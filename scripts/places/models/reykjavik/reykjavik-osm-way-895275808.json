@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-way-895275808",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KR-v\u00f6llur_Main_Stand.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Gruesome Gary",
+   "view": "side",
+   "file": "/tmp/places-evidence/reykjavik/kr.jpg",
+   "used": "main stand: single raked tier of grey seats, long flat roof on slim yellow-brown posts with a deep blue fascia (blank here), dark clubhouse wall with window strips behind the seats, timber stair at right end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/895275808",
+   "used": "ground size and pitch orientation (about 137 x 103 m, bearing 65 deg), modelled axis-aligned"
+  }
+ ],
+ "camera": {
+  "yawDeg": 57,
+  "pitchDeg": 6,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": -0.12
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 10,
+    "markings": true,
+    "goals": true
+   },
+   "rotDeg": 65
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     40,
+     40
+    ],
+    "end": [
+     -40,
+     40
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "offset": 3,
+    "under": "solid",
+    "backWall": 3.5,
+    "bay": 6,
+    "seatColour": "#6d747a",
+    "concreteColour": "#4d5256",
+    "underColour": "#2b2f32",
+    "canopy": {
+     "height": 6.8,
+     "depth": 11,
+     "thickness": 1.7,
+     "slopeDeg": -2,
+     "colour": "#2f3a58",
+     "overhangBack": 1.5,
+     "supports": 10,
+     "edgeColour": "#27408f"
+    }
+   },
+   "rotDeg": 65
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     84,
+     6
+    ]
+   },
+   "at": [
+    -46.22,
+    21.55
+   ],
+   "rotDeg": 65,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3d4245",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -13.64,
+    -57.64,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "post_height": 2.4,
+    "facing": "north",
+    "colour": "#2a2d31"
+   },
+   "rotDeg": 65
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 20,
+      "head_width": 3,
+      "colour": "#aeb4ba"
+     }
+    },
+    "mode": "line",
+    "start": [
+     10.05,
+     -73.1
+    ],
+    "end": [
+     62.45,
+     39.29
+    ],
+    "count": 2
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 20,
+      "head_width": 3,
+      "colour": "#aeb4ba"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -62.45,
+     -39.29
+    ],
+    "end": [
+     -10.05,
+     73.1
+    ],
+    "count": 2
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   150,
+   115
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "canopy fascia is flat plate not wavy; no timber stair; yellow posts default colour"
+ }
+}

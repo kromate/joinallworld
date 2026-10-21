@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-way-26895161",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tallinna_Tehnikak%C3%B5rgkool_2018.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kristjan Lepp",
+   "view": "front across square",
+   "file": "/tmp/places-evidence/tallinn/ttk1.jpg",
+   "used": "long four-storey Stalinist block in grey stone-clad plinth and pale grey render, central pedimented portico with six pilasters, taller pavilion ends with giant pilasters at left, hip roof behind parapet"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26895161",
+   "used": "overall extent (about 113 x 144 m); modelled as the front block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     44,
+     17
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "plain-render",
+    "colour": "#b9b8b0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 4,
+    "cornice": true,
+    "groundKind": "punched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a48",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     40,
+     17
+    ]
+   },
+   "at": [
+    33,
+    0
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "plain-render",
+    "colour": "#b9b8b0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a48",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     26,
+     19
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "plain-render",
+    "colour": "#cfcdc4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8a69e",
+    "pitch": 14,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "height": 18,
+    "depth": 3,
+    "colour": "#dcdad2"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -14,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "paving",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ }
+}

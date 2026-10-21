@@ -1,0 +1,492 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bettembourg_Castle5.JPG",
+   "licence": "CC0",
+   "author": "Ipigott",
+   "view": "side",
+   "file": "/tmp/places-evidence/luxembourg/bet1.jpg",
+   "used": "yellow render, grey slate roofs, tall stable wing with gable end at left, main wing with hip roof and chimney, wrought-iron gate and terrace stair, dormers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bettembourg_Castle1.JPG",
+   "licence": "CC0",
+   "author": "Ipigott",
+   "view": "side",
+   "file": "/tmp/places-evidence/luxembourg/bet2.jpg",
+   "used": "long stable wing eaves, round oculi, stone-framed niches, dormer row and chimney"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/146811861",
+   "used": "overall 59 x 52 m footprint; wings composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stable",
+   "footprint": {
+    "rect": [
+     19,
+     46
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e2c45f",
+    "windows": "punched",
+    "windowRatio": 0.04,
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 2.4,
+    "trimColour": "#9c9276"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#6b6f75",
+    "material": "slate",
+    "pitch": 50,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-wing",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e4c968",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 1.0,
+    "trimColour": "#cfc39c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#585b61",
+    "material": "slate",
+    "pitch": 35,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    22,
+    22
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6c96a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 1.0,
+    "bands": "#cdbf94",
+    "trimColour": "#cdbf94"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4d5057",
+    "material": "slate",
+    "pitch": 58,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "dormer",
+   "on": "link-wing",
+   "at": [
+    -8,
+    -3.5,
+    1.0
+   ],
+   "params": {
+    "width": 1.2,
+    "depth": 1.2,
+    "height": 1.4
+   }
+  },
+  {
+   "type": "dormer",
+   "on": "link-wing",
+   "at": [
+    -1,
+    -3.5,
+    1.0
+   ],
+   "params": {
+    "width": 1.2,
+    "depth": 1.2,
+    "height": 1.4
+   }
+  },
+  {
+   "type": "dormer",
+   "on": "link-wing",
+   "at": [
+    6,
+    -3.5,
+    1.0
+   ],
+   "params": {
+    "width": 1.2,
+    "depth": 1.2,
+    "height": 1.4
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "on": "main",
+   "at": [
+    0,
+    2,
+    10
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 7,
+    "pots": 0,
+    "colour": "#e2c45f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    18,
+    14
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8e8670",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b09a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    20,
+    10.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 2.2,
+    "run": 4,
+    "count": 9,
+    "colour": "#a89e86"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    18,
+    11.3,
+    2.2
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.4,
+    "thickness": 0.12,
+    "kind": "railing",
+    "colour": "#2a2a2c",
+    "pillarEvery": 4.5
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    18,
+    6,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.1,
+    "depth": 1.2
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "dormer",
+   "on": "main",
+   "at": [
+    -6,
+    -5,
+    3.5
+   ],
+   "params": {
+    "width": 1.2,
+    "depth": 1.2,
+    "height": 1.5
+   }
+  },
+  {
+   "type": "dormer",
+   "on": "main",
+   "at": [
+    0,
+    -5,
+    3.5
+   ],
+   "params": {
+    "width": 1.2,
+    "depth": 1.2,
+    "height": 1.5
+   }
+  },
+  {
+   "type": "dormer",
+   "on": "main",
+   "at": [
+    6,
+    -5,
+    3.5
+   ],
+   "params": {
+    "width": 1.2,
+    "depth": 1.2,
+    "height": 1.5
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -17,
+    -23.1,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.4,
+    "arch": true,
+    "colour": "#2b2a28",
+    "trim": "#a39a83"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -24,
+    -23.1,
+    9.5
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 1.0,
+    "kind": "arch",
+    "trim": "#a39a83"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -29,
+    -23.1,
+    6.5
+   ],
+   "params": {
+    "width": 0.4,
+    "height": 1.8,
+    "kind": "rect",
+    "trim": "#a39a83"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -24,
+    -23.1,
+    6.5
+   ],
+   "params": {
+    "width": 0.4,
+    "height": 1.8,
+    "kind": "rect",
+    "trim": "#a39a83"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -19,
+    -23.1,
+    6.5
+   ],
+   "params": {
+    "width": 0.4,
+    "height": 1.8,
+    "kind": "rect",
+    "trim": "#a39a83"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -14
+     ],
+     [
+      0,
+      -12
+     ],
+     [
+      40,
+      -14
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#a39b88"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -10,
+    12,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "railing",
+    "colour": "#2a2a2c",
+    "pillarEvery": 3
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "width": 105,
+    "depth": 85,
+    "colour": "#6d7d55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -14
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -8
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Main wing taller with steeper hip roof and taller chimney; stable has darker plinth, oculus, slit windows and arched door but no stone quoins; terrace stair and railing present, no stone retaining wall or gate detail; grass muted but still flat; park furniture omitted."
+ }
+}

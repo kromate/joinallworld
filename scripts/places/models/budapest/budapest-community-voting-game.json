@@ -1,0 +1,465 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%9Ajpest_V%C3%A1rosh%C3%A1za.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Christo",
+   "view": "front",
+   "file": "/tmp/places-evidence/budapest/town2.jpg",
+   "used": "front elevation: cream rusticated ground storey with round-arched openings, red brick upper storeys with cream pilaster strips, central bay with stepped gable and Roland figure, two square corner towers with steep green spires, steep green hipped roof, stucco gablets"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UjpestVaroshazaFotoThalerTamas.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Thaler Tamas",
+   "view": "side",
+   "file": "/tmp/places-evidence/budapest/town1.jpg",
+   "used": "depth and roof proportions, towers set at front of the central bay, side wing windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1764049",
+   "used": "footprint 56 x 33 m, rotated so the long front faces the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -77
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a3a2c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#e6dcc3",
+    "bands": "#e6dcc3",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 7
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f7a4a",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -18.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a3a2c",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#e6dcc3",
+    "bay": 4.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "trimColour": "#e6dcc3"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a4a",
+    "material": "slate",
+    "pitch": 45,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-l",
+   "at": [
+    -11,
+    -18
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     5.8
+    ],
+    "z0": 21,
+    "height": 1.5,
+    "colour": "#e6dcc3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spire-l",
+   "at": [
+    -11,
+    -18
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "z0": 22.5,
+    "height": 14,
+    "topScale": 0.06,
+    "colour": "#4f7a4a",
+    "topColour": "#4f7a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-r",
+   "at": [
+    11,
+    -18
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     5.8
+    ],
+    "z0": 21,
+    "height": 1.5,
+    "colour": "#e6dcc3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spire-r",
+   "at": [
+    11,
+    -18
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "z0": 22.5,
+    "height": 14,
+    "topScale": 0.06,
+    "colour": "#4f7a4a",
+    "topColour": "#4f7a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tw-l",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    -11,
+    -18
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a3a2c",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "cornice": true,
+    "bands": "#e6dcc3",
+    "trimColour": "#e6dcc3"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tw-r",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    11,
+    -18
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a3a2c",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "cornice": true,
+    "bands": "#e6dcc3",
+    "trimColour": "#e6dcc3"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    -22,
+    19.5
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#3a3a36"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 17
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-storey",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -77,
+    "scale": 1.03
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc3",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#e6dcc3",
+    "bands": "#cdbf9f",
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gablet-l",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    -22.0,
+    -16
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc3",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a4a",
+    "pitch": 50,
+    "axis": "x"
+   },
+   "z0": 10.5
+  },
+  {
+   "type": "mass",
+   "id": "gablet-r",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    22.0,
+    -16
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc3",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a4a",
+    "pitch": 50,
+    "axis": "x"
+   },
+   "z0": 10.5
+  },
+  {
+   "type": "mass",
+   "id": "bay-base",
+   "footprint": {
+    "rect": [
+     17,
+     6.2
+    ]
+   },
+   "at": [
+    0,
+    -18.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc3",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "bay": 4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -34
+    ],
+    "height": 4.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -34
+    ],
+    "height": 4.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -34
+    ],
+    "height": 4.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -34
+    ],
+    "height": 4.5
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-community-voting-game",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "towers and bay integrated, cream ground storey; stucco ornament, pilaster strips, stepped gable, dormers and arcade arches missing"
+ }
+}

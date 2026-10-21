@@ -1,0 +1,458 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-237087572",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tirana_church_2016.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "cameron lucida",
+   "view": "front",
+   "file": "/tmp/places-evidence/tirana/church0.jpg",
+   "used": "Romanesque Revival front: white stone ground storey with three round-arched doors and round windows, tall brick gable with cream central panel, rose window and three slender windows, stepped brick lean-to aisles, cross on the ridge, iron railing and steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:07Tirana_Kath-Church.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "de Fingalo",
+   "view": "side",
+   "file": "/tmp/places-evidence/tirana/church2.jpg",
+   "used": "long brick nave with small arched side windows, saw-tooth brick friezes under the eaves, no tower"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/237087572",
+   "used": "overall size only (40 m outline incl. annexes); nave modelled as a 10 x 27 m brick hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 0.74,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12,
+     27
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9623f",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "windowShape": "arched",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    },
+    "bay": 6,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a5553a",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-w",
+   "footprint": {
+    "rect": [
+     5,
+     25
+    ]
+   },
+   "at": [
+    -8.5,
+    3.5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9623f",
+    "windows": "none",
+    "faces": {
+     "left": "arched"
+    },
+    "bay": 6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "high": "right",
+    "pitch": 22,
+    "colour": "#a5553a",
+    "material": "clay-tile",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-e",
+   "footprint": {
+    "rect": [
+     5,
+     25
+    ]
+   },
+   "at": [
+    8.5,
+    3.5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9623f",
+    "windows": "none",
+    "faces": {
+     "right": "arched"
+    },
+    "bay": 6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "high": "left",
+    "pitch": 22,
+    "colour": "#a5553a",
+    "material": "clay-tile",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-front",
+   "footprint": {
+    "rect": [
+     24,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ece6d6",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6b2",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-panel",
+   "footprint": {
+    "rect": [
+     4.4,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    -9.3
+   ],
+   "z0": 6.2,
+   "height": 9.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ece2cc",
+    "windows": "pointed",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "pointed",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d5ccb8",
+    "material": "concrete",
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    0,
+    -12.75,
+    0.3
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 4.8,
+    "arch": true,
+    "colour": "#2a1d16",
+    "trim": "#d9d1be"
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    -8,
+    -12.75,
+    0.3
+   ],
+   "params": {
+    "width": 1.9,
+    "height": 3.8,
+    "arch": true,
+    "colour": "#2a1d16",
+    "trim": "#d9d1be"
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    8,
+    -12.75,
+    0.3
+   ],
+   "params": {
+    "width": 1.9,
+    "height": 3.8,
+    "arch": true,
+    "colour": "#2a1d16",
+    "trim": "#d9d1be"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    0,
+    -9.65,
+    13.0
+   ],
+   "params": {
+    "radius": 1.2,
+    "stained": true
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    -8,
+    -12.75,
+    5.0
+   ],
+   "params": {
+    "radius": 0.9,
+    "stained": true
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    8,
+    -12.75,
+    5.0
+   ],
+   "params": {
+    "radius": 0.9,
+    "stained": true
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -8.6,
+    18.2
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#2b2724"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 0.7,
+    "count": 5,
+    "colour": "#d6cfbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band0",
+   "footprint": {
+    "rect": [
+     11,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.6
+   ],
+   "z0": 8.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "colour": "#e3d9c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3d9c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band1",
+   "footprint": {
+    "rect": [
+     11,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.6
+   ],
+   "z0": 10.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "colour": "#e3d9c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3d9c4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -12.9,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 10,
+    "height": 6.2,
+    "colour": "#f2ecdc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -12.9,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 10,
+    "height": 6.2,
+    "colour": "#f2ecdc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.5,
+    -12.9,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 10,
+    "height": 6.2,
+    "colour": "#f2ecdc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.5,
+    -12.9,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 10,
+    "height": 6.2,
+    "colour": "#f2ecdc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -17
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -18
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Aisle lean-tos and cream bands added, but doors still render as framed glazed openings (no dark arched doors with arch surrounds), no saw-tooth friezes, no iron railing; stone is coarse blocks not smooth ashlar; nave length unverified."
+ }
+}

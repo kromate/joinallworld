@@ -1,0 +1,855 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Seb%C3%A9szet_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Veroczi Zoltan",
+   "view": "front",
+   "file": "/tmp/places-evidence/budapest/hosp1.jpg",
+   "used": "three-storey red-brick entrance block with arched windows in light surrounds, central arched glazed door, grey slate hipped roof with chimneys, rubble stone retaining wall with steps, big plane trees, notice board"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kis-Sv%C3%A1b_Hill_Protection_Area._View_to_J%C3%A1nos_Hospital._-_Budapest.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "see Commons page",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/budapest/hosp2.jpg",
+   "used": "separate brick ward pavilions with grey hipped roofs, tall freestanding brick chimney, modern white block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7883285",
+   "used": "hospital area (117,016 m2) only; the matched way is a 75 m2 cafe so no footprint is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     56,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a05c46",
+    "windows": "arched",
+    "windowRatio": 0.32,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "bands": {
+     "colour": "#cfae92",
+     "height": 0.5
+    },
+    "trimColour": "#cfae92"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6c7378",
+    "material": "slate",
+    "pitch": 14,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a05c46",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "bands": {
+     "colour": "#cfae92",
+     "height": 0.5
+    },
+    "trimColour": "#cfae92"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#6c7378",
+    "material": "slate",
+    "pitch": 26,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -12.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.35
+    ],
+    "z0": 0,
+    "height": 3.8,
+    "colour": "#5d6a70",
+    "topColour": "#5d6a70"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock",
+   "at": [
+    3.3,
+    -12.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.15
+    ],
+    "z0": 7.5,
+    "height": 1.2,
+    "colour": "#f1ede4",
+    "topColour": "#f1ede4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-w",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    -24,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9c5a45",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "bands": {
+     "colour": "#cfae92",
+     "height": 0.5
+    },
+    "trimColour": "#cfae92"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6c7378",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-e",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    24,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9c5a45",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "bands": {
+     "colour": "#cfae92",
+     "height": 0.5
+    },
+    "trimColour": "#cfae92"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6c7378",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "brick-stack",
+   "at": [
+    -4,
+    34,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "radius": 1.3,
+    "colour": "#a9573e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-w",
+   "at": [
+    -17,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#a39b88",
+    "topColour": "#a39b88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-e",
+   "at": [
+    17,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#a39b88",
+    "topColour": "#a39b88"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "info-board",
+   "at": [
+    26,
+    -26
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.2
+    ],
+    "z0": 1.0,
+    "height": 1.2,
+    "colour": "#5b7f9e",
+    "topColour": "#5b7f9e"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "trunk1",
+   "at": [
+    -17,
+    -15,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.53
+     },
+     {
+      "z": 8.55,
+      "circle": 1.02
+     },
+     {
+      "z": 13.299999999999999,
+      "circle": 0.68
+     }
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br1_0",
+   "at": [
+    -17,
+    -15,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      10.450000000000001
+     ],
+     [
+      3.034814938179713,
+      2.2868970879777835,
+      15.200000000000001
+     ],
+     [
+      6.069629876359426,
+      4.573794175955567,
+      19.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br1_1",
+   "at": [
+    -17,
+    -15,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      10.450000000000001
+     ],
+     [
+      -2.286897087977784,
+      3.0348149381797125,
+      15.200000000000001
+     ],
+     [
+      -4.573794175955568,
+      6.069629876359425,
+      19.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br1_2",
+   "at": [
+    -17,
+    -15,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      10.450000000000001
+     ],
+     [
+      -3.034814938179713,
+      -2.286897087977784,
+      15.200000000000001
+     ],
+     [
+      -6.069629876359426,
+      -4.573794175955568,
+      19.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br1_3",
+   "at": [
+    -17,
+    -15,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      10.450000000000001
+     ],
+     [
+      2.2868970879777826,
+      -3.0348149381797143,
+      15.200000000000001
+     ],
+     [
+      4.573794175955565,
+      -6.0696298763594285,
+      19.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "trunk2",
+   "at": [
+    17,
+    -14,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.53
+     },
+     {
+      "z": 8.1,
+      "circle": 1.02
+     },
+     {
+      "z": 12.6,
+      "circle": 0.68
+     }
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br2_0",
+   "at": [
+    17,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      9.9
+     ],
+     [
+      0.992294480941197,
+      3.4605421053779484,
+      14.4
+     ],
+     [
+      1.984588961882394,
+      6.921084210755897,
+      18.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br2_1",
+   "at": [
+    17,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      9.9
+     ],
+     [
+      -3.4605421053779484,
+      0.9922944809411972,
+      14.4
+     ],
+     [
+      -6.921084210755897,
+      1.9845889618823944,
+      18.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br2_2",
+   "at": [
+    17,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      9.9
+     ],
+     [
+      -0.992294480941196,
+      -3.460542105377949,
+      14.4
+     ],
+     [
+      -1.984588961882392,
+      -6.921084210755898,
+      18.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br2_3",
+   "at": [
+    17,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      9.9
+     ],
+     [
+      3.4605421053779484,
+      -0.9922944809411963,
+      14.4
+     ],
+     [
+      6.921084210755897,
+      -1.9845889618823926,
+      18.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "trunk3",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.53
+     },
+     {
+      "z": 6.3,
+      "circle": 1.02
+     },
+     {
+      "z": 9.799999999999999,
+      "circle": 0.68
+     }
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br3_0",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      7.700000000000001
+     ],
+     [
+      -1.0034302587268407,
+      2.614025194192165,
+      11.200000000000001
+     ],
+     [
+      -2.0068605174536813,
+      5.22805038838433,
+      14.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br3_1",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      7.700000000000001
+     ],
+     [
+      -2.614025194192165,
+      -1.0034302587268413,
+      11.200000000000001
+     ],
+     [
+      -5.22805038838433,
+      -2.0068605174536827,
+      14.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br3_2",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      7.700000000000001
+     ],
+     [
+      1.003430258726841,
+      -2.614025194192165,
+      11.200000000000001
+     ],
+     [
+      2.006860517453682,
+      -5.22805038838433,
+      14.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "br3_3",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.55
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      0.0,
+      7.700000000000001
+     ],
+     [
+      2.614025194192165,
+      1.0034302587268409,
+      11.200000000000001
+     ],
+     [
+      5.22805038838433,
+      2.0068605174536818,
+      14.0
+     ]
+    ],
+    "colour": "#8d8576"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Entrance pavilion now projects 5 m with a taller gabled roof; brick is flat (no ivy mottling); bare plane trees are thick trunks with four straight limbs; info board shrunk and muted; rear pavilions stand in for ward wings; stair is a short run between plain stone walls."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-relation-7883285"
+}

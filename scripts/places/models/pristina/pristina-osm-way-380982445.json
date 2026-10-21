@@ -1,0 +1,649 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-osm-way-380982445",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Campusi_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "UkeSejfijaj",
+   "view": "front",
+   "file": "/tmp/places-evidence/pristina/380982445_0.jpg",
+   "used": "two-storey full-height glazed entrance front with blue-green tinted panes, deep flat white-edged roof overhang, white fascia block at the left end carrying a rooftop sign, coloured spandrel panels and a blue band along the ground storey, grey cladding to the sides, paved forecourt with lollipop trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UBT_Campus_at_Lipjan_.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "UkeSejfijaj",
+   "view": "side",
+   "used": "grey metal-panel cladding with a few framed ribbon windows on the side walls, flat roof, flagpoles, paved path with globe lamps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/380982445",
+   "used": "overall size (about 37 x 25 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 42,
+  "pitchDeg": 7,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d3d6d8",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#a9cbc6",
+    "faces": {
+     "front": "curtain",
+     "right": "punched",
+     "left": "plain",
+     "back": "plain"
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7c7e",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "at": [
+    0,
+    -1.8,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     35.5,
+     24.5
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#f4f6f7",
+    "topColour": "#e4e7e9"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia-block",
+   "at": [
+    -15.2,
+    -1,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     22
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#f4f6f7",
+    "topColour": "#cfd3d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-recess",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12,
+    -11.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.3
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#2b3236",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 2.6,
+    "colours": [
+     "#2f4fa0",
+     "#d33a3a",
+     "#2f4fa0",
+     "#d33a3a",
+     "#e8c13a"
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -4,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 3.4,
+    "count": 3,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 4.2
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -6,
+     -16
+    ],
+    "end": [
+     12,
+     -16
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter0",
+   "at": [
+    -17.2,
+    -10.5,
+    13.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#f7f9fa",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter1",
+   "at": [
+    -15.2,
+    -10.5,
+    13.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#f7f9fa",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter2",
+   "at": [
+    -13.2,
+    -10.5,
+    13.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#f7f9fa",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -9.0,
+    -11.25,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#2a47a0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -5.4,
+    -11.25,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#3f9a5a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -1.7999999999999998,
+    -11.25,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#d98a3a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    1.8000000000000007,
+    -11.25,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#e8c13a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    5.4,
+    -11.25,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#c9573f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel5",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9.0,
+    -11.25,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#2a47a0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel6",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12.600000000000001,
+    -11.25,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#8a9ba8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel7",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    16.2,
+    -11.25,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#3f9a5a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue-band",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    -11.25,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.2
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#2a47a0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo0",
+   "lod": [
+    0
+   ],
+   "at": [
+    -9.0,
+    -11.4,
+    0.95
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f4f6f7",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo1",
+   "lod": [
+    0
+   ],
+   "at": [
+    -5.4,
+    -11.4,
+    0.95
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f4f6f7",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo2",
+   "lod": [
+    0
+   ],
+   "at": [
+    -1.7999999999999998,
+    -11.4,
+    0.95
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f4f6f7",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo3",
+   "lod": [
+    0
+   ],
+   "at": [
+    1.8000000000000007,
+    -11.4,
+    0.95
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f4f6f7",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo4",
+   "lod": [
+    0
+   ],
+   "at": [
+    5.4,
+    -11.4,
+    0.95
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f4f6f7",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo5",
+   "lod": [
+    0
+   ],
+   "at": [
+    9.0,
+    -11.4,
+    0.95
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f4f6f7",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo6",
+   "lod": [
+    0
+   ],
+   "at": [
+    12.600000000000001,
+    -11.4,
+    0.95
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f4f6f7",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo7",
+   "lod": [
+    0
+   ],
+   "at": [
+    16.2,
+    -11.4,
+    0.95
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f4f6f7",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "glazing still reads darker than the light blue-green photo; slanted glazed front and big round logo graphic not modelled; logos are white squares not circles; UBT shown as three abstract white blocks (no legible name); lawn/lollipop trees simplified, white left block and side cladding approximate"
+ }
+}

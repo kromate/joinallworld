@@ -1,0 +1,136 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/14484752",
+   "used": "real outline of Kazin tal-Banda San Gabriel, Balzan (name match, 675 m2)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Maltese band club, limestone, enclosed painted balcony (gallarija), flags, ground floor bar; no exterior photo of the building found (nearby Balzan photos are plaques)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "club",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4b483",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#efe6cf",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ad8f",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallarija",
+   "footprint": {
+    "rect": [
+     6,
+     1.4
+    ]
+   },
+   "at": [
+    -2,
+    -15.2
+   ],
+   "rotDeg": 0,
+   "z0": 5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3e6b4a",
+    "windows": "punched",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5238",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -14.6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 3.2,
+    "colour": "#efe6cf",
+    "frameColour": "#3e6b4a",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -14.8,
+    8.5
+   ],
+   "params": {
+    "height": 4,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#c8362f",
+     "#f1ede2",
+     "#3e6b4a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-relation-14484752",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found; real outline with typical Maltese band club details (gallarija, flags) only"
+ }
+}

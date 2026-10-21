@@ -1,0 +1,508 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-node-8413119694",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Albano_Laziale_Monte_Savello_e_ruderi_Castel_Savello.JPG",
+   "licence": "Public domain",
+   "author": "Deblu68",
+   "view": "street",
+   "file": "/tmp/places-evidence/rome/rome-osm-node-8413119694-0.jpg",
+   "used": "low hilltop village: one slim square stone tower stump at centre among old house blocks, stone farmhouse with terracotta roof at left, umbrella pines along the crest, tall cypresses, green slopes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/764391791",
+   "used": "nearest OSM building (235 m2, 47 m away) is only a hint for the size of the tower base; not trusted as the castle outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#80864f",
+    "capBottom": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       58,
+       40
+      ]
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       46,
+       31
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       36,
+       24
+      ]
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       26,
+       17
+      ]
+     }
+    ],
+    "round": 10
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-stump",
+   "at": [
+    0,
+    0,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 9,
+    "topScale": 0.88,
+    "colour": "#8f836c",
+    "topColour": "#6b6454",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -6.5,
+    -2
+   ],
+   "z0": 3.8,
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89a80",
+    "windows": "punched",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-b",
+   "footprint": {
+    "rect": [
+     6.5,
+     5.5
+    ]
+   },
+   "at": [
+    6.2,
+    1
+   ],
+   "z0": 3.8,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a8e76",
+    "windows": "punched",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-c",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -1,
+    6
+   ],
+   "z0": 3.8,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b0a287",
+    "windows": "punched",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-d",
+   "footprint": {
+    "rect": [
+     6,
+     4.5
+    ]
+   },
+   "at": [
+    2,
+    -6.5
+   ],
+   "z0": 3.8,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a09074",
+    "windows": "punched",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-e",
+   "footprint": {
+    "rect": [
+     5,
+     4.5
+    ]
+   },
+   "at": [
+    -7,
+    5.5
+   ],
+   "z0": 3.8,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#998d74",
+    "windows": "punched",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "farmhouse",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    -3
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a8967a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -14,
+    -14,
+    2.5
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     34,
+     6
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "profile": [
+       [
+        0.45,
+        0,
+        "#5a4632"
+       ],
+       [
+        0.45,
+        9.5,
+        "#5a4632"
+       ],
+       [
+        3.2,
+        9.6,
+        "#2f4a2c"
+       ],
+       [
+        3.2,
+        11.2,
+        "#2f4a2c"
+       ],
+       [
+        1.8,
+        12,
+        "#2f4a2c"
+       ],
+       [
+        0,
+        12,
+        "#2f4a2c"
+       ]
+      ]
+     }
+    },
+    "lod2Step": 8,
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    14,
+    12,
+    2.5
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     -34,
+     -3
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "profile": [
+       [
+        0.45,
+        0,
+        "#5a4632"
+       ],
+       [
+        0.45,
+        10,
+        "#5a4632"
+       ],
+       [
+        3.2,
+        10.1,
+        "#2f4a2c"
+       ],
+       [
+        3.2,
+        11.8,
+        "#2f4a2c"
+       ],
+       [
+        1.8,
+        12.5,
+        "#2f4a2c"
+       ],
+       [
+        0,
+        12.5,
+        "#2f4a2c"
+       ]
+      ]
+     }
+    },
+    "lod2Step": 8,
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -14,
+    10,
+    2.5
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     26,
+     0
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#2a3d2a",
+      "capBottom": true,
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.7
+       },
+       {
+        "z": 4,
+        "circle": 1.1
+       },
+       {
+        "z": 9,
+        "circle": 0.9
+       },
+       {
+        "z": 13,
+        "circle": 0.2
+       }
+      ]
+     }
+    },
+    "lod2Step": 8,
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    10,
+    -12,
+    2.5
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     14,
+     4
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#2a3d2a",
+      "capBottom": true,
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.7
+       },
+       {
+        "z": 4,
+        "circle": 1.1
+       },
+       {
+        "z": 9,
+        "circle": 0.9
+       },
+       {
+        "z": 13,
+        "circle": 0.2
+       }
+      ]
+     }
+    },
+    "lod2Step": 8,
+    "lod1Step": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Low terraced mound, slim tower stump among tight house blocks, umbrella pines and cypresses placed; pine crowns are flat discs, terrace lines and olive groves are not modelled, wall plan inferred from one distant photo."
+ }
+}

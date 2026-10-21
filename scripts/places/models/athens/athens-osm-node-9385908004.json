@@ -1,0 +1,250 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-node-9385908004",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%CE%86%CE%B3%CE%B9%CE%BF%CF%82_%CE%9B%CE%BF%CF%85%CE%BA%CE%AC%CF%82,_%CE%9B%CE%B1%CE%BC%CF%80%CF%81%CE%B9%CE%BA%CE%AC_%CE%9A%CE%BF%CF%81%CF%89%CF%80%CE%AF%CE%BF%CF%85.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kostas Vassis",
+   "view": "front",
+   "file": "/tmp/places-evidence/athens/luk1.jpg",
+   "used": "small Byzantine chapel of rough buff limestone blocks, steep front gable with a blind arched niche above a plain timber door, grey stone-slab roof with a dentil eave course, small stone cross on the ridge, lower apse/annex stepping down at the left rear, olive trees and grass setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "node/9385908004",
+   "used": "location only (point, no outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     5.6,
+     8.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8a583",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.35,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a6e60",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse-annex",
+   "footprint": {
+    "rect": [
+     3.6,
+     5.2
+    ]
+   },
+   "at": [
+    -4.2,
+    1.6
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a99874",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#74685a",
+    "material": "slate",
+    "pitch": 26,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse-back",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    5.1
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a99874",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#74685a",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4.22,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.14
+    ],
+    "height": 2.3,
+    "colour": "#5e3a24"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4.22,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#9a8870"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4.9,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 1,
+    "colour": "#a39a88"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    6.55
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 1.0,
+    "colour": "#8f8a7c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    7.05
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.18
+    ],
+    "height": 0.18,
+    "colour": "#8f8a7c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7.5,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5.5,
+    "count": 2,
+    "spread": 5,
+    "colour": "#6b7a48"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 2,
+    "spread": 4,
+    "colour": "#4f6a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Stone is a regular block texture rather than rough rubble; no blind arch niche carved in the front gable at LOD0; annex roofs simplified; surrounding olive trees generic."
+ }
+}

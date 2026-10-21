@@ -1,0 +1,254 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-osm-way-37111399",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kralupy_kostel_sv._Jakuba_V%C4%9Bt%C5%A1%C3%ADho_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ewwwa",
+   "view": "side",
+   "file": "/tmp/places-evidence/prague/jakub.jpg",
+   "used": "yellow-render chancel with polygonal end, white pilasters, red clay-tile hip roof, tall square stone tower with a grey pyramid cap and ball and cross, rubble churchyard wall in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37111399",
+   "used": "facts only: about 25 x 15 m footprint including tower, Gothic origin and baroque remodelling"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "polygon": [
+     [
+      4.16,
+      1.72
+     ],
+     [
+      1.72,
+      4.16
+     ],
+     [
+      -1.72,
+      4.16
+     ],
+     [
+      -4.16,
+      1.72
+     ],
+     [
+      -4.16,
+      -1.72
+     ],
+     [
+      -1.72,
+      -4.16
+     ],
+     [
+      1.72,
+      -4.16
+     ],
+     [
+      4.16,
+      -1.72
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -4.5
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6cf72",
+    "windows": "pointed",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 5,
+    "faces": {
+     "front": "pointed"
+    },
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4552f",
+    "material": "clay-tile",
+    "rise": 4.2,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6cf72",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 5,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c4552f",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 0.35,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    3,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b8a888",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#8d939a",
+    "material": "metal-sheet",
+    "rise": 5.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    3,
+    7,
+    20.5
+   ],
+   "params": {
+    "baseWidth": 0.3,
+    "height": 2.2,
+    "colour": "#c9a74a",
+    "finial": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retaining-wall",
+   "footprint": {
+    "rect": [
+     34,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "rotDeg": -6,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#9c9078",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0a58a",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 3,
+    "colour": "#3c6a30"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 3,
+    "colour": "#3c6a30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower lacks quoins and belfry window, chancel buttresses are plain, churchyard wall is straight not curved and now hides the lower nave"
+ }
+}

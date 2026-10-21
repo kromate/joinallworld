@@ -1,0 +1,435 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A@a_larnaca_general_hospital_1_cy_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "An. Antoniou",
+   "view": "front",
+   "file": "/tmp/places-evidence/larnaca/hosp1.jpg",
+   "used": "nine-storey beige slab with projecting sunshade bands, taller stair tower at the left end, low two-storey podium at the front, colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/91496088",
+   "used": "footprint of the main slab"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     50,
+     26
+    ]
+   },
+   "height": 33,
+   "storeys": 9,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d2ae",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "plinth": 0.3,
+    "bands": "#a8916a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "parapet": 0.5
+   },
+   "at": [
+    0,
+    9
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     18,
+     30
+    ]
+   },
+   "at": [
+    10,
+    -12
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d8b8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     11,
+     22
+    ]
+   },
+   "at": [
+    -31,
+    -2
+   ],
+   "height": 36,
+   "storeys": 10,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c79d",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "back": "none",
+     "right": "none",
+     "left": "none"
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -2,
+    -14
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ebdfc2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-wing",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    -21,
+    -14
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d8b8",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -4,
+    -25,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#d9cdb0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -3.6,
+    33.5
+   ],
+   "params": {
+    "width": 40,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#4a4338",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 3,
+    "spacing": 3.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade0",
+   "at": [
+    0,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     1.0
+    ],
+    "z0": 4.2,
+    "height": 0.45,
+    "colour": "#a8916a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade1",
+   "at": [
+    0,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     1.0
+    ],
+    "z0": 7.87,
+    "height": 0.45,
+    "colour": "#a8916a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade2",
+   "at": [
+    0,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     1.0
+    ],
+    "z0": 11.54,
+    "height": 0.45,
+    "colour": "#a8916a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade3",
+   "at": [
+    0,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     1.0
+    ],
+    "z0": 15.21,
+    "height": 0.45,
+    "colour": "#a8916a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade4",
+   "at": [
+    0,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     1.0
+    ],
+    "z0": 18.88,
+    "height": 0.45,
+    "colour": "#a8916a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade5",
+   "at": [
+    0,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     1.0
+    ],
+    "z0": 22.55,
+    "height": 0.45,
+    "colour": "#a8916a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade6",
+   "at": [
+    0,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     1.0
+    ],
+    "z0": 26.22,
+    "height": 0.45,
+    "colour": "#a8916a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade7",
+   "at": [
+    0,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     1.0
+    ],
+    "z0": 29.89,
+    "height": 0.45,
+    "colour": "#a8916a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -4.2,
+    33.4
+   ],
+   "params": {
+    "width": 34,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#4a4338",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "sunshade ledges are thin and windows not recessed; no legible lettering (blank sign band); podium simplified; trees omitted"
+ }
+}

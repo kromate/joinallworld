@@ -1,0 +1,299 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TRAIN_STATION_Bratislava_Predmestie.JPG",
+   "licence": "Public domain",
+   "author": "Kelovy",
+   "view": "front",
+   "file": "/tmp/places-evidence/bratislava/p-transit-0.jpg",
+   "used": "modernist concrete station hall: flat roof, tall dark glazed front in a square mullion grid, blank name band above, low flat entrance canopy with steps, taller cantilever-roofed block behind right, lower wing at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/60801913",
+   "used": "overall length of the station building (68 x 22 m); hall modelled from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a698",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 1.2,
+    "cornice": true,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-band",
+   "params": {
+    "rect": [
+     25,
+     1.6
+    ],
+    "z0": 12.2,
+    "height": 1.4,
+    "colour": "#8f8c82"
+   },
+   "at": [
+    0,
+    -9.2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    7,
+    16
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39b8c",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968c",
+    "parapet": 0.3,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     28,
+     13
+    ]
+   },
+   "at": [
+    -27,
+    24
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#a19d90",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#78756e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -10.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 2,
+    "height": 3.4,
+    "thickness": 0.2,
+    "columns": 0,
+    "colour": "#b6b8b9",
+    "edgeColour": "#6e7173"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.8,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.8,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "graffiti-panel",
+   "at": [
+    0,
+    -9.3
+   ],
+   "footprint": {
+    "rect": [
+     8,
+     0.6
+    ]
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "graffiti-tag",
+   "at": [
+    0,
+    -9.5
+   ],
+   "footprint": {
+    "rect": [
+     3.2,
+     0.6
+    ]
+   },
+   "height": 1.6,
+   "z0": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a2a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cantilever-slab",
+   "at": [
+    7,
+    16
+   ],
+   "z0": 18,
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39b8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     15,
+     -12
+    ],
+    "height": 18
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     19,
+     -8
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     -3
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     -12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Graffiti panels not visible behind the glass, cantilever roof is a plain slab, left wing windows simplified, no weathering, pines not as dense as photo."
+ }
+}

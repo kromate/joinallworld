@@ -1,0 +1,510 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-48162658",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uzun_Aquaduct_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Canercangul",
+   "view": "side",
+   "file": "/tmp/places-evidence/istanbul/uzun1.jpg",
+   "used": "two tiers of tall pointed arches on rubble limestone piers, upper tier shorter, flat top, grassy valley floor, oblique view along the span"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mimar_Sinan_Uzun_Kemer_Uzun_Aquaduct.jpg",
+   "licence": "No restrictions",
+   "author": "SALT Research",
+   "view": "side",
+   "used": "arch proportions, string course between tiers, long run receding into the valley"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/48162658",
+   "used": "26 m height, Sinan 1554-64; run clamped to a 100 m segment"
+  }
+ ],
+ "camera": {
+  "yawDeg": 72,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "array",
+   "id": "tier-low",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42.75,
+     0
+    ],
+    "end": [
+     42.75,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         3,
+         4
+        ]
+       },
+       {
+        "z": 10.75,
+        "rect": [
+         3,
+         4
+        ]
+       },
+       {
+        "z": 12.35,
+        "rect": [
+         3.84,
+         4
+        ]
+       },
+       {
+        "z": 13.25,
+        "rect": [
+         5.35,
+         4
+        ]
+       },
+       {
+        "z": 13.75,
+        "rect": [
+         7,
+         4
+        ]
+       },
+       {
+        "z": 14.0,
+        "rect": [
+         9.5,
+         4
+        ]
+       }
+      ],
+      "colour": "#8a8573"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "tier-low-ring",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42.75,
+     0
+    ],
+    "end": [
+     42.75,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "sections": [
+       {
+        "z": 10.75,
+        "rect": [
+         3.5,
+         4.3
+        ]
+       },
+       {
+        "z": 12.35,
+        "rect": [
+         4.34,
+         4.3
+        ]
+       },
+       {
+        "z": 13.25,
+        "rect": [
+         5.85,
+         4.3
+        ]
+       },
+       {
+        "z": 13.75,
+        "rect": [
+         7.5,
+         4.3
+        ]
+       },
+       {
+        "z": 14.0,
+        "rect": [
+         10.0,
+         4.3
+        ]
+       }
+      ],
+      "colour": "#c9bd9c"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "string-course",
+   "params": {
+    "rect": [
+     100,
+     4.6
+    ],
+    "z0": 13.8,
+    "height": 1.0,
+    "colour": "#b8ac8a"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "tier-up",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42.75,
+     0
+    ],
+    "end": [
+     42.75,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "sections": [
+       {
+        "z": 14.6,
+        "rect": [
+         3,
+         4
+        ]
+       },
+       {
+        "z": 21.75,
+        "rect": [
+         3,
+         4
+        ]
+       },
+       {
+        "z": 23.35,
+        "rect": [
+         3.84,
+         4
+        ]
+       },
+       {
+        "z": 24.25,
+        "rect": [
+         5.35,
+         4
+        ]
+       },
+       {
+        "z": 24.75,
+        "rect": [
+         7,
+         4
+        ]
+       },
+       {
+        "z": 25.0,
+        "rect": [
+         9.5,
+         4
+        ]
+       }
+      ],
+      "colour": "#8f8977"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "tier-up-ring",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42.75,
+     0
+    ],
+    "end": [
+     42.75,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "sections": [
+       {
+        "z": 21.75,
+        "rect": [
+         3.5,
+         4.3
+        ]
+       },
+       {
+        "z": 23.35,
+        "rect": [
+         4.34,
+         4.3
+        ]
+       },
+       {
+        "z": 24.25,
+        "rect": [
+         5.85,
+         4.3
+        ]
+       },
+       {
+        "z": 24.75,
+        "rect": [
+         7.5,
+         4.3
+        ]
+       },
+       {
+        "z": 25.0,
+        "rect": [
+         10.0,
+         4.3
+        ]
+       }
+      ],
+      "colour": "#c9bd9c"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet",
+   "params": {
+    "rect": [
+     100,
+     4.6
+    ],
+    "z0": 24.9,
+    "height": 1.1,
+    "colour": "#a39b82"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stand-in",
+   "lod": [
+    2
+   ],
+   "params": {
+    "rect": [
+     96,
+     4
+    ],
+    "z0": 0,
+    "height": 25,
+    "colour": "#a99d7f"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bush0",
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#3d5a2e"
+   },
+   "at": [
+    -30,
+    -2.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bush1",
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#3d5a2e"
+   },
+   "at": [
+    -12,
+    -2.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bush2",
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#3d5a2e"
+   },
+   "at": [
+    6,
+    -2.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bush3",
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#3d5a2e"
+   },
+   "at": [
+    26,
+    -2.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "params": {
+    "rect": [
+     100,
+     2
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#7a6a50"
+   },
+   "at": [
+    0,
+    -4.5
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -11
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   28
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round arches on straight piers with ring lofts, but no rubble coursing texture, ivy only as low blobs, no third small tier; only a 100 m segment of the 767 m span."
+ }
+}

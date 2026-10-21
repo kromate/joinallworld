@@ -1,0 +1,1086 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barutana.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nikola Djordjevic",
+   "view": "street",
+   "file": "/tmp/places-evidence/belgrade/barutana.jpg",
+   "used": "wide grey paving-block promenade with red accent squares, mown lawn with young trees, dark timber-slat benches, tall lamp posts, mature broadleaf trees on the horizon, low stone wall at right, upright park sign board at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/68321074",
+   "used": "park outline about 214 x 168 m, drawn at 0.55 scale so the whole park fits the 118 m model limit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 38,
+  "fovDeg": 20,
+  "aspect": 2.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 0.55
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f9a4a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "promenade",
+   "footprint": {
+    "rect": [
+     14,
+     100
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4b0a8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "promenade-branch",
+   "footprint": {
+    "rect": [
+     12,
+     70
+    ]
+   },
+   "at": [
+    22,
+    -8
+   ],
+   "rotDeg": -62,
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4b0a8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    -38
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b5ad",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5ad"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red0",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    -36
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red1",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red2",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red3",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red4",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red5",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red6",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red7",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red8",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red9",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red10",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red11",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red12",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    36
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red13",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    42
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redb0",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    10.263210930352729,
+    14.07368982147317
+   ],
+   "rotDeg": -62,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redb1",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    13.080040307068074,
+    8.77600426431961
+   ],
+   "rotDeg": -62,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redb2",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    15.896869683783418,
+    3.47831870716605
+   ],
+   "rotDeg": -62,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redb3",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    18.713699060498765,
+    -1.819366849987512
+   ],
+   "rotDeg": -62,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redb4",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    21.53052843721411,
+    -7.117052407141073
+   ],
+   "rotDeg": -62,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redb5",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    24.347357813929456,
+    -12.414737964294634
+   ],
+   "rotDeg": -62,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redb6",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    27.1641871906448,
+    -17.712423521448194
+   ],
+   "rotDeg": -62,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redb7",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    29.981016567360143,
+    -23.010109078601758
+   ],
+   "rotDeg": -62,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redb8",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    32.79784594407549,
+    -28.307794635755318
+   ],
+   "rotDeg": -62,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5483c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench0",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.6
+    ]
+   },
+   "at": [
+    -9.5,
+    -30
+   ],
+   "rotDeg": 90,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3226",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a281e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench1",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.6
+    ]
+   },
+   "at": [
+    1.5,
+    -15
+   ],
+   "rotDeg": 90,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3226",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a281e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench2",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.6
+    ]
+   },
+   "at": [
+    -9.5,
+    0
+   ],
+   "rotDeg": 90,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3226",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a281e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench3",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.6
+    ]
+   },
+   "at": [
+    1.5,
+    15
+   ],
+   "rotDeg": 90,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3226",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a281e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench4",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.6
+    ]
+   },
+   "at": [
+    -9.5,
+    30
+   ],
+   "rotDeg": 90,
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3226",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a281e"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -9,
+    -30,
+    1.0
+   ],
+   "params": {
+    "height": 7,
+    "count": 6,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    1,
+    -30,
+    1.0
+   ],
+   "params": {
+    "height": 7,
+    "count": 6,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    38,
+    -30,
+    0.5
+   ],
+   "rotDeg": -35,
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#a6a198"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -44,
+    0.5
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.6,
+    "bottom": 0.3,
+    "colour": "#5f9a4e",
+    "frameColour": "#d8d8d8",
+    "posts": true
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    30
+   ],
+   "params": {
+    "width": 80,
+    "depth": 20,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    38,
+    15
+   ],
+   "params": {
+    "width": 20,
+    "depth": 40,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -38,
+    -5
+   ],
+   "params": {
+    "width": 14,
+    "depth": 60,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    25
+   ],
+   "params": {
+    "width": 24,
+    "depth": 20,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    -45
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    10
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 16
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "aerial view vs inside-park photo; paving widened with red squares, trees, benches, lamps present but tiny; grey surround remains; layout representative"
+ },
+ "site": {
+  "ground": "grass",
+  "extent": [
+   118,
+   104
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-recreation"
+}

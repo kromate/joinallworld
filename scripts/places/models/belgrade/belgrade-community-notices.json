@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-community-notices",
+ "name": "Security Information Agency (small house at the pin)",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/646970682",
+   "used": "real outline of the building 7 m from the pin (house, 24 x 17 m); no photo exists of this building, everything else is typical for a walled Belgrade villa-style government house"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "rotDeg": -38
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c8a0",
+    "trimColour": "#efeee8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "punched"
+    },
+    "plinth": 0.7,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8512f",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 3.0,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#bdb8aa"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#bdb8aa"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; outline only (rotation of footprint unchecked visually), generic hipped villa, wall and gate typical not observed"
+ }
+}

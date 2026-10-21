@@ -1,0 +1,593 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-osm-relation-2747685",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bellapais_Monastery_-_Abbey_church_(10).JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chris06",
+   "view": "side",
+   "file": "/tmp/places-evidence/kyrenia/bella1.jpg",
+   "used": "abbey church south wall with a tall belfry gable of five pointed openings, lower apse block, pointed-arch terrace arcade in front, honey limestone ashlar, crenellated refectory wall at left, cypresses"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bellapais_Abbey_7.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jorge-11",
+   "view": "detail",
+   "used": "ashlar course size and the stone tone (pale honey, darker in shade)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2747685",
+   "used": "overall extent only (65 x 55 m, name match); wings were placed by hand within it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.39
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    6,
+    6
+   ],
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b09468",
+    "windows": "pointed-arch",
+    "windowRatio": 0.08,
+    "plinth": 0.4,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "cornice": true,
+    "bay": 3.5,
+    "windowShape": "round",
+    "bands": "#a8926a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89670",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse-end",
+   "footprint": {
+    "rect": [
+     9,
+     12
+    ]
+   },
+   "at": [
+    26,
+    5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ae966c",
+    "windows": "pointed-arch",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "none",
+     "left": "none",
+     "right": "pointed-arch"
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89670",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     9,
+     1.4
+    ]
+   },
+   "at": [
+    -2,
+    2.2
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b59f76",
+    "windows": "pointed-arch",
+    "windowRatio": 0.9,
+    "plinth": 0.4,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "pointed-arch",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 1.8,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d8d72",
+    "parapet": 0.3
+   },
+   "z0": 16
+  },
+  {
+   "type": "mass",
+   "id": "gable-step1",
+   "footprint": {
+    "rect": [
+     6,
+     1.4
+    ]
+   },
+   "at": [
+    -2,
+    2.2
+   ],
+   "z0": 23,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b59f76",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d8d72"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gable-step2",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.4
+    ]
+   },
+   "at": [
+    -2,
+    2.2
+   ],
+   "z0": 24.5,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b59f76",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9d8d72",
+    "pitch": 45
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -8,
+    0.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     28,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.0
+      ],
+      "height": 15,
+      "topScale": 0.7,
+      "colour": "#a8926a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -18,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     44,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.4,
+       1.0
+      ],
+      "height": 0.8,
+      "colour": "#3d5a30"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -6,
+    -11,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     24,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       0.6
+      ],
+      "height": 0.5,
+      "colour": "#8a6a45"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "terrace-arcade",
+   "footprint": {
+    "rect": [
+     34,
+     5
+    ]
+   },
+   "at": [
+    3,
+    -2.5
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ae9468",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 9,
+      "opening": 0.85,
+      "height": 0.97,
+      "depth": 2.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89670",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "refectory-wall",
+   "footprint": {
+    "rect": [
+     24,
+     7
+    ]
+   },
+   "at": [
+    -34,
+    16
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#bba67e",
+    "windows": "pointed-arch",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "parapet": 0.8,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89670",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-range",
+   "footprint": {
+    "rect": [
+     56,
+     7
+    ]
+   },
+   "at": [
+    -3,
+    36
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b4a07a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#a89670",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-range",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    -30,
+    24
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b4a07a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#a89670",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-range",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    24,
+    24
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b8a47c",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#a89670",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -14,
+    3,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     12,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "profile": [
+       [
+        0.1,
+        0.0,
+        "#4a3b2a"
+       ],
+       [
+        0.1,
+        1.5,
+        "#4a3b2a"
+       ],
+       [
+        1.0,
+        1.875,
+        "#33502f"
+       ],
+       [
+        1.1,
+        6.25,
+        "#2f4b2e"
+       ],
+       [
+        0.7,
+        10.0,
+        "#2f4b2e"
+       ],
+       [
+        0.05,
+        12.5,
+        "#2f4b2e"
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     38,
+     -12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "belfry is a thin open wall but arches are still small windows not through-cut; apse and buttresses simplified; hedges blocky; cloister ranges hand-placed"
+ }
+}

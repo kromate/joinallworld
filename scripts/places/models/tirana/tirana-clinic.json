@@ -1,0 +1,136 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/672291927",
+   "used": "Spitali Amerikan 3 outline (2,436 m2, 4 levels, name match); no photo of this exact building (the only Commons image is the Central Laboratory, a different building), so facade is typed: rendered block, glazed entrance, ambulance bay"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e2d6",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bands": "#6f8aa0",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "height": 7,
+    "colour": "#7f9fb2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 8,
+    "height": 4.6,
+    "columns": 4,
+    "colour": "#f0eee8",
+    "edgeColour": "#6f8aa0"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -4.3,
+    8.2
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.4,
+    "colour": "#2f6f9f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     -25
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -25
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this hospital; facade, entrance and colours are typed from the brief."
+ }
+}

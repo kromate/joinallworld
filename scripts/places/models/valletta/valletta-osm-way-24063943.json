@@ -1,0 +1,785 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mater_Dei_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Johan Pihlemark",
+   "view": "street",
+   "used": "sand-yellow limestone blocks with peach render, round stair towers with slit windows, ribbon-glazed curved rotunda, blue-grey metal roof sheds, sculpture on round plinth in forecourt",
+   "file": "/tmp/places-evidence/valletta/mater1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sptar_Mater_Dei_(1).JPG",
+   "licence": "Attribution (Wikimedia Commons)",
+   "author": "Ori~",
+   "view": "front",
+   "used": "peach-render two-storey wing with pier rhythm and punched windows, round tower with glazed dome and curved glazed entrance, light blue roof hall behind",
+   "file": "/tmp/places-evidence/valletta/mater2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24063943",
+   "used": "overall layout: long front block with northward wings (330 x 200 m real, composed at 0.36 plan scale)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     110,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6c590",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 15,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#d9b98a"
+      ],
+      "height": 0.9,
+      "at": 0.0,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b29f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-0",
+   "footprint": {
+    "rect": [
+     10,
+     38
+    ]
+   },
+   "at": [
+    -46,
+    12
+   ],
+   "height": 11,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6c590",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b29f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-1",
+   "footprint": {
+    "rect": [
+     10,
+     38
+    ]
+   },
+   "at": [
+    -23,
+    12
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6c590",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b29f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-2",
+   "footprint": {
+    "rect": [
+     10,
+     38
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6c590",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b29f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-3",
+   "footprint": {
+    "rect": [
+     10,
+     38
+    ]
+   },
+   "at": [
+    23,
+    12
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6c590",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b29f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-4",
+   "footprint": {
+    "rect": [
+     10,
+     38
+    ]
+   },
+   "at": [
+    46,
+    12
+   ],
+   "height": 11,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6c590",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b29f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-link",
+   "footprint": {
+    "rect": [
+     104,
+     9
+    ]
+   },
+   "at": [
+    0,
+    35
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6c590",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b29f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "metal-hall",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    12
+   ],
+   "z0": 17,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8fa6b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fa6b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-drum",
+   "at": [
+    22,
+    -23,
+    0
+   ],
+   "params": {
+    "radius": 6.5,
+    "n": 16,
+    "height": 12,
+    "colour": "#e8c9a0"
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    22,
+    -23,
+    13
+   ],
+   "params": {
+    "radius": 5.5,
+    "profile": "hemi",
+    "colour": "#9fb4b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower-0",
+   "at": [
+    -57,
+    -19,
+    0
+   ],
+   "params": {
+    "radius": 4,
+    "n": 8,
+    "height": 22,
+    "colour": "#eab98f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower-1",
+   "at": [
+    57,
+    -19,
+    0
+   ],
+   "params": {
+    "radius": 4,
+    "n": 8,
+    "height": 22,
+    "colour": "#eab98f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower-2",
+   "at": [
+    -55,
+    32,
+    0
+   ],
+   "params": {
+    "radius": 4,
+    "n": 8,
+    "height": 22,
+    "colour": "#eab98f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower-3",
+   "at": [
+    55,
+    32,
+    0
+   ],
+   "params": {
+    "radius": 4,
+    "n": 8,
+    "height": 22,
+    "colour": "#eab98f"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "figure_colour": "#4a4038"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "atrium-glass",
+   "at": [
+    22,
+    -23,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      6.9,
+      0,
+      "#8fb0bd"
+     ],
+     [
+      6.9,
+      2.6,
+      "#8fb0bd"
+     ],
+     [
+      7.0,
+      2.7,
+      "#e8c9a0"
+     ],
+     [
+      7.0,
+      3.8,
+      "#e8c9a0"
+     ],
+     [
+      6.9,
+      3.9,
+      "#8fb0bd"
+     ],
+     [
+      6.9,
+      7.6,
+      "#8fb0bd"
+     ],
+     [
+      7.0,
+      7.7,
+      "#e8c9a0"
+     ],
+     [
+      7.0,
+      9.0,
+      "#e8c9a0"
+     ],
+     [
+      6.9,
+      9.1,
+      "#8fb0bd"
+     ],
+     [
+      6.9,
+      12,
+      "#8fb0bd"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "plinth-round",
+   "at": [
+    -12,
+    -36,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#d9b98a"
+     ],
+     [
+      8.5,
+      0,
+      "#d9b98a"
+     ],
+     [
+      8.5,
+      0.4,
+      "#d6a982"
+     ],
+     [
+      0,
+      0.4,
+      "#d6a982"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "plinth-cone",
+   "at": [
+    -12,
+    -36,
+    0.4
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#e2d3b4"
+     ],
+     [
+      4.6,
+      0,
+      "#e2d3b4"
+     ],
+     [
+      3.9,
+      3.2,
+      "#e2d3b4"
+     ],
+     [
+      0,
+      3.2,
+      "#e2d3b4"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth-cap",
+   "at": [
+    -12,
+    -36,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     3.6
+    ],
+    "height": 1.0,
+    "colour": "#d4cfc4"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "statue",
+   "at": [
+    -12,
+    -36,
+    4.6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.6,
+       1.6
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       2.5,
+       1.5
+      ]
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       1.6,
+       1.0
+      ]
+     },
+     {
+      "z": 8.6,
+      "ellipse": [
+       0.9,
+       0.7
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       0.3,
+       0.25
+      ]
+     }
+    ],
+    "colour": "#3f362f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mater-wall",
+   "at": [
+    14,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     1.2
+    ],
+    "height": 2.6,
+    "colour": "#e4cf9d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mater-letters",
+   "at": [
+    14,
+    -40.7,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.2
+    ],
+    "height": 0.8,
+    "colour": "#3a3a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    -37,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.0,
+    "depth": 1.4,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    32,
+    -37.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "depth": 1.4,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -26,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "depth": 1.4,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-front--30",
+   "at": [
+    -30,
+    -21.5,
+    0
+   ],
+   "params": {
+    "radius": 3.4,
+    "n": 8,
+    "height": 20,
+    "colour": "#eab98f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-front-slit--30",
+   "at": [
+    -30,
+    -24.8,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.4
+    ],
+    "height": 12,
+    "colour": "#eab98f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-front-0",
+   "at": [
+    0,
+    -21.5,
+    0
+   ],
+   "params": {
+    "radius": 3.4,
+    "n": 8,
+    "height": 22,
+    "colour": "#eab98f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-front-slit-0",
+   "at": [
+    0,
+    -24.8,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.4
+    ],
+    "height": 12,
+    "colour": "#eab98f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-front-36",
+   "at": [
+    36,
+    -21.5,
+    0
+   ],
+   "params": {
+    "radius": 3.4,
+    "n": 8,
+    "height": 20,
+    "colour": "#eab98f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-front-slit-36",
+   "at": [
+    36,
+    -24.8,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.4
+    ],
+    "height": 12,
+    "colour": "#eab98f"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 3,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-24063943",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Real complex is a 330 m maze of wings scaled to 118 m; statue is a lofted silhouette without arms/child; MATER DEI lettering is a blank dark strip; stepped roofs and planting beds only approximated."
+ }
+}

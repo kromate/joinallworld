@@ -1,0 +1,301 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-osm-way-32476612",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:RSM-Serravalle03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Szeder L\u00e1szl\u00f3",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-marino/atlante.jpg",
+   "used": "five-storey salmon-orange rendered block with horizontal glazed bands, tall dark-glass corner stair tower with curved arch bay, rooftop plant boxes, advertising boards at the front, car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32476612",
+   "used": "real rectangular footprint (80.8 x 54 m, bearing 30 deg)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "atlante",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d98e62",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7.5,
+    "plinth": 0.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa3",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-top",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 16.5,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a6378",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9399",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-band",
+   "at": [
+    -20.4,
+    -35.26,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "rect": [
+     52,
+     0.5
+    ],
+    "height": 3.6,
+    "colour": "#262c32"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower",
+   "at": [
+    -1.95,
+    -47.3,
+    0
+   ],
+   "params": {
+    "radius": 3.4,
+    "n": 16,
+    "height": 22.5,
+    "colour": "#2e4150",
+    "topScale": 0.96,
+    "trimColour": "#1f2a33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arched-bay",
+   "at": [
+    -8.63,
+    -42.87,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "rect": [
+     8,
+     2
+    ],
+    "height": 19.5,
+    "colour": "#38505f",
+    "topScale": [
+     1,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18.92,
+    -42.7,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 2.2,
+    "height": 8,
+    "bottom": 2.5,
+    "colour": "#27487f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16.84,
+    -43.9,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 2.2,
+    "height": 8,
+    "bottom": 2.5,
+    "colour": "#2b2f35"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -33.62,
+    -30.16,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 1.5,
+    "height": 9,
+    "bottom": 3,
+    "colour": "#5a3a78",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       0.25
+      ],
+      "height": 0.9,
+      "colour": "#f3f1ec"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -41.18,
+     -23.26,
+     4.4
+    ],
+    "end": [
+     -8.28,
+     -42.26,
+     4.4
+    ],
+    "count": 8,
+    "yaw": -30
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    -28.25,
+    -48.86,
+    0.0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "rect": [
+     80,
+     10
+    ],
+    "height": 0.08,
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "height": 0.8,
+    "thickness": 0.1,
+    "colour": "#a9adb0",
+    "points": [
+     [
+      -58.41,
+      -25.09
+     ],
+     [
+      7.41,
+      -63.09
+     ]
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45.53,
+    -30.79,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -40.68,
+    -54.38,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 30,
+    "depth": 9,
+    "density": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Punched-window salmon facade with dark glazed top band, ground shop band, cylindrical dark-glass corner stair tower, pylon signs and road/guard rail added; arched bay is a plain block, no overpass, curved lamp arms or many small shop signs (triangle budget); facade windows lack pilaster rhythm."
+ }
+}

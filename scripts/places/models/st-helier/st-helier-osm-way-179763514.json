@@ -1,0 +1,577 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-osm-way-179763514",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_clements_church_jersey.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Danrok",
+   "view": "side",
+   "file": "/tmp/places-evidence/st-helier/clement.jpg",
+   "used": "long granite nave with grey slate gable roof, pointed-arch windows between stepped buttresses, tall slate broach spire on a square clock tower behind the nave, lower gabled west aisle on the left, warm brown rubble granite"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/179763514",
+   "used": "overall size and orientation (about 30 x 15 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 34,
+  "pitchDeg": 6,
+  "fovDeg": 62,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "height": 6.6,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a58b74",
+    "windows": "pointed-arch",
+    "windowShape": "pointed",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "plinth": 0.5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5d5f68",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-aisle",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    -14,
+    -0.5
+   ],
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a08a76",
+    "windows": "pointed-arch",
+    "plinth": 0.4,
+    "windowShape": "pointed",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5d5f68",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.2
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    5
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#9a8672",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d5f68"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -4,
+    5,
+    17
+   ],
+   "params": {
+    "baseWidth": 7,
+    "height": 16,
+    "sides": 4,
+    "colour": "#5a5c63",
+    "finial": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     8,
+     7.5
+    ]
+   },
+   "at": [
+    11.5,
+    -0.5
+   ],
+   "height": 6.6,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a58b74",
+    "windows": "pointed-arch",
+    "windowShape": "pointed",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5d5f68",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -5.5,
+    -5.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 4.0,
+    "colour": "#9a8470",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -5.5,
+    -4.9,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#9a8470",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -1,
+    -5.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 4.0,
+    "colour": "#9a8470",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -1,
+    -4.9,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#9a8470",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3.5,
+    -5.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 4.0,
+    "colour": "#9a8470",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3.5,
+    -4.9,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#9a8470",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8,
+    -5.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 4.0,
+    "colour": "#9a8470",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8,
+    -4.9,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#9a8470",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9,
+    -4.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 4.2,
+    "colour": "#9a8470",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9,
+    -4.4,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#9a8470",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9,
+    4.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 4.2,
+    "colour": "#9a8470",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9,
+    4.4,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#9a8470",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    15.5,
+    -4.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 4.2,
+    "colour": "#9a8470",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    15.5,
+    -4.4,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#9a8470",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    15.5,
+    4.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 4.2,
+    "colour": "#9a8470",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    15.5,
+    4.4,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.8
+    ],
+    "height": 2.6,
+    "colour": "#9a8470",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4,
+    1.55,
+    11
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "height": 2.2,
+    "colour": "#e8e2cf"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9.5,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.0
+    ],
+    "height": 0.8,
+    "colour": "#8d8a85",
+    "topScale": 1
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -1,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.0
+    ],
+    "height": 0.8,
+    "colour": "#8d8a85",
+    "topScale": 1
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    6,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.0
+    ],
+    "height": 0.8,
+    "colour": "#8d8a85",
+    "topScale": 1
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    14,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.0
+    ],
+    "height": 0.8,
+    "colour": "#8d8a85",
+    "topScale": 1
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    1,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     1.6
+    ],
+    "height": 0.05,
+    "colour": "#a3a09a",
+    "topScale": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     4
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Buttresses are simple two-stage prisms, no tracery or pointed west doorway, clock face is a plain panel, tombs are plain boxes; spire still slimmer than photo"
+ }
+}

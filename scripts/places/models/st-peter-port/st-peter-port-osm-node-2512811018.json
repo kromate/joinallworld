@@ -1,0 +1,127 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/st-peter-port.json#st-peter-port-osm-node-2512811018",
+   "used": "small timber shore kiosk about 5 x 4 m, shed metal roof, pale blue and clay colours, awning (OSM nearest building is Tower 11, a round fort 77 m away, so not used; Commons Rousse Pier photo is an aerial of a plain concrete pier with rocks and sand, used only for the setting)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b6c9d1",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5c6368",
+    "material": "metal-sheet",
+    "rise": 0.6,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store-lean-to",
+   "footprint": {
+    "rect": [
+     1.8,
+     3
+    ]
+   },
+   "at": [
+    3.4,
+    0
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a99a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5c6368",
+    "material": "metal-sheet",
+    "rise": 0.3,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -0.2,
+    -2.1,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 1.4,
+    "drop": 0.4,
+    "height": 2.4,
+    "colours": [
+     "#c9a99a",
+     "#f1efe8"
+    ]
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -3,
+    -4.5,
+    0
+   ],
+   "params": {
+    "radius": 1.2,
+    "height": 2.2,
+    "colour": "#f1efe8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   28,
+   26
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-node-2512811018",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; kiosk typical, OSM match was a nearby fort so not used."
+ }
+}

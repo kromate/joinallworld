@@ -1,0 +1,263 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-24924674",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Atrium_Targ%C3%B3wek_w_Warszawie_2019.jpg",
+   "licence": "CC BY-SA 3.0 pl",
+   "author": "Adrian Grycuk",
+   "view": "front",
+   "file": "/tmp/places-evidence/warsaw/targ1.jpg",
+   "used": "tall dark grey metal-clad box with a lighter concrete base, three huge blank billboard panels on the front wall, ramp portal into the rooftop car park on the right with a free-standing concrete sign pylon and a tall steel lattice sign frame, lighter grey cladded block beyond, open surface car park in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24924674",
+   "used": "overall size only (435 x 196 m); a straight 96 m front portion is modelled, as seen in the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.9,
+  "margin": 0.0,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     96,
+     38
+    ]
+   },
+   "at": [
+    -8,
+    8
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#454b52",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 3.0,
+    "bands": "#cfcdc6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7174",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -18,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "density": 0.8
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -18,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    51,
+    -2
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aeb2b4",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#8d9296"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -11.2,
+    4
+   ],
+   "params": {
+    "width": 20,
+    "height": 10,
+    "bottom": 0,
+    "colour": "#c8372f",
+    "frameColour": "#d9d4c6",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -11.2,
+    4
+   ],
+   "params": {
+    "width": 20,
+    "height": 10,
+    "bottom": 0,
+    "colour": "#2f58a8",
+    "frameColour": "#d9d4c6",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -11.2,
+    4
+   ],
+   "params": {
+    "width": 20,
+    "height": 10,
+    "bottom": 0,
+    "colour": "#f0eee8",
+    "frameColour": "#d9d4c6",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp-portal",
+   "at": [
+    34,
+    -14
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "height": 6,
+    "colour": "#15171a",
+    "topColour": "#4a4f55",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    34,
+    -17.2,
+    6.5
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#e8892a",
+    "frameColour": "#555555",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon",
+   "at": [
+    20,
+    -20
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 14,
+    "colour": "#b0b2b0",
+    "topColour": "#b0b2b0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -20.9,
+    10.5
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#2f58a8",
+    "frameColour": "#c4c1b8",
+    "posts": false
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    44,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "baseWidth": 3,
+    "topWidth": 1.2,
+    "panels": 8,
+    "colour": "#5a5f66",
+    "colour2": "#5a5f66"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Coloured blank billboards, ramp portal with orange sign, taller pylon, lattice mast and cladded annex added; rooftop car park, tilted sign frame and the foreground cars of the photo are not modelled and framing is a wide aerial view."
+ }
+}

@@ -1,0 +1,369 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Morgenstedet_(Christiania).jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Royal Export",
+   "view": "front",
+   "file": "/tmp/places-evidence/copenhagen/morg1.jpg",
+   "used": "whitewashed pale blue-grey painted brick cottage, grey roof, lattice transom windows, glazed doors, white picket fence with orange gate, painted blank sign board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/107408808",
+   "used": "size only: about 24 x 13 m, bearing 54"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 0.81,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     7,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9c6cf",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 0.3,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a5a5c",
+    "material": "slate",
+    "pitch": 35,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-room",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    8,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e0d8c4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.8,
+    "colour": "#6a6a6c",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-door",
+   "footprint": {
+    "rect": [
+     3.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -5.7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d8e0e4",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd6d9"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transom-lattice",
+   "footprint": {
+    "rect": [
+     4.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -5.65
+   ],
+   "z0": 2.6,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8aa0",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9c6cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-gate",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    1,
+    -9
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e8601c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8601c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.5,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 2.3,
+    "bottom": 0.3,
+    "colour": "#4a98a8",
+    "frameColour": "#e8c14a",
+    "posts": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      1,
+      -9
+     ],
+     [
+      0.5,
+      -6.5
+     ],
+     [
+      0,
+      -4
+     ]
+    ],
+    "width": 1.4,
+    "colour": "#8d877c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      1,
+      -16
+     ],
+     [
+      1,
+      -9
+     ]
+    ],
+    "width": 1.8,
+    "colour": "#8d877c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "picket-0",
+   "footprint": {
+    "rect": [
+     7,
+     0.5
+    ]
+   },
+   "at": [
+    -6.5,
+    -9
+   ],
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f4f4ef",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4ef"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "picket-1",
+   "footprint": {
+    "rect": [
+     12,
+     0.5
+    ]
+   },
+   "at": [
+    8.5,
+    -9
+   ],
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f4f4ef",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4ef"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 8,
+  "trees": [],
+  "extent": [
+   48,
+   36
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-meal-stop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gable-front blue-grey cottage, orange gate, picket fence, framing trees; fence is a fin-textured box, lattice transoms are a glazing band, path is flat; render camera wider than tight photo crop."
+ }
+}

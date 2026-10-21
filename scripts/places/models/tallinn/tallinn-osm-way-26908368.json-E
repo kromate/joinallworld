@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-way-26908368",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:J%C3%A4rve_Keskus.JPG",
+   "licence": "Public domain",
+   "author": "Dmitry G",
+   "view": "street at night",
+   "file": "/tmp/places-evidence/tallinn/jarve1.jpg",
+   "used": "two-storey box clad in yellow metal panels with a taller yellow gable end at left, dark glazed corner block, grey ground-floor base with wide shopfront band and a clerestory ribbon window row, blank sign board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26908368",
+   "used": "overall size and 2 levels; modelled as a 118 m portion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     112,
+     46
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "plain-render",
+    "colour": "#8d8f93",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-box",
+   "footprint": {
+    "rect": [
+     70,
+     34
+    ]
+   },
+   "at": [
+    4,
+    0
+   ],
+   "z0": 7,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9cc2a",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-corner",
+   "footprint": {
+    "rect": [
+     18,
+     30
+    ]
+   },
+   "at": [
+    -46,
+    2
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-dark",
+    "colour": "#2b3036",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-end",
+   "footprint": {
+    "rect": [
+     8,
+     30
+    ]
+   },
+   "at": [
+    -34,
+    -2
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9cc2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f93"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -24,
+    9
+   ],
+   "params": {
+    "width": 22,
+    "height": 4,
+    "colour": "#b8b4ac"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -40,
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    20,
+    -40,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 25,
+  "cars": 8,
+  "trees": 3,
+  "extent": [
+   150,
+   100
+  ]
+ }
+}

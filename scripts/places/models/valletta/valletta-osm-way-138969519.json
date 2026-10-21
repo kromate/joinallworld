@@ -1,0 +1,392 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Manikata.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Didi8600",
+   "view": "side",
+   "file": "/tmp/places-evidence/valletta/man1.jpg",
+   "used": "stepped cylindrical girna drums, ochre rendered stucco, low perimeter wall, flat-roofed entrance porch with rust-red soffit, white cross on the tall drum, cypress"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Manikata_church_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "used": "porch with stepped approach, drum arrangement from the street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/138969519",
+   "used": "footprint of the low base"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a95f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfa056",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tier-low",
+   "at": [
+    -2,
+    -1
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#d9a95f",
+    "bottomCap": false,
+    "profile": [
+     [
+      13,
+      0
+     ],
+     [
+      13,
+      4
+     ],
+     [
+      12.2,
+      4.5
+     ],
+     [
+      0,
+      4.9
+     ]
+    ],
+    "topColour": "#d9a95f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tier-mid",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#dcaa60",
+    "bottomCap": false,
+    "profile": [
+     [
+      10.5,
+      0
+     ],
+     [
+      10.5,
+      7.5
+     ],
+     [
+      9.765,
+      8.0
+     ],
+     [
+      0,
+      8.4
+     ]
+    ],
+    "topColour": "#dcaa60"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tier-tall",
+   "at": [
+    2,
+    5
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#e0b062",
+    "bottomCap": false,
+    "profile": [
+     [
+      9.5,
+      0
+     ],
+     [
+      9.5,
+      10
+     ],
+     [
+      8.8,
+      10.5
+     ],
+     [
+      0,
+      10.9
+     ]
+    ],
+    "topColour": "#e0b062"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "perimeter",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 35,
+    "height": 2.5,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#d9a95f",
+    "points": [
+     [
+      -17.0,
+      -17.0
+     ],
+     [
+      -12.62,
+      -17.19
+     ],
+     [
+      -8.25,
+      -17.35
+     ],
+     [
+      -3.88,
+      -17.46
+     ],
+     [
+      0.5,
+      -17.5
+     ],
+     [
+      4.88,
+      -17.46
+     ],
+     [
+      9.25,
+      -17.35
+     ],
+     [
+      13.62,
+      -17.19
+     ],
+     [
+      18.0,
+      -17.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "porch-roof",
+   "at": [
+    -9,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 6,
+    "height": 4.6,
+    "thickness": 0.4,
+    "colour": "#9a4a30",
+    "edgeColour": "#d9a95f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "at": [
+    -13,
+    -13.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 4.6,
+    "colour": "#dcaa60"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    -5,
+    -13.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 4.6,
+    "colour": "#dcaa60"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier2",
+   "at": [
+    -13,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 4.6,
+    "colour": "#dcaa60"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#cfc2a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    3,
+    -8.55,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#5a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "window",
+   "at": [
+    -1.5,
+    -8.55,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "height": 1.1,
+    "colour": "#5a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    3,
+    -3.8,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 3.6,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    3,
+    -3.8,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -2,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "cypress",
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-138969519",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tiers are concentric stepped revolves, not the true spiralling ramp of walls sweeping down to the right; porch canopy and piers are simplified; perimeter wall is a straight-ish polyline; site is not sloped toward the street; no stucco texture"
+ }
+}

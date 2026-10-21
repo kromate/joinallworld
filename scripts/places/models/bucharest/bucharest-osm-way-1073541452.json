@@ -1,0 +1,232 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-osm-way-1073541452",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Animv.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anspruchsvoll",
+   "view": "front",
+   "file": "/tmp/places-evidence/bucharest/acad.jpg",
+   "used": "three-storey ochre-yellow render block with white window frames, central white columned portico with balcony and arched upper windows under a low gable, dark hipped roof, lower wing at right, road and lawn in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/267205785",
+   "used": "plan scale only: the photo shows one straight block, so the OSM zigzag is replaced by a straight block (84 m instead of 116 m to stay inside the 120 m clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.35,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     84,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a63a",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 5,
+    "plinth": 1.2,
+    "cornice": true,
+    "trimColour": "#f3efe4",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f3efe4"
+      ],
+      "height": 0.4,
+      "at": 0.0,
+      "proud": 0.15,
+      "floors": [
+       1,
+       2
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#bdb7a6"
+      ],
+      "height": 1.2,
+      "at": 0.0,
+      "proud": 0.1,
+      "floors": [
+       0
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4440",
+    "material": "slate",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    54,
+    5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a63a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 5,
+    "plinth": 1.0,
+    "trimColour": "#f3efe4",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f3efe4"
+      ],
+      "height": 0.35,
+      "at": 0.0,
+      "proud": 0.12,
+      "floors": [
+       1
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4440",
+    "material": "slate",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     18,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b345",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 4,
+    "plinth": 1.2,
+    "trimColour": "#f3efe4",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f3efe4"
+      ],
+      "height": 0.4,
+      "at": 0.0,
+      "proud": 0.15,
+      "floors": [
+       1,
+       2
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4440",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3.5,
+    "height": 4.8,
+    "columns": 6,
+    "pediment": false,
+    "steps": 5,
+    "colour": "#f3efe4",
+    "roofColour": "#f3efe4"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -8,
+    16
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 3,
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "block is 84 m not 116 m (120 m clamp); portico has no balustraded balcony or upper pedimented bay detail; wing is a plain hip block; no window surrounds on every window"
+ }
+}

@@ -1,0 +1,660 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pravoslavn%C3%BD_%C5%BEensk%C3%BD_monast%C3%BDr_sv._V%C3%A1clava_a_Ludmily,_Plze%C5%88sk%C3%A1_51,_Lod%C4%9Bnice,_okr._Beroun,_St%C5%99edo%C4%8Desk%C3%BD_kraj_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/prague/mon2.jpg",
+   "used": "three-storey pink-render front with mauve pilasters and bands, two square corner towers with hipped caps (onion dome with cross on the right, small dome on the left), central gable pavilion with a grey-blue onion dome and cross behind, row of dormers in the orange tile roof, terrace wall and a small gazebo at left, gravel yard"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pravoslavn%C3%BD_%C5%BEensk%C3%BD_monast%C3%BDr_sv._V%C3%A1clava_a_Ludmily,_Plze%C5%88sk%C3%A1_51,_Lod%C4%9Bnice,_okr._Beroun,_St%C5%99edo%C4%8Desk%C3%BD_kraj_05.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/prague/mon1.jpg",
+   "used": "pink and mauve tower facade, arched ground-floor windows with pediment relief, round clock-like oculi, stone plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1688416",
+   "used": "footprint 46 x 42 m: a 46 x 37.5 m block with two 7 x 4.5 m tower stubs, rotated so the long side faces the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     46,
+     37.5
+    ]
+   },
+   "at": [
+    0,
+    2.25
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "wall": {
+    "material": "render",
+    "colour": "#dba7a4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "bands": "#a8605f",
+    "plinth": 0.8,
+    "trimColour": "#a8605f",
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 14,
+    "colour": "#b9532f",
+    "material": "clay-tile",
+    "overhang": 0.7
+   },
+   "storeys": 3
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -19.5,
+    -17.75
+   ],
+   "z0": 0,
+   "height": 17,
+   "wall": {
+    "material": "render",
+    "colour": "#dba7a4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "rect",
+    "bands": "#9b5655",
+    "plinth": 1.0,
+    "trimColour": "#9b5655",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 38,
+    "colour": "#b9532f",
+    "material": "clay-tile",
+    "overhang": 0.8
+   },
+   "storeys": 4
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    19.5,
+    -17.75
+   ],
+   "z0": 0,
+   "height": 17,
+   "wall": {
+    "material": "render",
+    "colour": "#dba7a4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "rect",
+    "bands": "#9b5655",
+    "plinth": 1.0,
+    "trimColour": "#9b5655",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 38,
+    "colour": "#b9532f",
+    "material": "clay-tile",
+    "overhang": 0.8
+   },
+   "storeys": 4
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     15,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -17.4
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "wall": {
+    "material": "render",
+    "colour": "#dba7a4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "bands": "#a8605f",
+    "plinth": 0.8,
+    "trimColour": "#a8605f",
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 30,
+    "axis": "x",
+    "colour": "#b9532f",
+    "material": "clay-tile",
+    "overhang": 0.4
+   },
+   "storeys": 3
+  },
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 15.4,
+   "height": 2.6,
+   "wall": {
+    "material": "render",
+    "colour": "#e3b3b0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "windowShape": "round"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b5655",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "onion-main",
+   "at": [
+    0,
+    -6,
+    18.0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#3f4756"
+     ],
+     [
+      1.6800000000000002,
+      0.0
+     ],
+     [
+      1.6800000000000002,
+      0.6
+     ],
+     [
+      2.4,
+      1.6
+     ],
+     [
+      2.16,
+      3.0
+     ],
+     [
+      1.32,
+      4.3
+     ],
+     [
+      0.43000000000000005,
+      5.4
+     ],
+     [
+      0.1,
+      6.6
+     ],
+     [
+      0.0,
+      6.6
+     ]
+    ],
+    "segments": 16,
+    "colour": "#3f4756"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "onion-tower-r",
+   "at": [
+    19.5,
+    -17.75,
+    19.3
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#3f4756"
+     ],
+     [
+      0.77,
+      0.0
+     ],
+     [
+      0.77,
+      0.275
+     ],
+     [
+      1.1,
+      0.7333333333333335
+     ],
+     [
+      0.9900000000000002,
+      1.3750000000000002
+     ],
+     [
+      0.6050000000000001,
+      1.9708333333333337
+     ],
+     [
+      0.19708333333333336,
+      2.4750000000000005
+     ],
+     [
+      0.045833333333333344,
+      3.025
+     ],
+     [
+      0.0,
+      3.025
+     ]
+    ],
+    "segments": 12,
+    "colour": "#3f4756"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "onion-tower-l",
+   "at": [
+    -19.5,
+    -17.75,
+    19.3
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.8,
+      0
+     ],
+     [
+      1.1,
+      0.8
+     ],
+     [
+      0.6,
+      1.8
+     ],
+     [
+      0.1,
+      2.6
+     ],
+     [
+      0,
+      2.6
+     ]
+    ],
+    "segments": 12,
+    "colour": "#3f4756"
+   }
+  },
+  {
+   "type": "array",
+   "id": "dormers",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -14,
+     -12.5,
+     11.5
+    ],
+    "end": [
+     14,
+     -12.5,
+     11.5
+    ],
+    "of": {
+     "type": "mass",
+     "id": "d",
+     "footprint": {
+      "rect": [
+       2.0,
+       2.4
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": 0,
+     "height": 2.0,
+     "wall": {
+      "material": "render",
+      "colour": "#e3b3b0",
+      "windows": "arched",
+      "windowRatio": 0.4
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 38,
+      "axis": "y",
+      "colour": "#b9532f",
+      "material": "clay-tile"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-wall",
+   "footprint": {
+    "rect": [
+     34,
+     2
+    ]
+   },
+   "at": [
+    -4,
+    -27
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3b3b0",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gazebo",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -37,
+    -22
+   ],
+   "z0": 0.0,
+   "height": 3.2,
+   "wall": {
+    "material": "timber",
+    "colour": "#9b6b4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 30,
+    "colour": "#7a4a37",
+    "material": "clay-tile",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "entry-steps",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 1.0,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b9a98c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cross-main-v",
+   "params": {
+    "section": {
+     "circle": 0.09
+    },
+    "points": [
+     [
+      0,
+      -6,
+      24.5
+     ],
+     [
+      0,
+      -6,
+      26.7
+     ]
+    ],
+    "colour": "#c9a233",
+    "n": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cross-main-h",
+   "params": {
+    "section": {
+     "circle": 0.08
+    },
+    "points": [
+     [
+      -0.55,
+      -6,
+      26.0
+     ],
+     [
+      0.55,
+      -6,
+      26.0
+     ]
+    ],
+    "colour": "#c9a233",
+    "n": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cross-r-v",
+   "params": {
+    "section": {
+     "circle": 0.09
+    },
+    "points": [
+     [
+      19.5,
+      -17.75,
+      22.2
+     ],
+     [
+      19.5,
+      -17.75,
+      24.4
+     ]
+    ],
+    "colour": "#c9a233",
+    "n": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cross-r-h",
+   "params": {
+    "section": {
+     "circle": 0.08
+    },
+    "points": [
+     [
+      18.95,
+      -17.75,
+      23.7
+     ],
+     [
+      20.05,
+      -17.75,
+      23.7
+     ]
+    ],
+    "colour": "#c9a233",
+    "n": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cross-l-v",
+   "params": {
+    "section": {
+     "circle": 0.09
+    },
+    "points": [
+     [
+      -19.5,
+      -17.75,
+      21.9
+     ],
+     [
+      -19.5,
+      -17.75,
+      24.099999999999998
+     ]
+    ],
+    "colour": "#c9a233",
+    "n": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cross-l-h",
+   "params": {
+    "section": {
+     "circle": 0.08
+    },
+    "points": [
+     [
+      -20.05,
+      -17.75,
+      23.4
+     ],
+     [
+      -18.95,
+      -17.75,
+      23.4
+     ]
+    ],
+    "colour": "#c9a233",
+    "n": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     32,
+     -26
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     24
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     26
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Pilaster relief, arched ground-floor surrounds, dormer rows and the hillside setting are simplified; the roof is a single low hip, the terrace wall and gazebo are approximate."
+ }
+}

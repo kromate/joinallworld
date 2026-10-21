@@ -1,0 +1,268 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bajcsy-korhaz.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Czimmy at Hungarian Wikipedia",
+   "view": "street",
+   "file": "/tmp/places-evidence/budapest/clinic2.jpg",
+   "used": "hospital block seen along the street: dark red-brown brick tower block at the near end with eaves cornice, beige render wing receding with regular punched windows, brick-lined ground storey with diaper pattern, low brick-and-railing boundary wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bajcsy-Zsilinszky_K%C3%B3rh%C3%A1z.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Czimmy at Hungarian Wikipedia",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/budapest/clinic1.jpg",
+   "used": "massing context: red brick end block with grey flat roof and beige wing, twin brick chimneys behind, surrounding low houses"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/550331255",
+   "used": "identity only; OSM outline is the whole campus"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brick-block",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -27,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 23,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#6e3a2c",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#4f2a20",
+    "faces": {
+     "back": "none"
+    },
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6c68",
+    "parapet": 0.6,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beige-wing",
+   "footprint": {
+    "rect": [
+     64,
+     15
+    ]
+   },
+   "at": [
+    18,
+    0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d9c490",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 1.0,
+    "bay": 5.5,
+    "bands": "#7a4535",
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7770",
+    "parapet": 0.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    40,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#cdb583",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bay": 14,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4d5560",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    5,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5440",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "bay": 9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6c68",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-ground",
+   "footprint": {
+    "rect": [
+     64.4,
+     15.4
+    ]
+   },
+   "at": [
+    18,
+    0.5
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a3f30",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#4f2a20",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -42,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 1.1,
+    "kind": "railing",
+    "pillarEvery": 8,
+    "colour": "#6e3a2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -18
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "diaper pattern only as darker brick ground storey, window pairs approximated, gate opening and street boundary wall not modelled, rear wing guessed"
+ }
+}

@@ -1,0 +1,964 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-way-49209644",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chapelle_de_la_Mis%C3%A9ricorde_de_Monaco_en_2011.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Berthold Werner",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/mis1.jpg",
+   "used": "cream facade with four wide flat white pilasters, continuous entablature, curved baroque scroll attic gable with volutes, ringed oculus, arms panel, pinnacles and cross, timber door, painting panel, shuttered neighbours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/49209644",
+   "used": "size only (about 8 x 22 m); plan simplified to a rect aligned to the facade"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 0.61,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9.6,
+     19
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d4a2",
+    "windows": "none",
+    "plinth": 0.45,
+    "trimColour": "#f3eee2"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 12,
+    "colour": "#9b5b45",
+    "material": "clay-tile",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4.45,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "height": 6.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -3.2,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.72,
+     0.3
+    ],
+    "height": 6.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    1.35,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.75,
+     0.3
+    ],
+    "height": 6.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3.55,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.3
+    ],
+    "height": 6.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.45,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.3
+    ],
+    "height": 6.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entablature",
+   "footprint": {
+    "rect": [
+     10.3,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -9.4
+   ],
+   "height": 0.75,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3eee2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3eee2"
+   },
+   "z0": 6.45
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -9.55,
+    6.1
+   ],
+   "params": {
+    "rect": [
+     9.9,
+     0.5
+    ],
+    "height": 0.35,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic-base",
+   "footprint": {
+    "rect": [
+     9.4,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -9.1
+   ],
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d4a2",
+    "windows": "none",
+    "trimColour": "#f3eee2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4d4a2"
+   },
+   "z0": 7.2
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4.3,
+    -9.35,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.4
+    ],
+    "height": 1.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -3.1,
+    -9.35,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.4
+    ],
+    "height": 1.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3.1,
+    -9.35,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.4
+    ],
+    "height": 1.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.3,
+    -9.35,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.4
+    ],
+    "height": 1.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e4d4a2",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 8.7,
+      "rect": [
+       9.0,
+       0.7
+      ],
+      "cy": -8.75
+     },
+     {
+      "z": 9.0,
+      "rect": [
+       8.4,
+       0.7
+      ],
+      "cy": -8.75
+     },
+     {
+      "z": 9.6,
+      "rect": [
+       7.0,
+       0.7
+      ],
+      "cy": -8.75
+     },
+     {
+      "z": 10.2,
+      "rect": [
+       5.6,
+       0.7
+      ],
+      "cy": -8.75
+     },
+     {
+      "z": 10.9,
+      "rect": [
+       4.2,
+       0.7
+      ],
+      "cy": -8.75
+     },
+     {
+      "z": 11.7,
+      "rect": [
+       3.0,
+       0.7
+      ],
+      "cy": -8.75
+     },
+     {
+      "z": 12.5,
+      "rect": [
+       2.2,
+       0.7
+      ],
+      "cy": -8.75
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -8.75,
+    12.5
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.7
+    ],
+    "height": 0.5,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -8.75,
+    13.0
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 1.1,
+    "colour": "#4a3f36"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -8.75,
+    14.0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.16
+    ],
+    "height": 0.16,
+    "colour": "#4a3f36"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4.2,
+    -8.75,
+    8.7
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.7
+    ],
+    "height": 1.0,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    -4.2,
+    -8.75,
+    9.7
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.3,
+      0.2,
+      "#f3eee2"
+     ],
+     [
+      0.3,
+      0.5
+     ],
+     [
+      0.1,
+      0.75
+     ],
+     [
+      0.02,
+      0.85
+     ]
+    ],
+    "segments": 8,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.2,
+    -8.75,
+    8.7
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    4.2,
+    -8.75,
+    10.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.3,
+      0.2,
+      "#f3eee2"
+     ],
+     [
+      0.3,
+      0.5
+     ],
+     [
+      0.1,
+      0.75
+     ],
+     [
+      0.02,
+      0.85
+     ]
+    ],
+    "segments": 8,
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "points": [
+     [
+      1.05,
+      -9.15,
+      9.9
+     ],
+     [
+      0.9700735091368511,
+      -9.15,
+      10.301817603983345
+     ],
+     [
+      0.742462120245875,
+      -9.15,
+      10.642462120245876
+     ],
+     [
+      0.4018176039833444,
+      -9.15,
+      10.870073509136851
+     ],
+     [
+      6.429395695523605e-17,
+      -9.15,
+      10.950000000000001
+     ],
+     [
+      -0.4018176039833442,
+      -9.15,
+      10.870073509136851
+     ],
+     [
+      -0.7424621202458749,
+      -9.15,
+      10.642462120245876
+     ],
+     [
+      -0.9700735091368511,
+      -9.15,
+      10.301817603983345
+     ],
+     [
+      -1.05,
+      -9.15,
+      9.9
+     ],
+     [
+      -0.9700735091368512,
+      -9.15,
+      9.498182396016656
+     ],
+     [
+      -0.7424621202458751,
+      -9.15,
+      9.157537879754125
+     ],
+     [
+      -0.4018176039833449,
+      -9.15,
+      8.92992649086315
+     ],
+     [
+      -1.9288187086570813e-16,
+      -9.15,
+      8.85
+     ],
+     [
+      0.40181760398334454,
+      -9.15,
+      8.92992649086315
+     ],
+     [
+      0.7424621202458748,
+      -9.15,
+      9.157537879754125
+     ],
+     [
+      0.9700735091368509,
+      -9.15,
+      9.498182396016656
+     ]
+    ],
+    "closed": true,
+    "section": {
+     "rect": [
+      0.22,
+      0.24
+     ]
+    },
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "points": [
+     [
+      0.3,
+      -9.2,
+      9.9
+     ],
+     [
+      0.2598076211353316,
+      -9.2,
+      10.05
+     ],
+     [
+      0.15000000000000002,
+      -9.2,
+      10.159807621135332
+     ],
+     [
+      1.8369701987210297e-17,
+      -9.2,
+      10.200000000000001
+     ],
+     [
+      -0.14999999999999994,
+      -9.2,
+      10.159807621135332
+     ],
+     [
+      -0.2598076211353316,
+      -9.2,
+      10.05
+     ],
+     [
+      -0.3,
+      -9.2,
+      9.9
+     ],
+     [
+      -0.2598076211353316,
+      -9.2,
+      9.75
+     ],
+     [
+      -0.15000000000000013,
+      -9.2,
+      9.640192378864668
+     ],
+     [
+      -5.510910596163089e-17,
+      -9.2,
+      9.6
+     ],
+     [
+      0.15000000000000002,
+      -9.2,
+      9.640192378864668
+     ],
+     [
+      0.2598076211353315,
+      -9.2,
+      9.75
+     ]
+    ],
+    "closed": true,
+    "section": {
+     "circle": 0.3
+    },
+    "colour": "#2e2a28"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -9.2,
+    11.3
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#e8e0cc",
+    "frameColour": "#f3eee2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "points": [
+     [
+      2.75,
+      -9.1,
+      9.9
+     ],
+     [
+      2.8866754293353494,
+      -9.1,
+      10.260721434444285
+     ],
+     [
+      3.172895779548246,
+      -9.1,
+      10.48824771426785
+     ],
+     [
+      3.5153346844767763,
+      -9.1,
+      10.534430085858585
+     ],
+     [
+      3.8145547609094255,
+      -9.1,
+      10.406413576707061
+     ],
+     [
+      3.993812014306598,
+      -9.1,
+      10.159172538255179
+     ],
+     [
+      4.018624425470631,
+      -9.1,
+      9.874914206784833
+     ],
+     [
+      3.902149104812609,
+      -9.1,
+      9.636532448387179
+     ],
+     [
+      3.69602702978428,
+      -9.1,
+      9.503503470042284
+     ],
+     [
+      3.4707474845500577,
+      -9.1,
+      9.497214689547667
+     ],
+     [
+      3.2924378810020776,
+      -9.1,
+      9.599294356692702
+     ],
+     [
+      3.2035218435680908,
+      -9.1,
+      9.762234253228213
+     ],
+     [
+      3.2128851053699092,
+      -9.1,
+      9.927840554109958
+     ],
+     [
+      3.297745751406263,
+      -9.1,
+      10.04694631307312
+     ]
+    ],
+    "curve": true,
+    "section": {
+     "circle": 0.1
+    },
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "points": [
+     [
+      -2.75,
+      -9.1,
+      9.9
+     ],
+     [
+      -2.8866754293353494,
+      -9.1,
+      10.260721434444285
+     ],
+     [
+      -3.172895779548246,
+      -9.1,
+      10.48824771426785
+     ],
+     [
+      -3.5153346844767763,
+      -9.1,
+      10.534430085858585
+     ],
+     [
+      -3.8145547609094255,
+      -9.1,
+      10.406413576707061
+     ],
+     [
+      -3.993812014306598,
+      -9.1,
+      10.159172538255179
+     ],
+     [
+      -4.018624425470631,
+      -9.1,
+      9.874914206784833
+     ],
+     [
+      -3.902149104812609,
+      -9.1,
+      9.636532448387179
+     ],
+     [
+      -3.69602702978428,
+      -9.1,
+      9.503503470042284
+     ],
+     [
+      -3.4707474845500577,
+      -9.1,
+      9.497214689547667
+     ],
+     [
+      -3.2924378810020776,
+      -9.1,
+      9.599294356692702
+     ],
+     [
+      -3.2035218435680908,
+      -9.1,
+      9.762234253228213
+     ],
+     [
+      -3.2128851053699092,
+      -9.1,
+      9.927840554109958
+     ],
+     [
+      -3.297745751406263,
+      -9.1,
+      10.04694631307312
+     ]
+    ],
+    "curve": true,
+    "section": {
+     "circle": 0.1
+    },
+    "colour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -0.2,
+    -9.55,
+    0.45
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     0.2
+    ],
+    "height": 3.0,
+    "colour": "#d9d3c4"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -0.2,
+    -9.7,
+    0.45
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.2
+    ],
+    "height": 2.6,
+    "colour": "#7a5530"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -0.2,
+    -9.52,
+    3.5
+   ],
+   "params": {
+    "width": 1.45,
+    "height": 2.35,
+    "bottom": 0,
+    "colour": "#a8803a",
+    "frameColour": "#4a2f22",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neigh-l",
+   "footprint": {
+    "rect": [
+     7.2,
+     14
+    ]
+   },
+   "at": [
+    -8.6,
+    0.5
+   ],
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a8",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#6f9a78"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 8,
+    "colour": "#b5593c",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neigh-r",
+   "footprint": {
+    "rect": [
+     7.2,
+     14
+    ]
+   },
+   "at": [
+    8.6,
+    0.5
+   ],
+   "height": 5.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4673f",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#4a5a3a"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 8,
+    "colour": "#b5593c",
+    "material": "clay-tile"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "scroll gable approximated with stepped loft and ring oculus, no coat-of-arms relief or real volutes; neighbours generic with no shutters or wrought-iron balcony; pilasters sit slightly proud"
+ }
+}

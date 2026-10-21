@@ -1,0 +1,105 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/60007309",
+   "used": "real outline of the unnamed building at the library coordinates (54 x 22.6 m, containing match); no photograph of the George Herdman Library was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5,
+    "rotDeg": -90
+   },
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd6c4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#4a525a",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "entrance-steps",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#8d8a80"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "blank-board",
+   "at": [
+    -7,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#2f4a3f",
+    "frameColour": "#b8bcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building; OSM outline of unnamed building used with typical Manx slate gable and render, windows/door positions are guesses."
+ }
+}

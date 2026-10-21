@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/317507205",
+   "used": "real outline, 26 x 16 m skewed quadrilateral, name match"
+  },
+  {
+   "kind": "text",
+   "ref": "https://tr.wikipedia.org/wiki/Osmanl%C4%B1_Camii",
+   "used": "1595 church converted to mosque 1991: single-storey rough-cut stone hall, Marseille-tile gable roof, one concrete minaret with one balcony"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 30
+   },
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b0a287",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 4.2,
+    "plinth": 0.6,
+    "faces": {
+     "back": "punched"
+    },
+    "trimColour": "#d8d0bd"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "id": "minaret",
+   "at": [
+    -16,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "radius": 0.9,
+    "balconies": 1,
+    "style": "pencil",
+    "colour": "#d8d3c8",
+    "capColour": "#7f8587"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-base",
+   "at": [
+    -16,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.8
+    ],
+    "height": 2.2,
+    "colour": "#cbbfa6",
+    "slot": "stone-blocks"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: real OSM outline, gable stone hall with tile roof and single-balcony minaret; church-like details (apse, porch, windows) are text-based."
+ }
+}

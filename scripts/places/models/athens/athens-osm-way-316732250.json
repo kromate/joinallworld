@@ -1,0 +1,507 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-way-316732250",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%CE%9D%CE%BF%CF%83%CE%BF%CE%BA%CE%BF%CE%BC%CE%B5%CE%AF%CE%BF_%22%CE%97_%CE%A3%CE%A9%CE%A4%CE%97%CE%A1%CE%99%CE%91%22.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Elinakapetanaki",
+   "view": "street",
+   "file": "/tmp/places-evidence/athens/sotiria0.jpg",
+   "used": "entrance sign is a blue board on posts in front of a dark railing fence with pine woodland behind and a taxi rank; no building visible"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/316732250",
+   "used": "campus is 1034 x 614 m on a wooded hillside: a 118 m portion of the pavilion rows and entrance is modelled"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1902 sanatorium by pavilion type, stucco blocks, terraces, tile hip roofs (Wikidata Q21626598)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pav-a",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    -34,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 8,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#cdbf9f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4552f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "id": "terrace-pav-a",
+   "at": [
+    -46,
+    23.3,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "floors": 2,
+    "storeyHeight": 3.6,
+    "proud": 1.8,
+    "rail": true,
+    "railHeight": 0.9,
+    "colour": "#d9cdb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-b",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d6b6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 8,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#cdbf9f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4552f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "id": "terrace-pav-b",
+   "at": [
+    -12,
+    23.3,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "floors": 2,
+    "storeyHeight": 3.6,
+    "proud": 1.8,
+    "rail": true,
+    "railHeight": 0.9,
+    "colour": "#d9cdb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-c",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    34,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfc4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 8,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#cdbf9f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4552f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "id": "terrace-pav-c",
+   "at": [
+    22,
+    23.3,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "floors": 2,
+    "storeyHeight": 3.6,
+    "proud": 1.8,
+    "rail": true,
+    "railHeight": 0.9,
+    "colour": "#d9cdb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-d",
+   "footprint": {
+    "rect": [
+     36,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d3b2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 8,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#cdbf9f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4552f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 8,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#b8b0a2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4552f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "portico",
+   "id": "admin-portico",
+   "at": [
+    0,
+    -46.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 7,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#efe6d2",
+    "roofColour": "#b4552f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    -45,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "drum-dome",
+   "id": "chapel-drum",
+   "at": [
+    -45,
+    -30,
+    8
+   ],
+   "params": {
+    "radius": 2.4,
+    "drum_height": 2.0,
+    "cap": "dome",
+    "colour": "#f4efe2",
+    "cap_colour": "#a8452a"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "id": "walk-ab",
+   "at": [
+    -17,
+    18,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "width": 2.6,
+    "height": 3.0,
+    "colour": "#cdbf9f",
+    "roofColour": "#b4552f"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "id": "walk-bc",
+   "at": [
+    17,
+    18,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "width": 2.6,
+    "height": 3.0,
+    "colour": "#cdbf9f",
+    "roofColour": "#b4552f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "drive",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -58
+     ],
+     [
+      0,
+      -20
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      0,
+      22
+     ]
+    ],
+    "width": 5,
+    "colour": "#c9c3b6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    18,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.2,
+    "bottom": 2.2,
+    "colour": "#2a5a9a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "pines-w",
+   "at": [
+    -42,
+    52
+   ],
+   "params": {
+    "width": 30,
+    "depth": 18,
+    "count": 8,
+    "kind": "conifer",
+    "min_height": 11,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "pines-e",
+   "at": [
+    42,
+    52
+   ],
+   "params": {
+    "width": 30,
+    "depth": 18,
+    "count": 8,
+    "kind": "conifer",
+    "min_height": 11,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "ambulance",
+   "id": "ambulance",
+   "at": [
+    -9,
+    -52
+   ],
+   "params": {
+    "heading": 90
+   }
+  },
+  {
+   "type": "car",
+   "id": "taxi",
+   "at": [
+    12,
+    -52,
+    0
+   ],
+   "params": {
+    "colour": "#e8c030",
+    "count": 2,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   130,
+   135
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "pavilions typed from the sanatorium type; photo shows only the gate sign; hillside not modelled"
+ }
+}

@@ -1,0 +1,261 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-osm-way-1227559971",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/28246374",
+   "used": "real 8-level, 35 m hospital outline (92.9 x 63.4 m, name match)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bucharest_Emergency_Hospital_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "FlaviusNITA",
+   "view": "detail",
+   "file": "/tmp/places-evidence/bucharest/1227559971-0.jpg",
+   "used": "only a rooftop plant block clad in silver-grey panels and a rescue helicopter seen; no usable exterior elevation, so the block is footprint-verified only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "block",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -42.6,
+      11.6
+     ],
+     [
+      -23.6,
+      12.3
+     ],
+     [
+      -25.1,
+      44.2
+     ],
+     [
+      -12,
+      44.6
+     ],
+     [
+      -10.6,
+      16.3
+     ],
+     [
+      3.6,
+      23.7
+     ],
+     [
+      -1.4,
+      9.3
+     ],
+     [
+      10.6,
+      13.4
+     ],
+     [
+      11.9,
+      1.7
+     ],
+     [
+      26.6,
+      -2.2
+     ],
+     [
+      21.6,
+      -11.7
+     ],
+     [
+      35.3,
+      -3.6
+     ],
+     [
+      47.3,
+      -17.6
+     ],
+     [
+      15.8,
+      -40.2
+     ],
+     [
+      25.5,
+      -25.7
+     ],
+     [
+      16.4,
+      -29.7
+     ],
+     [
+      -14.1,
+      -6.3
+     ],
+     [
+      -42.3,
+      -11.1
+     ]
+    ],
+    "z0": 0,
+    "height": 35,
+    "colour": "#d6d1c3",
+    "topColour": "#6b6460",
+    "top": true,
+    "windows": "none",
+    "storeys": 8,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9d4c6",
+       "#7d8a90"
+      ]
+     }
+    ],
+    "plinth": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     10
+    ],
+    "z0": 35,
+    "height": 4.5,
+    "colour": "#c4c8cc",
+    "topColour": "#9aa0a5"
+   }
+  },
+  {
+   "type": "helipad",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18,
+    22,
+    35.6
+   ],
+   "params": {
+    "radius": 7
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "lod": [
+    0
+   ],
+   "at": [
+    -30,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "ambulance",
+   "lod": [
+    0
+   ],
+   "at": [
+    -30,
+    -19,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "red-cross-plate",
+   "lod": [
+    0
+   ],
+   "at": [
+    -31,
+    -12.5,
+    6
+   ],
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "car-park",
+   "lod": [
+    0
+   ],
+   "at": [
+    20,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "lod": [
+    0
+   ],
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 50,
+    "count": 8,
+    "min_height": 9,
+    "max_height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Outline simplified to 18 vertices for the LOD2 budget. No exterior elevation photo exists in evidence; facade colours, ribbon windows, plant block and entrance bay are estimates on the real outline."
+ }
+}

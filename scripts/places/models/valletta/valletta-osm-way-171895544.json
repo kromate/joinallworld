@@ -1,0 +1,177 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wardija_tower_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Inkwina",
+   "view": "street",
+   "used": "battered lower storey, string course, upper storey with one arched-head window, ground-level timber door, parapet with raised corner turret, grey-tan limestone ashlar",
+   "file": "/tmp/places-evidence/valletta/ward1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/171895544",
+   "used": "plan size 7.8 x 7.4 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "batter",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#b6a98c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       10.2,
+       10.2
+      ]
+     },
+     {
+      "z": 4.6,
+      "rect": [
+       7.8,
+       7.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     7.8,
+     7.8
+    ]
+   },
+   "z0": 4.6,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b9ab8d",
+    "windows": "none",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a99c7e"
+      ],
+      "height": 0.5,
+      "at": 0.0,
+      "proud": 0.35,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ab8d",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret",
+   "at": [
+    2.2,
+    2.2,
+    10.2
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 3.3,
+    "colour": "#b9ab8d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-cap",
+   "at": [
+    0,
+    0,
+    10.15
+   ],
+   "params": {
+    "rect": [
+     8.5,
+     8.5
+    ],
+    "height": 0.25,
+    "colour": "#a99c7e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "window",
+   "at": [
+    -1.0,
+    -3.95,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.5
+    ],
+    "height": 1.7,
+    "colour": "#26231f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -1.0,
+    -5.0,
+    0.0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.25
+    ],
+    "height": 2.4,
+    "colour": "#a8672f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-171895544",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "No irregular stone courses, no iron brackets; ground is flat laterite; turret stepped corner is a plain block."
+ }
+}

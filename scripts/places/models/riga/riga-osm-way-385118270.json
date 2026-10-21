@@ -1,0 +1,213 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-way-385118270",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Atg%C4%81zene,_Zemgales_priek%C5%A1pils%C4%93ta,_R%C4%ABga,_Latvia_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Dmitrij M",
+   "view": "street",
+   "file": "/tmp/places-evidence/riga/turiba2.jpg",
+   "used": "long five-storey Soviet-era slab in two wings meeting at a taller stair core, painted white with blue wave bands, regular punched window grid, glazed ground-floor strip, flat roof with parapet, car park and fence in front; photo found via the venue evidence list (Atgazene), matched by district, not by a caption naming the building"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Turiba_University_Hostel.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chutinon Putthiwanit",
+   "view": "street",
+   "used": "storey count and window rhythm of the neighbouring hostel block (dark grey)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/385118270",
+   "used": "campus outline is 275 m of irregular blobs and not used; one 96 m slab modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     46,
+     12.5
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 16.2,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e7de",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.2,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "punched"
+    },
+    "plinth": 0.6,
+    "groundKind": "ribbon",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e9e7de",
+       "#7aa6d4",
+       "#e9e7de",
+       "#6b9ccc",
+       "#e9e7de"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8286",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     46,
+     12.5
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "height": 16.2,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e7de",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.2,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "punched"
+    },
+    "plinth": 0.6,
+    "groundKind": "ribbon",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e9e7de",
+       "#6b9ccc",
+       "#7aa6d4",
+       "#e9e7de",
+       "#e9e7de"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8286",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     6,
+     13.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17.4,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#dfe3e6",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8286",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 14,
+    "density": 0.15
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     54,
+     8
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "real wings meet at a slight angle and blue wave pattern is diagonal (modelled as storey bands); photo building identified by district not caption; hostel is a separate dark block"
+ }
+}

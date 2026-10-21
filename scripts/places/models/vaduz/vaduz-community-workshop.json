@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/490877222",
+   "used": "checked, not used: the 3.0k m2 outline of 124 m is a long irregular industrial-style complex tagged yellow, 18.5 m, far larger than a small university building; only the pale yellow colour and the 4-storey height hint were taken"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     38,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dfb0",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "punched",
+     "right": "punched"
+    },
+    "glassColour": "#5f7b8a",
+    "bands": "#d2cc9a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a74",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd5a6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "ribbon",
+     "left": "ribbon"
+    },
+    "glassColour": "#5f7b8a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a74",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     8,
+     3.5
+    ]
+   },
+   "at": [
+    6,
+    -9.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa8b4",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain"
+    },
+    "glassColour": "#6f8a99"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6c66",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.1,
+    "bottom": 0.9,
+    "colour": "#e9ece9",
+    "frameColour": "#6f6c66",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.15,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -35,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "extent": [
+   100,
+   70
+  ]
+ }
+}

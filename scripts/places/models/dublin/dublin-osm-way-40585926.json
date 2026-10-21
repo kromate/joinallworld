@@ -1,0 +1,457 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belfield_Bowl.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Ciaran Ruane / SchumiUCD",
+   "view": "front",
+   "file": "/tmp/places-evidence/dublin/ucd0.jpg",
+   "used": "single low covered stand on the far touchline: blue seats in blocks with yellow steps, cream back wall, flat roof on posts with lights, floodlight masts, grass bank around, advertising hoardings on near side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/40585926",
+   "used": "stadium site outline as the grassed bank base"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bank",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6a8a45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a45",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     106,
+     68
+    ],
+    "height": 0.05,
+    "colour": "#68ab43"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -30,
+     42
+    ],
+    "end": [
+     30,
+     42
+    ],
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "flip": true,
+    "under": "solid",
+    "backWall": 4.2,
+    "concreteColour": "#d9d3b8",
+    "underColour": "#d9d3b8",
+    "seatColours": [
+     "#2f4a8c",
+     "#2a4488"
+    ],
+    "blocks": 5,
+    "canopy": {
+     "height": 6.4,
+     "depth": 7,
+     "thickness": 0.5,
+     "slopeDeg": 1,
+     "colour": "#d6dadc",
+     "edgeColour": "#e6e6e0"
+    }
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -70,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 30,
+    "count": 6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    72,
+    40,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 30,
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     41,
+     0.4
+    ],
+    "end": [
+     24,
+     41,
+     0.4
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       6.5
+      ],
+      "height": 0.35,
+      "colour": "#e0b82a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    47,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.4
+    ],
+    "height": 4.4,
+    "colour": "#e2dcc2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    46.5,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.3
+    ],
+    "height": 1.1,
+    "colour": "#e8e6dc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    38.5,
+    6.3
+   ],
+   "params": {
+    "rect": [
+     56,
+     0.6
+    ],
+    "height": 0.3,
+    "colour": "#f4f0d0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -38,
+     0.3
+    ],
+    "end": [
+     30,
+     -38,
+     0.3
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5.6,
+       0.15
+      ],
+      "height": 1.2,
+      "colour": "#e6e8ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -38.2,
+     0.3
+    ],
+    "end": [
+     30,
+     -38.2,
+     0.3
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 1.3,
+      "colour": "#7a8086"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     64
+    ],
+    "height": 0.03,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    31.8,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.3
+    ],
+    "height": 0.03,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -31.8,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.3
+    ],
+    "height": 0.03,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    0,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     64
+    ],
+    "height": 0.03,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50,
+    0,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     64
+    ],
+    "height": 0.03,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "colour": "#5f9a3e",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       90,
+       14
+      ]
+     },
+     {
+      "z": 5,
+      "rect": [
+       80,
+       4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -40,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    40,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -40,
+    50,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    40,
+    50,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stand now 60 m with cream wall, light bar and blue/yellow blocks; hoardings lack diagonal bracing; UCD strip blank; pitch not on true bearing."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-osm-way-40585926"
+}

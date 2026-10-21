@@ -1,0 +1,764 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-relation-64496",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moscow MSTU Bauman main building asv2021-08.jpg",
+   "licence": "FAL",
+   "author": "A.Savin",
+   "view": "front",
+   "used": "sand-coloured stalinist block: long wings of 5 storeys with punched windows and a cornice, central tall stepped tower with arcaded portico"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/64496",
+   "used": "checked: the 244 m real outline cannot fit the 118 m limit without shrinking to 0.48 and loses the facade proportions, so the main front is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    -32,
+    6
+   ],
+   "z0": 0,
+   "height": 17.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b27c",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 7,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5a48",
+    "parapet": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-pavilion",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    -54,
+    6
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa670",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 6,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5a48",
+    "parapet": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     32,
+     16
+    ]
+   },
+   "at": [
+    1,
+    8
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2ae78",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 7,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5a48",
+    "parapet": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    33,
+    8
+   ],
+   "z0": 0,
+   "height": 16.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b27c",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 7,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5a48",
+    "parapet": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-pavilion",
+   "footprint": {
+    "rect": [
+     10,
+     19
+    ]
+   },
+   "at": [
+    55,
+    8
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa670",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 6,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5a48",
+    "parapet": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     24,
+     17
+    ]
+   },
+   "at": [
+    -2,
+    8
+   ],
+   "z0": 0,
+   "height": 30,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc595",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 5.2,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c58",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-mid",
+   "footprint": {
+    "rect": [
+     18,
+     13
+    ]
+   },
+   "at": [
+    -2,
+    8.5
+   ],
+   "z0": 30,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b684",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 4.5,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c58",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    -2,
+    9
+   ],
+   "z0": 44,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6bf8b",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 4.5,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c58",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-crown",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    9
+   ],
+   "z0": 55,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb583",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c58",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-block",
+   "footprint": {
+    "rect": [
+     22,
+     4
+    ]
+   },
+   "at": [
+    -2,
+    -3
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a4a36",
+    "windows": "none",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 3.1,
+     "opening": 0.62,
+     "height": 0.86,
+     "depth": 0.8,
+     "storeys": 1,
+     "colour": "#4a2a20",
+     "pierColour": "#c9a070"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d3329",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "colonnade-corner",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    55,
+    -2.5
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cc9f",
+    "windows": "arched",
+    "windowRatio": 0.6,
+    "bay": 2.5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6c58",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "antenna1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -2,
+      9,
+      60
+     ],
+     [
+      -2,
+      9,
+      72
+     ]
+    ],
+    "colour": "#8a8a8a"
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "pond",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 118,
+    "depth": 44,
+    "colour": "#2a5a70",
+    "bank": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     8
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#6f8f4a",
+    "topColour": "#6f8f4a",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "reeds",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    38,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     4
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#8b9a4e",
+    "topColour": "#9a9d52"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ant-3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.2,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      -5,
+      9,
+      60
+     ],
+     [
+      -6.5,
+      9,
+      69
+     ]
+    ],
+    "colour": "#8a8a8a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ant-1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.2,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      -3,
+      9,
+      60
+     ],
+     [
+      -3.5,
+      9,
+      67
+     ]
+    ],
+    "colour": "#8a8a8a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ant1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.2,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      -1,
+      9,
+      60
+     ],
+     [
+      -0.5,
+      9,
+      67
+     ]
+    ],
+    "colour": "#8a8a8a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ant3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.2,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      1,
+      9,
+      60
+     ],
+     [
+      2.5,
+      9,
+      69
+     ]
+    ],
+    "colour": "#8a8a8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "reeds2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -36,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     3
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#7f9248",
+    "topColour": "#8d9a4e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -61.50839322044119,
+    -14.01642602147854,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.38558069669709
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -26.123723808871347,
+    -15.00685433476034,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.631282577707792
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8.88207053595556,
+    -13.667309256382897,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.297176354887425
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    29.929684435303702,
+    -13.755184469126396,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8.867915503240779
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    44.819118058135174,
+    -13.618047997824002,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.071925823320726
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped tower with arcaded portico, ochre wings with corner pavilions and darker pond; arcade is shallow, tower setbacks simpler than photo, no pilaster rhythm or reflection, reeds and tree line sparse due to triangle budget."
+ }
+}

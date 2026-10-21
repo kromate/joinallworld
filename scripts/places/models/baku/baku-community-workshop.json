@@ -1,0 +1,370 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baku_Engineering_University.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Asgar Huseynov",
+   "view": "front",
+   "file": "/tmp/places-evidence/baku/beu1.jpg",
+   "used": "campus entrance portal: white panel-clad piers on brick bases, wide white beam, blue blank sign board with dark soffit, low panel wings, red-brick academic block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32720577",
+   "used": "campus identity only (634 x 352 m polygon, too large; gate and nearest blocks modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.03,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e6e0",
+    "windows": "none",
+    "plinth": 4,
+    "bands": "#c4c1b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d6d0",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    14,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e6e0",
+    "windows": "none",
+    "plinth": 4,
+    "bands": "#c4c1b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d6d0",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-l",
+   "footprint": {
+    "rect": [
+     8.4,
+     8.4
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0634a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0634a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-r",
+   "footprint": {
+    "rect": [
+     8.4,
+     8.4
+    ]
+   },
+   "at": [
+    14,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0634a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0634a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beam",
+   "footprint": {
+    "rect": [
+     35,
+     7.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 12.2,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e6e0",
+    "windows": "none",
+    "bands": "#c4c1b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdad4",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soffit",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     6.4
+    ],
+    "z0": 11.9,
+    "height": 0.4,
+    "colour": "#1c2230"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-blue",
+   "at": [
+    0,
+    -4.6
+   ],
+   "params": {
+    "rect": [
+     42,
+     0.9
+    ],
+    "z0": 13.8,
+    "height": 9,
+    "topScale": [
+     1,
+     1
+    ],
+    "topOffset": [
+     0,
+     -1.6
+    ],
+    "colour": "#1f3fa8",
+    "topColour": "#1a3590"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "z0": 10.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e6e0",
+    "windows": "none",
+    "bands": "#c4c1b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdad4",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "z0": 10.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e6e0",
+    "windows": "none",
+    "bands": "#c4c1b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdad4",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-brick",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    -46,
+    66
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a9523a",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barrier",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    -4,
+    -7
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e07a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e07a2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     26
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Taller leaning blank sign board over open portal on larger brick-based piers; panel grid lines only banding; wings simplified; no turnstiles or bollards; academic block a small detached stand-in."
+ }
+}

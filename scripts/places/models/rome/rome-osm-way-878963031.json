@@ -1,0 +1,1018 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-way-878963031",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Piazzale_degli_Eroi_04.JPG",
+   "licence": "Public domain",
+   "author": "Gino il Pio",
+   "view": "street",
+   "used": "spiral concrete ramp walls (two concentric curved walls, weathered grey-beige concrete), stone retaining walls, lamp posts, trees behind",
+   "file": "/tmp/places-evidence/rome/eroi2.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PiazzaledegliEroi_Sagra2007.JPG",
+   "licence": "Public domain",
+   "author": "Gino il Pio",
+   "view": "aerial",
+   "used": "hillside terraces with stone walls and steps, white festival marquees, conifers and pines below",
+   "file": "/tmp/places-evidence/rome/eroi1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/878963031",
+   "used": "long strip outline of the piazzale"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "piazza",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a968c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "retaining",
+   "at": [
+    -20,
+    12,
+    0
+   ],
+   "rotDeg": 38,
+   "params": {
+    "length": 60,
+    "height": 3.2,
+    "thickness": 0.6,
+    "colour": "#a29f93"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "retaining2",
+   "at": [
+    22,
+    25,
+    0
+   ],
+   "rotDeg": 38,
+   "params": {
+    "length": 40,
+    "height": 2.4,
+    "thickness": 0.5,
+    "colour": "#a29f93"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    10,
+    -6,
+    0
+   ],
+   "rotDeg": 38,
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#b9ac90"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    22,
+    1
+   ],
+   "params": {
+    "rect": [
+     10,
+     8
+    ],
+    "height": 2.8,
+    "colour": "#f1eee6",
+    "topColour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    22,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     10,
+     8
+    ],
+    "height": 1.0,
+    "colour": "#f4f1ea",
+    "topColour": "#f4f1ea",
+    "topScale": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    30,
+    1
+   ],
+   "params": {
+    "rect": [
+     12,
+     10
+    ],
+    "height": 2.8,
+    "colour": "#f1eee6",
+    "topColour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    30,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     12,
+     10
+    ],
+    "height": 1.0,
+    "colour": "#f4f1ea",
+    "topColour": "#f4f1ea",
+    "topScale": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    36,
+    36,
+    1
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "height": 2.8,
+    "colour": "#f1eee6",
+    "topColour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    36,
+    36,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "height": 1.0,
+    "colour": "#f4f1ea",
+    "topColour": "#f4f1ea",
+    "topScale": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    12,
+    1
+   ],
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 2.8,
+    "colour": "#f1eee6",
+    "topColour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    12,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 1.0,
+    "colour": "#f4f1ea",
+    "topColour": "#f4f1ea",
+    "topScale": 0.3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    12,
+    2,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -28,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    30,
+    28,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp-floor",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      5.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -10.57,
+      -3.85,
+      9.25
+     ],
+     [
+      -8.87,
+      -6.93,
+      9.06
+     ],
+     [
+      -6.29,
+      -9.33,
+      8.87
+     ],
+     [
+      -3.1,
+      -10.81,
+      8.68
+     ],
+     [
+      0.39,
+      -11.24,
+      8.49
+     ],
+     [
+      3.85,
+      -10.57,
+      8.3
+     ],
+     [
+      6.93,
+      -8.87,
+      8.11
+     ],
+     [
+      9.33,
+      -6.29,
+      7.92
+     ],
+     [
+      10.81,
+      -3.1,
+      7.73
+     ],
+     [
+      11.24,
+      0.39,
+      7.54
+     ],
+     [
+      10.57,
+      3.85,
+      7.35
+     ],
+     [
+      8.87,
+      6.93,
+      7.16
+     ],
+     [
+      6.29,
+      9.33,
+      6.97
+     ],
+     [
+      3.1,
+      10.81,
+      6.78
+     ],
+     [
+      -0.39,
+      11.24,
+      6.59
+     ],
+     [
+      -3.85,
+      10.57,
+      6.4
+     ],
+     [
+      -6.93,
+      8.87,
+      6.21
+     ],
+     [
+      -9.33,
+      6.29,
+      6.02
+     ],
+     [
+      -10.81,
+      3.1,
+      5.83
+     ],
+     [
+      -11.24,
+      -0.39,
+      5.64
+     ],
+     [
+      -10.57,
+      -3.85,
+      5.45
+     ],
+     [
+      -8.87,
+      -6.93,
+      5.26
+     ],
+     [
+      -6.29,
+      -9.33,
+      5.07
+     ],
+     [
+      -3.1,
+      -10.81,
+      4.88
+     ],
+     [
+      0.39,
+      -11.24,
+      4.69
+     ],
+     [
+      3.85,
+      -10.57,
+      4.5
+     ],
+     [
+      6.93,
+      -8.87,
+      4.31
+     ],
+     [
+      9.33,
+      -6.29,
+      4.12
+     ],
+     [
+      10.81,
+      -3.1,
+      3.93
+     ],
+     [
+      11.24,
+      0.39,
+      3.74
+     ],
+     [
+      10.57,
+      3.85,
+      3.55
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#8f8a78"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp-outer-wall",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      7.0
+     ]
+    },
+    "points": [
+     [
+      -13.16,
+      -4.79,
+      12.5
+     ],
+     [
+      -11.03,
+      -8.62,
+      12.31
+     ],
+     [
+      -7.83,
+      -11.61,
+      12.12
+     ],
+     [
+      -3.86,
+      -13.46,
+      11.93
+     ],
+     [
+      0.49,
+      -13.99,
+      11.74
+     ],
+     [
+      4.79,
+      -13.16,
+      11.55
+     ],
+     [
+      8.62,
+      -11.03,
+      11.36
+     ],
+     [
+      11.61,
+      -7.83,
+      11.17
+     ],
+     [
+      13.46,
+      -3.86,
+      10.98
+     ],
+     [
+      13.99,
+      0.49,
+      10.79
+     ],
+     [
+      13.16,
+      4.79,
+      10.6
+     ],
+     [
+      11.03,
+      8.62,
+      10.41
+     ],
+     [
+      7.83,
+      11.61,
+      10.22
+     ],
+     [
+      3.86,
+      13.46,
+      10.03
+     ],
+     [
+      -0.49,
+      13.99,
+      9.84
+     ],
+     [
+      -4.79,
+      13.16,
+      9.65
+     ],
+     [
+      -8.62,
+      11.03,
+      9.46
+     ],
+     [
+      -11.61,
+      7.83,
+      9.27
+     ],
+     [
+      -13.46,
+      3.86,
+      9.08
+     ],
+     [
+      -13.99,
+      -0.49,
+      8.89
+     ],
+     [
+      -13.16,
+      -4.79,
+      8.7
+     ],
+     [
+      -11.03,
+      -8.62,
+      8.51
+     ],
+     [
+      -7.83,
+      -11.61,
+      8.32
+     ],
+     [
+      -3.86,
+      -13.46,
+      8.13
+     ],
+     [
+      0.49,
+      -13.99,
+      7.94
+     ],
+     [
+      4.79,
+      -13.16,
+      7.75
+     ],
+     [
+      8.62,
+      -11.03,
+      7.56
+     ],
+     [
+      11.61,
+      -7.83,
+      7.37
+     ],
+     [
+      13.46,
+      -3.86,
+      7.18
+     ],
+     [
+      13.99,
+      0.49,
+      6.99
+     ],
+     [
+      13.16,
+      4.79,
+      6.8
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#a89f86"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp-inner-wall",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      5.0
+     ]
+    },
+    "points": [
+     [
+      -7.99,
+      -2.91,
+      11.5
+     ],
+     [
+      -6.7,
+      -5.23,
+      11.31
+     ],
+     [
+      -4.75,
+      -7.05,
+      11.12
+     ],
+     [
+      -2.34,
+      -8.17,
+      10.93
+     ],
+     [
+      0.3,
+      -8.49,
+      10.74
+     ],
+     [
+      2.91,
+      -7.99,
+      10.55
+     ],
+     [
+      5.23,
+      -6.7,
+      10.36
+     ],
+     [
+      7.05,
+      -4.75,
+      10.17
+     ],
+     [
+      8.17,
+      -2.34,
+      9.98
+     ],
+     [
+      8.49,
+      0.3,
+      9.79
+     ],
+     [
+      7.99,
+      2.91,
+      9.6
+     ],
+     [
+      6.7,
+      5.23,
+      9.41
+     ],
+     [
+      4.75,
+      7.05,
+      9.22
+     ],
+     [
+      2.34,
+      8.17,
+      9.03
+     ],
+     [
+      -0.3,
+      8.49,
+      8.84
+     ],
+     [
+      -2.91,
+      7.99,
+      8.65
+     ],
+     [
+      -5.23,
+      6.7,
+      8.46
+     ],
+     [
+      -7.05,
+      4.75,
+      8.27
+     ],
+     [
+      -8.17,
+      2.34,
+      8.08
+     ],
+     [
+      -8.49,
+      -0.3,
+      7.89
+     ],
+     [
+      -7.99,
+      -2.91,
+      7.7
+     ],
+     [
+      -6.7,
+      -5.23,
+      7.51
+     ],
+     [
+      -4.75,
+      -7.05,
+      7.32
+     ],
+     [
+      -2.34,
+      -8.17,
+      7.13
+     ],
+     [
+      0.3,
+      -8.49,
+      6.94
+     ],
+     [
+      2.91,
+      -7.99,
+      6.75
+     ],
+     [
+      5.23,
+      -6.7,
+      6.56
+     ],
+     [
+      7.05,
+      -4.75,
+      6.37
+     ],
+     [
+      8.17,
+      -2.34,
+      6.18
+     ],
+     [
+      8.49,
+      0.3,
+      5.99
+     ],
+     [
+      7.99,
+      2.91,
+      5.8
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#a89f86"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "back-wall",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "rotDeg": 38,
+   "params": {
+    "length": 70,
+    "height": 7,
+    "thickness": 0.8,
+    "colour": "#a89f86"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "back-wall-top",
+   "at": [
+    -14,
+    22,
+    7
+   ],
+   "rotDeg": 38,
+   "params": {
+    "length": 70,
+    "height": 1.0,
+    "thickness": 0.15,
+    "colour": "#2b2b2b",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    4,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "ramp-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    -8,
+    -6,
+    3.0
+   ],
+   "params": {
+    "segments": 12,
+    "openTop": true,
+    "colour": "#a89f86",
+    "profile": [
+     [
+      14,
+      0
+     ],
+     [
+      14,
+      6
+     ],
+     [
+      14.7,
+      6
+     ],
+     [
+      14.7,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "continuous 1.5-turn spiral ramp with board-marked concrete walls, tall back wall, low marquees; no parked cars, fence at ramp mouth or surface weathering"
+ }
+}

@@ -1,0 +1,147 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/725091517",
+   "used": "real irregular outline (331 x 95 m, fitted to the scene clamp), height from brief"
+  },
+  {
+   "kind": "text",
+   "url": "https://nl.wikipedia.org/wiki/Amsterdam_The_Style_Outlets",
+   "used": "2018-2020 outlet centre, about 19,000 m2, brick-and-metal stone-and-water design, covered walkways, large car park; the supplied Commons photo shows the Halfweg town hall, a different building, and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "outlet-hall",
+   "footprint": {
+    "osm": true,
+    "fit": 116
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a8f86",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#4a4f55",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f74",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 80,
+    "depth": 4,
+    "height": 4.2,
+    "columns": 8,
+    "colour": "#4a4f55",
+    "edgeColour": "#c8bfb2"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "shopfront",
+     "params": {
+      "width": 4.2,
+      "height": 3.4,
+      "kind": "glass",
+      "colour": "#7d8e9a",
+      "sign_colour": "#c8bfb2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -36,
+     -8,
+     0
+    ],
+    "end": [
+     36,
+     -8,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -44,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 5,
+    "colour": "#4a4f55"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 6,
+    "count": 8,
+    "min_height": 6,
+    "max_height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": 0,
+  "extent": [
+   140,
+   110
+  ],
+  "density": 0.5
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-725091517",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the building (supplied photo shows Halfweg town hall); only the OSM outline is real, facade, canopy, shopfronts and car park are typical outlet-centre dressing."
+ }
+}

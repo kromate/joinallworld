@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-way-201286353",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:March%C3%A9_de_la_Condamine_depuis_la_Place_d%27Armes_(Monaco).jpg",
+   "licence": "CC0",
+   "author": "Benoit Prieur",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/g15_mk1.jpg",
+   "used": "two-storey pink-cream hall: ground arcade of round arches, upper loggia with balustrade, low terracotta hip roof with dormer vents, red brick-pattern square, blank dark sign board, trees and lamps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/201286353",
+   "used": "footprint (rotated so the long front faces -y); brief text of a green metal roof was contradicted by the photo, which shows terracotta tile"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.89,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 74.4,
+    "fit": 70
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebc9b2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true,
+    "bay": 6.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 6.4,
+      "opening": 0.8,
+      "height": 0.6,
+      "depth": 2.0,
+      "storeys": 1,
+      "pierColour": "#f0d9c4"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "depth": 0.6,
+      "rail": 0.9,
+      "width": 5.0,
+      "every": 6.4,
+      "floors": "upper",
+      "continuous": true,
+      "colour": "#e8c8b4",
+      "railColour": "#efd8c4",
+      "railKind": "solid"
+     }
+    ],
+    "faces": {
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched",
+    "parapet": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b2603f",
+    "material": "clay-tile",
+    "pitch": 13,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -24,
+    0.03
+   ],
+   "params": {
+    "rect": [
+     80,
+     26
+    ],
+    "height": 0.08,
+    "colour": "#b46a4e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    1,
+    -11.2,
+    4.3
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.0,
+    "bottom": 4.3,
+    "colour": "#2a2623",
+    "frameColour": "#d8c9b0",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     0
+    ],
+    "end": [
+     22,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 5.0
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -3
+    ],
+    "end": [
+     26,
+     -3
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       1.0
+      ],
+      "height": 0.9,
+      "colour": "#d9d6cf"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -6,
+    9.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     0
+    ],
+    "end": [
+     24,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "dormer",
+     "params": {
+      "width": 1.4,
+      "height": 1.4,
+      "colour": "#e8c8b4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -18,
+     -19
+    ],
+    "height": 22
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -4,
+     -19
+    ],
+    "height": 22
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     10,
+     -19
+    ],
+    "height": 22
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     24,
+     -19
+    ],
+    "height": 22
+   }
+  ],
+  "extent": [
+   90,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Open arcade, loggia, terracotta roof and red brick forecourt in place; conifers replaced by tall umbrella-crowned trees. Still: pink pier panels, carved trim, crowns generic."
+ }
+}

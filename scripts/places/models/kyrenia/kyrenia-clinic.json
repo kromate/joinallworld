@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1030789769",
+   "used": "real outline of the Medical Center (435 m2, name match), rotated 18 degrees"
+  },
+  {
+   "kind": "text",
+   "used": "brief: cream-rendered three-storey block with entrance canopy, flat roof with water tank and solar heaters (Kyrenia modern concrete style); no photo of this clinic found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dec9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#f6f3ea",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.4,
+    "thickness": 0.35,
+    "columns": 2,
+    "colour": "#f4f1e8",
+    "edgeColour": "#5f7f98"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -4,
+    2,
+    10.5
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "legs": 4,
+    "colour": "#2d2d2d"
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    5,
+    3,
+    10.5
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "tilt": 25,
+    "colour": "#2c3e57"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 2,
+    "vans": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -15,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this clinic; outline real, facade, height and rooftop gear typical for Kyrenia."
+ }
+}

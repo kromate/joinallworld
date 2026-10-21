@@ -1,0 +1,97 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-osm-way-435291543",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/435291543",
+   "used": "real outline (about 219 x 87 m, auto-fitted); height, concrete shell and boarded ribbon openings from the brief (closed, bankrupt shop=mall awaiting demolition). The only photo found is an interior selfie and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shell",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a9a69c",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "glassColour": "#3b3a36",
+    "plinth": 0.5,
+    "bands": "#8a867c",
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867c",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.0,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -60,
+    0
+   ],
+   "params": {
+    "colour": "#7b7f84",
+    "count": 3,
+    "spacing": 3.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo exists; real outline scaled to 118 m, generic bare concrete shell"
+ }
+}

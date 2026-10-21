@@ -1,0 +1,370 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-osm-way-512030566",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/512030566",
+   "used": "real park outline (name match, 135 x 45 m, bearing 109 deg), used as the lawn; no photo of this park exists on Commons (a Commons search for the name only returns Izmir Karsiyaka), so the Ataturk monument, pavilion, paths and trees follow the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a9a6a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9a6a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -2,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": -0.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc3a4"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    -2,
+    -2,
+    0.1
+   ],
+   "params": {
+    "height": 5.2,
+    "width": 2.6,
+    "steps": 2,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#7a6a4a"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    26,
+    6,
+    0.1
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#a8553a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#e2d8c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -44,
+      8
+     ],
+     [
+      -20,
+      -3
+     ],
+     [
+      -2,
+      -6
+     ],
+     [
+      30,
+      -12
+     ],
+     [
+      58,
+      -22
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -6
+     ],
+     [
+      10,
+      14
+     ],
+     [
+      30,
+      10
+     ]
+    ],
+    "width": 1.8,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      0
+     ],
+     [
+      -36,
+      22
+     ]
+    ],
+    "width": 1.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -9,
+    0.1
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    10,
+    -9,
+    0.1
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 4,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    2,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    12,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -8,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    12,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    6,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -14,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    -6,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -18,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    26,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5,
+    24,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   140,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Rounds 1. No photo; layout invented from brief. Real outline scaled 0.85; statue is a generic figure on plinth, pavilion and tree positions are plausible not surveyed."
+ }
+}

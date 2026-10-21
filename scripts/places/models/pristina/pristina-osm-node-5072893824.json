@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-osm-node-5072893824",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/pristina.json#pristina-osm-node-5072893824",
+   "used": "riverside viewpoint 60 x 40 m on a green bank: river in front, stone terrace with railing, broadleaf trees; no OSM outline, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 14,
+    "shape": "rect",
+    "colour": "#5f8ea3",
+    "bank": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bank",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "colour": "#5e8f3e",
+    "topColour": "#6f9c47",
+    "material": "grass",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        30.82,
+        0.0
+       ],
+       [
+        32.84,
+        11.93
+       ],
+       [
+        10.83,
+        16.67
+       ],
+       [
+        -10.09,
+        15.53
+       ],
+       [
+        -33.48,
+        12.16
+       ],
+       [
+        -32.16,
+        0.0
+       ],
+       [
+        -28.91,
+        -10.5
+       ],
+       [
+        -12.42,
+        -19.12
+       ],
+       [
+        9.48,
+        -14.58
+       ],
+       [
+        31.47,
+        -11.43
+       ]
+      ]
+     },
+     {
+      "z": 2,
+      "poly": [
+       [
+        28.74,
+        1.0
+       ],
+       [
+        27.55,
+        10.34
+       ],
+       [
+        7.99,
+        12.47
+       ],
+       [
+        -9.73,
+        14.97
+       ],
+       [
+        -26.04,
+        9.83
+       ],
+       [
+        -25.61,
+        1.0
+       ],
+       [
+        -27.23,
+        -8.23
+       ],
+       [
+        -9.12,
+        -12.1
+       ],
+       [
+        8.34,
+        -10.98
+       ],
+       [
+        27.91,
+        -8.46
+       ]
+      ]
+     },
+     {
+      "z": 3.5,
+      "poly": [
+       [
+        15.38,
+        1.0
+       ],
+       [
+        11.54,
+        5.79
+       ],
+       [
+        3.79,
+        7.67
+       ],
+       [
+        -4.96,
+        9.72
+       ],
+       [
+        -10.52,
+        5.37
+       ],
+       [
+        -13.28,
+        1.0
+       ],
+       [
+        -12.9,
+        -4.36
+       ],
+       [
+        -3.75,
+        -5.59
+       ],
+       [
+        4.5,
+        -6.91
+       ],
+       [
+        12.25,
+        -4.09
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#9a9588",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    -4.4,
+    0.6
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "colour": "#6f6a60"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#9a9588"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   100,
+   70
+  ]
+ }
+}

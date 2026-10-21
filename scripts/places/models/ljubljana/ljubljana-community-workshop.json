@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://sl.wikipedia.org/wiki/Datoteka:Knjiznica_medvode_1.JPG",
+   "licence": "see file page (sl.wikipedia)",
+   "author": "Gibalec",
+   "view": "front",
+   "file": "/tmp/places-evidence/ljubljana/medvode.jpg",
+   "used": "red brick walls with salmon render plinth, flat roof with thin grey cornice, one tall storey of narrow windows in pairs under a sign band, a taller brick tower-like end block, open colonnade of red piers on the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/18841258",
+   "used": "overall size only (about 41 x 40 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9563f",
+    "windows": "punched",
+    "windowRatio": 0.62,
+    "bay": 2.4,
+    "plinth": 1.4,
+    "cornice": true,
+    "bands": {
+     "colour": "#8d9488",
+     "height": 0.4
+    },
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8ecef",
+    "material": "membrane",
+    "overhang": 0.4,
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     9,
+     18
+    ]
+   },
+   "at": [
+    -18.5,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9563f",
+    "windows": "none",
+    "plinth": 1.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8ecef",
+    "parapet": 0.35,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "colonnade-wing",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    17,
+    0
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9563f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 1.2,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 2.4,
+      "spacing": 3.0,
+      "width": 0.8,
+      "colour": "#c4553f",
+      "backColour": "#8a3f31"
+     }
+    ],
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8ecef",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2,
+    -9.3,
+    4.2
+   ],
+   "params": {
+    "width": 12,
+    "height": 0.7,
+    "bottom": 0,
+    "colour": "#8d9488",
+    "frameColour": "#8d9488",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-column",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -9,
+    -10
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0907a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9488"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "salmon-plinth",
+   "footprint": {
+    "rect": [
+     26,
+     0.5
+    ]
+   },
+   "at": [
+    -1,
+    -9.25
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9705a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9705a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "plaza",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "hall corner is still a hard rectangle not rounded, window pairs approximate, snow is ground colour and roof tint only, bare snowy trees omitted"
+ }
+}

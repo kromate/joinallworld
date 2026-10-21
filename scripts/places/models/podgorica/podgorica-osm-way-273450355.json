@@ -1,0 +1,589 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-way-273450355",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/273450355",
+   "used": "stadium plot character (an oval ground with a running track, about 187 x 118 m in OSM); modelled scaled down to the 120 m scene clamp; no photograph of this ground was found"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small town ground with one stand, a running track, four floodlights; fence and grass banks typical for the type"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "bank",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      22.0,
+      -42.0
+     ],
+     [
+      34.98,
+      -39.94
+     ],
+     [
+      46.69,
+      -33.98
+     ],
+     [
+      55.98,
+      -24.69
+     ],
+     [
+      61.94,
+      -12.98
+     ],
+     [
+      64.0,
+      0.0
+     ],
+     [
+      61.94,
+      12.98
+     ],
+     [
+      55.98,
+      24.69
+     ],
+     [
+      46.69,
+      33.98
+     ],
+     [
+      34.98,
+      39.94
+     ],
+     [
+      22.0,
+      42.0
+     ],
+     [
+      -22.0,
+      42.0
+     ],
+     [
+      -34.98,
+      39.94
+     ],
+     [
+      -46.69,
+      33.98
+     ],
+     [
+      -55.98,
+      24.69
+     ],
+     [
+      -61.94,
+      12.98
+     ],
+     [
+      -64.0,
+      0.0
+     ],
+     [
+      -61.94,
+      -12.98
+     ],
+     [
+      -55.98,
+      -24.69
+     ],
+     [
+      -46.69,
+      -33.98
+     ],
+     [
+      -34.98,
+      -39.94
+     ],
+     [
+      -22.0,
+      -42.0
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#7a9a58",
+    "topColour": "#7a9a58",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      22.0,
+      -36.0
+     ],
+     [
+      33.12,
+      -34.24
+     ],
+     [
+      43.16,
+      -29.12
+     ],
+     [
+      51.12,
+      -21.16
+     ],
+     [
+      56.24,
+      -11.12
+     ],
+     [
+      58.0,
+      0.0
+     ],
+     [
+      56.24,
+      11.12
+     ],
+     [
+      51.12,
+      21.16
+     ],
+     [
+      43.16,
+      29.12
+     ],
+     [
+      33.12,
+      34.24
+     ],
+     [
+      22.0,
+      36.0
+     ],
+     [
+      -22.0,
+      36.0
+     ],
+     [
+      -33.12,
+      34.24
+     ],
+     [
+      -43.16,
+      29.12
+     ],
+     [
+      -51.12,
+      21.16
+     ],
+     [
+      -56.24,
+      11.12
+     ],
+     [
+      -58.0,
+      0.0
+     ],
+     [
+      -56.24,
+      -11.12
+     ],
+     [
+      -51.12,
+      -21.16
+     ],
+     [
+      -43.16,
+      -29.12
+     ],
+     [
+      -33.12,
+      -34.24
+     ],
+     [
+      -22.0,
+      -36.0
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#b0533d",
+    "topColour": "#b0533d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "infield",
+   "at": [
+    0,
+    0,
+    0.23
+   ],
+   "params": {
+    "points": [
+     [
+      22.0,
+      -28.0
+     ],
+     [
+      30.65,
+      -26.63
+     ],
+     [
+      38.46,
+      -22.65
+     ],
+     [
+      44.65,
+      -16.46
+     ],
+     [
+      48.63,
+      -8.65
+     ],
+     [
+      50.0,
+      0.0
+     ],
+     [
+      48.63,
+      8.65
+     ],
+     [
+      44.65,
+      16.46
+     ],
+     [
+      38.46,
+      22.65
+     ],
+     [
+      30.65,
+      26.63
+     ],
+     [
+      22.0,
+      28.0
+     ],
+     [
+      -22.0,
+      28.0
+     ],
+     [
+      -30.65,
+      26.63
+     ],
+     [
+      -38.46,
+      22.65
+     ],
+     [
+      -44.65,
+      16.46
+     ],
+     [
+      -48.63,
+      8.65
+     ],
+     [
+      -50.0,
+      0.0
+     ],
+     [
+      -48.63,
+      -8.65
+     ],
+     [
+      -44.65,
+      -16.46
+     ],
+     [
+      -38.46,
+      -22.65
+     ],
+     [
+      -30.65,
+      -26.63
+     ],
+     [
+      -22.0,
+      -28.0
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#5d8c45",
+    "topColour": "#5d8c45",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -20,
+     -45
+    ],
+    "end": [
+     20,
+     -45
+    ],
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColours": [
+     "#a8503a",
+     "#d8d4c8"
+    ],
+    "blocks": 3,
+    "concreteColour": "#b4b0a6",
+    "backWall": 1.0,
+    "under": "solid",
+    "canopy": {
+     "height": 7.5,
+     "depth": 7,
+     "colour": "#8a8f94",
+     "slopeDeg": 5,
+     "supports": 5
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     30,
+     46
+    ],
+    "end": [
+     -30,
+     46
+    ],
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "seatColour": "#b4b0a6",
+    "concreteColour": "#b4b0a6",
+    "under": "open"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -62,
+      -50
+     ],
+     [
+      62,
+      -50
+     ],
+     [
+      62,
+      50
+     ],
+     [
+      -62,
+      50
+     ],
+     [
+      -62,
+      -50
+     ]
+    ],
+    "height": 1.8,
+    "colour": "#7b7a74",
+    "kind": "fence"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    -38,
+    0
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 6,
+    "height": 22,
+    "colour": "#8a8f94",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    -38,
+    22
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#d8d8d0",
+    "topColour": "#f0f0e0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    46,
+    -38,
+    0
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 6,
+    "height": 22,
+    "colour": "#8a8f94",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    46,
+    -38,
+    22
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#d8d8d0",
+    "topColour": "#f0f0e0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    38,
+    0
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 6,
+    "height": 22,
+    "colour": "#8a8f94",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    38,
+    22
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#d8d8d0",
+    "topColour": "#f0f0e0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    46,
+    38,
+    0
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 6,
+    "height": 22,
+    "colour": "#8a8f94",
+    "topColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    46,
+    38,
+    22
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#d8d8d0",
+    "topColour": "#f0f0e0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -95,
+     0
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photograph; stand length and canopy are guesses from the brief, track lane layout simplified"
+ }
+}

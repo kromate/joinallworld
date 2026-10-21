@@ -1,0 +1,286 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-401557317",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2024_Warszawa_Ko%C5%9Bci%C3%B3%C5%82_Chrystusa_Najwy%C5%BCszego_Kap%C5%82ana,_1.jpg",
+   "licence": "CC0",
+   "author": "Cybularny",
+   "view": "side",
+   "file": "/tmp/places-evidence/warsaw/chrystus.jpg",
+   "used": "unfinished parish church: raw grey board-marked concrete gable end wall with a dark pitched roof and a small dark bell lantern on the ridge, raw red brick long wall with round-arched openings, lower brick side aisle with a dark shed roof, a tall timber cross in front, a stack of grey stone blocks and a wire fence, grass verge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/401557317",
+   "used": "overall size (about 22 x 13 m, skewed outline); the traced shape is simplified to a clean nave and aisle"
+  }
+ ],
+ "camera": {
+  "yawDeg": 44,
+  "pitchDeg": 3,
+  "fovDeg": 46,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -1,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#cf7c60",
+    "windows": "arched",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.4,
+    "bay": 4.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3b3b3d",
+    "material": "membrane",
+    "rise": 4,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle",
+   "footprint": {
+    "rect": [
+     17,
+     3.6
+    ]
+   },
+   "at": [
+    -3,
+    -6.8
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#d58a6d",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "bay": 3.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#333335",
+    "material": "membrane",
+    "rise": 1.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -2,
+    -12.5,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.8,
+    "thickness": 0.05,
+    "kind": "fence",
+    "pillarEvery": 3,
+    "colour": "#6b6e70"
+   }
+  },
+  {
+   "type": "array",
+   "id": "bell-frame",
+   "at": [
+    5.3,
+    0,
+    10.9
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 1.4,
+    "dy": 1.4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.18,
+       0.18
+      ],
+      "height": 2.1,
+      "colour": "#2c2c2e",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-cap",
+   "at": [
+    5.3,
+    0,
+    13.0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     1.9
+    ],
+    "height": 0.3,
+    "colour": "#2c2c2e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble",
+   "at": [
+    -10,
+    -10.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#8a8982",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "concrete-gable",
+   "at": [
+    9.45,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#aeaca6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       10.4
+      ]
+     },
+     {
+      "z": 8.4,
+      "rect": [
+       0.9,
+       10.4
+      ]
+     },
+     {
+      "z": 13.4,
+      "rect": [
+       0.9,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    10.9,
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "height": 8,
+    "colour": "#6a5440",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    10.9,
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.22,
+     1.8
+    ],
+    "z0": 5.6,
+    "height": 0.22,
+    "colour": "#6a5440",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "nave long wall still carries glazed-looking arched windows instead of open dark arches, brick top is not raked/ragged, concrete gable reads blue-grey and block-textured, aisle roof is a shed not a lean-to on an open arcade, wire fence has no mesh, bell frame sits slightly high"
+ }
+}

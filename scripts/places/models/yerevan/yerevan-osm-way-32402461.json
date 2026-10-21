@@ -1,0 +1,583 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-osm-way-32402461",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lyon_park,_the_entrance.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Spetsnaz 1991",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/lyon1.jpg",
+   "used": "two red tuff gatehouses with pyramidal tile roofs and white arched doors flanking a wrought-iron arched gate, paved apron, big plane trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lyon_Park,_Yerevan_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "23artashes",
+   "view": "street",
+   "file": "/tmp/places-evidence/yerevan/lyon3.jpg",
+   "used": "grass lawns, grey asphalt paths, brown slatted benches with dark iron ends, poplars and conifers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32402461",
+   "used": "park extent (about 465 x 450 m, modelled as a 116 x 88 m portion from the entrance)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -45,
+      4
+     ],
+     [
+      45,
+      4
+     ],
+     [
+      45,
+      34
+     ],
+     [
+      -45,
+      34
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "points": [
+     [
+      -45,
+      -20
+     ],
+     [
+      45,
+      -20
+     ],
+     [
+      45,
+      4
+     ],
+     [
+      -45,
+      4
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#5e5f62"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "main-path",
+   "params": {
+    "points": [
+     [
+      -3.5,
+      4
+     ],
+     [
+      3.5,
+      4
+     ],
+     [
+      3.5,
+      34
+     ],
+     [
+      -3.5,
+      34
+     ]
+    ],
+    "z0": 0.2,
+    "height": 0.08,
+    "colour": "#5d5f62"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse--9",
+   "footprint": {
+    "rect": [
+     6.4,
+     5.6
+    ]
+   },
+   "at": [
+    -11,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b5473a",
+    "windows": "none",
+    "trimColour": "#d9a58f",
+    "plinth": 0.3,
+    "pattern": [],
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0432e",
+    "pitch": 38,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse-9",
+   "footprint": {
+    "rect": [
+     6.4,
+     5.6
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b5473a",
+    "windows": "none",
+    "trimColour": "#d9a58f",
+    "plinth": 0.3,
+    "pattern": [],
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0432e",
+    "pitch": 38,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 6.5,
+    "pillar": 0.7,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#2d3033",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -26,
+    0,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    26,
+    0,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches",
+   "at": [
+    0,
+    0,
+    0.28
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     12
+    ],
+    "end": [
+     -6,
+     30
+    ],
+    "count": 3,
+    "lod2Step": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.55
+      ],
+      "height": 0.5,
+      "colour": "#7a4a2c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches-r",
+   "at": [
+    0,
+    0,
+    0.28
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     6,
+     18
+    ],
+    "end": [
+     6,
+     30
+    ],
+    "count": 3,
+    "lod2Step": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.55
+      ],
+      "height": 0.5,
+      "colour": "#7a4a2c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "plane-trees-l",
+   "params": {
+    "mode": "line",
+    "start": [
+     -22.400000000000002,
+     10
+    ],
+    "end": [
+     -22.400000000000002,
+     30
+    ],
+    "count": 3,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 16
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "plane-trees-r",
+   "params": {
+    "mode": "line",
+    "start": [
+     22.400000000000002,
+     10
+    ],
+    "end": [
+     22.400000000000002,
+     30
+    ],
+    "count": 3,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 15
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "outer-trees",
+   "params": {
+    "mode": "grid",
+    "cols": 3,
+    "rows": 1,
+    "dx": 30,
+    "dy": 0,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 13
+     }
+    }
+   },
+   "at": [
+    0,
+    26,
+    0
+   ]
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    42.5,
+    0.28
+   ],
+   "params": {
+    "radius": 3.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cupola--1",
+   "at": [
+    -11,
+    0,
+    8.8
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 1.6,
+    "colour": "#c0603f",
+    "topColour": "#b0432e",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cupola-1",
+   "at": [
+    11,
+    0,
+    8.8
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 1.6,
+    "colour": "#c0603f",
+    "topColour": "#b0432e",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door--11",
+   "at": [
+    -11,
+    -2.9,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "height": 3.4,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "door-arch--11",
+   "at": [
+    -11,
+    -2.9,
+    3.7
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 8,
+    "arc": {
+     "steps": 10,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.55,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz"
+    },
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stepcornice--11",
+   "at": [
+    -11,
+    0,
+    7.0
+   ],
+   "params": {
+    "rect": [
+     7.0,
+     6.2
+    ],
+    "height": 0.35,
+    "colour": "#d9a58f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-11",
+   "at": [
+    11,
+    -2.9,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "height": 3.4,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "door-arch-11",
+   "at": [
+    11,
+    -2.9,
+    3.7
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 8,
+    "arc": {
+     "steps": 10,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.55,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz"
+    },
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stepcornice-11",
+   "at": [
+    11,
+    0,
+    7.0
+   ],
+   "params": {
+    "rect": [
+     7.0,
+     6.2
+    ],
+    "height": 0.35,
+    "colour": "#d9a58f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gate-crest",
+   "at": [
+    0,
+    0,
+    6.6
+   ],
+   "params": {
+    "radius": 0.15,
+    "n": 6,
+    "arc": {
+     "steps": 16,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 7,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz"
+    },
+    "colour": "#c9a23a",
+    "bulge": 0.0
+   }
+  },
+  {
+   "type": "tree",
+   "id": "big-plane",
+   "at": [
+    -34,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gatehouses are small in frame with simple hip roofs and flat white door panels, no drum cupola detail; gate crest is a plain gold arc not wavy; apron is flat paving colour, foreground plane tree is low-poly; park beyond is generic"
+ }
+}

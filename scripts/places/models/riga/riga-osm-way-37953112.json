@@ -1,0 +1,717 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-way-37953112",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Purvciems,_Vidzemes_priek%C5%A1pils%C4%93ta,_Riga,_Latvia_-_panoramio_(6).jpg",
+   "licence": "CC BY 3.0",
+   "author": "Dmitrij M",
+   "view": "street",
+   "file": "/tmp/places-evidence/riga/13_0.jpg",
+   "used": "long low retail block with banded cladding and a multi-level car deck, tall brick-dark sign towers with white caps, blank colour boards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Domina_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Dmitrijs Purgalvis",
+   "view": "street",
+   "file": "/tmp/places-evidence/riga/13_1.jpg",
+   "used": "glazed entrance hall with gable-topped steel frame and big blank letter sign, dark square pylons"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37953112",
+   "used": "building outline (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "lamp",
+   "at": [
+    -55,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 5,
+    "spacing": 26
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retail",
+   "footprint": {
+    "rect": [
+     84,
+     30
+    ]
+   },
+   "at": [
+    16,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8d90",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#3d4044",
+      "height": 1.2,
+      "at": 0.5,
+      "floors": [
+       0,
+       1
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c7075",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck-core",
+   "at": [
+    -44,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     28
+    ],
+    "height": 13.5,
+    "colour": "#7a7d80",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab0",
+   "at": [
+    -44,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.4,
+     1
+    ],
+    "z0": 2.4,
+    "height": 0.9,
+    "colour": "#b9bbbd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail0",
+   "at": [
+    -44,
+    -15.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.4,
+     0.15
+    ],
+    "z0": 3.3,
+    "height": 1.0,
+    "colour": "#2e3236"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab1",
+   "at": [
+    -44,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.4,
+     1
+    ],
+    "z0": 5.6,
+    "height": 0.9,
+    "colour": "#b9bbbd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail1",
+   "at": [
+    -44,
+    -15.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.4,
+     0.15
+    ],
+    "z0": 6.5,
+    "height": 1.0,
+    "colour": "#2e3236"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab2",
+   "at": [
+    -44,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.4,
+     1
+    ],
+    "z0": 8.8,
+    "height": 0.9,
+    "colour": "#b9bbbd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail2",
+   "at": [
+    -44,
+    -15.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.4,
+     0.15
+    ],
+    "z0": 9.7,
+    "height": 1.0,
+    "colour": "#2e3236"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab3",
+   "at": [
+    -44,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.4,
+     1
+    ],
+    "z0": 12.000000000000002,
+    "height": 0.9,
+    "colour": "#b9bbbd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail3",
+   "at": [
+    -44,
+    -15.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.4,
+     0.15
+    ],
+    "z0": 12.900000000000002,
+    "height": 1.0,
+    "colour": "#2e3236"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower0",
+   "at": [
+    -24.6,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 22,
+    "colour": "#4b4038",
+    "topColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tcap0",
+   "at": [
+    -24.6,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     6.2
+    ],
+    "z0": 19.8,
+    "height": 2.2,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tband0_0",
+   "at": [
+    -24.6,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.3,
+     6.3
+    ],
+    "z0": 6.0,
+    "height": 3.8,
+    "colour": "#2f7a4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tband0_1",
+   "at": [
+    -24.6,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.3,
+     6.3
+    ],
+    "z0": 10.3,
+    "height": 3.8,
+    "colour": "#c23a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tband0_2",
+   "at": [
+    -24.6,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.3,
+     6.3
+    ],
+    "z0": 14.6,
+    "height": 3.8,
+    "colour": "#2f5f9a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower1",
+   "at": [
+    9.8,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 22,
+    "colour": "#4b4038",
+    "topColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tcap1",
+   "at": [
+    9.8,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     6.2
+    ],
+    "z0": 19.8,
+    "height": 2.2,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tband1_0",
+   "at": [
+    9.8,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.3,
+     6.3
+    ],
+    "z0": 6.0,
+    "height": 3.8,
+    "colour": "#c23a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tband1_1",
+   "at": [
+    9.8,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.3,
+     6.3
+    ],
+    "z0": 10.3,
+    "height": 3.8,
+    "colour": "#2f5f9a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tband1_2",
+   "at": [
+    9.8,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.3,
+     6.3
+    ],
+    "z0": 14.6,
+    "height": 3.8,
+    "colour": "#e0a73a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower2",
+   "at": [
+    41.0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 22,
+    "colour": "#4b4038",
+    "topColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tcap2",
+   "at": [
+    41.0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     6.2
+    ],
+    "z0": 19.8,
+    "height": 2.2,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tband2_0",
+   "at": [
+    41.0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.3,
+     6.3
+    ],
+    "z0": 6.0,
+    "height": 3.8,
+    "colour": "#2f5f9a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tband2_1",
+   "at": [
+    41.0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.3,
+     6.3
+    ],
+    "z0": 10.3,
+    "height": 3.8,
+    "colour": "#e0a73a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tband2_2",
+   "at": [
+    41.0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.3,
+     6.3
+    ],
+    "z0": 14.6,
+    "height": 3.8,
+    "colour": "#2f7a4f"
+   }
+  },
+  {
+   "type": "glass-gable-entrance",
+   "at": [
+    -1.6,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 8,
+    "height": 7,
+    "rise": 4.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -1.6,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.2,
+    "bottom": 11.5,
+    "colour": "#c23a3a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -20.5,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.0,
+    "bottom": 4.5,
+    "colour": "#2f7a4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -15.4,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.0,
+    "bottom": 6.9,
+    "colour": "#2f5f9a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10.3,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.0,
+    "bottom": 4.5,
+    "colour": "#7a2f6a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    15.1,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.0,
+    "bottom": 4.5,
+    "colour": "#e8e8e4",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    20.2,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.0,
+    "bottom": 6.9,
+    "colour": "#e0a73a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    25.3,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.0,
+    "bottom": 4.5,
+    "colour": "#e8e8e4",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    30.3,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.0,
+    "bottom": 6.9,
+    "colour": "#2f7a4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    35.4,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.0,
+    "bottom": 6.9,
+    "colour": "#e8e8e4",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    45.6,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.0,
+    "bottom": 4.5,
+    "colour": "#e0a73a",
+    "posts": false
+   }
+  },
+  {
+   "type": "pylon-sign",
+   "at": [
+    30,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "width": 4,
+    "colour": "#2f5f86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 2,
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Footprint is a plain rectangle, not the real irregular outline; sign tower faces are colour bands without lettering; deck is a simplified 4-level block; advert boards evenly spread and background pylons beyond the first three absent."
+ }
+}

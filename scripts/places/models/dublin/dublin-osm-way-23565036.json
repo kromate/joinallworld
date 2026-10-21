@@ -1,0 +1,354 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dublin",
+ "venueId": "dublin-osm-way-23565036",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pearse_Museum_and_St_Enda%27s_Park_008.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tom hankey",
+   "view": "front",
+   "file": "/tmp/places-evidence/dublin/enda1.jpg",
+   "used": "granite ashlar three-bay two-storey Hermitage, four-column portico with flat entablature, slate hip roof with chimney stack, lower rendered west wing, steps and low walls, lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dublin_-_St._Enda%27s_School_-_20200926185721.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jonjobaker",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/dublin/enda3.jpg",
+   "used": "curved forecourt walls, rear slate-roofed blocks, ivy on wing, modern link to the east, woodland and lawns"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yew_hedge,_formal_garden_of_Pearse_Museum.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Laurel Lodged",
+   "view": "detail",
+   "used": "yew hedges of the formal garden east of the house"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23565036",
+   "used": "identity only: the 588 m park outline is not used, the house is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hermitage",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#b3aa98",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 1.2,
+    "cornice": true,
+    "trimColour": "#cfc8b6",
+    "bands": "#c4bcaa"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#55595e",
+    "material": "slate",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -5.5,
+    1.2
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2.8,
+    "height": 8.6,
+    "columns": 4,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#b3aa98",
+    "roofColour": "#a69f8e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.4,
+    0
+   ],
+   "params": {
+    "width": 6.5,
+    "rise": 1.2,
+    "run": 2.2,
+    "count": 7,
+    "colour": "#a9a190"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -1.5,
+    2,
+    11.5
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 2.2,
+    "pots": 4,
+    "colour": "#a89f8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -19,
+    1
+   ],
+   "rotDeg": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcb8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#cfc8b6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#55595e",
+    "material": "slate",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block-1",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    12
+   ],
+   "rotDeg": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3caa8",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#55595e",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block-2",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    22
+   ],
+   "rotDeg": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc8b0",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#55595e",
+    "material": "slate",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-link",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    12.5,
+    -2
+   ],
+   "rotDeg": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4e2dc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#7f9097"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2dc",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -7.5,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.4,
+    "thickness": 0.8,
+    "colour": "#b3aa98"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    18,
+    -7.5,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.4,
+    "thickness": 0.8,
+    "colour": "#b3aa98"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 1,
+    "colours": [
+     "#169b62",
+     "#ffffff",
+     "#ff883e"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    42,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 2.4,
+    "depth": 1.8,
+    "colour": "#2f4a2c"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    42,
+    9,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 2.4,
+    "depth": 1.8,
+    "colour": "#2f4a2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 4,
+    "spread": 5,
+    "line": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "portico now visible on the front face but columns lighter and shorter than the real two-storey order; curved forecourt walls and ivy simplified; camera is higher and further back than the photo; stone smoother than granite"
+ }
+}

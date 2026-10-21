@@ -1,0 +1,324 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Furuset_kulturpark_sett_mot_nord.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Helge H\u00f8if\u00f8dt",
+   "view": "street",
+   "file": "/tmp/places-evidence/oslo/furuset.jpg",
+   "used": "open mown lawn with benches and a picnic table, birches in autumn colour, reed edge of the stream/pond on the left, litter bins and lamp posts, low fence at the far edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/155873155",
+   "used": "park outline (150 x 91 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 60,
+  "aspect": 1.49,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -30
+     ],
+     [
+      -5,
+      -10
+     ],
+     [
+      15,
+      10
+     ],
+     [
+      30,
+      35
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    -6,
+    0.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -6,
+    18,
+    0.2
+   ],
+   "rotDeg": 180,
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    20,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    60,
+    0.2
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#6b5a48"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -20,
+    0.2
+   ],
+   "params": {
+    "kind": "birch",
+    "height": 11,
+    "count": 6,
+    "spread": 14,
+    "colour": "#b7b24a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    20,
+    0.2
+   ],
+   "params": {
+    "kind": "birch",
+    "height": 12,
+    "count": 7,
+    "spread": 18,
+    "colour": "#c4a03a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    35,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 10,
+    "colour": "#8fa84a"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -62,
+    -5,
+    0.02
+   ],
+   "params": {
+    "width": 18,
+    "depth": 60,
+    "shape": "rect",
+    "colour": "#4f7f8a",
+    "bank": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "birch",
+    "height": 11,
+    "count": 5,
+    "spread": 12,
+    "colour": "#e0a23a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "birch",
+    "height": 12,
+    "count": 5,
+    "spread": 14,
+    "colour": "#d98a2e"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    8,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "picnic",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.9
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4a30",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bin1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    10,
+    -10
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f3a35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3a35",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bin2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    20
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f3a35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3a35",
+    "material": "membrane"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "groundColour": "#5fa63a",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "reed bed removed (masses rendered oversized); pond is a flat blue slab; birches round-crowned; layout typed from a single street-level photo"
+ }
+}

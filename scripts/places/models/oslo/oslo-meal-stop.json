@@ -1,0 +1,245 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+   "used": "red weatherboarded Norwegian country house with white trim; OSM match is only a containing hotel polygon so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8e3b2f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#ece8dd",
+    "plinth": 0.6,
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#35383c",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -12.5,
+    3
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7d3228",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bands": "#ece8dd"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#35383c",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4,
+     2.4
+    ]
+   },
+   "at": [
+    3,
+    -6.2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#ece8dd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#35383c",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     9,
+     3.5
+    ]
+   },
+   "at": [
+    -4,
+    -8
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e5a45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5a45"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    5,
+    2,
+    7.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 2,
+    "pots": 1
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 3.6,
+    "width": 1.6,
+    "colour": "#ece8dd"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    14,
+    -18
+   ],
+   "params": {
+    "colour": "#4a5a6a",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -4
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    14
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    12
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    8
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; massing typed from brief (18x10, two storeys, gable) with annex/porch/terrace added as typical"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-meal-stop"
+}

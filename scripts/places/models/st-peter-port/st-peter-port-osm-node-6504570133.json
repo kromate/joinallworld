@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-node-6504570133",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/243004506",
+   "used": "checked only: it is the whole hospital (4000 m2 star-shaped), not the annex, so not used as the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "polygon": [
+     [
+      -12.5,
+      -6
+     ],
+     [
+      12.5,
+      -6
+     ],
+     [
+      12.5,
+      3
+     ],
+     [
+      6,
+      3
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      -12.5,
+      6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e3ded0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#9b5a44"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-entrance",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -6,
+    -7.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9b5a44",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "membrane",
+    "overhang": 0.8,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -9.8,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 0.9,
+    "bottom": 1.7,
+    "colour": "#c9ccce"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   50,
+   36
+  ],
+  "trees": 0
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; modest L-shaped render annex with brick entrance block, flat membrane roof, sized from the brief (25 x 12 m); real annex outline unknown (OSM match is the whole hospital)."
+ }
+}

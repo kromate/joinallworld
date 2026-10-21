@@ -1,0 +1,324 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pa%C5%82ac_w_Falentach,_prz%C3%B3d.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Cyberwiked",
+   "view": "front",
+   "file": "/tmp/places-evidence/warsaw/falenty.jpg",
+   "used": "long two-storey white stucco front, green copper hip roof with chimneys, central arched door in a projecting bay with a pediment above, lattice-grilled ground floor windows, round-arched gallery at left, tower roof behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/124771239",
+   "used": "unreliable (85 m outline spanning palace and outbuilding); not used for the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 1.33,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.7,
+    "cornice": true,
+    "bay": 4.2,
+    "bands": "#dcdad4",
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f7f6c",
+    "material": "metal-sheet",
+    "pitch": 15,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     6,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -8.4
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c7",
+    "material": "membrane",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment-bay",
+   "footprint": {
+    "rect": [
+     12.4,
+     2.0
+    ]
+   },
+   "at": [
+    0,
+    -8.0
+   ],
+   "z0": 8.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f4f2ec",
+    "material": "concrete",
+    "pitch": 26,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.7,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b8b2a4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "chimney-stack",
+     "params": {
+      "width": 1.2,
+      "height": 2.6,
+      "pots": 0,
+      "colour": "#ebe6da"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     2,
+     8
+    ],
+    "end": [
+     14,
+     3,
+     8
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-projection",
+   "footprint": {
+    "rect": [
+     12,
+     1.0
+    ]
+   },
+   "at": [
+    0,
+    -7.9
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdad4",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade",
+   "footprint": {
+    "rect": [
+     14,
+     4
+    ]
+   },
+   "at": [
+    -30,
+    -5.0
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "count": 4
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdad4",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    42,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 24,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 22,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drive",
+   "at": [
+    0,
+    0,
+    0.03
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -16
+     ],
+     [
+      40,
+      -16
+     ],
+     [
+      40,
+      -22
+     ],
+     [
+      -30,
+      -24
+     ]
+    ],
+    "height": 0.04,
+    "colour": "#55575a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Camera pulled back; pediment faint, arcade arches only on left bay, no lattice grilles, no drive curve, tower roof omitted"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-124771239"
+}

@@ -1,0 +1,277 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-4254163",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hartwall_Arena_2013-03-21_001.jpg",
+   "licence": "CC BY 3.0",
+   "author": "L\u00f6fbergs",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/arena1.jpg",
+   "used": "elliptical drum with horizontal bands of dark glass and silver metal, tower-like clad block at right with a blank sign, low pale entrance pavilion, dark glazed block at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/4254163",
+   "used": "identity, 5 levels, 1997; plan scaled to the 118 m scene clamp (real 153 x 123 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.85,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     104,
+     84
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 24,
+   "storeys": 12,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a9199",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#2f363d",
+       "#b6bcc2"
+      ]
+     }
+    ],
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8085",
+    "material": "membrane",
+    "parapet": 1.0,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-low",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    -4,
+    -39
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc6bd",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "overhang": 0.8,
+    "parapet": 0.4
+   },
+   "rotDeg": -10
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    30,
+    -31
+   ],
+   "height": 29,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb3a8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#9d948a",
+      "height": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-glass-block",
+   "footprint": {
+    "rect": [
+     20,
+     22
+    ]
+   },
+   "at": [
+    -60,
+    -12
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a3238",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-link",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -40,
+    -34
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a8a6",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    30,
+    -35.6,
+    13
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#e6e9ea",
+    "frameColour": "#bdb3a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -4,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 34
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    10,
+    24.9
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 51.5,
+    "radiusY": 41.5,
+    "count": 40,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "lod2Step": 40,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 0.5,
+       "colour": "#fffbe8"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Drum now a banded oval with narrow clad tower and lower pale pavilion; bands are flat colour not glass/metal, no angled pavilion roof, drum partly hidden by tower from this camera, no spotlight glow."
+ }
+}

@@ -1,0 +1,397 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-way-25867450",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Spice_%5E_Panorama_Plaza_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Dmitrijs Purgalvis",
+   "view": "street",
+   "file": "/tmp/places-evidence/riga/12_1.jpg",
+   "used": "long wall clad in horizontal tan/beige metal boards, protruding glazed oriel boxes, blank sign letters, dark entrance canopy"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Spice_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Dmitrijs Purgalvis",
+   "view": "street",
+   "file": "/tmp/places-evidence/riga/12_2.jpg",
+   "used": "low tan box with dark glazed corner entrance and dark upper band, big car park, tall light masts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25867450",
+   "used": "building outline (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "lamp",
+   "at": [
+    -60,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 4,
+    "spacing": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     100,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b59a76",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       4,
+       0.45
+      ],
+      "colours": [
+       "#b59a76",
+       "#a68b69"
+      ],
+      "mode": "stripes-h",
+      "gap": 0.03,
+      "proud": 0.04
+     },
+     {
+      "type": "bands",
+      "colour": "#4a3f3a",
+      "height": 1.3,
+      "at": 0.7,
+      "floors": [
+       1
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a4c",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oriel0",
+   "at": [
+    -25,
+    -16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3.4
+    ],
+    "z0": 4.8,
+    "height": 3.6,
+    "colour": "#8fb0b8",
+    "topColour": "#c9d3d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oriel1",
+   "at": [
+    -13,
+    -16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3.4
+    ],
+    "z0": 4.8,
+    "height": 3.6,
+    "colour": "#8fb0b8",
+    "topColour": "#c9d3d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oriel2",
+   "at": [
+    -1,
+    -16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3.4
+    ],
+    "z0": 4.8,
+    "height": 3.6,
+    "colour": "#8fb0b8",
+    "topColour": "#c9d3d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oriel3",
+   "at": [
+    11,
+    -16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3.4
+    ],
+    "z0": 4.8,
+    "height": 3.6,
+    "colour": "#8fb0b8",
+    "topColour": "#c9d3d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oriel4",
+   "at": [
+    23,
+    -16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3.4
+    ],
+    "z0": 4.8,
+    "height": 3.6,
+    "colour": "#8fb0b8",
+    "topColour": "#c9d3d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oriel5",
+   "at": [
+    35,
+    -16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3.4
+    ],
+    "z0": 4.8,
+    "height": 3.6,
+    "colour": "#8fb0b8",
+    "topColour": "#c9d3d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter0",
+   "at": [
+    -20,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "z0": 10.3,
+    "height": 1.8,
+    "colour": "#c23a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter1",
+   "at": [
+    -13,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "z0": 10.3,
+    "height": 1.8,
+    "colour": "#c23a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter2",
+   "at": [
+    -6,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "z0": 10.3,
+    "height": 1.8,
+    "colour": "#c23a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter3",
+   "at": [
+    1,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "z0": 10.3,
+    "height": 1.8,
+    "colour": "#c23a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter4",
+   "at": [
+    8,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "z0": 10.3,
+    "height": 1.8,
+    "colour": "#c23a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter5",
+   "at": [
+    15,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "z0": 10.3,
+    "height": 1.8,
+    "colour": "#c23a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-glass",
+   "at": [
+    -46,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     2.5
+    ],
+    "height": 7,
+    "colour": "#2c3a42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-canopy",
+   "at": [
+    -46,
+    -19.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "z0": 4.2,
+    "height": 0.5,
+    "colour": "#3b2a26"
+   }
+  },
+  {
+   "type": "pylon-sign",
+   "at": [
+    -20,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "width": 3,
+    "colour": "#b5342b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 3,
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Footprint is a plain 100x32 rectangle (OSM outline is irregular); background towers and street-side signage lettering absent; oriels and letters evenly spaced."
+ }
+}

@@ -1,0 +1,449 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-osm-node-1783469367",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_John_-_Sorel_Point_20190102-02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pymouss",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/st-helier/sorel.jpg",
+   "used": "narrow ridge falling to the sea, gorse and heather cover, bare dirt path, grey granite boulders at the knuckle, red granite outcrop at the tip, turquoise sea"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/415142021",
+   "used": "Sorel Light small building at the headland (nearest, 33 m); not modelled as its own part"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "surface",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 46,
+    "depth": 70,
+    "z": 0,
+    "thickness": 1.2,
+    "smooth": true,
+    "res": 20,
+    "heights": [
+     [
+      0.15,
+      1.7,
+      4.21,
+      6.64,
+      6.64,
+      4.21,
+      1.7,
+      0.15
+     ],
+     [
+      0.15,
+      1.57,
+      3.84,
+      6.03,
+      6.03,
+      3.84,
+      1.57,
+      0.15
+     ],
+     [
+      0.15,
+      1.44,
+      3.48,
+      5.42,
+      5.42,
+      3.48,
+      1.44,
+      0.15
+     ],
+     [
+      0.15,
+      1.32,
+      3.13,
+      4.86,
+      4.86,
+      3.13,
+      1.32,
+      0.15
+     ],
+     [
+      0.15,
+      1.23,
+      2.88,
+      4.45,
+      4.45,
+      2.88,
+      1.23,
+      0.15
+     ],
+     [
+      0.15,
+      1.22,
+      2.85,
+      4.39,
+      4.39,
+      2.85,
+      1.22,
+      0.15
+     ],
+     [
+      0.15,
+      1.19,
+      2.76,
+      4.24,
+      4.24,
+      2.76,
+      1.19,
+      0.15
+     ],
+     [
+      0.15,
+      1.01,
+      2.24,
+      3.39,
+      3.39,
+      2.24,
+      1.01,
+      0.15
+     ],
+     [
+      0.15,
+      0.79,
+      1.62,
+      2.38,
+      2.38,
+      1.62,
+      0.79,
+      0.15
+     ],
+     [
+      0.15,
+      0.65,
+      1.23,
+      1.72,
+      1.72,
+      1.23,
+      0.65,
+      0.15
+     ],
+     [
+      0.15,
+      0.56,
+      0.96,
+      1.28,
+      1.28,
+      0.96,
+      0.56,
+      0.15
+     ],
+     [
+      0.15,
+      0.49,
+      0.76,
+      0.95,
+      0.95,
+      0.76,
+      0.49,
+      0.15
+     ]
+    ],
+    "colour": "#6b6a3a",
+    "underColour": "#6e5e48"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      0.2,
+      -12,
+      6.5
+     ],
+     [
+      -1.2,
+      -4,
+      5.4
+     ],
+     [
+      0.8,
+      2,
+      4.5
+     ],
+     [
+      -0.6,
+      10,
+      3.4
+     ],
+     [
+      0.9,
+      17,
+      2.4
+     ],
+     [
+      0,
+      22,
+      2.3
+     ]
+    ],
+    "colour": "#b59a6a"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.01,
+        0,
+        "#8f8e8a"
+       ],
+       [
+        1.1,
+        0.1,
+        "#8f8e8a"
+       ],
+       [
+        1.3,
+        0.9,
+        "#9b9a95"
+       ],
+       [
+        0.7,
+        1.5,
+        "#a4a39e"
+       ],
+       [
+        0.01,
+        1.7,
+        "#a4a39e"
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     22,
+     2.2
+    ],
+    "end": [
+     9,
+     28,
+     2.4
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    10,
+    0.1
+   ],
+   "params": {
+    "width": 140,
+    "depth": 130,
+    "colour": "#4fa7a8",
+    "bank": false
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    26,
+    2
+   ],
+   "params": {
+    "profile": [
+     [
+      0.01,
+      0,
+      "#8f8e8a"
+     ],
+     [
+      2.5,
+      0.2,
+      "#8f8e8a"
+     ],
+     [
+      0.01,
+      2,
+      "#a4a39e"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    6,
+    29,
+    1.2
+   ],
+   "params": {
+    "colour": "#a8574a",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -5,
+        -3
+       ],
+       [
+        5,
+        -3.5
+       ],
+       [
+        6.5,
+        2
+       ],
+       [
+        1,
+        4.5
+       ],
+       [
+        -5,
+        3
+       ]
+      ]
+     },
+     {
+      "z": 1.2,
+      "poly": [
+       [
+        -4.2,
+        -2.6
+       ],
+       [
+        3.5,
+        -3
+       ],
+       [
+        5,
+        1.8
+       ],
+       [
+        0.5,
+        3.6
+       ],
+       [
+        -4,
+        2.4
+       ]
+      ],
+      "colour": "#b5654f"
+     },
+     {
+      "z": 2.2,
+      "poly": [
+       [
+        -3.2,
+        -2
+       ],
+       [
+        2.8,
+        -2.4
+       ],
+       [
+        3.8,
+        1.2
+       ],
+       [
+        0,
+        2.8
+       ],
+       [
+        -3,
+        1.8
+       ]
+      ],
+      "colour": "#9c4f45"
+     },
+     {
+      "z": 3.2,
+      "poly": [
+       [
+        -1.8,
+        -1.2
+       ],
+       [
+        1.6,
+        -1.5
+       ],
+       [
+        2.2,
+        0.6
+       ],
+       [
+        -0.2,
+        1.6
+       ],
+       [
+        -1.8,
+        0.8
+       ]
+      ],
+      "colour": "#b5654f"
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "terrain still tiled-green texture, no gorse or heather; sea is flat blue plane with no surf; path is thin plank; tip rock is a simple loft; ground pad engine-limited"
+ }
+}

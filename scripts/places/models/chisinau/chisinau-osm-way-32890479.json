@@ -1,0 +1,357 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-way-32890479",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dinamo_Stadium_in_Chisinau.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Mika Perki\u00f6m\u00e4ki",
+   "view": "side",
+   "file": "/tmp/places-evidence/chisinau/dinamo.jpg",
+   "used": "red and blue plastic bucket seats on a low concrete raked stand, blue railing with gold posts along the track, dark running track, natural grass pitch, trees all round, low far stand and white goal nets"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32890479",
+   "used": "stadium extent (OSM ring is a diagonal 195 x 131 m site outline; pitch 105 x 68 per Wikipedia)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 172,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 136,
+    "width": 92,
+    "lane_width": 7,
+    "colour": "#3b3a3c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -47
+    ],
+    "end": [
+     34,
+     -47
+    ],
+    "rows": 9,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "under": "open",
+    "slab": 0.6,
+    "backWall": 0.5,
+    "bay": 6,
+    "seatColour": "#c4475a",
+    "seatColours": [
+     "#c4475a",
+     "#c4475a",
+     "#c4475a",
+     "#c4475a",
+     "#c4475a",
+     "#c4475a",
+     "#c4475a",
+     "#c4475a",
+     "#c4475a",
+     "#c4475a",
+     "#c4475a",
+     "#2f5f9e"
+    ],
+    "blocks": 12,
+    "concreteColour": "#b9b6ae",
+    "underColour": "#a8a49b"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     40,
+     49
+    ],
+    "end": [
+     -40,
+     49
+    ],
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#c4475a",
+    "concreteColour": "#c9c6be",
+    "underColour": "#a8a49b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 136,
+    "height": 1.15,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#5b8fb0",
+    "points": [
+     [
+      -68,
+      -45
+     ],
+     [
+      68,
+      -45
+     ]
+    ],
+    "pillarEvery": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -64,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    64,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -64,
+    52,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    64,
+    52,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    55,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "facing": "north",
+    "colour": "#d8d8d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing-block",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    -52,
+    -62
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    64,
+    0
+   ],
+   "params": {
+    "width": 130,
+    "depth": 10,
+    "count": 18,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 15
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 10,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 15
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -84,
+    0,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 90,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 15
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    84,
+    0,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 90,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 15
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 136,
+    "height": 1.15,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#5b8fb0",
+    "points": [
+     [
+      -68,
+      45
+     ],
+     [
+      68,
+      45
+     ]
+    ],
+    "pillarEvery": 4
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only an inside-the-stand view exists; inner blue railing added (posts not gold), seats mostly red, trees stylised groves, goal nets from the stock pitch only."
+ }
+}

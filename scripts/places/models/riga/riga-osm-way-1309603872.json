@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-way-1309603872",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1309603872",
+   "used": "real park outline (name match), long narrow wooded strip west of Mezaparks"
+  },
+  {
+   "kind": "text",
+   "used": "brief: pine woodland with paths; the Commons image tied to Wikidata (Aldara parks) shows a different park, so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f8f4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f4f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0.0,
+    0.0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -24.6,
+      -16.4
+     ],
+     [
+      -8.2,
+      -8.2
+     ],
+     [
+      4.1,
+      4.1
+     ],
+     [
+      16.4,
+      12.3
+     ],
+     [
+      24.6,
+      18.4
+     ]
+    ],
+    "width": 3,
+    "colour": "#b9a98f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0.0,
+    0.0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -20.5,
+      8.2
+     ],
+     [
+      -12.3,
+      24.6
+     ],
+     [
+      -4.1,
+      41.0
+     ],
+     [
+      -12.3,
+      49.2
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#b9a98f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0.0,
+    0.0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      8.2,
+      -32.8
+     ],
+     [
+      16.4,
+      -12.3
+     ],
+     [
+      20.5,
+      4.1
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b9a98f"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    3.3,
+    -2.5,
+    0.5
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#7a3b2c"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -2.5,
+    2.0,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -16.4,
+    16.4,
+    0.5
+   ],
+   "params": {
+    "width": 20.5,
+    "depth": 28.7,
+    "count": 14,
+    "kind": "conifer",
+    "min_height": 11,
+    "max_height": 17
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    20.5,
+    -28.7,
+    0.5
+   ],
+   "params": {
+    "width": 24.599999999999998,
+    "depth": 32.8,
+    "count": 14,
+    "kind": "conifer",
+    "min_height": 11,
+    "max_height": 17
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24.6,
+     -8.2
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -22.5,
+     12.3
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -16.4,
+     36.9
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -12.3,
+     47.1
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24.6,
+     8.2
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26.6,
+     -24.6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22.5,
+     -49.2
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     8.2,
+     -32.8
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8.2,
+     -16.4
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0.0,
+     0.0
+    ],
+    "height": 17
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     12.3,
+     12.3
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -16.4,
+     24.6
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   110,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No usable photo of this park (Commons image is another park): outline, paths, conifer groves and a pavilion only."
+ }
+}

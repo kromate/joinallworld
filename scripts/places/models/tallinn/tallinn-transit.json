@@ -1,0 +1,407 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Elroni_reisirong_Saue_rongipeatuses.jpg",
+   "licence": "CC BY-SA (Commons)",
+   "author": "see Commons page",
+   "view": "side",
+   "file": "/tmp/places-evidence/tallinn/saue1.jpg",
+   "used": "long low platform beside a single track, dark charcoal steel cantilever canopy on curved legs with sloping rafters, tactile paving strip, overhead catenary masts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1424815380",
+   "used": "location only; the 5 m mapped shelter is too small, canopy length taken from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 105,
+  "pitchDeg": 7,
+  "fovDeg": 55,
+  "aspect": 1.61,
+  "fit": "all",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "station-platform",
+   "id": "platform",
+   "params": {
+    "length": 64,
+    "depth": 6,
+    "height": 0.9,
+    "colour": "#9a9da1"
+   }
+  },
+  {
+   "type": "rail-track",
+   "id": "tracks",
+   "at": [
+    0,
+    -2.9,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "tracks": 1,
+    "spacing": 4.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "legs",
+   "params": {
+    "mode": "line",
+    "start": [
+     -15,
+     3.6,
+     0.9
+    ],
+    "end": [
+     15,
+     3.6,
+     0.9
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "loft",
+      "id": "leg",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#33373b",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.7,
+          1.5
+         ]
+        },
+        {
+         "z": 1.2,
+         "rect": [
+          0.6,
+          0.9
+         ]
+        },
+        {
+         "z": 2.6,
+         "rect": [
+          0.5,
+          0.7
+         ],
+         "cy": -0.2
+        },
+        {
+         "z": 4.0,
+         "rect": [
+          0.45,
+          0.6
+         ],
+         "cy": -0.7
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "rafters",
+   "params": {
+    "mode": "line",
+    "start": [
+     -15.5,
+     0,
+     0
+    ],
+    "end": [
+     15.5,
+     0,
+     0
+    ],
+    "count": 14,
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         0.18,
+         0.45
+        ]
+       },
+       "points": [
+        [
+         0,
+         6.4,
+         4.7
+        ],
+        [
+         0,
+         -0.6,
+         5.8
+        ]
+       ],
+       "colour": "#2b2e31"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fascia",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -16,
+      -0.7,
+      5.75
+     ],
+     [
+      16,
+      -0.7,
+      5.75
+     ]
+    ],
+    "colour": "#33373b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "back-beam",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -16,
+      6.5,
+      4.5
+     ],
+     [
+      16,
+      6.5,
+      4.5
+     ]
+    ],
+    "colour": "#33373b"
+   }
+  },
+  {
+   "type": "train",
+   "id": "emu",
+   "at": [
+    0,
+    -2.9,
+    0
+   ],
+   "params": {
+    "carriages": 3,
+    "colour": "#e2531f",
+    "loco_colour": "#e2531f"
+   }
+  },
+  {
+   "type": "array",
+   "id": "masts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -7,
+     0
+    ],
+    "end": [
+     30,
+     -7,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "loft",
+      "id": "mast",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#7b8085",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.7,
+          0.7
+         ]
+        },
+        {
+         "z": 8,
+         "rect": [
+          0.35,
+          0.35
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "wire0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.05,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      -32,
+      -2.9,
+      6.6
+     ],
+     [
+      32,
+      -2.9,
+      6.6
+     ]
+    ],
+    "colour": "#303336"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "wire1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.05,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      -32,
+      -2.4,
+      7.199999999999999
+     ],
+     [
+      32,
+      -2.4,
+      7.199999999999999
+     ]
+    ],
+    "colour": "#303336"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mast-arm",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.1,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -32,
+      -7,
+      7.4
+     ],
+     [
+      32,
+      -7,
+      7.4
+     ]
+    ],
+    "colour": "#7b8085"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -15
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   76,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopy now dark bent-leg cantilever with sloping rafters, orange EMU on track and catenary masts/wires added; legs are thin lofts not wide curved plates, no rounded cab or tactile strip detail, deck of canopy is open rafters, trees are green blobs not bare birch, ballast ground is a grey cobble tile."
+ }
+}

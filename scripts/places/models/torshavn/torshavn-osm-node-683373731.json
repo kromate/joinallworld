@@ -1,0 +1,598 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: scattered colourful tarred and painted timber houses and a small harbour bay on a green slope on east Eysturoy; the single OSM house is 75 m2 and nearest-only, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 16,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "slope0",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     22
+    ],
+    "height": 0.6,
+    "colour": "#5f7f3f",
+    "topColour": "#6b8a45",
+    "material": "grass",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope1",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     20
+    ],
+    "height": 3.8000000000000003,
+    "colour": "#5f7f3f",
+    "topColour": "#6b8a45",
+    "material": "grass",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope2",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     20
+    ],
+    "height": 7.0,
+    "colour": "#5f7f3f",
+    "topColour": "#6b8a45",
+    "material": "grass",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope3",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     22
+    ],
+    "height": 10.2,
+    "colour": "#5f7f3f",
+    "topColour": "#6b8a45",
+    "material": "grass",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house0",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    -23.1,
+    -12.7
+   ],
+   "rotDeg": 12,
+   "z0": 0.5,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#2b2926",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2b2926",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house1",
+   "footprint": {
+    "rect": [
+     6,
+     10
+    ]
+   },
+   "at": [
+    -2.4,
+    -12.8
+   ],
+   "rotDeg": 6,
+   "z0": 0.5,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9c3a2e",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a2f27",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house2",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    21.5,
+    -10.5
+   ],
+   "rotDeg": 12,
+   "z0": 0.5,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b44a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3d40",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house3",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    -29.3,
+    6.5
+   ],
+   "rotDeg": -8,
+   "z0": 3.7,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b5a3c",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house4",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    0.5,
+    3.3
+   ],
+   "rotDeg": 0,
+   "z0": 3.7,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2d5f6b",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2b2926",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house5",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    25.7,
+    6.4
+   ],
+   "rotDeg": 12,
+   "z0": 3.7,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a2f27",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a2f27",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house6",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -30.1,
+    22.4
+   ],
+   "rotDeg": 0,
+   "z0": 6.9,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#2b2926",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3d40",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house7",
+   "footprint": {
+    "rect": [
+     6,
+     10
+    ]
+   },
+   "at": [
+    -0.8,
+    22.7
+   ],
+   "rotDeg": 6,
+   "z0": 6.9,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b44a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b5a3c",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house8",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    33.1,
+    22.5
+   ],
+   "rotDeg": 6,
+   "z0": 6.9,
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2b2926",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house9",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -37.8,
+    39.7
+   ],
+   "rotDeg": -8,
+   "z0": 10.1,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9c3a2e",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a2f27",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house10",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    0.4,
+    37.7
+   ],
+   "rotDeg": 12,
+   "z0": 10.1,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#2b2926",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3d40",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house11",
+   "footprint": {
+    "rect": [
+     6,
+     10
+    ]
+   },
+   "at": [
+    39.9,
+    36.0
+   ],
+   "rotDeg": 0,
+   "z0": 10.1,
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4c6b3a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "trimColour": "#f1efe8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b5a3c",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "boathouse",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    22,
+    -14
+   ],
+   "z0": 0.0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2b2926",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a2f27",
+    "material": "corrugated",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    -10,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     16
+    ],
+    "z0": 0.2,
+    "height": 0.8,
+    "colour": "#6f6f6a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bay",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     100,
+     16
+    ],
+    "z0": -0.1,
+    "height": 0.15,
+    "colour": "#3b6a85",
+    "material": "glass"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "sea-wall",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.2,
+    "thickness": 0.8,
+    "colour": "#6d6a64"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; house positions, colours and the stepped slope are typed from Faroese village character, not surveyed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-osm-node-683373731"
+}

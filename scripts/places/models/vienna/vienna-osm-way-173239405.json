@@ -1,0 +1,720 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Schubertpark_Mauer_Naturdenkmal_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Funke",
+   "view": "street",
+   "file": "/tmp/places-evidence/vienna/Schubertpark64.jpg",
+   "used": "wide broken lime crown with several leaders and multi-stem trunk on a kerbed triangular grass island, asphalt street, yellow/cream villas behind, red round sign"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/173239405",
+   "used": "triangular island outline about 25 x 30 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "kerb",
+   "params": {
+    "points": [
+     [
+      -10.84,
+      -9.48
+     ],
+     [
+      -5.44,
+      -14.88
+     ],
+     [
+      -2.95,
+      -14.24
+     ],
+     [
+      13.68,
+      -0.74
+     ],
+     [
+      13.68,
+      4.23
+     ],
+     [
+      -5.44,
+      17.41
+     ]
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#a9a9a4",
+    "topColour": "#a9a9a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "island",
+   "params": {
+    "points": [
+     [
+      -10,
+      -9
+     ],
+     [
+      -5,
+      -14
+     ],
+     [
+      -2.7,
+      -13.4
+     ],
+     [
+      12.7,
+      -0.9
+     ],
+     [
+      12.7,
+      3.7
+     ],
+     [
+      -5,
+      15.9
+     ]
+    ],
+    "z0": 0.2,
+    "height": 0.15,
+    "colour": "#7fa45a",
+    "topColour": "#6f9a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerbS",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#a9a9a4",
+    "topColour": "#a9a9a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "walk",
+   "at": [
+    22,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     40
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#b8b6ae",
+    "topColour": "#b8b6ae"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "villaY",
+   "at": [
+    -18,
+    24,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     8
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#d9b44a",
+    "topColour": "#d9b44a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "villaC",
+   "at": [
+    10,
+    26,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     8
+    ],
+    "z0": 0,
+    "height": 6.5,
+    "colour": "#eadfba",
+    "topColour": "#eadfba"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fence",
+   "at": [
+    -24,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.4
+    ],
+    "z0": 0,
+    "height": 2,
+    "colour": "#cfc3a0",
+    "topColour": "#cfc3a0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stem0",
+   "at": [
+    -0.9,
+    0.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 6.5,
+    "colour": "#8a857a",
+    "topColour": "#8a857a",
+    "topScale": 0.7,
+    "topOffset": [
+     -0.5,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stem1",
+   "at": [
+    0.9,
+    -0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 6.5,
+    "colour": "#8a857a",
+    "topColour": "#8a857a",
+    "topScale": 0.7,
+    "topOffset": [
+     0.6,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stem2",
+   "at": [
+    0,
+    0.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 6.5,
+    "colour": "#8a857a",
+    "topColour": "#8a857a",
+    "topScale": 0.7,
+    "topOffset": [
+     0.1,
+     0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "foliage0",
+   "at": [
+    0.0,
+    0,
+    3.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#4a8530",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      7.73,
+      0.9
+     ],
+     [
+      11.05,
+      4.05
+     ],
+     [
+      8.84,
+      7.2
+     ],
+     [
+      4.42,
+      8.73
+     ],
+     [
+      0.0,
+      9.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "foliage1",
+   "at": [
+    -7.199999999999999,
+    2,
+    3.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#558f38",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      4.55,
+      0.6
+     ],
+     [
+      6.5,
+      2.7
+     ],
+     [
+      5.2,
+      4.8
+     ],
+     [
+      2.6,
+      5.82
+     ],
+     [
+      0.0,
+      6.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "foliage2",
+   "at": [
+    7.8,
+    3,
+    3.5
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#4c8a32",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      4.09,
+      0.6
+     ],
+     [
+      5.85,
+      2.7
+     ],
+     [
+      4.68,
+      4.8
+     ],
+     [
+      2.34,
+      5.82
+     ],
+     [
+      0.0,
+      6.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "foliage3",
+   "at": [
+    -3.5999999999999996,
+    -4,
+    5.5
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#5a9a3c",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      5.46,
+      0.6
+     ],
+     [
+      7.8,
+      2.7
+     ],
+     [
+      6.24,
+      4.8
+     ],
+     [
+      3.12,
+      5.82
+     ],
+     [
+      0.0,
+      6.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "foliage4",
+   "at": [
+    4.8,
+    -4,
+    6.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#4f8c34",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      4.55,
+      0.5
+     ],
+     [
+      6.5,
+      2.25
+     ],
+     [
+      5.2,
+      4.0
+     ],
+     [
+      2.6,
+      4.85
+     ],
+     [
+      0.0,
+      5.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "foliage5",
+   "at": [
+    0.0,
+    3,
+    9.5
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#5d9d40",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      4.55,
+      0.6
+     ],
+     [
+      6.5,
+      2.7
+     ],
+     [
+      5.2,
+      4.8
+     ],
+     [
+      2.6,
+      5.82
+     ],
+     [
+      0.0,
+      6.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "foliage6",
+   "at": [
+    -9.6,
+    -1,
+    3.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#467e2d",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      3.64,
+      0.5
+     ],
+     [
+      5.2,
+      2.25
+     ],
+     [
+      4.16,
+      4.0
+     ],
+     [
+      2.08,
+      4.85
+     ],
+     [
+      0.0,
+      5.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "foliage7",
+   "at": [
+    10.2,
+    0,
+    3.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#3f7829",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      3.64,
+      0.5
+     ],
+     [
+      5.2,
+      2.25
+     ],
+     [
+      4.16,
+      4.0
+     ],
+     [
+      2.08,
+      4.85
+     ],
+     [
+      0.0,
+      5.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "foliage8",
+   "at": [
+    1.2,
+    0,
+    3.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#3a6f27",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      6.83,
+      0.65
+     ],
+     [
+      9.75,
+      2.93
+     ],
+     [
+      7.8,
+      5.2
+     ],
+     [
+      3.9,
+      6.3
+     ],
+     [
+      0.0,
+      6.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#9a9a9a",
+    "topColour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "signdisc",
+   "at": [
+    -8,
+    -8.2,
+    1.9
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#c9302c",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.4,
+      0
+     ],
+     [
+      0.4,
+      0.1
+     ],
+     [
+      0,
+      0.1
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-osm-way-173239405",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Crown is faceted lobes, not leafy broken foliage; no real street detail, villas are plain blocks, kerb only on island"
+ }
+}

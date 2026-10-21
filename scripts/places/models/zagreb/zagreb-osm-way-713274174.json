@@ -1,0 +1,461 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-713274174",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chapel_of_the_Exaltation_of_the_Holy_Cross,_Zagreb_(Gor%C5%A1%C4%8Dica)_02.jpg",
+   "licence": "CC0",
+   "author": "Baltabar",
+   "view": "front",
+   "file": "/tmp/places-evidence/zagreb/274174_0.jpg",
+   "used": "open timber shelter: four posts, concrete slab, boarded back wall, dark-brown timber gable board with arch, red tile gable roof, small green-capped bell turret with cross"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chapel_of_the_Exaltation_of_the_Holy_Cross,_Zagreb_(Gor%C5%A1%C4%8Dica)_01.jpg",
+   "licence": "CC0",
+   "author": "Baltabar",
+   "view": "side",
+   "used": "open sides, ridge along depth, turret on the ridge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/713274174",
+   "used": "size (about 3.7 x 3.3 m) and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "slab",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     5.4
+    ],
+    "height": 0.15,
+    "colour": "#a9a69d",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "p1",
+   "at": [
+    -1.3,
+    -1.5,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.0,
+    "colour": "#5a3526",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "p2",
+   "at": [
+    1.3,
+    -1.5,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.0,
+    "colour": "#5a3526",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "p3",
+   "at": [
+    -1.3,
+    1.5,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.0,
+    "colour": "#5a3526",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "p4",
+   "at": [
+    1.3,
+    1.5,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.0,
+    "colour": "#5a3526",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "backwall",
+   "at": [
+    0,
+    1.5,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.5
+    ],
+    "height": 3.0,
+    "colour": "#6e4630",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sidewall-l",
+   "at": [
+    -1.3,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     3.0
+    ],
+    "height": 1.0,
+    "colour": "#6e4630",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sidewall-r",
+   "at": [
+    1.3,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     3.0
+    ],
+    "height": 1.0,
+    "colour": "#6e4630",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable",
+   "footprint": {
+    "rect": [
+     3.1,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.0,
+   "height": 0.7,
+   "wall": {
+    "material": "timber",
+    "colour": "#b08a62",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f4a36",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "turret",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    0.4
+   ],
+   "z0": 4.6,
+   "height": 0.9,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f4a36",
+    "rise": 0.5,
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    0.4,
+    5.9
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.08
+    ],
+    "height": 0.9,
+    "colour": "#d8d0b0",
+    "material": "metal"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    0.4,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.08
+    ],
+    "height": 0.08,
+    "colour": "#d8d0b0",
+    "material": "metal"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "recess",
+   "at": [
+    0,
+    1.22,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.1
+    ],
+    "height": 2.2,
+    "colour": "#6a4630",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "altar",
+   "at": [
+    0,
+    1.0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#a88e6c",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crucifix-v",
+   "at": [
+    0,
+    1.15,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     0.06,
+     0.05
+    ],
+    "height": 0.9,
+    "colour": "#3a2518",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crucifix-h",
+   "at": [
+    0,
+    1.15,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.05
+    ],
+    "height": 0.06,
+    "colour": "#3a2518",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "at": [
+    0,
+    -0.3,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.4
+    ],
+    "height": 0.45,
+    "colour": "#7a5538",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -1.75,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.04
+    ],
+    "height": 0.3,
+    "colour": "#2a2a2a",
+    "material": "metal"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -3,
+     3.5
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     4
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     3,
+     3.5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     3
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -5,
+     6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     5,
+     6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -7,
+     0
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     7,
+     0
+    ]
+   }
+  ],
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Arched recess is a flat panel (no true round arch), crucifix/altar simplified, no plaque text, forest backdrop is low-poly trees."
+ }
+}

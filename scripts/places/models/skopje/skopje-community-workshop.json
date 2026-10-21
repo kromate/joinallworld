@@ -1,0 +1,390 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FON-university.JPG",
+   "licence": "Public domain",
+   "author": "Yemc",
+   "view": "side",
+   "file": "/tmp/places-evidence/skopje/fon.jpg",
+   "used": "green mirror-glass drum on the right, long curved-top glass wing with pinkish-grey spandrel panels and arched clerestory bumps, curved entrance canopy on columns with steps, white railings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/179091097",
+   "used": "overall scale (about 150 m across); composed from photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 4,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "polygon": [
+     [
+      24.0,
+      0.0
+     ],
+     [
+      22.17,
+      9.18
+     ],
+     [
+      16.97,
+      16.97
+     ],
+     [
+      9.18,
+      22.17
+     ],
+     [
+      0.0,
+      24.0
+     ],
+     [
+      -9.18,
+      22.17
+     ],
+     [
+      -16.97,
+      16.97
+     ],
+     [
+      -22.17,
+      9.18
+     ],
+     [
+      -24.0,
+      0.0
+     ],
+     [
+      -22.17,
+      -9.18
+     ],
+     [
+      -16.97,
+      -16.97
+     ],
+     [
+      -9.18,
+      -22.17
+     ],
+     [
+      -0.0,
+      -24.0
+     ],
+     [
+      9.18,
+      -22.17
+     ],
+     [
+      16.97,
+      -16.97
+     ],
+     [
+      22.17,
+      -9.18
+     ]
+    ]
+   },
+   "at": [
+    22,
+    -4
+   ],
+   "height": 36,
+   "storeys": 9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f8f7c",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9a96",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     52,
+     20
+    ]
+   },
+   "at": [
+    -24,
+    2
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a9a88",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "plain"
+    },
+    "bay": 8,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#4a9a88",
+       "#b9a9a4"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-tower",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -54,
+    6
+   ],
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f6f68",
+    "windows": "none",
+    "windowRatio": 0.85,
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7f7c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-stair",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    46,
+    2
+   ],
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "render",
+    "colour": "#b9aca4",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9a96",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -17,
+    4
+   ],
+   "params": {
+    "width": 22,
+    "depth": 8,
+    "height": 0.6,
+    "form": "curved",
+    "colour": "#8a9290"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -14,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "count": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 5,
+    "count": 1,
+    "spread": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bump0",
+   "footprint": {
+    "rect": [
+     7,
+     16
+    ]
+   },
+   "at": [
+    -44,
+    2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a9a88",
+    "windows": "none",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9a96"
+   },
+   "z0": 24
+  },
+  {
+   "type": "mass",
+   "id": "bump2",
+   "footprint": {
+    "rect": [
+     7,
+     16
+    ]
+   },
+   "at": [
+    -26,
+    2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a9a88",
+    "windows": "none",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9a96"
+   },
+   "z0": 24
+  },
+  {
+   "type": "mass",
+   "id": "bump4",
+   "footprint": {
+    "rect": [
+     7,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a9a88",
+    "windows": "none",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9a96"
+   },
+   "z0": 24
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f0",
+    "length": 20
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f0",
+    "length": 20
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    20,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f0",
+    "length": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "drum is 16-sided (budget) not smooth; arched bumps are flat boxes, pinkish spandrel bands only on wing floors, railing fence is short, no round canopy columns"
+ }
+}

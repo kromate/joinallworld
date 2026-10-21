@@ -1,0 +1,291 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belgium-Waterloo-Butte-du-Lion-hill.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/lion.jpg",
+   "used": "regular grassed cone with straight slopes, small stone pedestal topped by the dark lion, clipped hedge ring at the foot, ploughed field in front"
+  },
+  {
+   "kind": "text",
+   "used": "43 m high, 169 m base, 226 steps, lion 4.45 m on stone pedestal (Wikipedia/Wikidata); base drawn at 58 m radius (scene clamp) keeping the slope of the real hill"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 48,
+    "colour": "#5f9440",
+    "bottomCap": true,
+    "profile": [
+     [
+      58,
+      0,
+      "#4f8a38"
+     ],
+     [
+      40,
+      16,
+      "#62973f"
+     ],
+     [
+      20,
+      32,
+      "#68a044"
+     ],
+     [
+      10,
+      41.6,
+      "#6aa245"
+     ],
+     [
+      10,
+      41.9,
+      "#9a9a94"
+     ],
+     [
+      0.01,
+      41.9,
+      "#9a9a94"
+     ]
+    ],
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    41.9
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "height": 1.6,
+    "colour": "#a09d94",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    43.5
+   ],
+   "params": {
+    "rect": [
+     9.5,
+     9.5
+    ],
+    "height": 8.5,
+    "topScale": 0.88,
+    "colour": "#98958d",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    52
+   ],
+   "params": {
+    "rect": [
+     10.6,
+     10.6
+    ],
+    "height": 1.1,
+    "colour": "#8c8981",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    53.1
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     8.0
+    ],
+    "height": 4.0,
+    "colour": "#2e2f31",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3.6,
+    53.1
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.6
+    ],
+    "height": 6.0,
+    "colour": "#2e2f31",
+    "material": "plain-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    3.2,
+    53.1
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 3.4,
+    "colour": "#2e2f31",
+    "material": "plain-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    4.8,
+    53.1
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.6
+    ],
+    "height": 1.2,
+    "colour": "#2e2f31",
+    "material": "plain-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      3.2,
+      3.6
+     ]
+    },
+    "closed": true,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      1.8
+     ],
+     "radius": 61,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "colour": "#2f5a22",
+    "material": "plain-render"
+   },
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -83,
+    0
+   ],
+   "params": {
+    "rect": [
+     200,
+     42
+    ],
+    "height": 0.08,
+    "colour": "#6b4a35",
+    "material": "plain-render"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     -30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     80,
+     -18
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-node-267878387",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Hill is a smooth cone at 58 m base radius; lion is a blocky seated mass; hedge is a ring (reads as a collar) and the field a flat plate; no distant building, ground flat grey not grass"
+ }
+}

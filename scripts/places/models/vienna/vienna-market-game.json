@@ -1,0 +1,498 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shopping_City_S%C3%BCd.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Christoph Leeb",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/vienna/scs1.jpg",
+   "used": "slice of the main building: white two-storey base, dark blue glass office block above the left half, white sign tower, white entrance block, glazed IKEA-side shed, yellow-orange entrance block, car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SCS-V%C3%B6sendorf_0331.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Karl Gruber",
+   "view": "street",
+   "used": "wavy cream metal fascia over a dark base and a glass entrance cube (not modelled in full)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23087421",
+   "used": "overall scale only: the real outline is 620 m long, a 110 m slice is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 16,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base-west",
+   "footprint": {
+    "rect": [
+     64,
+     20
+    ]
+   },
+   "at": [
+    -22,
+    6
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "ribbon",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccce",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     60,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    6
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#101c2c",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#16263d",
+    "faces": {
+     "front": "ribbon",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b6066",
+    "material": "membrane",
+    "parapet": 0.3
+   },
+   "z0": 7
+  },
+  {
+   "type": "mass",
+   "id": "sign-tower",
+   "footprint": {
+    "rect": [
+     3,
+     5
+    ]
+   },
+   "at": [
+    -6,
+    -1
+   ],
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d6",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    24,
+    4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f3f0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c3c6c8",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-shed",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    22,
+    -9
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#27384a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9afb3",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-block",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    50,
+    -2
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dca72a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9941f",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    22,
+    -14,
+    3.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 4,
+    "height": 3.6,
+    "colour": "#e8a53a",
+    "edgeColour": "#d9951f",
+    "columns": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -3.6,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 8,
+    "bottom": 13,
+    "colour": "#d63a2f",
+    "frameColour": "#f1f1ee",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    22,
+    -12.2,
+    4
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.2,
+    "bottom": 4.6,
+    "colour": "#3d8f4a",
+    "frameColour": "#d9d9d6",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 2,
+    "spread": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-block",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    52,
+    12
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6aa3",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3ab",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#7b8088",
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     -20
+    ],
+    "end": [
+     -10,
+     -20
+    ],
+    "count": 9,
+    "lod1Step": 3,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#2a3340",
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "start": [
+     8,
+     -20
+    ],
+    "end": [
+     40,
+     -20
+    ],
+    "count": 6,
+    "lod1Step": 3,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#b8bcc0",
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     -34
+    ],
+    "end": [
+     -10,
+     -34
+    ],
+    "count": 9,
+    "lod1Step": 3,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#a62a2e",
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "start": [
+     8,
+     -34
+    ],
+    "end": [
+     40,
+     -34
+    ],
+    "count": 6,
+    "lod1Step": 3,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -35,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     24
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#5f8f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     24
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#5f8f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -28,
+    0
+   ],
+   "params": {
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#3a3d41",
+    "points": [
+     [
+      -3,
+      -20
+     ],
+     [
+      3,
+      -20
+     ],
+     [
+      18,
+      16
+     ],
+     [
+      12,
+      16
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "long low office slab, ribbon base, slim sign tower, glazed hall, yellow and blue blocks and grass islands added; real fascia banding, rooftop planting, diagonal road detail and the dense dark car park are simplified; camera higher than mid-lot view"
+ }
+}

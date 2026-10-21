@@ -1,0 +1,324 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-relation-1876703",
+ "verified": "photo",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "pavilion wings behind the front block and the modern tower are inferred from OSM size and the second photo; pilaster rhythm approximate"
+ },
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:202OspedaleSGiovanni.JPG",
+   "licence": "Public domain",
+   "author": "MarkusMark",
+   "view": "front",
+   "file": "/tmp/places-evidence/rome/sg1.jpg",
+   "used": "long three-storey ochre-orange front block with cream pilasters and pale window frames, low hip roof of clay tile, small clock bell-gable above the centre, cobbled forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monti_-_osp_s_Giovanni_nuovo_1270885.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lalupa",
+   "view": "street",
+   "file": "/tmp/places-evidence/rome/sg2.jpg",
+   "used": "taller pale cream modern hospital blocks with window strips behind, plane and pine trees in the garden court"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1876703",
+   "used": "complex size (about 176 x 150 m): front block, pavilion wings and rear modern block laid out within a scaled 118 m clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     102,
+     17
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 14.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a56f",
+    "glassColour": "#4a4f55",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "plinth": 1.0,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 6.2,
+      "depth": 0.35,
+      "width": 0.9,
+      "colour": "#e7dcc2"
+     }
+    ],
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85a3c",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    0,
+    -10,
+    14.5
+   ],
+   "params": {
+    "width": 6.4,
+    "height": 6.5,
+    "cap": "hip",
+    "capRise": 2,
+    "clockRadius": 1.1,
+    "clock": true,
+    "belfry": false,
+    "colour": "#efe3c8",
+    "trimColour": "#d9d2bf",
+    "capColour": "#a85a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     3.5
+    ],
+    "height": 1.0,
+    "colour": "#cfc7b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-west",
+   "footprint": {
+    "rect": [
+     16,
+     44
+    ]
+   },
+   "at": [
+    -34,
+    36
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a56f",
+    "glassColour": "#4a4f55",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 1.0,
+    "cornice": false,
+    "pattern": [],
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85a3c",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     16,
+     44
+    ]
+   },
+   "at": [
+    34,
+    36
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a56f",
+    "glassColour": "#4a4f55",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 1.0,
+    "cornice": false,
+    "pattern": [],
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85a3c",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "modern-block",
+   "footprint": {
+    "rect": [
+     50,
+     17
+    ]
+   },
+   "at": [
+    0,
+    66
+   ],
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcd",
+    "glassColour": "#5c7684",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -12,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    12,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -52,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16
+   }
+  },
+  {
+   "type": "lamp",
+   "lod": [
+    0
+   ],
+   "at": [
+    -36,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 36
+   }
+  },
+  {
+   "type": "car",
+   "lod": [
+    0
+   ],
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": 0,
+  "forecourt": "road",
+  "extent": [
+   116,
+   110
+  ]
+ }
+}

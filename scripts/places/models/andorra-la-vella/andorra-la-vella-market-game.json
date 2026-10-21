@@ -1,0 +1,219 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pyr%C3%A9n%C3%A9es_Andorra.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lks.poch",
+   "view": "front",
+   "file": "/tmp/places-evidence/andorra-la-vella/pyrenees.jpg",
+   "used": "corner department store: grey granite-clad piers and recessed entrance bay, warm timber-clad arched shop bays, steep dark slate mansard roof with stepped upper tier, blank sign boards"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/54858984",
+   "used": "real 44 x 23 m corner footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 0.75,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8883",
+    "windows": "none",
+    "plinth": 0.1,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 11,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 1.2,
+      "colour": "#8a5a3a",
+      "pierColour": "#8f8d88",
+      "faces": [
+       "front",
+       "right",
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8b86",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 7,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8884",
+    "windows": "none",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       3,
+       2.25
+      ],
+      "colours": [
+       "#8d8b86",
+       "#82807b",
+       "#938f8a"
+      ],
+      "gap": 0.04,
+      "faces": [
+       "front",
+       "right",
+       "left",
+       "back"
+      ],
+      "skipGround": false
+     }
+    ]
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#2f3236",
+    "material": "slate",
+    "rise": 7,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 14.5,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2f3236",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f3236",
+    "material": "slate",
+    "rise": 2.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "roof-board",
+   "at": [
+    0,
+    0,
+    19.5
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.5,
+    "bottom": 0.3,
+    "colour": "#b3342e",
+    "frameColour": "#3a3d42",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    2,
+    18.5
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#2b4f9b",
+    "count": 2,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 52
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     -28
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-market-game",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "ground-floor arches still glazed not timber-clad; stone texture, not smooth granite panels; no chamfered corner entrance; roof tiers simplified; lamps and banners missing"
+ }
+}

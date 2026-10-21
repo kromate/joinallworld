@@ -1,0 +1,515 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%89glyise_Catholique_d'Not'_Danme_d'l'Annonchi%C3%A2tion_et_des_Martyrs_du_Japon,_Saint_Mart%C3%AEn,_J%C3%A8rri.jpg",
+   "licence": "Public domain",
+   "author": "Man vyi",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-helier/church.jpg",
+   "used": "steep slate-grey gable front of grey granite ashlar with pink granite quoins and arch dressings, low projecting porch with pointed arch and oak door, triple lancet window, clock roundel, bellcote with cross on the gable"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/168967980",
+   "used": "nave plan about 27 x 10.5 m (Wikidata Q24431455, built 1863)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 0.72
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     10.5,
+     19
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#9a9fa0",
+    "windows": "none",
+    "plinth": 0.5,
+    "faces": {
+     "left": "pointed",
+     "right": "pointed"
+    },
+    "windowShape": "pointed",
+    "windowRatio": 0.14,
+    "bay": 4.2,
+    "trimColour": "#c99a86"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 40,
+    "colour": "#6a6f73",
+    "material": "slate",
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     9.6,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    -8.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#9a9fa0",
+    "windows": "none",
+    "plinth": 0.7,
+    "trimColour": "#c99a86"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c99a86",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     7,
+     6.5
+    ]
+   },
+   "at": [
+    0,
+    16.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#9a9fa0",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "pitch": 50,
+    "colour": "#6a6f73",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -14
+     ],
+     [
+      14,
+      -14
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.4,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -10.8,
+    0
+   ],
+   "params": {
+    "colour": "#c99a86",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0.6,
+      "rect": [
+       3.5,
+       0.3
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       3.5,
+       0.3
+      ]
+     },
+     {
+      "z": 3.1,
+      "rect": [
+       2.6,
+       0.3
+      ]
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       1.4,
+       0.3
+      ]
+     },
+     {
+      "z": 3.75,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -11.0,
+    0
+   ],
+   "params": {
+    "colour": "#b07a3c",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0.7,
+      "rect": [
+       2.4,
+       0.25
+      ]
+     },
+     {
+      "z": 2.0,
+      "rect": [
+       2.4,
+       0.25
+      ]
+     },
+     {
+      "z": 2.7,
+      "rect": [
+       1.7,
+       0.25
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       0.9,
+       0.25
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.2,
+       0.25
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -11.15,
+    0
+   ],
+   "params": {
+    "colour": "#7a4f22",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0.7,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     },
+     {
+      "z": 3.0,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -10.8,
+    0
+   ],
+   "params": {
+    "colour": "#c99a86",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 3.6,
+      "rect": [
+       9.6,
+       0.3
+      ]
+     },
+     {
+      "z": 4.6,
+      "rect": [
+       9.6,
+       0.3
+      ]
+     },
+     {
+      "z": 5.4,
+      "rect": [
+       7.4,
+       0.3
+      ]
+     },
+     {
+      "z": 6.1,
+      "rect": [
+       4.0,
+       0.3
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       0.6,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -10.9,
+    0
+   ],
+   "params": {
+    "colour": "#9a9fa0",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 3.7,
+      "rect": [
+       9.0,
+       0.35
+      ]
+     },
+     {
+      "z": 4.6,
+      "rect": [
+       9.0,
+       0.35
+      ]
+     },
+     {
+      "z": 5.4,
+      "rect": [
+       6.8,
+       0.35
+      ]
+     },
+     {
+      "z": 6.0,
+      "rect": [
+       3.4,
+       0.35
+      ]
+     },
+     {
+      "z": 6.35,
+      "rect": [
+       0.4,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "at": [
+    0,
+    -6.55,
+    6.9
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.7,
+    "kind": "arch",
+    "stained": true,
+    "trim": "#c99a86"
+   }
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "at": [
+    -1.25,
+    -6.55,
+    6.9
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 1.7,
+    "kind": "arch",
+    "stained": true,
+    "trim": "#c99a86"
+   }
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "at": [
+    1.25,
+    -6.55,
+    6.9
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 1.7,
+    "kind": "arch",
+    "stained": true,
+    "trim": "#c99a86"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.3
+     ]
+    },
+    "colour": "#e8e0c8",
+    "arc": {
+     "centre": [
+      0,
+      -6.6,
+      9.9
+     ],
+     "radius": 0.8,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.2
+     ]
+    },
+    "colour": "#15171c",
+    "arc": {
+     "centre": [
+      0,
+      -6.6,
+      9.9
+     ],
+     "radius": 0.45,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    }
+   }
+  },
+  {
+   "type": "mosque-domed/bellcote",
+   "at": [
+    0,
+    -6.5,
+    10.4
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 4.0,
+    "colour": "#a39d94"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -13,
+     4
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "pointed-arch porch and pink granite hoods added, clock roundel and bell gable added; bellcote is a simplified gable (bell not modelled), lancets lack shared hood moulding, porch roof slab reads flat, ashlar texture coarser than photo"
+ }
+}

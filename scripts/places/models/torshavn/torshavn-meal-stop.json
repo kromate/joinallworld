@@ -1,0 +1,390 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:T%C3%B3rshavn_Altstadt_05.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zairon",
+   "view": "front",
+   "file": "/tmp/places-evidence/torshavn/meal1.jpg",
+   "used": "long oxblood-red vertical-board house in Tinganes old town, turf roof with two roof windows, cross gables at both ends, white-framed windows, white door surrounds (photo taken 8 m from the venue; building identity not confirmed by a caption)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30704459",
+   "used": "183 m2 building with roof:material=grass, 24 m long: overall length and the grass roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5e1f1c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 6.5,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "trimColour": "#f4f2ec"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a8a30",
+    "material": "thatch",
+    "pitch": 30,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-left",
+   "footprint": {
+    "rect": [
+     6,
+     10
+    ]
+   },
+   "at": [
+    -8.5,
+    -1.0
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5e1f1c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "trimColour": "#f4f2ec",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a8a30",
+    "material": "thatch",
+    "pitch": 58,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-right",
+   "footprint": {
+    "rect": [
+     6,
+     10
+    ]
+   },
+   "at": [
+    8.5,
+    -0.8
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5e1f1c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "trimColour": "#f4f2ec",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a8a30",
+    "material": "thatch",
+    "pitch": 58,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-win-left",
+   "params": {
+    "rect": [
+     1.0,
+     0.2
+    ],
+    "z0": 5.0,
+    "height": 2.4,
+    "colour": "#f4f2ec"
+   },
+   "at": [
+    -8.5,
+    -6.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-win-left-glass",
+   "params": {
+    "rect": [
+     0.7,
+     0.25
+    ],
+    "z0": 5.2,
+    "height": 2.0,
+    "colour": "#2b3338"
+   },
+   "at": [
+    -8.5,
+    -6.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-win-right",
+   "params": {
+    "rect": [
+     1.0,
+     0.2
+    ],
+    "z0": 5.0,
+    "height": 2.4,
+    "colour": "#f4f2ec"
+   },
+   "at": [
+    8.5,
+    -5.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-win-right-glass",
+   "params": {
+    "rect": [
+     0.7,
+     0.25
+    ],
+    "z0": 5.2,
+    "height": 2.0,
+    "colour": "#2b3338"
+   },
+   "at": [
+    8.5,
+    -5.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-left-frame",
+   "params": {
+    "rect": [
+     1.9,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.7,
+    "colour": "#f4f2ec"
+   },
+   "at": [
+    -8.5,
+    -6.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-left",
+   "params": {
+    "rect": [
+     1.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#4a2a22"
+   },
+   "at": [
+    -8.5,
+    -6.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "corner-trim-l",
+   "params": {
+    "rect": [
+     0.25,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#f4f2ec"
+   },
+   "at": [
+    -11.6,
+    -5.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "corner-trim-r",
+   "params": {
+    "rect": [
+     0.25,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#f4f2ec"
+   },
+   "at": [
+    11.6,
+    -5.7
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.8
+    ]
+   },
+   "at": [
+    4.3,
+    -4.9
+   ],
+   "z0": 0,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a2a22",
+    "material": "slate",
+    "pitch": 12,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-step",
+   "params": {
+    "rect": [
+     2.4,
+     0.8
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#9a9a96"
+   },
+   "at": [
+    4.3,
+    -6.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "neighbour",
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#4a4f58"
+   },
+   "at": [
+    17,
+    8
+   ]
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -3.5,
+    -2.6,
+    5.3
+   ],
+   "params": {
+    "width": 1.5,
+    "depth": 1.1,
+    "height": 1.1,
+    "colour": "#2b3338",
+    "wall_colour": "#f4f2ec",
+    "roof_colour": "#4a4e52"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    3.0,
+    -2.6,
+    5.3
+   ],
+   "params": {
+    "width": 1.5,
+    "depth": 1.1,
+    "height": 1.1,
+    "colour": "#2b3338",
+    "wall_colour": "#f4f2ec",
+    "roof_colour": "#4a4e52"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "turf is a uniform texture without shaggy undulation; porch and door surrounds simplified; no railings, string lights or left neighbour; neighbour is a plain block"
+ }
+}

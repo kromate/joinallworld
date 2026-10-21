@@ -1,0 +1,147 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fakultet_bezbednosti_Univerziteta_u_Beogradu_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Miljan Simonovic",
+   "view": "front",
+   "file": "/tmp/places-evidence/belgrade/1350045138_0.jpg",
+   "used": "four storeys, flat roof with thin dark fascia, cream rendered wall, regular pairs of punched windows with a wider triple window above the entrance, blue-grey plinth, glazed double door with small projecting canopy and blank sign board, ground-floor bars"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1350045138",
+   "used": "building outline (48 x 39 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc1a2",
+    "windows": "punched",
+    "windowRatio": 0.36,
+    "bay": 3.1,
+    "plinth": 1.8,
+    "trimColour": "#8e9aa6",
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bands": {
+     "colour": "#c4b79c",
+     "height": 0.3
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6f70",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4.5,
+    -24.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#8e9aa6"
+   },
+   "rotDeg": 10
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    4.2,
+    -26.2,
+    3.4
+   ],
+   "rotDeg": 10,
+   "params": {
+    "form": "flat",
+    "width": 7,
+    "depth": 2.2,
+    "height": 0.0,
+    "thickness": 0.3,
+    "columns": 0,
+    "colour": "#6e6f70"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.0,
+    -26.8,
+    4.0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 7.5,
+    "height": 1.2,
+    "bottom": 0.0,
+    "colour": "#f2f2f0",
+    "frameColour": "#3a3d41",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -34
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-way-1350045138",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "No air-conditioners/cables; entrance glazing and wide central window group simplified; render texture smooth."
+ }
+}

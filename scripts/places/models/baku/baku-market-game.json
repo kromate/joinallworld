@@ -1,0 +1,355 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:28_Mall.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "T\u0259rxan Pa\u015fazad\u0259",
+   "view": "front",
+   "file": "/tmp/places-evidence/baku/mall1.jpg",
+   "used": "brown-beige brick piers with tall glazed shop bays, taller beige corner block with a blank lit sign panel on the left, glazed pavilion with raking struts and flat canopy on the roof at right, dark cornice band"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/188605211",
+   "used": "main retail block outline (113 x 99 m, height 25, brick, beige)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 6,
+    "rotDeg": -18
+   },
+   "height": 24,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a98a68",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "windowShape": "rect",
+    "bay": 14,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#7fb08a",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 3.2,
+      "depth": 0.7,
+      "spacing": 14,
+      "colour": "#8e6a4e",
+      "margin": 2,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7377"
+   }
+  },
+  {
+   "type": "array",
+   "id": "bays",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     -50.4,
+     0
+    ],
+    "end": [
+     51,
+     -50.4,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        8.6,
+        0.6
+       ],
+       "z0": 1,
+       "height": 17.5,
+       "colour": "#e6f7c8",
+       "topColour": "#e6f7c8",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    8,
+    -50.2
+   ],
+   "params": {
+    "rect": [
+     92,
+     1.2
+    ],
+    "z0": 21.5,
+    "height": 1.8,
+    "colour": "#3a3128",
+    "topColour": "#3a3128"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signtower",
+   "at": [
+    -44,
+    -44
+   ],
+   "params": {
+    "rect": [
+     20,
+     14
+    ],
+    "z0": 0,
+    "height": 27,
+    "colour": "#cdb592",
+    "topColour": "#9a8a72",
+    "windows": "none",
+    "plinth": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signglow",
+   "at": [
+    -44,
+    -51.2
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.5
+    ],
+    "z0": 3,
+    "height": 21,
+    "colour": "#f4fbff",
+    "topColour": "#f4fbff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signborder",
+   "at": [
+    -44,
+    -51.0
+   ],
+   "params": {
+    "rect": [
+     10.4,
+     0.4
+    ],
+    "z0": 2.2,
+    "height": 22.6,
+    "colour": "#fff7d0",
+    "topColour": "#fff7d0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice2",
+   "at": [
+    34,
+    -40
+   ],
+   "params": {
+    "rect": [
+     50,
+     2
+    ],
+    "z0": 21,
+    "height": 1.8,
+    "colour": "#3a3128",
+    "topColour": "#3a3128"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall",
+   "at": [
+    34,
+    -40
+   ],
+   "params": {
+    "rect": [
+     44,
+     12
+    ],
+    "z0": 22.8,
+    "height": 6.5,
+    "colour": "#b9cfd2",
+    "topColour": "#a8bcc0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "canopy",
+   "at": [
+    34,
+    -40,
+    31.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 52,
+    "depth": 16,
+    "height": 0,
+    "thickness": 0.6,
+    "colour": "#e8e8e4",
+    "edgeColour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "array",
+   "id": "strutsA",
+   "at": [
+    0,
+    0,
+    22.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     13,
+     -46.5,
+     0
+    ],
+    "end": [
+     55,
+     -46.5,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "points": [
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         3,
+         0,
+         8.4
+        ]
+       ],
+       "colour": "#3a3a3c",
+       "section": {
+        "rect": [
+         0.45,
+         0.45
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "strutsB",
+   "at": [
+    0,
+    0,
+    22.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     16,
+     -46.5,
+     0
+    ],
+    "end": [
+     58,
+     -46.5,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "points": [
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         -3,
+         0,
+         8.4
+        ]
+       ],
+       "colour": "#3a3a3c",
+       "section": {
+        "rect": [
+         0.45,
+         0.45
+        ]
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   116,
+   108
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Bays are flat pale-green glass not varied lit shopfronts; struts approximate the raking pairs; sign tower has no corner-wrapping glow; hall roof canopy is simple."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-market-game"
+}

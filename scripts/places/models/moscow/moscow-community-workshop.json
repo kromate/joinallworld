@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/8861803",
+   "used": "five-level office building with a zig-zag stepped plan (about 100 x 58 m); containing match only, no photo of this building found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 18.5,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc6",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 7,
+    "bands": "#e4e8ea",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-core",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    8,
+    -2
+   ],
+   "z0": 18.5,
+   "height": 3.2,
+   "wall": {
+    "material": "timber",
+    "colour": "#a67c4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.0,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#cfcfcc"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     54,
+     -34
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     60,
+     30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; real OSM outline and 5 levels used, glass-and-timber facade colours come from the brief, not observed."
+ }
+}

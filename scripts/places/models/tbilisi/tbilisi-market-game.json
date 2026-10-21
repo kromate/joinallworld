@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zarya_Vostoka_building.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vano111ru",
+   "view": "street",
+   "file": "/tmp/places-evidence/tbilisi/zarya.jpg",
+   "used": "constructivist block (Zarya Vostoka, now Merani gallery): grey-beige render, five storeys over glazed shopfront base, stacked white-framed steel glazing with cantilevered balconies and railings, corner with tall arched windows, flat roof with rooftop masts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/242179594",
+   "used": "real footprint (name match, 6 levels tagged)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 23,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#b8ad98",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.4,
+    "glassColour": "#dfe6e8",
+    "cornice": true,
+    "groundKind": "shopfront",
+    "groundHeight": 4.2,
+    "bay": 8,
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.0,
+      "every": 8,
+      "width": 5,
+      "slab": 0.25,
+      "railKind": "solid",
+      "colour": "#cfc8b8",
+      "railColour": "#f2f2ee",
+      "floors": "upper",
+      "continuous": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-bay",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -28,
+    -14
+   ],
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#b8ad98",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.5,
+    "bay": 6,
+    "glassColour": "#dfe6e8",
+    "cornice": true,
+    "groundKind": "shopfront",
+    "groundHeight": 4.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -14,
+    4
+   ],
+   "height": 3,
+   "z0": 23,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b0a898",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    0,
+    23
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 5,
+    "colour": "#9a9a9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "colour": "#8b7d68",
+    "height": 14,
+    "at": [
+     -24,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "colour": "#8b7d68",
+    "height": 14,
+    "at": [
+     -12,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "colour": "#8b7d68",
+    "height": 14,
+    "at": [
+     0,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "taller arched corner bay, cantilevered balconies and lighter glass added; windows are ribbon not small-paned white steel glazing; shopfront base only generic, no black iron railing; trees are generic green leaf, not bare planes"
+ }
+}

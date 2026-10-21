@@ -1,0 +1,322 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-airport-stockholm-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_5_de_Arlanda.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bene Riobo",
+   "view": "street",
+   "file": "/tmp/places-evidence/stockholm/arn_t5c.jpg",
+   "used": "Terminal 5 pier seen from the apron: long low pale-grey panelled pier with two dark glazed ribbons, a taller stepped end block, jet bridges along the apron side, tall light masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arlanda_1_Publish.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brorsson",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/stockholm/arn1.jpg",
+   "used": "layout: control tower standing behind the terminal cluster, round low building beside it, flat apron"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/727421425",
+   "used": "Terminal 5 is 645 m long; a 150 m portion is modelled because the real outline exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     116,
+     22
+    ]
+   },
+   "at": [
+    -15,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aeb3b6",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 6,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bands": "#8f969b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     20,
+     24
+    ]
+   },
+   "at": [
+    55,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9bec1",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 6,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-hall",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    3
+   ],
+   "z0": 11,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#56646e",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -56,
+    -11,
+    4.8
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 20,
+    "colour": "#b9bec1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -38,
+    -11,
+    4.8
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 20,
+    "colour": "#b9bec1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -20,
+    -11,
+    4.8
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 20,
+    "colour": "#b9bec1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -2,
+    -11,
+    4.8
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 20,
+    "colour": "#b9bec1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    16,
+    -11,
+    4.8
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 20,
+    "colour": "#b9bec1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    34,
+    -11,
+    4.8
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 20,
+    "colour": "#b9bec1"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 3,
+    "colour": "#a9afb4"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 3,
+    "colour": "#a9afb4"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    2,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 3,
+    "colour": "#a9afb4"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    34,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 3,
+    "colour": "#a9afb4"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -62,
+    42,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#d8dadb",
+    "cabColour": "#6f8a99",
+    "bandColour": "#c8362f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -110,
+     30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     80,
+     40
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     100,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pier, dark glazed ribbons and light masts now match; jet bridges are solid tubes not trussed lattices; control tower is a stand-in (not in photo), only 116 of 645 m modelled."
+ }
+}

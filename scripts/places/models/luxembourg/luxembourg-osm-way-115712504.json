@@ -1,0 +1,330 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-way-115712504",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KieBau23.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Johnny Chicago at lb.wikipedia",
+   "view": "front",
+   "file": "/tmp/places-evidence/luxembourg/rem1.jpg",
+   "used": "white rendered west gable with steep slate roof edged in sandstone, sandstone corner strips, small arched window in the gable, small gabled slate porch with sandstone arched door surround and brown timber doors, wide low entrance steps, separate rubble-stone square tower at left with louvred belfry and small slate hip cap"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kirche_Remerschen_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MMFE",
+   "view": "side",
+   "file": "/tmp/places-evidence/luxembourg/rem2.jpg",
+   "used": "nave length, slate roof, arched windows, tower in warm sandstone"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/115712504",
+   "used": "name match; real outline is irregular and larger than the visible church so the volumes are composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 0.73,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     17,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eeece4",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "bay": 4,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.9,
+      "depth": 0.15,
+      "spacing": 15.1,
+      "colour": "#cdb88f",
+      "margin": 0.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d5058",
+    "material": "slate",
+    "pitch": 55,
+    "axis": "y",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.4,
+     4.4
+    ]
+   },
+   "at": [
+    -10.9,
+    -3
+   ],
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#76705f",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": false
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#3f434a",
+    "material": "slate",
+    "rise": 5.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     9,
+     4.4
+    ]
+   },
+   "at": [
+    0,
+    -12.2
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eeece4",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": false
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d5058",
+    "material": "slate",
+    "pitch": 48,
+    "axis": "y",
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.2,
+    "run": 0.7,
+    "count": 6,
+    "colour": "#a9a69c"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -14.45,
+    0
+   ],
+   "params": {
+    "width": 5.0,
+    "height": 5.6,
+    "depth": 0.4,
+    "archWidth": 3.8,
+    "springHeight": 4.0,
+    "colour": "#c9b58b"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -10.05,
+    14.8
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 3.4,
+    "kind": "arch",
+    "trim": "#bfae88"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.9,
+    17.8
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 1.8,
+    "colour": "#b59a55"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -6.5,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.2
+    ],
+    "height": 4.4,
+    "colour": "#6b4a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14.5,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.25
+    ],
+    "height": 1.2,
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.9,
+    -5.3,
+    18.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.2
+    ],
+    "height": 2.2,
+    "colour": "#2b2723"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.9,
+    -3,
+    27.5
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 1.6,
+    "colour": "#2b2723"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -6,
+     -13
+    ],
+    "height": 6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -4.5,
+     -15
+    ],
+    "height": 6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     10,
+     -12
+    ],
+    "height": 5.5
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower stone reads as regular courses not rubble; statue niche and gable window simplified; steps single flight not the real terraced stairs; no side stair or hedge conifers matching photo"
+ }
+}

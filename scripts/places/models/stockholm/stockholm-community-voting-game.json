@@ -1,0 +1,312 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Solna-stadshus.jpg",
+   "licence": "CC0",
+   "author": "Salcional",
+   "view": "front",
+   "file": "/tmp/places-evidence/stockholm/solna1.jpg",
+   "used": "16-storey slab of grey board-marked concrete, grid of narrow tall windows with pale frames, white cornice band, blank side gable with slit vents, low brown-clad hall and glazed roof at the foot"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Solna_stadshus_03_1000_Solnabilder.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sniper Zeta",
+   "view": "street",
+   "file": "/tmp/places-evidence/stockholm/solna3.jpg",
+   "used": "grey concrete entrance wall with blank board and crests, glass-roofed shopping link, orange portal (sign left blank), paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/496669866",
+   "used": "16 levels; photo shows a wider rectangular slab than the 8-vertex OSM outline, so a 46 x 20 m rectangle is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 0.85,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     36,
+     18
+    ]
+   },
+   "height": 54,
+   "storeys": 16,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a958d",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 3.2,
+    "plinth": 0.6,
+    "faces": {
+     "right": "none",
+     "left": "none",
+     "back": "none"
+    },
+    "cornice": true,
+    "trimColour": "#e6e3da",
+    "bands": "#8a857e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e7e1",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    24,
+    -14
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5238",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a949a",
+    "material": "metal-sheet",
+    "rise": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -14
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a7bcc4",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#aab9c0",
+    "rise": 3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 4,
+    "bottom": 5,
+    "colour": "#a7a39a",
+    "frameColour": "#7d7a74",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "z0": 54,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29d95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0ded8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bg-left",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -36,
+    12
+   ],
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "render",
+    "colour": "#b99a62",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "bands": "#8a7a58"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#777777"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bg-right",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    30,
+    16
+   ],
+   "height": 20,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#c9a56a",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "bands": "#8a7a58"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#777777"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     -18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -6,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -17
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -1,
+     -21
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     8,
+     -19
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -12
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -24
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     4,
+     -28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -27
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Slab proportion, tall window grid, white cornice, stair core, trees and neighbours added; windows are coarser than the photo's narrow pale-framed strips (budget), side gable lacks slit vents, link and brown hall only approximate, no hedges/fence at the base."
+ }
+}

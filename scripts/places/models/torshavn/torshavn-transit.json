@@ -1,0 +1,596 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Skopun_(5).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Erik Christensen",
+   "view": "side",
+   "file": "/tmp/places-evidence/torshavn/skopun5.jpg",
+   "used": "M/F Teistin broadside: black hull with white band, white two-deck deckhouse with rows of small square windows forward, raised white wheelhouse with mast, two short white funnels, open aft car deck with bulwark and red lifeboat davit, bow to the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Skopun_havn_Luftfoto.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Torfinnur Nielsen",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/torshavn/skopunair.jpg",
+   "used": "setting: ferry lies alongside a long grey breakwater quay with a car park behind it"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/839709043",
+   "used": "nearest building is a 56 m strip 66 m away, not the vessel: used only as a sense of the quay length"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      0
+     ],
+     [
+      -19,
+      -2.2
+     ],
+     [
+      -14,
+      -4.2
+     ],
+     [
+      -8,
+      -4.7
+     ],
+     [
+      16,
+      -4.7
+     ],
+     [
+      20.5,
+      -4.2
+     ],
+     [
+      21,
+      -2
+     ],
+     [
+      21,
+      2
+     ],
+     [
+      20.5,
+      4.2
+     ],
+     [
+      16,
+      4.7
+     ],
+     [
+      -8,
+      4.7
+     ],
+     [
+      -14,
+      4.2
+     ],
+     [
+      -19,
+      2.2
+     ]
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#141b24"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      0
+     ],
+     [
+      -19,
+      -2.2
+     ],
+     [
+      -14,
+      -4.2
+     ],
+     [
+      -8,
+      -4.7
+     ],
+     [
+      16,
+      -4.7
+     ],
+     [
+      20.5,
+      -4.2
+     ],
+     [
+      21,
+      -2
+     ],
+     [
+      21,
+      2
+     ],
+     [
+      20.5,
+      4.2
+     ],
+     [
+      16,
+      4.7
+     ],
+     [
+      -8,
+      4.7
+     ],
+     [
+      -14,
+      4.2
+     ],
+     [
+      -19,
+      2.2
+     ]
+    ],
+    "z0": 1.6,
+    "height": 0.2,
+    "colour": "#e8eaea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      0
+     ],
+     [
+      -19,
+      -2.2
+     ],
+     [
+      -14,
+      -4.2
+     ],
+     [
+      -8,
+      -4.7
+     ],
+     [
+      16,
+      -4.7
+     ],
+     [
+      20.5,
+      -4.2
+     ],
+     [
+      21,
+      -2
+     ],
+     [
+      21,
+      2
+     ],
+     [
+      20.5,
+      4.2
+     ],
+     [
+      16,
+      4.7
+     ],
+     [
+      -8,
+      4.7
+     ],
+     [
+      -14,
+      4.2
+     ],
+     [
+      -19,
+      2.2
+     ]
+    ],
+    "z0": 1.8,
+    "height": 1.65,
+    "colour": "#f0f1f0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "glassColour": "#1f2a33",
+    "bay": 2.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -22.4,
+      0
+     ],
+     [
+      -19,
+      -2.4
+     ],
+     [
+      -17,
+      2.4
+     ]
+    ],
+    "z0": 1.8,
+    "height": 2.4,
+    "colour": "#f0f1f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deckhouse",
+   "footprint": {
+    "rect": [
+     13,
+     7.6
+    ]
+   },
+   "at": [
+    -9,
+    0
+   ],
+   "z0": 3.45,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f2f0",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 1.8,
+    "glassColour": "#1f2a33",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8e7",
+    "parapet": 0.12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wheelhouse",
+   "footprint": {
+    "polygon": [
+     [
+      -2.5,
+      -2.4
+     ],
+     [
+      -2.5,
+      2.4
+     ],
+     [
+      2.6,
+      3.0
+     ],
+     [
+      2.6,
+      -3.0
+     ]
+    ]
+   },
+   "at": [
+    -11.5,
+    0
+   ],
+   "z0": 6.05,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f2f0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 1.4,
+    "glassColour": "#1f2a33"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8e7",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge-top",
+   "footprint": {
+    "rect": [
+     3,
+     3.6
+    ]
+   },
+   "at": [
+    -11.2,
+    0
+   ],
+   "z0": 8.35,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f2f0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 1.2,
+    "glassColour": "#1f2a33"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8e7",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -11.2,
+    0,
+    9.55
+   ],
+   "params": {
+    "height": 7,
+    "baseWidth": 0.7,
+    "topWidth": 0.2,
+    "panels": 6,
+    "colour": "#e6e8e7",
+    "colour2": "#d0d3d3"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -1.0,
+    2.2,
+    6.05
+   ],
+   "params": {
+    "profile": [
+     [
+      1.0,
+      0
+     ],
+     [
+      1.0,
+      1.6,
+      "#eceeed"
+     ],
+     [
+      0.8,
+      1.9,
+      "#eceeed"
+     ],
+     [
+      0,
+      2.0
+     ]
+    ],
+    "segments": 14,
+    "colour": "#eceeed"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -1.0,
+    -2.2,
+    6.05
+   ],
+   "params": {
+    "profile": [
+     [
+      1.0,
+      0
+     ],
+     [
+      1.0,
+      1.6,
+      "#eceeed"
+     ],
+     [
+      0.8,
+      1.9,
+      "#eceeed"
+     ],
+     [
+      0,
+      2.0
+     ]
+    ],
+    "segments": 14,
+    "colour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -4.4
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 3.45,
+    "height": 0.9,
+    "colour": "#e6e8e7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 3.45,
+    "height": 0.9,
+    "colour": "#e6e8e7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     8
+    ],
+    "z0": 3.45,
+    "height": 0.2,
+    "colour": "#6b7074"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.5,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 3.65,
+    "height": 3.2,
+    "colour": "#b4352b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      10.5,
+      3.2,
+      6.8
+     ],
+     [
+      10.5,
+      1.6,
+      6.2
+     ],
+     [
+      10.5,
+      1.0,
+      5.0
+     ]
+    ],
+    "colour": "#b4352b"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 36,
+    "colour": "#2f4654",
+    "bank": false
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    27,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 18,
+    "height": 12,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#6f7548",
+    "boulders": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "groundColour": "#2f4654",
+  "extent": [
+   70,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hull has pointed bow but little sheer, no railings or lifeboats (red davit only), funnels placed amidships not as in photo, hillside backdrop is a generic mound, white upper hull windows are a flat row"
+ }
+}

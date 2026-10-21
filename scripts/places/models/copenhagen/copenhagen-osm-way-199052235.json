@@ -1,0 +1,281 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:S%C3%B8ller%C3%B8d_Kro_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ramblersen2",
+   "view": "front",
+   "file": "/tmp/places-evidence/copenhagen/kro1.jpg",
+   "used": "long two-storey whitewashed range with two rows of small dark-framed windows, thick thatched roof with eyebrow dormers and three chimneys, taller cross-wing at the right, stone pond wall, hedge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/199052235",
+   "used": "L plan (49 x 28 m): long range plus cross-wing, rebuilt as two gabled masses so each roof is correct"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "long-range",
+   "footprint": {
+    "rect": [
+     44,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.25,
+    "bay": 2.4,
+    "glassColour": "#25292d",
+    "cornice": false
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d6c43",
+    "material": "thatch",
+    "pitch": 36,
+    "overhang": 0.45
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    16,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.25,
+    "bay": 2.4,
+    "glassColour": "#25292d",
+    "cornice": false,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d6c43",
+    "material": "thatch",
+    "pitch": 40,
+    "overhang": 0.45
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -14,
+    -1,
+    0
+   ],
+   "on": "long-range",
+   "params": {
+    "width": 1.3,
+    "height": 2.6,
+    "pots": 0,
+    "colour": "#e8e2d6"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -4,
+    -1,
+    0
+   ],
+   "on": "long-range",
+   "params": {
+    "width": 1.3,
+    "height": 2.6,
+    "pots": 0,
+    "colour": "#e8e2d6"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    17,
+    6,
+    0
+   ],
+   "on": "end-wing",
+   "params": {
+    "width": 1.4,
+    "height": 2.8,
+    "pots": 0,
+    "colour": "#e8e2d6"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    6,
+    -4.4,
+    5.6
+   ],
+   "params": {
+    "width": 1.4,
+    "depth": 1.2,
+    "height": 1.1,
+    "colour": "#7d6c43"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    19,
+    -6.2,
+    5.8
+   ],
+   "params": {
+    "width": 1.4,
+    "depth": 1.2,
+    "height": 1.1,
+    "colour": "#7d6c43"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -22,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.4,
+    "arch": false,
+    "colour": "#1f2326"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.7,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8b8a84"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    -12.5,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 0.9,
+    "depth": 0.8,
+    "colour": "#3f6a38"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "bare",
+    "height": 8,
+    "count": 3,
+    "spread": 3,
+    "line": 12
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    13,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "colours": [
+     "#efe9d6"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    2,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 14,
+    "shape": "rect",
+    "colour": "#5c6f5c",
+    "bank": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-way-199052235",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No eyebrow dormers matching the photo, no stone pond wall texture, windows are two plain rows, no sign lettering."
+ }
+}

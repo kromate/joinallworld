@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-node-6699211785",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1237321577",
+   "used": "checked only: 66 m away, an unrelated small building, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6f8c5a",
+    "sections": [
+     {
+      "z": -0.3,
+      "ellipse": [
+       24,
+       18
+      ]
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       19,
+       14
+      ]
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       14,
+       10
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -8,
+    0.4
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 0.25,
+    "run": 0.7,
+    "count": 6,
+    "colour": "#a9a399"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    6,
+    1.3
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -3,
+    1.3
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 1.2,
+    "bottom": 0.8,
+    "colour": "#6b5a3e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     10
+    ],
+    "end": [
+     18,
+     12
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   60,
+   45
+  ],
+  "trees": 0
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; a wooded viewpoint knoll with steps, low wall and picture board; not a building, tree layout and mound are typical, not surveyed."
+ }
+}

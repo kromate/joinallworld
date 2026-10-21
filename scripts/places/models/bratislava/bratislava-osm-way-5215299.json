@@ -1,0 +1,218 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-way-5215299",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nov%C3%A1_tr%C5%BEnica_(Bratislava)_-_poh%C4%BEad_na_hlavn%C3%BD_vstup.JPG",
+   "licence": "Public domain",
+   "author": "Ivushka84",
+   "view": "front",
+   "file": "/tmp/places-evidence/bratislava/p-osm-way-5215299-0.jpg",
+   "used": "tall glazed hall wall with slim steel mullions, red pyramid/hip roof with steel ribs, flat red entrance canopy with a blank yellow sign band, wide red stepped plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/5215299",
+   "used": "cross-shaped outline noted (120 x 53 m); composed from photo as long hall with round-ended drum instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "at": [
+    6,
+    0
+   ],
+   "footprint": {
+    "rect": [
+     60,
+     24
+    ]
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e3eef2",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.8,
+    "bands": "#a3283a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a3283a",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    -24,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#e3eef2",
+    "material": "glass",
+    "crease": 10,
+    "profile": [
+     [
+      12,
+      0,
+      "#7d2230"
+     ],
+     [
+      12,
+      0.9,
+      "#7d2230"
+     ],
+     [
+      12,
+      0.9,
+      "#e3eef2"
+     ],
+     [
+      12,
+      9,
+      "#e3eef2"
+     ],
+     [
+      12.5,
+      9,
+      "#a3283a"
+     ],
+     [
+      12.5,
+      9.6,
+      "#a3283a"
+     ],
+     [
+      0.3,
+      12.4,
+      "#a3283a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "at": [
+    8,
+    -17
+   ],
+   "footprint": {
+    "rect": [
+     34,
+     5
+    ]
+   },
+   "z0": 4.2,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a3283a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3283a",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -19.6,
+    4.9
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#e4bf2a",
+    "frameColour": "#a3283a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 56,
+    "rise": 0.45,
+    "run": 0.9,
+    "count": 8,
+    "colour": "#a3283a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.5,
+    "depth": 3.5,
+    "height": 3,
+    "colour": "#d8d4cc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -34
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -38
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Drum roof is a low cone but fewer visible ribs; glazing mullions are thinner/darker than the photo; red stair plinth and kiosk approximate; OSM cross outline replaced by hall plus drum."
+ }
+}

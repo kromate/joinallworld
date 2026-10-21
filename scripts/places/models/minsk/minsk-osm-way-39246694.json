@@ -1,0 +1,366 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-way-39246694",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Glory_Mound_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Andrej Kuzniecyk",
+   "view": "front",
+   "file": "/tmp/places-evidence/minsk/p18_5.jpg",
+   "used": "grass-covered cone about 35 m high, broad stone stair terrace at the foot with a dark plaque, paved plaza, ring-shaped bronze and red relief drum on the summit carrying four tall slender steel bayonet blades"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:D-44_at_Mound_of_Glory.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Anastasiya Lvova",
+   "view": "side",
+   "file": "/tmp/places-evidence/minsk/p18_2.jpg",
+   "used": "distant view of the mound proportions and blade height against the sky"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/39246694",
+   "used": "memorial plot extent (about 170 x 155 m); the mound is centred in it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 0.74,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "stairs",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#76756e",
+    "segments": 32,
+    "profile": [
+     [
+      52,
+      0,
+      "#76756e"
+     ],
+     [
+      52,
+      6
+     ],
+     [
+      48,
+      6
+     ],
+     [
+      0,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mound",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#5b7a3a",
+    "segments": 32,
+    "profile": [
+     [
+      48,
+      6,
+      "#4f6e2e"
+     ],
+     [
+      30,
+      17,
+      "#4b6a2b"
+     ],
+     [
+      9,
+      34.5,
+      "#4a6829"
+     ],
+     [
+      0,
+      34.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    0,
+    0,
+    34.5
+   ],
+   "params": {
+    "colour": "#9c8760",
+    "segments": 20,
+    "profile": [
+     [
+      6,
+      0,
+      "#8a5a3c"
+     ],
+     [
+      8.5,
+      0
+     ],
+     [
+      8.8,
+      2.4,
+      "#b5543a"
+     ],
+     [
+      8.8,
+      4.2,
+      "#a58a5a"
+     ],
+     [
+      8.0,
+      6,
+      "#9c8760"
+     ],
+     [
+      6.5,
+      6
+     ],
+     [
+      6,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "blade-0",
+   "at": [
+    0,
+    0,
+    40.5
+   ],
+   "params": {
+    "colour": "#b9bcc0",
+    "material": "metal-sheet",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       1.3
+      ],
+      "cx": -1.3,
+      "cy": -1.3,
+      "rotDeg": 45
+     },
+     {
+      "z": 18,
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "cx": -0.7,
+      "cy": -0.7,
+      "rotDeg": 45
+     },
+     {
+      "z": 35,
+      "rect": [
+       0.6,
+       0.4
+      ],
+      "cx": -0.1,
+      "cy": -0.1,
+      "rotDeg": 45
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "blade-1",
+   "at": [
+    0,
+    0,
+    40.5
+   ],
+   "params": {
+    "colour": "#b9bcc0",
+    "material": "metal-sheet",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       1.3
+      ],
+      "cx": 1.3,
+      "cy": -1.3,
+      "rotDeg": 45
+     },
+     {
+      "z": 18,
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "cx": 0.7,
+      "cy": -0.7,
+      "rotDeg": 45
+     },
+     {
+      "z": 35,
+      "rect": [
+       0.6,
+       0.4
+      ],
+      "cx": 0.1,
+      "cy": -0.1,
+      "rotDeg": 45
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "blade-2",
+   "at": [
+    0,
+    0,
+    40.5
+   ],
+   "params": {
+    "colour": "#b9bcc0",
+    "material": "metal-sheet",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       1.3
+      ],
+      "cx": 1.3,
+      "cy": 1.3,
+      "rotDeg": 45
+     },
+     {
+      "z": 18,
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "cx": 0.7,
+      "cy": 0.7,
+      "rotDeg": 45
+     },
+     {
+      "z": 35,
+      "rect": [
+       0.6,
+       0.4
+      ],
+      "cx": 0.1,
+      "cy": 0.1,
+      "rotDeg": 45
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "blade-3",
+   "at": [
+    0,
+    0,
+    40.5
+   ],
+   "params": {
+    "colour": "#b9bcc0",
+    "material": "metal-sheet",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       1.3
+      ],
+      "cx": -1.3,
+      "cy": 1.3,
+      "rotDeg": 45
+     },
+     {
+      "z": 18,
+      "rect": [
+       2.4,
+       0.9
+      ],
+      "cx": -0.7,
+      "cy": 0.7,
+      "rotDeg": 45
+     },
+     {
+      "z": 35,
+      "rect": [
+       0.6,
+       0.4
+      ],
+      "cx": -0.1,
+      "cy": 0.1,
+      "rotDeg": 45
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -52.2
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.5
+    ],
+    "z0": 1.5,
+    "height": 2,
+    "colour": "#25282b",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "summit crown is a plain revolved ring without pierced arches or relief; stair terrace is a revolved retaining wall not stepped flights; plaza setts have no radial lines; no tank park"
+ }
+}

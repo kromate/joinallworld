@@ -1,0 +1,301 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: wooded lake island park reached by a short footbridge, with a timber pavilion and benches; the only nearby Commons photo is a swan on the reservoir (no layout)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25210032",
+   "used": "park outline is 540 m wide, too large for the scene; modelled as one island portion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "island",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -12
+     ],
+     [
+      -26,
+      -24
+     ],
+     [
+      -8,
+      -28
+     ],
+     [
+      14,
+      -26
+     ],
+     [
+      32,
+      -16
+     ],
+     [
+      38,
+      2
+     ],
+     [
+      30,
+      18
+     ],
+     [
+      10,
+      26
+     ],
+     [
+      -12,
+      24
+     ],
+     [
+      -30,
+      14
+     ],
+     [
+      -38,
+      0
+     ]
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#5f8f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -4
+     ],
+     [
+      -30,
+      0
+     ],
+     [
+      24,
+      2
+     ],
+     [
+      24,
+      -2
+     ]
+    ],
+    "z0": 0.5,
+    "height": 0.08,
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "footbridge",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -31,
+      -1,
+      0.9
+     ],
+     [
+      -44,
+      -1,
+      1.5
+     ],
+     [
+      -58,
+      -1,
+      0.9
+     ]
+    ],
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "bridge-rail",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -31,
+      0.1,
+      1.4
+     ],
+     [
+      -44,
+      0.1,
+      2.0
+     ],
+     [
+      -58,
+      0.1,
+      1.4
+     ]
+    ],
+    "colour": "#6b4a3a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "bridge-rail2",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -31,
+      -2.1,
+      1.4
+     ],
+     [
+      -44,
+      -2.1,
+      2.0
+     ],
+     [
+      -58,
+      -2.1,
+      1.4
+     ]
+    ],
+    "colour": "#6b4a3a"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    8,
+    6,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#6b4a3a"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    8,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    18,
+    -10,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -10,
+    -4,
+    0.5
+   ],
+   "params": {
+    "width": 56,
+    "depth": 36,
+    "count": 22,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -20,
+    0.5
+   ],
+   "params": {
+    "length": 28,
+    "height": 0.9,
+    "kind": "bars",
+    "colour": "#a67c4c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only a swan photo exists; island shape, pavilion, bridge and bench placement are invented; the real outline is a 540 m park."
+ }
+}

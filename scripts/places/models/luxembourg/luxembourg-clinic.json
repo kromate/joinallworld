@@ -1,0 +1,321 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centre_hospitalier_de_Luxembourg_(CHL),_2016.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bdx",
+   "view": "street",
+   "file": "/tmp/places-evidence/luxembourg/chl2.jpg",
+   "used": "stepped blocks: tall beige-render slab with a brick-brown balcony wing, lower beige wings, long low concrete-grey wing with deep bays at right; window rhythm and colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Luxembourg,_Centre_hospitalier_de_Luxembourg_(101).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GilPe",
+   "view": "detail",
+   "used": "signage colours only (pale panel with green accents); the photo is a sign, not the building"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/41407070",
+   "used": "campus is 547 m across, far over the scene clamp; one block group modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     32,
+     15
+    ]
+   },
+   "at": [
+    12,
+    12
+   ],
+   "height": 36,
+   "storeys": 9,
+   "wall": {
+    "material": "render",
+    "colour": "#c9bb98",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#c2b48f",
+    "plinth": 1.0,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-box",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    16,
+    12
+   ],
+   "z0": 36,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#cdbf9a",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-wing",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    -20,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f5f4b",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#2f3a44",
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.8,
+    "bay": 4.5,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front",
+      "right"
+     ],
+     "colour": "#b9b2a2"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#80858a",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beige-wing",
+   "footprint": {
+    "rect": [
+     24,
+     11
+    ]
+   },
+   "at": [
+    -42,
+    16
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc09b",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.8,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#80858a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     62,
+     13
+    ]
+   },
+   "at": [
+    48,
+    -2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#92918c",
+    "windows": "punched",
+    "windowRatio": 0.6,
+    "glassColour": "#1f262d",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4.2,
+    "plinth": 0.6,
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "width": 1.6,
+     "depth": 1.2,
+     "spacing": 4.2,
+     "colour": "#a3a19b"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#777b7f",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 4,
+    "bottom": 1.0,
+    "colour": "#eef0ee",
+    "frameColour": "#9aa09c",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#d9d4dc",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.3,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#d7d9da"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    2.9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "bottom": 24,
+    "posts": false,
+    "colour": "#eef0ee",
+    "frameColour": "#4fae8c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tall slab dominant with plant box and sign panel; brick wing has balcony pattern but reads dark and boxy, brick wing is still too regular; low wing longer but bays shallow; glazed entrance pavilion removed; campus much larger than one block group; no helipad."
+ }
+}

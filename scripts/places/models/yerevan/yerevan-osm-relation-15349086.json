@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-osm-relation-15349086",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D5%8D%D5%AC%D5%A1%D5%BE%D5%B8%D5%B6%D5%A1%D5%AF%D5%A1%D5%B6_%D5%B0%D5%A1%D5%B4%D5%A1%D5%AC%D5%BD%D5%A1%D6%80%D5%A1%D5%B6.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chaojoker",
+   "view": "street",
+   "file": "/tmp/places-evidence/yerevan/v10_0.jpg",
+   "used": "long gently curved main block of pink-brown tuff, vertical dark-brown fins between white-framed windows on 5 storeys, dark entrance band with broad grey steps and handrails, lower plain tuff wing at left, flat roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arargats%26ArailerFromArabkir.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Vilnius",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/yerevan/v10_1.jpg",
+   "used": "campus layout: long block along the street, small stone-faced hall in front, flat snow-covered roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/49643673",
+   "used": "overall size only (246 m long, 4 levels); the long main block is modelled as a 96 m portion"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "polygon": [
+     [
+      -48.0,
+      6.92
+     ],
+     [
+      -28.8,
+      2.46
+     ],
+     [
+      -9.6,
+      0.27
+     ],
+     [
+      9.6,
+      0.27
+     ],
+     [
+      28.8,
+      2.46
+     ],
+     [
+      48.0,
+      6.92
+     ],
+     [
+      48.0,
+      23.92
+     ],
+     [
+      28.8,
+      19.46
+     ],
+     [
+      9.6,
+      17.27
+     ],
+     [
+      -9.6,
+      17.27
+     ],
+     [
+      -28.8,
+      19.46
+     ],
+     [
+      -48.0,
+      23.92
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22.5,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#b98c6d",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 5.0,
+    "glassColour": "#c7d3da",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.8,
+      "spacing": 5.0,
+      "colour": "#7a4a38",
+      "from": 0,
+      "margin": 0.5,
+      "skipGround": true,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6c68",
+    "parapet": 0.5,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    -58.5,
+    12.5
+   ],
+   "height": 22.5,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#c09a78",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "bay": 5.0,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6c68",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-band",
+   "footprint": {
+    "rect": [
+     60,
+     2.5
+    ]
+   },
+   "at": [
+    -30,
+    -0.6
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3336",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#34424b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a4c",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 20,
+    "rise": 0.17,
+    "run": 0.4,
+    "count": 12,
+    "colour": "#8d9094"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.04
+    },
+    "points": [
+     [
+      -10.1,
+      -6,
+      1.0
+     ],
+     [
+      -10.1,
+      -10.8,
+      1.0
+     ]
+    ],
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.04
+    },
+    "points": [
+     [
+      10.1,
+      -6,
+      1.0
+     ],
+     [
+      10.1,
+      -10.8,
+      1.0
+     ]
+    ],
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 2,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     -8
+    ],
+    "height": 6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     -9
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "fins widened and entrance band recessed along the ground floor, wing flush; steps and handrails barely read from this camera; curve only slightly bowed"
+ }
+}

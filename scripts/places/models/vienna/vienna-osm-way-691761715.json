@@ -1,0 +1,262 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rutzendorf_-_Kirche.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "C.Stadler/Bwag",
+   "view": "front",
+   "file": "/tmp/places-evidence/vienna/rutz1.jpg",
+   "used": "cream stucco walls with white plinth and corner strips, short red hip-less gable nave, square tower with white cornice and tall red pyramid spire with cross, arched louvred belfry windows, round-arched entrance on the tower"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/691761715",
+   "used": "tiny footprint (about 15 x 6 m including tower), church tag"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.38
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9.5,
+     5.4
+    ]
+   },
+   "at": [
+    -2.6,
+    0
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe2b0",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0.9,
+    "bands": "#f4f1e6",
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#b24c37",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.8,
+     3.8
+    ]
+   },
+   "at": [
+    4.1,
+    0
+   ],
+   "height": 9.6,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe2b0",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "plinth": 0.9,
+    "cornice": true,
+    "bands": "#f4f1e6",
+    "faces": {
+     "front": "arched",
+     "right": "plain",
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1e6",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     2.2,
+     3
+    ]
+   },
+   "at": [
+    -8.4,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1e6c0",
+    "windows": "none",
+    "plinth": 0.7
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b24c37",
+    "material": "clay-tile",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    6.1,
+    0,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 1,
+    "colour": "#bdb8a8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8.5,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eave",
+   "at": [
+    4.1,
+    0,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     4.8
+    ],
+    "height": 0.45,
+    "topScale": 0.8,
+    "colour": "#b24c37"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spire",
+   "at": [
+    4.1,
+    0,
+    10.05
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     2.9
+    ],
+    "height": 6.5,
+    "topScale": 0.04,
+    "colour": "#b24c37"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    4.1,
+    0,
+    16.5
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "height": 1.3,
+    "colour": "#3b3330"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    4.1,
+    0,
+    17.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "height": 0.12,
+    "colour": "#3b3330"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11,
+     7
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     12,
+     6
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-osm-way-691761715",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Round-arched door, wall plinth stripes and street/hedge surroundings simplified; spire lacks the bulb and flared eave."
+ }
+}

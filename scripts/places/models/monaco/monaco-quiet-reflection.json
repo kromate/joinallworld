@@ -1,0 +1,125 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/334846659",
+   "used": "real church outline (cross-shaped plan, about 28 x 15 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chapelle_des_Carmes_-_Monaco.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lacalle2003",
+   "view": "street",
+   "file": "/tmp/places-evidence/monaco/carm1.jpg",
+   "used": "only a historic postcard of the former Carmelite convent chapel (pointed arched windows, buttresses, dark hipped roof, warm stone); the present church is a 2002 rebuild so the photo informed colours and window shape only, not massing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6bfa4",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#ece3d2",
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 38,
+    "colour": "#6d7075",
+    "material": "slate",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0.4,
+    -13.75,
+    0
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 3.4,
+    "arch": true,
+    "colour": "#5f4430",
+    "trim": "#ece3d2"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0.4,
+    -13.9,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 0.6,
+    "run": 1.5,
+    "count": 3,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the present 2002 building; massing is the real outline with a generic pitched roof and pointed windows; no bell tower"
+ }
+}

@@ -1,0 +1,446 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-airport-minsk-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BE%D1%80%D1%82_%D0%9C%D0%B8%D0%BD%D1%81%D0%BA.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DCheretovich",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/minsk/airport1.jpg",
+   "used": "curved ramp and glazed landside canopy, stepped grey-blue terminal bands, round saucer building and octagonal-cab control tower on the right, fountain forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parking_lot_of_Minsk_National_Airport_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vasyatka1",
+   "view": "front",
+   "file": "/tmp/places-evidence/minsk/airport2.jpg",
+   "used": "long low frontage, set-back upper block with notched roof crests, tower and saucer building at right, colours (pale grey walls, blue accents)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/314452410",
+   "used": "overall size only; terminal is a long curved block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     100,
+     12
+    ]
+   },
+   "at": [
+    -13,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9cdd0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#8f9aa4",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     72,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    3
+   ],
+   "z0": 7,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9dde0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     3.5,
+     11
+    ],
+    "end": [
+     20,
+     3.5,
+     11
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.5,
+       3
+      ],
+      "height": 2.2,
+      "colour": "#cfd3d6",
+      "topScale": 1.0
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     23.0,
+     10.0
+    ]
+   },
+   "at": [
+    -62,
+    -1
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3d7da",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "bands": "#7f8c97"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     15,
+     0.6
+    ]
+   },
+   "at": [
+    -62,
+    -6.1
+   ],
+   "z0": 6.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7eaec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e7eaec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "saucer-1",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    38,
+    -1
+   ],
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdd2d6",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": "#4f78b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "saucer-2",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    38,
+    -1
+   ],
+   "z0": 5,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f97c4",
+    "windows": "ribbon",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb4b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "saucer-3",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     21,
+     21
+    ]
+   },
+   "at": [
+    38,
+    -1
+   ],
+   "z0": 8.5,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceff1",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": "#4f78b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb4b8"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    12,
+    0
+   ],
+   "params": {
+    "colour": "#cfd3d6",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      3.4,
+      0
+     ],
+     [
+      3.2,
+      19
+     ],
+     [
+      3.8,
+      20
+     ],
+     [
+      6.0,
+      22.5
+     ],
+     [
+      6.2,
+      27
+     ],
+     [
+      3.5,
+      28
+     ],
+     [
+      0,
+      28.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    12,
+    0
+   ],
+   "params": {
+    "colour": "#6f97c4",
+    "profile": [
+     [
+      6.1,
+      23
+     ],
+     [
+      6.3,
+      23
+     ],
+     [
+      6.3,
+      26
+     ],
+     [
+      6.1,
+      26
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "east-annex",
+   "footprint": {
+    "rect": [
+     11.0,
+     8.0
+    ]
+   },
+   "at": [
+    56,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfc4c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9195"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -11.0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 52,
+    "depth": 4,
+    "height": 4.5,
+    "columns": 6,
+    "colour": "#9fb0bb",
+    "edgeColour": "#5e7a99"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30.0,
+    -17.0,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spacing": 4.4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30.0,
+    -21.0,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spacing": 4.4,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": [],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Terminal lengthened but still boxy tiers vs the curved stepped frontage; tower cab is round not octagonal; roof crests simplified"
+ }
+}

@@ -1,0 +1,190 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nieuw_Vennep_view_from_Rijnlanderweg_towards_the_railway_4.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ymblanter",
+   "view": "street",
+   "used": "setting only: flat open polder, rows of poplars, yellow and blue regional train on a straight line; the station itself is not visible so the model is not compared"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q545457",
+   "used": "Nieuw-Vennep is a village in Haarlemmermeer; the OSM element at the pin is a motocross track so no outline is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "tracks": 2,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     70,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9a96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b0aa"
+   },
+   "z0": 0
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -10,
+    5,
+    0.9
+   ],
+   "params": {
+    "width": 34,
+    "depth": 3.6,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "station-hall",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    22,
+    -6
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8c4a3a",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "material": "membrane",
+    "overhang": 1.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 3,
+    "height": 2.5,
+    "form": "flat",
+    "support": "steel",
+    "colour": "#4a4f55"
+   }
+  },
+  {
+   "type": "train",
+   "at": [
+    8,
+    15.4,
+    0
+   ],
+   "params": {
+    "carriages": 2,
+    "colour": "#f2c200",
+    "loco_colour": "#1e4c9a"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "count": 9,
+    "kind": "broadleaf",
+    "gap": 3,
+    "height_min": 13,
+    "height_max": 17
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    22,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 2.6,
+    "colour": "#1e4c9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of a station exists; setting (polder, poplar avenue, yellow-blue train) taken from distant photo, station hall, platform and shelter are plausible not measured."
+ }
+}

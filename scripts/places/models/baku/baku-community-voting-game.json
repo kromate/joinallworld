@@ -1,0 +1,801 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Governement_house_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Marco Monelli",
+   "view": "front",
+   "file": "/tmp/places-evidence/baku/gov1.jpg",
+   "used": "cream limestone, three crenellated towers with arched loggias and pinnacles, lower connecting wings with balustrade"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Azadl%C4%B1q_meydan%C4%B1_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Stomatoloq Farid Zeynalov",
+   "view": "front",
+   "file": "/tmp/places-evidence/baku/gov2.jpg",
+   "used": "tower heights and spacing, arch rhythm, flag in front of right tower"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/152809510",
+   "used": "overall size 104 x 67 m, 10 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     100,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c49a",
+    "windows": "arched",
+    "windowRatio": 0.6,
+    "cornice": true,
+    "plinth": 2.0,
+    "parapet": 1.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none",
+     "front": "arched"
+    },
+    "bay": 8,
+    "bands": "#e6d6ae"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb98f",
+    "parapet": 2.0,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-centre",
+   "footprint": {
+    "rect": [
+     20,
+     20
+    ]
+   },
+   "at": [
+    -10,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 40,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c49a",
+    "windows": "arched",
+    "windowRatio": 0.85,
+    "cornice": true,
+    "plinth": 2.0,
+    "bands": "#e6d6ae",
+    "parapet": 1.0,
+    "faces": {
+     "back": "none",
+     "left": "plain",
+     "right": "plain",
+     "front": "arched"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb98f",
+    "parapet": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -44,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 44,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c49a",
+    "windows": "arched",
+    "windowRatio": 0.85,
+    "cornice": true,
+    "plinth": 2.0,
+    "bands": "#e6d6ae",
+    "parapet": 1.0,
+    "faces": {
+     "back": "none",
+     "left": "plain",
+     "right": "plain",
+     "front": "arched"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb98f",
+    "parapet": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     15,
+     15
+    ]
+   },
+   "at": [
+    26,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 30,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c49a",
+    "windows": "arched",
+    "windowRatio": 0.85,
+    "cornice": true,
+    "plinth": 2.0,
+    "bands": "#e6d6ae",
+    "parapet": 1.0,
+    "faces": {
+     "back": "none",
+     "left": "plain",
+     "right": "plain",
+     "front": "arched"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb98f",
+    "parapet": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     50,
+     16
+    ]
+   },
+   "at": [
+    18,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c49a",
+    "windows": "none",
+    "windowRatio": 0.28,
+    "cornice": false,
+    "plinth": 2.0,
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb98f",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    26,
+    10,
+    31
+   ],
+   "params": {}
+  },
+  {
+   "type": "steps",
+   "at": [
+    -10,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.2,
+     -8.6,
+     0
+    ],
+    "end": [
+     -37.8,
+     -8.6,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "z0": 44,
+      "height": 1.6,
+      "colour": "#d9c49a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50.2,
+     4.6,
+     0
+    ],
+    "end": [
+     -37.8,
+     4.6,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "z0": 44,
+      "height": 1.6,
+      "colour": "#d9c49a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-left--1-1",
+   "at": [
+    -50.7,
+    -8.7
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 44,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-left--11",
+   "at": [
+    -50.7,
+    4.7
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 44,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-left-1-1",
+   "at": [
+    -37.3,
+    -8.7
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 44,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-left-11",
+   "at": [
+    -37.3,
+    4.7
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 44,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -19.2,
+     -17.6,
+     0
+    ],
+    "end": [
+     -0.8,
+     -17.6,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "z0": 40,
+      "height": 1.6,
+      "colour": "#d9c49a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -19.2,
+     1.6,
+     0
+    ],
+    "end": [
+     -0.8,
+     1.6,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "z0": 40,
+      "height": 1.6,
+      "colour": "#d9c49a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-centre--1-1",
+   "at": [
+    -19.7,
+    -17.7
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 40,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-centre--11",
+   "at": [
+    -19.7,
+    1.6999999999999993
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 40,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-centre-1-1",
+   "at": [
+    -0.3000000000000007,
+    -17.7
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 40,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-centre-11",
+   "at": [
+    -0.3000000000000007,
+    1.6999999999999993
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 40,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     19.3,
+     2.9,
+     0
+    ],
+    "end": [
+     32.7,
+     2.9,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "z0": 30,
+      "height": 1.6,
+      "colour": "#d9c49a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     19.3,
+     17.1,
+     0
+    ],
+    "end": [
+     32.7,
+     17.1,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "z0": 30,
+      "height": 1.6,
+      "colour": "#d9c49a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-right--1-1",
+   "at": [
+    18.8,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 30,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-right--11",
+   "at": [
+    18.8,
+    17.2
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 30,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-right-1-1",
+   "at": [
+    33.2,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 30,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pin-tower-right-11",
+   "at": [
+    33.2,
+    17.2
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 30,
+    "height": 5,
+    "topScale": 0.05,
+    "colour": "#e2d2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Towers have crenellated parapets and pinnacles with larger arched windows but not deep open two-storey loggias; wing has no balustrade or ornate pilasters."
+ }
+}

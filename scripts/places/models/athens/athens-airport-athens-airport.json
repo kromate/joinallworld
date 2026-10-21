@@ -1,0 +1,519 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-airport-athens-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Athens_International_Airport_Entrance_(2025-02-20).webp",
+   "licence": "CC BY 4.0",
+   "author": "Logg Tandy",
+   "view": "front",
+   "file": "/tmp/places-evidence/athens/athens-airport-athens-airport-7j.jpg",
+   "used": "landside front: tall pale-grey panelled block with a blue glazed window and sign board, lower beige-stone wings left and right, flat roofs, thin entrance canopy with blue edge, flags and olive trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Athens_International_Airport_Eleftherios_Venizelos_2019-12-01_h.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Manfred Werner (Tsui)",
+   "view": "aerial",
+   "used": "overall low long white terminal with a round control tower at the right end, apron and car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/327797564",
+   "used": "overall size only (789 x 105 m, 3 levels); a 118 m central portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.25,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     44,
+     30
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "height": 42,
+   "storeys": 12,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c3c8cb",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       3,
+       3
+      ],
+      "colours": [
+       "#c3c8cb",
+       "#b3b9bd",
+       "#d0d4d6"
+      ],
+      "gap": 0.12,
+      "mode": "random"
+     }
+    ],
+    "plinth": 0.3,
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bec1",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront",
+   "footprint": {
+    "rect": [
+     72,
+     1.6
+    ]
+   },
+   "at": [
+    -2,
+    -8.8
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#26292c",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#2b3036"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c58a8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glass-slot",
+   "footprint": {
+    "rect": [
+     5,
+     1.2
+    ]
+   },
+   "at": [
+    -6,
+    -8.4
+   ],
+   "z0": 5,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f5fb0",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#3b64b4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -38,
+    8
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdbfa8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "left": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#3e63a6",
+    "bands": "#b3a58f",
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    30,
+    7
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc3ad",
+    "windows": "none",
+    "bands": "#b7aa94",
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#cfc3ad",
+       "#c4b8a2",
+       "#d6ccb9"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b3b3",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-lower",
+   "footprint": {
+    "rect": [
+     16,
+     18
+    ]
+   },
+   "at": [
+    54,
+    9
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d0c4ae",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 42,
+    "depth": 8,
+    "height": 4.8,
+    "thickness": 1.6,
+    "columns": 6,
+    "colour": "#d8cfba",
+    "edgeColour": "#2c58a8"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    34,
+    -5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 9,
+    "height": 6.5,
+    "thickness": 0.7,
+    "columns": 4,
+    "colour": "#d6ccb7",
+    "edgeColour": "#2c58a8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -8.3,
+    19
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 6,
+    "bottom": 0,
+    "colour": "#f2f2f0",
+    "frameColour": "#2c58a8",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    44,
+    30,
+    0
+   ],
+   "params": {
+    "height": 46,
+    "style": "round",
+    "colour": "#e4e6e6",
+    "cabColour": "#4a6d86",
+    "bandColour": "#c9ccce"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colours": [
+     "#2b63b3",
+     "#ffffff",
+     "#2b63b3"
+    ],
+    "count": 3,
+    "spacing": 2.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "w-stripe",
+   "footprint": {
+    "rect": [
+     34.4,
+     22.4
+    ]
+   },
+   "at": [
+    -38,
+    8
+   ],
+   "z0": 14.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2c58a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c58a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "e-stripe",
+   "footprint": {
+    "rect": [
+     34.4,
+     24.4
+    ]
+   },
+   "at": [
+    30,
+    7
+   ],
+   "z0": 14.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2c58a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c58a8"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    18,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    12,
+    -12.5,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colours": [
+     "#2b63b3",
+     "#f2f2f0",
+     "#e6c52c"
+    ],
+    "count": 3,
+    "spacing": 2.2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -18,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    28,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#2b63b3",
+     "#ffffff"
+    ],
+    "count": 3,
+    "spacing": 2.2
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -13
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -13
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -13
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -13
+    ],
+    "height": 4
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "taller block, shopfront band, thicker canopy, flags and lamps added; panel grid and blue window simplified, no planters or banners, only central portion"
+ }
+}

@@ -1,0 +1,869 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Noble%27s_Hospital_-_geograph.org.uk_-_109786.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Andy Stephenson",
+   "view": "front",
+   "file": "/tmp/places-evidence/douglas/douglas-clinic-0.jpg",
+   "used": "entrance cluster: teal-grey gabled fascia, glazed gable bay, low slate hip canopies on slim white columns, slate roofs, buff stone walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nobles_hospital_entrance_(geograph_6384875).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Richard Hoare",
+   "view": "front",
+   "file": "/tmp/places-evidence/douglas/douglas-clinic-3.jpg",
+   "used": "stone wing to the right: three-storey buff ashlar with small punched windows, slate hip roofs with dormer-like gables; flagpole left"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1483642",
+   "used": "overall extent only (234 x 218 m multi-wing complex); the front entrance blocks are modelled at true scale instead of shrinking the outline to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98a",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-gable",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    -9,
+    -9
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9a98a",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#c4a46e",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#33373d",
+    "material": "metal-sheet",
+    "pitch": 50,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "emblem-gable",
+   "footprint": {
+    "rect": [
+     15,
+     4
+    ]
+   },
+   "at": [
+    7,
+    -13.2
+   ],
+   "height": 7.5,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5b7873",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#4e6560",
+    "material": "metal-sheet",
+    "pitch": 44,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg-1",
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      7,
+      -15.4,
+      5.2
+     ],
+     [
+      7,
+      -15.4,
+      7.4
+     ],
+     [
+      5.6,
+      -15.4,
+      8.6
+     ]
+    ],
+    "colour": "#d6dbdc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg-2",
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      7,
+      -15.4,
+      5.2
+     ],
+     [
+      9,
+      -15.4,
+      4.4
+     ],
+     [
+      10,
+      -15.4,
+      3.2
+     ]
+    ],
+    "colour": "#d6dbdc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg-3",
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      7,
+      -15.4,
+      5.2
+     ],
+     [
+      5,
+      -15.4,
+      4.4
+     ],
+     [
+      4,
+      -15.4,
+      3.2
+     ]
+    ],
+    "colour": "#d6dbdc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "left-wing-a",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    3
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0b090",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 26,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing-b",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -40,
+    2
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 0.9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "left-gable",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -27,
+    -6
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0b090",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.9,
+    "axis": "y"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "right-wing-a",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    28,
+    2
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8a888",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing-b",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    44,
+    8
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0b090",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 26,
+    "overhang": 0.9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "right-gable",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    21,
+    -6
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8a888",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.9,
+    "axis": "y"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "canopy-left",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -16,
+    -19
+   ],
+   "z0": 3.4,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e6e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f434a",
+    "material": "slate",
+    "pitch": 16,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-right",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    18,
+    -19
+   ],
+   "z0": 3.4,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e6e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f434a",
+    "material": "slate",
+    "pitch": 16,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-link",
+   "footprint": {
+    "rect": [
+     12,
+     14
+    ]
+   },
+   "at": [
+    1,
+    -22
+   ],
+   "z0": 3.8,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e6e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f434a",
+    "material": "slate",
+    "pitch": 16,
+    "overhang": 1.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "canopy-columns-front",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.18,
+      "n": 10,
+      "height": 3.5,
+      "colour": "#f2f2f0"
+     }
+    },
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -28,
+     -25.5,
+     0
+    ],
+    "end": [
+     28,
+     -25.5,
+     0
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roundabout-paving",
+   "at": [
+    -1,
+    -36,
+    0
+   ],
+   "params": {
+    "radius": 10,
+    "n": 28,
+    "height": 0.12,
+    "colour": "#8c8a86"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roundabout-hedge",
+   "at": [
+    -1,
+    -36,
+    0.12
+   ],
+   "params": {
+    "radius": 7.2,
+    "n": 28,
+    "height": 1.5,
+    "colour": "#3f6b35",
+    "topColour": "#4f7d3f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roundabout-bed",
+   "at": [
+    -1,
+    -36,
+    1.22
+   ],
+   "params": {
+    "radius": 4.6,
+    "n": 24,
+    "height": 0.2,
+    "colour": "#6e8f4a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "id": "flagpole",
+   "at": [
+    -16,
+    -25,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hospital/ambulance-bay",
+   "id": "ambulance-bay",
+   "at": [
+    56,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 2,
+    "vans": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "dormer-l1",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    -28,
+    -5
+   ],
+   "z0": 6.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0b090",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 42,
+    "overhang": 0.3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "dormer-l2",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    -20,
+    -5
+   ],
+   "z0": 6.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0b090",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 42,
+    "overhang": 0.3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "dormer-r1",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    22,
+    -6
+   ],
+   "z0": 6.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0b090",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 42,
+    "overhang": 0.3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "dormer-r2",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    33,
+    -6
+   ],
+   "z0": 6.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0b090",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#33373d",
+    "material": "slate",
+    "pitch": 42,
+    "overhang": 0.3
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -26
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -32,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#2d3a5a"
+   },
+   {
+    "at": [
+     -20,
+     -34
+    ],
+    "yawDeg": 90,
+    "colour": "#7a2f2f"
+   },
+   {
+    "at": [
+     10,
+     -34
+    ],
+    "yawDeg": 90,
+    "colour": "#c9ccd0"
+   },
+   {
+    "at": [
+     24,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#1f3a2f"
+   }
+  ],
+  "extent": [
+   100,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only entrance cluster and flanking wings composed, not the full OSM complex; Three Legs emblem is three thin silver bars, glazed bay has no sloping glass, roundabout is a plain hedge disc, dormers are simple gables."
+ }
+}

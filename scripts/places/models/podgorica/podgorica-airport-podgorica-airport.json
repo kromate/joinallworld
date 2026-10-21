@@ -1,0 +1,713 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-airport-podgorica-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Podgorica_airport.jpg",
+   "licence": "CC (Wikimedia Commons)",
+   "author": "see Commons file page",
+   "view": "front",
+   "file": "/tmp/places-evidence/podgorica/airport2.jpg",
+   "used": "long low glazed landside frontage, thin flat roof with a rounded silver cylindrical fascia, slim grey columns, rooftop sign truss, umbrella-top lamp posts, asphalt apron kerb"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AerodromPodgorica.jpg",
+   "licence": "CC (Wikimedia Commons)",
+   "author": "see Commons file page",
+   "view": "detail",
+   "file": "/tmp/places-evidence/podgorica/airport1.jpg",
+   "used": "segmented silver tube fascia, blue-tinted reflective glazing, column spacing, sign truss above roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/88199063",
+   "used": "terminal footprint (99 x 57 m), rotated so the long side is the frontage"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5d70",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cdd0",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.05
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fascia-tube",
+   "params": {
+    "radius": 0.5,
+    "points": [
+     [
+      -49,
+      -30.5,
+      8.2
+     ],
+     [
+      49,
+      -30.5,
+      8.2
+     ]
+    ],
+    "colour": "#c3c7ca"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    8,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 7,
+    "height": 4.0,
+    "thickness": 0.25,
+    "columns": 6,
+    "colour": "#a9aeb2"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.12,
+        0,
+        "#8f959a"
+       ],
+       [
+        0.12,
+        10.5,
+        "#8f959a"
+       ],
+       [
+        2.6,
+        10.8,
+        "#d8dcdf"
+       ],
+       [
+        2.6,
+        10.95,
+        "#d8dcdf"
+       ],
+       [
+        0.1,
+        11.2,
+        "#d8dcdf"
+       ]
+      ],
+      "segments": 12
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     -40
+    ],
+    "end": [
+     44,
+     -40
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    62,
+    10,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "round",
+    "colour": "#e3e0d8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -30.0,
+      -27,
+      8.4
+     ],
+     [
+      -30.0,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -27.555555555555557,
+      -27,
+      8.4
+     ],
+     [
+      -27.555555555555557,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -25.11111111111111,
+      -27,
+      8.4
+     ],
+     [
+      -25.11111111111111,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -22.666666666666668,
+      -27,
+      8.4
+     ],
+     [
+      -22.666666666666668,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -20.22222222222222,
+      -27,
+      8.4
+     ],
+     [
+      -20.22222222222222,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -17.77777777777778,
+      -27,
+      8.4
+     ],
+     [
+      -17.77777777777778,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -15.333333333333334,
+      -27,
+      8.4
+     ],
+     [
+      -15.333333333333334,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -12.88888888888889,
+      -27,
+      8.4
+     ],
+     [
+      -12.88888888888889,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -10.444444444444443,
+      -27,
+      8.4
+     ],
+     [
+      -10.444444444444443,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      -8.0,
+      -27,
+      8.4
+     ],
+     [
+      -8.0,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      6.0,
+      -27,
+      8.4
+     ],
+     [
+      6.0,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      8.181818181818182,
+      -27,
+      8.4
+     ],
+     [
+      8.181818181818182,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      10.363636363636363,
+      -27,
+      8.4
+     ],
+     [
+      10.363636363636363,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      12.545454545454547,
+      -27,
+      8.4
+     ],
+     [
+      12.545454545454547,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      14.727272727272727,
+      -27,
+      8.4
+     ],
+     [
+      14.727272727272727,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      16.909090909090907,
+      -27,
+      8.4
+     ],
+     [
+      16.909090909090907,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      19.090909090909093,
+      -27,
+      8.4
+     ],
+     [
+      19.090909090909093,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      21.272727272727273,
+      -27,
+      8.4
+     ],
+     [
+      21.272727272727273,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      23.454545454545453,
+      -27,
+      8.4
+     ],
+     [
+      23.454545454545453,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      25.636363636363637,
+      -27,
+      8.4
+     ],
+     [
+      25.636363636363637,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      27.818181818181817,
+      -27,
+      8.4
+     ],
+     [
+      27.818181818181817,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      30.0,
+      -27,
+      8.4
+     ],
+     [
+      30.0,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.08,
+    "points": [
+     [
+      -30.5,
+      -27,
+      8.6
+     ],
+     [
+      -8,
+      -27,
+      8.6
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.08,
+    "points": [
+     [
+      -30.5,
+      -27,
+      10.4
+     ],
+     [
+      -8,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.08,
+    "points": [
+     [
+      5.5,
+      -27,
+      8.6
+     ],
+     [
+      30.5,
+      -27,
+      8.6
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.08,
+    "points": [
+     [
+      5.5,
+      -27,
+      10.4
+     ],
+     [
+      30.5,
+      -27,
+      10.4
+     ]
+    ],
+    "colour": "#c9cdd2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -55,
+     -50
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     55,
+     -50
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -48
+    ],
+    "colour": "#c9ccd0"
+   },
+   {
+    "at": [
+     -6,
+     -50
+    ],
+    "colour": "#2d3a55"
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "sign truss is plain rails not letters, glazing reflections still diagonal, roof still reads slightly thick, entrance canopy simplified"
+ }
+}

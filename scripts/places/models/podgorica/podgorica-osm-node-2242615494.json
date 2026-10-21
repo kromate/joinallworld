@@ -1,0 +1,141 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/276195337",
+   "used": "footprint 15x10.6 m (containing)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: stone tavern, red pantile gable roof, wooden pier over lake"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tavern",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f8c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8503a",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -4,
+    -9
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e3dcc8",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8503a",
+    "material": "clay-tile",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "width": 3,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -6,
+     -14,
+     0
+    ],
+    "end": [
+     6,
+     -14,
+     0
+    ],
+    "of": {
+     "type": "awning",
+     "params": {
+      "width": 3,
+      "depth": 2,
+      "colours": [
+       "#e3dcc8",
+       "#a8503a"
+      ]
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": 5,
+  "treeKind": "broadleaf",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-node-2242615494",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real 15x10 m outline; stone, tile roof, pier and terrace from brief only; model dips 0.8 m below z=0 at pier piles."
+ }
+}

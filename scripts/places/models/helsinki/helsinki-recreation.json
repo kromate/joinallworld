@@ -1,0 +1,321 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/helsinki.json#helsinki-recreation",
+   "used": "designed park of open meadows with winding paths, birch groves and pine edges, landscape design by Jussi Jannes (1964), a small pavilion and a low stone wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/4820257",
+   "used": "park extent only (696 x 315 m leisure=park); a representative 110 x 70 m section is modelled, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -52,
+      -24,
+      0
+     ],
+     [
+      -30,
+      -14,
+      0
+     ],
+     [
+      -8,
+      -20,
+      0
+     ],
+     [
+      14,
+      -8,
+      0
+     ],
+     [
+      34,
+      -14,
+      0
+     ],
+     [
+      54,
+      -4,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#b3afa2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.0,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -8,
+      -20,
+      0
+     ],
+     [
+      -4,
+      0,
+      0
+     ],
+     [
+      10,
+      14,
+      0
+     ],
+     [
+      20,
+      28,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#b3afa2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      14,
+      -8,
+      0
+     ],
+     [
+      2,
+      6,
+      0
+     ],
+     [
+      -18,
+      12,
+      0
+     ],
+     [
+      -40,
+      8,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#b3afa2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     12
+    ],
+    "height": 0.15,
+    "colour": "#b9b5a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     7,
+     4.5
+    ]
+   },
+   "at": [
+    28,
+    16
+   ],
+   "z0": 0.15,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d5256",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -33,
+    0
+   ],
+   "params": {
+    "length": 108,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#8d8a80"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 9,
+    "spread": 9,
+    "colour": "#7fa65a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 6,
+    "spread": 7,
+    "colour": "#86ad60"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    42,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 6,
+    "spread": 7,
+    "colour": "#7fa65a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 8,
+    "line": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 6,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   76
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; only the park extent is real. Path layout, grove positions, pavilion and wall are typical for a Finnish designed meadow park."
+ }
+}

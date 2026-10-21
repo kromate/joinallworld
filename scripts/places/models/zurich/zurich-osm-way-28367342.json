@@ -1,0 +1,339 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-osm-way-28367342",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ETH_H%C3%B6nggerberg_20100523_15-16-14.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Roland zh",
+   "view": "front",
+   "file": "/tmp/places-evidence/zurich/hoeng1.jpg",
+   "used": "glass curtain blocks with silver mullion grid and thin overhanging flat roof, open pilotis storey on the right block, tall tower behind left, granite plaza"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ETH_H%C3%B6nggerberg_HCI.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hannes Rada",
+   "view": "side",
+   "file": "/tmp/places-evidence/zurich/hoeng2.jpg",
+   "used": "green-tinted glass skin with grey frames and projecting roof plate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28367342",
+   "used": "campus extent only (760 m outline unusable as a building); the HCI plaza group and 14-storey physics tower are placed from photos and brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hci-main",
+   "footprint": {
+    "rect": [
+     52,
+     34
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e6eeee",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bands": "#c4ccce",
+    "plinth": 0.0,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "curtain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9496",
+    "material": "metal-sheet",
+    "parapet": 0.3,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hci-east",
+   "footprint": {
+    "rect": [
+     30,
+     34
+    ]
+   },
+   "at": [
+    46,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 6,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e6eeee",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bands": "#c4ccce",
+    "plinth": 0.0,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "curtain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9496",
+    "material": "metal-sheet",
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "physics-tower",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -34,
+    48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 52,
+   "storeys": 14,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c3cfcf",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 4.5,
+    "bands": "#98a3a6",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9496",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-block",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    22,
+    48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b9b8b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9496",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 11,
+      "colour": "#8a4a34"
+     }
+    },
+    "mode": "line",
+    "start": [
+     20,
+     -26
+    ],
+    "end": [
+     27,
+     -26
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/flag",
+     "params": {
+      "height": 20,
+      "colour": "#b6323a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -34,
+     -23
+    ],
+    "end": [
+     16,
+     -23
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 5,
+    "spread": 10
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    46,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     8
+    ],
+    "height": 6,
+    "colour": "#3a4044"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 6,
+      "colour": "#f2f2ee",
+      "n": 8
+     }
+    },
+    "mode": "line",
+    "start": [
+     33,
+     -15
+    ],
+    "end": [
+     59,
+     -15
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#7d7b76"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Lighter curtain walls with 4.5 m mullion bays, tall flagpoles, raised east block on slim columns, lattice sculptures; windows still read darker and denser than the real pale grid, no bench, tower blocky"
+ }
+}

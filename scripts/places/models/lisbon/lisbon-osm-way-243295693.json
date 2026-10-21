@@ -1,0 +1,369 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-way-243295693",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nouveau_carrefour_-_Quinta_do_Conde_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Cossel",
+   "view": "street",
+   "file": "/tmp/places-evidence/lisbon/park2.jpg",
+   "used": "setting only: low two to three storey pastel rendered housing around, dry grass verges, pines, a rare palm; the park itself is not shown in any photo"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/243295693",
+   "used": "real park outline (about 290 x 100 m, long north-south strip) as the lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fa86a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#86a05f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    8,
+    -20
+   ],
+   "z0": 0.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5623f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    12
+   ],
+   "z0": 0.5,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd5c2",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.5,
+      "opening": 0.6,
+      "height": 0.75,
+      "depth": 0.6
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5623f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    -4,
+    0.52
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     90
+    ],
+    "height": 0.05,
+    "colour": "#d8cfbd",
+    "windows": "none"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the park: lawn follows the real outline, pavilion, kiosk and tree positions are plausible not surveyed; bandstand and play area omitted"
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   130
+  ],
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     22.9,
+     2.8
+    ],
+    "height": 11.7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -9.3,
+     -26.1
+    ],
+    "height": 11.2
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8.9,
+     19.3
+    ],
+    "height": 13.3
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     6.9,
+     -49.4
+    ],
+    "height": 10.7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     19.1,
+     -34.4
+    ],
+    "height": 13.3
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -19.0,
+     54.9
+    ],
+    "height": 12.9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -5.0,
+     24.2
+    ],
+    "height": 13.5
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -19.4,
+     -38.2
+    ],
+    "height": 11.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -1.8,
+     -0.2
+    ],
+    "height": 9.0
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -10.9,
+     -48.5
+    ],
+    "height": 13.6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0.9,
+     -1.4
+    ],
+    "height": 13.3
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20.3,
+     44.0
+    ],
+    "height": 14.8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     9.0,
+     -21.7
+    ],
+    "height": 10.9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10.0,
+     -16.6
+    ],
+    "height": 11.7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -19.4,
+     22.4
+    ],
+    "height": 10.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10.2,
+     23.2
+    ],
+    "height": 10.0
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -18.8,
+     25.5
+    ],
+    "height": 13.6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14.7,
+     -11.5
+    ],
+    "height": 10.4
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8.4,
+     35.0
+    ],
+    "height": 11.0
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -22.0,
+     -15.4
+    ],
+    "height": 14.6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -4.5,
+     -4.6
+    ],
+    "height": 13.9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     13.6,
+     28.4
+    ],
+    "height": 11.0
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     9.6,
+     42.4
+    ],
+    "height": 13.4
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8.6,
+     5.1
+    ],
+    "height": 13.7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     21.5,
+     36.1
+    ],
+    "height": 13.6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     20.4,
+     -27.7
+    ],
+    "height": 11.2
+   }
+  ]
+ }
+}

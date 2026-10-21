@@ -1,0 +1,448 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-airport-paris-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal-1-Paris-Charles-de-Gaulle-Roissy-en-France-02-2018a.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gunnar Klack",
+   "view": "front",
+   "file": "/tmp/places-evidence/paris/cdgT1a.jpg",
+   "used": "round ribbed concrete drum on Y-shaped pilotis, glazed recessed base, curved elevated walkway at left, low glazed pavilion at right, colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal-1-Paris-Charles-de-Gaulle-Roissy-en-France-02-2018b.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gunnar Klack",
+   "view": "detail",
+   "file": "/tmp/places-evidence/paris/cdgT1b.jpg",
+   "used": "glazed tubes crossing the inner court (modelled as a few crossing tubes inside the ring)"
+  },
+  {
+   "kind": "text",
+   "used": "drum scaled to about 125 m across (real about 190 m) to fit the scene clamp; OSM match is Terminal 2E so its outline was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 56,
+    "colour": "#b4ada0",
+    "profile": [
+     [
+      50,
+      0,
+      "#3a4448"
+     ],
+     [
+      50,
+      11,
+      "#4a4f50"
+     ],
+     [
+      56,
+      11.5,
+      "#8f8a80"
+     ],
+     [
+      62,
+      14.5,
+      "#a9a398"
+     ],
+     [
+      63,
+      15.5,
+      "#b9b3a8"
+     ],
+     [
+      63,
+      15.5,
+      "#b9b3a8"
+     ],
+     [
+      63,
+      18.2,
+      "#b9b3a8"
+     ],
+     [
+      62.4,
+      18.2,
+      "#9a968d"
+     ],
+     [
+      62.4,
+      20.9,
+      "#9a968d"
+     ],
+     [
+      63,
+      20.9,
+      "#b9b3a8"
+     ],
+     [
+      63,
+      23.599999999999998,
+      "#b9b3a8"
+     ],
+     [
+      62.4,
+      23.599999999999998,
+      "#9a968d"
+     ],
+     [
+      62.4,
+      26.299999999999997,
+      "#9a968d"
+     ],
+     [
+      63,
+      26.299999999999997,
+      "#b9b3a8"
+     ],
+     [
+      63,
+      28.999999999999996,
+      "#b9b3a8"
+     ],
+     [
+      62.4,
+      28.999999999999996,
+      "#9a968d"
+     ],
+     [
+      62.4,
+      31.699999999999996,
+      "#9a968d"
+     ],
+     [
+      63,
+      31.699999999999996,
+      "#b9b3a8"
+     ],
+     [
+      63,
+      34.4,
+      "#b9b3a8"
+     ],
+     [
+      62.4,
+      34.4,
+      "#9a968d"
+     ],
+     [
+      62.4,
+      37.1,
+      "#9a968d"
+     ],
+     [
+      63.4,
+      37.1,
+      "#b9b3a8"
+     ],
+     [
+      63.4,
+      37.9,
+      "#b9b3a8"
+     ],
+     [
+      60,
+      38.300000000000004,
+      "#8e8c86"
+     ],
+     [
+      0,
+      38.300000000000004,
+      "#8e8c86"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "pilotis",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 16,
+    "radius": 53,
+    "startDeg": 0,
+    "endDeg": 340,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         2.4,
+         2.4
+        ]
+       },
+       {
+        "z": 6,
+        "rect": [
+         2.4,
+         2.8
+        ]
+       },
+       {
+        "z": 10,
+        "rect": [
+         2.2,
+         6
+        ]
+       },
+       {
+        "z": 13,
+        "rect": [
+         2.4,
+         9
+        ]
+       }
+      ],
+      "colour": "#9d978c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tubes",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -24,
+     -16
+    ],
+    "end": [
+     24,
+     16
+    ],
+    "dz": 0,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        3.2,
+        3.2
+       ]
+      },
+      "points": [
+       [
+        -34,
+        -6,
+        16
+       ],
+       [
+        0,
+        2,
+        26
+       ],
+       [
+        34,
+        -6,
+        16
+       ]
+      ],
+      "colour": "#66737a"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "walkway",
+   "params": {
+    "section": {
+     "rect": [
+      7,
+      5
+     ]
+    },
+    "points": [
+     [
+      -72,
+      -66,
+      5
+     ],
+     [
+      -62,
+      -62,
+      7.5
+     ],
+     [
+      -56,
+      -50,
+      10
+     ],
+     [
+      -52,
+      -38,
+      11
+     ]
+    ],
+    "curve": true,
+    "colour": "#a29d92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    56,
+    -60
+   ],
+   "rotDeg": -8,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7e8e94",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8c86",
+    "overhang": 4.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concourse-wall",
+   "footprint": {
+    "rect": [
+     30,
+     3
+    ]
+   },
+   "at": [
+    64,
+    -70
+   ],
+   "rotDeg": -8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d978c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d978c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "walk-piers",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -70,
+     -65
+    ],
+    "end": [
+     -54,
+     -42
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       3
+      ],
+      "z0": 0,
+      "height": 7,
+      "colour": "#a29d92"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mound",
+   "at": [
+    0,
+    -78,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#5d7a47",
+    "profile": [
+     [
+      26,
+      0,
+      "#5d7a47"
+     ],
+     [
+      18,
+      2,
+      "#5d7a47"
+     ],
+     [
+      0,
+      3,
+      "#5d7a47"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Drum scaled to ~125 m; pilotis are flared lofts not true Y-forks; no open deck levels visible under drum; pavilion/walkway simplified; mound is a plain disc."
+ }
+}

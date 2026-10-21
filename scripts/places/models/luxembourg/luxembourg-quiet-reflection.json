@@ -1,0 +1,283 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/355202358",
+   "used": "not used: the nearest OSM chapel is 75 m away and only 5 x 5 m, so it is not this church"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12,
+     22
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfae",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.9,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "bands": "#8c4f3b"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a6f66",
+    "material": "clay-tile",
+    "rise": 4.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-left",
+   "footprint": {
+    "rect": [
+     4,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    3
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfae",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a6f66",
+    "material": "clay-tile",
+    "rise": 1.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-right",
+   "footprint": {
+    "rect": [
+     4,
+     16
+    ]
+   },
+   "at": [
+    8,
+    3
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfae",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a6f66",
+    "material": "clay-tile",
+    "rise": 1.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfae",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a6f66",
+    "material": "clay-tile",
+    "rise": 2.0,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8c4f3b",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b625b",
+    "material": "concrete",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -9.5,
+    -9.5
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfae",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.9,
+    "bands": "#8c4f3b"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#5b5651",
+    "material": "slate",
+    "rise": 6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    -8.8,
+    12.4
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    15,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of Notre-Dame des Mineurs was found and the OSM match is wrong, so the form follows the brief only (plain miners' parish church: gabled nave, side aisles, apse, corner bell tower, brick portal); real proportions, tower position and roofing are unverified."
+ }
+}

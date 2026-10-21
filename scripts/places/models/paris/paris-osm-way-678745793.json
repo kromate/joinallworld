@@ -1,0 +1,456 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fa%C3%A7ade_du_centre_commercial_V%C3%A9lizy_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mickael Denet",
+   "view": "street",
+   "file": "/tmp/places-evidence/paris/velizy0.jpg",
+   "used": "copper-red metal panel cladding, dark service doors, large blank sign board, concrete bollards along the road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:V%C3%A9lizy_2_le_23_avril_2017_-_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lionel Allorge",
+   "view": "street",
+   "file": "/tmp/places-evidence/paris/velizy2.jpg",
+   "used": "orange tower block with large black board, maroon panel wall beside it, grey concrete base"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/678745793",
+   "used": "real outline scaled to 118 m (0.61)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "polygon": [
+     [
+      -35.9,
+      -36.1
+     ],
+     [
+      -5.5,
+      -48.2
+     ],
+     [
+      -5.7,
+      -53.4
+     ],
+     [
+      8.1,
+      -60.0
+     ],
+     [
+      27.0,
+      -14.0
+     ],
+     [
+      21.5,
+      -11.5
+     ],
+     [
+      32.2,
+      16.4
+     ],
+     [
+      26.3,
+      19.1
+     ],
+     [
+      35.3,
+      48.5
+     ],
+     [
+      13.1,
+      59.8
+     ],
+     [
+      -13.4,
+      39.2
+     ],
+     [
+      -15.6,
+      17.7
+     ],
+     [
+      -1.0,
+      -16.5
+     ],
+     [
+      -10.7,
+      -20.5
+     ],
+     [
+      -18.3,
+      -10.7
+     ],
+     [
+      -28.0,
+      -18.5
+     ]
+    ]
+   },
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7a2b2a",
+    "windows": "none",
+    "plinth": 0,
+    "groundKind": "plain",
+    "trimColour": "#8d8f8c",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       3.2,
+       2.2
+      ],
+      "colours": [
+       "#7a2b2a",
+       "#6e2625",
+       "#842f2d"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c8185",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "orange-block",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    -54
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c4622f",
+    "windows": "none",
+    "plinth": 0,
+    "trimColour": "#8d8f8c",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.8,
+       2.0
+      ],
+      "colours": [
+       "#c4622f",
+       "#b85a29",
+       "#cf6c36"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c8185",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -61.6,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.1
+    ],
+    "height": 0.8,
+    "colour": "#e8e8e8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -64,
+     0
+    ],
+    "end": [
+     30,
+     -64,
+     0
+    ],
+    "count": 13,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 8,
+      "height": 0.8,
+      "colour": "#cfcdc6"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    22,
+    -55
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f98a3",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f5559",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    -8,
+    -61.3,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.5
+    ],
+    "height": 9.8,
+    "colour": "#2a2d36"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -61.65,
+    9.4
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.1
+    ],
+    "height": 2.4,
+    "colour": "#f0f0f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -61.65,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.1
+    ],
+    "height": 0.15,
+    "colour": "#f0f0f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -61.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.4
+    ],
+    "height": 3.2,
+    "colour": "#d9dad6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33,
+    -61.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.5
+    ],
+    "height": 0.1,
+    "colour": "#b8b9b6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15,
+    -47.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "height": 4.0,
+    "colour": "#8c8e8b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.5,
+    -47.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.4
+    ],
+    "height": 3.2,
+    "colour": "#2e3236"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -69,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     3
+    ],
+    "height": 1.8,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-w",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -52,
+    -45
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5b7b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-e",
+   "footprint": {
+    "rect": [
+     20,
+     24
+    ]
+   },
+   "at": [
+    52,
+    -30
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c0c2bf",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-osm-way-678745793",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Grey concrete base under the maroon wall, the service doors and blue sign are only partly placed; panel joints are a colour grid rather than real vertical joints; no roof plant; the mall extent behind and the rear car park are omitted; neighbours are generic blocks."
+ }
+}

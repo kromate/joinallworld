@@ -1,0 +1,371 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-osm-way-169391630",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Girne_American_University.jpg",
+   "licence": "Public domain",
+   "author": "Kalbim nefretim",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyrenia/gau1.jpg",
+   "used": "main campus building: four-storey cream render block with dark window grid, forward end wings with ribbon glazing, central glazed entrance under a flat canopy with a blank sign board, flagpoles, hedges and lawn, water basin in front, dark parapet band"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Girne_Amerikan_%C3%9Cniversitesi_Kamp%C3%BCs.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Girne Amerikan Universitesi Digital Marketing",
+   "view": "aerial",
+   "used": "campus context only: white and cream flat-roofed blocks with ribbon glazing and a barrel-vaulted glazed hall, mountain backdrop"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/169391630",
+   "used": "not used: the outline is the whole 535 m campus, so one landmark building is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a8",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "glassColour": "#3a434b",
+    "plinth": 0.4,
+    "bands": "#2c3036",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b5f58",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    -30,
+    4
+   ],
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a8",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "glassColour": "#262c33",
+    "plinth": 0.4,
+    "bands": "#2c3036",
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "ribbon",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b5f58",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    30,
+    4
+   ],
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9a8",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "glassColour": "#262c33",
+    "plinth": 0.4,
+    "bands": "#2c3036",
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b5f58",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-parapet",
+   "footprint": {
+    "rect": [
+     76,
+     17
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 13.5,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3b3f5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3f5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -3.5
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e6d9a8",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e0cc",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5.4,
+    3.3
+   ],
+   "params": {
+    "width": 13,
+    "height": 1.5,
+    "bottom": 0.3,
+    "colour": "#1f2a4a",
+    "frameColour": "#e0d8c0",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    7,
+    -5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     4,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "core/flag",
+     "params": {}
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pond",
+   "footprint": {
+    "rect": [
+     70,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6677"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -15,
+    -8.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     30,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       1.2
+      ],
+      "height": 1.2,
+      "colour": "#3d5e2c"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -35,
+      -13,
+      0.3
+     ],
+     [
+      -31,
+      -13,
+      2.0
+     ],
+     [
+      -27,
+      -13,
+      0.3
+     ]
+    ],
+    "curve": true,
+    "colour": "#b9b3a2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -12
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "wings forward but returns square not angled; basin is simple slab; footbridge basic; one building of campus; night lighting not reproduced"
+ }
+}

@@ -1,0 +1,706 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-osm-way-437737781",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aussichtsturm_Stadlerberg_2023.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tschubby",
+   "view": "front",
+   "file": "/tmp/places-evidence/zurich/437737781_new.jpg",
+   "used": "new 2023 glulam tower: pale timber, crossing splayed legs, slatted twisted cladding wedges, top slatted box under overhanging roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/437737781",
+   "used": "triangular plan, 25 m height from Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -1.2,
+      -1.2,
+      0
+     ],
+     [
+      -1.2,
+      -1.2,
+      22
+     ]
+    ],
+    "colour": "#c49a5e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -1.2,
+      1.2,
+      0
+     ],
+     [
+      -1.2,
+      1.2,
+      22
+     ]
+    ],
+    "colour": "#c49a5e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      1.2,
+      -1.2,
+      0
+     ],
+     [
+      1.2,
+      -1.2,
+      22
+     ]
+    ],
+    "colour": "#c49a5e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      1.2,
+      1.2,
+      0
+     ],
+     [
+      1.2,
+      1.2,
+      22
+     ]
+    ],
+    "colour": "#c49a5e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -4.4,
+      -1.5,
+      0
+     ],
+     [
+      0,
+      -1.5,
+      9.5
+     ],
+     [
+      1.7,
+      -1.5,
+      22
+     ]
+    ],
+    "colour": "#d9b27a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      4.4,
+      -1.5,
+      0
+     ],
+     [
+      0,
+      -1.5,
+      9.5
+     ],
+     [
+      -1.7,
+      -1.5,
+      22
+     ]
+    ],
+    "colour": "#d9b27a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -4.4,
+      1.5,
+      0
+     ],
+     [
+      0,
+      1.5,
+      9.5
+     ],
+     [
+      1.7,
+      1.5,
+      22
+     ]
+    ],
+    "colour": "#d9b27a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      4.4,
+      1.5,
+      0
+     ],
+     [
+      0,
+      1.5,
+      9.5
+     ],
+     [
+      -1.7,
+      1.5,
+      22
+     ]
+    ],
+    "colour": "#d9b27a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 9.5,
+      "rect": [
+       3.4,
+       2.6
+      ],
+      "rotDeg": 0
+     },
+     {
+      "z": 15.5,
+      "rect": [
+       3.4,
+       2.8
+      ],
+      "rotDeg": 12
+     },
+     {
+      "z": 22,
+      "rect": [
+       3.5,
+       3.0
+      ],
+      "rotDeg": 24
+     }
+    ],
+    "colour": "#d9b27a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 2.5,
+      "rect": [
+       0.5,
+       2.4
+      ],
+      "cx": -3.5
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       3.4,
+       2.6
+      ]
+     }
+    ],
+    "colour": "#cfa66a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    3
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 0.2,
+    "colour": "#b98f5b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -1.2,
+      -1.0,
+      3
+     ],
+     [
+      1.2,
+      -1.0,
+      6.5
+     ]
+    ],
+    "colour": "#a8804e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 0.2,
+    "colour": "#b98f5b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      1.2,
+      1.0,
+      6.5
+     ],
+     [
+      -1.2,
+      1.0,
+      10.0
+     ]
+    ],
+    "colour": "#a8804e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    10
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 0.2,
+    "colour": "#b98f5b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -1.2,
+      -1.0,
+      10
+     ],
+     [
+      1.2,
+      -1.0,
+      13.5
+     ]
+    ],
+    "colour": "#a8804e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    13.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 0.2,
+    "colour": "#b98f5b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      1.2,
+      1.0,
+      13.5
+     ],
+     [
+      -1.2,
+      1.0,
+      17.0
+     ]
+    ],
+    "colour": "#a8804e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    17
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 0.2,
+    "colour": "#b98f5b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -1.2,
+      -1.0,
+      17
+     ],
+     [
+      1.2,
+      -1.0,
+      20.5
+     ]
+    ],
+    "colour": "#a8804e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    20.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 0.2,
+    "colour": "#b98f5b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      1.2,
+      1.0,
+      20.5
+     ],
+     [
+      -1.2,
+      1.0,
+      24.0
+     ]
+    ],
+    "colour": "#a8804e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     4.6
+    ],
+    "height": 1.4,
+    "colour": "#dcc08a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    23.4
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "height": 0.3,
+    "colour": "#c9a366"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    23.7
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 0.5,
+    "colour": "#d6a85f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -11,
+     -4
+    ],
+    "height": 24
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     11,
+     5
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     12
+    ],
+    "height": 20
+   }
+  ],
+  "extent": [
+   45,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Twisted slatted cladding and crossing glulam legs approximated by a lofted twisted box and a wedge; stair landings simplified; top box is a plain prism."
+ }
+}

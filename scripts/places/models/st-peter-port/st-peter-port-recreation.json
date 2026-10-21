@@ -1,0 +1,365 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Guernsey_July_2010_56,_Saumarez_Park_Manor.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Commons contributor (Guernsey July 2010 set)",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-peter-port/saumarez.jpg",
+   "used": "manor house inside the park: two-storey grey-pink granite, slate roofs with dormers, central projecting entrance bay with pointed slate cap, white shuttered sash windows, white cornice, lawn and flower beds in front"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Saumarez_Park",
+   "used": "park elements: lawns, walled garden, duck pond, fountain, mature broadleaf trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "manor-centre",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#a89888",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "plinth": 0.5,
+    "cornice": true,
+    "groundKind": "punched",
+    "trimColour": "#f3f1ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4d5257",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    -13,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#a89888",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "plinth": 0.5,
+    "cornice": true,
+    "groundKind": "punched",
+    "trimColour": "#f3f1ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4d5257",
+    "material": "slate",
+    "pitch": 42,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    13,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#a89888",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "plinth": 0.5,
+    "cornice": true,
+    "groundKind": "punched",
+    "trimColour": "#f3f1ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4d5257",
+    "material": "slate",
+    "pitch": 42,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     4.6,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    -1.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#a89888",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "groundKind": "punched",
+    "trimColour": "#f3f1ea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44494e"
+   }
+  },
+  {
+   "type": "dormer",
+   "id": "dormer-l",
+   "at": [
+    -13,
+    -2.0,
+    9.4
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.2,
+    "height": 1.8,
+    "wall_colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "dormer",
+   "id": "dormer-r",
+   "at": [
+    13,
+    -2.0,
+    9.4
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.2,
+    "height": 1.8,
+    "wall_colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "id": "chim-l",
+   "at": [
+    -13,
+    6,
+    12.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "chimney-stack",
+   "id": "chim-r",
+   "at": [
+    13,
+    6,
+    12.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.7,
+    "run": 1.4,
+    "count": 3,
+    "colour": "#b5ada0"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flagpole",
+   "at": [
+    -6,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colours": [
+     "#f2f0ea",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "lawn",
+   "id": "lawn",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 24,
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "id": "beds",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 14,
+    "depth": 2.2
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "duck-pond",
+   "at": [
+    34,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "shape": "oval",
+    "colour": "#5f7f8a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "walled-garden",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      28,
+      0
+     ],
+     [
+      28,
+      22
+     ],
+     [
+      0,
+      22
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 2.6,
+    "thickness": 0.5,
+    "colour": "#9a9285"
+   }
+  },
+  {
+   "type": "core/spire",
+   "id": "bay-spire",
+   "at": [
+    0,
+    -1.8,
+    9.5
+   ],
+   "params": {
+    "baseWidth": 3.8,
+    "height": 5.5,
+    "sides": 4,
+    "colour": "#44494e",
+    "finial": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "white shutters, cornice detail, arched ground windows and wing gable pediments missing; wings are hipped not mansard; stray trees at frame edges from site defaults; flag is a plain panel"
+ }
+}

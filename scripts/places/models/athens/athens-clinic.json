@@ -1,0 +1,436 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%CE%95%CE%B8%CE%BD%CE%B9%CE%BA%CF%8C_%CE%9A%CE%AD%CE%BD%CF%84%CF%81%CE%BF_%CE%91%CF%80%CE%BF%CE%BA%CE%B1%CF%84%CE%AC%CF%83%CF%84%CE%B1%CF%83%CE%B7%CF%82.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marios Kalyviotis",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/athens/athens-clinic-0.jpg",
+   "used": "long four-storey cream ward block with terracotta hip roof and a taller central stair core, two lower tile-roofed pavilions with rubble stone ends in front, car park and pine slope behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/669746894",
+   "used": "campus is 282 x 280 m: only the building group in the photo is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     86,
+     14
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfbc",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#7f929a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c5683f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     12,
+     15
+    ]
+   },
+   "at": [
+    -1,
+    23
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c5683f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-pavilion",
+   "footprint": {
+    "rect": [
+     9,
+     46
+    ]
+   },
+   "at": [
+    -18,
+    -1
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8aa94",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "faces": {},
+    "plinth": 0.3,
+    "glassColour": "#6f8190"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9693f",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-pavilion",
+   "footprint": {
+    "rect": [
+     9,
+     46
+    ]
+   },
+   "at": [
+    14,
+    -1
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4b8a2",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "faces": {},
+    "glassColour": "#6f8190",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c05c36",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-deck",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    -2,
+    16
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bfc0bb",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6f8b9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d4cc",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    36,
+    -4
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cf8e",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "glassColour": "#9aa6ab"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d3cd",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-room",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    28,
+    10
+   ],
+   "height": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9adae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9da1a2",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -26,
+    24,
+    14.5
+   ],
+   "params": {
+    "kind": "box",
+    "radius": 1.2,
+    "tankHeight": 2,
+    "legHeight": 0.5,
+    "legs": 4,
+    "colour": "#b8b8b2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -46,
+    -4,
+    0
+   ],
+   "params": {
+    "colour": "#b9bcc0",
+    "count": 6,
+    "spacing": 3.6,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "roof-plant",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    16
+   ],
+   "z0": 5.5,
+   "height": 1.8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9adae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9da1a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab10",
+   "params": {
+    "rect": [
+     14,
+     34
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#b9b4a4",
+    "topColour": "#b9b4a4"
+   },
+   "at": [
+    -2,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "courtyard-plant",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "height": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9adae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9da1a2",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     44
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -10,
+     48
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     15,
+     48
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     44
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     28
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     52
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -22
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pavilions longer and joined by link deck, windows on ward block; pavilion gable stone ends and detailed courtyard simplified, car park at left is small, pine slope thin"
+ }
+}

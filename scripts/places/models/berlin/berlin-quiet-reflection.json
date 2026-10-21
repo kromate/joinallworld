@@ -1,0 +1,406 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Friedenskirche_Gr%C3%BCnau_Berlin-Gr%C3%BCnau_2026-05-24_01.jpg",
+   "licence": "CC0",
+   "author": "Leonhard Lenz",
+   "view": "side",
+   "file": "/tmp/places-evidence/berlin/berlin-quiet-reflection-0.jpg",
+   "used": "east end seen from the park: red clinker brick wall, rough sandstone plinth with buttress piers, tall narrow round-arched windows, arched corbel frieze, cross-gabled transept with quatrefoil rose windows, red tile hip over a lower apse, slanted zinc-grey annex roof at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Friedenskirche_Gr%C3%BCnau_Berlin-Gr%C3%BCnau_2026-05-24_02.jpg",
+   "licence": "CC0",
+   "author": "Leonhard Lenz",
+   "view": "side",
+   "file": "/tmp/places-evidence/berlin/berlin-quiet-reflection-1.jpg",
+   "used": "wall detail: window spacing (about 5 m), stone piers between bays, round-headed windows with brick reveals, frieze of small arches under the eaves, low cellar windows in the plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24032288",
+   "used": "overall size only (35 x 20 m); the OSM outline is noisy so the nave is a clean rectangle"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8452f",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.42,
+    "glassColour": "#2b3036",
+    "bay": 4,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 1.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d8cdb4",
+      "height": 0.35,
+      "at": 0.93,
+      "proud": 0.12,
+      "floors": "all"
+     },
+     {
+      "type": "bands",
+      "colour": "#c98a6a",
+      "height": 0.5,
+      "at": 0.97,
+      "proud": 0.1,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3442d",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     8,
+     13
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8452f",
+    "windows": "punched",
+    "plinth": 1.6,
+    "windowShape": "round",
+    "windowRatio": 0.04,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3442d",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse",
+   "at": [
+    -11.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      2,
+      -3.6
+     ],
+     [
+      -1.5,
+      -3.2
+     ],
+     [
+      -3.4,
+      -1.6
+     ],
+     [
+      -4,
+      0
+     ],
+     [
+      -3.4,
+      1.6
+     ],
+     [
+      -1.5,
+      3.2
+     ],
+     [
+      2,
+      3.6
+     ]
+    ],
+    "z0": 0,
+    "height": 6.2,
+    "colour": "#a8452f",
+    "topColour": "#a3442d",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 1.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse-roof",
+   "at": [
+    -11.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      2,
+      -3.9
+     ],
+     [
+      -1.8,
+      -3.5
+     ],
+     [
+      -3.8,
+      -1.8
+     ],
+     [
+      -4.5,
+      0
+     ],
+     [
+      -3.8,
+      1.8
+     ],
+     [
+      -1.8,
+      3.5
+     ],
+     [
+      2,
+      3.9
+     ]
+    ],
+    "z0": 6.2,
+    "height": 3,
+    "topScale": 0.15,
+    "colour": "#a3442d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "annex-roof",
+   "at": [
+    -11.8,
+    -3.6
+   ],
+   "params": {
+    "points": [
+     [
+      -2.6,
+      0
+     ],
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      -3.4
+     ],
+     [
+      -2.6,
+      -3.4
+     ]
+    ],
+    "z0": 1.2,
+    "height": 3.6,
+    "topScale": [
+     1,
+     0.02
+    ],
+    "topOffset": [
+     0,
+     1.7
+    ],
+    "colour": "#6e7a82",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    3,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -11.3,
+      -5.8
+     ],
+     [
+      11.3,
+      -5.8
+     ],
+     [
+      11.3,
+      5.8
+     ],
+     [
+      -11.3,
+      5.8
+     ]
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#b3a27a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.35,
+        -0.5
+       ],
+       [
+        0.35,
+        -0.5
+       ],
+       [
+        0.35,
+        0.2
+       ],
+       [
+        -0.35,
+        0.2
+       ]
+      ],
+      "z0": 0,
+      "height": 6.5,
+      "topScale": 0.7,
+      "colour": "#b3a27a",
+      "windows": "none"
+     }
+    },
+    "start": [
+     -6.5,
+     -5.9
+    ],
+    "end": [
+     12.5,
+     -5.9
+    ],
+    "count": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     22
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     20
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     18
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Nave side windows and buttress piers added; apse and annex roofs still simplified; tower omitted as it is not in photos; tree cover not modelled densely"
+ }
+}

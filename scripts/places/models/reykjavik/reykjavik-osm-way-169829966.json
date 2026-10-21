@@ -1,0 +1,246 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:R%C3%BAtst%C3%BAn-17j%C3%BAn%C3%AD2007.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "J\u00f3hannes Birgir Jensson",
+   "view": "street",
+   "file": "/tmp/places-evidence/reykjavik/rut1.jpg",
+   "used": "open grass slope rising to a crest, row of flagpoles along the crest, white stage tent at left, conifer and broadleaf tree belt behind, low red-roofed building and pale sheds at the edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/169829966",
+   "used": "park outline (about 137 x 114 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "lawn"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f9150",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9150",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope",
+   "params": {
+    "points": [
+     [
+      -45,
+      -10
+     ],
+     [
+      50,
+      -10
+     ],
+     [
+      50,
+      45
+     ],
+     [
+      -45,
+      45
+     ]
+    ],
+    "height": 4.5,
+    "topScale": [
+     1,
+     0.5
+    ],
+    "topOffset": [
+     0,
+     15
+    ],
+    "colour": "#6f9150",
+    "topColour": "#6f9150"
+   },
+   "at": [
+    0,
+    0,
+    0.3
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -18,
+    30,
+    4.5
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#1f4fa0",
+    "count": 7,
+    "spacing": 5,
+    "colours": [
+     "#1f4fa0",
+     "#c8102e",
+     "#ffffff",
+     "#1f4fa0",
+     "#c8102e",
+     "#ffffff",
+     "#1f4fa0"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stage-tent",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -48,
+    8
+   ],
+   "z0": 0.5,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1f1ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e9e9e6",
+    "pitch": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    52,
+    36
+   ],
+   "z0": 0.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d4c8",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#7a3b2c",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -12,
+    0.3
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#a9a9a4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    60,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 9,
+    "spread": 30,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 8,
+    "spread": 40,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -80,
+    75,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 8,
+    "spread": 160,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   160
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "photo is a crowd scene; slope, flags, tent and tree belt approximate; flags small; grass cannot extend past 160 m extent so a grey horizon shows"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-way-169829966"
+}

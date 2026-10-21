@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-osm-node-13922405680",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praha_Vysocany_U_vinnych_sklepu_11_Panevropska_univerzita.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "JiriMatejicek",
+   "view": "street",
+   "file": "/tmp/places-evidence/prague/osm-node-13922405680-0.jpg",
+   "used": "four-storey red-brick block on a pale grey glazed ground storey, tall narrow paired windows in a dense rhythm, flat roof with a small pale plant box at the back, dark railing fence and car-park barrier at the front, wooded slope behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/104837956",
+   "used": "plan size (about 54 x 27 m); modelled as an axis-aligned rectangle"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 4,
+  "fovDeg": 58,
+  "aspect": 1.33,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-storey",
+   "footprint": {
+    "rect": [
+     54,
+     27
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#cfd0cf",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.5,
+    "bay": 2.4,
+    "glassColour": "#3b4a52",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdbdbb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-upper",
+   "footprint": {
+    "rect": [
+     54,
+     27
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.4,
+   "height": 11.6,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0674e",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.38,
+    "bay": 2.4,
+    "glassColour": "#46565e",
+    "cornice": false,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7f80",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    22,
+    9
+   ],
+   "z0": 16,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#cfd1d2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.9,
+    "thickness": 0.12,
+    "kind": "fence",
+    "pillarEvery": 2.5,
+    "colour": "#25282b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -14.2,
+    15.8
+   ],
+   "params": {
+    "width": 14,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#e8e8e6",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     22
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     24
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   90,
+   75
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Windows are paired casements on a regular grid rather than the real alternating tall single and double slots; fence is plain posts without the rails; barrier, signage lettering and wooded slope are omitted; plan is an axis-aligned rectangle instead of the slightly skewed OSM outline."
+ }
+}

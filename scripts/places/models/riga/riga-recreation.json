@@ -1,0 +1,742 @@
+{
+ "name": "Zemitana laukums",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Teika,_Zemitaana_laukums2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "ScAvenger",
+   "view": "street",
+   "file": "/tmp/places-evidence/riga/recreation-0.jpg",
+   "used": "grey concrete-tile paving, marigold flowerbed, stylised granite arch sculpture, tall lindens ringing the square, low hedges, benches, buses passing behind the trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/88326540",
+   "used": "pentagon outline of the square (61 x 41 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "paved-square",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -32,
+      16.3
+     ],
+     [
+      0,
+      34.7
+     ],
+     [
+      4.6,
+      34.5
+     ],
+     [
+      31.4,
+      -18.1
+     ],
+     [
+      -2.5,
+      -35.9
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#c4baa5"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-w",
+   "at": [
+    -18,
+    -3,
+    0.12
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9
+   },
+   "rotDeg": -28
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-e",
+   "at": [
+    20,
+    -14,
+    0.12
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9
+   },
+   "rotDeg": -28
+  },
+  {
+   "type": "park-bench",
+   "id": "benches-w",
+   "at": [
+    -24,
+    -8,
+    0.12
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 4
+   },
+   "rotDeg": -60
+  },
+  {
+   "type": "park-bench",
+   "id": "benches-e",
+   "at": [
+    22,
+    -18,
+    0.12
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 4
+   },
+   "rotDeg": -60
+  },
+  {
+   "type": "lamp",
+   "id": "lamp-a",
+   "at": [
+    8,
+    12,
+    0.12
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-green",
+   "at": [
+    0,
+    -2,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -7,
+      0
+     ],
+     [
+      -2,
+      2.0
+     ],
+     [
+      4,
+      1.8
+     ],
+     [
+      9,
+      0.3
+     ],
+     [
+      3,
+      -1.5
+     ],
+     [
+      -3,
+      -1.7
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#5f8f3f"
+   },
+   "rotDeg": -20
+  },
+  {
+   "type": "prism",
+   "id": "bed-marigold",
+   "at": [
+    0,
+    -2,
+    0.42
+   ],
+   "params": {
+    "points": [
+     [
+      2,
+      0.3
+     ],
+     [
+      4,
+      1.4
+     ],
+     [
+      8.6,
+      0.3
+     ],
+     [
+      4,
+      -0.8
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#e88a1e"
+   },
+   "rotDeg": -20
+  },
+  {
+   "type": "prism",
+   "id": "bed-yellow",
+   "at": [
+    0,
+    -2,
+    0.42
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      0.2
+     ],
+     [
+      -4,
+      1.0
+     ],
+     [
+      -2,
+      0.9
+     ],
+     [
+      -4,
+      -0.3
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#f0c43a"
+   },
+   "rotDeg": -20
+  },
+  {
+   "type": "prism",
+   "id": "granite-plinth",
+   "at": [
+    -9,
+    5,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     3.4
+    ],
+    "height": 1.2,
+    "colour": "#a9a395"
+   },
+   "rotDeg": -20
+  },
+  {
+   "type": "revolve",
+   "id": "granite-arch",
+   "at": [
+    -9,
+    5,
+    1.32
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      2.5,
+      0
+     ],
+     [
+      2.5,
+      1.2
+     ],
+     [
+      2.1,
+      1.2
+     ],
+     [
+      2.1,
+      2.0
+     ],
+     [
+      1.7,
+      2.0
+     ],
+     [
+      1.7,
+      2.7
+     ],
+     [
+      1.2,
+      2.7
+     ],
+     [
+      1.2,
+      3.3
+     ],
+     [
+      0,
+      3.3
+     ]
+    ],
+    "colour": "#c8c1b6",
+    "segments": 18
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road-s",
+   "at": [
+    0,
+    -43,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     6
+    ],
+    "height": 0.1,
+    "colour": "#4a4b4d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road-n",
+   "at": [
+    0,
+    43,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     6
+    ],
+    "height": 0.1,
+    "colour": "#4a4b4d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-n",
+   "footprint": {
+    "rect": [
+     50,
+     8
+    ]
+   },
+   "at": [
+    0,
+    54
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d9c2",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#80807d"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-n",
+   "at": [
+    -8,
+    20,
+    0.12
+   ],
+   "params": {
+    "length": 22,
+    "height": 0.9
+   },
+   "rotDeg": -28
+  },
+  {
+   "type": "tree",
+   "id": "linden0",
+   "at": [
+    27.9,
+    -2.4,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden1",
+   "at": [
+    26.4,
+    2.7,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden2",
+   "at": [
+    29.9,
+    12.0,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20.4
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden3",
+   "at": [
+    20.2,
+    14.8,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16.9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden4",
+   "at": [
+    14.4,
+    15.7,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16.5
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden5",
+   "at": [
+    14.1,
+    22.5,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20.6
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden6",
+   "at": [
+    6.0,
+    20.0,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.2
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden7",
+   "at": [
+    -2.6,
+    23.2,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 21.0
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden8",
+   "at": [
+    -7.6,
+    18.1,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19.2
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden9",
+   "at": [
+    -15.7,
+    18.1,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16.2
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden10",
+   "at": [
+    -22.7,
+    12.1,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 21.5
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden11",
+   "at": [
+    -23.6,
+    10.5,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.1
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden12",
+   "at": [
+    -25.9,
+    5.7,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 21.2
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden13",
+   "at": [
+    -27.2,
+    0.1,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden14",
+   "at": [
+    -28.3,
+    -5.7,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16.1
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden15",
+   "at": [
+    -28.1,
+    -8.3,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15.3
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden16",
+   "at": [
+    -26.1,
+    -13.8,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.0
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden17",
+   "at": [
+    -16.8,
+    -18.3,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.4
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden18",
+   "at": [
+    -6.7,
+    -22.4,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden19",
+   "at": [
+    -6.0,
+    -21.0,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16.9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden20",
+   "at": [
+    2.5,
+    -20.4,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.2
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden21",
+   "at": [
+    11.1,
+    -18.1,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15.7
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden22",
+   "at": [
+    13.5,
+    -19.7,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20.4
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden23",
+   "at": [
+    23.4,
+    -16.2,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17.3
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden24",
+   "at": [
+    24.0,
+    -10.5,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15.3
+   }
+  },
+  {
+   "type": "tree",
+   "id": "linden25",
+   "at": [
+    30.7,
+    -2.9,
+    0.12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 21.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-recreation",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Beige paving, lens bed with marigolds, stepped granite arch, ring of tall lindens and road/block backdrop added; tree shadows still read bluish on paving, buses not modelled, arch is a stepped revolve, bench backs generic."
+ }
+}

@@ -1,0 +1,212 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/533375801",
+   "used": "Zorgboulevard care strip outline 115.6 x 19.4 m, 2016, rotated to the bearing; the hospital block behind it is sized from the brief (about 110 x 40 m, 4 storeys, 17 m)"
+  },
+  {
+   "kind": "text",
+   "used": "Zaans Medisch Centrum by Mecanoo 2013-2017: compact block, floor-length windows, calm colours; no usable photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "zorgboulevard",
+   "footprint": {
+    "osm": true,
+    "scale": 0.85
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9b2a6",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 9,
+    "glassColour": "#8aa0aa",
+    "plinth": 0.3,
+    "bands": "#ece9e2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "material": "membrane",
+    "parapet": 0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "rect": [
+     88,
+     34
+    ]
+   },
+   "at": [
+    -2,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4ac9f",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bay": 5,
+    "glassColour": "#8aa0aa",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#b4ac9f",
+      "#ece9e2"
+     ]
+    },
+    "plinth": 0.4,
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "material": "membrane",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     26,
+     26
+    ]
+   },
+   "at": [
+    56,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9a194",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 6,
+    "faces": {
+     "left": "none",
+     "back": "none"
+    },
+    "glassColour": "#8aa0aa",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "material": "membrane",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "glass-gable-entrance",
+   "at": [
+    -8,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 8,
+    "height": 7,
+    "rise": 2.0,
+    "glass_colour": "#cfe0e6"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    34,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#ece9e2",
+    "roofColour": "#8a8f93",
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1.5,
+    "colour": "#3f8f9c",
+    "frameColour": "#b8bcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   118,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -45
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -45
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo available; OSM strip is the Zorgboulevard, hospital body sized from the brief"
+ }
+}

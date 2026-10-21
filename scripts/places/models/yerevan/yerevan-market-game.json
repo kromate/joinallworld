@@ -1,0 +1,340 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dalma_Garden_Mall.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Serouj Ourishian",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/dalma.jpg",
+   "used": "long low two-level mall, pale grey-beige panel walls, tall white arched portal pavilion with pilasters and a green sign tree, glazed left strip, green pyramid roof at right end, flat roof with rooftop plant"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dalma_Garden_Mall-2.JPG",
+   "licence": "CC BY-SA",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/yerevan/dalma2.jpg",
+   "used": "portal pavilion detail (paired pilasters, deep arch), grey cladding panels, shopfront glazing with blank posters, parking forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/116719155",
+   "used": "main footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 2.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     118,
+     42
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c4bcae",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain",
+     "front": "plain"
+    },
+    "bands": "#c9c3b6",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a8c",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shopfront",
+   "params": {
+    "rect": [
+     118,
+     0.8
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#6a7a82",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    -21.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portal",
+   "params": {
+    "rect": [
+     22,
+     8
+    ],
+    "z0": 0,
+    "height": 12.5,
+    "colour": "#f1eee5",
+    "windows": "none",
+    "trimColour": "#d9d4c6"
+   },
+   "at": [
+    -6,
+    -24
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "arch-void",
+   "params": {
+    "segments": 12,
+    "colour": "#3b3f44",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      4,
+      0,
+      "#3b3f44"
+     ],
+     [
+      4,
+      6
+     ],
+     [
+      2.8,
+      8.2
+     ],
+     [
+      0.1,
+      9
+     ]
+    ]
+   },
+   "at": [
+    -6,
+    -28.1,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pilasters",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -15,
+     -28.5
+    ],
+    "end": [
+     3,
+     -28.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.4
+      ],
+      "height": 12.5,
+      "colour": "#fbf8ef"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment",
+   "params": {
+    "rect": [
+     24,
+     9
+    ],
+    "z0": 12.5,
+    "height": 1.2,
+    "colour": "#e4dfd2"
+   },
+   "at": [
+    -6,
+    -24
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign-tree",
+   "at": [
+    -6,
+    -24,
+    13.7
+   ],
+   "params": {
+    "width": 6,
+    "height": 4,
+    "bottom": 0.2,
+    "colour": "#3b8a52",
+    "frameColour": "#3b8a52",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "green-roof",
+   "params": {
+    "rect": [
+     20,
+     14
+    ],
+    "z0": 8.5,
+    "height": 5,
+    "topScale": 0.2,
+    "colour": "#59a98c",
+    "windows": "none"
+   },
+   "at": [
+    48,
+    -14
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "glass-left",
+   "params": {
+    "rect": [
+     20,
+     0.6
+    ],
+    "z0": 3,
+    "height": 5,
+    "colour": "#2f3a42",
+    "windows": "none"
+   },
+   "at": [
+    -48,
+    -21.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant-box",
+   "params": {
+    "rect": [
+     10,
+     6
+    ],
+    "z0": 8.5,
+    "height": 2.4,
+    "colour": "#b9b3a6",
+    "windows": "none"
+   },
+   "at": [
+    -20,
+    -8
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -60
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -45,
+     -38
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -45,
+     -46
+    ],
+    "yawDeg": 90,
+    "colour": "#2c2f33"
+   },
+   {
+    "at": [
+     -31,
+     -38
+    ],
+    "yawDeg": 90,
+    "colour": "#2c2f33"
+   },
+   {
+    "at": [
+     -31,
+     -46
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     -17,
+     -38
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     -17,
+     -46
+    ],
+    "yawDeg": 90,
+    "colour": "#7b1f1f"
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "mall is a plain rectangle (no stair/ramp at right end, no shopfront posters, tower blocks behind omitted); portal arch reads as a dark blob; parked cars still dominate foreground"
+ }
+}

@@ -1,0 +1,3128 @@
+{
+ "name": "Riga Aviation Museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yakovlev_Yak-28R_Red_22_Soviet_AF_Riga_Msm_04.10.05R_edited-3.jpg",
+   "licence": "CC BY 3.0",
+   "author": "RuthAS",
+   "view": "side",
+   "file": "/tmp/places-evidence/riga/osm-way-976058477-0.jpg",
+   "used": "open-air jet standing on rough grass with a sandy track, olive-tan camouflage, silver belly, radar lattice behind, more aircraft in the row, orange cones"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Riga_Aviation_Museum_gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mztourist",
+   "view": "detail",
+   "file": "/tmp/places-evidence/riga/osm-way-976058477-1.jpg",
+   "used": "green wire-mesh fence, cracked concrete apron, missiles on stands, low white shed with pitched roof, pines behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/976058477",
+   "used": "site extent only (about 217 x 112 m open-air park)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 5,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "array",
+   "id": "missiles",
+   "at": [
+    6,
+    -36,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     14,
+     0
+    ],
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "circle": 0.4
+      },
+      "points": [
+       [
+        0,
+        0,
+        1.2
+       ],
+       [
+        0,
+        9,
+        1.6
+       ]
+      ],
+      "taper": [
+       1,
+       0.4
+      ],
+      "colour": "#6f7a5c",
+      "n": 6
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-front",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -76,
+      0
+     ],
+     [
+      -4,
+      0
+     ]
+    ],
+    "height": 2.2,
+    "kind": "wire",
+    "colour": "#2f6b4a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-front-b",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      4,
+      0
+     ],
+     [
+      76,
+      0
+     ]
+    ],
+    "height": 2.2,
+    "kind": "wire",
+    "colour": "#2f6b4a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-l",
+   "at": [
+    -5,
+    -42,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 3.0,
+    "colour": "#7a7f7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-r",
+   "at": [
+    5,
+    -42,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 3.0,
+    "colour": "#7a7f7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "id": "pines",
+   "at": [
+    0,
+    72,
+    0
+   ],
+   "params": {
+    "width": 150,
+    "depth": 18,
+    "count": 22,
+    "kind": "conifer",
+    "min_height": 11,
+    "max_height": 18
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "id": "ticket-kiosk",
+   "at": [
+    14,
+    -46,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#6a7e5a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-nose",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.0
+    },
+    "points": [
+     [
+      0,
+      13,
+      2.3
+     ],
+     [
+      0,
+      6,
+      2.3
+     ]
+    ],
+    "colour": "#7a7a45",
+    "n": 8,
+    "taper": [
+     0.1,
+     1
+    ]
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-probe",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.1
+    },
+    "points": [
+     [
+      0,
+      17,
+      2.3
+     ],
+     [
+      0,
+      13,
+      2.3
+     ]
+    ],
+    "colour": "#5a5a58",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-body",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.05
+    },
+    "points": [
+     [
+      0,
+      6,
+      2.3
+     ],
+     [
+      0,
+      -9,
+      2.3
+     ]
+    ],
+    "colour": "#7a7a45",
+    "n": 8,
+    "taper": [
+     1,
+     0.7
+    ]
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-camo0",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.02
+    },
+    "points": [
+     [
+      0,
+      4.5,
+      2.3
+     ],
+     [
+      0,
+      2.0,
+      2.3
+     ]
+    ],
+    "colour": "#c2ad7a",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-camo1",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.95
+    },
+    "points": [
+     [
+      0,
+      -0.5,
+      2.3
+     ],
+     [
+      0,
+      -3.0,
+      2.3
+     ]
+    ],
+    "colour": "#c2ad7a",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-camo2",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.86
+    },
+    "points": [
+     [
+      0,
+      -5.5,
+      2.3
+     ],
+     [
+      0,
+      -8,
+      2.3
+     ]
+    ],
+    "colour": "#c2ad7a",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-camo3",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.8
+    },
+    "points": [
+     [
+      0,
+      10,
+      2.3
+     ],
+     [
+      0,
+      8,
+      2.3
+     ]
+    ],
+    "colour": "#c2ad7a",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-belly",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.5,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      0,
+      5,
+      1.4
+     ],
+     [
+      0,
+      -3,
+      1.4
+     ]
+    ],
+    "colour": "#c9ccc8",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-intake-1",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.4
+    },
+    "points": [
+     [
+      -1.15,
+      4,
+      2.0
+     ],
+     [
+      -1.15,
+      1,
+      2.0
+     ]
+    ],
+    "colour": "#33332f",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-tank-1",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.4,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -4.8,
+      1.0,
+      1.7
+     ],
+     [
+      -4.8,
+      -3.5,
+      1.7
+     ]
+    ],
+    "colour": "#cfd2d0",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-intake1",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.4
+    },
+    "points": [
+     [
+      1.15,
+      4,
+      2.0
+     ],
+     [
+      1.15,
+      1,
+      2.0
+     ]
+    ],
+    "colour": "#33332f",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak28-tank1",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.4,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      4.8,
+      1.0,
+      1.7
+     ],
+     [
+      4.8,
+      -3.5,
+      1.7
+     ]
+    ],
+    "colour": "#cfd2d0",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak28-wings",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1,
+      2.5
+     ],
+     [
+      -9,
+      -2.5
+     ],
+     [
+      -9,
+      -4.5
+     ],
+     [
+      -1,
+      -4
+     ],
+     [
+      1,
+      -4
+     ],
+     [
+      9,
+      -4.5
+     ],
+     [
+      9,
+      -2.5
+     ],
+     [
+      1,
+      2.5
+     ]
+    ],
+    "z0": 2.05,
+    "height": 0.3,
+    "colour": "#7a7a45"
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "prism",
+   "id": "yak28-sandwing",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      0.5
+     ],
+     [
+      -8,
+      -2
+     ],
+     [
+      -8,
+      -3.2
+     ],
+     [
+      -4,
+      -2.8
+     ]
+    ],
+    "z0": 2.35,
+    "height": 0.05,
+    "colour": "#c2ad7a"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak28-fin",
+   "at": [
+    -51.17,
+    -15.37,
+    3.1
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     3.6
+    ],
+    "height": 3.6,
+    "topScale": [
+     1,
+     0.45
+    ],
+    "colour": "#7a7a45"
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "prism",
+   "id": "yak28-star",
+   "at": [
+    -51.17,
+    -15.37,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     1.0
+    ],
+    "height": 1.0,
+    "colour": "#b3262b"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak28-tailplane",
+   "at": [
+    -52.17,
+    -15.29,
+    2.5
+   ],
+   "params": {
+    "points": [
+     [
+      -3.6,
+      0.6
+     ],
+     [
+      3.6,
+      0.6
+     ],
+     [
+      3.6,
+      -0.6
+     ],
+     [
+      -3.6,
+      -1.2
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#7a7a45"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak28-canopy",
+   "at": [
+    -40.81,
+    -16.28,
+    3.25
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     3.2
+    ],
+    "height": 0.7,
+    "topScale": [
+     0.7,
+     0.5
+    ],
+    "colour": "#6d7c82"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak28-numeral",
+   "at": [
+    -44.59,
+    -16.95,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     2.4
+    ],
+    "height": 0.9,
+    "colour": "#b3262b"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "yak28-gear",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -1.4,
+     -0.5
+    ],
+    "end": [
+     1.4,
+     -0.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.9
+      ],
+      "height": 1.4,
+      "colour": "#2b2d2f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ],
+   "rotDeg": -95
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-nose",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.0
+    },
+    "points": [
+     [
+      0,
+      13,
+      2.3
+     ],
+     [
+      0,
+      6,
+      2.3
+     ]
+    ],
+    "colour": "#847f4a",
+    "n": 8,
+    "taper": [
+     0.1,
+     1
+    ]
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-probe",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.1
+    },
+    "points": [
+     [
+      0,
+      17,
+      2.3
+     ],
+     [
+      0,
+      13,
+      2.3
+     ]
+    ],
+    "colour": "#5a5a58",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-body",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.05
+    },
+    "points": [
+     [
+      0,
+      6,
+      2.3
+     ],
+     [
+      0,
+      -9,
+      2.3
+     ]
+    ],
+    "colour": "#847f4a",
+    "n": 8,
+    "taper": [
+     1,
+     0.7
+    ]
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-camo0",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.02
+    },
+    "points": [
+     [
+      0,
+      4.5,
+      2.3
+     ],
+     [
+      0,
+      2.0,
+      2.3
+     ]
+    ],
+    "colour": "#bda978",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-camo1",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.95
+    },
+    "points": [
+     [
+      0,
+      -0.5,
+      2.3
+     ],
+     [
+      0,
+      -3.0,
+      2.3
+     ]
+    ],
+    "colour": "#bda978",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-camo2",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.86
+    },
+    "points": [
+     [
+      0,
+      -5.5,
+      2.3
+     ],
+     [
+      0,
+      -8,
+      2.3
+     ]
+    ],
+    "colour": "#bda978",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-camo3",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.8
+    },
+    "points": [
+     [
+      0,
+      10,
+      2.3
+     ],
+     [
+      0,
+      8,
+      2.3
+     ]
+    ],
+    "colour": "#bda978",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-belly",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.5,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      0,
+      5,
+      1.4
+     ],
+     [
+      0,
+      -3,
+      1.4
+     ]
+    ],
+    "colour": "#c9ccc8",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-intake-1",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.4
+    },
+    "points": [
+     [
+      -1.15,
+      4,
+      2.0
+     ],
+     [
+      -1.15,
+      1,
+      2.0
+     ]
+    ],
+    "colour": "#33332f",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-tank-1",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.4,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -4.8,
+      1.0,
+      1.7
+     ],
+     [
+      -4.8,
+      -3.5,
+      1.7
+     ]
+    ],
+    "colour": "#cfd2d0",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-intake1",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.4
+    },
+    "points": [
+     [
+      1.15,
+      4,
+      2.0
+     ],
+     [
+      1.15,
+      1,
+      2.0
+     ]
+    ],
+    "colour": "#33332f",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-b-tank1",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.4,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      4.8,
+      1.0,
+      1.7
+     ],
+     [
+      4.8,
+      -3.5,
+      1.7
+     ]
+    ],
+    "colour": "#cfd2d0",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-b-wings",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1,
+      2.5
+     ],
+     [
+      -9,
+      -2.5
+     ],
+     [
+      -9,
+      -4.5
+     ],
+     [
+      -1,
+      -4
+     ],
+     [
+      1,
+      -4
+     ],
+     [
+      9,
+      -4.5
+     ],
+     [
+      9,
+      -2.5
+     ],
+     [
+      1,
+      2.5
+     ]
+    ],
+    "z0": 2.05,
+    "height": 0.3,
+    "colour": "#847f4a"
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "prism",
+   "id": "yak-b-sandwing",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      0.5
+     ],
+     [
+      -8,
+      -2
+     ],
+     [
+      -8,
+      -3.2
+     ],
+     [
+      -4,
+      -2.8
+     ]
+    ],
+    "z0": 2.35,
+    "height": 0.05,
+    "colour": "#bda978"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-b-fin",
+   "at": [
+    -25.17,
+    -13.37,
+    3.1
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     3.6
+    ],
+    "height": 3.6,
+    "topScale": [
+     1,
+     0.45
+    ],
+    "colour": "#847f4a"
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "prism",
+   "id": "yak-b-star",
+   "at": [
+    -25.17,
+    -13.37,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     1.0
+    ],
+    "height": 1.0,
+    "colour": "#b3262b"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-b-tailplane",
+   "at": [
+    -26.17,
+    -13.29,
+    2.5
+   ],
+   "params": {
+    "points": [
+     [
+      -3.6,
+      0.6
+     ],
+     [
+      3.6,
+      0.6
+     ],
+     [
+      3.6,
+      -0.6
+     ],
+     [
+      -3.6,
+      -1.2
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#847f4a"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-b-canopy",
+   "at": [
+    -14.81,
+    -14.28,
+    3.25
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     3.2
+    ],
+    "height": 0.7,
+    "topScale": [
+     0.7,
+     0.5
+    ],
+    "colour": "#6d7c82"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-b-numeral",
+   "at": [
+    -18.59,
+    -14.95,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     2.4
+    ],
+    "height": 0.9,
+    "colour": "#b3262b"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "yak-b-gear",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -1.4,
+     -0.5
+    ],
+    "end": [
+     1.4,
+     -0.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.9
+      ],
+      "height": 1.4,
+      "colour": "#2b2d2f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ],
+   "rotDeg": -95
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-nose",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.0
+    },
+    "points": [
+     [
+      0,
+      13,
+      2.3
+     ],
+     [
+      0,
+      6,
+      2.3
+     ]
+    ],
+    "colour": "#7a7a45",
+    "n": 8,
+    "taper": [
+     0.1,
+     1
+    ]
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-probe",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.1
+    },
+    "points": [
+     [
+      0,
+      17,
+      2.3
+     ],
+     [
+      0,
+      13,
+      2.3
+     ]
+    ],
+    "colour": "#5a5a58",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-body",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.05
+    },
+    "points": [
+     [
+      0,
+      6,
+      2.3
+     ],
+     [
+      0,
+      -9,
+      2.3
+     ]
+    ],
+    "colour": "#7a7a45",
+    "n": 8,
+    "taper": [
+     1,
+     0.7
+    ]
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-camo0",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.02
+    },
+    "points": [
+     [
+      0,
+      4.5,
+      2.3
+     ],
+     [
+      0,
+      2.0,
+      2.3
+     ]
+    ],
+    "colour": "#c7b283",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-camo1",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.95
+    },
+    "points": [
+     [
+      0,
+      -0.5,
+      2.3
+     ],
+     [
+      0,
+      -3.0,
+      2.3
+     ]
+    ],
+    "colour": "#c7b283",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-camo2",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.86
+    },
+    "points": [
+     [
+      0,
+      -5.5,
+      2.3
+     ],
+     [
+      0,
+      -8,
+      2.3
+     ]
+    ],
+    "colour": "#c7b283",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-camo3",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.8
+    },
+    "points": [
+     [
+      0,
+      10,
+      2.3
+     ],
+     [
+      0,
+      8,
+      2.3
+     ]
+    ],
+    "colour": "#c7b283",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-belly",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.5,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      0,
+      5,
+      1.4
+     ],
+     [
+      0,
+      -3,
+      1.4
+     ]
+    ],
+    "colour": "#c9ccc8",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-intake-1",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.4
+    },
+    "points": [
+     [
+      -1.15,
+      4,
+      2.0
+     ],
+     [
+      -1.15,
+      1,
+      2.0
+     ]
+    ],
+    "colour": "#33332f",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-tank-1",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.4,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -4.8,
+      1.0,
+      1.7
+     ],
+     [
+      -4.8,
+      -3.5,
+      1.7
+     ]
+    ],
+    "colour": "#cfd2d0",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-intake1",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.4
+    },
+    "points": [
+     [
+      1.15,
+      4,
+      2.0
+     ],
+     [
+      1.15,
+      1,
+      2.0
+     ]
+    ],
+    "colour": "#33332f",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-c-tank1",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.4,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      4.8,
+      1.0,
+      1.7
+     ],
+     [
+      4.8,
+      -3.5,
+      1.7
+     ]
+    ],
+    "colour": "#cfd2d0",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-c-wings",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1,
+      2.5
+     ],
+     [
+      -9,
+      -2.5
+     ],
+     [
+      -9,
+      -4.5
+     ],
+     [
+      -1,
+      -4
+     ],
+     [
+      1,
+      -4
+     ],
+     [
+      9,
+      -4.5
+     ],
+     [
+      9,
+      -2.5
+     ],
+     [
+      1,
+      2.5
+     ]
+    ],
+    "z0": 2.05,
+    "height": 0.3,
+    "colour": "#7a7a45"
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "prism",
+   "id": "yak-c-sandwing",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      0.5
+     ],
+     [
+      -8,
+      -2
+     ],
+     [
+      -8,
+      -3.2
+     ],
+     [
+      -4,
+      -2.8
+     ]
+    ],
+    "z0": 2.35,
+    "height": 0.05,
+    "colour": "#c7b283"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-c-fin",
+   "at": [
+    0.83,
+    -15.37,
+    3.1
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     3.6
+    ],
+    "height": 3.6,
+    "topScale": [
+     1,
+     0.45
+    ],
+    "colour": "#7a7a45"
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "prism",
+   "id": "yak-c-star",
+   "at": [
+    0.83,
+    -15.37,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     1.0
+    ],
+    "height": 1.0,
+    "colour": "#b3262b"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-c-tailplane",
+   "at": [
+    -0.17,
+    -15.29,
+    2.5
+   ],
+   "params": {
+    "points": [
+     [
+      -3.6,
+      0.6
+     ],
+     [
+      3.6,
+      0.6
+     ],
+     [
+      3.6,
+      -0.6
+     ],
+     [
+      -3.6,
+      -1.2
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#7a7a45"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-c-canopy",
+   "at": [
+    11.19,
+    -16.28,
+    3.25
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     3.2
+    ],
+    "height": 0.7,
+    "topScale": [
+     0.7,
+     0.5
+    ],
+    "colour": "#6d7c82"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-c-numeral",
+   "at": [
+    7.41,
+    -16.95,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     2.4
+    ],
+    "height": 0.9,
+    "colour": "#b3262b"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "yak-c-gear",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -1.4,
+     -0.5
+    ],
+    "end": [
+     1.4,
+     -0.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.9
+      ],
+      "height": 1.4,
+      "colour": "#2b2d2f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ],
+   "rotDeg": -95
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-nose",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.0
+    },
+    "points": [
+     [
+      0,
+      13,
+      2.3
+     ],
+     [
+      0,
+      6,
+      2.3
+     ]
+    ],
+    "colour": "#6f7340",
+    "n": 8,
+    "taper": [
+     0.1,
+     1
+    ]
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-probe",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.1
+    },
+    "points": [
+     [
+      0,
+      17,
+      2.3
+     ],
+     [
+      0,
+      13,
+      2.3
+     ]
+    ],
+    "colour": "#5a5a58",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-body",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.05
+    },
+    "points": [
+     [
+      0,
+      6,
+      2.3
+     ],
+     [
+      0,
+      -9,
+      2.3
+     ]
+    ],
+    "colour": "#6f7340",
+    "n": 8,
+    "taper": [
+     1,
+     0.7
+    ]
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-camo0",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.02
+    },
+    "points": [
+     [
+      0,
+      4.5,
+      2.3
+     ],
+     [
+      0,
+      2.0,
+      2.3
+     ]
+    ],
+    "colour": "#c2ad7a",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-camo1",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.95
+    },
+    "points": [
+     [
+      0,
+      -0.5,
+      2.3
+     ],
+     [
+      0,
+      -3.0,
+      2.3
+     ]
+    ],
+    "colour": "#c2ad7a",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-camo2",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.86
+    },
+    "points": [
+     [
+      0,
+      -5.5,
+      2.3
+     ],
+     [
+      0,
+      -8,
+      2.3
+     ]
+    ],
+    "colour": "#c2ad7a",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-camo3",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.8
+    },
+    "points": [
+     [
+      0,
+      10,
+      2.3
+     ],
+     [
+      0,
+      8,
+      2.3
+     ]
+    ],
+    "colour": "#c2ad7a",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-belly",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.5,
+      0.45
+     ]
+    },
+    "points": [
+     [
+      0,
+      5,
+      1.4
+     ],
+     [
+      0,
+      -3,
+      1.4
+     ]
+    ],
+    "colour": "#c9ccc8",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-intake-1",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.4
+    },
+    "points": [
+     [
+      -1.15,
+      4,
+      2.0
+     ],
+     [
+      -1.15,
+      1,
+      2.0
+     ]
+    ],
+    "colour": "#33332f",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-tank-1",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.4,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -4.8,
+      1.0,
+      1.7
+     ],
+     [
+      -4.8,
+      -3.5,
+      1.7
+     ]
+    ],
+    "colour": "#cfd2d0",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-intake1",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.4
+    },
+    "points": [
+     [
+      1.15,
+      4,
+      2.0
+     ],
+     [
+      1.15,
+      1,
+      2.0
+     ]
+    ],
+    "colour": "#33332f",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "yak-d-tank1",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      0.4,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      4.8,
+      1.0,
+      1.7
+     ],
+     [
+      4.8,
+      -3.5,
+      1.7
+     ]
+    ],
+    "colour": "#cfd2d0",
+    "n": 8
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-d-wings",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1,
+      2.5
+     ],
+     [
+      -9,
+      -2.5
+     ],
+     [
+      -9,
+      -4.5
+     ],
+     [
+      -1,
+      -4
+     ],
+     [
+      1,
+      -4
+     ],
+     [
+      9,
+      -4.5
+     ],
+     [
+      9,
+      -2.5
+     ],
+     [
+      1,
+      2.5
+     ]
+    ],
+    "z0": 2.05,
+    "height": 0.3,
+    "colour": "#6f7340"
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "prism",
+   "id": "yak-d-sandwing",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      0.5
+     ],
+     [
+      -8,
+      -2
+     ],
+     [
+      -8,
+      -3.2
+     ],
+     [
+      -4,
+      -2.8
+     ]
+    ],
+    "z0": 2.35,
+    "height": 0.05,
+    "colour": "#c2ad7a"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-d-fin",
+   "at": [
+    26.83,
+    -13.37,
+    3.1
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     3.6
+    ],
+    "height": 3.6,
+    "topScale": [
+     1,
+     0.45
+    ],
+    "colour": "#6f7340"
+   },
+   "rotDeg": -95
+  },
+  {
+   "type": "prism",
+   "id": "yak-d-star",
+   "at": [
+    26.83,
+    -13.37,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     1.0
+    ],
+    "height": 1.0,
+    "colour": "#b3262b"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-d-tailplane",
+   "at": [
+    25.83,
+    -13.29,
+    2.5
+   ],
+   "params": {
+    "points": [
+     [
+      -3.6,
+      0.6
+     ],
+     [
+      3.6,
+      0.6
+     ],
+     [
+      3.6,
+      -0.6
+     ],
+     [
+      -3.6,
+      -1.2
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#6f7340"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-d-canopy",
+   "at": [
+    37.19,
+    -14.28,
+    3.25
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     3.2
+    ],
+    "height": 0.7,
+    "topScale": [
+     0.7,
+     0.5
+    ],
+    "colour": "#6d7c82"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yak-d-numeral",
+   "at": [
+    33.41,
+    -14.95,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     2.4
+    ],
+    "height": 0.9,
+    "colour": "#b3262b"
+   },
+   "rotDeg": -95,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "yak-d-gear",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -1.4,
+     -0.5
+    ],
+    "end": [
+     1.4,
+     -0.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.9
+      ],
+      "height": 1.4,
+      "colour": "#2b2d2f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ],
+   "rotDeg": -95
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    -5,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     120,
+     26
+    ],
+    "height": 0.08,
+    "colour": "#9c9c96"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apron-crack",
+   "at": [
+    -5,
+    -14,
+    0.08
+   ],
+   "params": {
+    "rect": [
+     120,
+     0.15
+    ],
+    "height": 0.02,
+    "colour": "#5f5f5b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "path-strip",
+   "id": "sand-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -75,
+      -30
+     ],
+     [
+      -20,
+      -33
+     ],
+     [
+      40,
+      -31
+     ],
+     [
+      75,
+      -28
+     ]
+    ],
+    "width": 7,
+    "colour": "#c2ad84"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "path-strip",
+   "id": "apron-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -8
+     ],
+     [
+      -20,
+      -28
+     ],
+     [
+      40,
+      -24
+     ],
+     [
+      72,
+      -6
+     ]
+    ],
+    "width": 4,
+    "colour": "#b9b3a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cones",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -48,
+     0
+    ],
+    "end": [
+     40,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.55
+      ],
+      "height": 0.75,
+      "topScale": [
+       0.2,
+       0.2
+      ],
+      "colour": "#e8661f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "radar-mast",
+   "at": [
+    -58,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 7,
+    "colour": "#8c8f8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "radar-lattice",
+   "at": [
+    -58,
+    2,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "height": 6.5,
+    "topScale": [
+     1,
+     1
+    ],
+    "colour": "#6a6f6a"
+   },
+   "rotDeg": 25,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    46,
+    30
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0f1ee",
+    "windows": "plain",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "airliner",
+   "id": "tu134",
+   "at": [
+    14,
+    44,
+    0
+   ],
+   "params": {
+    "scale": 0.85,
+    "colour": "#dcdfe0",
+    "tailColour": "#8a8f92"
+   },
+   "rotDeg": -80
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-way-976058477",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Four Yak-28 style jets in a row with camo blotches, intakes, drop tanks, red fins; still simplified fuselage shape, no swept nose detail, grass is flat colour not rough, shed and Tu-134 layout invented from the gate photo."
+ }
+}

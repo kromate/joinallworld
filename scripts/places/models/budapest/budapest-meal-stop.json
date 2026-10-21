@@ -1,0 +1,704 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gerbeaud_Budapest_2005_078.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Norbert Aepli",
+   "view": "front",
+   "file": "/tmp/places-evidence/budapest/meal-stop-0.jpg",
+   "used": "long Vorosmarty ter front: cream stucco, arched upper windows in regular bays, pilaster-and-column central bay, dark maroon ground-floor shopfronts, corner pavilions with domed turret caps, white terrace umbrellas"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Budapest_Gerbeaud.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "unknown",
+   "view": "side",
+   "used": "corner return with a plain grid of rectangular windows, balconies and the arched corner entrance, five storeys with cornice and parapet roofline",
+   "file": "/tmp/places-evidence/budapest/meal-stop-1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/11897",
+   "used": "six-point plan, rotated so the long square frontage faces the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "polygon": [
+     [
+      -34.3,
+      9.4
+     ],
+     [
+      2.9,
+      11.4
+     ],
+     [
+      2.5,
+      18.5
+     ],
+     [
+      35.9,
+      4.5
+     ],
+     [
+      25.0,
+      -21.8
+     ],
+     [
+      -32.2,
+      -21.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20.0,
+   "storeys": 5,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8dcc4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.4,
+    "bay": 3.4,
+    "faces": {
+     "left": "plain",
+     "right": "rect",
+     "back": "plain"
+    },
+    "bands": "#cfc2a4",
+    "plinth": 0.5,
+    "cornice": true,
+    "groundKind": "curtain",
+    "groundHeight": 5.0,
+    "glassColour": "#7a3b34",
+    "parapet": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8083",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -17.9
+    ],
+    "end": [
+     18,
+     -17.9
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "height": 15,
+      "z0": 5.2,
+      "colour": "#d6caad"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cafe-front",
+   "at": [
+    -4,
+    -17.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.8
+    ],
+    "height": 5.0,
+    "colour": "#5c2e2a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -18.4,
+    4.4
+   ],
+   "params": {
+    "width": 12,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#3e2c26",
+    "frameColour": "#c9a24a",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -24
+    ],
+    "end": [
+     18,
+     -24
+    ],
+    "count": 8,
+    "of": {
+     "type": "core/canopy",
+     "params": {
+      "form": "flat",
+      "width": 4.2,
+      "depth": 4.2,
+      "height": 2.6,
+      "thickness": 0.15,
+      "columns": 1,
+      "colour": "#f4f1ea",
+      "edgeColour": "#ece8df"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -17,
+     -18.2
+    ],
+    "end": [
+     10,
+     -18.2
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "height": 12,
+      "z0": 5.2,
+      "colour": "#efe6d0"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "attic",
+   "params": {
+    "points": [
+     [
+      -34.3,
+      9.4
+     ],
+     [
+      2.9,
+      11.4
+     ],
+     [
+      2.5,
+      18.5
+     ],
+     [
+      35.9,
+      4.5
+     ],
+     [
+      25.0,
+      -21.8
+     ],
+     [
+      -32.2,
+      -21.8
+     ]
+    ],
+    "z0": 20.0,
+    "height": 7.5,
+    "topScale": 0.9,
+    "colour": "#7d8785",
+    "windows": "rect",
+    "windowRatio": 0.0
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      -34.3,
+      9.4
+     ],
+     [
+      2.9,
+      11.4
+     ],
+     [
+      2.5,
+      18.5
+     ],
+     [
+      35.9,
+      4.5
+     ],
+     [
+      25.0,
+      -21.8
+     ],
+     [
+      -32.2,
+      -21.8
+     ]
+    ],
+    "z0": 27.5,
+    "height": 0.5,
+    "topScale": 0.92,
+    "colour": "#6f7173"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     -20.4
+    ],
+    "end": [
+     21,
+     -20.4
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.8
+      ],
+      "height": 5.0,
+      "z0": 20.4,
+      "colour": "#e8dcc4"
+     }
+    },
+    "lod1Step": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     -20.4
+    ],
+    "end": [
+     21,
+     -20.4
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.8,
+       2.2
+      ],
+      "height": 0.5,
+      "z0": 25.4,
+      "colour": "#6f7173"
+     }
+    },
+    "lod1Step": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -21
+    ],
+    "end": [
+     22,
+     -21
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 3.2,
+      "z0": 27.5,
+      "colour": "#d6caad"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "radius": 5.0,
+    "n": 8,
+    "z0": 20.0,
+    "height": 6.0,
+    "colour": "#e8dcc4"
+   },
+   "at": [
+    -31,
+    -17.5,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -31,
+    -17.5,
+    26.0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.0,
+      0.0,
+      "#6f9484"
+     ],
+     [
+      5.64,
+      0.0,
+      "#6f9484"
+     ],
+     [
+      5.04,
+      0.9359999999999999,
+      "#6f9484"
+     ],
+     [
+      3.5999999999999996,
+      2.3400000000000003,
+      "#6f9484"
+     ],
+     [
+      1.56,
+      3.9000000000000004,
+      "#6f9484"
+     ],
+     [
+      0.36,
+      5.460000000000001,
+      "#6f9484"
+     ],
+     [
+      0.12,
+      7.800000000000001,
+      "#b8a04a"
+     ],
+     [
+      0.0,
+      8.19,
+      "#b8a04a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "radius": 5.0,
+    "n": 8,
+    "z0": 20.0,
+    "height": 6.0,
+    "colour": "#e8dcc4"
+   },
+   "at": [
+    23,
+    -17.5,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    23,
+    -17.5,
+    26.0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.0,
+      0.0,
+      "#6f9484"
+     ],
+     [
+      5.64,
+      0.0,
+      "#6f9484"
+     ],
+     [
+      5.04,
+      0.9359999999999999,
+      "#6f9484"
+     ],
+     [
+      3.5999999999999996,
+      2.3400000000000003,
+      "#6f9484"
+     ],
+     [
+      1.56,
+      3.9000000000000004,
+      "#6f9484"
+     ],
+     [
+      0.36,
+      5.460000000000001,
+      "#6f9484"
+     ],
+     [
+      0.12,
+      7.800000000000001,
+      "#b8a04a"
+     ],
+     [
+      0.0,
+      8.19,
+      "#b8a04a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "centre-bay",
+   "params": {
+    "rect": [
+     22,
+     1.6
+    ],
+    "z0": 5.0,
+    "height": 13.2,
+    "colour": "#e8dcc4"
+   },
+   "at": [
+    -4,
+    -22.6,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -13.5,
+     -24
+    ],
+    "end": [
+     5.5,
+     -24
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "height": 13.2,
+      "z0": 5.0,
+      "colour": "#f0e8d4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -4,
+    -23,
+    18.2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       23,
+       3.0
+      ]
+     },
+     {
+      "z": 1.0,
+      "rect": [
+       16,
+       2.2
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       6,
+       1.4
+      ]
+     },
+     {
+      "z": 2.3,
+      "rect": [
+       1,
+       1
+      ]
+     }
+    ],
+    "colour": "#e8dcc4"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     56,
+     1.0
+    ],
+    "z0": 5.0,
+    "height": 0.6,
+    "colour": "#d6caad"
+   },
+   "at": [
+    -4,
+    -22.3,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -22.2
+    ],
+    "end": [
+     20,
+     -22.2
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.5
+      ],
+      "z0": 9.4,
+      "height": 0.5,
+      "colour": "#d6caad"
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Mansard is a tapered prism with simple dormers, not the sculptural attic; central bay is a projecting pilaster slab with stepped pediment, window surrounds only as lintels; ground-floor arches not cut; frontage slightly angled in reality."
+ }
+}

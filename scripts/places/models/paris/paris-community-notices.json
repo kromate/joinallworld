@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/4187796",
+   "used": "106 m square plan with 64 degree rotation, height tag 12 m, built 1974 (architects Wogenscky, Chauvet, Richard)"
+  },
+  {
+   "kind": "text",
+   "used": "no photo of this building found on Commons (candidates were aerials where it is not identifiable); stepped courtyard form is a modest 1970s concrete administrative block, not photo-verified; plan scaled from 106 m to 76 m to fit the budget"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ring",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     76,
+     76
+    ]
+   },
+   "rotDeg": 64,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cbc6ba",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a8a398"
+     }
+    ],
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-ring",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     52,
+     52
+    ]
+   },
+   "rotDeg": 64,
+   "z0": 12,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa0a8",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -42
+   ],
+   "rotDeg": 64,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7e9097",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "overhang": 2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Footprint only, not photo-verified: no usable photo of this building; plan scaled from 106 m to 76 m; stepped ring form is an assumption from the 1974 date and height tag."
+ }
+}

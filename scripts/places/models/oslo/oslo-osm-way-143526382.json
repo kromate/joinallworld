@@ -1,0 +1,292 @@
+{
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Longer slab with unbroken louvres, glazed green base, conifers and paving; neighbour blocks still prominent at right, no parking bays, sloping site not modelled."
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Radiumhospitalet02.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ahhh25",
+   "view": "street",
+   "file": "/tmp/places-evidence/oslo/radium1.jpg",
+   "used": "five-storey block clad in pale horizontal louvres, green-glazed ribbon windows between them, grey ground storey with green glass, lower stepped block at the right, plant stacks on the roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Air_radiumhospitalet.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GAD",
+   "view": "aerial",
+   "used": "campus layout: flat-roofed pale blocks stepping down the slope, a taller beige older block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/143526382",
+   "used": "campus is 303 x 294 m, over the scene clamp; a 110 m portion is modelled from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 36,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "research",
+   "footprint": {
+    "rect": [
+     60,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 23,
+   "storeys": 5,
+   "wall": {
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bay": 6,
+    "material": "metal-cladding",
+    "colour": "#d7dcdb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4f8d83",
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#dfe3e3",
+      "backColour": "#6f817c",
+      "pitch": 0.7,
+      "depth": 0.2,
+      "band": 0.7,
+      "faces": [
+       "front",
+       "right"
+      ],
+      "at": 0.1
+     }
+    ],
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa5a6",
+    "parapet": 0.4
+   },
+   "z0": 3.6
+  },
+  {
+   "type": "mass",
+   "id": "research-base",
+   "footprint": {
+    "rect": [
+     58,
+     16.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8184",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#5a9a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8e90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "research-step",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    40,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bay": 7,
+    "material": "metal-cladding",
+    "colour": "#d7dcdb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4f8d83",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa5a6",
+    "parapet": 0.4
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     36,
+     18
+    ]
+   },
+   "at": [
+    -4,
+    50
+   ],
+   "height": 9.799999999999999,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d5c8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#7f9aa3",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bay": 8,
+    "bands": "#c4bfae"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7377",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-block",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -44,
+    66
+   ],
+   "height": 18.2,
+   "storeys": 7,
+   "wall": {
+    "material": "brick",
+    "colour": "#cbb48e",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#8aa0a8",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "bay": 14,
+    "bands": "#d9ccb0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7377",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 8,
+      "height": 2.4,
+      "colour": "#c9cdcf"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -14,
+     0,
+     26.6
+    ],
+    "end": [
+     -6,
+     0,
+     26.6
+    ]
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -4,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "count": 8,
+    "kind": "conifer",
+    "height_min": 6,
+    "height_max": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     20
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-way-143526382"
+}

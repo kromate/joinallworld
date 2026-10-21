@@ -1,0 +1,183 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/227571444",
+   "used": "park outline (name match, about 113 x 106 m, 1 ha) as the lawn; the only nearby Commons photo (See_on_kunst.jpg) is a drawing, not the park, so it was not used; gate, birches and paths follow the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fa457",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa457"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -24.0,
+      -8.0
+     ],
+     [
+      -8.0,
+      -4.800000000000001
+     ],
+     [
+      8.0,
+      4.800000000000001
+     ],
+     [
+      24.0,
+      16.0
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#c9c3b2"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -8.0,
+      -4.800000000000001
+     ],
+     [
+      -6.4,
+      -32.0
+     ]
+    ],
+    "width": 2.0,
+    "colour": "#c9c3b2"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -8,
+    -44,
+    0.2
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "pillar": 0.7,
+    "leaf": "bars",
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -25,
+    20,
+    0.2
+   ],
+   "params": {
+    "width": 30,
+    "depth": 28,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    22,
+    -10,
+    0.2
+   ],
+   "params": {
+    "width": 22,
+    "depth": 22,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    2,
+    0,
+    0.25
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -36,
+    0.2
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 3,
+    "spacing": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   125
+  ]
+ },
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no usable photo (nearby image is a drawing); real outline, gate, birches and paths typed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-way-227571444"
+}

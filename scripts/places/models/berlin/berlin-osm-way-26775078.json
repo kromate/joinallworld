@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-way-26775078",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Krankenhaus_Havelh%C3%B6he_Kulturdenkmal_09085644_20160608_100833_Lehrsaalgeb%C3%A4ude_(13).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dirk1981",
+   "view": "front",
+   "file": "/tmp/places-evidence/berlin/26775078_0.jpg",
+   "used": "long three-storey red rendered block with grey cladded top storey and dormers, tall punched windows with shutters, stepped wing, entrance piers with balcony, cobbled forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26775078",
+   "used": "site only (791 x 588 m grounds, outline unusable as a building, so a single listed hall block is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-wing",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 8.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0503f",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "bay": 3.4,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#d9c8b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7e8d9a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-clad",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 8.8,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa9b6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7e8d9a",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     13,
+     26
+    ]
+   },
+   "at": [
+    27,
+    7.5
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0503f",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "bay": 3.4,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7e8d9a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     11.5,
+     -7.4,
+     0
+    ],
+    "end": [
+     16.5,
+     -7.4,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 0,
+      "height": 4.5,
+      "colour": "#cdbfa9",
+      "topColour": "#cdbfa9"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-balcony",
+   "params": {
+    "rect": [
+     7.5,
+     2.6
+    ],
+    "z0": 4.2,
+    "height": 0.35,
+    "colour": "#8c8c88",
+    "topColour": "#8c8c88"
+   },
+   "at": [
+    14,
+    -7.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entry-slab",
+   "params": {
+    "rect": [
+     7.5,
+     2.6
+    ],
+    "z0": 4.5,
+    "height": 0.3,
+    "colour": "#cdbfa9",
+    "topColour": "#cdbfa9"
+   },
+   "at": [
+    14,
+    -7.5,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "far-wing",
+   "footprint": {
+    "rect": [
+     11,
+     18
+    ]
+   },
+   "at": [
+    39.5,
+    11
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0503f",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "bay": 3.4,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7e8d9a",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -16
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -22
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "two storeys plus clad attic with taller punched windows; dormers are a plain window row, porch simplified, forecourt is paving not cobbles"
+ }
+}

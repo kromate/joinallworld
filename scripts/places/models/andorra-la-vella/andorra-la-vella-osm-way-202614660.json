@@ -1,0 +1,162 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Casa_Rull_(6).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mafoso",
+   "view": "front",
+   "file": "/tmp/places-evidence/andorra-la-vella/rull.jpg",
+   "used": "four-level rubble-stone farmhouse with patchy cream render, big gable end facing the street with wide timber-bracketed eaves, arched plank door at ground left of centre, small grilled ground windows, brown-framed upper windows with iron balconies, shuttered attic windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/202614660",
+   "used": "dimensions about 20 x 14 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9bd9e",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6a5238",
+    "trimColour": "#5a3d28",
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3a2c",
+    "material": "slate",
+    "pitch": 26,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-surround",
+   "footprint": {
+    "rect": [
+     2.3,
+     0.5
+    ]
+   },
+   "at": [
+    -2.2,
+    -9.8
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "timber",
+    "colour": "#d2c7a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d2c7a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     1.7,
+     0.5
+    ]
+   },
+   "at": [
+    -2.2,
+    -9.95
+   ],
+   "z0": 0,
+   "height": 2.7,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3322",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3322"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    8.5,
+    -12.5,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 2.4,
+    "thickness": 0.9,
+    "colour": "#5f594e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   45
+  ],
+  "groundColour": "#8a847a"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-way-202614660",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "cream render tone and brown windows set; wall is regular blocks not patchy render over dark rubble, no arched door, balconies, shutters, sloped street"
+ }
+}

@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/37989177",
+   "used": "real outline of Neringa (name match), about 48 x 40 m"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/vilnius.json#vilnius-meal-stop",
+   "used": "two-storey Soviet-era modernist restaurant on Gedimino prospektas with glazed street front; nearby Commons photos show other buildings and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-glazing",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7d9bb0",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "material": "membrane",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-concrete",
+   "footprint": {
+    "osm": true,
+    "scale": 1.02
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.4,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#e8e8e4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "material": "membrane",
+    "overhang": 0.4,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "colours": [
+     "#8a2f2f",
+     "#e8e8e4"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -8,
+    -27,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 8,
+    "colours": [
+     "#8a2f2f",
+     "#e8e8e4"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building was found; outline from OSM, facade rhythm typed"
+ }
+}

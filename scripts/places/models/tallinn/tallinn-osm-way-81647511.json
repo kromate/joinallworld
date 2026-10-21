@@ -1,0 +1,498 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-way-81647511",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ranna_kirik.jpg",
+   "licence": "CC BY-SA 3.0 ee",
+   "author": "Ren12",
+   "view": "side",
+   "file": "/tmp/places-evidence/tallinn/ranna1.jpg",
+   "used": "whitewashed single-nave plan with steep red metal gable roof, tall arched windows with red sills between stepped buttresses, entrance in the gable end with brown door, small bell gable with red cap and cross over the gable, pinnacles on the gable corners, round window in the gable"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/81647511",
+   "used": "identity and name match only; outline too irregular so a clean nave rectangle from the photo is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 6,
+  "fovDeg": 32,
+  "aspect": 1.49
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     9.5
+    ]
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.0,
+    "plinth": 0.5,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d2a2f",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "id": "buttresses",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.45,
+        0.5
+       ],
+       "height": 3.6,
+       "topScale": 0.8,
+       "colour": "#d9d3c4"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -8,
+     -5.1,
+     0
+    ],
+    "end": [
+     8,
+     -5.1,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross",
+   "at": [
+    10.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 12.6,
+    "height": 1.4,
+    "colour": "#f0ede6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bell-gable",
+   "at": [
+    10.3,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#efebe0",
+    "sections": [
+     {
+      "z": 6.0,
+      "rect": [
+       1.7,
+       1.9
+      ]
+     },
+     {
+      "z": 8.5,
+      "rect": [
+       1.4,
+       1.7
+      ]
+     },
+     {
+      "z": 11.2,
+      "rect": [
+       1.1,
+       1.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bell-cap",
+   "at": [
+    10.3,
+    0,
+    11.2
+   ],
+   "params": {
+    "colour": "#8c2f34",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.5,
+       1.8
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.2,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bell-opening",
+   "at": [
+    10.95,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#3a2a22",
+    "sections": [
+     {
+      "z": 9.2,
+      "rect": [
+       0.25,
+       0.7
+      ]
+     },
+     {
+      "z": 10.2,
+      "rect": [
+       0.25,
+       0.7
+      ]
+     },
+     {
+      "z": 10.8,
+      "rect": [
+       0.25,
+       0.3
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "door",
+   "at": [
+    11.0,
+    -2.0,
+    0
+   ],
+   "params": {
+    "colour": "#6b3a26",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.3,
+       1.7
+      ]
+     },
+     {
+      "z": 2.2,
+      "rect": [
+       0.3,
+       1.7
+      ]
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       0.3,
+       1.0
+      ]
+     },
+     {
+      "z": 3.3,
+      "rect": [
+       0.3,
+       0.2
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "oculus",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "circle": 0.55
+    },
+    "points": [
+     [
+      11.0,
+      0,
+      7.0
+     ],
+     [
+      11.2,
+      0,
+      7.0
+     ]
+    ],
+    "colour": "#8fa0b0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gable-coping",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      11.15,
+      -4.95,
+      5.2
+     ],
+     [
+      11.15,
+      0,
+      9.0
+     ],
+     [
+      11.15,
+      4.95,
+      5.2
+     ]
+    ],
+    "colour": "#efebe0"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pinnacle-1",
+   "at": [
+    11.1,
+    -4.85,
+    0
+   ],
+   "params": {
+    "colour": "#efebe0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 5.8,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 5.9,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 6.8,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pinnacle-cap-1",
+   "at": [
+    11.1,
+    -4.85,
+    6.8
+   ],
+   "params": {
+    "colour": "#8c2f34",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.05,
+       0.05
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pinnacle1",
+   "at": [
+    11.1,
+    4.85,
+    0
+   ],
+   "params": {
+    "colour": "#efebe0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 5.8,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 5.9,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 6.8,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pinnacle-cap1",
+   "at": [
+    11.1,
+    4.85,
+    6.8
+   ],
+   "params": {
+    "colour": "#8c2f34",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.05,
+       0.05
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     9
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Round 1: gable now has pinnacles, oculus, pointed door, tapered bell gable with red cap. Missing red window sills, transom grids, stepped gable parapet is only a coping line, snow absent."
+ }
+}

@@ -1,0 +1,354 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-osm-way-258815975",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Z%C3%A1mek_%C5%A0ti%C5%99%C3%ADn.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rzitko",
+   "view": "front",
+   "file": "/tmp/places-evidence/prague/stirin.jpg",
+   "used": "U-shaped Baroque chateau seen from the cobbled court: ochre-orange render with cream bands and pilasters, red clay-tile mansard pavilions at the wing ends, central curved-fronted pavilion with balcony and hip roof over the two-storey rear range, clipped round yews, grey cobbles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/258815975",
+   "used": "facts only: about 51 x 33 m, baroque, 1750 (outline is irregular, composition follows the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9975a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#ecd9a8",
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532e",
+    "material": "clay-tile",
+    "rise": 3.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    -24,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9975a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#ecd9a8",
+    "faces": {
+     "right": "punched",
+     "left": "punched",
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#b5532e",
+    "material": "clay-tile",
+    "rise": 5.5,
+    "overhang": 0.5,
+    "dormers": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    24,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9975a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#ecd9a8",
+    "faces": {
+     "right": "punched",
+     "left": "punched",
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#b5532e",
+    "material": "clay-tile",
+    "rise": 5.5,
+    "overhang": 0.5,
+    "dormers": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f4c",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#f0e2b8",
+    "faces": {
+     "front": "arched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532e",
+    "material": "clay-tile",
+    "rise": 3.0,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    0.6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.5,
+    "run": 0.7,
+    "count": 2,
+    "colour": "#cfc6b4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    4,
+    15.5
+   ],
+   "params": {
+    "baseWidth": 0.6,
+    "height": 2.5,
+    "colour": "#3f5f4a",
+    "finial": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 10.5,
+      "colour": "#ecd9a8",
+      "topColour": "#ecd9a8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -7,
+     1.4
+    ],
+    "end": [
+     7,
+     1.4
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.6
+      ],
+      "height": 8.6,
+      "colour": "#ecd9a8",
+      "topColour": "#ecd9a8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -9.2
+    ],
+    "end": [
+     -18,
+     -9.2
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.6
+      ],
+      "height": 8.6,
+      "colour": "#ecd9a8",
+      "topColour": "#ecd9a8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     18,
+     -9.2
+    ],
+    "end": [
+     30,
+     -9.2
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5.5,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "round",
+    "height": 3.5,
+    "spread": 3.5,
+    "colour": "#2a5428"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5.5,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "round",
+    "height": 3.5,
+    "spread": 3.5,
+    "colour": "#2a5428"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wings still read as gabled blocks without dormers or the curved projecting pavilion front and rusticated portal; yews and cobbles are only approximated by trees and plaza"
+ }
+}

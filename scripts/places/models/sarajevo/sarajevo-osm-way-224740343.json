@@ -1,0 +1,299 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ku%C4%87a_Cekovi%C4%87a,_Pale_05.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tufnica Njezna",
+   "view": "front",
+   "file": "/tmp/places-evidence/sarajevo/cek1.jpg",
+   "used": "cream plaster upper storey over beige ground floor with rubble-stone plinth, timber balcony with turned posts along the long side, brown shingle gable roof with deep eaves, red-tile porch hood, rubble-stone terrace steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/224740343",
+   "used": "size check only (22.5 x 11.7 m footprint incl. verandas); house block modelled 10 x 14 m from the photo"
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "veranda is a simple post-and-rail frame without turned balusters or lattice and its roof sweep; rubble-stone plinth, wide stone terraces and retaining walls are only approximated; no wooded slope behind"
+ },
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe9dc",
+    "windows": "punched",
+    "windowRatio": 0.09,
+    "plinth": 0.9,
+    "trimColour": "#b58a56",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#dcc7a3",
+       "#efe9dc"
+      ]
+     }
+    ],
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "back": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a5a40",
+    "material": "timber-shingle",
+    "pitch": 33,
+    "overhang": 1.1,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.9,
+    0,
+    3.3
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     13
+    ],
+    "height": 0.25,
+    "colour": "#b58a56"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.8,
+    0,
+    4.3
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     13
+    ],
+    "height": 0.12,
+    "colour": "#b58a56"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.8,
+    0,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     13
+    ],
+    "height": 0.9,
+    "colour": "#c9a370",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -6.8,
+     -6
+    ],
+    "end": [
+     -6.8,
+     6
+    ],
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 6.3,
+      "colour": "#b58a56"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.9,
+    0,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     13.4
+    ],
+    "height": 0.15,
+    "colour": "#7a5a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    -7.6,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     1.6
+    ],
+    "height": 0.2,
+    "colour": "#a4553b"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     8,
+     -9
+    ],
+    "end": [
+     17,
+     -9
+    ],
+    "dz": 0.45,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.9,
+       7
+      ],
+      "height": 0.45,
+      "colour": "#b4ab94",
+      "material": "stone-blocks"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    5,
+    -12.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "thickness": 0.7,
+    "kind": "wall",
+    "colour": "#b4ab94",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      14,
+      10
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     6
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     -4
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-osm-way-224740343"
+}

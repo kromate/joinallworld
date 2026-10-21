@@ -1,0 +1,638 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TEG_Tirana_2016.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kj1595",
+   "view": "front",
+   "file": "/tmp/places-evidence/tirana/teg.jpg",
+   "used": "main entrance: full-height glass block flanked by grey and white panel wings with dark horizontal bands, large flat translucent canopy carried on two diagonal white struts from one central column, green/blue glazing tint, paved forecourt with parking in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/293898197",
+   "used": "overall size only (268 m wide, 22,000 m2 footprint; the outline is a loose blob, so a 118 m wide front portion is modelled with a deep rear block)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.03,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-entrance",
+   "footprint": {
+    "rect": [
+     36,
+     50
+    ]
+   },
+   "at": [
+    0,
+    25
+   ],
+   "height": 27,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a7cfcc",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.2,
+    "bands": "#e4ecec",
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#eef2f2",
+      "faces": [
+       "front"
+      ],
+      "spacing": 1.6
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     28,
+     50
+    ]
+   },
+   "at": [
+    -32,
+    27
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#b9b8b3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       7,
+       1.6
+      ],
+      "colours": [
+       "#bdbcb7",
+       "#f0f0ed",
+       "#4a4c4e"
+      ],
+      "mode": "stripes-h",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e91",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     28,
+     50
+    ]
+   },
+   "at": [
+    32,
+    27
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c3c1bb",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       7,
+       1.6
+      ],
+      "colours": [
+       "#bdbcb7",
+       "#f0f0ed",
+       "#4a4c4e"
+      ],
+      "mode": "stripes-h",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e91",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     88,
+     30
+    ]
+   },
+   "at": [
+    0,
+    65
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d4c8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront-band",
+   "footprint": {
+    "rect": [
+     36,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -0.6
+   ],
+   "height": 4.2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fb59a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 58,
+    "depth": 34,
+    "height": 32,
+    "thickness": 0.7,
+    "colour": "#bfe0e0",
+    "edgeColour": "#f1f1ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      -18,
+      -29,
+      32.4
+     ],
+     [
+      -18,
+      3,
+      32.4
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      -6,
+      -29,
+      32.4
+     ],
+     [
+      -6,
+      3,
+      32.4
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      6,
+      -29,
+      32.4
+     ],
+     [
+      6,
+      3,
+      32.4
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      18,
+      -29,
+      32.4
+     ],
+     [
+      18,
+      3,
+      32.4
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      -28,
+      -26,
+      32.4
+     ],
+     [
+      28,
+      -26,
+      32.4
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      -28,
+      -18,
+      32.4
+     ],
+     [
+      28,
+      -18,
+      32.4
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      -28,
+      -10,
+      32.4
+     ],
+     [
+      28,
+      -10,
+      32.4
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      -28,
+      -2,
+      32.4
+     ],
+     [
+      28,
+      -2,
+      32.4
+     ]
+    ],
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "points": [
+     [
+      0,
+      -14,
+      0
+     ],
+     [
+      0,
+      -14,
+      9
+     ]
+    ],
+    "colour": "#dcdcd9"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.6,
+    "points": [
+     [
+      0,
+      -14,
+      9
+     ],
+     [
+      -24,
+      -1,
+      32.4
+     ]
+    ],
+    "colour": "#f0f0ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "points": [
+     [
+      0,
+      -14,
+      9
+     ],
+     [
+      -22,
+      -26,
+      32.4
+     ]
+    ],
+    "colour": "#f0f0ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.6,
+    "points": [
+     [
+      0,
+      -14,
+      9
+     ],
+     [
+      24,
+      -1,
+      32.4
+     ]
+    ],
+    "colour": "#f0f0ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "points": [
+     [
+      0,
+      -14,
+      9
+     ],
+     [
+      22,
+      -26,
+      32.4
+     ]
+    ],
+    "colour": "#f0f0ee"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.01,
+        0.9
+       ],
+       [
+        0.4,
+        0.8
+       ],
+       [
+        0.45,
+        0.5
+       ],
+       [
+        0.4,
+        0.1
+       ],
+       [
+        0.01,
+        0
+       ]
+      ],
+      "segments": 8,
+      "colour": "#eeeeea"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -6,
+     0
+    ],
+    "end": [
+     46,
+     -6,
+     0
+    ],
+    "count": 13,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 20,
+  "trees": 0,
+  "extent": [
+   100,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "canopy is a solid pale slab with a few ribs rather than a dense glazed grid; glass renders darker than the cyan photo; only the 118 m front of the 268 m building is modelled; bollards and wing signage boards omitted"
+ }
+}

@@ -1,0 +1,668 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Helsinki_Central_railway_station_in_Finland,_2021_July.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Anne Pietarinen",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/helsinki/hel-station.jpg",
+   "used": "pink-grey granite massing, tall arched entrance recess on the end block, round turrets with green copper caps, black mansard roofs with green trim, tall square clock tower with green pyramid cap behind, blue-grey platform hall, long dark-roofed wings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/122595198",
+   "used": "overall size (185 x 119 m, 4 levels, black metal roof, granite colour #b38f80); the modelled blocks cover about 118 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 26,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-hall",
+   "footprint": {
+    "rect": [
+     64,
+     22
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c29c8c",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 6,
+    "glassColour": "#2f3a42",
+    "plinth": 1.0,
+    "cornice": true,
+    "pattern": null
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#34383c",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     26,
+     32
+    ]
+   },
+   "at": [
+    40,
+    -3
+   ],
+   "height": 23,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c29c8c",
+    "windows": "none",
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "windowRatio": 0.12,
+    "bay": 8,
+    "glassColour": "#2f3a42",
+    "plinth": 1.2,
+    "cornice": true,
+    "pattern": null
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#34383c",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    53.9,
+    -3,
+    1.0
+   ],
+   "params": {
+    "colour": "#2a3238",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.6,
+       14
+      ]
+     },
+     {
+      "z": 11.5,
+      "rect": [
+       0.6,
+       14
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       0.6,
+       13
+      ]
+     },
+     {
+      "z": 14.8,
+      "rect": [
+       0.6,
+       11
+      ]
+     },
+     {
+      "z": 16.3,
+      "rect": [
+       0.6,
+       8
+      ]
+     },
+     {
+      "z": 17.5,
+      "rect": [
+       0.6,
+       4
+      ]
+     },
+     {
+      "z": 18,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    53.3,
+    -3,
+    0
+   ],
+   "params": {
+    "colour": "#c2a595",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.0,
+       19
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       3.0,
+       19
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       3.0,
+       18
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       3.0,
+       15
+      ]
+     },
+     {
+      "z": 18.5,
+      "rect": [
+       3.0,
+       10
+      ]
+     },
+     {
+      "z": 20.3,
+      "rect": [
+       3.0,
+       4
+      ]
+     },
+     {
+      "z": 21,
+      "rect": [
+       3.0,
+       1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    53,
+    -18.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.1,
+      0,
+      "#c4a090"
+     ],
+     [
+      3.1,
+      20,
+      "#c4a090"
+     ],
+     [
+      3.5,
+      20,
+      "#5fd0a0"
+     ],
+     [
+      3.2,
+      21.2,
+      "#5fd0a0"
+     ],
+     [
+      0,
+      29,
+      "#5fd0a0"
+     ]
+    ],
+    "segments": 14
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    53,
+    12.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.1,
+      0,
+      "#c4a090"
+     ],
+     [
+      3.1,
+      20,
+      "#c4a090"
+     ],
+     [
+      3.5,
+      20,
+      "#5fd0a0"
+     ],
+     [
+      3.2,
+      21.2,
+      "#5fd0a0"
+     ],
+     [
+      0,
+      29,
+      "#5fd0a0"
+     ]
+    ],
+    "segments": 14
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    27,
+    -18.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.1,
+      0,
+      "#c4a090"
+     ],
+     [
+      3.1,
+      20,
+      "#c4a090"
+     ],
+     [
+      3.5,
+      20,
+      "#5fd0a0"
+     ],
+     [
+      3.2,
+      21.2,
+      "#5fd0a0"
+     ],
+     [
+      0,
+      29,
+      "#5fd0a0"
+     ]
+    ],
+    "segments": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     28,
+     20
+    ]
+   },
+   "at": [
+    -52,
+    -1
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c29c8c",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    },
+    "bay": 6,
+    "glassColour": "#2f3a42",
+    "plinth": 1.0,
+    "cornice": true,
+    "pattern": null
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#34383c",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform-hall",
+   "footprint": {
+    "rect": [
+     86,
+     34
+    ]
+   },
+   "at": [
+    8,
+    28
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7d8790",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#6f7e8a",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    30,
+    22,
+    18
+   ],
+   "params": {
+    "colour": "#b28f7f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       9
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       8.2,
+       8.2
+      ]
+     },
+     {
+      "z": 24,
+      "rect": [
+       9.4,
+       9.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    30,
+    22,
+    42
+   ],
+   "params": {
+    "colour": "#6fc4a0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.6,
+       9.6
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       8.4,
+       8.4
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       5.5,
+       5.5
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       2.5,
+       2.5
+      ]
+     },
+     {
+      "z": 17,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       0.2,
+       0.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    3,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 5,
+    "height": 4.2,
+    "thickness": 0.4,
+    "columns": 0,
+    "colour": "#6fc4a0",
+    "edgeColour": "#4e7c6c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "line": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-wing",
+   "footprint": {
+    "rect": [
+     22,
+     30
+    ]
+   },
+   "at": [
+    -30,
+    24
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c29c8c",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "none",
+     "left": "arched",
+     "right": "none",
+     "back": "none"
+    },
+    "bay": 8,
+    "glassColour": "#2f3a42",
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#34383c",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    17.0,
+    38
+   ],
+   "params": {
+    "radius": 1.7,
+    "n": 18,
+    "height": 0.4,
+    "colour": "#f2ecd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    34.1,
+    22,
+    38
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       3.0
+      ],
+      "height": 3.0,
+      "colour": "#f2ecd8"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    17.4,
+    38
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.4
+    ],
+    "height": 3.0,
+    "colour": "#f2ecd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Arch recess is now a thick stone frame whose dark fill is barely visible from this view; clock faces are pale discs/panels; dormers, statues and arched hall glazing simplified; footprint is bars plus platform hall, not the real U-plan."
+ }
+}

@@ -1,0 +1,344 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-24279875",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CH_Szebmeka_Beax.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Beax",
+   "view": "street",
+   "file": "/tmp/places-evidence/warsaw/szem1.jpg",
+   "used": "cream two-storey flat-roofed hall with a continuous upper glazing band and a blank rooftop sign board, grey tower block behind, low grey tin-roofed lean-tos and a tall pale chimney at the left, white market umbrellas and stall roofs, parked cars on tarmac in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24279875",
+   "used": "market square outline (about 135 x 103 m) scaled to fit the scene as the paved ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "square",
+   "footprint": {
+    "osm": true,
+    "fit": 80
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a49a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 0.5,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdca0",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#d8c78a",
+    "cornice": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7c7e",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    22,
+    22
+   ],
+   "z0": 0.5,
+   "height": 30,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9cac6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7c7e",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -6,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -27,
+    -14,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    8,
+    10.5
+   ],
+   "params": {
+    "width": 12,
+    "height": 3,
+    "bottom": 1.5,
+    "colour": "#f2efe8",
+    "frameColour": "#8d9296",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -12,
+    0.5
+   ],
+   "params": {
+    "width": 5,
+    "height": 5,
+    "bottom": 5,
+    "colour": "#2f5fb0",
+    "frameColour": "#e3b93a",
+    "posts": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    22,
+    22
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 30,
+    "height": 8,
+    "colour": "#6d7378",
+    "topColour": "#6d7378",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    -24,
+    2,
+    0.5
+   ],
+   "params": {
+    "height": 18,
+    "radius": 0.7,
+    "material": "concrete",
+    "colour": "#e6e0d0"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -6,
+    -10,
+    0.5
+   ],
+   "params": {
+    "length": 34,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "shed",
+    "roof_colour": "#8a8f93",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -6,
+    -20,
+    0.5
+   ],
+   "params": {
+    "length": 34,
+    "depth": 5,
+    "height": 3.0,
+    "roof": "shed",
+    "roof_colour": "#8a8f93",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -24,
+    0.5
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 2.6,
+    "kind": "umbrella",
+    "colours": [
+     "#efece4",
+     "#f4f2ec",
+     "#e6e0d0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -32,
+    0.5
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 2.6,
+    "kind": "umbrella",
+    "colours": [
+     "#efece4",
+     "#f4f2ec",
+     "#e6e0d0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -40,
+    0.5
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 2.6,
+    "kind": "umbrella",
+    "colours": [
+     "#efece4",
+     "#f4f2ec",
+     "#e6e0d0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -8,
+    0.5
+   ],
+   "params": {
+    "width": 20,
+    "depth": 8,
+    "density": 0.9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hall, taller tower with mast, lean-to sheds, chimney, umbrellas and sign pylon added; framing is an aerial composition rather than the street-level corner view, and parked vans, rooftop sign and the S pylon shape are simplified."
+ }
+}

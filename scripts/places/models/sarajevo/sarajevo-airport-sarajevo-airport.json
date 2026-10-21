@@ -1,0 +1,244 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-airport-sarajevo-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sarajevo_Airport_1_2024.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Natalino7",
+   "view": "front",
+   "file": "/tmp/places-evidence/sarajevo/airport.jpg",
+   "used": "departures front: huge sloping mirror-steel canopy over raked dark steel columns, light grey stone-clad end block, dark glazed entrance with a ribbon window above"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19920778",
+   "used": "Terminal B size only (about 125 m by 90 m angled outline); a straight 100 m front is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 4,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-block",
+   "footprint": {
+    "rect": [
+     26,
+     30
+    ]
+   },
+   "at": [
+    44,
+    -4
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#bdb9b0",
+    "plinth": 0.4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#c3bfb7",
+      "#b3afa7"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f969b",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     46,
+     24
+    ]
+   },
+   "at": [
+    -4,
+    2
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#27323a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa1a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    -42,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#bdb9b0",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa1a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-roof",
+   "footprint": {
+    "rect": [
+     72,
+     38
+    ]
+   },
+   "at": [
+    -6,
+    -10
+   ],
+   "z0": 10.5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "right",
+    "rise": 4,
+    "overhang": 1,
+    "colour": "#aab3ba",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -27,
+     0
+    ],
+    "end": [
+     34,
+     -27,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.65,
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        5.5,
+        12.4
+       ]
+      ],
+      "colour": "#2c3238"
+     }
+    }
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    47,
+    -15.2,
+    8
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.2,
+    "colour": "#d9dcdf"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -70,
+    28,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#d6d8d9",
+    "cabColour": "#46606f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "forecourtDepth": 22,
+  "trees": 0,
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Canopy is a flat-ish shed plane not a folded mirror-steel fold, only mildly metallic; struts straight rows not varied lengths; stone end block panelled but lower than the canopy peak; straight plan."
+ }
+}

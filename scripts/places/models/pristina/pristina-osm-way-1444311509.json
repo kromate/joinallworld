@@ -1,0 +1,760 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-osm-way-1444311509",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Northwest_view_of_the_church_LIPLJAN_06.jpg",
+   "licence": "CC BY 4.0",
+   "author": "BLAGO Fund, Inc.",
+   "view": "front",
+   "file": "/tmp/places-evidence/pristina/1444311509_0.jpg",
+   "used": "single-nave gabled medieval church of rough ochre and tan stone laced with red brick courses, three blind brick arches per long side with narrow slit windows, gable end with one blind arch over a slit window and a small stone-framed door, grey metal-sheet roof, green lawn setting"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:South_view_of_the_church_LIPLJAN_01.jpg",
+   "licence": "CC BY 4.0",
+   "author": "BLAGO Fund, Inc.",
+   "view": "side",
+   "used": "long-side proportions: low eaves, shallow-pitch roof of grey sheet panels, plinth stones, three blind arches"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1444311509",
+   "used": "size of the building (about 10.5 x 7.2 m); modelled as an axis-aligned nave"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     7.4,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b39367",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9b79a",
+      "height": 0.25,
+      "proud": 0.03,
+      "at": 0.2
+     },
+     {
+      "type": "bands",
+      "colour": "#9a7a52",
+      "height": 0.35,
+      "proud": 0.03,
+      "at": 0.55
+     }
+    ],
+    "windowShape": "arched",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 3.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7f8488",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.12
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3.7,
+    -3.2,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.28,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.4,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3.7,
+    -3.2,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.05,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.72,
+    -3.2,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.28
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#2e2a28",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3.7,
+    0.0,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.28,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.4,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3.7,
+    0.0,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.05,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.72,
+    0.0,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.28
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#2e2a28",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3.7,
+    3.2,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.28,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.4,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -3.7,
+    3.2,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.05,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.72,
+    3.2,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.28
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#2e2a28",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    3.7,
+    -3.2,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.28,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.4,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    3.7,
+    -3.2,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.05,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.72,
+    -3.2,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.28
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#2e2a28",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    3.7,
+    0.0,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.28,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.4,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    3.7,
+    0.0,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.05,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.72,
+    0.0,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.28
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#2e2a28",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    3.7,
+    3.2,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.28,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.4,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    3.7,
+    3.2,
+    3.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.05,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "yz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.72,
+    3.2,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.28
+    ],
+    "z0": 0,
+    "height": 2.1,
+    "colour": "#2e2a28",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -5.52,
+    4.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.28,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.58,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.12
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#2e2a28",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    5.52,
+    4.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.28,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#a8553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.0,
+    "height": 2.6,
+    "depth": 0.3,
+    "archWidth": 1.3,
+    "springHeight": 1.8,
+    "colour": "#b9b0a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -5.62,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#2b2018",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "blind brick arches now rings with slits (slits sit slightly below the arch crowns); wall is regular block pattern rather than mottled rubble with mortar patches; arch infill hatching, plinth stones and background domed church omitted"
+ }
+}

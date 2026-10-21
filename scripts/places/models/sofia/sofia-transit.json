@@ -1,0 +1,116 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/300868820",
+   "used": "real outline of the Obelya station building: a long thin diagonal bar about 140 m by 18 m (containing match), tags building=transportation"
+  },
+  {
+   "kind": "text",
+   "used": "brief only: low concrete station block with glazing, platform canopy and a blank signboard; the nearby Commons photos show apartment blocks and a sunset, not the station, so they were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c5ba",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "glassColour": "#5c7a92",
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#e8e6e0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6f6f",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 6,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2,
+    5.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 0.5,
+    "colour": "#5c7a92",
+    "frameColour": "#c9c5ba",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the station; real OSM bar outline with glazed flat-roof block and canopy, details guessed from the brief"
+ }
+}

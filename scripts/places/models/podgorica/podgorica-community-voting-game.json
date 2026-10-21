@@ -1,0 +1,418 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Independence_Square_(Podgorica).jpg",
+   "licence": "CC (Wikimedia Commons)",
+   "author": "see Commons file page",
+   "view": "front",
+   "file": "/tmp/places-evidence/podgorica/square1.jpg",
+   "used": "wide dark-grey paved square with pale stone joint lines, round tiered fountain in the centre, long low cream block with tall blank piers closing the far side, yellow mid-rise behind, tree rows left and right, cream block with ribbon windows on the right, curved lamp posts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Trg_Nezavisnosti,_2019.jpg",
+   "licence": "CC (Wikimedia Commons)",
+   "author": "see Commons file page",
+   "view": "side",
+   "file": "/tmp/places-evidence/podgorica/square2.jpg",
+   "used": "pavement, clipped hedge boxes, plane trees, row of timber market huts with green roofs (not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1149487035",
+   "used": "fountain position and size (about 11 m across)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": 0.08
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 70,
+    "border": 1.2,
+    "colour": "#6f717a",
+    "border_colour": "#b3afa6"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "radius": 11,
+    "waterColour": "#8fb4c8",
+    "rimColour": "#bdb7a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-block",
+   "footprint": {
+    "rect": [
+     84,
+     12
+    ]
+   },
+   "at": [
+    0,
+    42
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcd3bd",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9588",
+    "overhang": 0.6,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-rear",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    0,
+    56
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#e3c76a",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     14,
+     60
+    ]
+   },
+   "at": [
+    50,
+    30
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e0d6bd",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -51,
+    40
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd3bc",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "bay": 5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 8
+     }
+    },
+    "mode": "line",
+    "start": [
+     -45,
+     8
+    ],
+    "end": [
+     45,
+     8
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.6,
+      0,
+      "#cfcac0"
+     ],
+     [
+      0.6,
+      5,
+      "#cfcac0"
+     ],
+     [
+      0.5,
+      5.2,
+      "#f2f6f8"
+     ],
+     [
+      0.3,
+      10,
+      "#f2f6f8"
+     ],
+     [
+      0.1,
+      14,
+      "#ffffff"
+     ]
+    ],
+    "segments": 10
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.2,
+      0,
+      "#cfcac0"
+     ],
+     [
+      3.2,
+      1.6,
+      "#cfcac0"
+     ],
+     [
+      2,
+      2.2,
+      "#cfcac0"
+     ],
+     [
+      2,
+      2.8,
+      "#8fb4c8"
+     ],
+     [
+      0.1,
+      3.2,
+      "#8fb4c8"
+     ]
+    ],
+    "segments": 24
+   }
+  },
+  {
+   "type": "prism",
+   "on": "far-block",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     1.0
+    ],
+    "height": 8,
+    "colour": "#23262b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   150,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     26
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     36
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     26
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     12
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     12
+    ],
+    "height": 11
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "fountain jet is a single column not spray, no paving joint bands, side blocks and trees still generic, billboard approximate"
+ }
+}

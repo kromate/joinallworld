@@ -1,0 +1,335 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-23498828",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stegny_Skating_Track,_Warsaw.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wistula",
+   "view": "street",
+   "file": "/tmp/places-evidence/warsaw/stegny1.jpg",
+   "used": "pale grey-green concrete tower block with irregular small windows, blue stacked blocks at its base, steel lattice frame and a flat roof, tall floodlight masts, conifer hedge and grass verge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tor_stegny.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sobieskigr3",
+   "view": "street",
+   "file": "/tmp/places-evidence/warsaw/stegny2.jpg",
+   "used": "long two-storey grey and white club building with glazed ground floor, ribbon first-floor windows and a pink-orange band, white boards with a yellow kerb round the concrete track, tall lamp poles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23498828",
+   "used": "the real oval track outline, scaled down to fit the scene (real ring about 196 x 87 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.78,
+  "margin": 0.0,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "track",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9a96",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4a29c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "infield",
+   "footprint": {
+    "osm": true,
+    "fit": 94
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7a9a58",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a9a58",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     56,
+     11
+    ]
+   },
+   "at": [
+    42,
+    4
+   ],
+   "rotDeg": 90,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9cdc8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#d98a6c",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timing-tower",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -70
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9bfb4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 4.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-blocks",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    -76
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5a82b4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a82b4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "external-stair",
+   "at": [
+    -11,
+    -74,
+    0
+   ],
+   "params": {
+    "height": 5.5,
+    "length": 6,
+    "width": 1.1,
+    "colour": "#5b6166"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast-frame",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "z0": 15,
+    "height": 4,
+    "colour": "#6d7378",
+    "topColour": "#6d7378",
+    "windows": "none"
+   },
+   "at": [
+    -4,
+    -70
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -38,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3.2,
+    "colour": "#7d8388"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    38,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3.2,
+    "colour": "#7d8388"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -38,
+    0,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3.2,
+    "colour": "#7d8388"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    38,
+    0,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3.2,
+    "colour": "#7d8388"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -38,
+    52,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3.2,
+    "colour": "#7d8388"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    38,
+    52,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3.2,
+    "colour": "#7d8388"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -84,
+    0
+   ],
+   "params": {
+    "width": 45,
+    "depth": 4,
+    "count": 20,
+    "kind": "conifer",
+    "min_height": 5,
+    "max_height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Timing tower is now 15 m with rooftop frame, blue base blocks, hedge and six masts, but the photo is a side view of the tower with a lattice frame and the track is seen from a different angle; tower proportions, lattice detail and dense conifer wall are approximated."
+ }
+}

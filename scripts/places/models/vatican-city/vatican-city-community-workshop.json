@@ -1,0 +1,442 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pontifical_Ethiopian_College_Vatican.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/vatican-city/eth1.jpg",
+   "used": "buff brick block with arched windows and red shutters, tiled eaves, stepped roof terrace with pergola, surrounded by cedars, pines and lawns in the Vatican Gardens"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pontificio_Collegio_Etiopico_in_Vaticano.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons",
+   "view": "front",
+   "file": "/tmp/places-evidence/vatican-city/eth2.jpg",
+   "used": "ground-floor arched loggia on the right wing, cream plinth, round-headed windows, low tiled roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30161132",
+   "used": "overall size (about 43 x 42 m with wings); the outline is stepped, so a main block plus wing is modelled to match the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 44,
+  "aspect": 1.5,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    2,
+    2
+   ],
+   "params": {
+    "rect": [
+     64,
+     46
+    ],
+    "height": 0.06,
+    "z0": 0,
+    "colour": "#5f8f45",
+    "topColour": "#5f8f45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-dark",
+   "at": [
+    -20,
+    -14
+   ],
+   "params": {
+    "rect": [
+     18,
+     12
+    ],
+    "height": 0.08,
+    "z0": 0.06,
+    "colour": "#4f7d3b",
+    "topColour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    6,
+    -14
+   ],
+   "params": {
+    "rect": [
+     26,
+     2.2
+    ],
+    "height": 0.1,
+    "z0": 0.06,
+    "colour": "#cdbf9f",
+    "topColour": "#cdbf9f"
+   },
+   "rotDeg": 8
+  },
+  {
+   "type": "prism",
+   "id": "forecourt",
+   "at": [
+    4,
+    -10.5
+   ],
+   "params": {
+    "rect": [
+     34,
+     5
+    ],
+    "height": 0.12,
+    "z0": 0.06,
+    "colour": "#8d8a84",
+    "topColour": "#8d8a84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "college",
+   "footprint": {
+    "rect": [
+     25,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#cba66e",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 3.8,
+    "plinth": 2.2,
+    "cornice": true,
+    "trimColour": "#e6d9b8",
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbb92",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eave",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     27.4,
+     18.4
+    ],
+    "height": 0.6,
+    "z0": 15.6,
+    "colour": "#9c5a3a",
+    "topColour": "#8d4f33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     12,
+     14
+    ]
+   },
+   "at": [
+    19,
+    -1
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#d3b07a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 3.0,
+    "plinth": 1.4,
+    "cornice": true,
+    "trimColour": "#e6d9b8",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9c5a3a",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-block",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    2
+   ],
+   "z0": 16.2,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c08a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9c5a3a",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "market-open/pergola",
+   "at": [
+    6,
+    -3,
+    16.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 2.4,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "shut5",
+   "params": {
+    "mode": "line",
+    "start": [
+     -9.5,
+     -8.2,
+     5.4
+    ],
+    "end": [
+     9.5,
+     -8.2,
+     5.4
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.3
+      ],
+      "height": 1.8,
+      "colour": "#a8452f",
+      "topColour": "#a8452f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "shut9",
+   "params": {
+    "mode": "line",
+    "start": [
+     -9.5,
+     -8.2,
+     9.4
+    ],
+    "end": [
+     9.5,
+     -8.2,
+     9.4
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.3
+      ],
+      "height": 1.8,
+      "colour": "#a8452f",
+      "topColour": "#a8452f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "shut13",
+   "params": {
+    "mode": "line",
+    "start": [
+     -9.5,
+     -8.2,
+     13.0
+    ],
+    "end": [
+     9.5,
+     -8.2,
+     13.0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.3
+      ],
+      "height": 1.8,
+      "colour": "#a8452f",
+      "topColour": "#a8452f"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    -15
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22,
+    "count": 1,
+    "colour": "#2f5a37"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -19,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "colour": "#4d8a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -9
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 24,
+    "count": 2,
+    "spread": 4,
+    "colour": "#2b5535"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    10
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22,
+    "count": 3,
+    "spread": 8,
+    "colour": "#2f5a37"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    14
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 24,
+    "count": 3,
+    "spread": 8,
+    "colour": "#2b5535"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    19
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 3,
+    "spread": 12,
+    "colour": "#2f5a37"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "wing loggia arches only partly read, shutters are flat red slabs, trees are low-poly cones rather than true cedar and pine silhouettes, no stepped terrace detail"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-community-workshop"
+}

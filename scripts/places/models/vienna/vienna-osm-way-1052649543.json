@@ -1,0 +1,370 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-osm-way-1052649543",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:P%C3%A4dagogische_Hochschule_Wien.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Sequentius",
+   "view": "front",
+   "file": "/tmp/places-evidence/vienna/ph.jpg",
+   "used": "three-storey salmon-pink rendered U-shaped block with receding wings, flat roofs, green-framed punched windows, central arched glazed bay with a curved cornice line, low glazed entrance, concrete post-and-beam colonnade across the front court, bare trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27892057",
+   "used": "campus building group extent only (about 124 x 57 m, irregular): modelled as a simplified U"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 42,
+  "aspect": 1.36,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a98f",
+    "glassColour": "#7fae96",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "cornice": true,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b0a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    -30,
+    -2
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a98f",
+    "glassColour": "#7fae96",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "bay": 4.2,
+    "cornice": true,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b0a6",
+    "parapet": 0.4
+   },
+   "rotDeg": -12
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    30,
+    -2
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a98f",
+    "glassColour": "#7fae96",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "bay": 4.2,
+    "cornice": true,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b0a6",
+    "parapet": 0.4
+   },
+   "rotDeg": 12
+  },
+  {
+   "type": "mass",
+   "id": "glass-bay",
+   "footprint": {
+    "rect": [
+     11,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    0.4
+   ],
+   "z0": 2.5,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9cdbb",
+    "glassColour": "#9fc9bb",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fb4ab"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     22,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4ab",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b8"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "count": 8,
+    "height": 5.4,
+    "radius": 0.55,
+    "kind": "square",
+    "beamHeight": 1.7,
+    "roofDepth": 4.5,
+    "colour": "#cfc6ae",
+    "roofColour": "#cdc4ac"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    28,
+    -14.8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3,
+    "bottom": 1.2,
+    "colour": "#f2f0ea",
+    "frameColour": "#b8b3a9",
+    "posts": false
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0.9,
+    13.5
+   ],
+   "params": {
+    "colour": "#e0a98f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       18,
+       1.0
+      ]
+     },
+     {
+      "z": 0.9,
+      "rect": [
+       14,
+       1.0
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       9,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0.4,
+    13.5
+   ],
+   "params": {
+    "colour": "#9fc9bb",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       11,
+       0.6
+      ]
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       8,
+       0.6
+      ]
+     },
+     {
+      "z": 2.0,
+      "rect": [
+       4,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -3.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -9,
+     0,
+     0
+    ],
+    "end": [
+     9,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.15,
+       0.15
+      ],
+      "height": 10,
+      "colour": "#6f9c84"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -20
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -19
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Wings splayed 12 deg, taller centre with arched glazed bay and curved hump cornice, stouter cream colonnade, orange-pink render with green frames. Still missing: real photo wings project toward the viewer at a stronger angle, window sizes are uniform (no long horizontals), colonnade piers still thinner than photo, no entrance doors/sign/bike racks/bare trees."
+ }
+}

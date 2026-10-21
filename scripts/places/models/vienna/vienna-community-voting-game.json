@@ -1,0 +1,104 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/175540848",
+   "used": "real 470 m2 outline of the building containing the venue point (unnamed, 30 x 21 m, bent plan)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey pale yellow rendered village hall with clay-tile hip roof; no photo of this building found (nearby Commons photos show other Ebergassing sites)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf86",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "plinth": 0.5,
+    "bands": "#f0ead8",
+    "cornice": true,
+    "trimColour": "#f0ead8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5593f",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#c8202f",
+     "#ffffff",
+     "#c8202f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building: plan is the real OSM outline but facade, roof and colours are typical Lower Austrian village hall from the brief; no entrance details"
+ }
+}

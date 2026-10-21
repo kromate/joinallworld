@@ -1,0 +1,528 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-way-822899835",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nittedal_kirke_-_2012-09-30_at_09-42-56.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kjetil Ree",
+   "view": "side",
+   "file": "/tmp/places-evidence/oslo/nittedal.jpg",
+   "used": "white-painted timber church seen from the east: polygonal chancel and sacristy under brown tile roofs, tall brown-framed arched window, orange door, nave gable behind, slim white tower with green copper spire, gravel forecourt, stone wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/822899835",
+   "used": "extent and cross-shaped plan (about 34 x 16 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     10.5,
+     21
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "pointed-arch",
+     "right": "pointed-arch",
+     "front": "none",
+     "back": "none"
+    },
+    "plinth": 0.5,
+    "glassColour": "#6a5a42",
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#5a3a2c",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "pointed-arch",
+     "right": "pointed-arch",
+     "front": "none",
+     "back": "none"
+    },
+    "plinth": 0.5,
+    "glassColour": "#6a5a42",
+    "bay": 4
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#5a3a2c",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "polygon": [
+     [
+      -3.2,
+      0
+     ],
+     [
+      3.2,
+      0
+     ],
+     [
+      4.2,
+      -3
+     ],
+     [
+      2,
+      -5.2
+     ],
+     [
+      -2,
+      -5.2
+     ],
+     [
+      -4.2,
+      -3
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "pointed-arch",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "glassColour": "#8a5a30"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a3a2c",
+    "material": "clay-tile",
+    "pitch": 46,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacristy",
+   "footprint": {
+    "rect": [
+     4.5,
+     4
+    ]
+   },
+   "at": [
+    5.5,
+    -4.2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a3a2c",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     2.8,
+     2.8
+    ]
+   },
+   "at": [
+    0,
+    15.5
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "pointed-arch",
+     "left": "pointed-arch",
+     "right": "pointed-arch",
+     "back": "pointed-arch"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8f7c",
+    "material": "copper"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    15.5,
+    9
+   ],
+   "params": {
+    "baseWidth": 2.6,
+    "height": 8,
+    "sides": 8,
+    "colour": "#5f8f7c",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    15.5
+   ],
+   "z0": 9,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e8e4d8",
+    "windows": "none",
+    "trimColour": "#5a3a2c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8f7c",
+    "material": "copper"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -11.2,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.8,
+    "arch": true,
+    "colour": "#d9772c"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    5.5,
+    -6.25,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.2,
+    "arch": false,
+    "colour": "#d9772c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 0.9,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#8a867c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grave0",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    -8,
+    -14
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7a72",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a72",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grave1",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -13
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7a72",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a72",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grave2",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    2,
+    -15
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7a72",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a72",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grave3",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    6,
+    -13.5
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7a72",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a72",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grave4",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    10,
+    -15
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7a72",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a72",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grave5",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    14,
+    -13
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7a72",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a72",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "groundColour": "#8a7a6c",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -6
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     14
+    ],
+    "height": 11
+   }
+  ],
+  "forecourt": "none",
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "tower approximate; parish hall, hedge and tree beside forecourt omitted; gravestones and wall schematic"
+ }
+}

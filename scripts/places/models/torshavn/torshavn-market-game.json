@@ -1,0 +1,578 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SMS_mall_front_May_2026.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "OhanaUnited",
+   "view": "front",
+   "file": "/tmp/places-evidence/torshavn/sms1.jpg",
+   "used": "black panel-clad centre: three-storey gabled wings with glazed gable tops, taller central block with round sign disc and glazed entrance, tall chimney stack behind, chequered black cladding"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SMS_mall_side.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "OhanaUnited",
+   "view": "side",
+   "file": "/tmp/places-evidence/torshavn/sms2.jpg",
+   "used": "long dark timber-boarded side wall, gabled front wing with glazed upper gable, lower pitched roofs stepping down behind, surface car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32351707",
+   "used": "name-quality footprint (89 x 64 m, bent plan)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.778,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "frontage",
+   "footprint": {
+    "rect": [
+     86,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#26292d",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "trimColour": "#e8e8e4",
+    "plinth": 0.3,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#26292d",
+      "#3a3e42",
+      "#17191c"
+     ],
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4e52",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     60,
+     22
+    ]
+   },
+   "at": [
+    8,
+    18
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a2d31",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f54",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -32,
+    -3
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#26292d",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 4.2,
+    "trimColour": "#e8e8e4",
+    "plinth": 0.3,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#26292d",
+      "#3a3e42",
+      "#17191c"
+     ],
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f54",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right-a",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    15,
+    -3
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#26292d",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 4.2,
+    "trimColour": "#e8e8e4",
+    "plinth": 0.3,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#26292d",
+      "#3a3e42",
+      "#17191c"
+     ],
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f54",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right-b",
+   "footprint": {
+    "rect": [
+     17,
+     16
+    ]
+   },
+   "at": [
+    35,
+    -3
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#26292d",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 4.2,
+    "trimColour": "#e8e8e4",
+    "plinth": 0.3,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#26292d",
+      "#3a3e42",
+      "#17191c"
+     ],
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f54",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-atrium",
+   "footprint": {
+    "rect": [
+     19,
+     14
+    ]
+   },
+   "at": [
+    -9,
+    -2
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#1e2124",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4b4f54",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-bay",
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 9.5,
+    "colour": "#b9a56a"
+   },
+   "at": [
+    -9,
+    -9.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mullion-a",
+   "params": {
+    "rect": [
+     0.25,
+     0.4
+    ],
+    "z0": 0.4,
+    "height": 9.5,
+    "colour": "#1e2124"
+   },
+   "at": [
+    -11.3,
+    -9.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mullion-b",
+   "params": {
+    "rect": [
+     0.25,
+     0.4
+    ],
+    "z0": 0.4,
+    "height": 9.5,
+    "colour": "#1e2124"
+   },
+   "at": [
+    -9,
+    -9.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mullion-c",
+   "params": {
+    "rect": [
+     0.25,
+     0.4
+    ],
+    "z0": 0.4,
+    "height": 9.5,
+    "colour": "#1e2124"
+   },
+   "at": [
+    -6.7,
+    -9.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-disc",
+   "params": {
+    "radius": 1.4,
+    "n": 16,
+    "z0": 10.2,
+    "height": 0.4,
+    "colour": "#f0f0ee"
+   },
+   "at": [
+    -9,
+    -9.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-glass-left",
+   "params": {
+    "rect": [
+     12,
+     0.4
+    ],
+    "z0": 9.2,
+    "height": 4.5,
+    "topScale": [
+     0.04,
+     1
+    ],
+    "colour": "#a9bcc4"
+   },
+   "at": [
+    -32,
+    -11.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-glass-a",
+   "params": {
+    "rect": [
+     9,
+     0.4
+    ],
+    "z0": 9.2,
+    "height": 4,
+    "topScale": [
+     0.04,
+     1
+    ],
+    "colour": "#d79a45"
+   },
+   "at": [
+    15,
+    -11.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-glass-b",
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "z0": 9.2,
+    "height": 3.6,
+    "topScale": [
+     0.04,
+     1
+    ],
+    "colour": "#d79a45"
+   },
+   "at": [
+    35,
+    -11.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "chimney",
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "z0": 9,
+    "height": 18,
+    "colour": "#3a3a3c"
+   },
+   "at": [
+    -6,
+    8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "green-sign",
+   "params": {
+    "rect": [
+     3.6,
+     0.5
+    ],
+    "z0": 2.5,
+    "height": 6,
+    "colour": "#1f9d46"
+   },
+   "at": [
+    28,
+    -11.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-pole",
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#1f4a2e"
+   },
+   "at": [
+    -22,
+    -26
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "globe0",
+   "params": {
+    "radius": 0.7,
+    "n": 8,
+    "z0": 9.3,
+    "height": 1.2,
+    "colour": "#e8eae6"
+   },
+   "at": [
+    -22,
+    -26
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "globe1",
+   "params": {
+    "radius": 0.7,
+    "n": 8,
+    "z0": 8.4,
+    "height": 1.2,
+    "colour": "#e8eae6"
+   },
+   "at": [
+    -23.6,
+    -25.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "globe2",
+   "params": {
+    "radius": 0.7,
+    "n": 8,
+    "z0": 8.4,
+    "height": 1.2,
+    "colour": "#e8eae6"
+   },
+   "at": [
+    -20.4,
+    -25.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "globe3",
+   "params": {
+    "radius": 0.7,
+    "n": 8,
+    "z0": 7.4,
+    "height": 1.2,
+    "colour": "#e8eae6"
+   },
+   "at": [
+    -24.2,
+    -26.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "globe4",
+   "params": {
+    "radius": 0.7,
+    "n": 8,
+    "z0": 7.4,
+    "height": 1.2,
+    "colour": "#e8eae6"
+   },
+   "at": [
+    -19.8,
+    -26.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "globe5",
+   "params": {
+    "radius": 0.7,
+    "n": 8,
+    "z0": 7,
+    "height": 1.2,
+    "colour": "#e8eae6"
+   },
+   "at": [
+    -22,
+    -27.6
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": 0,
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gabled wings, glazed gables, atrium, lamp column and chequered cladding added; window rhythm sparse, glazing tints approximate, fine details and foreground roundabout not modelled; OSM bent plan replaced by a straight frontage"
+ }
+}

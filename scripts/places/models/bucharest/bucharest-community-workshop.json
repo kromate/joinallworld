@@ -1,0 +1,401 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:InternationalSchoolofBucharest.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yerceken",
+   "view": "front",
+   "file": "/tmp/places-evidence/bucharest/school1.jpg",
+   "used": "blue-green glass curtain wall with white mullions, projecting terracotta-red panel around a big window over the entrance, mustard band and overhanging dark roof slab on top, glazed ground floor, planters and benches"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/242092560",
+   "used": "overall size (121 x 40 m, zig-zag plan); composed as a long block plus a front entrance bay"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftX": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     46,
+     30
+    ]
+   },
+   "at": [
+    -37,
+    2
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#86bcc4",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "bands": "#c4c8c8",
+    "faces": {
+     "back": "none",
+     "left": "plain",
+     "right": "none"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cbcb",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     46,
+     30
+    ]
+   },
+   "at": [
+    37,
+    2
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#86bcc4",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "bands": "#c4c8c8",
+    "faces": {
+     "back": "none",
+     "right": "plain",
+     "left": "none"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cbcb",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-glass",
+   "footprint": {
+    "rect": [
+     28,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 23,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fb4c0",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cbcb",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-panel",
+   "footprint": {
+    "rect": [
+     24,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "z0": 3,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a8452f",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4503c",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mustard-band",
+   "footprint": {
+    "rect": [
+     24,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "z0": 19,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a24f",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9a24f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f8fa8",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb1b2",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    0,
+    -17.5,
+    24
+   ],
+   "params": {
+    "rect": [
+     34,
+     12
+    ],
+    "height": 1.0,
+    "colour": "#3d4042"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-l",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.2
+    ],
+    "height": 0.7,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-r",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.2
+    ],
+    "height": 0.7,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.6
+    ],
+    "height": 0.5,
+    "colour": "#8a6b4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-window",
+   "at": [
+    0,
+    -21.6,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     17,
+     0.3
+    ],
+    "height": 11,
+    "colour": "#4d8aa6"
+   }
+  },
+  {
+   "type": "array",
+   "id": "window-mullions",
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     -21.8,
+     5.5
+    ],
+    "end": [
+     7,
+     -21.8,
+     5.5
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 11,
+      "colour": "#eeeeea"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "red-sign",
+   "at": [
+    0,
+    -21.7,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#e8e8e4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "red panel window is a mullioned glass inset; wings still more banded and darker than the photo; no doors detail"
+ }
+}

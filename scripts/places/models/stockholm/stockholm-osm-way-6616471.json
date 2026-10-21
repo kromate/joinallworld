@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-way-6616471",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stinsen_H%C3%A4ggvik.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Udo Schroeter",
+   "view": "front",
+   "file": "/tmp/places-evidence/stockholm/stinsen.jpg",
+   "used": "8-storey light grey panelled office slab with paired brown-framed windows, rooftop sign band, lower dark mall block and blue pylon sign on the left, car park in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/6616471",
+   "used": "retail footprint is 274 m long: only the tower and the nearest mall volume are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 5,
+  "fovDeg": 48,
+  "aspect": 1.46,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 29,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c8c3",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "punched"
+    },
+    "bands": "#a9a8a2",
+    "plinth": 0.3,
+    "bay": 2.4,
+    "groundKind": "glazed",
+    "groundHeight": 3.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.4,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.4,
+    "colour": "#3a4a78"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     34,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "rotDeg": 0,
+   "z0": 29,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8f9298",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7176",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-inset",
+   "footprint": {
+    "rect": [
+     20,
+     0.6
+    ]
+   },
+   "at": [
+    -4,
+    -12.2
+   ],
+   "rotDeg": 0,
+   "z0": 29.4,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1c2f55",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c2f55",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     40,
+     30
+    ]
+   },
+   "at": [
+    -37,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#585d63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall-entry",
+   "footprint": {
+    "rect": [
+     12,
+     1
+    ]
+   },
+   "at": [
+    -26,
+    -15.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4c33",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon",
+   "footprint": {
+    "rect": [
+     1.5,
+     1.2
+    ]
+   },
+   "at": [
+    -62,
+    -20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1d3f93",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d3f93",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon-list",
+   "footprint": {
+    "rect": [
+     1.55,
+     1.25
+    ]
+   },
+   "at": [
+    -62,
+    -20
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e8e6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "material": "membrane"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -15
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower is a plain punched grid at oblique angle, no vertical piers or glazed shopfront detail; mall and pylon are stand-ins; 274 m mall not modelled; no lettering by design"
+ }
+}

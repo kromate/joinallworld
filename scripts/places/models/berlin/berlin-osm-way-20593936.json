@@ -1,0 +1,446 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-way-20593936",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:WestendMommsenstadion-4.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Fridolin freudenfett (Peter Kuley)",
+   "view": "front",
+   "used": "long low grandstand: cream ground storey with window rows, dark open gallery under a thin dark flat roof, curved cream stair at the left end with a brick chimney, floodlight mast at right, wire fence round the pitch",
+   "file": "/tmp/places-evidence/berlin/WestendMommsen.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/20593936",
+   "used": "overall size (190 x 132 m) and orientation only"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 105,
+    "width": 68,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gs-ground",
+   "footprint": {
+    "rect": [
+     104,
+     13
+    ]
+   },
+   "at": [
+    0,
+    50.5
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0d0",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b4146",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    59.2,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     104,
+     1.2
+    ],
+    "height": 5.5,
+    "colour": "#2f373c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -51.5,
+     48.5,
+     0
+    ],
+    "end": [
+     51.5,
+     48.5,
+     0
+    ],
+    "count": 22,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "height": 5.4,
+       "colour": "#2f373c"
+      },
+      "at": [
+       0,
+       0,
+       5.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -51,
+     53
+    ],
+    "end": [
+     51,
+     53
+    ],
+    "rows": 4,
+    "rise": 0.5,
+    "run": 1.0,
+    "firstHeight": 5.6,
+    "seatColour": "#3d5a4a",
+    "concreteColour": "#6b6f70",
+    "flip": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    54,
+    11.0
+   ],
+   "params": {
+    "rect": [
+     104,
+     14
+    ],
+    "height": 0.45,
+    "colour": "#2b3034",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    47.6,
+    5.4
+   ],
+   "params": {
+    "rect": [
+     104,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#d7d1c1"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -55,
+    45,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3.5,
+       3.2
+      ]
+     },
+     {
+      "z": 5.5,
+      "ellipse": [
+       3.3,
+       3.0
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       2.6,
+       2.4
+      ]
+     }
+    ],
+    "colour": "#e2dac4",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -57,
+    53,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 16,
+    "colour": "#9a4f36"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62.699999999999996,
+    30,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 7
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62.699999999999996,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 7
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -64,
+     38
+    ],
+    "end": [
+     -64,
+     -38
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 1.2,
+    "firstHeight": 0.4,
+    "seatColour": "#8e8b80",
+    "concreteColour": "#8e8b80"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     64,
+     -38
+    ],
+    "end": [
+     64,
+     38
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 1.2,
+    "firstHeight": 0.4,
+    "seatColour": "#8e8b80",
+    "concreteColour": "#8e8b80"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -64,
+     -42
+    ],
+    "end": [
+     64,
+     -42
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 1.2,
+    "firstHeight": 0.4,
+    "seatColour": "#8e8b80",
+    "concreteColour": "#8e8b80"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.4,
+    "thickness": 0.05,
+    "kind": "railing",
+    "pillarEvery": 10,
+    "colour": "#9aa4a6",
+    "points": [
+     [
+      -58,
+      -36
+     ],
+     [
+      58,
+      -36
+     ],
+     [
+      58,
+      36
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -70,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 50,
+    "count": 7,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    70,
+    0,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 50,
+    "count": 7,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    64,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 8,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    40,
+    64,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 8,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Open gallery under thin dark roof on posts with seat tiers, cream ground storey, curved stair, thin brick chimney, taller lamp-bank masts, mesh fence on front and right, terraces and trees added; photo viewpoint is much closer than the framing (scene fit wide), snow ground not modelled, fence only on two sides, ground storey windows are generic."
+ }
+}

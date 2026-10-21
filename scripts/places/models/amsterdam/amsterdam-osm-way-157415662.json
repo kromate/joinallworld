@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-157415662",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kopje_van_Bloemendaal.jpeg",
+   "licence": "CC0",
+   "author": "Hanno Lans",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/kopje1.jpg",
+   "used": "it is a round grey rendered-concrete drum, not a cube: dark battered lower drum, recessed dark window band, paler upper drum with overhanging flat roof, two curved stair walls climbing both sides, cobble paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/157415662",
+   "used": "8.8 m diameter, rounded outline, 8 m tag height"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#4d4d45",
+    "slot": "plain-render",
+    "profile": [
+     [
+      4.7,
+      0
+     ],
+     [
+      4.35,
+      6.0
+     ],
+     [
+      3.3,
+      6.2,
+      "#8a8982"
+     ],
+     [
+      3.2,
+      6.3,
+      "#35352f"
+     ],
+     [
+      3.2,
+      7.3,
+      "#35352f"
+     ],
+     [
+      3.75,
+      7.4,
+      "#a3a094"
+     ],
+     [
+      3.7,
+      9.6
+     ],
+     [
+      3.95,
+      9.7,
+      "#8a8982"
+     ],
+     [
+      3.95,
+      10.0,
+      "#8a8982"
+     ],
+     [
+      0.1,
+      10.0,
+      "#8a8982"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      1.9
+     ]
+    },
+    "curve": true,
+    "steps": 8,
+    "colour": "#76756e",
+    "slot": "plain-render",
+    "points": [
+     [
+      -5.3,
+      -4.4,
+      0.7
+     ],
+     [
+      -5.5,
+      -1.8,
+      2.4
+     ],
+     [
+      -4.8,
+      1.8,
+      4.3
+     ],
+     [
+      -3.5,
+      4.0,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      1.9
+     ]
+    },
+    "curve": true,
+    "steps": 8,
+    "colour": "#76756e",
+    "slot": "plain-render",
+    "points": [
+     [
+      5.3,
+      -4.4,
+      0.7
+     ],
+     [
+      5.5,
+      -1.8,
+      2.4
+     ],
+     [
+      4.8,
+      1.8,
+      4.3
+     ],
+     [
+      3.5,
+      4.0,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.1,
+     -3.4,
+     0.5
+    ],
+    "step": [
+     1.05,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       1.6
+      ],
+      "height": 0.15,
+      "colour": "#55554f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     3
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     9,
+     5
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     13
+    ]
+   }
+  ],
+  "extent": [
+   44,
+   44
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Plaque, stair treads and cobble texture missing; concrete tone approximated; trees are generic conifers."
+ }
+}

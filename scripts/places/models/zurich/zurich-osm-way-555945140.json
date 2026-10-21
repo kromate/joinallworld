@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-osm-way-555945140",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadtspital_Triemli.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "see Commons file page",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/zurich/555945140_2.jpg",
+   "used": "long dark-glass Bettenhaus slab with horizontal grey bands, beige 1970 concrete tower rising behind it, low podium, annex block, grass slope and access road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Triemli_spital.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Andreas Faessler",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/zurich/555945140_0.jpg",
+   "used": "tower and Bettenhaus relative height and spacing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/402680307",
+   "used": "real Bettenhaus outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 60,
+  "aspect": 1.7,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bettenhaus",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 54,
+   "storeys": 12,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#35424b",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#2f3a42",
+       "#3b4851"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#a3a8aa",
+      "height": 0.9,
+      "at": 0.5
+     }
+    ],
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9496",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     28,
+     13
+    ]
+   },
+   "at": [
+    40,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 68,
+   "storeys": 11,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9bea6",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#cfc4ab",
+       "#7b7568"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c85",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-core",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    40,
+    28
+   ],
+   "z0": 68,
+   "height": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#a39d92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     50,
+     20
+    ]
+   },
+   "at": [
+    40,
+    6
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6a727a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e3e1d8",
+      "height": 0.9,
+      "at": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9496"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      6,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      60,
+      -20,
+      0.1
+     ],
+     [
+      45,
+      -45,
+      0.1
+     ],
+     [
+      55,
+      -75,
+      0.1
+     ],
+     [
+      40,
+      -100,
+      0.1
+     ]
+    ],
+    "curve": true,
+    "colour": "#55575a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -70
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Bettenhaus follows the real OSM outline but is a banded slab (no balcony rhythm or stepped end); tower window grid is punched, podium and annex simplified; access road is a single ribbon and terrace/slope are not modelled."
+ }
+}

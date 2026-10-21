@@ -1,0 +1,667 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-989152604",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beykoz_koru1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ekol (Wikimedia Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/bey1.jpg",
+   "used": "white cafe pavilion with two square white towers capped by dark pyramid roofs, orange-red tiled hip wings, columnar conifers, lawn with tulip beds, large plane tree at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beykoz_koru2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ekol (Wikimedia Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/istanbul/bey2.jpg",
+   "used": "promenade with white lamp posts, tulip borders, tall plane and pine trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/989152604",
+   "used": "park identity only (1.07 km outline is far larger than the modelled pavilion corner)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4552f",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     15,
+     7
+    ]
+   },
+   "at": [
+    -15.5,
+    3
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4552f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     13,
+     7
+    ]
+   },
+   "at": [
+    14.5,
+    3
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4552f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-left",
+   "at": [
+    -4.2,
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     5.5
+    ],
+    "height": 10,
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "storeys": 3,
+    "colour": "#f3f0e8",
+    "faces": {
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-left-roof",
+   "at": [
+    -4.2,
+    -3.2,
+    10
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "height": 5.5,
+    "topScale": 0.05,
+    "colour": "#3f4246",
+    "topColour": "#33363a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-right",
+   "at": [
+    5.2,
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     5.5
+    ],
+    "height": 11,
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "storeys": 3,
+    "colour": "#f3f0e8",
+    "faces": {
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-right-roof",
+   "at": [
+    5.2,
+    -3.2,
+    11
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "height": 5.5,
+    "topScale": 0.05,
+    "colour": "#3f4246",
+    "topColour": "#33363a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool",
+   "at": [
+    34,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     9
+    ],
+    "height": 0.12,
+    "colour": "#5f8a96",
+    "slot": "glass-dark"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     3.4
+    ],
+    "height": 0.06,
+    "colour": "#b98a78",
+    "slot": "paving"
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -36,
+     -21.5,
+     0
+    ],
+    "end": [
+     36,
+     -21.5,
+     0
+    ],
+    "of": {
+     "type": "lamp",
+     "params": {}
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-volume",
+   "at": [
+    0.4,
+    -4.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     2.4
+    ],
+    "height": 5.2,
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "storeys": 2,
+    "faces": {
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-roof",
+   "at": [
+    0.4,
+    -4.6,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     3.4
+    ],
+    "height": 2.0,
+    "topScale": 0.2,
+    "colour": "#c4552f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bay-left",
+   "at": [
+    -4.2,
+    -6.3,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     1.0
+    ],
+    "height": 2.6,
+    "colour": "#bcd8dc",
+    "slot": "glass-dark"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bay-right",
+   "at": [
+    5.2,
+    -6.3,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     1.0
+    ],
+    "height": 2.6,
+    "colour": "#bcd8dc",
+    "slot": "glass-dark"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney",
+   "at": [
+    -19,
+    4,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 3.5,
+    "colour": "#cfc7b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-red",
+   "at": [
+    -10.0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     3.4
+    ],
+    "height": 0.7,
+    "colour": "#c8263a",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-yellow",
+   "at": [
+    19.0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     3.4
+    ],
+    "height": 0.7,
+    "colour": "#f0c828",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-red2",
+   "at": [
+    -12.0,
+    -17.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     3.4
+    ],
+    "height": 0.7,
+    "colour": "#d93a4a",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-yellow2",
+   "at": [
+    19.0,
+    -17.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     3.4
+    ],
+    "height": 0.7,
+    "colour": "#f2c230",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-red3",
+   "at": [
+    -23.0,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     3.4
+    ],
+    "height": 0.7,
+    "colour": "#c8263a",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-yellow3",
+   "at": [
+    27.0,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     3.4
+    ],
+    "height": 0.7,
+    "colour": "#f0c828",
+    "slot": "grass"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -9.5,
+     -9
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     -10
+    ],
+    "height": 7.5
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -11,
+     -10.5
+    ],
+    "height": 7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -1.5,
+     -9
+    ],
+    "height": 7.5
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     -10
+    ],
+    "height": 7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     2.5,
+     -9.5
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     10.5,
+     -8
+    ],
+    "height": 7.5
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     12,
+     -9.5
+    ],
+    "height": 7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     -8
+    ],
+    "height": 7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14.5,
+     -9
+    ],
+    "height": 7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -10,
+     -8
+    ],
+    "height": 7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     -9
+    ],
+    "height": 6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     2,
+     -9
+    ],
+    "height": 6.5
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     11,
+     -8
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -12
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     14
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -10
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     -15
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   78,
+   44
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Pavilion, white towers with dark pyramid roofs, orange hips, tulip beds, conifers present; render framing still wide so building is small, no eye-level foreground tulips or big plane trunk, pools simplified."
+ }
+}

@@ -1,0 +1,802 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-osm-way-139745554",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Odolena_Voda,_kostel_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Palickap",
+   "view": "side",
+   "file": "/tmp/places-evidence/prague/way-139745554-0.jpg",
+   "used": "Baroque church: ochre-yellow pilasters and cornices on cream panels, arched and oval windows, red tile roof, west tower with clock and copper-green onion cupola with lantern"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kostel_sv._Klimenta_-_pohled_od_severu.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Macamica",
+   "view": "side",
+   "file": "/tmp/places-evidence/prague/way-139745554-2.jpg",
+   "used": "tower proportions and cupola, curved apse, yellow and cream wash, terracotta hipped roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/139745554",
+   "used": "church outline with chapel annexes, about 38 x 22 m (brief text was wrong: this is the Odolena Voda Baroque church by K. I. Dientzenhofer, 1735)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "polygon": [
+     [
+      11.5,
+      0.0
+     ],
+     [
+      11.12,
+      4.71
+     ],
+     [
+      9.98,
+      7.23
+     ],
+     [
+      8.07,
+      8.94
+     ],
+     [
+      5.26,
+      9.96
+     ],
+     [
+      0.0,
+      10.3
+     ],
+     [
+      -5.26,
+      9.96
+     ],
+     [
+      -8.07,
+      8.94
+     ],
+     [
+      -9.98,
+      7.23
+     ],
+     [
+      -11.12,
+      4.71
+     ],
+     [
+      -11.5,
+      0.0
+     ],
+     [
+      -11.12,
+      -4.71
+     ],
+     [
+      -9.98,
+      -7.23
+     ],
+     [
+      -8.07,
+      -8.94
+     ],
+     [
+      -5.26,
+      -9.96
+     ],
+     [
+      -0.0,
+      -10.3
+     ],
+     [
+      5.26,
+      -9.96
+     ],
+     [
+      8.07,
+      -8.94
+     ],
+     [
+      9.98,
+      -7.23
+     ],
+     [
+      11.12,
+      -4.71
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d6cbb0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#c98f4a",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.2,
+      "depth": 0.3,
+      "spacing": 4.6,
+      "colour": "#c98f4a",
+      "margin": 0.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9b5a43",
+    "material": "clay-tile",
+    "pitch": 21,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "polygon": [
+     [
+      0,
+      -4.5
+     ],
+     [
+      3,
+      -6
+     ],
+     [
+      6,
+      -5.2
+     ],
+     [
+      8,
+      -3
+     ],
+     [
+      8.8,
+      0
+     ],
+     [
+      8,
+      3
+     ],
+     [
+      6,
+      5.2
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      0,
+      4.5
+     ]
+    ]
+   },
+   "at": [
+    9,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d6cbb0",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.08,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#e3b96a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9b5a43",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    -13
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d6cbb0",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9b5a43",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d6cbb0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#c98f4a",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.0,
+      "depth": 0.3,
+      "spacing": 3.0,
+      "colour": "#c98f4a",
+      "margin": 0.6
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c98f4a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-plinth",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      12.0,
+      0.0
+     ],
+     [
+      11.61,
+      4.94
+     ],
+     [
+      10.42,
+      7.58
+     ],
+     [
+      8.42,
+      9.38
+     ],
+     [
+      5.48,
+      10.44
+     ],
+     [
+      0.0,
+      10.8
+     ],
+     [
+      -5.48,
+      10.44
+     ],
+     [
+      -8.42,
+      9.38
+     ],
+     [
+      -10.42,
+      7.58
+     ],
+     [
+      -11.61,
+      4.94
+     ],
+     [
+      -12.0,
+      0.0
+     ],
+     [
+      -11.61,
+      -4.94
+     ],
+     [
+      -10.42,
+      -7.58
+     ],
+     [
+      -8.42,
+      -9.38
+     ],
+     [
+      -5.48,
+      -10.44
+     ],
+     [
+      -0.0,
+      -10.8
+     ],
+     [
+      5.48,
+      -10.44
+     ],
+     [
+      8.42,
+      -9.38
+     ],
+     [
+      10.42,
+      -7.58
+     ],
+     [
+      11.61,
+      -4.94
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#b8a98a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-cornice",
+   "at": [
+    0,
+    0,
+    6.6
+   ],
+   "params": {
+    "points": [
+     [
+      12.0,
+      0.0
+     ],
+     [
+      11.61,
+      4.94
+     ],
+     [
+      10.42,
+      7.58
+     ],
+     [
+      8.42,
+      9.38
+     ],
+     [
+      5.48,
+      10.44
+     ],
+     [
+      0.0,
+      10.8
+     ],
+     [
+      -5.48,
+      10.44
+     ],
+     [
+      -8.42,
+      9.38
+     ],
+     [
+      -10.42,
+      7.58
+     ],
+     [
+      -11.61,
+      4.94
+     ],
+     [
+      -12.0,
+      0.0
+     ],
+     [
+      -11.61,
+      -4.94
+     ],
+     [
+      -10.42,
+      -7.58
+     ],
+     [
+      -8.42,
+      -9.38
+     ],
+     [
+      -5.48,
+      -10.44
+     ],
+     [
+      -0.0,
+      -10.8
+     ],
+     [
+      5.48,
+      -10.44
+     ],
+     [
+      8.42,
+      -9.38
+     ],
+     [
+      10.42,
+      -7.58
+     ],
+     [
+      11.61,
+      -4.94
+     ]
+    ],
+    "height": 0.7,
+    "colour": "#c98f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave-eave-cornice",
+   "at": [
+    0,
+    0,
+    9.6
+   ],
+   "params": {
+    "points": [
+     [
+      12.2,
+      0.0
+     ],
+     [
+      11.8,
+      5.03
+     ],
+     [
+      10.59,
+      7.72
+     ],
+     [
+      8.56,
+      9.55
+     ],
+     [
+      5.58,
+      10.64
+     ],
+     [
+      0.0,
+      11.0
+     ],
+     [
+      -5.58,
+      10.64
+     ],
+     [
+      -8.56,
+      9.55
+     ],
+     [
+      -10.59,
+      7.72
+     ],
+     [
+      -11.8,
+      5.03
+     ],
+     [
+      -12.2,
+      0.0
+     ],
+     [
+      -11.8,
+      -5.03
+     ],
+     [
+      -10.59,
+      -7.72
+     ],
+     [
+      -8.56,
+      -9.55
+     ],
+     [
+      -5.58,
+      -10.64
+     ],
+     [
+      -0.0,
+      -11.0
+     ],
+     [
+      5.58,
+      -10.64
+     ],
+     [
+      8.56,
+      -9.55
+     ],
+     [
+      10.59,
+      -7.72
+     ],
+     [
+      11.8,
+      -5.03
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#c98f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-clock-stage",
+   "at": [
+    -12,
+    0,
+    17.0
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     5.8
+    ],
+    "height": 4.2,
+    "colour": "#d6cbb0",
+    "topScale": 0.92
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cornice",
+   "at": [
+    -12,
+    0,
+    17.0
+   ],
+   "params": {
+    "rect": [
+     8.6,
+     8.6
+    ],
+    "height": 0.6,
+    "colour": "#c98f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-face",
+   "at": [
+    -9.0,
+    0,
+    19.0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     1.8
+    ],
+    "height": 1.8,
+    "colour": "#efe9d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cornice-top",
+   "at": [
+    -12,
+    0,
+    21.2
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "height": 0.5,
+    "colour": "#c98f4a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cupola",
+   "at": [
+    -12,
+    0,
+    21.7
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#4a6657",
+    "profile": [
+     [
+      2.4,
+      0
+     ],
+     [
+      2.9,
+      0.6
+     ],
+     [
+      3.1,
+      1.6
+     ],
+     [
+      2.6,
+      2.6
+     ],
+     [
+      1.4,
+      3.3
+     ],
+     [
+      0.9,
+      3.7
+     ],
+     [
+      0.9,
+      5.2,
+      "#5b7a68"
+     ],
+     [
+      1.3,
+      5.5
+     ],
+     [
+      1.3,
+      6.3
+     ],
+     [
+      0.7,
+      7.0
+     ],
+     [
+      0.2,
+      7.5
+     ],
+     [
+      0,
+      7.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cross",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -12,
+      0,
+      29.4
+     ],
+     [
+      -12,
+      0,
+      31.4
+     ]
+    ],
+    "colour": "#d4af37",
+    "n": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cross-arm",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -12,
+      -0.5,
+      30.7
+     ],
+     [
+      -12,
+      0.5,
+      30.7
+     ]
+    ],
+    "colour": "#d4af37",
+    "n": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -18
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     16
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is a plain hip, not the mansard-curved hip; no gable pediment with volutes, oval windows only as round chancel windows; tower is a stepped box with an onion cupola, apse is a faceted polygon."
+ }
+}

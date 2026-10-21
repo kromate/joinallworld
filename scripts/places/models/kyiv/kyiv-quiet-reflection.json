@@ -1,0 +1,800 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%B2%D1%8F%D1%82%D0%BE-%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0_%D1%86%D0%B5%D1%80%D0%BA%D0%B2%D0%B0_%D0%91%D0%BE%D1%8F%D1%80%D0%BA%D0%B0.jpg",
+   "licence": "Attribution",
+   "author": "IgorTurzh",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyiv/kyiv-quiet-reflection-1.jpg",
+   "used": "sky-blue timbered walls with white trim, hipped grey nave roof with transept gables, octagonal drum with dark-blue dome, tall bell tower with belfry, dark pyramidal cap and onion at the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%91%D0%BE%D1%8F%D1%80%D0%BA%D0%B0_21.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Andriychenko",
+   "view": "side",
+   "file": "/tmp/places-evidence/kyiv/kyiv-quiet-reflection-2.jpg",
+   "used": "tower proportions and teal fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/481695850",
+   "used": "overall plan size (about 27 x 18 m, tower on the west end); the plan is recomposed as nave + transept + tower because the outline includes the tower and porches irregularly"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ornate carved white trim and cross-shaped window panels simplified to plain white boards; tower cap is a simple octagon plus onion (no multi-tier carved eaves); pediments are flat boards; wall is flat sky-blue render, not clapboard."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#79bde8",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "bay": 3.2,
+    "plinth": 0.5,
+    "bands": "#eef2f3",
+    "cornice": true,
+    "windowShape": "rect",
+    "trimColour": "#eef2f3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b8590",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     9,
+     17
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#79bde8",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "bay": 2.8,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "none",
+     "right": "none"
+    },
+    "trimColour": "#eef2f3"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8590",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    -2,
+    0,
+    7.4
+   ],
+   "params": {
+    "n": 8,
+    "radius": 3.4,
+    "height": 4.8,
+    "colour": "#74b6e2",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "trimColour": "#eef2f3"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    -2,
+    0,
+    12.2
+   ],
+   "params": {
+    "colour": "#34508c",
+    "profile": [
+     [
+      3.8,
+      0,
+      "#34508c"
+     ],
+     [
+      4.0,
+      0.3
+     ],
+     [
+      3.7,
+      1.2
+     ],
+     [
+      2.9,
+      2.1
+     ],
+     [
+      1.6,
+      2.9
+     ],
+     [
+      0.7,
+      3.3
+     ],
+     [
+      0.0,
+      3.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    12.5,
+    -5.0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#eef2f3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8590",
+    "pitch": 30,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -16
+     ],
+     [
+      26,
+      -16
+     ],
+     [
+      26,
+      14
+     ],
+     [
+      -26,
+      14
+     ],
+     [
+      -26,
+      -16
+     ]
+    ],
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "fence",
+    "colour": "#4a9a8a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    0,
+    15.6
+   ],
+   "params": {
+    "n": 8,
+    "radius": 0.8,
+    "height": 1.3,
+    "colour": "#34508c"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -2,
+    0,
+    16.9
+   ],
+   "params": {
+    "colour": "#34508c",
+    "profile": [
+     [
+      0.45,
+      0,
+      "#34508c"
+     ],
+     [
+      0.9,
+      0.6
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.3,
+      1.5
+     ],
+     [
+      0.05,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    0,
+    18.6
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "height": 2.0,
+    "colour": "#d4a82a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    0,
+    19.8
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.1
+    ],
+    "height": 0.12,
+    "colour": "#d4a82a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    12.5,
+    -1.5
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#79bde8",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 2.6,
+    "plinth": 0.4,
+    "bands": "#eef2f3",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef2f3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     2.8,
+     2.8
+    ]
+   },
+   "at": [
+    12.5,
+    -1.5
+   ],
+   "z0": 15.2,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#79bde8",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "bay": 1.6,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a5266",
+    "rise": 1.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -1.5,
+    20.8
+   ],
+   "params": {
+    "n": 8,
+    "radius": 1.15,
+    "height": 2.4,
+    "colour": "#34508c",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "trimColour": "#eef2f3"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    12.5,
+    -1.5,
+    23.2
+   ],
+   "params": {
+    "colour": "#2a3a5c",
+    "profile": [
+     [
+      1.0,
+      0,
+      "#2a3a5c"
+     ],
+     [
+      1.5,
+      0.6
+     ],
+     [
+      1.3,
+      1.2
+     ],
+     [
+      0.6,
+      2.0
+     ],
+     [
+      0.05,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -1.5,
+    25.6
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "height": 2.0,
+    "colour": "#d4a82a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    -1.5,
+    26.8
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.1
+    ],
+    "height": 0.12,
+    "colour": "#d4a82a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.4,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.4,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.4,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.4,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.5,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.4,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.4,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.5,
+    8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.4,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 6.4,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.5,
+    -8.62,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.1
+    ],
+    "height": 0.6,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.5,
+    -8.62,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.1
+    ],
+    "height": 0.6,
+    "colour": "#eef2f3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -2,
+    -8.55,
+    6.5
+   ],
+   "params": {
+    "colour": "#eef2f3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.2,
+       0.2
+      ]
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       6,
+       0.2
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       2.6,
+       0.2
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       0.4,
+       0.2
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -2,
+    8.55,
+    6.5
+   ],
+   "params": {
+    "colour": "#eef2f3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.2,
+       0.2
+      ]
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       6,
+       0.2
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       2.6,
+       0.2
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       0.4,
+       0.2
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ }
+}

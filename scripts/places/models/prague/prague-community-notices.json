@@ -1,0 +1,121 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "prague",
+ "venueId": "prague-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/203227246",
+   "used": "real 12.7 x 6.9 m civic outline (building=civic), rotated as mapped"
+  },
+  {
+   "kind": "text",
+   "used": "Obecni urad Borek: village hall, two storeys, hipped clay roof, rendered walls (brief, low confidence; no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#c9a66b"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8502f",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -6.2,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "rise": 0.17,
+    "run": 0.35,
+    "count": 3,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -6,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 1.0,
+    "bottom": 1.2,
+    "colour": "#7a2b2b",
+    "frameColour": "#c9a66b"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    6.5,
+    -6,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 7,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     6
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   44,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; outline from OSM, storeys/roof/colours from the brief estimate; flag part params unverified."
+ }
+}

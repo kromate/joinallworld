@@ -1,0 +1,457 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sourp_east_facade.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Zippymarmalade",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyrenia/sourp-east.jpg",
+   "used": "east range: two storeys of weathered rubble stone with pale plaster patches, a pointed-arch ground-floor arcade on stone posts, pointed-arch openings, unglazed upper windows, a small timber lean-to canopy, ruined roofline"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sourp_fm_north.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Zippymarmalade",
+   "view": "side",
+   "file": "/tmp/places-evidence/kyrenia/sourp-north.jpg",
+   "used": "grey rendered gable end with two round-arched upper windows, ruined parapet, surrounding pine forest and bare slope"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/906943513",
+   "used": "site only: the OSM polygon is the whole 150 m monastery grounds, so the courtyard buildings (about 52 x 42 m) are composed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "east-range",
+   "footprint": {
+    "rect": [
+     52,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "rect",
+    "windowRatio": 0.05,
+    "windowShape": "rect",
+    "plinth": 0.5,
+    "faces": {
+     "front": "rect",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "shape": "pointed",
+     "bay": 17,
+     "opening": 0.24,
+     "height": 0.85,
+     "depth": 0.9
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8368",
+    "parapet": 0.5,
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-range",
+   "footprint": {
+    "rect": [
+     52,
+     9
+    ]
+   },
+   "at": [
+    0,
+    16.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "windowShape": "pointed",
+    "plinth": 0.5,
+    "faces": {
+     "front": "none",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8368",
+    "parapet": 0.5,
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-range",
+   "footprint": {
+    "rect": [
+     9,
+     24
+    ]
+   },
+   "at": [
+    -21.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "windowShape": "pointed",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8368",
+    "parapet": 0.5,
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south-range",
+   "footprint": {
+    "rect": [
+     9,
+     24
+    ]
+   },
+   "at": [
+    21.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "windowShape": "pointed",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8368",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "small-chapel",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    33,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "windowShape": "pointed",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8368",
+    "parapet": 0.5,
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "great-chapel",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -33,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "windowShape": "pointed",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8368",
+    "parapet": 0.5,
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9ab8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ab8a"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    36,
+    14,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.4,
+    "thickness": 0.7,
+    "colour": "#a99c80",
+    "gaps": 0.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -21.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 5.8,
+    "colour": "#e2dac6",
+    "topScale": 0.75
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -22.5,
+    3.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6,
+    "depth": 2.2,
+    "height": 0.3,
+    "thickness": 0.2,
+    "columns": 0,
+    "colour": "#5a4632",
+    "edgeColour": "#4a3828"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -26,
+    -21,
+    7.2
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.6,
+    "thickness": 0.9,
+    "colour": "#a89f88",
+    "gaps": 0.35
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    0,
+    21,
+    7.2
+   ],
+   "params": {
+    "length": 48,
+    "height": 1.5,
+    "thickness": 0.9,
+    "colour": "#a89f88",
+    "gaps": 0.3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    10,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b5ab92"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Ruined roofline with broken ruin-wall tops, pale portal, lean-to and dry sand ground now present; arches are small and the portal is a solid wedge not an open 4 m pointed arch; no weathered plaster texture; windows look glazed."
+ }
+}

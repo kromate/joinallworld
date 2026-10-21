@@ -1,0 +1,189 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-osm-way-875744638",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/875744638",
+   "used": "park outline (very long strip, about 744 x 183 m, fitted to 118 m), leisure=park, Wikidata Q20526534, established 1964"
+  },
+  {
+   "kind": "text",
+   "used": "brief: neighbourhood park in Novi Zagreb with lawns, young trees, playgrounds, paved path, pavilion, kiosk and fountain; no usable exterior photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      -40
+     ],
+     [
+      0,
+      -15
+     ],
+     [
+      -2,
+      10
+     ],
+     [
+      6,
+      35
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      5
+     ],
+     [
+      -5,
+      3
+     ],
+     [
+      25,
+      10
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    10,
+    -8,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.4,
+    "colour": "#b8b0a0",
+    "cap_colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -12,
+    14,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#c9c3b3"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    -22,
+    0.5
+   ],
+   "params": {
+    "radius": 3,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -18,
+    -30,
+    0.5
+   ],
+   "params": {
+    "width": 22,
+    "depth": 18,
+    "count": 8,
+    "min_height": 5,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    16,
+    26,
+    0.5
+   ],
+   "params": {
+    "width": 26,
+    "depth": 20,
+    "count": 9,
+    "min_height": 5,
+    "max_height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; park outline scaled to 118 m, paths, trees, pavilion, kiosk and fountain are typical placements"
+ }
+}

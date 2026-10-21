@@ -1,0 +1,279 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-osm-way-444827472",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ermita_de_Santa_Mar%C3%ADa_de_la_Antigua._Lateral..jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "beritec",
+   "view": "side",
+   "file": "/tmp/places-evidence/madrid/m_ermita.jpg",
+   "used": "rubble nave wall with brick courses, brick round-arch portal, tall brick tower at west end with belfry openings, red clay-tile gable roof with brick dentil eaves, brick buttresses"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/444827472",
+   "used": "overall size and layout (tower west, apse east)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     9.85
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9d1bd",
+    "windows": "none",
+    "bands": "#b9693f",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c0643a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -9.5,
+    -0.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 19,
+    "cap": "flat",
+    "colour": "#c98563",
+    "material": "brick",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -0.5,
+    13.5
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     5.2
+    ],
+    "height": 5.5,
+    "colour": "#c98563",
+    "windows": "punched",
+    "windowShape": "arched",
+    "storeys": 1,
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.5,
+    -5.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     1.2
+    ],
+    "height": 5.6,
+    "colour": "#c98563",
+    "windows": "punched",
+    "windowShape": "arched",
+    "storeys": 1,
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "arched"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.5,
+    -6.05,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.2
+    ],
+    "height": 3.4,
+    "colour": "#3a4048",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.8,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 4.2,
+    "n": 10,
+    "height": 4.6,
+    "colour": "#bfae90",
+    "windows": "none",
+    "topScale": 0.95
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    8.8,
+    0,
+    4.6
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#b3562f",
+    "profile": [
+     [
+      4.5,
+      0
+     ],
+     [
+      3.2,
+      0.9
+     ],
+     [
+      0.2,
+      2.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.8,
+    -5.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 6.0,
+    "colour": "#c98563",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.2,
+    -5.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 6.0,
+    "colour": "#c98563",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.8,
+    -3.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     6
+    ],
+    "height": 4.2,
+    "colour": "#c98563",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.2,
+    -4.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     0.4
+    ],
+    "height": 0.6,
+    "colour": "#b9693f",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Nave recoloured light rubble with brick bands, thicker light-brick tower with belfry arches, wider brick portal with piers, low east annex; rubble texture, double-arch header detail and dentil eave only approximated, tree/graffiti omitted"
+ }
+}

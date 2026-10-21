@@ -1,0 +1,594 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malta_-_Valletta_-_Triq_il-Papa_Piju_V_-_Hastings_Gardens_-_Monument_to_Lord_Hastings_01_ies.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Frank Vincentz",
+   "view": "side",
+   "used": "Hastings monument: open Doric pavilion tomb with six square piers, pediment on the short side, low black iron railings, pale limestone paving, palms and pines, bastion wall behind",
+   "file": "/tmp/places-evidence/valletta/hast2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/243915139",
+   "used": "garden on the bastions; outline not used 1:1, composed as a compact 80 x 46 m garden terrace"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     58,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dccaa0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bastion-scarp",
+   "at": [
+    0,
+    18
+   ],
+   "params": {
+    "rect": [
+     58,
+     4.5
+    ],
+    "height": 11,
+    "topScale": [
+     1,
+     0.8
+    ],
+    "colour": "#dcc79c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bastion-parapet",
+   "footprint": {
+    "rect": [
+     58,
+     3
+    ]
+   },
+   "at": [
+    0,
+    18.4
+   ],
+   "z0": 11,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6c094",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb688"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-step-0",
+   "at": [
+    0,
+    -2,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     15,
+     19
+    ],
+    "height": 0.5,
+    "colour": "#cbbd9d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-step-1",
+   "at": [
+    0,
+    -2,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     13,
+     17
+    ],
+    "height": 0.5,
+    "colour": "#d3c6a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-pier-0",
+   "at": [
+    -4,
+    -7.5,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 6.5,
+    "colour": "#d8cbac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-pier-1",
+   "at": [
+    4,
+    -7.5,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 6.5,
+    "colour": "#d8cbac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-pier-2",
+   "at": [
+    -4,
+    -2,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 6.5,
+    "colour": "#d8cbac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-pier-3",
+   "at": [
+    4,
+    -2,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 6.5,
+    "colour": "#d8cbac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-pier-4",
+   "at": [
+    -4,
+    3.5,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 6.5,
+    "colour": "#d8cbac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-pier-5",
+   "at": [
+    4,
+    3.5,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 6.5,
+    "colour": "#d8cbac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-sarcophagus",
+   "at": [
+    0,
+    -1.5,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 1.6,
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-figure",
+   "at": [
+    0,
+    -1.5,
+    3.6
+   ],
+   "params": {
+    "radius": 0.6,
+    "n": 8,
+    "height": 1.5,
+    "colour": "#eadfc8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-entablature",
+   "at": [
+    0,
+    -2,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     11.4,
+     15.2
+    ],
+    "height": 1.6,
+    "colour": "#c4b898"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mon-roof",
+   "at": [
+    0,
+    -2,
+    10.1
+   ],
+   "params": {
+    "rect": [
+     11.8,
+     15.6
+    ],
+    "height": 2.4,
+    "topScale": [
+     0.06,
+     1.0
+    ],
+    "colour": "#cfc3a3"
+   }
+  },
+  {
+   "type": "market-open/pediment",
+   "id": "mon-pediment",
+   "at": [
+    0,
+    -9.7,
+    10.1
+   ],
+   "params": {
+    "width": 10.8,
+    "rise": 2.3,
+    "depth": 0.5,
+    "colour": "#d8ccae"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -2,
+    1.0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#1c1c1c",
+    "points": [
+     [
+      -9,
+      -11
+     ],
+     [
+      9,
+      -11
+     ],
+     [
+      9,
+      11
+     ],
+     [
+      -9,
+      11
+     ],
+     [
+      -9,
+      -11
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-front",
+   "at": [
+    0,
+    -13
+   ],
+   "params": {
+    "rect": [
+     50,
+     3
+    ],
+    "height": 0.05,
+    "colour": "#c9b98f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-l",
+   "at": [
+    -16.12,
+    3,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     9,
+     18
+    ],
+    "height": 0.3,
+    "colour": "#7a8a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-r",
+   "at": [
+    16.12,
+    3,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     9,
+     18
+    ],
+    "height": 0.3,
+    "colour": "#7a8a4a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18.6,
+    -6.0,
+    1.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -13.64,
+    1.5,
+    1.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18.6,
+    7.5,
+    1.0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -13.64,
+    12.0,
+    1.0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18.6,
+    -6.0,
+    1.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    13.64,
+    1.5,
+    1.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18.6,
+    7.5,
+    1.0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    13.64,
+    12.0,
+    1.0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9.3,
+    13.5,
+    1.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9.3,
+    13.5,
+    1.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22.32,
+    -9.0,
+    1.0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22.32,
+    -9.0,
+    1.0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 9
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8.68,
+    -12.75,
+    1.0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8.68,
+    -12.75,
+    1.0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-243915139",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Garden is a compact 58 x 34 m composition, not the real 300 m OSM terrace; monument shows no inner statue detail or railing spikes; bastion is a plain scarp with no crenellation; trees are generic."
+ }
+}

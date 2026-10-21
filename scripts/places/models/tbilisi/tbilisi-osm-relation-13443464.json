@@ -1,0 +1,385 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-relation-13443464",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tbilisi_-_Mtatsminda_Park_(9460953464).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Andrzej Wojtowicz",
+   "view": "front",
+   "file": "/tmp/places-evidence/tbilisi/mta1.jpg",
+   "used": "central round fountain basin with a tree sculpture and dark stone rim, grey paving, tall dark cedars and pines behind, green park trolley, lattice TV mast rising beyond the trees at the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mtatsminda_Park.jpg",
+   "licence": "Public domain",
+   "author": "Kober",
+   "view": "street",
+   "file": "/tmp/places-evidence/tbilisi/mta2.jpg",
+   "used": "clipped box-hedge parterre, conical shrubs, glazed timber-framed pavilion with hip roof in the background"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13443464",
+   "used": "not used as outline: park is 1.1 km long; a hilltop plaza core is modelled instead (fountain, trolley, mast, pavilion only; no wheel or castle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 24,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 25.2,
+    "n": 48,
+    "height": 0.9,
+    "colour": "#3a3d40"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8a6a3a",
+    "sections": [
+     {
+      "circle": 0.7,
+      "z": 0
+     },
+     {
+      "circle": 0.45,
+      "z": 6
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "colour": "#c4c8c6"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "circle",
+    "count": 24,
+    "radius": 10,
+    "facing": "outward",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "circle": 0.12
+      },
+      "arc": {
+       "centre": [
+        0,
+        0,
+        0
+       ],
+       "radius": 8,
+       "startDeg": 180,
+       "endDeg": 0,
+       "plane": "xz",
+       "radiusY": 6
+      },
+      "colour": "#e8f2f6"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "trolley",
+   "footprint": {
+    "rect": [
+     15,
+     3.6
+    ]
+   },
+   "at": [
+    -46,
+    -4
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2f7a4a",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#cfd8d8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-glass",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    44,
+    24
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b8743a",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c09060",
+    "overhang": 1.8,
+    "pitch": 14
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    46,
+    38,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "baseWidth": 5,
+    "topWidth": 1,
+    "panels": 8,
+    "colour": "#b0b3b5",
+    "colour2": "#d8d9d9"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     -47.3,
+     31.5
+    ],
+    "height": 33.2
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     -33.3,
+     31.4
+    ],
+    "height": 34.3
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     -26.8,
+     29.8
+    ],
+    "height": 34.5
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     -11.1,
+     32.4
+    ],
+    "height": 27.0
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     -0.2,
+     28.5
+    ],
+    "height": 30.9
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     12.4,
+     27.1
+    ],
+    "height": 28.0
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     22.7,
+     32.5
+    ],
+    "height": 32.9
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     34.0,
+     31.8
+    ],
+    "height": 27.2
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     48.7,
+     27.8
+    ],
+    "height": 26.0
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     -45.8,
+     38.3
+    ],
+    "height": 31.9
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     -33.1,
+     42.2
+    ],
+    "height": 32.6
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     -21.2,
+     40.2
+    ],
+    "height": 36.1
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     -13.8,
+     42.6
+    ],
+    "height": 36.2
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     2.8,
+     42.4
+    ],
+    "height": 32.7
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     11.2,
+     38.0
+    ],
+    "height": 31.3
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     21.4,
+     38.8
+    ],
+    "height": 35.4
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     33.0,
+     41.1
+    ],
+    "height": 33.0
+   },
+   {
+    "kind": "conifer",
+    "colour": "#1f3a2c",
+    "at": [
+     46.9,
+     41.9
+    ],
+    "height": 34.3
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "basin, jet dome, tree sculpture, trolley, mast now central; basin rim is a flat dark disc not a raised rim, conifers are low-poly bright green not dark layered cedars, trolley is a plain box, jets pass for a fountain only loosely"
+ }
+}

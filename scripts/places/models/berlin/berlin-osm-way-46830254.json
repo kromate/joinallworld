@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-way-46830254",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kirche_Karmel_St._Teresa.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Feldarbeit",
+   "view": "detail",
+   "file": "/tmp/places-evidence/berlin/berlin-osm-way-46830254-0.jpg",
+   "used": "interior only (not compared): plain white-rendered walls, tall narrow paired windows, dark timber ceiling beams; so a white render finish and a simple 1920s-30s church wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/46830254",
+   "used": "real 12-point monastery outline (41 x 36 m), name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cloister",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "windowShape": "arched",
+    "glassColour": "#5b6870",
+    "plinth": 0.5,
+    "bands": "#9a4a38"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a4472f",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "bellcote",
+   "at": [
+    2,
+    -8,
+    0
+   ],
+   "on": "cloister",
+   "params": {
+    "width": 2.2,
+    "height": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -22
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     -20
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     24
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     26
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no exterior photo exists; outline is real, wall colour inferred from the interior render, bell turret and roof form are from the brief"
+ }
+}

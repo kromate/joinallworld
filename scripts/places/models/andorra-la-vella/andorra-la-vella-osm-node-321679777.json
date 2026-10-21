@@ -1,0 +1,166 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/208401232",
+   "used": "real 20 x 11 m rotated rectangular footprint (bearing 45 deg)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vista_desde_La_Rabassa_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bernardo Reis",
+   "view": "street",
+   "used": "setting only (dark pine forest, pale limestone range, grass clearing); no building visible so no photo comparison"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a6a55",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.9,
+    "faces": {
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6368",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "porch",
+   "at": [
+    2,
+    -13,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 3,
+    "height": 2.8,
+    "columns": 2,
+    "colour": "#6b5a46",
+    "edgeColour": "#5f6368"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "id": "chimney",
+   "at": [
+    3,
+    2,
+    6.5
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1,
+    "colour": "#8a8478"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#4a5a68",
+    "count": 2,
+    "spacing": 3,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -22,
+     8
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     -6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     14
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -4
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     22
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-node-321679777",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building exists; simple chalet on OSM outline, materials assumed"
+ }
+}

@@ -1,0 +1,817 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-way-1317128307",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PolKommunarka2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Brattarb",
+   "view": "front",
+   "file": "/tmp/places-evidence/moscow/p2_0.jpg",
+   "used": "entrance: painted mint-green brick piers with pyramidal grey caps, green plank gate leaves and fence, small plaque, dirt track, wooden cross and flowers in a clearing, tall pine and birch forest behind"
+  },
+  {
+   "kind": "text",
+   "ref": "brief sources (Wikipedia Kommunarka shooting ground)",
+   "used": "Wall of Remembrance and wooden church placed from the description; positions and sizes are indicative"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1317128307",
+   "used": "identity only: the 570 x 430 m memorial polygon is far over the scene clamp, so the entrance and nearest memorial elements are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gravel track is a flat rectangle; forest is low-poly with fat trunks; plank texture flat; wall/chapel indicative"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pier-l-out",
+   "at": [
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#8fbfa6",
+    "windows": "none",
+    "topColour": "#8d9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-l-out-cap",
+   "at": [
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "z0": 3.6,
+    "height": 0.9,
+    "colour": "#9aa0a6",
+    "topScale": 0.1,
+    "topColour": "#b9bec3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-l-in",
+   "at": [
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#8fbfa6",
+    "windows": "none",
+    "topColour": "#8d9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-l-in-cap",
+   "at": [
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "z0": 3.6,
+    "height": 0.9,
+    "colour": "#9aa0a6",
+    "topScale": 0.1,
+    "topColour": "#b9bec3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-r-out",
+   "at": [
+    6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#8fbfa6",
+    "windows": "none",
+    "topColour": "#8d9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-r-out-cap",
+   "at": [
+    6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "z0": 3.6,
+    "height": 0.9,
+    "colour": "#9aa0a6",
+    "topScale": 0.1,
+    "topColour": "#b9bec3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-r-in",
+   "at": [
+    2.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#8fbfa6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-r-in-cap",
+   "at": [
+    2.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.5
+    ],
+    "z0": 3.6,
+    "height": 0.9,
+    "colour": "#9aa0a6",
+    "topScale": 0.1,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dirt-track",
+   "at": [
+    0,
+    -6
+   ],
+   "params": {
+    "rect": [
+     8,
+     24
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#9a8f80",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dirt-track2",
+   "at": [
+    -1,
+    13
+   ],
+   "params": {
+    "rect": [
+     6,
+     10
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#9a8f80",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gatehouse",
+   "at": [
+    4.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.1,
+     1.8
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#8fbfa6",
+    "windows": "none",
+    "topColour": "#8d9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "leaf-left-open",
+   "at": [
+    -4.6,
+    -1.2
+   ],
+   "rotDeg": -70,
+   "params": {
+    "rect": [
+     2.6,
+     0.15
+    ],
+    "z0": 0.1,
+    "height": 2.5,
+    "colour": "#7fb59a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-leaf",
+   "at": [
+    4.25,
+    -0.95
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "z0": 0.1,
+    "height": 2.3,
+    "colour": "#5e9a7e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-canopy",
+   "at": [
+    4.25,
+    -0.9
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "z0": 3.4,
+    "height": 0.15,
+    "colour": "#8d9296",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    5.3,
+    -0.95
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "z0": 2.2,
+    "height": 0.6,
+    "colour": "#7c8086",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "plank-fence-left",
+   "at": [
+    -20,
+    0,
+    0
+   ],
+   "params": {
+    "length": 27,
+    "height": 2.5,
+    "thickness": 0.15,
+    "kind": "wall",
+    "colour": "#7fb59a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "plank-fence-right",
+   "at": [
+    20,
+    0,
+    0
+   ],
+   "params": {
+    "length": 27,
+    "height": 2.5,
+    "thickness": 0.15,
+    "kind": "wall",
+    "colour": "#7fb59a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-post",
+   "at": [
+    -1,
+    18
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#a8793f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-arm",
+   "at": [
+    -1,
+    18
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.25
+    ],
+    "z0": 2.2,
+    "height": 0.25,
+    "colour": "#a8793f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wreath-bed",
+   "at": [
+    -1,
+    18.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.6
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#d98a2b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-of-remembrance",
+   "at": [
+    8,
+    45
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.8
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#7b7d7a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     9,
+     13
+    ]
+   },
+   "at": [
+    -22,
+    52
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a67c4c",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b4a3a",
+    "material": "timber-shingle",
+    "rise": 3.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/spire",
+   "id": "chapel-belfry",
+   "at": [
+    -22,
+    43
+   ],
+   "params": {
+    "baseWidth": 2.4,
+    "height": 10,
+    "shaftHeight": 5,
+    "sides": 4,
+    "colour": "#a67c4c",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -21.0,
+    39.1,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 21.589686165836554,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8.3,
+    41.0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19.458702014678693,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38.9,
+    46.1,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20.815478100296055,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -21.3,
+    49.9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 22.291844552657135,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26.9,
+    37.4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 23.473476983809135,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28.0,
+    41.2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 25.076317150003078,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    19.9,
+    43.8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 23.69988032758715,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34.9,
+    44.2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 23.137697080519224,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -15.9,
+    26.7,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 25.05869065885262,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20.2,
+    43.3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 25.151689601788373,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17.1,
+    48.1,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 21.76474382800521,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24.1,
+    36.7,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 25.54910705193165,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30.3,
+    28.3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19.951782021404682,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22.6,
+    49.2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 22.053133066392004,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10.1,
+    33.2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22.550700886803416,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -27.1,
+    34.4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 23.095518751837545,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6.7,
+    47.7,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 23.773874956444764,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34.3,
+    46.6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 25.936927514081706,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13.7,
+    29.9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 25.024462731813877,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    37.2,
+    47.7,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 22.983752524320266,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17.1,
+    31.1,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 24.821255511913478,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    23.9,
+    32.8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19.444224040016607,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28.3,
+    49.8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19.619626651768098,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24.0,
+    35.9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20.055357621169666,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16.5,
+    44.5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 25.109369172397408,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36.5,
+    40.7,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19.314581704472253,
+    "spread": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   100,
+   90
+  ]
+ }
+}

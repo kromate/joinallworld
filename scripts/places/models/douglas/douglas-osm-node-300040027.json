@@ -1,0 +1,252 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-osm-node-300040027",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Milner%27s_Tower,_Bradda_Head_-_geograph.org.uk_-_103350.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "geograph contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/douglas/milner.jpg",
+   "used": "slim grey rubble-stone tower on a grassy hilltop: tall central round turret with conical cap and flagpole, lower square wings with corner turrets, narrow slit windows, hill mound"
+  },
+  {
+   "kind": "wikidata",
+   "url": "https://en.wikipedia.org/wiki/Milner%27s_Tower",
+   "used": "built 1871, key-and-lock plan"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": -4,
+  "fovDeg": 28,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "mound",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       26,
+       22
+      ],
+      "colour": "#5f7a3a"
+     },
+     {
+      "z": 2.5,
+      "ellipse": [
+       14,
+       12
+      ],
+      "colour": "#6a8040"
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       7,
+       6.5
+      ],
+      "colour": "#728640"
+     }
+    ],
+    "curve": true,
+    "colour": "#648038"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     6.4,
+     4.6
+    ]
+   },
+   "at": [
+    0,
+    0.4
+   ],
+   "z0": 4,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#7b786f",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6c64",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-front",
+   "at": [
+    0,
+    -2.0,
+    0
+   ],
+   "params": {
+    "radius": 1.75,
+    "n": 14,
+    "z0": 4,
+    "height": 13.2,
+    "colour": "#74716a",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "topColour": "#6a675f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret-cap",
+   "at": [
+    0,
+    -2.0,
+    17.2
+   ],
+   "params": {
+    "profile": [
+     [
+      2.1,
+      0,
+      "#6a675f"
+     ],
+     [
+      2.1,
+      0.5,
+      "#6a675f"
+     ],
+     [
+      1.7,
+      0.5,
+      "#6a675f"
+     ],
+     [
+      1.7,
+      0.9,
+      "#74716a"
+     ],
+     [
+      0.0,
+      2.4,
+      "#5e5b55"
+     ]
+    ],
+    "segments": 14
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flagpole",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      0,
+      -2.0,
+      19.5
+     ],
+     [
+      0,
+      -2.0,
+      22
+     ]
+    ],
+    "colour": "#8a8a8a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "corner-turrets",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.75,
+      "n": 8,
+      "z0": 4,
+      "height": 12.4,
+      "colour": "#74716a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.1,
+     -1.7,
+     0
+    ],
+    "end": [
+     3.1,
+     -1.7,
+     0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "array",
+   "id": "back-turrets",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.8,
+      "n": 8,
+      "z0": 4,
+      "height": 13.0,
+      "colour": "#74716a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.0,
+     2.5,
+     0
+    ],
+    "end": [
+     3.0,
+     2.5,
+     0
+    ],
+    "count": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "tower is smaller in frame, corner turret heights, lichen and rocky hill not modelled; slit windows omitted"
+ }
+}

@@ -1,0 +1,385 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jomala_kyrka_2021-06-29_image31.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hakan Skogsjo",
+   "view": "side",
+   "file": "/tmp/places-evidence/mariehamn/quiet-reflection-0.jpg",
+   "used": "Jomala (St Olof) church from the south-east: rubble-stone walls in warm brown-red, west tower with grey shingled bell cap, red lantern and slim spire, grey-brown hipped nave roof, brick-red east gable with cross, low porch/vestry gable, white arched entrance, low stone churchyard wall and clipped hedge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/261409033",
+   "used": "extent and orientation only (about 38 x 29 m); outline is irregular so masses are composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 52
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     19,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a8472",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f655c",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     7,
+     7.5
+    ]
+   },
+   "at": [
+    12.5,
+    0.5
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a8472",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f655c",
+    "material": "slate",
+    "pitch": 46,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestry",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    7,
+    -7
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a8472",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f655c",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.4,
+     3
+    ]
+   },
+   "at": [
+    -4.5,
+    -6.2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efeae0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a6f66",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -12.5,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a7565",
+    "windows": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#7a3f33",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5a4c"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -12.5,
+    0,
+    12.5
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#7b7266",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      3.7,
+      0.3
+     ],
+     [
+      3.4,
+      1.2
+     ],
+     [
+      2.4,
+      2.4
+     ],
+     [
+      1.4,
+      3.1
+     ],
+     [
+      0.9,
+      3.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.5,
+    0,
+    16.0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 1.0,
+    "height": 2.0,
+    "colour": "#a8423a",
+    "topColour": "#a8423a"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -12.5,
+    0,
+    18.0
+   ],
+   "params": {
+    "baseWidth": 1.7,
+    "height": 6.0,
+    "sides": 8,
+    "colour": "#6b665e",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4.5,
+    -8.3,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "rise": 0.4,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#b8b2a6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 0.9,
+    "thickness": 0.7,
+    "kind": "wall",
+    "colour": "#8a8070"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    0,
+    -13.4,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.8,
+    "depth": 1.6,
+    "colour": "#4f8a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel-cross",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    16.2,
+    0.5
+   ],
+   "z0": 10.0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel-cross-arm",
+   "footprint": {
+    "rect": [
+     0.5,
+     1.2
+    ]
+   },
+   "at": [
+    16.2,
+    0.5
+   ],
+   "z0": 10.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -10
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -12
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rubble stone, narrower bell cap, cross on chancel gable and low wall/hedge applied; stone is still a flat tint, belfry arches are only approximate, cap still reads rounder than the photo, extra trees remain in front."
+ }
+}

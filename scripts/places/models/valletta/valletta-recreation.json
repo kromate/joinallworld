@@ -1,0 +1,362 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/277496981",
+   "used": "real park outline (388 x 245 m), drawn at 0.29 scale to fit the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 38,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -61.5,
+      -22.6
+     ],
+     [
+      -50.5,
+      21.7
+     ],
+     [
+      -31.5,
+      24.7
+     ],
+     [
+      12.5,
+      33.8
+     ],
+     [
+      24.5,
+      34.2
+     ],
+     [
+      29.9,
+      34.1
+     ],
+     [
+      36.8,
+      32.7
+     ],
+     [
+      47.5,
+      29.4
+     ],
+     [
+      51.1,
+      4.2
+     ],
+     [
+      52.6,
+      -8.7
+     ],
+     [
+      51.5,
+      -21.4
+     ],
+     [
+      47.4,
+      -26.9
+     ],
+     [
+      47.8,
+      -28.3
+     ],
+     [
+      42.3,
+      -35.2
+     ],
+     [
+      35.8,
+      -29.8
+     ],
+     [
+      35.5,
+      -30.4
+     ],
+     [
+      30.0,
+      -37.1
+     ],
+     [
+      25.0,
+      -33.0
+     ],
+     [
+      17.0,
+      -28.7
+     ],
+     [
+      4.1,
+      -24.7
+     ],
+     [
+      0.6,
+      -24.9
+     ],
+     [
+      -1.8,
+      -25.3
+     ],
+     [
+      -3.7,
+      -23.6
+     ],
+     [
+      -16.7,
+      -24.9
+     ],
+     [
+      -20.1,
+      -26.0
+     ],
+     [
+      -27.2,
+      -27.8
+     ],
+     [
+      -39.4,
+      -25.5
+     ],
+     [
+      -48.8,
+      -30.6
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#7aa857",
+    "windows": "none",
+    "trimColour": "#cdb283"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      -8
+     ],
+     [
+      48,
+      -4
+     ],
+     [
+      48,
+      -1
+     ],
+     [
+      -48,
+      -5
+     ]
+    ],
+    "z0": 0.25,
+    "height": 0.08,
+    "colour": "#d6c59b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-a",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    -22,
+    6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c392",
+    "windows": "rect",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb283",
+    "overhang": 1.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-b",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    22,
+    12
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0cfa5",
+    "windows": "rect",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb283",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    0,
+    2,
+    0.25
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.4,
+    "height": 2.8,
+    "colour": "#e0cfa5"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -8,
+    0,
+    0.25
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "colours": [
+     "#d9c392",
+     "#efece4"
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -6,
+    34,
+    0.25
+   ],
+   "params": {
+    "width": 70,
+    "depth": 18,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 5,
+    "max_height": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    -30,
+    0.25
+   ],
+   "params": {
+    "width": 30,
+    "depth": 14,
+    "count": 7,
+    "kind": "broadleaf",
+    "min_height": 5,
+    "max_height": 8
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 4.2
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -9
+    ],
+    "end": [
+     46,
+     -5
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -33,
+    0.25
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.2,
+    "thickness": 0.3,
+    "colour": "#cdb283"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; outline only, scaled to 0.29; play areas, paths and the real positions of pavilions are typical placements, not surveyed"
+ }
+}

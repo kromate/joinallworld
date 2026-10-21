@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-node-6506548450",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/6506548450",
+   "used": "location only (a point on Salamis island, no outline)"
+  },
+  {
+   "kind": "text",
+   "url": "brief athens.json",
+   "used": "8 x 8 m stepped marble base, ~12 m stone-and-marble monument, overlooking the strait; no photograph of this memorial could be found (the evidence list holds photos of unrelated Ampelakia, Thessaly)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     16
+    ],
+    "height": 0.3,
+    "colour": "#b8b0a2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "height": 0.5,
+    "colour": "#8a8478"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     6.8,
+     6.8
+    ],
+    "height": 0.5,
+    "colour": "#b8b0a2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.3
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "height": 0.5,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.8
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "height": 1.4,
+    "colour": "#e8e4d8",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    3.2
+   ],
+   "params": {
+    "colour": "#e8e4d8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     },
+     {
+      "z": 6.2,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 6.4,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 7.6,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 7.8,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 9.0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    6.8,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.6
+    ],
+    "height": 1.0,
+    "colour": "#8a8478"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    3,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     7
+    ],
+    "height": 0.8,
+    "colour": "#8a8478"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    3,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     7
+    ],
+    "height": 0.8,
+    "colour": "#8a8478"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.3,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 1,
+    "colour": "#b8b0a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -3,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 2,
+    "spread": 4,
+    "colour": "#4f6a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 2,
+    "spread": 4,
+    "colour": "#4f6a3a"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists in the evidence set: shaft, capital and the absence of a statue are plausible guesses; the real memorial's sculpture and inscription panels are unknown."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ }
+}

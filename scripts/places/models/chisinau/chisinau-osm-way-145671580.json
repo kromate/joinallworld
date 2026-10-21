@@ -1,0 +1,493 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-way-145671580",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AIRM_-_Biserica_M%C4%83z%C4%83rache_-_octombrie_2013_-_680137952010961.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Agentia de Inspectare si Restaurare a Monumentelor din Republica Moldova",
+   "view": "front",
+   "file": "/tmp/places-evidence/chisinau/maz1.jpg",
+   "used": "whitewashed low nave under green metal gable roof, square white belfry tower with arched openings and green dome, gold cross finials, green porch canopy over brown door, arched green-framed windows, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/145671580",
+   "used": "footprint of nave, side arms and apse"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     27.6,
+     9.6
+    ]
+   },
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "windowShape": "arched",
+    "glassColour": "#2f5a3c",
+    "plinth": 0.5,
+    "faces": {}
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f7a4a",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.4
+   },
+   "at": [
+    0.3,
+    -0.3
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "arm-s",
+   "footprint": {
+    "rect": [
+     5.0,
+     10.6
+    ]
+   },
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "windowShape": "arched",
+    "glassColour": "#2f5a3c",
+    "plinth": 0.5,
+    "faces": {}
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f7a4a",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.4
+   },
+   "at": [
+    -0.2,
+    -5.6
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "arm-n",
+   "footprint": {
+    "rect": [
+     5.0,
+     10.4
+    ]
+   },
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "windowShape": "arched",
+    "glassColour": "#2f5a3c",
+    "plinth": 0.5,
+    "faces": {}
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f7a4a",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.4
+   },
+   "at": [
+    -0.8,
+    5.8
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "revolve",
+   "id": "apse-roof",
+   "at": [
+    11.0,
+    0.2,
+    6.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#2f7a4a",
+    "profile": [
+     [
+      3.4,
+      0
+     ],
+     [
+      2.8,
+      1.0
+     ],
+     [
+      1.6,
+      1.8
+     ],
+     [
+      0,
+      2.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -3.6,
+    0
+   ],
+   "z0": 6.0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "glassColour": "#2f5a3c",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    -3.6,
+    0,
+    17.3
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#2f8a55",
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      2.3,
+      0.4
+     ],
+     [
+      2.0,
+      1.3
+     ],
+     [
+      1.3,
+      2.1
+     ],
+     [
+      0.5,
+      2.7
+     ],
+     [
+      0,
+      2.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome-neck",
+   "at": [
+    -3.6,
+    0,
+    20.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d6a73a",
+    "profile": [
+     [
+      0.45,
+      0
+     ],
+     [
+      0.45,
+      0.9
+     ],
+     [
+      0.8,
+      1.2
+     ],
+     [
+      0.5,
+      1.9
+     ],
+     [
+      0.12,
+      2.3
+     ],
+     [
+      0,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "apse-cap",
+   "at": [
+    11.3,
+    0.4,
+    6.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#d6a73a",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.35,
+      0.8
+     ],
+     [
+      0.7,
+      1.1
+     ],
+     [
+      0.35,
+      1.6
+     ],
+     [
+      0,
+      2.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cupola-w",
+   "at": [
+    -9.5,
+    0.5,
+    6.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d6a73a",
+    "profile": [
+     [
+      0.4,
+      0
+     ],
+     [
+      0.4,
+      0.7
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.35,
+      1.5
+     ],
+     [
+      0,
+      1.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cupola-e",
+   "at": [
+    5.5,
+    0.5,
+    6.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d6a73a",
+    "profile": [
+     [
+      0.4,
+      0
+     ],
+     [
+      0.4,
+      0.7
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.35,
+      1.5
+     ],
+     [
+      0,
+      1.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    -3.6,
+    0,
+    17.0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2efe6",
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      2.2,
+      0.3
+     ],
+     [
+      0,
+      0.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -0.2,
+    -8.0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#6b3a1f",
+    "topColour": "#6b3a1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    -0.2,
+    -8.4
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     1.4
+    ],
+    "z0": 2.8,
+    "height": 0.4,
+    "colour": "#2f7a4a",
+    "topColour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-w",
+   "at": [
+    -6.2,
+    -4.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#6b3a1f",
+    "topColour": "#6b3a1f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-w",
+   "at": [
+    -6.2,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.2
+    ],
+    "z0": 2.6,
+    "height": 0.4,
+    "colour": "#2f7a4a",
+    "topColour": "#2f7a4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 2,
+  "treeKind": "broadleaf",
+  "extent": [
+   48,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "cross plan now gabled nave and arms with apse half-dome; belfry cornice and arch surrounds simplified, door canopy on far side not visible, no stepped forecourt wall"
+ }
+}

@@ -1,0 +1,659 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-relation-3941505",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Poladi_Stadium.jpg",
+   "licence": "Public domain",
+   "author": "Kotola001",
+   "view": "interior",
+   "file": "/tmp/places-evidence/tbilisi/poladi.jpg",
+   "used": "artificial-turf pitch with red track edge, low open stands on the far side in green/blue/red/yellow seat blocks under thin dark roof canopies, lattice floodlight mast at the left corner, small white block behind, near stand with red and green seats"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3941505",
+   "used": "overall extent and orientation; stands follow the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     106,
+     70
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#4f9a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track-edge",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     120,
+     84
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#d9a58f",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "id": "far-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     50,
+     46
+    ],
+    "end": [
+     -50,
+     46
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#3f8a4a",
+     "#2f5aa0",
+     "#b84a3e",
+     "#3f8a4a",
+     "#d8b53a",
+     "#b84a3e"
+    ],
+    "blocks": 6,
+    "concreteColour": "#aaa59a",
+    "canopy": {
+     "height": 7,
+     "depth": 7,
+     "thickness": 0.5,
+     "slopeDeg": 1,
+     "colour": "#2c3034",
+     "edgeColour": "#2c3034",
+     "overhangBack": 0.5
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "near-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50,
+     -46
+    ],
+    "end": [
+     50,
+     -46
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#b84a3e",
+     "#3f8a4a",
+     "#b84a3e",
+     "#3f8a4a"
+    ],
+    "blocks": 8,
+    "concreteColour": "#aaa59a"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "east-end",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     66,
+     -28
+    ],
+    "end": [
+     66,
+     28
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "open",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#2f5aa0",
+     "#3f8a4a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#aaa59a"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "west-end",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -66,
+     28
+    ],
+    "end": [
+     -66,
+     -28
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "open",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#2f5aa0",
+     "#3f8a4a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#aaa59a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin-block",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    0,
+    58
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6de",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track-inner",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     76
+    ],
+    "z0": 0.1,
+    "height": 0.04,
+    "colour": "#b4553c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch-surface",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     106,
+     70
+    ],
+    "z0": 0.15,
+    "height": 0.03,
+    "colour": "#4f9a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "line-outer-n",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     0.25
+    ],
+    "z0": 0.18,
+    "height": 0.03,
+    "colour": "#f2f2f2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "line-outer-s",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     0.25
+    ],
+    "z0": 0.18,
+    "height": 0.03,
+    "colour": "#f2f2f2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "line-outer-e",
+   "at": [
+    51.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     68
+    ],
+    "z0": 0.18,
+    "height": 0.03,
+    "colour": "#f2f2f2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "line-outer-w",
+   "at": [
+    -51.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     68
+    ],
+    "z0": 0.18,
+    "height": 0.03,
+    "colour": "#f2f2f2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "line-half",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     68
+    ],
+    "z0": 0.18,
+    "height": 0.03,
+    "colour": "#f2f2f2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "centre-circle",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 9.15,
+    "n": 28,
+    "z0": 0.18,
+    "height": 0.03,
+    "colour": "#f2f2f2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pen-e",
+   "at": [
+    43,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     16.5,
+     40
+    ],
+    "z0": 0.19,
+    "height": 0.03,
+    "colour": "#e8f0e0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pen-w",
+   "at": [
+    -43,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     16.5,
+     40
+    ],
+    "z0": 0.19,
+    "height": 0.03,
+    "colour": "#e8f0e0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pen-e-in",
+   "at": [
+    43,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     15.9,
+     39.4
+    ],
+    "z0": 0.2,
+    "height": 0.03,
+    "colour": "#4f9a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pen-w-in",
+   "at": [
+    -43,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     15.9,
+     39.4
+    ],
+    "z0": 0.2,
+    "height": 0.03,
+    "colour": "#4f9a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goal-e",
+   "at": [
+    53.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     7.3
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "topScale": 0.9,
+    "colour": "#f4f4f4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goal-w",
+   "at": [
+    -53.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     7.3
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "topScale": 0.9,
+    "colour": "#f4f4f4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -55,
+    -37,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 1.4
+   }
+  },
+  {
+   "type": "loft",
+   "id": "floodlight",
+   "at": [
+    -72,
+    50,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4,
+       4
+      ]
+     },
+     {
+      "z": 15,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 29,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     }
+    ],
+    "colour": "#7a7e82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head",
+   "at": [
+    -72,
+    50,
+    29
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#d8d8d0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "centre-in",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 8.9,
+    "n": 28,
+    "z0": 0.19,
+    "height": 0.03,
+    "colour": "#4f9a3c"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     72
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     76
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     72
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     80,
+     40
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pitch lines, goals, lighter track surround, slender lattice-style tapered mast, raked near stand with red/green seats and fence added; mast is a plain loft not a true lattice, canopy not segmented, track is a single pinkish band without distinct sand lane, trees generic."
+ }
+}

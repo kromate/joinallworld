@@ -1,0 +1,228 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minsk",
+ "venueId": "minsk-osm-relation-8825869",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Architecture_of_Belarus",
+   "used": "Independence Avenue is lined with Stalinist-era institute blocks: ochre painted render, white stucco trim, central pedimented portico, flat roof, U plan around a courtyard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/36935677",
+   "used": "NOT used: the contained OSM polygon is Secondary School No. 69, a different building, and the nearby Commons photos show a school and a roundabout, not the university"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     40
+    ],
+    "height": 0.12,
+    "colour": "#a9a9a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-u",
+   "footprint": {
+    "polygon": [
+     [
+      -55,
+      -25
+     ],
+     [
+      -20,
+      -25
+     ],
+     [
+      -20,
+      0
+     ],
+     [
+      20,
+      0
+     ],
+     [
+      20,
+      -25
+     ],
+     [
+      55,
+      -25
+     ],
+     [
+      55,
+      25
+     ],
+     [
+      -55,
+      25
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 28,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b87a",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 6.5,
+    "plinth": 1.4,
+    "cornice": true,
+    "bands": "#efe6cf",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f6368",
+    "material": "metal-sheet",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central-bay",
+   "footprint": {
+    "rect": [
+     30,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -27
+   ],
+   "height": 28,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d2a0",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "plinth": 1.4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f6368",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -29,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 5.5,
+    "height": 14,
+    "columns": 8,
+    "pediment": true,
+    "steps": 9,
+    "colour": "#f6f2e6"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -40,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "count": 3,
+    "kind": "broadleaf",
+    "height_min": 8,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    40,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "count": 3,
+    "kind": "broadleaf",
+    "height_min": 8,
+    "height_max": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the university building exists in the evidence (nearby photos show a school and a roundabout); form is the Stalinist institute block described by the brief, size and detail are plausible not measured"
+ }
+}

@@ -1,0 +1,456 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Z%C3%A1mock%C3%BD_park_pri_ka%C5%A1tieli,_Mladoboleslavsk%C3%A1_ul.,_Pezinok,_okres_Pezinok_01.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Horakvlado",
+   "view": "street",
+   "file": "/tmp/places-evidence/bratislava/p-recreation-0.jpg",
+   "used": "open lawns under tall mixed old trees with dark conifers, gravel path, benches, a single white lamp post and a small rust-brown timber shelter"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pezinok_castle_01.JPG",
+   "licence": "Public domain",
+   "author": "fetour",
+   "view": "front",
+   "file": "/tmp/places-evidence/bratislava/p-recreation-1.jpg",
+   "used": "park entrance: green iron gate and fence, pale plastered castle with red hip roof beside the park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/4345760",
+   "used": "park outline (387 x 293 m, scaled to fit the scene); this OSM way is Z\u00e1mock\u00fd park in Pezinok (Bratislava region), matching the photos (Pezinok is in the Bratislava region; the venue is this named OSM park, photo is its Wikidata P18 image)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b3a884",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a27a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -50
+     ],
+     [
+      2,
+      -10
+     ],
+     [
+      -2,
+      30
+     ],
+     [
+      0,
+      60
+     ]
+    ],
+    "width": 10,
+    "colour": "#b9ad8e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -10
+     ],
+     [
+      -10,
+      -2
+     ],
+     [
+      2,
+      -10
+     ]
+    ],
+    "width": 3,
+    "colour": "#bdb298"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 3,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#7a4128"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    5,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.6,
+    "colour": "#2f5a3f",
+    "board_colour": "#2f5a3f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.6,
+    "thickness": 0.2,
+    "kind": "railings",
+    "colour": "#2f5a3f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -13.0,
+     -38.672698569474
+    ],
+    "height": 37.4
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     10.5,
+     -40.59045391308955
+    ],
+    "height": 43.2
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -22.6,
+     -32.66843094585809
+    ],
+    "height": 38.2
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     13.7,
+     -29.038769925854357
+    ],
+    "height": 34.6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -25.0,
+     -20.026479707329486
+    ],
+    "height": 41.7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22.6,
+     -24.01109044358805
+    ],
+    "height": 35.0
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -23.7,
+     -15.479690484190469
+    ],
+    "height": 41.7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20.4,
+     -14.506758756438337
+    ],
+    "height": 37.1
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -13.8,
+     -1.957223923493368
+    ],
+    "height": 33.9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14.0,
+     -1.9117354706581917
+    ],
+    "height": 40.4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16.0,
+     3.7292214228679095
+    ],
+    "height": 39.6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13.0,
+     6.8755539118077245
+    ],
+    "height": 34.3
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9.8,
+     14.11323251730003
+    ],
+    "height": 42.2
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     20.9,
+     16.983673245032676
+    ],
+    "height": 33.8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -16.0,
+     23.810114635497257
+    ],
+    "height": 36.9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12.1,
+     24.481656085942774
+    ],
+    "height": 38.0
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18.5,
+     29.605876632307158
+    ],
+    "height": 34.6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12.9,
+     32.69259245077218
+    ],
+    "height": 36.9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14.6,
+     39.74554552699709
+    ],
+    "height": 31.6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     15.1,
+     43.375566674670935
+    ],
+    "height": 43.6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -21.5,
+     47.10912515175985
+    ],
+    "height": 37.6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     25.4,
+     52.1682385329891
+    ],
+    "height": 45.1
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20.6,
+     57.76046152194126
+    ],
+    "height": 33.7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     16.6,
+     57.500284241809005
+    ],
+    "height": 39.0
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11.7,
+     65.05637879803739
+    ],
+    "height": 34.3
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     11.9,
+     70.98311157332364
+    ],
+    "height": 41.2
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -41.02922832748278,
+     -20
+    ],
+    "height": 39.0
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -37.31578760432631,
+     20
+    ],
+    "height": 39.0
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48.6644768962761,
+     50
+    ],
+    "height": 39.0
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     35.817891724030915,
+     -20
+    ],
+    "height": 39.0
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34.995347029599024,
+     20
+    ],
+    "height": 39.0
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45.793942710002696,
+     50
+    ],
+    "height": 39.0
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Photo is the Wikidata image of this named park (Zamocky park in Pezinok, Bratislava region); trees are generic low-poly, gravel path and shelter small, camera sits low so the park reads as a tree cluster; no snow or ground texture."
+ }
+}

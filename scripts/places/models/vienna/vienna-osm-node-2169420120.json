@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-osm-node-2169420120",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/197797505",
+   "used": "rejected: nearest building is a granary (Schuettkasten), not the grotto; no photo of this exact grotto could be tied to the OSM node (Commons Lourdesgrotte photos are of the Maria Gugging grotto, 20+ km away)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "grotto-rock",
+   "at": [
+    0,
+    3,
+    0
+   ],
+   "params": {
+    "width": 6.5,
+    "depth": 4.2,
+    "height": 4.2,
+    "colour": "#8d887c",
+    "statue": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     3
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -2.8,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "rise": 0.45,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#a9a59a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -3.9,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.9,
+    "thickness": 0.06,
+    "kind": "fence",
+    "pillarEvery": 1.5,
+    "colour": "#2a2d2f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   30,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this exact grotto; generic Lourdes grotto with fence and steps; verified as text"
+ }
+}

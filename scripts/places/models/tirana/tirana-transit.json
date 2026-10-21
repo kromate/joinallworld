@@ -1,0 +1,410 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tirana_Airport,_terminal_building.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jcornelius",
+   "view": "front",
+   "file": "/tmp/places-evidence/tirana/tia_bldg.jpg",
+   "used": "terminal frontage: glazed ground storey with teal columns and diagonal braces, dark corrugated cladding band, flat grey roof canopy with slanted fascia, planters at the doors (the photo is the apron side of the same terminal; the lettering is omitted)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1528457813",
+   "used": "100 x 23 m frontage outline (bearing 175 deg), modelled as a rectangle"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     100,
+     23
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6ea39b",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#43505b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cladding-band",
+   "footprint": {
+    "rect": [
+     100,
+     23
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 6.4,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f4b57",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    0,
+    10.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 104,
+    "depth": 27,
+    "height": 0.0,
+    "thickness": 1.1,
+    "colour": "#9aa0a4",
+    "edgeColour": "#6f767c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -11.8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     0,
+     0
+    ],
+    "end": [
+     48,
+     0,
+     0
+    ],
+    "count": 17,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.4
+      ],
+      "z0": 0,
+      "height": 6,
+      "colour": "#2f9a8c",
+      "topColour": "#2f9a8c"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -11.7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -46,
+      0,
+      0.2
+     ],
+     [
+      -42,
+      0,
+      5.8
+     ]
+    ],
+    "colour": "#2f9a8c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -11.7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -30,
+      0,
+      0.2
+     ],
+     [
+      -26,
+      0,
+      5.8
+     ]
+    ],
+    "colour": "#2f9a8c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -11.7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -14,
+      0,
+      0.2
+     ],
+     [
+      -10,
+      0,
+      5.8
+     ]
+    ],
+    "colour": "#2f9a8c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -11.7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      10,
+      0,
+      0.2
+     ],
+     [
+      6,
+      0,
+      5.8
+     ]
+    ],
+    "colour": "#2f9a8c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -11.7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      26,
+      0,
+      0.2
+     ],
+     [
+      22,
+      0,
+      5.8
+     ]
+    ],
+    "colour": "#2f9a8c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -11.7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      42,
+      0,
+      0.2
+     ],
+     [
+      38,
+      0,
+      5.8
+     ]
+    ],
+    "colour": "#2f9a8c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     0,
+     0
+    ],
+    "end": [
+     36,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#7b7f83",
+      "topColour": "#8a8d8f"
+     }
+    }
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -46
+   ],
+   "params": {
+    "length": 60,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -48,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 50,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -56,
+     -18
+    ],
+    "height": 7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     56,
+     -18
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is the apron side; here buses stand on a landside forecourt. Door canopies, planters, V braces and cladding relief simplified; lettering omitted."
+ }
+}

@@ -1,0 +1,384 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-node-638572868",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muuga_Kabelikivi_07Oct2015.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jaan Rebane",
+   "view": "side",
+   "file": "/tmp/places-evidence/tallinn/kabeli1.jpg",
+   "used": "low lens-shaped grey granite boulder, steep blunt left end and long smooth slope to the right, moss streaks on top, small second boulder behind right, mown grass and oak trees"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q12365958",
+   "used": "identity (Kabelikivi glacial boulder, Muuga); no OSM building outline exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 34,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       6,
+       2.875
+      ],
+      "cx": 0.2,
+      "colour": "#4b4d4a"
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       5.9,
+       2.619444444444444
+      ],
+      "cx": 0.1,
+      "colour": "#5a5c58"
+     },
+     {
+      "z": 2.25,
+      "ellipse": [
+       5.4,
+       2.3
+      ],
+      "cx": -0.3,
+      "colour": "#666965"
+     },
+     {
+      "z": 3.25,
+      "ellipse": [
+       4.6,
+       2.0444444444444443
+      ],
+      "cx": -1.1,
+      "colour": "#6b6e68"
+     },
+     {
+      "z": 3.875,
+      "ellipse": [
+       3.6,
+       1.884722222222222
+      ],
+      "cx": -2.0,
+      "colour": "#73786a"
+     },
+     {
+      "z": 4.375,
+      "ellipse": [
+       2.2,
+       1.7569444444444444
+      ],
+      "cx": -3.2,
+      "colour": "#6f736c"
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       1.4,
+       1.7249999999999999
+      ],
+      "cx": -3.8,
+      "colour": "#797d70"
+     }
+    ],
+    "colour": "#62655f",
+    "topColour": "#6e7466",
+    "curve": false,
+    "smooth": false,
+    "steps": 2,
+    "round": 10
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    7,
+    5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.4,
+       1.8
+      ],
+      "cx": 0,
+      "colour": "#5d5f5c"
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       2.1,
+       1.5
+      ],
+      "cx": 0,
+      "colour": "#6a6d6a"
+     },
+     {
+      "z": 1.8,
+      "ellipse": [
+       1.2,
+       1.0
+      ],
+      "cx": -0.2,
+      "colour": "#767a70"
+     },
+     {
+      "z": 2.1,
+      "ellipse": [
+       0.5,
+       0.4
+      ],
+      "cx": -0.3,
+      "colour": "#7c8074"
+     }
+    ],
+    "colour": "#767a7b",
+    "topColour": "#8a9080",
+    "curve": false,
+    "smooth": false,
+    "steps": 4,
+    "round": 8
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -11,
+    8
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 8,
+    "height": 9,
+    "colour": "#4a3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    9
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 8,
+    "height": 9,
+    "colour": "#4a3f33"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    12
+   ],
+   "params": {
+    "radius": 0.5,
+    "n": 8,
+    "height": 10,
+    "colour": "#4a3f33"
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -11,
+    8,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 8,
+      "ellipse": [
+       1.6,
+       1.2000000000000002
+      ],
+      "colour": "#4f6a30"
+     },
+     {
+      "z": 9.5,
+      "ellipse": [
+       4,
+       3
+      ],
+      "colour": "#62803a"
+     },
+     {
+      "z": 11.2,
+      "ellipse": [
+       2.4,
+       1.7999999999999998
+      ],
+      "colour": "#6f8c3c"
+     }
+    ],
+    "colour": "#62803a",
+    "smooth": true,
+    "curve": true,
+    "round": 10
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    9,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 8,
+      "ellipse": [
+       1.8,
+       1.2000000000000002
+      ],
+      "colour": "#4f6a30"
+     },
+     {
+      "z": 9.5,
+      "ellipse": [
+       4.5,
+       3
+      ],
+      "colour": "#62803a"
+     },
+     {
+      "z": 11.2,
+      "ellipse": [
+       2.6999999999999997,
+       1.7999999999999998
+      ],
+      "colour": "#6f8c3c"
+     }
+    ],
+    "colour": "#62803a",
+    "smooth": true,
+    "curve": true,
+    "round": 10
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    12,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 9,
+      "ellipse": [
+       2.0,
+       1.4000000000000001
+      ],
+      "colour": "#4f6a30"
+     },
+     {
+      "z": 10.5,
+      "ellipse": [
+       5,
+       3.5
+      ],
+      "colour": "#62803a"
+     },
+     {
+      "z": 12.2,
+      "ellipse": [
+       3.0,
+       2.1
+      ],
+      "colour": "#6f8c3c"
+     }
+    ],
+    "colour": "#62803a",
+    "smooth": true,
+    "curve": true,
+    "round": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     14
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "wedge boulder now long with steep left end, but faceted low-poly without cracks; moss not texture-streaked; oak canopies are blobs, no leaf litter"
+ }
+}

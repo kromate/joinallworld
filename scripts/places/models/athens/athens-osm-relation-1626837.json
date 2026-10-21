@@ -1,0 +1,577 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-relation-1626837",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%CE%A0%CE%91%CE%9D%CE%99%CE%A9%CE%9D%CE%99%CE%9F%CE%A3_001.jpg",
+   "licence": "Attribution (Commons)",
+   "author": "TB5050",
+   "view": "interior",
+   "file": "/tmp/places-evidence/athens/stad1.jpg",
+   "used": "opposite stand: raked red plastic seats with blue lettering blocks, dark navy fascia band, stair aisles, low concrete advertising wall, flat concrete rear edge against surrounding apartment blocks"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%CE%A0%CE%91%CE%9D%CE%99%CE%A9%CE%9D%CE%99%CE%9F%CE%A3_005.jpg",
+   "licence": "Attribution (Commons)",
+   "author": "TB5050",
+   "view": "detail",
+   "file": "/tmp/places-evidence/athens/stad2.jpg",
+   "used": "covered East stand: red seats on navy concrete risers, white stepped aisle walls, steel space-truss roof with translucent panels, glazed rear band with blank advertising boards"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1626837",
+   "used": "overall size only (about 190 x 180 m site including surrounds): bowl modelled as an oval scaled to about 135 x 125 m so the scene fits the 170 m clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -2,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     134,
+     112
+    ],
+    "height": 0.1,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -2,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     105,
+     68
+    ],
+    "height": 0.05,
+    "colour": "#5a9a45"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 14,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "under": "open",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 8,
+    "concreteColour": "#e4e2dc",
+    "underColour": "#26386a",
+    "seatColours": [
+     "#c0453c",
+     "#c0453c",
+     "#b8453c",
+     "#2b3f7a"
+    ],
+    "blocks": 6,
+    "backWall": 2.0,
+    "closeEnds": true,
+    "start": [
+     -66,
+     -42
+    ],
+    "end": [
+     76,
+     -42
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 14,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "under": "open",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 8,
+    "concreteColour": "#e4e2dc",
+    "underColour": "#26386a",
+    "seatColours": [
+     "#c0453c",
+     "#c0453c",
+     "#b8453c",
+     "#2b3f7a"
+    ],
+    "blocks": 6,
+    "backWall": 2.0,
+    "closeEnds": true,
+    "start": [
+     76,
+     38
+    ],
+    "end": [
+     -66,
+     38
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 12,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "under": "open",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 8,
+    "concreteColour": "#e4e2dc",
+    "underColour": "#26386a",
+    "seatColours": [
+     "#c0453c",
+     "#c0453c",
+     "#b8453c",
+     "#2b3f7a"
+    ],
+    "blocks": 6,
+    "backWall": 2.0,
+    "closeEnds": true,
+    "start": [
+     -52,
+     38
+    ],
+    "end": [
+     -52,
+     -42
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 16,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "under": "open",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 8,
+    "concreteColour": "#e4e2dc",
+    "underColour": "#26386a",
+    "seatColours": [
+     "#c0453c",
+     "#c0453c",
+     "#b8453c",
+     "#2b3f7a"
+    ],
+    "blocks": 6,
+    "backWall": 2.0,
+    "closeEnds": true,
+    "start": [
+     62,
+     -42
+    ],
+    "end": [
+     62,
+     38
+    ],
+    "canopy": {
+     "height": 9.5,
+     "depth": 15,
+     "thickness": 0.45,
+     "slopeDeg": 3,
+     "colour": "#b7bcc0",
+     "edgeColour": "#3f5f9a",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     63.5,
+     -39
+    ],
+    "end": [
+     63.5,
+     35
+    ],
+    "count": 14,
+    "lod1Step": 2,
+    "lod2Step": 9,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      9.0
+     ],
+     "params": {
+      "rect": [
+       14,
+       0.35
+      ],
+      "height": 0.5,
+      "colour": "#7f858a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -36.5,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     106,
+     0.4
+    ],
+    "height": 1.1,
+    "colour": "#2b3f7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    32.5,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     106,
+     0.4
+    ],
+    "height": 1.1,
+    "colour": "#2b3f7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46.8,
+    -2,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     66
+    ],
+    "height": 1.1,
+    "colour": "#2b3f7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    56.8,
+    -2,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     66
+    ],
+    "height": 1.1,
+    "colour": "#2b3f7a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -68,
+    -58,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#9aa0a6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -68,
+    -58,
+    28
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.6
+    ],
+    "height": 2.4,
+    "colour": "#d8d8d0"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    78,
+    -58,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#9aa0a6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    78,
+    -58,
+    28
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.6
+    ],
+    "height": 2.4,
+    "colour": "#d8d8d0"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -68,
+    54,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#9aa0a6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -68,
+    54,
+    28
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.6
+    ],
+    "height": 2.4,
+    "colour": "#d8d8d0"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    78,
+    54,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#9aa0a6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    78,
+    54,
+    28
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.6
+    ],
+    "height": 2.4,
+    "colour": "#d8d8d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    -15,
+    -62
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ae",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Boxy four-sided raked stands with red/navy seats, hoarding wall and corner masts now; no lettering blocks, stair aisles or real irregular outline; East canopy is a thin slab with rafters not a true space-truss; photo is an interior view so exterior is inferred; site slightly over the 120 m clamp."
+ }
+}

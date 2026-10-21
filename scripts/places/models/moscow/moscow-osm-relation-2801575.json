@@ -1,0 +1,347 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-relation-2801575",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lesteh 2011.JPG",
+   "licence": "CC0",
+   "author": "Qweasdqwe",
+   "view": "front",
+   "used": "tall brick block with vertical dark piers on its end face, long glass-ribbon flank receding right, low glass-ribbon wing at left, rear brick block, black iron fence, flagpoles, conifer and hedge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lesteh2.JPG",
+   "licence": "CC0",
+   "author": "Qweasdqwe",
+   "view": "side",
+   "used": "confirms yellow render older building exists on campus; not modelled (the modelled block is the Wikidata P18 building)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2801575",
+   "used": "checked only: relation is the whole 600 m campus polygon, not a building, so not used as footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 6,
+  "fovDeg": 52
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     30,
+     52
+    ]
+   },
+   "at": [
+    6,
+    14
+   ],
+   "z0": 0,
+   "height": 34,
+   "storeys": 8,
+   "wall": {
+    "material": "brick",
+    "colour": "#8d5f4b",
+    "windows": "none",
+    "faces": {
+     "right": "ribbon",
+     "back": "none",
+     "front": "none",
+     "left": "none"
+    },
+    "bay": 9,
+    "windowRatio": 0.55,
+    "glassColour": "#6d8da6",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "faces": [
+       "front"
+      ],
+      "type": "fins",
+      "colour": "#6a4435",
+      "spacing": 4.2,
+      "depth": 0.3,
+      "width": 1.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    -34,
+    -8
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d6d0",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#6d8da6",
+    "plinth": 0.5,
+    "bay": 6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-rear",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    -34,
+    17
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5f48",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "windowRatio": 0.4,
+    "glassColour": "#7a95a8",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     42,
+     22
+    ]
+   },
+   "at": [
+    40,
+    -3
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdad4",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#5f7e96",
+    "plinth": 0.5,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-recess",
+   "at": [
+    6,
+    -12.5
+   ],
+   "params": {
+    "rect": [
+     22,
+     3
+    ],
+    "z0": 0,
+    "height": 5,
+    "colour": "#3a3a3c",
+    "topColour": "#6a6a6a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    2,
+    -12.8,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 8,
+    "colours": [
+     "#2a4fa8",
+     "#c93636"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "fence",
+    "pillarEvery": 3.5,
+    "colour": "#232427"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     36,
+     5
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#3f7a3c",
+    "topColour": "#4a8a43"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flowerbed",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     4
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#b23b33",
+    "topColour": "#b83a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -25,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -66,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     70,
+     -18
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Fins are coarse blocks; flank glazing is cheaper ribbon without the grey bands; wings simplified; trees, flowerbed and gate pillar detail minimal; main brick block only, not the yellow older building."
+ }
+}

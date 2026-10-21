@@ -1,0 +1,531 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-node-258816379",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Habscht,_ch%C3%A2teau_de_Septfontaines_(101).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GilPe",
+   "view": "front",
+   "file": "/tmp/places-evidence/luxembourg/sept2.jpg",
+   "used": "ruined grey rubble-stone castle on a wooded spur: round tower at the left corner, tall rear block behind, long lower hall wall with narrow slit windows and a ruined crenellated top, small square tower with a pyramidal slate roof at the centre-back, roofless halls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1028936104",
+   "used": "NOT used: the OSM match is a 42 m2 fountain 118 m away (name score 0.6), not the castle; size taken from the photo and brief (about 40 x 30 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 15,
+  "aspect": 1.5,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-hall",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    4,
+    -1
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a867a",
+    "windows": "punched",
+    "windowRatio": 0.02,
+    "bay": 6
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#8a867a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    -6,
+    9
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#938f81",
+    "windows": "punched",
+    "windowRatio": 0.02,
+    "bay": 6
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#938f81"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-round-tower",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    -12,
+    2
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a867a",
+    "windows": "none",
+    "windowRatio": 0.02,
+    "bay": 6
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#8a867a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "square-tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    8,
+    9
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39e8d",
+    "windows": "punched",
+    "windowRatio": 0.03,
+    "bay": 6
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#4a4f57",
+    "material": "slate",
+    "rise": 3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wall",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    17.5,
+    6
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7f7b6f",
+    "windows": "none",
+    "windowRatio": 0.02,
+    "bay": 6
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#7f7b6f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     20,
+     2
+    ]
+   },
+   "at": [
+    4,
+    14
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a867a",
+    "windows": "none",
+    "windowRatio": 0.02,
+    "bay": 6
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#8a867a"
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -9,
+    -5,
+    6.5
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.6,
+    "thickness": 0.8,
+    "merlons": true,
+    "ruin": 0.55,
+    "batter": 0
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -12,
+    6,
+    18
+   ],
+   "params": {
+    "length": 13,
+    "height": 1.8,
+    "thickness": 0.8,
+    "ruin": 0.6
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -14.5,
+    -1,
+    20
+   ],
+   "params": {
+    "length": 5,
+    "height": 1.8,
+    "thickness": 0.8,
+    "colour": "#7d796d",
+    "gaps": 0.3
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    14,
+    1,
+    7
+   ],
+   "params": {
+    "length": 7,
+    "height": 1.6,
+    "thickness": 0.7,
+    "colour": "#7d796d",
+    "gaps": 0.4
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    4,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 4,
+    "count": 10,
+    "colour": "#7b776c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slope0",
+   "footprint": {
+    "polygon": [
+     [
+      -45,
+      -16
+     ],
+     [
+      45,
+      -16
+     ],
+     [
+      45,
+      28
+     ],
+     [
+      -45,
+      28
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#566b3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#566b3f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slope1",
+   "footprint": {
+    "polygon": [
+     [
+      -45,
+      16
+     ],
+     [
+      45,
+      16
+     ],
+     [
+      45,
+      32
+     ],
+     [
+      -45,
+      32
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#4d6238",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#4d6238"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slope2",
+   "footprint": {
+    "polygon": [
+     [
+      -45,
+      24
+     ],
+     [
+      45,
+      24
+     ],
+     [
+      45,
+      40
+     ],
+     [
+      -45,
+      40
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3f5530",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#3f5530"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slope3",
+   "footprint": {
+    "polygon": [
+     [
+      -45,
+      34
+     ],
+     [
+      45,
+      34
+     ],
+     [
+      45,
+      50
+     ],
+     [
+      -45,
+      50
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#344a29",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#344a29"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -36,
+    16,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 24,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 18,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    36,
+    16,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 24,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 18,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 18,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 18,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9,
+    "keep_out": []
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "hill is stepped plates, not a smooth slope; ruin tops approximated; generic low-poly trees; rear layout inferred from one distant view"
+ }
+}

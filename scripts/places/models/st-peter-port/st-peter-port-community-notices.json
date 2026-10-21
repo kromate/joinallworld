@@ -1,0 +1,81 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/232235142",
+   "used": "real outline of the Chief Pleas building on Sark (13 x 7 m, rotated); no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#a39a90",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#e8e2d2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5c6368",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b2aaa0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    7,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "trees": 2,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; granite/slate assumed from Sark vernacular, windows and door positions unknown"
+ }
+}

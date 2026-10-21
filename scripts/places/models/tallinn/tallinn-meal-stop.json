@@ -1,0 +1,779 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Olde_Hansa_Vana_turg.jpg",
+   "licence": "Public domain",
+   "author": "Lefevrue",
+   "view": "front",
+   "file": "/tmp/places-evidence/tallinn/hansa2.jpg",
+   "used": "long white limewashed gable wall, tall steep red clay-tile roof with three small dormers and a chimney, few small deep-set windows and arched shutters, low timber terrace with striped awnings; revised per critic"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/201040761",
+   "used": "overall size about 29 x 15 m (containing match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 5,
+  "fovDeg": 34,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "warehouse",
+   "footprint": {
+    "rect": [
+     29,
+     14
+    ]
+   },
+   "height": 8.5,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e6dfcc",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 55,
+    "colour": "#b4502f",
+    "material": "clay-tile",
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer0",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.4
+    ]
+   },
+   "at": [
+    -9,
+    -3.4
+   ],
+   "z0": 11.9,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6c7b5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 35,
+    "colour": "#6c7b5c",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer1",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.4
+    ]
+   },
+   "at": [
+    -3.5,
+    -3.4
+   ],
+   "z0": 11.9,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6c7b5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 35,
+    "colour": "#6c7b5c",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer2",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.4
+    ]
+   },
+   "at": [
+    4.5,
+    -3.4
+   ],
+   "z0": 11.9,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6c7b5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 35,
+    "colour": "#6c7b5c",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    8,
+    0,
+    14.5
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.6,
+    "pots": 1,
+    "colour": "#f0ece4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    24,
+    8
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#d8b585",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3,
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 45,
+    "colour": "#b4502f",
+    "material": "clay-tile",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -10.5,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 3.8,
+    "height": 2.6,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arcap0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -10.5,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 6.4,
+    "height": 0.3,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -5.5,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 3.4,
+    "height": 2.6,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arcap1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -5.5,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 6.0,
+    "height": 0.3,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -1.0,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 3.8,
+    "height": 2.6,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arcap2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -1.0,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 6.4,
+    "height": 0.3,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    4.0,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 3.4,
+    "height": 2.6,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arcap3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    4.0,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 6.0,
+    "height": 0.3,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9.5,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 3.8,
+    "height": 2.6,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arcap4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9.5,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 6.4,
+    "height": 0.3,
+    "colour": "#3f3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tiny0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12.5,
+    -7.15
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.4
+    ],
+    "z0": 6.8,
+    "height": 0.5,
+    "colour": "#4a4d44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tiny1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -7.5,
+    -7.15
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.4
+    ],
+    "z0": 7.1,
+    "height": 0.5,
+    "colour": "#4a4d44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tiny2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3.2,
+    -7.15
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.4
+    ],
+    "z0": 7.3999999999999995,
+    "height": 0.5,
+    "colour": "#4a4d44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tiny3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    1.8,
+    -7.15
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.4
+    ],
+    "z0": 6.8,
+    "height": 0.5,
+    "colour": "#4a4d44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tiny4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6.5,
+    -7.15
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.4
+    ],
+    "z0": 7.1,
+    "height": 0.5,
+    "colour": "#4a4d44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tiny5",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12,
+    -7.15
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.4
+    ],
+    "z0": 7.3999999999999995,
+    "height": 0.5,
+    "colour": "#4a4d44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -7.25
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "z0": 4.3,
+    "height": 2.6,
+    "colour": "#9a3a34"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -2.8,
+    -7.25
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "z0": 4.1,
+    "height": 2.6,
+    "colour": "#b8903a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    11.5,
+    -7.25
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "z0": 4.1,
+    "height": 2.6,
+    "colour": "#8a3a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "weathervane",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 18.0,
+    "height": 2.2,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "balustrade",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "wall",
+    "pillarEvery": 2.0,
+    "colour": "#3a2a20"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -12,
+    -10.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     24,
+     0,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "id": "post",
+      "lod": [
+       0,
+       1
+      ],
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.15,
+        0.15
+       ],
+       "z0": 0,
+       "height": 3.0,
+       "colour": "#3a2a20"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -11,
+    -10.2,
+    3.0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     22,
+     0,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        3.4,
+        2.6
+       ],
+       "z0": 0,
+       "height": 0.15,
+       "colour": "#b23a35"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -12,
+    -11,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     24,
+     0,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.8,
+        0.8
+       ],
+       "height": 0.8,
+       "colour": "#7a4a30"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.8
+      ],
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "height": 0.7,
+       "colour": "#4f7a3f"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "neighbours reduced to one ochre house, banners, arched-ish shutters, tub plants, balustrade added; missing real arched shutters, lattice pattern, mixed canvas pergola, roof chimney detail"
+ }
+}

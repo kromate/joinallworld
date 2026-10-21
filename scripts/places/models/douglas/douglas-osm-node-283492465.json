@@ -1,0 +1,147 @@
+{
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "douglas",
+  "venueId": "douglas-osm-node-283492465",
+  "verified": "footprint",
+  "evidence": [
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Sulby_Claddagh_-_geograph.org.uk_-_1888757.jpg",
+      "licence": "CC BY-SA 2.0",
+      "author": "Chris Gunns",
+      "view": "street",
+      "file": "/tmp/places-evidence/douglas/sulby.jpg",
+      "used": "setting only: whitewashed slate-roofed cottages, rubble stone walls, broadleaf trees, green hill behind (not the campsite itself)"
+    },
+    {
+      "kind": "osm",
+      "ref": "way/902050657",
+      "used": "camp-site outline, 378 x 160 m, fitted to scene"
+    }
+  ],
+  "camera": {
+    "yawDeg": 20,
+    "pitchDeg": 35,
+    "fovDeg": 50
+  },
+  "parts": [
+    {
+      "type": "mass",
+      "id": "meadow",
+      "footprint": {
+        "osm": true
+      },
+      "at": [
+        0,
+        0
+      ],
+      "z0": 0,
+      "height": 0.5,
+      "storeys": 1,
+      "wall": {
+        "material": "render",
+        "colour": "#7da25a",
+        "windows": "none"
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#86ab62",
+        "material": "membrane"
+      }
+    },
+    {
+      "type": "mass",
+      "id": "site-shed",
+      "footprint": {
+        "rect": [
+          7,
+          4
+        ]
+      },
+      "at": [
+        0,
+        0
+      ],
+      "z0": 0.5,
+      "height": 2.8,
+      "storeys": 1,
+      "wall": {
+        "material": "timber",
+        "colour": "#8b6f4e",
+        "windows": "none"
+      },
+      "roof": {
+        "form": "gable",
+        "colour": "#4a525a",
+        "material": "slate",
+        "pitch": 22,
+        "overhang": 0.3
+      }
+    },
+    {
+      "type": "fence-wall",
+      "at": [
+        0,
+        -20,
+        0.5
+      ],
+      "params": {
+        "length": 70,
+        "height": 1.2,
+        "kind": "wall",
+        "colour": "#8d8a80"
+      }
+    }
+  ],
+  "site": {
+    "ground": "grass",
+    "forecourt": "none",
+    "trees": [
+      {
+        "kind": "broadleaf",
+        "at": [
+          -30,
+          -5
+        ]
+      },
+      {
+        "kind": "broadleaf",
+        "at": [
+          -20,
+          10
+        ]
+      },
+      {
+        "kind": "broadleaf",
+        "at": [
+          25,
+          12
+        ]
+      },
+      {
+        "kind": "broadleaf",
+        "at": [
+          35,
+          -8
+        ]
+      },
+      {
+        "kind": "broadleaf",
+        "at": [
+          10,
+          22
+        ]
+      }
+    ],
+    "extent": [
+      140,
+      100
+    ]
+  },
+  "review": {
+    "rounds": 0,
+    "match": "rough",
+    "gaps": "outline-only meadow; campsite contents unknown, trees and wall are typical"
+  }
+}

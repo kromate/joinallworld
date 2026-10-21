@@ -1,0 +1,338 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-osm-node-9299613331",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alandica_Shipping_Academy_fire_drill_house_in_the_harbour_area,_2021.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ashipping",
+   "view": "front",
+   "file": "/tmp/places-evidence/mariehamn/ala1.jpg",
+   "used": "harbour-area training house: Falu-red vertical boarding, white trim, wide double door, two small white-framed windows, dark metal gable roof, blank sign board in the gable, red paved apron, neighbouring two-storey red building left, black shed right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alandica_Shipping_Academy_Fire_Drill_Facility,_2021.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ashipping",
+   "view": "side",
+   "file": "/tmp/places-evidence/mariehamn/ala3.jpg",
+   "used": "drill yard: concrete walls round a red paved apron with a tank prop, tree line behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1003896679",
+   "used": "nearest match only (9 x 7 m); not used for the footprint, the campus layout follows the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 30,
+  "aspect": 1.444,
+  "margin": 0.03,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "drill-house",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a2a28",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowRatio": 0.16,
+    "plinth": 0.4,
+    "trimColour": "#f1eee8",
+    "bands": "#f1eee8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#1f2326",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.8,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-annex",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -12,
+    5
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c2b27",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "trimColour": "#f1eee8",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4f54",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "black-shed",
+   "footprint": {
+    "rect": [
+     3.5,
+     5
+    ]
+   },
+   "at": [
+    9.5,
+    5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#1f2326",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#26292c",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.75,
+    0
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 2.0,
+    "bottom": 4.4,
+    "colour": "#f0eeea",
+    "frameColour": "#f0eeea",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.8,
+    0
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 1.0,
+    "bottom": 4.85,
+    "colour": "#2b3342",
+    "frameColour": "#2b3342",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.7,
+    -4.62,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 3.3,
+    "bottom": 0.3,
+    "colour": "#b86a5a",
+    "frameColour": "#f1eee8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0.3,
+    -4.62,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.7,
+    "bottom": 1.6,
+    "colour": "#2a2c30",
+    "frameColour": "#f1eee8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.1,
+    -4.62,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.7,
+    "bottom": 1.6,
+    "colour": "#2a2c30",
+    "frameColour": "#f1eee8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.62,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 0.15,
+    "bottom": 4.1,
+    "colour": "#f1eee8",
+    "frameColour": "#f1eee8",
+    "posts": false
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    7.5,
+    -8.5,
+    0
+   ],
+   "params": {
+    "chairs": 0,
+    "table_colour": "#9a8f7c",
+    "radius": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench1",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    7.5,
+    -9.4
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a8f7c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f7c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench2",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    7.5,
+    -7.6
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a8f7c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f7c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     12
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "vertical boarding is only a faint texture; door, windows and sign are flat boards without real reveals or the ship logo; picnic table is a simple stand-in; neighbouring annex and shed are simplified"
+ }
+}

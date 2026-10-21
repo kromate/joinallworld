@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:RestaurantInatKu%C4%87aSarajevo_(2).JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "file": "/tmp/places-evidence/sarajevo/inat1.jpg",
+   "view": "street",
+   "used": "whitewashed walls, wide low ground-floor wing with deep tiled eaves and green shutters, smaller upper block with dark timber overhang, green timber bay at the right, awning on the left, chimney"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/191388836",
+   "used": "ground-floor outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 10,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-wing",
+   "footprint": {
+    "osm": true,
+    "fit": 15.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ebdf",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "rect",
+    "plinth": 0.5,
+    "bay": 2.0,
+    "glassColour": "#2f4a3a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -1.5,
+    0.5
+   ],
+   "z0": 3.6,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4eee3",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "cornice": false,
+    "faces": {
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8512f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-oriel-left",
+   "footprint": {
+    "rect": [
+     2.2,
+     6
+    ]
+   },
+   "at": [
+    -7.2,
+    0.5
+   ],
+   "z0": 0.2,
+   "height": 8.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3a261b",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3a261b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-bay-right",
+   "footprint": {
+    "rect": [
+     2.6,
+     3
+    ]
+   },
+   "at": [
+    2.6,
+    -3.3
+   ],
+   "z0": 3.6,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#436350",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#2f4a3a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#436350"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -6,
+    2.5,
+    8
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 2,
+    "pots": 1
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    4.5,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 2.2,
+    "pillar": 0.35,
+    "leaf": "solid",
+    "arch": true,
+    "colour": "#1f1f23",
+    "leafColour": "#1f1f23"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -8,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2.2,
+    "drop": 0.5,
+    "height": 2.9,
+    "colours": [
+     "#e8e4da"
+    ],
+    "stripe": 5,
+    "valance": 0.15,
+    "posts": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flowerbox-a",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    -3.2,
+    -3.8
+   ],
+   "z0": 5.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3d6b2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0432f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flowerbox-b",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    1.2,
+    -3.8
+   ],
+   "z0": 5.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3d6b2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0432f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": 0,
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "carved eaves and timber brackets simplified; gate flat-topped leaf approximated; flower boxes and green bay generic; camera side of OSM outline may be mirrored"
+ }
+}

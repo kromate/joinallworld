@@ -1,0 +1,485 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kvivik_the_church_and_village_July_2012.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "EileenSanda",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/torshavn/kvivik.jpg",
+   "used": "white rendered walls with dark blue trim along the gable edges, steep grey scale-pattern slate roof, white square tower with a blue arched window and a tall pyramidal grey spire; the brief's black-timber assumption was wrong"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/511472500",
+   "used": "overall size 19 x 9.7 m, long axis along the tower end"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     9.7,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -2.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "windowShape": "arched",
+    "glassColour": "#2c4a86",
+    "bay": 3.2,
+    "plinth": 0.4,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5babc",
+    "material": "slate",
+    "pitch": 50,
+    "overhang": 0.45
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    6.1
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f3f0",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#9fa5a8",
+    "material": "slate",
+    "rise": 9,
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.4,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -10.4
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5babc",
+    "material": "slate",
+    "pitch": 35,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    4.5,
+    10.6
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 1.9,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -5.3,
+      -9.95,
+      4.06
+     ],
+     [
+      0,
+      -9.95,
+      10.45
+     ]
+    ],
+    "colour": "#1f3a73"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      5.3,
+      -9.95,
+      4.06
+     ],
+     [
+      0,
+      -9.95,
+      10.45
+     ]
+    ],
+    "colour": "#1f3a73"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house0",
+   "footprint": {
+    "rect": [
+     7,
+     5.5
+    ]
+   },
+   "at": [
+    -14,
+    -4
+   ],
+   "rotDeg": 0,
+   "height": 5.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#1d1f22",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "glassColour": "#f0f0ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b57",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house1",
+   "footprint": {
+    "rect": [
+     6.5,
+     5.5
+    ]
+   },
+   "at": [
+    14,
+    -7
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2a22",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "glassColour": "#f0f0ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6366",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house2",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -15,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 5.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9b45a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "glassColour": "#f0f0ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b57",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house3",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    15,
+    5
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "glassColour": "#f0f0ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d50",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house4",
+   "footprint": {
+    "rect": [
+     6.5,
+     5
+    ]
+   },
+   "at": [
+    -9,
+    15
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#1d1f22",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "glassColour": "#f0f0ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6366",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house5",
+   "footprint": {
+    "rect": [
+     7,
+     5.5
+    ]
+   },
+   "at": [
+    9,
+    16
+   ],
+   "rotDeg": 0,
+   "height": 5.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2a22",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "glassColour": "#f0f0ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b57",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house6",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -19,
+    -12
+   ],
+   "rotDeg": 0,
+   "height": 4.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "glassColour": "#f0f0ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b57",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house7",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    19,
+    -1
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#1d1f22",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "glassColour": "#f0f0ee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d50",
+    "material": "metal-sheet",
+    "pitch": 35,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#6f9a3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       70,
+       10
+      ],
+      "cy": 0
+     },
+     {
+      "z": 10,
+      "rect": [
+       70,
+       4
+      ],
+      "cy": 3
+     }
+    ]
+   },
+   "at": [
+    0,
+    22,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "groundColour": "#6f9a3a",
+  "extent": [
+   56,
+   48
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "nave gable end carries the blue rake trim and tower is taller with a narrower grey spire; scale-pattern roof is plain slate, village houses are generic boxes, hillside is a flat-faced slab, turf-roofed porch simplified"
+ }
+}

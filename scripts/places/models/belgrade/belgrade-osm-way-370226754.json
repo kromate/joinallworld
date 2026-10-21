@@ -1,0 +1,1198 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Defense.gov_News_Photo_990529-O-9999M-005.jpg",
+   "licence": "public domain (US DoD)",
+   "author": "US Department of Defense",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/belgrade/vinca_1.jpg",
+   "used": "layout of the research cluster: one tall central reactor-hall block with a raised box on its flat roof, low pale-roofed halls and sheds around a yard, a dark gabled hall in front, a slim chimney, belts of trees and orchards around; colours are invented as the photo is greyscale"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/370226754",
+   "used": "not used for massing: the polygon is the whole 1.4 km campus"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 42,
+  "fovDeg": 36,
+  "aspect": 1.25,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     19,
+     29
+    ]
+   },
+   "at": [
+    -23,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb9b0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcd9d2",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -23,
+    8,
+    13
+   ],
+   "params": {
+    "rect": [
+     11,
+     19
+    ],
+    "height": 4.5,
+    "colour": "#cfccc4",
+    "topColour": "#e4e2dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shedw",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -46,
+    18
+   ],
+   "rotDeg": -5,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#55534f",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0ded8",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -7,
+    14
+   ],
+   "rotDeg": 8,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b8b4ab",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cf",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "longa",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    30,
+    30
+   ],
+   "rotDeg": -3,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c4c0b7",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2dc",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "longb",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    47,
+    30
+   ],
+   "rotDeg": 2,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c4c0b7",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2dc",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yardw",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    12.5,
+    13
+   ],
+   "rotDeg": 4,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb9b0",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3d0c9",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yards",
+   "footprint": {
+    "rect": [
+     23,
+     8
+    ]
+   },
+   "at": [
+    32,
+    7
+   ],
+   "rotDeg": -6,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb9b0",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3d0c9",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yarde",
+   "footprint": {
+    "rect": [
+     10,
+     21
+    ]
+   },
+   "at": [
+    52,
+    13
+   ],
+   "rotDeg": 5,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c4c0b7",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2dc",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "darkhall",
+   "footprint": {
+    "rect": [
+     22,
+     19
+    ]
+   },
+   "at": [
+    40,
+    -22
+   ],
+   "rotDeg": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#6a6a66",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3c3c3a",
+    "parapet": 0,
+    "pitch": 32
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     6,
+     12
+    ]
+   },
+   "at": [
+    57,
+    -17.5
+   ],
+   "rotDeg": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#77756f",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55534f",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "whitehut",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    25,
+    -2
+   ],
+   "rotDeg": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e6e3dc",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0eee8",
+    "parapet": 0.4,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "banded-stack",
+   "at": [
+    18,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "radius": 0.8,
+    "bands": false,
+    "colour": "#a8a49b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "s1",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    22,
+    22
+   ],
+   "rotDeg": 12,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bfbbb2",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ebe9e3",
+    "pitch": 14,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "s2",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    38,
+    18
+   ],
+   "rotDeg": -9,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bfbbb2",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ebe9e3",
+    "pitch": 14,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "s3",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    3,
+    24
+   ],
+   "rotDeg": 6,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bfbbb2",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ebe9e3",
+    "pitch": 14,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "s4",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    45,
+    2
+   ],
+   "rotDeg": 20,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bfbbb2",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ebe9e3",
+    "pitch": 14,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "s7",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    56,
+    3
+   ],
+   "rotDeg": -8,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bfbbb2",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ebe9e3",
+    "pitch": 14,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hallann",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -23,
+    -14
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b2aea5",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcd9d2",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    10,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     52,
+     44
+    ],
+    "height": 0.06,
+    "colour": "#a79c88"
+   },
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -5,
+    0.03
+   ],
+   "params": {
+    "rect": [
+     70,
+     5
+    ],
+    "height": 0.06,
+    "colour": "#b2a891"
+   },
+   "rotDeg": 8,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    -8,
+    0.03
+   ],
+   "params": {
+    "rect": [
+     6,
+     40
+    ],
+    "height": 0.06,
+    "colour": "#b2a891"
+   },
+   "rotDeg": -5,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -59.5,
+    -58,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     14,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#8c9a5c"
+   },
+   "rotDeg": 8,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -44.2,
+    -58,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     14,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#b4a76a"
+   },
+   "rotDeg": -8,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28.9,
+    -58,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     14,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#6f8450"
+   },
+   "rotDeg": 16,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.6,
+    -58,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     14,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#a89a6c"
+   },
+   "rotDeg": -14,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.7,
+    -58,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     14,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#7b8f55"
+   },
+   "rotDeg": -14,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    17.0,
+    -58,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     14,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#c0b27a"
+   },
+   "rotDeg": -14,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    32.3,
+    -58,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     14,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#8c9a5c"
+   },
+   "rotDeg": 8,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    47.6,
+    -58,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     14,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#b4a76a"
+   },
+   "rotDeg": -14,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5.7,
+    53.1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.2,
+    "count": 4,
+    "spread": 9,
+    "line": 28
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13.7,
+    46.4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.6,
+    "count": 4,
+    "spread": 9,
+    "line": 28
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -49.1,
+    57.6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11.0,
+    "count": 4,
+    "spread": 9,
+    "line": 28
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52.4,
+    43.6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10.9,
+    "count": 4,
+    "spread": 9,
+    "line": 28
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    33.4,
+    48.9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12.0,
+    "count": 4,
+    "spread": 9,
+    "line": 28
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -61.7,
+    28.4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9.8,
+    "count": 4,
+    "spread": 8,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -68.6,
+    29.3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14.9,
+    "count": 4,
+    "spread": 8,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -54.1,
+    40.4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11.1,
+    "count": 4,
+    "spread": 8,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -57.9,
+    20.8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10.1,
+    "count": 4,
+    "spread": 8,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    71.2,
+    31.8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.0,
+    "count": 3,
+    "spread": 7,
+    "line": 22
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    73.5,
+    46.1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8.4,
+    "count": 3,
+    "spread": 7,
+    "line": 22
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -43.7,
+    -36.8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9.1,
+    "count": 3,
+    "spread": 7,
+    "line": 20
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -33.7,
+    -32.6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9.7,
+    "count": 3,
+    "spread": 7,
+    "line": 20
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -23.3,
+    -25.9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8.8,
+    "count": 3,
+    "spread": 7,
+    "line": 20
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34.5,
+    -52.9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8.6,
+    "count": 4,
+    "spread": 6,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2.6,
+    -47.4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7.6,
+    "count": 4,
+    "spread": 6,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    54.0,
+    -45.3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8.1,
+    "count": 4,
+    "spread": 6,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.8,
+    -48.8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.0,
+    "count": 4,
+    "spread": 6,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    52,
+    0.015
+   ],
+   "params": {
+    "rect": [
+     120,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#4a6340"
+   },
+   "rotDeg": 3,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -55,
+    30,
+    0.016
+   ],
+   "params": {
+    "rect": [
+     26,
+     60
+    ],
+    "height": 0.06,
+    "colour": "#455c3a"
+   },
+   "rotDeg": -6,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -2,
+    0.025
+   ],
+   "params": {
+    "rect": [
+     30,
+     18
+    ],
+    "height": 0.06,
+    "colour": "#9a8f78"
+   },
+   "rotDeg": 5,
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-way-370226754",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Greyscale aerial so colours invented; ground patches added for woods/yard but trees still regular rows, field strips hang off the pad; LOD0 near budget so no more trees."
+ }
+}

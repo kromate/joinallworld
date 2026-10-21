@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-node-4753627987",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 34,
+    "height": 13,
+    "seed": 11,
+    "stairs": false,
+    "rock_colour": "#a39e90",
+    "boulders": 10
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "points": [
+     [
+      12,
+      -4
+     ],
+     [
+      16,
+      4
+     ]
+    ],
+    "height": 3.2,
+    "thickness": 1.4,
+    "kind": "wall",
+    "colour": "#8f897b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "points": [
+     [
+      -16,
+      -6
+     ],
+     [
+      -6,
+      -9
+     ],
+     [
+      4,
+      -8
+     ]
+    ],
+    "height": 3.2,
+    "thickness": 1.4,
+    "kind": "wall",
+    "colour": "#8f897b"
+   }
+  },
+  {
+   "type": "corner-tower",
+   "at": [
+    -1,
+    2,
+    11
+   ],
+   "params": {
+    "radius": 3.2,
+    "height": 10,
+    "kind": "square",
+    "cap": "none",
+    "ruin": true
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -14,
+    6,
+    11
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.8,
+    "thickness": 1.0,
+    "colour": "#8c8578"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or footprint: generic ruined summit castle (broken wall segments, square tower stub)"
+ }
+}

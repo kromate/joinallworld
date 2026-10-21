@@ -1,0 +1,403 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wiki_\u0160umadija_XIV_Crkva_Svete_Trojice_(Zaklopa\u010da)_062.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vanilica",
+   "view": "side",
+   "file": "/tmp/places-evidence/belgrade/1444519027_1.jpg",
+   "used": "cream plaster walls with deep red trim, west bell tower with a pointed pyramid cap, round and arched openings with red surrounds, arched porch over the west door, orange tile gable roof over a single nave with a lower rounded apse, slim red arched windows, stone plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1444519027",
+   "used": "overall length 14 m and width 6.6 m with a rounded east end"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 30,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     7.6,
+     6.2
+    ]
+   },
+   "at": [
+    -0.2,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f3ecdc",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "bay": 2.6,
+    "plinth": 0.7,
+    "trimColour": "#a3262a",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#a3262a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8532f",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.45,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.6,
+    0,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.9,
+    "height": 3.6,
+    "colour": "#f3ecdc",
+    "top": true
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    4.6,
+    0,
+    3.6
+   ],
+   "params": {
+    "profile": [
+     [
+      3.2,
+      0,
+      "#a8532f"
+     ],
+     [
+      3.0,
+      0.3,
+      "#a8532f"
+     ],
+     [
+      1.4,
+      1.5,
+      "#a8532f"
+     ],
+     [
+      0.05,
+      2.3,
+      "#a8532f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     2.8,
+     2.8
+    ]
+   },
+   "at": [
+    -4.6,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f3ecdc",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "trimColour": "#a3262a",
+    "plinth": 0.7,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "cornice": true,
+    "glassColour": "#a3262a"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b5532a",
+    "material": "clay-tile",
+    "rise": 4.2,
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.0
+    ]
+   },
+   "at": [
+    -7.6,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f3ecdc",
+    "windows": "none",
+    "trimColour": "#a3262a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3262a",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.35,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.82,
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.3
+    ],
+    "height": 2.2,
+    "colour": "#3a2a22"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.6,
+    0,
+    5.4
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 0.35,
+    "colour": "#a3262a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.6,
+    0,
+    11.5
+   ],
+   "params": {
+    "rect": [
+     3.1,
+     3.1
+    ],
+    "height": 0.3,
+    "colour": "#a3262a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -4.6,
+    0,
+    15.7
+   ],
+   "params": {
+    "profile": [
+     [
+      0.01,
+      0,
+      "#2a2a2a"
+     ],
+     [
+      0.28,
+      0.2,
+      "#2a2a2a"
+     ],
+     [
+      0.3,
+      0.4,
+      "#2a2a2a"
+     ],
+     [
+      0.01,
+      0.6,
+      "#2a2a2a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.6,
+    0,
+    16.25
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.08
+    ],
+    "height": 1.1,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.6,
+    0,
+    16.95
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.6
+    ],
+    "height": 0.08,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.6,
+    -1.52,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.14
+    ],
+    "height": 2.2,
+    "colour": "#a3262a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.6,
+    -1.56,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "height": 2.0,
+    "colour": "#3a2a22"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -4.6,
+    -1.43,
+    9.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "profile": [
+     [
+      0.45,
+      0,
+      "#a3262a"
+     ],
+     [
+      0.45,
+      0.06,
+      "#a3262a"
+     ],
+     [
+      0.01,
+      0.06,
+      "#a3262a"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     6
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     6
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     10
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-way-1444519027",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tower narrowed and raised with steeper cap; side-wall arches simplified, apse and porch arch still approximate, round tower window is a flat red disc."
+ }
+}

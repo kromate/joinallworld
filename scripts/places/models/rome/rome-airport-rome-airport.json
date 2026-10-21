@@ -1,0 +1,748 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-airport-rome-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fiumicino_bird_view.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Raboe001",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/rome/fcobird.jpg",
+   "used": "central satellite terminal as a low rectangular block with grey flat roof and small skylights, piers with aircraft stands, long low landside terminal and multi-storey car parks behind, tower at the apron edge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fiumicino_nuovo_molo_A.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pres",
+   "view": "interior",
+   "used": "pale ribbed ceilings, glazed side walls, dark grey floors for colour choice only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 34,
+  "fovDeg": 50,
+  "aspect": 1.9,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    -52
+   ],
+   "params": {
+    "rect": [
+     130,
+     80
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#5a5d5c",
+    "topColour": "#5a5d5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "taxi-a",
+   "at": [
+    0,
+    -90
+   ],
+   "params": {
+    "rect": [
+     140,
+     9
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#4a4d4c",
+    "topColour": "#4a4d4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe",
+   "at": [
+    0,
+    -90
+   ],
+   "params": {
+    "rect": [
+     140,
+     0.8
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#c8b445",
+    "topColour": "#c8b445"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "taxi-b",
+   "at": [
+    -62,
+    -45
+   ],
+   "params": {
+    "rect": [
+     12,
+     60
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#4a4d4c",
+    "topColour": "#4a4d4c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "satellite",
+   "footprint": {
+    "rect": [
+     60,
+     40
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9bdbc",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "bay": 6,
+    "plinth": 0.3,
+    "bands": "#8a8f90"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85898a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "skylight-0",
+   "at": [
+    -16,
+    -40
+   ],
+   "params": {
+    "rect": [
+     9,
+     18
+    ],
+    "z0": 11.2,
+    "height": 1.4,
+    "topScale": [
+     0.8,
+     0.6
+    ],
+    "colour": "#c8ccce",
+    "topColour": "#dfe4e6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "skylight-1",
+   "at": [
+    0,
+    -40
+   ],
+   "params": {
+    "rect": [
+     9,
+     18
+    ],
+    "z0": 11.2,
+    "height": 1.4,
+    "topScale": [
+     0.8,
+     0.6
+    ],
+    "colour": "#c8ccce",
+    "topColour": "#dfe4e6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "skylight-2",
+   "at": [
+    16,
+    -40
+   ],
+   "params": {
+    "rect": [
+     9,
+     18
+    ],
+    "z0": 11.2,
+    "height": 1.4,
+    "topScale": [
+     0.8,
+     0.6
+    ],
+    "colour": "#c8ccce",
+    "topColour": "#dfe4e6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pier-w",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    -47,
+    -40
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb2b1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-e",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    47,
+    -40
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb2b1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-s",
+   "footprint": {
+    "rect": [
+     9,
+     30
+    ]
+   },
+   "at": [
+    0,
+    -74
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb2b1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-sw",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    -24,
+    -66
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb2b1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-se",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    24,
+    -66
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb2b1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    0,
+    -5
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0b4b3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9e9f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     110,
+     20
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c2c6c5",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "bay": 8,
+    "bands": "#6f7778"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 120,
+    "depth": 6,
+    "height": 5.5,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#d9dcdc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carpark",
+   "footprint": {
+    "rect": [
+     50,
+     26
+    ]
+   },
+   "at": [
+    -40,
+    50
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b5aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carpark-2",
+   "footprint": {
+    "rect": [
+     44,
+     24
+    ]
+   },
+   "at": [
+    28,
+    52
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8ad",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carpark-3",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    66,
+    46
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8ad",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast-0",
+   "at": [
+    -60,
+    -76
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     4.0
+    ],
+    "z0": 0,
+    "height": 6,
+    "topScale": 0.87,
+    "colour": "#c23a32",
+    "topColour": "#c23a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast-1",
+   "at": [
+    -60,
+    -76
+   ],
+   "params": {
+    "rect": [
+     3.5840000000000005,
+     3.5840000000000005
+    ],
+    "z0": 6,
+    "height": 6,
+    "topScale": 0.87,
+    "colour": "#f0f0ee",
+    "topColour": "#f0f0ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast-2",
+   "at": [
+    -60,
+    -76
+   ],
+   "params": {
+    "rect": [
+     3.168,
+     3.168
+    ],
+    "z0": 12,
+    "height": 6,
+    "topScale": 0.87,
+    "colour": "#c23a32",
+    "topColour": "#c23a32"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast-3",
+   "at": [
+    -60,
+    -76
+   ],
+   "params": {
+    "rect": [
+     2.752,
+     2.752
+    ],
+    "z0": 18,
+    "height": 6,
+    "topScale": 0.87,
+    "colour": "#f0f0ee",
+    "topColour": "#f0f0ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast-cab",
+   "at": [
+    -60,
+    -76
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "z0": 24,
+    "height": 3,
+    "colour": "#4d6770",
+    "topColour": "#d8d8d4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -22,
+    -62,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.8,
+    "colour": "#f2f4f4",
+    "tailColour": "#2f6b4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -56,
+    -38,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.8,
+    "colour": "#f2f4f4",
+    "tailColour": "#b83a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    58,
+    -40,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "scale": 0.8,
+    "colour": "#f2f4f4",
+    "tailColour": "#2f4f8a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    22,
+    -62,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "scale": 0.8,
+    "colour": "#f2f4f4",
+    "tailColour": "#8a2f4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -6,
+    -76,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.8,
+    "colour": "#f2f4f4",
+    "tailColour": "#444444"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    36,
+    -76,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "scale": 0.8,
+    "colour": "#f2f4f4",
+    "tailColour": "#b83a35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    12.5,
+    6.5
+   ],
+   "params": {
+    "width": 20,
+    "height": 2.0,
+    "bottom": 0,
+    "colour": "#2a5a8c",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    2,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 6,
+    "spacing": 20
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Satellite is now one flat grey-roofed block with piers, dark apron, landside terminal and car parks behind, 6 aircraft and red-white mast; apron markings, curved elevated road and real roof folds are not reproduced; ground plane remains a light blue-grey; whole complex compressed to ~150 m."
+ }
+}

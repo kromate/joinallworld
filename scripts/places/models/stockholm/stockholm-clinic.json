@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2271367",
+   "used": "Bromma sjukhus (name match, wikidata Q124609324, opened 1971): the real comb-shaped outline, 123 x 92 m, 8,600 m2"
+  },
+  {
+   "kind": "text",
+   "url": "https://sv.wikipedia.org/wiki/Bromma_sjukhus",
+   "used": "local district hospital on the former Beckomberga site in western Stockholm; no photo of this building found (the nearby Beckomberga.jpg shows the 1930s clock-tower building, a different structure)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8b86e",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 15,
+    "plinth": 0.5,
+    "bands": "#e6dcc0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -30,
+    -68,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 4,
+    "columns": 3,
+    "colour": "#e6dcc0",
+    "roofColour": "#4b5057",
+    "vans": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -30,
+    -69,
+    4.5
+   ],
+   "params": {
+    "size": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -70,
+     -30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -72,
+     20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     75,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -80
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building exists in the evidence; shape is the real OSM outline but heights (3 storeys), ochre render, window rhythm and entrance are inferred from the brief; windows deliberately coarse (wide bays) to stay in the triangle budget."
+ }
+}

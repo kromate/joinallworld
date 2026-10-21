@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-way-1360711774",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1360711774",
+   "used": "real 55 x 40 m parallelogram-like outline, name match (AP Hogeschool - campus Dodoens, Mechelen)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-storey brick and glass block with ribbon windows, flat roof, glazed atrium, blank signage board, entrance steps. Commons photos found for AP Hogeschool show other campuses (Noorderplaats, Antwerp) so none is used as a photo of this building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 45,
+  "pitchDeg": 20,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5440",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#6f7a85",
+    "bands": "#e6e1d3",
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 4.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    17.9,
+    -14.1
+   ],
+   "rotDeg": 53,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f9aab",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#6f8a9c",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "rotDeg": 53,
+   "at": [
+    15.9,
+    -25.1,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#e6e1d3",
+    "frameColour": "#6f7a85",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "rotDeg": 53,
+   "at": [
+    21.4,
+    -16.8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b8b4aa"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "No photo of this building exists (Commons images are other AP campuses), so details are inferred from the brief: brick, ribbon windows, glazed entrance and blank sign board are typical, not verified; only the OSM outline is real."
+ }
+}

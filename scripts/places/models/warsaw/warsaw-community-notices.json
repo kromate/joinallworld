@@ -1,0 +1,128 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/558576563",
+   "used": "real 21 x 14 m outline of the named agency office (264 m2, rotated 37 degrees); three storeys from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true,
+    "fit": 60
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1ddd2",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bands": "#8a9a8e",
+    "glassColour": "#5f7480",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6f72",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glazing",
+   "footprint": {
+    "rect": [
+     5,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "rotDeg": 0,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db0b4",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6f72",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -13,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 2.5,
+    "colours": [
+     "#ffffff",
+     "#c8102e",
+     "#2f7d3c"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "sign",
+   "at": [
+    10,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 0.5,
+    "height": 1.6,
+    "colour": "#2f7d3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this office exists (Commons image is a different, larger building); outline from OSM only, facade colours and ribbon windows generic."
+ }
+}

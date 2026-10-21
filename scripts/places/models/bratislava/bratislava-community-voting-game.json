@@ -1,0 +1,284 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stupavsk%C3%BD_kostol_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Prskavka (sk.wikipedia)",
+   "view": "side",
+   "file": "/tmp/places-evidence/bratislava/voting1.jpg",
+   "used": "parish church at the edge of the square: pale yellow plastered walls with ochre bands and arched windows, polygonal apse with brown tile hip roof, clock tower with copper onion cap, big lime trees, low iron fence (photo is the Stupava church; the venue Namestie sv. Trojice is in Stupava per the brief and OSM, not Bratislava proper, so identity matches)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/147538870",
+   "used": "church outline (nearest, 6.5 m) placed on the square's north edge; the square itself and the Trinity column are inferred from the name"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdc96",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "bands": "#d9a22b",
+    "windowShape": "arched",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 38,
+    "colour": "#8a5545",
+    "material": "clay-tile",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse",
+   "at": [
+    8.5,
+    0,
+    0
+   ],
+   "params": {
+    "n": 5,
+    "radius": 6.2,
+    "height": 7,
+    "colour": "#efdc96",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.5,
+    0,
+    0
+   ],
+   "params": {
+    "n": 5,
+    "radius": 6.35,
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#d9a22b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.5,
+    0,
+    0
+   ],
+   "params": {
+    "n": 5,
+    "radius": 6.9,
+    "z0": 7,
+    "height": 4.2,
+    "topScale": 0.12,
+    "colour": "#8a5545"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.5,
+     5.5
+    ]
+   },
+   "at": [
+    -6,
+    -3
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdc96",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bands": "#d9a22b",
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9a22b",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -6,
+    -3,
+    19
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#8a5a3d",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      2.4,
+      0
+     ],
+     [
+      2.4,
+      0.8
+     ],
+     [
+      3.0,
+      1.8
+     ],
+     [
+      3.2,
+      3.0
+     ],
+     [
+      2.5,
+      4.4
+     ],
+     [
+      1.2,
+      5.6
+     ],
+     [
+      0.9,
+      6.6
+     ],
+     [
+      1.4,
+      7.0
+     ],
+     [
+      1.2,
+      7.6
+     ],
+     [
+      0.5,
+      8.4
+     ],
+     [
+      0,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    16,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.4,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#4a3328"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "base_width": 1.6,
+    "style": "square",
+    "steps": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -12
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     14
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -12
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -14
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   96,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Apse now visible with hip roof; tower lacks clock face; trees low-poly; photo is Stupava church which is the venue"
+ }
+}

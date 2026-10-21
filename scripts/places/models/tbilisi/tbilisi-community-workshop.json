@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: private university campus of mid-rise Soviet-era and newer blocks (U-plan, 4 storeys, render). The only photo (Free University library) is an interior, so it was not used for form. OSM outline is a 160,000 m2 campus polygon, too large to use"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-u",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     70,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d6d0c0",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.6,
+    "bands": "#8b8f8c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "newer-lab",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -52,
+    -14
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db3ba",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f92",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    30,
+    -32,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": 2,
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no exterior photo; massing from brief"
+ }
+}

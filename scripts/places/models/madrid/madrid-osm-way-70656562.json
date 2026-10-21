@@ -1,0 +1,482 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-osm-way-70656562",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:European_University_of_Madrid.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Craig.Lundsten",
+   "view": "front",
+   "file": "/tmp/places-evidence/madrid/uem1.jpg",
+   "used": "long three-storey pale blue-grey block with dark ribbon windows, raised central entrance pavilion with arched glass roof, footbridge over a lake, palms and flagged plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/70656562",
+   "used": "not used for geometry: the outline is the whole 250 ha campus; one block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    16
+   ],
+   "params": {
+    "rect": [
+     130,
+     12
+    ],
+    "height": 0.05,
+    "colour": "#5f8a4f",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     90,
+     15
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#b7c3cf",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#1f2630",
+    "bands": "#e4e7ea",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -46,
+    28
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#b0bdc9",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#1f2630"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    48,
+    28
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#b0bdc9",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#1f2630"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    2,
+    20.5
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe6ee",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#8fa6bd"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "vault",
+   "at": [
+    2,
+    24,
+    12
+   ],
+   "params": {
+    "colour": "#cfdbe8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       10
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       21,
+       9.2
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       17,
+       8
+      ]
+     },
+     {
+      "z": 4.6,
+      "rect": [
+       10,
+       6.5
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       3,
+       5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pond",
+   "at": [
+    0,
+    6
+   ],
+   "params": {
+    "rect": [
+     96,
+     12
+    ],
+    "height": 0.15,
+    "colour": "#2f5a55",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "rect": [
+     100,
+     30
+    ],
+    "height": 0.2,
+    "colour": "#d3b3a0",
+    "material": "paving"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge",
+   "at": [
+    2,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     3,
+     16
+    ],
+    "height": 0.6,
+    "z0": 0.6,
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable0",
+   "footprint": {
+    "rect": [
+     3,
+     9
+    ]
+   },
+   "at": [
+    -10,
+    20.5
+   ],
+   "z0": 12,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe6ee",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#8fa6bd"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cfdbe8",
+    "pitch": 35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable1",
+   "footprint": {
+    "rect": [
+     3,
+     9
+    ]
+   },
+   "at": [
+    14,
+    20.5
+   ],
+   "z0": 12,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe6ee",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#8fa6bd"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cfdbe8",
+    "pitch": 35
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -20,
+    0.6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -58,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flower-ring",
+   "at": [
+    8,
+    -20
+   ],
+   "params": {
+    "rect": [
+     10,
+     10
+    ],
+    "height": 0.6,
+    "colour": "#d0506e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Water is a flat teal slab with square banks, olive is a broadleaf stand-in on a square flower bed, pavilion vault only approximates the pointed glass roof, wings not as long"
+ }
+}

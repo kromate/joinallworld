@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-way-438907241",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/24967004",
+   "used": "real 84 x 67 m multi-wing school outline (name match, school building tag)"
+  },
+  {
+   "kind": "text",
+   "used": "brief + Wikidata (primary school Kaludjerica, founded 1919): three-storey render wings, hip roof of clay tile; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "school",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 100,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.8,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc4",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "bay": 14,
+    "plinth": 0.8,
+    "bands": "#a65a43",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8512f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#a65a43",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 0.35,
+    "count": 5,
+    "colour": "#c9c5bd"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "No photo; real outline used but simplified, windows dropped to fit the LOD1 budget (storey bands only); single low hip roof over all wings."
+ }
+}

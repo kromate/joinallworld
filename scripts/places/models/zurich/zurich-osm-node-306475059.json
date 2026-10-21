@@ -1,0 +1,21 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "zurich", "venueId": "zurich-osm-node-306475059",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/55724255", "used": "real building outline (containing the venue point, ~42 x 25 m, rotated 45 deg in plan), squared up to the camera"},
+  {"kind": "text", "ref": "scripts/places/briefs/zurich.json#zurich-osm-node-306475059", "used": "private typewriter museum at Speckstrasse 3 in the Pfaeffikon ZH industrial area; typed as a light-industrial unit, 2 storeys, render and metal cladding, shed roof (no photo of the building found; the nearby Commons photo shows the lakeside, not this building)"}
+ ],
+ "camera": {"yawDeg": 25, "pitchDeg": 14, "fovDeg": 50, "aspect": 1.5, "fit": "all", "margin": 0.1},
+ "parts": [
+  {"type": "mass", "id": "unit", "footprint": {"osm": true, "rotDeg": -45}, "at": [0, 0], "height": 7.5, "storeys": 2,
+   "wall": {"material": "painted-render", "colour": "#dcd8cc", "windows": "ribbon", "windowRatio": 0.25, "faces": {"back": "none", "left": "none", "right": "none"}, "plinth": 0.4, "groundKind": "shopfront", "groundHeight": 3.4, "bands": "#a4a8aa", "glassColour": "#6f7f88"},
+   "roof": {"form": "shed", "colour": "#7f8386", "material": "metal-sheet", "rise": 1.6, "overhang": 0.5, "parapet": 0}},
+  {"type": "mass", "id": "cladding-entrance", "footprint": {"rect": [8, 3]}, "at": [-6, -14], "height": 4.2, "storeys": 1,
+   "wall": {"material": "metal-cladding", "colour": "#7a7f82", "windows": "curtain", "windowRatio": 0.5, "faces": {"front": "curtain"}},
+   "roof": {"form": "flat", "colour": "#6f7477", "material": "metal-sheet", "overhang": 0.8}},
+  {"type": "core/sign-board", "at": [10, -14.5, 0], "params": {"width": 5, "height": 1.6, "bottom": 1.2, "colour": "#a4a8aa", "frameColour": "#5f6469", "posts": true}},
+  {"type": "core/car", "at": [-18, -22, 0], "params": {"colour": "#c8c8c8", "count": 4, "spacing": 3.0}}
+ ],
+ "site": {"ground": "paving", "forecourt": "parking", "forecourtDepth": 14, "extent": [90, 70]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "No photo of this building; massing is the real outline with brief-typed height, roof and facade; entrance position and window rhythm are assumed."}
+}

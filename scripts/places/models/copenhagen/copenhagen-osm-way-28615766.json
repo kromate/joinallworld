@@ -1,0 +1,639 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-osm-way-28615766",
+ "name": "Drag\u00f8r Fort",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dragoer_Fort_Strube_Indgang.jpg",
+   "licence": "Public domain",
+   "author": "Sooe (da.wikipedia)",
+   "view": "front",
+   "used": "cream entrance block with round-arched double door, stepped parapet with 1910 and 1914, flanking rounded strube caponiers with loopholes, grass-covered earth ramparts behind, green copper trim",
+   "file": "/tmp/places-evidence/copenhagen/drag1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Drag%C3%B8r_Fort-1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Praeceptor",
+   "view": "side",
+   "used": "long single-storey tan-rendered range with white sash windows under a green turf roof, lattice observation tower and radio mast on the mound",
+   "file": "/tmp/places-evidence/copenhagen/drag2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/671603544",
+   "used": "island outline (31 points)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 24,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fort",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8a85",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a9a5c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-block",
+   "at": [
+    -29.76,
+    -27.59
+   ],
+   "rotDeg": -2,
+   "params": {
+    "rect": [
+     16,
+     10
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#e6dcc0",
+    "topColour": "#d9cfb2",
+    "trimColour": "#f2ead2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-parapet",
+   "at": [
+    -29.76,
+    -27.59
+   ],
+   "rotDeg": -2,
+   "params": {
+    "rect": [
+     17.5,
+     11.4
+    ],
+    "z0": 9,
+    "height": 0.9,
+    "colour": "#f2ead2",
+    "topColour": "#f2ead2"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "gate-arch",
+   "at": [
+    -29.76,
+    -32.95,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 8.4,
+    "depth": 0.5,
+    "archWidth": 5.6,
+    "springHeight": 4.6,
+    "pointed": false,
+    "colour": "#f2ead2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-door",
+   "at": [
+    -29.76,
+    -32.75
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.3
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#3a342d",
+    "topColour": "#3a342d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "caponier-e",
+   "at": [
+    -17.560000000000002,
+    -27.6
+   ],
+   "params": {
+    "radius": 5,
+    "n": 24,
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#e6dcc0",
+    "topColour": "#d9cfb2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "caponier-w",
+   "at": [
+    -41.96,
+    -27.6
+   ],
+   "params": {
+    "radius": 5,
+    "n": 24,
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#e6dcc0",
+    "topColour": "#d9cfb2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "green-band",
+   "at": [
+    -29.76,
+    -26.66
+   ],
+   "params": {
+    "rect": [
+     30,
+     8
+    ],
+    "z0": 3.4,
+    "height": 0.3,
+    "colour": "#4d7a52",
+    "topColour": "#4d7a52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "barrack",
+   "footprint": {
+    "rect": [
+     36,
+     7
+    ]
+   },
+   "at": [
+    -1.86,
+    -16.12
+   ],
+   "rotDeg": 14,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9a98f",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "trimColour": "#f2f0e8",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8c5a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "id": "radio-mast",
+   "at": [
+    4.96,
+    4.96,
+    4.5
+   ],
+   "params": {
+    "height": 20,
+    "baseWidth": 1.2,
+    "topWidth": 0.4,
+    "panels": 12,
+    "colour": "#9a9d9f",
+    "colour2": "#8d8a85"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lattice-mast",
+   "id": "obs-tower",
+   "at": [
+    -4.96,
+    3.72,
+    4.5
+   ],
+   "params": {
+    "height": 10,
+    "baseWidth": 2.2,
+    "topWidth": 1.4,
+    "panels": 4,
+    "colour": "#7e8184",
+    "colour2": "#6d7073"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "cannon",
+   "id": "battery",
+   "at": [
+    37.2,
+    29.76,
+    4.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 6,
+    "yaw": 200
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "brick-stack",
+   "id": "chimney",
+   "at": [
+    -12.4,
+    1.24,
+    4.5
+   ],
+   "params": {
+    "height": 4,
+    "radius": 0.7,
+    "colour": "#5d5650"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "ramp-c",
+   "at": [
+    -29.76,
+    -18,
+    4.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       26,
+       6
+      ]
+     },
+     {
+      "z": 5.3999999999999995,
+      "ellipse": [
+       22.099999999999998,
+       4.800000000000001
+      ]
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       15.6,
+       3.0
+      ]
+     }
+    ],
+    "colour": "#a89a58",
+    "topColour": "#a89a58"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "ramp-w",
+   "at": [
+    -53.760000000000005,
+    -14,
+    4.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       16,
+       6
+      ]
+     },
+     {
+      "z": 5.1,
+      "ellipse": [
+       13.6,
+       4.800000000000001
+      ]
+     },
+     {
+      "z": 8.5,
+      "ellipse": [
+       9.6,
+       3.0
+      ]
+     }
+    ],
+    "colour": "#a89a58",
+    "topColour": "#a89a58"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "ramp-e",
+   "at": [
+    -5.760000000000002,
+    -14,
+    4.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       16,
+       6
+      ]
+     },
+     {
+      "z": 5.1,
+      "ellipse": [
+       13.6,
+       4.800000000000001
+      ]
+     },
+     {
+      "z": 8.5,
+      "ellipse": [
+       9.6,
+       3.0
+      ]
+     }
+    ],
+    "colour": "#a89a58",
+    "topColour": "#a89a58"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "ramp-back",
+   "at": [
+    8,
+    2,
+    4.5
+   ],
+   "rotDeg": -8,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       34,
+       9
+      ]
+     },
+     {
+      "z": 5.7,
+      "ellipse": [
+       28.9,
+       7.2
+      ]
+     },
+     {
+      "z": 9.5,
+      "ellipse": [
+       20.4,
+       4.5
+      ]
+     }
+    ],
+    "colour": "#a89a58",
+    "topColour": "#a89a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-crest",
+   "at": [
+    -29.76,
+    -28.59
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 9.9,
+    "height": 1.4,
+    "colour": "#f2ead2",
+    "topColour": "#f2ead2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crest-shield",
+   "at": [
+    -29.76,
+    -32.7
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 7.2,
+    "height": 1.8,
+    "colour": "#a8302f",
+    "topColour": "#a8302f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth-e",
+   "at": [
+    -17.560000000000002,
+    -27.6
+   ],
+   "params": {
+    "radius": 5.1,
+    "n": 24,
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#1f1d1b",
+    "topColour": "#1f1d1b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth-w",
+   "at": [
+    -41.96,
+    -27.6
+   ],
+   "params": {
+    "radius": 5.1,
+    "n": 24,
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#1f1d1b",
+    "topColour": "#1f1d1b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loop-e1",
+   "at": [
+    -18.560000000000002,
+    -32.5
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 2.2,
+    "height": 0.5,
+    "colour": "#2a2623",
+    "topColour": "#2a2623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loop-e2",
+   "at": [
+    -14.96,
+    -31.9
+   ],
+   "rotDeg": 25,
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 2.2,
+    "height": 0.5,
+    "colour": "#2a2623",
+    "topColour": "#2a2623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loop-w1",
+   "at": [
+    -40.96,
+    -32.5
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 2.2,
+    "height": 0.5,
+    "colour": "#2a2623",
+    "topColour": "#2a2623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loop-w2",
+   "at": [
+    -44.56,
+    -31.9
+   ],
+   "rotDeg": -25,
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "z0": 2.2,
+    "height": 0.5,
+    "colour": "#2a2623",
+    "topColour": "#2a2623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gate arch, round caponiers with plinths and loopholes, tall straw-grass ramparts match; gate still small at this framing, no 1910/1914 lettering, lamps or bins; outline scaled to 118 m (real 189 m)"
+ }
+}

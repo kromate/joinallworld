@@ -1,0 +1,327 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-way-242774480",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fmfi_f1_zelen.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Teslaton",
+   "view": "street",
+   "file": "/tmp/places-evidence/bratislava/fmfi1.jpg",
+   "used": "Wikidata P18: the long slab with floors stepping outward upward (recessed glazed ground floor, projecting pale concrete balcony slabs, ribbon windows), lower wing at left, grey-cream concrete"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/242774480",
+   "used": "campus polygon is 430 m wide with many buildings, so only the main slab proportions (about 100 x 16 m, 5 floors) are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.7,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "rect": [
+     86,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8d949a",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-floor-2",
+   "footprint": {
+    "rect": [
+     88,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cdc7b8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a5560",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e0dccf"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4cfc2",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-floor-3",
+   "footprint": {
+    "rect": [
+     90,
+     13.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 8.4,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cdc7b8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a5560",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e0dccf"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4cfc2",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-floor-4",
+   "footprint": {
+    "rect": [
+     92,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 12.600000000000001,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cdc7b8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a5560",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e0dccf"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4cfc2",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-floor-5",
+   "footprint": {
+    "rect": [
+     94,
+     16.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 16.8,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cdc7b8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a5560",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e0dccf"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4cfc2",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -70,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d6d1c3",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#4a5560",
+    "bands": "#e4e0d4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c6",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    30,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29d92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -40,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#b9b8b2"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 10,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    50,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 8,
+    "count": 5,
+    "kind": "conifer",
+    "min_height": 5,
+    "max_height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   160,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Real slab is a corner view with retaining wall and dense planting; ground floor glazing and exact slab step depth approximate; rest of 430 m campus not modelled"
+ }
+}

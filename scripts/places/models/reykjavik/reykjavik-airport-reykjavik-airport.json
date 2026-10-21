@@ -1,0 +1,467 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-airport-reykjavik-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Keflav%C3%ADk_International_Airport_(31001876723).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jeff Hitchcock from Seattle",
+   "view": "front",
+   "file": "/tmp/places-evidence/reykjavik/rk-air1.jpg",
+   "used": "deep weathered-concrete roof slab with chamfered edge, steeply raked dark glazed front under it, glazed entrance pavilion, round concrete control-tower stub behind, paved forecourt with bollards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Keflav%C3%ADk_Airport_tarmac.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Xfigpower",
+   "view": "back",
+   "used": "dark grey boxy gate pier with glass, enclosed jet bridges, tall light masts"
+  },
+  {
+   "kind": "text",
+   "used": "brief: ~320 m long, three wings, 13 gates; a 120 m stretch is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 5,
+  "fovDeg": 58,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     96,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f918d",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a9a4",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#5d7a8a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       96,
+       6
+      ],
+      "cy": -6
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       96,
+       3.2
+      ],
+      "cy": -4.2
+     },
+     {
+      "z": 8,
+      "rect": [
+       96,
+       0.6
+      ],
+      "cy": -2.5
+     }
+    ],
+    "capTop": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -46,
+    -12,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     92,
+     0,
+     0
+    ],
+    "count": 24,
+    "lod2Step": 24,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#1e2a30",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.4,
+         0.4
+        ],
+        "cy": -9
+       },
+       {
+        "z": 8,
+        "rect": [
+         0.4,
+         0.4
+        ],
+        "cy": -2.8
+       }
+      ],
+      "capTop": true
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#8a8b86",
+    "sections": [
+     {
+      "z": 7.6,
+      "rect": [
+       98,
+       17
+      ],
+      "cy": 3.5
+     },
+     {
+      "z": 9.6,
+      "rect": [
+       100,
+       23
+      ],
+      "cy": 0.5
+     },
+     {
+      "z": 11.1,
+      "rect": [
+       100,
+       24
+      ],
+      "cy": 0
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12,
+    11.1
+   ],
+   "params": {
+    "rect": [
+     98,
+     22
+    ],
+    "height": 0.4,
+    "colour": "#7c7d78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -25,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "height": 4.4,
+    "colour": "#6f8e9c",
+    "windows": "punched",
+    "windowRatio": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -25,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     18,
+     9
+    ],
+    "height": 0.5,
+    "colour": "#8a8b86",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    22,
+    -2,
+    11.1
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#85857f",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      6.2,
+      0
+     ],
+     [
+      6.6,
+      7
+     ],
+     [
+      7.4,
+      12
+     ],
+     [
+      7.8,
+      13
+     ],
+     [
+      7.8,
+      13.4
+     ],
+     [
+      0,
+      14.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -2,
+    25.6
+   ],
+   "params": {
+    "radius": 0.25,
+    "n": 6,
+    "height": 7,
+    "colour": "#bcbcbc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     14,
+     70
+    ]
+   },
+   "at": [
+    10,
+    52
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a4f55",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6e72",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    10,
+    36,
+    8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     30,
+     0
+    ],
+    "count": 3,
+    "lod2Step": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "height": 2.2,
+      "colour": "#8a8d90",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -45,
+    -36,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     90,
+     0,
+     0
+    ],
+    "count": 25,
+    "lod2Step": 25,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 1.0,
+      "colour": "#1a1a1a",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -45,
+    -36,
+    0.65
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     90,
+     0,
+     0
+    ],
+    "count": 25,
+    "lod2Step": 25,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.54,
+       0.54
+      ],
+      "height": 0.15,
+      "colour": "#b3302a",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 24,
+  "trees": 0,
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Only ~100 m of the ~320 m terminal; glazing raked with mullions but no entrance-canopy detail, airside pier hidden behind slab, no vehicles."
+ }
+}

@@ -1,0 +1,766 @@
+{
+ "name": "Kalngale",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kalngales_stacija.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "ScAvenger",
+   "view": "front",
+   "file": "/tmp/places-evidence/riga/transit-0.jpg",
+   "used": "red corrugated open-fronted shelter: closed end wall, open bay with bench, closed block with window and ticket hatch, white corner trims, flat dark grey roof, blank name board, paving slabs, pines behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1449698535",
+   "used": "only a 3 m building matched (nearest); not used for the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     9
+    ],
+    "height": 0.4,
+    "colour": "#b3aea4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform-edge",
+   "at": [
+    0,
+    -5.35,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.4
+    ],
+    "height": 0.45,
+    "colour": "#6f6c66"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform-crack",
+   "at": [
+    1,
+    -4,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     4
+    ],
+    "height": 0.01,
+    "colour": "#6a675f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab-line",
+   "at": [
+    -2,
+    -3.2,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.06
+    ],
+    "height": 0.01,
+    "colour": "#8d897f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "back-wall",
+   "at": [
+    0,
+    2.4,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     0.2
+    ],
+    "height": 2.7,
+    "colour": "#a02a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "left-wall",
+   "at": [
+    -4.7,
+    0,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     5.0
+    ],
+    "height": 2.7,
+    "colour": "#a02a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "right-block",
+   "at": [
+    3.15,
+    0,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     3.3,
+     5.0
+    ],
+    "height": 2.7,
+    "colour": "#a02a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "window",
+   "at": [
+    3.95,
+    -2.55,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 1.2,
+    "colour": "#3a2c2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "window-frame",
+   "at": [
+    3.95,
+    -2.52,
+    1.45
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.06
+    ],
+    "height": 1.3,
+    "colour": "#e8e4da"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ticket-hatch",
+   "at": [
+    2.2,
+    -2.55,
+    1.3
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#e6e6e0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    0,
+    0,
+    3.1
+   ],
+   "params": {
+    "rect": [
+     10.0,
+     5.5
+    ],
+    "height": 0.28,
+    "colour": "#4d555a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-lip",
+   "at": [
+    0,
+    0,
+    3.38
+   ],
+   "params": {
+    "rect": [
+     10.0,
+     5.5
+    ],
+    "height": 0.08,
+    "colour": "#6f777c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "trim-l",
+   "at": [
+    -4.7,
+    -2.55,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.15
+    ],
+    "height": 2.7,
+    "colour": "#eeeae0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "trim-m",
+   "at": [
+    1.5,
+    -2.55,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.15
+    ],
+    "height": 2.7,
+    "colour": "#eeeae0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "trim-r",
+   "at": [
+    4.8,
+    -2.55,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.15
+    ],
+    "height": 2.7,
+    "colour": "#eeeae0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "name-board",
+   "at": [
+    3.15,
+    -2.6,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.15
+    ],
+    "height": 0.75,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-letters",
+   "at": [
+    3.15,
+    -2.7,
+    3.58
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.05
+    ],
+    "height": 0.25,
+    "colour": "#3a2a28"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-seat",
+   "at": [
+    -1.2,
+    2.0,
+    0.85
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "height": 0.08,
+    "colour": "#2f6b4a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-brick",
+   "at": [
+    -1.2,
+    2.0,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.4
+    ],
+    "height": 0.45,
+    "colour": "#8a4b3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "ribs-front",
+   "at": [
+    0,
+    -2.6,
+    0.4
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     1.9,
+     0
+    ],
+    "end": [
+     4.6,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.07,
+       0.07
+      ],
+      "height": 2.7,
+      "colour": "#7f1f1f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "ribs-left",
+   "at": [
+    -4.8,
+    0,
+    0.4
+   ],
+   "params": {
+    "mode": "line",
+    "count": 11,
+    "start": [
+     0,
+     -2.3
+    ],
+    "end": [
+     0,
+     2.3
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.07,
+       0.07
+      ],
+      "height": 2.7,
+      "colour": "#7f1f1f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "ribs-back",
+   "at": [
+    0,
+    2.3,
+    0.4
+   ],
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -4.4,
+     0
+    ],
+    "end": [
+     4.4,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.07,
+       0.07
+      ],
+      "height": 2.7,
+      "colour": "#7f1f1f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "id": "platform-lamp",
+   "at": [
+    -7,
+    -2.5,
+    0.4
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 1,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-house",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    15,
+    12
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d3ae4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a5a3a",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine0",
+   "at": [
+    -13.3,
+    13.7,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9.3
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine1",
+   "at": [
+    -12.5,
+    13.2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12.9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine2",
+   "at": [
+    -9.3,
+    10.5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12.1
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine3",
+   "at": [
+    -7.2,
+    11.9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9.8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine4",
+   "at": [
+    -5.3,
+    11.0,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12.8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine5",
+   "at": [
+    -2.2,
+    13.7,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11.9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine6",
+   "at": [
+    -0.9,
+    10.3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9.2
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine7",
+   "at": [
+    0.6,
+    11.3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10.6
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine8",
+   "at": [
+    3.4,
+    13.5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11.8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine9",
+   "at": [
+    5.9,
+    10.2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9.1
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine10",
+   "at": [
+    7.7,
+    9.7,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11.7
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine11",
+   "at": [
+    11.0,
+    12.4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10.0
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine12",
+   "at": [
+    13.0,
+    13.0,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12.8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine13",
+   "at": [
+    15.3,
+    12.8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13.1
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine14",
+   "at": [
+    16.6,
+    13.9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14.0
+   }
+  },
+  {
+   "type": "tree",
+   "id": "pine15",
+   "at": [
+    18.5,
+    12.8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   40,
+   28
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-transit",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Deeper boxy shelter with corrugation ribs, white trims, roof-edge name board, slab platform and pine backdrop; no graffiti, conifer shape stylised, paving cracks minimal, house behind is a stand-in."
+ }
+}

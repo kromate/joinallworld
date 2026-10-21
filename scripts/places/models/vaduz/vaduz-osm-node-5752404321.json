@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-node-5752404321",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Russian-Monument-Liechtenstein.jpg",
+   "licence": "Public domain",
+   "author": "James Bartosik",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/russian8.jpg",
+   "used": "actual form: a large round dark bronze plaque (inscription left blank here) standing tilted on a rough grey granite block, on a grassy bank with a railing behind; the brief's obelisk is wrong"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 0.67
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.95,
+     0.6
+    ],
+    "height": 0.95,
+    "colour": "#9d9d9a",
+    "material": "granite",
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0.0
+   ],
+   "params": {
+    "colour": "#4d4a43",
+    "sections": [
+     {
+      "z": 0.83,
+      "rect": [
+       0.04,
+       0.14
+      ],
+      "cy": -0.003
+     },
+     {
+      "z": 0.86,
+      "rect": [
+       0.383,
+       0.14
+      ],
+      "cy": -0.006
+     },
+     {
+      "z": 0.948,
+      "rect": [
+       0.729,
+       0.14
+      ],
+      "cy": -0.015
+     },
+     {
+      "z": 1.086,
+      "rect": [
+       1.003,
+       0.14
+      ],
+      "cy": -0.029
+     },
+     {
+      "z": 1.258,
+      "rect": [
+       1.179,
+       0.14
+      ],
+      "cy": -0.046
+     },
+     {
+      "z": 1.45,
+      "rect": [
+       1.24,
+       0.14
+      ],
+      "cy": -0.065
+     },
+     {
+      "z": 1.642,
+      "rect": [
+       1.179,
+       0.14
+      ],
+      "cy": -0.084
+     },
+     {
+      "z": 1.814,
+      "rect": [
+       1.003,
+       0.14
+      ],
+      "cy": -0.101
+     },
+     {
+      "z": 1.952,
+      "rect": [
+       0.729,
+       0.14
+      ],
+      "cy": -0.115
+     },
+     {
+      "z": 2.04,
+      "rect": [
+       0.383,
+       0.14
+      ],
+      "cy": -0.124
+     },
+     {
+      "z": 2.07,
+      "rect": [
+       0.04,
+       0.14
+      ],
+      "cy": -0.127
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    2.8,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.0,
+    "thickness": 0.05,
+    "kind": "fence",
+    "colour": "#3a3d40"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -4,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   16,
+   12
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "plaque is blank (no relief lettering), granite block texture is blocky, no tilt-back of the disc visible"
+ }
+}

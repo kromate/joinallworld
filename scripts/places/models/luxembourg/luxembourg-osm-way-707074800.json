@@ -1,0 +1,521 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-way-707074800",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_de_Luxembourg,_Luxembourg_vs_Azebaidjan_2021-09-01_(103).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GilPe",
+   "view": "interior",
+   "file": "/tmp/places-evidence/luxembourg/stade1.jpg",
+   "used": "interior only: fully roofed bowl, pale grey roof with white raking struts, floodlight rail on the roof edge, blue seats with red blocks, diamond-lattice rear wall, red scoreboard"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Luxembourg,_Stadion_tram_stop_(102).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GilPe",
+   "view": "street",
+   "file": "/tmp/places-evidence/luxembourg/stade2.jpg",
+   "used": "stadium is not in frame; tram stop in the plaza only (no geometry used)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9833592",
+   "used": "overall size 154 x 110 m rounded rectangle (bearing 97 deg ignored, axis-aligned)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      63.84,
+      30.12
+     ],
+     [
+      61.56,
+      38.62
+     ],
+     [
+      55.34,
+      44.84
+     ],
+     [
+      46.84,
+      47.12
+     ],
+     [
+      -46.84,
+      47.12
+     ],
+     [
+      -55.34,
+      44.84
+     ],
+     [
+      -61.56,
+      38.62
+     ],
+     [
+      -63.84,
+      30.12
+     ],
+     [
+      -63.84,
+      -30.12
+     ],
+     [
+      -61.56,
+      -38.62
+     ],
+     [
+      -55.34,
+      -44.84
+     ],
+     [
+      -46.84,
+      -47.12
+     ],
+     [
+      46.84,
+      -47.12
+     ],
+     [
+      55.34,
+      -44.84
+     ],
+     [
+      61.56,
+      -38.62
+     ],
+     [
+      63.84,
+      -30.12
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8d9094",
+    "top": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "length": 73,
+    "width": 47,
+    "stripes": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lattice-wall",
+   "footprint": {
+    "polygon": [
+     [
+      58.52,
+      27.8
+     ],
+     [
+      56.64,
+      34.8
+     ],
+     [
+      51.52,
+      39.92
+     ],
+     [
+      44.52,
+      41.8
+     ],
+     [
+      -44.52,
+      41.8
+     ],
+     [
+      -51.52,
+      39.92
+     ],
+     [
+      -56.64,
+      34.8
+     ],
+     [
+      -58.52,
+      27.8
+     ],
+     [
+      -58.52,
+      -27.8
+     ],
+     [
+      -56.64,
+      -34.8
+     ],
+     [
+      -51.52,
+      -39.92
+     ],
+     [
+      -44.52,
+      -41.8
+     ],
+     [
+      44.52,
+      -41.8
+     ],
+     [
+      51.52,
+      -39.92
+     ],
+     [
+      56.64,
+      -34.8
+     ],
+     [
+      58.52,
+      -27.8
+     ]
+    ],
+    "scale": 1
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9cccd",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       4,
+       4
+      ],
+      "colours": [
+       "#d3d6d7",
+       "#b4babd",
+       "#e1e3e3"
+      ],
+      "slits": 0.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e7e8",
+    "overhang": 0.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 44.8,
+    "radiusY": 30.4,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 0.65,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "facetDeg": 36,
+    "under": "solid",
+    "stepped": false,
+    "backWall": 2.0,
+    "seatColour": "#2f4f9e",
+    "seatColours": [
+     "#2f4f9e",
+     "#c23a3a",
+     "#2f4f9e",
+     "#2f4f9e",
+     "#c23a3a"
+    ],
+    "blocks": 10,
+    "concreteColour": "#c4c6c8",
+    "underColour": "#a9adb1",
+    "canopy": {
+     "height": 20,
+     "depth": 17,
+     "thickness": 1.2,
+     "slopeDeg": 16,
+     "colour": "#e4e7e8",
+     "edgeColour": "#f1f2f1",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -85,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    88,
+    -35,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -90,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    60,
+    66,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    70,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    22.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.8
+     ]
+    },
+    "closed": true,
+    "colour": "#f2f3f2",
+    "points": [
+     [
+      58.52,
+      28.12,
+      0
+     ],
+     [
+      56.69,
+      34.96,
+      0
+     ],
+     [
+      51.68,
+      39.97,
+      0
+     ],
+     [
+      44.84,
+      41.8,
+      0
+     ],
+     [
+      -44.84,
+      41.8,
+      0
+     ],
+     [
+      -51.68,
+      39.97,
+      0
+     ],
+     [
+      -56.69,
+      34.96,
+      0
+     ],
+     [
+      -58.52,
+      28.12,
+      0
+     ],
+     [
+      -58.52,
+      -28.12,
+      0
+     ],
+     [
+      -56.69,
+      -34.96,
+      0
+     ],
+     [
+      -51.68,
+      -39.97,
+      0
+     ],
+     [
+      -44.84,
+      -41.8,
+      0
+     ],
+     [
+      44.84,
+      -41.8,
+      0
+     ],
+     [
+      51.68,
+      -39.97,
+      0
+     ],
+     [
+      56.69,
+      -34.96,
+      0
+     ],
+     [
+      58.52,
+      -28.12,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    22.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 57,
+    "radiusY": 41,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 30,
+    "facing": "centre",
+    "lod1Step": 30,
+    "lod2Step": 30,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.2,
+        0.8
+       ],
+       "height": 1.8,
+       "colour": "#fafaf5"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard-end",
+   "at": [
+    0,
+    33,
+    3
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.6
+    ],
+    "height": 4.5,
+    "colour": "#b32a2a",
+    "top": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Interior-only photos; shell is a closed rounded-rectangle with sloping canopy roof and floodlight rail (30 heads), but panel grid not diamond lattice, stand oval inside, axis-aligned not 97 deg, scaled to 118 m clamp."
+ }
+}

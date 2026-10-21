@@ -1,0 +1,393 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GrotemarktHaarlem.jpg",
+   "licence": "CC BY 2.0",
+   "author": "CT Snow",
+   "view": "street",
+   "file": "/tmp/places-evidence/amsterdam/game1.jpg",
+   "used": "square frontages: Stadhuis at left (long grey slate roof, stepped brick walls, slender tower), Vleeshal stepped-gable facade in the middle, row of tall narrow brick gabled houses at right, pollarded limes, brick cobbles; venue is Haarlem Grote Markt (brief and Wikidata Q1083850), so photo is correct for it"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Coster statue 1856 and St Bavo tower (about 78 m) on the north side"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 62,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stadhuis",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -30,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5a48",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": false
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6670",
+    "pitch": 42,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    -28,
+    33.5,
+    8.5
+   ],
+   "params": {
+    "width": 13,
+    "height": 5,
+    "steps": 4,
+    "colour": "#d9d3c5"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "vleeshal",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -3,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a35540",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": false,
+    "bands": "#d9d3c5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a636e",
+    "pitch": 52,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    -3,
+    30.5,
+    10.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 5.5,
+    "steps": 5,
+    "colour": "#d6cdbb"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "row-east",
+   "footprint": {
+    "rect": [
+     44,
+     10
+    ]
+   },
+   "at": [
+    56,
+    20
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f4c3a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": false,
+    "bands": "#d9d3c5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a5522f",
+    "pitch": 50,
+    "overhang": 0.3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -26,
+    12,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#e8e4da",
+     "#c8362f",
+     "#3a6aa8"
+    ]
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    8,
+    4,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "plinthHeight": 3,
+    "colour": "#5e564a",
+    "plinthColour": "#bdb6a6"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    42,
+    20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 36,
+    "count": 3,
+    "kind": "broadleaf",
+    "gap": 12,
+    "height_min": 8,
+    "height_max": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-east",
+   "footprint": {
+    "rect": [
+     36,
+     11
+    ]
+   },
+   "at": [
+    36,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5442",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bay": 9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "bands": "#d9d3c5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6670",
+    "pitch": 50,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    27,
+    34.4,
+    14
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "steps": 4,
+    "colour": "#d6cdbb"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    36,
+    34.4,
+    14
+   ],
+   "params": {
+    "width": 8,
+    "height": 4.5,
+    "steps": 4,
+    "colour": "#d9d3c5"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    45,
+    34.4,
+    14
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.8,
+    "steps": 3,
+    "colour": "#d6cdbb"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bavo-nave",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    4,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a6a58",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6670",
+    "pitch": 40,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 38,
+    "cap": "pyramid",
+    "capRise": 10,
+    "windows": "none",
+    "colour": "#8a6a58",
+    "capColour": "#4f6a72",
+    "windowRatio": 0.1
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "extent": [
+   116,
+   90
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "venue is Haarlem Grote Markt per brief and Wikidata so the photo is correct; frontages made a continuous terrace with stepped gables and St Bavo nave and tower added; stepped and scrolled facade ornament, pollarded limes and lamp mast missing, square still sparse"
+ }
+}

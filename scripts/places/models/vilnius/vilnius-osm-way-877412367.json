@@ -1,0 +1,197 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-osm-way-877412367",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:VU_Matematikos_ir_informatikos_fakultetas_2006-08-08.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Algirdas (lt.wikipedia)",
+   "view": "side",
+   "used": "four-storey massing, blank cream-rendered end gable, long side with vertical strip windows between white panels, flat roof with thin parapet",
+   "file": "/tmp/places-evidence/vilnius/mif.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17371913",
+   "used": "overall extent and wing arrangement (a long block with a cross wing); simplified to three masses"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "long-block",
+   "footprint": {
+    "rect": [
+     14,
+     60
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcc",
+    "windows": "punched",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "punched"
+    },
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bands": "#f4f1e6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6c70",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-wing",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -24,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dcc8",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.22,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6c70",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    35
+   ],
+   "rotDeg": 180,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d9c6",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58595d",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 5,
+    "depth": 2.2,
+    "height": 2.8,
+    "columns": 2,
+    "colour": "#d8d2c0",
+    "edgeColour": "#b9b4a4"
+   },
+   "rotDeg": 180
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -30
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -24
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     10
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Window strips are plain punched grid (no recessed panel rhythm); entrance moved to back end; final camera yaw reverted to 38 after a 55 try looked worse (not re-rendered)"
+ }
+}

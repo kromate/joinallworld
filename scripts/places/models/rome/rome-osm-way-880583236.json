@@ -1,0 +1,220 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-osm-way-880583236",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/880583236",
+   "used": "real irregular outline (about 91 x 70 m), name match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1996-1999 pilgrimage church, pale stone and concrete, curved roof, free-standing campanile, pilgrim forecourt. The Commons photos show the old 1745 Baroque sanctuary, a different building, so they were not used for the comparison."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "sanctuary",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6dfcd",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a8a090",
+      "height": 0.5,
+      "spacing": 7.3
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a86",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "loft",
+   "id": "vault",
+   "at": [
+    2,
+    -8,
+    22
+   ],
+   "params": {
+    "colour": "#8c8a86",
+    "topColour": "#8c8a86",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       44,
+       40
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       38,
+       34
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       26,
+       24
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       10,
+       10
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     26,
+     6
+    ],
+    "height": 9,
+    "z0": 0,
+    "colour": "#a8a090",
+    "topColour": "#f3eee2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "campanile",
+   "at": [
+    -32,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 46,
+    "topScale": 0.8,
+    "colour": "#e6dfcd",
+    "topColour": "#a8a090"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "campanile-cap",
+   "at": [
+    -32,
+    38,
+    46
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 6,
+    "topScale": 0.05,
+    "colour": "#8c8a86",
+    "topColour": "#8c8a86"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 0.25,
+    "run": 1.2,
+    "count": 6,
+    "colour": "#d8d0bc"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "count": 4,
+    "spread": 8,
+    "line": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 3,
+    "spread": 8,
+    "line": 15
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "footprint only; new sanctuary form (curved vault, campanile, pale stone) inferred from the brief, photos show the old Baroque church"
+ }
+}

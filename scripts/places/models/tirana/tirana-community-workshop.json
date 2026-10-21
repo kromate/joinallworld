@@ -1,0 +1,311 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universiteti_POLIS.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Soni (Wikimedia Commons)",
+   "view": "front",
+   "used": "full-height glazed curtain wall with white mullions, deep overhanging dark flat roof, grey tile-clad side tower with small punched windows and green entrance accent",
+   "file": "/tmp/places-evidence/tirana/polis2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/530777159",
+   "used": "Universiteti POLIS (1,837 m2, 4 levels); block proportions about 44 x 22 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-block",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3fa6b8",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "bands": "#f2f5f6",
+    "plinth": 0.4,
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "back": "punched",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 4.4,
+      "depth": 0.5,
+      "colour": "#f4f6f7",
+      "faces": [
+       "front",
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#33383c",
+    "material": "metal-sheet",
+    "overhang": 3.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clad-tower",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    27,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a8a6a2",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bands": "#95928e",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.6,
+       1.1
+      ],
+      "colours": [
+       "#a9a7a3",
+       "#9a9894",
+       "#b4b2ae"
+      ],
+      "slits": 0.04,
+      "faces": [
+       "front",
+       "right",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#33383c",
+    "material": "metal-sheet",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -11.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 3.6,
+    "colour": "#6fbf45",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -12,
+    17
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.3
+    ],
+    "height": 1,
+    "colour": "#e5e8ea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -1,
+    17
+   ],
+   "params": {
+    "rect": [
+     56,
+     29
+    ],
+    "height": 1.3,
+    "colour": "#2f3438",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -11.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.6
+    ],
+    "height": 4,
+    "colour": "#1f2428",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    25.5,
+    -11.15,
+    8
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "height": 1.5,
+    "colour": "#2a3a46",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28.5,
+    -11.15,
+    12.5
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "height": 1.5,
+    "colour": "#2a3a46",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    27,
+    -11.15,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "height": 1.5,
+    "colour": "#2a3a46",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -11.3,
+    12
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.4
+    ],
+    "height": 1.4,
+    "colour": "#f2f5f6",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     38,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glazing is a flat teal curtain grid with white fins, not the real diagonal truss bracing; roof overhang added as thick slab but lettering is only a blank band; entrance recess and tile tower slits simplified."
+ }
+}

@@ -1,0 +1,386 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-osm-way-38883021",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kazimiero_Simonavi%C4%8Diaus_universitetas_ir_Vilniaus_dizaino_kolegija.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bearas",
+   "view": "front",
+   "file": "/tmp/places-evidence/vilnius/design2.jpg",
+   "used": "cream rendered four-storey block, tall stair tower with a blank rendered side wall and a full-height blue-framed glazed strip, lower three-storey bay with dark entrance canopy, ribbon-window block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38883021",
+   "used": "main block outline (about 61 x 27 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.0,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc6",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#6f8da6",
+    "bay": 6,
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     7.4,
+     13
+    ]
+   },
+   "at": [
+    -10.5,
+    -14.5
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dbb4",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d9cfb3",
+    "material": "membrane",
+    "rise": 6,
+    "overhang": 0.1,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-bay",
+   "footprint": {
+    "rect": [
+     5,
+     7
+    ]
+   },
+   "at": [
+    -16,
+    -13
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d6b0",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#6f7f98",
+    "bay": 5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "ribbon",
+     "right": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8d8f",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frame-l",
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "height": 24,
+    "z0": 0,
+    "colour": "#e6dcbf"
+   },
+   "at": [
+    -13.1,
+    -21.3,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frame-r",
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "height": 22,
+    "z0": 0,
+    "colour": "#e6dcbf"
+   },
+   "at": [
+    -7.9,
+    -21.3,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frame-top",
+   "params": {
+    "rect": [
+     7.4,
+     0.8
+    ],
+    "height": 2.3,
+    "z0": 22.2,
+    "colour": "#e6dcbf"
+   },
+   "at": [
+    -10.5,
+    -21.3,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "glass",
+   "params": {
+    "rect": [
+     5.2,
+     0.25
+    ],
+    "height": 21.8,
+    "z0": 0.3,
+    "colour": "#5f78b0"
+   },
+   "at": [
+    -10.5,
+    -21.2,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10.5,
+     -21.4,
+     2.0
+    ],
+    "end": [
+     -10.5,
+     -21.4,
+     21.6
+    ],
+    "count": 10,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        5.3,
+        0.2
+       ],
+       "height": 0.18,
+       "colour": "#1f2c44"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12.4,
+     -21.4,
+     0.3
+    ],
+    "end": [
+     -8.6,
+     -21.4,
+     0.3
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.15,
+        0.2
+       ],
+       "height": 21.8,
+       "colour": "#1f2c44"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner",
+   "params": {
+    "rect": [
+     1.8,
+     0.1
+    ],
+    "height": 2.2,
+    "z0": 13,
+    "colour": "#4a4a8a"
+   },
+   "at": [
+    -10.5,
+    -21.55,
+    0
+   ]
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -16,
+    -17.2,
+    3.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 5,
+    "depth": 2.0,
+    "height": 0,
+    "thickness": 0.25,
+    "colour": "#2d2f33"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lb-banner",
+   "params": {
+    "rect": [
+     3.0,
+     0.1
+    ],
+    "height": 1.6,
+    "z0": 7.2,
+    "colour": "#6a3f5a"
+   },
+   "at": [
+    -16,
+    -16.6,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     -24,
+     0
+    ],
+    "end": [
+     -6,
+     -24,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.0,
+        1.6
+       ],
+       "height": 1.3,
+       "colour": "#3f6a30",
+       "topScale": 0.8
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -26
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glazing is a mullioned strip without the reflective purple panels and sign; the blank side wall has no street plaques; low bay balconies/banners simplified; back block follows the OSM outline with ribbon windows only on three faces; no leafy hedge texture."
+ }
+}

@@ -1,0 +1,432 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_Sectorului_1_municipiul_Bucure%C8%99ti,_Bd._Banul_Manta_10.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Munteanu Anca",
+   "view": "street",
+   "file": "/tmp/places-evidence/bucharest/hall1.jpg",
+   "used": "steep red clay-tile hip roofs with small hipped dormers, square clock tower with arcaded open belfry and a pyramidal tile cap, grey-beige stone walls with arched ground-floor windows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:9_Bulevardul_Banu_Manta,_Bucharest_(03).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Neoclassicism Enthusiast",
+   "view": "detail",
+   "used": "ashlar stone in pale grey, big triple-ringed round-arch portal with columns and a wide flight of steps, carved balustrade band above"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/156815213",
+   "used": "overall size (51 x 47 m) and U plan; modelled as three wings because the traced outline is irregular and cannot take a hip roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#aaa493",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#d3ccba",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64a2e",
+    "material": "clay-tile",
+    "pitch": 55,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left",
+   "footprint": {
+    "rect": [
+     14,
+     33
+    ]
+   },
+   "at": [
+    -18,
+    7.5
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#aaa493",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#d3ccba",
+    "faces": {
+     "left": "arched",
+     "right": "none",
+     "front": "none",
+     "back": "arched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64a2e",
+    "material": "clay-tile",
+    "pitch": 55,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right",
+   "footprint": {
+    "rect": [
+     14,
+     33
+    ]
+   },
+   "at": [
+    18,
+    7.5
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#aaa493",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#d3ccba",
+    "faces": {
+     "right": "arched",
+     "left": "none",
+     "front": "none",
+     "back": "arched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64a2e",
+    "material": "clay-tile",
+    "pitch": 55,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-tower",
+   "at": [
+    -20,
+    -18,
+    14
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "z0": 0,
+    "height": 36,
+    "colour": "#b0a893",
+    "windows": "none",
+    "trimColour": "#c9c2ae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    -20,
+    -18,
+    50
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 8,
+    "colour": "#c4bda9",
+    "windows": "arched",
+    "windowRatio": 0.7,
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "at": [
+    -20,
+    -18,
+    58
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "height": 14,
+    "topScale": 0.04,
+    "colour": "#b4502f",
+    "topColour": "#a24526"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 3.5,
+    "height": 7.5,
+    "columns": 6,
+    "pediment": false,
+    "steps": 8,
+    "colour": "#cfc8b6",
+    "roofColour": "#b8b09e"
+   }
+  },
+  {
+   "type": "array",
+   "id": "dormers",
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -23.2,
+     11
+    ],
+    "end": [
+     22,
+     -23.2,
+     11
+    ],
+    "count": 8,
+    "lod1Step": 1,
+    "lod2Step": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.6,
+       3.2
+      ],
+      "height": 3.4,
+      "topScale": 0.1,
+      "colour": "#b4502f",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice-band",
+   "at": [
+    0,
+    -23.4,
+    16
+   ],
+   "params": {
+    "rect": [
+     50,
+     0.8
+    ],
+    "height": 1.0,
+    "colour": "#d3ccba"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney-l",
+   "at": [
+    -8,
+    -6,
+    16
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 11,
+    "colour": "#8c6a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chimney-r",
+   "at": [
+    8,
+    -6,
+    16
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 11,
+    "colour": "#8c6a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-face",
+   "at": [
+    -20,
+    -22.2,
+    40
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.4
+    ],
+    "height": 3,
+    "colour": "#efe9d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cornice",
+   "at": [
+    -20,
+    -18,
+    47
+   ],
+   "params": {
+    "rect": [
+     9.4,
+     9.4
+    ],
+    "height": 1.2,
+    "colour": "#d3ccba"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-arch",
+   "at": [
+    0,
+    -23.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.6
+    ],
+    "height": 8.5,
+    "topScale": 0.7,
+    "colour": "#c9c2ae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-l",
+   "at": [
+    -24,
+    -6,
+    14
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 7,
+    "topScale": 0.05,
+    "colour": "#b4502f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-r",
+   "at": [
+    24,
+    -6,
+    14
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 7,
+    "topScale": 0.05,
+    "colour": "#b4502f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -22
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -14
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "belfry is an arched window band, clock face is a plain slab; portal is a column portico with arch backing, not triple-ringed; no ridge breaks"
+ }
+}

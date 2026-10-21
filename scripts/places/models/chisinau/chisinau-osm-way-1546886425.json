@@ -1,0 +1,383 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-way-1546886425",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rapid_Ghidighici_Stadium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "MoldovaFootball4ever",
+   "view": "side",
+   "file": "/tmp/places-evidence/chisinau/rap1.jpg",
+   "used": "open grass pitch with no big stands, one small two-storey white clubhouse with red gable roofs on the far touchline, blue-and-white advertising boards along the touchline, tall green ball-stop netting behind the goal, village houses beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1546886425",
+   "used": "overall ground extent only; the OSM outline is a loose 262 m site boundary so a standard pitch with run-off is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     112,
+     74
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#3f7a30",
+    "topColour": "#3f7a30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "boards-far",
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     38.5,
+     0
+    ],
+    "end": [
+     52,
+     38.5,
+     0
+    ],
+    "count": 18,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5.4,
+       0.2
+      ],
+      "z0": 0.1,
+      "height": 0.9,
+      "colour": "#3e6fa0",
+      "topColour": "#3e6fa0"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "boards-near",
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -38.5,
+     0
+    ],
+    "end": [
+     52,
+     -38.5,
+     0
+    ],
+    "count": 18,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5.4,
+       0.2
+      ],
+      "z0": 0.1,
+      "height": 0.9,
+      "colour": "#3e6fa0",
+      "topColour": "#3e6fa0"
+     }
+    },
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     18,
+     8.5
+    ]
+   },
+   "at": [
+    8,
+    43.5
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ece8dc",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5463c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    43.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ece8dc",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5463c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "net-poles",
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     -30,
+     0
+    ],
+    "end": [
+     -56,
+     30,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 8,
+      "colour": "#3d6a3a",
+      "topColour": "#3d6a3a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "net",
+   "at": [
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     76
+    ],
+    "z0": 0.5,
+    "height": 7.5,
+    "colour": "#5d8a58",
+    "topColour": "#5d8a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "goal-w",
+   "at": [
+    -55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     7.3
+    ],
+    "height": 2.4,
+    "colour": "#f2f2f2",
+    "topColour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "goal-e",
+   "at": [
+    55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     7.3
+    ],
+    "height": 2.4,
+    "colour": "#f2f2f2",
+    "topColour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "boards-mix",
+   "params": {
+    "mode": "line",
+    "start": [
+     -47,
+     38.5,
+     0
+    ],
+    "end": [
+     47,
+     38.5,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5.4,
+       0.25
+      ],
+      "z0": 0.1,
+      "height": 0.95,
+      "colour": "#d9d4d0",
+      "topColour": "#c0443c"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "boards-mix2",
+   "params": {
+    "mode": "line",
+    "start": [
+     -47,
+     -38.5,
+     0
+    ],
+    "end": [
+     47,
+     -38.5,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5.4,
+       0.25
+      ],
+      "z0": 0.1,
+      "height": 0.95,
+      "colour": "#d9d4d0",
+      "topColour": "#c0443c"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "low-poles",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -44,
+     0
+    ],
+    "end": [
+     40,
+     -44,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 5,
+      "colour": "#6b6b6b",
+      "topColour": "#6b6b6b"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no stand, 3 low poles only, larger clubhouse with lower red-gabled wing; render camera sits far back so pitch reads small versus the close photo; boards still alternate blue and white without red-white mix on all runs"
+ }
+}

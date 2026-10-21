@@ -1,0 +1,364 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-osm-node-5320172364",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/L%C3%B6kbatan_Mud_Volcano",
+   "used": "Lokbatan is a mud volcano on the Absheron Peninsula near Baku; brief gives a low grey-brown clay cone about 60 m across, 8 m high, on bare ground. No photo of this site was found, so the form is typical of such cones (cratered summit, small satellite gryphons, dried flow lobes), not measured."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "cone",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#8f877a",
+    "material": "mud-render",
+    "profile": [
+     [
+      31,
+      0,
+      "#8a8174"
+     ],
+     [
+      28,
+      0.8
+     ],
+     [
+      22,
+      2.6,
+      "#8f877a"
+     ],
+     [
+      16,
+      4.6
+     ],
+     [
+      11,
+      6.4,
+      "#a59d8e"
+     ],
+     [
+      8,
+      7.6
+     ],
+     [
+      6.2,
+      8.2,
+      "#6f675c"
+     ],
+     [
+      4.8,
+      7.6
+     ],
+     [
+      3,
+      6.9,
+      "#5f574d"
+     ],
+     [
+      0,
+      6.7
+     ]
+    ],
+    "bottomCap": true,
+    "crease": 60
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "gryphon0",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#8f877a",
+    "profile": [
+     [
+      7,
+      0,
+      "#8a8174"
+     ],
+     [
+      4.8999999999999995,
+      1.56,
+      "#a59d8e"
+     ],
+     [
+      2.1,
+      2.6,
+      "#6f675c"
+     ],
+     [
+      1.26,
+      2.08,
+      "#5f574d"
+     ],
+     [
+      0,
+      1.9500000000000002
+     ]
+    ],
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "gryphon1",
+   "at": [
+    24,
+    20,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#8f877a",
+    "profile": [
+     [
+      6,
+      0,
+      "#8a8174"
+     ],
+     [
+      4.199999999999999,
+      1.32,
+      "#a59d8e"
+     ],
+     [
+      1.7999999999999998,
+      2.2,
+      "#6f675c"
+     ],
+     [
+      1.08,
+      1.7600000000000002,
+      "#5f574d"
+     ],
+     [
+      0,
+      1.6500000000000001
+     ]
+    ],
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "gryphon2",
+   "at": [
+    -14,
+    28,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#8f877a",
+    "profile": [
+     [
+      5,
+      0,
+      "#8a8174"
+     ],
+     [
+      3.5,
+      1.08,
+      "#a59d8e"
+     ],
+     [
+      1.5,
+      1.8,
+      "#6f675c"
+     ],
+     [
+      0.8999999999999999,
+      1.4400000000000002,
+      "#5f574d"
+     ],
+     [
+      0,
+      1.35
+     ]
+    ],
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "gryphon3",
+   "at": [
+    33,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#8f877a",
+    "profile": [
+     [
+      4.5,
+      0,
+      "#8a8174"
+     ],
+     [
+      3.15,
+      0.96,
+      "#a59d8e"
+     ],
+     [
+      1.3499999999999999,
+      1.6,
+      "#6f675c"
+     ],
+     [
+      0.8099999999999999,
+      1.2800000000000002,
+      "#5f574d"
+     ],
+     [
+      0,
+      1.2000000000000002
+     ]
+    ],
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "flow-south",
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       10,
+       5
+      ],
+      "cx": 0,
+      "cy": -26
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       7,
+       4
+      ],
+      "cx": 0,
+      "cy": -27
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       3,
+       2
+      ],
+      "cx": 0,
+      "cy": -28
+     }
+    ],
+    "colour": "#7e766a",
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "flow-east",
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       9,
+       4
+      ],
+      "cx": 28,
+      "cy": 6
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       6,
+       3
+      ],
+      "cx": 29,
+      "cy": 6
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       2.5,
+       1.5
+      ],
+      "cx": 30,
+      "cy": 6
+     }
+    ],
+    "colour": "#7e766a",
+    "capTop": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#6a6a66",
+    "points": [
+     [
+      -38,
+      -30
+     ],
+     [
+      -38,
+      -42
+     ],
+     [
+      38,
+      -42
+     ],
+     [
+      38,
+      -30
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; form is typical of mud cones, not measured; no oil-field surroundings."
+ }
+}

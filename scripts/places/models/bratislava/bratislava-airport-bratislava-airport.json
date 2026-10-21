@@ -1,0 +1,311 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-airport-bratislava-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BRATISLAVSK%C3%9D_TERMIN%C3%81L_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "ANDREJ NEUHERZ",
+   "view": "front",
+   "file": "/tmp/places-evidence/bratislava/airport2.jpg",
+   "used": "long glazed terminal with a wide flat white roof edge on the right, taller curved-roof grey hall at left, blue glass annex at far left, flat canopy walkway along the kerb, lamp posts"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q828379",
+   "used": "identity; no OSM footprint matched, so rectangular massing from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     84,
+     36
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa9b1",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e7e8",
+    "overhang": 0.5,
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-hall",
+   "footprint": {
+    "rect": [
+     34,
+     36
+    ]
+   },
+   "at": [
+    -36,
+    0
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b7c3cc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 4.5,
+    "colour": "#8c9ca8",
+    "material": "metal-sheet",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-annex",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -46,
+    -24
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a78a8",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa2a7",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    22,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 92,
+    "depth": 44,
+    "z": 12.2,
+    "rise": 2.2,
+    "waves": 0.75,
+    "slopeX": 0.04,
+    "thickness": 0.5,
+    "colour": "#eef0f1",
+    "edgeColour": "#ffffff",
+    "underColour": "#c9ced1"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 15,
+    "start": [
+     -16,
+     -18.3,
+     0.2
+    ],
+    "end": [
+     64,
+     -18.3,
+     0.2
+    ],
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.18,
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        2.8,
+        0,
+        11.5
+       ]
+      ],
+      "colour": "#6b747a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 15,
+    "start": [
+     -14,
+     -18.3,
+     0.2
+    ],
+    "end": [
+     66,
+     -18.3,
+     0.2
+    ],
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.18,
+      "points": [
+       [
+        0,
+        0,
+        11.5
+       ],
+       [
+        -2.8,
+        0,
+        0
+       ]
+      ],
+      "colour": "#6b747a"
+     }
+    }
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 7,
+    "height": 5,
+    "columns": 8,
+    "colour": "#dfe3e5",
+    "edgeColour": "#aeb6bb"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 9,
+    "spacing": 11
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -32,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -90,
+    90,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "style": "round",
+    "colour": "#d9dcdd",
+    "cabColour": "#6f8a99"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Wave roof, bracing weak at this size, terminal length approximate, tower moved far behind"
+ }
+}

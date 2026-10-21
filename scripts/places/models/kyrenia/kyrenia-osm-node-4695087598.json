@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-osm-node-4695087598",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/310655157",
+   "used": "real footprint of the building containing the node, 14.8 x 8.6 m, bearing 22 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/kyrenia.json",
+   "used": "cream render, flat roof, awnings and terrace of a 24/7 Turkish roadside cafe"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cfae",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -6,
+    2.7
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2,
+    "colours": [
+     "#b96a43",
+     "#f6f1e4"
+    ]
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3.5,
+    "colours": [
+     "#f6f1e4",
+     "#b96a43"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -5.2,
+    3.8
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.8,
+    "bottom": 0,
+    "colour": "#b96a43",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

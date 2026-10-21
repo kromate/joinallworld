@@ -1,0 +1,276 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-node-1008013053",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u0386\u03b3\u03b9\u03bf\u03c2_\u0399\u03c3\u03af\u03b4\u03c9\u03c1\u03bf\u03c2_\u0394\u03c1\u03bf\u03bc\u03bf\u03ba\u03b1\u0390\u03c4\u03b5\u03b9\u03bf\u03c5_3.jpg",
+   "licence": "see Commons page",
+   "author": "Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/athens/drom-b.jpg",
+   "used": "a two-storey campus pavilion: weathered ochre-pink stucco, flat roof with a stepped parapet block, small barred windows in a sparse row, brick boundary wall behind, eucalyptus trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1437133452",
+   "used": "campus size only (572 x 470 m is far over the scene clamp); a representative cluster of pavilions around a garden court is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion-main",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c4a384",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "bay": 3.6,
+    "windowShape": "rect",
+    "glassColour": "#0c0e10",
+    "trimColour": "#6e5a4a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7870",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-step",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "z0": 10,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a89484",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7870",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    34,
+    20
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b89c82",
+    "windows": "punched",
+    "windowRatio": 0.11,
+    "plinth": 0.6,
+    "bay": 4,
+    "windowShape": "rect",
+    "glassColour": "#1c1f22"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7870",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-block",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -22,
+    24
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5a44",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7870",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "brick-boundary",
+   "at": [
+    0,
+    6.5,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 3.2,
+    "thickness": 0.5,
+    "colour": "#8a4e3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "retaining-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 0.9,
+    "thickness": 0.4,
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "downpipe",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -5.8,
+    5.2
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6a6c6c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6c6c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "scrub",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.2,
+    "count": 6,
+    "spread": 9,
+    "colour": "#6f7a52"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     8
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     14
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     10
+    ],
+    "height": 21
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     6
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -8
+    ],
+    "height": 18
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Trees are lollipop broadleaf, not thin eucalyptus; windows are small slits without bar grilles; no weathering stains or downpipe visible; foreground scrub and retaining wall are approximate; camera sees the wall in shadow so colour reads greyer than the photo."
+ }
+}

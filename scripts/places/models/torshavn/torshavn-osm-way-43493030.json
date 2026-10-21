@@ -1,0 +1,272 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nordens_Hus_pa_Faeroerne.jpg",
+   "licence": "CC BY 2.5 dk",
+   "author": "Nordens Hus paa Faeroerne",
+   "view": "front",
+   "file": "/tmp/places-evidence/torshavn/nh3.jpg",
+   "used": "glazed front of the hill building between dark steel posts and exposed diagonal struts, turf roof sloping up behind a black steel fascia, stepped front, stone-walled grass bank"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nordic_house,_faroe_islands_(4).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Arne List",
+   "view": "detail",
+   "used": "dark timber cladding on the end wall, black steel frame, cobble paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/43493030",
+   "used": "real plan outline (name match, 2217 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 1,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 58,
+    "simplify": 1.2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa3a8",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "plinth": 0.2,
+    "glassColour": "#7f9aa3"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f8a4a",
+    "material": "membrane",
+    "rise": 3.8,
+    "overhang": 0.6,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "timber-end",
+   "at": [
+    -29,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     16
+    ],
+    "height": 6.4,
+    "colour": "#3b332d"
+   }
+  },
+  {
+   "type": "array",
+   "id": "aframes",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.3,
+        0.3
+       ]
+      },
+      "colour": "#2e3236",
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        1.6,
+        3.0
+       ],
+       [
+        0,
+        2.6,
+        5.6
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -26.5
+    ],
+    "end": [
+     24,
+     -26.5
+    ],
+    "count": 12,
+    "lod1Step": 2,
+    "lod2Step": 12
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.6,
+      "colour": "#2e3236"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -27.4
+    ],
+    "end": [
+     24,
+     -27.4
+    ],
+    "count": 12,
+    "lod1Step": 2,
+    "lod2Step": 12
+   }
+  },
+  {
+   "type": "array",
+   "id": "braces",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.18,
+        0.18
+       ]
+      },
+      "colour": "#3a3d41",
+      "points": [
+       [
+        0,
+        0,
+        0.3
+       ],
+       [
+        2.5,
+        1.2,
+        3.6
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -27.4
+    ],
+    "end": [
+     22,
+     -27.4
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    2,
+    -26.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     48,
+     0.6
+    ],
+    "z0": 3.5,
+    "height": 0.4,
+    "colour": "#2e3236"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -14,
+    -29,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 5,
+    "colour": "#7b6a86"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.0,
+    "thickness": 1.6,
+    "colour": "#6b6359"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Sloped turf roof now present but the 3.5 m to 7 m rise is gentle and the glazing reads dark; A-frame struts are thin and straight with no curved braces; purple stair run is small and hidden; the dry-stone bank is a flat plank-like wall, not irregular basalt blocks."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-osm-way-43493030"
+}

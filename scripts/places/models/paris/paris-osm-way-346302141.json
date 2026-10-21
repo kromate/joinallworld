@@ -1,0 +1,538 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Villiers-le-Bel_(95),_%C3%A9glise_Saint-Didier,_%C3%A9l%C3%A9vation_sud.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "P.poschadel",
+   "view": "street",
+   "file": "/tmp/places-evidence/paris/stdidier0.jpg",
+   "used": "south elevation: pale limestone, tall nave under brown tile gable, red-tile lean-to aisle roofs, buttress piers, crossing tower with dark slate pyramid, south transept gable with two corner turrets, choir to the east"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Marlot_-_VILLIERS-LE-BEL_-_Place_de_l%27Eglise.JPG",
+   "licence": "Public domain",
+   "author": "scan, Claude_villetaneuse",
+   "view": "street",
+   "used": "old postcard confirming buttress tops, turret and aisle window shapes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/346302141",
+   "used": "overall size (about 45 x 30 m) only; outline is jagged with buttresses so masses are composed by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    -9,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b0a17a",
+    "windows": "pointed-arch",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "glassColour": "#4a4e55",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "pointed-arch",
+     "right": "pointed-arch"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b5443",
+    "material": "clay-tile",
+    "pitch": 52,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-s",
+   "footprint": {
+    "rect": [
+     26,
+     4.8
+    ]
+   },
+   "at": [
+    -9,
+    -6.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b0a17a",
+    "windows": "pointed-arch",
+    "windowRatio": 0.34,
+    "plinth": 0.5,
+    "glassColour": "#4a4e55",
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a9462f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-n",
+   "footprint": {
+    "rect": [
+     26,
+     4.8
+    ]
+   },
+   "at": [
+    -9,
+    6.9
+   ],
+   "rotDeg": 180,
+   "z0": 0,
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b0a17a",
+    "windows": "pointed-arch",
+    "windowRatio": 0.34,
+    "plinth": 0.5,
+    "glassColour": "#4a4e55",
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a9462f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     8,
+     26
+    ]
+   },
+   "at": [
+    7.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b0a17a",
+    "windows": "pointed-arch",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "glassColour": "#4a4e55",
+    "faces": {
+     "front": "pointed-arch",
+     "back": "pointed-arch",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b5443",
+    "material": "clay-tile",
+    "pitch": 58,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "choir",
+   "footprint": {
+    "rect": [
+     13,
+     8
+    ]
+   },
+   "at": [
+    20.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b0a17a",
+    "windows": "pointed-arch",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "glassColour": "#4a4e55"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b5443",
+    "material": "clay-tile",
+    "pitch": 48,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    6,
+    0,
+    14
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "height": 14,
+    "colour": "#b8aa84",
+    "windows": "pointed-arch",
+    "windowShape": "pointed",
+    "storeys": 1,
+    "windowRatio": 0.4,
+    "plinth": 0
+   }
+  },
+  {
+   "type": "loft",
+   "id": "spire",
+   "at": [
+    6,
+    0,
+    28
+   ],
+   "params": {
+    "colour": "#363b47",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.0,
+       6.0
+      ]
+     },
+     {
+      "z": 2.0,
+      "rect": [
+       4.8,
+       4.8
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    0,
+    39.5
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 3.4,
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.0999999999999996,
+    -13.4,
+    0
+   ],
+   "params": {
+    "radius": 1.3,
+    "n": 12,
+    "height": 19,
+    "colour": "#b0a17a",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    3.0999999999999996,
+    -13.4,
+    19
+   ],
+   "params": {
+    "colour": "#363b47",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.7
+     },
+     {
+      "z": 0.5,
+      "circle": 1.5
+     },
+     {
+      "z": 8.5,
+      "circle": 0.12
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.9,
+    -13.4,
+    0
+   ],
+   "params": {
+    "radius": 1.3,
+    "n": 12,
+    "height": 19,
+    "colour": "#b0a17a",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    11.9,
+    -13.4,
+    19
+   ],
+   "params": {
+    "colour": "#363b47",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.7
+     },
+     {
+      "z": 0.5,
+      "circle": 1.5
+     },
+     {
+      "z": 8.5,
+      "circle": 0.12
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -21,
+     -9.7,
+     0
+    ],
+    "end": [
+     -1,
+     -9.7,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.4
+      ],
+      "height": 8.4,
+      "colour": "#a89a76",
+      "topScale": 0.5
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.9
+    ]
+   },
+   "at": [
+    1.5,
+    -9.6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b0a17a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0a17a",
+    "pitch": 50
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -21,
+     -9.7,
+     8.4
+    ],
+    "end": [
+     -1,
+     -9.7,
+     8.4
+    ],
+    "count": 6,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#8e8266",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.9,
+         1.0
+        ]
+       },
+       {
+        "z": 1.6,
+        "rect": [
+         0.1,
+         0.1
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -21,
+     9.7,
+     0
+    ],
+    "end": [
+     -1,
+     9.7,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.4
+      ],
+      "height": 8.0,
+      "colour": "#a89a76",
+      "topScale": 0.5
+     }
+    }
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    7.5,
+    -13.05,
+    14.5
+   ],
+   "params": {
+    "radius": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    -13.1,
+    17.5
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "height": 4.5,
+    "topScale": 0.2,
+    "colour": "#3a3d44"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-osm-way-346302141",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Aisle lean-to roofs read thin and the pointed windows are small; buttress pinnacles simplified; no tracery or stone weathering texture; tower and turret spires slightly too tall and slim."
+ }
+}

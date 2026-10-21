@@ -1,0 +1,462 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-relation-13366042",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Renaat_Braem_Rectoraat_VUB.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Karl Stas",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/bru-vub1.jpg",
+   "used": "curved seven-storey Rectoraat block (Renaat Braem): sand-grey textured concrete, narrow vertical window slots, open ground storey, curved concrete entrance canopy, lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:VUB_campus_Etterbeek.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Big_Apple",
+   "view": "street",
+   "file": "/tmp/places-evidence/brussels/bru-vub2.jpg",
+   "used": "terraced brown-grey concrete blocks of the 1970s campus behind, a glass-clad block to the right, grass slopes and paths"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13366042",
+   "used": "campus is 531 x 420 m so the outline is not used; the Rectoraat arc and neighbouring blocks are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 4,
+  "fovDeg": 44,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rectoraat",
+   "footprint": {
+    "polygon": [
+     [
+      -42.4,
+      10.1
+     ],
+     [
+      -36.6,
+      3.7
+     ],
+     [
+      -29.0,
+      -1.7
+     ],
+     [
+      -20.1,
+      -5.7
+     ],
+     [
+      -10.3,
+      -8.2
+     ],
+     [
+      0.0,
+      -9.0
+     ],
+     [
+      10.3,
+      -8.2
+     ],
+     [
+      20.1,
+      -5.7
+     ],
+     [
+      29.0,
+      -1.7
+     ],
+     [
+      36.6,
+      3.7
+     ],
+     [
+      42.4,
+      10.1
+     ],
+     [
+      30.9,
+      14.7
+     ],
+     [
+      26.7,
+      10.0
+     ],
+     [
+      21.2,
+      6.1
+     ],
+     [
+      14.7,
+      3.2
+     ],
+     [
+      7.5,
+      1.4
+     ],
+     [
+      0.0,
+      0.8
+     ],
+     [
+      -7.5,
+      1.4
+     ],
+     [
+      -14.7,
+      3.2
+     ],
+     [
+      -21.2,
+      6.1
+     ],
+     [
+      -26.7,
+      10.0
+     ],
+     [
+      -30.9,
+      14.7
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 27,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4b78a",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "glassColour": "#3f454b",
+    "plinth": 0.0,
+    "bands": "#a89c7c",
+    "bay": 2.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "rect",
+    "pattern": {
+     "type": "pilotis"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0dac4",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-canopy",
+   "at": [
+    41,
+    6.6,
+    4.5
+   ],
+   "rotDeg": -24,
+   "params": {
+    "form": "curved",
+    "width": 24,
+    "depth": 8,
+    "height": 4.5,
+    "rise": 2.8,
+    "colour": "#b6ad92",
+    "edgeColour": "#d3ccb6",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-1",
+   "at": [
+    44,
+    44
+   ],
+   "params": {
+    "rect": [
+     56,
+     20
+    ],
+    "z0": 0,
+    "height": 26,
+    "topScale": [
+     1,
+     0.45
+    ],
+    "topOffset": [
+     0,
+     4
+    ],
+    "colour": "#a38f72",
+    "topColour": "#8f8a7e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-2",
+   "at": [
+    -4,
+    52
+   ],
+   "params": {
+    "rect": [
+     44,
+     18
+    ],
+    "z0": 0,
+    "height": 22,
+    "topScale": [
+     1,
+     0.5
+    ],
+    "topOffset": [
+     0,
+     3
+    ],
+    "colour": "#a38f72",
+    "topColour": "#8f8a7e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-block-0",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    62,
+    28
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d8d76",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a4f55",
+    "bands": "#8a7c66"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a7e",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-block-1",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    62,
+    28
+   ],
+   "z0": 12,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d8d76",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a4f55",
+    "bands": "#8a7c66"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a7e",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-block-2",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    62,
+    28
+   ],
+   "z0": 22,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d8d76",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4a4f55",
+    "bands": "#8a7c66"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a7e",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sculpture-base",
+   "at": [
+    -40,
+    -20
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#8f8a7e"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "sculpture",
+   "at": [
+    -40,
+    -20
+   ],
+   "params": {
+    "colour": "#5d5c58",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0.8,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       1.2,
+       1.8
+      ],
+      "cx": 0.4
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       0.5,
+       0.9
+      ],
+      "cx": -0.3
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       0.2,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lawn-slope",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -26
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#6e8f4a",
+    "profile": [
+     [
+      24,
+      0
+     ],
+     [
+      18,
+      0.7
+     ],
+     [
+      8,
+      1.3
+     ],
+     [
+      0,
+      1.5
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -20
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "window slots are shorter than the near-full-storey slots in the photo; terraced block, sculpture and lawn slope are simple massing; canopy is a swept slab not the thick pod; crescent not as long and shallow as the real one"
+ }
+}

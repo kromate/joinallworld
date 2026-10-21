@@ -1,0 +1,107 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/45705386",
+   "used": "real mall outline, 4 levels tag, silver roof"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "3 floors, 65,200 m2, opened 2001, metal and glass facade, large car parks"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9dcd8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#3f6f9a",
+    "bands": "#ffffff",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "metal-sheet",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "params": {
+    "rect": [
+     18,
+     6
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#3f6f9a",
+    "topColour": "#ffffff"
+   },
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "z0": 9,
+    "height": 2.5,
+    "colour": "#ffffff"
+   },
+   "at": [
+    0,
+    -37.2,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; outline auto-fitted to 118 m (real mall is 294 m long), entrance position and tower elements guessed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-market-game"
+}

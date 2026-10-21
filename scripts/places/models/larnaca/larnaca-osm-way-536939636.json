@@ -1,0 +1,114 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/536939636",
+   "used": "real outline 47.5 x 13.4 m, bearing 54 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/larnaca.json#larnaca-osm-way-536939636",
+   "used": "private college, founded 1991; modern four-storey block, ribbon windows, glazed entrance, flagpoles (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e3d3",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "bands": "#8fa0ab",
+    "glassColour": "#7f929e",
+    "parapet": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entrance-canopy",
+   "at": [
+    0,
+    -10.2,
+    0
+   ],
+   "rotDeg": 54,
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#c9bfa8"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "id": "flagpoles",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; massing from OSM outline and brief only, entrance position and facade details guessed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "larnaca",
+ "venueId": "larnaca-osm-way-536939636"
+}

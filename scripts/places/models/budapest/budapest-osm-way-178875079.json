@@ -1,0 +1,604 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barczakastelycivertanlegifoto.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Civertan",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/budapest/p3-178875079-0.jpg",
+   "used": "hipped terracotta roofs over a long main range with a cross wing, cream walls, small columned porch, chimneys, dormers, park trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/178875079",
+   "used": "size/bearing only (outline is irregular; composed as L of rect ranges)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 42,
+  "fovDeg": 45,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     27
+    ]
+   },
+   "at": [
+    -4,
+    8
+   ],
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcbf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a5547",
+    "material": "clay-tile",
+    "pitch": 44,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     16,
+     34
+    ]
+   },
+   "at": [
+    14,
+    -11
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcbf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#704c40",
+    "material": "clay-tile",
+    "pitch": 46,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    30,
+    -1
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d6b6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#664639",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    10,
+    20
+   ],
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcbf",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a5547",
+    "material": "clay-tile",
+    "pitch": 44,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -10,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 7.5,
+    "height": 4.6,
+    "columns": 6,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#efe8d6",
+    "roofColour": "#704c40"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -14,
+    10,
+    8
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.6,
+    "pots": 2
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    6,
+    12,
+    8
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.6,
+    "pots": 2
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -20,
+    -4.6,
+    5.2
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 2.0,
+    "colour": "#e6dcbf",
+    "roof_colour": "#664639"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -12,
+    -4.6,
+    5.2
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 2.0,
+    "colour": "#e6dcbf",
+    "roof_colour": "#664639"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -4,
+    -4.6,
+    5.2
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 2.0,
+    "colour": "#e6dcbf",
+    "roof_colour": "#664639"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "dormer",
+   "at": [
+    4,
+    -4.6,
+    5.2
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 2.0,
+    "colour": "#e6dcbf",
+    "roof_colour": "#664639"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "dormer",
+   "at": [
+    12,
+    -4.6,
+    5.2
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.4,
+    "height": 2.0,
+    "colour": "#e6dcbf",
+    "roof_colour": "#664639"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "yew",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#2c4a2c"
+     ],
+     [
+      2.6,
+      0,
+      "#2c4a2c"
+     ],
+     [
+      2.4,
+      1.6,
+      "#2c4a2c"
+     ],
+     [
+      1.2,
+      2.6,
+      "#2c4a2c"
+     ],
+     [
+      0,
+      2.9,
+      "#2c4a2c"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "drive-loop",
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      5.0,
+      -16.0,
+      0.04
+     ],
+     [
+      2.99038105676658,
+      -12.25,
+      0.04
+     ],
+     [
+      -2.4999999999999982,
+      -9.50480947161671,
+      0.04
+     ],
+     [
+      -9.999999999999998,
+      -8.5,
+      0.04
+     ],
+     [
+      -17.499999999999996,
+      -9.50480947161671,
+      0.04
+     ],
+     [
+      -22.99038105676658,
+      -12.25,
+      0.04
+     ],
+     [
+      -25.0,
+      -15.999999999999998,
+      0.04
+     ],
+     [
+      -22.99038105676658,
+      -19.75,
+      0.04
+     ],
+     [
+      -17.500000000000007,
+      -22.49519052838329,
+      0.04
+     ],
+     [
+      -10.000000000000004,
+      -23.5,
+      0.04
+     ],
+     [
+      -2.4999999999999982,
+      -22.49519052838329,
+      0.04
+     ],
+     [
+      2.9903810567665765,
+      -19.750000000000004,
+      0.04
+     ]
+    ],
+    "closed": true,
+    "curve": true,
+    "steps": 4,
+    "colour": "#b0a48c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -31.8,
+     26.3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11.3,
+     27.4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -53.5,
+     32.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55.5,
+     41.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     35.9,
+     28.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6.7,
+     30.1
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -39.9,
+     26.3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34.6,
+     44.4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44.1,
+     41.7
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40.5,
+     28.3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22.3,
+     37.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     31.7,
+     42.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50.6,
+     25.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15.5,
+     38.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     2.8,
+     27.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -1.4,
+     26.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     57.6,
+     43.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8.1,
+     30.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     49.2,
+     19.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -41.4,
+     4.3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     47.2,
+     -15.4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     53.0,
+     -25.7
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40.6,
+     25.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     51.2,
+     -20.2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46.9,
+     21.3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44.4,
+     -8.8
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-way-178875079",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Roofs now weathered brown but uniform tile; dormers mostly hidden by roof pitch; drive is an oval loop not the curved drive with island; tree masses far sparser than the dense canopy (triangle budget)"
+ }
+}

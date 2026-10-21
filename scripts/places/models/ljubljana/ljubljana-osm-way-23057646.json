@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-osm-way-23057646",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/23057646",
+   "used": "real outline of the centre (about 400 m long, 47,000 m2, 2 levels), auto-fitted to the scene clamp"
+  },
+  {
+   "kind": "text",
+   "ref": "https://sl.wikipedia.org/wiki/Citypark_Ljubljana",
+   "used": "retail centre opened 1993; no photo of the building itself found (Commons geo results show BTC restaurants)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8d4ca",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "parapet": 0.8,
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a82",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -34
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4bf",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5593a",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#b5593a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 4,
+    "colours": [
+     "#ffffff",
+     "#b5593a",
+     "#6f7d88"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -60,
+     -48
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     60,
+     -48
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of the building; real outline scaled to 0.3, glazed entrance and panel colours are typed guesses"
+ }
+}

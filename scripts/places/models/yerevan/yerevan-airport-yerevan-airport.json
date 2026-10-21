@@ -1,0 +1,414 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zvartnots_airport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Armenia The World",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/air1.jpg",
+   "used": "tall end block clad in coloured glass panels (terracotta, orange, blue, yellow) with a dark curved blue fin at its corner, long wing falling away to the right with a roof-edge solar strip, white swept canopy over the departures ramp with white railings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26374409",
+   "used": "overall extent only (about 210 x 190 m, 5 levels); the outline self-overlaps so the composition follows the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower-end",
+   "footprint": {
+    "rect": [
+     46,
+     40
+    ]
+   },
+   "at": [
+    -30,
+    10
+   ],
+   "height": 34,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c3c8",
+    "windows": "none",
+    "glassColour": "#4a6572",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.5,
+       3.4
+      ],
+      "colours": [
+       "#b4552f",
+       "#c9633f",
+       "#b4552f",
+       "#8aa7b3",
+       "#c9a560",
+       "#a04a2c",
+       "#4f86a8",
+       "#c9633f"
+      ],
+      "slits": {
+       "fraction": 0.01,
+       "colour": "#2d3f4a"
+      },
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa1a5",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     100,
+     30
+    ]
+   },
+   "at": [
+    42,
+    8
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c3c8",
+    "windows": "none",
+    "glassColour": "#4a6572",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.5,
+       3.4
+      ],
+      "colours": [
+       "#4f86a8",
+       "#6d9db8",
+       "#b4552f",
+       "#8aa7b3",
+       "#c9a560",
+       "#4f86a8",
+       "#c9633f"
+      ],
+      "slits": {
+       "fraction": 0.01,
+       "colour": "#2d3f4a"
+      },
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#8b979e"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa1a5",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "solar-strip",
+   "params": {
+    "rect": [
+     100,
+     3
+    ],
+    "z0": 16.2,
+    "height": 0.6,
+    "colour": "#2a3340"
+   },
+   "at": [
+    42,
+    -6
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "blue-fin",
+   "at": [
+    -54,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#2c4f7c",
+    "sections": [
+     {
+      "z": 8,
+      "rect": [
+       1.5,
+       5
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       3.2,
+       9
+      ],
+      "cx": -1
+     },
+     {
+      "z": 34,
+      "rect": [
+       4.2,
+       12
+      ],
+      "cx": -2
+     },
+     {
+      "z": 38,
+      "rect": [
+       3,
+       6
+      ],
+      "cx": -2.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp",
+   "footprint": {
+    "rect": [
+     96,
+     12
+    ]
+   },
+   "at": [
+    12,
+    -32
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e8e9",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f91",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "z0": 5,
+      "height": 1.1,
+      "colour": "#f2f4f5"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -37.8
+    ],
+    "end": [
+     58,
+     -37.8
+    ],
+    "count": 40,
+    "lod1Step": 24,
+    "lod2Step": 24
+   }
+  },
+  {
+   "type": "loft",
+   "id": "canopy",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#e8e9e8",
+    "curve": true,
+    "sections": [
+     {
+      "z": 6.5,
+      "rect": [
+       78,
+       2.5
+      ],
+      "cy": 6,
+      "cx": 10
+     },
+     {
+      "z": 8.5,
+      "rect": [
+       74,
+       8
+      ],
+      "cy": 3,
+      "cx": 8
+     },
+     {
+      "z": 10.8,
+      "rect": [
+       66,
+       12
+      ],
+      "cy": 0,
+      "cx": 4
+     },
+     {
+      "z": 12.8,
+      "rect": [
+       54,
+       9
+      ],
+      "cy": -1,
+      "cx": -2
+     },
+     {
+      "z": 13.2,
+      "rect": [
+       44,
+       5
+      ],
+      "cy": -1.5,
+      "cx": -5
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 5,
+      "height": 4.4,
+      "colour": "#dfe3e5"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -27
+    ],
+    "end": [
+     40,
+     -27
+    ],
+    "count": 8,
+    "lod1Step": 8,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    60,
+    40,
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -36,
+    5
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail",
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -37.8,
+      5.9
+     ],
+     [
+      58,
+      -37.8,
+      5.9
+     ]
+    ],
+    "colour": "#f2f4f5"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "wing is a stepped lower box not a sloping roof; tower panels more saturated and chequered than the photo; canopy is a lofted shell without the thin curved edge; no glazed atrium"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-airport-yerevan-airport"
+}

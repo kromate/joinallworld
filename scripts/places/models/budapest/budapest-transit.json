@@ -1,0 +1,645 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stop_Shop_parking_building_and_bus_station._-_%C3%89rd,_Hungary.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Globetrotter19",
+   "view": "street",
+   "file": "/tmp/places-evidence/budapest/transit-0.jpg",
+   "used": "bus station under a multi-storey car park: open ground-floor bays, white fascia bands, pale yellow top band and end pier, yellow articulated buses, blank sign boards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:STOP.SHOP._(SW)_-_%C3%89rd,_Hungary.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Globetrotter19",
+   "view": "street",
+   "used": "two-level shopping arcade with grey metal fascia and canopy, ground-level car park, glass walkway"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:STOP.SHOP._Glass_floor_bridge._(SW)_-_%C3%89rd,_Hungary.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Globetrotter19",
+   "view": "street",
+   "used": "round glass stair rotunda with a disc roof and the glass-sided walkway on slender piers"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3748563",
+   "used": "Stop Shop retail building outline (containing match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stop-shop",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#bdb8ad",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bands": "#6f7378",
+    "plinth": 0.2,
+    "groundKind": "shopfront",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "material": "metal-sheet",
+    "parapet": 0.5,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     135,
+     95
+    ],
+    "z0": 0.0,
+    "height": 0.04,
+    "colour": "#b8b6ad",
+    "topColour": "#b8b6ad"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -33.0,
+    -75,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 9,
+    "rows": 3,
+    "dx": 8.25,
+    "dy": 9,
+    "centred": false,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "height": 11,
+      "colour": "#55524d",
+      "topColour": "#55524d",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     24
+    ],
+    "z0": 4.2,
+    "height": 0.5,
+    "colour": "#bdb9b0",
+    "topColour": "#bdb9b0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     24
+    ],
+    "z0": 7.8,
+    "height": 0.5,
+    "colour": "#bdb9b0",
+    "topColour": "#bdb9b0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     24
+    ],
+    "z0": 11.0,
+    "height": 0.5,
+    "colour": "#bdb9b0",
+    "topColour": "#bdb9b0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -78.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.5
+    ],
+    "z0": 4.2,
+    "height": 2.7,
+    "colour": "#f1f1ec",
+    "topColour": "#f1f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -78.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.5
+    ],
+    "z0": 7.8,
+    "height": 2.7,
+    "colour": "#f1f1ec",
+    "topColour": "#f1f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -78.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.5
+    ],
+    "z0": 11.0,
+    "height": 2.0,
+    "colour": "#dfdc8a",
+    "topColour": "#dfdc8a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    35.0,
+    -66,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     24
+    ],
+    "z0": 4.2,
+    "height": 8.8,
+    "colour": "#dfdc8a",
+    "topColour": "#dfdc8a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34.7,
+    -78.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.0
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#dfdc8a",
+    "topColour": "#dfdc8a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    29.0,
+    -78.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.5,
+    "bottom": 11.3,
+    "colour": "#d9d6cd",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -14,
+    -68,
+    0
+   ],
+   "params": {
+    "colour": "#e5b81f",
+    "stripe": "#e5b81f",
+    "count": 3,
+    "spacing": 3.4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    -36,
+    0
+   ],
+   "params": {
+    "radius": 4.6,
+    "n": 16,
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#9fb9b4",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "storeys": 1,
+    "topColour": "#9fb9b4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    -36,
+    0
+   ],
+   "params": {
+    "radius": 5.0,
+    "n": 16,
+    "z0": 5.2,
+    "height": 0.5,
+    "colour": "#d6d9d6",
+    "topColour": "#d6d9d6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    -36,
+    0
+   ],
+   "params": {
+    "radius": 4.4,
+    "n": 16,
+    "z0": 5.7,
+    "height": 3.4,
+    "colour": "#9fb9b4",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "storeys": 1,
+    "topColour": "#9fb9b4"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    48,
+    -36,
+    0
+   ],
+   "params": {
+    "colour": "#7e9a9a",
+    "sections": [
+     {
+      "z": 9.1,
+      "circle": 6.2
+     },
+     {
+      "z": 9.5,
+      "circle": 6.0
+     },
+     {
+      "z": 10.0,
+      "circle": 2.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     24
+    ],
+    "z0": 5.2,
+    "height": 0.5,
+    "colour": "#d6d9d6",
+    "topColour": "#d6d9d6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    46.5,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     24
+    ],
+    "z0": 5.7,
+    "height": 1.1,
+    "colour": "#a9c9c7",
+    "topColour": "#a9c9c7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    49.5,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     24
+    ],
+    "z0": 5.7,
+    "height": 1.1,
+    "colour": "#a9c9c7",
+    "topColour": "#a9c9c7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    48,
+    -29,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     14
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 8,
+      "height": 5.2,
+      "colour": "#d6d9d6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    22,
+    -32,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     40
+    ],
+    "count": 6,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "coach",
+    "density": 0.5,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "colour": "#c8c8c4",
+    "count": 10,
+    "spacing": 4.2,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -78.6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.2,
+    "bottom": 13.2,
+    "colour": "#d9d6cd",
+    "frameColour": "#dfdc8a",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -37,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.15
+    ],
+    "z0": 0.02,
+    "height": 0.03,
+    "colour": "#e8e6dc",
+    "topColour": "#e8e6dc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -31,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.15
+    ],
+    "z0": 0.02,
+    "height": 0.03,
+    "colour": "#e8e6dc",
+    "topColour": "#e8e6dc"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -30,
+    -70,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.15,
+       10
+      ],
+      "z0": 0.05,
+      "height": 0.03,
+      "colour": "#f2f0e6",
+      "topColour": "#f2f0e6"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "pale asphalt slab with bay lines now covers the site; deck open on piers with white fascia, yellow top band and end pier, sign boards, yellow coaches (no articulated bus); shop remains a grey two-level block with punched windows, no real arcade or canopy; rotunda and glass walkway kept"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-transit"
+}

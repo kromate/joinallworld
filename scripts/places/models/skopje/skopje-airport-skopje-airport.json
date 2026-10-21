@@ -1,0 +1,286 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-airport-skopje-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Skopje_aeroport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Stas Kozlovskiy",
+   "view": "front",
+   "file": "/tmp/places-evidence/skopje/airport.jpg",
+   "used": "long low two-level terminal: dark reflective glazing under a deep grey metal fascia band, large blank sign band on thin frames above, lawn and low shrubs, trees, cars on the kerb"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/177346294",
+   "used": "overall scale only (terminal about 150 m long); outline too irregular and long for the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 1,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glazed-hall",
+   "footprint": {
+    "rect": [
+     116,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1d2830",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9288",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     118,
+     33
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#767c6e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9f96",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   },
+   "z0": 6
+  },
+  {
+   "type": "mass",
+   "id": "airside-pier",
+   "footprint": {
+    "rect": [
+     90,
+     18
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#46586a",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9f96",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -14,
+    11.2
+   ],
+   "params": {
+    "width": 60,
+    "height": 3.4,
+    "bottom": 0,
+    "colour": "#2a4aa0",
+    "posts": true
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    52,
+    30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -44,
+    -35,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -36,
+    -35,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -26,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 1,
+    "spread": 1,
+    "colour": "#d6b232"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.8,
+    "count": 5,
+    "spread": 7,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.6,
+    "count": 5,
+    "spread": 8,
+    "colour": "#4a7436"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.8,
+    "count": 4,
+    "spread": 6,
+    "colour": "#58803f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    55,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 5,
+    "count": 1,
+    "spread": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 1,
+    "spread": 1,
+    "colour": "#a8663a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -28,
+    -35,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "sign now visible above fascia but sits low on roof; shrubs are small tree clumps, tower position unverified"
+ }
+}

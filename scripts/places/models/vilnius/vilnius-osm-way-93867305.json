@@ -1,0 +1,576 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-osm-way-93867305",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:11bazhnychia.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Anaiptol",
+   "view": "front",
+   "used": "stepped Renaissance west gable with niches, yellow plaster, pilaster-like buttresses with dark caps, arched windows, dark roof",
+   "file": "/tmp/places-evidence/vilnius/ryk1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rykantai._Ba%C5%BEny%C4%8Dia_su_varpine.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Vilensija",
+   "view": "side",
+   "used": "long nave with arched side windows and buttresses, separate square timber belfry with hip roof, rubble churchyard wall",
+   "file": "/tmp/places-evidence/vilnius/ryk3.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/93867305",
+   "used": "overall size (about 25 x 19 m) and orientation of the nave and chancel"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     15.6,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c860",
+    "windows": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "windowRatio": 0.16,
+    "plinth": 0.7,
+    "cornice": true,
+    "bands": "#efe6c9"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3a36",
+    "material": "metal-sheet",
+    "pitch": 27,
+    "axis": "y",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier1",
+   "footprint": {
+    "rect": [
+     15.8,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -10.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c860",
+    "windows": "none",
+    "faces": {},
+    "windowRatio": 0.14,
+    "bands": "#f0e2a8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a36",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     11.5,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -10.6
+   ],
+   "rotDeg": 0,
+   "z0": 8.4,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c860",
+    "windows": "arched",
+    "faces": {
+     "front": "arched"
+    },
+    "windowRatio": 0.14,
+    "bands": "#f0e2a8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a36",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     8,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -10.6
+   ],
+   "rotDeg": 0,
+   "z0": 12.0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c860",
+    "windows": "arched",
+    "faces": {
+     "front": "arched"
+    },
+    "windowRatio": 0.14,
+    "bands": "#f0e2a8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a36",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier4",
+   "footprint": {
+    "rect": [
+     4.6,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -10.6
+   ],
+   "rotDeg": 0,
+   "z0": 14.8,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c860",
+    "windows": "none",
+    "faces": {},
+    "windowRatio": 0.14,
+    "bands": "#f0e2a8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3a36",
+    "pitch": 38,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -11.7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a08c5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b3f35"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fbut-1",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.8
+    ]
+   },
+   "at": [
+    -8.2,
+    -11.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c670",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a3d30",
+    "pitch": 35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fbut1",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.8
+    ]
+   },
+   "at": [
+    8.2,
+    -11.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c670",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a3d30",
+    "pitch": 35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    0,
+    13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c860",
+    "windows": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "windowRatio": 0.1,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b4a47",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacristy",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -9,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c860",
+    "windows": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "plain"
+    },
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5b4a47",
+    "material": "metal-sheet",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     8.4,
+     -7
+    ],
+    "end": [
+     8.4,
+     6
+    ],
+    "of": {
+     "type": "mass",
+     "id": "buttress",
+     "footprint": {
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     "height": 4.6,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#e0c670",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "shed",
+      "colour": "#7a3d30",
+      "pitch": 35
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    18,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#dccfa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f3633",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-front",
+   "footprint": {
+    "rect": [
+     38,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a867b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-right",
+   "footprint": {
+    "rect": [
+     0.7,
+     28
+    ]
+   },
+   "at": [
+    19,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a867b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-left",
+   "footprint": {
+    "rect": [
+     0.7,
+     28
+    ]
+   },
+   "at": [
+    -19,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a867b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-window",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    -3.6,
+    -11.7
+   ],
+   "rotDeg": 0,
+   "z0": 3.4,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a3a36",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a36"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -8
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     12
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped gable now 4 tiers but niches/pilasters are only window slots; no aisle projections; side buttresses boxy; belfry and fence approximate; round-headed window above door omitted"
+ }
+}

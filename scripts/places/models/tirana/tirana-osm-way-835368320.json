@@ -1,0 +1,432 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-835368320",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kam%C3%ABz,_Albania_07_-_Agricultural_University_of_Tirana.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pasztilla aka Attila Terbocs",
+   "view": "front",
+   "file": "/tmp/places-evidence/tirana/agri07.jpg",
+   "used": "main teaching block: three storeys, green render bands with ribbon windows in a pale frame, low white entrance block, dark grey end wing, flagpoles, lawns, brick path, topiary and palm"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/835368320",
+   "used": "campus polygon only (127,000 m2 site, not a building): not used as a footprint; main block sized from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     48,
+     16
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#98aa52",
+    "windows": "ribbon",
+    "windowRatio": 0.62,
+    "plinth": 0.2,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#e6e6e0",
+    "glassColour": "#dfe9ee",
+    "bands": "#e6e6e0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7477",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     22,
+     4
+    ]
+   },
+   "at": [
+    -4,
+    -2
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee8",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain"
+    },
+    "cornice": true,
+    "glassColour": "#46535a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "rect": [
+     11,
+     16
+    ]
+   },
+   "at": [
+    29.5,
+    8
+   ],
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#80868a",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7477",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -35,
+    9.5
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4d0c4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7f83",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -27,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#d6402e",
+     "#f2f2f2",
+     "#e8c14a"
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 2,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    24.8,
+    8
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -8
+     ],
+     [
+      0.8,
+      -8
+     ],
+     [
+      0.8,
+      8
+     ],
+     [
+      -1.2,
+      8
+     ]
+    ],
+    "z0": 0,
+    "height": 14.2,
+    "colour": "#d8d8d2",
+    "topColour": "#d8d8d2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    0.4,
+    14.0
+   ],
+   "params": {
+    "width": 44,
+    "height": 2.4,
+    "bottom": 0.3,
+    "colour": "#2f8a3d",
+    "frameColour": "#2f8a3d",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -12,
+    -4.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     16,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "radius": 0.45,
+       "n": 10,
+       "z0": 0,
+       "height": 4.6,
+       "colour": "#f4f2ec",
+       "topColour": "#f4f2ec"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -4
+     ],
+     [
+      -6,
+      -24
+     ],
+     [
+      -6,
+      -44
+     ]
+    ],
+    "width": 10,
+    "colour": "#c78a6c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "monument",
+   "at": [
+    -6,
+    -14
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.8
+     ],
+     [
+      1,
+      -1
+     ],
+     [
+      1.3,
+      0.6
+     ],
+     [
+      -0.4,
+      1.1
+     ]
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#7d725f",
+    "topColour": "#8a7f6a"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -6,
+    -16
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.8,
+    "colour": "#c45a8a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "topiary",
+   "at": [
+    22,
+    -12
+   ],
+   "params": {
+    "height": 5,
+    "count": 1,
+    "colour": "#3d6f38"
+   }
+  },
+  {
+   "type": "topiary",
+   "at": [
+    20,
+    -9
+   ],
+   "params": {
+    "height": 3,
+    "count": 1,
+    "colour": "#3d6f38"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -8
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 3,
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Green ribbon storeys, tall grey end wing, rooftop sign band, recessed white entrance with piers, brick path, monument and topiary now present; no mullion grid detail, no lettering, slanted fascia is a plain strip, camera sits farther back so lawns/plaza read grey-green."
+ }
+}

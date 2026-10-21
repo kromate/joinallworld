@@ -1,0 +1,408 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-osm-way-49895064",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gabriel_Schwerzenbach_nord.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Charly Bernasconi",
+   "view": "side",
+   "file": "/tmp/places-evidence/zurich/49895064_0.jpg",
+   "used": "steep gable end in vertical larch boarding, clay-tile roof with dormers, grey brick plinth, row of slatted timber doors on the long side, cobble-paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/49895064",
+   "used": "site identity only; the OSM outline is a skewed polygon and the photo shows a simple barn-like volume"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.48,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     13.5,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0.0,
+   "height": 4.6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#dcc08e",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d98552",
+    "material": "clay-tile",
+    "pitch": 57,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     13.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -13.2
+   ],
+   "z0": 0,
+   "height": 1.3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9a7a1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-side",
+   "footprint": {
+    "rect": [
+     0.5,
+     13
+    ]
+   },
+   "at": [
+    6.85,
+    -6.5
+   ],
+   "z0": 0,
+   "height": 1.3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9a7a1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9a94"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.9,
+    -5,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     13
+    ],
+    "height": 3.0,
+    "colour": "#a8734a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.95,
+    -8.6,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.2
+    ],
+    "height": 2.7,
+    "colour": "#b57a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.95,
+    -7.1,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.2
+    ],
+    "height": 2.7,
+    "colour": "#b57a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.95,
+    -5.6,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.2
+    ],
+    "height": 2.7,
+    "colour": "#b57a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.95,
+    -4.1,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.2
+    ],
+    "height": 2.7,
+    "colour": "#b57a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.95,
+    -2.5999999999999996,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.2
+    ],
+    "height": 2.7,
+    "colour": "#b57a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -13.45,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.12
+    ],
+    "height": 6.2,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -13.45,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.12
+    ],
+    "height": 0.25,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-side-w",
+   "footprint": {
+    "rect": [
+     0.5,
+     26
+    ]
+   },
+   "at": [
+    -6.85,
+    0
+   ],
+   "z0": 0,
+   "height": 1.3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9a7a1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer0",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.4
+    ]
+   },
+   "at": [
+    3.9,
+    -1.0
+   ],
+   "z0": 7.4,
+   "height": 2.0,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6b45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d98552",
+    "pitch": 35,
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer1",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.4
+    ]
+   },
+   "at": [
+    3.9,
+    3.5
+   ],
+   "z0": 7.4,
+   "height": 2.0,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6b45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d98552",
+    "pitch": 35,
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer2",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.4
+    ]
+   },
+   "at": [
+    3.9,
+    8.0
+   ],
+   "z0": 7.4,
+   "height": 2.0,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6b45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d98552",
+    "pitch": 35,
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.3,
+    -13.45,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.1
+    ],
+    "height": 5.5,
+    "colour": "#5c6a70"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.6,
+    -13.35,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.1
+    ],
+    "height": 2.4,
+    "colour": "#46565c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     2
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is a plain gable with 3 dormers; no tile texture detail, shutters, copper dormer cheeks or rainwater pipe; paving is generic tiles (no cobble option)."
+ }
+}

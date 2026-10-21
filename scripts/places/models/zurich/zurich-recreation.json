@@ -1,0 +1,734 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baden_Kursaal_Rueckseite.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Voyager",
+   "view": "back",
+   "file": "/tmp/places-evidence/zurich/kurpark2.jpg",
+   "used": "the Kursaal rear facade on the park lawn: two-storey neoclassical block in ochre-grey stone and cream render, ten tall arched ground-floor windows, rectangular upper windows between pilasters, taller end pavilions with curved pediments, low dark slate hip roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kurpark_Baden_03.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nelson Perez",
+   "view": "street",
+   "file": "/tmp/places-evidence/zurich/kurpark1.jpg",
+   "used": "the park itself: gravel path between two rows of big bell-shaped clipped yew topiaries, lawns, tall broadleaf trees and conifers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/59553084",
+   "used": "park outline about 86 x 40 m for the extent of the lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.06,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kursaal-ground",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    4,
+    26
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4b994",
+    "windows": "arched",
+    "windowRatio": 0.62,
+    "plinth": 0.5,
+    "bay": 5.0,
+    "glassColour": "#4c5a62",
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#a89f80",
+      "height": 0.4,
+      "proud": 0.1,
+      "at": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kursaal-upper",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    4,
+    26
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#f1ead2",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0,
+    "bay": 5.0,
+    "glassColour": "#4c5a62",
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "colour": "#e2d9bb",
+      "spacing": 5.0,
+      "depth": 0.25,
+      "width": 0.6
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#383d44",
+    "material": "slate",
+    "pitch": 8,
+    "overhang": 0.5
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-left",
+   "footprint": {
+    "rect": [
+     7,
+     17
+    ]
+   },
+   "at": [
+    -22,
+    25.2
+   ],
+   "height": 10.4,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbbf99",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 3.5,
+    "glassColour": "#4c5a62",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#383d44",
+    "material": "slate",
+    "pitch": 8,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-centre",
+   "footprint": {
+    "rect": [
+     9,
+     17.5
+    ]
+   },
+   "at": [
+    10,
+    25.2
+   ],
+   "height": 10.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbbf99",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 3.6,
+    "glassColour": "#4c5a62",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#383d44",
+    "material": "slate",
+    "pitch": 8,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-right",
+   "footprint": {
+    "rect": [
+     8,
+     17
+    ]
+   },
+   "at": [
+    29,
+    25.2
+   ],
+   "height": 10.4,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbbf99",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 3.5,
+    "glassColour": "#4c5a62",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#383d44",
+    "material": "slate",
+    "pitch": 8,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -34
+     ],
+     [
+      0,
+      8
+     ],
+     [
+      0,
+      17
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#cfc7b2"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    11,
+    0
+   ],
+   "params": {
+    "radius": 2.8
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -14,
+    14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    14,
+    17,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -22,
+    16.4,
+    10.5
+   ],
+   "params": {
+    "colour": "#e2d9bb",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       7.4,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.32,
+      "rect": [
+       7.26,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.64,
+      "rect": [
+       6.81,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.96,
+      "rect": [
+       5.99,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.28,
+      "rect": [
+       4.6,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       1.48,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    16.4,
+    10.5
+   ],
+   "params": {
+    "colour": "#e2d9bb",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       9.4,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.4,
+      "rect": [
+       9.22,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.8,
+      "rect": [
+       8.65,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       7.6,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       5.84,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 2.0,
+      "rect": [
+       1.88,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    29,
+    16.4,
+    10.5
+   ],
+   "params": {
+    "colour": "#e2d9bb",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       8.4,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.34,
+      "rect": [
+       8.24,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.68,
+      "rect": [
+       7.73,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.02,
+      "rect": [
+       6.8,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.36,
+      "rect": [
+       5.22,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.7,
+      "rect": [
+       1.68,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.6,
+     -30,
+     0
+    ],
+    "end": [
+     -3.6,
+     2,
+     0
+    ],
+    "count": 9,
+    "lod2Step": 2,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "colour": "#3f6b2d",
+      "profile": [
+       [
+        0.25,
+        0,
+        "#3f6b2d"
+       ],
+       [
+        0.25,
+        0.6
+       ],
+       [
+        1.1,
+        0.9
+       ],
+       [
+        1.5,
+        1.8
+       ],
+       [
+        1.3,
+        3.0
+       ],
+       [
+        0.7,
+        3.7
+       ],
+       [
+        0.0,
+        3.9
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     3.6,
+     -30,
+     0
+    ],
+    "end": [
+     3.6,
+     2,
+     0
+    ],
+    "count": 9,
+    "lod2Step": 2,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "colour": "#3f6b2d",
+      "profile": [
+       [
+        0.25,
+        0,
+        "#3f6b2d"
+       ],
+       [
+        0.25,
+        0.6
+       ],
+       [
+        1.1,
+        0.9
+       ],
+       [
+        1.5,
+        1.8
+       ],
+       [
+        1.3,
+        3.0
+       ],
+       [
+        0.7,
+        3.7
+       ],
+       [
+        0.0,
+        3.9
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   96,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -10
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -18
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     14
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     4
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -34
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     -36
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     -26
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     46,
+     16
+    ],
+    "height": 12
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tall arched windows, cream upper storey, bell topiaries and curved pediments added; pilasters weak, pediments small, grey ground beyond the lawn remains"
+ }
+}

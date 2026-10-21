@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-way-684889280",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mjóddin_0975.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Steinninn",
+   "view": "interior",
+   "file": "/tmp/places-evidence/reykjavik/mjodd.jpg",
+   "used": "interior only (no exterior photo found): white rendered walls with dark window frames and shopfronts, upper gallery, central glazed mall roof carried on laminated timber arches, block-paved floor; used for colours and the skylight vault"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/684889280",
+   "used": "real footprint of the centre (114 x 70 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e8e3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b727a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall-vault",
+   "footprint": {
+    "rect": [
+     12,
+     84
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 9,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c1d1",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 3.2,
+    "colour": "#b9cfdc"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 4,
+      "height": 1.4,
+      "bottom": 3.4,
+      "colour": "#f0c040",
+      "posts": false
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     -58
+    ],
+    "end": [
+     24,
+     -58
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    42,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 5,
+    "height": 3.8,
+    "colour": "#5d646c"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -48,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "only an interior photo exists; exterior is the OSM outline with guessed facade and a vault standing for the timber-arch skylight"
+ }
+}

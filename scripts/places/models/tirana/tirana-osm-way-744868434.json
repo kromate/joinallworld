@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-744868434",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/744868434",
+   "used": "real 10 x 7.5 m outline (name match, Kisha Ungjillore); no exterior photo found: the two listed Commons photos show other churches in Berat and Vlora and were not used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small evangelical hall, render walls, clay-tile gable roof, two storeys, blank board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3e0d4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bands": "#f0eee8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c4a38",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.2,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -5.2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c4a38",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#f0eee8",
+    "frameColour": "#8c8f91"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.1,
+    "thickness": 0.25,
+    "colour": "#b9b4a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -5
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     5
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No exterior photo of this hall exists in the evidence; the model is the real outline with a typical gabled render hall, so facade, roof pitch and porch are plausible but unverified."
+ }
+}

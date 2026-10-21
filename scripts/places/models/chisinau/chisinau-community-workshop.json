@@ -1,0 +1,339 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MD.C.C_Pedagogical_University_of_Chi%C8%99in%C4%83u_nov-2012.JPG",
+   "licence": "CC0",
+   "author": "Giku",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/chisinau/uni2.jpg",
+   "used": "long three-storey pale-beige block with grey hip roofs and projecting end wing, regular punched windows, brick chimneys, trees and lawns"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MD.C.C_Pedagogical_University_of_Chi%C8%99in%C4%83u_(campus)_nov-2012.JPG",
+   "licence": "CC0",
+   "author": "Giku",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/chisinau/uni1.jpg",
+   "used": "neighbouring blocks, yellow and grey render, chimney stacks, courtyard"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1390258",
+   "used": "footprint and 3 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     64,
+     13
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ddd0a6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4.4,
+    "trimColour": "#f1ece0",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#868a8e",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -33,
+    -5.5
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ddd0a6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5.5,
+    "trimColour": "#f1ece0",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#868a8e",
+    "material": "metal-sheet",
+    "rise": 3.2,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     12,
+     20
+    ]
+   },
+   "at": [
+    41,
+    -3.5
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ddd0a6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5.5,
+    "trimColour": "#f1ece0",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#868a8e",
+    "material": "metal-sheet",
+    "rise": 3.0,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nb-yellow",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    -48,
+    34
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e4d97f",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 8,
+    "trimColour": "#f1ece0",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#868a8e",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nb-grey",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    12,
+    42
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cdc8b6",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 8,
+    "trimColour": "#f1ece0",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#868a8e",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "brick-stack",
+     "params": {
+      "height": 2.2,
+      "radius": 0.6
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     0,
+     14.5
+    ],
+    "end": [
+     30,
+     0,
+     14.5
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#7d6f5a",
+      "topColour": "#8b7d66",
+      "sections": [
+       {
+        "z": 0,
+        "ellipse": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "z": 5,
+        "ellipse": [
+         0.9,
+         0.9
+        ]
+       },
+       {
+        "z": 13,
+        "ellipse": [
+         1.5,
+         1.5
+        ]
+       },
+       {
+        "z": 19,
+        "ellipse": [
+         0.8,
+         0.8
+        ]
+       },
+       {
+        "z": 23,
+        "ellipse": [
+         0.15,
+         0.15
+        ]
+       }
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24,
+     -19,
+     0
+    ],
+    "end": [
+     40,
+     -19,
+     0
+    ],
+    "count": 9,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -50,
+      -23
+     ],
+     [
+      55,
+      -23
+     ]
+    ],
+    "width": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -62,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Footprint is composed rectangles, not the OSM outline; poplars are simple lofted bare crowns; neighbour blocks and chimney positions approximate."
+ }
+}

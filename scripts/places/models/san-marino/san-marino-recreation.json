@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/770370670",
+   "used": "park outline (Parco delle Fontane Azzurre, name match, long narrow strip)"
+  },
+  {
+   "kind": "text",
+   "used": "fountains implied by the name only; blue water basins, paths and benches assumed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 40,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f9a4e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -60
+     ],
+     [
+      8,
+      -20
+     ],
+     [
+      10,
+      30
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbbf9f"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    8,
+    -15,
+    0.5
+   ],
+   "params": {
+    "radius": 5,
+    "waterColour": "#3f8fd0",
+    "rimColour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    10,
+    25,
+    0.5
+   ],
+   "params": {
+    "radius": 3.5,
+    "waterColour": "#3f8fd0",
+    "rimColour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    2,
+    0,
+    0.55
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    14,
+    -40,
+    0.5
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 25
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -70,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 5,
+    "spread": 10,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -40,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 6,
+    "line": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   80,
+   160
+  ]
+ }
+}

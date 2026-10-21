@@ -1,0 +1,73 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/215302734",
+   "used": "real outline of the Cappella Paolina (19 x 12.5 m, L-notch at the entrance corner), 1540, levels from brief"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cappella_paolina,_02,0.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Sailko",
+   "view": "interior",
+   "used": "interior only (tall single nave, coffered barrel vault, travertine-coloured pilasters): sets the nave height and the warm stone and ochre palette; no exterior photo exists because the chapel is enclosed by the Apostolic Palace"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 30,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "osm": true
+   },
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8a77f",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#efe7d3",
+    "faces": {
+     "front": "arched",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a85d44",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": 0,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo (chapel is inside the Apostolic Palace); roof, colours and window rhythm are plausible, not observed; adjoining palace volumes omitted"
+ }
+}

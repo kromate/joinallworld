@@ -1,0 +1,471 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Liechtenstein_asv2022-10_img27_Balzers_Pfarrkirche_StNikolaus.jpg",
+   "licence": "FAL (free art licence)",
+   "author": "A. Savin",
+   "view": "front",
+   "file": "/tmp/places-evidence/vaduz/balz.jpg",
+   "used": "grey rough-stone church: two stepped gables with deep eaves and big arched window, brown tile roofs, square tower on the right with clock and dark-green copper spire, conical turret, half-timbered low annex with arched door, mountain backdrop"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/165294627",
+   "used": "overall extent only (outline is 51 x 30 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.0,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    2,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8a82",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "bay": 3.6,
+    "plinth": 0.7,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "none",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a5446",
+    "material": "clay-tile",
+    "pitch": 50,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    -10,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8a82",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "bay": 3.6,
+    "plinth": 0.7,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "arched",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a5446",
+    "material": "clay-tile",
+    "pitch": 52,
+    "overhang": 0.9,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-b",
+   "footprint": {
+    "rect": [
+     7,
+     12
+    ]
+   },
+   "at": [
+    -1.5,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8a82",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "bay": 3.6,
+    "plinth": 0.7,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a5446",
+    "material": "clay-tile",
+    "pitch": 50,
+    "overhang": 1.0,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.2,
+     5.2
+    ]
+   },
+   "at": [
+    15,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8a82",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "bay": 3,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.7,
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#3f5a4a",
+    "material": "slate",
+    "rise": 22,
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "turret",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    6,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a877f",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "bay": 2.5
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#3f3a38",
+    "material": "slate",
+    "rise": 6,
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     8,
+     5.5
+    ]
+   },
+   "at": [
+    16,
+    -8.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8a82",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "faces": {
+     "front": "punched"
+    },
+    "bay": 3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b3f3b",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-upper",
+   "footprint": {
+    "rect": [
+     8,
+     5.5
+    ]
+   },
+   "at": [
+    16,
+    -8.5
+   ],
+   "rotDeg": 0,
+   "z0": 2.6,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c4ae86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f3532",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    -9,
+    -12.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8a82",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b3f3b",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -10,
+    -11.05,
+    4.2
+   ],
+   "params": {
+    "width": 4,
+    "height": 6,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mullion",
+   "at": [
+    -10,
+    -11.12,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.15
+    ],
+    "height": 5.5,
+    "colour": "#5a554d"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    16,
+    -11.28,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 2.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock",
+   "at": [
+    15,
+    -5.65,
+    15.5
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.12
+    ],
+    "height": 1.8,
+    "colour": "#d8b44a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mountain",
+   "at": [
+    -30,
+    62,
+    0
+   ],
+   "params": {
+    "colour": "#7a7a6c",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       40,
+       10
+      ]
+     },
+     {
+      "z": 14,
+      "ellipse": [
+       26,
+       8
+      ],
+      "cx": -4
+     },
+     {
+      "z": 26,
+      "ellipse": [
+       10,
+       5
+      ],
+      "cx": -8
+     },
+     {
+      "z": 32,
+      "ellipse": [
+       1,
+       1
+      ],
+      "cx": -10
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 7,
+    "colour": "#6f9a3c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "spread": 4,
+    "colour": "#2f5a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "two stepped gables, big arched window, slim spire, turret and timber annex added; mountain backdrop is a crude cone, clock is a flat patch, barge-board trim and annex arched door small, nave length guessed"
+ }
+}

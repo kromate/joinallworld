@@ -1,0 +1,339 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yak\u0131n_Do\u011fu_\u00dcniversitesi_Hukuk_Fak\u00fcltesi.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Orhanozkilic",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyrenia/uni1.jpg",
+   "used": "long white four-storey faculty block with regular small square windows, taller stepped end block with blank grey tower, flat roof with rooftop plant, lawn and palm setting"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cyprus_Near_East_University_Faculty_of_Health_Sciences.jpg",
+   "licence": "Public domain",
+   "author": "Orhanozkilic",
+   "view": "side",
+   "used": "white five-storey block with strip steel-framed windows, pale green-grey roof edge, curved grey metal-clad canopy over a glazed double-height entrance, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1343437922",
+   "used": "Near East College block outline direction only (name score 0.5); composition is a campus faculty"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "long-wing",
+   "footprint": {
+    "rect": [
+     78,
+     16
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f4f0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.0,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f6f6f2",
+       "#e4e4de"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa6a0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    -39,
+    0
+   ],
+   "height": 17.5,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe6",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 3.0,
+    "faces": {
+     "front": "punched",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9594",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -15,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    8,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 76,
+    "depth": 2,
+    "count": 12,
+    "max_height": 3.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-box",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -39,
+    0
+   ],
+   "z0": 17.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#9a9f9d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9594"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    -40,
+    0,
+    20.7
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 6,
+    "colour": "#b8bcbc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "ledges",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       78.4,
+       0.7
+      ],
+      "height": 0.45,
+      "colour": "#ffffff"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     8,
+     -8.2
+    ],
+    "end": [
+     8,
+     -8.2
+    ],
+    "dz": 3.6
+   },
+   "at": [
+    0,
+    0,
+    3.4
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "z0": 14.5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d8d2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9594"
+   }
+  },
+  {
+   "type": "array",
+   "id": "palms-base",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 7
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -30,
+     -10.5
+    ],
+    "end": [
+     50,
+     -10.5
+    ]
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "brick-path",
+   "at": [
+    0,
+    0,
+    0.02
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -28
+     ],
+     [
+      -5,
+      -16
+     ],
+     [
+      20,
+      -15
+     ],
+     [
+      45,
+      -18
+     ],
+     [
+      65,
+      -26
+     ]
+    ],
+    "width": 3.5,
+    "colour": "#b4665a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 10,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is shot from far across the lawn so the foreground is cropped; windows are punched, not flush; ledges are thin; palms are generic; the end tower and rooftop box are approximate."
+ }
+}

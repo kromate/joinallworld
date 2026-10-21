@@ -1,0 +1,865 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-osm-way-248355618",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parku_Rinia.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "a.dombrowski",
+   "view": "aerial",
+   "used": "wide lawns cut by curving paths with benches and lamps, tall plane and cedar trees, white curved-ribbon cafe pavilion at the right edge, small car park, mountain backdrop",
+   "file": "/tmp/places-evidence/tirana/rinia1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/248355618",
+   "used": "park outline (leisure=park, name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": -0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f9a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0.0,
+    0.0,
+    0.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.65,
+      0.1
+     ]
+    },
+    "colour": "#b5ad99",
+    "points": [
+     [
+      -31.8,
+      -47.7,
+      0.0
+     ],
+     [
+      -10.6,
+      -31.8,
+      0.0
+     ],
+     [
+      5.3,
+      -10.6,
+      0.0
+     ],
+     [
+      10.6,
+      10.6,
+      0.0
+     ],
+     [
+      21.2,
+      31.8,
+      0.0
+     ]
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0.0,
+    0.0,
+    0.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.65,
+      0.1
+     ]
+    },
+    "colour": "#b5ad99",
+    "points": [
+     [
+      37.1,
+      -31.8,
+      0.0
+     ],
+     [
+      21.2,
+      -10.6,
+      0.0
+     ],
+     [
+      5.3,
+      -10.6,
+      0.0
+     ],
+     [
+      -15.9,
+      -5.3,
+      0.0
+     ],
+     [
+      -37.1,
+      15.9,
+      0.0
+     ]
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0.0,
+    0.0,
+    0.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.32,
+      0.1
+     ]
+    },
+    "colour": "#b5ad99",
+    "points": [
+     [
+      -21.2,
+      37.1,
+      0.0
+     ],
+     [
+      0.0,
+      26.5,
+      0.0
+     ],
+     [
+      15.9,
+      31.8,
+      0.0
+     ],
+     [
+      26.5,
+      47.7,
+      0.0
+     ]
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    10.6,
+    -2.7,
+    0.5
+   ],
+   "params": {
+    "radius": 7,
+    "rimColour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    -15.9,
+    21.2,
+    0.5
+   ],
+   "params": {
+    "radius": 5,
+    "height": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    62,
+    -5
+   ],
+   "z0": 0.5,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d6da",
+    "windows": "none",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f1ec"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -23.9,
+    -31.8,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "end": [
+     26.5,
+     21.2,
+     0.0
+    ],
+    "count": 8,
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 4
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    41.3,
+    -10.6,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "colour": "#c9ccd0",
+    "yaw": 90
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-a",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "z0": 0.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d2c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-b",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -10,
+    60
+   ],
+   "z0": 0.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d2c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -48,
+    0,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 80,
+    "count": 10,
+    "kind": "conifer",
+    "min_height": 18,
+    "max_height": 28
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -8,
+    52,
+    0.5
+   ],
+   "params": {
+    "width": 100,
+    "depth": 26,
+    "count": 17,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    55,
+    40,
+    0.5
+   ],
+   "params": {
+    "width": 40,
+    "depth": 50,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -20,
+    -55,
+    0.5
+   ],
+   "params": {
+    "width": 60,
+    "depth": 16,
+    "count": 8,
+    "kind": "conifer",
+    "min_height": 16,
+    "max_height": 24
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    20,
+    -55,
+    0.5
+   ],
+   "params": {
+    "width": 50,
+    "depth": 16,
+    "count": 7,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -22,
+    18,
+    0.5
+   ],
+   "params": {
+    "width": 22,
+    "depth": 24,
+    "count": 4,
+    "kind": "broadleaf",
+    "min_height": 20,
+    "max_height": 26
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    15,
+    0.5
+   ],
+   "params": {
+    "width": 24,
+    "depth": 30,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cafe-ribbon-a",
+   "at": [
+    62,
+    -5,
+    4.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      0.7
+     ]
+    },
+    "colour": "#f6f6f2",
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 10,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz",
+     "radiusY": 3.5
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cafe-ribbon-b",
+   "at": [
+    62,
+    -5,
+    6.0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      0.6
+     ]
+    },
+    "colour": "#ffffff",
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 8,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz",
+     "radiusY": 3.0
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    54,
+    -9,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     16,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 4.4,
+      "colour": "#dfe3e4",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    54,
+    -1,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     16,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 4.4,
+      "colour": "#dfe3e4",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "carpark",
+   "at": [
+    44,
+    -22,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     20,
+     12
+    ],
+    "height": 0.12,
+    "colour": "#6a6c6e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    38,
+    -22,
+    0.6
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.0,
+    "colour": "#7a2e2a",
+    "yaw": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    34,
+    -14,
+    0.5
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.6,
+    "depth": 1.4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    56,
+    -14,
+    0.5
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.6,
+    "depth": 1.4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -27,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -5,
+    10,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -22,
+    42,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    18,
+    -12,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "mtn-a",
+   "at": [
+    -30,
+    72,
+    0
+   ],
+   "params": {
+    "colour": "#5d6f80",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       38,
+       12
+      ]
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       24,
+       8
+      ]
+     },
+     {
+      "z": 24,
+      "ellipse": [
+       8,
+       4
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "mtn-b",
+   "at": [
+    40,
+    76,
+    0
+   ],
+   "params": {
+    "colour": "#6a7a88",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       32,
+       11
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       20,
+       7
+      ]
+     },
+     {
+      "z": 19,
+      "ellipse": [
+       7,
+       3
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glass-tower",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    16,
+    70
+   ],
+   "height": 30,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6ea3b4",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "bands": "#c8683a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9822b",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-wing",
+   "footprint": {
+    "rect": [
+     9,
+     11
+    ]
+   },
+   "at": [
+    8,
+    70
+   ],
+   "height": 26,
+   "storeys": 8,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8683a",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bands": "#8a4a2c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dense cedar/plane stands are generic low-poly trees and sit as a belt rather than the real layout; cafe double-ribbon roof is approximate; mountains are simple blobs; aerial camera does not match exactly."
+ }
+}

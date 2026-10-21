@@ -1,0 +1,110 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-791438790",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/17436710",
+   "used": "real building outline, 73 x 68 m parallelogram rotated about 60 degrees (nearest match, 33 m away; no exterior photo of the university building found: the only Commons images are of the metro station)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d4c8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.5,
+    "bands": "#f1eee6",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-core",
+   "footprint": {
+    "rect": [
+     14,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7f98",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 4,
+    "form": "flat",
+    "colour": "#f1eee6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 5,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Only the OSM outline is known (nearest match, no exterior photo); facade, storeys and entrance are typical guesses."
+ }
+}

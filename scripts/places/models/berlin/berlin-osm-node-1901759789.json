@@ -1,0 +1,417 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-node-1901759789",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Berlin-lichterfelde-fliegeberg-seitlich.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Roland.h.bueb",
+   "view": "front",
+   "used": "conical grass mound with flat top, straight central stair with white handrails, thin dark disc-roofed round pavilion on slim columns at the summit, rectangular basin and fenced gravel path in front",
+   "file": "/tmp/places-evidence/berlin/b5-fliege2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/49991595",
+   "used": "not used for the mass (nearest named feature is the kindergarten); 12 m height and plan size from brief and Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 46,
+  "aspect": 1.33,
+  "margin": -0.3
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "mound",
+   "params": {
+    "segments": 32,
+    "colour": "#7b7c45",
+    "profile": [
+     [
+      25,
+      0,
+      "#6a6a3a"
+     ],
+     [
+      16,
+      6.0,
+      "#6b6838"
+     ],
+     [
+      7.5,
+      12.0,
+      "#6a6838"
+     ],
+     [
+      0.1,
+      12.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mound-lod2",
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#7b7c45",
+    "profile": [
+     [
+      25,
+      0
+     ],
+     [
+      7,
+      12
+     ],
+     [
+      0.1,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "base-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#8c8a80",
+    "profile": [
+     [
+      25.2,
+      0
+     ],
+     [
+      25.2,
+      0.5
+     ],
+     [
+      24.4,
+      0.5
+     ],
+     [
+      24.4,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "disc-roof",
+   "params": {
+    "segments": 20,
+    "colour": "#2f4048",
+    "profile": [
+     [
+      7.0,
+      15.6
+     ],
+     [
+      7.0,
+      16.1
+     ],
+     [
+      6.2,
+      16.2
+     ],
+     [
+      0.3,
+      16.2
+     ],
+     [
+      0.3,
+      15.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 8,
+    "radius": 5.2,
+    "of": {
+     "type": "revolve",
+     "lod": [
+      0,
+      1
+     ],
+     "params": {
+      "segments": 6,
+      "colour": "#2b3438",
+      "profile": [
+       [
+        0.2,
+        0
+       ],
+       [
+        0.2,
+        3.6
+       ],
+       [
+        0.0,
+        3.6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "sphere",
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#6f5a3a",
+    "profile": [
+     [
+      0.01,
+      12.0
+     ],
+     [
+      1.0,
+      12.4
+     ],
+     [
+      1.2,
+      13.2
+     ],
+     [
+      0.9,
+      14.0
+     ],
+     [
+      0.01,
+      14.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "stair",
+   "params": {
+    "width": 4.6,
+    "rise": 0.5,
+    "run": 0.72,
+    "count": 24,
+    "colour": "#8a867e"
+   },
+   "at": [
+    0,
+    -25.5,
+    0.05
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.5,
+     -25.5,
+     1.0
+    ],
+    "end": [
+     2.5,
+     -25.5,
+     1.0
+    ],
+    "count": 2,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.22,
+      "n": 4,
+      "points": [
+       [
+        0,
+        0,
+        0.9
+       ],
+       [
+        0,
+        17.3,
+        12.4
+       ]
+      ],
+      "colour": "#f2f2f2"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "basin",
+   "params": {
+    "rect": [
+     38,
+     10
+    ],
+    "height": 0.3,
+    "colour": "#2b2923"
+   },
+   "at": [
+    -14,
+    -36,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "basin-kerb",
+   "params": {
+    "rect": [
+     39.6,
+     11.4
+    ],
+    "height": 0.12,
+    "colour": "#a9a69c"
+   },
+   "at": [
+    -14,
+    -36,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "params": {
+    "rect": [
+     80,
+     4.4
+    ],
+    "height": 0.05,
+    "colour": "#7b7d7f"
+   },
+   "at": [
+    10,
+    -29,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fence-rail",
+   "params": {
+    "rect": [
+     44,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#1f2224"
+   },
+   "at": [
+    20,
+    -32,
+    0.9
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "fence-posts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -2,
+     -32,
+     0
+    ],
+    "end": [
+     42,
+     -32,
+     0
+    ],
+    "count": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.18,
+       0.18
+      ],
+      "height": 1.1,
+      "colour": "#1f2224"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     22
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     32
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     24
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mound is a smooth cone without tufting or stone retaining wall, rails only approximate, basin is a flat dark slab without reflection, fence is a plain rail, background trees generic."
+ }
+}

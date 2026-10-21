@@ -1,0 +1,279 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-osm-way-622818140",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/622818140",
+   "used": "identity only: the 470 x 340 m former-barracks campus is reduced to a representative 120 m courtyard; no photo of the campus buildings was found (nearby geotagged photos show the Violeta tower, a different building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 48,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 50,
+    "colour": "#c4c0b4",
+    "border_colour": "#a9a69c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks-w",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    -26
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c9a4",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a44",
+    "material": "clay-tile",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks-e",
+   "footprint": {
+    "rect": [
+     14,
+     52
+    ]
+   },
+   "at": [
+    -52,
+    0
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c9a4",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "front": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a44",
+    "material": "clay-tile",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks-n",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    26
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c9a4",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a44",
+    "material": "clay-tile",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "faculty",
+   "footprint": {
+    "rect": [
+     48,
+     18
+    ]
+   },
+   "at": [
+    34,
+    -18
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#d1cdc2",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#8c8a85",
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6f6f",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "faculty2",
+   "footprint": {
+    "rect": [
+     18,
+     40
+    ]
+   },
+   "at": [
+    52,
+    12
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d4c8",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#8c8a85",
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6f6f",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    34,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#bdb9ae"
+   }
+  },
+  {
+   "type": "gate-lodge",
+   "at": [
+    -8,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4.5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 10,
+    "count": 4,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "gaps": "No photo of the campus exists (nearby geotagged photos show the Violeta tower); typical Austro-Hungarian barracks wings plus later faculty blocks inferred from the OSM barracks tag and brief; real campus is 470 x 340 m.",
+  "match": "rough"
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bessasta%C3%B0akirkja.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "JD554",
+   "view": "side",
+   "file": "/tmp/places-evidence/reykjavik/bess2.jpg",
+   "used": "whitewashed stone nave with four arched windows, red clay-tile gable roof, square west tower taller than the nave with a dark pyramidal cap and overhanging eaves"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:OB090126c-3053_Bessastadir.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "OddurBen",
+   "view": "front",
+   "file": "/tmp/places-evidence/reykjavik/bess1.jpg",
+   "used": "tower proportions, small arched tower windows and low arched door, grass hilltop setting"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     19,
+     8.5
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece9e0",
+    "windows": "arched",
+    "windowRatio": 0.05,
+    "bay": 4.2,
+    "plinth": 0.3,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#b8482e",
+    "material": "clay-tile",
+    "pitch": 25,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.4,
+     6.4
+    ]
+   },
+   "at": [
+    -10.2,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efece4",
+    "windows": "arched",
+    "windowRatio": 0.03,
+    "bay": 3.2,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#4a4e54",
+    "material": "slate",
+    "rise": 3.0,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   50,
+   40
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "tower has no brown eaves band, nave windows slightly tall, real arched leaded glass not shown"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-way-167395358"
+}

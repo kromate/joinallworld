@@ -1,0 +1,316 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vizelj_park.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Perabre",
+   "view": "front",
+   "file": "/tmp/places-evidence/belgrade/1387911268_0.jpg",
+   "used": "single long raked stand with blue seats and yellow stair edges, raised central press box with blue cladding and glazed band, three blue dugouts at the pitch edge, pale concrete rear wall, flat open pitch, no roof over the seats, no floodlights"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1387911268",
+   "used": "ground extent (about 119 x 112 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 28,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     66
+    ],
+    "height": 0.1,
+    "colour": "#6b8a4a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     42,
+     24
+    ],
+    "end": [
+     -42,
+     24
+    ],
+    "rows": 11,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "under": "open",
+    "slab": 0.5,
+    "backWall": 1.2,
+    "bay": 6,
+    "seatColour": "#2d62ad",
+    "seatColours": [
+     "#2d62ad",
+     "#2d62ad",
+     "#e8ecf2"
+    ],
+    "blocks": 4,
+    "concreteColour": "#3b6fb5",
+    "underColour": "#a9a59d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pressbox",
+   "footprint": {
+    "rect": [
+     17,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "z0": 5.8,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2d62ad",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#bfd3e3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#27528f",
+    "parapet": 0.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cabin",
+   "footprint": {
+    "rect": [
+     6,
+     3.4
+    ]
+   },
+   "at": [
+    -2,
+    36.4
+   ],
+   "z0": 10.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2d62ad",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#27528f",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "z0": 0,
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c5bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3ab"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     22.2
+    ],
+    "end": [
+     6,
+     22.2
+    ],
+    "count": 3,
+    "of": {
+     "type": "mass",
+     "id": "dugout",
+     "footprint": {
+      "rect": [
+       3.6,
+       1.4
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 1.7,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#26467a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "shed",
+      "colour": "#2d62ad",
+      "pitch": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -52,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     66
+    ],
+    "height": 1.0,
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    52,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     66
+    ],
+    "height": 1.0,
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0.0,
+    0.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     64
+    ],
+    "height": 0.02,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -56,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 8,
+    "line": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-osm-way-1387911268",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stand is a straight blue block without white lettering or yellow stair edges; press box simpler; backdrop of houses absent."
+ }
+}

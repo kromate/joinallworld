@@ -1,0 +1,101 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/245713083",
+   "used": "real outline of the EUAA building at Winemakers Wharf (1287 m2, name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: six-storey modern limestone and glass office on the Grand Harbour quay; the Commons street photos nearby show other buildings so are not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c3cdd1",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bands": "#d9bf8e",
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 3.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#3a5a8a",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building found (nearby street photos show other buildings); real OSM outline with brief-based glass and limestone ribbon facade."
+ }
+}

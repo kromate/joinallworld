@@ -1,0 +1,398 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_Square,_St_Helier_-_geograph.ci_-_326.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Bob Embleton",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-helier/st-helier-community-voting-game-0.jpg",
+   "used": "open paved granite-sett square, central tall plinth with gilded George II statue, chestnut trees both sides, cream/pink three-storey buildings at the far side with red cafe awnings, granite building at right with arched doors, bench"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:60_Diamond_Jubilee_Royal_Square_Jersey.jpg",
+   "licence": "Public domain",
+   "author": "Man vyi",
+   "view": "detail",
+   "used": "grey-pink granite sett colour"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "far-block",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    2,
+    30
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6c9b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.4,
+    "cornice": true,
+    "plinth": 0.5,
+    "groundKind": "arched"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#5f666c",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    -26,
+    20
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3d2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#5f666c",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     12,
+     38
+    ]
+   },
+   "at": [
+    26,
+    10
+   ],
+   "rotDeg": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#b0a392",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "arched",
+     "front": "punched",
+     "back": "punched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 24,
+    "colour": "#5f666c",
+    "material": "slate",
+    "axis": "y"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    12,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 1
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "plinthHeight": 6.2,
+    "colour": "#d4a93a",
+    "plinthColour": "#b7b0a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -19,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    19,
+    7,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -12,
+    23.8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#a3262a",
+     "#a3262a"
+    ],
+    "stripe": 1
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    23.8,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#a3262a",
+     "#a3262a"
+    ],
+    "stripe": 1
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    14,
+    23.8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#a3262a",
+     "#a3262a"
+    ],
+    "stripe": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parasol0",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -8,
+    20.5
+   ],
+   "z0": 2.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a3262a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "rise": 0.7,
+    "colour": "#a3262a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parasol1",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    20.5
+   ],
+   "z0": 2.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a3262a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "rise": 0.7,
+    "colour": "#a3262a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parasol2",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    9,
+    20.5
+   ],
+   "z0": 2.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a3262a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "rise": 0.7,
+    "colour": "#a3262a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   84,
+   52
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "statue figure generic; cafe terrace and bench simplified; tree crowns still lighter than the dense chestnut canopy; arcading approximate"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-community-voting-game"
+}

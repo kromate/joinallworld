@@ -1,0 +1,249 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palace_of_Saint_Charles_in_the_Vatican_City.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/vatican-city/sancarlo.jpg",
+   "used": "style reference only (ochre plaster, white stone frames, terracotta hip roofs) of Vatican administrative buildings; the clinic is a game venue with no real building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b57c",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "bay": 3.6,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": {
+     "colour": "#efe7d3",
+     "height": 0.4
+    },
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "trimColour": "#efe7d3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85d44",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    27,
+    -2
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3ad73",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85d44",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.4,
+    "height": 6.2,
+    "columns": 4,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#ece4d0",
+    "roofColour": "#b8644a"
+   }
+  },
+  {
+   "type": "hospital/ambulance-bay",
+   "at": [
+    27,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 4.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#ece4d0",
+    "roofColour": "#b8644a",
+    "vans": 1,
+    "marking": true
+   }
+  },
+  {
+   "type": "hospital/ambulance",
+   "at": [
+    27,
+    -12,
+    0
+   ],
+   "params": {
+    "heading": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 2.2,
+    "bottom": 0.8,
+    "colour": "#f4f1ea",
+    "frameColour": "#b5322c",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -5
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    10
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -17
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -20
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.1,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#d8cfbb"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14
+   ],
+   "params": {
+    "rect": [
+     48,
+     9
+    ],
+    "height": 0.08,
+    "colour": "#7b7873",
+    "topColour": "#7b7873"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo of a real building exists (game placeholder); typed Vatican palette, plausible clinic massing only"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-clinic"
+}

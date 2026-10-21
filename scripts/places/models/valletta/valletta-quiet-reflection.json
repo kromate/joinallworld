@@ -1,0 +1,825 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kapelle_auf_Comino.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rolf Gastler",
+   "view": "side",
+   "file": "/tmp/places-evidence/valletta/ch.jpg",
+   "used": "whitewashed rendered box with flat parapet roof, three-arch bell-cote with cross on the roof edge, tiny square windows, brown door, low white terrace walls at the foot, Aleppo pine and date palm, green lamp posts, gravel track"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/136199373",
+   "used": "footprint, about 12.6 x 12.4 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efe8d4",
+    "windows": "none",
+    "windowRatio": 0.07,
+    "plinth": 0.3,
+    "groundKind": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfca",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-base",
+   "at": [
+    0,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.8
+    ],
+    "z0": 4.6000000000000005,
+    "height": 1.2,
+    "colour": "#ece3cc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "at": [
+    -1.9,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.38,
+     0.7
+    ],
+    "z0": 5.8,
+    "height": 1.2000000000000002,
+    "colour": "#ece3cc",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    -0.65,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.38,
+     0.7
+    ],
+    "z0": 5.8,
+    "height": 1.2999999999999998,
+    "colour": "#ece3cc",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier2",
+   "at": [
+    0.65,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.38,
+     0.7
+    ],
+    "z0": 5.8,
+    "height": 1.2999999999999998,
+    "colour": "#ece3cc",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier3",
+   "at": [
+    1.9,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.38,
+     0.7
+    ],
+    "z0": 5.8,
+    "height": 1.2000000000000002,
+    "colour": "#ece3cc",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.34,
+      0.7
+     ]
+    },
+    "arc": {
+     "centre": [
+      -1.275,
+      -3.9,
+      7.0
+     ],
+     "radius": 0.625,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz",
+     "steps": 8
+    },
+    "colour": "#ece3cc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -1.275,
+    -3.9,
+    6.0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      1.0,
+      "#2b2b2b"
+     ],
+     [
+      0.12,
+      0.6
+     ],
+     [
+      0.28,
+      0.1
+     ],
+     [
+      0.25,
+      0
+     ],
+     [
+      0.0,
+      0
+     ]
+    ],
+    "segments": 8,
+    "colour": "#2b2b2b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.34,
+      0.7
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      -3.9,
+      7.1
+     ],
+     "radius": 0.65,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz",
+     "steps": 8
+    },
+    "colour": "#ece3cc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -3.9,
+    6.1
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      1.0,
+      "#2b2b2b"
+     ],
+     [
+      0.12,
+      0.6
+     ],
+     [
+      0.28,
+      0.1
+     ],
+     [
+      0.25,
+      0
+     ],
+     [
+      0.0,
+      0
+     ]
+    ],
+    "segments": 8,
+    "colour": "#2b2b2b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.34,
+      0.7
+     ]
+    },
+    "arc": {
+     "centre": [
+      1.275,
+      -3.9,
+      7.0
+     ],
+     "radius": 0.625,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz",
+     "steps": 8
+    },
+    "colour": "#ece3cc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    1.275,
+    -3.9,
+    6.0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      1.0,
+      "#2b2b2b"
+     ],
+     [
+      0.12,
+      0.6
+     ],
+     [
+      0.28,
+      0.1
+     ],
+     [
+      0.25,
+      0
+     ],
+     [
+      0.0,
+      0
+     ]
+    ],
+    "segments": 8,
+    "colour": "#2b2b2b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apex",
+   "at": [
+    0,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 7.75,
+    "height": 0.5,
+    "colour": "#ece3cc",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "z0": 8.25,
+    "height": 0.6,
+    "colour": "#ece3cc",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.12
+    ],
+    "z0": 8.55,
+    "height": 0.12,
+    "colour": "#ece3cc",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -1.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.0,
+    "arch": false,
+    "colour": "#5a3a28"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win1",
+   "at": [
+    -3.6,
+    -4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.2
+    ],
+    "z0": 2.3,
+    "height": 0.6,
+    "colour": "#2b241e",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "win2",
+   "at": [
+    3.6,
+    -4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.2
+    ],
+    "z0": 2.3,
+    "height": 0.6,
+    "colour": "#2b241e",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terr-l",
+   "at": [
+    -4.7,
+    -6.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#e4dcc6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terr-r",
+   "at": [
+    2.2,
+    -6.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.5,
+     1.0
+    ],
+    "z0": 0,
+    "height": 0.85,
+    "colour": "#e4dcc6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terr-step",
+   "at": [
+    7.2,
+    -6.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.0
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#e4dcc6",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "pine",
+   "at": [
+    8.5,
+    -1,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.0,
+      0,
+      "#4a3a2c"
+     ],
+     [
+      0.35,
+      0,
+      "#4a3a2c"
+     ],
+     [
+      0.3,
+      3.0,
+      "#1f3f27"
+     ],
+     [
+      1.6,
+      3.0,
+      "#1f3f27"
+     ],
+     [
+      3.0,
+      4.6,
+      "#1f3f27"
+     ],
+     [
+      1.5,
+      5.4,
+      "#1f3f27"
+     ],
+     [
+      3.6,
+      6.8,
+      "#1f3f27"
+     ],
+     [
+      1.8,
+      7.6,
+      "#1f3f27"
+     ],
+     [
+      3.0,
+      8.8,
+      "#1f3f27"
+     ],
+     [
+      0.0,
+      10.4,
+      "#1f3f27"
+     ]
+    ],
+    "segments": 10,
+    "colour": "#1f3f27"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cypress",
+   "at": [
+    -9,
+    2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#16301c"
+     ],
+     [
+      1.3,
+      0,
+      "#16301c"
+     ],
+     [
+      1.1,
+      3,
+      "#16301c"
+     ],
+     [
+      0.7,
+      5.5,
+      "#16301c"
+     ],
+     [
+      0,
+      7.5,
+      "#16301c"
+     ]
+    ],
+    "segments": 8,
+    "colour": "#16301c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    3.5,
+    -7.6,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0,
+      "#2f6b4f"
+     ],
+     [
+      0.1,
+      3.2
+     ],
+     [
+      0.2,
+      3.2,
+      "#f4f4f0"
+     ],
+     [
+      0.32,
+      3.4
+     ],
+     [
+      0.38,
+      3.7
+     ],
+     [
+      0.32,
+      4.0
+     ],
+     [
+      0.15,
+      4.2
+     ],
+     [
+      0.0,
+      4.2
+     ]
+    ],
+    "segments": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8.8,
+    -6.8,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0,
+      "#2f6b4f"
+     ],
+     [
+      0.1,
+      3.2
+     ],
+     [
+      0.2,
+      3.2,
+      "#f4f4f0"
+     ],
+     [
+      0.32,
+      3.4
+     ],
+     [
+      0.38,
+      3.7
+     ],
+     [
+      0.32,
+      4.0
+     ],
+     [
+      0.15,
+      4.2
+     ],
+     [
+      0.0,
+      4.2
+     ]
+    ],
+    "segments": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "door frame renders white not brown, lamp poles lose green colour, pine is a stylised layered cone, walls are not hand-rounded, gravel track shown as paving"
+ }
+}

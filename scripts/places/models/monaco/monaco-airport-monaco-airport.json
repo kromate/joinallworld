@@ -1,0 +1,653 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-airport-monaco-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monaco_%E2%80%93_Heliport_vor_dem_Cirque_de_Monte-Carlo_-_panoramio_(cropped).jpg",
+   "licence": "CC BY 3.0",
+   "author": "giggel",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/monaco-airport-monaco-airport-0.jpg",
+   "used": "seen from the sea: long arched stone quay wall with apron, low pink-red terminal block at left with flat roofs, cream hangar with long blank fascia boards and a wide door bay, grey metal shed at right, helipad extension on piers over the water, red-white helicopters parked"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Heli_air_monaco_(2507865243).jpg",
+   "licence": "CC BY 2.0",
+   "author": "snake&luigi",
+   "view": "detail",
+   "used": "hangar cladding is rust-red corrugated metal with a grey roller door; apron is dark grey with green and white pad markings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/431895550",
+   "used": "sense of scale only (about 200 m of piers and pads)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 2.5,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "quay",
+   "footprint": {
+    "rect": [
+     96,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c2b9a2",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7075",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -34,
+    2
+   ],
+   "z0": 3.2,
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9806b",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "cornice": true,
+    "glassColour": "#3d4f5c",
+    "bands": "#efe4d0",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c86",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal-low",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    -48,
+    4
+   ],
+   "z0": 3.2,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b96f5e",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#3d4f5c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    2,
+    4
+   ],
+   "z0": 3.2,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0e6c4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#4b5d6a",
+    "cornice": true,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar-tower",
+   "footprint": {
+    "rect": [
+     11,
+     12
+    ]
+   },
+   "at": [
+    23,
+    3
+   ],
+   "z0": 3.2,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ece3c6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#4b5d6a",
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -4.2,
+    6.6
+   ],
+   "params": {
+    "width": 18,
+    "height": 1.3,
+    "bottom": 0,
+    "colour": "#c8362f",
+    "frameColour": "#f3efe4",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    38,
+    0
+   ],
+   "z0": 3.2,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b3bfc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9d1d6",
+    "material": "metal-sheet",
+    "pitch": 5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -14,
+    -8,
+    3.2
+   ],
+   "params": {
+    "radius": 5.5,
+    "colour": "#5e6f68",
+    "markColour": "#e8e8e2",
+    "ringColour": "#e8e8e2",
+    "ground": false
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    30,
+    -9,
+    3.2
+   ],
+   "params": {
+    "radius": 5.5,
+    "colour": "#707477",
+    "markColour": "#e8e8e2",
+    "ringColour": "#e8e8e2",
+    "ground": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-pad",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    18,
+    -18
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8e9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7075"
+   },
+   "z0": 1.4
+  },
+  {
+   "type": "helipad",
+   "at": [
+    18,
+    -19,
+    3.2
+   ],
+   "params": {
+    "radius": 3.8,
+    "colour": "#6d7075",
+    "markColour": "#e8e8e2",
+    "ringColour": "#d8d8d0",
+    "ground": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -33,
+    -4.1,
+    8.6
+   ],
+   "params": {
+    "width": 10,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#e9e1cf",
+    "frameColour": "#c9806b",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    30,
+    3.2
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 8,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    6,
+    -12,
+    3.2
+   ],
+   "params": {
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -4.2,
+    6.6
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#f3efe4",
+    "frameColour": "#c8362f",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -4.15
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.6
+    ],
+    "z0": 3.2,
+    "height": 4.2,
+    "colour": "#3b3f44"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -18,
+    16,
+    3.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f2f0e8",
+    "profile": [
+     [
+      9.520000000000001,
+      0.0
+     ],
+     [
+      8.568000000000001,
+      1.836
+     ],
+     [
+      4.760000000000001,
+      8.415000000000001
+     ],
+     [
+      1.7136000000000002,
+      13.464
+     ],
+     [
+      0.28,
+      14.841000000000001
+     ],
+     [
+      0.08960000000000001,
+      17.595,
+      "#c9c9c9"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -4,
+    18,
+    3.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f2f0e8",
+    "profile": [
+     [
+      10.64,
+      0.0
+     ],
+     [
+      9.576000000000002,
+      2.142
+     ],
+     [
+      5.32,
+      9.8175
+     ],
+     [
+      1.9152000000000002,
+      15.708
+     ],
+     [
+      0.28,
+      17.3145
+     ],
+     [
+      0.08960000000000001,
+      20.5275,
+      "#c9c9c9"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10,
+    17,
+    3.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f2f0e8",
+    "profile": [
+     [
+      8.96,
+      0.0
+     ],
+     [
+      8.064000000000002,
+      1.9124999999999999
+     ],
+     [
+      4.48,
+      8.765625000000002
+     ],
+     [
+      1.6128,
+      14.025
+     ],
+     [
+      0.28,
+      15.459375
+     ],
+     [
+      0.08960000000000001,
+      18.328124999999996,
+      "#c9c9c9"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -30,
+    14,
+    3.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2f0e8",
+    "profile": [
+     [
+      5.5,
+      0.0
+     ],
+     [
+      4.95,
+      1.44
+     ],
+     [
+      2.75,
+      6.6000000000000005
+     ],
+     [
+      0.99,
+      10.56
+     ],
+     [
+      0.25,
+      11.64
+     ],
+     [
+      0.08,
+      13.799999999999999,
+      "#c9c9c9"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    22,
+    14,
+    3.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2f0e8",
+    "profile": [
+     [
+      4.5,
+      0.0
+     ],
+     [
+      4.05,
+      1.08
+     ],
+     [
+      2.25,
+      4.95
+     ],
+     [
+      0.8099999999999999,
+      7.92
+     ],
+     [
+      0.25,
+      8.73
+     ],
+     [
+      0.08,
+      10.35,
+      "#c9c9c9"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -20
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#6d7075"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -20
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#6d7075"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tents are cones not multi-mast peaked fabric; quay arches still large (not tunable); no helicopters or fascia graphics; pier helipad is a plain slab on two stubs"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   60
+  ]
+ }
+}

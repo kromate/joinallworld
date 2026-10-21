@@ -1,0 +1,484 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-relation-17823425",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tbilisi_Boris_Paichadze_Dinamo_Arena_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "DJMX",
+   "view": "interior",
+   "file": "/tmp/places-evidence/tbilisi/dinamo1.jpg",
+   "used": "interior only (not compared): full oval bowl, two tiers with gold/yellow upper seats, dark flat roof band with lights and an electronic scoreboard at the top, red running track around the pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17499453",
+   "used": "overall oval proportions 230 x 188 m, scaled to about half"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Dinamo_Arena",
+   "used": "1976, 30 m cantilever roof on 58 pylons over the upper tier, two electronic boards, 4 floodlight corners"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch-apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      36.0,
+      0.0
+     ],
+     [
+      35.45,
+      5.21
+     ],
+     [
+      33.83,
+      10.26
+     ],
+     [
+      31.18,
+      15.0
+     ],
+     [
+      27.58,
+      19.28
+     ],
+     [
+      23.14,
+      22.98
+     ],
+     [
+      18.0,
+      25.98
+     ],
+     [
+      12.31,
+      28.19
+     ],
+     [
+      6.25,
+      29.54
+     ],
+     [
+      0.0,
+      30.0
+     ],
+     [
+      -6.25,
+      29.54
+     ],
+     [
+      -12.31,
+      28.19
+     ],
+     [
+      -18.0,
+      25.98
+     ],
+     [
+      -23.14,
+      22.98
+     ],
+     [
+      -27.58,
+      19.28
+     ],
+     [
+      -31.18,
+      15.0
+     ],
+     [
+      -33.83,
+      10.26
+     ],
+     [
+      -35.45,
+      5.21
+     ],
+     [
+      -36.0,
+      0.0
+     ],
+     [
+      -35.45,
+      -5.21
+     ],
+     [
+      -33.83,
+      -10.26
+     ],
+     [
+      -31.18,
+      -15.0
+     ],
+     [
+      -27.58,
+      -19.28
+     ],
+     [
+      -23.14,
+      -22.98
+     ],
+     [
+      -18.0,
+      -25.98
+     ],
+     [
+      -12.31,
+      -28.19
+     ],
+     [
+      -6.25,
+      -29.54
+     ],
+     [
+      -0.0,
+      -30.0
+     ],
+     [
+      6.25,
+      -29.54
+     ],
+     [
+      12.31,
+      -28.19
+     ],
+     [
+      18.0,
+      -25.98
+     ],
+     [
+      23.14,
+      -22.98
+     ],
+     [
+      27.58,
+      -19.28
+     ],
+     [
+      31.18,
+      -15.0
+     ],
+     [
+      33.83,
+      -10.26
+     ],
+     [
+      35.45,
+      -5.21
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#7fa05c",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 38,
+    "radiusY": 32,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 12,
+    "rise": 0.85,
+    "run": 0.85,
+    "firstHeight": 4.5,
+    "facetDeg": 18,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#d8a63a",
+    "seatColours": [
+     "#d8a63a",
+     "#2f5a8a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#b9b5a8",
+    "underColour": "#a8a496",
+    "canopy": {
+     "height": 5,
+     "depth": 11,
+     "thickness": 1.6,
+     "slopeDeg": 1,
+     "colour": "#8f9498",
+     "edgeColour": "#4e5257",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 53,
+    "radiusY": 47,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 29,
+    "facing": "outward",
+    "lod2Step": 3,
+    "lod1Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#d8d3c4",
+       "sections": [
+        {
+         "z": 15,
+         "rect": [
+          1.2,
+          2.2
+         ]
+        },
+        {
+         "z": 8,
+         "rect": [
+          1.4,
+          2.0
+         ]
+        },
+        {
+         "z": 0,
+         "rect": [
+          1.6,
+          1.8
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 50,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 15,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.01
+      ],
+      "lod": [
+       0
+      ],
+      "params": {
+       "rect": [
+        7,
+        0.6
+       ],
+       "z0": 4,
+       "height": 3,
+       "colour": "#2f5a8a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard-east",
+   "at": [
+    44,
+    0,
+    16
+   ],
+   "rotDeg": 90,
+   "params": {
+    "rect": [
+     10,
+     1.2
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#1d2227"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard-west",
+   "at": [
+    -44,
+    0,
+    16
+   ],
+   "rotDeg": 90,
+   "params": {
+    "rect": [
+     10,
+     1.2
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#1d2227"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -62,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    62,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -62,
+    52,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    62,
+    52,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -64
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -66,
+     0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     66,
+     0
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Only interior photos exist, so no exterior comparison; oval two-tier bowl with canopy ring, pylons, scoreboards and floodlights is built from the real oval proportions and brief facts. Seat colours, pylon count and the real cladding are approximate."
+ }
+}

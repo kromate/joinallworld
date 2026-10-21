@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-osm-way-44619145",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/44619145",
+   "used": "museum building outline (72 x 22 m)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Faroese_National_Museum",
+   "used": "Heima a Gardi farmhouse c.1812 in tarred timber with turf roof, outdoor museum"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7075",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "farmhouse-main",
+   "footprint": {
+    "rect": [
+     16,
+     6.5
+    ]
+   },
+   "at": [
+    -36,
+    -3
+   ],
+   "rotDeg": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2b2926",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#ecebe6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f8a4a",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "farmhouse-wing",
+   "footprint": {
+    "rect": [
+     6.5,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    5.5
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2b2926",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a8545",
+    "pitch": 28,
+    "axis": "y",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -36,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.1,
+    "thickness": 0.5,
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -50,
+    -12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 28,
+    "height": 1.1,
+    "thickness": 0.5,
+    "colour": "#8a8780"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo (P18 is interior): real OSM outline only, facade and farmstead placement typical, not seen"
+ }
+}

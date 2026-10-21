@@ -1,0 +1,281 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cencio_la_Parolaccia.jpeg",
+   "licence": "Public domain",
+   "author": "Utente:Topolgnussy",
+   "view": "front",
+   "file": "/tmp/places-evidence/rome/rome-meal-stop-0.jpg",
+   "used": "ochre-yellow weathered stucco facade, round-arched entrance with pale arch band and blank sign, iron grille gates either side, timber double doors, small clay-tile awning with lamps, grey cobbles, potted plant, plain upper windows with cornice"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/203864122",
+   "used": "approximate width/depth only (outline is an irregular 225 m2 courtyard block; a clean rectangle of the street block is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 28,
+  "aspect": 0.75,
+  "margin": 0.02,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d4a860",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "punched"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "bay": 4.5,
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 6.4,
+    "height": 5.6,
+    "depth": 0.6,
+    "archWidth": 3.6,
+    "springHeight": 3.6,
+    "pointed": false,
+    "colour": "#efe6d2"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -4.6,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 3.6,
+    "colour": "#2f3a5a"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    4.6,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 3.6,
+    "colour": "#2f3a5a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.5,
+    4.2
+   ],
+   "params": {
+    "width": 7.0,
+    "depth": 1.2,
+    "drop": 0.3,
+    "height": 0.2,
+    "colours": [
+     "#a65a3a",
+     "#8c4a30"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -3,
+    -9.5,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3.0,
+    "radius": 1.4,
+    "height": 2.4,
+    "colours": [
+     "#efe6d2",
+     "#a02f3a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-leaf-l",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    -0.9,
+    -5.9
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c98a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c98a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-leaf-r",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    0.9,
+    -5.9
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c98a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c98a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fanlight",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -5.9
+   ],
+   "z0": 3.3,
+   "height": 2.0,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f3a5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3a5a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -3.4,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    3.4,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2.6,
+    -6.6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.6,
+    "count": 1,
+    "spread": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Arch ring, grid gates, timber door leaves, tile awning with lamps and potted plant placed; no streaked stucco texture, arch fanlight grid is a flat panel, upper windows invented, footprint simplified from courtyard OSM outline."
+ }
+}

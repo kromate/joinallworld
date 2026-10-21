@@ -1,0 +1,375 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fj%C3%A4derholmarnas_krog_01.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bengt Oberger",
+   "view": "front",
+   "file": "/tmp/places-evidence/stockholm/krog1.jpg",
+   "used": "two-storey falu-red timber main volume with grey metal gable roof and upper window band, lower glazed front wing with small gables, white railed timber terrace on a pier, flagpole on the shore"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/161917128",
+   "used": "overall size (about 38 x 28 m, irregular)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 2,
+  "fovDeg": 26,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     20,
+     11
+    ]
+   },
+   "at": [
+    6,
+    5
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f26",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d858b",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     19,
+     8
+    ]
+   },
+   "at": [
+    -3,
+    -4
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f26",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa1a6",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    17,
+    2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f26",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f4a58",
+    "material": "metal-sheet",
+    "pitch": 24
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     8
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#b7aea0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -9,
+    1
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -24,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "height": 1.0,
+    "colour": "#b7aea0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    28,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colours": [
+     "#0a62a8",
+     "#f2c500",
+     "#0a62a8"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable0",
+   "footprint": {
+    "rect": [
+     5,
+     2.4
+    ]
+   },
+   "at": [
+    -12,
+    -8.6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f26",
+    "windows": "punched",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa1a6",
+    "pitch": 38
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable1",
+   "footprint": {
+    "rect": [
+     5,
+     2.4
+    ]
+   },
+   "at": [
+    -6,
+    -8.6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f26",
+    "windows": "punched",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa1a6",
+    "pitch": 38
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable2",
+   "footprint": {
+    "rect": [
+     5,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -8.6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f26",
+    "windows": "punched",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa1a6",
+    "pitch": 38
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     0,
+     0
+    ],
+    "end": [
+     30,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.4,
+        1.8
+       ],
+       "height": 0.9,
+       "colour": "#7a766d",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     4
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     15
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     8,
+     17
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-osm-way-161917128",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Flag is a plain blue pennant with no yellow cross; shoreline rocks are boxy; pier terrace railing simple; greenhouses and rear annexes omitted; water is a flat plane."
+ }
+}

@@ -1,0 +1,373 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nowa_Stacja_Pruszk%C3%B3w_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Karol Szejner",
+   "view": "street",
+   "file": "/tmp/places-evidence/warsaw/nowa.jpg",
+   "used": "dark clad entrance block with cantilevered triangular soffit, diagonally braced glass hall, long grey clad side wall, forecourt steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/695633081",
+   "used": "overall scale only (190 m outline too large for the scene clamp); front block and 100 m of the long wing are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.49,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "long-wing",
+   "footprint": {
+    "rect": [
+     30,
+     110
+    ]
+   },
+   "at": [
+    -11,
+    69
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c3c5c3",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": "all",
+     "size": [
+      1.6,
+      17
+     ],
+     "colours": [
+      "#c3c5c3",
+      "#b4b7b6"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-box",
+   "footprint": {
+    "rect": [
+     22,
+     34
+    ]
+   },
+   "at": [
+    -15,
+    17
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#45484d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3d41",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-hall",
+   "at": [
+    13,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     34
+    ],
+    "height": 17,
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "storeys": 4,
+    "colour": "#4c5a5e",
+    "glassColour": "#3f545c",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "topColour": "#3a3d41"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "soffit",
+   "at": [
+    0,
+    0,
+    17
+   ],
+   "params": {
+    "colour": "#3b3e42",
+    "topColour": "#2f3236",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -26,
+        0
+       ],
+       [
+        30,
+        0
+       ],
+       [
+        30,
+        -12
+       ],
+       [
+        26,
+        -12
+       ]
+      ]
+     },
+     {
+      "z": 1.5,
+      "poly": [
+       [
+        -26,
+        0
+       ],
+       [
+        30,
+        0
+       ],
+       [
+        30,
+        -0.5
+       ],
+       [
+        28,
+        -0.5
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-0",
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      0,
+      -0.6,
+      17
+     ],
+     [
+      28,
+      -0.6,
+      0
+     ]
+    ],
+    "colour": "#1f2124"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-1",
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      28,
+      -0.6,
+      17
+     ],
+     [
+      0,
+      -0.6,
+      0
+     ]
+    ],
+    "colour": "#1f2124"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-2",
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      8,
+      -0.6,
+      17
+     ],
+     [
+      28,
+      -0.6,
+      6
+     ]
+    ],
+    "colour": "#1f2124"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-3",
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      -2,
+      -0.6,
+      10
+     ],
+     [
+      18,
+      -0.6,
+      17
+     ]
+    ],
+    "colour": "#1f2124"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-4",
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      14,
+      -0.6,
+      17
+     ],
+     [
+      28,
+      -0.6,
+      10
+     ]
+    ],
+    "colour": "#1f2124"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-5",
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      0,
+      -0.6,
+      6
+     ],
+     [
+      28,
+      -0.6,
+      16
+     ]
+    ],
+    "colour": "#1f2124"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 1.4,
+    "run": 1.2,
+    "count": 9,
+    "colour": "#9a9a98"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -15,
+    -0.8,
+    10
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.4,
+    "bottom": 9,
+    "colour": "#2a2c30",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    10,
+    -6,
+    1.4
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.0,
+    "colour": "#222222"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Soffit is a thin projecting wedge, braces approximate, no lettering or forecourt greenery; wing length shortened to 110 m of the 190 m"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-market-game"
+}

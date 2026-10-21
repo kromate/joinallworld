@@ -1,0 +1,460 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vilnius",
+ "venueId": "vilnius-airport-vilnius-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:EYVI-VNO_by_Augustas_Didzgalvis.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Augustas Didzgalvis",
+   "view": "aerial",
+   "used": "cream two-storey 1950s front terminal with central arched portico and hip roof, curved glazed link canopies at both ends, stepped modern glass/white airside piers behind, red-orange multi-storey office block at right, beige office block, grey cladded multi-storey car park at bottom right, apron behind",
+   "file": "/tmp/places-evidence/vilnius/vilnius-airport-vilnius-airport-0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3536241",
+   "used": "apron only (containing match, too large for a building footprint); terminal composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "old-terminal",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe3c8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 11
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8f8c",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-block",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebe0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "bay": 6,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f8c",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "airside-hall",
+   "footprint": {
+    "rect": [
+     46,
+     20
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4c0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.3,
+    "bands": "#e0e3e5",
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb4b8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    -27,
+    28
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4c0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.3,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c3c8cb",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    27,
+    28
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4c0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.3,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c3c8cb",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-step",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c6cc",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d7d9",
+    "parapet": 0.6
+   },
+   "z0": 8
+  },
+  {
+   "type": "mass",
+   "id": "link-left",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    -43,
+    -1
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a8bcc6",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ba2a6",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-right",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    43,
+    -1
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a8bcc6",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ba2a6",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-red",
+   "footprint": {
+    "rect": [
+     38,
+     12
+    ]
+   },
+   "at": [
+    72,
+    14
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4553d",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#f0ece4",
+    "plinth": 0.5,
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-beige",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    66,
+    -14
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb2",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-left",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -50,
+    -8
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car-park",
+   "footprint": {
+    "rect": [
+     78,
+     22
+    ]
+   },
+   "at": [
+    56,
+    -60
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b6b8b4",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea3a6",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -45.0,
+    50,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.9,
+    "tailColour": "#e8508a"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    45.0,
+    50,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.9,
+    "tailColour": "#8a2d7a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10.0,
+    -30
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 18
+   }
+  },
+  {
+   "type": "prism",
+   "id": "runway",
+   "at": [
+    10,
+    72
+   ],
+   "params": {
+    "rect": [
+     130,
+     12
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#4f5154"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 22,
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Old terminal now wide with portico and links, red office, beige office and 4-storey car park placed from photo; link canopies are straight not curved, airside piers still plain stepped boxes, runway not visible in render, roads/car-park lots and trees omitted, forecourt only a generic road"
+ }
+}

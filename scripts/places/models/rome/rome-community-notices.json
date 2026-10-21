@@ -1,0 +1,349 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palazzo_Orsini_(Monterotondo).JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "LPLT",
+   "view": "front",
+   "file": "/tmp/places-evidence/rome/orsini.jpg",
+   "used": "long four-level grey-ochre stucco front with eleven regular white-framed windows, balustrade along the roofline, small white belvedere tower with arched opening above the centre, central framed doorway with coat of arms, tiered fountain on a stepped basin in front, red-leaved trees and hedge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/186037229",
+   "used": "footprint scale about 69 x 55 m, U-plan with courtyard (OSM outline is a 4-point box, so wings are composed by hand)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-range",
+   "footprint": {
+    "rect": [
+     62,
+     15
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "height": 16.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a99f80",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "bay": 5.2,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#d9d2bd",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     15,
+     44
+    ]
+   },
+   "at": [
+    -23.5,
+    10
+   ],
+   "height": 16.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a99f80",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "bay": 8,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#d9d2bd",
+    "faces": {
+     "right": "none",
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     15,
+     44
+    ]
+   },
+   "at": [
+    23.5,
+    10
+   ],
+   "height": 16.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a99f80",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "bay": 8,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#d9d2bd",
+    "faces": {
+     "left": "none",
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-range",
+   "footprint": {
+    "rect": [
+     62,
+     13
+    ]
+   },
+   "at": [
+    0,
+    31
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a99f80",
+    "windows": "none",
+    "windowRatio": 0.17,
+    "bay": 5.2,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#d9d2bd"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balustrade",
+   "at": [
+    0,
+    -20
+   ],
+   "params": {
+    "rect": [
+     62.6,
+     15.6
+    ],
+    "z0": 16.5,
+    "height": 1.3,
+    "colour": "#e3ddcc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "z0": 17.8,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ece5d3",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b3603f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -27.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 1.4,
+    "height": 5.5,
+    "columns": 0,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#d8d1bd"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -29.2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.9,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "radius": 7,
+    "waterColour": "#7fb0c6",
+    "rimColour": "#d8d3c6"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -20,
+    26.3
+   ],
+   "params": {
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 6,
+    "line": 14,
+    "colour": "#7a3d4d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 6,
+    "line": 14,
+    "colour": "#7a3d4d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Fountain is a simple basin without railing and sculpture; tower belvedere has no real arched loggia; wings/courtyard are inferred (only the front is seen), trees are generic; portal is a plain porch, no coat of arms."
+ }
+}

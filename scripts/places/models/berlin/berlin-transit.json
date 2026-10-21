@@ -1,0 +1,366 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Berlin-_Bahnhof_Tiergarten-_Haupteingang-_von_der_Bachstra%C3%9Fe_aus_8.8.2013.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia user Jivee Blau",
+   "view": "front",
+   "file": "/tmp/places-evidence/berlin/tg3.jpg",
+   "used": "street frontage: long low red-brick station hall with four stone-framed windows, a recessed stone-framed entrance, a light stone-clad end bay with glazing, a plain green S-Bahn disc board at the right, dark flat platform canopy above, viaduct passing at the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:S-Bahn_Tiergarten_2021_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Smiley.toerist",
+   "view": "street",
+   "file": "/tmp/places-evidence/berlin/tg1.jpg",
+   "used": "platform: dark flat canopy with slim grey steel columns, two tracks, paved platform edge, glass screen at the roof edge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Berlin_S-Bahn_Bhf_Tiergarten_(S07_1837).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Michael.F.H.Barth",
+   "view": "street",
+   "used": "viaduct railing, S sign, track layout"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/320485955",
+   "used": "not used: that outline is the neighbouring rectifier substation, the station hall is modelled from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.55,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     38,
+     9
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8553c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#4a5258",
+    "trimColour": "#d8d0bd",
+    "bay": 5.2,
+    "groundKind": "punched",
+    "groundHeight": 7.0,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5d62",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-bay",
+   "footprint": {
+    "rect": [
+     7,
+     9.4
+    ]
+   },
+   "at": [
+    16.5,
+    -0.2
+   ],
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d3cbb8",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "glassColour": "#7f939a",
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5d62",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-bay",
+   "footprint": {
+    "rect": [
+     4,
+     9
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8553c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5d62",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-frame",
+   "footprint": {
+    "rect": [
+     13,
+     0.6
+    ]
+   },
+   "at": [
+    1,
+    -4.6
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d3cbb8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3cbb8",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-void",
+   "footprint": {
+    "rect": [
+     11,
+     0.5
+    ]
+   },
+   "at": [
+    1,
+    -4.8
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2a2a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2a2c",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    6,
+    8.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 58,
+    "depth": 16,
+    "height": 0,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#2b2d30",
+    "edgeColour": "#2b2d30",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     2,
+     0
+    ],
+    "end": [
+     26,
+     2,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 8.9,
+      "colour": "#6b7075",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     10,
+     0
+    ],
+    "end": [
+     26,
+     10,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 8.9,
+      "colour": "#6b7075",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    6,
+    7.2
+   ],
+   "params": {
+    "length": 60,
+    "depth": 7.5,
+    "height": 0.4,
+    "colour": "#9c9a94"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    13,
+    7.2
+   ],
+   "params": {
+    "length": 64,
+    "tracks": 2,
+    "spacing": 4.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "s-disc",
+   "at": [
+    24.5,
+    -4.9
+   ],
+   "params": {
+    "radius": 1.1,
+    "n": 16,
+    "z0": 3.6,
+    "height": 0.2,
+    "colour": "#1f8a52",
+    "windows": "none"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    26,
+    8,
+    7.2
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#6b7075"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hall windows simplified, canopy columns and glass roof edge approximate, viaduct arches not shown, bicycles and signage omitted"
+ }
+}

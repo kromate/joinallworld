@@ -1,0 +1,326 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BGE_PSZK_campus_2020.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "see Commons page",
+   "view": "street",
+   "file": "/tmp/places-evidence/budapest/uni1.jpg",
+   "used": "red-brown brick teaching block with grey horizontal bands, ribbon windows with grey louvre blinds, long four-storey flank with open access gallery, red brick paved forecourt, bollards, blue seats, low green planting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1522779061",
+   "used": "footprint, about 65 x 30 m at 43 deg bearing, simplified"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.81
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     72,
+     17
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b45a40",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "plinth": 0.5,
+    "cornice": false,
+    "glassColour": "#cfdde4",
+    "bands": {
+     "colour": "#a3a9ae",
+     "height": 0.5
+    },
+    "trimColour": "#a3a9ae",
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "right"
+      ],
+      "colour": "#9aa0a5",
+      "backColour": "#8a9096",
+      "floors": "all",
+      "band": 0.5
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "continuous": true,
+      "depth": 1.8,
+      "railKind": "solid",
+      "colour": "#a3a9ae",
+      "railColour": "#c8d3d8",
+      "floors": "upper"
+     }
+    ],
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7e7a74",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brick-paving",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     28
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#b4553d",
+    "topColour": "#b4553d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-canopy",
+   "at": [
+    -8,
+    -3.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     3.5
+    ],
+    "z0": 3.4,
+    "height": 0.35,
+    "colour": "#8e959b",
+    "topColour": "#8e959b"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#9aa5ab",
+    "frameColour": "#a3a9ae",
+    "posts": true
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "z0": 0,
+      "height": 1.1,
+      "colour": "#1f1f21",
+      "topColour": "#1f1f21"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -38,
+     -30
+    ],
+    "end": [
+     10,
+     -30
+    ],
+    "count": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "z0": 0,
+      "height": 0.5,
+      "colour": "#2f6fb5",
+      "topColour": "#2f6fb5"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     -14
+    ],
+    "end": [
+     -12,
+     -14
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.4,
+    "depth": 1.6,
+    "colour": "#4b7a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    -20,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.4,
+    "depth": 1.6,
+    "colour": "#4b7a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.0,
+    "depth": 1.4,
+    "colour": "#4b7a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 2,
+    "spread": 3,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Slab is 72 m long (about 4x width) but gallery is a solid-rail balcony not an open walkway; louvre blinds only on the end face (window cuts at LOD0 budget); forecourt hedges and seats are simple blocks; underpass and signs omitted."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-way-1522779060"
+}

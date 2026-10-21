@@ -1,0 +1,401 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_(J.Stradina)_entrance_-_ainars_br%C5%ABvelis_-_Panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "ainars br\u016bvelis",
+   "view": "front",
+   "file": "/tmp/places-evidence/riga/hosp.jpg",
+   "used": "historic 1910 pavilion: cream render with red-brick banding and arched window surrounds, brick porch, tall central gable, steep red-tile roofs with chimneys, two lower wings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paula_Stradi%C5%86a_slimn%C4%ABca,_korpuss_A_(Ventspils_iela).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/riga/hospA.jpg",
+   "used": "modern Block A: pale white-grey cladding, scattered small square windows, curved end and red end block"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17588998",
+   "used": "context only (480 m campus); pavilion and Block A modelled individually"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd0ac",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#a9503b",
+    "plinth": 1.2,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0392f",
+    "material": "clay-tile",
+    "pitch": 62,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     26,
+     13
+    ]
+   },
+   "at": [
+    -20,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd0ac",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bay": 4.5,
+    "bands": "#a9503b",
+    "plinth": 1.0,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0392f",
+    "material": "clay-tile",
+    "pitch": 48
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     26,
+     13
+    ]
+   },
+   "at": [
+    20,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd0ac",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "bay": 4.5,
+    "bands": "#a9503b",
+    "plinth": 1.0,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0392f",
+    "material": "clay-tile",
+    "pitch": 48
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -9.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8523f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4636",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -11.95,
+    0
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 4.6,
+    "depth": 0.4,
+    "archWidth": 2.4,
+    "springHeight": 2.6,
+    "pointed": true,
+    "colour": "#2a211c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    78,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e7e6e1",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 8,
+    "count": 4,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-surround",
+   "footprint": {
+    "rect": [
+     8,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -9.2
+   ],
+   "rotDeg": 0,
+   "z0": 5.4,
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8523f",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "windowShape": "arched",
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c4636"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.4,
+     -12.2,
+     0
+    ],
+    "end": [
+     3.4,
+     -12.2,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 4.6,
+      "colour": "#f0ece0",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "brick-stack",
+   "at": [
+    -3,
+    3,
+    14
+   ],
+   "params": {
+    "height": 4,
+    "radius": 0.7,
+    "colour": "#a9573e"
+   }
+  },
+  {
+   "type": "brick-stack",
+   "at": [
+    3,
+    -3,
+    14
+   ],
+   "params": {
+    "height": 4,
+    "radius": 0.7,
+    "colour": "#a9573e"
+   }
+  },
+  {
+   "type": "brick-stack",
+   "at": [
+    -28,
+    2,
+    10
+   ],
+   "params": {
+    "height": 3.5,
+    "radius": 0.7,
+    "colour": "#a9573e"
+   }
+  },
+  {
+   "type": "brick-stack",
+   "at": [
+    -12,
+    2,
+    10
+   ],
+   "params": {
+    "height": 3.5,
+    "radius": 0.7,
+    "colour": "#a9573e"
+   }
+  },
+  {
+   "type": "brick-stack",
+   "at": [
+    26,
+    3,
+    10
+   ],
+   "params": {
+    "height": 3.5,
+    "radius": 0.7,
+    "colour": "#a9573e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   120,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no stepped brick gable tracery, dormers or curved end on Block A; porch arch and columns simplified; chimneys barely visible; campus not modelled"
+ }
+}

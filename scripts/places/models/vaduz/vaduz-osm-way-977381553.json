@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-osm-way-977381553",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parish_church_in_Ruggell_(1).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Tournasol7",
+   "view": "street",
+   "file": "/tmp/places-evidence/vaduz/ruggell1.jpg",
+   "used": "grey rubble-stone walls, tall square tower with arched belfry and dark slate spire, steep slate nave roof, pointed-arch gable window and portal, hedge and low plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/977381553",
+   "used": "size only (OSM outline is a fragmented 35 x 23 m shape; the OSM height 47 m is the spire)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 0.71,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#9b978d",
+    "windows": "pointed",
+    "windowRatio": 0.12,
+    "bay": 3.4,
+    "plinth": 0.6,
+    "faces": {
+     "front": "pointed",
+     "back": "pointed",
+     "left": "pointed",
+     "right": "pointed"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d3b3c",
+    "material": "slate",
+    "pitch": 52,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "choir",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    18,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9b978d",
+    "windows": "pointed",
+    "windowRatio": 0.12,
+    "bay": 3.4,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d3b3c",
+    "material": "slate",
+    "pitch": 50,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.6,
+     6.6
+    ]
+   },
+   "at": [
+    -10,
+    -3.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 25,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8b82",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "bay": 3,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#38363a",
+    "material": "slate",
+    "rise": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -12,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c6bf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c6bf"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -17,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "spread": 9,
+    "colour": "#6f8a3c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "spread": 3.5,
+    "colour": "#3f6a58"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "tower/spire/nave massing good; no clock faces, buttress-free gable lacks pointed window and portal, annex and hedge simplified, nave axis guessed"
+ }
+}

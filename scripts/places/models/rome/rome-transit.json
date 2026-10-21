@@ -1,0 +1,272 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rome",
+ "venueId": "rome-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stazione_prenestina_01.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nicholas Gemini",
+   "view": "front",
+   "used": "long low flat-roofed rectangle, horizontally striped tan travertine walls, roof-edge railing, off-centre white window-frame panel with dark grilled windows, dark entrance bays, grass strip and street in front",
+   "file": "/tmp/places-evidence/rome/pren1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/466843398",
+   "used": "station building location and approximate length (outline is irregular, so a clean rectangle of the same length is used as the photo shows)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: four platforms, 1936-38 building (platforms and tracks behind the building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "building",
+   "footprint": {
+    "rect": [
+     68,
+     13
+    ]
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9a869",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.9,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b3925a",
+      "height": 0.35,
+      "spacing": 0.9
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "window-frame",
+   "at": [
+    -9,
+    -6.7,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.5
+    ],
+    "height": 6.4,
+    "colour": "#d6cdb4",
+    "topColour": "#d6cdb4"
+   }
+  },
+  {
+   "type": "array",
+   "id": "windows-left",
+   "at": [
+    -24,
+    -7.05,
+    2.4
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 3,
+    "dx": 6.4,
+    "dy": 1.7,
+    "centred": false,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5.8,
+       0.3
+      ],
+      "height": 1.4,
+      "colour": "#3a3a38",
+      "topColour": "#3a3a38"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "windows-right",
+   "at": [
+    0,
+    -7.05,
+    2.4
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 3,
+    "rows": 3,
+    "dx": 6.4,
+    "dy": 1.7,
+    "centred": false,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5.8,
+       0.3
+      ],
+      "height": 1.4,
+      "colour": "#3a3a38",
+      "topColour": "#3a3a38"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "at": [
+    -12,
+    -7.1,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.4
+    ],
+    "height": 4.2,
+    "colour": "#2e2e2d",
+    "topColour": "#2e2e2d"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "bottom": 5.4,
+    "colour": "#2f4a7a",
+    "frameColour": "#d8d8d4",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "roof-rail",
+   "at": [
+    0,
+    0,
+    8.5
+   ],
+   "params": {
+    "length": 64,
+    "height": 1.1,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#c4c8cb"
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -18,
+    22,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 6,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    18,
+    22,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 6,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    18,
+    -0.3
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 4,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "flat-roofed striped-travertine block with roof rail, window frame and dark entrance; photo window frame is slimmer and bin/lamp details omitted"
+ }
+}

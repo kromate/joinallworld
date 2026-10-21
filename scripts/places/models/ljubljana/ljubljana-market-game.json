@@ -1,0 +1,126 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/785816151",
+   "used": "real irregular outline of the mall (223 x 106 m, auto-fitted to the 118 m scene clamp), 3 levels, 18.1 m, flat roof, roof colour #ab6043, glass/panel wall"
+  },
+  {
+   "kind": "text",
+   "used": "brief: pale panelled facade with terracotta accent, glazed entrance, rooftop parking; the Mapillary 360 street frames in the evidence show only the road, not the building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8d4ca",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "bay": 9,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.6,
+    "bands": "#b5593a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ab6043",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 3,
+    "bottom": 13,
+    "colour": "#b5593a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 8,
+    "bottom": 2,
+    "colour": "#6f7d88",
+    "frameColour": "#d8d4ca",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -19,
+    -58,
+    0
+   ],
+   "rotDeg": 30,
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 7,
+    "height": 5,
+    "colour": "#6f7d88",
+    "edgeColour": "#d8d4ca",
+    "columns": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "cars": [],
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building exists; real outline scaled 0.56 to the 118 m clamp, facade/colours from the brief and OSM tags, entrance position guessed, rooftop parking not modelled"
+ }
+}

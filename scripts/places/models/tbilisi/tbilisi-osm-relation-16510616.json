@@ -1,0 +1,526 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tbilisi",
+ "venueId": "tbilisi-osm-relation-16510616",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TSU_Main_Building_in_2018_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mehman Ibragimov for UG Georgia",
+   "view": "front",
+   "file": "/tmp/places-evidence/tbilisi/tsu.jpg",
+   "used": "Corpus I front: white-cream stucco, rusticated ground storey, central projecting block with three tall arched windows and paired small windows above, heavy dentilled cornice and attic, lower two-storey wings with balustrade and arched windows, three timber doors up a broad stair"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/78490251",
+   "used": "not used: nearest match is a small construction site, not the corpus"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 23,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2e8d2",
+    "windows": "arched",
+    "windowRatio": 0.62,
+    "bay": 9.5,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "arched"
+    },
+    "groundKind": "plain",
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#dccfb4",
+      "height": 0.12,
+      "proud": 0.12,
+      "floors": [
+       0
+      ],
+      "at": 0.25
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#dccfb4",
+      "height": 0.12,
+      "proud": 0.12,
+      "floors": [
+       0
+      ],
+      "at": 0.5
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#dccfb4",
+      "height": 0.12,
+      "proud": 0.12,
+      "floors": [
+       0
+      ],
+      "at": 0.75
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    -26,
+    2
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f0e4cc",
+    "windows": "arched",
+    "windowRatio": 0.42,
+    "bay": 5.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c8",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    26,
+    2
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f0e4cc",
+    "windows": "arched",
+    "windowRatio": 0.42,
+    "bay": 5.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c8",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-l",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    -30,
+    18
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6dfd0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-r",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    30,
+    18
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6dfd0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 1.8,
+    "run": 1.0,
+    "count": 9,
+    "colour": "#b5b0a6"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -18
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    14,
+    -18
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "door0",
+   "footprint": {
+    "rect": [
+     4,
+     0.6
+    ]
+   },
+   "at": [
+    -6,
+    -15.3
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8773f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8773f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door1",
+   "footprint": {
+    "rect": [
+     4,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -15.3
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8773f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8773f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door2",
+   "footprint": {
+    "rect": [
+     4,
+     0.6
+    ]
+   },
+   "at": [
+    6,
+    -15.3
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8773f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8773f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    23
+   ],
+   "params": {
+    "rect": [
+     32.6,
+     28.6
+    ],
+    "height": 1.6,
+    "colour": "#eadfc6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    24.6
+   ],
+   "params": {
+    "rect": [
+     30.6,
+     26.6
+    ],
+    "height": 0.5,
+    "colour": "#f7efdc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     27,
+     21
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 25.1,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2e8d2",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "bay": 4.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -28,
+    -6.8,
+    15
+   ],
+   "params": {
+    "length": 19,
+    "height": 1.0
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    28,
+    -6.8,
+    15
+   ],
+   "params": {
+    "length": 19,
+    "height": 1.0
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.4,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.7
+    ],
+    "height": 22.6,
+    "colour": "#f7efdc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.75,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.7
+    ],
+    "height": 22.6,
+    "colour": "#f7efdc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.75,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.7
+    ],
+    "height": 22.6,
+    "colour": "#f7efdc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14.4,
+    -15.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.7
+    ],
+    "height": 22.6,
+    "colour": "#f7efdc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "centre now projects with dentil-style cornice, attic, pilaster strips, rusticated bands, warmer stucco; windows still small and one size (no 2x arches or paired small top windows), doors flat boxes in a plain wall not arched openings, stair has no flanking balustrades, balustrade on wings barely visible"
+ }
+}

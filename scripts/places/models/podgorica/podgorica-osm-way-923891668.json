@@ -1,0 +1,684 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadion_Tre%C5%A1njica.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vux33",
+   "view": "front",
+   "file": "/tmp/places-evidence/podgorica/stad1.jpg",
+   "used": "artificial-turf pitch behind a dark-blue mesh fence on a pale-blue plinth wall, three tall lattice floodlight masts with square lamp heads, small white stand with net posts on the far right, bare sandy forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadion_Tre%C5%A1njica2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vux33",
+   "view": "side",
+   "used": "blue plinth wall and fence detail, white pole beside the mast, pitch markings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/923891668",
+   "used": "leisure=stadium name match; outline is the whole complex (231 m), only the pitch-sized core is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "sand-forecourt",
+   "at": [
+    0,
+    -4
+   ],
+   "params": {
+    "rect": [
+     140,
+     100
+    ],
+    "height": 0.04,
+    "colour": "#c9a77a",
+    "z0": -0.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     105,
+     66
+    ],
+    "height": 0.08,
+    "colour": "#4c8a3f",
+    "z0": 0.02
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch-lines",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     103,
+     64
+    ],
+    "height": 0.02,
+    "colour": "#4c8a3f",
+    "z0": 0.11
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-front",
+   "at": [
+    0,
+    -37
+   ],
+   "params": {
+    "rect": [
+     110,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#7fb2de",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-back",
+   "at": [
+    0,
+    37
+   ],
+   "params": {
+    "rect": [
+     110,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#7fb2de",
+    "z0": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing-rooms",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    0,
+    43
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e6e0",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "goal-a",
+   "at": [
+    -52.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     7.3
+    ],
+    "height": 2.4,
+    "colour": "#f2f2f2",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "goal-b",
+   "at": [
+    52.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     7.3
+    ],
+    "height": 2.4,
+    "colour": "#f2f2f2",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-left",
+   "at": [
+    -55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     74
+    ],
+    "height": 1.0,
+    "colour": "#7fb2de",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-right",
+   "at": [
+    55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     74
+    ],
+    "height": 1.0,
+    "colour": "#7fb2de",
+    "z0": 0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-0",
+   "at": [
+    0,
+    -37
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 110,
+    "height": 3.0,
+    "thickness": 0.8,
+    "kind": "railing",
+    "colour": "#1f2f5c"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-1",
+   "at": [
+    0,
+    37
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 110,
+    "height": 3.0,
+    "thickness": 0.8,
+    "kind": "railing",
+    "colour": "#1f2f5c"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-2",
+   "at": [
+    -55,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 74,
+    "height": 3.0,
+    "thickness": 0.8,
+    "kind": "railing",
+    "colour": "#1f2f5c"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-3",
+   "at": [
+    55,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 74,
+    "height": 3.0,
+    "thickness": 0.8,
+    "kind": "railing",
+    "colour": "#1f2f5c"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mesh-f",
+   "at": [
+    0,
+    -37
+   ],
+   "params": {
+    "rect": [
+     110,
+     0.06
+    ],
+    "height": 0.12,
+    "colour": "#1f2f5c",
+    "z0": 1.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mesh-b",
+   "at": [
+    0,
+    37
+   ],
+   "params": {
+    "rect": [
+     110,
+     0.06
+    ],
+    "height": 0.12,
+    "colour": "#1f2f5c",
+    "z0": 1.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mesh-l",
+   "at": [
+    -55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.06,
+     74
+    ],
+    "height": 0.12,
+    "colour": "#1f2f5c",
+    "z0": 1.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mesh-r",
+   "at": [
+    55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.06,
+     74
+    ],
+    "height": 0.12,
+    "colour": "#1f2f5c",
+    "z0": 1.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fence-top-l",
+   "at": [
+    -55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     74
+    ],
+    "height": 0.1,
+    "colour": "#1f2f5c",
+    "z0": 3.0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fence-top-r",
+   "at": [
+    55,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     74
+    ],
+    "height": 0.1,
+    "colour": "#1f2f5c",
+    "z0": 3.0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lattice-mast",
+   "id": "mast0",
+   "at": [
+    -45,
+    46
+   ],
+   "params": {
+    "height": 28,
+    "baseWidth": 2.4,
+    "topWidth": 0.8,
+    "panels": 9,
+    "colour": "#3e4650",
+    "colour2": "#3e4650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "head0",
+   "at": [
+    -45,
+    46
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.0
+    ],
+    "height": 2.6,
+    "colour": "#d9dde0",
+    "z0": 28
+   }
+  },
+  {
+   "type": "prism",
+   "id": "headframe0",
+   "at": [
+    -45,
+    46
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     1.2
+    ],
+    "height": 0.3,
+    "colour": "#3e4650",
+    "z0": 27.7
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "id": "mast1",
+   "at": [
+    30,
+    46
+   ],
+   "params": {
+    "height": 34,
+    "baseWidth": 2.4,
+    "topWidth": 0.8,
+    "panels": 9,
+    "colour": "#3e4650",
+    "colour2": "#3e4650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "head1",
+   "at": [
+    30,
+    46
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.0
+    ],
+    "height": 2.6,
+    "colour": "#d9dde0",
+    "z0": 34
+   }
+  },
+  {
+   "type": "prism",
+   "id": "headframe1",
+   "at": [
+    30,
+    46
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     1.2
+    ],
+    "height": 0.3,
+    "colour": "#3e4650",
+    "z0": 33.7
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "id": "mast2",
+   "at": [
+    40,
+    44
+   ],
+   "params": {
+    "height": 22,
+    "baseWidth": 2.4,
+    "topWidth": 0.8,
+    "panels": 9,
+    "colour": "#3e4650",
+    "colour2": "#3e4650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "head2",
+   "at": [
+    40,
+    44
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.0
+    ],
+    "height": 2.6,
+    "colour": "#d9dde0",
+    "z0": 22
+   }
+  },
+  {
+   "type": "prism",
+   "id": "headframe2",
+   "at": [
+    40,
+    44
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     1.2
+    ],
+    "height": 0.3,
+    "colour": "#3e4650",
+    "z0": 21.7
+   }
+  },
+  {
+   "type": "stand",
+   "id": "small-stand",
+   "params": {
+    "start": [
+     62,
+     -14
+    ],
+    "end": [
+     62,
+     14
+    ],
+    "rows": 3,
+    "seatColours": [
+     "#f2f4f7"
+    ],
+    "concreteColour": "#f0f0ee",
+    "backWall": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "id": "net-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 8,
+      "colour": "#d4d6d8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     58,
+     -26
+    ],
+    "end": [
+     58,
+     26
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fence-solid",
+   "lod": [
+    1
+   ],
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     74
+    ],
+    "height": 3.0,
+    "colour": "#1f2f5c",
+    "z0": 0,
+    "windows": "none",
+    "top": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   160,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -65,
+     44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     55
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-osm-way-923891668",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Overview framing vs close fence photo; fence is railing posts plus rails (mesh not woven); lattice masts are tapered frames with plain box heads; small stand placed by assumption; sand is a ground slab."
+ }
+}

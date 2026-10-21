@@ -1,0 +1,18 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "torshavn", "venueId": "torshavn-osm-node-13743098696", "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/43249771", "used": "containing building, 249 m2 (27 x 9 m), taken as the main school wing; the brief adds a dormitory wing and flagpole on a grass slope"}
+ ],
+ "camera": {"yawDeg": 20, "pitchDeg": 12, "fovDeg": 50, "aspect": 1.333, "margin": 0.15},
+ "parts": [
+  {"type": "mass", "id": "osm", "footprint": {"osm": true, "scale": 1.0, "fit": 30}, "at": [0, 0], "z0": 0, "height": 7.5, "storeys": 2,
+   "wall": {"material": "painted-render", "colour": "#e3dfd3", "windows": "punched", "windowRatio": 0.25, "plinth": 0.4, "bands": "#5f7a8c"},
+   "roof": {"form": "gable", "colour": "#3a3d40", "material": "corrugated", "pitch": 24, "overhang": 0.5}},
+  {"type": "mass", "id": "dorm", "footprint": {"rect": [9, 16]}, "at": [14, 6], "z0": 0, "height": 7, "storeys": 2,
+   "wall": {"material": "timber", "colour": "#5f7a8c", "windows": "punched", "windowRatio": 0.22, "plinth": 0.3},
+   "roof": {"form": "gable", "colour": "#3a3d40", "material": "corrugated", "pitch": 24, "overhang": 0.5}},
+  {"type": "flagpole", "at": [-12, -16, 0], "params": {"height": 9}}
+ ],
+ "site": {"ground": "grass", "forecourt": "parking", "forecourtDepth": 12, "trees": [{"kind": "conifer", "at": [-24, 10]}, {"kind": "conifer", "at": [24, -12]}], "extent": [80, 60]},
+ "review": {"rounds": 0, "match": "rough", "gaps": "no photo; dormitory wing position and wall colours from the brief, not seen"}
+}

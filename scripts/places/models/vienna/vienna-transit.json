@@ -1,0 +1,300 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Voroertelinie_Ottakring_Bahnhof.jpg",
+   "licence": "CC BY-SA 3.0 at",
+   "author": "HeinzLW",
+   "view": "front",
+   "file": "/tmp/places-evidence/vienna/ott2.jpg",
+   "used": "low white single-storey station building with tall arched-top windows, long timber-clad sloping platform canopy on slim pale-green iron posts, opposite platform canopy, two tracks in ballast"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vorortelinie_Ottakring.jpg",
+   "licence": "CC BY-SA 3.0 at",
+   "author": "HeinzLW",
+   "view": "street",
+   "file": "/tmp/places-evidence/vienna/ott1.jpg",
+   "used": "rock-faced stone viaduct wall with brick arches next to the station, steel railing on top"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/50924308",
+   "used": "station building about 34 x 12 m, two storeys tag"
+  }
+ ],
+ "camera": {
+  "yawDeg": 68,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.54,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ece8dc",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "plinth": 0.5,
+    "bay": 4.0,
+    "cornice": true,
+    "bands": "#d8d2c2",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a7f84",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    -2.5,
+    0
+   ],
+   "params": {
+    "length": 74,
+    "depth": 6.5,
+    "height": 0.9,
+    "colour": "#cfcabd"
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 62,
+    "depth": 6.5,
+    "height": 0.9,
+    "colour": "#cfcabd"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -9.2,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 2,
+    "spacing": 4.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    2.0,
+    0
+   ],
+   "params": {
+    "form": "shed",
+    "width": 36,
+    "depth": 6,
+    "height": 4.0,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#8a5a38",
+    "edgeColour": "#7fa896",
+    "axis": "x",
+    "rise": 2.0
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -18.4,
+    0
+   ],
+   "params": {
+    "form": "shed",
+    "width": 36,
+    "depth": 5,
+    "height": 3.6,
+    "thickness": 0.45,
+    "columns": 0,
+    "colour": "#8a5a38",
+    "edgeColour": "#7fa896",
+    "axis": "x",
+    "rise": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "viaduct-wall",
+   "footprint": {
+    "rect": [
+     30,
+     2.4
+    ]
+   },
+   "at": [
+    -47,
+    -14
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8e7a58",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "bay": 5,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6a5e",
+    "parapet": 0.9
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0.9
+     ],
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 3.3,
+      "colour": "#8fb6a2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -0.8
+    ],
+    "end": [
+     18,
+     -0.8
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0.9
+     ],
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 2.9,
+      "colour": "#8fb6a2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -16,
+     -20.4
+    ],
+    "end": [
+     16,
+     -20.4
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ballast",
+   "at": [
+    0,
+    -9.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     12
+    ],
+    "height": 0.12,
+    "colour": "#8c877e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     16
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-transit",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopy approximated by shed form without gabled fascia details or brackets; no platform signs, wires or train; platform building is a generic arched-window box; viaduct is block with window arches rather than rock-faced stone."
+ }
+}

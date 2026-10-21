@@ -1,0 +1,561 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "paris",
+ "venueId": "paris-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Versailles_view_from_the_Parterre_d%27eau.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Paolo Costa Baldi",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/paris/versailles1.jpg",
+   "used": "Latona basin with tiered fountain in the foreground, gravel terrace, flanking parterres with white vases and statues, the long Tapis Vert lawn between clipped tree rows, tall dark clipped hedge walls and forest masses, the Grand Canal closing the axis"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grand_Canal_Jardin_Ch%C3%A2teau_Versailles_-_Versailles_(FR78)_-_2021-12-19_-_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chabe01",
+   "view": "street",
+   "file": "/tmp/places-evidence/paris/versailles2.jpg",
+   "used": "grey-green canal water, stone coping and lawn banks, bare tree rows beyond"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 15,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "gravel",
+   "at": [
+    0,
+    -51.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     63.8
+    ],
+    "height": 0.06,
+    "colour": "#d9cdae",
+    "topColour": "#d9cdae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    -50.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     55.7
+    ],
+    "height": 0.12,
+    "colour": "#5d9a3a",
+    "topColour": "#68a841"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bedgrass-1",
+   "at": [
+    -21,
+    -94,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     16
+    ],
+    "height": 0.12,
+    "colour": "#4f8a34",
+    "topColour": "#5a9a3b"
+   }
+  },
+  {
+   "type": "office-tower/parterre",
+   "at": [
+    -21,
+    -94,
+    0.1
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-1",
+   "at": [
+    -35,
+    -50.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     60.3
+    ],
+    "height": 8,
+    "colour": "#243f20",
+    "topColour": "#2c4c27"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "treerow-1",
+   "at": [
+    -20,
+    -52.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     52
+    ],
+    "height": 9,
+    "colour": "#33552a",
+    "topColour": "#3f6a33"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     -80.8,
+     0
+    ],
+    "end": [
+     -27,
+     -28.6,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.0,
+        1.0
+       ],
+       "height": 1.3,
+       "colour": "#e3dcc9"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       1.3
+      ],
+      "params": {
+       "rect": [
+        0.7,
+        0.7
+       ],
+       "height": 1.5,
+       "colour": "#eee8d8",
+       "topScale": 0.6
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -62,
+    -50.7,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 60.3,
+    "count": 34,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bedgrass1",
+   "at": [
+    21,
+    -94,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     16
+    ],
+    "height": 0.12,
+    "colour": "#4f8a34",
+    "topColour": "#5a9a3b"
+   }
+  },
+  {
+   "type": "office-tower/parterre",
+   "at": [
+    21,
+    -94,
+    0.1
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge1",
+   "at": [
+    35,
+    -50.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     60.3
+    ],
+    "height": 8,
+    "colour": "#243f20",
+    "topColour": "#2c4c27"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "treerow1",
+   "at": [
+    20,
+    -52.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     52
+    ],
+    "height": 9,
+    "colour": "#33552a",
+    "topColour": "#3f6a33"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     27,
+     -80.8,
+     0
+    ],
+    "end": [
+     27,
+     -28.6,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.0,
+        1.0
+       ],
+       "height": 1.3,
+       "colour": "#e3dcc9"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       1.3
+      ],
+      "params": {
+       "rect": [
+        0.7,
+        0.7
+       ],
+       "height": 1.5,
+       "colour": "#eee8d8",
+       "topScale": 0.6
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    62,
+    -50.7,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 60.3,
+    "count": 34,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "prism",
+   "id": "latonaPool",
+   "at": [
+    0,
+    -120,
+    0
+   ],
+   "params": {
+    "radius": 26,
+    "n": 40,
+    "height": 0.7,
+    "colour": "#b9ae95",
+    "topColour": "#2e4647"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "latonaTiers",
+   "at": [
+    0,
+    -120,
+    0.7
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#7c6b57",
+    "profile": [
+     [
+      14.4,
+      0.0
+     ],
+     [
+      14.4,
+      1.4300000000000002
+     ],
+     [
+      11.200000000000001,
+      1.4300000000000002
+     ],
+     [
+      11.200000000000001,
+      2.8600000000000003
+     ],
+     [
+      8.0,
+      2.8600000000000003
+     ],
+     [
+      8.0,
+      4.29
+     ],
+     [
+      4.800000000000001,
+      4.29
+     ],
+     [
+      4.800000000000001,
+      5.59
+     ],
+     [
+      2.5600000000000005,
+      5.59
+     ],
+     [
+      2.2399999999999998,
+      7.279999999999999
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "latonaStatue",
+   "at": [
+    0,
+    -120,
+    8.47
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 3.2,
+    "colour": "#ece6d6",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     -120,
+     0.9
+    ],
+    "radius": 11,
+    "count": 14,
+    "lod2Step": 10,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "height": 1.5,
+       "colour": "#c9a24a",
+       "topScale": 0.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terraceWall",
+   "at": [
+    0,
+    -132,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     1.2
+    ],
+    "height": 1.3,
+    "colour": "#d2cab5",
+    "topColour": "#e0d9c6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terraceBand",
+   "at": [
+    0,
+    -138,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     10
+    ],
+    "height": 0.06,
+    "colour": "#e2d8bf",
+    "topColour": "#e2d8bf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canalBank",
+   "at": [
+    0,
+    -0.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     37.1
+    ],
+    "height": 0.1,
+    "colour": "#c9bd9e",
+    "topColour": "#c9bd9e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canal",
+   "at": [
+    0,
+    0.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     34.8
+    ],
+    "height": 0.2,
+    "colour": "#7d9593",
+    "topColour": "#7d9593"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canalEdge",
+   "at": [
+    0,
+    -17.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     1.4
+    ],
+    "height": 0.3,
+    "colour": "#cfc7b2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "basin is wider with dark water and stone rim, sand ground, tall hedge walls and clipped tree rows, wider canal with coping; no gilded figures on rim, topiary and box edging absent, forest masses are generic broadleaf groves, axis compressed, statues on plinths only as small vases"
+ }
+}

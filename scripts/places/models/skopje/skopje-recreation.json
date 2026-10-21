@@ -1,0 +1,493 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sv.Nikola-Shishevo.jpg",
+   "licence": "CC BY 3.0",
+   "author": "\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0435\u0446",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/skopje/shishevo1.jpg",
+   "used": "small stone-and-brick church with an octagonal belfry drum and tiled cap at the west end of a grassy terrace, ruined rubble curtain wall with a stub tower in front, red-tiled open pavilions and a small white house on the east side, wooded cliff behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St.Nicolas-Shishevo.jpg",
+   "licence": "CC BY 3.0",
+   "author": "\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0435\u0446",
+   "view": "street",
+   "file": "/tmp/places-evidence/skopje/shishevo2.jpg",
+   "used": "church seen from across the gorge, pavilion and wall layout"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1330252489",
+   "used": "yard outline, simplified, as the grass terrace"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#b7ad7a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7ad7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "rect": [
+     8.5,
+     10.5
+    ]
+   },
+   "at": [
+    -17,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c3a27a",
+    "windows": "arched",
+    "windowRatio": 0.05,
+    "windowShape": "arched",
+    "plinth": 0.4,
+    "faces": {
+     "front": "arched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": {
+     "colour": "#b6623f",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c6a4c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fresco-niche",
+   "footprint": {
+    "rect": [
+     3.0,
+     0.5
+    ]
+   },
+   "at": [
+    -17,
+    -3.0
+   ],
+   "rotDeg": 0,
+   "z0": 3.8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e3c24a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3c24a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -17,
+    3,
+    9.4
+   ],
+   "params": {
+    "colour": "#c4a47f",
+    "round": 8,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 2.1
+     },
+     {
+      "z": 5.2,
+      "circle": 2.1
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -17,
+    3,
+    14.6
+   ],
+   "params": {
+    "colour": "#a8583a",
+    "round": 8,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 2.5
+     },
+     {
+      "z": 1.0,
+      "circle": 2.2
+     },
+     {
+      "z": 2.3,
+      "circle": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-arches",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    -17,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 10.4,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4a47f",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4a47f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -30,
+    -17,
+    0.5
+   ],
+   "params": {
+    "length": 28,
+    "height": 3.2,
+    "thickness": 1.2,
+    "colour": "#a39a88",
+    "gaps": 0.1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    0,
+    -17,
+    0.5
+   ],
+   "params": {
+    "length": 30,
+    "height": 3.0,
+    "thickness": 1.2,
+    "colour": "#a39a88",
+    "gaps": 0.12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wall-tower",
+   "footprint": {
+    "rect": [
+     4.0,
+     4.0
+    ]
+   },
+   "at": [
+    -13,
+    -17
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 8.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9d957f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d957f"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    30,
+    -2,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "height": 4.0,
+    "thickness": 1.3,
+    "colour": "#a39a88",
+    "gaps": 0.12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     7,
+     2.0
+    ]
+   },
+   "at": [
+    -26,
+    -15
+   ],
+   "rotDeg": 0,
+   "z0": 2.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    16,
+    -4,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6.5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#7a5a3c",
+    "cap_colour": "#b4502f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    22,
+    3,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6.5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#7a5a3c",
+    "cap_colour": "#b4502f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    5,
+    6,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6.5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#7a5a3c",
+    "cap_colour": "#b4502f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-house",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    26,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4502f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 12,
+    "height": 26,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#8f8c84",
+    "boulders": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    33,
+    0.5
+   ],
+   "params": {
+    "width": 90,
+    "depth": 10,
+    "count": 20,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    2,
+    8,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Aerial camera still differs; cliff is a smooth rock hill, curtain wall not continuous, bridge small, church not coursed brick-and-stone texture, pavilions simplified, trees sparse vs wooded slope."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-recreation"
+}

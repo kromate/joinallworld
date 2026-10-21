@@ -1,0 +1,200 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-256477802",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Trybuna_kryta_na_Dolcanie_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Panoramio contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/warsaw/zabki.jpg",
+   "used": "low white-walled covered stand on the far touchline with red, white and blue seat rows, flat roof with a small press box on top, open grass pitch, tall white steel-bar gates and a chain-link ball fence in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/256477802",
+   "used": "site outline about 120 x 117 m, used to size pitch, stand and fence"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 22,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     34,
+     36
+    ],
+    "end": [
+     -24,
+     36
+    ],
+    "rows": 4,
+    "rise": 0.35,
+    "run": 0.8,
+    "seatColours": [
+     "#b3262f",
+     "#f1f1ee",
+     "#2b4f9a"
+    ],
+    "blocks": 9,
+    "concreteColour": "#f2f1ec",
+    "backWall": 2.5,
+    "under": "solid",
+    "canopy": {
+     "height": 4.0,
+     "depth": 4,
+     "colour": "#ffffff",
+     "supports": 7
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "press-box",
+   "at": [
+    8,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     2.4
+    ],
+    "z0": 4.1,
+    "height": 2.0,
+    "colour": "#d5d9d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    -48,
+    48
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2e0d8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8288",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 108,
+    "height": 4.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#f0f2f0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -51.5,
+    0
+   ],
+   "params": {
+    "length": 108,
+    "height": 6.0,
+    "thickness": 0.05,
+    "kind": "fence",
+    "pillarEvery": 3,
+    "colour": "#59665f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     62,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ball fence is bar posts without mesh; stand seat band small at this distance; clubhouse and background trees approximate; stand reads grey-blue"
+ }
+}

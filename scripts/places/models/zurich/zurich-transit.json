@@ -1,0 +1,697 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dietikon_-_Bahnhof_2012-03-10_15-56-43_(P7000).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Roland zh",
+   "view": "front",
+   "file": "/tmp/places-evidence/zurich/bhf2.jpg",
+   "used": "the 1976 station block: exposed concrete, ground floor of shops and entrance under a deep concrete deck, four upper storeys of stepped balcony terraces with planters in grey concrete trays and cream walls, glazed blue stair tower at the left end, bare poplars in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dietikon_-_Bahnhof_2012-03-26_18-33-22_(P7000)_ShiftN.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Roland zh",
+   "view": "street",
+   "used": "bus station forecourt: low dark flat canopy on slim columns, articulated buses, open asphalt square"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17488846",
+   "used": "not used for the outline: the name match is a different building (Bezirksgebaeude); only the 70 m x 20 m size from the brief is kept"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "margin": 0.08,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-hall",
+   "footprint": {
+    "rect": [
+     64,
+     15
+    ]
+   },
+   "at": [
+    2,
+    0.5
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3a3733",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     66,
+     19
+    ]
+   },
+   "at": [
+    2,
+    -1.5
+   ],
+   "z0": 4.5,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d998e",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "floor0",
+   "footprint": {
+    "rect": [
+     64,
+     15.0
+    ]
+   },
+   "at": [
+    2,
+    0.5
+   ],
+   "z0": 5.4,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978b",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tray0",
+   "footprint": {
+    "rect": [
+     66,
+     2.4
+    ]
+   },
+   "at": [
+    2,
+    -9.1
+   ],
+   "z0": 5.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d998e",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "floor1",
+   "footprint": {
+    "rect": [
+     64,
+     12.6
+    ]
+   },
+   "at": [
+    2,
+    1.7000000000000002
+   ],
+   "z0": 8.5,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978b",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tray1",
+   "footprint": {
+    "rect": [
+     66,
+     2.4
+    ]
+   },
+   "at": [
+    2,
+    -6.7
+   ],
+   "z0": 8.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d998e",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "floor2",
+   "footprint": {
+    "rect": [
+     64,
+     10.2
+    ]
+   },
+   "at": [
+    2,
+    2.8999999999999995
+   ],
+   "z0": 11.6,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978b",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tray2",
+   "footprint": {
+    "rect": [
+     66,
+     2.4
+    ]
+   },
+   "at": [
+    2,
+    -4.300000000000001
+   ],
+   "z0": 11.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d998e",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "floor3",
+   "footprint": {
+    "rect": [
+     64,
+     7.800000000000001
+    ]
+   },
+   "at": [
+    2,
+    4.1
+   ],
+   "z0": 14.7,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978b",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tray3",
+   "footprint": {
+    "rect": [
+     66,
+     2.4
+    ]
+   },
+   "at": [
+    2,
+    -1.9000000000000008
+   ],
+   "z0": 14.7,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d998e",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#4d5f6e",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     5.5,
+     7
+    ]
+   },
+   "at": [
+    -34,
+    -3
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f78b8",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#3f78b8",
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-pavilion",
+   "footprint": {
+    "rect": [
+     38,
+     9
+    ]
+   },
+   "at": [
+    14,
+    1
+   ],
+   "z0": 17.6,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2ddd0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    18,
+    -15,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 7,
+    "height": 3.2,
+    "thickness": 0.5,
+    "columns": 6,
+    "colour": "#2b2e32"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 5,
+    "spacing": 5.2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -22,
+    25,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 5,
+    "height": 3.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    14,
+    25,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 5,
+    "height": 3.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#5b4a3a",
+    "profile": [
+     [
+      0.15,
+      0,
+      "#6a5a48"
+     ],
+     [
+      0.15,
+      9
+     ],
+     [
+      0.25,
+      12
+     ],
+     [
+      0.12,
+      16
+     ],
+     [
+      0,
+      17
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#5b4a3a",
+    "profile": [
+     [
+      0.15,
+      0,
+      "#6a5a48"
+     ],
+     [
+      0.15,
+      9
+     ],
+     [
+      0.25,
+      12
+     ],
+     [
+      0.12,
+      16
+     ],
+     [
+      0,
+      17
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    6,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#5b4a3a",
+    "profile": [
+     [
+      0.15,
+      0,
+      "#6a5a48"
+     ],
+     [
+      0.15,
+      9
+     ],
+     [
+      0.25,
+      12
+     ],
+     [
+      0.12,
+      16
+     ],
+     [
+      0,
+      17
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    18,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#5b4a3a",
+    "profile": [
+     [
+      0.15,
+      0,
+      "#6a5a48"
+     ],
+     [
+      0.15,
+      9
+     ],
+     [
+      0.25,
+      12
+     ],
+     [
+      0.12,
+      16
+     ],
+     [
+      0,
+      17
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   110,
+   80
+  ],
+  "trees": [],
+  "cars": [
+   {
+    "at": [
+     30,
+     -25
+    ],
+    "yawDeg": 90,
+    "colour": "#d7d9dc"
+   },
+   {
+    "at": [
+     38,
+     -25
+    ],
+    "yawDeg": 90,
+    "colour": "#2c3034"
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stepped balcony trays over a concrete deck and blue stair tower added; planters, shop fronts and entrance hall are plain; poplars are simple posts"
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/270899677",
+   "used": "real 20 x 10 m outline, 2 levels, at the Wikidata coordinates of Varoulko Seaside"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q88389150",
+   "used": "restaurant, 1987; white glassy seafront look typed from setting, not photographed"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#b8b0a2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cdd0",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "roof-terrace",
+   "on": "restaurant",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "tables": 4,
+    "pergola": true,
+    "glass": true,
+    "bar": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.2,
+    "drop": 0.6,
+    "height": 3.2,
+    "colours": [
+     "#f1efe8",
+     "#7d8e9a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "forecourtDepth": 18,
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; white glassy look typed from the setting; real 20x10 m outline only."
+ }
+}

@@ -1,0 +1,406 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lozenetz_Hospital.JPG",
+   "licence": "Public domain",
+   "author": "\u0418\u0441\u043a\u0440\u0430 \u0412\u0430\u0441\u0438\u043b\u0435\u0432\u0430",
+   "view": "front",
+   "file": "/tmp/places-evidence/sofia/lozenets.jpg",
+   "used": "main entrance: glazed foyer under a flat canopy with a wide flight of steps, pale sand-coloured render wings with ribbon windows and balcony floors, taller block behind, brown blank sign board, flagpoles, setted pavers, mature trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16476740",
+   "used": "hospital campus is 550 x 430 m; only the entrance block group is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    16
+   ],
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc9a8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "bands": "#bdb78f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#cdc6a4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    26,
+    5
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cbc5a6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -9,
+    10.5
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8c9a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -9,
+    4.6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 17,
+    "depth": 5.5,
+    "height": 4.4,
+    "columns": 4,
+    "colour": "#b8b2a0",
+    "edgeColour": "#8f8a7a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9,
+    0.6,
+    0
+   ],
+   "params": {
+    "width": 15,
+    "rise": 0.36,
+    "run": 0.95,
+    "count": 7,
+    "colour": "#8e8a7e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -13,
+    0
+   ],
+   "params": {
+    "radius": 6.2,
+    "n": 24,
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#8c8a80"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -13,
+    0
+   ],
+   "params": {
+    "radius": 5.5,
+    "n": 24,
+    "z0": 0.45,
+    "height": 0.1,
+    "colour": "#5f8a3c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -13,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "spread": 6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -24,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 2.4,
+    "colours": [
+     "#b6323a",
+     "#f2f2ee",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28,
+    -8,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -0.6
+     ],
+     [
+      4,
+      -0.6
+     ],
+     [
+      4,
+      0.6
+     ],
+     [
+      -4,
+      0.6
+     ]
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#7d786c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    28,
+    -8,
+    0.7
+   ],
+   "params": {
+    "width": 6.5,
+    "height": 2.4,
+    "bottom": 0.3,
+    "colour": "#5a3b2e",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -31,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-osm-relation-16476740",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "flags are thin and hard to read, steps are small and partly hidden behind the canopy, trees are low-poly and sparser than the photo; lawn ring planter, setted paving, sand-olive wings and sign board now match"
+ }
+}

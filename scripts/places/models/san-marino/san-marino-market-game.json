@@ -1,0 +1,115 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/32476610",
+   "used": "named retail outline (Azzurro, ~216 x 62 m, 9156 m2); modelled as a two-storey shopping block with blue band; no photo found"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/san-marino.json#san-marino-market-game",
+   "used": "retail, cream render #e5dcc6, blue #4a7fb0 accent, terracotta roof colour"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#4a7fb0",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49c",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 6.5,
+    "colour": "#4a7fb0",
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "colours": [
+     "#4a7fb0",
+     "#f3eee2"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 12,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo of Azzurro found; real OSM outline and brief only; storey count, blue band and entrance placement are assumed."
+ }
+}

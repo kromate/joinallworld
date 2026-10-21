@@ -1,0 +1,361 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Nostra_Senyora_de_Meritxell._Escaldes-Engordany._Andorra_81.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Luis Miguel Bugallo Sanchez (Lmbuga)",
+   "view": "street",
+   "file": "/tmp/places-evidence/andorra-la-vella/hosp.jpg",
+   "used": "long stone-clad six-storey block with ribbon windows, blank sign box on the roof, arched glazed entrance hall, white balconied block to the left, dark glass block to the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Heliport_Andorra.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Walmaul",
+   "view": "street",
+   "used": "stone cladding colour, narrow punched windows, roof helipad with striped edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1058436401",
+   "used": "identity and location only (outline is a small pavilion, not the block)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     90,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#a79886",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-box",
+   "footprint": {
+    "rect": [
+     22,
+     2
+    ]
+   },
+   "at": [
+    8,
+    3
+   ],
+   "z0": 19,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e8e8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d0d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    -15
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8590",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#7f8a90",
+    "rise": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -60,
+    -4
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 7,
+   "wall": {
+    "material": "render",
+    "colour": "#e2ddd0",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.4,
+      "every": 3.5,
+      "width": 3,
+      "colour": "#f0ece2",
+      "railKind": "solid",
+      "faces": [
+       "front"
+      ],
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d7466",
+    "rise": 2.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    62,
+    -5
+   ],
+   "z0": 0,
+   "height": 23,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3d46",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f757a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -24.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.5,
+    "bottom": 6.5,
+    "colour": "#e8e8e8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 4,
+    "spread": 6,
+    "line": 50
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {}
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -30
+    ],
+    "end": [
+     30,
+     -30
+    ],
+    "count": 6
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "east-step",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    72,
+    -3
+   ],
+   "z0": 0,
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#26343d",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f757a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy",
+   "footprint": {
+    "rect": [
+     18,
+     5
+    ]
+   },
+   "at": [
+    -6,
+    -17.5
+   ],
+   "z0": 6,
+   "height": 1,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8f93",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill",
+   "at": [
+    0,
+    42
+   ],
+   "params": {
+    "radius": 42,
+    "n": 10,
+    "z0": 0,
+    "height": 30,
+    "topScale": [
+     0.35,
+     0.2
+    ],
+    "colour": "#4e5f3c",
+    "topColour": "#4e5f3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "longer lower ribbon-window block with roof sign box, taller balconied white and stepped dark glass blocks, arched hall with canopy, hillside and parking added; stone facade windows approximate, rear block dropped, far hillside hospital omitted"
+ }
+}

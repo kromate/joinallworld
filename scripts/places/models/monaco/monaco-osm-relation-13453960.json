@@ -1,0 +1,1285 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-relation-13453960",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nouveau_mus%C3%A9e_national_de_Monaco_(novembre_2021).jpg",
+   "licence": "CC0",
+   "author": "Benoit Prieur",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/nnm.jpg",
+   "used": "Villa Sauber from the street: rubble stone terrace wall topped by white balustrade, cream Belle Epoque villa with ornate corner tower and green cupola, cypress and palm, tall apartment blocks behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/94400086",
+   "used": "not used: nearest match is an unrelated apartment block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.5
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tower is a stacked-box belvedere with onion cupola, not the carved ornate Villa Sauber tower; wall is a regular stone pattern, not irregular rubble; back blocks lack real balconies and awnings; trees are low-poly cones and blobs"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 9.5,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece0c6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.28,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#fbf6e8"
+      ],
+      "height": 0.5,
+      "at": 0.34,
+      "proud": 0.15,
+      "floors": "all"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6b2",
+    "parapet": 0.9,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     11,
+     10
+    ]
+   },
+   "at": [
+    -15,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 9.5,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e9d6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.26,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6b2",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tw1",
+   "footprint": {
+    "rect": [
+     4.8,
+     4.8
+    ]
+   },
+   "at": [
+    7,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 9.5,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#f1e6c8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tw2",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    7,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 21.0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#f6eed8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "cupola",
+   "at": [
+    7,
+    -3,
+    28.9
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#6fa58a"
+     ],
+     [
+      1.7,
+      0.1
+     ],
+     [
+      2.0,
+      1.0
+     ],
+     [
+      1.5,
+      2.0
+     ],
+     [
+      0.7,
+      2.9
+     ],
+     [
+      0.25,
+      3.7
+     ],
+     [
+      0.05,
+      4.6,
+      "#d4b04a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pin0",
+   "at": [
+    4.4,
+    -5.6,
+    20.5
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.4
+     ],
+     [
+      0.01,
+      2.2
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "pin1",
+   "at": [
+    9.6,
+    -5.6,
+    20.5
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.4
+     ],
+     [
+      0.01,
+      2.2
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "pin2",
+   "at": [
+    4.4,
+    -0.3999999999999999,
+    20.5
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.4
+     ],
+     [
+      0.01,
+      2.2
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "pin3",
+   "at": [
+    9.6,
+    -0.3999999999999999,
+    20.5
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.4
+     ],
+     [
+      0.01,
+      2.2
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "fin-roof",
+   "at": [
+    -4,
+    -6,
+    22.0
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#f3ead2"
+     ],
+     [
+      0.4,
+      0.1
+     ],
+     [
+      0.3,
+      2.2
+     ],
+     [
+      0.01,
+      3.4,
+      "#6fa58a"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "fin0",
+   "at": [
+    -9,
+    -1,
+    22.1
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.25,
+      0.1
+     ],
+     [
+      0.2,
+      0.8
+     ],
+     [
+      0.01,
+      1.6
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "fin1",
+   "at": [
+    -3,
+    -1,
+    22.1
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.25,
+      0.1
+     ],
+     [
+      0.2,
+      0.8
+     ],
+     [
+      0.01,
+      1.6
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "fin2",
+   "at": [
+    3,
+    -1,
+    22.1
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.25,
+      0.1
+     ],
+     [
+      0.2,
+      0.8
+     ],
+     [
+      0.01,
+      1.6
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "fin3",
+   "at": [
+    -12,
+    4,
+    22.1
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.25,
+      0.1
+     ],
+     [
+      0.2,
+      0.8
+     ],
+     [
+      0.01,
+      1.6
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "terrace-wall",
+   "footprint": {
+    "rect": [
+     46,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9ad96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6ddc4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "id": "balus",
+   "at": [
+    0,
+    -14.3,
+    5.2
+   ],
+   "params": {
+    "length": 46,
+    "height": 1.4,
+    "colour": "#efe8d4",
+    "postEvery": 1.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    -4,
+    -15.2,
+    1.0
+   ],
+   "params": {
+    "width": 12,
+    "height": 5.2,
+    "bottom": 0.4,
+    "colour": "#f6f6f2",
+    "frameColour": "#d9d9d4",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "apt1",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    -24,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 38,
+   "storeys": 11,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d4",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d6cab0"
+      ]
+     }
+    ],
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt2",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -9,
+    36
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d6cab0"
+      ]
+     }
+    ],
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt3",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    4,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 52,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f2e8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e2d8c0"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#f7f1e2"
+      ],
+      "height": 0.35,
+      "at": 0.0,
+      "proud": 0.35,
+      "floors": "all"
+     }
+    ],
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt4",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    22,
+    42
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 42,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6a56e",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d6cab0"
+      ]
+     }
+    ],
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "cyp0",
+   "at": [
+    -27,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 26,
+    "colour": "#1f3d28"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "cyp1",
+   "at": [
+    -22,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22,
+    "colour": "#1f3d28"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "cyp2",
+   "at": [
+    -17,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 24,
+    "colour": "#1f3d28"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge0",
+   "at": [
+    -8,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "colour": "#4f7a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge1",
+   "at": [
+    1,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "colour": "#5c8540"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge2",
+   "at": [
+    12,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "colour": "#4f7a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "palm",
+   "at": [
+    18,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 19,
+    "colour": "#5a8a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "terrace-fill",
+   "footprint": {
+    "rect": [
+     44,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc2a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "belv",
+   "at": [
+    7,
+    -3,
+    25.4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      1.5,
+      0,
+      "#f6eed8"
+     ],
+     [
+      1.5,
+      3.0
+     ]
+    ],
+    "arcade": {
+     "count": 8,
+     "width": 0.9,
+     "height": 2.2,
+     "sill": 0.4,
+     "shape": "arched",
+     "depth": 1.0
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "tw-lantern",
+   "at": [
+    7,
+    -3,
+    28.4
+   ],
+   "params": {
+    "segments": 12,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#f3ead2"
+     ],
+     [
+      1.2,
+      0.05
+     ],
+     [
+      1.0,
+      0.5
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.01,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "rp0",
+   "at": [
+    -10,
+    -6.1,
+    22.0
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.2
+     ],
+     [
+      0.01,
+      2.4,
+      "#d4b04a"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "rp1",
+   "at": [
+    -6,
+    -6.1,
+    22.0
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.2
+     ],
+     [
+      0.01,
+      2.4,
+      "#d4b04a"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "rp2",
+   "at": [
+    -2,
+    -6.1,
+    22.0
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.2
+     ],
+     [
+      0.01,
+      2.4,
+      "#d4b04a"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "rp3",
+   "at": [
+    2,
+    -6.1,
+    22.0
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.2
+     ],
+     [
+      0.01,
+      2.4,
+      "#d4b04a"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "rp4",
+   "at": [
+    10,
+    -6.1,
+    22.0
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.2
+     ],
+     [
+      0.01,
+      2.4,
+      "#d4b04a"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "rp5",
+   "at": [
+    12,
+    -6.1,
+    22.0
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#fbf6e8"
+     ],
+     [
+      0.3,
+      0.1
+     ],
+     [
+      0.25,
+      1.2
+     ],
+     [
+      0.01,
+      2.4,
+      "#d4b04a"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "hx0",
+   "at": [
+    -13,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "colour": "#4a7436"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "hx1",
+   "at": [
+    6,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "colour": "#5c8540"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "hx2",
+   "at": [
+    18,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "colour": "#4f7a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "hx3",
+   "at": [
+    24,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#5c8540"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   80,
+   60
+  ]
+ }
+}

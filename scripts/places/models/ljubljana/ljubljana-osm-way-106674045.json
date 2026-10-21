@@ -1,0 +1,321 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kunstle_Villa,_Vrhnika,_August_2009.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Janos Korom Dr.",
+   "view": "front",
+   "file": "/tmp/places-evidence/ljubljana/villa1.jpg",
+   "used": "two-storey orange-ochre stucco front, central slim bay tower with steep green-tile spire, brown-red hipped main roof, small green dormer spires, timber-clad oriel wing at the left, balcony over the entrance"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kunstle_Villa,_Vrhnika,_May_2007.jpg",
+   "licence": "public domain",
+   "author": "Photo of Filip Supancic villa",
+   "view": "side",
+   "used": "left side timber verandas and depth of the building"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/106674045",
+   "used": "name match; footprint is a skewed polygon so a clean rectangle of similar area (about 20 x 13 m) was composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     21,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d08a52",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bands": "#efe0bc",
+    "plinth": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#efe0bc"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4638",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-wing",
+   "footprint": {
+    "rect": [
+     3.5,
+     6
+    ]
+   },
+   "at": [
+    -12.25,
+    -3.5
+   ],
+   "height": 7.8,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#3d281c",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    },
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4638",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.0,
+     2.4
+    ]
+   },
+   "at": [
+    2.6,
+    -5.3
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d6965c",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bands": "#efe0bc"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f8a73",
+    "material": "slate",
+    "rise": 5.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    2.6,
+    -6.9,
+    3.4
+   ],
+   "params": {
+    "width": 3.6,
+    "railing_colour": "#7a4e31"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    2.6,
+    -5.3,
+    16.8
+   ],
+   "params": {
+    "baseWidth": 0.3,
+    "height": 2.2,
+    "colour": "#2f8a73"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-l",
+   "footprint": {
+    "rect": [
+     1.1,
+     1.1
+    ]
+   },
+   "at": [
+    -4,
+    -2.5
+   ],
+   "z0": 9.2,
+   "height": 1.4,
+   "wall": {
+    "material": "timber",
+    "colour": "#5b4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f8a73",
+    "rise": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-r",
+   "footprint": {
+    "rect": [
+     1.1,
+     1.1
+    ]
+   },
+   "at": [
+    8,
+    -2.5
+   ],
+   "z0": 9.2,
+   "height": 1.4,
+   "wall": {
+    "material": "timber",
+    "colour": "#5b4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f8a73",
+    "rise": 1.6
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -1.5,
+    0,
+    10.6
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 2.0,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-panel-0",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    -2.2,
+    -6.7
+   ],
+   "z0": 3.8,
+   "height": 3.2,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a4a2c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "trimColour": "#efe0bc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a4a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-panel-1",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    7.2,
+    -6.7
+   ],
+   "z0": 3.8,
+   "height": 3.2,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a4a2c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "trimColour": "#efe0bc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a4a2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -17,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-osm-way-106674045",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower lantern/bellcast omitted; no stucco relief or shutters on window surrounds; wing balconies simplified; photo is angled while render is frontal"
+ }
+}

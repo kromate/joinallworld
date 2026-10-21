@@ -1,0 +1,291 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zurich",
+ "venueId": "zurich-osm-way-236595729",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:M%C3%A4nnedorf_-_Spital_-_Z%C3%BCrichsee_-_Dampfschiff_Stadt_Z%C3%BCrich_2012-07-22_16-42-45_(P7000).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Roland zh",
+   "view": "front",
+   "file": "/tmp/places-evidence/zurich/236595729_0.jpg",
+   "used": "low pale stone/render podium with open pillar ground storey and trees on the terrace, white retaining wall at the lake edge, taller block above, older white wing with dark mansard roof on the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3688008",
+   "used": "hospital building outline (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.08,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 6,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e2dac0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e2dac0",
+      "#cfc7a8"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa07a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "polygon": [
+     [
+      -52,
+      -40
+     ],
+     [
+      50,
+      -40
+     ],
+     [
+      50,
+      -26
+     ],
+     [
+      -52,
+      -26
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcd6c0",
+    "windows": "none",
+    "pattern": {
+     "type": "pilotis",
+     "inset": 1.5,
+     "spacing": 4.5,
+     "width": 0.5,
+     "colour": "#bfb9a4",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa07a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-wing",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -50,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee6",
+    "windows": "punched",
+    "plinth": 0.5,
+    "windowRatio": 0.28,
+    "bay": 5.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#3f3a38",
+    "material": "slate",
+    "pitch": 55,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    26,
+    28,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 3
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.6,
+    "thickness": 0.7,
+    "kind": "wall",
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    6
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 5,
+      "count": 1,
+      "spread": 1
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -33
+    ],
+    "end": [
+     46,
+     -33
+    ],
+    "count": 7
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    -2,
+    6
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 34,
+    "colour": "#8a8d90"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -2,
+    40
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#b8403a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -56,
+    -0.3
+   ],
+   "params": {
+    "rect": [
+     84,
+     14
+    ],
+    "height": 0.3,
+    "colour": "#5d9bb8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Podium now long, aligned and pilotis with terrace trees, lake plane, crane mast; no scaffolding, no lawn slope, mansard old wing only roughly placed; OSM outline orientation still differs from photo"
+ }
+}

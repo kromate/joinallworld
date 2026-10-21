@@ -1,0 +1,333 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:S%C3%B6rentorp-Administration-DSC_6231-2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Alinnman",
+   "view": "front",
+   "file": "/tmp/places-evidence/stockholm/sor1.jpg",
+   "used": "Sorentorp administration building: 4-storey red-brick block with tall paired windows, white-rendered entrance link with glass canopy and carved crest board, ochre-rendered 3-storey wing with hipped grey roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Solb_2001_11_109.jpg",
+   "licence": "Public domain",
+   "author": "Unknown",
+   "view": "street",
+   "file": "/tmp/places-evidence/stockholm/sor2.jpg",
+   "used": "setting only: pale blocks among pine trees on open grass"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/165847212",
+   "used": "not used for geometry: it is the whole 760,000 m2 campus site, far over the clamp; one building is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brick-block",
+   "footprint": {
+    "rect": [
+     18,
+     18
+    ]
+   },
+   "at": [
+    14,
+    0
+   ],
+   "height": 17.5,
+   "storeys": 4,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8a4232",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 3.4,
+    "plinth": 0.5,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "at": [
+    -4,
+    1
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5d6166",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ochre-wing",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    -26,
+    1
+   ],
+   "height": 8.6,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#dfb677",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a6e72",
+    "material": "slate",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "entrance-canopy",
+   "at": [
+    -4,
+    -5.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -5.8,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.8,
+    "bottom": 5.2,
+    "colour": "#7a5a38",
+    "frameColour": "#d9c07a",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    22,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 1,
+    "colours": [
+     "#c8c8c4"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge0",
+   "footprint": {
+    "rect": [
+     14,
+     1.4
+    ]
+   },
+   "at": [
+    -30,
+    -6.2
+   ],
+   "height": 1.3,
+   "wall": {
+    "material": "render",
+    "colour": "#3f5f34",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#47693a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge1",
+   "footprint": {
+    "rect": [
+     8,
+     1.4
+    ]
+   },
+   "at": [
+    -16,
+    -6.2
+   ],
+   "height": 1.3,
+   "wall": {
+    "material": "render",
+    "colour": "#3f5f34",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#47693a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge2",
+   "footprint": {
+    "rect": [
+     6,
+     1.4
+    ]
+   },
+   "at": [
+    2,
+    -6.2
+   ],
+   "height": 1.3,
+   "wall": {
+    "material": "render",
+    "colour": "#3f5f34",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#47693a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     2
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     12
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -4
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -48,
+     10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     14
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -52,
+     0
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     14
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     46,
+     0
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -8
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Brick block now 4 storeys with tall narrow windows but no paired mullions or brick relief; ochre wing is 3 storeys with long hipped roof, link has canopy and crest board only approximately; hedges, pines and asphalt added; rest of campus not modelled."
+ }
+}

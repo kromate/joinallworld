@@ -1,0 +1,445 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "torshavn",
+ "venueId": "torshavn-osm-way-493139327",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kirkjub%C3%B8ur_St_Magnus_Cathedral_seen_from_the_northeast.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ymblanter",
+   "view": "side",
+   "file": "/tmp/places-evidence/torshavn/493139327_3.jpg",
+   "used": "roofless rubble-stone gable end with tall pointed doorway, thick walls, grass growing on the wall heads, black lean-to roof on a lower wing, hillside and sea behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kirkjub%C3%B8ur,_Faroe_Islands.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Erik Christensen",
+   "view": "side",
+   "file": "/tmp/places-evidence/torshavn/493139327_0.jpg",
+   "used": "large pointed window openings in the side wall and the east gable, grey-brown lichened stone, farm with turf roof behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/493139327",
+   "used": "identity and overall extent (26 x 16 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier-w",
+   "footprint": {
+    "rect": [
+     3.3,
+     2
+    ]
+   },
+   "at": [
+    -3.35,
+    -9.5
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a665e",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "bay": 6,
+    "glassColour": "#1f2224"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7a3d",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-e",
+   "footprint": {
+    "rect": [
+     3.3,
+     2
+    ]
+   },
+   "at": [
+    3.35,
+    -9.5
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#66625a",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "bay": 6,
+    "glassColour": "#1f2224"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7a3d",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     3.4,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a665e",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "bay": 6,
+    "glassColour": "#1f2224"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7a3d",
+    "material": "membrane"
+   },
+   "z0": 7.5
+  },
+  {
+   "type": "mass",
+   "id": "gable-rear",
+   "footprint": {
+    "rect": [
+     10,
+     2
+    ]
+   },
+   "at": [
+    0,
+    9.5
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#625f58",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "glassColour": "#1f2224",
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7a3d",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-east",
+   "footprint": {
+    "rect": [
+     2,
+     17
+    ]
+   },
+   "at": [
+    4,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a665e",
+    "windows": "pointed-arch",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "glassColour": "#1f2224",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7a3d",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-west",
+   "footprint": {
+    "rect": [
+     2,
+     17
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#625f58",
+    "windows": "pointed-arch",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "glassColour": "#1f2224",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7a3d",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lean-to",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -9.5,
+    -3.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#625f58",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#23262a",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "thickness": 0.7,
+    "colour": "#7a766d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-w",
+   "footprint": {
+    "rect": [
+     2.2,
+     17
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#5f7a3d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b8a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-e",
+   "footprint": {
+    "rect": [
+     2.2,
+     17
+    ]
+   },
+   "at": [
+    4,
+    0
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#5f7a3d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b8a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-r",
+   "footprint": {
+    "rect": [
+     10.2,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    9.5
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#5f7a3d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b8a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-pw",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.2
+    ]
+   },
+   "at": [
+    -3.35,
+    -9.5
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#5f7a3d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b8a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-pe",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.2
+    ]
+   },
+   "at": [
+    3.35,
+    -9.5
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#5f7a3d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b8a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-l",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#5f7a3d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b8a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stone reads as regular coursed blocks, not irregular rubble; portal is a flat lintel opening, not a pointed arch; no hillside or sea backdrop; lean-to window omitted"
+ }
+}

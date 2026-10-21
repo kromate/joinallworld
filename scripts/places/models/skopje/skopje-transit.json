@@ -1,0 +1,262 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%96%D0%A1_%D0%9A%D0%B0%D0%B4%D0%B8%D0%BD%D0%B0_%D0%A0%D0%B5%D0%BA%D0%B0.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Македонец",
+   "view": "front",
+   "file": "/tmp/places-evidence/skopje/kadina.jpg",
+   "used": "long single-storey ochre-yellow station building with a broad dark-brown tiled hip roof and four brick chimneys, two doors, four windows, blank name board, low concrete platform, tracks with gravel and a steep wooded slope behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/640059151",
+   "used": "overall length (about 30-40 m); outline too irregular to use directly"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     27,
+     7.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e3b24a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a5144",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney-1",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    -12.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9b5a43",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4c38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney-2",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9b5a43",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4c38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney-3",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9b5a43",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4c38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney-4",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    12.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9b5a43",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4c38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     40,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    -5.1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a69e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -3.9,
+    2.3
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.9,
+    "bottom": 2.3,
+    "colour": "#f2f0ea",
+    "frameColour": "#6b6b6b",
+    "posts": false
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "tracks": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 8,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   70,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "No clock, doors differ in colour, windows not individually matched, gravel bed and steep wooded slope behind absent; trees too tall and bushy."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-transit"
+}

@@ -1,0 +1,459 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moscow_Tushino_Children_Hospital_9-may-2015.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mike1979 Russia",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/moscow/clinic1.jpg",
+   "used": "long seven-storey cream main block with white horizontal bands, dark glazed stair core in the centre, lower stepped end wings, pilotis passage at the right end, taller rear block, white flat-roofed entrance pavilion, park setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8220601",
+   "used": "identity only: the real outline covers the whole campus (537 m), the main building is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     70,
+     16.3
+    ]
+   },
+   "at": [
+    0.0,
+    0.0
+   ],
+   "height": 17.0,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cfa4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#fbfaf5",
+    "plinth": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5.2,
+    "pattern": {
+     "type": "pilotis",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0b8",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     8,
+     2.8
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 18.6,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c343c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4046",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     38.1,
+     12.2
+    ]
+   },
+   "at": [
+    12,
+    19.5
+   ],
+   "height": 11,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c79c",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "bands": "#efe9dc",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 5.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0b8",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     20.4,
+     12.2
+    ]
+   },
+   "at": [
+    -44.5,
+    1.4
+   ],
+   "height": 10,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cfa4",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "bands": "#f1eee6",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 5.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0b8",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     25.8,
+     12.2
+    ]
+   },
+   "at": [
+    48.5,
+    -1.4
+   ],
+   "height": 11.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cfa4",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "bands": "#f1eee6",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 5.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0b8",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     12.2,
+     6.8
+    ]
+   },
+   "at": [
+    -4.1,
+    -15.0
+   ],
+   "height": 4.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f2ee",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "curtain"
+    },
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8590",
+    "material": "membrane",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4.1,
+    -18.5,
+    2.2
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.3,
+    "bottom": 2.8,
+    "colour": "#2f5f9c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -4.1,
+    -19.7,
+    0.0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 4,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#e9e9e6"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    39.4,
+    -9.5,
+    0.0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-14",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    -14,
+    2
+   ],
+   "z0": 17,
+   "height": 1.8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc8b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-2",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    -2,
+    2
+   ],
+   "z0": 17,
+   "height": 1.8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc8b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant10",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    10,
+    2
+   ],
+   "z0": 17,
+   "height": 1.8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc8b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant22",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    22,
+    2
+   ],
+   "z0": 17,
+   "height": 1.8,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc8b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "col",
+     "footprint": {
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     "height": 3.6,
+     "wall": {
+      "material": "concrete",
+      "colour": "#fbfaf5",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#fbfaf5"
+     }
+    },
+    "mode": "line",
+    "count": 15,
+    "start": [
+     -32,
+     -9.2
+    ],
+    "end": [
+     32,
+     -9.2
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20.4,
+     -23.1
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     19.0,
+     -24.5
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     27.2,
+     -27.2
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Real block is curved/chevron, model straight; white pilotis columns added but ground floor still reads solid; roof renders grey despite cream colour; park paths and dense trees omitted."
+ }
+}

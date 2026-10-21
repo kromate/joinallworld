@@ -1,0 +1,510 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "berlin",
+ "venueId": "berlin-osm-way-1442933370",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Volkspark_Lichtenrade_(2010)_1151-1031-(120).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lotse",
+   "view": "detail",
+   "used": "ENTRANCE ONLY: boulder with steel lettering plate, white-green info board on two steel posts, gravel path, dense broadleaf woodland and undergrowth. Does not evidence the park layout.",
+   "file": "/tmp/places-evidence/berlin/VolksparkLicht.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1442933370",
+   "used": "park outline (305 x 221 m, fitted to the scene) as the lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    2,
+    4
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#4f6a35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6a35"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.52
+   ],
+   "params": {
+    "points": [
+     [
+      14,
+      -8
+     ],
+     [
+      9,
+      -4
+     ],
+     [
+      6,
+      0
+     ],
+     [
+      5,
+      5
+     ],
+     [
+      7,
+      10
+     ],
+     [
+      9,
+      16
+     ]
+    ],
+    "width": 3.0,
+    "colour": "#6b6258"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -2,
+    -4,
+    0.5
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       2.8499999999999996,
+       1.4
+      ]
+     },
+     {
+      "z": 0.75,
+      "ellipse": [
+       3.3000000000000003,
+       1.6099999999999999
+      ]
+     },
+     {
+      "z": 1.5,
+      "ellipse": [
+       3.0,
+       1.4
+      ]
+     },
+     {
+      "z": 2.0999999999999996,
+      "ellipse": [
+       1.6500000000000001,
+       0.84
+      ]
+     },
+     {
+      "z": 2.325,
+      "ellipse": [
+       0.75,
+       0.42
+      ]
+     }
+    ],
+    "colour": "#8a8068",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -5.95,
+    0.75
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.08
+    ],
+    "height": 0.4,
+    "colour": "#b8bcbc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.5,
+    -3.4,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "height": 3.0,
+    "colour": "#b0b4b4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.6,
+    -3.4,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "height": 3.0,
+    "colour": "#b0b4b4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.05,
+    -3.45,
+    2.1
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     0.1
+    ],
+    "height": 1.2,
+    "colour": "#e9ecdf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.05,
+    -3.52,
+    2.7
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.04
+    ],
+    "height": 0.3,
+    "colour": "#3f6b4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    3,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.08
+    ],
+    "height": 1.8,
+    "colour": "#9aa0a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    2.95,
+    1.7
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.05
+    ],
+    "height": 0.5,
+    "colour": "#dfe4d8"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -4.800000000000001,
+    5.6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    3.2,
+    9.2,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 8,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    9.600000000000001,
+    3.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 10,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    9.600000000000001,
+    3,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -8.0,
+    10.4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -3.2,
+    3,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    8.0,
+    10.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 6,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -12,
+    6.8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 10,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    1,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 5,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3e6a30"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    3,
+    -2,
+    0.5
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3e6a30"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    10,
+    -1,
+    0.5
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3e6a30"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    11,
+    6,
+    0.5
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3e6a30"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    1,
+    5,
+    0.5
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3e6a30"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -6,
+    2,
+    0.5
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3e6a30"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    8,
+    8,
+    0.5
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3e6a30"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -12,
+    4,
+    0.5
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3e6a30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   36,
+   22
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Photo evidences only the entrance (boulder, steel plate, info board, gravel path, woodland); verified downgraded to footprint because the park layout is not evidenced. Entrance scene is a small stand-in ground, boulder is a smooth loft, trees low-poly, path and undergrowth generic; real path network and meadows unknown."
+ }
+}

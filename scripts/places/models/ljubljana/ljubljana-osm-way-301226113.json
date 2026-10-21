@@ -1,0 +1,354 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-osm-way-301226113",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Golo_Ig_Slovenia_-_church_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Doremo",
+   "view": "front",
+   "file": "/tmp/places-evidence/ljubljana/lj-golo.jpg",
+   "used": "white plastered nave with pilastered pediment front, square clocked tower rising from the front bay with a dark domed cap, bell lantern and onion finial, red-brown nave roof with dark metal edges, low white churchyard wall (STAND-IN: photo is the church at Golo, not St Margaret; proportions only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/301226113",
+   "used": "orientation and size check of the nave (about 28 x 16 m outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 0.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ea",
+    "windows": "arched",
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.08,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.2,
+      "spacing": 2.8,
+      "colour": "#ebe8dc",
+      "margin": 0.8,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.5
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.2,
+     6.2
+    ]
+   },
+   "at": [
+    0,
+    -3.2
+   ],
+   "z0": 8.4,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ea",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "cornice": true,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-cap",
+   "at": [
+    0,
+    -3.2,
+    18.4
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#3b3f45",
+    "profile": [
+     [
+      3.5,
+      0
+     ],
+     [
+      3.6,
+      0.3
+     ],
+     [
+      3.2,
+      0.9
+     ],
+     [
+      2.2,
+      1.5
+     ],
+     [
+      1.3,
+      2.0
+     ],
+     [
+      0.9,
+      2.6
+     ],
+     [
+      0.8,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern",
+   "at": [
+    0,
+    -3.2,
+    21.4
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.6,
+    "colour": "#2f3338",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "onion",
+   "at": [
+    0,
+    -3.2,
+    24.0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#2f3338",
+    "profile": [
+     [
+      0.8,
+      0
+     ],
+     [
+      1.15,
+      0.6
+     ],
+     [
+      0.8,
+      1.3
+     ],
+     [
+      0.25,
+      1.9
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross",
+   "at": [
+    0,
+    -3.2,
+    26.3
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 1.8,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "yard-wall-front",
+   "at": [
+    -6,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.8,
+    "thickness": 0.5,
+    "colour": "#efece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-disc",
+   "at": [
+    0,
+    -6.4,
+    16.4
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.25
+    ],
+    "height": 1.8,
+    "colour": "#f4f1e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment",
+   "at": [
+    0,
+    -1.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     11.4,
+     0.5
+    ],
+    "height": 2.6,
+    "colour": "#2f3338",
+    "topScale": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-opening",
+   "at": [
+    0,
+    -6.4,
+    14.6
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#3a3631"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oculus",
+   "at": [
+    0,
+    -1.9,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.2
+    ],
+    "height": 1.1,
+    "colour": "#3a3631"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     11,
+     -6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     -11
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "STAND-IN photo (Golo, not St Margaret; evidence not of this church). Pediment dark verge plus small oculus, no niches; tower plain shaft with belfry slot and clock disc."
+ }
+}

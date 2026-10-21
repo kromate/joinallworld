@@ -1,0 +1,583 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-osm-way-43222619",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ullev%C3%A5l_Stadium_(8077753565).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "John Christian Fjellestad",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/oslo/ull1.jpg",
+   "used": "continuous pale roof ring over all four stands, dark glazed outer facade, round concrete stair towers at the corners, blue and red seat blocks, pitch with stand ends closer to the touchline"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1611164",
+   "used": "overall size (about 195 x 160 m); whole stadium scaled to about 0.55 to fit the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 40,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "surface",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 58,
+    "depth": 37.4,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.2,
+    "colour": "#3f8f3a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -30,
+     -21
+    ],
+    "end": [
+     30,
+     -21
+    ],
+    "rows": 20,
+    "rise": 0.42,
+    "run": 0.6,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#2f5aa0",
+     "#a83a3a",
+     "#2f5aa0"
+    ],
+    "blocks": 5,
+    "seatColour": "#2f5aa0",
+    "concreteColour": "#b9bcbf",
+    "underColour": "#3a4048",
+    "under": "open",
+    "bay": 4.5,
+    "backWall": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     30,
+     21
+    ],
+    "end": [
+     -30,
+     21
+    ],
+    "rows": 20,
+    "rise": 0.42,
+    "run": 0.6,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#2f5aa0",
+     "#a83a3a",
+     "#2f5aa0"
+    ],
+    "blocks": 5,
+    "seatColour": "#2f5aa0",
+    "concreteColour": "#b9bcbf",
+    "underColour": "#3a4048",
+    "under": "open",
+    "bay": 4.5,
+    "backWall": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     36,
+     -17
+    ],
+    "end": [
+     36,
+     17
+    ],
+    "rows": 15,
+    "rise": 0.42,
+    "run": 0.6,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#2f5aa0",
+     "#a83a3a",
+     "#2f5aa0"
+    ],
+    "blocks": 5,
+    "seatColour": "#2f5aa0",
+    "concreteColour": "#b9bcbf",
+    "underColour": "#3a4048",
+    "under": "open",
+    "bay": 4.5,
+    "backWall": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -36,
+     17
+    ],
+    "end": [
+     -36,
+     -17
+    ],
+    "rows": 15,
+    "rise": 0.42,
+    "run": 0.6,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#2f5aa0",
+     "#a83a3a",
+     "#2f5aa0"
+    ],
+    "blocks": 5,
+    "seatColour": "#2f5aa0",
+    "concreteColour": "#b9bcbf",
+    "underColour": "#3a4048",
+    "under": "open",
+    "bay": 4.5,
+    "backWall": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-s",
+   "footprint": {
+    "rect": [
+     112,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -46.5
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#252b31",
+    "glassColour": "#3f5262",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#6f7f8c"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e6e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-n",
+   "footprint": {
+    "rect": [
+     112,
+     3
+    ]
+   },
+   "at": [
+    0,
+    46.5
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#252b31",
+    "glassColour": "#3f5262",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#6f7f8c"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e6e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-e",
+   "footprint": {
+    "rect": [
+     3,
+     90
+    ]
+   },
+   "at": [
+    56.5,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a434d",
+    "glassColour": "#586a78",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#6f7f8c"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e6e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-w",
+   "footprint": {
+    "rect": [
+     3,
+     90
+    ]
+   },
+   "at": [
+    -56.5,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a434d",
+    "glassColour": "#586a78",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#6f7f8c"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e6e6"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -41.5,
+    13.6
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 112,
+    "depth": 11,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.25,
+    "colour": "#f4f4ef"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    41.5,
+    13.6
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 112,
+    "depth": 11,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.25,
+    "colour": "#f4f4ef"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -51,
+    -1,
+    13.6
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 10,
+    "depth": 70,
+    "rise": 0,
+    "folds": 1,
+    "thickness": 0.25,
+    "colour": "#f4f4ef"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair--54--44",
+   "at": [
+    -54,
+    -44,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "n": 14,
+    "height": 20,
+    "colour": "#e3dfd3",
+    "top": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-54--44",
+   "at": [
+    54,
+    -44,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "n": 14,
+    "height": 20,
+    "colour": "#e3dfd3",
+    "top": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair--54-44",
+   "at": [
+    -54,
+    44,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "n": 14,
+    "height": 20,
+    "colour": "#e3dfd3",
+    "top": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-54-44",
+   "at": [
+    54,
+    44,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "n": 14,
+    "height": 20,
+    "colour": "#e3dfd3",
+    "top": false
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    -40,
+    -48.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 14,
+    "colour": "#2b3036",
+    "top": false
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    -20,
+    -48.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 14,
+    "colour": "#2b3036",
+    "top": false
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    0,
+    -48.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 14,
+    "colour": "#2b3036",
+    "top": false
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    20,
+    -48.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 14,
+    "colour": "#2b3036",
+    "top": false
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    40,
+    -48.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 14,
+    "colour": "#2b3036",
+    "top": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "commercial",
+   "footprint": {
+    "rect": [
+     50,
+     8
+    ]
+   },
+   "at": [
+    10,
+    -54
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a525a",
+    "glassColour": "#7f98a8",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8dad8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   124,
+   112
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof ring is four flat slabs without rounded corner sweep; outer facade is a plain dark band wall, commercial block is a simple ribbon box, stair towers have no ribbing, no flags or floodlights. Whole stadium scaled to about 0.55 for the scene clamp."
+ }
+}

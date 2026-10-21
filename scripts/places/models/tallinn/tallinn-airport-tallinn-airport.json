@@ -1,0 +1,357 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-airport-tallinn-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tallinn_Airport_03_July_2006.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Pjotr Mahhonin",
+   "view": "front",
+   "file": "/tmp/places-evidence/tallinn/airport0.jpg",
+   "used": "landside view of the 1980 terminal: one big mono-pitch roof rising from a low front eave, blue glazed strips between dark ribs, dark glazed end bay, long pale concrete retaining wall along the forecourt, conifers and lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tallinn_Airport_passenger_terminal_and_runway.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tallinn/airport7.jpg",
+   "used": "terminal roof orientation, low piers and extension running airside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26881372",
+   "used": "overall size only: the 265 m outline is too long for the scene clamp, the 1980 hall is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-base",
+   "footprint": {
+    "rect": [
+     92,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2d3b4e",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "back": "none",
+     "left": "curtain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f2a3a",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "surface",
+   "id": "mono-roof",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 96,
+    "depth": 44,
+    "z": 10.7,
+    "thickness": 0.8,
+    "kind": "folded",
+    "foldAxis": "y",
+    "folds": 1,
+    "rise": 0,
+    "slopeY": 12,
+    "colour": "#4f78b8",
+    "edgeColour": "#1f2a3a",
+    "underColour": "#1f2a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "retaining-wall",
+   "params": {
+    "rect": [
+     62,
+     2.6
+    ],
+    "height": 4.2,
+    "colour": "#cfcfc9",
+    "material": "concrete"
+   },
+   "at": [
+    34,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wall-end",
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      6,
+      0
+     ],
+     [
+      0,
+      6
+     ]
+    ],
+    "height": 4.2,
+    "colour": "#a9a9a3",
+    "material": "concrete"
+   },
+   "at": [
+    2,
+    -29,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    30,
+    42
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#556270",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9096",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -34,
+    62,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#b8bcbf"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 5,
+    "count": 4,
+    "spread": 16,
+    "line": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -35,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "array",
+   "id": "ribs",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.9,
+        1.3
+       ]
+      },
+      "points": [
+       [
+        0,
+        -22,
+        10.9
+       ],
+       [
+        0,
+        22,
+        20.2
+       ]
+      ],
+      "colour": "#16213a"
+     }
+    },
+    "start": [
+     -44,
+     0,
+     0
+    ],
+    "end": [
+     44,
+     0,
+     0
+    ],
+    "count": 10,
+    "mode": "line"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "front-canopy",
+   "params": {
+    "rect": [
+     98,
+     3.5
+    ],
+    "height": 1.2,
+    "colour": "#2a3446",
+    "material": "concrete"
+   },
+   "at": [
+    0,
+    -23,
+    9.6
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "end-gable",
+   "footprint": {
+    "rect": [
+     7,
+     34
+    ]
+   },
+   "at": [
+    -50,
+    0
+   ],
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1c2736",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#16213a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    -31,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 2.5,
+    "count": 8,
+    "spread": 40,
+    "line": 1,
+    "colour": "#4f7a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     55,
+     -38
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     62,
+     -38
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     69,
+     -38
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is now a flat blue plane with parallel dark ribs, front canopy and dark end gable, but ribs overshoot the glazing slope, the retaining wall is not a stepped wedge, and only the 1980 hall plus a pier are modelled."
+ }
+}

@@ -1,0 +1,159 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-388925021",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/388925021",
+   "used": "real irregular outline of Olivium Outlet Center, 134 x 130 m, name-quality match"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Olivium_Outlet_Center",
+   "used": "four retail floors, two parking levels, opened 2000; cream render with olive green accent is an estimate from the name"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 19,
+   "storeys": 4,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8ccb0",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#7a9a58",
+      "height": 1.3,
+      "at": 0.55,
+      "skipGround": true
+     }
+    ],
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     26,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    -52
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0b8",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a9a58",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 7,
+    "height": 4.5,
+    "form": "flat",
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -55.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 13,
+    "colour": "#7a9a58",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    10,
+    -55.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 13,
+    "colour": "#f3efe4",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No exterior photo (only interior images found); facade colours, entrance position and glazing are estimates on the real outline."
+ }
+}

@@ -1,0 +1,417 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "warsaw",
+ "venueId": "warsaw-osm-way-339846775",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Akademia_Sztuki_Wojennej.jpg",
+   "licence": "CC BY-SA 3.0 pl",
+   "author": "Piotr Stanislawski",
+   "view": "front",
+   "file": "/tmp/places-evidence/warsaw/asw.jpg",
+   "used": "three-storey cream-rendered palace block with grey-blue standing-seam hip roof and tall white chimneys, central pedimented risalit with three arched windows, relief panels and a four-column portico, small roof dormers, flat lawn with columnar conifers and a statue on a plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/339846775",
+   "used": "the OSM polygon covers the whole 700,000 m2 campus; only the historic main building seen in the photo is modelled at its real scale (about 50 m wide)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 1.78,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     52,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfca",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#d9d1bb",
+    "plinth": 0.9,
+    "cornice": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f6a76",
+    "material": "metal-sheet",
+    "rise": 6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "risalit",
+   "footprint": {
+    "rect": [
+     10.5,
+     12.5
+    ]
+   },
+   "at": [
+    5,
+    -2.65
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece5d1",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.28,
+    "bay": 3.9,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.9,
+    "cornice": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a7683",
+    "material": "metal-sheet",
+    "rise": 7,
+    "overhang": 0.5
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    5,
+    -11.4,
+    0
+   ],
+   "params": {
+    "width": 8.6,
+    "depth": 3.2,
+    "height": 4.6,
+    "columns": 4,
+    "pediment": false,
+    "steps": 4,
+    "colour": "#f1ece0",
+    "roofColour": "#e6dfca"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    20,
+    26
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dac4",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 4.0,
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f6a76",
+    "material": "metal-sheet",
+    "rise": 2.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    37,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "market-open/chimney-stack",
+   "at": [
+    -22,
+    1.5,
+    11.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5.5,
+    "pots": 0,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "market-open/chimney-stack",
+   "at": [
+    -17,
+    1.5,
+    11.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5.5,
+    "pots": 0,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "market-open/chimney-stack",
+   "at": [
+    -12,
+    1.5,
+    11.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5.5,
+    "pots": 0,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "market-open/chimney-stack",
+   "at": [
+    -7,
+    1.5,
+    11.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5.5,
+    "pots": 0,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "market-open/chimney-stack",
+   "at": [
+    -2,
+    1.5,
+    11.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5.5,
+    "pots": 0,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "market-open/chimney-stack",
+   "at": [
+    12,
+    1.5,
+    11.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5.5,
+    "pots": 0,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "market-open/chimney-stack",
+   "at": [
+    17,
+    1.5,
+    11.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5.5,
+    "pots": 0,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "market-open/chimney-stack",
+   "at": [
+    22,
+    1.5,
+    11.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 5.5,
+    "pots": 0,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "array",
+   "id": "dormersL",
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -4.7,
+     11.4
+    ],
+    "end": [
+     -6,
+     -4.7,
+     11.4
+    ],
+    "count": 5,
+    "of": {
+     "type": "market-open/dormer",
+     "params": {
+      "width": 1.6,
+      "depth": 1.4,
+      "height": 2.0,
+      "colour": "#f4f1ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "dormersR",
+   "params": {
+    "mode": "line",
+    "start": [
+     14,
+     -4.7,
+     11.4
+    ],
+    "end": [
+     24,
+     -4.7,
+     11.4
+    ],
+    "count": 3,
+    "of": {
+     "type": "market-open/dormer",
+     "params": {
+      "width": 1.6,
+      "depth": 1.4,
+      "height": 2.0,
+      "colour": "#f4f1ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "market-open/statue-on-plinth",
+   "at": [
+    -3,
+    -16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    -15.5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -21,
+    -14.5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "chimneys sit mostly hidden in the roof (should be tall slender stacks); risalit relief panels, balcony and tympanum carving missing; statue small; dormers aligned in one row, roof lacks hipped corner pavilions; ground floor arched windows not modelled"
+ }
+}

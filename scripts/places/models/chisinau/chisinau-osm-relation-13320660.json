@@ -1,0 +1,722 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chi%C8%99in%C4%83u_Zoo_June_2016_001.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mariancik94",
+   "view": "detail",
+   "file": "/tmp/places-evidence/chisinau/zoo1.jpg",
+   "used": "enclosure construction: low grey concrete wall topped by green-posted green mesh fence, grey-beige rendered animal house behind, bare earth"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chi%C8%99in%C4%83u_Zoo_C08_(June_2016).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Crissty90",
+   "view": "detail",
+   "file": "/tmp/places-evidence/chisinau/zoo2.jpg",
+   "used": "layout from the on-site map: entrance at the south with administration, row of enclosures along the south, bird and ostrich pens in the centre, hoofed animals west, big cats east, lakes north-west"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13320660",
+   "used": "overall extent only (800 x 490 m, 24 ha); a ~110 m section around the entrance is modelled since the outline is far beyond the scene clamp"
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only an entrance-and-central-pens section of a 24 ha zoo; layout is schematic from the map, not surveyed; no animals; no photo of the entrance gate itself."
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "at": [
+    -5,
+    -48,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 4.5,
+    "colour": "#b9b09c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-r",
+   "at": [
+    5,
+    -48,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 4.5,
+    "colour": "#b9b09c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-board",
+   "at": [
+    0,
+    -48,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     11.4,
+     0.7
+    ],
+    "height": 1.6,
+    "colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "id": "kiosk-l",
+   "at": [
+    -12,
+    -44,
+    0
+   ],
+   "params": {
+    "colour": "#d8cdb5",
+    "sign_colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "id": "kiosk-r",
+   "at": [
+    12,
+    -44,
+    0
+   ],
+   "params": {
+    "colour": "#d8cdb5",
+    "sign_colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-main",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     80
+    ],
+    "height": 0.1,
+    "colour": "#b8b2a6",
+    "slot": "paving"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-cross",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     4.5
+    ],
+    "height": 0.1,
+    "colour": "#b8b2a6",
+    "slot": "paving"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-w",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -32,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b3ab9a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6d6b68",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-e",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    28,
+    -35
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b3ab9a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6d6b68",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cdb5",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5a45",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "pen-ostrich",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -22.0,
+      -2.0
+     ],
+     [
+      22.0,
+      -2.0
+     ],
+     [
+      22.0,
+      14.0
+     ],
+     [
+      -22.0,
+      14.0
+     ],
+     [
+      -22.0,
+      -2.0
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "pen-birds-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -27.0,
+      19.0
+     ],
+     [
+      -9.0,
+      19.0
+     ],
+     [
+      -9.0,
+      33.0
+     ],
+     [
+      -27.0,
+      33.0
+     ],
+     [
+      -27.0,
+      19.0
+     ]
+    ],
+    "height": 3.6,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "pen-birds-2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5.0,
+      19.0
+     ],
+     [
+      13.0,
+      19.0
+     ],
+     [
+      13.0,
+      33.0
+     ],
+     [
+      -5.0,
+      33.0
+     ],
+     [
+      -5.0,
+      19.0
+     ]
+    ],
+    "height": 3.6,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "pen-hoofed-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -45.0,
+      -8.0
+     ],
+     [
+      -31.0,
+      -8.0
+     ],
+     [
+      -31.0,
+      16.0
+     ],
+     [
+      -45.0,
+      16.0
+     ],
+     [
+      -45.0,
+      -8.0
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "pen-cats",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      32.0,
+      -8.0
+     ],
+     [
+      44.0,
+      -8.0
+     ],
+     [
+      44.0,
+      28.0
+     ],
+     [
+      32.0,
+      28.0
+     ],
+     [
+      32.0,
+      -8.0
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#2f6b45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pen-wall-low",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.5
+    ],
+    "height": 0.9,
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lake",
+   "at": [
+    -30,
+    44,
+    0
+   ],
+   "params": {
+    "radius": 17,
+    "n": 20,
+    "height": 0.12,
+    "colour": "#4c86b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pond",
+   "at": [
+    -38,
+    -14,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "n": 16,
+    "height": 0.12,
+    "colour": "#4c86b8"
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "snack",
+   "at": [
+    18,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "container"
+   }
+  },
+  {
+   "type": "park-bench",
+   "id": "bench",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -50,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    50,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t5",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t6",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    40,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t7",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -24,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t8",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t9",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    30,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t10",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -46,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t11",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    55,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chisinau",
+ "venueId": "chisinau-osm-relation-13320660"
+}

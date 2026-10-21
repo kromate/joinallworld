@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-60088300",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hibernians_Ground.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chivista",
+   "view": "side",
+   "file": "/tmp/places-evidence/valletta/tb.jpg",
+   "used": "long main stand seen from the pitch: shallow raked seating in red/yellow blocks, tall low-pitched roof on a grey fascia with spaced props, yellow office block under the roof, four floodlight pylons along the roof line and one tall lattice mast at right, grass pitch with low boundary wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/60088300",
+   "used": "overall ground size (126 x 80 m) and orientation only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     40
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#4fa83a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     40,
+     26
+    ],
+    "end": [
+     -40,
+     26
+    ],
+    "rows": 18,
+    "rise": 0.42,
+    "run": 0.85,
+    "seatColour": "#b8352f",
+    "seatColours": [
+     "#b8352f",
+     "#d9b02a",
+     "#b8352f"
+    ],
+    "blocks": 5,
+    "concreteColour": "#c9c9c0",
+    "under": "solid",
+    "backWall": 0,
+    "canopy": {
+     "height": 3.5,
+     "depth": 16,
+     "thickness": 1.2,
+     "colour": "#8a8c86",
+     "edgeColour": "#8e9296",
+     "slopeDeg": -6,
+     "overhangBack": 1
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    25,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 1.2,
+    "thickness": 0.4,
+    "colour": "#ecebe5"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    46,
+    14,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#b9bdc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rear-wall",
+   "at": [
+    0,
+    41.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     0.5
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#454a48",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "office",
+   "at": [
+    -20,
+    39.6,
+    8
+   ],
+   "params": {
+    "rect": [
+     10,
+     3.2
+    ],
+    "z0": 8,
+    "height": 3,
+    "colour": "#d8c253",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "trimColour": "#e8e2c9"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -36,
+     26.6,
+     0
+    ],
+    "end": [
+     36,
+     26.6,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0
+       ],
+       [
+        0.45,
+        0,
+        "#c9c9c0"
+       ],
+       [
+        0.45,
+        9.6
+       ],
+       [
+        0,
+        9.6
+       ]
+      ],
+      "segments": 10
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    36,
+    52
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#9da2a5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9396",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-bldg",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    58,
+    46
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe4",
+    "windows": "rect",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c8c2",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    38,
+    12
+   ],
+   "params": {
+    "height": 9,
+    "head_width": 2,
+    "colour": "#b9bdc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -10,
+    38,
+    12
+   ],
+   "params": {
+    "height": 8.5,
+    "head_width": 2,
+    "colour": "#b9bdc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    10,
+    38,
+    12
+   ],
+   "params": {
+    "height": 8,
+    "head_width": 2,
+    "colour": "#b9bdc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    28,
+    38,
+    12
+   ],
+   "params": {
+    "height": 7.5,
+    "head_width": 2,
+    "colour": "#b9bdc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "seat blocks lack yellow stair stripes, props read dark in render, backdrop sheds hidden behind the stand from this camera, no hoardings"
+ }
+}

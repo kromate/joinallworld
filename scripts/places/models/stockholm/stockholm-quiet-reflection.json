@@ -1,0 +1,209 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stockholm",
+ "venueId": "stockholm-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fresta_kyrka_ext3.jpg",
+   "licence": "Public domain",
+   "author": "Ulkl",
+   "view": "side",
+   "file": "/tmp/places-evidence/stockholm/fresta1.jpg",
+   "used": "grey-beige roughcast nave, white-framed arched windows with dark sashes, steep dark sheet-metal gable roof, white-rendered west tower with clock faces and dark hipped cap, fieldstone churchyard wall in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24340484",
+   "used": "nave about 27 x 12.6 m; footprint is a stepped polygon, composed as nave plus tower plus narrower choir"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     11.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#aaa392",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bay": 5.4,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#e9e5da",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a504b",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "choir",
+   "footprint": {
+    "rect": [
+     7.5,
+     9.5
+    ]
+   },
+   "at": [
+    14.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#aaa392",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a504b",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -13.2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d6cc",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.06,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4d5550",
+    "material": "metal-sheet",
+    "pitch": 42,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -13.2,
+    0,
+    18.3
+   ],
+   "params": {
+    "baseWidth": 0.6,
+    "height": 2.4,
+    "colour": "#3a3f3c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "height": 1.7,
+    "thickness": 0.8,
+    "kind": "wall",
+    "colour": "#8a8078"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 3,
+    "spread": 3,
+    "line": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "nave windows slightly small, no stone-textured churchyard wall, no clock faces or round gable window, tower cap simplified"
+ }
+}

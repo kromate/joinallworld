@@ -1,0 +1,126 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1016871040",
+   "used": "real outline of Bistro La Pigna (name match, 360 m2)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cortile_della_Pigna_-_panoramio_(1).jpg",
+   "licence": "CC BY 3.0",
+   "author": "lienyuan lee",
+   "view": "street",
+   "used": "courtyard ochre and travertine palette and the terracotta pots only; the cafe is not visible in any found photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d5b3",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "cornice": true,
+    "bands": "#d9b57c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69e",
+    "material": "membrane",
+    "parapet": 0.35,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -1,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.4,
+    "height": 3.0,
+    "colours": [
+     "#efe7d3",
+     "#c9906b"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 9,
+    "radius": 1.7,
+    "height": 2.5,
+    "colours": [
+     "#efe7d3",
+     "#d9b57c",
+     "#c9906b"
+    ],
+    "tables": true
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo shows the cafe; height, glazing and awning are typical of a courtyard cafe, only the outline is real."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     20,
+     10
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ }
+}

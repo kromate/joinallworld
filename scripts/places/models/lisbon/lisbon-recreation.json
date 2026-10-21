@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/18307787",
+   "used": "real outline of the Quinta do Bonjardim estate (410 x 341 m, 9.8 ha, tagged farm, C16), scaled to the scene's 118 m limit as a low lawn slab; a manor, chapel and avenue are placed inside it from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 24,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "estate",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9c9a82",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa05a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "manor",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    2,
+    -14
+   ],
+   "z0": 0.5,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8cf9a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3,
+    "plinth": 0.5,
+    "bands": "#f0ece2",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "rise": 2.4,
+    "colour": "#b5573b",
+    "material": "clay-tile",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "manor-wing",
+   "footprint": {
+    "rect": [
+     6,
+     9
+    ]
+   },
+   "at": [
+    -9,
+    -9
+   ],
+   "z0": 0.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8cf9a",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "rise": 1.8,
+    "colour": "#b5573b",
+    "material": "clay-tile",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     4.5,
+     7
+    ]
+   },
+   "at": [
+    -24,
+    -6
+   ],
+   "z0": 0.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2eee4",
+    "windows": "arched",
+    "windowRatio": 0.06,
+    "plinth": 0.3,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "rise": 1.8,
+    "colour": "#b5573b",
+    "material": "clay-tile",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -24,
+    -9.5,
+    0.5
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.4,
+    "arch": true,
+    "colour": "#3b2a20",
+    "trim": "#d9c3a0"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    2,
+    12,
+    0.5
+   ],
+   "params": {
+    "length": 40,
+    "count": 8,
+    "kind": "broadleaf",
+    "gap": 7,
+    "height_min": 8,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      2,
+      -9
+     ],
+     [
+      2,
+      40
+     ]
+    ],
+    "width": 3,
+    "colour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    2,
+    2,
+    0.5
+   ],
+   "params": {
+    "radius": 3,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    25,
+    20,
+    0.5
+   ],
+   "params": {
+    "width": 40,
+    "depth": 35,
+    "count": 16,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -24,
+    24,
+    0.5
+   ],
+   "params": {
+    "width": 36,
+    "depth": 30,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    2,
+    -34,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "colour": "#e8e0cf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   140,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo exists: manor, chapel and avenue positions are plausible guesses from the brief; the real estate outline is scaled down to 29 percent so the buildings are larger relative to it"
+ }
+}

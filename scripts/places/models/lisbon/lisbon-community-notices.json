@@ -1,0 +1,351 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gabriel_walking_in_Campus_de_Justi%C3%A7a_de_Lisboa,_Parque_das_Na%C3%A7%C3%B5es,_Lisbon,_Portugal_julesvernex2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jules Verne x2",
+   "view": "front",
+   "file": "/tmp/places-evidence/lisbon/court1.jpg",
+   "used": "Campus de Justica: long glazed block with grey slab edges, taller white block with ribbon windows behind, low glass plinth wall, lawn and granite paving, jacaranda trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/241475725",
+   "used": "footprint of the OSM building Edificio A (63 x 21 m, 9 levels) as the tall block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 42,
+  "aspect": 1.28,
+  "margin": 0.0,
+  "shiftX": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-block",
+   "footprint": {
+    "rect": [
+     64,
+     22
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f4350",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bands": "#9a9a96",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-tower",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    48,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#e0e0dc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c4c0",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-plinth",
+   "footprint": {
+    "rect": [
+     50,
+     0.6
+    ]
+   },
+   "at": [
+    -6,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a8d0c8",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd8d4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-slab",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    34,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe9",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "id": "jacarandas",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 12,
+      "colour": "#b2a53a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24,
+     -30
+    ],
+    "end": [
+     16,
+     -26
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    -6,
+    -28,
+    0.0
+   ],
+   "params": {
+    "rect": [
+     70,
+     16
+    ],
+    "height": 0.2,
+    "colour": "#7f9f55"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recessed-top",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 19,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f4350",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d0cc",
+    "overhang": 1.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-step1",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    48,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 24,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae4",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f0ea",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-step2",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    48,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 27.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae4",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f0ea",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-mound",
+   "at": [
+    -6,
+    -28,
+    0.2
+   ],
+   "params": {
+    "radius": 22,
+    "n": 20,
+    "height": 0.8,
+    "topScale": 0.5,
+    "colour": "#7a9d50"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "granite-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -34,
+      -38,
+      0.3
+     ],
+     [
+      -14,
+      -30,
+      0.3
+     ],
+     [
+      8,
+      -28,
+      0.3
+     ],
+     [
+      30,
+      -24,
+      0.3
+     ]
+    ],
+    "colour": "#cfcac0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dark glazing with recessed top, stepped white tower, mounded lawn, thin balustrade done; granite path barely visible, jacarandas solid low-poly crowns."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-community-notices"
+}

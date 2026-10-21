@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-marino",
+ "venueId": "san-marino-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/770927865",
+   "used": "footprint of the containing building (24 x 12 m, 276 m2)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/san-marino.json#san-marino-meal-stop",
+   "used": "small trattoria, cream render #eadfc4, terracotta gable roof #a85c3c, terrace and awning; nearby Commons photos (aircraft wing, townscape) are not this building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a85c3c",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.2,
+    "colours": [
+     "#a85c3c",
+     "#f4efe3"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "bottom": 2.9,
+    "colour": "#a85c3c",
+    "posts": false
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -5,
+    -13,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -1,
+    -13,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -13,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; real footprint only. Facade, terrace and roof pitch are typical of the area, not observed."
+ }
+}

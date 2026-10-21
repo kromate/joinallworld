@@ -1,0 +1,712 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-osm-way-526461841",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Luxembourg,_route_d%27Esch,_Parc_Heintz_(104).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GilPe",
+   "view": "street",
+   "file": "/tmp/places-evidence/luxembourg/hz104.jpg",
+   "used": "lawn with clipped evergreen hedge mounds in the foreground, autumn broadleaf trees, beige limestone-clad office block with ribbon glazing and a stepped top beyond the park"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Luxembourg,_route_d%27Esch,_Parc_Heintz_(103).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GilPe",
+   "view": "street",
+   "file": "/tmp/places-evidence/luxembourg/hz103.jpg",
+   "used": "leaf-strewn earth path between dense ivy hedge and woodland shrubs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Luxembourg,_route_d%27Esch,_Parc_Heintz_(101).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GilPe",
+   "view": "detail",
+   "file": "/tmp/places-evidence/luxembourg/hz101.jpg",
+   "used": "entrance sign: weathered corten-steel slab with a pale panel (modelled blank); maple trees and ivy hedge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/526461841",
+   "used": "park is 299 x 137 m, a long strip; one 84 m stretch near its widest part is modelled because the scene clamp is 120 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 84,
+    "depth": 84,
+    "colour": "#7a9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank",
+   "at": [
+    26,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     50
+    ],
+    "height": 1.4,
+    "topScale": 0.7,
+    "colour": "#6f8f4a",
+    "top": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -40
+     ],
+     [
+      -18,
+      -22
+     ],
+     [
+      -4,
+      -8
+     ],
+     [
+      6,
+      8
+     ],
+     [
+      14,
+      26
+     ],
+     [
+      10,
+      40
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#b9a58a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -8
+     ],
+     [
+      -22,
+      0
+     ],
+     [
+      -34,
+      12
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#b9a58a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-mound-l",
+   "at": [
+    -12,
+    -18,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -5
+     ],
+     [
+      9,
+      -6
+     ],
+     [
+      10,
+      4
+     ],
+     [
+      -6,
+      7
+     ]
+    ],
+    "height": 3.0,
+    "topScale": 0.6,
+    "colour": "#3f6a3a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-mound-r",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      -6
+     ],
+     [
+      9,
+      -5
+     ],
+     [
+      8,
+      6
+     ],
+     [
+      -7,
+      5
+     ]
+    ],
+    "height": 3.1999999999999997,
+    "topScale": 0.6,
+    "colour": "#46703c",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    -26,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "height": 2.0,
+    "colour": "#8a4d33",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -34.25,
+    0.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.12
+    ],
+    "height": 0.5,
+    "colour": "#e3e3e0",
+    "top": true
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.2
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "height": 1.9,
+    "depth": 1.6,
+    "colour": "#2f5a34"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -32,
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "height": 1.9,
+    "depth": 1.6,
+    "colour": "#2f5a34"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    18,
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 26,
+    "height": 1.9,
+    "depth": 1.6,
+    "colour": "#2f5a34"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    34,
+    30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "height": 1.9,
+    "depth": 1.6,
+    "colour": "#2f5a34"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "rotDeg": 35,
+   "params": {
+    "length": 14,
+    "height": 1.9,
+    "depth": 1.6,
+    "colour": "#2f5a34"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-main",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    8,
+    62
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdbd98",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "glassColour": "#6f8ea3",
+    "plinth": 0.5,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "curtain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "fins",
+     "spacing": 3.0,
+     "depth": 1.4,
+     "width": 1.6,
+     "colour": "#d8c9a3",
+     "faces": [
+      "front",
+      "right"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9a92",
+    "material": "membrane",
+    "overhang": 0.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-tower",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    -22,
+    60
+   ],
+   "z0": 0,
+   "height": 46,
+   "storeys": 8,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdbd98",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9a92",
+    "material": "membrane",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-slots",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.8
+    ]
+   },
+   "at": [
+    -22,
+    50.6
+   ],
+   "z0": 2,
+   "height": 34,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7f95",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7f95"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-wing",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    42,
+    60
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c7b790",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#6f8ea3",
+    "plinth": 0.5,
+    "pattern": {
+     "type": "fins",
+     "spacing": 3.5,
+     "depth": 0.8,
+     "width": 1.5,
+     "colour": "#d2c29c",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9a92",
+    "material": "membrane",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-mound-m",
+   "at": [
+    -2,
+    -26,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -4
+     ],
+     [
+      10,
+      -5
+     ],
+     [
+      13,
+      3
+     ],
+     [
+      -8,
+      6
+     ]
+    ],
+    "height": 2.4,
+    "topScale": 0.55,
+    "colour": "#35603a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-mound-f",
+   "at": [
+    26,
+    -30,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -4
+     ],
+     [
+      12,
+      -6
+     ],
+     [
+      14,
+      5
+     ],
+     [
+      -10,
+      5
+     ]
+    ],
+    "height": 2.2,
+    "topScale": 0.5,
+    "colour": "#3f6a3a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ivy-trunk",
+   "at": [
+    -34,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 22,
+    "colour": "#6d6a52",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ivy-trunk-r",
+   "at": [
+    40,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 18,
+    "colour": "#3d5a35",
+    "top": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 27,
+    "colour": "#c9742f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 29,
+    "colour": "#b9833d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 28,
+    "colour": "#a8573a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 4,
+    "colour": "#46703c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 4,
+    "colour": "#46703c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 4,
+    "colour": "#46703c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 4,
+    "colour": "#46703c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ivy-trunk-big",
+   "at": [
+    -38,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 26,
+    "colour": "#5f6a4a",
+    "top": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   110,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Stone tower taller with glazed slot, finned stepped block; hedge mounds are faceted prisms; only 3 tall autumn trees (solid crowns, not bare branching); ivy trunks are plain pillars; 84 m of a 300 m strip."
+ }
+}

@@ -1,0 +1,588 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-392300651",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beemster_Arboretum_20250704_145703.jpg",
+   "licence": "CC0",
+   "author": "Hobbema",
+   "view": "street",
+   "file": "/tmp/places-evidence/amsterdam/ba1.jpg",
+   "used": "entrance: low dark timber beam sign on a stub, white flagpole, mown lawn path between dense broadleaf groves, bench"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/392300651",
+   "used": "real park outline as the lawn, auto-fitted to 118 m (about 0.52 of real scale); path loop and groves placed inside it at the same scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7fa653",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa653"
+   },
+   "z0": -0.35
+  },
+  {
+   "type": "sweep-path",
+   "id": "path",
+   "params": {
+    "section": "rect",
+    "width": 1.4,
+    "height": 0.1,
+    "points": [
+     [
+      -41.1,
+      10.3
+     ],
+     [
+      -32.9,
+      41.1
+     ],
+     [
+      -8.2,
+      39.0
+     ],
+     [
+      16.4,
+      30.8
+     ],
+     [
+      39.0,
+      22.6
+     ],
+     [
+      28.8,
+      -8.2
+     ],
+     [
+      11.5,
+      -37.0
+     ],
+     [
+      6.2,
+      -57.5
+     ],
+     [
+      -4.9,
+      -51.4
+     ],
+     [
+      -8.2,
+      -24.6
+     ],
+     [
+      -24.6,
+      -10.3
+     ],
+     [
+      -28.8,
+      4.1
+     ],
+     [
+      -41.1,
+      10.3
+     ]
+    ],
+    "colour": "#cdb98f"
+   },
+   "at": [
+    0,
+    0,
+    0.16
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge0",
+   "at": [
+    -44.388000000000005,
+    11.124000000000002,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge1",
+   "at": [
+    -35.532000000000004,
+    44.388000000000005,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge2",
+   "at": [
+    -8.856,
+    42.120000000000005,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge3",
+   "at": [
+    17.712,
+    33.264,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge4",
+   "at": [
+    42.120000000000005,
+    24.408000000000005,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge5",
+   "at": [
+    31.104000000000003,
+    -8.856,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge6",
+   "at": [
+    12.420000000000002,
+    -39.96,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge7",
+   "at": [
+    6.696000000000001,
+    -62.1,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge8",
+   "at": [
+    -5.292000000000001,
+    -55.512,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge9",
+   "at": [
+    -8.856,
+    -26.568000000000005,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge10",
+   "at": [
+    -26.568000000000005,
+    -11.124000000000002,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedge11",
+   "at": [
+    -31.104000000000003,
+    4.428,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 6,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "grove0",
+   "at": [
+    -24,
+    25,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "grove1",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "grove2",
+   "at": [
+    22,
+    22,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "grove3",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "grove4",
+   "at": [
+    2,
+    -40,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "grove5",
+   "at": [
+    -18,
+    -4,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 11
+   }
+  },
+  {
+   "type": "prism",
+   "id": "beam",
+   "params": {
+    "rect": [
+     14,
+     1.2
+    ],
+    "z0": 0.3,
+    "height": 1.6,
+    "colour": "#33363a"
+   },
+   "at": [
+    2,
+    -66
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "beam-stub0",
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#33363a"
+   },
+   "at": [
+    -3.5,
+    -66
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "beam-stub1",
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#33363a"
+   },
+   "at": [
+    7.5,
+    -66
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lettering",
+   "params": {
+    "rect": [
+     10,
+     0.06
+    ],
+    "z0": 0.6,
+    "height": 0.8,
+    "colour": "#ece9df"
+   },
+   "at": [
+    2,
+    -66.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flagpole",
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 16,
+    "colour": "#f4f4f4"
+   },
+   "at": [
+    2.5,
+    -64.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn-path",
+   "params": {
+    "rect": [
+     3,
+     12
+    ],
+    "z0": 0.17,
+    "height": 0.04,
+    "colour": "#9cc06a"
+   },
+   "at": [
+    3,
+    -58
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "params": {
+    "rect": [
+     1.3,
+     0.4
+    ],
+    "z0": 0.45,
+    "height": 0.12,
+    "colour": "#5a4a3a"
+   },
+   "at": [
+    -8,
+    -62
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   125
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "photo is a ground-level sign close-up so only sign, flagpole, lawn, path and groves compare; trees low-poly; grey backdrop plane beyond the grass cannot be trimmed; lettering is a blank pale strip"
+ }
+}

@@ -1,0 +1,271 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Podgorica_Mall_of_Montenegro_and_Ramada_Hotel_IMG_1297.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bjoertvedt",
+   "view": "street",
+   "file": "/tmp/places-evidence/podgorica/mall1.jpg",
+   "used": "low pale mall with flat-roofed entrance portico on piers, green fascia band, glazed balconied upper floor; taller white hotel block behind with green curved roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/134769445",
+   "used": "complex outline (mall + Ramada), name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 2.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa3b0",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     70,
+     15
+    ]
+   },
+   "at": [
+    12,
+    12
+   ],
+   "z0": 13,
+   "height": 11,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe6",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "windowShape": "rect",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#4f7f5f",
+    "rise": 4,
+    "overhang": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     1.5,
+     1.5
+    ]
+   },
+   "at": [
+    -28,
+    -55
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd3cf",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     1.5,
+     1.5
+    ]
+   },
+   "at": [
+    -10,
+    -55
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd3cf",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-back",
+   "footprint": {
+    "rect": [
+     1.5,
+     1.5
+    ]
+   },
+   "at": [
+    -19,
+    -47
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd3cf",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    -19,
+    -51
+   ],
+   "z0": 7.5,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d9d4",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f9a78"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -64,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.2,
+    "colour": "#555a5e"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 2,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "podgorica",
+ "venueId": "podgorica-market-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM complex outline simplified and scaled to 118 m; hotel placement/size approximate; portico is a plain frame, no signage band, stair or real balcony detail; green signage band dropped (misplaced)."
+ }
+}

@@ -1,0 +1,359 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-way-913686540",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_Peter_Port_-_Notre-Dame-du-Rosaire_church_20250813-03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pymouss",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-peter-port/rosaire.jpg",
+   "used": "cream painted render, tall shaped gable with curved shoulders, tall arched window, oval window above, small cross on the gable, timber-roofed side porch with arched brown door, black railings on a granite stepped wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/913686540",
+   "used": "overall size (about 19 x 17 m, stepped plan); nave drawn as a simple rectangle"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 0.667,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfbf",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "cornice": false,
+    "trimColour": "#e4d6b2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5c6368",
+    "material": "slate",
+    "pitch": 26,
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4,
+     5
+    ]
+   },
+   "at": [
+    -3.5,
+    -11
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfbf",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a3328",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    1,
+    12.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfbf",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5c6368",
+    "material": "slate",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "loft",
+   "id": "dutch-gable",
+   "at": [
+    0,
+    -8.75,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "steps": 3,
+    "colour": "#ecdfbf",
+    "material": "painted-render",
+    "sections": [
+     {
+      "z": 8.4,
+      "rect": [
+       11.0,
+       0.5
+      ]
+     },
+     {
+      "z": 9.0,
+      "rect": [
+       11.0,
+       0.5
+      ]
+     },
+     {
+      "z": 9.6,
+      "rect": [
+       9.4,
+       0.5
+      ]
+     },
+     {
+      "z": 10.1,
+      "rect": [
+       7.4,
+       0.5
+      ]
+     },
+     {
+      "z": 10.6,
+      "rect": [
+       5.6,
+       0.5
+      ]
+     },
+     {
+      "z": 11.1,
+      "rect": [
+       4.4,
+       0.5
+      ]
+     },
+     {
+      "z": 11.6,
+      "rect": [
+       3.6,
+       0.5
+      ]
+     },
+     {
+      "z": 12.0,
+      "rect": [
+       2.8,
+       0.5
+      ]
+     },
+     {
+      "z": 12.35,
+      "rect": [
+       1.8,
+       0.5
+      ]
+     },
+     {
+      "z": 12.6,
+      "rect": [
+       0.8,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-base",
+   "footprint": {
+    "rect": [
+     4.4,
+     5.4
+    ]
+   },
+   "at": [
+    -3.5,
+    -11
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8b857a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b857a"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "tall-window",
+   "at": [
+    1.8,
+    -9.0,
+    2.6
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 4.2,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "rose-window",
+   "id": "oval-window",
+   "at": [
+    1.8,
+    -9.0,
+    9.6
+   ],
+   "params": {
+    "radius": 0.5
+   }
+  },
+  {
+   "type": "church-door",
+   "id": "porch-door",
+   "at": [
+    -3.5,
+    -13.5,
+    1.0
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 2.3,
+    "arch": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "retaining",
+   "at": [
+    -3.5,
+    -14.6,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.2,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#7f7a70"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rails",
+   "at": [
+    -3.5,
+    -14.6,
+    1.2
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#15171a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "porch-steps",
+   "at": [
+    -3.5,
+    -15.4,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "rise": 1.2,
+    "run": 2.0,
+    "count": 5,
+    "colour": "#7f7a70"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "id": "cross",
+   "at": [
+    0,
+    -8.75,
+    12.5
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "gable shoulders are smoothed but not scrolled; porch is a closed box rather than an open timber lean-to; railing finials and statue missing; pointed window glazing reads blue"
+ }
+}

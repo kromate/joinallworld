@@ -1,0 +1,210 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C5%A0amor%C3%ADn_05_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lure",
+   "view": "side",
+   "file": "/tmp/places-evidence/bratislava/notices1.jpg",
+   "used": "two-storey white-rendered block over a cream rusticated ground storey, dark low hip roof, small tall window openings with white frames, oriel on the front, flag poles at the right corner, paved square (photo is of the Samorin town hall, which is the venue Mestsky urad v Samorine per OSM and Wikidata Q112103982; the venue sits in Samorin, not Bratislava proper)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/61630694",
+   "used": "real irregular footprint (name match, 30 x 21 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-storey",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfb0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "rect",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eadfb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "town-hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0,
+    "cornice": true,
+    "windowShape": "rect",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f3733",
+    "parapet": 0.1,
+    "overhang": 0.4
+   },
+   "z0": 3.9
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15,
+      2.5
+     ],
+     [
+      -3.3,
+      17.5
+     ],
+     [
+      5,
+      13.1
+     ],
+     [
+      -2.4,
+      4.3
+     ],
+     [
+      1.4,
+      0.8
+     ],
+     [
+      4.1,
+      4.2
+     ],
+     [
+      8,
+      1
+     ],
+     [
+      15.6,
+      -6.7
+     ],
+     [
+      6.1,
+      -16.2
+     ]
+    ],
+    "z0": 9.5,
+    "height": 2.2,
+    "topScale": 0.75,
+    "colour": "#3f3733"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.4,
+    -12.1,
+    0
+   ],
+   "rotDeg": -45,
+   "params": {
+    "rect": [
+     3.6,
+     1.6
+    ],
+    "z0": 3.2,
+    "height": 0.7,
+    "topScale": 0.7,
+    "colour": "#eadfb0"
+   }
+  },
+  {
+   "type": "bay-window",
+   "at": [
+    10.8,
+    -11.5,
+    3.9
+   ],
+   "rotDeg": -45,
+   "params": {
+    "width": 3.2,
+    "depth": 1.2,
+    "height": 5.4,
+    "storeys": 2,
+    "colour": "#f4f1ea",
+    "roof_colour": "#6a5a46",
+    "trim_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    17,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 1.6,
+    "colours": [
+     "#ffffff",
+     "#1f4e9c",
+     "#c8362f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Cream base, L-roof, oriel, flags present; oriel placement/shape approximate; venue is Samorin town hall (photo matches venue)"
+ }
+}

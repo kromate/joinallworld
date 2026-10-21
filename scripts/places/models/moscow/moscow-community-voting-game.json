@@ -1,0 +1,697 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Amilkara_Kabrala_Square,_Moscow,_Russia_-_003.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user via Commons",
+   "view": "street",
+   "file": "/tmp/places-evidence/moscow/sq3.jpg",
+   "used": "the square seen from the street: nine-storey grey-white panel slab with stepped stair-core sections and balconies on the left, a cream round residential tower with a flared top disc on the right, open paved plaza with a lawn strip, lamp posts and kiosks between"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30396051",
+   "used": "the 1971 nine-storey apartment slab beside the square (81 x 13 m, nearest match 60 m): length, depth and storeys"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     78,
+     13
+    ]
+   },
+   "at": [
+    -6,
+    34
+   ],
+   "height": 27,
+   "storeys": 9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 9.0,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c7f80",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -6,
+    27.4,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "floors": 9,
+    "storeyHeight": 3.0,
+    "proud": 0.9,
+    "colour": "#b9b6ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "core",
+     "footprint": {
+      "rect": [
+       4,
+       1.2
+      ]
+     },
+     "height": 28,
+     "wall": {
+      "material": "concrete",
+      "colour": "#c4c1b8",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#7c7f80"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -34,
+     27.2
+    ],
+    "end": [
+     22,
+     27.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "lawn-edge",
+   "footprint": {
+    "rect": [
+     50,
+     5
+    ]
+   },
+   "at": [
+    -6,
+    -1.5
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4f8a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8a4a"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 6,
+    "spacing": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -20,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    56,
+    38,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      9.5,
+      0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      1.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      1.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      2.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      2.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      3.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      4.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      4.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      5.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      5.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      6.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      7.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      7.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      8.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      8.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      9.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      10.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      10.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      11.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      11.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      12.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      13.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      13.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      14.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      14.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      15.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      16.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      16.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      17.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      17.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      18.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      19.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      19.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      20.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      20.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      21.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      22.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      22.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      23.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      23.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      24.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      25.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      25.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      26.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      26.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      27.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      28.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      28.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      29.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      29.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      30.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      31.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      31.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      32.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      32.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      33.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      34.0,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      34.0,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      35.2,
+      "#b3b4ae"
+     ],
+     [
+      9.5,
+      35.2,
+      "#e2d9c4"
+     ],
+     [
+      9.5,
+      36.0,
+      "#e2d9c4"
+     ],
+     [
+      11.5,
+      36.0,
+      "#d9cdb2"
+     ],
+     [
+      11.5,
+      38.5,
+      "#d9cdb2"
+     ],
+     [
+      6.5,
+      38.5,
+      "#cfc3a6"
+     ],
+     [
+      6.5,
+      41.0,
+      "#bdb39a"
+     ],
+     [
+      3,
+      41.0,
+      "#bdb39a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "road",
+   "footprint": {
+    "rect": [
+     110,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#55585a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55585a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    20,
+    -5
+   ],
+   "z0": 0,
+   "height": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c97a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c97a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car0",
+   "footprint": {
+    "rect": [
+     4.2,
+     1.8
+    ]
+   },
+   "at": [
+    -30,
+    -14
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9aa3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car1",
+   "footprint": {
+    "rect": [
+     4.2,
+     1.8
+    ]
+   },
+   "at": [
+    -12,
+    -14
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8c2f2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c2f2f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car2",
+   "footprint": {
+    "rect": [
+     4.2,
+     1.8
+    ]
+   },
+   "at": [
+    8,
+    -14
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d8d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 40,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     8
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -26
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower is a smooth shaft with dark window bands, no balconies; road is a flat asphalt pad with box cars and one kiosk, no junction detail; trees and street furniture simplified."
+ }
+}

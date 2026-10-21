@@ -1,0 +1,449 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Roseraie_Princesse_Grace_-_panoramio_(3).jpg",
+   "licence": "CC BY 3.0",
+   "author": "Mister No",
+   "view": "street",
+   "file": "/tmp/places-evidence/monaco/rec1.jpg",
+   "used": "dark green duck pond with a single fountain jet, palms and yuccas, gravel edges, peach and cream apartment blocks behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MONACO_CIRCUS_10_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "otterboris",
+   "view": "street",
+   "used": "white peaked circus tent at the park edge with the rock of Tete de Chien behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16250182",
+   "used": "park extent (about 230 m across, clamped); contents composed from photos, not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 24,
+    "shape": "ellipse",
+    "colour": "#1f3d34",
+    "bank": true
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    1,
+    6,
+    0.1
+   ],
+   "params": {
+    "profile": [
+     [
+      0.25,
+      0
+     ],
+     [
+      0.2,
+      3.2
+     ],
+     [
+      0.5,
+      4.6,
+      "#f4fafb"
+     ],
+     [
+      0.05,
+      4.8
+     ]
+    ],
+    "segments": 10,
+    "colour": "#eef6f8"
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    1,
+    6,
+    0.05
+   ],
+   "params": {
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      3.2,
+      0.15
+     ],
+     [
+      3.6,
+      0.0
+     ]
+    ],
+    "segments": 16,
+    "colour": "#dbeaee"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -14
+     ],
+     [
+      -14,
+      -12
+     ],
+     [
+      10,
+      -14
+     ],
+     [
+      40,
+      -8
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#cdb89a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -14
+     ],
+     [
+      2,
+      -30
+     ],
+     [
+      0,
+      -45
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cdb89a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 10,
+    "count": 8,
+    "kind": "palm",
+    "min_height": 9,
+    "max_height": 14,
+    "keep_out": [
+     [
+      -20,
+      0,
+      20,
+      16
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -6,
+    28,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 10,
+    "count": 6,
+    "kind": "palm",
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 3.2
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    14,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 3.0
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -18,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-r",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    30,
+    14
+   ],
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b894",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#f1e6d0",
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98466",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-r2",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    46,
+    8
+   ],
+   "height": 20,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efd9b0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#f6eedb",
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98466",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-l",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    -38,
+    26
+   ],
+   "height": 26,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2b48a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#f6eedb",
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98466",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 40,
+    "count": 12,
+    "kind": "palm",
+    "min_height": 7,
+    "max_height": 13,
+    "keep_out": [
+     [
+      -22,
+      -14,
+      22,
+      14
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    -45,
+    10,
+    0
+   ],
+   "params": {
+    "colour": "#8f8878",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       16,
+       26
+      ],
+      "cx": 0
+     },
+     {
+      "z": 8,
+      "rect": [
+       12,
+       20
+      ],
+      "cx": -2
+     },
+     {
+      "z": 16,
+      "rect": [
+       7,
+       12
+      ],
+      "cx": -4
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "dense planting approximated with groves; balconies generic; circus tent dropped; rose garden omitted; rock cliff is a smooth mass"
+ }
+}

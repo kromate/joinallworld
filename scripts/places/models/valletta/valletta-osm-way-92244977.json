@@ -1,0 +1,565 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-92244977",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Victor_Tedesco_Stadium.jpg",
+   "licence": "CC BY-SA",
+   "author": "Chivista",
+   "view": "side",
+   "file": "/tmp/places-evidence/valletta/vt.jpg",
+   "used": "artificial green pitch, low pale boundary wall with hoardings, tall single floodlight mast, backdrop of a white industrial block with chimney at left and honey-limestone flats at right, red seating in the near corner, yellow gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/92244977",
+   "used": "ground size and orientation only (irregular outline, 138 x 100 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 14,
+  "fovDeg": 60,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     62
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#1f5a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    33,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 1.4,
+    "thickness": 0.5,
+    "colour": "#d8d3c4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    32.5,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "height": 1.0,
+    "bottom": 0.4,
+    "posts": false,
+    "colour": "#9a3a5a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50,
+     -36
+    ],
+    "end": [
+     -34,
+     -36
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "seatColour": "#c8283a",
+    "concreteColour": "#cfc9b8",
+    "under": "solid",
+    "flip": true
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -4,
+    34,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "head_width": 7,
+    "colour": "#9ea3a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "l-half",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     60
+    ],
+    "z0": 0.15,
+    "height": 0.04,
+    "colour": "#f0f0ea",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "l-n",
+   "at": [
+    0,
+    29,
+    0
+   ],
+   "params": {
+    "rect": [
+     96,
+     0.25
+    ],
+    "z0": 0.15,
+    "height": 0.04,
+    "colour": "#f0f0ea",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "l-s",
+   "at": [
+    0,
+    -29,
+    0
+   ],
+   "params": {
+    "rect": [
+     96,
+     0.25
+    ],
+    "z0": 0.15,
+    "height": 0.04,
+    "colour": "#f0f0ea",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "l-w",
+   "at": [
+    -48,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     58
+    ],
+    "z0": 0.15,
+    "height": 0.04,
+    "colour": "#f0f0ea",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "l-e",
+   "at": [
+    48,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     58
+    ],
+    "z0": 0.15,
+    "height": 0.04,
+    "colour": "#f0f0ea",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "circle",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 9.2,
+    "n": 36,
+    "z0": 0.15,
+    "height": 0.04,
+    "colour": "#f0f0ea",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "circle-in",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 8.9,
+    "n": 36,
+    "z0": 0.19,
+    "height": 0.03,
+    "colour": "#1f5a2a",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -33.5,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 2.0,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 8,
+    "colour": "#5f7a68"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate1",
+   "at": [
+    -52,
+    -33.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     2.4
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#e3b520",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate2",
+   "at": [
+    -47,
+    -33.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     2.4
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#e3b520",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "factory",
+   "footprint": {
+    "rect": [
+     48,
+     14
+    ]
+   },
+   "at": [
+    -28,
+    52
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#eceae4",
+    "windows": "rect",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "faces": {
+     "front": "rect",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c8c2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "brick-stack",
+   "at": [
+    -50,
+    47,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "radius": 1.2,
+    "colour": "#9b9488"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flat0",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    9.5,
+    50
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dcc487",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a574",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    9.5,
+    50,
+    14
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.6,
+    "legHeight": 0.8,
+    "colour": "#8c8f92"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "flat1",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    22.5,
+    53
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4b46c",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "cornice": false,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a574",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flat2",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    35.5,
+    56
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0cc98",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a574",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    35.5,
+    56,
+    12
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.6,
+    "legHeight": 0.8,
+    "colour": "#8c8f92"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "flat3",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    48.5,
+    50
+   ],
+   "height": 18,
+   "storeys": 6,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfae6a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "cornice": false,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a574",
+    "parapet": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "near fence is a plain railing (no glass panels), backdrop is a sparse set of limestone blocks without dense roof clutter, near stand is a simple red block, no hoarding artwork"
+ }
+}

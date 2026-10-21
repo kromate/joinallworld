@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vienna",
+ "venueId": "vienna-osm-node-3762548985",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wien_01_Musik_und_Kunst_Privatuniversit%C3%A4t_der_Stadt_Wien_a.jpg",
+   "licence": "CC0",
+   "author": "Gugerell",
+   "view": "street",
+   "file": "/tmp/places-evidence/vienna/muk1.jpg",
+   "used": "Johannesgasse frontage of the conservatory building: grey rusticated ground floor with glazed entrance and steel-and-glass canopy, red cornice band, cream upper storeys with white-framed windows; red banners as blank boards"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/175788661",
+   "used": "rejected: containing building is a Graumanngasse apartment house, not the conservatory"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 48,
+  "aspect": 1.78,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     32,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a59c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "trimColour": "#3a3a3c"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     32,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d0b6",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4.4,
+    "cornice": true,
+    "trimColour": "#f1ede0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7378",
+    "material": "membrane",
+    "parapet": 0.4
+   },
+   "z0": 6.5
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     32.4,
+     0.5
+    ],
+    "z0": 6.5,
+    "height": 0.5,
+    "colour": "#9c2f36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     9,
+     1.6
+    ]
+   },
+   "at": [
+    2,
+    -12.8
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1e2d36",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    2,
+    -14.2,
+    5.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 3.4,
+    "height": 5.4,
+    "thickness": 0.2,
+    "colour": "#2a3a40",
+    "edgeColour": "#cfd4d6",
+    "columns": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -12.3,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 3.2,
+    "bottom": 1.8,
+    "colour": "#b3262f",
+    "frameColour": "#7a1a20",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    11,
+    -12.3,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 3.2,
+    "bottom": 1.8,
+    "colour": "#b3262f",
+    "frameColour": "#7a1a20",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#a62a2e",
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "start": [
+     8,
+     -17
+    ],
+    "end": [
+     8,
+     -17
+    ],
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-left",
+   "footprint": {
+    "rect": [
+     10,
+     24
+    ]
+   },
+   "at": [
+    -21,
+    0
+   ],
+   "height": 19.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a59c",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.6,
+    "plinth": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#777777",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-right",
+   "footprint": {
+    "rect": [
+     10,
+     24
+    ]
+   },
+   "at": [
+    21,
+    0
+   ],
+   "height": 20.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a59c",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.8,
+    "plinth": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#777777",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "taller rusticated base, recessed dark glass entrance with four columns and canopy, thin red band, flush neighbours added; canopy is flat not sloped with tie rods, banners are small, window rhythm still regular, neighbours simplified; depth and side walls assumed"
+ }
+}

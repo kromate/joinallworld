@@ -1,0 +1,422 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Esgl%C3%A9sia_de_Sant_Serni_de_Canillo_-_20.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Ferran Llorens",
+   "view": "side",
+   "file": "/tmp/places-evidence/andorra-la-vella/church.jpg",
+   "used": "tall square rubble-stone belfry with arched belfry openings and slate pyramidal spire with cross, stepped slate-roofed gabled chancel and apse in front, ochre-brown rubble stone"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7790584",
+   "used": "overall size 22.5 x 15.5 m, bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 0.667,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     22
+    ]
+   },
+   "at": [
+    2,
+    9
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a38a64",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "windowShape": "arched",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       0.55,
+       0.38
+      ],
+      "colours": [
+       "#a38a64",
+       "#8f7852",
+       "#b09a72"
+      ],
+      "mode": "random",
+      "slits": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f56",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    3,
+    -3.5
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a68f68",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "windowShape": "arched",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       0.55,
+       0.38
+      ],
+      "colours": [
+       "#a68f68",
+       "#917a55",
+       "#b49d76"
+      ],
+      "mode": "random",
+      "slits": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f56",
+    "material": "slate",
+    "pitch": 34,
+    "overhang": 0.3
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     5,
+     4.2
+    ]
+   },
+   "at": [
+    3,
+    -9
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a68f68",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       0.55,
+       0.38
+      ],
+      "colours": [
+       "#a68f68",
+       "#917a55",
+       "#b49d76"
+      ],
+      "mode": "random",
+      "slits": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f56",
+    "material": "slate",
+    "pitch": 34,
+    "overhang": 0.3
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -7.5,
+    3
+   ],
+   "z0": 0,
+   "height": 29,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#a08560",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       0.55,
+       0.38
+      ],
+      "colours": [
+       "#a08560",
+       "#8a7350",
+       "#b39c74"
+      ],
+      "mode": "random",
+      "slits": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#464a52",
+    "material": "slate",
+    "rise": 8.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    -7.5,
+    3,
+    38.0
+   ],
+   "params": {
+    "height": 2.2,
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell0",
+   "at": [
+    -8.6,
+    -1.05
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "z0": 15,
+    "height": 2.4,
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bellt0",
+   "at": [
+    -8.6,
+    -1.05
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 12,
+    "z0": 17.4,
+    "height": 0.3,
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell1",
+   "at": [
+    -8.6,
+    -1.05
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "z0": 19.5,
+    "height": 2.4,
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bellt1",
+   "at": [
+    -8.6,
+    -1.05
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 12,
+    "z0": 21.9,
+    "height": 0.3,
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell2",
+   "at": [
+    -8.6,
+    -1.05
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "z0": 24,
+    "height": 2.4,
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bellt2",
+   "at": [
+    -8.6,
+    -1.05
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 12,
+    "z0": 26.4,
+    "height": 0.3,
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse-win",
+   "at": [
+    3,
+    -12.1
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.2
+    ],
+    "z0": 2.0,
+    "height": 1.1,
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock0",
+   "at": [
+    10,
+    -8
+   ],
+   "params": {
+    "radius": 5,
+    "n": 7,
+    "z0": 0,
+    "height": 3.5,
+    "topScale": 0.4,
+    "colour": "#7a6a55",
+    "topColour": "#e8eef2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock1",
+   "at": [
+    13,
+    -3
+   ],
+   "params": {
+    "radius": 4,
+    "n": 7,
+    "z0": 0,
+    "height": 2.8,
+    "topScale": 0.4,
+    "colour": "#7a6a55",
+    "topColour": "#e8eef2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock2",
+   "at": [
+    12,
+    -12
+   ],
+   "params": {
+    "radius": 3.5,
+    "n": 7,
+    "z0": 0,
+    "height": 2.4499999999999997,
+    "topScale": 0.4,
+    "colour": "#7a6a55",
+    "topColour": "#e8eef2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "belfry bell openings are dark arched recesses on front face only; rubble is random-panel approximation; nave roof pitched low, rocks and snow added; stepped slate gables of chancel simplified"
+ }
+}

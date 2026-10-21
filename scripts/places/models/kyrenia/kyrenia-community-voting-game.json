@@ -1,0 +1,431 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyrenia",
+ "venueId": "kyrenia-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saray\u00f6n\u00fc_Square_2020.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Seksen iki y\u00fcz k\u0131rk be\u015f",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyrenia/sq1.jpg",
+   "used": "Venetian granite column on a stepped limestone plinth inside a low round limestone kerb planter, iron railing around the plinth, ball finial, lamp posts, white modern block with red bands behind, paved square"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chypre_Nicosie_Ataturk_Maydani_Colonne_Venitienne_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "rene boulay",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyrenia/sq2.jpg",
+   "used": "column proportions (about 14 m, capital and ball), round kerb of sand-coloured stone, tiled-roof colonial building behind, white umbrella cafes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1380042718",
+   "used": "nearest match only, not used for geometry"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "id": "square",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 50,
+    "border": 1.2,
+    "colour": "#bdb4a2",
+    "border_colour": "#d3c9b0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "kerb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      10.5,
+      0,
+      "#c9b891"
+     ],
+     [
+      10.5,
+      0.7,
+      "#d6c8a2"
+     ],
+     [
+      9.8,
+      0.7,
+      "#d6c8a2"
+     ],
+     [
+      9.8,
+      0.05,
+      "#7b8a4f"
+     ],
+     [
+      0,
+      0.05,
+      "#7b8a4f"
+     ]
+    ],
+    "segments": 32
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-1",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     4.6
+    ],
+    "height": 1.0,
+    "colour": "#c9a45f",
+    "topColour": "#d3b06c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-2",
+   "at": [
+    0,
+    0,
+    1.05
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 1.4,
+    "colour": "#c9a45f",
+    "topColour": "#d3b06c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-3",
+   "at": [
+    0,
+    0,
+    2.45
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     2.3
+    ],
+    "height": 0.9,
+    "colour": "#c4a060"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "column",
+   "at": [
+    0,
+    0,
+    3.35
+   ],
+   "params": {
+    "profile": [
+     [
+      0.95,
+      0,
+      "#8b8171"
+     ],
+     [
+      0.8,
+      0.3,
+      "#8b8171"
+     ],
+     [
+      0.62,
+      0.6,
+      "#8b8171"
+     ],
+     [
+      0.55,
+      6,
+      "#8f8575"
+     ],
+     [
+      0.5,
+      11,
+      "#968c7b"
+     ],
+     [
+      0.6,
+      11.1,
+      "#9a9080"
+     ],
+     [
+      0.85,
+      11.6,
+      "#9a9080"
+     ],
+     [
+      0.8,
+      12.1,
+      "#9a9080"
+     ],
+     [
+      0.55,
+      12.2,
+      "#8f8575"
+     ],
+     [
+      0.3,
+      12.2,
+      "#7d7468"
+     ],
+     [
+      0.7,
+      12.6,
+      "#7d7468"
+     ],
+     [
+      0.7,
+      13.4,
+      "#6e675c"
+     ],
+     [
+      0.3,
+      13.9,
+      "#6e675c"
+     ],
+     [
+      0,
+      14,
+      "#6e675c"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail-front",
+   "at": [
+    0,
+    -3.4,
+    0.05
+   ],
+   "params": {
+    "length": 6.8,
+    "height": 1.6,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#e8d9a0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail-back",
+   "at": [
+    0,
+    3.4,
+    0.05
+   ],
+   "params": {
+    "length": 6.8,
+    "height": 1.6,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#e8d9a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-block",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    24
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#b84a3a",
+    "bay": 3.4,
+    "plinth": 0.3,
+    "groundKind": "shopfront",
+    "groundHeight": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa59b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "colonial",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    25
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e3d4b3",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "bay": 3.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5593c",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-block",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    28,
+    22
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d9bd",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -22,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 6,
+    "radius": 2,
+    "height": 2.6,
+    "colours": [
+     "#f3f1ea"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Surrounding buildings simplified (no curved corner block, cafes, bike racks); column and kerb match."
+ }
+}

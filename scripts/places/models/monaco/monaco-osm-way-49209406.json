@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-way-49209406",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/49209406",
+   "used": "real hospital outline (186 m wide, multi-wing, name match) scaled to 118 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: cream render, ribbon windows, about 9 storeys, flat membrane roof, ambulance bays; no exterior photo of this building found on Commons (the candidates show other buildings or an interior)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bay": 16,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f3ead6",
+    "glassColour": "#8da0a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "membrane",
+    "parapet": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -48,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     -55
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -52
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "match": "rough",
+  "gaps": "No exterior photo: real outline scaled to 118 m, cream render, ribbon windows. Tall central block, terraces and wing heights are not evidenced.",
+  "rounds": 0
+ }
+}

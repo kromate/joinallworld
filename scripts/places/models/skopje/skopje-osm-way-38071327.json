@@ -1,0 +1,570 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Boris_Trajkovski_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "A8B",
+   "view": "interior",
+   "file": "/tmp/places-evidence/skopje/u15-boris1.jpg",
+   "used": "single long main stand of blue seats in two blocks with a central stair aisle, thin dark steel roof on blue columns, low white concrete front wall with blue advertising boards, striped grass pitch, blue railing, flags on poles along the near touchline, open sides, hills behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38071327",
+   "used": "overall extent (about 164 x 78 m) and long axis; modelled as pitch plus the one stand within the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 56,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     112,
+     84
+    ],
+    "height": 0.1,
+    "colour": "#8e9a63"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 14,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     46,
+     36
+    ],
+    "end": [
+     -46,
+     36
+    ],
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "under": "solid",
+    "slab": 0.4,
+    "blocks": 2,
+    "seatColour": "#2f62a8",
+    "concreteColour": "#e4e2dc",
+    "underColour": "#e4e2dc"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     96,
+     10.5
+    ],
+    "height": 0.4,
+    "colour": "#2a2d32"
+   },
+   "at": [
+    0,
+    42.2,
+    8.3
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     96,
+     0.3
+    ],
+    "height": 0.9,
+    "colour": "#23262b"
+   },
+   "at": [
+    0,
+    47.3,
+    8.3
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     38,
+     0
+    ],
+    "end": [
+     44,
+     38,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 8.5,
+      "colour": "#2f62a8"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     46.5,
+     0
+    ],
+    "end": [
+     44,
+     46.5,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 8.7,
+      "colour": "#2f62a8"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.2,
+     8.4
+    ],
+    "height": 1.1,
+    "colour": "#e8c02a"
+   },
+   "at": [
+    1.2,
+    40.4,
+    3.4
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     0.2,
+     8.4
+    ],
+    "height": 1.1,
+    "colour": "#e8c02a"
+   },
+   "at": [
+    -1.2,
+    40.4,
+    3.4
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3.0,
+     8.0
+    ],
+    "height": 0.15,
+    "colour": "#d9d7d0"
+   },
+   "at": [
+    0,
+    40.4,
+    0.9
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     96,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#f0efe9"
+   },
+   "at": [
+    0,
+    34.5,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     34.2,
+     0
+    ],
+    "end": [
+     40,
+     34.2,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       7,
+       0.15
+      ],
+      "z0": 0.1,
+      "height": 0.8,
+      "colour": "#2f62a8"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "points": [
+     [
+      -50,
+      -37
+     ],
+     [
+      50,
+      -37
+     ]
+    ],
+    "height": 1.1,
+    "thickness": 0.08,
+    "kind": "fence",
+    "colour": "#1e3f7a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "points": [
+     [
+      -52,
+      -42
+     ],
+     [
+      52,
+      -42
+     ],
+     [
+      52,
+      32
+     ],
+     [
+      -52,
+      32
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#b4babf"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -38,
+     0
+    ],
+    "end": [
+     44,
+     -38,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6,
+       0.2
+      ],
+      "height": 1.0,
+      "colour": "#2f62a8"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -28,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 5,
+    "spacing": 4,
+    "colours": [
+     "#6b4b8f",
+     "#f0eee8",
+     "#c9372c",
+     "#c9372c",
+     "#c9372c"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    56,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -56,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -50,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 50
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#6f7f96",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       150,
+       24
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       100,
+       8
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       40,
+       3
+      ]
+     }
+    ]
+   },
+   "at": [
+    10,
+    78,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 6.0,
+    "colour": "#e8dcc6"
+   },
+   "at": [
+    -45,
+    62,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 7.5,
+    "colour": "#d7b79a"
+   },
+   "at": [
+    -27,
+    66,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 9.0,
+    "colour": "#efe9de"
+   },
+   "at": [
+    -9,
+    62,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 6.0,
+    "colour": "#e8dcc6"
+   },
+   "at": [
+    9,
+    66,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 7.5,
+    "colour": "#d7b79a"
+   },
+   "at": [
+    27,
+    62,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 9.0,
+    "colour": "#efe9de"
+   },
+   "at": [
+    45,
+    66,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-osm-way-38071327",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Stand now low (10 rows) with roof attached on blue columns, white front wall, blue boards, yellow stair rails, blue touchline rail, hills and houses behind; seat blue is hidden by pale underside, no true yellow-rail stair geometry, hills are a plain loft, camera is higher than the photo."
+ }
+}

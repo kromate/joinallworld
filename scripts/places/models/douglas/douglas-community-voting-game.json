@@ -1,0 +1,535 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "douglas",
+ "venueId": "douglas-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Municipal_Buildings,_Ridgeway_Street,_Douglas_-_geograph.org.uk_-_6280229.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Jo and Steve Turner",
+   "view": "street",
+   "file": "/tmp/places-evidence/douglas/douglas-community-voting-game-1.jpg",
+   "used": "corner view: buff ashlar with dark rubble panels, sash windows in stone mullions, gable with round window, silver onion dome on corner tower, red-brown tile roofs behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Municipal_Buildings_Douglas_-_geograph.org.uk_-_4388167.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Richard Hoare",
+   "view": "street",
+   "file": "/tmp/places-evidence/douglas/douglas-community-voting-game-0.jpg",
+   "used": "long street facade with arched doorway, ranked sash windows, dormer lantern roof, dome at the right end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/79143118",
+   "used": "footprint (39.8 x 29.6 m), rotated so the long street side faces the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     36,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b9a77f",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#d9cfb4",
+    "pattern": {
+     "type": "bands",
+     "colour": "#8d7f66"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d4a3b",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-bay",
+   "footprint": {
+    "rect": [
+     11,
+     4.2
+    ]
+   },
+   "at": [
+    -3,
+    -9.6
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#bfae86",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#c2b392",
+    "material": "concrete",
+    "pitch": 50,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble-panel",
+   "at": [
+    -3,
+    -11.78,
+    9.7
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     0.2
+    ],
+    "height": 2.6,
+    "colour": "#5d5348"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "oculus-ring",
+   "at": [
+    -3,
+    -11.95,
+    11.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.95,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "closed": true,
+    "colour": "#d4c8a8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "oculus-glass",
+   "at": [
+    -3,
+    -11.8,
+    11.3
+   ],
+   "params": {
+    "radius": 0.8,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      -0.2,
+      0
+     ]
+    ],
+    "colour": "#2d3438"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble-quoin-l",
+   "at": [
+    -8.3,
+    -11.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.3
+    ],
+    "height": 9.5,
+    "colour": "#5d5348"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble-quoin-r",
+   "at": [
+    2.3,
+    -11.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.3
+    ],
+    "height": 9.5,
+    "colour": "#5d5348"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7.4,
+     7.4
+    ]
+   },
+   "at": [
+    13,
+    -4.2
+   ],
+   "height": 11.2,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b9a77f",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bd9f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "onion-dome",
+   "at": [
+    13,
+    -4.2,
+    11.2
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#b4b9bd",
+    "profile": [
+     [
+      0.1,
+      0,
+      "#b4b9bd"
+     ],
+     [
+      3.5,
+      0
+     ],
+     [
+      3.6,
+      0.15
+     ],
+     [
+      3.9,
+      0.9
+     ],
+     [
+      3.8,
+      1.8
+     ],
+     [
+      3.2,
+      2.6
+     ],
+     [
+      2.2,
+      3.3
+     ],
+     [
+      1.2,
+      4.0
+     ],
+     [
+      0.5,
+      4.7
+     ],
+     [
+      0.2,
+      5.2
+     ],
+     [
+      0.12,
+      5.5
+     ],
+     [
+      0.1,
+      6.6,
+      "#3b3b3b"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dormer-lantern",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    -10,
+    1.5
+   ],
+   "z0": 10.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e8e6df",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#aebfc9"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d4a3b",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    6,
+    -7.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "height": 3.0,
+    "colour": "#1f1b18"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "door-arch",
+   "at": [
+    6,
+    -7.7,
+    3.0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.2,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#c9bb98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-wing",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    -23,
+    2
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5a48",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#6b3f38",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "porch-steps",
+   "at": [
+    6,
+    -8.3,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "rise": 0.7,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#a49a86"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    -14,
+    -7.6,
+    9
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#b3333f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mullion-bay",
+   "footprint": {
+    "rect": [
+     6,
+     1.4
+    ]
+   },
+   "at": [
+    -15.5,
+    -8.2
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#bfae86",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bd9f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble-bay-0",
+   "at": [
+    -18.2,
+    -8.95,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.12
+    ],
+    "height": 6.2,
+    "colour": "#5d5348"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble-bay-1",
+   "at": [
+    -12.8,
+    -8.95,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.12
+    ],
+    "height": 6.2,
+    "colour": "#5d5348"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rect massing not the true outline; mullioned bay is only a punched-window box, shaped gable is a plain steep gable without scrolls, dome lacks ribs, no dormer lantern detail, rubble panels only on gable, quoins and bay."
+ }
+}

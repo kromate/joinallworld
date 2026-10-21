@@ -1,0 +1,528 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gare,_Monaco_(20260620-IMG_3810).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Matti Blume",
+   "view": "street",
+   "file": "/tmp/places-evidence/monaco/tr1.jpg",
+   "used": "station entrance cut under a stone viaduct: segmental stone arch ring, glazed arch infill, grey steel stair and rails, terracotta paved terrace, sandstone parapets, girders above"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gare_de_Monaco_-_panoramio_(1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "MSzybalski",
+   "view": "street",
+   "used": "same arch glazing and coursed masonry"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/156780354",
+   "used": "not used for geometry: the underground station outline is far longer than the visible portal"
+  },
+  {
+   "kind": "text",
+   "used": "brief: underground station in a 466 m curved tunnel, opened 1999, only the portal and entrance hall show at the surface"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 44,
+  "aspect": 1.5,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "viaduct",
+   "footprint": {
+    "rect": [
+     44,
+     9
+    ]
+   },
+   "at": [
+    0,
+    4.5
+   ],
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#bdb298",
+    "windows": "none",
+    "cornice": true,
+    "trimColour": "#bdb298"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "girders",
+   "footprint": {
+    "rect": [
+     44,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7a5a46",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e5240"
+   },
+   "z0": 12.8
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    -0.2,
+    0.05
+   ],
+   "params": {
+    "colour": "#e6dfc9",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       28.44,
+       1.0
+      ],
+      "cy": 0.1
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       26.85,
+       1.0
+      ],
+      "cy": 0.1
+     },
+     {
+      "z": 3,
+      "rect": [
+       24.81,
+       1.0
+      ],
+      "cy": 0.1
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       22.17,
+       1.0
+      ],
+      "cy": 0.1
+     },
+     {
+      "z": 6,
+      "rect": [
+       18.71,
+       1.0
+      ],
+      "cy": 0.1
+     },
+     {
+      "z": 7,
+      "rect": [
+       15.67,
+       1.0
+      ],
+      "cy": 0.1
+     },
+     {
+      "z": 9.4,
+      "rect": [
+       0.6,
+       1.0
+      ],
+      "cy": 0.1
+     }
+    ],
+    "capTop": false
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    -0.45,
+    0.05
+   ],
+   "params": {
+    "colour": "#bcd4de",
+    "material": "glass",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       26.0,
+       0.35
+      ],
+      "cy": 0
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       24.25,
+       0.35
+      ],
+      "cy": 0
+     },
+     {
+      "z": 3,
+      "rect": [
+       21.96,
+       0.35
+      ],
+      "cy": 0
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       18.94,
+       0.35
+      ],
+      "cy": 0
+     },
+     {
+      "z": 6,
+      "rect": [
+       14.73,
+       0.35
+      ],
+      "cy": 0
+     },
+     {
+      "z": 7,
+      "rect": [
+       10.61,
+       0.35
+      ],
+      "cy": 0
+     },
+     {
+      "z": 8,
+      "rect": [
+       0.2,
+       0.35
+      ],
+      "cy": 0
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-r",
+   "footprint": {
+    "rect": [
+     16,
+     4
+    ]
+   },
+   "at": [
+    19,
+    -5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdb590",
+    "windows": "none",
+    "cornice": true,
+    "trimColour": "#dcc9a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb590"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-l",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    -17,
+    -3.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a68c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcd3c2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    -5.5,
+    -5
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd3d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3b7"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9,
+    -0.6,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "rise": 2.2,
+    "run": 3.5,
+    "count": 9,
+    "colour": "#8e9296"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -3,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 4
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -0.6,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.4
+    ],
+    "height": 1.2,
+    "colour": "#7a5a46"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -20,
+    -1.0,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6e5240"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -15,
+    -1.0,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6e5240"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -10,
+    -1.0,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6e5240"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -5,
+    -1.0,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6e5240"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -1.0,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6e5240"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    5,
+    -1.0,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6e5240"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    10,
+    -1.0,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6e5240"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    15,
+    -1.0,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6e5240"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    20,
+    -1.0,
+    12.8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#6e5240"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "voussoir ring thicker but not individual blocks; glazing has no mullion grid; lightwell and wall lights omitted; stair approximate"
+ }
+}

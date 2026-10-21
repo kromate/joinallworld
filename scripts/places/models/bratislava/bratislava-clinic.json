@@ -1,0 +1,468 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:VO_VINOHRADOCH_NAD_CAJLOU_-_panoramio_(cropped).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "ANDREJ NEUHERZ",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/bratislava/clinic1.jpg",
+   "used": "pavilions of the hospital seen from the vineyards: white rendered 3-5 storey slabs with flat roofs, orange-red rooftop plant boxes, lower white block with hip roof, tall brick boiler chimney behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/778564760",
+   "used": "campus is 543 x 317 m so the outline is not used as a building; pavilion sizes from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 2.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     46,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e1",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4573a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c9c4"
+   },
+   "z0": 13
+  },
+  {
+   "type": "mass",
+   "id": "plant-box2",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    12,
+    2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4573a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c9c4"
+   },
+   "z0": 13
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     40,
+     15
+    ]
+   },
+   "at": [
+    44,
+    16
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e1",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.8
+   },
+   "rotDeg": -12
+  },
+  {
+   "type": "mass",
+   "id": "plant-east",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    48,
+    15
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4573a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c9c4"
+   },
+   "z0": 16,
+   "rotDeg": -12
+  },
+  {
+   "type": "mass",
+   "id": "mid-block",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    22,
+    38
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e1",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.8
+   },
+   "rotDeg": 6
+  },
+  {
+   "type": "mass",
+   "id": "plant-mid",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    22,
+    38
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4573a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c9c4"
+   },
+   "z0": 12,
+   "rotDeg": 6
+  },
+  {
+   "type": "mass",
+   "id": "west-annex",
+   "footprint": {
+    "rect": [
+     28,
+     11
+    ]
+   },
+   "at": [
+    -50,
+    -10
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#b5593f",
+    "material": "clay-tile",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "brick-stack",
+   "at": [
+    -24,
+    60,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "radius": 1.1
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    40,
+    95,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       46,
+       20
+      ],
+      "cx": 0
+     },
+     {
+      "z": 22,
+      "ellipse": [
+       38,
+       16
+      ],
+      "cx": 10
+     },
+     {
+      "z": 48,
+      "ellipse": [
+       26,
+       10
+      ],
+      "cx": 14
+     },
+     {
+      "z": 60,
+      "ellipse": [
+       10,
+       5
+      ],
+      "cx": 16
+     }
+    ],
+    "colour": "#2f4a2a",
+    "curve": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     12
+    ],
+    "height": 0.8,
+    "colour": "#7d9c3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     76,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Pavilion cluster approximate; hill backdrop is a smooth blob; vineyard foreground a flat strip"
+ }
+}

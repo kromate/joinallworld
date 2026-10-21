@@ -1,0 +1,386 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-osm-way-23872736",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:EdmondMachtensstadion.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Billywillem",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/v17_0.jpg",
+   "used": "long covered main stand seen across the pitch: single-tier raked seating under a flat cantilever roof on raking steel trusses, pale roof fascia, floodlights along the roof edge, dirt track around the grass pitch, open end terrace on the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Edmond_Machtensstadion_2017.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "PitchdGroundhopping",
+   "view": "street",
+   "file": "/tmp/places-evidence/brussels/v17_1.jpg",
+   "used": "exterior of the ribbed stand: red-brown curved ribs, tan cladding gable end, brick ground floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23872736",
+   "used": "overall size (141 x 120 m) and the bowl of three stands plus an open fourth side"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 36,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     114,
+     86
+    ],
+    "height": 0.1,
+    "colour": "#a65a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     102,
+     66
+    ],
+    "height": 0.08,
+    "colour": "#5e8a45"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     57,
+     35
+    ],
+    "end": [
+     -57,
+     35
+    ],
+    "rows": 20,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "stepped": true,
+    "slab": 0.5,
+    "bay": 5,
+    "seatColours": [
+     "#3a3d42",
+     "#45484e"
+    ],
+    "blocks": 4,
+    "concreteColour": "#6b6d6e",
+    "underColour": "#26292c",
+    "canopy": {
+     "height": 3.2,
+     "depth": 24,
+     "thickness": 0.7,
+     "slopeDeg": 4,
+     "colour": "#3b4046",
+     "edgeColour": "#e4e6e6",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     3
+    ],
+    "height": 19,
+    "colour": "#4a4d52"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     38
+    ],
+    "end": [
+     48,
+     38
+    ],
+    "count": 9,
+    "lod1Step": 6,
+    "lod2Step": 9,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 12,
+      "colour": "#6a7078"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     44.5
+    ],
+    "end": [
+     50,
+     44.5
+    ],
+    "count": 11,
+    "lod1Step": 6,
+    "lod2Step": 3,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 0.9,
+      "colour": "#d6d8d4"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -60,
+     32
+    ],
+    "end": [
+     -60,
+     -32
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 0.8,
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#b8b5ac",
+     "#9a978f"
+    ],
+    "blocks": 2,
+    "concreteColour": "#b8b5ac",
+    "underColour": "#98958e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -64,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     66
+    ],
+    "height": 5.5,
+    "colour": "#7b7a74"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    54,
+    0,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "colour": "#7b7a74",
+    "points": [
+     [
+      0,
+      -36
+     ],
+     [
+      0,
+      36
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     36
+    ],
+    "end": [
+     52,
+     36
+    ],
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 5,
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 22,
+      "head_width": 2.2,
+      "colour": "#aeb4ba"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     7,
+     1.2
+    ]
+   },
+   "at": [
+    -62,
+    -8
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2d3033",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    38,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 3.5,
+    "colour": "#aeb4ba"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -20
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     72,
+     0
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stand now spans the pitch with dark underside, pale thin fascia, masts, track and open end terrace, but trusses are not raked, stand reads lighter and smaller than the photo, ribbed rear stand and fourth side missing, no goal posts or ad boards."
+ }
+}

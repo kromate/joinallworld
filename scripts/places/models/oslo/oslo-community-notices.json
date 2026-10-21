@@ -1,0 +1,365 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "oslo",
+ "venueId": "oslo-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B%C3%A6rum_r%C3%A5dhus_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/oslo/baerum1.jpg",
+   "used": "long grey-stone ground block with tall slender windows and a carved frieze band, tall white square bell tower at the left, white five-storey office block at the right, white low wing behind, retaining wall and stairs in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baerum_radhus_ocean.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Siri Anne Bjornbakken / Baerum kommune",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/oslo/baerum2.jpg",
+   "used": "rear grey slate roof on the long wing, white upper block, tower position, river bank in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30606562",
+   "used": "overall size (about 60 m) only; the cross-shaped outline was recomposed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-wing",
+   "footprint": {
+    "rect": [
+     52,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#9f9a8d",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "glassColour": "#c9c6b8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 1.2,
+    "bands": "#d7d2c4",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5d60",
+    "overhang": 0.4,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -31,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 29,
+   "storeys": 4,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece9e1",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing-left",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e8e5dc",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     17,
+     14
+    ]
+   },
+   "at": [
+    26,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ebe8e0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#b8c0c4",
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9093",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     42,
+     10
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e4e1d8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 12,
+    "colour": "#5d6166",
+    "material": "slate",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid-block",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    6,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ebe8e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9093",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retaining-wall",
+   "footprint": {
+    "rect": [
+     56,
+     2
+    ]
+   },
+   "at": [
+    -2,
+    -11
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8b80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a398",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -34,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 0.9,
+    "count": 6,
+    "colour": "#aaa59a"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -20,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#d0d0d0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -48,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "carved frieze and window reliefs are not modelled; the real plan is cross-shaped (OSM) and the rear wings are simplified; tower belfry and cornice detail plain"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   110,
+   70
+  ]
+ }
+}

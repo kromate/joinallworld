@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tallinn,_maja,_kus_aastatel_1867-1917_asus_Toomvaestekool,_Wismari_15.jpg",
+   "licence": "CC BY-SA 3.0 ee",
+   "author": "Iifar",
+   "view": "street",
+   "file": "/tmp/places-evidence/tallinn/clinic0.jpg",
+   "used": "two-storey over raised basement, pale grey-beige rendered walls, blue-grey rendered plinth, tall white-framed windows with sill and lintel mouldings, cornice, low hipped roof, side entrance porch with pilasters, big linden tree, side steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26899898",
+   "used": "footprint (name match, 15 m height tag)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "fit": 40
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#bebdb6",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.34,
+    "bay": 3.4,
+    "plinth": 3.0,
+    "cornice": true,
+    "bands": "#e4e2da",
+    "groundKind": "window"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6d7377",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    17,
+    10,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    -17,
+    -8,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "width": 3.5,
+    "depth": 2,
+    "height": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Roof is a plain hip; real building has a stronger cornice, a side basement stair with railings and a big linden tree hiding the east end; windows slightly smaller than real."
+ }
+}

@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Tugual%27s_Chapel_op_Herm.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "unknown (Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-peter-port/tugual.jpg",
+   "used": "west gable of rough granite rubble, round-arched door with glazed fanlight and black frame, two small windows high on the gable, steep gable, hanging flower baskets, brick-paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/197343099",
+   "used": "footprint proportions (about 10 x 10 m, small chancel step)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 0.725,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     6.4,
+     9.5
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9283",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "windowRatio": 0.1,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6468",
+    "material": "slate",
+    "pitch": 45,
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     4.8,
+     3.6
+    ]
+   },
+   "at": [
+    0.3,
+    5.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9283",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6468",
+    "material": "slate",
+    "pitch": 40
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "yard-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.0,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "church-door",
+   "id": "door",
+   "at": [
+    0,
+    -5.25,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 3.0,
+    "arch": true,
+    "trim": "#15171a"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "win-l",
+   "at": [
+    -1.9,
+    -5.25,
+    4.0
+   ],
+   "params": {
+    "width": 0.5,
+    "height": 0.8,
+    "kind": "rect"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "win-r",
+   "at": [
+    1.9,
+    -5.25,
+    4.0
+   ],
+   "params": {
+    "width": 0.5,
+    "height": 0.8,
+    "kind": "rect"
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "id": "beds-l",
+   "at": [
+    -2.4,
+    -6.05,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 1,
+    "width": 1.8,
+    "depth": 1.0
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "id": "beds-r",
+   "at": [
+    2.4,
+    -6.05,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 1,
+    "width": 1.8,
+    "depth": 1.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "stone texture is coursed ashlar not irregular rubble; door glazing is a plain cross and not a fanlit arch; hanging baskets and lush planting reduced to two flat beds; gable windows sit a little low"
+ }
+}

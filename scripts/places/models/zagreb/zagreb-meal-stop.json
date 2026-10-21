@@ -1,0 +1,126 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/289862233",
+   "used": "real outline of the containing 6-level apartment building (27 x 26 m, stepped courtyard side)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/zagreb.json zagreb-meal-stop",
+   "used": "restaurant Noel on the ground floor of a Lower Town tenement: pastel-yellow plaster, awning, pavement terrace, arched windows. Nearby street photos on Commons do not show this building, so none was used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tenement",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3c978",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#f4efe0",
+    "glassColour": "#4a4f55",
+    "groundKind": "curtain",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f4efe0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4a3a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.4,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#7a4a3a",
+     "#f4efe0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.8,
+    "bottom": 3.6,
+    "colour": "#3b2b25",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -20
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this building: massing and storeys come from the OSM outline, colours and the awning, signboard and terrace-front details from the brief; ground-floor shopfront and facade rhythm are typical Lower Town, not observed."
+ }
+}

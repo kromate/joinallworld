@@ -1,0 +1,1939 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lisbon",
+ "venueId": "lisbon-osm-way-36615985",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:StadionJamor.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Koshelyev",
+   "view": "interior",
+   "file": "/tmp/places-evidence/lisbon/m-36615985_0.jpg",
+   "used": "horseshoe bowl of pale grey-blue raked seating in two tiers split by diagonal stair aisles, no roof, red running track round a green pitch, white royal-box block with light awnings on the right side stand, slender white lattice floodlight mast behind, dense pine woodland backdrop"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Est%C3%A1dio_Nacional_do_Jamor_-_Vista_geral_2.jpg",
+   "licence": "Public domain",
+   "author": "Tagido",
+   "view": "street",
+   "file": "/tmp/places-evidence/lisbon/m-36615985_2.jpg",
+   "used": "open end of the horseshoe facing a cobbled plaza with flagpoles and bollards, lattice floodlight masts, trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/36615985",
+   "used": "overall horseshoe plan (about 280 x 260 m with the plaza), composed at about 100 m to fit the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 70,
+  "pitchDeg": 26,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "two-tier bowl with concourse gap, tall two-leg barred masts outside the rim, dense pine ring and track lanes added; diagonal stair aisles are only block gaps, masts read as simple frames not true lattice, lanes barely visible, composed at ~100 m not real 280 m, plaza not cobbled in detail"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "track",
+   "params": {
+    "points": [
+     [
+      38.0,
+      12.0
+     ],
+     [
+      36.7,
+      22.4
+     ],
+     [
+      32.9,
+      32.0
+     ],
+     [
+      26.9,
+      40.3
+     ],
+     [
+      19.0,
+      46.6
+     ],
+     [
+      9.8,
+      50.6
+     ],
+     [
+      0.0,
+      52.0
+     ],
+     [
+      -9.8,
+      50.6
+     ],
+     [
+      -19.0,
+      46.6
+     ],
+     [
+      -26.9,
+      40.3
+     ],
+     [
+      -32.9,
+      32.0
+     ],
+     [
+      -36.7,
+      22.4
+     ],
+     [
+      -38.0,
+      12.0
+     ],
+     [
+      -38,
+      -44
+     ],
+     [
+      38,
+      -44
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#a8483a",
+    "topColour": "#a8483a"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "points": [
+     [
+      30.0,
+      12.0
+     ],
+     [
+      29.0,
+      20.3
+     ],
+     [
+      26.0,
+      28.0
+     ],
+     [
+      21.2,
+      34.6
+     ],
+     [
+      15.0,
+      39.7
+     ],
+     [
+      7.8,
+      42.9
+     ],
+     [
+      0.0,
+      44.0
+     ],
+     [
+      -7.8,
+      42.9
+     ],
+     [
+      -15.0,
+      39.7
+     ],
+     [
+      -21.2,
+      34.6
+     ],
+     [
+      -26.0,
+      28.0
+     ],
+     [
+      -29.0,
+      20.3
+     ],
+     [
+      -30.0,
+      12.0
+     ],
+     [
+      -30,
+      -44
+     ],
+     [
+      30,
+      -44
+     ]
+    ],
+    "z0": 0.12,
+    "height": 0.1,
+    "colour": "#5f9a46",
+    "topColour": "#5f9a46"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "royal-box",
+   "params": {
+    "rect": [
+     34,
+     9
+    ],
+    "z0": 17,
+    "height": 8,
+    "colour": "#ece7d8",
+    "topColour": "#d9d3c3",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "storeys": 2,
+    "glassColour": "#5e6a70"
+   },
+   "at": [
+    0,
+    80,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "box-roof",
+   "params": {
+    "rect": [
+     36,
+     10.5
+    ],
+    "z0": 25,
+    "height": 0.6,
+    "colour": "#f2efe6",
+    "topColour": "#f2efe6"
+   },
+   "at": [
+    0,
+    80,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "box-wing-l",
+   "params": {
+    "rect": [
+     16,
+     4
+    ],
+    "z0": 17,
+    "height": 3.2,
+    "colour": "#e8e3d4",
+    "topColour": "#d9d3c3"
+   },
+   "at": [
+    -27,
+    76,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "box-wing-r",
+   "params": {
+    "rect": [
+     16,
+     4
+    ],
+    "z0": 17,
+    "height": 3.2,
+    "colour": "#e8e3d4",
+    "topColour": "#d9d3c3"
+   },
+   "at": [
+    27,
+    76,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "params": {
+    "rect": [
+     70,
+     26
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#a99d8c",
+    "topColour": "#b8ad98"
+   },
+   "at": [
+    0,
+    -58,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "box-canopy",
+   "at": [
+    0,
+    73.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     3.5
+    ],
+    "z0": 21,
+    "height": 0.4,
+    "colour": "#f4f1e8",
+    "topColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "lane-0.37",
+   "at": [
+    0,
+    0,
+    0.13
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.03
+     ]
+    },
+    "points": [
+     [
+      32.96,
+      -44,
+      0
+     ],
+     [
+      32.96,
+      12.0,
+      0
+     ],
+     [
+      31.84,
+      21.05,
+      0
+     ],
+     [
+      28.54,
+      29.48,
+      0
+     ],
+     [
+      23.31,
+      36.72,
+      0
+     ],
+     [
+      16.48,
+      42.28,
+      0
+     ],
+     [
+      8.53,
+      45.77,
+      0
+     ],
+     [
+      0.0,
+      46.96,
+      0
+     ],
+     [
+      -8.53,
+      45.77,
+      0
+     ],
+     [
+      -16.48,
+      42.28,
+      0
+     ],
+     [
+      -23.31,
+      36.72,
+      0
+     ],
+     [
+      -28.54,
+      29.48,
+      0
+     ],
+     [
+      -31.84,
+      21.05,
+      0
+     ],
+     [
+      -32.96,
+      12.0,
+      0
+     ],
+     [
+      -32.96,
+      -44,
+      0
+     ]
+    ],
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "lane-0.75",
+   "at": [
+    0,
+    0,
+    0.13
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.03
+     ]
+    },
+    "points": [
+     [
+      36.0,
+      -44,
+      0
+     ],
+     [
+      36.0,
+      12.0,
+      0
+     ],
+     [
+      34.77,
+      21.84,
+      0
+     ],
+     [
+      31.18,
+      31.0,
+      0
+     ],
+     [
+      25.46,
+      38.87,
+      0
+     ],
+     [
+      18.0,
+      44.91,
+      0
+     ],
+     [
+      9.32,
+      48.71,
+      0
+     ],
+     [
+      0.0,
+      50.0,
+      0
+     ],
+     [
+      -9.32,
+      48.71,
+      0
+     ],
+     [
+      -18.0,
+      44.91,
+      0
+     ],
+     [
+      -25.46,
+      38.87,
+      0
+     ],
+     [
+      -31.18,
+      31.0,
+      0
+     ],
+     [
+      -34.77,
+      21.84,
+      0
+     ],
+     [
+      -36.0,
+      12.0,
+      0
+     ],
+     [
+      -36.0,
+      -44,
+      0
+     ]
+    ],
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast0-leg-1.6",
+   "at": [
+    -81.6,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-leg1.6",
+   "at": [
+    -78.4,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bar6",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.96,
+     0.3
+    ],
+    "z0": 6,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bary6",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 6,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bar12",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.72,
+     0.3
+    ],
+    "z0": 12,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bary12",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 12,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bar18",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4800000000000004,
+     0.3
+    ],
+    "z0": 18,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bary18",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 18,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bar24",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.24,
+     0.3
+    ],
+    "z0": 24,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bary24",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 24,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bar30",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 30,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-bary30",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 30,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast0-head",
+   "at": [
+    -80,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.2
+    ],
+    "z0": 35,
+    "height": 3.5,
+    "colour": "#cfd3d5",
+    "topColour": "#cfd3d5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-leg-1.6",
+   "at": [
+    78.4,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-leg1.6",
+   "at": [
+    81.6,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bar6",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.96,
+     0.3
+    ],
+    "z0": 6,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bary6",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 6,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bar12",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.72,
+     0.3
+    ],
+    "z0": 12,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bary12",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 12,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bar18",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4800000000000004,
+     0.3
+    ],
+    "z0": 18,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bary18",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 18,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bar24",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.24,
+     0.3
+    ],
+    "z0": 24,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bary24",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 24,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bar30",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 30,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-bary30",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 30,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1-head",
+   "at": [
+    80,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.2
+    ],
+    "z0": 35,
+    "height": 3.5,
+    "colour": "#cfd3d5",
+    "topColour": "#cfd3d5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-leg-1.6",
+   "at": [
+    -77.6,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-leg1.6",
+   "at": [
+    -74.4,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bar6",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.96,
+     0.3
+    ],
+    "z0": 6,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bary6",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 6,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bar12",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.72,
+     0.3
+    ],
+    "z0": 12,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bary12",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 12,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bar18",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4800000000000004,
+     0.3
+    ],
+    "z0": 18,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bary18",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 18,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bar24",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.24,
+     0.3
+    ],
+    "z0": 24,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bary24",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 24,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bar30",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 30,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-bary30",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 30,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2-head",
+   "at": [
+    -76,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.2
+    ],
+    "z0": 35,
+    "height": 3.5,
+    "colour": "#cfd3d5",
+    "topColour": "#cfd3d5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-leg-1.6",
+   "at": [
+    74.4,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-leg1.6",
+   "at": [
+    77.6,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bar6",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.96,
+     0.3
+    ],
+    "z0": 6,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bary6",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 6,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bar12",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.72,
+     0.3
+    ],
+    "z0": 12,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bary12",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 12,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bar18",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4800000000000004,
+     0.3
+    ],
+    "z0": 18,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bary18",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 18,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bar24",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.24,
+     0.3
+    ],
+    "z0": 24,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bary24",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 24,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bar30",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 30,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-bary30",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 30,
+    "height": 0.35,
+    "colour": "#eceeed",
+    "topColour": "#eceeed"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast3-head",
+   "at": [
+    76,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.2
+    ],
+    "z0": 35,
+    "height": 3.5,
+    "colour": "#cfd3d5",
+    "topColour": "#cfd3d5"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     0
+    ],
+    "end": [
+     30,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 14,
+      "colour": "#e8e8e6"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     12,
+     0
+    ],
+    "radius": 92,
+    "radiusY": 95,
+    "startDeg": -20,
+    "endDeg": 200,
+    "count": 30,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 22,
+      "spread": 10
+     }
+    },
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     12,
+     0
+    ],
+    "radius": 103,
+    "radiusY": 106,
+    "startDeg": -20,
+    "endDeg": 200,
+    "count": 36,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 24,
+      "spread": 10
+     }
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "seatColour": "#c3cfd6",
+    "seatColours": [
+     "#c3cfd6",
+     "#aebcc6"
+    ],
+    "blocks": 6,
+    "concreteColour": "#f0ede4",
+    "under": "solid",
+    "backWall": 1.0,
+    "facetDeg": 12,
+    "closeEnds": true,
+    "start": [
+     43,
+     -42
+    ],
+    "end": [
+     43,
+     12
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 10.5,
+    "seatColour": "#c3cfd6",
+    "seatColours": [
+     "#c3cfd6",
+     "#aebcc6"
+    ],
+    "blocks": 6,
+    "concreteColour": "#f0ede4",
+    "under": "solid",
+    "backWall": 1.0,
+    "facetDeg": 12,
+    "closeEnds": true,
+    "start": [
+     58,
+     -42
+    ],
+    "end": [
+     58,
+     12
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "seatColour": "#c3cfd6",
+    "seatColours": [
+     "#c3cfd6",
+     "#aebcc6"
+    ],
+    "blocks": 6,
+    "concreteColour": "#f0ede4",
+    "under": "solid",
+    "backWall": 1.0,
+    "facetDeg": 12,
+    "closeEnds": true,
+    "start": [
+     -43,
+     12
+    ],
+    "end": [
+     -43,
+     -42
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 10.5,
+    "seatColour": "#c3cfd6",
+    "seatColours": [
+     "#c3cfd6",
+     "#aebcc6"
+    ],
+    "blocks": 6,
+    "concreteColour": "#f0ede4",
+    "under": "solid",
+    "backWall": 1.0,
+    "facetDeg": 12,
+    "closeEnds": true,
+    "start": [
+     -58,
+     12
+    ],
+    "end": [
+     -58,
+     -42
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "seatColour": "#c3cfd6",
+    "seatColours": [
+     "#c3cfd6",
+     "#aebcc6"
+    ],
+    "blocks": 6,
+    "concreteColour": "#f0ede4",
+    "under": "solid",
+    "backWall": 1.0,
+    "facetDeg": 22,
+    "closeEnds": true,
+    "centre": [
+     0,
+     12
+    ],
+    "radius": 43,
+    "radiusY": 46,
+    "startDeg": 0,
+    "endDeg": 180
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 10.5,
+    "seatColour": "#c3cfd6",
+    "seatColours": [
+     "#c3cfd6",
+     "#aebcc6"
+    ],
+    "blocks": 6,
+    "concreteColour": "#f0ede4",
+    "under": "solid",
+    "backWall": 1.0,
+    "facetDeg": 22,
+    "closeEnds": true,
+    "centre": [
+     0,
+     12
+    ],
+    "radius": 58,
+    "radiusY": 61,
+    "startDeg": 0,
+    "endDeg": 180
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ }
+}

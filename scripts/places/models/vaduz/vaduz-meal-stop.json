@@ -1,0 +1,234 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:2018-10-05_Liechtenstein,_Vaduz,_Hintergass_(KPFC)_05.jpg",
+   "licence": "CC BY-SA 3.0 (Rafael P. D. Suppmann), file /tmp/places-evidence/vaduz/torkel5.jpg",
+   "used": "geo-nearest (34 m) Hintergass house in the vineyards: cream render, low red-tile roof with chimney, ivy-covered gable behind, rubble wall in front; NOT confirmed to be the restaurant, so used for alpine vernacular colours and form only"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/vaduz.json#vaduz-meal-stop",
+   "used": "whitewashed wine-press house restaurant, red-tile gable roof, vineyard terrace"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 5,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.25
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d0b8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#94553f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ivy-gable",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5a7040",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#55703d",
+    "material": "timber-shingle",
+    "pitch": 55,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-annex",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    11.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a4a3a",
+    "material": "clay-tile",
+    "rise": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "on": "main",
+   "at": [
+    -4,
+    2,
+    0
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.0,
+    "pots": 1
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.2,
+    "drop": 0.6,
+    "height": 2.6,
+    "colours": [
+     "#8a4a35",
+     "#f0ebe0"
+    ],
+    "posts": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -2,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "radius": 1.5,
+    "colours": [
+     "#f0ebe0",
+     "#8a4a35"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -13,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.4,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#a8a69c"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#c8372d",
+    "count": 2,
+    "spacing": 1.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vaduz",
+ "venueId": "vaduz-meal-stop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is a nearby Hintergass house not confirmed as the restaurant; real house is single-storey with plainer walls, vine/stone wall and planting omitted; ivy gable is a simple hip."
+ }
+}

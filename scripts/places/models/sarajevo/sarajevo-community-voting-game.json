@@ -1,0 +1,95 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sarajevo",
+ "venueId": "sarajevo-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/44788668",
+   "used": "real municipal building outline (name match, 4.6 m): irregular stepped plan with a long rear block, 3 levels, concrete"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 95
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b3b0a7",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bands": "#8c8a85",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6f6f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this building found; outline is real OSM, storeys/materials inferred from tags and the 1970s Novi Grad brief."
+ }
+}

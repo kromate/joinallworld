@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-way-948091319",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Atromitos_fc_-_panathinaikos_athen_nov2017_-_5.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Z thomas",
+   "view": "interior",
+   "file": "/tmp/places-evidence/athens/athens-osm-way-948091319-0.jpg",
+   "used": "no running track, grass pitch, far stand covered by a long flat dark-roofed canopy with floodlights on its edge and glazed box, blue raked seating, low uncovered end stands with yellow stairs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Atromitos_fc_-_panathinaikos_athen_nov2017_-_1.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Z thomas",
+   "view": "interior",
+   "file": "/tmp/places-evidence/athens/athens-osm-way-948091319-1.jpg",
+   "used": "white and blue front of the covered stand, floodlight pole beside it, light blue seating"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/948091319",
+   "used": "site outline about 204 x 113 m, pitch 105 x 68 in it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "length": 105,
+    "width": 68,
+    "stripes": 10
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     52,
+     39
+    ],
+    "end": [
+     -52,
+     39
+    ],
+    "rows": 18,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 2.5,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#7fb2e5",
+    "concreteColour": "#d4d2cc",
+    "underColour": "#e6e6e2",
+    "canopy": {
+     "height": 3.2,
+     "depth": 19,
+     "thickness": 1.2,
+     "slopeDeg": 1,
+     "colour": "#262a30",
+     "edgeColour": "#ffffff",
+     "overhangBack": 1.0
+    },
+    "backWall": 0
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -52,
+     -39
+    ],
+    "end": [
+     52,
+     -39
+    ],
+    "rows": 6,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#7fb2e5",
+    "concreteColour": "#d4d2cc",
+    "underColour": "#e6e6e2"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     62,
+     -30
+    ],
+    "end": [
+     62,
+     30
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.9,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 8,
+    "seatColour": "#7fb2e5",
+    "concreteColour": "#d4d2cc",
+    "underColour": "#e6e6e2",
+    "seatColours": [
+     "#7fb2e5",
+     "#7fb2e5",
+     "#e6c12b",
+     "#7fb2e5",
+     "#7fb2e5",
+     "#e6c12b"
+    ],
+    "blocks": 6
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -62,
+     30
+    ],
+    "end": [
+     -62,
+     -30
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.9,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 8,
+    "seatColour": "#7fb2e5",
+    "concreteColour": "#d4d2cc",
+    "underColour": "#e6e6e2",
+    "seatColours": [
+     "#7fb2e5",
+     "#7fb2e5",
+     "#e6c12b",
+     "#7fb2e5",
+     "#7fb2e5",
+     "#e6c12b"
+    ],
+    "blocks": 6
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -60,
+    -42,
+    2
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "north"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     45,
+     17.2
+    ],
+    "end": [
+     48,
+     45,
+     17.2
+    ],
+    "count": 10,
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 4,
+      "head_width": 3.5
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    44
+   ],
+   "params": {
+    "rect": [
+     20,
+     6
+    ],
+    "z0": 14.2,
+    "height": 3.2,
+    "colour": "#9db8c8",
+    "topColour": "#30343a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -69.3,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    69.3,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72,
+    50,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72,
+    50,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -75,
+     -60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     -62
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Raised exterior view of a pitch-level photo; canopy is a flat dark roof with white fascia and glazed box, end stands low with yellow stairs; no facade bracing or background buildings."
+ }
+}

@@ -1,0 +1,210 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Media-House_%27Rilindja%27_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Agron Berisha",
+   "view": "street",
+   "file": "/tmp/places-evidence/pristina/rilindja3.jpg",
+   "used": "blue-green curtain-wall tower with beige panel and glazed lower block, old concrete annex behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Media-House_%27Rilindja%27_05.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Agron Berisha",
+   "view": "detail",
+   "file": "/tmp/places-evidence/pristina/rilindja5.jpg",
+   "used": "old concrete annex: stepped weathered grey concrete, deep arched recesses, ribbon windows with blinds"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/124899242",
+   "used": "tower footprint, 89 m, 19 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.0,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 89,
+   "storeys": 19,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6a99a0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8388",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-podium",
+   "footprint": {
+    "rect": [
+     44,
+     18
+    ]
+   },
+   "at": [
+    -8,
+    -34
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9c9b5",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "ribbon",
+     "front": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8388",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concrete-annex",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    12,
+    -62
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8e877a",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#756f64"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 24,
+    "count": 2,
+    "spread": 6,
+    "line": 6,
+    "colour": "#1f4a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 8,
+    "colour": "#b5622c"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "params": {
+    "colour": "#1e2024",
+    "count": 4,
+    "spacing": 4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -38,
+    0
+   ],
+   "params": {
+    "colour": "#d5d7d9",
+    "count": 3,
+    "spacing": 4,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-community-notices",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower 19 storeys, blue-green glazing, beige panel wing; no beige bands on the tower (budget), annex has ribbon windows but no deep arched recesses."
+ }
+}

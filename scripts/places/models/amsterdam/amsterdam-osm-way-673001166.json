@@ -1,0 +1,580 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-way-673001166",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ziekenhuis_Amstelland_-_Amstelveen_-_panoramio_-_Rokus_C.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Rokus C",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/za1.jpg",
+   "used": "low red-brick block with open upper terrace bays, canvas awnings and a yellow-framed window"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ziekenhuis_Amstelland_foto_1-001.jpg",
+   "licence": "Public domain",
+   "author": "Alf van Beem",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/za2.jpg",
+   "used": "main entrance front: five-storey white render block, plain tall top storey with a blank sign band and roof vents, two ribbon window bands with brown spandrels, recessed glazed ground floor with round columns and revolving door, brick wing at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3674357",
+   "used": "extent only (210 x 149 m of scattered wings); the model keeps the front block, a brick wing and rear wings at reduced length"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-low",
+   "footprint": {
+    "rect": [
+     62,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.4,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e4e2dc",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#8a9aa3",
+    "plinth": 0.2,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.4
+   },
+   "z0": 4.6
+  },
+  {
+   "type": "mass",
+   "id": "wingL",
+   "footprint": {
+    "rect": [
+     16,
+     46
+    ]
+   },
+   "at": [
+    -24,
+    31
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d4c8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "glassColour": "#6b7f8a",
+    "bands": {
+     "colour": "#7a6a58",
+     "height": 0.4
+    },
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wingR",
+   "footprint": {
+    "rect": [
+     16,
+     46
+    ]
+   },
+   "at": [
+    24,
+    31
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a07a62",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "ribbon"
+    },
+    "glassColour": "#6b7f8a",
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-block",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a38",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6b7f8a",
+    "plinth": 0.3,
+    "pattern": [],
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ground-glass",
+   "params": {
+    "rect": [
+     62,
+     6
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#8a9a9a",
+    "topColour": "#8a8f93"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.3,
+      "n": 10,
+      "z0": 0,
+      "height": 4.6,
+      "colour": "#f2f1ec"
+     }
+    },
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -30,
+     -7.8
+    ],
+    "end": [
+     30,
+     -7.8
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "params": {
+    "radius": 1.5,
+    "n": 12,
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#2f3f48"
+   },
+   "at": [
+    0,
+    -4.5
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hoofdingang",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.2
+    ],
+    "z0": 3.7,
+    "height": 0.6,
+    "colour": "#3a6f9a"
+   },
+   "at": [
+    0,
+    -8.0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "front-top",
+   "at": [
+    0,
+    0,
+    14
+   ],
+   "params": {
+    "colour": "#ebe9e3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       52,
+       15
+      ],
+      "cx": -4
+     },
+     {
+      "z": 10.5,
+      "rect": [
+       46,
+       15
+      ],
+      "cx": -7
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-lettering",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.3
+    ],
+    "z0": 19.8,
+    "height": 1.2,
+    "colour": "#3a6f9a"
+   },
+   "at": [
+    -9,
+    -7.8
+   ]
+  },
+  {
+   "type": "array",
+   "id": "vents",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.6,
+      "n": 8,
+      "z0": 24.5,
+      "height": 2,
+      "colour": "#8a8f93"
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -14,
+     0
+    ],
+    "end": [
+     -2,
+     0
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "brick-wing",
+   "footprint": {
+    "rect": [
+     20,
+     18
+    ]
+   },
+   "at": [
+    41,
+    -1
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8c4c3a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6b7f8a",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     20,
+     18
+    ]
+   },
+   "at": [
+    41,
+    -1
+   ],
+   "z0": 5.3,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d4c8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6b7f8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "awnings",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       2
+      ],
+      "z0": 8.2,
+      "height": 0.15,
+      "colour": "#e8e2cf"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     34.5,
+     -10
+    ],
+    "end": [
+     48.5,
+     -10
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "spandrel-a",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.2
+    ],
+    "z0": 5.0,
+    "height": 1.1,
+    "colour": "#7a6a58"
+   },
+   "at": [
+    0,
+    -9.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "spandrel-b",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.2
+    ],
+    "z0": 9.7,
+    "height": 1.1,
+    "colour": "#7a6a58"
+   },
+   "at": [
+    0,
+    -9.1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.12,
+      "n": 6,
+      "z0": 0,
+      "height": 6,
+      "colour": "#3a3d40"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -24,
+     -14
+    ],
+    "end": [
+     24,
+     -14
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "id": "cars",
+   "params": {
+    "count": 4,
+    "spacing": 3.4,
+    "yaw": 0
+   },
+   "at": [
+    16,
+    -22,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -22
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "compared against the entrance photo; sign band is a blank blue bar, door and Hoofdingang sign are simple blocks, columns thinner/more numerous than photo, brick wing is a reduced stand-in, no hedge or people, grey backdrop plane"
+ }
+}

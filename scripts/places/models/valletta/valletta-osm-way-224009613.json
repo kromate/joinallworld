@@ -1,0 +1,630 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Balluta_B.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Continentaleurope",
+   "view": "front",
+   "used": "five-storey honey limestone block, three joined sections each ending in a pediment, tall arched passage openings with carved arches, green-shuttered windows, balcony bands, pilasters",
+   "file": "/tmp/places-evidence/valletta/ball1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malta_-_St._Julian%27s_-_it-Telgha_ta%27_San_Giljan_-_Balluta_Buildings_02_ies.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Frank Vincentz",
+   "view": "detail",
+   "used": "carved arch with winged-head keystone, window rhythm, colours",
+   "file": "/tmp/places-evidence/valletta/ball2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/224009613",
+   "used": "overall length about 95 m, depth 18 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-0",
+   "footprint": {
+    "rect": [
+     25.5,
+     18
+    ]
+   },
+   "at": [
+    -31.75,
+    0
+   ],
+   "z0": 0,
+   "height": 21.5,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4b07c",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "windowShape": "rect",
+    "bay": 3.6,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b98f5c"
+      ],
+      "height": 0.5,
+      "at": 0.2,
+      "proud": 0.35,
+      "floors": "all"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "floors": [
+       1,
+       2,
+       3
+      ],
+      "depth": 0.9,
+      "rail": 0.9,
+      "width": 2.6,
+      "every": 7.2,
+      "slab": 0.3,
+      "railKind": "solid",
+      "colour": "#c8a46e",
+      "railColour": "#3c5a3f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98f5c",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-1",
+   "footprint": {
+    "rect": [
+     26,
+     19.8
+    ]
+   },
+   "at": [
+    0,
+    -0.9
+   ],
+   "z0": 0,
+   "height": 25,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4b07c",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "windowShape": "rect",
+    "bay": 3.6,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b98f5c"
+      ],
+      "height": 0.5,
+      "at": 0.2,
+      "proud": 0.35,
+      "floors": "all"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "floors": [
+       1,
+       2,
+       3
+      ],
+      "depth": 0.9,
+      "rail": 0.9,
+      "width": 2.6,
+      "every": 7.2,
+      "slab": 0.3,
+      "railKind": "solid",
+      "colour": "#c8a46e",
+      "railColour": "#3c5a3f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98f5c",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-2",
+   "footprint": {
+    "rect": [
+     25.5,
+     18
+    ]
+   },
+   "at": [
+    31.75,
+    0
+   ],
+   "z0": 0,
+   "height": 20.5,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4b07c",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "windowShape": "rect",
+    "bay": 3.6,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b98f5c"
+      ],
+      "height": 0.5,
+      "at": 0.2,
+      "proud": 0.35,
+      "floors": "all"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "floors": [
+       1,
+       2,
+       3
+      ],
+      "depth": 0.9,
+      "rail": 0.9,
+      "width": 2.6,
+      "every": 7.2,
+      "slab": 0.3,
+      "railKind": "solid",
+      "colour": "#c8a46e",
+      "railColour": "#3c5a3f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98f5c",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -25,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    25,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "recess-0",
+   "at": [
+    -16,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.6
+    ],
+    "height": 23,
+    "colour": "#2a2018"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "surround-0",
+   "at": [
+    -16,
+    -9.0,
+    0
+   ],
+   "params": {
+    "width": 7.4,
+    "height": 24,
+    "depth": 1.4,
+    "archWidth": 4.8,
+    "springHeight": 14,
+    "colour": "#ecdcb4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "keystone-0",
+   "at": [
+    -16,
+    -9.8,
+    17.5
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.5
+    ],
+    "height": 1.6,
+    "colour": "#c9a56d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "recess-1",
+   "at": [
+    16,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.6
+    ],
+    "height": 23,
+    "colour": "#2a2018"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "surround-1",
+   "at": [
+    16,
+    -9.0,
+    0
+   ],
+   "params": {
+    "width": 7.4,
+    "height": 24,
+    "depth": 1.4,
+    "archWidth": 4.8,
+    "springHeight": 14,
+    "colour": "#ecdcb4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "keystone-1",
+   "at": [
+    16,
+    -9.8,
+    17.5
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.5
+    ],
+    "height": 1.6,
+    "colour": "#c9a56d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-0",
+   "at": [
+    -31.75,
+    -9.1,
+    21.5
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#e3cd9c"
+   }
+  },
+  {
+   "type": "market-open/pediment",
+   "id": "ped-0",
+   "at": [
+    -31.75,
+    -9.1,
+    22.7
+   ],
+   "params": {
+    "width": 15,
+    "rise": 3.4,
+    "depth": 1.0,
+    "colour": "#ead9ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-1",
+   "at": [
+    0,
+    -10.9,
+    25
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#e3cd9c"
+   }
+  },
+  {
+   "type": "market-open/pediment",
+   "id": "ped-1",
+   "at": [
+    0,
+    -10.9,
+    26.2
+   ],
+   "params": {
+    "width": 15,
+    "rise": 3.4,
+    "depth": 1.0,
+    "colour": "#ead9ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-2",
+   "at": [
+    31.75,
+    -9.1,
+    20.5
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#e3cd9c"
+   }
+  },
+  {
+   "type": "market-open/pediment",
+   "id": "ped-2",
+   "at": [
+    31.75,
+    -9.1,
+    21.7
+   ],
+   "params": {
+    "width": 15,
+    "rise": 3.4,
+    "depth": 1.0,
+    "colour": "#ead9ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-0",
+   "at": [
+    -44,
+    -9.4,
+    2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.9
+    ],
+    "height": 19,
+    "colour": "#ead9ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-1",
+   "at": [
+    -19.5,
+    -9.4,
+    2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.9
+    ],
+    "height": 19,
+    "colour": "#ead9ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-2",
+   "at": [
+    -12.5,
+    -11.2,
+    2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.9
+    ],
+    "height": 19,
+    "colour": "#ead9ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-3",
+   "at": [
+    12.5,
+    -11.2,
+    2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.9
+    ],
+    "height": 19,
+    "colour": "#ead9ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-4",
+   "at": [
+    19.5,
+    -9.4,
+    2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.9
+    ],
+    "height": 19,
+    "colour": "#ead9ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-5",
+   "at": [
+    44,
+    -9.4,
+    2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.9
+    ],
+    "height": 19,
+    "colour": "#ead9ac"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 4,
+  "extent": [
+   110,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-osm-way-224009613",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Passages are glazed-looking arch openings with no carved reliefs; windows stay a regular grid (no arched top-floor windows or ground arcade); pediments are plain; street furniture missing."
+ }
+}

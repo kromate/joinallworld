@@ -1,0 +1,413 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "reykjavik",
+ "venueId": "reykjavik-osm-way-64047767",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Landsp\u00edtali_Hringbraut.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Siqurdur",
+   "view": "front",
+   "file": "/tmp/places-evidence/reykjavik/lsh1.jpg",
+   "used": "1930 block: cream-white render, five storeys of regular sash windows, projecting centre pavilion with pediment and dark hipped slate roof, balustraded string courses, side wings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Landspitali2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Berserkur",
+   "view": "street",
+   "used": "new treatment-centre block behind: grey concrete frame, deep storey bays, about 8 storeys"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/64047767",
+   "used": "site is a 630 m campus; only the 1930 block and one new block are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     24,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ead9",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4.2,
+    "cornice": true,
+    "plinth": 1.2,
+    "glassColour": "#7c8794"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4f56",
+    "material": "slate",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4eee0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "plinth": 1.2,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#efe9da",
+    "pitch": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    -25,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ead9",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 5.2,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#7c8794"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4f56",
+    "material": "slate",
+    "pitch": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    25,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ead9",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 5.2,
+    "cornice": true,
+    "plinth": 1.2,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#7c8794"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4f56",
+    "material": "slate",
+    "pitch": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-left",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -46,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ead9",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 5.2,
+    "plinth": 1.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#7c8794"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4f56",
+    "material": "slate",
+    "pitch": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-right",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    46,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ead9",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 5.2,
+    "plinth": 1.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#7c8794"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4f56",
+    "material": "slate",
+    "pitch": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "new-block",
+   "footprint": {
+    "rect": [
+     70,
+     28
+    ]
+   },
+   "at": [
+    -4,
+    36
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#8f9497",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "bay": 12,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#8f9497",
+      "#5e6a74"
+     ]
+    },
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9092",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "on": "new-block",
+   "params": {
+    "radius": 6.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 1.2,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#cfcbbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-left",
+   "footprint": {
+    "rect": [
+     14,
+     34
+    ]
+   },
+   "at": [
+    -62,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f4a55",
+    "windows": "none",
+    "windowRatio": 0.8,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#3f4a55",
+      "#5f6e7a"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7378"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cupola",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 24,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4f56",
+    "pitch": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   160,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "pediment is a plain gable (no relief), no balustrade string courses; windows are cut boxes not white-framed sashes; back block simplified; campus is partial"
+ }
+}

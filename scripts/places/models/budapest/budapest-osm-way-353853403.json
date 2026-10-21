@@ -1,0 +1,742 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dunakeszi,_alagi_lovaregyleti_k%C3%A1polna_2022_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pasztilla (Attila Terbocs)",
+   "view": "front",
+   "file": "/tmp/places-evidence/budapest/p3-353853403-2.jpg",
+   "used": "steep cream gable with stepped corbel arches, central rose window, pointed gabled entrance porch with columns and arched mosaic, pointed side windows, grey-blue stone plinth, corner pilasters, cross on apex, statue niche"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/353853403",
+   "used": "nave size and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 32,
+  "aspect": 0.667,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dfa6",
+    "windows": "pointed-arch",
+    "windowRatio": 0.16,
+    "plinth": 1.1,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    },
+    "windowShape": "pointed",
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7c5a4a",
+    "material": "clay-tile",
+    "pitch": 58,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5.6,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -12.5
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ecE4b4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7479",
+    "material": "metal-sheet",
+    "pitch": 40,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacristy",
+   "footprint": {
+    "rect": [
+     5,
+     8
+    ]
+   },
+   "at": [
+    8,
+    4
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d9a0",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b4a36",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "pilaster-l",
+   "at": [
+    -7.3,
+    -11.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.2
+    ],
+    "z0": 0,
+    "height": 9.8,
+    "colour": "#d6d0a0",
+    "topColour": "#d6d0a0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "pilaster-r",
+   "at": [
+    7.3,
+    -11.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     1.2
+    ],
+    "z0": 0,
+    "height": 9.8,
+    "colour": "#d6d0a0",
+    "topColour": "#d6d0a0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "plinth-band",
+   "at": [
+    0,
+    -11.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14.8,
+     0.7
+    ],
+    "z0": 0,
+    "height": 1.7,
+    "colour": "#8794a8",
+    "topColour": "#8794a8"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    0,
+    -12.3,
+    8.6
+   ],
+   "params": {
+    "radius": 1.9,
+    "stained": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "statue",
+   "at": [
+    0,
+    -12.3,
+    11.4
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.4
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#a99f8a",
+    "topColour": "#a99f8a"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -11.0,
+    18.1
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#7b5e4e"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "door",
+   "at": [
+    0,
+    -14.1,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#2b2220",
+    "topColour": "#2b2220"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.2,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#a3a29a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-front",
+   "at": [
+    0,
+    -11.4,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     14.4,
+     0.8
+    ],
+    "z0": 0,
+    "height": 8.6,
+    "colour": "#eadfa8",
+    "topColour": "#eadfa8",
+    "topScale": 0.03
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-wall",
+   "at": [
+    0,
+    -11.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     14.4,
+     0.8
+    ],
+    "z0": 0,
+    "height": 9.5,
+    "colour": "#eadfa8",
+    "topColour": "#eadfa8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-arch",
+   "at": [
+    0,
+    -14.2,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#b9a15e",
+    "topColour": "#b9a15e"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "col-l",
+   "at": [
+    -1.9,
+    -14.4,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#cfc9a8",
+    "topColour": "#cfc9a8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "col-r",
+   "at": [
+    1.9,
+    -14.4,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#cfc9a8",
+    "topColour": "#cfc9a8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.9
+      ],
+      "z0": 0,
+      "height": 3.2,
+      "colour": "#3a3d46",
+      "topColour": "#3a3d46",
+      "topScale": 0.2
+     }
+    },
+    "mode": "line",
+    "start": [
+     -7.05,
+     -6
+    ],
+    "end": [
+     -7.05,
+     7
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.9
+      ],
+      "z0": 0,
+      "height": 3.2,
+      "colour": "#3a3d46",
+      "topColour": "#3a3d46",
+      "topScale": 0.2
+     }
+    },
+    "mode": "line",
+    "start": [
+     7.05,
+     -6
+    ],
+    "end": [
+     7.05,
+     7
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fwin-l",
+   "at": [
+    -4.9,
+    -12.0,
+    1.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#3a3d46",
+    "topColour": "#3a3d46"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fwin-top-l",
+   "at": [
+    -4.9,
+    -12.0,
+    4.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#3a3d46",
+    "topColour": "#3a3d46",
+    "topScale": 0.04
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fwin-sur-l",
+   "at": [
+    -4.9,
+    -11.95,
+    1.7
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.25
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#cfc9a0",
+    "topColour": "#cfc9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fwin-r",
+   "at": [
+    4.9,
+    -12.0,
+    1.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#3a3d46",
+    "topColour": "#3a3d46"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fwin-top-r",
+   "at": [
+    4.9,
+    -12.0,
+    4.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#3a3d46",
+    "topColour": "#3a3d46",
+    "topScale": 0.04
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fwin-sur-r",
+   "at": [
+    4.9,
+    -11.95,
+    1.7
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.25
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#cfc9a0",
+    "topColour": "#cfc9a0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.45
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#cfc79a",
+      "topColour": "#cfc79a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6.2,
+     -12.2,
+     10.2
+    ],
+    "end": [
+     -0.8,
+     -12.2,
+     16.4
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.45
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#cfc79a",
+      "topColour": "#cfc79a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     6.2,
+     -12.2,
+     10.2
+    ],
+    "end": [
+     0.8,
+     -12.2,
+     16.4
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rose-ring",
+   "at": [
+    0,
+    -12.55,
+    8.6
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      2.6,
+      0,
+      0.0
+     ],
+     [
+      2.4020867845293457,
+      0,
+      0.9949769241492334
+     ],
+     [
+      1.8384776310850237,
+      0,
+      1.8384776310850235
+     ],
+     [
+      0.9949769241492337,
+      0,
+      2.4020867845293457
+     ],
+     [
+      1.5920408388915593e-16,
+      0,
+      2.6
+     ],
+     [
+      -0.9949769241492333,
+      0,
+      2.4020867845293457
+     ],
+     [
+      -1.8384776310850235,
+      0,
+      1.8384776310850237
+     ],
+     [
+      -2.4020867845293457,
+      0,
+      0.9949769241492338
+     ],
+     [
+      -2.6,
+      0,
+      3.1840816777831187e-16
+     ],
+     [
+      -2.402086784529346,
+      0,
+      -0.9949769241492332
+     ],
+     [
+      -1.838477631085024,
+      0,
+      -1.8384776310850235
+     ],
+     [
+      -0.9949769241492349,
+      0,
+      -2.402086784529345
+     ],
+     [
+      -4.776122516674677e-16,
+      0,
+      -2.6
+     ],
+     [
+      0.994976924149234,
+      0,
+      -2.402086784529345
+     ],
+     [
+      1.8384776310850233,
+      0,
+      -1.838477631085024
+     ],
+     [
+      2.402086784529345,
+      0,
+      -0.9949769241492351
+     ]
+    ],
+    "closed": true,
+    "colour": "#efe6c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-surround",
+   "at": [
+    0,
+    -14.1,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.25
+    ],
+    "z0": 0,
+    "height": 3.7,
+    "colour": "#e6dcb0",
+    "topColour": "#e6dcb0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "budapest",
+ "venueId": "budapest-osm-way-353853403",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Taller steeper gable, rose ring, corbel frieze, pointed front windows and plinth added; tympanum mosaic and statue niche only suggested; pointed arch windows on nave sides depend on mass window shape; porch columns are plain squares"
+ }
+}

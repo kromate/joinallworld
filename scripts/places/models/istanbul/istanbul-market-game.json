@@ -1,0 +1,530 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bakirkoy_view_from_carusel.jpg",
+   "licence": "Public domain",
+   "author": "Sabri76",
+   "view": "front",
+   "file": "/tmp/places-evidence/istanbul/carousel2.jpg",
+   "used": "long blank pinkish-tan tiled wall of the mall, colourful entrance gable with yellow-green steel frame and blue arch, adjacent lawn and hedges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/162139987",
+   "used": "mall outline (about 125 x 104 m, three levels)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 16.0
+   },
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#b8998a",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "radius": 0.35,
+    "points": [
+     [
+      -13.5,
+      0,
+      0.0
+     ],
+     [
+      0.0,
+      0,
+      23.1
+     ],
+     [
+      13.5,
+      0,
+      0.0
+     ]
+    ],
+    "colour": "#e0b640"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      -13.5,
+      0,
+      0.0
+     ],
+     [
+      13.5,
+      0,
+      0.0
+     ]
+    ],
+    "colour": "#3f8f4a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      -7.5,
+      0,
+      8.8
+     ],
+     [
+      7.5,
+      0,
+      8.8
+     ]
+    ],
+    "colour": "#c23a32"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      -4.5,
+      0,
+      14.850000000000001
+     ],
+     [
+      4.5,
+      0,
+      14.850000000000001
+     ]
+    ],
+    "colour": "#e0b640"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "radius": 0.18,
+    "points": [
+     [
+      -13.5,
+      0,
+      0.0
+     ],
+     [
+      4.5,
+      0,
+      14.850000000000001
+     ],
+     [
+      -7.5,
+      0,
+      8.8
+     ],
+     [
+      7.5,
+      0,
+      8.8
+     ],
+     [
+      -4.5,
+      0,
+      14.850000000000001
+     ],
+     [
+      13.5,
+      0,
+      0.0
+     ]
+    ],
+    "colour": "#3f8f4a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "radius": 0.25,
+    "points": [
+     [
+      0.0,
+      0,
+      0.0
+     ],
+     [
+      0.0,
+      0,
+      23.1
+     ]
+    ],
+    "colour": "#c23a32"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "radius": 0.18,
+    "points": [
+     [
+      -6.75,
+      0,
+      0.0
+     ],
+     [
+      6.75,
+      0,
+      0.0
+     ],
+     [
+      0.0,
+      0,
+      8.8
+     ],
+     [
+      -6.75,
+      0,
+      0.0
+     ]
+    ],
+    "colour": "#e0b640"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "discs",
+   "at": [
+    -14,
+    -62.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     0,
+     0,
+     4
+    ],
+    "end": [
+     0,
+     0,
+     18
+    ],
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "circle": 0.2
+       },
+       "arc": {
+        "centre": [
+         0,
+         0,
+         0
+        ],
+        "radius": 1.7,
+        "startDeg": 0,
+        "endDeg": 360,
+        "plane": "xz"
+       },
+       "colour": "#f4f4f4"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "discs2",
+   "at": [
+    -14,
+    -62.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     0,
+     0,
+     4
+    ],
+    "end": [
+     0,
+     0,
+     18
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 1.4,
+       "n": 12,
+       "z0": 0,
+       "height": 0.1,
+       "colour": "#2a5aa8"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    -72
+   ],
+   "params": {
+    "rect": [
+     130,
+     26
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#5f9a3e",
+    "topColour": "#5f9a3e"
+   }
+  },
+  {
+   "type": "array",
+   "id": "hedges",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -50,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     0,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        12,
+        1.6
+       ],
+       "z0": 0,
+       "height": 1.4,
+       "colour": "#2f6b2f",
+       "topColour": "#3a7a35"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block0",
+   "at": [
+    -80,
+    -92
+   ],
+   "params": {
+    "rect": [
+     26,
+     14
+    ],
+    "z0": 0,
+    "height": 14,
+    "colour": "#c9593f",
+    "topColour": "#8a8a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block2",
+   "at": [
+    -62,
+    -92
+   ],
+   "params": {
+    "rect": [
+     26,
+     14
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#4b7fb5",
+    "topColour": "#8a8a86"
+   }
+  },
+  {
+   "type": "array",
+   "id": "discs3",
+   "at": [
+    -12,
+    -62.8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0,
+     3
+    ],
+    "end": [
+     3,
+     0,
+     19
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 1.2,
+       "n": 10,
+       "z0": 0,
+       "height": 0.12,
+       "colour": "#f4f4f4"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -80
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     -78
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -80
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "entrance is a thin steel pyramid with a few white rings, not the dense spiral discs; mall is a blocky simplified OSM mass; foreground lawn is flat with sparse hedges; street blocks are plain boxes"
+ }
+}

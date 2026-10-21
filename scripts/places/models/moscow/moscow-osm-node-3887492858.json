@@ -1,0 +1,165 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rizh-rynok-msk.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "UR3IRS",
+   "view": "front",
+   "file": "/tmp/places-evidence/moscow/rz1.jpg",
+   "used": "big brown hip roof overhanging a dark glazed hall with dark louvre panels, yellow kiosk strip along the front, low white annex at right, asphalt forecourt (sign boards left blank)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/79964533",
+   "used": "size and arrangement of the hall (about 92 x 64 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 2.03,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     60,
+     38
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2d363b",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "front": "curtain"
+    },
+    "pattern": null,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7c6a5c",
+    "material": "metal-sheet",
+    "rise": 7,
+    "overhang": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-strip",
+   "footprint": {
+    "rect": [
+     50,
+     6
+    ]
+   },
+   "at": [
+    -3,
+    -23
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6b52a",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6b52a",
+    "material": "membrane",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    44,
+    6
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9dad8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7e80",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "height": 2.6,
+    "bottom": 11.6,
+    "colour": "#27508c",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": 0,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Roof slope and glazing close; no louvre panels, sign and kiosk details simplified, hall depth and annex approximate."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moscow",
+ "venueId": "moscow-osm-node-3887492858"
+}

@@ -1,0 +1,186 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/496249920",
+   "used": "real 10.2 x 4.9 m footprint, bearing 94 deg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maxinge_2015-09-30_image03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hakan Skogsjo",
+   "view": "street",
+   "file": "/tmp/places-evidence/mariehamn/osm-way-496249920-0.jpg",
+   "used": "neighbouring Maxinge retail units only (not this unit): dark grey-brown cladding with pale vertical boarding, glazed corner, flat roof, asphalt car park, flagpoles, lamp posts"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "polygon": [
+     [
+      -5.2,
+      -2.1
+     ],
+     [
+      4.9,
+      -2.8
+     ],
+     [
+      5.2,
+      2.1
+     ],
+     [
+      -4.9,
+      2.8
+     ]
+    ]
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#51484a",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "parapet": 0.5,
+    "bands": {
+     "colour": "#9a8a85",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5f66",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 1.6,
+    "colours": [
+     "#4f6a8c",
+     "#e6e1d2"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1,
+    -2.6,
+    2.9
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "bottom": 0.0,
+    "colour": "#2f6b4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#2a3a5a",
+    "count": 2,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 1.2,
+    "colours": [
+     "#d7a21d",
+     "#2a4a8a",
+     "#c8362f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     12
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mariehamn",
+ "venueId": "mariehamn-osm-way-496249920",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photo shows neighbouring Maxinge units, not this cafe; interior unit shape, signage and glazing are guessed."
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "athens",
+ "venueId": "athens-osm-node-4729929890",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/224903033",
+   "used": "real 68 x 40 m roofed-passage outline at Panepistimiou"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/way/224903033",
+   "used": "building=roof: a covered arcade; glazed roof between stone-fronted frontages is typed, not photographed"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "arcade-roof",
+   "footprint": {
+    "osm": true
+   },
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d3c4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "groundKind": "curtain",
+    "groundHeight": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fb3bd",
+    "material": "glass",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-vault",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 146,
+   "z0": 16,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb3bd",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#9fb3bd",
+    "material": "glass",
+    "rise": 2.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2,
+    "drop": 0.5,
+    "height": 3.5,
+    "colours": [
+     "#7f8c96",
+     "#d9d3c4"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; glazed roof and stone frontages typed from OSM building=roof outline."
+ }
+}

@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yerevan",
+ "venueId": "yerevan-osm-way-108255791",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ancient_temple_in_Garni.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Katsiaryna Naliuka",
+   "view": "front",
+   "file": "/tmp/places-evidence/yerevan/v14_0.jpg",
+   "used": "hexastyle Ionic front, 9-step stair between podium wings, dark basalt podium, pedimented gable with eaves cornice, dark doorway in the cella, grey paved terrace and grass edge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chr%C3%A1m_v_Garni.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Ondrej Zvacek",
+   "view": "side",
+   "file": "/tmp/places-evidence/yerevan/v14_1.jpg",
+   "used": "side colonnade of 8 columns, ashlar cella wall behind, tall moulded podium, entablature and gable proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/108255791",
+   "used": "location and size cue only (19 x 16 m incl. steps); podium built to the 15.7 x 11 m of the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 34,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     11.2,
+     15.9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6a7075",
+    "windows": "none",
+    "plinth": 0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#767c80",
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    5.0,
+    -10.6,
+    0
+   ],
+   "params": {
+    "width": 5.8,
+    "rise": 2.9,
+    "run": 4.5,
+    "count": 9,
+    "colour": "#70767a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cella",
+   "footprint": {
+    "rect": [
+     7.4,
+     10.4
+    ]
+   },
+   "at": [
+    0,
+    1.9
+   ],
+   "z0": 2.9,
+   "height": 6.6,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#868c90",
+    "windows": "none",
+    "bands": "#7c8286"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#858b8f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -3.35,
+    2.9
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.3
+    ],
+    "height": 3.6,
+    "colour": "#1d1e20"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -6.3,
+    2.9
+   ],
+   "params": {
+    "length": 9.0,
+    "count": 6,
+    "height": 6.5,
+    "radius": 0.42,
+    "beamHeight": 0,
+    "colour": "#8d9396"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    6.3,
+    2.9
+   ],
+   "params": {
+    "length": 9.0,
+    "count": 6,
+    "height": 6.5,
+    "radius": 0.42,
+    "beamHeight": 0,
+    "colour": "#8d9396"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -4.5,
+    0,
+    2.9
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 12.6,
+    "count": 8,
+    "height": 6.5,
+    "radius": 0.42,
+    "beamHeight": 0,
+    "colour": "#8d9396"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    4.5,
+    0,
+    2.9
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 12.6,
+    "count": 8,
+    "height": 6.5,
+    "radius": 0.42,
+    "beamHeight": 0,
+    "colour": "#8d9396"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entablature",
+   "footprint": {
+    "rect": [
+     11.0,
+     15.0
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9.4,
+   "height": 1.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#767c81",
+    "windows": "none",
+    "bands": "#8a9094"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 19,
+    "axis": "y",
+    "colour": "#757b7f",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "acroterion",
+   "at": [
+    0,
+    -7.2,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.6
+    ],
+    "height": 0.9,
+    "colour": "#7f858a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 2,
+    "spread": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "columns are plain shafts without Ionic capitals or entasis, pediment is a plain gable without relief, stair width and podium wings simplified, terrace edge/ruins omitted"
+ }
+}

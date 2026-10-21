@@ -1,0 +1,377 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brussels",
+ "venueId": "brussels-airport-brussels-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20180406_zaventem081.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jean Housen",
+   "view": "front",
+   "file": "/tmp/places-evidence/brussels/ap3.jpg",
+   "used": "departures facade: long pale-stone and grey-panel block, two ribbon-window storeys with vertical fins over a dark glazed ground floor, kerb canopy, blank stone end block, glazed steel-truss pier at the left, sand-coloured forecourt with white planters and small trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Brussels_airport_from_air.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Abxbay",
+   "view": "aerial",
+   "used": "overall layout only: very long terminal with piers (only ~135 m of facade modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/234282757",
+   "used": "overall size only (355 m long); a 135 m portion is modelled, the full outline exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     80,
+     18
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfcabd",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 2.4,
+    "plinth": 0.3,
+    "bands": "#2f3a42",
+    "groundKind": "glazed",
+    "groundHeight": 4.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "colour": "#f2f0ea"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9b0b5",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin-band",
+   "at": [
+    -4,
+    -9.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     0.3
+    ],
+    "z0": 5.0,
+    "height": 8.6,
+    "colour": "#3c4851"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     12,
+     20
+    ]
+   },
+   "at": [
+    42,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d3c6",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9b0b5",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-pier",
+   "footprint": {
+    "rect": [
+     24,
+     22
+    ]
+   },
+   "at": [
+    -56,
+    -1
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c0cc",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#c7d3da",
+    "rise": 3,
+    "material": "metal-sheet",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "kerb-canopy",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 76,
+    "depth": 7,
+    "height": 5.2,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#454b51",
+    "edgeColour": "#2c3136",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 5.2,
+      "colour": "#555b61"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -38,
+     -20.6,
+     0
+    ],
+    "end": [
+     30,
+     -20.6,
+     0
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "array",
+   "id": "planters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.4
+      ],
+      "z0": 0,
+      "height": 1.1,
+      "colour": "#eeeeea"
+     }
+    },
+    "mode": "line",
+    "start": [
+     6,
+     -26,
+     0
+    ],
+    "end": [
+     42,
+     -26,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t1",
+   "at": [
+    20,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t2",
+   "at": [
+    36,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.5
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t3",
+   "at": [
+    -10,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamps",
+   "at": [
+    -40,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 5,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "array",
+   "id": "truss-ribs",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.35,
+        0.5
+       ]
+      },
+      "points": [
+       [
+        -12,
+        0,
+        8
+       ],
+       [
+        -6,
+        0,
+        10.6
+       ],
+       [
+        0,
+        0,
+        11.6
+       ],
+       [
+        6,
+        0,
+        10.6
+       ],
+       [
+        12,
+        0,
+        8
+       ]
+      ],
+      "curve": true,
+      "colour": "#e8eef2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -56,
+     -9,
+     0
+    ],
+    "end": [
+     -56,
+     11,
+     0
+    ],
+    "count": 7
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "long low proportions and fins now read; only ~115 m of 355 m terminal; glass pier is a vault with ribs but no real truss; no logo by rule; flat forecourt"
+ }
+}

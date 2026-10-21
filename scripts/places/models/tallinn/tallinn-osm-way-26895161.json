@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-way-26895161",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tallinna_Tehnikak%C3%B5rgkool_2018.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kristjan Lepp",
+   "view": "front",
+   "file": "/tmp/places-evidence/tallinn/ttk1.jpg",
+   "used": "long four-storey Stalinist block in grey stone-clad plinth and pale grey render, central pedimented portico with six pilasters, taller pavilion ends with giant pilasters at left, hip roof behind parapet"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26895161",
+   "used": "overall extent (about 113 x 144 m); modelled as the front block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     44,
+     17
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0aca0",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 4,
+    "cornice": true,
+    "parapet": 1.0,
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     40,
+     17
+    ]
+   },
+   "at": [
+    33,
+    0
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0aca0",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 4,
+    "cornice": true,
+    "parapet": 1.0,
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-left",
+   "footprint": {
+    "rect": [
+     12,
+     18
+    ]
+   },
+   "at": [
+    -50,
+    -0.5
+   ],
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aaa69a",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 4,
+    "cornice": true,
+    "parapet": 1.0,
+    "bay": 4,
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ]
+    },
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-right",
+   "footprint": {
+    "rect": [
+     12,
+     18
+    ]
+   },
+   "at": [
+    46,
+    -0.5
+   ],
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aaa69a",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 4,
+    "cornice": true,
+    "parapet": 1.0,
+    "bay": 4,
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ]
+    },
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     26,
+     19
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8b4a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 4,
+    "cornice": true,
+    "bay": 7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 4,
+    "height": 20,
+    "columns": 6,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#cdc9bd",
+    "roofColour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    11,
+    -15,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -22
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -12,
+     -22
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     -22
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pilasters on wings only as plain faces; pediment/entablature generic; trees are green conifers not bare winter trees; plaza flat not domed."
+ }
+}

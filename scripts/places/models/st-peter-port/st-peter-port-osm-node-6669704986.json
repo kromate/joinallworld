@@ -1,0 +1,87 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-peter-port",
+ "venueId": "st-peter-port-osm-node-6669704986",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/355273663",
+   "used": "38 x 10 m platform outline, 1.7 m from the point, orientation 118 deg"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8d9296",
+    "windows": "none",
+    "plinth": 0.2,
+    "bands": "#7a7f84"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b2aaa0",
+    "material": "concrete",
+    "parapet": 1.1,
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.3,
+    "run": 0.5,
+    "count": 5,
+    "colour": "#a9a399"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    14,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   60,
+   40
+  ],
+  "trees": 0
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real 38 x 10 m OSM platform outline with granite parapet and steps; parapet height, railings and steps position are from the brief."
+ }
+}

@@ -1,0 +1,344 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-osm-node-2739756603",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Schiphol_Airport_entrance.jpg",
+   "licence": "see Commons page",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/amsterdam/plaza2.jpg",
+   "used": "tall teal glass curtain wall, deep glazed canopy roof carried on slim green columns with splayed struts, oversized blank board band across the glass, ramps to the station"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Schiphol_Airport_02.JPG",
+   "licence": "see Commons page",
+   "author": "see Commons page",
+   "view": "side",
+   "file": "/tmp/places-evidence/amsterdam/plaza3.jpg",
+   "used": "canopy edge rising away and white tensile umbrellas at the end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/268641343",
+   "used": "overall scale only: the outline is the whole terminal complex (348 m), so a 116 m portion of the plaza front is modelled (note: partial front)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     80,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0aa",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "curtain",
+     "right": "curtain",
+     "back": "plain"
+    },
+    "bay": 4.5,
+    "plinth": 0.3,
+    "glassColour": "#6f9a98"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7d80",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "surface",
+   "id": "canopy-glass",
+   "at": [
+    0,
+    -21,
+    10.5
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 84,
+    "depth": 14,
+    "rise": 0.0,
+    "folds": 1,
+    "slopeY": 0.35,
+    "thickness": 0.7,
+    "colour": "#cfe0e0",
+    "edgeColour": "#4f8a72",
+    "underColour": "#3f5f5c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -46,
+     -26
+    ],
+    "end": [
+     46,
+     -26
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.25,
+      "n": 10,
+      "height": 12,
+      "colour": "#4f8a72",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -46,
+     -26
+    ],
+    "end": [
+     46,
+     -26
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "rotDeg": 0,
+      "params": {
+       "rect": [
+        7,
+        0.3
+       ],
+       "z0": 12,
+       "height": 0.3,
+       "colour": "#4f8a72",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "rotDeg": 90,
+      "params": {
+       "rect": [
+        7,
+        0.3
+       ],
+       "z0": 12,
+       "height": 0.3,
+       "colour": "#4f8a72",
+       "windows": "none"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -46,
+     -17
+    ],
+    "end": [
+     46,
+     -17
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.15,
+       9
+      ],
+      "z0": 12,
+      "height": 0.15,
+      "colour": "#4f8a72",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "ramp-l",
+   "at": [
+    -54,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 8,
+    "depth": 16,
+    "rise": 0.2,
+    "folds": 1,
+    "slopeY": 0.1,
+    "thickness": 0.4,
+    "colour": "#9aa3a6"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "ramp-r",
+   "at": [
+    54,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 8,
+    "depth": 16,
+    "rise": 0.2,
+    "folds": 1,
+    "slopeY": 0.1,
+    "thickness": 0.4,
+    "colour": "#9aa3a6"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     58,
+     -24
+    ],
+    "end": [
+     66,
+     -24
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 12,
+      "colour": "#f4f4f2",
+      "profile": [
+       [
+        0,
+        0
+       ],
+       [
+        0.15,
+        0,
+        "#999"
+       ],
+       [
+        0.15,
+        5
+       ],
+       [
+        4,
+        6.5,
+        "#f4f4f2"
+       ],
+       [
+        0,
+        8,
+        "#f4f4f2"
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -16.2,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 3.6,
+    "bottom": 6,
+    "colour": "#f4f4f2",
+    "frameColour": "#1b3f8f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    38,
+    -16.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.2,
+    "bottom": 7.4,
+    "colour": "#1b3f8f",
+    "frameColour": "#d9a21a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only an 80 m portion of the plaza front; canopy slopes but reads thin from the low camera; strut heads are flat crosses, ramps and umbrellas simplified; photo is closer and from a wider-angle viewpoint"
+ }
+}

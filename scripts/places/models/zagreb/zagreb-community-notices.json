@@ -1,0 +1,242 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "zagreb",
+ "venueId": "zagreb-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kraljevec_na_Sutli_Vije%C4%87nica.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Suradnik13",
+   "view": "front",
+   "file": "/tmp/places-evidence/zagreb/kralj1.jpg",
+   "used": "two-storey pale yellow rendered block, white band between floors and white window surrounds, three upper windows, two barred ground windows and a white double door at left of centre, hip roof of terracotta tile with two chimneys, croatian flag on a pole, cars parked on the street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/609611254",
+   "used": "plan size 14.8 x 13.4 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.18
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     15,
+     13.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d49a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4.4,
+    "plinth": 0.7,
+    "bands": "#f4f1ea",
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "punched"
+    },
+    "windowShape": "rect",
+    "trimColour": "#f4f1ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a33",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -3.5,
+    0.5,
+    9.8
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.4,
+    "pots": 1,
+    "colour": "#8a7a6e"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    3.2,
+    1,
+    9.8
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.4,
+    "pots": 1,
+    "colour": "#8a7a6e"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -2.2,
+    -7.0,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -2.2,
+    -6.85,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.25
+    ],
+    "height": 2.6,
+    "colour": "#f4f1ea",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fanlight",
+   "at": [
+    -2.2,
+    -6.85,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.25
+    ],
+    "height": 0.5,
+    "colour": "#3a4852"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pole",
+   "at": [
+    0.6,
+    -6.9,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     0.08
+    ],
+    "height": 2.6,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fl0",
+   "at": [
+    1.1,
+    -6.95,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.05
+    ],
+    "height": 0.28,
+    "colour": "#c8362b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fl1",
+   "at": [
+    1.1,
+    -6.95,
+    7.22
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.05
+    ],
+    "height": 0.28,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fl2",
+   "at": [
+    1.1,
+    -6.95,
+    6.9399999999999995
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.05
+    ],
+    "height": 0.28,
+    "colour": "#2b4a8c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -3
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ground-floor windows are not barred and have no glazing bars; door is a plain white slab with a dark fanlight; flag is a flat tricolour on the wall; roof still reads brighter orange than the muted brown tile; cars removed."
+ }
+}

@@ -1,0 +1,567 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ripanj_railway_station_(3).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kolega2357",
+   "view": "street",
+   "file": "/tmp/places-evidence/belgrade/ripanj3.jpg",
+   "used": "view along the tracks: station building at left with deep timber-rafter eaves and clay-tile roof, ochre render, low concrete platform edges, island platform, two tracks plus siding, steel gantry across tracks, wooded hills"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/683461487",
+   "used": "not used: the OSM building at the pin is the school, not the station"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ballast",
+   "footprint": {
+    "rect": [
+     28,
+     100
+    ]
+   },
+   "at": [
+    5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d776c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d776c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     8,
+     30
+    ]
+   },
+   "at": [
+    -11,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#cfa95f",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "plinth": 0.4,
+    "faces": {
+     "left": "punched",
+     "right": "none",
+     "front": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e3424",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform-station",
+   "footprint": {
+    "rect": [
+     5,
+     70
+    ]
+   },
+   "at": [
+    -5.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9b9890",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9f9c94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform-island",
+   "footprint": {
+    "rect": [
+     3,
+     70
+    ]
+   },
+   "at": [
+    4.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9b9890",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9f9c94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform-far",
+   "footprint": {
+    "rect": [
+     4,
+     70
+    ]
+   },
+   "at": [
+    15.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9b9890",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9f9c94"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0.2,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 100,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    9,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 100,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    -3,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 100,
+    "tracks": 1,
+    "gauge": 1.435
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gantry-post-l",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -5,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d9296",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gantry-post-r",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    17,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d9296",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gantry-beam",
+   "footprint": {
+    "rect": [
+     24,
+     1.2
+    ]
+   },
+   "at": [
+    6,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 8,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d9296",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -12,
+    1.0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 0.9,
+    "bottom": 2.0,
+    "colour": "#e8e4d8",
+    "frameColour": "#3d4f6b",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 5,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    38
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 5,
+    "spread": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "station-lower",
+   "footprint": {
+    "rect": [
+     8.1,
+     30.1
+    ]
+   },
+   "at": [
+    -11,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8470",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8470"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     10.5,
+     -40,
+     0
+    ],
+    "end": [
+     10.5,
+     40,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 7.5,
+      "colour": "#7e8387",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -40,
+     0
+    ],
+    "end": [
+     -6,
+     40,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 7.5,
+      "colour": "#7e8387",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    7
+   ],
+   "params": {
+    "section": {
+     "circle": 0.04
+    },
+    "points": [
+     [
+      1,
+      -45,
+      0
+     ],
+     [
+      1,
+      45,
+      0
+     ]
+    ],
+    "colour": "#333333"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    7
+   ],
+   "params": {
+    "section": {
+     "circle": 0.04
+    },
+    "points": [
+     [
+      9,
+      -45,
+      0
+     ],
+     [
+      9,
+      45,
+      0
+     ]
+    ],
+    "colour": "#333333"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    50
+   ],
+   "params": {
+    "width": 60,
+    "depth": 16,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    5
+   ],
+   "params": {
+    "width": 12,
+    "depth": 70,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    10
+   ],
+   "params": {
+    "width": 12,
+    "depth": 70,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 22
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ballast now under tracks but reads as a dark slab and platforms are wide; gantry is a plain beam not a lattice; wires thin; hills are tree groves; station small at frame edge"
+ },
+ "site": {
+  "ground": "grass",
+  "extent": [
+   60,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-transit"
+}

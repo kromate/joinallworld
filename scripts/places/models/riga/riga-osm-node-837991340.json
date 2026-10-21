@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riga",
+ "venueId": "riga-osm-node-837991340",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dole_hunters'_lodge_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ainars Br\u016bvelis",
+   "view": "side",
+   "file": "/tmp/places-evidence/riga/dole.jpg",
+   "used": "Wikidata P18 image of the Daugava Museum (Dole hunters' lodge): two-storey pale yellow rendered block with white trim and a front gable, square corner tower with tall slate pyramid spire, lower wing to the left, dark grey metal roofs, red-roofed outbuilding at right, lawn and pines"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/data/facts/riga.json#riga-osm-node-837991340",
+   "used": "OSM match is a park polygon, so no footprint was used; sizes are read from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     11,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5cd86",
+    "windows": "arched",
+    "windowRatio": 0.13,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#fbf8ee"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#4b4f5c",
+    "material": "metal-sheet",
+    "rise": 5.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -8,
+    3.5
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5cd86",
+    "windows": "arched",
+    "windowRatio": 0.07,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#fbf8ee"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#41454f",
+    "material": "metal-sheet",
+    "rise": 9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     6,
+     14
+    ]
+   },
+   "at": [
+    -10.5,
+    14
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead0",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#fbf8ee"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a5e68",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "outbuilding",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    14,
+    3
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5a4034",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a3d33",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    10.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.5,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#b8b0a0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "at": [
+    -8,
+    3.5,
+    20.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0.25,
+      0,
+      "#41454f"
+     ],
+     [
+      0.05,
+      2.2,
+      "#41454f"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     20,
+     -6
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     6
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     18
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     30
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "no dormers or chimneys on the spire, no ornate white window surrounds or gable fretwork; wing and outbuilding simplified"
+ }
+}

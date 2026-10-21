@@ -1,0 +1,196 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/203861610",
+   "used": "real hospital outline (name match), auto-fitted to 118 m"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HT_bus_line_650S_at_Hvidovre_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Leif J\u00f8rgensen",
+   "view": "street",
+   "file": "/tmp/places-evidence/copenhagen/clinic_0.jpg",
+   "used": "only the long pale sandy-beige ribbed precast wall beside the road (colour); no clear building view, so not compared"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/copenhagen.json",
+   "used": "four low 3-4 storey blocks, flat roofs, 1968-79, brutalist concrete"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "fit": 116,
+    "simplify": 4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4b79c",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bay": 20,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6a68",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "services-wing",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -18
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6a68",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    2,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#f2f0eb",
+    "frameColour": "#b3302a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -28,
+    -72,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 2.9,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    8,
+    -76,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.9,
+    "yaw": 0,
+    "colour": "#38424f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    -60,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    56,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 24,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-clinic",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No usable building photo: real OSM outline scaled 0.26 with generic ribbon windows; real block layout and ward detail are not verified."
+ }
+}

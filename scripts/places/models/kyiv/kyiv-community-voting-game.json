@@ -1,0 +1,298 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KharkivskaSqKyiv.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Skoropadsky",
+   "file": "/tmp/places-evidence/kyiv/vg1.jpg",
+   "view": "street",
+   "used": "white 9-storey slab with glazed top band and the blue-glass curved tower beside it, across the junction"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u041f\u0430\u043d\u043e\u0440\u0430\u043c\u0430_\u0445\u0430\u0440\u043a\u0456\u0432\u0441\u044c\u043a\u0430_\u043f\u043b\u043e\u0449\u0430.jpg",
+   "licence": "Public domain",
+   "author": "Dimant",
+   "file": "/tmp/places-evidence/kyiv/vg0.jpg",
+   "view": "street",
+   "used": "open grassed junction island, low kerb planters, tall poplars, billboards"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "loft",
+   "id": "white-slab",
+   "at": [
+    -10,
+    36,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       44,
+       6.5
+      ]
+     },
+     {
+      "z": 32,
+      "ellipse": [
+       44,
+       6.5
+      ]
+     }
+    ],
+    "colour": "#ebe8e0"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "slab-glass-band",
+   "at": [
+    -10,
+    36,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 24,
+      "ellipse": [
+       44.3,
+       6.695
+      ]
+     },
+     {
+      "z": 32,
+      "ellipse": [
+       44.3,
+       6.695
+      ]
+     }
+    ],
+    "colour": "#2f4457"
+   }
+  },
+  {
+   "type": "array",
+   "id": "spandrels",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "ellipse": [
+         44.6,
+         7
+        ]
+       },
+       {
+        "z": 0.7,
+        "ellipse": [
+         44.6,
+         7
+        ]
+       }
+      ],
+      "colour": "#f6f4ee"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     36,
+     3
+    ],
+    "end": [
+     -10,
+     36,
+     23
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "loft",
+   "id": "glass-block",
+   "at": [
+    40,
+    36,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       12,
+       10
+      ]
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       12,
+       10
+      ]
+     },
+     {
+      "z": 44,
+      "ellipse": [
+       10,
+       8.5
+      ]
+     }
+    ],
+    "colour": "#6f93b0"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower-frame",
+   "at": [
+    40,
+    36,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 30,
+      "ellipse": [
+       12.4,
+       10.4
+      ]
+     },
+     {
+      "z": 31,
+      "ellipse": [
+       12.4,
+       10.4
+      ]
+     }
+    ],
+    "colour": "#f0efea"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    26,
+    5
+   ],
+   "params": {
+    "width": 40,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#c9c6bc",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -34,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "bottom": 3,
+    "colour": "#d8d8d0",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     22
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -44,
+     22
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     50,
+     22
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     56,
+     22
+    ],
+    "height": 20
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Bowed white slab with spandrel bands and stepped glass tower with white frame on grass island; tower is still smooth ellipse (no stepped angular top), billboard/crash barrier simplified, slab too deep-curved."
+ }
+}

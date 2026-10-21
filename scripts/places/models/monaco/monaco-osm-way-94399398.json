@@ -1,0 +1,1252 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monaco",
+ "venueId": "monaco-osm-way-94399398",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%89glise_Sainte-D%C3%A9vote_(Monaco).jpg",
+   "licence": "Public domain",
+   "author": "Tangopaso",
+   "view": "front",
+   "file": "/tmp/places-evidence/monaco/dev2.jpg",
+   "used": "cream facade with gabled centre and lower side wings, arched doors and windows, tall belfry tower behind right, steps across the front, rock cliff and conifers at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sainte_D%C3%A9vote_Chapel,_Monaco_(49780871622).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Matthew Hartley",
+   "view": "front",
+   "used": "confirmed proportions: tower sits right-rear, rock face behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/94399398",
+   "used": "overall size only; plan simplified to rect aligned with the facade"
+  }
+ ],
+ "camera": {
+  "yawDeg": -3,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     19,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebdcb0",
+    "windows": "none",
+    "plinth": 0.6,
+    "trimColour": "#f4eedc",
+    "cornice": true,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4a0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     8.6,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -0.2
+   ],
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebdcb0",
+    "windows": "none",
+    "plinth": 0.6,
+    "trimColour": "#f4eedc",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ebdcb0"
+   }
+  },
+  {
+   "type": "core/loft",
+   "params": {
+    "colour": "#ebdcb0",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 7.6,
+      "rect": [
+       8.6,
+       0.8
+      ],
+      "cy": -9.0
+     },
+     {
+      "z": 8.4,
+      "rect": [
+       7.0,
+       0.8
+      ],
+      "cy": -9.0
+     },
+     {
+      "z": 9.2,
+      "rect": [
+       5.4,
+       0.8
+      ],
+      "cy": -9.0
+     },
+     {
+      "z": 10.0,
+      "rect": [
+       3.6,
+       0.8
+      ],
+      "cy": -9.0
+     },
+     {
+      "z": 10.9,
+      "rect": [
+       2.0,
+       0.8
+      ],
+      "cy": -9.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -9.0,
+    10.9
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "height": 0.4,
+    "colour": "#f4eedc"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -9.0,
+    11.3
+   ],
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "height": 1.5,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -9.0,
+    12.1
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.2
+    ],
+    "height": 0.22,
+    "colour": "#3a3430"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -3.6,
+    -9.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 7.0,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -2.6,
+    -9.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 7.0,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    2.6,
+    -9.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 7.0,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3.6,
+    -9.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 7.0,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -8.4,
+    -9.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -7.4,
+    -9.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    7.4,
+    -9.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8.4,
+    -9.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -6.5,
+    -8.7,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#f4eedc"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -8.0,
+    -8.7,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "height": 0.9,
+    "colour": "#f4eedc"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9.2,
+    -8.7,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "height": 1.3,
+    "colour": "#f4eedc"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9.2,
+    -8.7,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 0.7,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4.6,
+    -9.0,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    6.5,
+    -8.7,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#f4eedc"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8.0,
+    -8.7,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "height": 0.9,
+    "colour": "#f4eedc"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    9.2,
+    -8.7,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.5
+    ],
+    "height": 1.3,
+    "colour": "#f4eedc"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    9.2,
+    -8.7,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 0.7,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.6,
+    -9.0,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    3.4,
+    -4.2
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebdcb0",
+    "windows": "none",
+    "trimColour": "#f4eedc",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ebdcb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.2
+    ]
+   },
+   "at": [
+    3.4,
+    -4.2
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "z0": 11.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebdcb0",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "trimColour": "#f4eedc",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ebdcb0"
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    3.4,
+    -4.2,
+    14.1
+   ],
+   "params": {
+    "profile": [
+     [
+      1.2,
+      0,
+      "#cfd3cf"
+     ],
+     [
+      1.1,
+      0.3
+     ],
+     [
+      0.8,
+      0.8
+     ],
+     [
+      0.4,
+      1.15
+     ],
+     [
+      0.05,
+      1.3
+     ]
+    ],
+    "segments": 12,
+    "colour": "#cfd3cf"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3.4,
+    -4.2,
+    15.3
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3.4,
+    -4.2,
+    15.8
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#3a3430"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    9.5,
+    0
+   ],
+   "params": {
+    "colour": "#8f8878",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       34,
+       4
+      ],
+      "cx": 4
+     },
+     {
+      "z": 6,
+      "rect": [
+       30,
+       3.2
+      ],
+      "cx": 5,
+      "cy": -0.6
+     },
+     {
+      "z": 12,
+      "rect": [
+       24,
+       2.6
+      ],
+      "cx": 7,
+      "cy": -1.2
+     },
+     {
+      "z": 18,
+      "rect": [
+       16,
+       2.2
+      ],
+      "cx": 9,
+      "cy": -1.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "colour": "#a39a84",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       6
+      ],
+      "cx": 15,
+      "cy": -1
+     },
+     {
+      "z": 5,
+      "rect": [
+       5,
+       4.5
+      ],
+      "cx": 15.5,
+      "cy": -1.5
+     },
+     {
+      "z": 10,
+      "rect": [
+       3,
+       3
+      ],
+      "cx": 15,
+      "cy": -2
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    13,
+    -3,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#4a3a28"
+     ],
+     [
+      0.2,
+      0.1
+     ],
+     [
+      0.2,
+      1.7999999999999998
+     ],
+     [
+      1.4400000000000002,
+      2.4000000000000004,
+      "#1f3a24"
+     ],
+     [
+      1.8,
+      6.0
+     ],
+     [
+      1.26,
+      9.600000000000001
+     ],
+     [
+      0.05,
+      12
+     ]
+    ],
+    "segments": 8,
+    "colour": "#1f3a24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    15.5,
+    -1,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#4a3a28"
+     ],
+     [
+      0.2,
+      0.1
+     ],
+     [
+      0.2,
+      2.1
+     ],
+     [
+      1.6,
+      2.8000000000000003,
+      "#1f3a24"
+     ],
+     [
+      2.0,
+      7.0
+     ],
+     [
+      1.4,
+      11.200000000000001
+     ],
+     [
+      0.05,
+      14
+     ]
+    ],
+    "segments": 8,
+    "colour": "#1f3a24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    11.5,
+    0.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#4a3a28"
+     ],
+     [
+      0.2,
+      0.1
+     ],
+     [
+      0.2,
+      1.5
+     ],
+     [
+      1.2800000000000002,
+      2.0,
+      "#1f3a24"
+     ],
+     [
+      1.6,
+      5.0
+     ],
+     [
+      1.1199999999999999,
+      8.0
+     ],
+     [
+      0.05,
+      10
+     ]
+    ],
+    "segments": 8,
+    "colour": "#1f3a24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    17,
+    2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#4a3a28"
+     ],
+     [
+      0.2,
+      0.1
+     ],
+     [
+      0.2,
+      1.65
+     ],
+     [
+      1.4400000000000002,
+      2.2,
+      "#1f3a24"
+     ],
+     [
+      1.8,
+      5.5
+     ],
+     [
+      1.26,
+      8.8
+     ],
+     [
+      0.05,
+      11
+     ]
+    ],
+    "segments": 8,
+    "colour": "#1f3a24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    -13,
+    -3,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#4a3a28"
+     ],
+     [
+      0.2,
+      0.1
+     ],
+     [
+      0.2,
+      1.3499999999999999
+     ],
+     [
+      1.1199999999999999,
+      1.8,
+      "#1f3a24"
+     ],
+     [
+      1.4,
+      4.5
+     ],
+     [
+      0.9799999999999999,
+      7.2
+     ],
+     [
+      0.05,
+      9
+     ]
+    ],
+    "segments": 8,
+    "colour": "#1f3a24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    -11.5,
+    -1,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#4a3a28"
+     ],
+     [
+      0.2,
+      0.1
+     ],
+     [
+      0.2,
+      1.65
+     ],
+     [
+      1.2800000000000002,
+      2.2,
+      "#1f3a24"
+     ],
+     [
+      1.6,
+      5.5
+     ],
+     [
+      1.1199999999999999,
+      8.8
+     ],
+     [
+      0.05,
+      11
+     ]
+    ],
+    "segments": 8,
+    "colour": "#1f3a24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    -15,
+    0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#4a3a28"
+     ],
+     [
+      0.2,
+      0.1
+     ],
+     [
+      0.2,
+      1.2
+     ],
+     [
+      1.04,
+      1.6,
+      "#1f3a24"
+     ],
+     [
+      1.3,
+      4.0
+     ],
+     [
+      0.9099999999999999,
+      6.4
+     ],
+     [
+      0.05,
+      8
+     ]
+    ],
+    "segments": 8,
+    "colour": "#1f3a24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -9.25,
+    0.6
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 4.2,
+    "arch": true,
+    "colour": "#7a4a2e",
+    "trim": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -7.2,
+    -9.15,
+    0.6
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 3.0,
+    "arch": true,
+    "colour": "#6b4a30",
+    "trim": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "church-door",
+   "at": [
+    7.2,
+    -9.15,
+    0.6
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 3.0,
+    "arch": true,
+    "colour": "#6b4a30",
+    "trim": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -9.25,
+    5.4
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 2.6,
+    "kind": "arch",
+    "trim": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -3.6,
+    -9.15,
+    1.6
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.4,
+    "kind": "arch",
+    "trim": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    3.6,
+    -9.15,
+    1.6
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.4,
+    "kind": "arch",
+    "trim": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -9.25,
+    8.8
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.4,
+    "kind": "arch",
+    "trim": "#f4eedc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10.2,
+    0
+   ],
+   "params": {
+    "width": 19,
+    "rise": 0.6,
+    "run": 1.0,
+    "count": 5,
+    "colour": "#cfc8b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "flat-front composition with stepped gable, wings and domed tower now in place; no pilaster pairs with capitals, relief medallions or statue niche; cliff is a smooth slab; windows/doors approximated"
+ }
+}

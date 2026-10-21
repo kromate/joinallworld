@@ -1,0 +1,689 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aleksandar_club.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Antioksidans",
+   "view": "front",
+   "file": "club1.jpg",
+   "used": "two-storey log-clad cabin, tall glazed gables with timber frames, stepped roofs, rubble-stone chimney at left, raised plank deck, conifers behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1153923899",
+   "used": "11 m octagonal footprint, 2 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7d6f60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7c6b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ground",
+   "at": [
+    0,
+    0,
+    1.0
+   ],
+   "params": {
+    "points": [
+     [
+      4.435,
+      1.837
+     ],
+     [
+      1.837,
+      4.435
+     ],
+     [
+      -1.837,
+      4.435
+     ],
+     [
+      -4.435,
+      1.837
+     ],
+     [
+      -4.435,
+      -1.837
+     ],
+     [
+      -1.837,
+      -4.435
+     ],
+     [
+      1.837,
+      -4.435
+     ],
+     [
+      4.435,
+      -1.837
+     ]
+    ],
+    "z0": 0,
+    "height": 3.3,
+    "colour": "#5a4430",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#9fb3bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band",
+   "at": [
+    0,
+    0,
+    4.3
+   ],
+   "params": {
+    "points": [
+     [
+      5.266,
+      2.181
+     ],
+     [
+      2.181,
+      5.266
+     ],
+     [
+      -2.181,
+      5.266
+     ],
+     [
+      -5.266,
+      2.181
+     ],
+     [
+      -5.266,
+      -2.181
+     ],
+     [
+      -2.181,
+      -5.266
+     ],
+     [
+      2.181,
+      -5.266
+     ],
+     [
+      5.266,
+      -2.181
+     ]
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#b98a55",
+    "windows": "none",
+    "pattern": {
+     "type": "fins",
+     "colour": "#d8b98a"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper",
+   "at": [
+    0,
+    0,
+    5.5
+   ],
+   "params": {
+    "points": [
+     [
+      5.081,
+      2.105
+     ],
+     [
+      2.105,
+      5.081
+     ],
+     [
+      -2.105,
+      5.081
+     ],
+     [
+      -5.081,
+      2.105
+     ],
+     [
+      -5.081,
+      -2.105
+     ],
+     [
+      -2.105,
+      -5.081
+     ],
+     [
+      2.105,
+      -5.081
+     ],
+     [
+      5.081,
+      -2.105
+     ]
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#9a6f40",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#bcd2de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hip-roof",
+   "at": [
+    0,
+    0,
+    9.0
+   ],
+   "params": {
+    "points": [
+     [
+      6.005,
+      2.487
+     ],
+     [
+      2.487,
+      6.005
+     ],
+     [
+      -2.487,
+      6.005
+     ],
+     [
+      -6.005,
+      2.487
+     ],
+     [
+      -6.005,
+      -2.487
+     ],
+     [
+      -2.487,
+      -6.005
+     ],
+     [
+      2.487,
+      -6.005
+     ],
+     [
+      6.005,
+      -2.487
+     ]
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "topScale": 0.25,
+    "colour": "#3f342d",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable",
+   "footprint": {
+    "rect": [
+     6.5,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "z0": 5.5,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6f40",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#bcd2de",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f342d",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.7,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4.8,
+    -5.6
+   ],
+   "z0": 1.0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -2.4,
+    -5.6
+   ],
+   "z0": 1.0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0.0,
+    -5.6
+   ],
+   "z0": 1.0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2.4,
+    -5.6
+   ],
+   "z0": 1.0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post4",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    4.8,
+    -5.6
+   ],
+   "z0": 1.0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.2
+    ]
+   },
+   "at": [
+    -6.4,
+    -4.2
+   ],
+   "z0": 0,
+   "height": 10.0,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#b0a898",
+    "windows": "none",
+    "bands": {
+     "colour": "#8e877b",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b665e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney-cap",
+   "footprint": {
+    "rect": [
+     1.5,
+     1.7
+    ]
+   },
+   "at": [
+    -6.4,
+    -4.2
+   ],
+   "z0": 10.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6b665e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "balustrade",
+   "id": "rail-front",
+   "at": [
+    0,
+    -8.4,
+    1.0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.0,
+    "postEvery": 1.6,
+    "colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "balustrade",
+   "id": "rail-l",
+   "rotDeg": 90,
+   "at": [
+    -9.8,
+    -6,
+    1.0
+   ],
+   "params": {
+    "length": 5,
+    "height": 1.0,
+    "postEvery": 1.6,
+    "colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "balustrade",
+   "id": "rail-r",
+   "rotDeg": 90,
+   "at": [
+    9.8,
+    -6,
+    1.0
+   ],
+   "params": {
+    "length": 5,
+    "height": 1.0,
+    "postEvery": 1.6,
+    "colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "table0",
+   "at": [
+    -3,
+    -6.3,
+    1.0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#8a6a43",
+    "chair_colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "table1",
+   "at": [
+    2,
+    -6.3,
+    1.0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#8a6a43",
+    "chair_colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "table2",
+   "at": [
+    6.5,
+    -6.3,
+    1.0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#8a6a43",
+    "chair_colour": "#7a5a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     4.6,
+     8
+    ]
+   },
+   "at": [
+    -4.6,
+    0
+   ],
+   "z0": 5.5,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6f40",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#bcd2de",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f342d",
+    "material": "slate",
+    "pitch": 25,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     4.6,
+     8
+    ]
+   },
+   "at": [
+    4.6,
+    0
+   ],
+   "z0": 5.5,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a6f40",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#bcd2de",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f342d",
+    "material": "slate",
+    "pitch": 25,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -12,
+     10
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     12,
+     9
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     2
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "octagonal plan, stepped side roofs, lighter glass, log band, chimney and railed deck added; glass still renders dark, no X-bracing on rail, chimney stone texture is regular"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belgrade",
+ "venueId": "belgrade-meal-stop"
+}

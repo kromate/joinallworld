@@ -1,0 +1,693 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kyiv_Koncha-Zaspa_Sanatorium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "e74b81m",
+   "view": "front",
+   "file": "/tmp/places-evidence/kyiv/2304759_0.jpg",
+   "used": "two-wing neoclassical main building: taupe-brown rendered walls with cream pilasters and cornice, right wing with a four-column Corinthian portico and triangular pediment, arched first-floor windows with balconettes, low hipped roof, left wing set back at an angle, tall spruces and a clipped hedge circle"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kyiv_Koncha-Zaspa_Sanatorium_Building.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "lyoshko",
+   "view": "side",
+   "used": "white rendered annex style with blue-green metal roof (not modelled, context only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1052304759",
+   "used": "identity only: the OSM way is the whole 1 km sanatorium estate, not a building, so the outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     46,
+     16
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8f7c68",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "windowShape": "arched",
+    "plinth": 0.6,
+    "bands": "#efe6d0",
+    "cornice": true,
+    "glassColour": "#2f3a40",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "punched"
+    },
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f7a62",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     34,
+     15
+    ]
+   },
+   "at": [
+    -26,
+    14
+   ],
+   "rotDeg": -22,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8f7c68",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "windowShape": "arched",
+    "plinth": 0.6,
+    "bands": "#efe6d0",
+    "cornice": true,
+    "glassColour": "#2f3a40",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "plain"
+    },
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f7a62",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "col0",
+   "at": [
+    27,
+    -9,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#efe8d6",
+    "profile": [
+     [
+      1.5,
+      0,
+      "#efe8d6"
+     ],
+     [
+      1.25,
+      0.6,
+      "#efe8d6"
+     ],
+     [
+      1.15,
+      1.2,
+      "#efe8d6"
+     ],
+     [
+      1.15,
+      12.2,
+      "#efe8d6"
+     ],
+     [
+      1.4,
+      12.8,
+      "#efe8d6"
+     ],
+     [
+      1.9,
+      13.6,
+      "#efe8d6"
+     ],
+     [
+      1.9,
+      14.2,
+      "#efe8d6"
+     ],
+     [
+      0,
+      14.2,
+      "#efe8d6"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "col1",
+   "at": [
+    33,
+    -9,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#efe8d6",
+    "profile": [
+     [
+      1.5,
+      0,
+      "#efe8d6"
+     ],
+     [
+      1.25,
+      0.6,
+      "#efe8d6"
+     ],
+     [
+      1.15,
+      1.2,
+      "#efe8d6"
+     ],
+     [
+      1.15,
+      12.2,
+      "#efe8d6"
+     ],
+     [
+      1.4,
+      12.8,
+      "#efe8d6"
+     ],
+     [
+      1.9,
+      13.6,
+      "#efe8d6"
+     ],
+     [
+      1.9,
+      14.2,
+      "#efe8d6"
+     ],
+     [
+      0,
+      14.2,
+      "#efe8d6"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "col2",
+   "at": [
+    39,
+    -9,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#efe8d6",
+    "profile": [
+     [
+      1.5,
+      0,
+      "#efe8d6"
+     ],
+     [
+      1.25,
+      0.6,
+      "#efe8d6"
+     ],
+     [
+      1.15,
+      1.2,
+      "#efe8d6"
+     ],
+     [
+      1.15,
+      12.2,
+      "#efe8d6"
+     ],
+     [
+      1.4,
+      12.8,
+      "#efe8d6"
+     ],
+     [
+      1.9,
+      13.6,
+      "#efe8d6"
+     ],
+     [
+      1.9,
+      14.2,
+      "#efe8d6"
+     ],
+     [
+      0,
+      14.2,
+      "#efe8d6"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "col3",
+   "at": [
+    45,
+    -9,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#efe8d6",
+    "profile": [
+     [
+      1.5,
+      0,
+      "#efe8d6"
+     ],
+     [
+      1.25,
+      0.6,
+      "#efe8d6"
+     ],
+     [
+      1.15,
+      1.2,
+      "#efe8d6"
+     ],
+     [
+      1.15,
+      12.2,
+      "#efe8d6"
+     ],
+     [
+      1.4,
+      12.8,
+      "#efe8d6"
+     ],
+     [
+      1.9,
+      13.6,
+      "#efe8d6"
+     ],
+     [
+      1.9,
+      14.2,
+      "#efe8d6"
+     ],
+     [
+      0,
+      14.2,
+      "#efe8d6"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "entablature",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    36,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 14.2,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe8d6",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe8d6",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment",
+   "at": [
+    36,
+    -9,
+    16.2
+   ],
+   "params": {
+    "rect": [
+     21,
+     6
+    ],
+    "height": 4.2,
+    "topScale": [
+     0.04,
+     1
+    ],
+    "colour": "#efe8d6",
+    "topColour": "#d8d0bc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-back",
+   "footprint": {
+    "rect": [
+     18,
+     1.2
+    ]
+   },
+   "at": [
+    36,
+    -6.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe8d6",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe8d6",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "portico-steps",
+   "at": [
+    36,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 0.4,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#bdb5a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pedimented-bay",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    -12,
+    -5
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8f7c68",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "windowShape": "arched",
+    "plinth": 0.6,
+    "bands": "#efe6d0",
+    "cornice": true,
+    "glassColour": "#2f3a40",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a39f92",
+    "material": "metal-sheet",
+    "pitch": 32
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce-tall",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 34,
+    "spread": 11,
+    "colour": "#2b4630"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "asphalt-ring",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#6e6c6a",
+    "profile": [
+     [
+      0,
+      0.02,
+      "#6e6c6a"
+     ],
+     [
+      22,
+      0.02,
+      "#6e6c6a"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "curb",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#e8e6e0",
+    "profile": [
+     [
+      15.2,
+      0.02,
+      "#e8e6e0"
+     ],
+     [
+      15.2,
+      0.35,
+      "#e8e6e0"
+     ],
+     [
+      16,
+      0.35,
+      "#e8e6e0"
+     ],
+     [
+      16,
+      0.02,
+      "#e8e6e0"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "hedge-maze",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#2f5a2c",
+    "profile": [
+     [
+      0,
+      0.3,
+      "#2f5a2c"
+     ],
+     [
+      6,
+      0.3,
+      "#2f5a2c"
+     ],
+     [
+      6,
+      1.6,
+      "#2f5a2c"
+     ],
+     [
+      7,
+      1.6,
+      "#2a5228"
+     ],
+     [
+      7,
+      0.3,
+      "#2a5228"
+     ],
+     [
+      11,
+      0.3,
+      "#2f5a2c"
+     ],
+     [
+      11,
+      1.6,
+      "#2f5a2c"
+     ],
+     [
+      12.5,
+      1.6,
+      "#2f5a2c"
+     ],
+     [
+      12.5,
+      0.3,
+      "#2f5a2c"
+     ],
+     [
+      14.5,
+      0.3,
+      "#2f5a2c"
+     ],
+     [
+      14.5,
+      1.4,
+      "#2f5a2c"
+     ],
+     [
+      15,
+      1.4,
+      "#2f5a2c"
+     ],
+     [
+      15,
+      0.3,
+      "#2f5a2c"
+     ]
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "portico now tall with pediment and thick columns (no fluting/relief); arched windows still read rectangular, no balconettes; sky blue vs overcast; hedge ring simplified; spruce a cone"
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -20
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     60,
+     12
+    ],
+    "height": 24
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kyiv",
+ "venueId": "kyiv-osm-way-1052304759"
+}

@@ -1,0 +1,305 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tirana",
+ "venueId": "tirana-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TOPTANI%E2%80%99S_SARAJET.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "JoraK",
+   "view": "street",
+   "file": "/tmp/places-evidence/tirana/sarajet1.jpg",
+   "used": "white-rendered two-storey Ottoman house, overhanging upper floor with a long band of brown timber-framed windows, low hip roof of old clay tile with deep eaves, low picket fence in front, gate piers at the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sarajet_e_Toptanasve.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "EvelinaJ",
+   "view": "front",
+   "file": "/tmp/places-evidence/tirana/sarajet2.jpg",
+   "used": "front garden gate: stone piers with a small pediment, iron gate, side walls with arched niches, row of tall arched red-brown framed windows upstairs, hip roofs in two heights"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/405351517",
+   "used": "real stepped plan of the house (28.7 x 21.5 m, 2 levels)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f7edd2",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#6b4a35",
+    "glassColour": "#7d6a58"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a40",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "oriel",
+   "footprint": {
+    "rect": [
+     20,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -11.4
+   ],
+   "z0": 3.8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5238",
+    "windows": "rect",
+    "windowRatio": 0.62,
+    "windowShape": "rect",
+    "glassColour": "#8fa3ab",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a3d2a",
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.2,
+    "thickness": 0.2,
+    "kind": "palisade",
+    "colour": "#f4f1ea",
+    "pillarEvery": 0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    17,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.2,
+    "thickness": 0.2,
+    "kind": "palisade",
+    "colour": "#f4f1ea",
+    "pillarEvery": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier6.4",
+   "footprint": {
+    "rect": [
+     1.1,
+     1.1
+    ]
+   },
+   "at": [
+    6.4,
+    -17
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdbf9f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#bfb090",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier11.6",
+   "footprint": {
+    "rect": [
+     1.1,
+     1.1
+    ]
+   },
+   "at": [
+    11.6,
+    -17
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdbf9f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#bfb090",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    9,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 4.2,
+    "height": 2.0,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 0.4,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#efe9dc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -17,
+    0.4
+   ],
+   "params": {
+    "length": 22,
+    "height": 0.9,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    17,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.4,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#efe9dc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    17,
+    -17,
+    0.4
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#f4f1ea"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "walls still read slightly cool in shade; fence is thin posts and a rail, not turned balusters; gate is plain pier pair with iron bars, no side niches; upper timber band is one flat box not a jettied oriel with brackets"
+ }
+}

@@ -1,0 +1,313 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Skopje_Market_Bit_Pazar.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Prince Roy",
+   "view": "street",
+   "file": "/tmp/places-evidence/skopje/bit1.jpg",
+   "used": "produce stalls under flat cream/pale tin-and-canvas awnings on slim dark green steel posts, low continuous roof of crowded stalls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bit_Pazar_Skopje.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Predavatel",
+   "view": "street",
+   "file": "/tmp/places-evidence/skopje/bit2.jpg",
+   "used": "low shop row with swept red/cream curved canopies, cracked paving, 4-6 storey grey-beige blocks behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32813170",
+   "used": "market outline as the paved base (221 m long, fitted to the scene)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "paving",
+   "footprint": {
+    "osm": true,
+    "scale": 0.3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d9a92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a92",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "market-shed",
+     "params": {
+      "length": 27,
+      "depth": 9,
+      "height": 3.6,
+      "roof": "shed",
+      "post_pitch": 2.5,
+      "roof_colour": "#d8d0bc",
+      "wall_colour": "#2f6b4a",
+      "trim_colour": "#2f6b4a",
+      "accent_colour": "#c9552d",
+      "goods": "sacks"
+     }
+    },
+    "mode": "grid",
+    "cols": 3,
+    "rows": 4,
+    "dx": 29,
+    "dy": 12,
+    "centred": true
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -5,
+    20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 4,
+    "height": 3.4,
+    "roof": "shed",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "shutter_colours": [
+     "#6c6f73",
+     "#8a8f94"
+    ],
+    "awning_colours": [
+     "#b8392f",
+     "#e6dcc4",
+     "#2f6b4a"
+    ],
+    "wall_colour": "#d9cdb0",
+    "roof_colour": "#a9a59c"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    5,
+    -30,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 60,
+    "depth": 4,
+    "height": 3.4,
+    "roof": "shed",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "awning_colours": [
+     "#b8392f",
+     "#e6dcc4",
+     "#2f6b4a"
+    ],
+    "wall_colour": "#d3c5a8",
+    "roof_colour": "#a9a59c"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -18,
+    -24.5,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#e6dcc4",
+     "#2f6b4a",
+     "#b8392f",
+     "#d9a441"
+    ],
+    "goods_colours": [
+     "#d9622b",
+     "#c23a2b",
+     "#5f9a3c",
+     "#e0b83a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -18,
+    16,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#e6dcc4",
+     "#2f6b4a",
+     "#b8392f",
+     "#d9a441"
+    ],
+    "goods_colours": [
+     "#d9622b",
+     "#c23a2b",
+     "#5f9a3c",
+     "#e0b83a"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-back",
+   "footprint": {
+    "rect": [
+     36,
+     12
+    ]
+   },
+   "at": [
+    -20,
+    32
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9bfae",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#a8a090",
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-side",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    22,
+    32
+   ],
+   "height": 19,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9ae9a",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -15
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "skopje",
+ "venueId": "skopje-market-game",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Reference photo is an interior close-up under the awnings; model now gives a dense cream-roofed shed field with green posts, shop rows and blocks close behind, but no stall goods detail, canvas sag or crowds, and a front shop row hides part of the sheds."
+ }
+}

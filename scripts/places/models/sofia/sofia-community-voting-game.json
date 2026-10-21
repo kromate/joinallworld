@@ -1,0 +1,178 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/598738119",
+   "used": "not used: nearest match is an unrelated 183 m2 retail building 15 m away; the only nearby photo shows the village church 250 m away, not the square"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4dccb",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9533b",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "width": 2.4,
+    "steps": 2,
+    "shape": "block",
+    "figure": "stand",
+    "figure_colour": "#6b6256"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "radius": 2.6,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "kiosk",
+    "width": 3,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#7a8f6a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 0.5,
+    "kind": "wall",
+    "colour": "#b8b2a4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   60,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -4
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -20
+    ],
+    "height": 9
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the square: generic village plaza with memorial, fountain, kiosk and cafe"
+ }
+}

@@ -1,0 +1,316 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luxembourg",
+ "venueId": "luxembourg-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Distillerie_ch%C3%A2teau_de_bourglinster_2018-11-18.jpg",
+   "licence": "CC BY 4.0",
+   "author": "MNHNL pbraun",
+   "view": "front",
+   "file": "/tmp/places-evidence/luxembourg/dist.jpg",
+   "used": "white three-storey manor with sandstone window surrounds, slate mansard hip roof with dormers and chimney; ochre-rendered steep-gabled restaurant wing at left with small stone-framed windows and doors; cobbled court"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bourglinster_Castle.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Jean & Nathalie",
+   "view": "street",
+   "file": "/tmp/places-evidence/luxembourg/burg.jpg",
+   "used": "two round cream-rendered gate towers with black conical slate roofs, stone arch, timber bridge rails, manor seen through the gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/243623706",
+   "used": "castle is the venue (La Distillerie is the castle restaurant); overall size 62 x 35 m used for placement"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "manor",
+   "footprint": {
+    "rect": [
+     12.5,
+     10
+    ]
+   },
+   "at": [
+    7.5,
+    4
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f2efe8",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "punched"
+    },
+    "bay": 3.2,
+    "plinth": 0.9,
+    "trimColour": "#c7a86a",
+    "bands": "#c7a86a"
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#575b60",
+    "material": "slate",
+    "rise": 9
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    2.8,
+    -1.2,
+    10.5
+   ],
+   "params": {
+    "colour": "#575b60",
+    "width": 1.2,
+    "height": 1.5
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    7,
+    -1.2,
+    10.5
+   ],
+   "params": {
+    "colour": "#575b60",
+    "width": 1.2,
+    "height": 1.5
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    11.2,
+    -1.2,
+    10.5
+   ],
+   "params": {
+    "colour": "#575b60",
+    "width": 1.2,
+    "height": 1.5
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    11,
+    8,
+    13.5
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.6,
+    "colour": "#b49f78",
+    "pots": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "restaurant-wing",
+   "footprint": {
+    "rect": [
+     15,
+     10
+    ]
+   },
+   "at": [
+    -7.5,
+    6
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#dcb98a",
+    "windows": "punched",
+    "windowRatio": 0.04,
+    "faces": {
+     "front": "punched"
+    },
+    "bay": 9,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d5156",
+    "material": "slate",
+    "pitch": 52,
+    "axis": "y",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -5.5,
+    -0.5,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.4,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#a9a395"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    20,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 3,
+    "thickness": 0.8,
+    "colour": "#b9a77e",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      -6,
+      0
+     ],
+     [
+      -6,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "half-timber-wall",
+   "at": [
+    -19,
+    0.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 4,
+    "floors": 1,
+    "timber_colour": "#2b2622",
+    "plaster_colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rubble-buttress",
+   "footprint": {
+    "rect": [
+     2.2,
+     1.6
+    ]
+   },
+   "at": [
+    -6.5,
+    0.2
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d786c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d786c"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -3,
+    0.95,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.8,
+    "arch": true,
+    "colour": "#5a3a22",
+    "trim": "#c7a86a"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    7.5,
+    -1.0,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 3.0,
+    "arch": true,
+    "colour": "#3b2a1e",
+    "trim": "#c7a86a"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    7.5,
+    -1.0,
+    3.6
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 1.0,
+    "railing_colour": "#2b2b2b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     18
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "courtyard cobbles are a generic grid texture; window surrounds, balcony, arched doors and rubble stub simplified; mansard lacks the photo hip step"
+ }
+}

@@ -1,0 +1,158 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-helier",
+ "venueId": "st-helier-osm-node-1793026515",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/208100277",
+   "used": "nearest OSM polygon is The Windmill (unrelated name); not used for the footprint, brief size used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39a90",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    },
+    "bay": 3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f666c",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4,
+     2.4
+    ]
+   },
+   "at": [
+    -2,
+    -5.1
+   ],
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d2",
+    "windows": "none",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5d6b",
+    "material": "membrane",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    3.2,
+    -4.4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "height": 2.6,
+    "colours": [
+     "#2f5d6b",
+     "#f4f2ea"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    3.5,
+    -7.6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 2.6,
+    "colours": [
+     "#2f5d6b",
+     "#f4f2ea"
+    ],
+    "radius": 1.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    3.5,
+    0
+   ],
+   "z0": 4.2,
+   "height": 2.4,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f877e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6560"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; modest granite gable cafe with awning and umbrellas typical for Jersey, size from the brief"
+ }
+}

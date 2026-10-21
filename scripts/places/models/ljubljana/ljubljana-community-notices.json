@@ -1,0 +1,425 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ljubljana",
+ "venueId": "ljubljana-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ljubljana_-_dvorec_Selo_-_2007-06-20.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Janez Novak",
+   "view": "front",
+   "file": "/tmp/places-evidence/ljubljana/selo.jpg",
+   "used": "long two-storey front of 15 axes, yellow stucco with cream pilaster strips and window frames, tall red hip roof, projecting central bay with stone portal and volute attic with round clock, cars parked in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/197202761",
+   "used": "overall size only (about 84 m); composed as a long main block with two rear wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     72,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8c",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 4.2,
+    "plinth": 3.0,
+    "cornice": true,
+    "bands": "#efe6cf",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 1.2,
+      "depth": 0.15,
+      "spacing": 4.2,
+      "colour": "#efe6cf",
+      "margin": 0.4
+     }
+    ],
+    "faces": {
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4503a",
+    "material": "clay-tile",
+    "pitch": 44,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "risalit",
+   "footprint": {
+    "rect": [
+     15,
+     3.4
+    ]
+   },
+   "at": [
+    -4,
+    -9.7
+   ],
+   "height": 10.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "arched",
+    "windowRatio": 0.32,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#efe6cf"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6cf",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    -29,
+    20
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4503a",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    29,
+    20
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4503a",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stable-w",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    -14,
+    22
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c590",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "right"
+      ],
+      "shape": "arch",
+      "bay": 4,
+      "opening": 0.6
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4503a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stable-e",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    14,
+    22
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c590",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "left"
+      ],
+      "shape": "arch",
+      "bay": 4,
+      "opening": 0.6
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4503a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 4,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    14,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#a03a35",
+    "count": 3,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "portal",
+   "at": [
+    -4,
+    -11.0,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 4.0,
+    "shape": "round",
+    "door_colour": "#6a3f2c",
+    "surround": 0.35,
+    "steps": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     9,
+     1.6
+    ]
+   },
+   "at": [
+    -4,
+    -10.2
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#efe6cf",
+    "pitch": 30,
+    "axis": "x"
+   },
+   "z0": 10.8
+  },
+  {
+   "type": "mass",
+   "id": "scroll-l",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.4
+    ]
+   },
+   "at": [
+    -9.6,
+    -10.2
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6cf"
+   },
+   "z0": 10.8
+  },
+  {
+   "type": "mass",
+   "id": "scroll-r",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.4
+    ]
+   },
+   "at": [
+    1.6,
+    -10.2
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6cf"
+   },
+   "z0": 10.8
+  },
+  {
+   "type": "rose-window",
+   "at": [
+    -4,
+    -11.1,
+    13.2
+   ],
+   "params": {
+    "radius": 0.9,
+    "glass": "#efe6cf",
+    "spokes": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "attic is a boxy cream block with a round clock not a true volute scroll gable; no pediment hoods over windows; ground-floor arched windows approximate; wings guessed"
+ }
+}

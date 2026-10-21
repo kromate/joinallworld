@@ -1,0 +1,168 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/358057724",
+   "used": "real 40 x 25 m notched footprint of the mountain restaurant"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estany_Primer_de_Pessons_20240830_n01.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Marie-Lan Tay Pamart",
+   "view": "street",
+   "used": "setting only (alpine lake, granite peaks, scattered pines, grass); the building is not visible so it is not a photo comparison"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a6a55",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 1.0,
+    "faces": {
+     "back": "punched"
+    },
+    "bands": "#8a8478"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f56",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 1.0,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "terrace-roof",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 5,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#6b5a46",
+    "edgeColour": "#4b4f56"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "id": "chimney",
+   "at": [
+    -4,
+    3,
+    7.6
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 2.6,
+    "pots": 2,
+    "colour": "#8a8478"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    16,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#d8d2c4",
+    "frameColour": "#4b4f56",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#7a6a55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -28,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -32,
+     -8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     18
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "andorra-la-vella",
+ "venueId": "andorra-la-vella-osm-node-1894423912",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building exists; massing from OSM outline, materials assumed"
+ }
+}

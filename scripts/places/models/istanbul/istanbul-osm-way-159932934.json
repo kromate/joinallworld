@@ -1,0 +1,446 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maltepe_Stadyumu_12112016.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sakhalinio",
+   "view": "interior",
+   "file": "/tmp/places-evidence/istanbul/159932934_0.jpg",
+   "used": "interior only (no exterior photo exists on Commons): flat steel-truss roofs over low stands on the sides and ends, pale blue-grey rear walls, light seating with green and red blocks, green pitch with red track"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/159932934",
+   "used": "stadium plot outline 137 x 99 m, rotated outline fitted to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plot",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -38,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9c9e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      48.0,
+      0.0
+     ],
+     [
+      47.59,
+      4.18
+     ],
+     [
+      46.36,
+      8.28
+     ],
+     [
+      44.35,
+      12.25
+     ],
+     [
+      41.57,
+      16.0
+     ],
+     [
+      38.08,
+      19.48
+     ],
+     [
+      33.94,
+      22.63
+     ],
+     [
+      29.22,
+      25.39
+     ],
+     [
+      24.0,
+      27.71
+     ],
+     [
+      18.37,
+      29.56
+     ],
+     [
+      12.42,
+      30.91
+     ],
+     [
+      6.27,
+      31.73
+     ],
+     [
+      0.0,
+      32.0
+     ],
+     [
+      -6.27,
+      31.73
+     ],
+     [
+      -12.42,
+      30.91
+     ],
+     [
+      -18.37,
+      29.56
+     ],
+     [
+      -24.0,
+      27.71
+     ],
+     [
+      -29.22,
+      25.39
+     ],
+     [
+      -33.94,
+      22.63
+     ],
+     [
+      -38.08,
+      19.48
+     ],
+     [
+      -41.57,
+      16.0
+     ],
+     [
+      -44.35,
+      12.25
+     ],
+     [
+      -46.36,
+      8.28
+     ],
+     [
+      -47.59,
+      4.18
+     ],
+     [
+      -48.0,
+      0.0
+     ],
+     [
+      -47.59,
+      -4.18
+     ],
+     [
+      -46.36,
+      -8.28
+     ],
+     [
+      -44.35,
+      -12.25
+     ],
+     [
+      -41.57,
+      -16.0
+     ],
+     [
+      -38.08,
+      -19.48
+     ],
+     [
+      -33.94,
+      -22.63
+     ],
+     [
+      -29.22,
+      -25.39
+     ],
+     [
+      -24.0,
+      -27.71
+     ],
+     [
+      -18.37,
+      -29.56
+     ],
+     [
+      -12.42,
+      -30.91
+     ],
+     [
+      -6.27,
+      -31.73
+     ],
+     [
+      -0.0,
+      -32.0
+     ],
+     [
+      6.27,
+      -31.73
+     ],
+     [
+      12.42,
+      -30.91
+     ],
+     [
+      18.37,
+      -29.56
+     ],
+     [
+      24.0,
+      -27.71
+     ],
+     [
+      29.22,
+      -25.39
+     ],
+     [
+      33.94,
+      -22.63
+     ],
+     [
+      38.08,
+      -19.48
+     ],
+     [
+      41.57,
+      -16.0
+     ],
+     [
+      44.35,
+      -12.25
+     ],
+     [
+      46.36,
+      -8.28
+     ],
+     [
+      47.59,
+      -4.18
+     ]
+    ],
+    "height": 0.06,
+    "colour": "#a8453a",
+    "topColour": "#a8453a"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "length": 90,
+    "width": 58
+   }
+  },
+  {
+   "type": "stand",
+   "id": "stands",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 34,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 8,
+    "rise": 0.7,
+    "run": 1.0,
+    "firstHeight": 1.2,
+    "facetDeg": 20,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#d9d9d4",
+    "seatColours": [
+     "#d9d9d4",
+     "#2e8a4a",
+     "#b53a35"
+    ],
+    "blocks": 6,
+    "concreteColour": "#b7bdc2",
+    "underColour": "#a9b5bf"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-ring",
+   "at": [
+    0,
+    0,
+    7.4
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      9,
+      0.7
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 55,
+     "radiusY": 38.5,
+     "startDeg": 0,
+     "endDeg": 360,
+     "steps": 20
+    },
+    "colour": "#7b8085"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 41.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 28,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 7.4,
+      "colour": "#6c7176"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 43,
+    "startDeg": 45,
+    "endDeg": 315,
+    "count": 4,
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 24,
+      "head_width": 4
+     }
+    }
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "facing": "south",
+    "post_height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     44
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "istanbul",
+ "venueId": "istanbul-osm-way-159932934",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Only an interior photo exists: stand layout and roof colours inferred from it, plot from OSM outline, stands drawn as an oval ring."
+ }
+}

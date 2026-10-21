@@ -1,0 +1,372 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Denmark_Frederiksberg_Town_Hall.JPG",
+   "licence": "Public domain",
+   "author": "Anonymous",
+   "view": "front",
+   "file": "/tmp/places-evidence/copenhagen/community-vo_1.jpg",
+   "used": "dark red brick, long six-storey front with four tall glazed bays and iron balconies, ground-floor piers and dark doors, low red tile hip roof, tall brick tower behind with copper lantern"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Movia_bus_line_74_on_Smallegade_02.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Leif J\u00f8rgensen",
+   "view": "street",
+   "used": "tower at the corner, red tile hip roof with dormers, brick colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/34106",
+   "used": "120 x 60 m plan"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     104,
+     54
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a4535",
+    "windows": "none",
+    "windowRatio": 0.42,
+    "bay": 8.5,
+    "plinth": 0.6,
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "rect",
+      "bay": 11,
+      "opening": 0.6,
+      "height": 0.85,
+      "depth": 0.6,
+      "storeys": 1,
+      "faces": [
+       "front"
+      ],
+      "colour": "#25201e",
+      "pierColour": "#7a3d2e"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a38",
+    "rise": 2.4,
+    "overhang": 0.8,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-bays",
+   "footprint": {
+    "rect": [
+     26,
+     1.0
+    ]
+   },
+   "at": [
+    0,
+    -29.4
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa0a8",
+    "bay": 6.5,
+    "windowRatio": 0.85,
+    "windows": "curtain",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.0,
+      "rail": 1.0,
+      "width": 26,
+      "floors": [
+       1,
+       3
+      ],
+      "colour": "#2a2a2c",
+      "railColour": "#2a2a2c",
+      "railKind": "solid",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4535"
+   },
+   "z0": 5
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    -38,
+    14
+   ],
+   "height": 48,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a3a2a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#86412f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-a",
+   "footprint": {
+    "rect": [
+     4.2,
+     0.5
+    ]
+   },
+   "at": [
+    -38,
+    7.3
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8d2c0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d0"
+   },
+   "z0": 40
+  },
+  {
+   "type": "mass",
+   "id": "belfry-rail",
+   "footprint": {
+    "rect": [
+     11.5,
+     11.5
+    ]
+   },
+   "at": [
+    -38,
+    14
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#3a4a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4a44"
+   },
+   "z0": 48
+  },
+  {
+   "type": "mass",
+   "id": "lantern",
+   "footprint": {
+    "rect": [
+     7.5,
+     7.5
+    ]
+   },
+   "at": [
+    -38,
+    14
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6f9d88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9d88"
+   },
+   "z0": 51.5
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -38,
+    14,
+    56.5
+   ],
+   "params": {
+    "baseWidth": 5.0,
+    "height": 7,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#6f9d88",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "rise": 0.5,
+    "run": 1.4,
+    "count": 3,
+    "colour": "#b9b3a6"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -16,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "colour": "#c8102e"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -42,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "spread": 1.5,
+    "colour": "#4a3c32"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -46,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 1.5,
+    "colour": "#4a3c32"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hedge",
+   "footprint": {
+    "rect": [
+     16,
+     2.2
+    ]
+   },
+   "at": [
+    -46,
+    -43
+   ],
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a4a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a4a2e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "copenhagen",
+ "venueId": "copenhagen-community-voting-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower now broader with copper lantern but belfry is a plain box (no open lantern/clock faces), facade has 6 storeys not 7-8 with tight window grid, no ground arcade or iron balconies, hedge a short bar, trees round not bare."
+ }
+}

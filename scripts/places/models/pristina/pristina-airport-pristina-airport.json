@@ -1,0 +1,360 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pristina_International_Airport_-_new_terminal.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Katie Chan",
+   "view": "front",
+   "file": "/tmp/places-evidence/pristina/airport1.jpg",
+   "used": "landside elevation: long dark glazed hall under a wavy steel canopy on slanted white columns, taller grey-beige panel block with window grids at right, stepped low end, colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/385422371",
+   "used": "overall size only (260 m terminal; a ~150 m portion is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     70,
+     26
+    ]
+   },
+   "at": [
+    -36,
+    6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d4a52",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7278",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-block",
+   "footprint": {
+    "rect": [
+     34,
+     34
+    ]
+   },
+   "at": [
+    18,
+    6
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b4aea0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "right": "punched",
+     "left": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8387",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-gate",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    39,
+    -6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3a44",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9095",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-low",
+   "footprint": {
+    "rect": [
+     12,
+     14
+    ]
+   },
+   "at": [
+    48,
+    8
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b3aea3",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8387",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    44,
+    40,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "round",
+    "colour": "#c9cdd0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -60,
+    -18.5,
+    9.8
+   ],
+   "params": {
+    "width": 26,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#a8adb1",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -55,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 5,
+    "spacing": 26
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#2a2d33",
+    "count": 3,
+    "spacing": 9,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -44,
+    0
+   ],
+   "params": {
+    "colour": "#c4c8cc",
+    "count": 2,
+    "spacing": 8,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "surface",
+   "id": "canopy-wave",
+   "at": [
+    -34,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 72,
+    "depth": 34,
+    "z": 12,
+    "rise": 1.6,
+    "waves": 3,
+    "thickness": 0.9,
+    "colour": "#5d646a",
+    "underColour": "#2b3036",
+    "edgeColour": "#7b8186"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.7,
+        1.1
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        -1.8,
+        -1,
+        6.5
+       ],
+       [
+        -4,
+        -2,
+        12.3
+       ]
+      ],
+      "colour": "#f0f0ee"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -66,
+     -15,
+     0
+    ],
+    "end": [
+     -8,
+     -15,
+     0
+    ],
+    "lod1Step": 2,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-end",
+   "footprint": {
+    "rect": [
+     10,
+     20
+    ]
+   },
+   "at": [
+    -76,
+    4
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d4a52",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7278",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "surface",
+   "id": "block-roof",
+   "at": [
+    18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 40,
+    "depth": 36,
+    "z": 16.8,
+    "rise": 1.2,
+    "waves": 1.5,
+    "thickness": 1.2,
+    "colour": "#7a8085",
+    "underColour": "#5d646a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": [],
+  "extent": [
+   112,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-airport-pristina-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wavy canopy and splayed white legs added; ~110 m of the 260 m terminal; block roof edge is a gentle wave not the full sweeping curve; control tower sits behind block."
+ }
+}

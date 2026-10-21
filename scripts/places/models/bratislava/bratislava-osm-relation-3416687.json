@@ -1,0 +1,465 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bratislava",
+ "venueId": "bratislava-osm-relation-3416687",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ka%C5%A1tie%C4%BE_v_Malinove.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/bratislava/eberhard.jpg",
+   "used": "two-storey wings round a courtyard: pale cream plaster with ochre plinth, white-framed tall rectangular windows with plaster surrounds, ground-floor loggia of square piers and an arched door on the rear wing, low shallow roofs with deep eaves, clipped hedge in the court"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3416687",
+   "used": "overall size about 60 x 48 m (the irregular outline is replaced by three wings round a court)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e0cc9c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "glassColour": "#4a4038",
+    "pattern": []
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e6e9ec",
+    "material": "membrane",
+    "pitch": 3,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     13,
+     34
+    ]
+   },
+   "at": [
+    -21.5,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e0cc9c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "right": "punched"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "glassColour": "#4a4038",
+    "pattern": []
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e6e9ec",
+    "material": "membrane",
+    "pitch": 3,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     13,
+     34
+    ]
+   },
+   "at": [
+    21.5,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e0cc9c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "punched"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "glassColour": "#4a4038",
+    "pattern": []
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e6e9ec",
+    "material": "membrane",
+    "pitch": 3,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     9.8,
+     0
+    ],
+    "end": [
+     24,
+     9.8,
+     0
+    ],
+    "count": 17,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 3.8,
+      "colour": "#e0cb98"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14.2,
+     -14,
+     0
+    ],
+    "end": [
+     -14.2,
+     14,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 3.8,
+      "colour": "#e0cb98"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     14.2,
+     -14,
+     0
+    ],
+    "end": [
+     14.2,
+     14,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 3.8,
+      "colour": "#e0cb98"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-roof",
+   "at": [
+    0,
+    10.1,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     48,
+     1.6
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#d9c692"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arched-door",
+   "at": [
+    0,
+    10.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "colour": "#5a4632"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-head",
+   "at": [
+    0,
+    10.45,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#5a4632",
+    "topScale": [
+     0.6,
+     1
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    9.4,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     26
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#e9ebe8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-back",
+   "at": [
+    0,
+    2.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     25,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#2f4a2c",
+    "topColour": "#3a5a34"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-l",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     18
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#2f4a2c",
+    "topColour": "#3a5a34"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-r",
+   "at": [
+    12,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     18
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#2f4a2c",
+    "topColour": "#3a5a34"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-front",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     25,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#2f4a2c",
+    "topColour": "#3a5a34"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -18
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     41,
+     20
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Three wings with loggia, shallow pale roofs, hedged court read; no plaster weathering or window surrounds, inner loggias simplified, roof reads grey-blue not snow."
+ }
+}

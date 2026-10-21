@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sofia",
+ "venueId": "sofia-osm-way-409292553",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Nicholas_Seslavtsi.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Babradov",
+   "view": "side",
+   "file": "/tmp/places-evidence/sofia/ses1.jpg",
+   "used": "single-nave box, steeply gabled clay-tile roof with stepped tile eave on the west gable, weathered pink-cream render over rubble stone, arched-barrel gable end, paved path ring, grass and forested slope"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Seslavci_monastery_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ilian Mitev",
+   "view": "side",
+   "file": "/tmp/places-evidence/sofia/ses2.jpg",
+   "used": "arched gable end, small arched windows, brick and stone banding in the quoins, tile eave course"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/409292553",
+   "used": "overall size 17.6 x 6.7 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     10,
+     6.7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8b4a0",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 0.8,
+    "trimColour": "#9a6a50",
+    "faces": {
+     "front": "none",
+     "left": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9553b",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     2.6,
+     5.0
+    ]
+   },
+   "at": [
+    -6.2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c9ab94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a9553b",
+    "material": "clay-tile",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 14,
+    "colour": "#4c7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 12,
+    "colour": "#41703a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     11.6,
+     7.8
+    ],
+    "height": 0.5,
+    "colour": "#7a6a58",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -5.5
+     ],
+     [
+      -5,
+      -6.2
+     ],
+     [
+      5,
+      -6.2
+     ],
+     [
+      9,
+      -5.5
+     ],
+     [
+      10,
+      -1
+     ],
+     [
+      9,
+      4
+     ]
+    ],
+    "width": 1.8,
+    "colour": "#cfcbc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 5,
+    "spread": 30,
+    "colour": "#35603a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10,
+    "colour": "#4c6a38"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "rubble texture only as colour; no real slope mound; arched gable approximated"
+ }
+}

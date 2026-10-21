@@ -1,0 +1,567 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pista_de_atletism.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ovidiup76",
+   "view": "street",
+   "file": "/tmp/places-evidence/bucharest/arghezi1.jpg",
+   "used": "red rubberised running track with white lane lines beside a grey asphalt path, mown lawns, rows of young broadleaf trees either side, benches and curved lamp posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1054221333",
+   "used": "park outline size only; plot reduced to a compact 140 x 90 m stretch around the track"
+  }
+ ],
+ "camera": {
+  "yawDeg": -90,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": -1.2,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -34
+     ],
+     [
+      52,
+      -34
+     ],
+     [
+      52,
+      40
+     ],
+     [
+      -52,
+      40
+     ]
+    ],
+    "z0": -0.3,
+    "height": 0.3,
+    "colour": "#5eb23a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      2.4
+     ],
+     [
+      50,
+      2.4
+     ],
+     [
+      50,
+      6.0
+     ],
+     [
+      -50,
+      6.0
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.1,
+    "colour": "#8a8885"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      2.0
+     ],
+     [
+      50,
+      2.0
+     ],
+     [
+      50,
+      2.4
+     ],
+     [
+      -50,
+      2.4
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.14,
+    "colour": "#d9d6cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -2.0
+     ],
+     [
+      50,
+      -2.0
+     ],
+     [
+      50,
+      2.0
+     ],
+     [
+      -50,
+      2.0
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.12,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lane1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -0.75
+     ],
+     [
+      50,
+      -0.75
+     ],
+     [
+      50,
+      -0.6
+     ],
+     [
+      -50,
+      -0.6
+     ]
+    ],
+    "z0": 0.12,
+    "height": 0.02,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lane2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      0.6
+     ],
+     [
+      50,
+      0.6
+     ],
+     [
+      50,
+      0.75
+     ],
+     [
+      -50,
+      0.75
+     ]
+    ],
+    "z0": 0.12,
+    "height": 0.02,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lane-edge-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -1.9
+     ],
+     [
+      50,
+      -1.9
+     ],
+     [
+      50,
+      -1.8
+     ],
+     [
+      -50,
+      -1.8
+     ]
+    ],
+    "z0": 0.12,
+    "height": 0.02,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 18,
+    "start": [
+     -44,
+     -6.0,
+     0
+    ],
+    "end": [
+     44,
+     -6.0,
+     0
+    ],
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 6.5,
+      "spread": 3.2,
+      "colour": "#5c9a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 18,
+    "start": [
+     -44,
+     10.0,
+     0
+    ],
+    "end": [
+     44,
+     10.0,
+     0
+    ],
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 6.5,
+      "spread": 3.2,
+      "colour": "#5c9a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -40,
+     7.0,
+     0
+    ],
+    "end": [
+     40,
+     7.0,
+     0
+    ],
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 7
+     }
+    }
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -40,
+    6.8,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -20,
+    26,
+    0
+   ],
+   "params": {
+    "radius": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pond",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      27.0,
+      -24.0
+     ],
+     [
+      25.794228634059948,
+      -21.5
+     ],
+     [
+      22.5,
+      -19.66987298107781
+     ],
+     [
+      18.0,
+      -19.0
+     ],
+     [
+      13.500000000000002,
+      -19.669872981077805
+     ],
+     [
+      10.205771365940052,
+      -21.5
+     ],
+     [
+      9.0,
+      -24.0
+     ],
+     [
+      10.20577136594005,
+      -26.5
+     ],
+     [
+      13.499999999999996,
+      -28.33012701892219
+     ],
+     [
+      18.0,
+      -29.0
+     ],
+     [
+      22.5,
+      -28.33012701892219
+     ],
+     [
+      25.794228634059944,
+      -26.500000000000004
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.05,
+    "colour": "#4d92b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "play0",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.2
+    ]
+   },
+   "at": [
+    26,
+    22
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9453a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9453a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "play1",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.2
+    ]
+   },
+   "at": [
+    30,
+    24
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2b83a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2b83a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "play2",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.2
+    ]
+   },
+   "at": [
+    24,
+    26
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a7bd9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a7bd9",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "play-pad",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      22,
+      18
+     ],
+     [
+      38,
+      18
+     ],
+     [
+      38,
+      30
+     ],
+     [
+      22,
+      30
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.05,
+    "colour": "#8a9c6a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    30,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "count": 6,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#a39d90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "all critic items modelled (red track with lane lines, kerbed path, tree rows, lamps, benches, fountain, pond, playground) but the camera frames the park from afar instead of along the track; trees low-poly, lamps straight"
+ }
+}

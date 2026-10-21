@@ -1,0 +1,142 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AAB_College_fron.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/pristina/aab.jpg",
+   "used": "colours and materials only: white render wall, thin dark red band, dark charcoal plinth, flat roof with thin projecting slab (close-up; no massing view)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/788892473",
+   "used": "real zig-zag outline of the 5-level campus (216 m long)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#f1efe9",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f1efe9",
+       "#c9d3da"
+      ]
+     }
+    ],
+    "bands": "#8c2b34",
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "parapet": 0.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-dark",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "height": 0.1,
+    "colour": "#3a3d41"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -30,
+    5
+   ],
+   "params": {
+    "width": 9,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#f2f0ea",
+    "frameColour": "#3f4348",
+    "posts": false
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -60,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 12,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 5,
+    "spread": 5,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pristina",
+ "venueId": "pristina-community-workshop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only a close-up logo photo exists: massing is the OSM outline scaled 0.56 to fit the 120 m clamp, windows omitted for budget (floor colours only)."
+ }
+}

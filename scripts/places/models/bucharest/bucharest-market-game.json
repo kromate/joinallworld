@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bucharest",
+ "venueId": "bucharest-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/241256765",
+   "used": "real outline of the mall (371 x 178 m, name match), 3 levels, 22 m"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bucharest_shopping_city_under_construction_2_photo_by_dan69en.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Dan69en",
+   "view": "street",
+   "file": "/tmp/places-evidence/bucharest/shop2.jpg",
+   "used": "construction-era car park view only: saturated blue and yellow cladding panels, paved apron, flagpoles, street lamps; not a facade view so no photo comparison"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d8",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#7b8791"
+      ],
+      "height": 1.6,
+      "at": 0.5,
+      "proud": 0.15,
+      "floors": [
+       1
+      ]
+     },
+     {
+      "type": "panels",
+      "size": [
+       6,
+       5
+      ],
+      "colours": [
+       "#e6e2d8",
+       "#d9d3c5",
+       "#b04a3a"
+      ],
+      "weights": [
+       6,
+       3,
+       1
+      ],
+      "gap": 0.1,
+      "proud": 0.05,
+      "floors": [
+       0,
+       2
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-a",
+   "at": [
+    -27,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     10
+    ],
+    "height": 12,
+    "colour": "#7b8791",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#6f8fa3",
+    "topColour": "#8a8f94",
+    "faces": [
+     "left"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-b",
+   "at": [
+    -27,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     10
+    ],
+    "height": 12,
+    "colour": "#7b8791",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#6f8fa3",
+    "topColour": "#8a8f94",
+    "faces": [
+     "left"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -31,
+    -6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 14,
+    "colour": "#b04a3a",
+    "frameColour": "#7b8791"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo of the finished mall; entrance and cladding positions guessed on the scaled 361 m outline"
+ }
+}

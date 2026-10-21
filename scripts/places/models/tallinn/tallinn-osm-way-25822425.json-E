@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tallinn",
+ "venueId": "tallinn-osm-way-25822425",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:EU-EE-TLN-PIRITA-Velodrome.JPG",
+   "licence": "Public domain",
+   "author": "Dmitry G",
+   "view": "aerial-ish from stand",
+   "file": "/tmp/places-evidence/tallinn/velo1.jpg",
+   "used": "banked concrete track bowl in weathered grey-brown with green rim rail, turf infield, low white-fronted grandstand with stepped seats and a small white box tower on the far side, pine woods behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25822425",
+   "used": "oval size ~142x81 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "track",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     118,
+     68
+    ]
+   },
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "smooth-concrete",
+    "colour": "#9a8f80",
+    "windows": "none",
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "none",
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -26,
+     30
+    ],
+    "end": [
+     26,
+     30
+    ],
+    "flip": true,
+    "rows": 9,
+    "seatColour": "#c9ccc8",
+    "concreteColour": "#d9d6cc",
+    "backWall": 0.6,
+    "under": "solid",
+    "canopy": {
+     "height": 5.5,
+     "depth": 4,
+     "colour": "#eeeeea"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    18,
+    38
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 14,
+    "z0": 0,
+    "colour": "#eeeeea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.2,
+    "colour": "#4f7a4a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -55,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    55,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -60,
+     30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -62,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     60,
+     40
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     64,
+     -10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     52
+    ]
+   }
+  ],
+  "extent": [
+   170,
+   120
+  ]
+ }
+}

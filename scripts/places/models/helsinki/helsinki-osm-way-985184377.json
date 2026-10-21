@@ -1,0 +1,609 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "helsinki",
+ "venueId": "helsinki-osm-way-985184377",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Metropolia-Myyrm%C3%A4ki1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Paju (Commons user)",
+   "view": "front",
+   "file": "/tmp/places-evidence/helsinki/hel-metropolia.jpg",
+   "used": "sand-yellow brick walls with grey concrete corner piers and trim, entrance block with open undercroft on two grey columns, round drum behind with glazed top, grey stair towers with round windows on the left wing, glass box at right, flat roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/554713503",
+   "used": "overall size (155 x 138 m multi-wing campus, 3 levels, yellow building:colour); wings arranged by the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.46,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    -4
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8bc8e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4,
+    "glassColour": "#3d4a55",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6f73",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -18,
+    -1
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a4a7a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#3d4a55",
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6f73",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower-2",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    -6,
+    -1
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a4a7a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#3d4a55",
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6f73",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    9,
+    -2
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8bc8e",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "left": "punched",
+     "back": "none",
+     "right": "punched"
+    },
+    "windowRatio": 0.3,
+    "bay": 6,
+    "glassColour": "#3d4a55",
+    "plinth": 0.4,
+    "pattern": {
+     "type": "pilotis",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6f73",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    23,
+    -1
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8bc8e",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "bay": 4,
+    "glassColour": "#3d4a55"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6f73",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-box",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    42,
+    4
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0bf",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "bay": 4,
+    "faces": {
+     "back": "none"
+    },
+    "glassColour": "#6d8fa0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f83",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 8.5,
+    "n": 16,
+    "height": 16,
+    "colour": "#e0cba0",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "glassColour": "#3d4a55"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -1,
+    10,
+    16
+   ],
+   "params": {
+    "colour": "#9cb8c4",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 8.5
+     },
+     {
+      "z": 1.0,
+      "circle": 6
+     },
+     {
+      "z": 1.5,
+      "circle": 1.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    3.2,
+    -10.3,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     11.5,
+     0,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 3.2,
+      "colour": "#8e9194"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6,
+    "count": 2,
+    "spread": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.3,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 12.4,
+    "colour": "#a4a7a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17.7,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 12.4,
+    "colour": "#a4a7a8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    4,
+    -9.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     10,
+     0,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.8,
+      "n": 10,
+      "height": 7.5,
+      "colour": "#9a9da0"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    -10.6,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#5a7a8a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    31,
+    -3.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     22,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 9.2,
+      "colour": "#5d6165"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 14,
+    "colour": "#a4a7a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 14,
+    "colour": "#a4a7a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -5.1,
+    2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.2
+    ],
+    "height": 10,
+    "colour": "#3d4a55"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -5.1,
+    2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.2
+    ],
+    "height": 10,
+    "colour": "#3d4a55"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -27,
+    -11.2,
+    3
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     26,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 6.5,
+      "colour": "#a4a7a8"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Wings are an orthogonal simplification of the multi-wing outline; round portholes and glazed conical link roof omitted; stair towers use ribbon windows with added slits; glass-box steel frame is simple."
+ }
+}

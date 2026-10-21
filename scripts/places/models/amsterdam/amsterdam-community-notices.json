@@ -1,0 +1,179 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amsterdam",
+ "venueId": "amsterdam-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/278865495",
+   "used": "real irregular outline 53.7 x 45.7 m (2003, commercial)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Holland_Park_Ochtend_Piet_Mondriaansingel_Diemen_Zuid.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Maartenberk",
+   "view": "street",
+   "file": "/tmp/places-evidence/amsterdam/notices2.jpg",
+   "used": "neighbourhood context only (Holland Park, Diemen Zuid): yellow and red brick, dark glass-ribbon offices, brick paving, canal edge; the building itself is not identifiable in it"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#7b5a4a",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 13,
+    "faces": {
+     "back": "none"
+    },
+    "glassColour": "#4a5560",
+    "bands": "#4a4f55",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-wing",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    14,
+    6
+   ],
+   "rotDeg": -27,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd4d6",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 5,
+    "glassColour": "#4f6672",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "glass-lobby",
+   "at": [
+    -3,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 6,
+    "curtain_colour": "#9db3bd"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5,
+    "colours": [
+     "#cfd4d6",
+     "#3a6aa8",
+     "#cfd4d6"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -35,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 38,
+    "depth": 14,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -35
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -20
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "building not seen in any photo; massing from the real outline, brief and local Diemen office style"
+ }
+}

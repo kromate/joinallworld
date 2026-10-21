@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baku",
+ "venueId": "baku-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/376244850",
+   "used": "real building outline (about 70 x 64 m, containing match for the oncology centre site)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e1d3",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bands": "#c9c2b0",
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -37
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc4",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfcf",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    8,
+    6
+   ],
+   "z0": 20,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9bdbf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9da0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#f2f2ee",
+    "frameColour": "#7f868a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -38
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building exists in evidence: real outline only, storeys, finish and entrance position are typed from the brief for a Soviet/post-Soviet hospital."
+ }
+}

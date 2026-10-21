@@ -1,0 +1,274 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "valletta",
+ "venueId": "valletta-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/446041140",
+   "used": "nearest-only match (52 x 12 m): not used for outline; only confirms a long narrow warehouse range at Pinto Wharf"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pinto-range",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     96,
+     16
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#d6b985",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "storeys": 2,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 6,
+      "opening": 0.55,
+      "height": 0.8,
+      "depth": 0.5,
+      "colour": "#7e6a4a"
+     }
+    ],
+    "trimColour": "#e8d9b4",
+    "plinth": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-barrel",
+   "footprint": {
+    "rect": [
+     96,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 10,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6b985",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#c9b58a",
+    "material": "concrete",
+    "rise": 2.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -45,
+    -8.6,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.3
+      ],
+      "z0": 0,
+      "height": 3.0,
+      "colour": "#3e6b4a",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     90,
+     0
+    ],
+    "count": 16,
+    "vary": {}
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 5,
+    "height": 4.2,
+    "columns": 8,
+    "colour": "#c9c5b8",
+    "edgeColour": "#8f9494"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 6,
+    "colour": "#3e6b4a",
+    "posts": false
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    50,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "width": 9,
+    "height": 0.8,
+    "rails": true,
+    "piles": false,
+    "colour": "#b8ad96"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -27,
+    0.8
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 4.5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -45,
+     0
+    ],
+    "end": [
+     45,
+     0
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -29.2,
+    0.8
+   ],
+   "params": {
+    "of": {
+     "type": "fence-wall",
+     "params": {
+      "length": 1.0,
+      "height": 0.5,
+      "thickness": 0.5,
+      "colour": "#2f2f33"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     0
+    ],
+    "end": [
+     48,
+     0
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    52,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   130,
+   70
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no usable photo; Pinto Stores arcade, door colours and barrel roofs from general knowledge; quay water and cruise ship not modelled; length 96 m is an estimate"
+ }
+}

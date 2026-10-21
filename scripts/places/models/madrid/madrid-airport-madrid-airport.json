@@ -1,0 +1,304 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-airport-madrid-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Madrid_Barajas_T4_1.jpg",
+   "licence": "Wikimedia Commons (free licence, see file page)",
+   "author": "see file page",
+   "view": "back",
+   "file": "/tmp/places-evidence/madrid/air_Madrid_Barajas_T4_1.jpg",
+   "used": "long low glazed terminal front, wide grey rippled metal roof edge, colour-graded steel V-columns (orange to green), grey control tower with glazed cab in front of the terminal"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Madrid_Barajas_T4_2.jpg",
+   "licence": "Wikimedia Commons (free licence, see file page)",
+   "author": "see file page",
+   "view": "back",
+   "used": "roof proportion against the glass wall, apron with aircraft in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Exterior_-_Aeropuerto_de_Madrid-Barajas_T4_-_Madrid_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nerve net",
+   "view": "detail",
+   "file": "/tmp/places-evidence/madrid/t4_01.jpg",
+   "used": "yellow Y-columns, orange timber-slat soffit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-wall",
+   "footprint": {
+    "rect": [
+     110,
+     16
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5a5c",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "wave",
+    "colour": "#9aa0a6",
+    "material": "metal-sheet",
+    "curve": "wave",
+    "waves": 20,
+    "rise": 0.5,
+    "thickness": 1.5,
+    "overhang": 1.5,
+    "infill": "glass"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "landside-block",
+   "footprint": {
+    "rect": [
+     110,
+     10
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6e7a7c",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 9.5,
+      "topScale": 1.0,
+      "topOffset": [
+       3.0,
+       0
+      ],
+      "colour": "#c49a4c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -52,
+     0
+    ],
+    "end": [
+     -4,
+     0
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 9.5,
+      "topScale": 1.0,
+      "topOffset": [
+       -3.0,
+       0
+      ],
+      "colour": "#9c9a52"
+     }
+    },
+    "mode": "line",
+    "start": [
+     4,
+     0
+    ],
+    "end": [
+     52,
+     0
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -6,
+    -10
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8e9193",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d6063"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-glaze",
+   "footprint": {
+    "rect": [
+     9.2,
+     9.2
+    ]
+   },
+   "at": [
+    -6,
+    -10
+   ],
+   "z0": 8,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c98b4e",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d6063"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-cab",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    -6,
+    -10
+   ],
+   "z0": 26,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d4b52",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.4,
+    "colour": "#f2f2f2",
+    "tailColour": "#c8202c"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.4,
+    "colour": "#f2f2f2",
+    "tailColour": "#c8202c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "110 m slice of a 600 m terminal; roof is a gentle wave, not ribbed plates; V-columns straight posts; no timber soffit or jet bridges"
+ }
+}

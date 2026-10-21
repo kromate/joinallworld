@@ -1,0 +1,405 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Heliport_in_Vatican_City_-_total_view.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "User:Mattes",
+   "view": "front",
+   "file": "/tmp/places-evidence/vatican-city/heli1.jpg",
+   "used": "pale concrete pad with yellow edge line on grey asphalt apron, clipped green hedge terraces, tan bastion wall behind, dark statue on a white plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/50841519",
+   "used": "pad and circular apron size (about 56 x 35 m outline), pad 25 x 17 m from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 46,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "all",
+  "shiftY": 0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "asphalt",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     64,
+     26
+    ],
+    "height": 0.1,
+    "colour": "#7d7e7e",
+    "topColour": "#7d7e7e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    -4,
+    30
+   ],
+   "params": {
+    "rect": [
+     66,
+     28
+    ],
+    "height": 0.06,
+    "colour": "#6f9a4c",
+    "topColour": "#6f9a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad-edge",
+   "at": [
+    8,
+    4
+   ],
+   "params": {
+    "rect": [
+     26.4,
+     18.4
+    ],
+    "height": 0.2,
+    "colour": "#d8b92e",
+    "topColour": "#d8b92e",
+    "z0": 0.08
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad",
+   "at": [
+    8,
+    4
+   ],
+   "params": {
+    "rect": [
+     25,
+     17
+    ],
+    "height": 0.3,
+    "colour": "#e2dccb",
+    "topColour": "#e6e0cf",
+    "z0": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-front-r",
+   "at": [
+    22,
+    17
+   ],
+   "params": {
+    "rect": [
+     22,
+     2.2
+    ],
+    "height": 1.4,
+    "colour": "#3f6b34",
+    "topColour": "#4a7a3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-front",
+   "at": [
+    -10,
+    19
+   ],
+   "params": {
+    "rect": [
+     40,
+     2
+    ],
+    "height": 1.4,
+    "colour": "#3f6b34",
+    "topColour": "#4a7a3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-wall-1",
+   "at": [
+    -4,
+    36
+   ],
+   "params": {
+    "rect": [
+     62,
+     3.5
+    ],
+    "height": 3.2,
+    "colour": "#3f6b34",
+    "topColour": "#4f8040"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-wall-2",
+   "at": [
+    -4,
+    40
+   ],
+   "params": {
+    "rect": [
+     62,
+     3.5
+    ],
+    "height": 5.2,
+    "colour": "#3b6630",
+    "topColour": "#4a7a3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-wall-3",
+   "at": [
+    -30,
+    43.5
+   ],
+   "params": {
+    "rect": [
+     30,
+     3
+    ],
+    "height": 7.0,
+    "colour": "#3b6630",
+    "topColour": "#4a7a3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad-H-a",
+   "at": [
+    4,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     5
+    ],
+    "height": 0.02,
+    "colour": "#d8b92e",
+    "topColour": "#d8b92e",
+    "z0": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad-H-b",
+   "at": [
+    8,
+    4
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.6
+    ],
+    "height": 0.02,
+    "colour": "#d8b92e",
+    "topColour": "#d8b92e",
+    "z0": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad-H-c",
+   "at": [
+    12,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     5
+    ],
+    "height": 0.02,
+    "colour": "#d8b92e",
+    "topColour": "#d8b92e",
+    "z0": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue-hedge-bay",
+   "at": [
+    8,
+    34.5
+   ],
+   "params": {
+    "rect": [
+     9,
+     2
+    ],
+    "height": 3.4,
+    "colour": "#4a7a3b",
+    "topColour": "#4a7a3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad",
+   "at": [
+    8,
+    4
+   ],
+   "params": {
+    "rect": [
+     25,
+     17
+    ],
+    "z0": 0.1,
+    "height": 0.25,
+    "colour": "#cfc9b8",
+    "topColour": "#d3cdbc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bastion",
+   "footprint": {
+    "rect": [
+     64,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    44
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b99a6e",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a98a5e"
+      ],
+      "height": 0.5,
+      "at": 0.9,
+      "proud": 0.1,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a58862",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bastion-return",
+   "footprint": {
+    "rect": [
+     8,
+     34
+    ]
+   },
+   "at": [
+    -38,
+    28
+   ],
+   "height": 9.0,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b39468",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a58862",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    8,
+    30,
+    0
+   ],
+   "params": {
+    "height": 5.2,
+    "plinth_height": 1.8,
+    "colour": "#3b3d3e",
+    "figure_colour": "#3b3d3e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    3,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hedge terraces are plain boxes without flowers or round shrubs, statue small, only the one roadside tree, H marking simplified"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vatican-city",
+ "venueId": "vatican-city-airport-vatican-city-airport"
+}

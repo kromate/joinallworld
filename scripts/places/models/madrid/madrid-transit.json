@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "madrid",
+ "venueId": "madrid-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/370580059",
+   "used": "footprint of the station building (a narrow 55 x 12 m sliver, bearing 168 degrees); tracks and platforms laid parallel to its long axis"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b7b3a8",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "bands": "#c4452f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    -20,
+    0,
+    0
+   ],
+   "rotDeg": 98,
+   "params": {
+    "length": 80,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    26,
+    0,
+    0
+   ],
+   "rotDeg": 98,
+   "params": {
+    "length": 80,
+    "tracks": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    -12,
+    0,
+    0
+   ],
+   "rotDeg": 98,
+   "params": {
+    "length": 60,
+    "depth": 5
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -12,
+    5,
+    1
+   ],
+   "rotDeg": 98,
+   "params": {
+    "width": 40,
+    "depth": 4,
+    "height": 3.6,
+    "roof_colour": "#c4452f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    2,
+    -20,
+    4
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "colour": "#c4452f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bus-bay",
+   "at": [
+    -38,
+    18
+   ],
+   "params": {
+    "rect": [
+     14,
+     24
+    ],
+    "height": 0.12,
+    "colour": "#55575a",
+    "material": "asphalt"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the station exists; OSM sliver outline plus assumed tracks, platform and bus bay"
+ }
+}

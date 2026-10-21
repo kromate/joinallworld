@@ -34,14 +34,16 @@ export function startExtras(diagnostics: boolean): void {
 }
 
 export function startAfterReady(): void {
+  // Play app mode and the rules before sharing (playMode.ts): marks the page and wraps the site's API requests. Public Play builds also
+  // opt in to the rating prompt, a lazy chunk that listens only inside the Play app.
+  void import('./playMode.ts').then(({ isPlayApp, startPlayMode }) => {
+    startPlayMode()
+    if (import.meta.env.VITE_PLAY_RATING_PROMPT === 'on' && isPlayApp()) void import('./features/rating/startRatingPrompt.ts').then(({ startRatingPrompt }) => { startRatingPrompt() }, () => undefined)
+  }, () => undefined)
   void import('./moments.ts').then(({ startMoments }) => { startMoments() }, () => undefined)
   void import('../game/dilemma-pack.ts').catch(() => undefined)
   void import('./chatter/start.ts').then(({ startChatter }) => { startChatter() }, () => undefined)
   void import('./chatter/ambient.ts').then(({ startAmbient }) => { startAmbient() }, () => undefined)
-  // Public Play builds opt in explicitly. The prompt itself remains a lazy chunk and listens only after the game is ready.
-  if (import.meta.env.VITE_PLAY_RATING_PROMPT === 'on') {
-    try { if (globalThis.document?.documentElement?.getAttribute('data-allworld-app') === 'play') void import('./features/rating/startRatingPrompt.ts').then(({ startRatingPrompt }) => { startRatingPrompt() }, () => undefined) } catch { /* no prompt */ }
-  }
   // The installed app's offline page (features/start/offlineWorker.ts registers public/sw.js only inside the installed app).
   void import('./features/start/offlineWorker.ts').then(({ startOfflineWorker }) => startOfflineWorker(), () => undefined)
   // "Add Allworld to your phone", once per device after a first session in the game: fetched only for a device that has not been asked (features/start/installPrompt.ts).

@@ -15,7 +15,6 @@ export const work = phonePanel('work', 'Work', bodyLoader('feed/WorkApp'), { ico
 export const promote = phonePanel('promote', 'Businesses', bodyLoader('promote/BusinessesApp'), { icon: 'shop', order: 13.4, group: 'money' })
 
 /** Earn (docs/EARN.md): real money through Bachs, paid by buyers directly, and the creator pool. */
-const playApp = (): boolean => globalThis.document?.documentElement?.dataset.allworldApp === 'play'
-export const earn = phonePanel('earn', 'Earn', bodyLoader('earn/EarnApp'), { icon: 'wallet', order: 10.4, group: 'money', hidden: playApp })
+export const earn = phonePanel('earn', 'Earn', bodyLoader('earn/EarnApp'), { icon: 'wallet', order: 10.4, group: 'money' })
 
 export const FEED_PANELS: readonly VuePanel[] = [feed, me, crews, plans, work, promote, earn]

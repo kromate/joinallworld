@@ -31,6 +31,5 @@ export async function loadGame(): Promise<LoadedGame> {
     const { homewardFor } = await import('../game/homeward-gate.ts')
     await homewardFor(savedState(cached))
   } else await loadCityContent(initialCity(cached, isCityId))
-  ;(await import('./playMode.ts')).isPlayApp()
   return import('./startApp.ts')
 }

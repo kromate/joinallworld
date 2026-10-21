@@ -44,7 +44,7 @@ test('Play mode suppresses paid promotional inventory while ordinary businesses 
     source('./features/travel/MapApp.vue'), source('./features/travel/MapOverview.vue'),
   ])
   assert.match(ads, /when: \(\) => !playApp/)
-  assert.match(civic, /id: 'ads'[\s\S]*hidden: playApp/)
+  assert.match(civic, /id: 'ads'/)
   assert.match(feed, /sponsored\.value = playApp \? \[\]/)
   assert.match(sponsored, /<article v-if="!playApp"/)
   assert.match(shopFront, /v-if="!playApp && listing\.boosted"/)
@@ -54,7 +54,15 @@ test('Play mode suppresses paid promotional inventory while ordinary businesses 
 })
 
 
-test('app detection is awaited before importing the reactive shell', async () => {
-  const boot = await readFile(new URL('./bootstrap.ts', import.meta.url), 'utf8')
-  assert.ok(boot.indexOf("(await import('./playMode.ts')).isPlayApp()") < boot.indexOf("return import('./startApp.ts')"))
+test('Play mode starts from the lazy extras, never from the first download', async () => {
+  const [boot, extras] = await Promise.all([source('./bootstrap.ts'), source('./startExtras.ts')])
+  assert.doesNotMatch(boot, /playMode/)
+  assert.match(extras, /import\('\.\/playMode\.ts'\)\.then\(\(\{ isPlayApp, startPlayMode \}\) => \{\n    startPlayMode\(\)/)
+})
+
+test('inside the Play app the phone does not list Earn or Billboards; the web lists them as before', async () => {
+  const { listedApps } = await import('./features/phone/phoneHomeModel.ts')
+  const panels = ['earn', 'ads', 'bank', 'feed'].map(id => ({ id, title: id, placement: 'phone' })) as unknown as Parameters<typeof listedApps>[0]
+  assert.deepEqual(listedApps(panels, true).map(app => app.id), ['bank', 'feed'])
+  assert.deepEqual(listedApps(panels, false).map(app => app.id), ['earn', 'ads', 'bank', 'feed'])
 })

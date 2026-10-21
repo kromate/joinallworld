@@ -8,7 +8,6 @@
 import { computed } from 'vue'
 import type { PlayerRef } from '../../../types/protocol.ts'
 import { acknowledgeDisclosure, callActive, callStore, disclosureAcknowledged } from './callState.ts'
-import { agreeBeforeSocketSharing } from '../terms/agree.ts'
 import { loadCalls, loadedCalls } from './callsLoader.ts'
 
 interface CallableCard { status?: string; blocked?: boolean; self?: boolean }
@@ -25,9 +24,11 @@ export function callReason(card: CallableCard, connected: boolean, supported = t
   return null
 }
 
-async function place(peer: PlayerRef): Promise<void> { if (await agreeBeforeSocketSharing()) (await loadCalls()).call(peer) }
+/** Calls are sharing: the rules are agreed first (fetched only when a call starts or is answered). */
+const agreed = (): Promise<boolean> => import('../terms/agree.ts').then(m => m.agreeBeforeSocketSharing())
+async function place(peer: PlayerRef): Promise<void> { if (await agreed()) (await loadCalls()).call(peer) }
 
-export async function answerCall(): Promise<void> { if (await agreeBeforeSocketSharing()) await loadedCalls()?.accept() }
+export async function answerCall(): Promise<void> { if (await agreed()) await loadedCalls()?.accept() }
 
 /** Ring after the player has read the line (or had read it before). */
 export async function confirmCall(): Promise<void> {

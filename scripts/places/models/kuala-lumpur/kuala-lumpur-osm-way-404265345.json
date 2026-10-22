@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-way-404265345",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kmb3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bizarree",
+   "view": "front",
+   "file": "/tmp/places-evidence/kuala-lumpur/kmb2.jpg",
+   "used": "orange painted three-storey block with white-framed windows, large glazed stair bay, blue corrugated porch roof on orange columns, dark blue roof edge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:78_full.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bizarree",
+   "view": "street",
+   "file": "/tmp/places-evidence/kuala-lumpur/kmb1.jpg",
+   "used": "cream entrance walls with curved rails, guard kiosk with pyramid blue roof, tall royal palms, flags"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/884419943",
+   "used": "20 x 20 m building outline considered; block sized from the photo instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     32,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8782a",
+    "glassColour": "#8fa6b4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "bands": "#f0e6d0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2a5f9a",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0,
+    "pitch": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-stair",
+   "footprint": {
+    "rect": [
+     11,
+     2.5
+    ]
+   },
+   "at": [
+    2,
+    -7.2
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8782a",
+    "glassColour": "#7f98a8",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8782a",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    2,
+    -13,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 8,
+    "height": 4.2,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#2f79b0",
+    "edgeColour": "#1f3f78",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-rear",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    -12,
+    -9.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0d8b0",
+    "glassColour": "#93a9b3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2a5f9a",
+    "material": "concrete",
+    "overhang": 0.8,
+    "parapet": 0,
+    "pitch": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-wall-w",
+   "footprint": {
+    "rect": [
+     14,
+     1.2
+    ]
+   },
+   "at": [
+    -18,
+    -28
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dac4",
+    "glassColour": "#93a9b3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6b0",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-wall-e",
+   "footprint": {
+    "rect": [
+     14,
+     1.2
+    ]
+   },
+   "at": [
+    18,
+    -28
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dac4",
+    "glassColour": "#93a9b3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6b0",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guardhouse",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    24,
+    -30
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d890",
+    "glassColour": "#93a9b3",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d7fa0",
+    "material": "concrete",
+    "overhang": 0.8,
+    "parapet": 0,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "count": 4,
+    "spread": 8,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 2,
+    "spread": 4,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "count": 3,
+    "spread": 8,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a close crop of the front porch; model shows the whole block from afar; porch roof lacks corrugation read; no lettering by design"
+ }
+}

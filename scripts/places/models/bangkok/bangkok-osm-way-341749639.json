@@ -1,0 +1,244 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/341749639",
+   "used": "hospital complex outline (395 x 358 m, 95,252 m2, name match) as the low service podium, scaled to the 118 m clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1982 government hospital, tall ward slab with balcony bands beside lower wings, helipad, ambulance bay, water tank. No photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "complex",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8c8a80"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-slab",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 6,
+   "height": 40,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8c8a80",
+    "bay": 7.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-a",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    24,
+    -18
+   ],
+   "rotDeg": 12,
+   "z0": 6,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#8c8a80",
+    "bay": 7.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-b",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -20
+   ],
+   "rotDeg": -10,
+   "z0": 6,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 7.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -6,
+    0,
+    46
+   ],
+   "params": {
+    "radius": 6.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -30,
+    6
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -6,
+    -7,
+    34
+   ],
+   "params": {
+    "size": 3
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    26,
+    12,
+    6
+   ],
+   "params": {
+    "radius": 2.5,
+    "height": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 5,
+    "spread": 6,
+    "line": 60
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 2,
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-osm-way-341749639",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo found; complex outline used as a 6 m podium, ward slab, wings, helipad typed from the brief (10 storeys, 1982), real wing layout unknown"
+ }
+}

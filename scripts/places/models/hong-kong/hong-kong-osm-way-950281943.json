@@ -1,0 +1,159 @@
+{
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "podium massing and green roof follow the OSM outline; real facade is a curved bronze/cream band with planted terraces and 14 towers behind (not modelled), glazing too regular"
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2025%E5%B9%B49%E6%9C%88-%E6%B8%AF%E5%B3%B6%E5%8D%97%E5%B2%B8.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "建園春秋",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/osm-way-950281943-0.jpg",
+   "used": "long curved 3-4 level podium with soft cream bands, bronze-toned curtain wall, planted green roof terraces, shop front at street level"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/950281943",
+   "used": "podium footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcd2bd",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "glassColour": "#a8b4bb",
+    "plinth": 0.3,
+    "groundKind": "shopfront",
+    "groundHeight": 4.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.9,
+      "colour": "#c9b79a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fa07a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roofgarden",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     12
+    ],
+    "z0": 18.9,
+    "height": 0.4,
+    "colour": "#6f9a58"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -55,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 3.5,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    -30
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "spread": 4.8999999999999995
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -42
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "spread": 4.8999999999999995
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "spread": 4.8999999999999995
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    80,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "spread": 4.8999999999999995
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-way-950281943"
+}

@@ -1,0 +1,400 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E6%BE%B3%E9%96%80%E9%99%B8%E8%BB%8D%E4%BF%B1%E6%A8%82%E9%83%A8_Macao_Military_Club_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "panoramio contributor",
+   "view": "front",
+   "used": "salmon-pink stucco two-storey front, two-storey white-column loggia, central arched entrance bay, curved pediment with oval '1870' cartouche (left blank), balustrades",
+   "file": "/tmp/places-evidence/macau/club.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/205784457",
+   "used": "overall size 41 x 27 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "club",
+   "footprint": {
+    "rect": [
+     41,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e08a8e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f2eee6",
+    "plinth": 1.4,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5543c",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    6,
+    14.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e08a8e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f2eee6",
+    "plinth": 1.4,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a5543c",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-back-wall",
+   "at": [
+    0,
+    -8.6
+   ],
+   "params": {
+    "rect": [
+     41,
+     0.5
+    ],
+    "height": 9.8,
+    "colour": "#d97a80",
+    "windows": "punched",
+    "windowShape": "arched",
+    "storeys": 2,
+    "faces": {
+     "front": "arched"
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "columns-ground",
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -18.5,
+     -11.8,
+     0
+    ],
+    "end": [
+     18.5,
+     -11.8,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#f4f1ea",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.35,
+        0.4
+       ],
+       [
+        0.3,
+        1.0
+       ],
+       [
+        0.3,
+        4.6
+       ],
+       [
+        0.45,
+        5.0
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "columns-upper",
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -18.5,
+     -11.8,
+     5.2
+    ],
+    "end": [
+     18.5,
+     -11.8,
+     5.2
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#f4f1ea",
+      "profile": [
+       [
+        0.45,
+        0
+       ],
+       [
+        0.3,
+        0.4
+       ],
+       [
+        0.3,
+        3.8
+       ],
+       [
+        0.45,
+        4.2
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-slab",
+   "at": [
+    0,
+    -10.2
+   ],
+   "params": {
+    "rect": [
+     41,
+     3.2
+    ],
+    "z0": 4.6,
+    "height": 0.6,
+    "colour": "#f2eee6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balustrade",
+   "at": [
+    0,
+    -11.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     41,
+     0.25
+    ],
+    "z0": 5.2,
+    "height": 1.0,
+    "colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-roof",
+   "at": [
+    0,
+    -10.2
+   ],
+   "params": {
+    "rect": [
+     41,
+     3.4
+    ],
+    "z0": 9.4,
+    "height": 0.5,
+    "colour": "#f2eee6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pediment-curve",
+   "at": [
+    0,
+    -8.4
+   ],
+   "params": {
+    "rect": [
+     13,
+     0.9
+    ],
+    "z0": 10.0,
+    "height": 3.4,
+    "topScale": [
+     1,
+     1
+    ],
+    "colour": "#e08a8e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "pediment-rim",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -8.9,
+    10.0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 6.5,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "radiusY": 3.4
+    },
+    "colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -12.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.25,
+    "run": 0.4,
+    "count": 5,
+    "colour": "#d8d3c8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -17
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -17
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-meal-stop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "loggia is evenly columned (real centre bay is an arch), cartouche left blank, no side wings or balustrade detail beyond front"
+ }
+}

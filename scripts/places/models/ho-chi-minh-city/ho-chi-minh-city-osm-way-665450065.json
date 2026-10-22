@@ -1,0 +1,100 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SV%C4%90_Th%E1%BB%91ng_Nh%E1%BA%A5t.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Eternal Dragon",
+   "view": "interior",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/tn1.jpg",
+   "used": "covered main stand: flat pale cantilever roof on slim raked columns, blue/red/green seat blocks, low front wall, running track and pitch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SV%C4%90_Th%E1%BB%91ng_Nh%E1%BA%A5t_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Eternal Dragon",
+   "view": "interior",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/tn2.jpg",
+   "used": "main stand roof shorter than the pitch length, uncovered terraces on other sides, floodlight masts, blue track"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/665450065",
+   "used": "overall size (about 199 x 150 m), modelled as an oval bowl scaled to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 116,
+    "depth": 90,
+    "height": 16,
+    "tiers": 2,
+    "arc_start": 0,
+    "arc_end": 359,
+    "roof": "canopy",
+    "roof_style": "shed",
+    "wall": "ribs",
+    "seat_colour": "#2f55a4",
+    "seat_colour2": "#2f6b4a",
+    "main_height": 16,
+    "far_height": 5,
+    "end_height": 7,
+    "track": true,
+    "floodlights": true,
+    "roof_material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -72,
+     -60
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     74,
+     -58
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   158,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is from the pitch looking at the covered main stand; render is a raised view of the whole bowl. Roof is a plain curved canopy without the ribbed cantilever beams, no pink concourse band or green lower seat blocks, generic masts."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-665450065"
+}

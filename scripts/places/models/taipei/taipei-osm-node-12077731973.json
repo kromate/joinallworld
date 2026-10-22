@@ -1,0 +1,222 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-node-12077731973",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: Tudigong Hill archaeological site, a wooded low hilltop about 80 x 50 m with a trail, steps and a small earth-god shrine; no OSM outline (node only), no photo found, shrine assumed from the name"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#58724a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       40,
+       25
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       33,
+       20
+      ]
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       20,
+       12
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       9,
+       6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "steps",
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -4,
+     -19,
+     0
+    ],
+    "end": [
+     -1,
+     -5,
+     6.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       1.4
+      ],
+      "height": 2.6,
+      "colour": "#a39d90",
+      "topColour": "#b3ad9f"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrine",
+   "at": [
+    0,
+    0
+   ],
+   "z0": 8,
+   "footprint": {
+    "rect": [
+     2.4,
+     1.8
+    ]
+   },
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a56a50",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt",
+   "at": [
+    0,
+    -2.4,
+    8
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     2.4
+    ],
+    "height": 0.2,
+    "colour": "#d8cfc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4,
+    12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and no outline for this site; hill size from the brief, shrine and steps assumed from the name Tudigong; trail and archaeological features not shown."
+ }
+}

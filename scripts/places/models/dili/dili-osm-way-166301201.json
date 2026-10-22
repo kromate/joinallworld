@@ -1,0 +1,462 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-way-166301201",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2023-04-24_Palacio_de_Lahane_backside.jpg",
+   "licence": "Public domain",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/dili/lah2.jpg",
+   "used": "pink stucco walls with white trim, two square corner towers with balustraded terraces and tall terracotta pyramid roofs, low hipped tile roof over centre, recessed porch with white balustrade and steps, tall white-framed windows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2016-01-08_Palaciu_Nobre_Lahane.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jose Fernando Real",
+   "view": "front",
+   "file": "/tmp/places-evidence/dili/lah1.jpg",
+   "used": "same facade from the entrance side: curved white pediment over the porch, palms, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/166301201",
+   "used": "overall length about 44 m with towers at both ends"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.55,
+  "fit": "building",
+  "margin": 0.25
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eaa9b3",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 0.9,
+    "bands": "#f4efe8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5542f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-1",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eaa9b3",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    },
+    "plinth": 0.9,
+    "bands": "#f4efe8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe8",
+    "parapet": 0.1
+   },
+   "at": [
+    -12.8,
+    0.5
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-cap-1",
+   "footprint": {
+    "rect": [
+     7.5,
+     7.5
+    ]
+   },
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#c2623a",
+    "material": "clay-tile",
+    "rise": 8.5,
+    "overhang": 0.2
+   },
+   "at": [
+    -12.8,
+    0.5
+   ],
+   "z0": 9.0
+  },
+  {
+   "type": "prism",
+   "id": "bal-10-5.3",
+   "at": [
+    -12.8,
+    -4.8
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.25
+    ],
+    "z0": 9.0,
+    "height": 1.0,
+    "colour": "#f4efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal-105.3",
+   "at": [
+    -12.8,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.25
+    ],
+    "z0": 9.0,
+    "height": 1.0,
+    "colour": "#f4efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal-1-5.40",
+   "at": [
+    -18.200000000000003,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     10.5
+    ],
+    "z0": 9.0,
+    "height": 1.0,
+    "colour": "#f4efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal-15.40",
+   "at": [
+    -7.4,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     10.5
+    ],
+    "z0": 9.0,
+    "height": 1.0,
+    "colour": "#f4efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower1",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eaa9b3",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    },
+    "plinth": 0.9,
+    "bands": "#f4efe8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe8",
+    "parapet": 0.1
+   },
+   "at": [
+    12.8,
+    0.5
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-cap1",
+   "footprint": {
+    "rect": [
+     7.5,
+     7.5
+    ]
+   },
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#c2623a",
+    "material": "clay-tile",
+    "rise": 8.5,
+    "overhang": 0.2
+   },
+   "at": [
+    12.8,
+    0.5
+   ],
+   "z0": 9.0
+  },
+  {
+   "type": "prism",
+   "id": "bal10-5.3",
+   "at": [
+    12.8,
+    -4.8
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.25
+    ],
+    "z0": 9.0,
+    "height": 1.0,
+    "colour": "#f4efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal105.3",
+   "at": [
+    12.8,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.25
+    ],
+    "z0": 9.0,
+    "height": 1.0,
+    "colour": "#f4efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal1-5.40",
+   "at": [
+    7.4,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     10.5
+    ],
+    "z0": 9.0,
+    "height": 1.0,
+    "colour": "#f4efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal15.40",
+   "at": [
+    18.200000000000003,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     10.5
+    ],
+    "z0": 9.0,
+    "height": 1.0,
+    "colour": "#f4efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe8",
+    "parapet": 0.9
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 0.3
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -10.8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.3,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#e6dfcf"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pediment",
+   "at": [
+    0,
+    -7,
+    3.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#f4efe8"
+     ],
+     [
+      1.6,
+      0.0,
+      "#f4efe8"
+     ],
+     [
+      1.5,
+      1.0,
+      "#f4efe8"
+     ],
+     [
+      0.05,
+      1.1,
+      "#f4efe8"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -13
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -8
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "towers a little wide-apart and plain, no cobble pattern, no balustrade on porch, interior-set window detail simplified"
+ }
+}

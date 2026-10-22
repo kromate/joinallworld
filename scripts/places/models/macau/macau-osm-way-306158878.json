@@ -1,0 +1,294 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Redmarket.JPG",
+   "licence": "CC BY 2.5",
+   "author": "Whhalbert (assumed)",
+   "view": "street",
+   "file": "/tmp/places-evidence/macau/red1.jpg",
+   "used": "red brick piers with pale concrete lintel bands, tall 3-storey window bays, low brick stall wall with striped awnings, corner pier caps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/306158878",
+   "used": "62x31 m footprint, 14 m height"
+  }
+ ],
+ "camera": {
+  "yawDeg": -60,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo shows weathered brick piers with white lintel patches and a low brick stall wall; model has regular window bays, striped awnings only, and street furniture is missing"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -49,
+    "simplify": 1.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8452f",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 8,
+    "bands": {
+     "colour": "#d9d3c3",
+     "height": 0.7
+    },
+    "cornice": true,
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   },
+   "storeys": 3
+  },
+  {
+   "type": "mass",
+   "id": "corner0",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    -28.5,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8452f",
+    "windows": "none",
+    "bands": "#d9d3c3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner1",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    28.5,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8452f",
+    "windows": "none",
+    "bands": "#d9d3c3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner2",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    -28.5,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8452f",
+    "windows": "none",
+    "bands": "#d9d3c3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner3",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    28.5,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8452f",
+    "windows": "none",
+    "bands": "#d9d3c3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clocktower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -11.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8452f",
+    "windows": "none",
+    "bands": "#d9d3c3",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d3524",
+    "rise": 4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "height": 1.2
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -18,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.4,
+    "colours": [
+     "#2f7a5a",
+     "#f2f2ee"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.4,
+    "colours": [
+     "#2f7a5a",
+     "#f2f2ee"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    6,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.4,
+    "colours": [
+     "#2f7a5a",
+     "#f2f2ee"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -28
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-306158878"
+}

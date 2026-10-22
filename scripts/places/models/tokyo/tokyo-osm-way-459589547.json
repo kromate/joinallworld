@@ -1,0 +1,190 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-way-459589547",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saitama_Akigase_Park_1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "京浜にけ",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/akigase1.jpg",
+   "used": "flat mown lawn, double row of small round-crowned pines mid-field, tall dense broadleaf and cedar tree belt behind, open sky"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/459589547",
+   "used": "park is 2.8 km long on the Arakawa floodplain; only a short stretch is modelled (outline not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.6
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 140,
+    "depth": 90,
+    "colour": "#6fae3f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -70,
+      -30
+     ],
+     [
+      -20,
+      -26
+     ],
+     [
+      30,
+      -30
+     ],
+     [
+      70,
+      -24
+     ]
+    ],
+    "width": 4,
+    "colour": "#c9c6bb"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    42,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 6,
+    "count": 50,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 17
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "width": 64,
+    "depth": 5,
+    "count": 34,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "tree",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "kind": "conifer",
+      "height": 17
+     }
+    },
+    "mode": "line",
+    "start": [
+     58,
+     -8
+    ],
+    "end": [
+     62,
+     24
+    ],
+    "count": 4,
+    "vary": {}
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    8,
+    26,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "colour": "#8b7a60",
+    "cap_colour": "#6b4a3c"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -8,
+    28,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 3,
+    "roof": "hip",
+    "rise": 1.3,
+    "colour": "#8b7a60",
+    "cap_colour": "#6b4a3c"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -60,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 5,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Lawn, pine rows, broadleaf belt, pavilions and path match the photo in kind; tree groves are narrower than the lawn and pines are low-poly cones, not round-crowned pines."
+ }
+}

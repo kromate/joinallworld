@@ -1,0 +1,362 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Central_Square_Ulaanbaatar_(2540293186).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Francisco Anzola",
+   "view": "street",
+   "file": "/tmp/places-evidence/ulaanbaatar/square1.jpg",
+   "used": "wide pale paved square with grey stone border stripes, ornate multi-globe lamp standards, ochre colonnaded neoclassical block with grey roof, grey glass slab towers, blue glass tower with a curved front, mountains behind"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ulaanbaatar.json",
+   "used": "layout: Government Palace colonnade north, Sukhbaatar statue centre, Genghis Khan monument steps (no OSM outline for the square)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "rect": [
+     96,
+     26
+    ]
+   },
+   "at": [
+    0,
+    52
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9d2bf",
+    "trimColour": "#efe9d9",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "plinth": 1.2,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f7478",
+    "material": "metal-sheet",
+    "rise": 3,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "count": 8,
+    "height": 14,
+    "radius": 1.1,
+    "beamHeight": 1.4,
+    "roofDepth": 6,
+    "colour": "#ede8da",
+    "roofColour": "#d5cfbd"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#3f3a34",
+    "plinthColour": "#b8b2a3"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#4a4337",
+    "plinthColour": "#a8a396"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "city-admin",
+   "footprint": {
+    "rect": [
+     22,
+     50
+    ]
+   },
+   "at": [
+    -52,
+    0
+   ],
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a4f56",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44484e",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central-tower-east",
+   "footprint": {
+    "rect": [
+     24,
+     20
+    ]
+   },
+   "at": [
+    52,
+    5
+   ],
+   "height": 62,
+   "storeys": 16,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9ba3aa",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 8,
+    "bands": "#c8ccd0",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f858b",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "blue-tower",
+   "at": [
+    56,
+    -40,
+    0
+   ],
+   "params": {
+    "colour": "#3c6fb0",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       8,
+       6
+      ]
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       8,
+       5.5
+      ]
+     },
+     {
+      "z": 52,
+      "ellipse": [
+       6,
+       4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "start": [
+     -56,
+     -38
+    ],
+    "end": [
+     56,
+     -38
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "start": [
+     -56,
+     18
+    ],
+    "end": [
+     56,
+     18
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    28,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 4,
+    "spacing": 17,
+    "colours": [
+     "#c4272f",
+     "#1b4f9c",
+     "#e8c22b"
+    ]
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -35,
+    -10,
+    0
+   ],
+   "params": {
+    "radius": 4.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "border-n",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     140,
+     3
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#8f8a80",
+    "topColour": "#8f8a80"
+   },
+   "at": [
+    0,
+    22
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "border-s",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     140,
+     3
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#8f8a80",
+    "topColour": "#8f8a80"
+   },
+   "at": [
+    0,
+    -52
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Photo is a street view of the square edge showing neighbouring buildings; the model is a whole-square vignette (150 m clamp) with palace, colonnade and statues from text; ornate globe lamps, the curved blue tower and the opera colonnade are simplified."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-community-voting-game"
+}

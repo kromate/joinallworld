@@ -1,0 +1,306 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20250816_Torre_de_Macau.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yumeto",
+   "view": "street",
+   "used": "tall slender grey concrete shaft with flared splayed legs at the base, rounded observation pod with dark glass band and ring rim near the top, thin lattice mast above, low silver-clad podium",
+   "file": "/tmp/places-evidence/macau/tower.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/21176879",
+   "used": "round 33 m base footprint for the podium"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": -3,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 0.41
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aeb3b6",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9da3a6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "legs-and-shaft",
+   "at": [
+    0,
+    0,
+    0.0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#b9b8b0",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0.0,
+      "circle": 5.843
+     },
+     {
+      "z": 5.74,
+      "circle": 3.936
+     },
+     {
+      "z": 16.4,
+      "circle": 2.891
+     },
+     {
+      "z": 49.2,
+      "circle": 2.522
+     },
+     {
+      "z": 77.08,
+      "circle": 2.398
+     },
+     {
+      "z": 82.0,
+      "circle": 2.706
+     }
+    ],
+    "round": 10,
+    "steps": 2
+   }
+  },
+  {
+   "type": "array",
+   "id": "splay-legs",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 2.255,
+    "startDeg": 0,
+    "endDeg": 300,
+    "count": 6,
+    "facing": "outward",
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#a7a69f",
+      "sections": [
+       {
+        "z": 0.0,
+        "rect": [
+         0.902,
+         0.984
+        ],
+        "cy": 1.558
+       },
+       {
+        "z": 6.56,
+        "rect": [
+         0.574,
+         0.656
+        ],
+        "cy": -0.246
+       },
+       {
+        "z": 13.94,
+        "rect": [
+         0.41,
+         0.41
+        ],
+        "cy": -0.574
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "pod",
+   "at": [
+    0,
+    0,
+    82.0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#bfc3c3",
+    "profile": [
+     [
+      1.804,
+      0.0
+     ],
+     [
+      3.28,
+      1.23,
+      "#b9bcbc"
+     ],
+     [
+      4.51,
+      3.28
+     ],
+     [
+      5.125,
+      5.33,
+      "#9fa4a6"
+     ],
+     [
+      5.125,
+      6.56,
+      "#4a6b82"
+     ],
+     [
+      5.535,
+      9.43,
+      "#4a6b82"
+     ],
+     [
+      6.765,
+      10.045,
+      "#d9dcdc"
+     ],
+     [
+      6.765,
+      10.66,
+      "#d9dcdc"
+     ],
+     [
+      4.92,
+      11.07,
+      "#c6c9c9"
+     ],
+     [
+      4.1,
+      11.89
+     ],
+     [
+      2.87,
+      12.71,
+      "#8d9396"
+     ],
+     [
+      0.902,
+      13.53
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mast",
+   "at": [
+    0,
+    0,
+    82.0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e7e5df",
+    "profile": [
+     [
+      0.984,
+      0.0
+     ],
+     [
+      0.984,
+      13.53
+     ],
+     [
+      0.779,
+      17.63
+     ],
+     [
+      0.533,
+      20.91,
+      "#c9462f"
+     ],
+     [
+      0.41,
+      29.93,
+      "#e7e5df"
+     ],
+     [
+      0.246,
+      42.23,
+      "#c9462f"
+     ],
+     [
+      0.123,
+      50.43
+     ],
+     [
+      0.021,
+      56.58
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "n": 6,
+    "height": 4,
+    "colour": "#aeb3b6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-relation-21176879",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "scaled to 41% (height 138 m, model limit 140 m); base legs, pod ring balconies and lattice mast simplified; podium is a plain drum"
+ }
+}

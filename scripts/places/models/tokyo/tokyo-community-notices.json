@@ -1,0 +1,288 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Metropolitan_Government_Building_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kakidai",
+   "view": "street",
+   "file": "/tmp/places-evidence/tokyo/a_tmg1.jpg",
+   "used": "No. 1 Building: tall light-grey gridded slab, stepped setbacks, split into two towers with round-arched notches near the top, lower connecting block; pale grey-cream colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/89877471",
+   "used": "orientation and overall footprint size (OSM outline is a stepped zigzag 60 m across); height 243 m from Wikipedia exceeds the 138 m scene clamp so the model is scaled to 138 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.15,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     64,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "granite",
+    "colour": "#d4d6dc",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shaft-lower",
+   "footprint": {
+    "rect": [
+     44,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 26,
+   "height": 36,
+   "storeys": 10,
+   "wall": {
+    "material": "granite",
+    "colour": "#cccfdb",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#cccfdb",
+       "#a9aebd"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shaft-mid",
+   "footprint": {
+    "rect": [
+     36,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 62,
+   "height": 32,
+   "storeys": 9,
+   "wall": {
+    "material": "granite",
+    "colour": "#cccfdb",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#cccfdb",
+       "#a9aebd"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-west",
+   "footprint": {
+    "rect": [
+     15,
+     24
+    ]
+   },
+   "at": [
+    -10.5,
+    0
+   ],
+   "z0": 94,
+   "height": 34,
+   "storeys": 9,
+   "wall": {
+    "material": "granite",
+    "colour": "#d8dae2",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#cccfdb",
+       "#a9aebd"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-east",
+   "footprint": {
+    "rect": [
+     15,
+     24
+    ]
+   },
+   "at": [
+    10.5,
+    0
+   ],
+   "z0": 94,
+   "height": 34,
+   "storeys": 9,
+   "wall": {
+    "material": "granite",
+    "colour": "#d8dae2",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#cccfdb",
+       "#a9aebd"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -34,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 3
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    45,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.5,
+    0,
+    128
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 6,
+    "colour": "#c8c8c8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.5,
+    0,
+    128
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 6,
+    "colour": "#c8c8c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "twin-tower silhouette, setbacks and pale grid read correctly; no round-arched notches in tower tops, no fine window grid, height capped at 134 m of 243 m"
+ }
+}

@@ -1,0 +1,549 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ash-Shaliheen_Mosque,_Brunei_Darussalam(outside).JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "AfiqahAA",
+   "view": "side",
+   "file": "/tmp/places-evidence/bsb/ash.jpg",
+   "used": "ochre-cream rendered walls, one tall round minaret with a balcony and blue cap, a second shorter minaret and two blue ribbed domes on drums at the back, stacked lattice arch openings on the roof stages, low pale domes on the left wing, green lawn and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/321333285",
+   "used": "main prayer-hall outline (about 60 x 36 m, turned about 20 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lod2min1",
+   "lod": [
+    2
+   ],
+   "at": [
+    -14.5,
+    -17
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 46,
+    "colour": "#e6c47c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lod2min2",
+   "lod": [
+    2
+   ],
+   "at": [
+    14,
+    3
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "z0": 13,
+    "height": 26,
+    "colour": "#e6c47c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lod2dome",
+   "lod": [
+    2
+   ],
+   "at": [
+    8,
+    4
+   ],
+   "params": {
+    "rect": [
+     10,
+     10
+    ],
+    "z0": 16.5,
+    "height": 6,
+    "colour": "#6ec2e8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6c47c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.03,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9bf80",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stage2",
+   "at": [
+    2,
+    2
+   ],
+   "rotDeg": -20,
+   "params": {
+    "rect": [
+     40,
+     24
+    ],
+    "z0": 8,
+    "height": 5,
+    "colour": "#e6c47c",
+    "topColour": "#d9bf80",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stage3",
+   "at": [
+    8,
+    4
+   ],
+   "rotDeg": -20,
+   "params": {
+    "rect": [
+     18,
+     14
+    ],
+    "z0": 13,
+    "height": 3.5,
+    "colour": "#dcc283",
+    "topColour": "#d9bf80"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8,
+    4,
+    16.5
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#e6c47c",
+    "profile": [
+     [
+      6.825,
+      0,
+      "#e6c47c"
+     ],
+     [
+      6.825,
+      2.9250000000000003
+     ],
+     [
+      6.175,
+      2.9250000000000003,
+      "#6ec2e8"
+     ],
+     [
+      6.5,
+      3.575
+     ],
+     [
+      5.5249999999999995,
+      6.175
+     ],
+     [
+      3.25,
+      8.450000000000001
+     ],
+     [
+      0.3,
+      9.75
+     ],
+     [
+      0.25,
+      12.35,
+      "#d8b44a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6,
+    2,
+    13
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#e6c47c",
+    "profile": [
+     [
+      5.25,
+      0,
+      "#e6c47c"
+     ],
+     [
+      5.25,
+      2.25
+     ],
+     [
+      4.75,
+      2.25,
+      "#6ec2e8"
+     ],
+     [
+      5,
+      2.75
+     ],
+     [
+      4.25,
+      4.75
+     ],
+     [
+      2.5,
+      6.5
+     ],
+     [
+      0.3,
+      7.5
+     ],
+     [
+      0.25,
+      9.5,
+      "#d8b44a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -22,
+    -14,
+    9
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e8ddb8",
+    "profile": [
+     [
+      4,
+      0
+     ],
+     [
+      4,
+      0.8
+     ],
+     [
+      3.4,
+      1.8
+     ],
+     [
+      2,
+      2.8
+     ],
+     [
+      0.2,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    -22,
+    9
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e8ddb8",
+    "profile": [
+     [
+      3.2,
+      0
+     ],
+     [
+      3.2,
+      0.8
+     ],
+     [
+      2.7,
+      1.6
+     ],
+     [
+      1.6,
+      2.4
+     ],
+     [
+      0.2,
+      2.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14.5,
+    -17,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e6c47c",
+    "profile": [
+     [
+      3.75,
+      0,
+      "#e6c47c"
+     ],
+     [
+      3.75,
+      3
+     ],
+     [
+      3.0,
+      5
+     ],
+     [
+      3.0,
+      28.52
+     ],
+     [
+      3.9000000000000004,
+      28.82
+     ],
+     [
+      5.25,
+      28.82
+     ],
+     [
+      5.25,
+      29.82
+     ],
+     [
+      3.3000000000000003,
+      29.82
+     ],
+     [
+      3.0,
+      29.82
+     ],
+     [
+      3.1500000000000004,
+      41.4
+     ],
+     [
+      3.9000000000000004,
+      41.4
+     ],
+     [
+      3.9000000000000004,
+      41.9,
+      "#4aa3d8"
+     ],
+     [
+      2.7,
+      43.0
+     ],
+     [
+      0.2,
+      45.9
+     ],
+     [
+      0.2,
+      47.199999999999996,
+      "#d8b44a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    14,
+    3,
+    13
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e6c47c",
+    "profile": [
+     [
+      2.75,
+      0,
+      "#e6c47c"
+     ],
+     [
+      2.75,
+      3
+     ],
+     [
+      2.2,
+      5
+     ],
+     [
+      2.2,
+      16.12
+     ],
+     [
+      2.8600000000000003,
+      16.42
+     ],
+     [
+      3.8500000000000005,
+      16.42
+     ],
+     [
+      3.8500000000000005,
+      17.42
+     ],
+     [
+      2.4200000000000004,
+      17.42
+     ],
+     [
+      2.2,
+      17.42
+     ],
+     [
+      2.3100000000000005,
+      23.400000000000002
+     ],
+     [
+      2.8600000000000003,
+      23.400000000000002
+     ],
+     [
+      2.8600000000000003,
+      23.900000000000002,
+      "#4aa3d8"
+     ],
+     [
+      1.9800000000000002,
+      25.000000000000004
+     ],
+     [
+      0.2,
+      27.900000000000002
+     ],
+     [
+      0.2,
+      29.200000000000003,
+      "#d8b44a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#f2c200",
+     "#ffffff",
+     "#2f6f9a"
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "No stacked lattice arch openings on the stepped roofs, no entrance arches or low dome wings accurate; minaret shafts plainer than the real banded ones; hall is a plain OSM block."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     4,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -2,
+     -28
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ }
+}

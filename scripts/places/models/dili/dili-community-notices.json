@@ -1,0 +1,134 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1083634999",
+   "used": "20 x 7 m one-level footprint, bearing"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/way/1083634999",
+   "used": "identity: Sede Suco Seloi Craic, Aileu; look typed from Timorese village offices (no photo of the building exists)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.2,
+    "height": 2.8,
+    "balustrade": false,
+    "steps": true,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    12,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.6,
+    "legHeight": 3,
+    "colour": "#3d6fb5"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#c8362f",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-community-notices",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the building exists; OSM 20 x 7 m outline, gable corrugated roof, veranda, flag and tank typed from Timorese village offices"
+ }
+}

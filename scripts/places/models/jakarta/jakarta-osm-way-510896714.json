@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-510896714",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/510896714",
+   "used": "12-point podium outline 104 x 61 m, 30 levels, opened 2017"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Museum_MACAN",
+   "used": "museum galleries on the lower levels of the AKR Tower office block; Commons only has gallery interiors, so no exterior comparison"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#aab7bf",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#aab7bf",
+      "#8d9aa6"
+     ]
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     44,
+     32
+    ]
+   },
+   "at": [
+    12,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 17,
+   "height": 112,
+   "storeys": 18,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bcc9d1",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#bcc9d1",
+      "#7f93a1"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-room",
+   "at": [
+    12,
+    2,
+    129
+   ],
+   "params": {
+    "rect": [
+     22,
+     14
+    ],
+    "height": 4,
+    "colour": "#b9bcbe"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "helipad",
+   "at": [
+    16,
+    2,
+    133
+   ],
+   "params": {
+    "radius": 7,
+    "n": 16,
+    "height": 0.3,
+    "colour": "#3a3f44"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -38
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only gallery interiors exist on Commons; tower position, glazing and crown are typed on the real podium outline (AKR Tower)."
+ }
+}

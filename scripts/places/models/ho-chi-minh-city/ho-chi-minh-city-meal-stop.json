@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+   "used": "brief only: generic Saigon tube-house shopfront (6 x 15 m, two storeys, open ground floor, first-floor balcony with grille, roof terrace); no OSM match and no photo of this cafe exist"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     6,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3b9a2",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.2,
+    "groundKind": "shopfront",
+    "groundHeight": 3.6,
+    "bands": "#4e7a59"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f90",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-left",
+   "footprint": {
+    "rect": [
+     4.5,
+     15
+    ]
+   },
+   "at": [
+    -5.25,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d3bf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f90",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-right",
+   "footprint": {
+    "rect": [
+     5,
+     15
+    ]
+   },
+   "at": [
+    5.5,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9cfc4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f90",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 5.4,
+    "depth": 2.0,
+    "drop": 0.4,
+    "height": 3.4,
+    "colours": [
+     "#4e7a59",
+     "#f1ece0"
+    ]
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    0,
+    -7.5,
+    4.3
+   ],
+   "params": {
+    "width": 4.6,
+    "depth": 1.2,
+    "railing_colour": "#2e3a33"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.7,
+    5.8
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#f1ece0",
+    "frameColour": "#4e7a59",
+    "posts": false
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "cafe",
+   "at": [
+    1.2,
+    3,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 1.3,
+    "yaw": 90,
+    "colour": "#2f3a44"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -6
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "text only: no photo or outline for this cafe; plastic stools, roller shutter and street clutter not modelled"
+ }
+}

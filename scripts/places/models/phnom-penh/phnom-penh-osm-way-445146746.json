@@ -1,0 +1,454 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-osm-way-445146746",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Phnom_Penh_Army_Stadium.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Backpackerlife",
+   "view": "front",
+   "file": "/tmp/places-evidence/phnom-penh/445146746_0.jpg",
+   "used": "long covered main stand with dark roof, yellow/blue seating, two tall tan pylons of different height at the stand ends, white four-storey ribbon-window block with red roofs behind, low terraces at the sides, grass pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/445146746",
+   "used": "overall extent about 204 x 112 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     108,
+     70
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#6f9a4f"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "params": {
+    "start": [
+     -52,
+     42
+    ],
+    "end": [
+     52,
+     42
+    ],
+    "flip": false,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 1.5,
+    "seatColours": [
+     "#d9b63a",
+     "#2f5f9e"
+    ],
+    "blocks": 5,
+    "backWall": 0.8,
+    "under": "solid",
+    "concreteColour": "#c9c5ba",
+    "canopy": {
+     "height": 8.5,
+     "depth": 14,
+     "colour": "#6b5d4e",
+     "thickness": 0.6,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "near-terrace",
+   "params": {
+    "start": [
+     52,
+     -40
+    ],
+    "end": [
+     -52,
+     -40
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColour": "#b9b5aa",
+    "under": "solid",
+    "concreteColour": "#c9c5ba"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "east-terrace",
+   "params": {
+    "start": [
+     58,
+     -34
+    ],
+    "end": [
+     58,
+     36
+    ],
+    "rows": 7,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColour": "#b9b5aa",
+    "under": "solid",
+    "concreteColour": "#c9c5ba"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "west-terrace",
+   "params": {
+    "start": [
+     -58,
+     36
+    ],
+    "end": [
+     -58,
+     -34
+    ],
+    "rows": 7,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColour": "#b9b5aa",
+    "under": "solid",
+    "concreteColour": "#c9c5ba"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hostel",
+   "at": [
+    0,
+    74,
+    0
+   ],
+   "params": {
+    "rect": [
+     124,
+     14
+    ],
+    "z0": 0,
+    "height": 16,
+    "storeys": 4,
+    "colour": "#ece9e0",
+    "topColour": "#b5532f",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#5d7a85",
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hostel-roof",
+   "at": [
+    0,
+    74,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     9
+    ],
+    "z0": 16,
+    "height": 2.0,
+    "topScale": 0.8,
+    "colour": "#b5532f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pylon-l",
+   "at": [
+    -56,
+    44,
+    0
+   ],
+   "params": {
+    "colour": "#8a6f45",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 27,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     },
+     {
+      "z": 29.5,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 31,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pylon-r",
+   "at": [
+    56,
+    44,
+    0
+   ],
+   "params": {
+    "colour": "#8a6f45",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 38,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     },
+     {
+      "z": 41,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 43,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "flood0",
+   "at": [
+    -66,
+    -48,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f93",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 27.2,
+      "rect": [
+       4.5,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "flood1",
+   "at": [
+    66,
+    -48,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f93",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 27.2,
+      "rect": [
+       4.5,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "flood2",
+   "at": [
+    -66,
+    48,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f93",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 27.2,
+      "rect": [
+       4.5,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "flood3",
+   "at": [
+    66,
+    48,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f93",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 27.2,
+      "rect": [
+       4.5,
+       1.2
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -75,
+     70
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     72
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -70
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Main stand lower and smaller than photo, no crowd/colour detail, pylon tops lack ornament; pitch-level camera approximated; hostel block simplified."
+ }
+}

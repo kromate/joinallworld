@@ -1,0 +1,383 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-osm-way-182972997",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Buddhist_Stupa_at_Choeung_Ek_killing_fields,_Cambodia.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Timgray200",
+   "view": "front",
+   "file": "/tmp/places-evidence/phnom-penh/ce1.jpg",
+   "used": "memorial stupa: white fluted-pilaster body with dark glazed door, cantilevered gilded eave, gabled upper pavilion with green and yellow tiles and naga horns, tall spire, low stepped platform with flower-bed walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/182972997",
+   "used": "site is 228 x 215 m; only the stupa (about 12 m wide) is modelled at its centre"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     22,
+     22
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#b9b6ab"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "z0": 0.5,
+    "height": 0.6,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 1.1,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#d4d0c4"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     9,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#8d8a80"
+   },
+   "at": [
+    -9.5,
+    -10
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     9,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#8d8a80"
+   },
+   "at": [
+    9.5,
+    -10
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     9.4,
+     9.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.1,
+   "height": 10.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe7dc",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 1.5,
+      "width": 0.9,
+      "depth": 0.4,
+      "colour": "#f4f1e8",
+      "margin": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9a24a",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -4.75
+   ],
+   "z0": 1.1,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5560",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5560"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vent",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -4.7
+   ],
+   "z0": 7.2,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3b3f44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3f44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     6.4,
+     6.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 12.0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d6b23c",
+    "material": "metal-sheet",
+    "pitch": 42,
+    "overhang": 1.0,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 14.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c27a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b8963e",
+    "pitch": 45,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    16.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#cfcac0",
+    "profile": [
+     [
+      0.6,
+      0,
+      "#d8d2c4"
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.5,
+      1.6
+     ],
+     [
+      0.6,
+      2.6,
+      "#c9b27a"
+     ],
+     [
+      0.35,
+      3.8
+     ],
+     [
+      0.45,
+      4.8,
+      "#d8d2c4"
+     ],
+     [
+      0.2,
+      6.2
+     ],
+     [
+      0.08,
+      8.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    13.8
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 2.6,
+    "count": 4,
+    "startDeg": 45,
+    "endDeg": 315,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 1.6,
+      "colour": "#cfcac0",
+      "topScale": 0.2
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   60,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     8
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     18
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     20
+    ],
+    "height": 12
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "no naga horns, carved pediment or deep eave bracket detail; body is plain fins, upper roof tiles are one colour; surrounding trees stylised"
+ }
+}

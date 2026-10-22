@@ -1,0 +1,557 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Three_Revolution_Exhibition.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Christophe95",
+   "view": "side",
+   "file": "/tmp/places-evidence/pyongyang/tre1.jpg",
+   "used": "tiled silver-white sphere on low ground, thin pale ring leaving the sphere on the right, surrounding broadleaf trees and lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/42416605",
+   "used": "complex extent only (838 x 406 m park); not used as footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.38
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plinth",
+   "params": {
+    "radius": 37,
+    "n": 28,
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#b9b6ae",
+    "topColour": "#c9c6be"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "globe",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#d6dad6",
+    "slot": "precast-panel",
+    "profile": [
+     [
+      0.05,
+      4.0,
+      "#cfd4d2"
+     ],
+     [
+      5.85,
+      4.58
+     ],
+     [
+      11.48,
+      6.28
+     ],
+     [
+      16.67,
+      9.06
+     ],
+     [
+      21.21,
+      12.79
+     ],
+     [
+      24.94,
+      17.33
+     ],
+     [
+      27.72,
+      22.52
+     ],
+     [
+      29.42,
+      28.15
+     ],
+     [
+      30.0,
+      34.0
+     ],
+     [
+      29.42,
+      39.85
+     ],
+     [
+      27.72,
+      45.48
+     ],
+     [
+      24.94,
+      50.67
+     ],
+     [
+      21.21,
+      55.21
+     ],
+     [
+      16.67,
+      58.94
+     ],
+     [
+      11.48,
+      61.72
+     ],
+     [
+      5.85,
+      63.42
+     ],
+     [
+      0.05,
+      64.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "globe-lo",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#cdd2d0",
+    "profile": [
+     [
+      0.05,
+      4.0,
+      "#cfd4d2"
+     ],
+     [
+      17.63,
+      9.73
+     ],
+     [
+      28.53,
+      24.73
+     ],
+     [
+      28.53,
+      43.27
+     ],
+     [
+      17.63,
+      58.27
+     ],
+     [
+      0.05,
+      64.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring",
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      4
+     ]
+    },
+    "points": [
+     [
+      38.0,
+      0.0,
+      25.0
+     ],
+     [
+      37.53,
+      5.85,
+      26.03
+     ],
+     [
+      36.14,
+      11.56,
+      27.04
+     ],
+     [
+      33.86,
+      16.99,
+      28.0
+     ],
+     [
+      30.74,
+      22.0,
+      28.88
+     ],
+     [
+      26.87,
+      26.46,
+      29.67
+     ],
+     [
+      22.34,
+      30.28,
+      30.34
+     ],
+     [
+      17.25,
+      33.34,
+      30.88
+     ],
+     [
+      11.74,
+      35.59,
+      31.28
+     ],
+     [
+      5.94,
+      36.96,
+      31.52
+     ],
+     [
+      0.0,
+      37.42,
+      31.6
+     ],
+     [
+      -5.94,
+      36.96,
+      31.52
+     ],
+     [
+      -11.74,
+      35.59,
+      31.28
+     ],
+     [
+      -17.25,
+      33.34,
+      30.88
+     ],
+     [
+      -22.34,
+      30.28,
+      30.34
+     ],
+     [
+      -26.87,
+      26.46,
+      29.67
+     ],
+     [
+      -30.74,
+      22.0,
+      28.88
+     ],
+     [
+      -33.86,
+      16.99,
+      28.0
+     ],
+     [
+      -36.14,
+      11.56,
+      27.04
+     ],
+     [
+      -37.53,
+      5.85,
+      26.03
+     ],
+     [
+      -38.0,
+      0.0,
+      25.0
+     ],
+     [
+      -37.53,
+      -5.85,
+      23.97
+     ],
+     [
+      -36.14,
+      -11.56,
+      22.96
+     ],
+     [
+      -33.86,
+      -16.99,
+      22.0
+     ],
+     [
+      -30.74,
+      -22.0,
+      21.12
+     ],
+     [
+      -26.87,
+      -26.46,
+      20.33
+     ],
+     [
+      -22.34,
+      -30.28,
+      19.66
+     ],
+     [
+      -17.25,
+      -33.34,
+      19.12
+     ],
+     [
+      -11.74,
+      -35.59,
+      18.72
+     ],
+     [
+      -5.94,
+      -36.96,
+      18.48
+     ],
+     [
+      -0.0,
+      -37.42,
+      18.4
+     ],
+     [
+      5.94,
+      -36.96,
+      18.48
+     ],
+     [
+      11.74,
+      -35.59,
+      18.72
+     ],
+     [
+      17.25,
+      -33.34,
+      19.12
+     ],
+     [
+      22.34,
+      -30.28,
+      19.66
+     ],
+     [
+      26.87,
+      -26.46,
+      20.33
+     ],
+     [
+      30.74,
+      -22.0,
+      21.12
+     ],
+     [
+      33.86,
+      -16.99,
+      22.0
+     ],
+     [
+      36.14,
+      -11.56,
+      22.96
+     ],
+     [
+      37.53,
+      -5.85,
+      23.97
+     ]
+    ],
+    "closed": true,
+    "colour": "#dfe3e2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "entrance-steps",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 1,
+    "of": [
+     {
+      "type": "core/steps",
+      "params": {
+       "width": 22,
+       "rise": 2.2,
+       "run": 2.0,
+       "count": 4,
+       "colour": "#c4c1b9"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "flagpoles",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -44,
+     0
+    ],
+    "end": [
+     18,
+     -44,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "flag",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "height": 12,
+       "colours": [
+        "#c8362f"
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   130
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -30
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     -52
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -72,
+     -8
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -60
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -34
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -54
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     72,
+     -12
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     30
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     30
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -64
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -62
+    ],
+    "height": 12
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-42416605",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Sphere tiling is a coarse grid with a visible seam band; ring is a plain slab; real surrounding halls, road and dense tree belt not modelled; colour a little cooler than the sun-warmed photo."
+ }
+}

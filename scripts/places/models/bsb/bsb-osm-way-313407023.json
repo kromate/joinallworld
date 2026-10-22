@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-313407023",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Duli_Pengiran_Muda_Al-Muhtadee_Billah_College_entrance.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rolfmueller",
+   "view": "detail",
+   "file": "/tmp/places-evidence/bsb/maktab.jpg",
+   "used": "entrance sign board, gate canopy with grey metal roof and brick-pink hexagon paving; the main block is not visible, so not used for the comparison"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/464019078",
+   "used": "main block footprint 63.7 x 39.4 m, 3 levels, rotated 45 degrees"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "polygon": [
+     [
+      -36.5,
+      -8.5
+     ],
+     [
+      8.7,
+      36.4
+     ],
+     [
+      36.5,
+      8.5
+     ],
+     [
+      -8.7,
+      -36.4
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece4d0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "colours": [
+       "#2f6fa8"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#bfbab0"
+      ],
+      "height": 0.35
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a3c",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -28,
+    -34,
+    0
+   ],
+   "rotDeg": 45,
+   "params": {
+    "width": 4,
+    "height": 3.2,
+    "bottom": 0.8,
+    "colour": "#c4a98a",
+    "frameColour": "#222222"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "id": "gate-shelter",
+   "at": [
+    -44,
+    -30,
+    0
+   ],
+   "rotDeg": 45,
+   "params": {
+    "rect": [
+     7,
+     3.5
+    ],
+    "height": 3.2,
+    "colour": "#9aa7b0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-roof",
+   "at": [
+    -44,
+    -30,
+    3.2
+   ],
+   "rotDeg": 45,
+   "params": {
+    "rect": [
+     8.4,
+     4.5
+    ],
+    "height": 0.3,
+    "colour": "#4a5560"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the block exists (only the gate sign); volume from the OSM outline and brief, facade colours and hip roof are typed"
+ }
+}

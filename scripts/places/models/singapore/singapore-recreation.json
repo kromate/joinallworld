@@ -1,0 +1,316 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Punggol_Waterway_Park_2013.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Erwin Soo",
+   "view": "street",
+   "file": "/tmp/places-evidence/singapore/singapore-recreation-0.jpg",
+   "used": "view down the straight canal from a footbridge: water strip, grass banks, white curved stepped seating and railings on the right bank, lamp posts on the left promenade, HDB blocks in the distance"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/180909686",
+   "used": "overall park size; a 300 m reach of the waterway is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 60
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 150,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    30,
+    0,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 150,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 150,
+    "colour": "#3d6a80",
+    "bank": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -11,
+      -70
+     ],
+     [
+      -11,
+      70
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      11,
+      -70
+     ],
+     [
+      11,
+      70
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "lamp-post",
+     "params": {}
+    },
+    "mode": "line",
+    "start": [
+     -13,
+     -65,
+     0
+    ],
+    "end": [
+     -13,
+     65,
+     0
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "stand",
+   "id": "terrace",
+   "params": {
+    "centre": [
+     24,
+     20
+    ],
+    "radius": 13,
+    "startDeg": 150,
+    "endDeg": 280,
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.9,
+    "seatColour": "#f3f3ef",
+    "concreteColour": "#f3f3ef",
+    "facetDeg": 15
+   }
+  },
+  {
+   "type": "stand",
+   "id": "terrace2",
+   "params": {
+    "centre": [
+     22,
+     -20
+    ],
+    "radius": 10,
+    "startDeg": 70,
+    "endDeg": 200,
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.9,
+    "seatColour": "#f3f3ef",
+    "concreteColour": "#f3f3ef",
+    "facetDeg": 15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge-deck",
+   "footprint": {
+    "rect": [
+     22,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 1.2,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d8d4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hdb-1",
+   "footprint": {
+    "rect": [
+     55,
+     13
+    ]
+   },
+   "at": [
+    10,
+    72
+   ],
+   "height": 38,
+   "storeys": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hdb-2",
+   "footprint": {
+    "rect": [
+     45,
+     13
+    ]
+   },
+   "at": [
+    -45,
+    66
+   ],
+   "height": 36,
+   "storeys": 11,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "viaduct",
+   "footprint": {
+    "rect": [
+     90,
+     9
+    ]
+   },
+   "at": [
+    -10,
+    60
+   ],
+   "z0": 6,
+   "height": 1.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4c4be",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c4be"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 60,
+    "count": 8,
+    "min_height": 4,
+    "max_height": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    25,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 80,
+    "count": 8,
+    "min_height": 4,
+    "max_height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": 0,
+  "extent": [
+   120,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-recreation",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "HDB blocks are plain slabs, no cranes or planted banks, terraces fewer than photo"
+ }
+}

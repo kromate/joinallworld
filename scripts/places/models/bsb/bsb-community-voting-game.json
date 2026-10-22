@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/508067587",
+   "used": "real outline 94 x 12.5 m, historic=building, 2 levels (nearest match, 8 m from pin)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: long low two-storey waterfront building beside a covered landing stage on the Brunei River; Dermaga Diraja (Royal Wharf). No photo of this building found on Commons (nearby search results show other streets), so details are typical, not seen"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ece4cf",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bay": 4.5,
+    "plinth": 0.6,
+    "bands": "#8a5a3c",
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "overhang": 1.6,
+    "colour": "#8a5a3c",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ece4cf",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 28,
+    "overhang": 1.4,
+    "colour": "#8a5a3c",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 8,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 6,
+    "colour": "#8a5a3c",
+    "edgeColour": "#c9a227"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 1.4,
+    "colour": "#c9a227",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -40,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -17
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building: roof, arcade, pavilion and landing stage are plausible, only the outline, 2 levels and historic status are real; river water not modelled"
+ }
+}

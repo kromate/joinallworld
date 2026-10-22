@@ -1,0 +1,367 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20260627_Campo_de_Futebol_e_de_Atletismo_da_Universidade_de_Ciência_e_Tecnologia_de_Macau.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "used": "covered grandstand with three arched canopy bays, blue seats, white pavilion and glazed box above, red track and green pitch",
+   "file": "/tmp/places-evidence/macau/must2.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:An_aerial_view_of_MUST.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Winslowchen",
+   "view": "aerial",
+   "used": "pitch with red/green track, pale green campus blocks beside the field",
+   "file": "/tmp/places-evidence/macau/must1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/244820723",
+   "used": "size of the field (208 x 149 m with surrounds)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 105,
+    "width": 68,
+    "stripes": 10
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "width": 96,
+    "lane_width": 8.5,
+    "infield": false
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     62,
+     48
+    ],
+    "end": [
+     -62,
+     48
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#3b72b8",
+     "#e2c13a"
+    ],
+    "blocks": 5,
+    "concreteColour": "#d7d5cf",
+    "underColour": "#bdbab2",
+    "backWall": 1.5,
+    "under": "solid"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    58,
+    9
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 42,
+    "depth": 14,
+    "rise": 2.2,
+    "folds": 6,
+    "thickness": 0.5,
+    "colour": "#6b6660",
+    "underColour": "#4f4b46"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -36,
+    58,
+    6.5
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 42,
+    "depth": 14,
+    "rise": 1.8,
+    "folds": 6,
+    "thickness": 0.5,
+    "colour": "#6b6660",
+    "underColour": "#4f4b46"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    36,
+    58,
+    6.5
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 42,
+    "depth": 14,
+    "rise": 1.8,
+    "folds": 6,
+    "thickness": 0.5,
+    "colour": "#6b6660",
+    "underColour": "#4f4b46"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    0,
+    64
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e9e7e1",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "glassColour": "#7fa3b4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d6d2"
+   },
+   "z0": 9.5
+  },
+  {
+   "type": "mass",
+   "id": "press-box",
+   "footprint": {
+    "rect": [
+     24,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    64
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6c8fb0",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d6d2"
+   },
+   "z0": 14.5
+  },
+  {
+   "type": "revolve",
+   "at": [
+    8,
+    64,
+    18
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#e6e6e2"
+     ],
+     [
+      2.2,
+      0,
+      "#e6e6e2"
+     ],
+     [
+      2.0,
+      1.2,
+      "#e6e6e2"
+     ],
+     [
+      0,
+      2.3,
+      "#f2f2ee"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block-w",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -72,
+    56
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c5c3ba",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d6d2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "campus-block",
+   "footprint": {
+    "rect": [
+     70,
+     18
+    ]
+   },
+   "at": [
+    -30,
+    110
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bcd0b4",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bay": 8,
+    "glassColour": "#8fa6a2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -90,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    90,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -90,
+    30,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    90,
+    30,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -100,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     100,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-244820723",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "stand roofs are folded surfaces not the three swept arched canopies; seat letters missing; background campus tower approximate"
+ }
+}

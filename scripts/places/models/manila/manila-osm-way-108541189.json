@@ -1,0 +1,213 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-108541189",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Filoil_EcoOil_Centre_San_Juan_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "SwarmCheng",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/fil4.jpg",
+   "used": "terracotta-red stucco walls, tall silver-white composite piers, arched glazed gable, recessed entrance with canopy"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Filoil_EcoOil_Centre_San_Juan_13.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "SwarmCheng",
+   "view": "detail",
+   "used": "curved red fascia with white bands, recessed entrance, signage band"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/108541189",
+   "used": "footprint 68x60 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0604c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#d9d5cf"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#c8cbcd",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-1",
+   "at": [
+    -16,
+    -33
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#c9ced6",
+    "topColour": "#e1e4ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-2",
+   "at": [
+    -2,
+    -35
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#c9ced6",
+    "topColour": "#e1e4ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-3",
+   "at": [
+    12,
+    -35
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#c9ced6",
+    "topColour": "#e1e4ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-glaze",
+   "at": [
+    -2,
+    -34
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.8
+    ],
+    "z0": 7,
+    "height": 8,
+    "colour": "#aab9c6",
+    "topColour": "#b7c4cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-canopy",
+   "at": [
+    -2,
+    -36
+   ],
+   "params": {
+    "rect": [
+     22,
+     5
+    ],
+    "z0": 4.2,
+    "height": 0.8,
+    "colour": "#7d4338",
+    "topColour": "#7d4338"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -2,
+    -39
+   ],
+   "params": {
+    "width": 12,
+    "height": 1.6,
+    "bottom": 5.2,
+    "colour": "#e8e4da",
+    "posts": false
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -2,
+    -40
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#8a4a3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "photo is a tall close-up of the corner piers and arched glazing; model has plain red hall, three piers, flat glass panel and curved roof only; OSM outline orientation of the front is assumed"
+ }
+}

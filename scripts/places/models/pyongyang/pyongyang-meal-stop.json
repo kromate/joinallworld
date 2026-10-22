@@ -1,0 +1,131 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/725445234",
+   "used": "curved multi-wing riverside outline about 145 x 78 m"
+  },
+  {
+   "kind": "text",
+   "used": "Wikidata Q116869735 (2018); brief: pale green render, ribbon glazing, terrace, flags"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.2
+   },
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfd8c8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "bands": "#eeeeea",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#bfd8c8",
+       "#aac8dc"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 8,
+    "height": 4.5,
+    "form": "flat",
+    "colour": "#eeeeea",
+    "columns": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign",
+   "footprint": {
+    "rect": [
+     14,
+     0.6
+    ]
+   },
+   "at": [
+    -4,
+    -62
+   ],
+   "z0": 16,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aac8dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -60,
+     -80
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     70,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building; real OSM outline scaled 0.72 to fit; facade colours and terrace/sign from brief only"
+ }
+}

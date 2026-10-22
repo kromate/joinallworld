@@ -1,0 +1,444 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-808022726",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_Museum,_Saigon.jpg",
+   "licence": "CC0",
+   "author": "Gary Todd",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/dragon.jpg",
+   "used": "two-storey salmon-pink block, ground arcade of round arches, upper balcony with columns and balustrade, roof terrace parapet with square piers, central hip roof in orange tile with a front gable, lawn with hedges and small garden pavilions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/808022726",
+   "used": "34.5 x 27.6 m footprint, 2 levels, building:colour #EBC3A7, roof:colour #E69151"
+  }
+ ],
+ "camera": {
+  "yawDeg": 42,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     34.5,
+     27.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eaa98b",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.28,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#f2e7d6",
+    "trimColour": "#f2e7d6",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.6,
+      "opening": 0.62,
+      "height": 0.86,
+      "depth": 0.8,
+      "storeys": 1,
+      "pierColour": "#eaa98b"
+     },
+     {
+      "type": "balconies",
+      "depth": 1.4,
+      "rail": 1.0,
+      "width": 2.4,
+      "every": 3.6,
+      "railKind": "solid",
+      "colour": "#f2e7d6",
+      "railColour": "#eaa98b",
+      "floors": "upper",
+      "continuous": true,
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a58a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-hall",
+   "footprint": {
+    "rect": [
+     17,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 10.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eaa98b",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f2e7d6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e69151",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "footprint": {
+    "rect": [
+     9,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -8.4
+   ],
+   "z0": 10.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e7d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e69151",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 10.5,
+      "height": 2.6,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -15.5,
+     -12.4,
+     0
+    ],
+    "end": [
+     15.5,
+     -12.4,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 10.5,
+      "height": 2.6,
+      "colour": "#eaa98b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -15.5,
+     12.4,
+     0
+    ],
+    "end": [
+     15.5,
+     12.4,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -10,
+    10.5
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#d0262b"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#c9bfae"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    14.2
+   ],
+   "params": {
+    "colour": "#7a3b24",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.5,
+      0
+     ],
+     [
+      0.3,
+      1.2
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -5.5,
+    -8.4,
+    17.3
+   ],
+   "params": {
+    "colour": "#7a3b24",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.6,
+      0
+     ],
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.2,
+      1.8
+     ],
+     [
+      0,
+      2.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    5.5,
+    -8.4,
+    17.3
+   ],
+   "params": {
+    "colour": "#7a3b24",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.6,
+      0
+     ],
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.2,
+      1.8
+     ],
+     [
+      0,
+      2.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "pavilion",
+     "params": {
+      "width": 1.4,
+      "depth": 1.4,
+      "height": 2.2,
+      "roof": "hip",
+      "rise": 0.6,
+      "colour": "#d8d0c4",
+      "cap_colour": "#e69151"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     -24,
+     0
+    ],
+    "end": [
+     26,
+     -24,
+     0
+    ],
+    "count": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -22
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -22
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -18
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Upper-floor columned loggia, roof-ridge dragons, and dense bonsai garden are simplified; roof terrace piers are plain blocks; colour slightly more muted than photo"
+ }
+}

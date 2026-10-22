@@ -1,0 +1,229 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Po_Hei_Court_Commercial_Centre_2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tombus20032000",
+   "view": "street",
+   "file": "/tmp/places-evidence/hong-kong/pohei.jpg",
+   "used": "single-storey shopping podium with a deep weathered mint-green fascia, dark glazed cafe shopfront and a convenience-store frontage, grey-concrete residential slab above with window rows, aircon boxes and a green-striped end block"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/757854082",
+   "used": "nearest match only (zig-zag outline 104 m); podium size taken from the photo instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c9c9c0",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9db8a0",
+    "material": "concrete",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -8.4,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     45,
+     1.2
+    ],
+    "height": 2.6,
+    "colour": "#a9c4ab"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -8.2,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.3
+    ],
+    "height": 3.4,
+    "colour": "#171717"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    -8.3,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "height": 0.7,
+    "colour": "#c0392b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-main",
+   "footprint": {
+    "rect": [
+     28,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 6.2,
+   "height": 33,
+   "storeys": 11,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b8b0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-green",
+   "footprint": {
+    "rect": [
+     8,
+     13
+    ]
+   },
+   "at": [
+    14,
+    0
+   ],
+   "z0": 6.2,
+   "height": 30,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9b6b",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#6f9b6b",
+       "#d8d9d2"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -21,
+    -9.5,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.4
+    ],
+    "height": 3.2,
+    "colour": "#555555"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     19,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "residential tower is a generic slab with plain facades; shop signage/awning detail and aircon boxes omitted"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-meal-stop"
+}

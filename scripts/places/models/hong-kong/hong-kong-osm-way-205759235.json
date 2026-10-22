@@ -1,0 +1,290 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:THEi_Tsing_Yi_campus_2016.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wpcpey",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/v16_1.jpg",
+   "used": "banded grey cladding on the long 7-storey block with recessed ribbon windows, white-grey lift tower with red fin, tall grey tiled left wall with louvred top, columned right deck, stepped stair, glazed walkways"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/205759235",
+   "used": "overall extent only (290 m long, too long for the scene clamp); a central frontage is modelled"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a low upward courtyard view; model is a frontal elevation of a central 113 m slice of a 290 m campus; stair not visible, deep recessed banded fascia, glass balustrades and angled right deck simplified"
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-banded",
+   "footprint": {
+    "rect": [
+     56,
+     22
+    ]
+   },
+   "at": [
+    6,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 30,
+   "storeys": 7,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a3a4a1",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#a3a4a1",
+      "#8e908e"
+     ]
+    },
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8e",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift-tower",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 40,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8cbcd",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19.4,
+    -4.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.8
+    ],
+    "height": 40,
+    "colour": "#c0272d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     30,
+     28
+    ]
+   },
+   "at": [
+    -42,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 30,
+   "storeys": 7,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#9d9b97",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    -2,
+    30
+   ],
+   "params": {
+    "rect": [
+     30,
+     28
+    ],
+    "height": 7,
+    "colour": "#b9bbb8",
+    "pattern": {
+     "type": "louvres"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-deck",
+   "footprint": {
+    "rect": [
+     24,
+     28
+    ]
+   },
+   "at": [
+    44,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a2a39f",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#a8a9a5",
+       "#8f9090"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8e",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walkway-low",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -5,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f918f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8e",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walkway-mid",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -5,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 9,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db8b5",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8e",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 9,
+    "colour": "#cdbb90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-way-205759235"
+}

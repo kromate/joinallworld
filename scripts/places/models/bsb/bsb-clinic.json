@@ -1,0 +1,215 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jerudong_Park_Medical_Centre_main_entrance_in_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pangalau",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/clinic.jpg",
+   "used": "two-storey cream wing, broad green-tile hipped roof with deep eaves, salmon-pink columns, porch with curved vault roof, flagpole, lamp posts, car loop"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4161361",
+   "used": "real campus outline (name match) for the main block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 84,
+    "simplify": 20
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0c4",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "plinth": 0.5,
+    "bands": "#d8c9b0"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 11,
+    "overhang": 2.4,
+    "colour": "#7f9a74",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -50
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2c8",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 12,
+    "overhang": 2.6,
+    "colour": "#7f9a74",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-wing",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -18,
+    -48
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb8b0",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b99a",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    12,
+    -60,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 18,
+    "depth": 14,
+    "height": 5.8,
+    "thickness": 0.5,
+    "columns": 4,
+    "rise": 1.6,
+    "colour": "#bfb59a",
+    "edgeColour": "#e8e2c8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     4,
+     -66,
+     0
+    ],
+    "end": [
+     19,
+     -66,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 5.2,
+      "colour": "#d4a190"
+     }
+    }
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    26,
+    -62,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    6,
+    -70,
+    0
+   ],
+   "params": {
+    "colour": "#2c3e6e",
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -62
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -64
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "real building is a ring of low wings around a courtyard reduced to a simplified OSM outline; hip roof pitch, lamp posts, curved porch vault and hedges approximate; windows on the OSM block omitted for the LOD1 budget"
+ }
+}

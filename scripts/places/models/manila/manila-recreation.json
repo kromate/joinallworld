@@ -1,0 +1,692 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Valenzuela_People%27s_Park,_Mar_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ralff Nestor Nacor",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/park2.jpg",
+   "used": "big white block-letter sign with red first letter and cream backing slab on a base, wide paved plaza of cream tiles with grey lines and concentric ring inlays, tree line behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:09774jfPeoples_Park_Town_Center_Roads_Valenzuela_Cityfvf_02.JPG",
+   "licence": "Public domain",
+   "author": "Judgefloro",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/park1.jpg",
+   "used": "tan and grey paving with dark stripes, blue ring inlays, black bollard lamps, cream building behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/605312643",
+   "used": "extent only (about 62 x 54 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": -0.3,
+  "fit": "building",
+  "shiftY": 0.2
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Letters are plain blocks without letterform curves; logo on slab is a plain green plate; amphitheatre, gazebo and fountain are positioned from the brief (not visible in the photos); background trees and building generic."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "rect": [
+     58,
+     50
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#cdbd9b",
+    "topColour": "#cdbd9b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grey-field",
+   "at": [
+    -12,
+    -6
+   ],
+   "params": {
+    "rect": [
+     26,
+     20
+    ],
+    "z0": 0.2,
+    "height": 0.04,
+    "colour": "#bdbcb6",
+    "topColour": "#bdbcb6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grey-field2",
+   "at": [
+    14,
+    -12
+   ],
+   "params": {
+    "rect": [
+     22,
+     16
+    ],
+    "z0": 0.2,
+    "height": 0.04,
+    "colour": "#bdbcb6",
+    "topColour": "#bdbcb6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-x",
+   "at": [
+    0,
+    -14
+   ],
+   "params": {
+    "rect": [
+     58,
+     1.0
+    ],
+    "z0": 0.2,
+    "height": 0.06,
+    "colour": "#6a6d72",
+    "topColour": "#6a6d72"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-x2",
+   "at": [
+    0,
+    -3
+   ],
+   "params": {
+    "rect": [
+     58,
+     0.8
+    ],
+    "z0": 0.2,
+    "height": 0.06,
+    "colour": "#6a6d72",
+    "topColour": "#6a6d72"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-y",
+   "at": [
+    12,
+    2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     50
+    ],
+    "z0": 0.2,
+    "height": 0.06,
+    "colour": "#6a6d72",
+    "topColour": "#6a6d72"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-y2",
+   "at": [
+    -14,
+    2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     50
+    ],
+    "z0": 0.2,
+    "height": 0.06,
+    "colour": "#6a6d72",
+    "topColour": "#6a6d72"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "ring-big",
+   "at": [
+    12,
+    -16,
+    0.2
+   ],
+   "params": {
+    "segments": 36,
+    "colour": "#9db7c6",
+    "profile": [
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      0.08
+     ],
+     [
+      9,
+      0.08
+     ],
+     [
+      9,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "ring-mid",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12,
+    -16,
+    0.2
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#7f8f99",
+    "profile": [
+     [
+      7,
+      0
+     ],
+     [
+      7,
+      0.1
+     ],
+     [
+      5.4,
+      0.1
+     ],
+     [
+      5.4,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "ring-in",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12,
+    -16,
+    0.2
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#6e7a82",
+    "profile": [
+     [
+      3.4,
+      0
+     ],
+     [
+      3.4,
+      0.1
+     ],
+     [
+      2.2,
+      0.1
+     ],
+     [
+      2.2,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "ring-left",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    -16,
+    0.2
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#9db7c6",
+    "profile": [
+     [
+      7,
+      0
+     ],
+     [
+      7,
+      0.08
+     ],
+     [
+      6,
+      0.08
+     ],
+     [
+      6,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-base",
+   "at": [
+    0,
+    9
+   ],
+   "params": {
+    "rect": [
+     37,
+     3.8
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#c4ac84",
+    "topColour": "#c4ac84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-slab",
+   "at": [
+    8,
+    11.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     1.4
+    ],
+    "z0": 0.7,
+    "height": 13,
+    "colour": "#e6e1d3",
+    "topColour": "#e6e1d3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-logo",
+   "at": [
+    8,
+    10.4
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.3
+    ],
+    "z0": 7.4,
+    "height": 5.6,
+    "colour": "#2e8b4f",
+    "topColour": "#2e8b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "letter0",
+   "at": [
+    -14.850000000000001,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     1.2
+    ],
+    "z0": 0.7,
+    "height": 7.0,
+    "colour": "#c0332c",
+    "topColour": "#c0332c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter1",
+   "at": [
+    -11.745,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     1.2
+    ],
+    "z0": 0.7,
+    "height": 6.0,
+    "colour": "#f2f1ec",
+    "topColour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter2",
+   "at": [
+    -8.370000000000001,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     1.2
+    ],
+    "z0": 0.7,
+    "height": 6.0,
+    "colour": "#f2f1ec",
+    "topColour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter3",
+   "at": [
+    -4.455,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     1.2
+    ],
+    "z0": 0.7,
+    "height": 6.0,
+    "colour": "#f2f1ec",
+    "topColour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter4",
+   "at": [
+    -0.81,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     1.2
+    ],
+    "z0": 0.7,
+    "height": 6.0,
+    "colour": "#f2f1ec",
+    "topColour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter5",
+   "at": [
+    2.8350000000000004,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     1.2
+    ],
+    "z0": 0.7,
+    "height": 6.0,
+    "colour": "#f2f1ec",
+    "topColour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter6",
+   "at": [
+    6.75,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     1.2
+    ],
+    "z0": 0.7,
+    "height": 6.0,
+    "colour": "#f2f1ec",
+    "topColour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter7",
+   "at": [
+    11.205000000000002,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     1.2
+    ],
+    "z0": 0.7,
+    "height": 6.0,
+    "colour": "#f2f1ec",
+    "topColour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter8",
+   "at": [
+    14.850000000000001,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     2.9,
+     1.2
+    ],
+    "z0": 0.7,
+    "height": 6.0,
+    "colour": "#f2f1ec",
+    "topColour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "bollard",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "z0": 0,
+      "height": 2.3,
+      "colour": "#1b1b1d",
+      "topColour": "#1b1b1d"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24,
+     -22
+    ],
+    "end": [
+     -8,
+     -22
+    ],
+    "count": 3,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18,
+    -14,
+    0.2
+   ],
+   "params": {
+    "radius": 4.5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "amphitheatre",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    28,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 13,
+    "tiers": 5,
+    "stage": true,
+    "shelter": true,
+    "colour": "#d8d3c6",
+    "roofColour": "#a33a2e"
+   }
+  },
+  {
+   "type": "pavilion",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22,
+    20,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 7,
+    "height": 4.2,
+    "roof": "hip",
+    "rise": 2.2,
+    "colour": "#b88a5a",
+    "cap_colour": "#a33a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall-bg",
+   "at": [
+    -6,
+    40
+   ],
+   "params": {
+    "rect": [
+     58,
+     12
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#e2d6b4",
+    "topColour": "#e2d6b4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18,
+    34,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 8,
+    "count": 7,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -26,
+    8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 30,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   56,
+   50
+  ]
+ }
+}

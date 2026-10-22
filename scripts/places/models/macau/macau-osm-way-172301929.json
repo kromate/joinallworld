@@ -1,0 +1,260 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kiang_Wu_Hospital_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Doraemon.tvb",
+   "view": "street",
+   "used": "grey tile-panel podium with round relief medallions, stepped pink-cream balcony terraces above, glass-roofed entrance with sloping steel rail",
+   "file": "/tmp/places-evidence/macau/kw1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Emergency_Building_of_Kiang_Wu_Hospital.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Doraemon.tvb",
+   "view": "street",
+   "used": "cream tile wall with fin bands, pink flat-slab emergency canopy on round columns",
+   "file": "/tmp/places-evidence/macau/kw2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/402304877",
+   "used": "footprint of the podium"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#b9b4ac",
+    "windows": "ribbon",
+    "windowRatio": 0.14,
+    "bay": 9,
+    "glassColour": "#7fa7a0",
+    "cornice": false,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-1",
+   "footprint": {
+    "rect": [
+     44,
+     30
+    ]
+   },
+   "at": [
+    -2,
+    4
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d8bdb2",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 8,
+    "glassColour": "#7f98a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb6aa",
+    "overhang": 1.2
+   },
+   "z0": 17
+  },
+  {
+   "type": "mass",
+   "id": "terrace-2",
+   "footprint": {
+    "rect": [
+     36,
+     24
+    ]
+   },
+   "at": [
+    -2,
+    6
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d4b8ad",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 8,
+    "glassColour": "#7f98a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb6aa",
+    "overhang": 1.2
+   },
+   "z0": 23
+  },
+  {
+   "type": "mass",
+   "id": "rear-tower",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -4,
+    12
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e6dfd0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 6,
+    "glassColour": "#7f98a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   },
+   "z0": 29
+  },
+  {
+   "type": "canopy",
+   "at": [
+    20,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 22,
+    "depth": 9,
+    "height": 8,
+    "rise": 2,
+    "colour": "#7f8c8d",
+    "edgeColour": "#8f9a9b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-foyer",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    22,
+    -20
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0b8",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9394"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -18,
+    -27,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 3.8,
+    "colour": "#7fa89a",
+    "edgeColour": "#9bbcb0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.6,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#b9b4a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-172301929",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "podium is OSM outline with ribbon windows instead of grey panel grid and round medallions; terraces are rectangles not following the stepped plan; no gate or entrance glazing slope detail"
+ }
+}

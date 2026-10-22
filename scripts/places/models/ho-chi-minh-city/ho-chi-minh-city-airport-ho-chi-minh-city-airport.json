@@ -1,0 +1,277 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:S%C3%A2n_bay_qu%E1%BB%91c_t%E1%BA%BF_t%C3%A2n_s%C6%A1n_nh%E1%BA%A5t,_vn_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "trungydang",
+   "view": "street",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/p0_1.jpg",
+   "used": "T2 blue-green glass hall under a pale arched roof edge, long flat paneled canopy on slim round white columns, concrete elevated departures ramp, clipped round trees, paved walk"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:S%C3%A2n_bay_qu%E1%BB%91a_t%E1%BA%BF_,_t%C3%A2n_s%C6%A1n_nh%E1%BA%A5t_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "trungydang",
+   "view": "detail",
+   "used": "large round pale-grey kerbside columns and concrete soffits"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "Terminal 2 size (about 300 m long, a 118 m portion modelled), 70 m control tower, jet bridges on the airside"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 1.505,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     100,
+     38
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f7287",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "curtain"
+    },
+    "bands": "#cfd6da",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#cbd1d5",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-end",
+   "footprint": {
+    "rect": [
+     14,
+     38
+    ]
+   },
+   "at": [
+    -57,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#bfc6ca",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb4b8",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 100,
+    "depth": 12,
+    "height": 6.5,
+    "thickness": 0.9,
+    "columns": 11,
+    "colour": "#dcd9d1",
+    "edgeColour": "#c4c1b9"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp",
+   "footprint": {
+    "rect": [
+     40,
+     9
+    ]
+   },
+   "at": [
+    62,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 6.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9b94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "pilotis-row",
+   "at": [
+    62,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 6.2,
+    "radius": 0.8,
+    "pitch": 9,
+    "colour": "#a8a69f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "rotDeg": 90,
+     "params": {
+      "length": 16,
+      "colour": "#c9ced1"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -36,
+     32,
+     0
+    ],
+    "end": [
+     36,
+     32,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -52,
+    62,
+    0
+   ],
+   "params": {
+    "height": 70,
+    "style": "round",
+    "colour": "#d6d3cc",
+    "cabColour": "#5a7684"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    -37,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-airport-ho-chi-minh-city-airport",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Photo shows T2 only in the distance; modelled as a barrel-roofed glass hall with canopy, ramp, bridges and tower; no tree/sign detail, curved roof edge simplified."
+ }
+}

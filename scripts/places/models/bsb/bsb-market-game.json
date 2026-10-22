@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1213500438",
+   "used": "real outline of the pasar (31.5 x 16.4 m, name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey hall, wide eaves, grey metal gable roof, open stall bays, cream render"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe8d8",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7a6a55"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 12,
+    "overhang": 2.4,
+    "colour": "#7d8084",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c9573f",
+     "#2f6fa8",
+     "#e0b13a",
+     "#5f8f4e"
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/awning",
+   "at": [
+    -8,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.4,
+    "height": 3,
+    "colour": "#bfbab0"
+   }
+  },
+  {
+   "type": "mosque-domed/awning",
+   "at": [
+    8,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.4,
+    "height": 3,
+    "colour": "#7a6a55"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 4.1,
+    "colour": "#7a6a55",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f95",
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; massing from the real OSM outline and brief, details typed"
+ }
+}

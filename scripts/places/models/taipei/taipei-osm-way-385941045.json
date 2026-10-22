@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-385941045",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yingfeng_Riverside_Park_Bikeway_20141014.jpg",
+   "licence": "CC0",
+   "author": "玄史生",
+   "view": "street",
+   "file": "/tmp/places-evidence/taipei/yf1.jpg",
+   "used": "wide mown grass levee, curving dark asphalt bikeway with white edge lines, slim street lamps, reeds, trees at the river side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:IGD2008Taipei_Soccer_Yinfeng_Riverside_Park.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rico Shen",
+   "view": "street",
+   "used": "football pitch in the park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/385941045",
+   "used": "park extent (2.7 km strip); a 220 m stretch is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "floodwall",
+   "params": {
+    "points": [
+     [
+      -75,
+      36
+     ],
+     [
+      75,
+      36
+     ],
+     [
+      75,
+      38.5
+     ],
+     [
+      -75,
+      38.5
+     ]
+    ],
+    "height": 3.5,
+    "colour": "#b5b8b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "levee",
+   "params": {
+    "points": [
+     [
+      -75,
+      18
+     ],
+     [
+      75,
+      18
+     ],
+     [
+      75,
+      36
+     ],
+     [
+      -75,
+      36
+     ]
+    ],
+    "height": 2,
+    "topScale": 1,
+    "colour": "#5f8f45"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -75,
+      -8
+     ],
+     [
+      -42,
+      -12
+     ],
+     [
+      -8,
+      -6
+     ],
+     [
+      28,
+      2
+     ],
+     [
+      60,
+      -6
+     ],
+     [
+      75,
+      -4
+     ]
+    ],
+    "width": 5.5,
+    "colour": "#4a4a4e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -75,
+      24
+     ],
+     [
+      -20,
+      27
+     ],
+     [
+      35,
+      24
+     ],
+     [
+      75,
+      28
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d8cfc0"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    -40,
+    -45,
+    0.05
+   ],
+   "params": {
+    "length": 60,
+    "width": 38,
+    "stripes": 6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 8
+     }
+    },
+    "mode": "line",
+    "start": [
+     -68,
+     -2
+    ],
+    "end": [
+     68,
+     -2
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 22
+     }
+    },
+    "mode": "line",
+    "start": [
+     -70,
+     -60
+    ],
+    "end": [
+     -30,
+     -60
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    30,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    50,
+    20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 2,
+    "run": 1.8,
+    "count": 4,
+    "colour": "#b5b8b6"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    52,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 22,
+    "count": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -50,
+    10,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 14,
+    "count": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Photo is a long low-angle view of the levee; model is a short stretch with generic pitch, pavilions and floodlights; no skyline, reeds or river, bikeway thin."
+ }
+}

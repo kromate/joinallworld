@@ -1,0 +1,225 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Patane_Activity_Centre_(Complexo_Municipal_do_Mercado_do_Patane)_in_2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jacklamf1d14",
+   "view": "street",
+   "used": "horizontal tan/white/grey tile bands per storey, open market floors with railings, red entrance portal on grey stone base, round emblem on roof block",
+   "file": "/tmp/places-evidence/macau/pat1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Complexo_Municipal_do_Mercado_do_Patane_22-02-2024(3).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jacklamf1d14",
+   "view": "front",
+   "used": "entrance steps, white tile side block, awnings",
+   "file": "/tmp/places-evidence/macau/pat2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/206823798",
+   "used": "footprint, height 41.2 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a8a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "market-tower",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 34,
+   "storeys": 8,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e1e3e2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 14,
+    "glassColour": "#34363a",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9a77c",
+       "#e1e3e2"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   },
+   "z0": 4
+  },
+  {
+   "type": "mass",
+   "id": "roof-block",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e4e6e5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   },
+   "z0": 38
+  },
+  {
+   "type": "prism",
+   "id": "roof-emblem",
+   "at": [
+    0,
+    -6.2,
+    40.2
+   ],
+   "params": {
+    "radius": 3,
+    "n": 16,
+    "height": 0.4,
+    "colour": "#b0705a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     13,
+     2
+    ]
+   },
+   "at": [
+    2,
+    -39.5
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c2402f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0705a",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    2,
+    -41.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -42,
+    0
+   ],
+   "params": {
+    "colours": [
+     "#d98f8f",
+     "#e7b2b2"
+    ],
+    "width": 5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -42,
+    0
+   ],
+   "params": {
+    "colours": [
+     "#4a5cc2",
+     "#6f7fd1"
+    ],
+    "width": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": 0,
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-206823798",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "open market floors are black ribbons not recessed bays with railings; dark grey band stubs and lattice neighbour missing; no signage lettering"
+ }
+}

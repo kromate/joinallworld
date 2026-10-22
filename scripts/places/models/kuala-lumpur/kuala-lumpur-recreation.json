@@ -1,0 +1,489 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zoo_Negara_entrance_with_elephant_sculpture.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Haiqal08",
+   "view": "front",
+   "file": "/tmp/places-evidence/kuala-lumpur/zoo.jpg",
+   "used": "low wire-frame elephant sculptures in yellow-gold mesh, a second rearing one, white lettering board on slim white posts over a green planted wall, big trunked rain tree, dense jungle backdrop, paved forecourt"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/National_Zoo_of_Malaysia",
+   "used": "entrance plaza scale; whole zoo (800 m) too large, only the entrance is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 3,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     34
+    ],
+    "height": 0.12,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#3d7f4a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 6,
+      "colour": "#e8e8e8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     5
+    ],
+    "end": [
+     -4,
+     5
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    5,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.3
+    ],
+    "height": 1.8,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    7,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     4
+    ],
+    "height": 9,
+    "colour": "#2e6b3a"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    -4,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "colour": "#d9bf55",
+    "sections": [
+     {
+      "z": 1.9,
+      "ellipse": [
+       2.6599999999999997,
+       3.8
+      ]
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       3.23,
+       5.699999999999999
+      ]
+     },
+     {
+      "z": 3.6,
+      "ellipse": [
+       3.04,
+       5.319999999999999
+      ]
+     },
+     {
+      "z": 4.2,
+      "ellipse": [
+       1.9,
+       3.04
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    2,
+    -4,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.855,
+      "n": 8,
+      "height": 4.18,
+      "colour": "#d9bf55"
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 4.18,
+    "dy": 6.46
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    -4,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "colour": "#d9bf55",
+    "sections": [
+     {
+      "z": 4.56,
+      "circle": 1.71,
+      "cy": -6.46
+     },
+     {
+      "z": 6.46,
+      "circle": 2.09,
+      "cy": -7.03
+     },
+     {
+      "z": 8.17,
+      "circle": 1.52,
+      "cy": -7.409999999999999
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    2,
+    -4,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "section": {
+     "circle": 0.57
+    },
+    "points": [
+     [
+      0,
+      -8.36,
+      6.46
+     ],
+     [
+      0,
+      -10.26,
+      3.8
+     ],
+     [
+      0,
+      -11.78,
+      1.9
+     ],
+     [
+      0,
+      -11.399999999999999,
+      0.57
+     ]
+    ],
+    "curve": true,
+    "colour": "#d9bf55"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    16,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#d9bf55",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.2,
+       2.6
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.6,
+       3.0
+      ],
+      "cy": 0.5
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       2.4,
+       2.8
+      ],
+      "cy": 1.2
+     },
+     {
+      "z": 8.5,
+      "ellipse": [
+       1.6,
+       1.9
+      ],
+      "cy": 1.8
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       1.0,
+       1.3
+      ],
+      "cy": 2.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    16,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#d9bf55",
+    "sections": [
+     {
+      "z": 6,
+      "circle": 1.0,
+      "cy": -1.5
+     },
+     {
+      "z": 8,
+      "circle": 0.7,
+      "cy": -2.6
+     },
+     {
+      "z": 9.5,
+      "circle": 0.5,
+      "cy": -3.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    16,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.4
+    },
+    "points": [
+     [
+      0,
+      -2.5,
+      10.5
+     ],
+     [
+      0,
+      -3.8,
+      12
+     ],
+     [
+      0,
+      -3.2,
+      13.5
+     ]
+    ],
+    "curve": true,
+    "colour": "#d9bf55"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    -5,
+    0
+   ],
+   "params": {
+    "colour": "#4a3a2c",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.8
+     },
+     {
+      "z": 8,
+      "circle": 0.5
+     },
+     {
+      "z": 14,
+      "circle": 0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 20,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2,
+    -5,
+    13
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#3d7f3a"
+     ],
+     [
+      7,
+      0,
+      "#3d7f3a"
+     ],
+     [
+      8,
+      3,
+      "#4d9a45"
+     ],
+     [
+      5,
+      6,
+      "#4d9a45"
+     ],
+     [
+      0,
+      7,
+      "#4d9a45"
+     ]
+    ],
+    "segments": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     14
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     12
+    ],
+    "height": 18
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "elephants are solid lofts not wire mesh, poses simplified; wall of lettering is a blank board; jungle backdrop is a low-poly grove"
+ }
+}

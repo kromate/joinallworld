@@ -1,0 +1,248 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praca_do_Centro_Cultural.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "unknown (22 April 2009)",
+   "view": "street",
+   "used": "wavy black-and-cream calcada paving, green lawn strip, free-standing steel louvre pergolas on slender columns",
+   "file": "/tmp/places-evidence/macau/3_0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/307049831",
+   "used": "plaza outline (about 175 m x 108 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "paving",
+   "footprint": {
+    "osm": true,
+    "scale": 0.7
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d8d4c8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "calcada-waves",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -30,
+     0
+    ],
+    "end": [
+     30,
+     30,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       70,
+       1.6
+      ],
+      "height": 0.05,
+      "colour": "#454a4e",
+      "topColour": "#454a4e"
+     },
+     "rotDeg": -8
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    -10,
+    -22
+   ],
+   "params": {
+    "rect": [
+     62,
+     16
+    ],
+    "z0": 0.5,
+    "height": 0.25,
+    "colour": "#5f9a3a",
+    "topColour": "#6aa83f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pergola-roof",
+   "at": [
+    -10,
+    10
+   ],
+   "params": {
+    "rect": [
+     26,
+     18
+    ],
+    "z0": 7,
+    "height": 0.5,
+    "colour": "#3f464b",
+    "topColour": "#4a5258"
+   }
+  },
+  {
+   "type": "array",
+   "id": "pergola-columns",
+   "at": [
+    -10,
+    10,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 3,
+    "rows": 2,
+    "dx": 12,
+    "dy": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 8,
+      "z0": 0.5,
+      "height": 6.7,
+      "colour": "#5c6a74",
+      "topColour": "#5c6a74"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "shrubs",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     22,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#7a9a3a",
+      "profile": [
+       [
+        0.2,
+        0.5
+       ],
+       [
+        1.3,
+        1.2
+       ],
+       [
+        1.1,
+        2.4
+       ],
+       [
+        0,
+        2.8
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fountain-basin",
+   "at": [
+    -34,
+    20
+   ],
+   "params": {
+    "radius": 6,
+    "n": 16,
+    "z0": 0.5,
+    "height": 0.5,
+    "colour": "#8a8f94",
+    "topColour": "#6c8a96"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Calcada wave paving is only straight dark stripes, pergola is a plain slab without louvres, the gold-glass casino backdrop is not part of the square and is omitted."
+ }
+}

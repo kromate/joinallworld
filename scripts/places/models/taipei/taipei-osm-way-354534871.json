@@ -1,0 +1,272 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-354534871",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:雙和醫院後方20100312.JPG",
+   "licence": "Public domain",
+   "author": "Nicemanpower",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/sh2.jpg",
+   "used": "tan tile-clad blocks with punched windows, long 5-storey podium, two tall towers, full-height glass stair core, dark rooftop helipad structure, blue entrance sign (blank here)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/346405811",
+   "used": "overall size (125 x 84 m) and stepped plan"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     90,
+     34
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c4a982",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bay": 10,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "towerW",
+   "footprint": {
+    "rect": [
+     34,
+     36
+    ]
+   },
+   "at": [
+    -30,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 56,
+   "storeys": 14,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c4a982",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bay": 11,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "towerE",
+   "footprint": {
+    "rect": [
+     36,
+     30
+    ]
+   },
+   "at": [
+    14,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 52,
+   "storeys": 13,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c4a982",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bay": 7,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wingE",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    40,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 44,
+   "storeys": 11,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c9b090",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bay": 7,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    32,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 52,
+   "storeys": 13,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7d98a4",
+    "windows": "none",
+    "bands": "#c9d4d8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "helideck",
+   "at": [
+    -36,
+    8
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "z0": 56,
+    "height": 3,
+    "colour": "#464a50"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -36,
+    8,
+    59
+   ],
+   "params": {
+    "radius": 5.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard",
+   "at": [
+    -52,
+    -34
+   ],
+   "params": {
+    "rect": [
+     10,
+     1
+    ],
+    "z0": 3,
+    "height": 4,
+    "colour": "#1f3f8f"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -30,
+    -30,
+    18
+   ],
+   "params": {
+    "size": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Towers' stepped plan and the rooftop helipad structure are approximate; window grid is coarser than the photo; glass stair core is a plain tinted slab; entrance sign is a blank board."
+ }
+}

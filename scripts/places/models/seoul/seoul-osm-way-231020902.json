@@ -1,0 +1,362 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-231020902",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Statue_of_Douglas_MacArthur.jpg",
+   "licence": "see Commons page",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/seoul/jayu2.jpg",
+   "used": "MacArthur monument: tall pale granite pier plinth with a blank panel, dark bronze figure, low stone wall with bronze relief panels either side, black lattice fence in front, paved edge, broadleaf trees behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jayu_Park_20230430_001.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mobius6",
+   "view": "street",
+   "file": "/tmp/places-evidence/seoul/jayu1.jpg",
+   "used": "wide grey granite steps with ball-topped granite balustrade posts and rails, dense green broadleaf canopy, red-painted gate at the foot"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/231020902",
+   "used": "park extent and hilltop plateau; modelled as a 120 m portion centred on the monument terrace"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -30
+     ],
+     [
+      34,
+      -30
+     ],
+     [
+      34,
+      30
+     ],
+     [
+      -34,
+      30
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#7aa05a",
+    "material": "grass",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     20
+    ],
+    "height": 0.5,
+    "colour": "#bdb6a8",
+    "material": "paving"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "height": 15,
+    "width": 4.6,
+    "steps": 1,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#3b4044",
+    "figure_ratio": 0.33
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10.5,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.4,
+    "thickness": 0.7,
+    "colour": "#bdb6a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10.5,
+    4.5,
+    0.5
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.4,
+    "thickness": 0.7,
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -5,
+    0.5
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.1,
+    "thickness": 0.15,
+    "colour": "#25282b",
+    "kind": "railing"
+   }
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    -28,
+    10,
+    0.3
+   ],
+   "params": {
+    "height": 24,
+    "base_width": 3.2,
+    "style": "square",
+    "steps": 3,
+    "crown": "none"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    28,
+    -18,
+    0.3
+   ],
+   "params": {
+    "width": 7,
+    "depth": 7,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 4,
+    "colour": "#b5382f",
+    "cap_colour": "#5b6a5e"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -28,
+    -20,
+    0.3
+   ],
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 2.0,
+    "posts": 4,
+    "colour": "#b5382f",
+    "cap_colour": "#5b6a5e"
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    -9,
+    -24,
+    0.5
+   ],
+   "params": {
+    "scale": 1.2
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    9,
+    -24,
+    0.5
+   ],
+   "params": {
+    "scale": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rest-house",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    26,
+    20
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#bdb6a8",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5b6a5e",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.0
+   },
+   "z0": 0.3
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.4
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      0,
+      -5
+     ]
+    ],
+    "width": 6,
+    "colour": "#cbc6bb"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     16
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     18
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -2,
+     19
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     18
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     16
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     8
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -8
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -10
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only the MacArthur monument is photo-matched; plinth narrower than photo, relief panels plain, fence is a plain rail, rest of park (pavilions, obelisk, stairs) from brief."
+ }
+}

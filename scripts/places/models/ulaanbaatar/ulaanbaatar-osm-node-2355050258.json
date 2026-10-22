@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-node-2355050258",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: stony ridge, ovoo cairn with blue khadag, larch/conifer forest"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       60,
+       36
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       44,
+       24
+      ],
+      "cx": 2,
+      "cy": 0
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       26,
+       14
+      ],
+      "cx": 4,
+      "cy": 1
+     }
+    ],
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    4,
+    0,
+    4.5
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 4.5
+     },
+     {
+      "z": 2.2,
+      "circle": 3
+     },
+     {
+      "z": 3.6,
+      "circle": 1.2
+     }
+    ],
+    "colour": "#c9c6bb"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 6,
+    "colour": "#c9c6bb"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    3,
+    -1,
+    8
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 6,
+    "spread": 14,
+    "colour": "#2f5a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; ridge and cairn schematic, khadag only suggested"
+ }
+}

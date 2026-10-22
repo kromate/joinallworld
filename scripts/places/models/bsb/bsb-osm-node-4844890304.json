@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-node-4844890304",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/492467502",
+   "used": "building outline, 1 level, 23 x 12 m (nearest quality)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small village eatery, pitched grey metal roof, front veranda, rooftop-less water tank"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "eatery",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe8d8",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#8a5a3c"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 16,
+    "overhang": 1.2,
+    "colour": "#7d8084",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "market-open/veranda",
+   "at": [
+    5.25,
+    -2.47,
+    0
+   ],
+   "rotDeg": 64.8,
+   "params": {
+    "length": 18,
+    "depth": 2.6,
+    "height": 2.9,
+    "balustrade": false,
+    "steps": false,
+    "roof_colour": "#7d8084",
+    "wall_colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.95,
+    -9.9,
+    0
+   ],
+   "rotDeg": 64.8,
+   "params": {
+    "width": 3.5,
+    "height": 1.2,
+    "bottom": 2.2,
+    "colour": "#5f6b4e",
+    "posts": true
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -0.21,
+    8.94,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "legs": 1.2,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10.54,
+    -8.3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12.77,
+    8.36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; massing from the real OSM outline and brief, details typed"
+ }
+}

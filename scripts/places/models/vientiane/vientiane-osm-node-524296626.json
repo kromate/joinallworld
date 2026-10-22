@@ -1,0 +1,233 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-osm-node-524296626",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kualao_Restaurant_in_Vientiane,_Laos_(2014).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ainvictusk",
+   "view": "front",
+   "file": "/tmp/places-evidence/vientiane/kual0.jpg",
+   "used": "two-storey cream-yellow villa with white trim bands and tall white-framed windows, dark tile hip and gable roofs, dark timber gable in the upper floor, single-storey entrance porch with orange fretwork valance and a brown timber post, blank signboard, car parked in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/772892163",
+   "used": "overall extent only (outline is irregular and contains more than the villa)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "at": [
+    1,
+    3
+   ],
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5c97c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 2.6,
+    "plinth": 0.6,
+    "trimColour": "#f3ead0",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f3ead0"
+      ],
+      "height": 0.35,
+      "at": 0.12,
+      "proud": 0.1,
+      "floors": [
+       1
+      ]
+     }
+    ],
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5b4437",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    3,
+    5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3226",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b4437",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 0.9,
+    "axis": "x"
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -3,
+    -8.2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5c97c",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4a2b",
+    "material": "clay-tile",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -3,
+    -10.6,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "count": 4,
+    "height": 3.2,
+    "radius": 0.3,
+    "kind": "square",
+    "beamHeight": 0.5,
+    "colour": "#f3ead0",
+    "roofColour": "#8a4a2b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "valance",
+   "at": [
+    -3,
+    -10.8
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.15
+    ],
+    "z0": 2.5,
+    "height": 0.7,
+    "colour": "#c26a2a",
+    "topScale": 1.0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3,
+    -11.2,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 1.5,
+    "bottom": 3.3,
+    "colour": "#b4672f",
+    "frameColour": "#6b3f2a",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#f2f0ea",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -6
+    ],
+    "height": 4
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Porch roof too heavy and tile-coloured vs the orange fretwork valance, no timber brackets under the eaves, car and planting simplified"
+ }
+}

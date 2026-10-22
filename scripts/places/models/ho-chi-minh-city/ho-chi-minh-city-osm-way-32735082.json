@@ -1,0 +1,245 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Le_Van_Tam_park.JPG",
+   "licence": "CC BY 3.0",
+   "author": "TrungLH",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/lvt1.jpg",
+   "used": "white sculpture on a stepped white plinth beside a long turquoise rectangular pool with fountain jets, flower beds, tall dense shade trees, lamp posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32735082",
+   "used": "park outline 243 x 224 m, diamond-oriented"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.77
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pool",
+   "footprint": {
+    "rect": [
+     60,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dfe6e3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58b8b0"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "width": 7,
+    "steps": 3,
+    "shape": "tapered",
+    "figure": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    12,
+    6,
+    6
+   ],
+   "params": {
+    "colour": "#f1f0ec",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.6,
+       1.8
+      ]
+     },
+     {
+      "z": 2,
+      "ellipse": [
+       2.8,
+       2.0
+      ],
+      "cx": -1.0
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       1.8,
+       1.4
+      ],
+      "cx": -0.2
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       1.5,
+       1.1
+      ],
+      "cx": 0.5
+     },
+     {
+      "z": 8.5,
+      "ellipse": [
+       0.9,
+       0.7
+      ],
+      "cx": 0.8
+     },
+     {
+      "z": 10.5,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 6,
+    "depth": 3,
+    "colours": [
+     "#f2c230",
+     "#e8e0f0",
+     "#d8d030"
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    30,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 18,
+    "count": 22,
+    "kind": "broadleaf",
+    "min_height": 16,
+    "max_height": 26
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -8,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -26,
+    0,
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 3,
+    "spread": 4,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 4,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    60,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 3.2,
+    "thickness": 0.4,
+    "colour": "#cfc7b8"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "The sculpture is an abstract lofted white stack (the real figure group is a stylised wave/figure form); pool tiles and the lined fountain jets are omitted; the park is shown as a 90 m portion."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-32735082"
+}

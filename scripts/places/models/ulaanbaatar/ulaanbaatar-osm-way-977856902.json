@@ -1,0 +1,240 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-way-977856902",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/977856902",
+   "used": "campus polygon is the whole grounds (514 x 200 m), not a building outline; only the scale of the site and the 1950s-80s Soviet campus type were used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     78,
+     20
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd4b8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 8,
+    "bands": "#a9a69c",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     18,
+     54
+    ]
+   },
+   "at": [
+    -30,
+    -15
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d0b4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6.8,
+    "bands": "#a9a69c",
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     18,
+     54
+    ]
+   },
+   "at": [
+    30,
+    -15
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d0b4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6.8,
+    "bands": "#a9a69c",
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    0,
+    11
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 7,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    7.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "height": 7,
+    "columns": 6,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#f0eee4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.25,
+    "run": 0.7,
+    "count": 5,
+    "colour": "#b9b4aa"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -20
+   ],
+   "params": {
+    "width": 36,
+    "depth": 40,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building found; U-plan and look typed from the Soviet campus type, scaled down from a 514 m site"
+ }
+}

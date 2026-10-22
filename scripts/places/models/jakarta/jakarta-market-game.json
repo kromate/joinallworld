@@ -1,0 +1,206 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/529392697",
+   "used": "real 271x140 m wedge footprint, 2014, levels/height tags"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jakarta.json#jakarta-market-game",
+   "used": "six-storey glass-and-render waterfront mall podium, central glass atrium, roof terrace, plaza, car park; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 28,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfdbe0",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "bands": "#e8e3d6",
+    "bay": 9,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "groundKind": "shopfront",
+    "groundHeight": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "params": {
+    "rect": [
+     22,
+     14
+    ],
+    "z0": 28,
+    "height": 6,
+    "colour": "#5f7f90",
+    "topColour": "#9fb8c4",
+    "windows": "curtain"
+   },
+   "at": [
+    -4,
+    -14,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace-bar",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     20,
+     5
+    ],
+    "z0": 28,
+    "height": 4,
+    "colour": "#e8e3d6"
+   },
+   "at": [
+    22,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -20,
+    -85,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 8,
+    "height": 6,
+    "colour": "#e8e3d6",
+    "edgeColour": "#5f7f90",
+    "columns": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -45,
+    -100,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 4,
+    "bottom": 3,
+    "colour": "#5f7f90"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -76,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 4,
+    "bottom": 3,
+    "colour": "#e8e3d6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -90,
+    -105,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -112,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -95,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    80,
+    -80,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 26,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; OSM wedge scaled to 118 m with a simplified outline, six-storey curtain-wall podium and atrium guessed from the brief; tower blocks behind not modelled."
+ }
+}

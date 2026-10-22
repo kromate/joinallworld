@@ -1,0 +1,415 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-121919489",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mall_of_Indonesia_(2025)_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Medelam",
+   "view": "front",
+   "file": "/tmp/places-evidence/jakarta/moi2.jpg",
+   "used": "neoclassical front: grey corner block with domed tower at left, white block with giant free columns and glazed curtain wall at right with round clock windows and green-domed corner turret, low central arched pavilion, white apartment towers with domes behind, lawn with clipped hedges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/121919489",
+   "used": "overall size only (325 x 164 m, 8 levels per OSM); a ~115 m front portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 80,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    -40,
+    -12
+   ],
+   "rotDeg": 14,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b8b3",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#e4e3de",
+    "cornice": true,
+    "plinth": 1.0,
+    "windowShape": "arched",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none",
+     "front": "none"
+    },
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9193",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-tower",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -50,
+    -20
+   ],
+   "rotDeg": 14,
+   "z0": 0,
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c6c5c0",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "cornice": false,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9193",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -50,
+    -20,
+    32
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 4.2,
+    "height": 4,
+    "profile": "hemi",
+    "drum": 1.5,
+    "colour": "#9fa3a6",
+    "finial": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "right",
+   "footprint": {
+    "rect": [
+     40,
+     20
+    ]
+   },
+   "at": [
+    40,
+    -12
+   ],
+   "rotDeg": -14,
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#ffffff",
+    "cornice": true,
+    "plinth": 1.0,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    28,
+    -30,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "length": 28,
+    "count": 5,
+    "height": 18,
+    "radius": 0.9,
+    "kind": "round",
+    "beamHeight": 1.2,
+    "colour": "#f2f1ec"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "right-tower",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    50,
+    -20
+   ],
+   "rotDeg": -14,
+   "z0": 0,
+   "height": 34,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0efea",
+    "windows": "none",
+    "cornice": false,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#4f8a6f",
+    "rise": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c9c5",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "cornice": false,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f9193",
+    "pitch": 12,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "apt",
+     "footprint": {
+      "rect": [
+       14,
+       14
+      ]
+     },
+     "height": 50,
+     "storeys": 16,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#e8e6df",
+      "windows": "none",
+      "windowRatio": 0.2,
+      "cornice": false
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#8fa7a0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -45,
+     60
+    ],
+    "end": [
+     45,
+     60
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -16,
+    60,
+    50
+   ],
+   "params": {
+    "radius": 4,
+    "height": 4,
+    "profile": "hemi",
+    "colour": "#9fb3b0",
+    "finial": 2,
+    "drum": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.6,
+    "depth": 2.5,
+    "colour": "#3f7a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    20,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.6,
+    "depth": 2.5,
+    "colour": "#3f7a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 8,
+    "depth": 6,
+    "colours": [
+     "#6b3b4a",
+     "#4f8a3f",
+     "#6b3b4a"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    0,
+    32
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4d3ce",
+    "windows": "none",
+    "cornice": false,
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   116,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "neoclassical ornament (cornices, clock roundels, arched pavilion detail, hedges lettering) simplified; wings not splayed as in the V plan; towers plain"
+ }
+}

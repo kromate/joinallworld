@@ -1,0 +1,572 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-osm-way-445148651",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A_football_match_at_the_Olympic_Stadium,_Phnom_Penh_(Chetra_Chap,_2015)._(19104466005).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Khmer Scholar",
+   "view": "interior",
+   "used": "oval bowl with continuous raked concrete stand, running track around the grass pitch, tall floodlight masts, overhang at one corner"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/445148651",
+   "used": "real outline of the moated earth platform and entrance ramp (274 x 229 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Olympic_Stadium_(Phnom_Penh)",
+   "used": "Vann Molyvann 1964 raised bowl on moated platform"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "points": [
+     [
+      -64.44,
+      53.82
+     ],
+     [
+      -13.5,
+      80.76
+     ],
+     [
+      7.38,
+      81.24
+     ],
+     [
+      28.32,
+      72.96
+     ],
+     [
+      45.96,
+      54.3
+     ],
+     [
+      54.72,
+      34.56
+     ],
+     [
+      73.56,
+      34.86
+     ],
+     [
+      74.76,
+      -19.5
+     ],
+     [
+      75.0,
+      -31.26
+     ],
+     [
+      56.28,
+      -31.68
+     ],
+     [
+      45.78,
+      -56.82
+     ],
+     [
+      24.48,
+      -75.72
+     ],
+     [
+      -3.0,
+      -82.38
+     ],
+     [
+      -24.36,
+      -77.34
+     ],
+     [
+      -61.44,
+      -57.24
+     ]
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#b9b4a6",
+    "topColour": "#7d9a5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    5,
+    0,
+    3.2
+   ],
+   "params": {
+    "points": [
+     [
+      40.0,
+      0.0
+     ],
+     [
+      39.0,
+      6.9
+     ],
+     [
+      36.04,
+      13.45
+     ],
+     [
+      31.27,
+      19.33
+     ],
+     [
+      24.94,
+      24.24
+     ],
+     [
+      17.36,
+      27.93
+     ],
+     [
+      8.9,
+      30.22
+     ],
+     [
+      0.0,
+      31.0
+     ],
+     [
+      -8.9,
+      30.22
+     ],
+     [
+      -17.36,
+      27.93
+     ],
+     [
+      -24.94,
+      24.24
+     ],
+     [
+      -31.27,
+      19.33
+     ],
+     [
+      -36.04,
+      13.45
+     ],
+     [
+      -39.0,
+      6.9
+     ],
+     [
+      -40.0,
+      0.0
+     ],
+     [
+      -39.0,
+      -6.9
+     ],
+     [
+      -36.04,
+      -13.45
+     ],
+     [
+      -31.27,
+      -19.33
+     ],
+     [
+      -24.94,
+      -24.24
+     ],
+     [
+      -17.36,
+      -27.93
+     ],
+     [
+      -8.9,
+      -30.22
+     ],
+     [
+      -0.0,
+      -31.0
+     ],
+     [
+      8.9,
+      -30.22
+     ],
+     [
+      17.36,
+      -27.93
+     ],
+     [
+      24.94,
+      -24.24
+     ],
+     [
+      31.27,
+      -19.33
+     ],
+     [
+      36.04,
+      -13.45
+     ],
+     [
+      39.0,
+      -6.9
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#6d5a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    5,
+    0,
+    3.2
+   ],
+   "params": {
+    "points": [
+     [
+      34.0,
+      0.0
+     ],
+     [
+      33.15,
+      5.56
+     ],
+     [
+      30.63,
+      10.85
+     ],
+     [
+      26.58,
+      15.59
+     ],
+     [
+      21.2,
+      19.55
+     ],
+     [
+      14.75,
+      22.52
+     ],
+     [
+      7.57,
+      24.37
+     ],
+     [
+      0.0,
+      25.0
+     ],
+     [
+      -7.57,
+      24.37
+     ],
+     [
+      -14.75,
+      22.52
+     ],
+     [
+      -21.2,
+      19.55
+     ],
+     [
+      -26.58,
+      15.59
+     ],
+     [
+      -30.63,
+      10.85
+     ],
+     [
+      -33.15,
+      5.56
+     ],
+     [
+      -34.0,
+      0.0
+     ],
+     [
+      -33.15,
+      -5.56
+     ],
+     [
+      -30.63,
+      -10.85
+     ],
+     [
+      -26.58,
+      -15.59
+     ],
+     [
+      -21.2,
+      -19.55
+     ],
+     [
+      -14.75,
+      -22.52
+     ],
+     [
+      -7.57,
+      -24.37
+     ],
+     [
+      -0.0,
+      -25.0
+     ],
+     [
+      7.57,
+      -24.37
+     ],
+     [
+      14.75,
+      -22.52
+     ],
+     [
+      21.2,
+      -19.55
+     ],
+     [
+      26.58,
+      -15.59
+     ],
+     [
+      30.63,
+      -10.85
+     ],
+     [
+      33.15,
+      -5.56
+     ]
+    ],
+    "z0": 0.12,
+    "height": 0.1,
+    "colour": "#6f9a4f"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "bowl",
+   "at": [
+    5,
+    0,
+    3.2
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 33,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 20,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 1.2,
+    "seatColours": [
+     "#b8b3a6",
+     "#c9c4b6"
+    ],
+    "blocks": 8,
+    "under": "solid",
+    "backWall": 1.0,
+    "concreteColour": "#c3beb0",
+    "facetDeg": 15
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast0",
+   "at": [
+    -45,
+    -58,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 35.5,
+      "rect": [
+       7,
+       1.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast1",
+   "at": [
+    55,
+    -58,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 35.5,
+      "rect": [
+       7,
+       1.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast2",
+   "at": [
+    -45,
+    58,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 35.5,
+      "rect": [
+       7,
+       1.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast3",
+   "at": [
+    55,
+    58,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     {
+      "z": 35.5,
+      "rect": [
+       7,
+       1.4
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -100,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     120,
+     -90
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -90,
+     100
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Only an interior photo exists: exterior is composed from the OSM outline (scaled 0.6) and general knowledge, so the bowl, platform and entrance ramps are generic; no moat or concrete V-supports; partial canopy omitted."
+ }
+}

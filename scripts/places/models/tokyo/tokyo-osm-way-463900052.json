@@ -1,0 +1,240 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-way-463900052",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hitachikashiwa.JPG",
+   "licence": "Public domain",
+   "author": "WAKA77",
+   "view": "interior",
+   "file": "/tmp/places-evidence/tokyo/kashiwa2.jpg",
+   "used": "pitch long axis, one roofed main stand with low flat dark-grey canopy, open end terraces with yellow seats and a blue away block, tall silver floodlight mast with a broad lamp head at a corner"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kashiwa20120311-1.JPG",
+   "licence": "CC0",
+   "author": "Waka77",
+   "view": "interior",
+   "file": "/tmp/places-evidence/tokyo/kashiwa1.jpg",
+   "used": "yellow seating, main-stand roof edge and open terrace ends"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9080485",
+   "used": "stadium outline about 152 x 129 m (stands laid out to that extent)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 105,
+    "depth": 68,
+    "colour": "#5f9a3f"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    0,
+    -57,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "depth": 20,
+    "height": 14,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 2,
+    "seat_colour": "#f0c514",
+    "seat_colour2": "#e6bd10",
+    "accent_material": "metal-cladding"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    0,
+    57,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 84,
+    "depth": 18,
+    "height": 9,
+    "roof": "none",
+    "rear": "none",
+    "storeys": 1,
+    "seat_colour": "#f0c514",
+    "seat_colour2": "#5a8fcf"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    74,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 60,
+    "depth": 19,
+    "height": 10,
+    "roof": "none",
+    "rear": "none",
+    "storeys": 1,
+    "seat_colour": "#f0c514",
+    "seat_colour2": "#f0c514"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    -74,
+    0,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 60,
+    "depth": 19,
+    "height": 10,
+    "roof": "none",
+    "rear": "none",
+    "storeys": 1,
+    "seat_colour": "#f0c514",
+    "seat_colour2": "#f0c514"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -80,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    80,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -80,
+    52,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    80,
+    52,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -60,
+    64,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "post_height": 3,
+    "facing": "south",
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -80,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 16,
+    "colour": "#bdb8ac",
+    "border_colour": "#d4d2cb"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    84,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 6,
+    "count": 18,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photos are interior views only; exterior massing (one roofed main stand, open yellow terraces, corner masts) follows them, roof detail, signage boards and the real irregular outline are simplified."
+ }
+}

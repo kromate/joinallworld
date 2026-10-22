@@ -1,0 +1,404 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u0e42\u0e23\u0e07\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25\u0e19\u0e04\u0e23\u0e18\u0e19_02.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/bangkok/m0_clinic2.jpg",
+   "used": "15-storey white ward slab with balcony rows, blue vertical bands and tall white end core, grey podium with blue band, lower glazed white wing and round-roofed hall in front, glass block at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u0e42\u0e23\u0e07\u0e1e\u0e22\u0e32\u0e1a\u0e32\u0e25\u0e19\u0e04\u0e23\u0e18\u0e19_03.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/bangkok/m0_clinic1.jpg",
+   "used": "same ensemble second angle"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-tower",
+   "footprint": {
+    "rect": [
+     44,
+     19
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 56,
+   "storeys": 15,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f1f1",
+    "glassColour": "#7e93a3",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.5,
+    "pattern": {
+     "kind": "balconies",
+     "faces": [
+      "front"
+     ],
+     "depth": 1.2,
+     "every": 3.2,
+     "colour": "#f4f5f5",
+     "railColour": "#dfe3e6",
+     "floors": "upper"
+    },
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9ecee",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-core",
+   "footprint": {
+    "rect": [
+     9,
+     19
+    ]
+   },
+   "at": [
+    26,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 60,
+   "storeys": 15,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f5f6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9ecee",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-panel",
+   "footprint": {
+    "rect": [
+     6,
+     1
+    ]
+   },
+   "at": [
+    19,
+    -4.4
+   ],
+   "rotDeg": 0,
+   "z0": 4,
+   "height": 52,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f3f9c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f3f9c",
+    "material": "concrete",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     50,
+     24
+    ]
+   },
+   "at": [
+    -2,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c84",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": {
+     "kind": "bands",
+     "colour": "#1f3f9c",
+     "height": 3,
+     "at": 0.2,
+     "floors": [
+      1
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c84",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    16,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#f2f3f3",
+    "glassColour": "#8fb0bd",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e7e9",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-cap",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    2,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2347a8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2347a8",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    44,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe6e6",
+    "glassColour": "#7fa7a8",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd4d4",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dome-hall",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -28,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#f1f2f1",
+    "rise": 2.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "colour": "#f2f2f0",
+    "roofColour": "#e4e6e6",
+    "vans": 1
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    16,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 10
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -34
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "balcony rows, podium detail and the second blue wing simplified; neighbouring buildings omitted"
+ }
+}

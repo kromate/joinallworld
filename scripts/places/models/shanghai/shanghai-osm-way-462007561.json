@@ -1,0 +1,299 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-462007561",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shanghai_Zoo_Entrance.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "SSYoung",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/zoo1.jpg",
+   "used": "entrance boulder (grey-tan, rounded, tapering to the right, name carved but left blank here), paved plaza with a pink border strip, dense magnolia and red-maple planting behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/462007561",
+   "used": "zoo is a 69 ha park (1127 x 958 m): too large for a building model, so only the entrance court is composed; the brief gives ticket booths, pavilions, kiosks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "boulder",
+   "at": [
+    -1,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#8f877a",
+    "smooth": true,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       4.6,
+       1.4
+      ],
+      "cx": 0
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       4.9,
+       1.6
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 2.0,
+      "ellipse": [
+       4.5,
+       1.5
+      ],
+      "cx": 0.5
+     },
+     {
+      "z": 3.0,
+      "ellipse": [
+       3.2,
+       1.3
+      ],
+      "cx": 1.0
+     },
+     {
+      "z": 3.7,
+      "ellipse": [
+       1.2,
+       0.8
+      ],
+      "cx": 1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     2.2
+    ],
+    "height": 0.12,
+    "colour": "#c9a9a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booth-l",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -11,
+    6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e4dc",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "glassColour": "#4f6670"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a0452f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booth-r",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    11,
+    6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e4dc",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "glassColour": "#4f6670"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a0452f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 3.4,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#a0452f",
+    "edgeColour": "#e8e4dc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d6d0c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10,
+    "line": 10,
+    "colour": "#3f7a3c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 9,
+    "line": 8,
+    "colour": "#7a3038"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 2.2,
+    "colour": "#8b6b4a",
+    "cap_colour": "#a0452f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     28
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only the entrance boulder is seen in the photo; ticket booths, canopy, pavilion and planting are typical placeholders; the 69 ha park (Swan Lake, animal houses, lawns) is not modelled"
+ }
+}

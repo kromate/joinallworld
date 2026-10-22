@@ -1,0 +1,189 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mitsui_Outlet_Park_KLIA_Sepang_exterior_(211128)_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "*angys*",
+   "view": "front",
+   "file": "/tmp/places-evidence/kuala-lumpur/mi2.jpg",
+   "used": "plain blank walls: light grey concrete and white render, tall maroon horizontal-plank cladding tower, red panel band over grey lower band, low white entrance canopy, blank gold logo board"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mitsui_Outlet_Park_KLIA_Sepang.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "front",
+   "used": "long white wall with hoarding boards, maroon end block, low covered walkway along the car park, brick paver car park, central raised roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1033470607",
+   "used": "real outline of the mall (346 x 142 m), scaled to fit the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.03
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "346 m mall is shown at 0.34 scale; wall panels are generic (no horizontal plank cladding on the maroon tower, no hoarding boards), entrance canopy and planting simplified, MOP logo is only a blank gold board."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 8,
+    "rotDeg": 90
+   },
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4d2cb",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#d4d2cb",
+       "#e8e6df",
+       "#c8c6bf"
+      ],
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "maroon-tower",
+   "at": [
+    -8,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     9
+    ],
+    "height": 18,
+    "colour": "#7b3b32",
+    "topColour": "#6a322a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#5f2e27",
+      "height": 0.25
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-band",
+   "at": [
+    -24,
+    -26.5,
+    5
+   ],
+   "params": {
+    "rect": [
+     16,
+     1
+    ],
+    "height": 6,
+    "colour": "#b24a3a",
+    "topColour": "#b24a3a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -28,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 4,
+    "height": 4.4,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 4,
+    "bottom": 8,
+    "colour": "#c8963a",
+    "frameColour": "#e0dcd0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -33,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14,
+    "count": 2,
+    "spread": 4,
+    "line": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   118,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -34
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-way-1033470607"
+}

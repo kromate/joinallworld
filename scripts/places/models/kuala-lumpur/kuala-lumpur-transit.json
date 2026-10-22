@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kepong_Sentral_KTM_Station_(KA07)_Overall_View_(221106)_1.jpg",
+   "licence": "CC0",
+   "author": "Wiki Farazi",
+   "view": "front",
+   "file": "/tmp/places-evidence/kuala-lumpur/kepong.jpg",
+   "used": "low cream-yellow ticket hall with grey pitched metal roof and blue fascia, blue barrel-roofed covered stairs and link bridge rising to the right, blue cladding on stair core, open forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1339171176",
+   "used": "platform canopy outline (151 x 24 m, scaled 0.78 to fit the scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 4,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform-roof",
+   "footprint": {
+    "polygon": [
+     [
+      -58.2,
+      -4.1
+     ],
+     [
+      -57.6,
+      13.5
+     ],
+     [
+      -15.4,
+      10.8
+     ],
+     [
+      4.2,
+      8.8
+     ],
+     [
+      26.9,
+      6.0
+     ],
+     [
+      59.7,
+      1.2
+     ],
+     [
+      57.5,
+      -15.4
+     ],
+     [
+      22.2,
+      -10.5
+     ],
+     [
+      -13.2,
+      -6.4
+     ]
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 8,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a5fa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9aa6",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 8,
+      "colour": "#9aa0a6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -50,
+     0
+    ],
+    "end": [
+     52,
+     -12
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -36,
+    -14
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c98c",
+    "windows": "none",
+    "bands": "#2a5fa8",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa5b0",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -18,
+    -18,
+    3.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 6,
+    "height": 0,
+    "columns": 6,
+    "colour": "#2a5fa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     5
+    ],
+    "height": 3.6,
+    "colour": "#e0c98c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     10
+    ],
+    "height": 13,
+    "colour": "#2a5fa8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.2,
+      2.8
+     ]
+    },
+    "points": [
+     [
+      -2,
+      -16,
+      3.0
+     ],
+     [
+      10,
+      -16,
+      6.0
+     ],
+     [
+      24,
+      -15,
+      10.5
+     ],
+     [
+      34,
+      -14,
+      11.5
+     ],
+     [
+      60,
+      -10,
+      11.5
+     ]
+    ],
+    "colour": "#2e63b0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "link bridge is a flat-roofed box not a barrel vault; ticket hall and stair core positions approximate; no neighbouring towers"
+ }
+}

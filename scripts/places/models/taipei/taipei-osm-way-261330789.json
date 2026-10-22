@@ -1,0 +1,282 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-261330789",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:IMAG09395_Taipei.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "張聖佑",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/taipei/tumt0.jpg",
+   "used": "campus on the river bank: one large cream flat-roofed block of about five storeys, a long white block with a red roof beside it, small lower buildings, a pontoon pier with blue pylons on the water side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E5%8F%B0%E5%8C%97%E6%B5%B7%E6%B4%8B%E6%8A%80%E8%A1%93%E5%AD%B8%E9%99%A2DSC_5042.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Taiwankengo",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/taipei/tumt1.jpg",
+   "used": "layout of blocks along the quay, river on two sides"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/261330789",
+   "used": "grounds 268 x 223 m, long axis bearing 121 deg: blocks are rotated to that axis and compressed into the 118 m clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 30,
+  "aspect": 1.8
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     58,
+     13
+    ]
+   },
+   "at": [
+    -2,
+    -6
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e4dcb4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-wing",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -38,
+    -4
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#dcd3b0",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-roof-hall",
+   "footprint": {
+    "rect": [
+     46,
+     11
+    ]
+   },
+   "at": [
+    -18,
+    16
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#f0ece4",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b8443a",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-block",
+   "footprint": {
+    "rect": [
+     20,
+     11
+    ]
+   },
+   "at": [
+    30,
+    10
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d6d2c4",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gym",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    10,
+    34
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9ccd0",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#9aa3ab",
+    "rise": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dorm",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    34
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e8d9c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#d22b2b",
+     "#2a5fb0"
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#b9b6ad"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -5
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "photo is a distant aerial so block sizes and positions are estimated; river, quay, pontoon pier with blue pylons, mangrove and surrounding town are not modelled; campus compressed into the 118 m clamp"
+ }
+}

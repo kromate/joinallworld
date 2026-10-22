@@ -1,0 +1,328 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Escola_Luso-Chinesa_T%C3%A9cnico-Profissional_(Front_Door).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jacklamf1d14",
+   "view": "front",
+   "file": "/tmp/places-evidence/macau/sch1.jpg",
+   "used": "cream rendered convex front walls, glass-curtain central drum with gold mullions, free-standing white round columns, mauve-grey base, black railing at the pavement"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9709543",
+   "used": "overall size (125x91 m), 22 m height and the U arrangement; not traced because the outline is diagonal and jagged"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "upper floors not seen in the photo (trees hide them), so the six-storey block behind is typed from OSM height; exact curvature, mullion grid and banyan trees not modelled"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     74,
+     22
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcf",
+    "windows": "none",
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowRatio": 0.3,
+    "bay": 8,
+    "plinth": 1.2,
+    "bands": "#cfc6b2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.6
+   },
+   "storeys": 6
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     18,
+     34
+    ]
+   },
+   "at": [
+    -30,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcf",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "windowRatio": 0.3,
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.6
+   },
+   "storeys": 6
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     18,
+     34
+    ]
+   },
+   "at": [
+    30,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcf",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "windowRatio": 0.3,
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.6
+   },
+   "storeys": 6
+  },
+  {
+   "type": "mass",
+   "id": "glass-drum",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     20,
+     20
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a3d44",
+    "windows": "none",
+    "glassColour": "#2d3238",
+    "trimColour": "#d8b83a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-l",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -22,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcf",
+    "windows": "none",
+    "bands": "#bdb59f",
+    "plinth": 1.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-r",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    22,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcf",
+    "windows": "none",
+    "bands": "#bdb59f",
+    "plinth": 1.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "lod1Step": 2,
+    "mode": "line",
+    "start": [
+     -33,
+     -13,
+     0
+    ],
+    "end": [
+     33,
+     -13,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.7,
+      "n": 10,
+      "height": 12,
+      "colour": "#f3f1ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.1,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "flag",
+   "lod": [
+    0
+   ],
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "lod": [
+    0
+   ],
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-330769741"
+}

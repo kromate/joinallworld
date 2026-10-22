@@ -1,0 +1,190 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Toi_San_Market.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Whhalbert",
+   "view": "street",
+   "used": "long two-storey market slab, beige mosaic-tile walls with grey concrete frame, amber timber-louvre balconies along upper front, white perforated breeze-block panels at ground, taller end block with louvred door",
+   "file": "/tmp/places-evidence/macau/market.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/334453286",
+   "used": "footprint 84 x 15 m, height 11 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 50,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market",
+   "footprint": {
+    "rect": [
+     84,
+     14.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c8b497",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#a8a59c",
+    "plinth": 1.0,
+    "bay": 4.2,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9193",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-block",
+   "at": [
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     13
+    ],
+    "height": 12.5,
+    "colour": "#c8b497",
+    "topColour": "#8f9193"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "vent-panels",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -7.55
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.3
+    ],
+    "z0": 0.6,
+    "height": 3.2,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "array",
+   "id": "louvre-balconies",
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -34,
+     -8.0,
+     6.4
+    ],
+    "end": [
+     26,
+     -8.0,
+     6.4
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        5.2,
+        1.8
+       ],
+       "height": 0.4,
+       "colour": "#b5b0a6"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.7,
+       0.4
+      ],
+      "params": {
+       "rect": [
+        5.2,
+        0.3
+       ],
+       "height": 2.4,
+       "colour": "#dba94f"
+      }
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30,
+    -7.7
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.4
+    ],
+    "z0": 8.6,
+    "height": 1.6,
+    "colour": "#5a5048"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   110,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-market-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no breeze-block panels, window frames and stepped roofline simplified; louvre balconies roughly placed"
+ }
+}

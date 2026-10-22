@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-way-173131856",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CCK-Lot1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "mailer_diablo",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/lotone1.jpg",
+   "used": "stone-beige rounded corner, big curved glazed bands on levels 2-3, open pillared ground storey, tinted glass pyramid roof element"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lot_One_Mall.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Brhb25",
+   "view": "front",
+   "used": "curved bay window, ribbon glazing strip along the long side, sloping grey-glass upper floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/173131856",
+   "used": "footprint, levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbca4",
+    "windows": "ribbon",
+    "windowRatio": 0.62,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "colour": "#b9a68e",
+      "inset": 2,
+      "spacing": 9,
+      "width": 1.2
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f90",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-top",
+   "footprint": {
+    "osm": true,
+    "scale": 0.62,
+    "simplify": 4
+   },
+   "z0": 22,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#58788a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c7a82"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.5,
+    "bottom": 6.5,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -55
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 9,
+    "line": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Curved glazed corner bays, sloping glass roof element and open pillared storeys are only approximated; mass is a straight-walled OSM extrusion"
+ }
+}

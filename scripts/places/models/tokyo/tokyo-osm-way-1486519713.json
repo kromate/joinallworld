@@ -1,0 +1,425 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zojo-ji_Temple_Minata_Tokyo_August_2014_04.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Piotrus",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/ona1.jpg",
+   "used": "vermilion-lacquer posts and beams, dark recessed walls, white-and-red bracket tier, big grey tiled hip-and-gable roof with gilded edge and curved eaves, kara-hafu gable on the front, stone base, black iron railings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E5%A2%97%E4%B8%8A%E5%AF%BA_(%E7%B5%B5%E8%91%89%E6%9B%B801)_%E5%8F%B0%E5%BE%B3%E9%99%A2%E6%AE%BF_%E9%9C%8A%E5%BB%9F_%E6%83%A3%E9%96%80.jpg",
+   "licence": "Public domain",
+   "author": "Unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/ona2.jpg",
+   "used": "historic postcard: front gable shape and a gate of similar form"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1486519713",
+   "used": "size (about 8 x 6 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-base",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#85857f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d87"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wall",
+   "footprint": {
+    "rect": [
+     8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    2.6
+   ],
+   "z0": 0.7,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e1a12",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e1a12"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall-w",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.2
+    ]
+   },
+   "at": [
+    -3.9,
+    0
+   ],
+   "z0": 0.7,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e1a12",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e1a12"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall-e",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.2
+    ]
+   },
+   "at": [
+    3.9,
+    0
+   ],
+   "z0": 0.7,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e1a12",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e1a12"
+   }
+  },
+  {
+   "type": "array",
+   "id": "front-pillars",
+   "at": [
+    0,
+    0,
+    0.7
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.9,
+     -2.6,
+     0
+    ],
+    "end": [
+     3.9,
+     -2.6,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 10,
+      "radius": 0.3,
+      "height": 4.6,
+      "colour": "#b32a1d"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "rear-pillars",
+   "at": [
+    0,
+    0,
+    0.7
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.9,
+     2.6,
+     0
+    ],
+    "end": [
+     3.9,
+     2.6,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 10,
+      "radius": 0.3,
+      "height": 4.6,
+      "colour": "#b32a1d"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tie-beam-front",
+   "at": [
+    0,
+    -2.6,
+    3.9
+   ],
+   "params": {
+    "rect": [
+     8.6,
+     0.5
+    ],
+    "height": 0.6,
+    "colour": "#b32a1d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tie-beam-low",
+   "at": [
+    0,
+    -2.6,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     8.2,
+     0.3
+    ],
+    "height": 0.4,
+    "colour": "#b32a1d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-leaf-w",
+   "at": [
+    -1.8,
+    0,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     3.0
+    ],
+    "height": 3.6,
+    "colour": "#7a1d14"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bracket-band",
+   "at": [
+    0,
+    0,
+    4.55
+   ],
+   "params": {
+    "rect": [
+     9.4,
+     6.4
+    ],
+    "height": 1.1,
+    "colour": "#f2f0ea",
+    "bottom": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bracket-eave",
+   "at": [
+    0,
+    0,
+    5.4
+   ],
+   "params": {
+    "rect": [
+     10.4,
+     7.4
+    ],
+    "height": 0.5,
+    "colour": "#b32a1d"
+   }
+  },
+  {
+   "type": "mosque-domed/curved-roof",
+   "at": [
+    0,
+    0,
+    5.9
+   ],
+   "params": {
+    "width": 10.6,
+    "depth": 7.6,
+    "rise": 2.6,
+    "overhang": 1.3,
+    "upturn": 0.7,
+    "colour": "#4b4e53",
+    "trim": "#c9a23a",
+    "material": "clay-tile",
+    "ridge": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "karahafu",
+   "at": [
+    0,
+    -3.3,
+    6.4
+   ],
+   "params": {
+    "colour": "#4b4e53",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.4,
+       1.2
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       2.6,
+       0.9
+      ]
+     },
+     {
+      "z": 2.2,
+      "rect": [
+       0.8,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4.8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.7,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#85857f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -3.4,
+    0.7
+   ],
+   "params": {
+    "length": 5.5,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#26282b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    1.8,
+    -3.4,
+    0.7
+   ],
+   "params": {
+    "length": 5.5,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#26282b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     8
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-way-1486519713",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Eaves bracket complexes, gilded edges and the curved kara-hafu gable are simplified (gable reads as a plain pyramid); lacquer reads brick-textured; railings and hall bays simplified."
+ }
+}

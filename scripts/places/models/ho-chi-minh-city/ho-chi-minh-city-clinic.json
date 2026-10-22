@@ -1,0 +1,367 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:City_International_Hospital_Vietnam.jpg",
+   "licence": "CC0",
+   "author": "Keronii",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/p1_0.jpg",
+   "used": "stepped massing: peach low base wing, white-grey eight-storey wings with ribbon windows, taller glazed central tower with vertical orange mullions, canopy over entrance, tree-lined road"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1211762403",
+   "used": "overall size (about 103 x 49 m); real outline is irregular, volumes recomposed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.646,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    14,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a27c",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#e8d2c0",
+    "plinth": 0.4,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    -27,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 32,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e6e2",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "bands": "#cfd2d4",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     32,
+     16
+    ]
+   },
+   "at": [
+    36,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ebed",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "bands": "#cfd3d6",
+    "plinth": 0.4,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3e6fb0",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     24,
+     20
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 36,
+   "storeys": 10,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f9c92",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e6e6e2",
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d4",
+    "parapet": 0.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 36,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    9
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.6
+      ],
+      "height": 27,
+      "colour": "#e09a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3,
+     -8.4,
+     0
+    ],
+    "end": [
+     3,
+     -8.4,
+     0
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tail",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    30,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d0d0cc",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 8,
+    "height": 4.6,
+    "thickness": 0.5,
+    "columns": 4,
+    "colour": "#b8bfc3"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-clinic",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Volumes simplified to boxes (real OSM outline is irregular); no brown podium end block, entrance canopy and roof details approximate."
+ }
+}

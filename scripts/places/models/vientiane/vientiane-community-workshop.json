@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_University_of_Laos(NUOL)%E0%BA%A1.%E0%BA%8A_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Sian (panoramio)",
+   "view": "front",
+   "file": "/tmp/places-evidence/vientiane/nuol.jpg",
+   "used": "two-storey cream block, big red hip tile roof, central triangular Lao-style pediment over a columned portico, gabled end bays with arched windows, balcony rails, lawn and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/182528285",
+   "used": "overall size only (38 x 25 m); photo block is modelled wider"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     56,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "punched"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b2412c",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-bay-l",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    -23,
+    -10.5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdc",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#b2412c",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-bay-r",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    23,
+    -10.5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdc",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#b2412c",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-roof",
+   "footprint": {
+    "rect": [
+     13,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -12.5
+   ],
+   "z0": 4.4,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b2412c",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -7
+   ],
+   "z0": 7.6,
+   "height": 3.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3eedf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#b2412c",
+    "material": "clay-tile",
+    "pitch": 58,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -14.6,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "count": 6,
+    "height": 4.4,
+    "radius": 0.4,
+    "colour": "#e8c98e",
+    "beamHeight": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.6,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#d8d2c3"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -15,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -17
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -17
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "no carved gable ornament or crest; arched stair-tower glazing simplified; garden hedges and balcony rails omitted"
+ }
+}

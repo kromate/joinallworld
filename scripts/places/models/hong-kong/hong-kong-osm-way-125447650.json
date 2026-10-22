@@ -1,0 +1,415 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-way-125447650",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jordan_Valley_Park_Overview1_201308.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Wing1990hk",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/1_0.jpg",
+   "used": "wide open lawn with scattered clipped shrubs and a pale path, low community buildings and tree line at the far edge, three tall beige housing towers and steep green hill behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jordan_Valley_Park,_Central_Lawn_(Hong_Kong).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mk2010",
+   "view": "front",
+   "used": "flat central lawn framed by towers and low buildings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/125447650",
+   "used": "identity; 373 x 300 m outline exceeds the scene clamp so a lawn portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 80,
+    "colour": "#5a9a2e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -45,
+      38
+     ],
+     [
+      -10,
+      36
+     ],
+     [
+      20,
+      40
+     ],
+     [
+      45,
+      38
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbb7a3"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    8,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#47703a"
+     ],
+     [
+      2.2,
+      0.4,
+      "#47703a"
+     ],
+     [
+      2.0,
+      1.4,
+      "#55803f"
+     ],
+     [
+      0.8,
+      2.0,
+      "#55803f"
+     ],
+     [
+      0,
+      2.1,
+      "#55803f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    26,
+    12,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#47703a"
+     ],
+     [
+      2.6,
+      0.4,
+      "#47703a"
+     ],
+     [
+      2.4,
+      1.6,
+      "#55803f"
+     ],
+     [
+      1.0,
+      2.3,
+      "#55803f"
+     ],
+     [
+      0,
+      2.4,
+      "#55803f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    34,
+    12,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#47703a"
+     ],
+     [
+      2.4,
+      0.4,
+      "#47703a"
+     ],
+     [
+      2.2,
+      1.5,
+      "#55803f"
+     ],
+     [
+      0.9,
+      2.1,
+      "#55803f"
+     ],
+     [
+      0,
+      2.2,
+      "#55803f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    44,
+    40,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#3f8f7a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    -34,
+    40
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c9a6",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bands": "#a89c84"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ad9c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    26,
+    48
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0d0",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bands": "#a89c84"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ad9c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-1",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    -26,
+    70
+   ],
+   "height": 92,
+   "storeys": 10,
+   "wall": {
+    "material": "render",
+    "colour": "#d9c19a",
+    "windows": "none",
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-2",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    -2,
+    74
+   ],
+   "height": 80,
+   "storeys": 10,
+   "wall": {
+    "material": "render",
+    "colour": "#b89f7e",
+    "windows": "none",
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-3",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    22,
+    70
+   ],
+   "height": 96,
+   "storeys": 10,
+   "wall": {
+    "material": "render",
+    "colour": "#d6bd96",
+    "windows": "none",
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    43,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 8,
+    "count": 8,
+    "min_height": 6,
+    "max_height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -15,
+    30,
+    0
+   ],
+   "params": {
+    "height": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    10,
+    34,
+    0
+   ],
+   "params": {
+    "height": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "towers are plain striped blocks without their crown caps or balcony texture; hillside backdrop and playground are not modelled; lawn reads pale in the render and the foreground is empty compared with the photo"
+ }
+}

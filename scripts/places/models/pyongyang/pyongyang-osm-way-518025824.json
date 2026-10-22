@@ -1,0 +1,183 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/518025824",
+   "used": "real outline of the residence building (about 90 x 81 m, irregular stepped plan)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: guarded walled compound, 1983, two storeys, green-tiled hip roof; no public photograph found, so the wall, gate and planting are typical rather than surveyed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "residence",
+   "footprint": {
+    "osm": true,
+    "simplify": 3.0
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#d6cbb4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.8,
+    "bay": 6.5,
+    "cornice": true,
+    "bands": "#b9b6ae"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b7a5a",
+    "material": "clay-tile",
+    "parapet": 0.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "compound-wall",
+   "params": {
+    "points": [
+     [
+      -66,
+      -58
+     ],
+     [
+      -66,
+      54
+     ],
+     [
+      72,
+      54
+     ],
+     [
+      72,
+      -58
+     ],
+     [
+      10,
+      -58
+     ]
+    ],
+    "height": 3.0,
+    "thickness": 0.6,
+    "colour": "#cfc7b4",
+    "pillarEvery": 8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "compound-wall-w",
+   "params": {
+    "points": [
+     [
+      -12,
+      -58
+     ],
+     [
+      -66,
+      -58
+     ]
+    ],
+    "height": 3.0,
+    "thickness": 0.6,
+    "colour": "#cfc7b4",
+    "pillarEvery": 8
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "gate",
+   "at": [
+    -1,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "height": 4,
+    "pillar": 1.6,
+    "leaf": "bars",
+    "colour": "#cfc7b4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "pines-w",
+   "at": [
+    -56,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 5,
+    "spread": 8,
+    "line": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "pines-e",
+   "at": [
+    64,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 5,
+    "spread": 8,
+    "line": 90
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    -10,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 22,
+    "colours": [
+     "#c8362f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-518025824",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photograph exists; real outline extruded with a flat green roof instead of the true roof form, wall, gate and planting are typical rather than surveyed."
+ }
+}

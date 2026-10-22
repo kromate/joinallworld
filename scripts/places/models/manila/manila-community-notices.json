@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/7971722",
+   "used": "Main Building footprint (U plan about 97x90 m, containing match)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Batasang_Pambansa_Complex",
+   "used": "architect Felipe Mendoza 1978, brutalist, concrete fins, flanking wings; no usable photo of the Main Building found (Commons has the south gate and the MRT station only)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d0cabb",
+    "windows": "none",
+    "plinth": 1.2,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "colour": "#b9b3a3"
+     },
+     {
+      "type": "bands",
+      "colour": "#9a9a94"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 1.0,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -8,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 2.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -52,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -18,
+    -52,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    2,
+    -52,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the Main Building: real OSM outline with brutalist fin pattern from text; fin rhythm, colonnade and wing details are guesses."
+ }
+}

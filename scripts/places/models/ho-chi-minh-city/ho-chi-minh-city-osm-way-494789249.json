@@ -1,0 +1,216 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chua_Vinh_Nghiem.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "ntt",
+   "view": "street",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/vn1.jpg",
+   "used": "seven-tier cream tower with orange-tile swept eaves and dark finial, tam quan gate with two-tier tiled roofs and grey piers, low boundary wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ch%C3%B9a_V%C4%A9nh_Nghi%C3%AAm.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bui Thuy Dao Nguyen",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/vn2.jpg",
+   "used": "main hall: two-tier orange tile roof with ridge ornaments, cream walls, wide white stair flights, yellow undercroft"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/343886793",
+   "used": "main hall footprint (zig-zag plan about 48 x 34 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3b8",
+    "windows": "none",
+    "plinth": 1.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d9a441"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4623a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 46,
+   "z0": 7,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4623a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 2.4
+   }
+  },
+  {
+   "type": "mosque-domed/pagoda-tower",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "storeys": 7,
+    "base_width": 14,
+    "height": 46,
+    "sides": 4,
+    "colour": "#efe3b8",
+    "accent": "#a8332a",
+    "cap_colour": "#c4623a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    -36,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 7,
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -36,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 7,
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -36,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     13,
+     2.2
+    ],
+    "height": 1.5,
+    "colour": "#b8b2a4"
+   }
+  },
+  {
+   "type": "mosque-domed/pagoda-roof",
+   "at": [
+    18,
+    -36,
+    7
+   ],
+   "params": {
+    "width": 14,
+    "depth": 7,
+    "rise": 2.4,
+    "overhang": 1.4,
+    "colour": "#c4623a"
+   }
+  },
+  {
+   "type": "mosque-domed/pagoda-roof",
+   "at": [
+    18,
+    -36,
+    10
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "rise": 2.2,
+    "overhang": 1.2,
+    "colour": "#c4623a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower is shorter and plainer than the photo (no dark finial, no balcony detail), gate is a single-roof kiosk not the two-tier tam quan, no boundary wall or street; hall roof is a generic hip."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-494789249"
+}

@@ -1,0 +1,196 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-1197004281",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E6%96%B0%E5%BA%97_%E8%A3%95%E9%9A%86%E5%9F%8E_2023-11-02_%282%29.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Foxy1219",
+   "view": "street",
+   "file": "/tmp/places-evidence/taipei/yes2.jpg",
+   "used": "blue reflective curtain-wall glass with white mullion grid, dark stone-and-metal podium with entrance, stepped upper masses, white roof screen at the top, blank sign boards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E6%96%B0%E5%BA%97_%E8%A3%95%E9%9A%86%E5%9F%8E_2023-11-02_%281%29.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Foxy1219",
+   "view": "street",
+   "file": "/tmp/places-evidence/taipei/yes1.jpg",
+   "used": "podium colour, paved plaza pattern, forecourt sign"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1197004281",
+   "used": "footprint, 8 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 8,
+  "fovDeg": 60,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "osm": true,
+    "simplify": 5.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a4e54",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "towerbody",
+   "footprint": {
+    "osm": true,
+    "simplify": 5.0,
+    "scale": 0.97
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 9,
+   "height": 29,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7a9cc0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 13,
+    "bands": "#c9ccd0",
+    "parapet": 1.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-plant",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -12,
+    6
+   ],
+   "rotDeg": -33,
+   "z0": 38,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9d6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -34,
+    22
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#b3262c",
+    "frameColour": "#3b3f45",
+    "posts": false
+   },
+   "rotDeg": -33
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -38,
+    2.5
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#e2b02c",
+    "frameColour": "#2a2a2a",
+    "posts": true
+   },
+   "rotDeg": -33
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#b9b6ad"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -25,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "podium and tower reduced to two plain volumes, no stepped corner masses, no signage mass or white roof screen; mullion grid coarser than the real glazing; footprint simplified to stay in budget"
+ }
+}

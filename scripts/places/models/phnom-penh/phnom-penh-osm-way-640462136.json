@@ -1,0 +1,160 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/640462136",
+   "used": "footprint 39 x 25 m, bearing 91 degrees"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q16256278",
+   "used": "university founded 2002; four storeys, cream render with glass ribbon from the brief (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "polygon": [
+     [
+      -19.6,
+      -12.5
+     ],
+     [
+      -19.3,
+      12.9
+     ],
+     [
+      19.6,
+      12.5
+     ],
+     [
+      19.3,
+      -12.9
+     ]
+    ]
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "plinth": 0.4,
+    "bands": "#7fa3b5",
+    "faces": {
+     "front": "ribbon",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "colour": "#e4c46a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-glass",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -13.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.2
+    ],
+    "height": 15.6,
+    "colour": "#7fa3b5"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 0.6,
+    "colour": "#e4c46a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -21,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 2,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-osm-way-640462136"
+}

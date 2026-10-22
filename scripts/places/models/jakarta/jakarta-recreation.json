@@ -1,0 +1,509 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Central_Jakarta_-_Lapangan_Banteng_(2025)_-_img_08.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Chainwit.",
+   "view": "front",
+   "file": "/tmp/places-evidence/jakarta/banteng1.jpg",
+   "used": "West Irian Liberation Monument: twin slender pylons joined at top and mid-height carrying a dark bronze figure with raised arms, white podium with broad steps, white ivy-topped wall blocks either side, lawn left, concrete paving, floodlight mast and flag row, tall white block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28705164",
+   "used": "park size only (about 360 x 318 m; the modelled core is the central monument precinct)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "viewpoint is on the monument axis, the photo is off-axis from the left; ivy walls, stepped podium and statue pose simplified; no big shade trees or pond; backdrop block is generic"
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 90,
+    "colour": "#bdb5a6",
+    "border_colour": "#a79f90"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    -55,
+    -62,
+    0.02
+   ],
+   "params": {
+    "width": 60,
+    "depth": 60,
+    "colour": "#5f9a42"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    40,
+    0.02
+   ],
+   "params": {
+    "width": 200,
+    "depth": 60,
+    "colour": "#5f9a42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     26
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#ecebe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium-top",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     22
+    ],
+    "z0": 2.6,
+    "height": 0.6,
+    "colour": "#d5d0c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-dark",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     2
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "height": 2.6,
+    "run": 13,
+    "colour": "#ecebe6",
+    "rails": false
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "prism",
+   "id": "pylon0",
+   "at": [
+    -3.4,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     2.6
+    ],
+    "z0": 3.2,
+    "height": 38,
+    "colour": "#cfc6b4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon1",
+   "at": [
+    3.4,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     2.6
+    ],
+    "z0": 3.2,
+    "height": 38,
+    "colour": "#cfc6b4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tie-top",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.6,
+     2.6
+    ],
+    "z0": 41.2,
+    "height": 1.2,
+    "colour": "#cfc6b4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tie-mid",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.6,
+     2.6
+    ],
+    "z0": 20,
+    "height": 1.0,
+    "colour": "#cfc6b4"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    0,
+    42.4
+   ],
+   "params": {
+    "height": 10.5,
+    "pose": "stand",
+    "colour": "#2f2d2b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-1",
+   "at": [
+    -60,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     52,
+     5
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#ecebe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ivy-1",
+   "at": [
+    -60,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     51,
+     2.4
+    ],
+    "z0": 3.4,
+    "height": 1.6,
+    "colour": "#6b8a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall1",
+   "at": [
+    45,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     5
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#ecebe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ivy1",
+   "at": [
+    45,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     19,
+     2.4
+    ],
+    "z0": 3.4,
+    "height": 1.6,
+    "colour": "#6b8a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-r",
+   "at": [
+    52,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "z0": 0,
+    "height": 5,
+    "colour": "#ecebe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-r-ivy",
+   "at": [
+    52,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     15,
+     14
+    ],
+    "z0": 5,
+    "height": 1.6,
+    "colour": "#6b8a4a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    46.5
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -2.6,
+      0,
+      3.6
+     ]
+    ],
+    "radius": 0.4,
+    "colour": "#2f2d2b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    46.5
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      2.6,
+      0,
+      3.6
+     ]
+    ],
+    "radius": 0.4,
+    "colour": "#2f2d2b"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#b5b9bd"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -62,
+    6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 16,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.15,
+       0.15
+      ],
+      "height": 13,
+      "colour": "#d9dcdf"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "backdrop",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    42,
+    62
+   ],
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6df",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e8e6df",
+       "#9fb0b8"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b8b4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -85,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -90,
+     -15
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     60
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ }
+}

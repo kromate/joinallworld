@@ -1,0 +1,352 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-osm-way-1464119566",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_Thai_Air_Force_Museum_-_panoramio_(5).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kasom SKULTAB",
+   "view": "front",
+   "file": "/tmp/places-evidence/bangkok/rtaf1.jpg",
+   "used": "long white concrete hall with plain upper panelled band, deep flat entrance canopy on slim round columns, dark glazed ground storey, stepped plinth with bronze statue at the right, back hall stepping up"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ROYAL_THAI_AIR_FORCE_MUSEUM_Photographs_by_Peak_Hora_01.jpg",
+   "licence": "CC BY 3.0",
+   "author": "PEAK99",
+   "view": "detail",
+   "used": "cream stone-clad gate wall, white flagpoles with flags"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1464119566",
+   "used": "museum site extent only (296 x 185 m); the front hall is modelled at its photographed scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": -16,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.33,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-hall",
+   "footprint": {
+    "rect": [
+     70,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e7ea",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-ground",
+   "footprint": {
+    "rect": [
+     52,
+     2
+    ]
+   },
+   "at": [
+    -6,
+    -13.4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f4a52",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-band",
+   "footprint": {
+    "rect": [
+     70,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -12.5
+   ],
+   "z0": 4.8,
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0f2",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0e3e6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -10,
+    -18,
+    5.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 40,
+    "depth": 12,
+    "height": 0.0,
+    "thickness": 1.0,
+    "columns": 6,
+    "colour": "#eef0f2",
+    "edgeColour": "#d4d7da",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-hall",
+   "footprint": {
+    "rect": [
+     34,
+     30
+    ]
+   },
+   "at": [
+    26,
+    22
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfd2d4",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbf",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin",
+   "footprint": {
+    "rect": [
+     1.6,
+     6
+    ]
+   },
+   "at": [
+    19,
+    -10
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0e3e6",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0e3e6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -13.2,
+    8.2
+   ],
+   "params": {
+    "width": 22,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#d9c25a",
+    "frameColour": "#e0e3e6",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    32,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.25,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#2f3033"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    30,
+    -18,
+    1.0
+   ],
+   "params": {
+    "height": 6,
+    "steps": 2,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#2f2a24"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -42,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 2.5,
+    "colour": "#b43a3a",
+    "colours": [
+     "#b43a3a",
+     "#f2efe6",
+     "#2a3d7c"
+    ]
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#9ea3a6",
+    "count": 1,
+    "spacing": 3.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -28,
+    48,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "hall-2",
+   "footprint": {
+    "rect": [
+     48,
+     22
+    ]
+   },
+   "at": [
+    -24,
+    40
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfd2d4",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "metal-sheet",
+    "pitch": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Camera is closer in the photo; statue plinth and stepped pylon wall are simplified, canopy columns thin, upper band blank, back hall plain; site extent mostly car park."
+ }
+}

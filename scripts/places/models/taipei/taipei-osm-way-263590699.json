@@ -1,0 +1,304 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-263590699",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E8%A1%8C%E4%BF%AE%E5%AE%AE%EF%BC%88%E8%A1%8C%E5%A4%A9%E5%AE%AE%E4%B8%89%E5%B3%BD%E5%88%86%E5%AE%AE%EF%BC%89.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "寺人孟子",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/hsing0.jpg",
+   "used": "wide low front hall, overlapping swept orange-tile roofs with red ridges, grey stone columns, red studded doors, red brick end wall, stone-paved plaza, wooded hill behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E8%A1%8C%E4%BF%AE%E5%AE%AE(%E8%A1%8C%E5%A4%A9%E5%AE%AE%E4%B8%89%E5%B3%BD%E5%88%86%E5%AE%AE).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Z21413",
+   "view": "detail",
+   "used": "central tall gable with upswept ridge over the entrance, door and column layout"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/263590699",
+   "used": "grounds extent only (250 x 204 m); main hall composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     56,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8d8b88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wall",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0.9,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8452f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e0702c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-hall",
+   "footprint": {
+    "rect": [
+     44,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0.9,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a8785",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a3a2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall-r",
+   "footprint": {
+    "rect": [
+     4,
+     22
+    ]
+   },
+   "at": [
+    26,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0.9,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8452f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e0702c",
+    "material": "clay-tile",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -11.2,
+    0.9
+   ],
+   "params": {
+    "length": 42,
+    "count": 8,
+    "height": 6,
+    "radius": 0.55,
+    "colour": "#7c7b79",
+    "beamHeight": 0.6
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    -5,
+    5.6
+   ],
+   "params": {
+    "width": 50,
+    "depth": 18,
+    "rise": 2.2,
+    "overhang": 2.8,
+    "upturn": 1.6,
+    "colour": "#e0702c",
+    "trim": "#b22a1c"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    -14,
+    -5,
+    6.4
+   ],
+   "params": {
+    "width": 20,
+    "depth": 16,
+    "rise": 2.0,
+    "overhang": 2.2,
+    "upturn": 1.4,
+    "colour": "#e0702c",
+    "trim": "#b22a1c"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    14,
+    -5,
+    6.4
+   ],
+   "params": {
+    "width": 20,
+    "depth": 16,
+    "rise": 2.0,
+    "overhang": 2.2,
+    "upturn": 1.4,
+    "colour": "#e0702c",
+    "trim": "#b22a1c"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    -5,
+    8.0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 12,
+    "rise": 2.6,
+    "overhang": 2.0,
+    "upturn": 1.4,
+    "colour": "#e0702c",
+    "trim": "#b22a1c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13.6,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 0.9,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#7c7b79"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -11.8,
+    6.1
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#a8352a",
+    "frameColour": "#d9b24a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     0
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no carved ridge dragons or swallowtail finials, dark colonnade hidden behind front wall, grounds and hill backdrop simplified, central gable only approximated"
+ }
+}

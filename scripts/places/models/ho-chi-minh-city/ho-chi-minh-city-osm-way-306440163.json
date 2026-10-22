@@ -1,0 +1,177 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mat_tien_SIU.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Siuvietnam",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/siu2.jpg",
+   "used": "six-storey grey and glass block with framed glazing bays, glass corner, blank sign band on the parapet, three flag poles, low stone sign wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saigon_International_University_2010.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AHS",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/siu1.jpg",
+   "used": "white arched gate canopy, paved forecourt, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/306440163",
+   "used": "long campus building outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true,
+    "simplify": 1
+   },
+   "height": 23,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b4bcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 9,
+    "bands": "#6b6a78",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#5d5e70"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcc0",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     28,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "z0": 23,
+   "height": 2.2,
+   "storeys": 1,
+   "rotDeg": 0,
+   "wall": {
+    "material": "render",
+    "colour": "#e9ebee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d7d9dc"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "count": 3,
+    "spacing": 5,
+    "colours": [
+     "#d9a52b",
+     "#c8281f",
+     "#2e4a8a"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "height": 2.2,
+    "bottom": 0.4,
+    "colour": "#dfe4e4",
+    "frameColour": "#9aa0a0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 6,
+    "line": 30
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo shows only the 6-storey front block with framed glazing bays; the model uses the full 181 m OSM outline with generic ribbon glazing, no glass corner or dark framing grid, flags are small."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -25
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -25
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-306440163"
+}

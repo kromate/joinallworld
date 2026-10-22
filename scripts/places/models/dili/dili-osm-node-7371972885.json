@@ -1,0 +1,455 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-node-7371972885",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dolok_Oan_Beach,_2018_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/dili/do1.jpg",
+   "used": "crescent bay of pale sand, turquoise shallows, steep tan-brown dry headland behind, scrub and scattered trees on the back beach, switchback terrace with white railings above"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dolok_Oan_Beach,_2018_(02).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "aerial",
+   "used": "curve of the shoreline, cliffs at the head of the bay, sparse trees along the back of the sand"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q22813569",
+   "used": "identity: beach near Dili (no OSM outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 26,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "sea",
+   "at": [
+    -18,
+    -10
+   ],
+   "params": {
+    "points": [
+     [
+      -80,
+      -30
+     ],
+     [
+      -30,
+      -34
+     ],
+     [
+      10,
+      -26
+     ],
+     [
+      30,
+      -6
+     ],
+     [
+      34,
+      14
+     ],
+     [
+      22,
+      32
+     ],
+     [
+      0,
+      50
+     ],
+     [
+      -80,
+      56
+     ]
+    ],
+    "z0": -0.2,
+    "height": 0.2,
+    "colour": "#5f9ea0",
+    "material": "sand"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shallows",
+   "at": [
+    -18,
+    -10
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -26
+     ],
+     [
+      8,
+      -20
+     ],
+     [
+      25,
+      -4
+     ],
+     [
+      29,
+      14
+     ],
+     [
+      18,
+      30
+     ],
+     [
+      0,
+      44
+     ],
+     [
+      -14,
+      34
+     ],
+     [
+      -2,
+      10
+     ],
+     [
+      -14,
+      -6
+     ]
+    ],
+    "z0": -0.1,
+    "height": 0.15,
+    "colour": "#7fc3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "beach",
+   "params": {
+    "points": [
+     [
+      8,
+      -26
+     ],
+     [
+      14,
+      -14
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      13,
+      16
+     ],
+     [
+      5,
+      30
+     ],
+     [
+      -3,
+      42
+     ],
+     [
+      34,
+      46
+     ],
+     [
+      58,
+      40
+     ],
+     [
+      64,
+      20
+     ],
+     [
+      62,
+      -14
+     ],
+     [
+      40,
+      -26
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#d6c9ad",
+    "material": "sand"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "back-beach",
+   "params": {
+    "points": [
+     [
+      40,
+      -26
+     ],
+     [
+      62,
+      -14
+     ],
+     [
+      64,
+      20
+     ],
+     [
+      58,
+      40
+     ],
+     [
+      34,
+      46
+     ],
+     [
+      30,
+      24
+     ],
+     [
+      34,
+      0
+     ]
+    ],
+    "z0": 0.2,
+    "height": 0.1,
+    "colour": "#c4b79a"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    30,
+    64,
+    0
+   ],
+   "params": {
+    "width": 85,
+    "depth": 45,
+    "height": 28,
+    "seed": 4,
+    "stairs": false,
+    "rock_colour": "#8c6e55",
+    "boulders": 0
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -18,
+    56,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 30,
+    "height": 14,
+    "seed": 7,
+    "stairs": false,
+    "rock_colour": "#7d6450",
+    "boulders": 0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "terrace-rail",
+   "lod": [
+    0
+   ],
+   "at": [
+    40,
+    -40,
+    6
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.0,
+    "thickness": 0.25,
+    "pillarEvery": 3,
+    "colour": "#f0ede6",
+    "points": [
+     [
+      -24,
+      12
+     ],
+     [
+      -12,
+      4
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      28,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    40,
+    -40
+   ],
+   "params": {
+    "points": [
+     [
+      -24,
+      12
+     ],
+     [
+      -12,
+      4
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      28,
+      8
+     ],
+     [
+      28,
+      -4
+     ],
+     [
+      -24,
+      0
+     ]
+    ],
+    "z0": 5,
+    "height": 1,
+    "colour": "#5a5550"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    44,
+    18,
+    0.3
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.4,
+    "posts": 4,
+    "colour": "#7a5a3c",
+    "cap_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    52,
+    -2,
+    0.3
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4.5,
+    "height": 3.0,
+    "roof": "gable",
+    "rise": 1.2,
+    "posts": 4,
+    "colour": "#7a5a3c",
+    "cap_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    36,
+    30,
+    0.3
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#c9b99a",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    56,
+    28,
+    0.3
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#8a8f94",
+    "roof_colour": "#7a5a3c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 6,
+      "colour": "#5c7f3f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     30,
+     -18
+    ],
+    "end": [
+     44,
+     34
+    ],
+    "count": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "beach massing is schematic: sea/sand crescent, two blocky headlands instead of the long dark cliff ridge, no scrub; terrace rail and shelters are typed"
+ }
+}

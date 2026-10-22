@@ -1,0 +1,253 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-node-11964372050",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Koo-ji.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/koo.jpg",
+   "used": "street gate: two grey stone gate posts, crimson curtain between them, broad stone steps up the approach, dark grey tiled roof of the hall behind, dense pines and maples, stone memorial slabs and lantern at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1298153550",
+   "used": "hall footprint (19 x 19 m with a small porch)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9b8366",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4f55",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mosque-domed/curved-roof",
+   "id": "ridge",
+   "at": [
+    0,
+    0,
+    4.5
+   ],
+   "params": {
+    "width": 13,
+    "depth": 13,
+    "rise": 2.4,
+    "overhang": 1.2,
+    "upturn": 0.3,
+    "colour": "#454a50"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "post-l",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -3.2,
+    -14
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9a96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d89"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post-r",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    3.2,
+    -14
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9a96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d89"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14,
+    0.2
+   ],
+   "params": {
+    "width": 5.0,
+    "height": 2.0,
+    "bottom": 0.8,
+    "colour": "#8c1d3a",
+    "frameColour": "#8c1d3a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.6,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "mosque-domed/stone-lantern",
+   "at": [
+    -5,
+    -11,
+    0
+   ],
+   "params": {
+    "scale": 0.9
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -9,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 1.0,
+    "thickness": 0.5,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    4,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "thickness": 0.5,
+    "colour": "#8f8d88"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "gate posts and steps lower and tidier than the real ones (stone steps irregular, handrail missing); hall front is hidden behind trees in the photo so its facade is typed (timber, hip roof); gate and steps follow the photo"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   50,
+   45
+  ]
+ }
+}

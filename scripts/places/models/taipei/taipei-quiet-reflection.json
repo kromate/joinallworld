@@ -1,0 +1,386 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pinglin_Baoping_Temple_%E5%9D%AA%E6%9E%97%E4%BF%9D%E5%9D%AA%E5%AE%AE_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "lienyuan lee",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/bp2.jpg",
+   "used": "red-columned forecourt hall under a curved steel-truss canopy, twin pink-red stairs with balustrades to a raised platform, tall hall behind with orange tiled roof and swallowtail ridge, round blank signboards on the arch, plain houses either side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E5%9D%AA%E6%9E%97%E4%BF%9D%E5%9D%AA%E5%AE%AE_20230520.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "S8321414",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/bp1.jpg",
+   "used": "canopy arch height versus columns, balustrade and stair layout"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/242726461",
+   "used": "overall size (34 x 19 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7d2b2a",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9772f"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "id": "hallroof",
+   "at": [
+    0,
+    12,
+    14
+   ],
+   "params": {
+    "width": 24,
+    "depth": 16,
+    "rise": 4,
+    "overhang": 1.2,
+    "upturn": 1.5,
+    "colour": "#c9772f",
+    "trim": "#d8b04c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "z0": 14,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9772f"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "id": "upperroof",
+   "at": [
+    0,
+    12,
+    16
+   ],
+   "params": {
+    "width": 16,
+    "depth": 11,
+    "rise": 3.5,
+    "overhang": 1.2,
+    "upturn": 2.2,
+    "colour": "#c9772f",
+    "trim": "#d8b04c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     19,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8e3f43",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d8b04c",
+      "height": 0.3,
+      "at": 0.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f86",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frontwall",
+   "footprint": {
+    "rect": [
+     12,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    4.2
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8302a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a2a26"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -4.3,
+    2.8
+   ],
+   "params": {
+    "length": 19,
+    "height": 1.1,
+    "postEvery": 0.9,
+    "colour": "#b9a79a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.55,
+      "n": 12,
+      "height": 9.5,
+      "colour": "#a8302a",
+      "topColour": "#a8302a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10.5,
+     -6,
+     0
+    ],
+    "end": [
+     10.5,
+     -6,
+     0
+    ],
+    "count": 2,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "arch",
+   "at": [
+    0,
+    -1,
+    9.4
+   ],
+   "params": {
+    "form": "curved",
+    "width": 23,
+    "depth": 11,
+    "height": 0.2,
+    "rise": 3.6,
+    "thickness": 0.35,
+    "colour": "#4a4d52",
+    "edgeColour": "#4a4d52",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    -8.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 2.8,
+    "run": 4,
+    "colour": "#8e3f43"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    8.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 2.8,
+    "run": 4,
+    "colour": "#8e3f43"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.4,
+      "n": 20,
+      "height": 0.4,
+      "colour": "#7b2a22",
+      "topColour": "#7b2a22"
+     }
+    },
+    "mode": "arc",
+    "count": 5,
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 11,
+    "startDeg": 55,
+    "endDeg": 125,
+    "facing": "outward",
+    "lod2Step": 3
+   },
+   "at": [
+    0,
+    -1.5,
+    10.2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "left-house",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    -20,
+    6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b8b2",
+    "windows": "none",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0573a",
+    "pitch": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-house",
+   "footprint": {
+    "rect": [
+     9,
+     12
+    ]
+   },
+   "at": [
+    19,
+    6
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a5a48",
+    "windows": "none",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "carved dragon and swallowtail ridge ornament, lanterns, hand-painted relief panels and the open truss lattice of the canopy are simplified to a solid curved shell; side houses are plain stand-ins"
+ }
+}

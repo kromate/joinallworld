@@ -1,0 +1,220 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TalatSao-2010.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chaoborus",
+   "view": "street",
+   "used": "white rendered four-storey block, ribbon windows, orange-brown awnings over ground floor, taller rear block with louvres, flat roof, billboards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Morning_Market_(talat_sao)_Vientiane,_Laos.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "unknown",
+   "view": "front",
+   "used": "old market beside the mall: dark green tile roofs with gable fronts (context only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/202129577",
+   "used": "footprint 162 x 31 m, name match, Wikidata Q7678953"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 6,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "rotDeg": 45
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "plinth": 0.3,
+    "bands": "#d8d2c2",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#efece4",
+       "#e3ddd0"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    20,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee7",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8a",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mosque-domed/awning",
+   "at": [
+    -30,
+    -14.5,
+    0.2
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "height": 4.6,
+    "rise": 0.8,
+    "colour": "#c98a3e"
+   }
+  },
+  {
+   "type": "mosque-domed/awning",
+   "at": [
+    -8,
+    -14.5,
+    0.2
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "height": 4.6,
+    "rise": 0.8,
+    "colour": "#c98a3e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -45,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 6,
+    "bottom": 11,
+    "colour": "#b8332f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 6,
+    "bottom": 9,
+    "colour": "#2d5d8a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Outline auto-scaled to 118 m (real 162 m); no louvre block, real billboards, crane or old-market roofs; awnings and rear block position approximate"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-market-game"
+}

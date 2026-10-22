@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-airport-manila-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_3,_Ninoy_Aquino_International_Airport.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons contributor",
+   "view": "back",
+   "file": "/tmp/places-evidence/manila/t3b.jpg",
+   "used": "airside elevation: long low grey terminal, green ribbon glazing band, taller grey end block with a long sign band, swept roof on the left pier, jet bridges"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ninoy_Aquino_International_Airport_Terminal_3_in_2023.jpg",
+   "licence": "Public domain",
+   "author": "Manila International Airport Authority",
+   "view": "back",
+   "file": "/tmp/places-evidence/manila/t3a.jpg",
+   "used": "low horizontal terminal with green glazed ribbon and parked aircraft in front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     44,
+     26
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8b8e90",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     56,
+     26
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9c9d",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a2a5a7",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    63,
+    10
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9092",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 2.5,
+    "overhang": 4,
+    "colour": "#b8bcbe",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -22,
+    13.4,
+    11
+   ],
+   "params": {
+    "width": 28,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#c9b56a",
+    "posts": false
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    40,
+    14,
+    4
+   ],
+   "params": {
+    "length": 14,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    15,
+    14,
+    4
+   ],
+   "params": {
+    "length": 14,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 4,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only airside elevation modelled; no distant skyline, no apron markings; swept roof is a simple shed; jet bridges approximate."
+ }
+}

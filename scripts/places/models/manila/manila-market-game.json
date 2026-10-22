@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/261385828",
+   "used": "real zig-zag footprint of the mall (225x83 m)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/SM_Center_Angono",
+   "used": "mall, 3 storeys; Commons photos of it are interiors only, so colours follow the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e1cf",
+    "windows": "curtain",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#2f6f9a",
+    "plinth": 0.4,
+    "cornice": true,
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 6,
+    "height": 5,
+    "form": "flat",
+    "colour": "#2f6f9a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -45
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 14,
+    "colour": "#2f6f9a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    30,
+    -45
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 14,
+    "colour": "#2f6f9a",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium-glass",
+   "at": [
+    0,
+    -35
+   ],
+   "params": {
+    "rect": [
+     14,
+     4
+    ],
+    "z0": 0,
+    "height": 17,
+    "colour": "#8fb3c4",
+    "topColour": "#a4c3d1"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -62
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found (Commons has only interiors); colours, canopy and board positions are typed from the brief; footprint is the real OSM outline scaled 0.54"
+ }
+}

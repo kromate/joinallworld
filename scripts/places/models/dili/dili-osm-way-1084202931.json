@@ -1,0 +1,679 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-way-1084202931",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nicolau_Lobato_statue,_2018_(02).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "front",
+   "file": "/tmp/places-evidence/dili/nl2.jpg",
+   "used": "dark bronze standing figure with raised flag staff and rifle on a cream concrete pedestal: ribbed flared base, short drum, shallow dish top; black iron railing between cream gate-pillars on a low river-stone wall; flowering trees behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nicolau_Lobato_statue,_2018_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "detail",
+   "used": "pedestal profile (fluted fan base, drum, dish), spiked railing, colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1084202931",
+   "used": "36 m round park outline (roundabout garden) as the site disc"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "garden",
+   "params": {
+    "points": [
+     [
+      17.7,
+      0.0
+     ],
+     [
+      17.26,
+      3.94
+     ],
+     [
+      15.95,
+      7.68
+     ],
+     [
+      13.84,
+      11.04
+     ],
+     [
+      11.04,
+      13.84
+     ],
+     [
+      7.68,
+      15.95
+     ],
+     [
+      3.94,
+      17.26
+     ],
+     [
+      0.0,
+      17.7
+     ],
+     [
+      -3.94,
+      17.26
+     ],
+     [
+      -7.68,
+      15.95
+     ],
+     [
+      -11.04,
+      13.84
+     ],
+     [
+      -13.84,
+      11.04
+     ],
+     [
+      -15.95,
+      7.68
+     ],
+     [
+      -17.26,
+      3.94
+     ],
+     [
+      -17.7,
+      0.0
+     ],
+     [
+      -17.26,
+      -3.94
+     ],
+     [
+      -15.95,
+      -7.68
+     ],
+     [
+      -13.84,
+      -11.04
+     ],
+     [
+      -11.04,
+      -13.84
+     ],
+     [
+      -7.68,
+      -15.95
+     ],
+     [
+      -3.94,
+      -17.26
+     ],
+     [
+      -0.0,
+      -17.7
+     ],
+     [
+      3.94,
+      -17.26
+     ],
+     [
+      7.68,
+      -15.95
+     ],
+     [
+      11.04,
+      -13.84
+     ],
+     [
+      13.84,
+      -11.04
+     ],
+     [
+      15.95,
+      -7.68
+     ],
+     [
+      17.26,
+      -3.94
+     ],
+     [
+      17.7,
+      -0.0
+     ]
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#8c9a58",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pedestal-base",
+   "params": {
+    "segments": 16,
+    "colour": "#d9d8c0",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      1.2,
+      1.0
+     ],
+     [
+      2.4,
+      2.6
+     ],
+     [
+      3.9,
+      4.6
+     ],
+     [
+      4.1,
+      5.0
+     ],
+     [
+      3.6,
+      5.0
+     ],
+     [
+      1.9,
+      4.6
+     ],
+     [
+      1.4,
+      5.2
+     ],
+     [
+      1.4,
+      6.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "fan-ribs",
+   "params": {
+    "colour": "#c8c7ad",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.0
+     },
+     {
+      "z": 2.5,
+      "circle": 2.4
+     },
+     {
+      "z": 4.8,
+      "circle": 3.9
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dish",
+   "params": {
+    "segments": 20,
+    "colour": "#d9d8c0",
+    "profile": [
+     [
+      1.4,
+      6.4
+     ],
+     [
+      1.5,
+      7.4
+     ],
+     [
+      3.3,
+      8.2
+     ],
+     [
+      3.5,
+      8.6
+     ],
+     [
+      3.3,
+      8.6
+     ],
+     [
+      0.01,
+      8.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    0,
+    8.4
+   ],
+   "params": {
+    "height": 9.0,
+    "pose": "stand",
+    "colour": "#2b2e30"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "flagstaff",
+   "params": {
+    "section": {
+     "circle": 0.08
+    },
+    "points": [
+     [
+      -1.4,
+      0,
+      8.6
+     ],
+     [
+      -1.4,
+      0,
+      18.4
+     ]
+    ],
+    "colour": "#1b1b1b"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -1.4,
+    0,
+    15.6
+   ],
+   "params": {
+    "height": 2.7,
+    "colour": "#c8362f",
+    "colours": [
+     "#c8362f",
+     "#ecc92f",
+     "#1b1b1b"
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "stone-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      14.2,
+      0.0,
+      0.45
+     ],
+     [
+      13.72,
+      3.68,
+      0.45
+     ],
+     [
+      12.3,
+      7.1,
+      0.45
+     ],
+     [
+      10.04,
+      10.04,
+      0.45
+     ],
+     [
+      7.1,
+      12.3,
+      0.45
+     ],
+     [
+      3.68,
+      13.72,
+      0.45
+     ],
+     [
+      0.0,
+      14.2,
+      0.45
+     ],
+     [
+      -3.68,
+      13.72,
+      0.45
+     ],
+     [
+      -7.1,
+      12.3,
+      0.45
+     ],
+     [
+      -10.04,
+      10.04,
+      0.45
+     ],
+     [
+      -12.3,
+      7.1,
+      0.45
+     ],
+     [
+      -13.72,
+      3.68,
+      0.45
+     ],
+     [
+      -14.2,
+      0.0,
+      0.45
+     ],
+     [
+      -13.72,
+      -3.68,
+      0.45
+     ],
+     [
+      -12.3,
+      -7.1,
+      0.45
+     ],
+     [
+      -10.04,
+      -10.04,
+      0.45
+     ],
+     [
+      -7.1,
+      -12.3,
+      0.45
+     ],
+     [
+      -3.68,
+      -13.72,
+      0.45
+     ],
+     [
+      -0.0,
+      -14.2,
+      0.45
+     ],
+     [
+      3.68,
+      -13.72,
+      0.45
+     ],
+     [
+      7.1,
+      -12.3,
+      0.45
+     ],
+     [
+      10.04,
+      -10.04,
+      0.45
+     ],
+     [
+      12.3,
+      -7.1,
+      0.45
+     ],
+     [
+      13.72,
+      -3.68,
+      0.45
+     ],
+     [
+      14.2,
+      -0.0,
+      0.45
+     ]
+    ],
+    "closed": true,
+    "colour": "#b3a58b"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "iron-rail",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.6,
+    "thickness": 0.2,
+    "pillarEvery": 5,
+    "colour": "#1c1c1c",
+    "points": [
+     [
+      14.2,
+      0.0
+     ],
+     [
+      13.72,
+      3.68
+     ],
+     [
+      12.3,
+      7.1
+     ],
+     [
+      10.04,
+      10.04
+     ],
+     [
+      7.1,
+      12.3
+     ],
+     [
+      3.68,
+      13.72
+     ],
+     [
+      0.0,
+      14.2
+     ],
+     [
+      -3.68,
+      13.72
+     ],
+     [
+      -7.1,
+      12.3
+     ],
+     [
+      -10.04,
+      10.04
+     ],
+     [
+      -12.3,
+      7.1
+     ],
+     [
+      -13.72,
+      3.68
+     ],
+     [
+      -14.2,
+      0.0
+     ],
+     [
+      -13.72,
+      -3.68
+     ],
+     [
+      -12.3,
+      -7.1
+     ],
+     [
+      -10.04,
+      -10.04
+     ],
+     [
+      -7.1,
+      -12.3
+     ],
+     [
+      -3.68,
+      -13.72
+     ],
+     [
+      -0.0,
+      -14.2
+     ],
+     [
+      3.68,
+      -13.72
+     ],
+     [
+      7.1,
+      -12.3
+     ],
+     [
+      10.04,
+      -10.04
+     ],
+     [
+      12.3,
+      -7.1
+     ],
+     [
+      13.72,
+      -3.68
+     ],
+     [
+      14.2,
+      -0.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "gate-pillars",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 0,
+      "height": 2.6,
+      "colour": "#e3dbae",
+      "topScale": 0.85
+     }
+    },
+    "mode": "arc",
+    "count": 8,
+    "radius": 14.2,
+    "startDeg": 0,
+    "endDeg": 315
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "colour": "#7a9a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    9,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#c9a52f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   54,
+   54
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "statue is a blocky stand-in (no raised arm, rifle), flag red only, pedestal fan has no ribs, trees are generic and sparse compared with the dense garden"
+ }
+}

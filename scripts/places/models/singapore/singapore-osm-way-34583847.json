@@ -1,0 +1,294 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-way-34583847",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Meridian_Junior_College.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Muggershell",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/mjc.jpg",
+   "used": "six-storey off-white panel-clad teaching block raised on a row of square concrete pilotis over an open ground floor, punched windows in loose rhythm, glazed rooftop pergola with slanted solar louvres, deep navy-blue stair tower with open balcony landings and louvred base, lower white wing with a truss canopy on the left, paved plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2847110",
+   "used": "overall campus extent (304 x 124 m, 4 levels): only the main teaching block is modelled, as the plot outline is a sprawl of many wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.67,
+  "fit": "building",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     46,
+     15
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 5.5,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdcd8",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 6.5,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b9b9",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "id": "pilotis",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -22,
+     -6,
+     0
+    ],
+    "end": [
+     14,
+     -6,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.8,
+        1.8
+       ],
+       "z0": 0,
+       "height": 5.5,
+       "colour": "#b9b9b5"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ground-slab",
+   "at": [
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     46,
+     15
+    ],
+    "z0": 4.9,
+    "height": 0.7,
+    "colour": "#cfcfca"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ground-core",
+   "at": [
+    -4,
+    3
+   ],
+   "params": {
+    "rect": [
+     44,
+     8
+    ],
+    "z0": 0,
+    "height": 4.9,
+    "colour": "#9c9a94",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "navy-tower",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "z0": 0,
+   "height": 34,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f2a68",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front",
+       "left"
+      ],
+      "colour": "#b4b8bd"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1b2556",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -38,
+    2
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b3b3",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "truss-canopy",
+   "at": [
+    -38,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 7,
+    "height": 4.5,
+    "thickness": 0.5,
+    "columns": 4,
+    "colour": "#6d7378",
+    "edgeColour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "solar-pergola",
+   "at": [
+    -4,
+    0,
+    25.5
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 44,
+    "depth": 12,
+    "rise": 1.6,
+    "folds": 14,
+    "thickness": 0.15,
+    "colour": "#34414d",
+    "edgeColour": "#c9ced2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "blank-motto",
+   "at": [
+    -14,
+    -7.8,
+    11
+   ],
+   "params": {
+    "width": 22,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#e9e8e4",
+    "frameColour": "#e9e8e4",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     46,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rooftop pergola is a thin folded sheet rather than a glazed louvred frame; stair tower balconies reduced to landing bands; no motto lettering (blank board only); other campus wings from OSM not modelled; punched windows are more regular than the photo."
+ }
+}

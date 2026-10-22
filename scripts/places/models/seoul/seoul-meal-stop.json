@@ -1,0 +1,173 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/552485600",
+   "used": "real outline 53 x 39 m, 10 levels, 35 m, 2008; match: contains the venue"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "polygon": [
+     [
+      -26.7,
+      -20.1
+     ],
+     [
+      26,
+      -19.2
+     ],
+     [
+      26.7,
+      19.2
+     ],
+     [
+      -26,
+      20.1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 35,
+   "storeys": 10,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bdc3c8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": "#ecebe6",
+    "plinth": 0.2,
+    "cornice": true,
+    "faces": {
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "groundKind": "shopfront",
+    "groundHeight": 4.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-bulk",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    6
+   ],
+   "z0": 35,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d6d9dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -20.6,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 2.2,
+    "drop": 0.6,
+    "height": 3.4,
+    "colours": [
+     "#6f8896",
+     "#ecebe6"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -20.2,
+    4.4
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.8,
+    "bottom": 4.4,
+    "colour": "#ecebe6",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -19.6,
+    4.4
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.8,
+    "bottom": 4.4,
+    "colour": "#6f8896",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; facade finish and ground floor shopfront typed from brief; roof plant is a guess"
+ }
+}

@@ -1,0 +1,319 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ayuntamiento,_Ciudad_Ho_Chi_Minh,_Vietnam,_2013-08-14,_DD_09.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Diego Delso",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/p3_0.jpg",
+   "used": "two-storey ochre-cream wings with white balustrade and arched windows, two end pavilions with hip roofs, central bay with pediment and arcaded loggia, slender clock tower with spire, clipped topiary in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/341504305",
+   "used": "199 m overall length; the central 100 m of the front is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 42,
+  "aspect": 1.536,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     100,
+     16
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c680",
+    "windows": "arched",
+    "windowRatio": 0.32,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#f3efe4",
+    "plinth": 1.0,
+    "cornice": true,
+    "parapet": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a878",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-l",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    -13.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c783",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#f3efe4",
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0622d",
+    "material": "clay-tile",
+    "pitch": 52,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-r",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    13.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c783",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#f3efe4",
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0622d",
+    "material": "clay-tile",
+    "pitch": 52,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecd9a0",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#f3efe4",
+    "plinth": 1.0,
+    "cornice": true,
+    "parapet": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a878",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    0,
+    2,
+    17
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 15,
+    "cap": "hip",
+    "capRise": 9,
+    "clock": true,
+    "belfry": true,
+    "colour": "#ecd9a0",
+    "trimColour": "#f3efe4",
+    "capColour": "#8a8a82",
+    "finial": 4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    2,
+    41
+   ],
+   "params": {
+    "height": 6,
+    "colours": [
+     "#c8262d"
+    ],
+    "count": 1
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "depth": 2.5
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "depth": 2.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 4,
+    "count": 4,
+    "spacing": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-community-voting-game",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Ornate pediments, sculptures, loggia arcade and balustrade detail missing; tower simplified; pavilion roofs plain hips."
+ }
+}

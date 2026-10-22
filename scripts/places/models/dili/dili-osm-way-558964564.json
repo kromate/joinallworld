@@ -1,0 +1,370 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-way-558964564",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Ermera_2019.jpg",
+   "licence": "Public domain",
+   "author": "Staatssekretariat fuer Jugend und Sport (Timor-Leste)",
+   "view": "front",
+   "file": "/tmp/places-evidence/dili/stad.jpg",
+   "used": "Ermera municipal stadium (Gleno is the Ermera capital; assumed to be this ground): one stand with a roofed centre block under a red arched roof on two steel columns, blue and orange seats in the centre, yellow raked terraces either side, rail fences, green pitch, hills behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/558964564",
+   "used": "stadium extent about 184 x 117 m (oval outline not used literally; photo shows a pitch with a single stand)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.55,
+  "shiftY": 0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     108,
+     70
+    ],
+    "height": 0.12,
+    "colour": "#6f9a45"
+   },
+   "at": [
+    0,
+    -10,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "rect": [
+     124,
+     86
+    ],
+    "height": 0.05,
+    "colour": "#b7b1a2"
+   },
+   "at": [
+    0,
+    -10,
+    -0.02
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -14,
+     42
+    ],
+    "end": [
+     -62,
+     42
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.9,
+    "seatColours": [
+     "#e6c43a",
+     "#e6c43a"
+    ],
+    "blocks": 2,
+    "backWall": 0.6,
+    "under": "solid",
+    "concreteColour": "#d8c25a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     62,
+     42
+    ],
+    "end": [
+     14,
+     42
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.9,
+    "seatColours": [
+     "#e6c43a",
+     "#e6c43a"
+    ],
+    "blocks": 2,
+    "backWall": 0.6,
+    "under": "solid",
+    "concreteColour": "#d8c25a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     13,
+     42
+    ],
+    "end": [
+     -13,
+     42
+    ],
+    "rows": 12,
+    "rise": 0.55,
+    "run": 0.9,
+    "seatColours": [
+     "#4f78b8",
+     "#c8642c",
+     "#4f78b8"
+    ],
+    "blocks": 3,
+    "backWall": 0.6,
+    "under": "solid",
+    "concreteColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "backhouse",
+   "footprint": {
+    "rect": [
+     28,
+     6
+    ]
+   },
+   "at": [
+    0,
+    52
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a3f46",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f46"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "vault",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#b43a32",
+    "topColour": "#b43a32",
+    "sections": [
+     {
+      "z": 9.6,
+      "rect": [
+       30,
+       1.2
+      ],
+      "cy": 47
+     },
+     {
+      "z": 10.6,
+      "rect": [
+       27,
+       1.4
+      ],
+      "cy": 47
+     },
+     {
+      "z": 11.4,
+      "rect": [
+       20,
+       1.4
+      ],
+      "cy": 47
+     },
+     {
+      "z": 11.9,
+      "rect": [
+       10,
+       1.4
+      ],
+      "cy": 47
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "vault-under",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6b6f76",
+    "sections": [
+     {
+      "z": 9.0,
+      "rect": [
+       29,
+       15
+      ],
+      "cy": 49.5
+     },
+     {
+      "z": 9.6,
+      "rect": [
+       30,
+       15
+      ],
+      "cy": 49.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14.5,
+     43.5
+    ],
+    "end": [
+     14.5,
+     43.5
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "height": 9.6,
+      "colour": "#5a606a"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -62,
+    -45,
+    0
+   ],
+   "params": {
+    "length": 124,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -62,
+    26,
+    0
+   ],
+   "params": {
+    "length": 124,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    36,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 2,
+    "spacing": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Right ingredients (red arched roof, blue/orange centre seats, yellow terraces) but the comparison camera frames the whole site so the stand is tiny; no sheds, hills or fence detail; stadium assumed to be the Ermera ground photographed."
+ }
+}

@@ -1,0 +1,318 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-relation-5390610",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ShanghaiTech_Dormitories.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Blaklumm",
+   "view": "street",
+   "file": "/tmp/places-evidence/shanghai/st2.jpg",
+   "used": "campus character: tan blocks of 6-9 storeys with ribbon windows and vertical brown mullions, low dark-grey podium blocks, dark oval auditorium drum, a white block at right, glass lattice walkway roof in the foreground, bare paved courts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/832336714",
+   "used": "the 182 m x 27 m covered walkway outline (building=roof) as a thin glazed roof, scaled to 110 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Walkway is a flat glass slab not a lattice vault; blocks lack balcony fins and stepped setbacks; no canals or bridges; layout is an interpretation of the panorama, not surveyed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dorm-tall-right",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    34,
+    22
+   ],
+   "height": 31,
+   "storeys": 9,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9a468",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 4.0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#8a6a3c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a84",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dorm-left",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -34,
+    22
+   ],
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9a468",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 4.0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#8a6a3c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a84",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dorm-mid",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    8,
+    18
+   ],
+   "height": 36,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cbb48a",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 4.0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a84",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-grey",
+   "footprint": {
+    "rect": [
+     60,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    -4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8084",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a84",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    38,
+    0
+   ],
+   "params": {
+    "radius": 15,
+    "n": 28,
+    "z0": 0,
+    "height": 12,
+    "colour": "#3a3d42",
+    "topScale": 0.92
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-block",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    56,
+    -6
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ecebe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a84",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walkway-roof",
+   "footprint": {
+    "osm": true,
+    "fit": 110
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "z0": 4.2,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c9c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9c9c4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     0,
+     0
+    ],
+    "count": 9,
+    "lod2Step": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 0,
+      "height": 4.2,
+      "colour": "#c9cdd0"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -12
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -14
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -10
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   160,
+   100
+  ]
+ }
+}

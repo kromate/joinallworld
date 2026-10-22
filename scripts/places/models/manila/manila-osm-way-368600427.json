@@ -1,0 +1,267 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MOA_Arena,_Pasay,_Sep_2025.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/68600427_2.jpg",
+   "used": "eye/lens-shaped glass facade framed by a thin pale-silver curved rim, blue-green fritted curtain wall with a dark central panel, white ribbed bus-bay canopies in the foreground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SMMallofAsiajf9219_27.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ramon FVelasquez",
+   "view": "detail",
+   "file": "/tmp/places-evidence/manila/68600427_0.jpg",
+   "used": "grey granite slanted podium wall with stair, glass wall behind, thick round column and soffit"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/368600427",
+   "used": "overall extent about 150 x 95 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "podium",
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       72,
+       46
+      ],
+      "colour": "#8e8f8e"
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       69,
+       44
+      ],
+      "colour": "#9a9b99"
+     },
+     {
+      "z": 4.6,
+      "ellipse": [
+       66,
+       42
+      ],
+      "colour": "#7d8c96"
+     }
+    ],
+    "colour": "#8e8f8e",
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "eye-body",
+   "params": {
+    "sections": [
+     {
+      "z": 4.5,
+      "rect": [
+       78,
+       66
+      ],
+      "colour": "#7f9eb3"
+     },
+     {
+      "z": 12,
+      "rect": [
+       116,
+       76
+      ],
+      "colour": "#6a8fa8"
+     },
+     {
+      "z": 19,
+      "rect": [
+       146,
+       80
+      ],
+      "colour": "#6a8fa8"
+     },
+     {
+      "z": 26,
+      "rect": [
+       116,
+       72
+      ],
+      "colour": "#6a8fa8"
+     },
+     {
+      "z": 33,
+      "rect": [
+       70,
+       52
+      ],
+      "colour": "#a9b8c2"
+     },
+     {
+      "z": 36,
+      "rect": [
+       40,
+       40
+      ],
+      "colour": "#c8cbcd"
+     }
+    ],
+    "curve": false,
+    "colour": "#6a8fa8",
+    "material": "glass-curtain"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-panel",
+   "footprint": {
+    "rect": [
+     26,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -41.5
+   ],
+   "z0": 15,
+   "height": 13,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b2c30",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2c30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "bus-bay-canopies",
+   "params": {
+    "of": {
+     "type": "canopy",
+     "params": {
+      "form": "shed",
+      "width": 6,
+      "depth": 22,
+      "height": 4,
+      "colour": "#f2f4f5",
+      "columns": 0
+     }
+    },
+    "mode": "line",
+    "start": [
+     -45,
+     -62
+    ],
+    "end": [
+     45,
+     -62
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    -40,
+    -50,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "height": 4.5,
+    "run": 8,
+    "colour": "#7d7e7f"
+   }
+  },
+  {
+   "type": "array",
+   "id": "entrance-columns",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     "height": 12,
+     "wall": {
+      "material": "concrete",
+      "colour": "#a8a9a8",
+      "windows": "none",
+      "windowRatio": 0.1
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#a8a9a8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -52
+    ],
+    "end": [
+     46,
+     -52
+    ],
+    "count": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -48
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-368600427",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Eye shape is a faceted lens loft, not the thin curved silver rim and tapering podium; no IKEA/annex neighbours; bus canopies simplified."
+ }
+}

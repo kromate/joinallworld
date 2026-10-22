@@ -1,0 +1,305 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ROC-MOHW_Keelung_Hospital_entry_20140215.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Solomon203",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/clinic-0.jpg",
+   "used": "1930s-style cream tile front: tall central entrance block with arched porch and curved crown board, three-storey side wings with grouped windows, flat roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/556028011",
+   "used": "identity and wikidata Q18119145 only: the mapped roof is a small structure, not the full hospital"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    -23,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d2c9ae",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.0,
+    "plinth": 0.6,
+    "bands": "#c8c0a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    26,
+    1
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d2c9ae",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.0,
+    "plinth": 0.6,
+    "bands": "#c8c0a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     16,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d8cfb2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -9.1,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 6.5,
+    "depth": 1.2,
+    "archWidth": 4.6,
+    "springHeight": 3.6,
+    "colour": "#c9bfa6"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#b8b2a2"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "crown",
+   "at": [
+    0,
+    -0.5,
+    16.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#c9c2ac"
+     ],
+     [
+      8.5,
+      0,
+      "#c9c2ac"
+     ],
+     [
+      8.5,
+      1.0,
+      "#c9c2ac"
+     ],
+     [
+      7.8,
+      2.2,
+      "#c9c2ac"
+     ],
+     [
+      0,
+      2.8,
+      "#c9c2ac"
+     ]
+    ],
+    "segments": 18
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -9.4,
+    12.6
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.5,
+    "bottom": 0,
+    "colour": "#b8332c",
+    "posts": false
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -26,
+    4,
+    13.5
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 2.2,
+    "legs": 1.0,
+    "colour": "#cfd2d2"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    30,
+    5,
+    13.5
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 2.2,
+    "legs": 1.0,
+    "colour": "#cfd2d2"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    45,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#d2ccbb",
+    "roofColour": "#9a9d9e",
+    "vans": 1
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    13,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -4,
+     -19
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Arched porch and crown sign are simplified; real tile pattern, trees and street furniture not modelled; wing lengths estimated."
+ }
+}

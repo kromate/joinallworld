@@ -1,0 +1,347 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-relation-18873178",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tegar_Berdiri.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Cheers321",
+   "view": "detail",
+   "file": "/tmp/places-evidence/jakarta/martello.jpg",
+   "used": "red-orange brick with white render patches, deep arched openings with broken heads, ragged crumbling parapet, sand and paving apron, sea behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/18873178",
+   "used": "14.8 m round footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": -4,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "tower",
+   "params": {
+    "segments": 28,
+    "colour": "#c0735a",
+    "topColour": "#8a7a68",
+    "openTop": true,
+    "bottomCap": true,
+    "profile": [
+     [
+      7.6,
+      0,
+      "#8a7a68"
+     ],
+     [
+      7.6,
+      0.8
+     ],
+     [
+      7.1,
+      1.2,
+      "#b9694f"
+     ],
+     [
+      7.0,
+      1.6
+     ],
+     [
+      7.0,
+      6.6,
+      "#cf9a86"
+     ],
+     [
+      7.0,
+      7.0,
+      "#c0735a"
+     ],
+     [
+      6.9,
+      7.5
+     ],
+     [
+      5.4,
+      7.5
+     ]
+    ],
+    "arcade": [
+     {
+      "from": 1.6,
+      "to": 6.6,
+      "count": 4,
+      "width": 2.6,
+      "height": 4.6,
+      "sill": 1.6,
+      "shape": "arch",
+      "depth": 1.2,
+      "innerColour": "#5a4036",
+      "phase": 20
+     }
+    ],
+    "slot": "brick"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "inner-floor",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#8a7a68",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5.6,
+      0
+     ],
+     [
+      5.6,
+      0.3
+     ],
+     [
+      0,
+      0.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "ring",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#8a7a68",
+    "profile": [
+     [
+      9.5,
+      0
+     ],
+     [
+      9.5,
+      0.35
+     ],
+     [
+      7.5,
+      0.5
+     ],
+     [
+      7.5,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rub0",
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 7.0,
+    "height": 0.5,
+    "colour": "#b9694f"
+   },
+   "at": [
+    6.31,
+    1.95,
+    0
+   ],
+   "rotDeg": 107
+  },
+  {
+   "type": "prism",
+   "id": "rub1",
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 7.0,
+    "height": 0.9,
+    "colour": "#b9694f"
+   },
+   "at": [
+    2.39,
+    6.15,
+    0
+   ],
+   "rotDeg": 159
+  },
+  {
+   "type": "prism",
+   "id": "rub2",
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 7.0,
+    "height": 0.5,
+    "colour": "#b9694f"
+   },
+   "at": [
+    -4.87,
+    4.46,
+    0
+   ],
+   "rotDeg": 228
+  },
+  {
+   "type": "prism",
+   "id": "rub3",
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 7.0,
+    "height": 0.9,
+    "colour": "#b9694f"
+   },
+   "at": [
+    -6.52,
+    -1.04,
+    0
+   ],
+   "rotDeg": 279
+  },
+  {
+   "type": "prism",
+   "id": "rub4",
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 7.0,
+    "height": 0.5,
+    "colour": "#b9694f"
+   },
+   "at": [
+    -3.24,
+    -5.75,
+    0
+   ],
+   "rotDeg": 331
+  },
+  {
+   "type": "prism",
+   "id": "rub5",
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "z0": 7.0,
+    "height": 0.9,
+    "colour": "#b9694f"
+   },
+   "at": [
+    4.19,
+    -5.1,
+    0
+   ],
+   "rotDeg": 39
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 1.2,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#8a7a68"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is a close-up so only colour and form were compared; no whitewash patches, broken arch heads or ragged parapet detail, rubble blocks are simple boxes, rim is complete."
+ }
+}

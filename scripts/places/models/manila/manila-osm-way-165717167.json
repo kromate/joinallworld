@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-165717167",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/165717167",
+   "used": "campus outline 304 x 142 m and its 42 degree bearing: buildings laid out along the diagonal axis; building forms themselves are typed from the brief (no exterior photo of the campus found; the only Commons file is a logo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-building",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     80,
+     38
+    ]
+   },
+   "at": [
+    0.0,
+    0.0
+   ],
+   "rotDeg": -42,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#ffffff",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a33a2e",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "covered-court",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    44.3,
+    -34.5
+   ],
+   "rotDeg": -42,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "none",
+    "bands": "#b4573a",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4573a",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel-block",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    -41.3,
+    31.8
+   ],
+   "rotDeg": -42,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "none",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a33a2e",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "courtyard-paving",
+   "footprint": {
+    "rect": [
+     44,
+     26
+    ]
+   },
+   "at": [
+    -17.4,
+    -19.3
+   ],
+   "rotDeg": -42,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb6a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb6a6",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag0",
+   "at": [
+    -32.7,
+    -24.4,
+    0.5
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#2f4f9a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag1",
+   "at": [
+    -20.8,
+    -35.1,
+    0.5
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#2f4f9a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -49.1,
+    -9.7,
+    0
+   ],
+   "rotDeg": -42,
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 5,
+    "line": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 3,
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: U-shaped four-storey arcaded block, hipped red roof, covered court and chapel block are typed from the brief and campus outline, not seen"
+ }
+}

@@ -1,0 +1,213 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Higashi-Ohgishima_Park_@_Kawasaki_Port_(13695216675).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Guilhem Vellut",
+   "view": "street",
+   "file": "/tmp/places-evidence/tokyo/ohg1.jpg",
+   "used": "flat rough lawn, teal-roofed picnic shelter, concrete block barbecue pits, floodlight mast, ball net, big pale warehouse with teal stripes behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/15635177",
+   "used": "park outline 804 x 332 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a9a55",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9d58"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 10,
+    "height": 4.4,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 4,
+    "colour": "#9fb4b0",
+    "cap_colour": "#3f8f8c"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "warehouse",
+   "footprint": {
+    "rect": [
+     60,
+     26
+    ]
+   },
+   "at": [
+    40,
+    36
+   ],
+   "height": 28,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d3d6d6",
+    "windows": "none",
+    "bands": "#2a9d9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    34
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9bec4",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bbq0",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 0.9,
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bbq1",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 0.9,
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bbq2",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 0.9,
+    "colour": "#8c8a84"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     20
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     25
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-relation-15635177",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "park shown at 0.15 scale so lawn/pavilion proportions off; warehouse and picnic shelter right, barbecue blocks tiny, no net fence or road"
+ }
+}

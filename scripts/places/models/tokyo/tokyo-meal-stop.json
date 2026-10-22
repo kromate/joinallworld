@@ -1,0 +1,136 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/221679967",
+   "used": "real footprint of the corner office building (31 x 21 m, rotated to its axes); height and ground-floor cafe from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -76
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d8d2c4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#bdb5a4",
+    "groundKind": "shopfront",
+    "groundHeight": 3.6,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -6,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "drop": 0.4,
+    "height": 3.1,
+    "colours": [
+     "#7d5a3c",
+     "#e9dcc4"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -11.3,
+    3.4
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.2,
+    "bottom": 0.2,
+    "colour": "#7d5a3c",
+    "frameColour": "#b9a88c"
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    -9,
+    -14.5,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spread": 2.5,
+    "colours": [
+     "#e9dcc4",
+     "#7d5a3c"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    8,
+    4,
+    16
+   ],
+   "params": {
+    "kind": "box",
+    "radius": 1.2,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "legs": 4,
+    "colour": "#9a9d9f"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building found (nearby Omori street photos show other buildings); facade is a typed estimate on the real outline"
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   60,
+   50
+  ]
+ }
+}

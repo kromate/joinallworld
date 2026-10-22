@@ -1,0 +1,206 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rodriguez,Rizaljf5786_05.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ramon FVelasquez",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/rod.jpg",
+   "used": "yellow painted walls, grey aluminium-panel bands wrapping each floor edge, slate-blue central feature wall with round seal board, round white columns at the entrance, flat roofs with panel parapet"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/233133013",
+   "used": "21x18 m footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": -8,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 25
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c62a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9ccce"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbf",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "feature-wall",
+   "footprint": {
+    "rect": [
+     7,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -9.2
+   ],
+   "z0": 2.5,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4b5666",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b5666"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia-lower",
+   "footprint": {
+    "rect": [
+     24,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -10.2
+   ],
+   "z0": 3.0,
+   "height": 2.2,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d4d6d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c5c8ca"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia-upper",
+   "footprint": {
+    "rect": [
+     24,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -9.8
+   ],
+   "z0": 6.8,
+   "height": 2.0,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d4d6d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c5c8ca"
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -9.6,
+    8
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#2e3e55",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -18,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fascia bands are straight slabs not the folded aluminium panels; roof-edge panel parapet and the notched feature-wall gable are simplified; seal/lettering omitted."
+ }
+}

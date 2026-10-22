@@ -1,0 +1,399 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CentralPlazaWestGateRTB30Aug15.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kanlife99",
+   "view": "street",
+   "file": "/tmp/places-evidence/bangkok/m5/westgate.jpg",
+   "used": "sweeping bronze-tan arched entrance canopy over a dark glazed hall, taupe wavy cladding behind, long pale retail box with blue-grey band and roof terraces, rail viaduct on the left, round traffic island"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/359413315",
+   "used": "overall size only (427 x 233 m, retail); about 118 m of the long front is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 16,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "entrance arch is a simple barrel not the swept asymmetric shell; wavy taupe cladding is plain fins; roof terraces and glass screens simplified; only 118 m of the 427 m mall"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "box",
+   "footprint": {
+    "rect": [
+     118,
+     44
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd8cc",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#7b8b97"
+      ],
+      "height": 1.4,
+      "proud": 0.15,
+      "at": 0.1,
+      "floors": [
+       2,
+       3
+      ]
+     },
+     {
+      "type": "panels",
+      "size": [
+       6,
+       3.2
+      ],
+      "colours": [
+       "#cfcabd",
+       "#c4bfb0",
+       "#d8d4c8"
+      ],
+      "mode": "random",
+      "faces": [
+       "front"
+      ],
+      "floors": [
+       1,
+       2,
+       3
+      ],
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b4b6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -28,
+    18
+   ],
+   "z0": 22,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e3da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdbf",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "signboard",
+   "footprint": {
+    "rect": [
+     40,
+     2
+    ]
+   },
+   "at": [
+    -8,
+    -9
+   ],
+   "z0": 22,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f959b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aab0b4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wave-wing",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    -38,
+    -12
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a99882",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.7,
+      "spacing": 2.2,
+      "colour": "#c7b8a2",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8a76",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    8,
+    -20
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b2e33",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#c8a98a",
+    "rise": 6,
+    "overhang": 3.5,
+    "thickness": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 3,
+    "bottom": 15,
+    "colour": "#1d2024",
+    "frameColour": "#c8a98a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hoarding-l",
+   "footprint": {
+    "rect": [
+     9,
+     0.6
+    ]
+   },
+   "at": [
+    -3,
+    -29.5
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a8fc2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a8fc2",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hoarding-r",
+   "footprint": {
+    "rect": [
+     9,
+     0.6
+    ]
+   },
+   "at": [
+    19,
+    -29.5
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a9d8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a9d8f",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -18,
+    -38,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 8,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#d94a3d",
+    "edgeColour": "#e8e8e8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -62,
+     -52,
+     0
+    ],
+    "end": [
+     -62,
+     40,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       2.6
+      ],
+      "height": 9,
+      "colour": "#b9b8b2"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    -6,
+    9
+   ],
+   "params": {
+    "rect": [
+     6,
+     118
+    ],
+    "height": 2.2,
+    "colour": "#cfd0cc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ }
+}

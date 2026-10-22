@@ -1,0 +1,359 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-node-2003037499",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Outside_stairs_in_Zhishan_Park,_Taipei_City_20060226.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Winertai",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/zhi2.jpg",
+   "used": "the steep broad stone stair up the hill with two grey stone gateposts carrying blank white name boards, red metal handrails (centre divider and both sides), moss-green retaining walls, dense broadleaf woods either side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E8%8A%9D%E5%B1%B1%E5%B2%A9.jpg",
+   "licence": "CC0",
+   "author": "Katsuyama Yoshisaku",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/taipei/zhi1.jpg",
+   "used": "historic view: Zhishan is an isolated rounded, densely wooded hill rising from flat tea fields"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/861114144",
+   "used": "park extent 514 x 295 m only (containing match, too large to model); hill modelled as a compact 70 m summit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#4f6a3f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       52,
+       38
+      ]
+     },
+     {
+      "z": 7,
+      "ellipse": [
+       43,
+       31
+      ]
+     },
+     {
+      "z": 15,
+      "ellipse": [
+       31,
+       22
+      ]
+     },
+     {
+      "z": 22,
+      "ellipse": [
+       18,
+       13
+      ]
+     },
+     {
+      "z": 26,
+      "ellipse": [
+       9,
+       6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "stair",
+   "params": {
+    "mode": "line",
+    "count": 20,
+    "start": [
+     0,
+     -21,
+     0
+    ],
+    "end": [
+     0,
+     1,
+     17
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       8,
+       1.8
+      ],
+      "height": 3,
+      "colour": "#6d6a63",
+      "topColour": "#807d75"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-left",
+   "at": [
+    -5.2,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     20
+    ],
+    "height": 3,
+    "colour": "#59604a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wall-right",
+   "at": [
+    5.2,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     20
+    ],
+    "height": 3,
+    "colour": "#59604a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "post-left",
+   "at": [
+    -5.2,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 6.2,
+    "colour": "#8b8a85",
+    "topColour": "#77766f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-right",
+   "at": [
+    5.2,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 6.2,
+    "colour": "#8b8a85",
+    "topColour": "#77766f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -5.2,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 3.2,
+    "bottom": 2.4,
+    "colour": "#f2f2ee",
+    "frameColour": "#8b8a85",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    5.2,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 3.2,
+    "bottom": 2.4,
+    "colour": "#f2f2ee",
+    "frameColour": "#8b8a85",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "id": "rails",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -3.8,
+     0,
+     0
+    ],
+    "end": [
+     3.8,
+     0,
+     0
+    ],
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.07,
+      "colour": "#c0392b",
+      "points": [
+       [
+        0,
+        -21,
+        1.6
+       ],
+       [
+        0,
+        1,
+        18.6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "temple-hall",
+   "at": [
+    0,
+    22
+   ],
+   "z0": 24,
+   "footprint": {
+    "rect": [
+     18,
+     11
+    ]
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8402f",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#d8c9a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8402f"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "at": [
+    0,
+    22,
+    29
+   ],
+   "params": {
+    "width": 21,
+    "depth": 14,
+    "rise": 4,
+    "overhang": 1.2,
+    "upturn": 1.0,
+    "colour": "#b5532f",
+    "trim": "#d8c9a8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 9,
+    "spread": 28,
+    "colour": "#3f6a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 9,
+    "spread": 28,
+    "colour": "#3f6a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hill is a smooth green loft with no individual tree canopy texture; stair is a stepped prism run with simplified rails (no moss walls, bench decks or wooden railings); the temple on the summit is typical Minnan form from general knowledge, not photographed; no inscriptions."
+ }
+}

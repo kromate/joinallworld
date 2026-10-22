@@ -1,0 +1,314 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-34748225",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/34748225",
+   "used": "real 4-point site outline (148 x 104 m) drives the ground plate, perimeter wall and pitch alignment"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Tugu_Stadium",
+   "used": "4,000-seat football ground, one main stand with offices below, synthetic pitch, floodlights, prayer room; no exterior photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "site",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -57.2,
+      -70.3
+     ],
+     [
+      -46.5,
+      77.8
+     ],
+     [
+      57.2,
+      70.3
+     ],
+     [
+      46.5,
+      -77.8
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#b8b2a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    6,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     58,
+     98
+    ],
+    "height": 0.1,
+    "colour": "#3f8f52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch-mow",
+   "at": [
+    6,
+    0,
+    0.22
+   ],
+   "params": {
+    "rect": [
+     58,
+     6
+    ],
+    "height": 0.02,
+    "colour": "#378349"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -27,
+     50
+    ],
+    "end": [
+     -27,
+     -50
+    ],
+    "rows": 13,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 2.4,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#4f7f66",
+     "#e9e5dc",
+     "#4f7f66"
+    ],
+    "blocks": 6,
+    "concreteColour": "#cfc9bb",
+    "underColour": "#c4bead",
+    "canopy": {
+     "height": 2.2,
+     "depth": 13,
+     "thickness": 0.6,
+     "slopeDeg": 4,
+     "colour": "#6b7a8a",
+     "edgeColour": "#55626f",
+     "overhangBack": 1.0
+    },
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "offices",
+   "footprint": {
+    "rect": [
+     7,
+     66
+    ]
+   },
+   "at": [
+    -45,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc9bb",
+    "windows": "none",
+    "bands": "#4f7f66",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7a8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "prayer-room",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    40,
+    -64
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5dc",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f7f66",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    -66,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    66,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    8,
+    62,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4.5,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -57.2,
+      -70.3
+     ],
+     [
+      -46.5,
+      77.8
+     ],
+     [
+      57.2,
+      70.3
+     ],
+     [
+      46.5,
+      -77.8
+     ],
+     [
+      -57.2,
+      -70.3
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#e9e5dc"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   160
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     20
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found for this ground; main stand side, offices, prayer room and masts typed from the brief on the real site outline."
+ }
+}

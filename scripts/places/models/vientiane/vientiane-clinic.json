@@ -1,0 +1,233 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:VientianeHospital.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Torbenbrinker",
+   "view": "street",
+   "file": "/tmp/places-evidence/vientiane/hosp.jpg",
+   "used": "off-white two-storey block with deep balconies and lattice screen, flat roofs with small red-tile gables, low gatehouse with red-tile pent roof and a blue sign board, iron gate, street trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/39528312",
+   "used": "real L-shaped outline of the hospital block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 110
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bands": "#d6cfba",
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [],
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b6",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-a",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    -4
+   ],
+   "z0": 8,
+   "height": 1.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#b04a2e",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-b",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    14,
+    6
+   ],
+   "z0": 8,
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#b04a2e",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -48,
+    -40
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a8",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 3.4,
+    "colour": "#1f3f7a",
+    "frameColour": "#7a3b28"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -40,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "pillar": 0.8,
+    "colour": "#e8e2d0"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#e8e2d0",
+    "roofColour": "#c9c4b6",
+    "vans": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "OSM L-outline orientation differs from the street view; lattice screen, awnings, tuk-tuks and the red banner are omitted"
+ }
+}

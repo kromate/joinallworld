@@ -1,0 +1,92 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-node-2321962180",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1537293050",
+   "used": "82 m2 retail footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfcac0",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#7a5a3c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8,
+    3
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.9,
+    "bottom": 3,
+    "colour": "#7a5a3c",
+    "frameColour": "#f0eee6",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.2,
+    "height": 3,
+    "form": "flat",
+    "colour": "#7a5a3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; awning/sign placed by brief; shop front side guessed"
+ }
+}

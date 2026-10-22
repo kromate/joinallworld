@@ -1,0 +1,350 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Faculty_of_science_picture.jpg",
+   "licence": "CC0",
+   "author": "Kittipon Suttiprapa",
+   "view": "front",
+   "file": "/tmp/places-evidence/bangkok/kmutt1.jpg",
+   "used": "Faculty of Engineering block: off-white concrete with a pale teal band, magenta stair core with exposed steel stairs, open pilotis ground storey, granite sign slab behind clipped hedges, hexagonal paving, shade trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/420312611",
+   "used": "campus only (675 x 485 m): not modelled as one building; one faculty block shown"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a close-up of the faculty sign with the block behind; render shows the whole U block from further back, glazing still darker than the pale photo, no external steel stair detail on magenta core, hex paving flat"
+ },
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e6e3dc",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#aebfc2",
+    "plinth": 0.2,
+    "faces": {
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "colour": "#d8d5cd"
+     },
+     {
+      "type": "floors",
+      "colours": [
+       "#e6e3dc",
+       "#a8cfcb"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    -25,
+    -9
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e6e3dc",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#aebfc2",
+    "plinth": 0.2,
+    "faces": {
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "colour": "#d8d5cd"
+     },
+     {
+      "type": "floors",
+      "colours": [
+       "#e6e3dc",
+       "#a8cfcb"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    25,
+    -9
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e6e3dc",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#aebfc2",
+    "plinth": 0.2,
+    "faces": {
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "colour": "#d8d5cd"
+     },
+     {
+      "type": "floors",
+      "colours": [
+       "#e6e3dc",
+       "#a8cfcb"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -6,
+    -4
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8607f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f3a5c"
+   }
+  },
+  {
+   "type": "external-stair",
+   "at": [
+    -4,
+    -6.5,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "length": 10,
+    "width": 1.4,
+    "colour": "#c9cdd0"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "width": 3,
+    "height": 3,
+    "colour": "#c9c6bd",
+    "roofColour": "#8c8f8f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-plinth",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     17,
+     1.4
+    ],
+    "height": 1.0,
+    "colour": "#7d8082"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-slab",
+   "at": [
+    10,
+    -26,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.9
+    ],
+    "height": 2.2,
+    "colour": "#8f9293"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    3,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.7,
+    "colour": "#3f6a35"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    14,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.7,
+    "colour": "#4a7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -29,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-osm-way-420312611"
+}

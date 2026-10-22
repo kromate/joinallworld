@@ -1,0 +1,1001 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pha_That_Luang_Vientiane_Laos.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jialiang Gao",
+   "view": "side",
+   "file": "/tmp/places-evidence/vientiane/v20_quiet-reflection-0.jpg",
+   "used": "stepped square terraces, balustraded lower wall in gold-yellow, ring of tall pinnacle stupas on the upper terrace, lotus-bud spire, sand apron with low baluster fence, dark-roofed cloister pavilions at the edges"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pha_That_Luang_toits.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Alcyon",
+   "view": "aerial",
+   "used": "gilded colour tones"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/273288",
+   "used": "overall size check only (about 100 x 95 m with apron)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 8,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     86,
+     86
+    ],
+    "height": 0.5,
+    "colour": "#d9b06a",
+    "top": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      -42,
+      -42,
+      0.9
+     ],
+     [
+      42,
+      -42,
+      0.9
+     ],
+     [
+      42,
+      42,
+      0.9
+     ],
+     [
+      -42,
+      42,
+      0.9
+     ]
+    ],
+    "closed": true,
+    "colour": "#dcd8cc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     70,
+     70
+    ],
+    "height": 7,
+    "colour": "#e8b83c",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     71,
+     71
+    ],
+    "height": 1.0,
+    "colour": "#d9a42c",
+    "top": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      2.4
+     ]
+    },
+    "points": [
+     [
+      -34.5,
+      -34.5,
+      8.8
+     ],
+     [
+      34.5,
+      -34.5,
+      8.8
+     ],
+     [
+      34.5,
+      34.5,
+      8.8
+     ],
+     [
+      -34.5,
+      34.5,
+      8.8
+     ]
+    ],
+    "closed": true,
+    "colour": "#f0c855"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e8b83c",
+    "sections": [
+     {
+      "z": 7.5,
+      "rect": [
+       66,
+       66
+      ]
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       56,
+       56
+      ]
+     },
+     {
+      "z": 15,
+      "rect": [
+       50,
+       50
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f0c855",
+    "sections": [
+     {
+      "z": 15,
+      "rect": [
+       50,
+       50
+      ]
+     },
+     {
+      "z": 17,
+      "rect": [
+       44,
+       44
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       40,
+       40
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e8b83c",
+    "sections": [
+     {
+      "z": 22,
+      "rect": [
+       40,
+       40
+      ]
+     },
+     {
+      "z": 24,
+      "rect": [
+       32,
+       32
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       28,
+       28
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f0c855",
+    "sections": [
+     {
+      "z": 28,
+      "rect": [
+       28,
+       28
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       20,
+       20
+      ]
+     },
+     {
+      "z": 33,
+      "rect": [
+       14,
+       14
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    8.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -30
+    ],
+    "end": [
+     30,
+     -30
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 50,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0c855",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          3.0,
+          3.0
+         ]
+        },
+        {
+         "z": 2.9749999999999996,
+         "rect": [
+          2.4000000000000004,
+          2.4000000000000004
+         ]
+        },
+        {
+         "z": 5.949999999999999,
+         "rect": [
+          1.35,
+          1.35
+         ]
+        },
+        {
+         "z": 8.5,
+         "rect": [
+          0.2,
+          0.2
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    8.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     30,
+     -30
+    ],
+    "end": [
+     30,
+     30
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 50,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0c855",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          3.0,
+          3.0
+         ]
+        },
+        {
+         "z": 2.9749999999999996,
+         "rect": [
+          2.4000000000000004,
+          2.4000000000000004
+         ]
+        },
+        {
+         "z": 5.949999999999999,
+         "rect": [
+          1.35,
+          1.35
+         ]
+        },
+        {
+         "z": 8.5,
+         "rect": [
+          0.2,
+          0.2
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    8.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     30,
+     30
+    ],
+    "end": [
+     -30,
+     30
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 50,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0c855",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          3.0,
+          3.0
+         ]
+        },
+        {
+         "z": 2.9749999999999996,
+         "rect": [
+          2.4000000000000004,
+          2.4000000000000004
+         ]
+        },
+        {
+         "z": 5.949999999999999,
+         "rect": [
+          1.35,
+          1.35
+         ]
+        },
+        {
+         "z": 8.5,
+         "rect": [
+          0.2,
+          0.2
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    8.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     30
+    ],
+    "end": [
+     -30,
+     -30
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 50,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0c855",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          3.0,
+          3.0
+         ]
+        },
+        {
+         "z": 2.9749999999999996,
+         "rect": [
+          2.4000000000000004,
+          2.4000000000000004
+         ]
+        },
+        {
+         "z": 5.949999999999999,
+         "rect": [
+          1.35,
+          1.35
+         ]
+        },
+        {
+         "z": 8.5,
+         "rect": [
+          0.2,
+          0.2
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -22
+    ],
+    "end": [
+     22,
+     -22
+    ],
+    "count": 5,
+    "lod1Step": 2,
+    "lod2Step": 50,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0c855",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.4,
+          2.4
+         ]
+        },
+        {
+         "z": 2.275,
+         "rect": [
+          1.92,
+          1.92
+         ]
+        },
+        {
+         "z": 4.55,
+         "rect": [
+          1.08,
+          1.08
+         ]
+        },
+        {
+         "z": 6.5,
+         "rect": [
+          0.2,
+          0.2
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     22,
+     -22
+    ],
+    "end": [
+     22,
+     22
+    ],
+    "count": 5,
+    "lod1Step": 2,
+    "lod2Step": 50,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0c855",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.4,
+          2.4
+         ]
+        },
+        {
+         "z": 2.275,
+         "rect": [
+          1.92,
+          1.92
+         ]
+        },
+        {
+         "z": 4.55,
+         "rect": [
+          1.08,
+          1.08
+         ]
+        },
+        {
+         "z": 6.5,
+         "rect": [
+          0.2,
+          0.2
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     22,
+     22
+    ],
+    "end": [
+     -22,
+     22
+    ],
+    "count": 5,
+    "lod1Step": 2,
+    "lod2Step": 50,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0c855",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.4,
+          2.4
+         ]
+        },
+        {
+         "z": 2.275,
+         "rect": [
+          1.92,
+          1.92
+         ]
+        },
+        {
+         "z": 4.55,
+         "rect": [
+          1.08,
+          1.08
+         ]
+        },
+        {
+         "z": 6.5,
+         "rect": [
+          0.2,
+          0.2
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     22
+    ],
+    "end": [
+     -22,
+     -22
+    ],
+    "count": 5,
+    "lod1Step": 2,
+    "lod2Step": 50,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f0c855",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          2.4,
+          2.4
+         ]
+        },
+        {
+         "z": 2.275,
+         "rect": [
+          1.92,
+          1.92
+         ]
+        },
+        {
+         "z": 4.55,
+         "rect": [
+          1.08,
+          1.08
+         ]
+        },
+        {
+         "z": 6.5,
+         "rect": [
+          0.2,
+          0.2
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    33
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f0c855",
+    "profile": [
+     [
+      7,
+      0
+     ],
+     [
+      6.4,
+      2
+     ],
+     [
+      4.4,
+      5
+     ],
+     [
+      3.2,
+      9
+     ],
+     [
+      3.4,
+      12
+     ],
+     [
+      4.6,
+      14
+     ],
+     [
+      4.8,
+      15.5
+     ],
+     [
+      3.0,
+      16.5
+     ],
+     [
+      2.6,
+      18
+     ],
+     [
+      1.2,
+      21
+     ],
+     [
+      0.7,
+      26
+     ],
+     [
+      0.15,
+      30
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    33
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d9a42c",
+    "profile": [
+     [
+      6.2,
+      13.5
+     ],
+     [
+      5.2,
+      14.5
+     ],
+     [
+      5.6,
+      15.0
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "pavilion",
+   "at": [
+    -47,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8,
+    "height": 4.2,
+    "roof": "hip",
+    "rise": 2.6,
+    "colour": "#f4efe2",
+    "cap_colour": "#4a3430"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "pavilion",
+   "at": [
+    47,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8,
+    "height": 4.2,
+    "roof": "hip",
+    "rise": 2.6,
+    "colour": "#f4efe2",
+    "cap_colour": "#4a3430"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -44
+    ],
+    "end": [
+     44,
+     -44
+    ],
+    "count": 22,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.6,
+        1.2
+       ],
+       "height": 1.4,
+       "colour": "#d8d4c8"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -48
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     48
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Stepped gold terraces, ring of pinnacle stupas and lotus-bud spire match; missing the baluster-patterned parapet walls, the curved lotus petals on tiers, the cloister wall and dark-roofed corner halls are crude; tiers too wide/low."
+ }
+}

@@ -1,0 +1,158 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/295946611",
+   "used": "real 12 x 10 m outline (name match \u85cd\u767d\u5c0f\u93ae, restaurant)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: blue-and-white themed eatery, whitewashed walls with blue trim, arched windows, awning and terrace; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.35
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2f2ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#2f6ea8",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#2f6ea8",
+      "height": 0.35,
+      "at": 0.98,
+      "floors": [
+       0,
+       1
+      ]
+     }
+    ],
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6ea8",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-head",
+   "at": [
+    3,
+    1,
+    7
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3
+    ],
+    "height": 2.4,
+    "colour": "#f2f2ee",
+    "windows": "none",
+    "topColour": "#2f6ea8"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -2.5,
+    -1,
+    7
+   ],
+   "params": {
+    "colour": "#2f6ea8"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6.4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 8,
+    "depth": 1.8,
+    "colours": [
+     "#2f6ea8",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3.5,
+    -9.5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#ffffff",
+    "chair_colour": "#2f6ea8",
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    2.5,
+    -9.5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#ffffff",
+    "chair_colour": "#2f6ea8",
+    "umbrella": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 2,
+  "treeKind": "palm",
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the actual eatery; blue-and-white scheme, arched windows, awning and terrace come from the name and brief only; the awning sits at the OSM outline's corner because the outline is rotated 156 degrees."
+ }
+}

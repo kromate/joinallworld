@@ -1,0 +1,261 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-198047671",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B%E1%BB%87nh_vi%E1%BB%87n_Th%E1%BB%91ng_Nh%E1%BA%A5t.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Churongcon",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/hcm5-thongnhat.jpg",
+   "used": "five-storey cream ward block with white perforated breeze-block screens in every bay, slate-blue bands between floors, white roof edge, plain end wall with small windows, ground-floor set back, gold-brown clad piers of a flat entrance porch, curved ramp, conical cypress trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/198047671",
+   "used": "campus is 345 x 179 m; only the photographed ward block is modelled at its real scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.778,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     62,
+     17
+    ]
+   },
+   "at": [
+    6,
+    10
+   ],
+   "height": 17,
+   "storeys": 4,
+   "z0": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e1c6",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#8c9bab",
+      "height": 0.7
+     }
+    ],
+    "cornice": true,
+    "glassColour": "#f3f1ea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee6",
+    "parapet": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    6,
+    9
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d0b8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcab8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-end",
+   "footprint": {
+    "rect": [
+     7,
+     15
+    ]
+   },
+   "at": [
+    40,
+    10
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-pier-a",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -30,
+    -6
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b08d3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08d3f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-pier-b",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -18,
+    -6
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b08d3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08d3f"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -24,
+    -4,
+    8.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 14,
+    "height": 0.0,
+    "thickness": 0.5,
+    "colour": "#dcdcd8",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 8,
+      "colour": "#3d6b3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -4
+    ],
+    "end": [
+     30,
+     -4
+    ],
+    "count": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -2
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -4
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "breeze-block screens are approximated by pale punched windows, slate-blue floor bands, curved ramp and fountain bed, wing and stair-end details; the rest of the 345 x 179 m campus is not modelled"
+ }
+}

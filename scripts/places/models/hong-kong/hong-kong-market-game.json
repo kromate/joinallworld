@@ -1,0 +1,226 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LOHAS_Park_District_Open_Space_Aerial_view_2020.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Wpcpey",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/hong-kong/lohas2.jpg",
+   "used": "low terraced depot-top mall with long curved white fascia bands and green roof gardens, round glazed pavilion with grass roof, two square beige vent towers with dark bands, wide red-paved plaza and high-rise housing behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/607534710",
+   "used": "317 x 158 m footprint (auto-fitted portion)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 12
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#dcdad2",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#b9ccd6",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#dcdad2",
+       "#c4d3da"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9db58a",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-wing",
+   "footprint": {
+    "rect": [
+     50,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 13,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9ccd6",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b9ccd6",
+       "#e6e3da"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9db58a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -18,
+    -22,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#6b7a8a",
+    "profile": [
+     [
+      8,
+      0,
+      "#8fb3c0"
+     ],
+     [
+      8,
+      9,
+      "#8fb3c0"
+     ],
+     [
+      8.6,
+      9.2,
+      "#e6e3da"
+     ],
+     [
+      8.6,
+      10.2
+     ],
+     [
+      7.6,
+      10.3,
+      "#7da05f"
+     ],
+     [
+      0.1,
+      10.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    40,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "height": 20,
+    "colour": "#c9b896",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#2a2a2a"
+      ],
+      "height": 2.5,
+      "at": 0.6,
+      "proud": 0.05
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    56,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "height": 17,
+    "colour": "#c9b896",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#2a2a2a"
+      ],
+      "height": 2.5,
+      "at": 0.55,
+      "proud": 0.05
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 1,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "aerial of a curvy terraced depot-top mall; modelled as simplified OSM massing with pavilion and vent towers, no curving terraces or plaza paving colours"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-market-game"
+}

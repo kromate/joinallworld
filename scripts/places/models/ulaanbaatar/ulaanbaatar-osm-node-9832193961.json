@@ -1,0 +1,114 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-node-9832193961",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/220869625",
+   "used": "Khan-Uul Tower outline 33 x 24 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 1.04
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a8f94",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 5,
+   "height": 27,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c2cb",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bands": "#eef0f1",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.5,
+    "height": 3.2,
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -14,
+    3.5
+   ],
+   "params": {
+    "width": 5,
+    "height": 1,
+    "bottom": 3.5,
+    "colour": "#eef0f1",
+    "frameColour": "#8a8f94",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; storey count and cladding guessed"
+ }
+}

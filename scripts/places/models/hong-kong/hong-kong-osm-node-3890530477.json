@@ -1,0 +1,296 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rock_Carving_on_Tung_Lung_Chau_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Underwaterbuffalo",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/rock1.jpg",
+   "used": "tall dark brown-grey rock slab with a near-vertical engraved face leaning slightly, pale weathered base and shoulder, low concrete viewing wall with white interpretive panels, white mesh railing on the left, dry grass above"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q11104184",
+   "used": "declared monument identity"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "colour": "#5a4a3f",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -4.2,
+        -1.2
+       ],
+       [
+        4.4,
+        -1.6
+       ],
+       [
+        4.6,
+        2.4
+       ],
+       [
+        -3.6,
+        3.2
+       ]
+      ],
+      "colour": "#b9a68a"
+     },
+     {
+      "z": 1.2,
+      "poly": [
+       [
+        -4.3,
+        -1.2
+       ],
+       [
+        4.6,
+        -1.7
+       ],
+       [
+        4.8,
+        2.6
+       ],
+       [
+        -3.8,
+        3.4
+       ]
+      ],
+      "colour": "#a7927a"
+     },
+     {
+      "z": 2.0,
+      "poly": [
+       [
+        -4.6,
+        -1.4
+       ],
+       [
+        4.2,
+        -2.0
+       ],
+       [
+        4.4,
+        2.8
+       ],
+       [
+        -4.0,
+        3.5
+       ]
+      ],
+      "colour": "#5a4a3f"
+     },
+     {
+      "z": 6.0,
+      "poly": [
+       [
+        -4.8,
+        -1.0
+       ],
+       [
+        3.6,
+        -1.4
+       ],
+       [
+        3.8,
+        3.0
+       ],
+       [
+        -4.4,
+        3.6
+       ]
+      ],
+      "colour": "#4b3c33"
+     },
+     {
+      "z": 7.0,
+      "poly": [
+       [
+        -4.0,
+        -0.6
+       ],
+       [
+        2.4,
+        -0.8
+       ],
+       [
+        2.6,
+        2.6
+       ],
+       [
+        -3.6,
+        3.0
+       ]
+      ],
+      "colour": "#6b5d4f"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1,
+    -4.6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.5,
+      -0.45
+     ],
+     [
+      4.5,
+      -0.45
+     ],
+     [
+      4.5,
+      0.45
+     ],
+     [
+      -4.5,
+      0.45
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#a9a395",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.6,
+    -4.6,
+    1.0
+   ],
+   "params": {
+    "points": [
+     [
+      -2.6,
+      -0.5
+     ],
+     [
+      2.6,
+      -0.5
+     ],
+     [
+      2.6,
+      0.5
+     ],
+     [
+      -2.6,
+      0.5
+     ]
+    ],
+    "height": 0.08,
+    "topScale": 1.0,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -6,
+    -5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     -8,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.12,
+        0.12
+       ],
+       "height": 1.1,
+       "colour": "#f0f0ee"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -5,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     0.06
+    ],
+    "height": 0.5,
+    "colour": "#b8bfbf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3,
+    -0.05
+   ],
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "height": 0.1,
+    "colour": "#b4ada0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": 0,
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "rock is a smooth loft; no engraved pattern, fissures or dry grass cap; viewing wall approximate"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-node-3890530477"
+}

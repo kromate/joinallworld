@@ -1,0 +1,155 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/893887684",
+   "used": "station building outline (34.5 x 13.1 m, 370 m2), name match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey halt, hipped clay-tile roof, painted render, two tracks under a short platform canopy"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1d0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.6,
+    "bands": "#c8302a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a3c",
+    "material": "clay-tile",
+    "overhang": 1.2,
+    "pitch": 24
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 4.5,
+    "height": 3.4,
+    "roof_colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 2,
+    "spacing": 5.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 4.2,
+    "colour": "#c8302a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c8302a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#c9c9c9"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-transit"
+}

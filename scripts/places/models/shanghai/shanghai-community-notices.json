@@ -1,0 +1,250 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pudong_New_Area_Government_Headquarter.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "WQL",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/notices.jpg",
+   "used": "tall round glass tower rising behind a four-storey grey stone podium with a round entrance canopy, stepped approach, glazed lower side wings, flagpole on the plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/165023558",
+   "used": "not used for massing: curved unnamed outline does not agree with the rectilinear podium in the photo"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower is a plain glass cylinder without the faceted top and vertical mullion stripes; flag, hedges and approach steps simplified; side wings approximate"
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     76,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#b6b3a8",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#a8a59a",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     28,
+     24
+    ]
+   },
+   "at": [
+    -52,
+    -2
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f7c84",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bands": "#a9a79d",
+    "bay": 7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     28,
+     24
+    ]
+   },
+   "at": [
+    52,
+    -2
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f7c84",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bands": "#a9a79d",
+    "bay": 7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    12,
+    21
+   ],
+   "params": {
+    "colour": "#7f93a8",
+    "material": "glass-curtain",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 16
+     },
+     {
+      "z": 52,
+      "circle": 16
+     },
+     {
+      "z": 56,
+      "circle": 14.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -22,
+    6.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 9,
+    "height": 0,
+    "columns": 6,
+    "colour": "#c9c7bf"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "count": 5,
+    "rise": 0.2,
+    "run": 1.1,
+    "colour": "#b4b1a6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -2,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "colour": "#c8202a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-community-notices"
+}

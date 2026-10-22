@@ -1,0 +1,278 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/177938414",
+   "used": "campus outline (576 x 262 m, 62,785 m2) as the lawn and plaza ground plate, scaled to the 118 m scene clamp; buildings sit inside it"
+  },
+  {
+   "kind": "text",
+   "used": "brief: private university on Phet Kasem Road, founded 1965; tall concrete academic block over a classroom podium, canopy walkway, flags. Commons photos found were ceremony interiors and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus-plate",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9bb08a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9bb08a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     60,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1d0",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": "#c9b99a",
+    "plinth": 0.4,
+    "bay": 7.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 8.3,
+   "height": 44,
+   "storeys": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1d0",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "bands": "#6f8f9a",
+    "plinth": 0.4,
+    "bay": 7.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    34,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1d0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#a8a39a",
+    "plinth": 0.4,
+    "bay": 7.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cdb3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#a8a39a",
+    "plinth": 0.4,
+    "bay": 7.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy-walkway",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 4,
+    "spans": 6,
+    "tower": false,
+    "rails": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "colour": "#6f8f9a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 6,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": 3,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-osm-way-177938414",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no exterior photo found (Commons only has ceremony interiors); campus outline used as ground plate, buildings typed from the brief, so tower position, height and facade colours are plausible not measured"
+ }
+}

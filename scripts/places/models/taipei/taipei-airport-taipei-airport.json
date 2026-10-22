@@ -1,0 +1,438 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Taipei_Songshan_Airport_1st_Terminal_Building_20090926.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons user 玄史生",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/term1.jpg",
+   "used": "long low terminal front: row of grey concrete columns, recessed terracotta-red wall, deep flat yellow roof slab, blank blue sign board on roof, small yellow kerb awnings, slim lamp posts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Taipei_Songshan_Airport_1st_Terminal_Building_East_Side.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons user 玄史生",
+   "view": "side",
+   "file": "/tmp/places-evidence/taipei/term2.jpg",
+   "used": "east end: white block behind the terminal, yellow-capped control tower, green kerb shelter"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2013-03-27_B-18309_(aircraft)_at_Songshan_Airport.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Big Ben in Japan",
+   "view": "detail",
+   "file": "/tmp/places-evidence/taipei/airport-airp-2.jpg",
+   "used": "airside grey jet bridges with a red-brown tint, apron"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/549458178",
+   "used": "terminal size (445 m long x ~55 m deep); a 118 m central portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 9,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     100,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8604a",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "none"
+    },
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c4a99a",
+      "height": 0.5,
+      "at": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     106,
+     36
+    ],
+    "z0": 10.6,
+    "height": 2.6,
+    "colour": "#e6b72c",
+    "topColour": "#d4a822"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-attic",
+   "at": [
+    0,
+    3
+   ],
+   "params": {
+    "rect": [
+     86,
+     16
+    ],
+    "z0": 13.2,
+    "height": 1.6,
+    "colour": "#e6b72c",
+    "topColour": "#c9a024"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       1.3
+      ],
+      "height": 10.5,
+      "colour": "#a9a59c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -47,
+     -14.5
+    ],
+    "end": [
+     47,
+     -14.5
+    ],
+    "count": 14
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -2,
+    14.8
+   ],
+   "params": {
+    "width": 34,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#2d63a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -38,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.5,
+    "colour": "#e5b72a",
+    "edgeColour": "#d9a81f",
+    "columns": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -22,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.5,
+    "colour": "#e5b72a",
+    "edgeColour": "#d9a81f",
+    "columns": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.5,
+    "colour": "#e5b72a",
+    "edgeColour": "#d9a81f",
+    "columns": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.5,
+    "colour": "#e5b72a",
+    "edgeColour": "#d9a81f",
+    "columns": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    26,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.5,
+    "colour": "#e5b72a",
+    "edgeColour": "#d9a81f",
+    "columns": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    42,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.5,
+    "colour": "#e5b72a",
+    "edgeColour": "#d9a81f",
+    "columns": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    68,
+    22
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7e8e4",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    86,
+    12,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "round",
+    "colour": "#d9d6cc",
+    "cabColour": "#e5b72a",
+    "bandColour": "#e5b72a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 6,
+    "height": 3.2,
+    "thickness": 0.4,
+    "colour": "#2e6b54",
+    "columns": 4
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -40,
+    20,
+    5
+   ],
+   "params": {
+    "length": 16,
+    "colour": "#b9b2aa"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -14,
+    20,
+    5
+   ],
+   "params": {
+    "length": 16,
+    "colour": "#b9b2aa"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    12,
+    20,
+    5
+   ],
+   "params": {
+    "length": 16,
+    "colour": "#b9b2aa"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -48,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 7,
+    "spacing": 15
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -44,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4.2,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     -36
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-airport-taipei-airport",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Only the central 100 m of the 445 m terminal is modelled; kerb awnings and lamps simplified; no louvred panels; apron side is schematic."
+ }
+}

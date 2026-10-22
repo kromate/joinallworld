@@ -1,0 +1,336 @@
+{
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "brick, red door, couplets and green roof match; painted friezes, ornate ridge figures and potted plants are simplified"
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HK_CheungChauPakSheTinHauTemple.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chong Fat",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/quiet-reflection-0.jpg",
+   "used": "blue-grey brick wall, red double door in granite frame with gold lintel, red couplets, painted friezes under green glazed eaves, three granite steps, potted palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pak_She_Tin_Hau_Temple.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Millevache",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/quiet-reflection-1.jpg",
+   "used": "temple seen from the forecourt: low single hall, green tile roof, shaded yard"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 30,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7d828b",
+    "windows": "none",
+    "plinth": 0.7,
+    "bands": {
+     "colour": "#d4a62a",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7f66",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.1,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frame",
+   "at": [
+    0,
+    -4.65
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.35
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#c9a96a",
+    "topColour": "#c9a96a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    0,
+    -4.7
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.4
+    ],
+    "z0": 3.4,
+    "height": 0.7,
+    "colour": "#d9b56a",
+    "topColour": "#d9b56a"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -4.85,
+    0
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 2.9,
+    "arch": false,
+    "colour": "#a8221f",
+    "trim": "#c9a96a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "couplet-l",
+   "at": [
+    -1.6,
+    -4.7
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.12
+    ],
+    "z0": 0.5,
+    "height": 2.8,
+    "colour": "#c8281f",
+    "topColour": "#c8281f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "couplet-r",
+   "at": [
+    1.6,
+    -4.7
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.12
+    ],
+    "z0": 0.5,
+    "height": 2.8,
+    "colour": "#c8281f",
+    "topColour": "#c8281f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mural-l",
+   "at": [
+    -3.6,
+    -4.62
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.12
+    ],
+    "z0": 3.0,
+    "height": 1.5,
+    "colour": "#e9e1cf",
+    "topColour": "#e9e1cf",
+    "trimColour": "#a8322b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mural-r",
+   "at": [
+    3.6,
+    -4.62
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.12
+    ],
+    "z0": 3.0,
+    "height": 1.5,
+    "colour": "#e9e1cf",
+    "topColour": "#e9e1cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze",
+   "at": [
+    0,
+    -4.75
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.35
+    ],
+    "z0": 4.0,
+    "height": 0.6,
+    "colour": "#2f7a6a",
+    "topColour": "#2f7a6a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ridge",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     10.5,
+     0.6
+    ],
+    "z0": 5.9,
+    "height": 0.6,
+    "colour": "#2f6a55",
+    "topColour": "#2f6a55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "figures",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.4
+    ],
+    "z0": 6.4,
+    "height": 0.7,
+    "colour": "#d8b04a",
+    "topColour": "#d8b04a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "rise": 0.45,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b8a98a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    -6.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 3,
+    "spread": 2,
+    "count": 3,
+    "line": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 3,
+    "spread": 2,
+    "count": 2,
+    "line": 2
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -3.5,
+    -7,
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 6.3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 7.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-quiet-reflection"
+}

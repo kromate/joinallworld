@@ -1,0 +1,336 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-airport-vientiane-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vientiane-Wattay_Airport_Terminal.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Tim Wang from Beijing, China",
+   "view": "detail",
+   "file": "/tmp/places-evidence/vientiane/air1.jpg",
+   "used": "arrivals entrance: steep gable with a timber lattice screen under white fascia boards, deep flat white canopy beam below, pale tile roof beside, low viewpoint"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:VientianeAirportTerminal2.jpg",
+   "licence": "Public domain",
+   "author": "Wikimedia Commons",
+   "view": "interior",
+   "used": "colour cues only: pink piers, pale blue wall, white columns; not modelled"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10301278",
+   "used": "overall size (193 m long zig-zag terminal); modelled as a straightened 110 m wing because the outline exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     84,
+     30
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7e2d3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#f4f2ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532f",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    48,
+    8
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2ddcc",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    -46,
+    8
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2ddcc",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-gable",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a3f",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 56,
+    "depth": 9,
+    "height": 5.2,
+    "thickness": 0.9,
+    "columns": 6,
+    "colour": "#f4f2ea",
+    "edgeColour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    40,
+    24,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#d9d6cc",
+    "cabColour": "#4d6a78",
+    "bandColour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -32.0,
+    22,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -14.4,
+    22,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    6.4,
+    22,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -24.0,
+    -36,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20.8,
+    -36,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -17.6,
+    -36,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     42,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only the arrivals gable detail is photographed so overall massing is from OSM size and brief; real 193 m zig-zag outline straightened to ~110 m; neon sign omitted; wing positions approximate"
+ }
+}

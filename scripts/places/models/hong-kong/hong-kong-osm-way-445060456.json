@@ -1,0 +1,199 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MacLehoseMedicalRehabilitationCentre.jpg",
+   "licence": "Public domain",
+   "author": "Chong Fat",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/v18_0.jpg",
+   "used": "pale mint-blue painted concrete, long terraced balconies with planter edges stepping up the hillside block, open columned ground-floor drive-in, punched window pairs with air-conditioner boxes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/801321423",
+   "used": "footprint (name match), pentagon rotated so the long street side faces the camera"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hillside massing, stepped terraces with planters, glazed canopy and the deep projecting entry bay are only roughly suggested; OSM footprint is a regular pentagon so the photo corner geometry differs; second Commons photo (Chuk Lam care home sign) was a different building and ignored"
+ },
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -27
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bcd9d2",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bay": 9,
+    "faces": {
+     "back": "none",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#bcd9d2",
+       "#cfe6e0"
+      ]
+     },
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#d7ebe5",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9b3b0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -4
+     ],
+     [
+      9,
+      -4
+     ],
+     [
+      9,
+      4
+     ],
+     [
+      -9,
+      4
+     ]
+    ],
+    "height": 18,
+    "z0": 6,
+    "colour": "#c4ddd6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -35,
+    6
+   ],
+   "params": {
+    "rect": [
+     19,
+     2.6
+    ],
+    "height": 0.9,
+    "colour": "#d9ebe6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -35,
+    10
+   ],
+   "params": {
+    "rect": [
+     19,
+     2.6
+    ],
+    "height": 0.9,
+    "colour": "#d9ebe6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -35,
+    14
+   ],
+   "params": {
+    "rect": [
+     19,
+     2.6
+    ],
+    "height": 0.9,
+    "colour": "#d9ebe6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -35,
+    18
+   ],
+   "params": {
+    "rect": [
+     19,
+     2.6
+    ],
+    "height": 0.9,
+    "colour": "#d9ebe6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-way-445060456"
+}

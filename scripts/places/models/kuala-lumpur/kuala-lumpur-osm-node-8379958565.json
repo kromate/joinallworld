@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-node-8379958565",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief and Wikipedia: second official palace of the Sultan of Selangor; U-plan 85 x 65 m, hipped roofs, yellow-and-white royal palette (inferred). OSM outline is irregular (37% of its bounding box) so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "central",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6c8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "bands": "#d4b13f",
+    "plinth": 0.8,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9a43a",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     20,
+     48
+    ]
+   },
+   "at": [
+    -33,
+    -8
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6c8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "bands": "#d4b13f",
+    "plinth": 0.8,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9a43a",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     20,
+     48
+    ]
+   },
+   "at": [
+    33,
+    -8
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6c8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "bands": "#d4b13f",
+    "plinth": 0.8,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9a43a",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 9,
+    "columns": 6,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#ffffff",
+    "roofColour": "#c9a43a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#d4b13f",
+    "count": 2,
+    "spacing": 28
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "pillar": 1.2,
+    "arch": true,
+    "colour": "#efe6c8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -40
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; massing from OSM outline only, palette inferred"
+ }
+}

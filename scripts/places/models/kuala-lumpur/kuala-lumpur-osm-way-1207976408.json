@@ -1,0 +1,378 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Front_View_of_Orang_Asli_Museum.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fxchua",
+   "view": "front",
+   "file": "/tmp/places-evidence/kuala-lumpur/or2.jpg",
+   "used": "steep front gable hall with dark timber walls and diamond motif, green corrugated roofs with scalloped teal-white fascia, two pillars, white and teal diamond lattice screens over a rubble-stone plinth, lower hipped wing with verandah balustrade at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muzium_Orang_Asli,_Gombak,_Malaysia_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Renek78",
+   "view": "side",
+   "used": "carved scalloped bargeboards, cream rendered rear wing with white-framed windows, ramp with ornamental tusk-like arches"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1207976408",
+   "used": "overall extent only (124 x 50 m, long low complex); the visible entrance block is composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof edges are not scalloped; diamond lattice is plain white panels; rear cream wing and ramp arches are only rough masses; real complex is far longer than the modelled entrance block."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-plinth",
+   "footprint": {
+    "rect": [
+     44,
+     26
+    ]
+   },
+   "at": [
+    2,
+    2
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9c5b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-hall",
+   "footprint": {
+    "rect": [
+     20,
+     22
+    ]
+   },
+   "at": [
+    10,
+    2
+   ],
+   "z0": 1.0,
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5b3a25",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d7f58",
+    "material": "metal-sheet",
+    "pitch": 52,
+    "overhang": 2.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     24,
+     15
+    ]
+   },
+   "at": [
+    -16,
+    0
+   ],
+   "z0": 1.0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6a4730",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a7a55",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    21
+   ],
+   "z0": 1.0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "none"
+    },
+    "bands": "#d9c9a0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a4332",
+    "material": "timber-shingle",
+    "pitch": 30,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-hall",
+   "footprint": {
+    "rect": [
+     12,
+     14
+    ]
+   },
+   "at": [
+    31,
+    -1
+   ],
+   "z0": 1.0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#64412a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4d7f58",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lattice-left",
+   "at": [
+    4.6,
+    -9.1,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     0.3
+    ],
+    "height": 5.6,
+    "colour": "#e9efe9",
+    "topColour": "#e9efe9",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "glassColour": "#7fa7a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lattice-right",
+   "at": [
+    15.4,
+    -9.1,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     0.3
+    ],
+    "height": 5.6,
+    "colour": "#e9efe9",
+    "topColour": "#e9efe9",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "glassColour": "#7fa7a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-diamond",
+   "at": [
+    10,
+    -9.1,
+    8.4
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.3
+    ],
+    "height": 2.4,
+    "colour": "#7a5638",
+    "topColour": "#7a5638"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "muzium-board",
+   "at": [
+    10,
+    -9.1,
+    6.9
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.4
+    ],
+    "height": 1.1,
+    "colour": "#6f7c4a",
+    "topColour": "#6f7c4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pillar-0",
+   "at": [
+    0.8,
+    -10.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 9,
+    "colour": "#b5612a",
+    "topColour": "#b5612a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pillar-19",
+   "at": [
+    19.2,
+    -10.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 9,
+    "colour": "#b5612a",
+    "topColour": "#b5612a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -16,
+    -8,
+    1.0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#d8cfa6"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -18,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 1,
+    "run": 2,
+    "count": 3,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 10,
+    "line": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 8,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "extent": [
+   90,
+   60
+  ],
+  "trees": []
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-way-1207976408"
+}

@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-1082234947",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1082234947",
+   "used": "33.5x17.7 m two-level cafe outline, rotated 17 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jakarta.json#jakarta-osm-way-1082234947",
+   "used": "glazed ground floor, cantilevered roof slab, blank signage boards, umbrellas, car park; no photo of this branch found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "bands": "#6f4a3a",
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "groundKind": "shopfront",
+    "groundHeight": 3.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f90",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "params": {
+    "rect": [
+     38,
+     5
+    ],
+    "z0": 8.4,
+    "height": 0.7,
+    "colour": "#6f4a3a",
+    "topColour": "#8c8f90"
+   },
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "rotDeg": 17
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2.6,
+    "drop": 0.5,
+    "height": 3.2,
+    "colours": [
+     "#6f4a3a",
+     "#f1ece0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 5.5,
+    "colour": "#6f4a3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 4.5,
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "colours": [
+     "#6f4a3a",
+     "#f1ece0"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo of this branch; glazed ground floor, cantilever slab and signage are typed from the brief on the real outline."
+ }
+}

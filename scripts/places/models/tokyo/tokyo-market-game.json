@@ -1,0 +1,283 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AEON_Shinurayasu.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yo 2251 ki",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/aeon2.jpg",
+   "used": "two arched glazed vault gables at the left of the front, long blue ribbon-glass band over white panel walls, pink-brown piers and low arcaded podium, big plain sign box on the left roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shoppers_Plaza_Shin-urayasu.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "hamakamui",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/aeon1.jpg",
+   "used": "vault proportions: tall pointed-arch glass fan gable with steel grid, smaller twin vault beside it, bronze canopy along the base"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26322912",
+   "used": "footprint, aligned to the building axes"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.42,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -45.8,
+    "scale": 0.75
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 31,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ece8df",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#d6cdbf",
+    "plinth": 0.6,
+    "groundHeight": 6.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aaa8",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault-big",
+   "rotDeg": 90,
+   "footprint": {
+    "rect": [
+     12,
+     22
+    ]
+   },
+   "at": [
+    -30,
+    -49
+   ],
+   "height": 28,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f5f86",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#c9ccd0",
+    "material": "metal-sheet",
+    "rise": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault-small",
+   "rotDeg": 90,
+   "footprint": {
+    "rect": [
+     10,
+     15
+    ]
+   },
+   "at": [
+    -9,
+    -48
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f5f86",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#c9ccd0",
+    "material": "metal-sheet",
+    "rise": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault-end",
+   "rotDeg": 90,
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    -48,
+    -47
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f5f86",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#c9ccd0",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     88,
+     6
+    ]
+   },
+   "at": [
+    10,
+    -46.5
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c79a86",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 8,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b28571",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -48,
+    -28,
+    31
+   ],
+   "params": {
+    "width": 16,
+    "height": 10,
+    "bottom": 0.5,
+    "colour": "#f2f1ec",
+    "frameColour": "#d8d8d6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    25,
+    -50,
+    6
+   ],
+   "params": {
+    "width": 14,
+    "height": 6,
+    "bottom": 0.5,
+    "colour": "#e9e6df",
+    "frameColour": "#aaaaaa"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "vault fronts are plain blue glass without the steel arch grid; no rooftop car deck detail, no podium arcade columns or blue railings"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -56
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -56
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ }
+}

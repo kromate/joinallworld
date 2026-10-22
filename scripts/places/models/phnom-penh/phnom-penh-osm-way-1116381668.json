@@ -1,0 +1,464 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-osm-way-1116381668",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wat_Ounalom_2012.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kiensvay",
+   "view": "street",
+   "file": "/tmp/places-evidence/phnom-penh/ounalom1.jpg",
+   "used": "yellow-walled vihara with big red-orange gabled roof and white ornamental gable, pink-red tiered gate tower, three-storey hall with cream walls, balcony rails and gold-and-green tiered roof, red-brown fence wall with round motifs and finial posts, hedges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1116381668",
+   "used": "compound is 171 x 152 m; only the street-front cluster of hall, vihara and gate is modelled, to scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 46,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.4,
+    "thickness": 0.7,
+    "colour": "#a8453a",
+    "pillarEvery": 4.5,
+    "points": [
+     [
+      -36,
+      0
+     ],
+     [
+      -5,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 2.4,
+    "thickness": 0.7,
+    "colour": "#a8453a",
+    "pillarEvery": 4.5,
+    "points": [
+     [
+      5,
+      0
+     ],
+     [
+      40,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vihara",
+   "footprint": {
+    "rect": [
+     20,
+     11
+    ]
+   },
+   "at": [
+    -24,
+    -2
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c45c",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.8,
+    "bay": 3.5,
+    "faces": {
+     "back": "none"
+    },
+    "bands": {
+     "colour": "#c8a24a",
+     "height": 0.4
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9714a",
+    "material": "clay-tile",
+    "pitch": 46,
+    "overhang": 2.6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vihara-front",
+   "footprint": {
+    "rect": [
+     8,
+     11
+    ]
+   },
+   "at": [
+    -24,
+    -8
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c45c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9714a",
+    "material": "clay-tile",
+    "pitch": 50,
+    "overhang": 1.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#b5483a",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       8.625,
+       4.5
+      ],
+      "colour": "#a8453a"
+     },
+     {
+      "z": 6.324999999999999,
+      "rect": [
+       8.625,
+       4.5
+      ]
+     },
+     {
+      "z": 7.13,
+      "rect": [
+       7.359999999999999,
+       3.8
+      ],
+      "colour": "#c9a24a"
+     },
+     {
+      "z": 9.774999999999999,
+      "rect": [
+       6.21,
+       3.2
+      ],
+      "colour": "#b5483a"
+     },
+     {
+      "z": 10.579999999999998,
+      "rect": [
+       5.06,
+       2.6
+      ],
+      "colour": "#c9a24a"
+     },
+     {
+      "z": 12.879999999999999,
+      "rect": [
+       3.9099999999999997,
+       2.2
+      ],
+      "colour": "#b5483a"
+     },
+     {
+      "z": 14.489999999999998,
+      "rect": [
+       1.8399999999999999,
+       1.2
+      ]
+     },
+     {
+      "z": 16.56,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     5.2
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#2d1f1a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     17,
+     13
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "z0": 0,
+   "height": 10.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7d1c0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.8,
+    "bay": 3.4,
+    "bands": {
+     "colour": "#c8a24a",
+     "height": 0.4
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.3,
+      "floors": "upper",
+      "colour": "#efece4",
+      "railKind": "solid",
+      "faces": [
+       "front",
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9a24a",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 2.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-up1",
+   "footprint": {
+    "rect": [
+     11,
+     9
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "z0": 10.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc5a6",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9a24a",
+    "material": "clay-tile",
+    "pitch": 45,
+    "overhang": 1.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-up2",
+   "footprint": {
+    "rect": [
+     6.4,
+     6.4
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "z0": 14.0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a24a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#c9703a",
+    "material": "clay-tile",
+    "pitch": 55,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    24,
+    6,
+    17.8
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#c9a24a",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.2
+     ],
+     [
+      0.5,
+      2.2
+     ],
+     [
+      0.6,
+      3.2
+     ],
+     [
+      0.2,
+      4.6
+     ],
+     [
+      0.04,
+      6.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -34,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#c9b080"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     0,
+     0
+    ],
+    "end": [
+     14,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "shrub",
+      "height": 2.4,
+      "spread": 2.6
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -10
+    ],
+    "height": 10
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no gilded carved naga gables, pediments or pillar ornament; gate tower tiers are lofted plain tiers; hall roof tiers schematic; hedges, flags and statue simplified; compound beyond the street-front cluster not modelled"
+ }
+}

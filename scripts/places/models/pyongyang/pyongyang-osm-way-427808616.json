@@ -1,0 +1,507 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tomb_of_King_Tongmyong,_Pyongyang,_North_Korea.jpg",
+   "licence": "CC BY 2.0",
+   "author": "yeowatzup",
+   "view": "detail",
+   "file": "/tmp/places-evidence/pyongyang/tomb1.jpg",
+   "used": "Korean hall: white painted walls with green and ochre dancheong bands, red-brown columns, brown-red curved tile roofs with swept eaves and a stacked two-tier roof; armoured stone horseman statues"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:King_Tongmyong_mausoleum_tumuli.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sgnpkd",
+   "view": "side",
+   "file": "/tmp/places-evidence/pyongyang/tomb2.jpg",
+   "used": "low grassed burial mound under pines with a small stone stele"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/427808616",
+   "used": "overall enclosure extent (about 182 x 67 m, long axis along the approach)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 36,
+  "aspect": 1.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece5d3",
+    "windows": "none",
+    "plinth": 1.2,
+    "bands": "#3d7a5a",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.5,
+      "spacing": 3.2,
+      "colour": "#9c3d2b",
+      "margin": 1.0,
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a3f33",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "curved-roof",
+   "id": "hall-roof",
+   "at": [
+    0,
+    0,
+    7
+   ],
+   "params": {
+    "width": 29,
+    "depth": 18,
+    "rise": 4.6,
+    "overhang": 2.6,
+    "upturn": 1.0,
+    "colour": "#7b4a3b",
+    "trim": "#b8452f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 7,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e9e2d0",
+    "windows": "none",
+    "bands": "#9c3d2b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a3f33"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "id": "upper-roof",
+   "at": [
+    0,
+    0,
+    10.6
+   ],
+   "params": {
+    "width": 19,
+    "depth": 12,
+    "rise": 3.4,
+    "overhang": 2.0,
+    "upturn": 0.9,
+    "colour": "#7b4a3b",
+    "trim": "#b8452f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "hall-steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 1.2,
+    "run": 1.4,
+    "count": 5,
+    "colour": "#d9d6cc"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "path-steps",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#d9d6cc"
+   }
+  },
+  {
+   "type": "gatehouse",
+   "id": "gate",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 6,
+    "depth": 6,
+    "colour": "#b8452f"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "id": "gate-roof",
+   "at": [
+    0,
+    -48,
+    6
+   ],
+   "params": {
+    "width": 16,
+    "depth": 9,
+    "rise": 2.8,
+    "overhang": 1.8,
+    "upturn": 0.8,
+    "colour": "#7b4a3b",
+    "trim": "#b8452f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mound",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#6f9a4a",
+    "profile": [
+     [
+      16,
+      0
+     ],
+     [
+      14.5,
+      1.6
+     ],
+     [
+      11,
+      3.6
+     ],
+     [
+      6.5,
+      5.1
+     ],
+     [
+      0.3,
+      5.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mound-lo",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#6f9a4a",
+    "profile": [
+     [
+      16,
+      0
+     ],
+     [
+      8,
+      3.6
+     ],
+     [
+      0.3,
+      5.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "enclosure-back",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -52
+     ],
+     [
+      -40,
+      62
+     ],
+     [
+      40,
+      62
+     ],
+     [
+      40,
+      -52
+     ],
+     [
+      8,
+      -52
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.5,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "enclosure-gate-left",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      -52
+     ],
+     [
+      -40,
+      -52
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.5,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stele",
+   "at": [
+    0,
+    23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.5
+    ],
+    "height": 3.2,
+    "colour": "#e0ddd2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "guardians",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.2,
+     -36,
+     0
+    ],
+    "end": [
+     -5.2,
+     -18,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "statue-figure",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "height": 4.2,
+       "colour": "#dcd9cf"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "guardians-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     5.2,
+     -36,
+     0
+    ],
+    "end": [
+     5.2,
+     -18,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "statue-figure",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "height": 4.2,
+       "colour": "#dcd9cf"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   150,
+   150
+  ],
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     30
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     48
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     34
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     52
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     -20
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     -22
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     55
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     12,
+     58
+    ],
+    "height": 13
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-427808616",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Compared with a close-up of the hall and a stone guardian: no dancheong painting, eave rafters or ridge-end ornament; guardian statues are generic figures without horses; mound and enclosure layout from text and a mound photo."
+ }
+}

@@ -1,0 +1,510 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Global_Harbor_shopping_mall_and_towers.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jpbowen",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/gh1.jpg",
+   "used": "cream stone podium, eight-column portico with deep entablature, small glass dome, stepped bronze-gold fin-clad twin towers with dark glass crowns and silver spires, dark signboard at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:View_with_Global_Harbor_towers,_Shanghai.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jpbowen",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/shanghai/gh2.jpg",
+   "used": "twin towers side by side at equal height, dome and glass roof beside the podium"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/375224849",
+   "used": "387 m x 135 m footprint; a 118 m wide portion of the podium is modelled (scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 62,
+  "aspect": 0.75,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "towers capped at 138 m by the 140 m scene limit (real 248 m) so podium is scaled to 24 m; 118 m of the 387 m podium; no gilt fin relief or tower stepping detail; portico entablature simplified"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     118,
+     52
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#dcc6a0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#c9ae84"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a09a8e",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-beam",
+   "footprint": {
+    "rect": [
+     70,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "z0": 12,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d3b98e",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb68c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -31,
+     0,
+     0
+    ],
+    "end": [
+     31,
+     0,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 1.5,
+      "n": 12,
+      "z0": 0,
+      "height": 12,
+      "colour": "#e2cfae"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tall-entrance",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "z0": 24,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d6bd92",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb68c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -12,
+    -4,
+    24
+   ],
+   "params": {
+    "colour": "#6f8da3",
+    "profile": [
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      1.5
+     ],
+     [
+      9,
+      4
+     ],
+     [
+      7,
+      6.5
+     ],
+     [
+      4,
+      8
+     ],
+     [
+      0,
+      8.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -12,
+    -4,
+    24
+   ],
+   "params": {
+    "colour": "#d9c9a6",
+    "profile": [
+     [
+      1.6,
+      8.4
+     ],
+     [
+      1.6,
+      11
+     ],
+     [
+      0,
+      12.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-left",
+   "footprint": {
+    "rect": [
+     14,
+     1
+    ]
+   },
+   "at": [
+    -52,
+    -26.5
+   ],
+   "z0": 13,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#1c1c1f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1f"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -18,
+    34,
+    0
+   ],
+   "params": {
+    "colour": "#b98a5c",
+    "slot": "metal-cladding",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       32,
+       26
+      ]
+     },
+     {
+      "z": 38,
+      "rect": [
+       32,
+       26
+      ]
+     },
+     {
+      "z": 39,
+      "rect": [
+       30,
+       24
+      ]
+     },
+     {
+      "z": 82,
+      "rect": [
+       27,
+       22
+      ]
+     },
+     {
+      "z": 83,
+      "rect": [
+       24,
+       20
+      ]
+     },
+     {
+      "z": 111,
+      "rect": [
+       21,
+       17
+      ]
+     },
+     {
+      "z": 121,
+      "rect": [
+       16,
+       13
+      ],
+      "colour": "#2f3a47"
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -18,
+    34,
+    0
+   ],
+   "params": {
+    "colour": "#2f3a47",
+    "sections": [
+     {
+      "z": 121,
+      "rect": [
+       16,
+       13
+      ]
+     },
+     {
+      "z": 128,
+      "rect": [
+       12,
+       10
+      ]
+     },
+     {
+      "z": 132,
+      "rect": [
+       4,
+       4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "spire",
+   "at": [
+    -18,
+    34,
+    132
+   ],
+   "params": {
+    "baseWidth": 2.2,
+    "height": 5,
+    "colour": "#cfd3d6"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    46,
+    0
+   ],
+   "params": {
+    "colour": "#b98a5c",
+    "slot": "metal-cladding",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       32,
+       26
+      ]
+     },
+     {
+      "z": 38,
+      "rect": [
+       32,
+       26
+      ]
+     },
+     {
+      "z": 39,
+      "rect": [
+       30,
+       24
+      ]
+     },
+     {
+      "z": 82,
+      "rect": [
+       27,
+       22
+      ]
+     },
+     {
+      "z": 83,
+      "rect": [
+       24,
+       20
+      ]
+     },
+     {
+      "z": 111,
+      "rect": [
+       21,
+       17
+      ]
+     },
+     {
+      "z": 121,
+      "rect": [
+       16,
+       13
+      ],
+      "colour": "#2f3a47"
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    46,
+    0
+   ],
+   "params": {
+    "colour": "#2f3a47",
+    "sections": [
+     {
+      "z": 121,
+      "rect": [
+       16,
+       13
+      ]
+     },
+     {
+      "z": 128,
+      "rect": [
+       12,
+       10
+      ]
+     },
+     {
+      "z": 132,
+      "rect": [
+       4,
+       4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "spire",
+   "at": [
+    14,
+    46,
+    132
+   ],
+   "params": {
+    "baseWidth": 2.2,
+    "height": 5,
+    "colour": "#cfd3d6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -48
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -48
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ }
+}

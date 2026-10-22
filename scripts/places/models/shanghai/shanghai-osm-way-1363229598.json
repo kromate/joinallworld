@@ -1,0 +1,247 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-1363229598",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:201805_Jiangqiao_Wholesale_Market.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MNXANL",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/jq.jpg",
+   "used": "entrance hall: pale grey tiled barrel-vault gable wall, red-framed grey roller-shutter bays, central flat entrance canopy on stone columns"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1549236410",
+   "used": "trading-hall outline for the shed block behind the gate hall (scaled to scene)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": -0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed-block",
+   "footprint": {
+    "osm": true,
+    "scale": 0.27
+   },
+   "at": [
+    0,
+    46
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9ccce",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 8,
+    "colour": "#7f93a5",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-hall",
+   "footprint": {
+    "rect": [
+     70,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9bec3",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#cf3a3a"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 6,
+    "colour": "#aeb4ba",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-wing-left",
+   "footprint": {
+    "rect": [
+     26,
+     24
+    ]
+   },
+   "at": [
+    -48,
+    -31
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7babd",
+    "windows": "none",
+    "faces": {
+     "front": "louvre"
+    },
+    "bay": 8,
+    "bands": "#c62f33",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b2b6ba",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shutter-wing-right",
+   "footprint": {
+    "rect": [
+     22,
+     24
+    ]
+   },
+   "at": [
+    46,
+    -31
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7babd",
+    "windows": "none",
+    "faces": {
+     "front": "louvre"
+    },
+    "bay": 8,
+    "bands": "#c62f33",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b2b6ba",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 5.2,
+    "form": "flat",
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -43.5,
+    9.5
+   ],
+   "params": {
+    "width": 26,
+    "height": 3.4,
+    "colour": "#b8bdc2",
+    "textColour": "#cf3a3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -66,
+     0
+    ],
+    "end": [
+     30,
+     -66,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "car",
+      "params": {}
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -60
+    ],
+    "height": 3
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -60
+    ],
+    "height": 3
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Curved gate-hall roof, red-banded shutter wings and entrance canopy match; real gate is far more cluttered, no sign lettering or trucks, shed block behind is a scaled OSM outline, camera crop is wider than photo."
+ }
+}

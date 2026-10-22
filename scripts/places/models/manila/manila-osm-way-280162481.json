@@ -1,0 +1,328 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-280162481",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FelixManalojf0056_03.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ramon FVelasquez",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/fm2.jpg",
+   "used": "stamped grey-and-beige paved plaza, curved low step platform carrying a dark grey commemorative stele on a plinth, white low walls and bollard-lit corners, black twin-globe lamp posts on round bases, a tall pale flagpole on a round pedestal, white perimeter wall with louvred screens and clipped shrubs, palms behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FelixManalojf0056_06.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ramon FVelasquez",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/fm1.jpg",
+   "used": "stepped platform proportions, stele height against the wall, curved paving borders"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/280162481",
+   "used": "plaza size 35 x 18 m (drawn squared to the camera)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     35,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a7a39d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9894",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    6,
+    0.5
+   ],
+   "params": {
+    "radius": 8,
+    "n": 24,
+    "height": 0.5,
+    "colour": "#cfc8bb"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    0.8,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#d6d0c2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stele-plinth",
+   "at": [
+    0,
+    5.5,
+    1.3
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     1.4
+    ],
+    "height": 1.0,
+    "colour": "#3b4046"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stele",
+   "at": [
+    0,
+    5.5,
+    2.3
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.4
+    ],
+    "height": 2.2,
+    "colour": "#4a5057"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-left",
+   "at": [
+    -5.2,
+    4,
+    1.3
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.2
+    ],
+    "height": 0.8,
+    "colour": "#efe9dc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-right",
+   "at": [
+    5.2,
+    4,
+    1.3
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.2
+    ],
+    "height": 0.8,
+    "colour": "#efe9dc"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "back-wall",
+   "at": [
+    0,
+    8.7,
+    0.5
+   ],
+   "params": {
+    "length": 35,
+    "height": 2.4,
+    "thickness": 0.35,
+    "colour": "#eee8da"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "side-wall-left",
+   "at": [
+    -17.2,
+    0,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 17,
+    "height": 2.2,
+    "thickness": 0.35,
+    "colour": "#eee8da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre-screen",
+   "at": [
+    -9,
+    8.4,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.2
+    ],
+    "height": 2.7,
+    "colour": "#d8cdb6"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -9,
+    -2,
+    0.5
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 3,
+    "spacing": 7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag-pedestal",
+   "at": [
+    9,
+    -4,
+    0.5
+   ],
+   "params": {
+    "radius": 1.2,
+    "n": 14,
+    "height": 1.3,
+    "topScale": 0.45,
+    "colour": "#d8c9b1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flagpole",
+   "at": [
+    9,
+    -4,
+    1.8
+   ],
+   "params": {
+    "radius": 0.25,
+    "n": 8,
+    "height": 12,
+    "colour": "#eae4d4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 3,
+    "spread": 3,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/lamp",
+   "id": "near-lamp",
+   "at": [
+    -12,
+    -6,
+    0.5
+   ],
+   "params": {
+    "height": 7.5,
+    "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "near-lamp-base",
+   "at": [
+    -12,
+    -6,
+    0.5
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 12,
+    "height": 1.0,
+    "colour": "#d8c9b1"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stele, stepped platform, white walls, lamps and flagpole are placed from the photo but twin-globe lamp heads, stamped paving pattern, shrubs and neighbouring houses are not modelled"
+ }
+}

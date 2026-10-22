@@ -1,0 +1,276 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-712187766",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_of_Manqu_Park,Shanghai,July_2020.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lcsun",
+   "view": "street",
+   "file": "/tmp/places-evidence/shanghai/osm-way-712187766-0.jpg",
+   "used": "entrance: slate-grey stacked-stone boundary wall with four dark plaques (blank here), low rough stone gate house with teal window frames and a small tile eave, herringbone brick paving, dense broadleaf trees overhanging with vines"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/712187766",
+   "used": "park outline 187 x 163 m for the lawn extent"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": -0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6d9a4f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d9a4f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "entrance-wall",
+   "at": [
+    -6,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 2.8,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#5e676b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "boundary-left",
+   "at": [
+    -34,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 2.2,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8d8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -47
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39d8d",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#3f8f91",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b665c",
+    "parapet": 0.2,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "stadium/path-strip",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -54
+     ],
+     [
+      -6,
+      -30
+     ],
+     [
+      -2,
+      -8
+     ],
+     [
+      10,
+      12
+     ],
+     [
+      20,
+      30
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#b39a86"
+   }
+  },
+  {
+   "type": "stadium/path-strip",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -8
+     ],
+     [
+      -20,
+      5
+     ],
+     [
+      -40,
+      20
+     ],
+     [
+      -60,
+      40
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b39a86"
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    -20,
+    20
+   ],
+   "params": {
+    "width": 70,
+    "depth": 55,
+    "count": 26,
+    "min_height": 7,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    50,
+    60
+   ],
+   "params": {
+    "width": 60,
+    "depth": 45,
+    "count": 20,
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -56
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 5,
+    "spread": 40
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "garden-pavilion",
+   "at": [
+    30,
+    20,
+    0.3
+   ],
+   "rotDeg": 15,
+   "params": {
+    "width": 5.5,
+    "depth": 5.5,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 1.6,
+    "colour": "#a58a64",
+    "cap_colour": "#5f625f"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -6,
+    -40
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Only the entrance wall/gatehouse is photographed; the park interior (paths, pavilion, trees) is typical, not verified; the stacked-stone wall texture is a flat grey and plaques are blank."
+ }
+}

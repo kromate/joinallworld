@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Incheon_City_Hall.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "hyolee2",
+   "view": "front",
+   "file": "/tmp/places-evidence/seoul/cityhall1.jpg",
+   "used": "three storeys of pale concrete with projecting piers, dark recessed glazed band, huge sloping grey tile-clad roof slab overhanging all round, topiary pines and cars in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/238024537",
+   "used": "82 x 82 m square plan, 20 m height"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 9,
+  "fovDeg": 46,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c8c1",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.8,
+    "bay": 6.2,
+    "cornice": true,
+    "bands": "#b2b1aa"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9092"
+   }
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "rotDeg": -6.4,
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -43,
+     0
+    ],
+    "end": [
+     38,
+     -43,
+     0
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       3.2
+      ],
+      "z0": 0,
+      "height": 13.5,
+      "colour": "#c4c3bb",
+      "topColour": "#c4c3bb"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dark-band",
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -6.4,
+   "params": {
+    "rect": [
+     76,
+     76
+    ],
+    "z0": 13.3,
+    "height": 3.5,
+    "colour": "#3d4349",
+    "topColour": "#3d4349",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#566069"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tile-roof",
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -6.4,
+   "params": {
+    "rect": [
+     86,
+     86
+    ],
+    "z0": 16.6,
+    "height": 5,
+    "topScale": 0.8,
+    "colour": "#b7b6ad",
+    "topColour": "#b9b9b1"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    10,
+    -47,
+    0
+   ],
+   "rotDeg": -6.4,
+   "params": {
+    "width": 14,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -16,
+    -52,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 5,
+    "count": 6,
+    "spread": 4,
+    "line": 60
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -62,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -62,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    0,
+    -62,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -62,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof slab is a plain tapered prism without the tile grid and ridge step; piers are simple boxes; banners and topiary pines are reduced to a few trees; photo is a three-quarter view with parked cars hiding the ground floor."
+ }
+}

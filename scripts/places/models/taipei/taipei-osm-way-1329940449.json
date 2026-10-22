@@ -1,0 +1,370 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-1329940449",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maokong_Tian%27en_Temple_20151108.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Solomon203",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/tian0.jpg",
+   "used": "three stacked storeys with red columns, white balustrades on two balconies, three orange glazed-tile swept roofs, beige side wings, front steps and forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1329940449",
+   "used": "overall extent about 57 x 33 m (outline is ragged, so a composed plan is used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     12,
+     20
+    ]
+   },
+   "at": [
+    -21,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb48e",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c98a45",
+    "material": "clay-tile",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     12,
+     20
+    ]
+   },
+   "at": [
+    21,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbb9d",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c98a45",
+    "material": "clay-tile",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c7a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     26,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a5a44",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 5.2,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf9f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 9.8,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d3a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -8.7,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "count": 9,
+    "height": 5.0,
+    "radius": 0.32,
+    "colour": "#b3261e",
+    "beamHeight": 0.5
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -6.9,
+    5.2
+   ],
+   "params": {
+    "length": 20,
+    "count": 8,
+    "height": 4.4,
+    "radius": 0.28,
+    "colour": "#b3261e",
+    "beamHeight": 0.4
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    -0.5,
+    5.0
+   ],
+   "params": {
+    "width": 33,
+    "depth": 23,
+    "rise": 2.4,
+    "overhang": 2.6,
+    "upturn": 0.9,
+    "colour": "#d98a2b",
+    "trim": "#8a2a1a"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    1,
+    9.6
+   ],
+   "params": {
+    "width": 29,
+    "depth": 19,
+    "rise": 2.4,
+    "overhang": 2.6,
+    "upturn": 0.9,
+    "colour": "#d98a2b",
+    "trim": "#8a2a1a"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    2,
+    14.0
+   ],
+   "params": {
+    "width": 23,
+    "depth": 14,
+    "rise": 3.4,
+    "overhang": 2.6,
+    "upturn": 1.0,
+    "colour": "#d98a2b",
+    "trim": "#8a2a1a"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -9.2,
+    5.4
+   ],
+   "params": {
+    "length": 29,
+    "height": 1.1,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -7.2,
+    9.9
+   ],
+   "params": {
+    "length": 25,
+    "height": 1.1,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.9,
+    6.8
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#1d1a16",
+    "frameColour": "#b9902f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10.6,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.5,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#b8b2a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof eaves flatter than the real upswept swallowtail ridges, no incense burner or hillside, side wings simplified, upper walls render dark in shadow"
+ }
+}

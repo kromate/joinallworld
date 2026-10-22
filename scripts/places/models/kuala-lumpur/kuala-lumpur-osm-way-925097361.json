@@ -1,0 +1,359 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-way-925097361",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/925097361",
+   "used": "name-matched stadium outline (216 x 163 m at bearing 59): oval bowl; modelled reduced to fit the 118 m scene clamp"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Selayang_Municipal_Council_Stadium",
+   "used": "16,000 seats, 1999, athletics track, digital scoreboard, covered main stand. The only Commons photos found (Stadium MPS 230616) show the adjacent KTM station, not the stadium, so were not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     92
+    ],
+    "height": 0.15,
+    "colour": "#b9b6ab"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     98,
+     68
+    ],
+    "height": 0.1,
+    "colour": "#b5533f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     84,
+     52
+    ],
+    "height": 0.05,
+    "colour": "#3f7f3f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -44,
+     -36
+    ],
+    "end": [
+     44,
+     -36
+    ],
+    "rows": 18,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.6,
+    "bay": 6,
+    "blocks": 6,
+    "canopy": {
+     "height": 1.0,
+     "depth": 18,
+     "thickness": 0.7,
+     "slopeDeg": 3,
+     "colour": "#6b6f73",
+     "edgeColour": "#4f5357",
+     "overhangBack": 0.8
+    },
+    "facetDeg": 6,
+    "seatColours": [
+     "#2f6f9a",
+     "#e8e4da",
+     "#2f6f9a"
+    ],
+    "concreteColour": "#bdbab0",
+    "underColour": "#b2afa5",
+    "under": "solid",
+    "slab": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     44,
+     36
+    ],
+    "end": [
+     -44,
+     36
+    ],
+    "rows": 9,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "bay": 6,
+    "blocks": 7,
+    "facetDeg": 6,
+    "seatColours": [
+     "#2f6f9a",
+     "#e8e4da",
+     "#2f6f9a"
+    ],
+    "concreteColour": "#bdbab0",
+    "underColour": "#b2afa5",
+    "under": "solid",
+    "slab": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     44,
+     0
+    ],
+    "radius": 26,
+    "radiusY": 36,
+    "startDeg": -90,
+    "endDeg": 90,
+    "rows": 7,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "blocks": 5,
+    "facetDeg": 14,
+    "seatColours": [
+     "#2f6f9a",
+     "#e8e4da",
+     "#2f6f9a"
+    ],
+    "concreteColour": "#bdbab0",
+    "underColour": "#b2afa5",
+    "under": "solid",
+    "slab": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -44,
+     0
+    ],
+    "radius": 26,
+    "radiusY": 36,
+    "startDeg": 90,
+    "endDeg": 270,
+    "rows": 7,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "blocks": 5,
+    "facetDeg": 14,
+    "seatColours": [
+     "#2f6f9a",
+     "#e8e4da",
+     "#2f6f9a"
+    ],
+    "concreteColour": "#bdbab0",
+    "underColour": "#b2afa5",
+    "under": "solid",
+    "slab": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     1.2
+    ],
+    "height": 6,
+    "colour": "#2a3038"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     5
+    ],
+    "height": 9,
+    "colour": "#e8e4da"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "tower",
+   "at": [
+    -56,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 32,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#aeb4ba",
+    "capColour": "#dfe3e6"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    56,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 32,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#aeb4ba",
+    "capColour": "#dfe3e6"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -56,
+    44,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 32,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#aeb4ba",
+    "capColour": "#dfe3e6"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    56,
+    44,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 32,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#aeb4ba",
+    "capColour": "#dfe3e6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the stadium exists on Commons (only the adjacent station); reduced oval bowl, stand layout and roof assumed from brief"
+ }
+}

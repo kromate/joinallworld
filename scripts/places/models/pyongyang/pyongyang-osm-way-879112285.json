@@ -1,0 +1,424 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Church_of_the_Life-Giving_Trinity_in_Pyongyang.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Alkhimov Maxim",
+   "view": "front",
+   "file": "/tmp/places-evidence/pyongyang/trinity.jpg",
+   "used": "cream rendered blocky massing, stepped parapets with blue-grey trim, central drum with gilded onion dome and cross, arched entrance recess, left-hand open bell tower with small gold dome, low left wing with arched windows, taller right wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/879112285",
+   "used": "overall size (about 32 x 20 m); outline is a stair-stepped cross so the massing is composed from the photo instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.3,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     15,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfa0",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9aa6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-block",
+   "footprint": {
+    "rect": [
+     9,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfa0",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f86a8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     9,
+     15
+    ]
+   },
+   "at": [
+    12.5,
+    1
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfa0",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9aa6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    -2
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfa0",
+    "windows": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9aa6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     5.5,
+     5.5
+    ]
+   },
+   "at": [
+    -9.5,
+    -3
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfa0",
+    "windows": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9aa6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "main-dome",
+   "at": [
+    0,
+    2,
+    15
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d7a92e",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#cfc5b2"
+     ],
+     [
+      2.8,
+      3.5
+     ],
+     [
+      3.08,
+      3.5
+     ],
+     [
+      2.376,
+      3.6,
+      "#d9ad34"
+     ],
+     [
+      3.135,
+      4.67
+     ],
+     [
+      3.3,
+      5.58
+     ],
+     [
+      2.9699999999999998,
+      6.75
+     ],
+     [
+      2.046,
+      8.05
+     ],
+     [
+      0.9899999999999999,
+      9.219999999999999
+     ],
+     [
+      0.33,
+      9.805
+     ],
+     [
+      0,
+      10.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "main-cross",
+   "at": [
+    0,
+    2,
+    25
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 3.4,
+    "colour": "#d7a92e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "main-cross-bar",
+   "at": [
+    0,
+    2,
+    26.6
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 0.3,
+    "colour": "#d7a92e"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "bell-dome",
+   "at": [
+    -9.5,
+    -3,
+    12
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d7a92e",
+    "profile": [
+     [
+      1.4,
+      0,
+      "#cfc5b2"
+     ],
+     [
+      1.4,
+      1.2
+     ],
+     [
+      1.54,
+      1.2
+     ],
+     [
+      1.224,
+      1.3,
+      "#d9ad34"
+     ],
+     [
+      1.615,
+      1.7759999999999998
+     ],
+     [
+      1.7,
+      2.224
+     ],
+     [
+      1.53,
+      2.8
+     ],
+     [
+      1.054,
+      3.4399999999999995
+     ],
+     [
+      0.51,
+      4.016
+     ],
+     [
+      0.17,
+      4.304
+     ],
+     [
+      0,
+      4.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-cross",
+   "at": [
+    -9.5,
+    -3,
+    16.4
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 2.4,
+    "colour": "#d7a92e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#b7b2a6"
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamp",
+   "at": [
+    4,
+    -17,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -16
+    ],
+    "height": 6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     6,
+     -13
+    ],
+    "height": 4
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     -6
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-879112285",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Dome drum too tall and plain, bell tower lower than photo, no arched entrance recess or blue trim, stepped parapets simplified; roofs not seen."
+ }
+}

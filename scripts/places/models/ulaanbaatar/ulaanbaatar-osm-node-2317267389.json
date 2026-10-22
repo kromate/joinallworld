@@ -1,0 +1,482 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dashchoilin_Monastery_in_Ulan_Bator_(1).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Martin Vorel",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/dash2.jpg",
+   "used": "round ger temple: yellow wall with red posts and lattice windows, low shallow conical roof in yellow panels with red rim and blue cloud edging, small red crown lantern with gilded finial, teal entrance canopy, white lion pedestals, two prayer-wheel poles, neighbouring green-roofed pavilion"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dashchoilin_Monastery.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/dash1.jpg",
+   "used": "two round halls side by side, red lower roof with yellow upper panels, gold finial, paved court"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/219908953",
+   "used": "circular footprint 19 m across (nearest match 20 m; photo agrees on a circle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.7
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#e5b63f",
+    "profile": [
+     [
+      9.5,
+      0.0,
+      "#e5b63f"
+     ],
+     [
+      9.5,
+      3.4
+     ],
+     [
+      9.9,
+      3.4,
+      "#bf3a34"
+     ],
+     [
+      10.1,
+      3.3
+     ],
+     [
+      10.1,
+      3.4
+     ],
+     [
+      8.55,
+      4.3,
+      "#e7bd4a"
+     ],
+     [
+      3.12,
+      7.500000000000001
+     ],
+     [
+      3.12,
+      7.700000000000001,
+      "#bf3a34"
+     ],
+     [
+      2.65,
+      8.200000000000001
+     ],
+     [
+      2.6,
+      8.3
+     ],
+     [
+      2.6,
+      9.5,
+      "#c9952f"
+     ],
+     [
+      3.1,
+      9.55,
+      "#bf3a34"
+     ],
+     [
+      1.56,
+      10.200000000000001
+     ],
+     [
+      0.0,
+      10.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "floor",
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 0.01,
+    "colour": "#b0a38c",
+    "topColour": "#b0a38c"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "crown-windows",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    6.2
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#2a3340",
+    "profile": [
+     [
+      2.62,
+      0
+     ],
+     [
+      2.62,
+      1.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entrance-canopy",
+   "at": [
+    0,
+    -10.3,
+    2.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6.5,
+    "depth": 2.2,
+    "height": 0.0,
+    "thickness": 0.35,
+    "colour": "#2f8f7f",
+    "edgeColour": "#bf3a34"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-wall",
+   "params": {
+    "rect": [
+     3.6,
+     0.4
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#b43a33",
+    "topColour": "#b43a33"
+   },
+   "at": [
+    0,
+    -9.65
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lion-l",
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 1.5,
+    "colour": "#f2efe8",
+    "topColour": "#f2efe8"
+   },
+   "at": [
+    -2.6,
+    -10.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lion-r",
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 1.5,
+    "colour": "#f2efe8",
+    "topColour": "#f2efe8"
+   },
+   "at": [
+    2.6,
+    -10.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pole-l",
+   "params": {
+    "radius": 0.14,
+    "n": 8,
+    "height": 8.0,
+    "colour": "#8a3a30",
+    "topColour": "#8a3a30"
+   },
+   "at": [
+    -5.3,
+    -11.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pole-r",
+   "params": {
+    "radius": 0.14,
+    "n": 8,
+    "height": 8.0,
+    "colour": "#8a3a30",
+    "topColour": "#8a3a30"
+   },
+   "at": [
+    5.3,
+    -11.5
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -5.3,
+    -11.5,
+    8.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#cccccc",
+    "profile": [
+     [
+      0.45,
+      0,
+      "#3b3a2e"
+     ],
+     [
+      0.45,
+      0.8
+     ],
+     [
+      0.3,
+      0.8,
+      "#c9a24a"
+     ],
+     [
+      0.3,
+      1.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    5.3,
+    -11.5,
+    8.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#cccccc",
+    "profile": [
+     [
+      0.45,
+      0,
+      "#3b3a2e"
+     ],
+     [
+      0.45,
+      0.8
+     ],
+     [
+      0.3,
+      0.8,
+      "#c9a24a"
+     ],
+     [
+      0.3,
+      1.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    25,
+    6,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#e5b63f",
+    "profile": [
+     [
+      7.2,
+      0.0,
+      "#e5b63f"
+     ],
+     [
+      7.2,
+      3.0
+     ],
+     [
+      7.6000000000000005,
+      3.0,
+      "#bf3a34"
+     ],
+     [
+      7.8,
+      2.9
+     ],
+     [
+      7.8,
+      3.0
+     ],
+     [
+      6.48,
+      3.9,
+      "#e7bd4a"
+     ],
+     [
+      2.4,
+      6.0
+     ],
+     [
+      2.4,
+      6.2,
+      "#bf3a34"
+     ],
+     [
+      2.05,
+      6.7
+     ],
+     [
+      2.0,
+      6.8
+     ],
+     [
+      2.0,
+      8.0,
+      "#c9952f"
+     ],
+     [
+      2.5,
+      8.05,
+      "#bf3a34"
+     ],
+     [
+      1.2,
+      8.7
+     ],
+     [
+      0.0,
+      8.9
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/curved-roof",
+   "id": "green-pavilion",
+   "at": [
+    -17,
+    -1,
+    2.6
+   ],
+   "params": {
+    "width": 4.5,
+    "depth": 4.5,
+    "rise": 2.2,
+    "overhang": 0.8,
+    "upturn": 0.3,
+    "colour": "#2f8f6a",
+    "trim": "#c9a24a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-pavilion-body",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -17,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c99a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     16
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ger form, yellow and red roof, crown lantern, canopy and prayer-wheel poles match; missing lattice windows, blue cloud edging, red wall posts and planters; second hall and pavilion positions are guessed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-node-2317267389"
+}

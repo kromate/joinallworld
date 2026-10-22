@@ -1,0 +1,324 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Go_Vap_station,_Vietnam.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hisi21",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/govap.jpg",
+   "used": "cream-yellow single-storey station with terracotta hip roof, front veranda on slim columns with arched windows and doors, taller square tower at the left end with vertical louvre and stone relief, platform and tracks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1043653130",
+   "used": "30.4 x 9.5 m footprint (axis-aligned here to match the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 9,
+  "fovDeg": 48,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     8.6
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "z0": 0,
+   "height": 4.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecd9a0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.24,
+    "bay": 3.0,
+    "glassColour": "#6b5a48",
+    "plinth": 0.5,
+    "bands": "#f5ecd0",
+    "faces": {
+     "front": "arched",
+     "back": "punched",
+     "left": "none",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c8633a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.2,
+     8.6
+    ]
+   },
+   "at": [
+    -12.1,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdc9c",
+    "windows": "none",
+    "bands": "#f5ecd0",
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.12,
+      "depth": 0.1,
+      "spacing": 0.3,
+      "colour": "#b9a66c",
+      "from": 0.3,
+      "to": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c58a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lowend",
+   "footprint": {
+    "rect": [
+     3.2,
+     5.6
+    ]
+   },
+   "at": [
+    -12.1,
+    -6.8
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecd9a0",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c58a",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     24,
+     2.8
+    ]
+   },
+   "at": [
+    3,
+    -5.7
+   ],
+   "z0": 3.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e6b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1e6b8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.2,
+      "n": 8,
+      "height": 3.4,
+      "colour": "#f1e6b8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8.5,
+     -6.8,
+     0
+    ],
+    "end": [
+     14.5,
+     -6.8,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    -7.2,
+    3.8
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 0.8,
+    "bottom": 0,
+    "colour": "#f5f3ee",
+    "frameColour": "#b02a2a",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     56,
+     5.5
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#c9c3b5"
+   },
+   "at": [
+    0,
+    -10.6,
+    0
+   ]
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -15.2,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "tracks": 2,
+    "spacing": 4.2
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 4.5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -9.5,
+     0.9
+    ],
+    "end": [
+     22,
+     -9.5,
+     0.9
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18,
+    4.5,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.8,
+    "thickness": 0.25,
+    "colour": "#d8cfb8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -9
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Stone relief pieces, louvre slot on the tower, and fine arched door grilles missing; veranda columns plain; sign board is blank; ground and trackside are simplified"
+ }
+}

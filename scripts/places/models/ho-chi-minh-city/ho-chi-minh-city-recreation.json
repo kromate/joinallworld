@@ -1,0 +1,411 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tao_Dan_Park.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vano111ru",
+   "view": "street",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/tao.jpg",
+   "used": "canopy of very tall straight-trunked old trees (about 25-35 m) with high crowns over open lawn, leaf litter, paths with benches and globe lamps; the park is mostly trees and grass"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/500888743",
+   "used": "identity and size only (500 x 334 m, 9 ha park); a 112 x 85 m typical section is modelled because the scene clamps at 118 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "big-tree",
+     "params": {
+      "height": 34,
+      "crown_radius": 6.5,
+      "trunk_radius": 1.0,
+      "colour": "#2f6a32"
+     }
+    },
+    "mode": "grid",
+    "cols": 5,
+    "rows": 3,
+    "dx": 20,
+    "dy": 24,
+    "stagger": 4,
+    "centred": true,
+    "vary": {
+     "height": [
+      26,
+      38
+     ]
+    },
+    "lod1Step": 2,
+    "lod2Step": 8
+   },
+   "at": [
+    0,
+    16,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "big-tree",
+     "params": {
+      "height": 14,
+      "crown_radius": 5,
+      "trunk_radius": 0.5,
+      "colour": "#3f7f3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -30,
+     0
+    ],
+    "end": [
+     46,
+     -30,
+     0
+    ],
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     110,
+     3.2
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#cbbf9f"
+   },
+   "at": [
+    0,
+    -14,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3.2,
+     70
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#cbbf9f"
+   },
+   "at": [
+    -8,
+    10,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hung-king-temple",
+   "footprint": {
+    "rect": [
+     15,
+     10
+    ]
+   },
+   "at": [
+    26,
+    -4
+   ],
+   "z0": 0.9,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8472e",
+    "windows": "none",
+    "bands": "#e6d9a8",
+    "cornice": true,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "rect",
+      "bay": 3.6,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 0.6,
+      "storeys": 1,
+      "faces": [
+       "front"
+      ],
+      "colour": "#2a1a14",
+      "pierColour": "#a8472e"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     19,
+     14
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#c4bba8"
+   },
+   "at": [
+    26,
+    -4,
+    0
+   ]
+  },
+  {
+   "type": "steps",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#c4bba8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -30,
+    20,
+    0
+   ],
+   "params": {
+    "colour": "#b4623f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5,
+       5
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       4.4,
+       4.4
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       3.8,
+       3.8
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 6.2,
+      "rect": [
+       2.6,
+       2.6
+      ]
+     },
+     {
+      "z": 8.6,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 8.8,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 10.8,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "plinth_height": 1.8,
+    "colour": "#cfc7b4",
+    "figure_colour": "#b7ad92"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 3,
+    "height": 3,
+    "colour": "#e6d9a8"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -34,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 3,
+    "height": 3,
+    "colour": "#e6d9a8"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 4
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -12,
+     0
+    ],
+    "end": [
+     40,
+     -12,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "park-bench",
+     "params": {}
+    },
+    "mode": "line",
+    "start": [
+     -36,
+     -16,
+     0
+    ],
+    "end": [
+     36,
+     -16,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    -56,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "height": 1.8,
+    "thickness": 0.4,
+    "colour": "#7a8a6a",
+    "kind": "railing",
+    "pillarEvery": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   118,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Photo is a ground-level view of old tall trees that the fixed 3/4 camera cannot reproduce; tree crowns are low-poly lumps, no leaf litter or understorey, only a 112 m section of the 500 m park, temple/shrine/statue layout is from text"
+ }
+}

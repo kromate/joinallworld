@@ -1,0 +1,250 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/687400650",
+   "used": "campus identity and scale only: the polygon is the whole 647 x 354 m campus, not a building, so a representative block group is composed"
+  },
+  {
+   "kind": "text",
+   "url": "https://id.wikipedia.org/wiki/Institut_Teknologi_Indonesia_Serpong",
+   "used": "founded 1984 engineering campus at Serpong"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-u",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     80,
+     44
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 11,
+    "plinth": 0.6,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-block",
+   "footprint": {
+    "rect": [
+     46,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    -40
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a0",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    52,
+    -4
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "lawn",
+   "at": [
+    0,
+    -8,
+    0.02
+   ],
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "colour": "#5f9a42"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "plaza",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 8,
+    "colour": "#bdb5a6"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -8,
+      0
+     ],
+     [
+      0,
+      -8,
+      30
+     ]
+    ],
+    "radius": 0.35,
+    "colour": "#b5b9bd"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "flag",
+   "at": [
+    -6,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 4,
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "gate",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.8,
+    "colour": "#e8e3d6",
+    "board_colour": "#4f7f66"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this campus was found; massing, colours and the central mast are typed from the brief (confidence low), real building layout unknown"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-687400650"
+}

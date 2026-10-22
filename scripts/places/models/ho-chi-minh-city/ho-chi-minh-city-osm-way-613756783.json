@@ -1,0 +1,100 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:S%C3%A2n_v%E1%BA%ADn_%C4%91%E1%BB%99ng_Qu%C3%A2n_khu_7.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ThoseDaysAreGone",
+   "view": "interior",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/q7b.jpg",
+   "used": "curved covered stand with a green canopy edge, uncovered concrete terraces with yellow and blue seats, athletics track, dark-blue bench awnings, trees around the bowl"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HEC_K-Pop_Festival_at_Quan_Khu_7_Stadium_export.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Biodin",
+   "view": "interior",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/q7a.jpg",
+   "used": "low terraces with red, blue and yellow seat blocks, tall floodlight masts, track and pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9105777",
+   "used": "overall size (about 218 x 139 m), modelled as an oval bowl scaled to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 116,
+    "depth": 84,
+    "height": 12,
+    "tiers": 2,
+    "arc_start": 0,
+    "arc_end": 359,
+    "roof": "canopy",
+    "roof_style": "shed",
+    "wall": "ribs",
+    "seat_colour": "#2f55a4",
+    "seat_colour2": "#e0a526",
+    "main_height": 13,
+    "far_height": 9,
+    "end_height": 8,
+    "track": true,
+    "floodlights": true,
+    "roof_material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -50
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     64,
+     50
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Oval bowl with one covered stand; photo's green-edged curved canopy, grey concrete terraces and dark-blue bench awnings are not reproduced, wall and roof take the city tan instead of grey."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-613756783"
+}

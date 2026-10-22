@@ -1,0 +1,654 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:01_Hindutempel_2016-07-05.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jose Fernando Real",
+   "view": "front",
+   "file": "/tmp/places-evidence/dili/pura.jpg",
+   "used": "Balinese kori agung gateway in orange brick with grey carved stone trim and a stepped tapering shape, split candi bentar side pylons, two guardian statues in chequered cloth, low orange-brick compound walls with pale panels, dry grass and green hills"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1188788805",
+   "used": "temple extent about 118 x 35 m (irregular outline; modelled as a simple walled compound)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.7,
+  "shiftX": 0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "courtyard",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     58,
+     34
+    ],
+    "height": 0.15,
+    "colour": "#b9b29c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -29,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.0,
+    "thickness": 0.6,
+    "colour": "#d6b898"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    5,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.0,
+    "thickness": 0.6,
+    "colour": "#d6b898"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -29,
+    17,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 2.0,
+    "thickness": 0.6,
+    "colour": "#d6b898"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -29,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.0,
+    "thickness": 0.6,
+    "colour": "#d6b898",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      34
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    29,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.0,
+    "thickness": 0.6,
+    "colour": "#d6b898",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      34
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "kori",
+   "at": [
+    0,
+    -17,
+    0.6
+   ],
+   "params": {
+    "colour": "#c9733a",
+    "topColour": "#9a958a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8,
+       3.2
+      ],
+      "colour": "#c9733a"
+     },
+     {
+      "z": 6.75,
+      "rect": [
+       6.88,
+       3.0
+      ],
+      "colour": "#c9733a"
+     },
+     {
+      "z": 11.25,
+      "rect": [
+       5.6,
+       2.8
+      ],
+      "colour": "#9a958a"
+     },
+     {
+      "z": 14.25,
+      "rect": [
+       3.6,
+       2.4
+      ],
+      "colour": "#9a958a"
+     },
+     {
+      "z": 15,
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "colour": "#3a3631"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -18.55,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     2.24,
+     0.3
+    ],
+    "height": 6.75,
+    "colour": "#5a3a22"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base",
+   "at": [
+    0,
+    -17.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     5
+    ],
+    "height": 0.6,
+    "colour": "#8a867c"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -4.6,
+    -20.0,
+    0.6
+   ],
+   "params": {
+    "height": 2.2,
+    "colour": "#8a867c"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    4.6,
+    -20.0,
+    0.6
+   ],
+   "params": {
+    "height": 2.2,
+    "colour": "#8a867c"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bentar-33",
+   "at": [
+    -33,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#c9733a",
+    "topColour": "#9a958a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       2.0
+      ],
+      "colour": "#9a958a"
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       2.4,
+       1.8
+      ],
+      "colour": "#c9733a"
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       1.9,
+       1.5
+      ],
+      "colour": "#c9733a"
+     },
+     {
+      "z": 5.6,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "colour": "#9a958a"
+     },
+     {
+      "z": 6.0,
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "colour": "#3a3631"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bentar33",
+   "at": [
+    33,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#c9733a",
+    "topColour": "#9a958a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       2.0
+      ],
+      "colour": "#9a958a"
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       2.4,
+       1.8
+      ],
+      "colour": "#c9733a"
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       1.9,
+       1.5
+      ],
+      "colour": "#c9733a"
+     },
+     {
+      "z": 5.6,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "colour": "#9a958a"
+     },
+     {
+      "z": 6.0,
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "colour": "#3a3631"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth0",
+   "at": [
+    -14,
+    5,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     6.5
+    ],
+    "height": 1.2,
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrine0",
+   "at": [
+    -14,
+    5,
+    1.35
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 2.4,
+    "colour": "#c9733a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lod2-0",
+   "lod": [
+    2
+   ],
+   "at": [
+    -14,
+    5,
+    1.35
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 5,
+    "colour": "#262422"
+   }
+  },
+  {
+   "type": "meru",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    5,
+    3.75
+   ],
+   "params": {
+    "tiers": 3,
+    "base_width": 4.8,
+    "tier_height": 1.3,
+    "colour": "#262422",
+    "wall_colour": "#9a958a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth1",
+   "at": [
+    0,
+    7,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     6.5
+    ],
+    "height": 1.2,
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrine1",
+   "at": [
+    0,
+    7,
+    1.35
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 2.4,
+    "colour": "#c9733a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lod2-1",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    7,
+    1.35
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 5,
+    "colour": "#262422"
+   }
+  },
+  {
+   "type": "meru",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    7,
+    3.75
+   ],
+   "params": {
+    "tiers": 5,
+    "base_width": 4.8,
+    "tier_height": 1.3,
+    "colour": "#262422",
+    "wall_colour": "#9a958a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth2",
+   "at": [
+    14,
+    5,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     6.5
+    ],
+    "height": 1.2,
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrine2",
+   "at": [
+    14,
+    5,
+    1.35
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 2.4,
+    "colour": "#c9733a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lod2-2",
+   "lod": [
+    2
+   ],
+   "at": [
+    14,
+    5,
+    1.35
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 5,
+    "colour": "#262422"
+   }
+  },
+  {
+   "type": "meru",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    14,
+    5,
+    3.75
+   ],
+   "params": {
+    "tiers": 3,
+    "base_width": 4.8,
+    "tier_height": 1.3,
+    "colour": "#262422",
+    "wall_colour": "#9a958a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -2,
+    -6,
+    0.15
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#b9763a",
+    "cap_colour": "#2b2825"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#8a867c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "frangipani",
+    "height": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    23,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Orange-brick stepped kori agung with statues and meru shrines; carved stone ornament, split bentar detail and compound plan are simplified; OSM outline not used literally; comparison framing small."
+ }
+}

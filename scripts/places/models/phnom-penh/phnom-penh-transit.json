@@ -1,0 +1,408 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2009-09-07_09-09_Phnom_Penh_034_Train_Station-edit.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Commons contributor (2009-09-07 series)",
+   "view": "front",
+   "file": "/tmp/places-evidence/phnom-penh/st1.jpg",
+   "used": "two tall end towers with tall white slit fins, taller central block with red shuttered windows and round clock disc, lower side wings, flat roofs with decorated parapets, yellow render, open ground-floor loggia"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Phnom_Penh_Railway_station_512.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "GuillaumeG",
+   "view": "back",
+   "file": "/tmp/places-evidence/phnom-penh/st2.jpg",
+   "used": "platform-side wing: low yellow block, projecting flat canopy, vented windows, tracks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/40259269",
+   "used": "overall size (about 58 x 28 m) only; the real outline is skewed and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "central",
+   "footprint": {
+    "rect": [
+     29,
+     18
+    ]
+   },
+   "at": [
+    -4.4,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.2,
+    "plinth": 0.3,
+    "groundKind": "none",
+    "groundHeight": 4.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.4,
+      "depth": 0.2,
+      "spacing": 3.2,
+      "colour": "#efe6c8",
+      "margin": 1.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c37c",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "id": "red-windows",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.15
+      ],
+      "z0": 9.4,
+      "height": 2.6,
+      "colour": "#9a3a2c"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -16.5,
+     -9.1
+    ],
+    "end": [
+     7.7,
+     -9.1
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     9.6,
+     10
+    ]
+   },
+   "at": [
+    -20.8,
+    -1
+   ],
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c77a",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.2,
+      "spacing": 1.0,
+      "colour": "#f4eddc",
+      "margin": 3.2,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c37c",
+    "parapet": 1.1,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     10.8,
+     10
+    ]
+   },
+   "at": [
+    15.2,
+    -1
+   ],
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c77a",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.2,
+      "spacing": 1.0,
+      "colour": "#f4eddc",
+      "margin": 3.4,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c37c",
+    "parapet": 1.1,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     6,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    1
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 2.6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c37c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     11,
+     16
+    ]
+   },
+   "at": [
+    23.5,
+    2
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 2.6,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.5,
+      "colour": "#a8432f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c37c",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform-block",
+   "footprint": {
+    "rect": [
+     40,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    16.5
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d493",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbb78",
+    "parapet": 0.5,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-disc",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.5
+    ],
+    "z0": 10.2,
+    "height": 3.4,
+    "colour": "#dcdcd2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-shadow",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.4
+    ],
+    "z0": 0.2,
+    "height": 4.2,
+    "colour": "#3a3128"
+   },
+   "at": [
+    -4.4,
+    -9.05
+   ]
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -4,
+    29,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 7,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    -4,
+    38,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 2
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -26,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 13,
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Ground floor is a dark slab, not an open loggia with columns; no decorative parapet lattice, clock disc is faint; towers lack the stepped cornice and side balconies; wing windows are generic; plan is simplified (OSM outline is skewed)."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-transit"
+}

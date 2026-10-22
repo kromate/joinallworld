@@ -1,0 +1,212 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HK_TheMaritimeServicesTrainingInstitute.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chong Fat",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/v15_0.jpg",
+   "used": "cream curved-front 3-storey block, ribbon windows with blue-grey piers, tall teal elliptical funnel-like tower behind, bridge block on roof, green perimeter fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/378695377",
+   "used": "footprint of the campus buildings"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM campus outline is far larger than the single frontage in the photo; curved bow front, green fence, planters and signage not modelled; windows read whiter than the cream render"
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-base",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cc",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#8d8f9a",
+    "plinth": 0.4,
+    "cornice": true,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge-block",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 9.5,
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd8c6",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a2",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    -2,
+    9.5
+   ],
+   "params": {
+    "colour": "#2f8a7a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5.5,
+       3.6
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       5.2,
+       3.4
+      ]
+     },
+     {
+      "z": 20,
+      "ellipse": [
+       4.6,
+       3.0
+      ]
+     },
+     {
+      "z": 22,
+      "ellipse": [
+       3.4,
+       2.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    -12,
+    9.5
+   ],
+   "params": {
+    "colour": "#e6e0cc",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       16,
+       7
+      ]
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       16,
+       7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    8,
+    -2,
+    31.5
+   ],
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      6
+     ]
+    ],
+    "colour": "#9a9a9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-way-186138931"
+}

@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monetary_Authority_of_Macao_23-02-2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LN9267",
+   "view": "street",
+   "used": "granite-clad pale podium with horizontal metal bands, curved teal glazed bay, round steel columns at a recessed entrance, punched windows in the granite wing",
+   "file": "/tmp/places-evidence/macau/2_0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/347053217",
+   "used": "tag height 47.8 m; plan width about 45 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "granite-wing",
+   "footprint": {
+    "rect": [
+     26,
+     26
+    ]
+   },
+   "at": [
+    -22,
+    2
+   ],
+   "height": 48,
+   "storeys": 7,
+   "wall": {
+    "material": "granite",
+    "colour": "#bcb8ac",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bands": "#a9a699",
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "curved-bay",
+   "footprint": {
+    "polygon": [
+     [
+      -22,
+      14
+     ],
+     [
+      -22,
+      0
+     ],
+     [
+      -6,
+      0
+     ],
+     [
+      -6.0,
+      -0.0
+     ],
+     [
+      -5.52,
+      -3.11
+     ],
+     [
+      -4.12,
+      -6.0
+     ],
+     [
+      -1.9,
+      -8.49
+     ],
+     [
+      1.0,
+      -10.39
+     ],
+     [
+      4.38,
+      -11.59
+     ],
+     [
+      8.0,
+      -12.0
+     ],
+     [
+      11.62,
+      -11.59
+     ],
+     [
+      15.0,
+      -10.39
+     ],
+     [
+      17.9,
+      -8.49
+     ],
+     [
+      20.12,
+      -6.0
+     ],
+     [
+      21.52,
+      -3.11
+     ],
+     [
+      22.0,
+      -0.0
+     ],
+     [
+      22,
+      14
+     ]
+    ]
+   },
+   "at": [
+    14,
+    0
+   ],
+   "height": 30,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb7b5",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "bands": "#c3c0b4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-block",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    8
+   ],
+   "z0": 30,
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db4c2",
+    "windows": "curtain",
+    "windowRatio": 0.55
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-canopy",
+   "at": [
+    14,
+    -14
+   ],
+   "params": {
+    "rect": [
+     22,
+     4
+    ],
+    "z0": 6.5,
+    "height": 0.7,
+    "colour": "#c9c6ba",
+    "topColour": "#c9c6ba"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "at": [
+    14,
+    -13,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 10,
+      "height": 6.5,
+      "colour": "#a8adb0",
+      "topColour": "#a8adb0"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photo is a low street view; granite wing lacks horizontal steel bands and the real stepped plan; columns/portico simplified; window count cut for budget."
+ }
+}

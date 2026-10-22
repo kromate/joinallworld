@@ -1,0 +1,320 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/877465306",
+   "used": "campus identity and scale only: the polygon is a 716 x 626 m campus, not a building, so a representative block group is composed"
+  },
+  {
+   "kind": "text",
+   "url": "https://id.wikipedia.org/wiki/Politeknik_Keuangan_Negara_STAN",
+   "used": "Bintaro Jaya campus since 1987, Baitul Maal mosque, dormitories"
+  },
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:2_-_panoramio_-_zulfikr.jpg",
+   "used": "not used: portrait of a person, no building visible"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lecture-a",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    -20
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "plinth": 0.6,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture-b",
+   "footprint": {
+    "rect": [
+     18,
+     50
+    ]
+   },
+   "at": [
+    -42,
+    12
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "plinth": 0.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dorm0",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    42,
+    22
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d9c3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 9,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dorm1",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    42,
+    46
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d9c3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 9,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    6,
+    22
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "bay": 8,
+    "plinth": 0.5,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8",
+    "parapet": 0.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    6,
+    22,
+    9.6
+   ],
+   "params": {
+    "radius": 7,
+    "profile": "hemi",
+    "drum": 2,
+    "colour": "#6f8f8a",
+    "finial": true
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -8,
+    10,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "style": "pencil",
+    "colour": "#f1eee4"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "plaza",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 14,
+    "colour": "#c7c0b0"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "flag",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 4,
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "gate",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 4.2,
+    "colour": "#e8e3d6",
+    "board_colour": "#b9a98a"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no usable photo; blocks, dorms, mosque dome and colours are typed from the brief (confidence low), real building layout unknown"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-877465306"
+}

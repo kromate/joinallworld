@@ -1,0 +1,405 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-51549859",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SM_City_Fairview,_Q.C.,_Sept_2023.jpg",
+   "licence": "see Commons page",
+   "author": "see Commons page",
+   "view": "street",
+   "file": "/tmp/places-evidence/manila/fairview2.jpg",
+   "used": "long pale grey-cream windowless panel wall, dark metal overhanging roof edge over a blue glazed band, tall blue entrance tower block with a round logo plate (left blank), blue band over ground-floor shopfronts, flat canopies with red columns at the right, parking in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SM_Fairview_Entrance_002.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Psalonzo93",
+   "view": "detail",
+   "file": "/tmp/places-evidence/manila/fairview1.jpg",
+   "used": "glazed shopfront under a deep overhang, blue-tinted band"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/132890246",
+   "used": "overall size only (505 x 43 m strip, 4 levels); a 118 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 2.4,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only a 118 m portion of the 505 m mall; no jeepneys, footbridge or planting seen in the photo; tower logo plate left blank; glazed clerestory and panel joints simplified; canopy columns generic."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     118,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d6d0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c4c2bb"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 3.5,
+    "overhang": 2.5,
+    "colour": "#4b5666",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-band",
+   "at": [
+    0,
+    -20.3
+   ],
+   "params": {
+    "rect": [
+     116,
+     0.4
+    ],
+    "z0": 15.4,
+    "height": 4.2,
+    "colour": "#2b3f5e",
+    "topColour": "#2b3f5e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue-band",
+   "at": [
+    0,
+    -20.5
+   ],
+   "params": {
+    "rect": [
+     118,
+     0.7
+    ],
+    "z0": 7.4,
+    "height": 1.0,
+    "colour": "#2a63a8",
+    "topColour": "#2a63a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shopfront",
+   "at": [
+    10,
+    -20.4
+   ],
+   "params": {
+    "rect": [
+     96,
+     0.5
+    ],
+    "z0": 0.2,
+    "height": 6.6,
+    "colour": "#8da4b6",
+    "topColour": "#8da4b6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entrance-recess",
+   "at": [
+    -34,
+    -20.599999999999998
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.6
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#3e4954",
+    "topColour": "#3e4954"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-sign",
+   "at": [
+    -12,
+    -21.7
+   ],
+   "params": {
+    "rect": [
+     13,
+     6
+    ],
+    "z0": 0,
+    "height": 29,
+    "colour": "#2b62a6",
+    "topColour": "#2b62a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-sign-lower",
+   "at": [
+    -12,
+    -21.9
+   ],
+   "params": {
+    "rect": [
+     13.4,
+     6.4
+    ],
+    "z0": 0,
+    "height": 7.4,
+    "colour": "#1f4f8c",
+    "topColour": "#1f4f8c"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "logo-disc",
+   "at": [
+    -12,
+    -24.799999999999997,
+    21.5
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#2b3d58",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      2.6,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo-plate",
+   "at": [
+    -12,
+    -24.9
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     0.4
+    ],
+    "z0": 18.8,
+    "height": 5.6,
+    "colour": "#e8e6df",
+    "topColour": "#e8e6df"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "neighbour-wing",
+   "at": [
+    50,
+    6
+   ],
+   "params": {
+    "rect": [
+     30,
+     46
+    ],
+    "z0": 0,
+    "height": 17,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rear-wing",
+   "at": [
+    -54,
+    5
+   ],
+   "params": {
+    "rect": [
+     22,
+     36
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#c6c3ba",
+    "topColour": "#c6c3ba"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    34,
+    -28.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 10,
+    "height": 4.6,
+    "thickness": 0.6,
+    "columns": 0,
+    "colour": "#bdbdb8",
+    "edgeColour": "#8a8f95"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "col",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "z0": 0,
+      "height": 4.4,
+      "colour": "#b8363c",
+      "topColour": "#b8363c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     23,
+     -32.7
+    ],
+    "end": [
+     45,
+     -32.7
+    ],
+    "count": 4,
+    "lod1Step": 2,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -36,
+    -26.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 7,
+    "height": 4.6,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#bdbdb8",
+    "edgeColour": "#8a8f95"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -38.2,
+    0
+   ],
+   "params": {
+    "colour": "#c8ccd0",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -50.2,
+    0
+   ],
+   "params": {
+    "colour": "#7b8c9c",
+    "count": 2,
+    "spacing": 3.4,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ }
+}

@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E7%A6%BB%E5%B2%9B%E5%8C%BB%E7%96%97%E7%BB%BC%E5%90%88%E4%BD%931.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lhzss8",
+   "view": "aerial",
+   "used": "row of pale grey-white ward blocks of different heights with regular punched/ribbon window grids, dark grey top block at left",
+   "file": "/tmp/places-evidence/macau/1_0.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Macau_Union_Hosipital_18-02-2024(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LN9267",
+   "view": "aerial",
+   "used": "low white podium wings in front of the ward blocks, twin-tower block at right with lower link",
+   "file": "/tmp/places-evidence/macau/1_1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/428421340",
+   "used": "472 m x 166 m complex extent; a central 115 m portion modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     112,
+     42
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e4df",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -34,
+    8
+   ],
+   "z0": 10,
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9bbb8",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": "#e8e8e4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9190",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-mid",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "z0": 10,
+   "height": 34,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae3",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "windows": "ribbon",
+    "windowRatio": 0.55
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9190",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     28,
+     22
+    ]
+   },
+   "at": [
+    32,
+    8
+   ],
+   "z0": 10,
+   "height": 46,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdad2",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bands": "#f1efe8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9190",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east-side",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    50,
+    8
+   ],
+   "z0": 10,
+   "height": 38,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e4dc",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9190",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    -20,
+    -22
+   ],
+   "params": {
+    "rect": [
+     34,
+     8
+    ],
+    "z0": 6,
+    "height": 0.8,
+    "colour": "#7fa3b5",
+    "topColour": "#9fb8c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "helipad",
+   "at": [
+    -34,
+    8
+   ],
+   "params": {
+    "radius": 8,
+    "n": 16,
+    "z0": 36,
+    "height": 0.4,
+    "colour": "#7a7e80",
+    "topColour": "#8a8e90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "link-bridge",
+   "at": [
+    22,
+    -2
+   ],
+   "params": {
+    "rect": [
+     24,
+     3
+    ],
+    "z0": 16,
+    "height": 3,
+    "colour": "#bfc3c4",
+    "topColour": "#d0d3d4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photo is a distant LRT view of many ward blocks; blocks are generic grey/white boxes with ribbon windows, no dark top block detail, link bridges or twin-tower shape; windows reduced for triangle budget."
+ }
+}

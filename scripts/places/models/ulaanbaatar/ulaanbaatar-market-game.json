@@ -1,0 +1,163 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/894732836",
+   "used": "name-quality footprint, 160 x 103 m, bearing 53 deg, 4 storeys / 24 m from brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: boxy glass-and-metal-panel block, wide forecourt car park, glass atrium roof (an interior photo on Commons shows a glazed atrium roof and white interior; no exterior photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8cfd6",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c8cfd6",
+       "#b8c0c8"
+      ]
+     },
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#c8cfd6",
+       "#8f6a4a",
+       "#b7bec6"
+      ],
+      "slits": 0.1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium-glass",
+   "params": {
+    "rect": [
+     40,
+     18
+    ],
+    "z0": 22,
+    "height": 4,
+    "topScale": [
+     0.6,
+     0.5
+    ],
+    "colour": "#7fa4b8",
+    "topColour": "#9bb8c8"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass",
+   "params": {
+    "rect": [
+     22,
+     6
+    ],
+    "height": 12,
+    "colour": "#5f7f92",
+    "topColour": "#8f6a4a",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "at": [
+    22.6,
+    -21.3
+   ],
+   "rotDeg": 36.9
+  },
+  {
+   "type": "core/sign-board",
+   "id": "mall-sign",
+   "at": [
+    23.4,
+    -22.3,
+    12
+   ],
+   "rotDeg": 36.9,
+   "params": {
+    "width": 16,
+    "height": 3,
+    "bottom": 0.0,
+    "colour": "#8f6a4a",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "id": "cars",
+   "at": [
+    36,
+    -42,
+    0
+   ],
+   "rotDeg": 36.9,
+   "params": {
+    "length": 60,
+    "kind": "mixed",
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": 4,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No exterior photo: real outline plus brief only; entrance, atrium and panel pattern are typical, not seen."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-market-game"
+}

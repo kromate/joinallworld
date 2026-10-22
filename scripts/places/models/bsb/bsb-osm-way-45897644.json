@@ -1,0 +1,346 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-45897644",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Seri_Begawan_Religious_Teachers_University_College_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pangalau",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/coll2.jpg",
+   "used": "long white two-storey block with flat roof and white fascia band, tall white lattice tower with round plaque at the left, white lattice screen panel in the middle, brown timber screen at the left end, black railing with diamond pattern, lawn, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/45897644",
+   "used": "campus is 338 x 278 m: only the main teaching block and two rear wings modelled; the brief's hip roof and dome are NOT supported by the photo and were dropped"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 2.03,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     92,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ea",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "glassColour": "#4a5560",
+    "bay": 14,
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#e4e2da"
+      ],
+      "height": 0.9,
+      "at": 0.97,
+      "proud": 0.15,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d0cb",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-band",
+   "at": [
+    20,
+    -8.7,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     0.4
+    ],
+    "height": 2.2,
+    "colour": "#f6f5f0",
+    "topColour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lattice",
+   "at": [
+    8,
+    -9.1,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.5
+    ],
+    "height": 6,
+    "colour": "#e2dfd6",
+    "topColour": "#e2dfd6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    8,
+    -10,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     34,
+     3
+    ],
+    "height": 0.5,
+    "colour": "#bdbcb6",
+    "topColour": "#c9c8c2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "timber-panel",
+   "at": [
+    -30,
+    -9.1,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "height": 8,
+    "colour": "#7a4a2c",
+    "topColour": "#7a4a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     6.5
+    ],
+    "height": 20,
+    "colour": "#f4f3ee",
+    "topColour": "#f4f3ee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-lattice",
+   "at": [
+    -14,
+    -11.35,
+    2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.3
+    ],
+    "height": 12,
+    "colour": "#d4d1c8",
+    "topColour": "#d4d1c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    -14,
+    -11.4,
+    15.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "n": 14,
+    "radius": 1.7,
+    "height": 0.3,
+    "colour": "#a99a74",
+    "topColour": "#a99a74"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "wing-rear-l",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -34,
+    29
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ea",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "ribbon",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d0cb",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-rear-r",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    34,
+    29
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ea",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d0cb",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 92,
+    "height": 2.4,
+    "kind": "railing",
+    "pillarEvery": 6,
+    "colour": "#4a4d50"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -17
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -18
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Plain white block with a few ribbon windows: no fine lattice/breeze-block texture on the tower and middle screen, no diamond-pattern railing, no roofline signboards (blank), rear wings are a guess."
+ }
+}

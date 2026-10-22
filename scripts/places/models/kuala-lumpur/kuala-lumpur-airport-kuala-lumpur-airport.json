@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-airport-kuala-lumpur-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KLIA_MTB%26Tower.jpg",
+   "licence": "Public domain",
+   "author": "Craig",
+   "view": "front",
+   "used": "glass wall in a steel grid, upswept grey-green shell leaves with a pointed peak, raised gabled centre, undercroft, teal-capped tower behind",
+   "file": "/tmp/places-evidence/kuala-lumpur/klia1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/655135372",
+   "used": "KLIA Terminal 1 main terminal facts (Kurokawa, 1998); OSM match is a depot so the footprint is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.55,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     116,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.5,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5b7088",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#d8dad8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9c90",
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "undercroft",
+   "footprint": {
+    "rect": [
+     116,
+     32
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9bbb8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd1cf"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     0,
+     20.5
+    ],
+    "end": [
+     52,
+     0,
+     20.5
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       27,
+       40
+      ],
+      "height": 8,
+      "topScale": [
+       0.95,
+       0.2
+      ],
+      "topOffset": [
+       0,
+       -12
+      ],
+      "colour": "#7a9686",
+      "topColour": "#8fa89a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "central-gable",
+   "at": [
+    0,
+    -2,
+    20.5
+   ],
+   "params": {
+    "rect": [
+     30,
+     30
+    ],
+    "height": 9,
+    "topScale": [
+     0.9,
+     0.05
+    ],
+    "topOffset": [
+     0,
+     2
+    ],
+    "colour": "#8fa89a",
+    "topColour": "#6f8878"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    2,
+    24,
+    0
+   ],
+   "params": {
+    "height": 56,
+    "style": "round",
+    "colour": "#e2e0d8",
+    "shaftRadius": 5.5,
+    "cabRadius": 8.5,
+    "cabColour": "#2fa59a",
+    "bandColour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-ramps",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d7d6d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 3,
+    "colour": "#c9c8c2"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -28,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 2,
+    "spacing": 55
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof leaves are flat tapered prisms, not the upswept winged shells; escalator canopies are a plain box; wall grid and truck dock details missing."
+ }
+}

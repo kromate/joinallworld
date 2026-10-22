@@ -1,0 +1,319 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Safari_World.jpg",
+   "used": "marine-park dolphin show: pale white deck edge round a bright blue pool in front of a painted sea backdrop wall (pool and backdrop colours only; not an exterior view so no comparison made)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5721574",
+   "used": "park size only (811 x 757 m); containing match, not modelled as a footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    -30,
+    40,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 50,
+    "shape": "ellipse",
+    "colour": "#5fa0b8",
+    "bank": true
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -30,
+    15,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 2.6,
+    "height": 0.6,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-hall",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -38
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1d0",
+    "windows": "none",
+    "bay": 4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#1f7a5a",
+    "material": "metal-sheet",
+    "overhang": 2.5,
+    "pitch": 20
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 4,
+    "pillar": 1.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    16,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 2.5,
+    "colour": "#2f6fa8"
+   }
+  },
+  {
+   "type": "amphitheatre",
+   "at": [
+    40,
+    25,
+    0
+   ],
+   "params": {
+    "radius": 20,
+    "tiers": 6,
+    "stage": true,
+    "shelter": true,
+    "colour": "#c9b99a",
+    "roofColour": "#2f6fa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pool-theatre",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    50,
+    -10
+   ],
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#dfe8ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4fa8d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "backdrop",
+   "footprint": {
+    "rect": [
+     26,
+     1
+    ]
+   },
+   "at": [
+    50,
+    -4
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fb2d2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9d8e2"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aviary",
+   "at": [
+    -40,
+    -5,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 14
+     },
+     {
+      "z": 9,
+      "circle": 9
+     },
+     {
+      "z": 13,
+      "circle": 2
+     }
+    ],
+    "colour": "#cfd8dc",
+    "capTop": true
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c9b99a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#e8e1d0"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -20,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6fa8"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 40,
+    "count": 8,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    60,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 30,
+    "count": 6,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      -25,
+      10
+     ]
+    ],
+    "width": 4,
+    "colour": "#cbc6bb"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-osm-way-706259602"
+}

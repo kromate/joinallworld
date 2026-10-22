@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:JR-Nippori-Sta-S-201105.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Nyao148",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/nippori1.jpg",
+   "used": "south-exit pavilion: low dark hip roof with deep eaves over cream walls, tall green pyramid roof with a small glazed lantern, green-painted railed deck, elevated viaduct behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nippori_Station_-_Dec_30_2020_various_.jpeg",
+   "licence": "CC BY 4.0",
+   "author": "Nesnad",
+   "view": "side",
+   "file": "/tmp/places-evidence/tokyo/nippori2.jpg",
+   "used": "dark metal-clad concourse block with vertical timber-coloured louvres and a blank signboard, spiral stair, glass-roofed platform canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/182119141",
+   "used": "station building outline about 76 x 67 m (scaled 0.62)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.37,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "viaduct",
+   "footprint": {
+    "rect": [
+     90,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ae",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a8a8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 4,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concourse",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5,
+    "scale": 0.62
+   },
+   "at": [
+    22,
+    6
+   ],
+   "z0": 8,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a4d50",
+    "windows": "none",
+    "bands": "#a05a32",
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#a35f35"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -22,
+    -12
+   ],
+   "z0": 8,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e4d8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#41484e",
+    "material": "slate",
+    "pitch": 12,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -22,
+    -12,
+    13.1
+   ],
+   "params": {
+    "colour": "#6aa388",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.5,
+       9.5
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -12,
+    19.6
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 1.5,
+    "colour": "#f1efe8",
+    "topColour": "#6aa388",
+    "windows": "rect",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -22,
+    -12,
+    21.1
+   ],
+   "params": {
+    "colour": "#6aa388",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.2,
+       0.2
+      ]
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -45,
+    -17,
+    8
+   ],
+   "params": {
+    "length": 45,
+    "height": 1.1,
+    "colour": "#9bb08f"
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    5,
+    8
+   ],
+   "params": {
+    "width": 40,
+    "depth": 8,
+    "height": 3.4,
+    "deck_height": 0.5,
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    10,
+    -8,
+    15
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Green pyramid pavilion on a dark hip roof, viaduct with tracks and dark louvred concourse on the real outline are placed; glazed platform canopy, spiral stair and the surrounding towers are not modelled."
+ }
+}

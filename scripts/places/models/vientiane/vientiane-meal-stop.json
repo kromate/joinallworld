@@ -1,0 +1,106 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/773812276",
+   "used": "building outline containing the venue point (about 26 x 14 m, 309 m2, stepped); the catalogue photos near it show Wat Xieng Ngeun, a temple, so none were used. Form and colours from the brief: two-storey riverside shophouse bar with roller shutter, awning, balcony band and hanging sign"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shophouse",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b45a",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#7a4a2c",
+    "groundKind": "shopfront"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mosque-domed/awning",
+   "at": [
+    0,
+    -9,
+    0.2
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.0,
+    "height": 2.9,
+    "rise": 0.5,
+    "colour": "#7a4a2c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 3.4,
+    "colour": "#f2efe6",
+    "frameColour": "#7a4a2c",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this venue; outline-only, facade colours and signs typed from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-meal-stop"
+}

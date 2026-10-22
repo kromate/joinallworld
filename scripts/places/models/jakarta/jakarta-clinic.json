@@ -1,0 +1,197 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/485074669",
+   "used": "real outline 80 x 32 m (bearing 1 deg), building:levels=30, start 2010, building=hospital"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     92,
+     46
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e1d4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#c9c4b6",
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 12,
+   "height": 96,
+   "storeys": 14,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bfc9",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "ribbon"
+    },
+    "bands": "#e6e1d4",
+    "glassColour": "#4f7385"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 108,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfca",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    26,
+    4,
+    108
+   ],
+   "params": {
+    "radius": 7.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -26,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "columns": 3,
+    "colour": "#e8e3d6",
+    "roofColour": "#c8362f",
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "bottom": 2.5,
+    "colour": "#1f5fa0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -34
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10,
+    "colour": "#4c8a3c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    -30
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 8,
+    "colour": "#4c8a3c"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this branch; tower glazing, podium shape and helipad position are typical of Jakarta private hospital towers, not confirmed"
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ }
+}

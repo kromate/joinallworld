@@ -1,0 +1,231 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:H%E1%BB%93_n%C6%B0%E1%BB%9Bc_%E1%BB%9F_Th%E1%BA%A3o_C%E1%BA%A7m_Vi%C3%AAn.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hoangvantoanajc",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/zoo2.jpg",
+   "used": "lily lake with fountain jets, rubble kerb, bright flowerbeds in the foreground, tall rain trees closing the view, yellow colonial building with orange tile roof behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_the_Saigon_Zoo.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Dainis Matisons",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/zoo1.jpg",
+   "used": "cream ornate wrought-iron gate with piers and lamps and an arched sign"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32735038",
+   "used": "park extent 630 x 392 m; only the lake and entrance zone modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 34,
+    "shape": "ellipse",
+    "colour": "#566b45"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    4,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    -18,
+    16,
+    0
+   ],
+   "params": {
+    "radius": 1.0,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 10,
+    "depth": 3,
+    "colours": [
+     "#c4283a",
+     "#f2c230",
+     "#d63a4a"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "colonial",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    26,
+    60
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9b75a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#f0e6c2",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    38,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 18,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    5,
+    40,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 18,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 13,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#e6dcb0",
+    "leafColour": "#d8cc98"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -8,
+    5.4
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#c8452a",
+    "frameColour": "#c8452a",
+    "posts": false
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Representative lake and entrance corner of a 630 m park; foliage is generic broadleaf, the wrought-iron gate scrollwork is simplified, no stone kerb or lily pads."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-32735038"
+}

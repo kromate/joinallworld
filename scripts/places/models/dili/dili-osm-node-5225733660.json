@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-node-5225733660",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/540105756",
+   "used": "real outline 21.6 x 11.3 m (name match), rotated to align the long axis"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey clinic, gable corrugated roof, covered porch, ambulance bay, water tank"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -64.3
+   },
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bands": "#7ea0a0",
+    "plinth": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "porch",
+   "at": [
+    -3,
+    -6.9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 3.2,
+    "height": 2.9,
+    "columns": 4,
+    "colour": "#8a8a80",
+    "edgeColour": "#7ea0a0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.45,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#8a8a80"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.1,
+    "bottom": 1.4,
+    "colour": "#f2efe6",
+    "frameColour": "#7ea0a0"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    12.5,
+    -3,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "depth": 4.5,
+    "height": 3.2,
+    "columns": 2,
+    "colour": "#f2efe6",
+    "roofColour": "#8a8f94",
+    "vans": 1
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -6,
+    8,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.8,
+    "legs": 2.2,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   60,
+   44
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     10
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: real OSM outline plus typed clinic details (porch, bay, tank); colours from city style"
+ }
+}

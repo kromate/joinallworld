@@ -1,0 +1,285 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Keramat_Kusu,_Kusu_Island_(26287).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kbseah",
+   "view": "detail",
+   "file": "/tmp/places-evidence/singapore/singapore-quiet-reflection-0.jpg",
+   "used": "stair: concrete flight with bright yellow tubular handrails and yellow painted nosings under tall mixed forest, palms and broadleaf; no shrine in frame"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/729794116",
+   "used": "13 x 9 m shrine footprint (nearest match only)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 24,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "hillock",
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       30,
+       22
+      ],
+      "colour": "#5f7f45"
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       21,
+       15
+      ]
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       13,
+       9
+      ]
+     },
+     {
+      "z": 9.4,
+      "ellipse": [
+       12,
+       8.5
+      ]
+     }
+    ],
+    "colour": "#5f7f45",
+    "curve": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     12
+    ],
+    "z0": 9,
+    "height": 0.35,
+    "colour": "#bdb6a8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       0.9
+      ],
+      "height": 0.35,
+      "colour": "#b9b6ac"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     -21,
+     0.8
+    ],
+    "end": [
+     0,
+     -6,
+     9.4
+    ],
+    "count": 26
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-l",
+   "params": {
+    "points": [
+     [
+      -2,
+      -21,
+      1.8
+     ],
+     [
+      -2,
+      -6,
+      10.4
+     ]
+    ],
+    "section": {
+     "circle": 0.07
+    },
+    "colour": "#f2d21b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-r",
+   "params": {
+    "points": [
+     [
+      2,
+      -21,
+      1.8
+     ],
+     [
+      2,
+      -6,
+      10.4
+     ]
+    ],
+    "section": {
+     "circle": 0.07
+    },
+    "colour": "#f2d21b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kramat-a",
+   "footprint": {
+    "rect": [
+     4.2,
+     3.2
+    ]
+   },
+   "at": [
+    -4,
+    3
+   ],
+   "z0": 9.3,
+   "height": 1.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9a23c",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kramat-b",
+   "footprint": {
+    "rect": [
+     4.2,
+     3.2
+    ]
+   },
+   "at": [
+    0.5,
+    3.5
+   ],
+   "z0": 9.3,
+   "height": 1.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9a23c",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kramat-c",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.8
+    ]
+   },
+   "at": [
+    5,
+    3
+   ],
+   "z0": 9.3,
+   "height": 1.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5533c",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -7,
+    -1,
+    9.3
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "thickness": 0.2,
+    "colour": "#8a6a46"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14,
+    "count": 10,
+    "min_height": 9,
+    "max_height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "photo shows only the stair; hillock is smooth, shrines are schematic, vegetation sparse"
+ }
+}

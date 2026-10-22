@@ -1,0 +1,180 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1374387036",
+   "used": "the real 72 x 55 m footprint, 14.3 m height (3 storeys)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jumonji_University.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nyao148",
+   "view": "street",
+   "file": "/tmp/places-evidence/tokyo/jum1.jpg",
+   "used": "campus entrance only (not the block): maroon brick gate piers, white sliding railing gates, autumn broadleaf trees; the teaching block itself is not visible"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 14.3,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e2ddd0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#f2f0ea",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-w",
+   "footprint": {
+    "rect": [
+     3,
+     1.2
+    ]
+   },
+   "at": [
+    -12,
+    -58
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a2584a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f4f43"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-e",
+   "footprint": {
+    "rect": [
+     11,
+     1.2
+    ]
+   },
+   "at": [
+    14,
+    -58
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8665a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f4f43"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.8,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#f0f0ee"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    22,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.8,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#f0f0ee"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 10,
+    "colour": "#b86a2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 2,
+    "spread": 10,
+    "colour": "#a85a28"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the block: facade typed pale tile with ribbon windows; real outline and height only."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-way-136302688"
+}

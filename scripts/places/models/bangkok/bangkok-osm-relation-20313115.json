@@ -1,0 +1,307 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-osm-relation-20313115",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Thawi_Wanarom.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Phoebus 28",
+   "view": "street",
+   "used": "asphalt perimeter path about 4 m wide, rows of rain trees on both sides, clipped shrub edging, brick-red tree edging, open lawn to the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Thawi_Wanarom_Lake.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Phoebus 28",
+   "view": "side",
+   "used": "broad pond with grey-green water, wooded banks, low bridge across the far end, canna planting"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/20313115",
+   "used": "park boundary (about 366 x 254 m, scaled to the scene)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fa35a",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa35a"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    10,
+    -8,
+    0.2
+   ],
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "shape": "rect",
+    "colour": "#6f8f86",
+    "bank": true
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -22,
+    10,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 50,
+    "count": 18,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    28,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 26,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -40
+     ],
+     [
+      -30,
+      40
+     ],
+     [
+      32,
+      40
+     ],
+     [
+      34,
+      -30
+     ],
+     [
+      -30,
+      -40
+     ]
+    ],
+    "width": 4,
+    "colour": "#6e6f72"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -34,
+    -38,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 78,
+    "count": 9,
+    "kind": "broadleaf",
+    "gap": 4.5,
+    "height_min": 9,
+    "height_max": 12
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -8,
+    26,
+    0.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.0,
+    "posts": 4,
+    "colour": "#e8e1d0",
+    "cap_colour": "#d9772b"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    24,
+    -20,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#e8e1d0",
+    "cap_colour": "#d9772b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-1",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -26,
+    -30
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9772b",
+    "material": "clay-tile",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-2",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    30,
+    36
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9772b",
+    "material": "clay-tile",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -4,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.2,
+    "pillar": 1.0
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -26,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 8,
+    "spacing": 10
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -27,
+    2,
+    0.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 3,
+    "spacing": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   110,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Photo is a ground-level path view; render is an overview. Pond, pavilions, kiosks are placed typically (only boundary and tree-lined path are evidenced); shrub edging and lawn detail missing."
+ }
+}

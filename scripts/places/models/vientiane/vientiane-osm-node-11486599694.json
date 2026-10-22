@@ -1,0 +1,195 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: OSM hospital node with no outline; the nearby street photo (Tha Ngone, panoramio) shows a roadside, not the hospital, so it was not used. Laos district hospital typical: low pale pavilions, red tile hip roofs, covered walkways, red laterite ground"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -8,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#cfc9bb"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic-wing",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    22,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#cfc9bb"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -24,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc9bb",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#cfc9bb"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 3.6,
+    "form": "flat",
+    "columns": 4,
+    "colour": "#a8452a"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    22,
+    -14.2,
+    5.5
+   ],
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    32,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6.5,
+    "depth": 5.5,
+    "height": 4.0,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; typical district hospital layout from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-osm-node-11486599694"
+}

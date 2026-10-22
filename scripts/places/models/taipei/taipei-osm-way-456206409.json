@@ -1,0 +1,242 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-456206409",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Archives_of_Taiwan_20251122_(IMG_5910).png",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bigmorr",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/na1.png",
+   "used": "large glass cube with red/pink pixel-panel facade lifted over a tall open white-column podium, wide red-sided stair"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Archives_of_Taiwan_aerialphoto.jpg",
+   "licence": "Attribution",
+   "author": "國家發展委員會檔案管理局",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/taipei/na2.jpg",
+   "used": "flat-roofed colonnaded podium in front of the cube, dark glass block on the right, park trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/456206409",
+   "used": "size (88 x 87 m), 10 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cube",
+   "footprint": {
+    "rect": [
+     50,
+     42
+    ]
+   },
+   "at": [
+    6,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 9,
+   "height": 36,
+   "storeys": 9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9bfc0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.6,
+       2.4
+      ],
+      "colours": [
+       "#b8554d",
+       "#d9a49b",
+       "#c9ccc8",
+       "#8fa1ab"
+      ],
+      "slits": {
+       "fraction": 0.08,
+       "colour": "#59606a"
+      },
+      "faces": [
+       "front",
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d3",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     70,
+     34
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcdcd8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 2,
+      "spacing": 6,
+      "width": 1.2,
+      "colour": "#e6e6e2",
+      "faces": [
+       "front",
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9ea0",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glassWing",
+   "footprint": {
+    "rect": [
+     22,
+     34
+    ]
+   },
+   "at": [
+    52,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f505b",
+    "windows": "none",
+    "bands": "#6c7d88"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "rise": 1.1,
+    "run": 2.0,
+    "count": 8,
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "redwall",
+   "params": {
+    "points": [
+     [
+      -30,
+      -22
+     ],
+     [
+      14,
+      -22
+     ],
+     [
+      14,
+      -20.5
+     ],
+     [
+      -30,
+      -20.5
+     ]
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#b8453d"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -45,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 40,
+    "count": 4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    60,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 20,
+    "count": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Cube facade is a muted pixel-panel guess; podium is a wide flat colonnade, stair is simple, dark glass block on the right is approximate; no red stair side walls."
+ }
+}

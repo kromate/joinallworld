@@ -1,0 +1,282 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Peng_Chau_temple2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "9old9",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/v17_1.jpg",
+   "used": "two-storey magenta-purple painted hall, red-framed windows, green glazed-tile eave and ridge with ceramic figures, open red-post veranda in front with orange carved balustrade, red trim, incense burners"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lung_Mo_Temple,_Peng_Chau,_Hong_Kong.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Daniel Case",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/v17_0.jpg",
+   "used": "confirms colours and the lean-to veranda"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/322429617",
+   "used": "size only (11 x 8 m footprint, rotated diamond); modelled square to the lane to match the photo"
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "veranda is a flat slab not a sloped roof; no carved orange balustrade, joss burners are boxes, no ridge ceramic figures, neighbouring houses and drum oven omitted; hall slightly narrower than photo"
+ },
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     10,
+     7.5
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8e2a5e",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#c4161c",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7f66",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.7,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     0.5
+    ],
+    "height": 2.9,
+    "colour": "#7a2030"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2.9,
+    2.9
+   ],
+   "params": {
+    "rect": [
+     9.8,
+     0.5
+    ],
+    "height": 0.75,
+    "colour": "#e0922d",
+    "pattern": {
+     "type": "panels"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.5,
+    -5.4,
+    3.45
+   ],
+   "params": {
+    "rect": [
+     11.5,
+     5.8
+    ],
+    "height": 0.28,
+    "topScale": 1.0,
+    "colour": "#6b4a3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.2,
+     -7.8
+    ],
+    "end": [
+     5.2,
+     -7.8
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.32,
+       0.32
+      ],
+      "height": 3.5,
+      "colour": "#c4161c"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.9,
+    3.15
+   ],
+   "params": {
+    "rect": [
+     11.4,
+     0.3
+    ],
+    "height": 0.35,
+    "colour": "#c4161c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3,
+     3
+    ],
+    "end": [
+     3,
+     3
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.5,
+       0.4
+      ],
+      "height": 0.55,
+      "colour": "#e0922d"
+     }
+    }
+   },
+   "on": "hall"
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    -4.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.8
+    ],
+    "height": 1.5,
+    "colour": "#a8362e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.7,
+    -3.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 1.1,
+    "colour": "#d9a441"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.5,
+    -6.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 1.0,
+    "colour": "#d9a441"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-way-322429617"
+}

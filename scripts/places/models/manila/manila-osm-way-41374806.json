@@ -1,0 +1,424 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:OurLadyofAnnunciationParishjf9625_04.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ramon FVelasquez",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/41374806_0.jpg",
+   "used": "grey scored-block facade with raised star motifs, stepped gabled front with trimmed pale frames, gabled entrance porches with dark louvred soffits and brown carved doors, wide stair, white angel statues, stained window in front gable, red sign frame"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:OurLadyofAnnunciationParishjf9625_01.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ramon FVelasquez",
+   "view": "detail",
+   "file": "/tmp/places-evidence/manila/41374806_1.jpg",
+   "used": "stepped gable, double-barred cross, crown-topped bell tower at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/41374806",
+   "used": "footprint 34 x 14 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    0,
+    15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8d83",
+    "windows": "pointed",
+    "windowRatio": 0.06,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a33a2e",
+    "material": "corrugated",
+    "rise": 3.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     15.4,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8b897f",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.2,
+      "spacing": 1.2,
+      "colour": "#7c7a70"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b897f",
+    "rise": 3.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-l",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.6
+    ]
+   },
+   "at": [
+    -4.4,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f94",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a39f94",
+    "rise": 2.0,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-r",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.6
+    ]
+   },
+   "at": [
+    4.4,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f94",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a39f94",
+    "rise": 2.0,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-l",
+   "footprint": {
+    "rect": [
+     2,
+     0.5
+    ]
+   },
+   "at": [
+    -4.4,
+    -6.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a3f25",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3f25"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-r",
+   "footprint": {
+    "rect": [
+     2,
+     0.5
+    ]
+   },
+   "at": [
+    4.4,
+    -6.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a3f25",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3f25"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-window",
+   "footprint": {
+    "rect": [
+     3,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.6
+   ],
+   "rotDeg": 0,
+   "z0": 8.6,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a6fa5",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a6fa5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -10.5,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8d83",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcbbc",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-crown",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -10.5,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 22,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d5c6",
+    "windows": "arched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#d9d5c6",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-v",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.2
+   ],
+   "rotDeg": 0,
+   "z0": 15.6,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d5c6",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d5c6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-h",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.2
+   ],
+   "rotDeg": 0,
+   "z0": 17.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d5c6",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d5c6"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 15,
+    "height": 1.8,
+    "run": 4,
+    "colour": "#8c8a80"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-41374806",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Stepped gable and porches are simple gables; no raised star motifs, angel statues or louvred soffits; tower crown is a plain pyramid; footprint reoriented."
+ }
+}

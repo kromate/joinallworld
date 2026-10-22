@@ -1,0 +1,369 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-way-487114579",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lake_Titiwangsa.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "SpOt ON",
+   "view": "street",
+   "file": "/tmp/places-evidence/kuala-lumpur/titi2.jpg",
+   "used": "wide lake with fountain jets, far shore of tall palms and raised grass bank with a stone edge, small open pavilions, foreground shore with reeds; skyline towers not modelled"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Taman_Tasik_Titiwangsa_(220413)_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "*angys*",
+   "view": "street",
+   "file": "/tmp/places-evidence/kuala-lumpur/titi1.jpg",
+   "used": "lakeside lawn, jogging path and shelters (context)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/487114579",
+   "used": "park is 900 m wide: only a 120 m lakeside promenade vignette is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.56,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 10,
+    "colour": "#6f9a45"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 66,
+    "colour": "#55767f",
+    "bank": true
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    58,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 18,
+    "colour": "#6f9a45"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      46
+     ],
+     [
+      -20,
+      47
+     ],
+     [
+      20,
+      46
+     ],
+     [
+      60,
+      48
+     ]
+    ],
+    "width": 3,
+    "colour": "#d6cfc0"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    56,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 14,
+    "count": 44,
+    "kind": "palm",
+    "min_height": 11,
+    "max_height": 17
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 10,
+    "count": 3,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -36,
+    52,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#b59a74",
+    "cap_colour": "#5d6a6e"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    12,
+    52,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#b59a74",
+    "cap_colour": "#5d6a6e"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    34,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "width": 3,
+    "height": 0.9,
+    "rails": true,
+    "piles": true,
+    "colour": "#8b6b4a"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    34,
+    10,
+    0.9
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.5,
+    "posts": 4,
+    "colour": "#8b6b4a",
+    "cap_colour": "#5d6a6e"
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#e6f0f4",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 14,
+      "circle": 1.6
+     }
+    ],
+    "capTop": false
+   },
+   "at": [
+    -26,
+    26,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#e6f0f4",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 6,
+      "circle": 3.2
+     }
+    ],
+    "capTop": false
+   },
+   "at": [
+    8,
+    14,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#e6f0f4",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 10,
+      "circle": 1.6
+     }
+    ],
+    "capTop": false
+   },
+   "at": [
+    48,
+    30,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -23
+    ],
+    "end": [
+     24,
+     -22
+    ],
+    "count": 40,
+    "vary": {},
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#9a8a52",
+       "sections": [
+        {
+         "z": 0,
+         "circle": 0.25
+        },
+        {
+         "z": 3.4,
+         "circle": 0.12
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -58,
+     -6
+    ],
+    "end": [
+     -50,
+     44
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "lamp",
+      "params": {
+       "height": 5
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "fountain spray shapes are simple cones; no skyline towers by design; shore is a straight lawn edge, no stone kerb; only a 120 m vignette of a 900 m park"
+ }
+}

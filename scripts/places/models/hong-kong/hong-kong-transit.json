@@ -1,0 +1,85 @@
+{
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "OSM twin-pier outline with green/white storeys on piles; real pier has a short pier plus bridge, rooftop cabins and moored ferry not modelled"
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tsim_Sha_Tsui_Ferry_Pier.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "Baycrest",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/hong-kong/transit-0.jpg",
+   "used": "long two-level pier on timber piles, green lower deck with white upper deck, ribbon windows, dark flat roofs, small rooftop cabin, green-white ferry alongside"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/14941145",
+   "used": "twin pier footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe8dc",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#7f9a95",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#3f6b5a",
+       "#ebe8dc"
+      ]
+     },
+     {
+      "type": "pilotis",
+      "inset": 0.7,
+      "spacing": 8,
+      "width": 0.5,
+      "colour": "#7a6246",
+      "backColour": "#3a4a46",
+      "storeys": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d6163",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-transit"
+}

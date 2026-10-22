@@ -1,0 +1,285 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-node-4723539711",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gleneagles_JPMC_in_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pangalau",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/gleneagles.jpg",
+   "used": "cream entrance pavilion with a front gable and arched opening, salmon-pink columns, green tile hipped wings with deep eaves, lamp posts, lawn and palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jerudong_Park_Medical_Centre_30_March_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pangalau",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/jpmc2.jpg",
+   "used": "cream wall colour, green-tile roof, pink pilasters, dark-framed glazing"
+  },
+  {
+   "kind": "text",
+   "used": "brief: four-storey rectangular block (77 x 30 m, flat roof, ribbon glazing) behind the entrance wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     56,
+     22
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.5,
+    "bands": "#bfbab0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8084",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0c4",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#d8c9b0"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 16,
+    "overhang": 2.6,
+    "colour": "#7f9a74",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0c4",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 16,
+    "overhang": 2.6,
+    "colour": "#7f9a74",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d2bc",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#cfc6ae"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 30,
+    "overhang": 1.4,
+    "colour": "#cdc6b0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 5,
+    "height": 6,
+    "columns": 4,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#d4a190",
+    "roofColour": "#d9d2bc"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -33,
+     -9.4,
+     0
+    ],
+    "end": [
+     33,
+     -9.4,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 3.6,
+      "colour": "#d4a190"
+     }
+    }
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -8,
+    8
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 4.2
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 4.2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    -19,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "hedges, lawn mound, arched opening in the gable and real wing lengths are approximate; 4-storey rear block comes from the brief, not visible in the photo"
+ }
+}

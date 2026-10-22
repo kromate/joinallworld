@@ -1,0 +1,560 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stasiun_Kranji_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "FikriAkbar10",
+   "view": "street",
+   "file": "/tmp/places-evidence/jakarta/kranji1.jpg",
+   "used": "elevated grey glazed-band concourse with roof railing, blue stair/lift tower with white bands, curved striped metal canopy over the stair, long low platform canopy to the left, brick-paved forecourt, commuter train behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/500064974",
+   "used": "overall size (43 x 40 m); outline not used because the polygon is a slim rotated shape"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 5,
+  "fovDeg": 31,
+  "aspect": 1.778
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "canopy over the stair is a folded flat roof, not the real tall barrel arch; blue tower stripes simplified; no roof railing or stair handrail detail; real footprint is irregular, so the station is composed as an overbridge concourse"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "concourse",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 5.2,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d4d8da",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain"
+    },
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "at": [
+    -13,
+    6.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#b8bcbe"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    -4,
+    6.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#b8bcbe"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier2",
+   "at": [
+    5,
+    6.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#b8bcbe"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier3",
+   "at": [
+    14,
+    6.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#b8bcbe"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge-slab",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     9
+    ],
+    "z0": 4.9,
+    "height": 0.5,
+    "colour": "#a7abae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     5.5,
+     7
+    ]
+   },
+   "at": [
+    19.5,
+    9
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6fb5",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e9eef2"
+     }
+    ],
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d6",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-r-core",
+   "at": [
+    22.8,
+    9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     5.5
+    ],
+    "z0": 0,
+    "height": 11.0,
+    "colour": "#c4c9cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -19.5,
+    9
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6fb5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d6",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    10,
+    0,
+    7.0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 13,
+    "depth": 7,
+    "rise": 0.5,
+    "thickness": 0.35,
+    "folds": 8,
+    "colour": "#b9c3c9",
+    "edgeColour": "#d9dcde"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-post0",
+   "at": [
+    4.5,
+    -2.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 7.0,
+    "colour": "#2f6fb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-post1",
+   "at": [
+    15.5,
+    -2.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 7.0,
+    "colour": "#2f6fb5"
+   }
+  },
+  {
+   "type": "external-stair",
+   "at": [
+    11,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 5.2,
+    "length": 9,
+    "width": 2.4,
+    "colour": "#b7bcc0"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 9,
+    "height": 4.5,
+    "thickness": 0.45,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plat-post0",
+   "at": [
+    -40,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#2f6fb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plat-post1",
+   "at": [
+    -32,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#2f6fb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plat-post2",
+   "at": [
+    -24,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#2f6fb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plat-post3",
+   "at": [
+    -16,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#2f6fb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plat-post4",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#2f6fb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     8
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#a9a9a6"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "tracks": 3,
+    "spacing": 4.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "train-body",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     2.8
+    ],
+    "z0": 0.5,
+    "height": 3.6,
+    "colour": "#e8e8e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "train-stripe",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     20.05,
+     2.85
+    ],
+    "z0": 1.6,
+    "height": 0.6,
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    0,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.2,
+    "bottom": 8.3,
+    "colour": "#38556e",
+    "frameColour": "#cfd3d6",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kiosk",
+   "at": [
+    -32,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     5
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#d9d5cb"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#222222",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#2d2f33",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   60
+  ]
+ }
+}

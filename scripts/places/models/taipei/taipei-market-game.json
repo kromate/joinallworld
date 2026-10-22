@@ -1,0 +1,299 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mitsui_Shopping_Park_LaLaport_Nangang_2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yu tptw",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/lal1.jpg",
+   "used": "low glass-and-scaffold podium with wavy white bands, central inverted-cone glass bowl with white elliptical rim, glass block behind, two blue-green glass towers either side joined by a skybridge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LaLaport_Nangang_20250216.jpg",
+   "licence": "CC BY 2.0",
+   "author": "xiangyang17",
+   "view": "street",
+   "used": "finished state: banded silver wave facade on the podium, bowl proportion"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/0",
+   "used": "podium footprint (name match, 6 levels, 209 x 143 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.29,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     112,
+     56
+    ]
+   },
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7f78",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e2e4e2",
+      "height": 1.4,
+      "at": 0.9
+     }
+    ],
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9291",
+    "parapet": 0.6
+   },
+   "at": [
+    0,
+    -6
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "bowl",
+   "at": [
+    0,
+    -8,
+    21
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#4b6e67",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6.720000000000001,
+       5.760000000000001
+      ]
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       10.56,
+       8.64
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       17.28,
+       13.440000000000001
+      ]
+     },
+     {
+      "z": 16,
+      "ellipse": [
+       23.040000000000003,
+       17.28
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bowl-rim",
+   "at": [
+    0,
+    -8,
+    39
+   ],
+   "params": {
+    "colour": "#eceeee",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       23.52,
+       17.76
+      ]
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       24.0,
+       18.240000000000002
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       19.2,
+       13.440000000000001
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-block",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "z0": 21,
+   "height": 28,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7a9aa8",
+    "windows": "curtain",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     34,
+     28
+    ]
+   },
+   "at": [
+    -42,
+    26
+   ],
+   "height": 84,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5e8a9b",
+    "windows": "curtain",
+    "windowRatio": 0.15,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#5e8a9b",
+       "#35546a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9496"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     34,
+     28
+    ]
+   },
+   "at": [
+    42,
+    26
+   ],
+   "height": 112,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f86a3",
+    "windows": "curtain",
+    "windowRatio": 0.15,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#4f86a3",
+       "#35546a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9496"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "skybridge",
+   "at": [
+    0,
+    28,
+    66
+   ],
+   "params": {
+    "rect": [
+     70,
+     7
+    ],
+    "height": 9,
+    "colour": "#6f8e9a",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Podium is a plain banded box (photo has a wavy white-banded scaffold-wrapped facade); bowl has no vertical ribs; back block and tower facade details simplified; tower proportions approximate; podium is a rectangle, not the real angled outline (the OSM outline rendered oddly small and skewed)."
+ }
+}

@@ -1,0 +1,399 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:1_Utama_(220426)_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "*angys*",
+   "view": "front",
+   "file": "/tmp/places-evidence/kuala-lumpur/um1.jpg",
+   "used": "ochre painted-render mall frontage with darker panel fields, parapet planter band, vaulted entrance canopies, tall blank sign pylon, curved glass-and-concrete tower behind the left wing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:1_Utama_(220426)_05.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "*angys*",
+   "view": "side",
+   "used": "stepped brown office/car-park block with horizontal glazing bands, yellow panelled wing at right, green entrance canopies"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/11365206",
+   "used": "identity only; the OSM match is a small roof part, so the frontage is composed from the photos and the brief (about 110 m of the 400 m wing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 5,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Curved glass hotel tower is a plain ellipse loft; no planter band, vaulted entrance canopies are flat curved shells; 400 m wing reduced to about 75 m frontage; sign pylon has blank boards only."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-wing",
+   "footprint": {
+    "rect": [
+     74,
+     40
+    ]
+   },
+   "at": [
+    18,
+    8
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c58f48",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#b9803c",
+       "#d19a50",
+       "#a8733a"
+      ],
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#e3b45e",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 1.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     26,
+     32
+    ]
+   },
+   "at": [
+    -31,
+    6
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d49b3f",
+    "windows": "none",
+    "bands": {
+     "colour": "#e8bf66",
+     "height": 0.5
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f918c",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-pavilion",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    -18
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9843a",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#4a5a63",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6f86",
+    "pitch": 18,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     46,
+     20
+    ]
+   },
+   "at": [
+    2,
+    40
+   ],
+   "height": 28,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a67a4a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#a67a4a",
+       "#33454f"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7d78",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hotel-tower",
+   "at": [
+    -47,
+    36,
+    0
+   ],
+   "params": {
+    "colour": "#8b8a80",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       16,
+       13
+      ]
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       17,
+       13
+      ]
+     },
+     {
+      "z": 52,
+      "ellipse": [
+       16,
+       12
+      ],
+      "colour": "#7f9a95"
+     },
+     {
+      "z": 56,
+      "ellipse": [
+       13,
+       9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-spine",
+   "at": [
+    -47,
+    25,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     5
+    ],
+    "height": 46,
+    "z0": 0,
+    "colour": "#4f8a86",
+    "topColour": "#4f8a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-pylon",
+   "at": [
+    54,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     3
+    ],
+    "height": 30,
+    "colour": "#b69a62",
+    "topColour": "#9d8550"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-board-a",
+   "at": [
+    54,
+    -17.4,
+    18
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#b2476b",
+    "topColour": "#b2476b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-board-b",
+   "at": [
+    54,
+    -17.4,
+    13
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e8e4dc",
+    "topColour": "#e8e4dc"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    40,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 14,
+    "depth": 8,
+    "height": 5,
+    "colour": "#5f7f8c",
+    "columns": 0,
+    "rise": 1.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 12,
+    "depth": 7,
+    "height": 4.6,
+    "colour": "#5f7f8c",
+    "columns": 0,
+    "rise": 1.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "line": 10
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -36,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   118,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -32
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-relation-11365206"
+}

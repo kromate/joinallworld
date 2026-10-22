@@ -1,0 +1,609 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-15783341",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shanghai_Stadium_2008.JPG",
+   "licence": "Public domain",
+   "author": "JohnzyJay",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/shanghai/stadium.jpg",
+   "used": "oval bowl under a white tented membrane roof of peaked panels, continuous white fascia ring, canted white V-fins over a dark glazed concourse, paved plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9073794",
+   "used": "overall oval size 271 x 267 m, scaled by 0.45"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      57.0,
+      0.0
+     ],
+     [
+      55.9,
+      10.93
+     ],
+     [
+      52.66,
+      21.43
+     ],
+     [
+      47.39,
+      31.11
+     ],
+     [
+      40.31,
+      39.6
+     ],
+     [
+      31.67,
+      46.56
+     ],
+     [
+      21.81,
+      51.74
+     ],
+     [
+      11.12,
+      54.92
+     ],
+     [
+      0.0,
+      56.0
+     ],
+     [
+      -11.12,
+      54.92
+     ],
+     [
+      -21.81,
+      51.74
+     ],
+     [
+      -31.67,
+      46.56
+     ],
+     [
+      -40.31,
+      39.6
+     ],
+     [
+      -47.39,
+      31.11
+     ],
+     [
+      -52.66,
+      21.43
+     ],
+     [
+      -55.9,
+      10.93
+     ],
+     [
+      -57.0,
+      0.0
+     ],
+     [
+      -55.9,
+      -10.93
+     ],
+     [
+      -52.66,
+      -21.43
+     ],
+     [
+      -47.39,
+      -31.11
+     ],
+     [
+      -40.31,
+      -39.6
+     ],
+     [
+      -31.67,
+      -46.56
+     ],
+     [
+      -21.81,
+      -51.74
+     ],
+     [
+      -11.12,
+      -54.92
+     ],
+     [
+      -0.0,
+      -56.0
+     ],
+     [
+      11.12,
+      -54.92
+     ],
+     [
+      21.81,
+      -51.74
+     ],
+     [
+      31.67,
+      -46.56
+     ],
+     [
+      40.31,
+      -39.6
+     ],
+     [
+      47.39,
+      -31.11
+     ],
+     [
+      52.66,
+      -21.43
+     ],
+     [
+      55.9,
+      -10.93
+     ]
+    ],
+    "height": 9,
+    "colour": "#27384d",
+    "top": true,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 59,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 20,
+    "facing": "outward",
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#e6e5e0",
+       "sections": [
+        {
+         "z": 10,
+         "rect": [
+          3.4,
+          1.6
+         ],
+         "cy": 0
+        },
+        {
+         "z": 5.0,
+         "rect": [
+          2.6,
+          1.6
+         ],
+         "cy": -1.6
+        },
+        {
+         "z": 0,
+         "rect": [
+          2.0,
+          1.4
+         ],
+         "cy": -2.6
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    17
+   ],
+   "params": {
+    "points": [
+     [
+      52.0,
+      0.0
+     ],
+     [
+      48.04,
+      19.52
+     ],
+     [
+      36.77,
+      36.06
+     ],
+     [
+      19.9,
+      47.12
+     ],
+     [
+      0.0,
+      51.0
+     ],
+     [
+      -19.9,
+      47.12
+     ],
+     [
+      -36.77,
+      36.06
+     ],
+     [
+      -48.04,
+      19.52
+     ],
+     [
+      -52.0,
+      0.0
+     ],
+     [
+      -48.04,
+      -19.52
+     ],
+     [
+      -36.77,
+      -36.06
+     ],
+     [
+      -19.9,
+      -47.12
+     ],
+     [
+      -0.0,
+      -51.0
+     ],
+     [
+      19.9,
+      -47.12
+     ],
+     [
+      36.77,
+      -36.06
+     ],
+     [
+      48.04,
+      -19.52
+     ]
+    ],
+    "height": 2,
+    "colour": "#f4f4f1",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    9
+   ],
+   "params": {
+    "points": [
+     [
+      61.0,
+      0.0
+     ],
+     [
+      59.83,
+      11.71
+     ],
+     [
+      56.36,
+      22.96
+     ],
+     [
+      50.72,
+      33.33
+     ],
+     [
+      43.13,
+      42.43
+     ],
+     [
+      33.89,
+      49.89
+     ],
+     [
+      23.34,
+      55.43
+     ],
+     [
+      11.9,
+      58.85
+     ],
+     [
+      0.0,
+      60.0
+     ],
+     [
+      -11.9,
+      58.85
+     ],
+     [
+      -23.34,
+      55.43
+     ],
+     [
+      -33.89,
+      49.89
+     ],
+     [
+      -43.13,
+      42.43
+     ],
+     [
+      -50.72,
+      33.33
+     ],
+     [
+      -56.36,
+      22.96
+     ],
+     [
+      -59.83,
+      11.71
+     ],
+     [
+      -61.0,
+      0.0
+     ],
+     [
+      -59.83,
+      -11.71
+     ],
+     [
+      -56.36,
+      -22.96
+     ],
+     [
+      -50.72,
+      -33.33
+     ],
+     [
+      -43.13,
+      -42.43
+     ],
+     [
+      -33.89,
+      -49.89
+     ],
+     [
+      -23.34,
+      -55.43
+     ],
+     [
+      -11.9,
+      -58.85
+     ],
+     [
+      -0.0,
+      -60.0
+     ],
+     [
+      11.9,
+      -58.85
+     ],
+     [
+      23.34,
+      -55.43
+     ],
+     [
+      33.89,
+      -49.89
+     ],
+     [
+      43.13,
+      -42.43
+     ],
+     [
+      50.72,
+      -33.33
+     ],
+     [
+      56.36,
+      -22.96
+     ],
+     [
+      59.83,
+      -11.71
+     ]
+    ],
+    "height": 8,
+    "colour": "#e7e6e1",
+    "top": true,
+    "topScale": 1.02
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 52,
+    "radiusY": 51,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 4,
+    "rise": 1.8,
+    "run": 2.2,
+    "firstHeight": 6,
+    "facetDeg": 45,
+    "under": "open",
+    "stepped": false,
+    "seatColour": "#b0402f",
+    "concreteColour": "#c9c7c0",
+    "canopy": {
+     "height": 4.5,
+     "depth": 19,
+     "thickness": 1.6,
+     "slopeDeg": -6,
+     "colour": "#f4f4f1",
+     "edgeColour": "#e9e9e5"
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 59,
+    "radiusY": 58,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 20,
+    "facing": "outward",
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f1f1ee",
+       "sections": [
+        {
+         "z": 22,
+         "rect": [
+          5,
+          1.2
+         ],
+         "cy": 0
+        },
+        {
+         "z": 17,
+         "rect": [
+          7,
+          2.4
+         ],
+         "cy": -1
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "lod": [
+    0
+   ],
+   "at": [
+    -70,
+    -55,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -72,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     72,
+     -40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -80
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Oval ring, white fascia, V-fins, dark glazed base read right; roof is a smooth ring not peaked tented membrane, 32-sided oval, plaza/banners/neighbouring towers missing."
+ }
+}

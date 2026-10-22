@@ -1,0 +1,282 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AgrePUST.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jmesser5",
+   "view": "front",
+   "file": "/tmp/places-evidence/pyongyang/pust1.jpg",
+   "used": "stepped blocky 3-5 storey halls clad in beige-grey panels on a dark stone base, ribbon of blue-green glazing in the projecting central bay, flat roofs with a columned canopy and stair/lift boxes, bare yard"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PUST_(16177628831).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Uri Tours",
+   "view": "front",
+   "used": "checked the cladding colour and window rhythm"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/427620999",
+   "used": "campus extent (1169 x 622 m); one teaching hall modelled from the photo, not the campus outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -26,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    14,
+    0
+   ],
+   "height": 17.5,
+   "storeys": 5,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#cbc2b5",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 2.4,
+    "bay": 4.4,
+    "bands": "#c4bcae",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8e",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     36,
+     14
+    ]
+   },
+   "at": [
+    -38,
+    -3
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#cbc2b5",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 2.4,
+    "bay": 4.4,
+    "bands": "#c4bcae",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8e",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     28,
+     5
+    ]
+   },
+   "at": [
+    4,
+    -10.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#cbc2b5",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 2.4,
+    "bay": 4.4,
+    "bands": "#c4bcae",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none",
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8e",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "top-box",
+   "params": {
+    "rect": [
+     10,
+     9
+    ],
+    "z0": 17.5,
+    "height": 3.6,
+    "colour": "#cbc2b5"
+   },
+   "at": [
+    30,
+    3,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "top-box-left",
+   "params": {
+    "rect": [
+     9,
+     8
+    ],
+    "z0": 13,
+    "height": 3.6,
+    "colour": "#cbc2b5"
+   },
+   "at": [
+    -48,
+    -1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-slab",
+   "params": {
+    "rect": [
+     14,
+     9
+    ],
+    "z0": 17.5,
+    "height": 0.7,
+    "colour": "#9a9c9c"
+   },
+   "at": [
+    36,
+    -7,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "count": 3,
+    "spread": 10,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    20,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 6,
+    "colours": [
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post1",
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 9.5,
+    "height": 8.7,
+    "colour": "#eeeae0"
+   },
+   "at": [
+    31,
+    -10.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "post2",
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 9.5,
+    "height": 8.7,
+    "colour": "#eeeae0"
+   },
+   "at": [
+    41,
+    -10.5,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-427620999",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Cladding is a generic tile texture; the dark stone base, large blue glazing bands and the columned roof canopy are only roughly placed; one hall of a 1.2 km campus, not the campus."
+ }
+}

@@ -1,0 +1,659 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-498482968",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Masjid_Agung_Al-Azhar_2021.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rhmtdns",
+   "view": "front",
+   "file": "/tmp/places-evidence/jakarta/azhar1.jpg",
+   "used": "white two-tier hall with arched red-framed windows, one white onion dome on a windowed drum, tall white minaret at left with a small dome, small corner domes and thin white spires, golden ornamented gate wall at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Masjid_Agung_Al-Azhar.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Si Gam",
+   "view": "side",
+   "file": "/tmp/places-evidence/jakarta/azhar2.jpg",
+   "used": "ribbed ovoid dome proportion, slim minaret with single balcony, arched side windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/498482968",
+   "used": "overall extent 97 x 67 m, 2 levels, 1958 (plan too irregular to extrude directly; hall modelled as two rectangles)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "arcade-base",
+   "footprint": {
+    "rect": [
+     66,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.34,
+    "glassColour": "#6b5046",
+    "faces": {
+     "front": "arched",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6dc",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     48,
+     28
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 7.5,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "glassColour": "#7a4a3a",
+    "bay": 4.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6dc",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    0,
+    2,
+    17
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#f3f1ea",
+    "profile": [
+     [
+      8.6,
+      0
+     ],
+     [
+      8.6,
+      4.5
+     ],
+     [
+      9.2,
+      4.7
+     ],
+     [
+      9.2,
+      5.3
+     ],
+     [
+      7.6,
+      5.6
+     ]
+    ],
+    "arcade": {
+     "count": 8,
+     "width": 1.3,
+     "height": 2.2,
+     "sill": 1.4,
+     "shape": "arched",
+     "depth": 0.4
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    2,
+    22.5
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#f1f1ee",
+    "topColour": "#f1f1ee",
+    "profile": [
+     [
+      7.6,
+      0
+     ],
+     [
+      8.6,
+      1.8
+     ],
+     [
+      9.1,
+      4
+     ],
+     [
+      8.8,
+      6.6
+     ],
+     [
+      7.6,
+      9
+     ],
+     [
+      5.6,
+      11.2
+     ],
+     [
+      3.2,
+      12.9
+     ],
+     [
+      1.3,
+      14.3
+     ],
+     [
+      0.25,
+      16
+     ],
+     [
+      0.25,
+      18.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "crescent",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    2,
+    41
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.45,
+      0
+     ],
+     [
+      0.45,
+      1.2
+     ],
+     [
+      0.9,
+      1.5
+     ],
+     [
+      0.9,
+      2.4
+     ],
+     [
+      0.2,
+      2.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -22,
+    -8,
+    17
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f3f1ea",
+    "profile": [
+     [
+      2.3,
+      0
+     ],
+     [
+      2.3,
+      1.2
+     ],
+     [
+      2.6,
+      1.4
+     ],
+     [
+      2.2,
+      2.4
+     ],
+     [
+      1.3,
+      3.4
+     ],
+     [
+      0.3,
+      4.1
+     ],
+     [
+      0.2,
+      5.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -22,
+    12,
+    17
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f3f1ea",
+    "profile": [
+     [
+      2.3,
+      0
+     ],
+     [
+      2.3,
+      1.2
+     ],
+     [
+      2.6,
+      1.4
+     ],
+     [
+      2.2,
+      2.4
+     ],
+     [
+      1.3,
+      3.4
+     ],
+     [
+      0.3,
+      4.1
+     ],
+     [
+      0.2,
+      5.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    22,
+    -8,
+    17
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f3f1ea",
+    "profile": [
+     [
+      2.3,
+      0
+     ],
+     [
+      2.3,
+      1.2
+     ],
+     [
+      2.6,
+      1.4
+     ],
+     [
+      2.2,
+      2.4
+     ],
+     [
+      1.3,
+      3.4
+     ],
+     [
+      0.3,
+      4.1
+     ],
+     [
+      0.2,
+      5.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    22,
+    12,
+    17
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f3f1ea",
+    "profile": [
+     [
+      2.3,
+      0
+     ],
+     [
+      2.3,
+      1.2
+     ],
+     [
+      2.6,
+      1.4
+     ],
+     [
+      2.2,
+      2.4
+     ],
+     [
+      1.3,
+      3.4
+     ],
+     [
+      0.3,
+      4.1
+     ],
+     [
+      0.2,
+      5.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -17,
+    -9,
+    17
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#f3f1ea",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.5,
+      6
+     ],
+     [
+      0.1,
+      13
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    -9,
+    17
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#f3f1ea",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.5,
+      6
+     ],
+     [
+      0.1,
+      13
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "minaret",
+   "at": [
+    -31,
+    -8,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f3f1ea",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      3
+     ],
+     [
+      1.7,
+      3.4
+     ],
+     [
+      1.5,
+      30
+     ],
+     [
+      2.8,
+      30.4
+     ],
+     [
+      2.8,
+      31.4
+     ],
+     [
+      1.4,
+      31.8
+     ],
+     [
+      1.4,
+      33.5
+     ],
+     [
+      2.3,
+      34
+     ],
+     [
+      2.3,
+      35.5
+     ],
+     [
+      1.7,
+      37.5
+     ],
+     [
+      0.9,
+      39
+     ],
+     [
+      0.2,
+      40.2
+     ],
+     [
+      0.2,
+      42
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pillar-l",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 6,
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pillar-r",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 6,
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gold-wall",
+   "at": [
+    41,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     12
+    ],
+    "height": 18,
+    "colour": "#c9a15a",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "colour": "#b98d44",
+     "slits": 0.1
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     -18
+    ],
+    "height": 12
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Real plan has stepped wings and a roofline with more small domes; entrance arch and the gold gate wall are simplified; plaza trees are generic."
+ }
+}

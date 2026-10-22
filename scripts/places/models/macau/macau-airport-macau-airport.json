@@ -1,0 +1,215 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-airport-macau-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Macao_airport_terminal.jpg",
+   "licence": "Public domain",
+   "author": "Pizzaboy1",
+   "view": "street",
+   "used": "long 2-storey teal glazed terminal with pale piers, tall teal glass tower block at left end, glazed barrel-vault hall at right, jet bridges along the front",
+   "file": "/tmp/places-evidence/macau/0_0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/138258237",
+   "used": "overall size 438 m x 119 m, 24 m height; about 120 m portion modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     84,
+     32
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f9a9e",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "bands": "#c9d3d3",
+    "plinth": 1.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b4b6",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium",
+   "at": [
+    -36,
+    8
+   ],
+   "params": {
+    "rect": [
+     30,
+     26
+    ],
+    "height": 9,
+    "colour": "#7f9ea1",
+    "topColour": "#9aa6a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     24,
+     20
+    ]
+   },
+   "at": [
+    -36,
+    10
+   ],
+   "z0": 9,
+   "height": 50,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f98a3",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "bands": "#8fb7bd"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    -15.5
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.8
+    ],
+    "z0": 14.2,
+    "height": 2.2,
+    "colour": "#e8ecec",
+    "topColour": "#e8ecec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault-hall",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    63,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa8b0",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#8fb4bf",
+    "material": "glass",
+    "rise": 5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "jetbridges",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15,
+     0,
+     0
+    ],
+    "end": [
+     35,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      -6
+     ],
+     "params": {
+      "rect": [
+       3.4,
+       14
+      ],
+      "z0": 4.5,
+      "height": 3.2,
+      "colour": "#c5ccce",
+      "topColour": "#d6dcde"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Tower is wider and ribbon-glazed rather than smooth teal glass; no rooftop lettering, aircraft or apron detail; only a 84 m portion of the 438 m terminal; vault hall simplified."
+ }
+}

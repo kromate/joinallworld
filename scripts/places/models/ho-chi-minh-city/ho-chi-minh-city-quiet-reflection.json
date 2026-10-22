@@ -1,0 +1,526 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ch\u00ednh_\u0111i\u1ec7n_ch\u00f9a_Ho\u1eb1ng_Ph\u00e1p.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Thuydaonguyen",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/hp-main.jpg",
+   "used": "main sanctuary: two-tier hip roof in red-brown tile with upswept corners and cream fascia, open red-brown front bays with columns, wide stair, dharma wheel at ridge, clipped shrubs and lanterns"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Th\u00e1p_Nh\u1ecb_Nghi\u00eam.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "B\u00f9i Th\u1ee5y \u0110\u00e0o Nguy\u00ean",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/hp-tower.jpg",
+   "used": "Nhi Nghiem tower: stepped round base, striped drum, grey tiled dome with niche, white spire"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1314396510",
+   "used": "overall size (41 x 24 m main building) only; real outline is a rotated stepped shape not reproduced"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "fit": "building",
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -11.8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.12,
+    "run": 0.5,
+    "count": 6,
+    "colour": "#b8ad9b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-lower",
+   "footprint": {
+    "rect": [
+     28,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.6,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f4531",
+    "windows": "none",
+    "bands": "#efe4c8",
+    "cornice": true,
+    "faces": {
+     "front": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "rect",
+      "bay": 5.2,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 0.8,
+      "storeys": 1,
+      "faces": [
+       "front"
+      ],
+      "colour": "#2a1a14",
+      "pierColour": "#8f4531"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a24c38",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-upper",
+   "footprint": {
+    "rect": [
+     17,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 7.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f4531",
+    "windows": "none",
+    "bands": "#efe4c8",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#efe4c8",
+      "height": 0.9,
+      "floors": "all",
+      "at": 0.55
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a24c38",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 3.4
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    14.6
+   ],
+   "params": {
+    "colour": "#d9a441",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.5,
+      0
+     ],
+     [
+      0.5,
+      0.2
+     ],
+     [
+      0.12,
+      0.3
+     ],
+     [
+      0.12,
+      1.0
+     ],
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.5,
+      1.5
+     ],
+     [
+      0,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0.6,
+      "height": 5.2,
+      "colour": "#9a2f22"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -9,
+     -7.8,
+     0
+    ],
+    "end": [
+     9,
+     -7.8,
+     0
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -24,
+    6,
+    0
+   ],
+   "params": {
+    "colour": "#b9a98c",
+    "segments": 24,
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      7.2,
+      0,
+      "#8d8577"
+     ],
+     [
+      7.2,
+      0.7
+     ],
+     [
+      6.2,
+      0.7
+     ],
+     [
+      6.2,
+      1.4
+     ],
+     [
+      5.2,
+      1.4
+     ],
+     [
+      5.2,
+      2.1,
+      "#8d8577"
+     ],
+     [
+      4.4,
+      2.1,
+      "#f2ece0"
+     ],
+     [
+      4.4,
+      4.0
+     ],
+     [
+      4.6,
+      4.0,
+      "#b9a98c"
+     ],
+     [
+      4.6,
+      4.4
+     ],
+     [
+      4.0,
+      4.5,
+      "#b2a283"
+     ],
+     [
+      3.9,
+      6.0
+     ],
+     [
+      3.3,
+      8.0
+     ],
+     [
+      2.2,
+      9.4
+     ],
+     [
+      1.0,
+      10.2,
+      "#f2ece0"
+     ],
+     [
+      0.5,
+      10.8
+     ],
+     [
+      0.45,
+      13.0
+     ],
+     [
+      0,
+      13.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -24,
+    -1,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "width": 3.2,
+    "rise": 0.25,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#8d8577"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    25,
+    10,
+    0
+   ],
+   "params": {
+    "colour": "#f4f1ea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 1.2,
+      "rect": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 2.2,
+      "circle": 2.6
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       2.2,
+       1.4
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       2.0,
+       1.2
+      ]
+     },
+     {
+      "z": 12.5,
+      "ellipse": [
+       1.4,
+       1.0
+      ]
+     },
+     {
+      "z": 13.4,
+      "circle": 1.0
+     },
+     {
+      "z": 14.8,
+      "circle": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 6,
+    "colour": "#9a2f22",
+    "board_colour": "#d9a441",
+    "arch": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -34,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.6,
+    "thickness": 0.4,
+    "colour": "#e6dcc0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.6,
+    "thickness": 0.4,
+    "colour": "#e6dcc0"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "conifer",
+      "height": 6
+     }
+    },
+    "mode": "line",
+    "start": [
+     -16,
+     -13,
+     0
+    ],
+    "end": [
+     16,
+     -13,
+     0
+    ],
+    "count": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     0
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -18
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Roof corners are not upswept and the dragon ridge ends and carved lattice fascia are missing; hall reads lower and boxier than the photo; comparison frame includes the whole site so scale differs; layout of tower/statue/gate is approximate"
+ }
+}

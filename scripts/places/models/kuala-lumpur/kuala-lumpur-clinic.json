@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Canselor_Tuanku_Muhriz_UKM_(220419).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "*angys*",
+   "view": "street",
+   "used": "tall ward tower in cream render with brown-red floor bands and stacked balconies, red-tiled hipped roofs on lower blocks, brick gate piers",
+   "file": "/tmp/places-evidence/kuala-lumpur/hctm1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1058203501",
+   "used": "podium outline (311 x 190 m, scaled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     112,
+     20
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfd0",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#a2523d",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#a8452f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-rear",
+   "footprint": {
+    "rect": [
+     28,
+     26
+    ]
+   },
+   "at": [
+    8,
+    14
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfd0",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#a2523d",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#a8452f",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-tower",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    -26,
+    18
+   ],
+   "z0": 0,
+   "height": 58,
+   "storeys": 16,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6cab6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "right": "none",
+     "left": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d6cab6",
+       "#9a7260"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#d2c8b4",
+      "height": 0.5,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-core",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -26,
+    18
+   ],
+   "z0": 58,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9bfae",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-house",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -12,
+    -46
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65a43",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 25,
+    "colour": "#a8452f",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -20,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.4,
+    "bottom": 1,
+    "colour": "#2f3a44",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Podium is two simple blocks, not the real sprawling wing layout; ward tower lacks the stepped balconies and top plant crown; no mature trees or gate piers detail."
+ }
+}

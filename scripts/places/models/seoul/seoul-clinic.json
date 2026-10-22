@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2596751",
+   "used": "real 103 x 46 m sawtooth outline, 8 levels, 44 m height, opened 1994; no exterior photo found, facade colours from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 44,
+   "storeys": 8,
+   "wall": {
+    "material": "granite",
+    "colour": "#cfc8bb",
+    "windows": "none",
+    "windowRatio": 0.42,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#a7a398",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#cfc8bb",
+       "#a9b4bb"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-atrium",
+   "at": [
+    0,
+    -27
+   ],
+   "params": {
+    "rect": [
+     26,
+     10
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#7d8f9c",
+    "topColour": "#9fb0bb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-canopy",
+   "at": [
+    0,
+    -31
+   ],
+   "params": {
+    "rect": [
+     30,
+     8
+    ],
+    "z0": 6,
+    "height": 0.8,
+    "colour": "#ebe7de",
+    "topColour": "#ebe7de"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "helipad",
+   "at": [
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "z0": 44,
+    "height": 0.6,
+    "colour": "#6b7075",
+    "topColour": "#6b7075"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-low",
+   "footprint": {
+    "rect": [
+     60,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    -36
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d9d3c6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ambulance-bay",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    42,
+    -30
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e5e1d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0392f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 8,
+    "line": 50
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo found for this hospital; sawtooth OSM plan simplified, facade grid, glazed entrance, helipad and ambulance bay are typed from the brief, not seen."
+ }
+}

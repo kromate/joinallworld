@@ -1,0 +1,121 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/577053104",
+   "used": "size only (name match, 102 x 44 m, 3 levels); outline is fragmentary so a 100 x 26 m rectangle is used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-storey municipal building, stone walls, hipped tile roof; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "rect": [
+     100,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8cdb8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#b9b6ae",
+    "plinth": 1,
+    "cornice": true,
+    "bay": 5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d6d6b",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.25,
+    "run": 0.7,
+    "count": 6,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -45,
+     -30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     45,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; rectangle 100x26 m instead of the fragmentary OSM outline, tiled hip roof from brief."
+ }
+}

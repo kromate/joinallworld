@@ -1,0 +1,373 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tr%C6%B0%E1%BB%9Dng_%C4%90%E1%BA%A1i_h%E1%BB%8Dc_T%C3%B4n_%C4%90%E1%BB%A9c_Th%E1%BA%AFng,_q7,tp_hcm_vn_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "trungydang",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/p4_2.jpg",
+   "used": "grey eight-storey tower with green glazing and blue curved cap, curved glass atrium podium with a lettering band (left blank), white wings with corridor balconies and blue roof edges, white gate railing, hedge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dai_hoc_Ton_Duc_Thang_tan_phong_q7_tphcmvn_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "trungydang",
+   "view": "front",
+   "used": "curved atrium glass wall, tower proportions, colours"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 34,
+   "storeys": 9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6fb0a8",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#cfd3d6",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3e6fb0",
+    "parapet": 0.8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      18.0,
+      -0.0
+     ],
+     [
+      17.55,
+      -2.0
+     ],
+     [
+      16.22,
+      -3.9
+     ],
+     [
+      14.07,
+      -5.61
+     ],
+     [
+      11.22,
+      -7.04
+     ],
+     [
+      7.81,
+      -8.11
+     ],
+     [
+      4.01,
+      -8.77
+     ],
+     [
+      0.0,
+      -9.0
+     ],
+     [
+      -4.01,
+      -8.77
+     ],
+     [
+      -7.81,
+      -8.11
+     ],
+     [
+      -11.22,
+      -7.04
+     ],
+     [
+      -14.07,
+      -5.61
+     ],
+     [
+      -16.22,
+      -3.9
+     ],
+     [
+      -17.55,
+      -2.0
+     ],
+     [
+      -18.0,
+      -0.0
+     ]
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#8c9298",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "topColour": "#3e6fb0",
+    "glassColour": "#6fb0a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     32,
+     16
+    ]
+   },
+   "at": [
+    36,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ebed",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "bands": "#cfd3d6",
+    "plinth": 0.4,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3e6fb0",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -34,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ebed",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "right": "plain",
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#b99a6c",
+    "plinth": 0.4,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d6",
+    "parapet": 0.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner",
+   "footprint": {
+    "rect": [
+     12,
+     14
+    ]
+   },
+   "at": [
+    -48,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 25,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fb7a8",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bands": "#e8ebed",
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3e6fb0",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.7,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.8,
+    "depth": 2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colours": [
+     "#c8262d"
+    ],
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -12,
+    13
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#c9a84a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   160,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-community-workshop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Left wing balconies and glass strips simplified; tower cap flat not curved; OSM polygon is the sports centre so photo massing used."
+ }
+}

@@ -1,0 +1,384 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hac_S%C3%A1_Park_31-03-2024(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LN9267",
+   "view": "street",
+   "file": "/tmp/places-evidence/macau/hac1.jpg",
+   "used": "sand playground with arched climbing frame, green-post hexagonal gazebo with brown hipped roof, large banyan trees, brick-edged steps and benches, lawn behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/322642517",
+   "used": "park outline, scaled to fit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photo is a close view of the playground and one gazebo under a banyan; only the outline, gazebo, sand play area, benches and trees are modelled, no play equipment, slides, paths or beach side"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "render",
+    "colour": "#6f9a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sandplay",
+   "at": [
+    -8,
+    -34,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     22,
+     15
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#d8bf8a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "n": 6,
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#b9a58a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    2,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 6,
+    "radius": 3.2,
+    "centre": [
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "z0": 0.25,
+      "height": 2.7,
+      "colour": "#1f5b4a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "n": 6,
+    "z0": 2.95,
+    "height": 1.7,
+    "topScale": 0.12,
+    "colour": "#6f5d4c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "n": 6,
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#b9a58a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 6,
+    "radius": 3.2,
+    "centre": [
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "z0": 0.25,
+      "height": 2.7,
+      "colour": "#1f5b4a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "n": 6,
+    "z0": 2.95,
+    "height": 1.7,
+    "topScale": 0.12,
+    "colour": "#6f5d4c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    28,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "n": 6,
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#b9a58a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -14,
+    28,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 6,
+    "radius": 3.2,
+    "centre": [
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "z0": 0.25,
+      "height": 2.7,
+      "colour": "#1f5b4a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    28,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "n": 6,
+    "z0": 2.95,
+    "height": 1.7,
+    "topScale": 0.12,
+    "colour": "#6f5d4c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -8,
+    -34,
+    0.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     0,
+     0
+    ],
+    "end": [
+     6,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.2,
+      "colour": "#c9a24a"
+     }
+    }
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    -26,
+    0.2
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.6
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22,
+    -24,
+    0.5
+   ],
+   "params": {
+    "height": 14,
+    "crown_radius": 7,
+    "trunk_radius": 0.9,
+    "colour": "#3f6f3a"
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -24,
+    -16,
+    0.5
+   ],
+   "params": {
+    "height": 14,
+    "crown_radius": 7,
+    "trunk_radius": 0.9,
+    "colour": "#3f6f3a"
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18,
+    12,
+    0.5
+   ],
+   "params": {
+    "height": 14,
+    "crown_radius": 7,
+    "trunk_radius": 0.9,
+    "colour": "#3f6f3a"
+   }
+  },
+  {
+   "type": "big-tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20,
+    30,
+    0.5
+   ],
+   "params": {
+    "height": 14,
+    "crown_radius": 7,
+    "trunk_radius": 0.9,
+    "colour": "#3f6f3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   140,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-322642517"
+}

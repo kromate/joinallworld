@@ -1,0 +1,325 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lao_china_railway_vientiane_station_birdview.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pakopakopapa",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/vientiane/v20_transit-0.jpg",
+   "used": "broad multi-pitch orange-gold metal roof with wide eaves over a glazed concourse, lower orange wing roofs, white concrete platform canopy of flat slabs on Y-shaped columns in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Laos_china_railway_vientiane_station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pakopakopapa",
+   "view": "side",
+   "used": "white concrete canopy shapes and column spacing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/873231521",
+   "used": "195 x 64 m rectangle; modelled at 0.6 scale as a hall with two wings, track side facing +Y"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     64,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9c4b6",
+    "glassColour": "#4f5d66",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "curtain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9962e",
+    "material": "metal-sheet",
+    "rise": 8.5,
+    "overhang": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     26,
+     28
+    ]
+   },
+   "at": [
+    45,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e3ddd0",
+    "glassColour": "#4f5d66",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "curtain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9962e",
+    "material": "metal-sheet",
+    "rise": 4.5,
+    "overhang": 3.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     26,
+     28
+    ]
+   },
+   "at": [
+    -45,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e3ddd0",
+    "glassColour": "#4f5d66",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "curtain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9962e",
+    "material": "metal-sheet",
+    "rise": 4.5,
+    "overhang": 3.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     22
+    ],
+    "height": 1.0,
+    "colour": "#b9b5aa"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    34,
+    1.0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0
+    ],
+    "end": [
+     50,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "canopy",
+      "params": {
+       "form": "flat",
+       "width": 11.5,
+       "depth": 14,
+       "height": 6.2,
+       "thickness": 0.6,
+       "columns": 0,
+       "colour": "#dcdad2"
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#e4e2da",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.8,
+          0.8
+         ],
+         "cx": -5.7,
+         "cy": 6
+        },
+        {
+         "z": 5.6,
+         "rect": [
+          1.4,
+          1.4
+         ],
+         "cx": -5.7,
+         "cy": 6
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     50
+    ],
+    "end": [
+     0,
+     56
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        116,
+        0.18
+       ],
+       "height": 0.1,
+       "colour": "#55524d"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "kind": "mixed",
+    "density": 0.6,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -36
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -36
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Gable-roofed hall with wing roofs and flat-slab platform canopy match the colours and layout; the real roof is a faceted multi-pitch with a swept fascia, canopy slabs lack the Y columns, no tracks detail."
+ }
+}

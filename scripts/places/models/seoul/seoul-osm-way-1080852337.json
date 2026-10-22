@@ -1,0 +1,205 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-1080852337",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1080852337",
+   "used": "real outline: 36 x 13 m nave running east-west plus a taller 8 x 21 m cross block at the east end"
+  },
+  {
+   "kind": "text",
+   "used": "brief: red-brick Catholic parish church, gabled grey roof, bell tower, arched windows. Wikidata image is Dapdong cathedral, a different building, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "polygon": [
+     [
+      -24.3,
+      5.2
+     ],
+     [
+      12,
+      5.4
+     ],
+     [
+      12,
+      -7.8
+     ],
+     [
+      -24.2,
+      -7.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5b47",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "windowShape": "arched",
+    "plinth": 0.6,
+    "bands": "#ecebe6",
+    "faces": {
+     "front": "arched",
+     "back": "arched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f55",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-block",
+   "footprint": {
+    "polygon": [
+     [
+      12,
+      -7.4
+     ],
+     [
+      20.4,
+      -7.4
+     ],
+     [
+      20.4,
+      13.7
+     ],
+     [
+      11.9,
+      13.7
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#94533f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "bands": "#ecebe6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f55",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "bell-tower",
+   "at": [
+    16.2,
+    -9.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    16.2,
+    -9.5,
+    16
+   ],
+   "params": {
+    "baseWidth": 2.6,
+    "height": 9,
+    "colour": "#4b4f55",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -14,
+    -9.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 0.4,
+    "count": 4,
+    "colour": "#bdbab3"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "line": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this church (Wikidata image is another building); outline real, brick colour and tower typed from the brief."
+ }
+}

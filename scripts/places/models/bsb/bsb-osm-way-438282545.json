@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-438282545",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BRUNEI_NATIONAL_MUSEUM,_BRUNEI.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "JERRYE AND ROY KLOTZ MD",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/museum.jpg",
+   "used": "three-storey off-white concrete block with projecting upper boxes and slit-window grilles, tall grey tower end with fins, low entrance canopy, stone-pattern end panels, flagpoles, flat parapet roof, clipped shrubs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/438282545",
+   "used": "footprint (112 x 51 m, bent plan)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.53,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d8d2c2",
+       "#cfc9b8"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#8e918f"
+      ],
+      "height": 0.7
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e918f",
+    "parapet": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9,
+     11
+    ]
+   },
+   "at": [
+    -52,
+    -14
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9c99",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#85878a",
+      "bay": 2.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85878a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porte-cochere",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -30,
+    -12
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8e918f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e918f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-panel-end",
+   "footprint": {
+    "rect": [
+     6,
+     2
+    ]
+   },
+   "at": [
+    46,
+    27
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#b89e7a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e918f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -18,
+     0
+    ],
+    "end": [
+     -22,
+     -17,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "flag",
+      "params": {}
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -25
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -25
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "projecting upper boxes with slit grilles, crest ornament and stone end panels simplified; bent OSM plan seen from the other long side"
+ }
+}

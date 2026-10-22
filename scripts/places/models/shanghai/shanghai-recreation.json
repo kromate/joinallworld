@@ -1,0 +1,350 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:上海滨江森林公园.jpeg",
+   "licence": "CC BY-SA 3.0",
+   "author": "User:zhangchengyin",
+   "view": "street",
+   "file": "/tmp/places-evidence/shanghai/recreation-0.jpg",
+   "used": "the Yangtze shore of the park: rough pitted concrete sea wall in the foreground, rows of grey interlocking tetrapod blocks in front of it, a rock-armoured spur running into the hazy brown river, a utility pole, low timber fence, ships on the horizon"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q15893841",
+   "used": "identity; no OSM outline matched, so the park extent is a typical riverside strip"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "stadium/lawn",
+   "id": "park-lawn",
+   "at": [
+    0,
+    -34
+   ],
+   "params": {
+    "width": 150,
+    "depth": 50,
+    "colour": "#5f8f45"
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    -30,
+    -40
+   ],
+   "params": {
+    "width": 80,
+    "depth": 34,
+    "count": 30,
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "stadium/path-strip",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -12
+     ],
+     [
+      -30,
+      -10
+     ],
+     [
+      10,
+      -9
+     ],
+     [
+      50,
+      -10
+     ],
+     [
+      75,
+      -13
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#b9b2a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sea-wall",
+   "at": [
+    0,
+    -2
+   ],
+   "params": {
+    "rect": [
+     160,
+     3.0
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#8b867c",
+    "topColour": "#9a958b",
+    "topScale": [
+     1,
+     0.9
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "tetrapods",
+   "params": {
+    "mode": "line",
+    "start": [
+     -72,
+     3.5
+    ],
+    "end": [
+     72,
+     3.5
+    ],
+    "count": 48,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.0,
+       2.4
+      ],
+      "z0": 0,
+      "height": 1.6,
+      "colour": "#7c7d7b",
+      "topColour": "#8d8e8b",
+      "topScale": 0.6
+     }
+    },
+    "lod2Step": 6
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "id": "tetrapods-2",
+   "params": {
+    "mode": "line",
+    "start": [
+     -70,
+     6
+    ],
+    "end": [
+     70,
+     6
+    ],
+    "count": 44,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       2.4
+      ],
+      "z0": 0,
+      "height": 1.2,
+      "colour": "#74756f",
+      "topColour": "#858681",
+      "topScale": 0.6
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "spur",
+   "at": [
+    12,
+    16
+   ],
+   "rotDeg": 8,
+   "params": {
+    "points": [
+     [
+      -4,
+      -12
+     ],
+     [
+      4,
+      -12
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      2,
+      22
+     ],
+     [
+      -2,
+      22
+     ],
+     [
+      -6,
+      6
+     ]
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#7f7f7a",
+    "topColour": "#8a8a84"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    14,
+    36
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    1
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "pillarEvery": 3,
+    "colour": "#5a4a3a"
+   }
+  },
+  {
+   "type": "stadium/water-surface",
+   "id": "river",
+   "at": [
+    0,
+    48
+   ],
+   "params": {
+    "width": 170,
+    "depth": 70,
+    "colour": "#a39a7c",
+    "bank": false
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "viewing-pavilion-a",
+   "at": [
+    -48,
+    -20
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "colour": "#a58a64",
+    "cap_colour": "#5f625f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "viewing-pavilion-b",
+   "at": [
+    48,
+    -18
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "colour": "#a58a64",
+    "cap_colour": "#5f625f"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "id": "pier",
+   "at": [
+    -28,
+    22
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "width": 3,
+    "height": 0.9,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "stadium/path-strip",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -28,
+      -10
+     ],
+     [
+      -28,
+      -3
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b9b2a4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Photo is only of the Yangtze sea wall and tetrapod breakwater; park extent, lawn, pavilions and pier are typical because no OSM outline matched; comparison camera does not frame the shoreline closely."
+ }
+}

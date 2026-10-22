@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-node-4758981105",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/483146366",
+   "used": "building outline, 1 level, 25 x 16 m (nearest quality)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small standalone cafe-restaurant, glazed front, hip clay-tile roof, terrace, blue blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f2ec",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "bands": "#7a6a55"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "overhang": 1.4,
+    "colour": "#8a5a3c",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 2.5,
+    "colour": "#2f6fa8",
+    "posts": true
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -17,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#7a6a55"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#c9c9c4",
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; massing from the real OSM outline and brief, details typed"
+ }
+}

@@ -1,0 +1,164 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-node-1782932802",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Battle_of_Zapote_River",
+   "used": "Zapote Battlefield plaque (Commons Zapote_Battlefield_historical_marker.jpg, CC0, Eugene Alvin Villar) is dark cast iron with blue paint on red brick; no photo of a monument structure found, so a modest marker is modelled"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/252713971",
+   "used": "not used: nearest commercial building, not the marker"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.3,
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#bdbab0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfccc2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     4.5
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#9b988f",
+    "topColour": "#9b988f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.6
+    ],
+    "z0": 1.9,
+    "height": 3.6,
+    "colour": "#d3cfc3",
+    "topColour": "#e4e0d4",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     2.0
+    ],
+    "z0": 5.5,
+    "height": 0.5,
+    "colour": "#9b988f",
+    "topColour": "#9b988f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -0.85
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.2
+    ],
+    "z0": 2.6,
+    "height": 1.6,
+    "colour": "#2a3350",
+    "topColour": "#2a3350"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -3.2
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#a9a69c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   30,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the monument itself, only the plaque; modest obelisk-style marker on a plinth is invented from the brief"
+ }
+}

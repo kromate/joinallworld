@@ -1,0 +1,245 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Garden_Park_(Ulaanbaatar)_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "SunDawn",
+   "view": "street",
+   "file": "/tmp/places-evidence/ulaanbaatar/park1.jpg",
+   "used": "wide grey paving-slab promenade, young pines in square planters along both sides, low pavilion kiosk with green striped awning on the left, bins, pale apartment towers beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/903622706",
+   "used": "nearest small building only (7 x 5 m), taken as the kiosk size"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -26,
+    12
+   ],
+   "rotDeg": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7a52",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-2",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    30,
+    40
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4da",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7a52",
+    "material": "metal-sheet",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    25
+   ],
+   "params": {
+    "width": 8,
+    "depth": 70,
+    "count": 9,
+    "kind": "conifer",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    25
+   ],
+   "params": {
+    "width": 8,
+    "depth": 70,
+    "count": 9,
+    "kind": "conifer",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    62
+   ],
+   "params": {
+    "width": 60,
+    "depth": 10,
+    "count": 8,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "radius": 4.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    0,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 6,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-a",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    -22,
+    98
+   ],
+   "height": 42,
+   "storeys": 13,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbfae",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-b",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    26,
+    104
+   ],
+   "height": 54,
+   "storeys": 17,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa09a",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a7a",
+    "material": "membrane"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "single promenade vista out of a 250 x 200 m park; lawns, playground and aero-model area not modelled; planters and bins omitted"
+ }
+}

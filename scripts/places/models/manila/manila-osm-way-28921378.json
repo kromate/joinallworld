@@ -1,0 +1,482 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cainta_Church.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Elmer B. Domingo",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/28921378_0.jpg",
+   "used": "weathered brown-grey adobe stone facade, round-arched centre door, two arched statue niches, round stained window in gable, tiered attached bell tower on the right with arched belfry windows and domed cap"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28921378",
+   "used": "overall nave length and orientation (cruciform, about 68 m long)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     17,
+     48
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#8b7d68",
+    "windows": "arched",
+    "windowRatio": 0.07,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a33a2e",
+    "material": "clay-tile",
+    "rise": 5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#8b7d68",
+    "windows": "arched",
+    "windowRatio": 0.06
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a33a2e",
+    "material": "clay-tile",
+    "rise": 4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     21,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    -1.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#857763",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#857763",
+    "rise": 4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-lower",
+   "footprint": {
+    "rect": [
+     7.5,
+     7.5
+    ]
+   },
+   "at": [
+    12.5,
+    -1.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#7e7059",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6e5a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-belfry",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    12.5,
+    -1.6
+   ],
+   "rotDeg": 0,
+   "z0": 17,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#857763",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6e5a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-cap",
+   "at": [
+    12.5,
+    -1.6,
+    24.5
+   ],
+   "params": {
+    "profile": [
+     [
+      3.4,
+      0,
+      "#8a7e6c"
+     ],
+     [
+      3.2,
+      0.6
+     ],
+     [
+      2.6,
+      1.8
+     ],
+     [
+      1.4,
+      2.6
+     ],
+     [
+      0.3,
+      3.0
+     ]
+    ],
+    "colour": "#8a7e6c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    12.5,
+    -1.6
+   ],
+   "z0": 27.4,
+   "height": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a7e6c",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7e6c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-arch",
+   "footprint": {
+    "rect": [
+     4.4,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -3.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a2f26",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2f26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche-l",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    -6.4,
+    -3.8
+   ],
+   "rotDeg": 0,
+   "z0": 1.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "niche-r",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    6.4,
+    -3.8
+   ],
+   "rotDeg": 0,
+   "z0": 1.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "window-over-door",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.8
+   ],
+   "rotDeg": 0,
+   "z0": 7.2,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a6ea5",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a6ea5"
+   }
+  },
+  {
+   "type": "array",
+   "id": "buttress-w",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.1,
+       1.2
+      ]
+     },
+     "height": 9,
+     "wall": {
+      "material": "limestone",
+      "colour": "#7e7059",
+      "windows": "none",
+      "windowRatio": 0.1
+     },
+     "roof": {
+      "form": "shed",
+      "colour": "#7e7059"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8.2,
+     16
+    ],
+    "end": [
+     -8.2,
+     52
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "id": "buttress-e",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.1,
+       1.2
+      ]
+     },
+     "height": 9,
+     "wall": {
+      "material": "limestone",
+      "colour": "#7e7059",
+      "windows": "none",
+      "windowRatio": 0.1
+     },
+     "roof": {
+      "form": "shed",
+      "colour": "#7e7059"
+     }
+    },
+    "mode": "line",
+    "start": [
+     8.2,
+     16
+    ],
+    "end": [
+     8.2,
+     52
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2,
+    "height": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-28921378",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Tower and nave proportions right but stone is too clean and uniform; no scrolled baroque gable, pilasters, balcony or niches arches; transept and buttresses simplified; real footprint is cruciform and bent."
+ }
+}

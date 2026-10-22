@@ -1,0 +1,235 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small neighbourhood wat, white ubosot with two-tier tiled roof (brown), a small chedi, low wall; no photo or OSM outline found"
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline exists; typical central-Thai ubosot, brown two-tier roof, small gilded chedi"
+ },
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ubosot",
+   "footprint": {
+    "rect": [
+     9,
+     18
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.9,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a5a3c",
+    "material": "clay-tile",
+    "overhang": 1.4,
+    "pitch": 32
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ubosot-upper",
+   "footprint": {
+    "rect": [
+     6,
+     13
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 6.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c6a45",
+    "material": "clay-tile",
+    "overhang": 1.0,
+    "pitch": 34
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "none",
+    "plinth": 0.7
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a5a3c",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "pitch": 30
+   }
+  },
+  {
+   "type": "chedi",
+   "at": [
+    -13,
+    4,
+    0
+   ],
+   "params": {
+    "radius": 1.9,
+    "height": 11,
+    "colour": "#d4a72c"
+   }
+  },
+  {
+   "type": "chedi",
+   "at": [
+    13,
+    -3,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "height": 4.5,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e6dccb"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    14,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e6dccb"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 3.2,
+    "pillar": 0.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-quiet-reflection"
+}

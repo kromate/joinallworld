@@ -1,0 +1,244 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/461258168",
+   "used": "tower footprint 57x57 m (real outline), 39 levels, 137 m, glass colour #394EAA; outline simplified to 10 vertices for the triangle budget"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Seoul_Cityscape_From_the_Sky_Park_(6907573433).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (Commons)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/seoul/city.jpg",
+   "used": "distant skyline only: slab-like blue-grey glass towers; too far to compare, not used for verification"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "polygon": [
+     [
+      -27,
+      10
+     ],
+     [
+      -14,
+      -28
+     ],
+     [
+      2,
+      -31
+     ],
+     [
+      29,
+      1
+     ],
+     [
+      24,
+      7
+     ],
+     [
+      31,
+      10
+     ],
+     [
+      24,
+      22
+     ],
+     [
+      -9,
+      23
+     ],
+     [
+      -14,
+      28
+     ],
+     [
+      -24,
+      20
+     ]
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 137,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a62b0",
+    "windows": "none",
+    "bands": "#8fa0cf",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "polygon": [
+     [
+      -55,
+      -20
+     ],
+     [
+      45,
+      -20
+     ],
+     [
+      45,
+      8
+     ],
+     [
+      -10,
+      8
+     ],
+     [
+      -10,
+      28
+     ],
+     [
+      -55,
+      28
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "height": 25,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f86b8",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bands": "#d6d9dc",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    },
+    "bay": 16
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -20,
+    -52
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9bb0d6",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d9dc",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -50.5,
+    3
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.4,
+    "bottom": 3,
+    "colour": "#394eaa",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -50,
+    -50.5,
+    3
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "bottom": 3,
+    "colour": "#d6d9dc",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -20,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#c9c6bd"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building; podium form, atrium and storeys are estimates; tower outline simplified to 10 vertices, windows replaced by storey bands"
+ }
+}

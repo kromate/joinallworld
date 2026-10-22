@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-node-4199791991",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Queens_Head_Rock_Yeliu_North_Coast_Taiwan.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tian",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/qh2.jpg",
+   "used": "mushroom hoodoo: wide flared pale-yellow base, narrow neck, big honeycomb-weathered brown cap leaning left with a flat right face and a swept-up crest, row of boundary stones on the sandstone shelf"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Queen%27s_Head,_Yehliu_20060405.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "David Monniaux",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/qh1.jpg",
+   "used": "same hoodoo, smooth yellow-ochre shelf and neck colour, grey-brown pitted cap"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 0.63,
+  "margin": 0.12,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "shelf",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#d9bc84",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       7.0,
+       5.0
+      ]
+     },
+     {
+      "z": 0.595,
+      "ellipse": [
+       6.0,
+       4.25
+      ]
+     },
+     {
+      "z": 0.935,
+      "ellipse": [
+       3.5,
+       2.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pedestal",
+   "at": [
+    0,
+    0,
+    0.85
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#dcb878",
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       2.89,
+       2.04
+      ]
+     },
+     {
+      "z": 0.59,
+      "ellipse": [
+       2.04,
+       1.53
+      ]
+     },
+     {
+      "z": 1.36,
+      "ellipse": [
+       1.05,
+       0.85
+      ]
+     },
+     {
+      "z": 2.12,
+      "ellipse": [
+       0.82,
+       0.71
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "neck",
+   "at": [
+    0,
+    0,
+    2.72
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#d3ae72",
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       0.85,
+       0.71
+      ]
+     },
+     {
+      "z": 0.51,
+      "ellipse": [
+       0.94,
+       0.78
+      ],
+      "cx": 0.03
+     },
+     {
+      "z": 0.77,
+      "ellipse": [
+       1.19,
+       0.94
+      ],
+      "cx": -0.09
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "cap",
+   "at": [
+    0,
+    0,
+    3.4
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#a98767",
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       1.05,
+       0.85
+      ],
+      "cx": 0.0
+     },
+     {
+      "z": 0.51,
+      "ellipse": [
+       1.61,
+       1.19
+      ],
+      "cx": 0.09
+     },
+     {
+      "z": 1.27,
+      "ellipse": [
+       1.53,
+       1.22
+      ],
+      "cx": -0.09
+     },
+     {
+      "z": 1.78,
+      "ellipse": [
+       1.27,
+       1.05
+      ],
+      "cx": -0.42
+     },
+     {
+      "z": 2.21,
+      "ellipse": [
+       0.68,
+       0.68
+      ],
+      "cx": -0.94
+     },
+     {
+      "z": 2.46,
+      "ellipse": [
+       0.2,
+       0.34
+      ],
+      "cx": -1.19
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "boundary-stones",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -4.5,
+     -3.2,
+     0.6
+    ],
+    "end": [
+     4.5,
+     -3.2,
+     0.6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.7
+      ],
+      "height": 0.5,
+      "colour": "#8f7d6a",
+      "topColour": "#a39380"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   24,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Cap is a smooth lofted blob with no honeycomb weathering relief and a simplified crest; shelf is a symmetric mound instead of undulating rock; the hoodoo is drawn about 1.7x its real 1.7 m height so it reads at city scale; sea not shown."
+ }
+}

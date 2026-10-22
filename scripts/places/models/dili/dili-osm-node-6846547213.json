@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-node-6846547213",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1088065821",
+   "used": "nearest building 11.8 x 10.8 m, 19 m from the pin: size only (nearest match, not trusted for outline)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small coffee shop, hip clay-tile roof, front awning, terrace tables with umbrellas, blank board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bands": "#7a5a3c",
+    "plinth": 0.35,
+    "faces": {
+     "front": "louvre",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2.2,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#2f6fa8",
+     "#e8dcc0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4.5,
+    -4.9,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 0.9,
+    "bottom": 2.8,
+    "colour": "#7a5a3c",
+    "frameColour": "#e8dcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "radius": 1.4,
+    "height": 2.3,
+    "colours": [
+     "#2f6fa8",
+     "#e8dcc0",
+     "#7a5a3c"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and only a nearest-match outline: typical small hip-roofed coffee house with awning and umbrellas"
+ }
+}

@@ -1,0 +1,226 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "typical Vietnamese ward People's Committee: three-storey cream render, hip tile roof, flagpole, gated forecourt; no photo or OSM outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 8,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     42,
+     15
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3c4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#f5f2ea",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5533c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5533c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colours": [
+     "#c8262d"
+    ],
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.8,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "colour": "#c9a64e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#c8262d"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-community-notices",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or OSM outline: typical ward office from the brief (text only)."
+ }
+}

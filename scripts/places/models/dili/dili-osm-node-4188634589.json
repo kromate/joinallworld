@@ -1,0 +1,302 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-node-4188634589",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_University_of_East_Timor,_2023_(04).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "front",
+   "file": "/tmp/places-evidence/dili/untl1.jpg",
+   "used": "white two-storey render block, modernist projecting upper floor with small square windows in grid, breeze-block screen, low brown-red tile roof, white sign monument, water tank, road frontage"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_University_of_East_Timor,_2018_(04).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "side",
+   "used": "open pavilion on dark grey tapered pylons with rusty corrugated roof, breeze-block panel, black iron fence on grey stone wall"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/dili.json",
+   "used": "central campus in the former Technical High School, L plan about 70 x 30 m; OSM match (police HQ) ignored"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-main",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    -7,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bay": 3,
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a45",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-return",
+   "footprint": {
+    "rect": [
+     14,
+     28
+    ]
+   },
+   "at": [
+    28,
+    7.5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a45",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper-band",
+   "at": [
+    -26,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.2
+    ],
+    "z0": 4.6,
+    "height": 4,
+    "colour": "#e6e2d8",
+    "windows": "punched",
+    "windowRatio": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "breeze-block",
+   "at": [
+    -24,
+    -7
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.6
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#d8d4cb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavilion-roof",
+   "at": [
+    -6,
+    -14
+   ],
+   "params": {
+    "rect": [
+     20,
+     9
+    ],
+    "z0": 4.2,
+    "height": 0.35,
+    "colour": "#a0583c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "height": 4.2,
+      "topScale": 0.8,
+      "colour": "#4a4b4d"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -17,
+     0
+    ],
+    "end": [
+     2,
+     -17,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "height": 4.2,
+      "topScale": 0.8,
+      "colour": "#4a4b4d"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -11,
+     0
+    ],
+    "end": [
+     2,
+     -11,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-monument",
+   "at": [
+    22,
+    -22
+   ],
+   "params": {
+    "rect": [
+     8,
+     2
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "topScale": 0.85,
+    "colour": "#d8e4ee"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "params": {
+    "kind": "elevated",
+    "radius": 1.0,
+    "tankHeight": 1.8,
+    "legHeight": 1.2,
+    "colour": "#8a8d90"
+   },
+   "at": [
+    10,
+    -8
+   ]
+  },
+  {
+   "type": "core/flag",
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spacing": 3
+   },
+   "at": [
+    18,
+    -20,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -20
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -26
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     6,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "real upper floor projects with square window grid and breeze-block screen; model shows a plain punched wall, pavilion pylons too heavy; building L layout estimated"
+ }
+}

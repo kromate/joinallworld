@@ -1,0 +1,244 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KAU_main_building.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kaupr",
+   "view": "front",
+   "file": "/tmp/places-evidence/seoul/kau-main.jpg",
+   "used": "six-storey block clad in pale grey-cream panels with a regular grid of blue-green glazed windows in thin grey frames, curved glass stair tower with horizontal ribbed cap at the end, low glazed ground storey, fountain court in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/336024475",
+   "used": "campus is 670 x 385 m: only identity; the model is the main teaching block, not the campus outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.375,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     62,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcbc0",
+    "windows": "curtain",
+    "windowRatio": 0.72,
+    "bay": 4.2,
+    "plinth": 0.3,
+    "bands": "#b9b6ae",
+    "faces": {
+     "front": "curtain",
+     "back": "curtain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a9a8",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     66,
+     19
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7f8c",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 3.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stair-tower",
+   "at": [
+    35,
+    -4,
+    0
+   ],
+   "params": {
+    "colour": "#5c8798",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 6.2
+     },
+     {
+      "z": 24,
+      "circle": 6.2
+     },
+     {
+      "z": 26.5,
+      "circle": 6.6
+     },
+     {
+      "z": 28,
+      "circle": 6.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     35,
+     -4,
+     24.4
+    ],
+    "step": [
+     0,
+     0,
+     0.9
+    ],
+    "count": 3,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 20,
+      "colour": "#d4d6d6",
+      "profile": [
+       [
+        6.9,
+        0
+       ],
+       [
+        6.9,
+        0.4
+       ],
+       [
+        6.4,
+        0.45
+       ]
+      ]
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -12,
+    40
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e4dc",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9c",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     8,
+     -22
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     18,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -22
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-336024475",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Fewer/larger glass panes and a far-end tower foreshortened differently; no fountain/shaped pines"
+ }
+}

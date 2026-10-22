@@ -1,0 +1,21 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "singapore", "venueId": "singapore-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {"kind": "text", "ref": "https://www.openstreetmap.org/way/298087607", "used": "setting only: the matched OSM polygon is the Woodlands MRT and bus complex, not the library, so it is not used; the one Commons photo found is an interior entrance"}
+ ],
+ "camera": {"yawDeg": 25, "pitchDeg": 18, "fovDeg": 50},
+ "parts": [
+  {"type": "mass", "id": "library-block", "footprint": {"rect": [78, 34]}, "at": [0, 0], "height": 20, "storeys": 4,
+   "wall": {"material": "concrete", "colour": "#c9c7c0", "windows": "ribbon", "windowRatio": 0.5, "bay": 5, "bands": "#f0efe9", "faces": {"back": "plain"}, "plinth": 0.4},
+   "roof": {"form": "flat", "colour": "#8d8f90", "material": "concrete", "parapet": 0.8}},
+  {"type": "mass", "id": "atrium", "footprint": {"rect": [24, 8]}, "at": [-14, -20], "height": 15, "storeys": 3,
+   "wall": {"material": "glass-curtain", "colour": "#6e8a96", "windows": "curtain", "windowRatio": 0.85, "faces": {"left": "plain", "right": "plain"}},
+   "roof": {"form": "flat", "colour": "#8d8f90", "parapet": 0.3, "overhang": 1}},
+  {"type": "core/steps", "at": [-14, -26, 0], "params": {}},
+  {"type": "canopy-walkway", "at": [30, -22, 0], "params": {"length": 40, "height": 4, "spans": 5, "tower": false, "rails": true}},
+  {"type": "core/car", "at": [-34, -32, 0], "params": {"count": 3, "spacing": 3, "yaw": 90}}
+ ],
+ "site": {"ground": "paving", "forecourt": "plaza", "trees": [{"kind": "palm", "at": [-48, -24], "height": 10}, {"kind": "palm", "at": [48, -34], "height": 10}], "extent": [130, 90]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "no exterior photo or reliable outline found; modest civic block typical of Woodlands Civic Centre from the brief only"}
+}

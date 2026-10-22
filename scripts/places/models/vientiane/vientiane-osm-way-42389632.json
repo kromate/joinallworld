@@ -1,0 +1,367 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-osm-way-42389632",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wat_Si_Muang.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Ondrej Zvacek",
+   "view": "side",
+   "file": "/tmp/places-evidence/vientiane/wat0.jpg",
+   "used": "long sim hall with a stepped two-tier dark tile roof, red upper gable with gold chofa trim, yellow-gold walls on a gold plinth, arched red doorways, gold lion statues in front, small spires on the ridge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/42389632",
+   "used": "hall outline 17 x 33 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "aisle",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c79a2c",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 5.5,
+    "plinth": 1.2,
+    "bands": "#c9a24a",
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "trimColour": "#c9a24a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#c9a24a"
+      ],
+      "height": 0.6,
+      "at": 0.92,
+      "proud": 0.12
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4c4045",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12,
+     27
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c2b24",
+    "windows": "none",
+    "bands": "#c9a24a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4c4045",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 1.8,
+    "axis": "y"
+   },
+   "z0": 5.6
+  },
+  {
+   "type": "prism",
+   "id": "gablefront",
+   "at": [
+    0,
+    -13.2
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "z0": 8.6,
+    "height": 4.6,
+    "colour": "#c9a24a",
+    "topScale": 0.12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -14.2,
+    12.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9a24a",
+    "profile": [
+     [
+      0.45,
+      0
+     ],
+     [
+      0.315,
+      0.84
+     ],
+     [
+      0.2025,
+      1.68
+     ],
+     [
+      0.08,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    14.4,
+    12.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9a24a",
+    "profile": [
+     [
+      0.45,
+      0
+     ],
+     [
+      0.315,
+      0.84
+     ],
+     [
+      0.2025,
+      1.68
+     ],
+     [
+      0.08,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    4,
+    12.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d8d4c8",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.21,
+      0.84
+     ],
+     [
+      0.135,
+      1.68
+     ],
+     [
+      0.08,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    8,
+    12.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d8d4c8",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.21,
+      0.84
+     ],
+     [
+      0.135,
+      1.68
+     ],
+     [
+      0.08,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    12,
+    12.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d8d4c8",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.21,
+      0.84
+     ],
+     [
+      0.135,
+      1.68
+     ],
+     [
+      0.08,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -17.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#c9a24a"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -3.6,
+    -18.5,
+    1.2
+   ],
+   "params": {
+    "height": 1.6,
+    "colour": "#c9a24a"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    3.6,
+    -18.5,
+    1.2
+   ],
+   "params": {
+    "height": 1.6,
+    "colour": "#c9a24a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.4,
+    "thickness": 0.4,
+    "pillarEvery": 4,
+    "colour": "#e4d9bd"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Lower roof tier less sweeping than real, no gilded gable relief or carved door frames, lions are simple, red arched doorways not distinct"
+ }
+}

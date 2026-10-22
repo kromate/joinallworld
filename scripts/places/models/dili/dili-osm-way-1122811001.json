@@ -1,0 +1,702 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-way-1122811001",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1122811001",
+   "used": "real outline about 89 x 88 m, 3 levels, building=university, concrete"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Roof_top_of_FECT_(east_view).jpg",
+   "licence": "CC0",
+   "author": "Commons contributor (UNTL FECT photo set)",
+   "view": "detail",
+   "file": "/tmp/places-evidence/dili/untl1.jpg",
+   "used": "flat gravel roof with white concrete parapet/benches and long low corrugated metal sunshade roofs on short piers; walls and plan are not visible in any photo found"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/dili.json",
+   "used": "3 storeys, concrete, rebuilt after 1999; the brief's clay hip roof is overridden by the gravel flat roof seen in the roof photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c4b6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#f2efe6",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c9c4b6",
+       "#d8d3c5"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867d",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade0",
+   "at": [
+    -15,
+    25
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     13,
+     6.5
+    ],
+    "z0": 12.9,
+    "height": 0.3,
+    "colour": "#a7adb0",
+    "material": "metal-roof",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade0p-1-1",
+   "at": [
+    -20.8,
+    22.2
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade0p-11",
+   "at": [
+    -20.8,
+    27.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade0p1-1",
+   "at": [
+    -9.2,
+    22.2
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade0p11",
+   "at": [
+    -9.2,
+    27.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade1",
+   "at": [
+    15,
+    25
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     13,
+     6.5
+    ],
+    "z0": 12.9,
+    "height": 0.3,
+    "colour": "#a7adb0",
+    "material": "metal-roof",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade1p-1-1",
+   "at": [
+    9.2,
+    22.2
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade1p-11",
+   "at": [
+    9.2,
+    27.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade1p1-1",
+   "at": [
+    20.8,
+    22.2
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade1p11",
+   "at": [
+    20.8,
+    27.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade2",
+   "at": [
+    35,
+    12
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     13,
+     6.5
+    ],
+    "z0": 12.9,
+    "height": 0.3,
+    "colour": "#a7adb0",
+    "material": "metal-roof",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade2p-1-1",
+   "at": [
+    29.2,
+    9.2
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade2p-11",
+   "at": [
+    29.2,
+    14.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade2p1-1",
+   "at": [
+    40.8,
+    9.2
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade2p11",
+   "at": [
+    40.8,
+    14.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade3",
+   "at": [
+    -5,
+    -3
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     13,
+     6.5
+    ],
+    "z0": 12.9,
+    "height": 0.3,
+    "colour": "#a7adb0",
+    "material": "metal-roof",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade3p-1-1",
+   "at": [
+    -10.8,
+    -5.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade3p-11",
+   "at": [
+    -10.8,
+    -0.20000000000000018
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade3p1-1",
+   "at": [
+    0.7999999999999998,
+    -5.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade3p11",
+   "at": [
+    0.7999999999999998,
+    -0.20000000000000018
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade4",
+   "at": [
+    -20,
+    -36
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     13,
+     6.5
+    ],
+    "z0": 12.9,
+    "height": 0.3,
+    "colour": "#a7adb0",
+    "material": "metal-roof",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade4p-1-1",
+   "at": [
+    -25.8,
+    -38.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade4p-11",
+   "at": [
+    -25.8,
+    -33.2
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade4p1-1",
+   "at": [
+    -14.2,
+    -38.8
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shade4p11",
+   "at": [
+    -14.2,
+    -33.2
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 12.0,
+    "height": 0.9,
+    "colour": "#e9e6de"
+   }
+  },
+  {
+   "type": "array",
+   "id": "roof-benches",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.5
+      ],
+      "z0": 12.0,
+      "height": 0.5,
+      "colour": "#e9e6de"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     34
+    ],
+    "end": [
+     40,
+     22
+    ],
+    "count": 8,
+    "align": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     0
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -45
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no exterior photo of the block: walls, window rhythm and courtyard are typed; only the rooftop (gravel, metal sunshades, white benches) is from a photo"
+ }
+}

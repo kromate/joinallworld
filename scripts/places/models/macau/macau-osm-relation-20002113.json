@@ -1,0 +1,326 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Macau_in_Hengqin%EF%BC%88west%EF%BC%892021.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Charlie fong",
+   "view": "aerial",
+   "used": "sand-cream blocks of 3-5 storeys with terracotta-brick end strips, flat roofs with stair towers and solar panels, courtyards between wings",
+   "file": "/tmp/places-evidence/macau/um.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/289598379",
+   "used": "overall footprint scale only (about 102 x 67 m, 3 levels); outline not used because the matched building is a student centre"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     100,
+     15
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c18f",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#b5573f",
+    "plinth": 0.8,
+    "bay": 7,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bba5",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     15,
+     40
+    ]
+   },
+   "at": [
+    -42.5,
+    12.5
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c18f",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#b5573f",
+    "plinth": 0.8,
+    "bay": 7,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bba5",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     15,
+     40
+    ]
+   },
+   "at": [
+    42.5,
+    12.5
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c18f",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#b5573f",
+    "plinth": 0.8,
+    "bay": 7,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bba5",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-link",
+   "footprint": {
+    "rect": [
+     70,
+     10
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c18f",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#b5573f",
+    "plinth": 0.8,
+    "bay": 7,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bba5",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brick-strip-west",
+   "at": [
+    -35,
+    -27.6
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "height": 13,
+    "colour": "#a9483a",
+    "windows": "ribbon",
+    "storeys": 4,
+    "windowRatio": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "id": "stair-towers",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -38,
+     -20,
+     16
+    ],
+    "end": [
+     38,
+     -20,
+     16
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       7,
+       8
+      ],
+      "height": 4.5,
+      "colour": "#d0b684",
+      "topColour": "#c4bba5",
+      "windows": "punched",
+      "storeys": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-podium",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "rect": [
+     52,
+     6
+    ],
+    "height": 5,
+    "colour": "#d9cdb0",
+    "windows": "curtain",
+    "storeys": 1,
+    "windowRatio": 0.7,
+    "faces": {
+     "front": "curtain"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "solar-west",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -41,
+    12,
+    16.1
+   ],
+   "params": {
+    "rect": [
+     9,
+     28
+    ],
+    "height": 0.4,
+    "colour": "#27354a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "courtyard-lawn",
+   "at": [
+    0,
+    10
+   ],
+   "params": {
+    "rect": [
+     68,
+     34
+    ],
+    "height": 0.15,
+    "colour": "#7d9a5c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -38
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -38
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-relation-20002113",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "OSM match is a student centre; modelled a generic courtyard block from the campus aerial photo, no pitched slate roofs on towers"
+ }
+}

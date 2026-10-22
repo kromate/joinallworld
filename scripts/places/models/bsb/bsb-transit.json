@@ -1,0 +1,314 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_Feri_Serasa.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tofeiku",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/serasa.jpg",
+   "used": "grey portal frame with blank sign band under a curved beige canopy with blue-trimmed edge and green steel truss, pale grey-white two-storey walls with blue-green metal roof eaves, planted front beds and kerbed forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/376623464",
+   "used": "terminal outline (about 179 x 53 m), scaled to fit"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c4c8cc",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#9fa4a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8e96",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-l",
+   "at": [
+    -32,
+    -20
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "height": 6.5,
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-r",
+   "at": [
+    -10,
+    -20
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "height": 6.5,
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-beam",
+   "at": [
+    -21,
+    -20
+   ],
+   "params": {
+    "rect": [
+     24,
+     2.6
+    ],
+    "z0": 4.2,
+    "height": 2.6,
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -21,
+    -17,
+    6.8
+   ],
+   "params": {
+    "form": "curved",
+    "width": 30,
+    "depth": 13,
+    "height": 0.4,
+    "rise": 2.4,
+    "thickness": 0.5,
+    "colour": "#e8dcc4",
+    "edgeColour": "#2f6fb0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -21,
+    -23,
+    6.9
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -10.0,
+      0,
+      0
+     ],
+     [
+      -8.75,
+      0,
+      1.6
+     ],
+     [
+      -7.5,
+      0,
+      0
+     ],
+     [
+      -6.25,
+      0,
+      1.6
+     ],
+     [
+      -5.0,
+      0,
+      0
+     ],
+     [
+      -3.75,
+      0,
+      1.6
+     ],
+     [
+      -2.5,
+      0,
+      0
+     ],
+     [
+      -1.25,
+      0,
+      1.6
+     ],
+     [
+      0.0,
+      0,
+      0
+     ],
+     [
+      1.25,
+      0,
+      1.6
+     ],
+     [
+      2.5,
+      0,
+      0
+     ],
+     [
+      3.75,
+      0,
+      1.6
+     ],
+     [
+      5.0,
+      0,
+      0
+     ],
+     [
+      6.25,
+      0,
+      1.6
+     ],
+     [
+      7.5,
+      0,
+      0
+     ],
+     [
+      8.75,
+      0,
+      1.6
+     ],
+     [
+      10,
+      0,
+      0
+     ]
+    ],
+    "colour": "#2f8a6a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -21,
+    -21.5,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 1.4,
+    "bottom": 4.6,
+    "colour": "#8d9296",
+    "frameColour": "#8d9296",
+    "posts": false
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    -20,
+    20,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "width": 7,
+    "shelter": true,
+    "colour": "#bfbab0"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    30,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "kind": "mixed",
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Entrance position on the long outline is a guess; the jetty and bus bays are typical, not surveyed; truss and canopy curvature simplified."
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   130,
+   110
+  ]
+ }
+}

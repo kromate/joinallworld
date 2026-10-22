@@ -1,0 +1,717 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%27100th_Anniversary_Memorial_Hall%27_of_Sahmyook_University.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Exj",
+   "view": "front",
+   "file": "/tmp/places-evidence/seoul/syu-100.jpg",
+   "used": "three-storey neoclassical hall in pale grey stone, flat roof with deep cornice, central two-storey columned portico on a stepped base, tall columns pairs at the end bays, dark glazing between columns, lawn and pines"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/381119781",
+   "used": "campus 1099 x 692 m: identity only; model is the Memorial Hall, a campus landmark"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     52,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8d6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "cornice": true,
+    "plinth": 1.0,
+    "bands": "#c9c7bf",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9da0a1",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     53.6,
+     23.6
+    ],
+    "z0": 13.8,
+    "height": 1.2,
+    "colour": "#e8e6df",
+    "topColour": "#e8e6df"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-roof",
+   "params": {
+    "rect": [
+     15,
+     5.5
+    ],
+    "z0": 11.6,
+    "height": 1.4,
+    "colour": "#e8e6df",
+    "topColour": "#dcdad2"
+   },
+   "at": [
+    0,
+    -14.2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-base",
+   "params": {
+    "rect": [
+     16,
+     6
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#bfbdb5",
+    "topColour": "#bfbdb5"
+   },
+   "at": [
+    0,
+    -14,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-gable",
+   "params": {
+    "rect": [
+     15,
+     5.5
+    ],
+    "z0": 13,
+    "height": 1.2,
+    "colour": "#e8e6df",
+    "topColour": "#dcdad2"
+   },
+   "at": [
+    0,
+    -14.2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-l",
+   "params": {
+    "rect": [
+     9,
+     2
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#d0cec6",
+    "topColour": "#d0cec6"
+   },
+   "at": [
+    -22,
+    -11.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-r",
+   "params": {
+    "rect": [
+     9,
+     2
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#d0cec6",
+    "topColour": "#d0cec6"
+   },
+   "at": [
+    22,
+    -11.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "params": {
+    "rect": [
+     13,
+     3
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#c6c4bc"
+   },
+   "at": [
+    0,
+    -17.5,
+    0
+   ]
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    -5.5,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.6875,
+      0
+     ],
+     [
+      0.6875,
+      0.4
+     ],
+     [
+      0.55,
+      0.5
+     ],
+     [
+      0.55,
+      10.0
+     ],
+     [
+      0.66,
+      10.1
+     ],
+     [
+      0.66,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    -3.3,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.6875,
+      0
+     ],
+     [
+      0.6875,
+      0.4
+     ],
+     [
+      0.55,
+      0.5
+     ],
+     [
+      0.55,
+      10.0
+     ],
+     [
+      0.66,
+      10.1
+     ],
+     [
+      0.66,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    -1.0999999999999996,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.6875,
+      0
+     ],
+     [
+      0.6875,
+      0.4
+     ],
+     [
+      0.55,
+      0.5
+     ],
+     [
+      0.55,
+      10.0
+     ],
+     [
+      0.66,
+      10.1
+     ],
+     [
+      0.66,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    1.1000000000000005,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.6875,
+      0
+     ],
+     [
+      0.6875,
+      0.4
+     ],
+     [
+      0.55,
+      0.5
+     ],
+     [
+      0.55,
+      10.0
+     ],
+     [
+      0.66,
+      10.1
+     ],
+     [
+      0.66,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    3.3000000000000007,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.6875,
+      0
+     ],
+     [
+      0.6875,
+      0.4
+     ],
+     [
+      0.55,
+      0.5
+     ],
+     [
+      0.55,
+      10.0
+     ],
+     [
+      0.66,
+      10.1
+     ],
+     [
+      0.66,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    5.5,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.6875,
+      0
+     ],
+     [
+      0.6875,
+      0.4
+     ],
+     [
+      0.55,
+      0.5
+     ],
+     [
+      0.55,
+      10.0
+     ],
+     [
+      0.66,
+      10.1
+     ],
+     [
+      0.66,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    -22,
+    -12.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.625,
+      0
+     ],
+     [
+      0.625,
+      0.4
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.5,
+      10.0
+     ],
+     [
+      0.6,
+      10.1
+     ],
+     [
+      0.6,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    -17.5,
+    -12.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.625,
+      0
+     ],
+     [
+      0.625,
+      0.4
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.5,
+      10.0
+     ],
+     [
+      0.6,
+      10.1
+     ],
+     [
+      0.6,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    17.5,
+    -12.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.625,
+      0
+     ],
+     [
+      0.625,
+      0.4
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.5,
+      10.0
+     ],
+     [
+      0.6,
+      10.1
+     ],
+     [
+      0.6,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    22,
+    -12.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e5dc",
+    "profile": [
+     [
+      0.625,
+      0
+     ],
+     [
+      0.625,
+      0.4
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.5,
+      10.0
+     ],
+     [
+      0.6,
+      10.1
+     ],
+     [
+      0.6,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-band",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.3
+    ],
+    "z0": 3,
+    "height": 8,
+    "colour": "#3d4d4f",
+    "topColour": "#3d4d4f"
+   },
+   "at": [
+    0,
+    -11.3,
+    0
+   ]
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "id": "flagpole",
+   "at": [
+    -17,
+    -30,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#bfc2c4",
+    "profile": [
+     [
+      0.25,
+      0
+     ],
+     [
+      0.2,
+      16
+     ],
+     [
+      0.05,
+      16.1
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -26
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     -28
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   75
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-381119781",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Portico is a flat six-column porch without entablature pediment; glazing too dark; pines small"
+ }
+}

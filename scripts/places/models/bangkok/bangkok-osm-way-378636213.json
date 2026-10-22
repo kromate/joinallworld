@@ -1,0 +1,237 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/378636213",
+   "used": "wat compound outline (263 x 224 m, name match) as the paved precinct plate, scaled to 118 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief (low confidence): central-Thai wat with white ubosot under an orange and green stepped gable roof with chofa horns, tall gilded chedi, monks' quarters, walled precinct and gate. No photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "precinct",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c0ae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c0ae",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ubosot",
+   "footprint": {
+    "rect": [
+     11,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 0.5,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 5,
+    "bands": "#d4a72c",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3efe4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "thai-roof",
+   "at": [
+    -4,
+    0,
+    6.5
+   ],
+   "params": {
+    "width": 13,
+    "length": 24,
+    "tiers": 3,
+    "colour": "#d9772b",
+    "edge_colour": "#2f7d4a",
+    "wall_colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "chedi",
+   "at": [
+    24,
+    12,
+    0.5
+   ],
+   "params": {
+    "radius": 6,
+    "height": 34,
+    "colour": "#d4a82f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "monks-quarters",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    -22,
+    -26
+   ],
+   "rotDeg": 10,
+   "z0": 0.5,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d8b8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5532b",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sala",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    22,
+    -22
+   ],
+   "z0": 0.5,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9772b",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -40,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "height": 4.5,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -44,
+    0.5
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    16,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 6,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 4,
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: layout of ubosot, chedi and quarters is typed from the brief and a standard central-Thai wat; only the precinct outline is real"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-osm-way-378636213"
+}

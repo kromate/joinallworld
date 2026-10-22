@@ -1,0 +1,196 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1415871887",
+   "used": "real irregular outline of the Auditorium Kementerian Pertanian (111.6 x 65.2 m, 1986, architect PT Gubah Laras, conference centre)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 4.0
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 12,
+    "plinth": 0.5,
+    "bands": "#b9a98a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8378",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "great-roof",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    8,
+    8
+   ],
+   "z0": 9,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "great-roof-top",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    8,
+    8
+   ],
+   "z0": 16.5,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    10,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 8,
+    "columns": 6,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f3f1ea",
+    "roofColour": "#b9a98a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -4,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#d8d8d4",
+     "#c0392b",
+     "#d8d8d4"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -25,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.2,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -45
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 14,
+    "colour": "#4c8a3c"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -48,
+    0
+   ],
+   "params": {
+    "colour": "#c9c9c4",
+    "count": 2,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; roof form (hip) and storeys are assumed from the 1980s government-hall pattern, the real outline is exact"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   100
+  ]
+ }
+}

@@ -1,0 +1,333 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-580160817",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:City_University_of_Macau_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Doraemon.tvb",
+   "view": "front",
+   "file": "/tmp/places-evidence/macau/cu2.jpg",
+   "used": "entrance block on round pilotis: cream rendered upper blocks with dark glazed windows, central curved dark-glass bay, rounded corner turrets, rubble stone planter with hedge and palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20250812_Universidade_da_Cidade_de_Macau.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yumeto",
+   "view": "front",
+   "file": "/tmp/places-evidence/macau/cu1.jpg",
+   "used": "colours and the open pilotis storey with stone planter"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4497463",
+   "used": "41 x 39 m footprint and 74 m height of the tall block (not visible in the photos)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "z0": 4.5,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#dccbb3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 9,
+    "parapet": 0.6,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ad",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-bay",
+   "params": {
+    "radius": 9,
+    "n": 12,
+    "z0": 6,
+    "height": 7.5,
+    "colour": "#26323f",
+    "topColour": "#cdbda5"
+   },
+   "at": [
+    0,
+    -16.5
+   ]
+  },
+  {
+   "type": "array",
+   "id": "window-left",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        4.6,
+        0.5
+       ],
+       "z0": 8,
+       "height": 4.6,
+       "colour": "#202a36"
+      }
+     }
+    ],
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -16.5,
+     -19.1
+    ],
+    "end": [
+     -9.5,
+     -19.1
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "window-right",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        4.6,
+        0.5
+       ],
+       "z0": 8,
+       "height": 4.6,
+       "colour": "#202a36"
+      }
+     }
+    ],
+    "mode": "line",
+    "count": 2,
+    "start": [
+     9.5,
+     -19.1
+    ],
+    "end": [
+     16.5,
+     -19.1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-left",
+   "params": {
+    "rect": [
+     13,
+     0.4
+    ],
+    "z0": 13.4,
+    "height": 1.6,
+    "colour": "#f3ece0"
+   },
+   "at": [
+    -11.5,
+    -19.2
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pilotis",
+   "params": {
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 12,
+       "colour": "#e3d6c1",
+       "profile": [
+        [
+         1.0,
+         0
+        ],
+        [
+         0.95,
+         4.5
+        ]
+       ]
+      }
+     }
+    ],
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -18.5,
+     -17.5
+    ],
+    "end": [
+     18.5,
+     -17.5
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilotis-core",
+   "params": {
+    "rect": [
+     38,
+     14
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#6f6a62"
+   },
+   "at": [
+    0,
+    -3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "params": {
+    "points": [
+     [
+      -14,
+      -9
+     ],
+     [
+      14,
+      -9
+     ],
+     [
+      14,
+      9
+     ],
+     [
+      -14,
+      9
+     ]
+    ],
+    "z0": 15.5,
+    "height": 58.5,
+    "colour": "#d9d2c0",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#d9d2c0",
+      "#8fa9b8"
+     ]
+    }
+   },
+   "at": [
+    0,
+    22
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-core",
+   "params": {
+    "rect": [
+     30,
+     20
+    ],
+    "z0": 4.5,
+    "height": 11,
+    "colour": "#d9d2c0"
+   },
+   "at": [
+    0,
+    18
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "planter",
+   "params": {
+    "radius": 9.5,
+    "n": 20,
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#a39e8c",
+    "topColour": "#4f7a46"
+   },
+   "at": [
+    0,
+    -23
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6.5,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "photo shows only the 3-storey entrance block (curved dark-glass bay, pilotis); the 74 m tower behind it is from OSM height only, podium corners and hillside planter are simplified"
+ }
+}

@@ -1,0 +1,144 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/756383247",
+   "used": "irregular temple building outline, 35 x 19 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3ddcd",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.8,
+    "bands": "#a4885f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4f55",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 2.4
+   }
+  },
+  {
+   "type": "gate-arch",
+   "id": "gate",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 4,
+    "height": 6
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    -5,
+    -20,
+    0
+   ],
+   "params": {
+    "scale": 1.2
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    5,
+    -20,
+    0
+   ],
+   "params": {
+    "scale": 1.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#8f8f86"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -32,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -22,
+     -12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     20
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-node-7064887959",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "footprint only: hip-roof hall on the real outline; no photo of this temple, details typical Nichiren hall"
+ }
+}

@@ -1,0 +1,358 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/phnom-penh.json",
+   "used": "family leisure park, 2020s: gate, two pavilions, two kiosks, fountain, blank sign board; no OSM match and no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#f1e8cf"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#c8531f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      -5,
+      0
+     ]
+    ],
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#7a7f74"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5,
+      0
+     ],
+     [
+      60,
+      0
+     ]
+    ],
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#7a7f74"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -32
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      -28,
+      12
+     ],
+     [
+      -28,
+      30
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#d9d3c4"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -10
+     ],
+     [
+      28,
+      12
+     ],
+     [
+      28,
+      30
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#d9d3c4"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 8,
+    "height": 3.6,
+    "kind": "hip",
+    "roof_colour": "#c8531f"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    30,
+    22,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 8,
+    "height": 3.6,
+    "kind": "hip",
+    "roof_colour": "#c8531f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "colour": "#e8c04a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -48,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    42,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence at all: generic family park layout typed from the brief, specific only in its program (gate, fountain, two pavilions, two kiosks)."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-recreation"
+}

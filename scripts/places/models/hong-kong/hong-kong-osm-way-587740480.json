@@ -1,0 +1,472 @@
+{
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "dome, pavilions and netting read like the photo; missing hill backdrop, trees and the weathered grass foreground, instrument replicas are tiny stand-ins"
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chong_Hing_Water_Sports_Centre_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Underwaterbuffalo",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/osm-way-587740480-0.jpg",
+   "used": "white night-sky dome with low white annexes, two red-roofed open timber pavilions with benches at right, green netting, grassy dam, wooded hill behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/587740480",
+   "used": "site extent (84 x 63 m, outline not used: a zigzag of walls and paths)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "shiftX": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "dome-base",
+   "at": [
+    -4,
+    12
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#e8e6df",
+    "topColour": "#e8e6df"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    -4,
+    12,
+    2.2
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#f4f3ee",
+    "profile": [
+     [
+      4.6,
+      0
+     ],
+     [
+      4.6,
+      0.6
+     ],
+     [
+      4.2,
+      2.0
+     ],
+     [
+      3.2,
+      3.4
+     ],
+     [
+      1.8,
+      4.4
+     ],
+     [
+      0,
+      4.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "annex",
+   "at": [
+    -14,
+    12
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#d9d6cc",
+    "topColour": "#d9d6cc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "annex2",
+   "at": [
+    8,
+    12
+   ],
+   "params": {
+    "rect": [
+     10,
+     5
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#e4e1d8",
+    "topColour": "#e4e1d8"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "id": "pav1",
+   "at": [
+    30,
+    4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#5a3a2c",
+    "cap_colour": "#b6473a"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "id": "pav2",
+   "at": [
+    41,
+    6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#5a3a2c",
+    "cap_colour": "#b6473a"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "id": "pav3",
+   "at": [
+    16,
+    14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 2.6,
+    "roof": "hip",
+    "rise": 1.2,
+    "posts": 4,
+    "colour": "#5a3a2c",
+    "cap_colour": "#b6473a"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    28,
+    -1,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    40,
+    0,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    2,
+    2,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "base_width": 0.8,
+    "style": "square",
+    "steps": 2
+   }
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    10,
+    4,
+    0
+   ],
+   "params": {
+    "height": 2.2,
+    "base_width": 0.7,
+    "style": "square",
+    "steps": 1
+   }
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -34,
+     -6
+    ],
+    "end": [
+     2,
+     -6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 1.2,
+      "colour": "#b8b4aa"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "sundial",
+   "at": [
+    -12,
+    -2,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#9a9690",
+    "profile": [
+     [
+      3.2,
+      0
+     ],
+     [
+      3.2,
+      0.25
+     ],
+     [
+      0,
+      0.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "armillary",
+   "at": [
+    -20,
+    3,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#8c8a84",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.0
+     ],
+     [
+      0.5,
+      1.0
+     ],
+     [
+      0.5,
+      1.6
+     ],
+     [
+      1.2,
+      2.2
+     ],
+     [
+      0.5,
+      2.8
+     ],
+     [
+      0.0,
+      2.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "net",
+   "at": [
+    -24,
+    26
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#2f9a6a",
+    "topColour": "#2f9a6a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fence",
+   "at": [
+    8,
+    20
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#4bb3a5",
+    "topColour": "#4bb3a5"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#3a8a6a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    34
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 8.399999999999999
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    36
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 8.399999999999999
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    34
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 8.399999999999999
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    32
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 8.399999999999999
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 7.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 6.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-way-587740480"
+}

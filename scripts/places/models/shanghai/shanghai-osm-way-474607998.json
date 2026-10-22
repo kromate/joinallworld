@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-474607998",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/474607998",
+   "used": "campus grounds 605 x 450 m (private university, founded 1992), a campus rather than one building; the teaching block is a typical U-shaped five-storey block sized from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     84,
+     42
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e0d8c4",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "plinth": 1.2,
+    "bands": "#a8553e",
+    "glassColour": "#52636b",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a0452f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8553e",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4,
+    "plinth": 0.8,
+    "glassColour": "#52636b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0c8b4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    0,
+    -26,
+    14
+   ],
+   "params": {
+    "width": 5,
+    "height": 12,
+    "cap": "hip",
+    "cap_rise": 4,
+    "clock": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 8,
+    "line": 60,
+    "colour": "#4f8a3f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found for this campus; block form, colours and clock tower are typical for the city and the brief, not observed"
+ }
+}

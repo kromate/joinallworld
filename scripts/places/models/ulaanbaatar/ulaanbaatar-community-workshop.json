@@ -1,0 +1,145 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MIU_Main_Building.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kiyeonk",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/workshop1.jpg",
+   "used": "four-storey grey cement-render block, deep recessed punched windows with white frames in a regular grid, blue eave strip and blue canopy line over a low ground storey, entrance canopy board (blank), street lamp"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1535847761",
+   "used": "37 x 22 m rotated footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#a8a59d",
+    "trimColour": "#e6e4de",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.6,
+    "bands": "#a8a59d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8794",
+    "material": "metal-sheet",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 3,
+    "height": 3.4,
+    "thickness": 0.35,
+    "columns": 0,
+    "colour": "#e9dff0",
+    "edgeColour": "#d6c8e0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -16,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 2,
+    "spacing": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 4,
+    "spread": 4,
+    "line": 22
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Window reveals, blue eave line, lower ground storey and blank entrance board are simplified; roof is flat grey; the photo is a steep low angle so proportions cannot be matched exactly."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-community-workshop"
+}

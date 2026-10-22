@@ -1,0 +1,349 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-428761669",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Science_faculty_of_University_of_Brunei_Darussalam.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hansicanada",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/ubd.jpg",
+   "used": "Faculty of Science building as the campus's best documented block: two barrel-vaulted wings with red/yellow roof edges and green-teal-yellow panel cladding, lower dark glazed hub with hex pattern, orange bridges, green lantern on top, entrance canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/428761669",
+   "used": "campus is 1.6 x 0.9 km, far beyond the scene limit, so one block is modelled, not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "rotDeg": 90,
+   "at": [
+    -34,
+    0
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a9a6a",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ],
+      "colours": [
+       "#1f7a52",
+       "#2a9a6a",
+       "#e8b82a",
+       "#f1ede0"
+      ],
+      "slits": 0.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 5,
+    "colour": "#d9382a",
+    "material": "metal-sheet",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     44,
+     30
+    ]
+   },
+   "rotDeg": 90,
+   "at": [
+    34,
+    6
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a9a6a",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "back",
+       "left"
+      ],
+      "colours": [
+       "#1f7a52",
+       "#2a9a6a",
+       "#e8b82a",
+       "#f1ede0"
+      ],
+      "slits": 0.2
+     }
+    ],
+    "faces": {
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 6,
+    "colour": "#f0b323",
+    "material": "metal-sheet",
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hub",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c6b6b",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9382a",
+    "material": "metal-sheet",
+    "overhang": 2.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-lantern",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 13.4,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4faa6a",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a7a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge-a",
+   "footprint": {
+    "rect": [
+     14,
+     3.5
+    ]
+   },
+   "at": [
+    -18,
+    -3
+   ],
+   "z0": 7,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e07a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8a02a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge-b",
+   "footprint": {
+    "rect": [
+     14,
+     3.5
+    ]
+   },
+   "at": [
+    18,
+    -3
+   ],
+   "z0": 10,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e07a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8a02a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-canopy",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8782a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8782a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -12,
+    0.5
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.5,
+    "bottom": 9.5,
+    "colour": "#1c4f80",
+    "frameColour": "#d9d6cc",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -26,
+     0
+    ],
+    "end": [
+     50,
+     -26,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "lamp",
+      "params": {}
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "models the Faculty of Science block, not the 1.6 km campus; wing roofs are plain arches (photo has swept curled eaves), glazed hub lacks hex pattern, panel colours random, mosque and walkways omitted"
+ }
+}

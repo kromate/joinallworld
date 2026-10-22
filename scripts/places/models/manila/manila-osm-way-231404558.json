@@ -1,0 +1,173 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-231404558",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Philippine_Children%27s_Medical_Center_main.jpg",
+   "licence": "Public domain",
+   "author": "Philippine Children's Medical Center",
+   "view": "front",
+   "file": "/tmp/places-evidence/manila/pcmc1.jpg",
+   "used": "long flat entrance canopy with a deep grey panelled fascia carrying a blank blue sign band, round white columns, concrete roof edge above, landscaped lawn and shrub beds, curving drive, palms behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/939757",
+   "used": "multi-wing outline (195 x 98 m, turned so the long wing faces the drive)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.9,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftX": 0.18,
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -33,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfd0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#c8c4b8",
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9193",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entrance-canopy",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 8,
+    "height": 5.4,
+    "thickness": 1.7,
+    "columns": 8,
+    "colour": "#b7babb",
+    "edgeColour": "#a9adae",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "fascia-sign",
+   "at": [
+    -20,
+    -34.2,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "height": 1.6,
+    "bottom": 3.9,
+    "colour": "#2a4fb0",
+    "frameColour": "#c4c7c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "rect": [
+     70,
+     8
+    ]
+   },
+   "at": [
+    -20,
+    -41
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4f8a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8a3f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 6,
+    "spread": 4,
+    "line": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 4,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a close-up of the entrance canopy only; canopy shown as a long flat slab with blank blue band, but landscaping beds, deep dark soffit and the wing behind it are simplified, and the canopy position on the real outline is inferred"
+ }
+}

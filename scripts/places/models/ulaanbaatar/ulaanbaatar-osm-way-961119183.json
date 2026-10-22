@@ -1,0 +1,237 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_MFF_Football_Centre_in_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mongolian Football Federation",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/ulaanbaatar/v4_0.jpg",
+   "used": "artificial pitch with one long roofed stand of blue/purple seats on the far side, white-and-blue two-storey office block at the west end, light-blue-roofed hall beyond, second training pitch east, apartment blocks behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/961119183",
+   "used": "overall size (141 x 103 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 38,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0.08
+   ],
+   "params": {
+    "width": 108,
+    "depth": 72,
+    "colour": "#5f9a3f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     56,
+     38
+    ],
+    "end": [
+     -56,
+     38
+    ],
+    "rows": 14,
+    "rise": 0.55,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "under": "open",
+    "seatColours": [
+     "#4a5a9a",
+     "#7a4f8a",
+     "#4a5a9a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#cfd3d6",
+    "underColour": "#aeb3b8",
+    "canopy": {
+     "height": 6.5,
+     "depth": 10,
+     "thickness": 0.5,
+     "slopeDeg": 3,
+     "colour": "#d5d9dc",
+     "edgeColour": "#d5d9dc"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "offices",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -44
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e8e2",
+    "windows": "punched",
+    "plinth": 0.6,
+    "windowRatio": 0.25,
+    "bands": "#3c5f93"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    -62,
+    -30
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe3e6",
+    "windows": "none",
+    "plinth": 0,
+    "bands": "#2f5d8c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fc7de",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    78,
+    -10,
+    0.08
+   ],
+   "params": {
+    "width": 40,
+    "depth": 66,
+    "colour": "#5b9540"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 1.2,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#3a6a9a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    45,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 2.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-way-961119183",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pitch markings, curved end of stand and neighbouring tower blocks absent; second small pitch is a flat lawn"
+ }
+}

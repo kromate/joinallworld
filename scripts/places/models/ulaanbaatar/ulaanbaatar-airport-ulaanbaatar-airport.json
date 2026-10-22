@@ -1,0 +1,309 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20230924_190730_Chingis_khaan_airport_in_Mongolia.jpg",
+   "licence": "CC0",
+   "author": "Orgio89",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/airport4.jpg",
+   "used": "landside elevation: long two-level terminal, columned ground storey under a cream deck band, brown-fringed canopy, central glazed gable hall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20230227チンギス・ハーン国際空港1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/ulaanbaatar/airport3.jpg",
+   "used": "airside: glazed lower wing, jet bridge and stairs on the apron, flat roofline"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ulaanbaatar.json",
+   "used": "size and program (no OSM outline matched)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     80,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dccf",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 2.5,
+      "spacing": 9,
+      "width": 2.2,
+      "colour": "#ddd6c8",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#d3ccbd"
+      ],
+      "height": 0.6,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "glassColour": "#4f6372"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bc",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-glazing",
+   "footprint": {
+    "rect": [
+     70,
+     20
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 9.5,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5d7686",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0d9cc",
+    "material": "metal-sheet",
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-hall",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 15.5,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f98a6",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cfc7b8",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "fringe-canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 8,
+    "height": 10.5,
+    "thickness": 1.0,
+    "columns": 0,
+    "colour": "#b7956d",
+    "edgeColour": "#a08058"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    -47,
+    2
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6b8190",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c5",
+    "material": "metal-sheet",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    47,
+    2
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6b8190",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c5",
+    "material": "metal-sheet",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -30,
+    40,
+    0
+   ],
+   "params": {
+    "height": 50,
+    "style": "round",
+    "colour": "#d6d2c8",
+    "cabColour": "#4a5f70",
+    "bandColour": "#c8362f"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -52,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 8,
+    "spacing": 15
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spacing": 5.5,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 3.5,
+    "colours": [
+     "#c4272f",
+     "#1b4f9c",
+     "#c4272f"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Real canopy is a folded pitched brown roof and the columns are heavier; glass hall roof is a plain gable; terminal is 320 m long but only about 80 m is modelled (120 m scene clamp); tower position is a guess."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-airport-ulaanbaatar-airport"
+}

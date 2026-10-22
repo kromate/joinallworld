@@ -1,0 +1,334 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/220107452",
+   "used": "real outline 15 x 33 m, long axis tilted 8 deg"
+  },
+  {
+   "kind": "text",
+   "used": "Russian Orthodox church: white walls, central gilded onion dome on drum, west bell tower, east apse (typical type; no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eeeae0",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "bands": "#d8d0b8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f7a58",
+    "pitch": 17,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "params": {
+    "n": 12,
+    "radius": 3.4,
+    "z0": 10.5,
+    "height": 3.0,
+    "colour": "#eeeae0",
+    "topColour": "#eeeae0",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    13.5
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#cccccc",
+    "profile": [
+     [
+      3.7,
+      0,
+      "#d8d0b8"
+     ],
+     [
+      3.7,
+      0.4
+     ],
+     [
+      3.4,
+      0.4,
+      "#c9a24a"
+     ],
+     [
+      3.4,
+      0.8
+     ],
+     [
+      3.9,
+      2.2
+     ],
+     [
+      3.5,
+      3.8
+     ],
+     [
+      2.0,
+      5.1
+     ],
+     [
+      0.8,
+      5.9
+     ],
+     [
+      0.35,
+      6.6
+     ],
+     [
+      0.0,
+      6.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    20.4
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#cccccc",
+    "profile": [
+     [
+      0.1,
+      0,
+      "#c9a24a"
+     ],
+     [
+      0.1,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    -2.2,
+    -14.8
+   ],
+   "rotDeg": -8,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eeeae0",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "params": {
+    "rect": [
+     4.4,
+     4.4
+    ],
+    "z0": 13,
+    "height": 3.2,
+    "colour": "#d8d0b8",
+    "topColour": "#d8d0b8",
+    "windows": "arched",
+    "windowRatio": 0.3
+   },
+   "at": [
+    -2.2,
+    -14.8
+   ],
+   "rotDeg": -8
+  },
+  {
+   "type": "prism",
+   "id": "bell-spire",
+   "params": {
+    "rect": [
+     4.6,
+     4.6
+    ],
+    "z0": 16.2,
+    "height": 5.5,
+    "topScale": 0.05,
+    "colour": "#5f7a58",
+    "topColour": "#5f7a58"
+   },
+   "at": [
+    -2.2,
+    -14.8
+   ],
+   "rotDeg": -8
+  },
+  {
+   "type": "prism",
+   "id": "apse",
+   "params": {
+    "n": 8,
+    "radius": 3.8,
+    "z0": 0,
+    "height": 6.2,
+    "colour": "#eeeae0",
+    "topColour": "#5f7a58"
+   },
+   "at": [
+    2.4,
+    17.2
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2.4,
+    17.2,
+    6.2
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#cccccc",
+    "profile": [
+     [
+      2.3,
+      0,
+      "#c9a24a"
+     ],
+     [
+      2.8,
+      1.0
+     ],
+     [
+      1.6,
+      2.2
+     ],
+     [
+      0.3,
+      3.0
+     ],
+     [
+      0,
+      3.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "id": "west-door",
+   "at": [
+    -1.5,
+    -17.4,
+    0
+   ],
+   "rotDeg": -8,
+   "params": {
+    "width": 2.2,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    -1.4,
+    -19.2,
+    0
+   ],
+   "rotDeg": -8,
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#bdb6a2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     -10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     6
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No exterior photo: real outline plus typical Orthodox elements; roof colour, tower and dome positions assumed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-node-1367931400"
+}

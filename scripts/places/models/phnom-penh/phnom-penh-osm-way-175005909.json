@@ -1,0 +1,799 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-osm-way-175005909",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wat_Phnom-Phnom_Penh-Cambodia.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Justin Watt",
+   "view": "front",
+   "file": "/tmp/places-evidence/phnom-penh/phnom1.jpg",
+   "used": "tall silver-white bell stupa with ribbed lower dome and ringed spire rising from a grassed mound, small stupas and stepped terrace in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2016_Phnom_Penh,_Wat_Phnom_(04).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marcin Konsek",
+   "view": "front",
+   "file": "/tmp/places-evidence/phnom-penh/phnom2.jpg",
+   "used": "grand east stair: pink-white seven-headed naga balustrades on red-brown steps, lion guardians, red plinths, shrine and lamp posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/175005909",
+   "used": "summit compound outline about 72 x 45 m: vihara, stupa and shrine positions and fence line"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 0.664,
+  "fit": "building",
+  "margin": 0.35
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#5c8a3c",
+    "profile": [
+     [
+      62,
+      0,
+      "#6b9a45"
+     ],
+     [
+      56,
+      3
+     ],
+     [
+      48,
+      9,
+      "#5c8a3c"
+     ],
+     [
+      42,
+      15
+     ],
+     [
+      38,
+      20.5,
+      "#6f9a48"
+     ],
+     [
+      36,
+      22,
+      "#8a8f78"
+     ],
+     [
+      0,
+      22
+     ]
+    ],
+    "bottomCap": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#5c8a3c",
+    "profile": [
+     [
+      62,
+      0,
+      "#6b9a45"
+     ],
+     [
+      56,
+      3
+     ],
+     [
+      48,
+      9,
+      "#5c8a3c"
+     ],
+     [
+      42,
+      15
+     ],
+     [
+      38,
+      20.5,
+      "#6f9a48"
+     ],
+     [
+      36,
+      22,
+      "#8a8f78"
+     ],
+     [
+      0,
+      22
+     ]
+    ],
+    "bottomCap": false
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.4,
+    "thickness": 0.6,
+    "colour": "#b5532f",
+    "points": [
+     [
+      -37.6,
+      12
+     ],
+     [
+      -33.8,
+      -19.9
+     ],
+     [
+      -30.5,
+      -24.5
+     ],
+     [
+      -24.7,
+      -26.1
+     ],
+     [
+      32,
+      -17.3
+     ],
+     [
+      36.4,
+      -14.7
+     ],
+     [
+      37.8,
+      -9.4
+     ],
+     [
+      33.4,
+      21.2
+     ],
+     [
+      25.8,
+      25.7
+     ],
+     [
+      20.1,
+      25.3
+     ],
+     [
+      -29.9,
+      18.1
+     ],
+     [
+      -37.6,
+      12
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    2,
+    22
+   ],
+   "params": {
+    "rect": [
+     19,
+     19
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#c9c3b2"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9,
+    2,
+    22
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#bfc7c9",
+    "profile": [
+     [
+      7.8,
+      0,
+      "#8f9a9c"
+     ],
+     [
+      7.8,
+      2.2
+     ],
+     [
+      6.8,
+      2.4,
+      "#aab4b6"
+     ],
+     [
+      6.8,
+      4.0
+     ],
+     [
+      6.0,
+      4.2,
+      "#c6cdcf"
+     ],
+     [
+      6.3,
+      7
+     ],
+     [
+      6.4,
+      10,
+      "#d4dadb"
+     ],
+     [
+      5.6,
+      13.2
+     ],
+     [
+      4.4,
+      15.2
+     ],
+     [
+      3.8,
+      16.2,
+      "#b7c0c2"
+     ],
+     [
+      3.5,
+      17.2
+     ],
+     [
+      3.0,
+      18.4,
+      "#d4dadb"
+     ],
+     [
+      2.7,
+      19.4
+     ],
+     [
+      2.3,
+      20.6
+     ],
+     [
+      2.0,
+      21.8
+     ],
+     [
+      1.5,
+      23
+     ],
+     [
+      1.1,
+      24
+     ],
+     [
+      0.6,
+      25.5
+     ],
+     [
+      0.1,
+      27.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9,
+    2,
+    22
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#bfc7c9",
+    "profile": [
+     [
+      7.8,
+      0,
+      "#8f9a9c"
+     ],
+     [
+      7.8,
+      2.2
+     ],
+     [
+      6.8,
+      2.4,
+      "#aab4b6"
+     ],
+     [
+      6.8,
+      4.0
+     ],
+     [
+      6.0,
+      4.2,
+      "#c6cdcf"
+     ],
+     [
+      6.3,
+      7
+     ],
+     [
+      6.4,
+      10,
+      "#d4dadb"
+     ],
+     [
+      5.6,
+      13.2
+     ],
+     [
+      4.4,
+      15.2
+     ],
+     [
+      3.8,
+      16.2,
+      "#b7c0c2"
+     ],
+     [
+      3.5,
+      17.2
+     ],
+     [
+      3.0,
+      18.4,
+      "#d4dadb"
+     ],
+     [
+      2.7,
+      19.4
+     ],
+     [
+      2.3,
+      20.6
+     ],
+     [
+      2.0,
+      21.8
+     ],
+     [
+      1.5,
+      23
+     ],
+     [
+      1.1,
+      24
+     ],
+     [
+      0.6,
+      25.5
+     ],
+     [
+      0.1,
+      27.5
+     ]
+    ]
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -12,
+     0
+    ],
+    "end": [
+     -28,
+     12,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#bdb496",
+      "profile": [
+       [
+        1.4,
+        0
+       ],
+       [
+        1.4,
+        0.8
+       ],
+       [
+        1.0,
+        1.2
+       ],
+       [
+        1.1,
+        2.4
+       ],
+       [
+        0.8,
+        3.6
+       ],
+       [
+        0.5,
+        4.6
+       ],
+       [
+        0.2,
+        6.2
+       ],
+       [
+        0.05,
+        7
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "vihara",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    15,
+    4
+   ],
+   "z0": 22,
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cc",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "bay": 3.2,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    },
+    "bands": {
+     "colour": "#c9a24a",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c8531f",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vihara-upper",
+   "footprint": {
+    "rect": [
+     14,
+     6.5
+    ]
+   },
+   "at": [
+    15,
+    4
+   ],
+   "z0": 29.6,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dcb6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c8531f",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 1.4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "shrine",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -16
+   ],
+   "z0": 22,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d8b0",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c8531f",
+    "material": "clay-tile",
+    "pitch": 35,
+    "overhang": 0.9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a8553a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       2
+      ],
+      "cy": -62
+     },
+     {
+      "z": 6,
+      "rect": [
+       9,
+       2
+      ],
+      "cy": -52
+     },
+     {
+      "z": 12,
+      "rect": [
+       9,
+       2
+      ],
+      "cy": -45
+     },
+     {
+      "z": 22,
+      "rect": [
+       9,
+       2
+      ],
+      "cy": -35
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     -62,
+     0
+    ],
+    "end": [
+     5,
+     -62,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#e8c9bd",
+      "sections": [
+       {
+        "z": 0.6,
+        "rect": [
+         1.3,
+         2
+        ]
+       },
+       {
+        "z": 1.9,
+        "rect": [
+         1.0,
+         2
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.5,
+    "colour": "#e8c9bd",
+    "points": [
+     [
+      -5,
+      -62,
+      1.4
+     ],
+     [
+      -5,
+      -52,
+      7.4
+     ],
+     [
+      -5,
+      -45,
+      13.4
+     ],
+     [
+      -5,
+      -35,
+      23.4
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.5,
+    "colour": "#e8c9bd",
+    "points": [
+     [
+      5,
+      -62,
+      1.4
+     ],
+     [
+      5,
+      -52,
+      7.4
+     ],
+     [
+      5,
+      -45,
+      13.4
+     ],
+     [
+      5,
+      -35,
+      23.4
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   150
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -40
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -52
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     42,
+     -48
+    ],
+    "height": 13
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "reference photo is a close ground view up the hill; model matches the stupa bell and ringed spire shape only roughly, no relief on the dome, no clock garden, small stupas simplified, naga stair rendered as plain rails, vihara roof tiers schematic (no photo of the vihara)"
+ }
+}

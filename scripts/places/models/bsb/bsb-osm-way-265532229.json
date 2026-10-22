@@ -1,0 +1,568 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-265532229",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Taman_Jubli_Perak_Sultan_Haji_Hassanal_Bolkiah_1.jpg",
+   "licence": "CC0",
+   "author": "Mx. Granger",
+   "view": "street",
+   "file": "/tmp/places-evidence/bsb/park1.jpg",
+   "used": "paved promenade with lattice balustrade and white piers, circular brick plaza with stepped rim, white twisted lamp columns, gazebos, white arcade pavilion at the far end, open lawns, coconut palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/265532229",
+   "used": "park outline (leisure=park, 304 x 229 m), scaled to 0.55 to fit the 170 m scene limit"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -73.9,
+      28.2
+     ],
+     [
+      -72.5,
+      20.8
+     ],
+     [
+      -53.7,
+      -44.6
+     ],
+     [
+      21.1,
+      -55.8
+     ],
+     [
+      40.0,
+      -58.4
+     ],
+     [
+      59.7,
+      -56.6
+     ],
+     [
+      76.3,
+      -53.0
+     ],
+     [
+      84.2,
+      -38.4
+     ],
+     [
+      89.8,
+      6.7
+     ],
+     [
+      72.3,
+      5.3
+     ],
+     [
+      59.7,
+      -1.9
+     ],
+     [
+      52.0,
+      -15.1
+     ],
+     [
+      45.9,
+      8.9
+     ],
+     [
+      40.0,
+      23.3
+     ],
+     [
+      30.3,
+      36.1
+     ],
+     [
+      -17.2,
+      77.1
+     ],
+     [
+      -62.6,
+      54.5
+     ],
+     [
+      -67.7,
+      50.1
+     ],
+     [
+      -71.6,
+      43.9
+     ],
+     [
+      -73.6,
+      35.3
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#5f8f3a",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza-step",
+   "at": [
+    -3,
+    -20,
+    0
+   ],
+   "params": {
+    "radius": 21,
+    "n": 32,
+    "height": 0.35,
+    "colour": "#8f8f8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    -3,
+    -20,
+    0.35
+   ],
+   "params": {
+    "radius": 18.5,
+    "n": 32,
+    "height": 0.1,
+    "colour": "#7d7e86",
+    "material": "paving-block"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "promenade",
+   "at": [
+    -34,
+    -3,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "rect": [
+     70,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#c9b79a",
+    "material": "paving"
+   }
+  },
+  {
+   "type": "colonnade",
+   "id": "arcade",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    36,
+    0.3
+   ],
+   "params": {
+    "length": 18,
+    "count": 8,
+    "height": 4.5,
+    "radius": 0.35,
+    "kind": "round",
+    "beamHeight": 0.7,
+    "roofDepth": 3,
+    "colour": "#f2f0ea",
+    "roofColour": "#ece8df"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arcade-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    -3,
+    36,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     3
+    ],
+    "height": 5,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "steps",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    33,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.3,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#d8d4ca"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -66,
+     -7,
+     0
+    ],
+    "end": [
+     -8,
+     -5,
+     0
+    ],
+    "count": 12,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "height": 1.2,
+       "colour": "#e6e4dc"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balustrade",
+   "lod": [
+    0
+   ],
+   "at": [
+    -37,
+    -6.2,
+    0.3
+   ],
+   "rotDeg": 1.2,
+   "params": {
+    "rect": [
+     58,
+     0.25
+    ],
+    "height": 0.7,
+    "colour": "#d9d6cc"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     -1,
+     0
+    ],
+    "end": [
+     -10,
+     -6,
+     0
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 8,
+       "colour": "#f4f2ea",
+       "profile": [
+        [
+         0.4,
+         0
+        ],
+        [
+         0.4,
+         0.4
+        ],
+        [
+         0.18,
+         0.6
+        ],
+        [
+         0.18,
+         3.6
+        ],
+        [
+         0.4,
+         3.8
+        ],
+        [
+         0.4,
+         4.3
+        ],
+        [
+         0.25,
+         4.6
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     22,
+     0
+    ],
+    "end": [
+     40,
+     28,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 2.2,
+       "n": 6,
+       "height": 2.6,
+       "colour": "#f1eee6",
+       "top": false
+      }
+     },
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 10,
+       "colour": "#b8b2a4",
+       "profile": [
+        [
+         0,
+         2.6
+        ],
+        [
+         3.0,
+         2.6
+        ],
+        [
+         2.7,
+         3.0
+        ],
+        [
+         0.2,
+         4.4
+        ],
+        [
+         0,
+         4.6
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "start": [
+     -30,
+     -34,
+     0
+    ],
+    "cols": 5,
+    "rows": 2,
+    "dx": 6,
+    "dy": 6,
+    "centred": false,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 8,
+       "colour": "#d6d3c9",
+       "profile": [
+        [
+         0,
+         0
+        ],
+        [
+         1.0,
+         0
+        ],
+        [
+         1.1,
+         0.7
+        ],
+        [
+         0,
+         0.75
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    22,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    32,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -55,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -48,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    38,
+    44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "park scaled to 0.55 to fit the scene limit; lattice balustrade, flower planters and the grey stepped rim are simplified; far-end arcade is a plain colonnade"
+ }
+}

@@ -1,0 +1,719 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-626583660",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Patriot_Stadium_Bekasi.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Garybhaztara",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/jakarta/pat2.jpg",
+   "used": "white membrane-like saucer roof wrapping the whole oval bowl with a pinched kidney plan, open oval to the pitch, four teal stripes across the roof, red track, green pitch, coloured seat blocks (green, yellow, blue)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Patriot_Chandrabhaga_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "nodanodaboo",
+   "view": "interior",
+   "file": "/tmp/places-evidence/jakarta/pat1.jpg",
+   "used": "seat colours, steel-lattice roof underside, running track"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/626583660",
+   "used": "oval outline and overall size (site 274 x 196 m, modelled bowl reduced to about 130 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 62,
+  "fovDeg": 38,
+  "aspect": 1.7,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      66.0,
+      0.0
+     ],
+     [
+      62.77,
+      15.1
+     ],
+     [
+      53.4,
+      29.17
+     ],
+     [
+      38.79,
+      41.12
+     ],
+     [
+      20.4,
+      49.77
+     ],
+     [
+      0.0,
+      54.0
+     ],
+     [
+      -20.4,
+      52.94
+     ],
+     [
+      -38.79,
+      46.25
+     ],
+     [
+      -53.4,
+      34.31
+     ],
+     [
+      -62.77,
+      18.27
+     ],
+     [
+      -66.0,
+      0.0
+     ],
+     [
+      -62.77,
+      -18.27
+     ],
+     [
+      -53.4,
+      -34.31
+     ],
+     [
+      -38.79,
+      -46.25
+     ],
+     [
+      -20.4,
+      -52.94
+     ],
+     [
+      -0.0,
+      -54.0
+     ],
+     [
+      20.4,
+      -49.77
+     ],
+     [
+      38.79,
+      -41.12
+     ],
+     [
+      53.4,
+      -29.17
+     ],
+     [
+      62.77,
+      -15.1
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#a9a69f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      34.0,
+      0.0
+     ],
+     [
+      32.34,
+      6.71
+     ],
+     [
+      27.51,
+      12.97
+     ],
+     [
+      19.98,
+      18.28
+     ],
+     [
+      10.51,
+      22.12
+     ],
+     [
+      0.0,
+      24.0
+     ],
+     [
+      -10.51,
+      23.53
+     ],
+     [
+      -19.98,
+      20.56
+     ],
+     [
+      -27.51,
+      15.25
+     ],
+     [
+      -32.34,
+      8.12
+     ],
+     [
+      -34.0,
+      0.0
+     ],
+     [
+      -32.34,
+      -8.12
+     ],
+     [
+      -27.51,
+      -15.25
+     ],
+     [
+      -19.98,
+      -20.56
+     ],
+     [
+      -10.51,
+      -23.53
+     ],
+     [
+      -0.0,
+      -24.0
+     ],
+     [
+      10.51,
+      -22.12
+     ],
+     [
+      19.98,
+      -18.28
+     ],
+     [
+      27.51,
+      -12.97
+     ],
+     [
+      32.34,
+      -6.71
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#a8504a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "rect": [
+     46,
+     28
+    ],
+    "height": 0.1,
+    "colour": "#3f8a4a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 36,
+    "radiusY": 25,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 8,
+    "rise": 0.9,
+    "run": 1.0,
+    "firstHeight": 2,
+    "under": "solid",
+    "slab": 0.5,
+    "seatColours": [
+     "#3c8a58",
+     "#e2b93a",
+     "#3a6ea8"
+    ],
+    "blocks": 8,
+    "concreteColour": "#d9d5cb",
+    "underColour": "#c9c5bb",
+    "facetDeg": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "outer-wall",
+   "at": [
+    0,
+    0,
+    8.5
+   ],
+   "params": {
+    "section": "rect",
+    "width": 1.6,
+    "height": 17,
+    "points": [
+     [
+      58.0,
+      0.0
+     ],
+     [
+      55.16,
+      12.58
+     ],
+     [
+      46.92,
+      24.31
+     ],
+     [
+      34.09,
+      34.27
+     ],
+     [
+      17.92,
+      41.48
+     ],
+     [
+      0.0,
+      45.0
+     ],
+     [
+      -17.92,
+      44.12
+     ],
+     [
+      -34.09,
+      38.55
+     ],
+     [
+      -46.92,
+      28.59
+     ],
+     [
+      -55.16,
+      15.23
+     ],
+     [
+      -58.0,
+      0.0
+     ],
+     [
+      -55.16,
+      -15.23
+     ],
+     [
+      -46.92,
+      -28.59
+     ],
+     [
+      -34.09,
+      -38.55
+     ],
+     [
+      -17.92,
+      -44.12
+     ],
+     [
+      -0.0,
+      -45.0
+     ],
+     [
+      17.92,
+      -41.48
+     ],
+     [
+      34.09,
+      -34.27
+     ],
+     [
+      46.92,
+      -24.31
+     ],
+     [
+      55.16,
+      -12.58
+     ]
+    ],
+    "closed": true,
+    "colour": "#e7e4dc"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-ring",
+   "at": [
+    0,
+    0,
+    16.5
+   ],
+   "params": {
+    "section": "rect",
+    "width": 20,
+    "height": 1.6,
+    "points": [
+     [
+      48.0,
+      0.0
+     ],
+     [
+      45.65,
+      10.07
+     ],
+     [
+      38.83,
+      19.45
+     ],
+     [
+      28.21,
+      27.41
+     ],
+     [
+      14.83,
+      33.18
+     ],
+     [
+      0.0,
+      36.0
+     ],
+     [
+      -14.83,
+      35.3
+     ],
+     [
+      -28.21,
+      30.84
+     ],
+     [
+      -38.83,
+      22.87
+     ],
+     [
+      -45.65,
+      12.18
+     ],
+     [
+      -48.0,
+      0.0
+     ],
+     [
+      -45.65,
+      -12.18
+     ],
+     [
+      -38.83,
+      -22.87
+     ],
+     [
+      -28.21,
+      -30.84
+     ],
+     [
+      -14.83,
+      -35.3
+     ],
+     [
+      -0.0,
+      -36.0
+     ],
+     [
+      14.83,
+      -33.18
+     ],
+     [
+      28.21,
+      -27.41
+     ],
+     [
+      38.83,
+      -19.45
+     ],
+     [
+      45.65,
+      -10.07
+     ]
+    ],
+    "closed": true,
+    "colour": "#eceae3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-rim",
+   "at": [
+    0,
+    0,
+    16
+   ],
+   "params": {
+    "section": "rect",
+    "width": 1.4,
+    "height": 3,
+    "points": [
+     [
+      58.0,
+      0.0
+     ],
+     [
+      55.16,
+      12.58
+     ],
+     [
+      46.92,
+      24.31
+     ],
+     [
+      34.09,
+      34.27
+     ],
+     [
+      17.92,
+      41.48
+     ],
+     [
+      0.0,
+      45.0
+     ],
+     [
+      -17.92,
+      44.12
+     ],
+     [
+      -34.09,
+      38.55
+     ],
+     [
+      -46.92,
+      28.59
+     ],
+     [
+      -55.16,
+      15.23
+     ],
+     [
+      -58.0,
+      0.0
+     ],
+     [
+      -55.16,
+      -15.23
+     ],
+     [
+      -46.92,
+      -28.59
+     ],
+     [
+      -34.09,
+      -38.55
+     ],
+     [
+      -17.92,
+      -44.12
+     ],
+     [
+      -0.0,
+      -45.0
+     ],
+     [
+      17.92,
+      -41.48
+     ],
+     [
+      34.09,
+      -34.27
+     ],
+     [
+      46.92,
+      -24.31
+     ],
+     [
+      55.16,
+      -12.58
+     ]
+    ],
+    "closed": true,
+    "colour": "#dedbd2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe-s",
+   "at": [
+    16,
+    -46,
+    18.1
+   ],
+   "params": {
+    "rect": [
+     4,
+     28
+    ],
+    "height": 0.2,
+    "colour": "#3aa68c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe-n",
+   "at": [
+    -8,
+    46,
+    18.1
+   ],
+   "params": {
+    "rect": [
+     4,
+     28
+    ],
+    "height": 0.2,
+    "colour": "#3aa68c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe-w",
+   "at": [
+    -58,
+    8,
+    18.1
+   ],
+   "params": {
+    "rect": [
+     22,
+     4
+    ],
+    "height": 0.2,
+    "colour": "#3aa68c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stripe-e",
+   "at": [
+    58,
+    -6,
+    18.1
+   ],
+   "params": {
+    "rect": [
+     22,
+     4
+    ],
+    "height": 0.2,
+    "colour": "#3aa68c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "parking-deck",
+   "at": [
+    -84,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     44
+    ],
+    "height": 14,
+    "colour": "#cfc9bc",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colour": "#bdb7a9"
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   160,
+   140
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -80,
+     50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     80,
+     -56
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof ring is a flat oval, not the real pinched kidney saucer with a sloped membrane; seat blocks and track simplified; no parking deck detail or masts."
+ }
+}

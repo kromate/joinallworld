@@ -1,0 +1,195 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-node-2935650691",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: typical modern Malaysian neighbourhood mosque, one central dome, arcaded hall, slender minaret; OSM polygon is landuse and not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     40,
+     40
+    ]
+   },
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d3c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "rect": [
+     32,
+     32
+    ]
+   },
+   "z0": 1.2,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bands": "#c9a64a",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d7f72",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah",
+   "footprint": {
+    "rect": [
+     32,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -18
+   ],
+   "z0": 1.2,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f7a6a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    13.2
+   ],
+   "params": {
+    "radius": 9,
+    "height": 8,
+    "profile": "hemi",
+    "drum": 3,
+    "drumRadius": 9.2,
+    "lantern": 2,
+    "finial": 2.5,
+    "colour": "#3d7f72",
+    "drumColour": "#f1ede2"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -12,
+    -12,
+    13.2
+   ],
+   "params": {
+    "radius": 2.4,
+    "height": 3,
+    "profile": "hemi",
+    "colour": "#3d7f72"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    12,
+    -12,
+    13.2
+   ],
+   "params": {
+    "radius": 2.4,
+    "height": 3,
+    "profile": "hemi",
+    "colour": "#3d7f72"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    22,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 35,
+    "radius": 1.1,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f1ede2",
+    "capColour": "#2f7a6a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -24
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 4,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; typical neighbourhood mosque"
+ }
+}

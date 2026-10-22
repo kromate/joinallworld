@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-node-3083953775",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/219477085",
+   "used": "31 x 16 m outline with stepped rear and entrance bay"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dad3bd",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.6,
+    "bands": "#a9a69c",
+    "cornice": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 1,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#a9a69c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8.8,
+    9
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.2,
+    "bottom": 9,
+    "colour": "#f0eee6",
+    "frameColour": "#a9a69c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "colour": "#2f5a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; facade, entrance side and colours from brief"
+ }
+}

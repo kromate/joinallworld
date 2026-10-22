@@ -1,0 +1,355 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:July_2023_Suoi_Tien_Park.jpg",
+   "licence": "CC0",
+   "author": "Syced",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/st1.jpg",
+   "used": "cream three-arch gate building with swept two-tier eaves in tan and gold, wide granite stairs with red joints and steel handrails, yellow and blue sculpted dragons at both ends"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SuoiTien1.JPG",
+   "licence": "Public domain",
+   "author": "Genghiskhanviet",
+   "view": "side",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/st2.jpg",
+   "used": "lake with golden thatched pavilions, grey rock spires and roller coaster and ferris wheel behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/463548000",
+   "used": "park extent 1100 x 515 m; only the gate zone and a hint of the rides modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 60,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate",
+   "footprint": {
+    "rect": [
+     44,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8dcb8",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "round",
+      "bay": 14,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 1.2,
+      "colour": "#e8dcb8",
+      "pierColour": "#e8dcb8",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "params": {
+    "width": 48,
+    "depth": 12,
+    "rise": 2.4,
+    "overhang": 2.4,
+    "upturn": 1.6,
+    "colour": "#d8c49a",
+    "trim": "#c9a24a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     18,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 15.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3d4a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb88a"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    0,
+    18.7
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "rise": 1.8,
+    "overhang": 1.6,
+    "upturn": 1.4,
+    "colour": "#d0b88a",
+    "trim": "#c9a24a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     50,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8e9088",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9088"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 34,
+    "rise": 0.4,
+    "run": 0.9,
+    "count": 10,
+    "colour": "#8e9088"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -26,
+    -4,
+    4
+   ],
+   "params": {
+    "colour": "#f0c22a",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.2,
+       1.6
+      ],
+      "colour": "#3f8fc0"
+     },
+     {
+      "z": 2,
+      "ellipse": [
+       2.4,
+       1.7
+      ],
+      "colour": "#f2b82a",
+      "cx": 0.6
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       1.6,
+       1.3
+      ],
+      "colour": "#f2c030",
+      "cx": 1.6
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "colour": "#f08a22",
+      "cx": 0.8
+     },
+     {
+      "z": 7.5,
+      "ellipse": [
+       0.4,
+       0.4
+      ],
+      "colour": "#f08a22",
+      "cx": -0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    26,
+    -4,
+    4
+   ],
+   "params": {
+    "colour": "#f0c22a",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.2,
+       1.6
+      ],
+      "colour": "#3f8fc0"
+     },
+     {
+      "z": 2,
+      "ellipse": [
+       2.4,
+       1.7
+      ],
+      "colour": "#f2b82a",
+      "cx": -0.6
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       1.6,
+       1.3
+      ],
+      "colour": "#f2c030",
+      "cx": -1.6
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "colour": "#f08a22",
+      "cx": -0.8
+     },
+     {
+      "z": 7.5,
+      "ellipse": [
+       0.4,
+       0.4
+      ],
+      "colour": "#f08a22",
+      "cx": 0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "ferris-wheel",
+   "at": [
+    30,
+    60,
+    0
+   ],
+   "params": {
+    "radius": 14,
+    "gondolas": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 5,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 5,
+    "line": 14
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Gate relief, painted dragon scales, lanterns and handrails are simplified; arches render as dark-glazed openings and the dragons are plain lofted horns; the waterfall, Buddha statues, thatched lake pavilions and roller coaster are only hinted (ferris wheel and rock spires)."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-463548000"
+}

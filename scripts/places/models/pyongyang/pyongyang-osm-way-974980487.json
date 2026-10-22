@@ -1,0 +1,243 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:North_Korea_Temple_06.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "David Clayton Ellsworth",
+   "view": "front",
+   "file": "/tmp/places-evidence/pyongyang/kwang.jpg",
+   "used": "main hall (Taeung hall) with two stacked grey-tile eaves swept up at the corners, dancheong painted green/red under the eaves, dark red pillars, stone multi-storey pagoda in the forecourt, low stone wall, bare ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/974980487",
+   "used": "compound is about 100 x 90 m of hillside; only the principal hall court is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "terrace",
+   "params": {
+    "rect": [
+     44,
+     26
+    ],
+    "height": 0.5,
+    "colour": "#bdb7a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-lower",
+   "footprint": {
+    "rect": [
+     14,
+     9.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a2f22",
+    "windows": "screen",
+    "windowRatio": 0.45,
+    "plinth": 0.9,
+    "bands": "#3d7a5a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4f4d"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "id": "lower-eave",
+   "at": [
+    0,
+    0,
+    5.1
+   ],
+   "params": {
+    "width": 22,
+    "depth": 17,
+    "rise": 2.0,
+    "overhang": 0.5,
+    "upturn": 1.0,
+    "colour": "#4b504e",
+    "trim": "#3d7a5a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-upper",
+   "footprint": {
+    "rect": [
+     9.5,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 7.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a2f22",
+    "windows": "screen",
+    "windowRatio": 0.35,
+    "plinth": 0.9,
+    "bands": "#3d7a5a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4f4d"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "id": "upper-eave",
+   "at": [
+    0,
+    0,
+    10.6
+   ],
+   "params": {
+    "width": 17,
+    "depth": 12,
+    "rise": 2.4,
+    "overhang": 0.5,
+    "upturn": 1.0,
+    "colour": "#454a48",
+    "trim": "#3d7a5a"
+   }
+  },
+  {
+   "type": "pagoda-tower",
+   "id": "stone-pagoda",
+   "at": [
+    -13.5,
+    -9,
+    0.5
+   ],
+   "params": {
+    "storeys": 7,
+    "base_width": 3.6,
+    "height": 11,
+    "colour": "#d9d6cc",
+    "accent": "#cfcbc0",
+    "cap_colour": "#cfcbc0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#bdb7a8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#b8b4a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     12
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     2
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -22,
+     6
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-974980487",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Wall colours too dark and no dancheong painting, eaves gap too large, stone pagoda too ornate, only the main hall of a 100 m compound."
+ }
+}

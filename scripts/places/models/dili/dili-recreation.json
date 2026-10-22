@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/166662133",
+   "used": "park outline (narrow wedge along the seafront road, about 142 x 42 m, 3,289 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -46.1,
+      -25.1
+     ],
+     [
+      -44.5,
+      3.1
+     ],
+     [
+      -44.1,
+      5.1
+     ],
+     [
+      -43.2,
+      6.5
+     ],
+     [
+      79.2,
+      33.7
+     ],
+     [
+      80.6,
+      33.9
+     ],
+     [
+      81.3,
+      32.7
+     ],
+     [
+      81.1,
+      30.9
+     ],
+     [
+      -34,
+      -36.7
+     ],
+     [
+      -38.2,
+      -37.4
+     ],
+     [
+      -43,
+      -34.8
+     ],
+     [
+      -44.9,
+      -31.8
+     ],
+     [
+      -45.9,
+      -29
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -20
+     ],
+     [
+      -40,
+      -14
+     ],
+     [
+      78,
+      29
+     ],
+     [
+      78,
+      24
+     ]
+    ],
+    "height": 0.04,
+    "colour": "#d9c7a0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -32
+    ],
+    "end": [
+     76,
+     27
+    ],
+    "count": 14,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -8
+    ],
+    "end": [
+     74,
+     34
+    ],
+    "count": 9,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 5
+     }
+    }
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    20,
+    6,
+    0.12
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 3,
+    "height": 2.8
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -20,
+    -15,
+    0.12
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#d9c7a0",
+    "cap_colour": "#a8452f"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    40,
+    16,
+    0.12
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -44,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b7b1a2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -34,
+    -37,
+    0
+   ],
+   "params": {
+    "length": 115,
+    "height": 0.7,
+    "thickness": 0.4,
+    "colour": "#b7b1a2",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      40,
+      18
+     ],
+     [
+      115,
+      50
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "OSM wedge lawn with path, palms, kiosk, pavilion and statue; contents are typed not seen; no photo."
+ }
+}

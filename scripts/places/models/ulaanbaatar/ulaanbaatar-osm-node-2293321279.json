@@ -1,0 +1,155 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/937287282",
+   "used": "building=construction outline, 133 x 131 m (10-vertex L-shaped plan), containing match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: new Natural History Museum building planned after the 1953 museum was demolished in 2019; a wide low white cuboid with a glass entrance. Under construction, so final look unknown."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d7d5cd",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#bfbcb2"
+     },
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#d7d5cd",
+       "#cac8bf",
+       "#e2e0d8"
+      ],
+      "slits": 0.05
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass",
+   "params": {
+    "rect": [
+     22,
+     8
+    ],
+    "height": 13,
+    "colour": "#7c8a96",
+    "topColour": "#8f8a80",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "at": [
+    -12,
+    -45
+   ],
+   "rotDeg": -4.6
+  },
+  {
+   "type": "core/steps",
+   "id": "entrance-steps",
+   "at": [
+    -12,
+    -52,
+    0
+   ],
+   "rotDeg": -4.6,
+   "params": {
+    "width": 20,
+    "rise": 0.9,
+    "run": 1.4,
+    "count": 5,
+    "colour": "#c9c6bc"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entrance-canopy",
+   "at": [
+    -12,
+    -54,
+    6
+   ],
+   "rotDeg": -4.6,
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 5,
+    "height": 0.0,
+    "thickness": 0.5,
+    "colour": "#eeece6",
+    "edgeColour": "#c9c6bc"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "cars",
+   "at": [
+    -10,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "density": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": 0,
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Under construction in OSM and no photo: plain white block on the real outline with a glass entrance; final design unknown."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-node-2293321279"
+}

@@ -1,0 +1,226 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/828201005",
+   "used": "scale only: long twin-wing hospital 322 m x 99 m, 22 floors, 85 m (Wikidata Q96400526); modelled as two slab towers on a podium, shrunk to the scene clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: twin 22-floor towers, lower podium, rooftop helipad, glass atrium, ambulance bay"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     110,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0dccf",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-west",
+   "footprint": {
+    "rect": [
+     26,
+     24
+    ]
+   },
+   "at": [
+    -42,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 78,
+   "storeys": 22,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 1,
+    "bay": 13,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9c",
+    "parapet": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-east",
+   "footprint": {
+    "rect": [
+     26,
+     24
+    ]
+   },
+   "at": [
+    42,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 78,
+   "storeys": 22,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 1,
+    "bay": 13,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9c",
+    "parapet": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     24,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "rotDeg": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7a98ae",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "overhang": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ambulance-bay",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    -21
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c4b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9c",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "helipad",
+   "at": [
+    42,
+    0,
+    78
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "height": 0.6,
+    "colour": "#7c8085"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -55,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; two 22-storey slab towers on a podium from brief and OSM size, real plan is a long diagonal wing layout, glazing detail simplified."
+ }
+}

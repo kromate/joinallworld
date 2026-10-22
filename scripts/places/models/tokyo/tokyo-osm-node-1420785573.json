@@ -1,0 +1,120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-node-1420785573",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/658738967",
+   "used": "real footprint: a long staggered multi-wing complex, 141 x 97 m, rotated to its axes"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "complex",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 67,
+    "scale": 0.84,
+    "simplify": 6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e0dccf",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e0dccf",
+      "#a9b3ae"
+     ]
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/water-tank",
+   "at": [
+    0,
+    0,
+    24
+   ],
+   "params": {
+    "kind": "box",
+    "radius": 2.5,
+    "tankHeight": 3,
+    "legHeight": 0.8,
+    "legs": 4,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "hospital/ambulance-bay",
+   "at": [
+    -4,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "market-open/car-park",
+   "at": [
+    28,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building found (Oyama street photos are of other buildings); only the OSM outline is real, facade and heights are typed"
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   150
+  ]
+ }
+}

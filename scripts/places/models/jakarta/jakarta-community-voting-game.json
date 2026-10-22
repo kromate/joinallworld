@@ -1,0 +1,362 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museum_Fatahilah_(Museum_Sejarah_Jakarta).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Herusutimbul",
+   "view": "front",
+   "file": "/tmp/places-evidence/jakarta/museum.jpg",
+   "used": "former city hall: white two-storey block, orange hip roof with dormers, central pediment portico, small cupola, raised low terrace with steps, palms either side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Taman_Fatahillah_or_Fatahillah_Square_(formerly_Stadhuisplein).jpg",
+   "licence": "Public domain",
+   "author": "Uncredited",
+   "view": "street",
+   "file": "/tmp/places-evidence/jakarta/square.jpg",
+   "used": "vast flagstone square, small white domed well pavilion, white colonial buildings and a taller block around, big shade tree"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.5,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     58,
+     17
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.6,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "punched"
+    },
+    "glassColour": "#4f6d4f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d0572c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    -36.0,
+    12.5
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 5,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "glassColour": "#4f6d4f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d0572c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    36.0,
+    12.5
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 5,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "glassColour": "#4f6d4f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d0572c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     62,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -1.2
+   ],
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e9e6dd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabd"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    0.5,
+    0
+   ],
+   "params": {
+    "width": 13,
+    "depth": 3.5,
+    "height": 9.5,
+    "columns": 4,
+    "pediment": true,
+    "steps": 0,
+    "colour": "#f4f2ea",
+    "roofColour": "#e6e3da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f2ea",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7f9a86",
+    "material": "metal-sheet",
+    "pitch": 40,
+    "overhang": 0.4
+   },
+   "z0": 16
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.3,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#5d5a54"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "well",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d8d5ca",
+    "pitch": 45,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    -30,
+    2.6
+   ],
+   "params": {
+    "radius": 1.5,
+    "profile": "hemi",
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    22
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 2,
+    "spread": 9,
+    "colour": "#4d7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6,
+    "colour": "#4c8a3c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6,
+    "colour": "#4c8a3c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "market-open/dormer",
+     "params": {
+      "width": 1.6,
+      "depth": 1.4,
+      "height": 1.7,
+      "colour": "#f1efe8",
+      "roof_colour": "#d0572c",
+      "wall_colour": "#f1efe8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -4.2,
+     2.4
+    ],
+    "end": [
+     20,
+     -4.2,
+     2.4
+    ],
+    "count": 5
+   },
+   "on": "hall"
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "green shutters rendered as dark glazing, no balcony/balustrade on pediment, cupola is a plain pyramid, no street furniture or people; square paving is regular, side buildings of the square omitted"
+ }
+}

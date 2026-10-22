@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-airport-singapore-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Changi_Airport,_Terminal_2,_Departure_Driveway_2.JPG",
+   "licence": "CC BY-SA",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/singapore/changi.jpg",
+   "used": "Terminal 2 departure kerb: full-height blue-green glass curtain wall, tall round silver-clad columns along the kerb, deep glazed canopy carried on diagonal steel ribs and cross beams"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     118,
+     40
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0a8",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#c9ced0",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d5d9da",
+    "material": "metal-sheet",
+    "overhang": 3,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "count": 15,
+    "height": 14,
+    "radius": 1.2,
+    "kind": "round",
+    "beamHeight": 1.2,
+    "colour": "#cfc8bd",
+    "roofColour": "#b9bfc2"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -3,
+    14
+   ],
+   "params": {
+    "form": "flat",
+    "width": 150,
+    "depth": 24,
+    "height": 0,
+    "thickness": 0.6,
+    "colour": "#a8c4c6",
+    "edgeColour": "#cfd4d6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       24
+      ],
+      "height": 0.6,
+      "colour": "#d3d8da"
+     }
+    },
+    "mode": "line",
+    "count": 25,
+    "start": [
+     -56,
+     -3,
+     14.2
+    ],
+    "end": [
+     56,
+     -3,
+     14.2
+    ]
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    40,
+    80,
+    0
+   ],
+   "params": {
+    "height": 55,
+    "style": "round",
+    "colour": "#d8dcdd",
+    "cabColour": "#5f7f86"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#e9e6d8",
+    "count": 2,
+    "spacing": 8,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -42
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "canopy is a flat glass slab with thin ribs, not the diagonal-ribbed stepped canopy; no silver-clad cylindrical column detail or interior glow; only a generic 118 m portion of one terminal (T2 kerb) modelled, no OSM outline matched"
+ }
+}

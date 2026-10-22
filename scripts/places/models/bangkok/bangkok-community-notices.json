@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1",
+   "used": "real wing outline (143 x 108 m, ~9,200 m2, several wings round a courtyard), 4 storeys assumed"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found for this building; facade colour, storeys and entrance are typical Thai institutional guesses on the real outline"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-wings",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "glassColour": "#6f7f86",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a395",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    -10,
+    -47,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 9,
+    "columns": 6,
+    "pediment": false,
+    "steps": 4,
+    "colour": "#f2efe6",
+    "roofColour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -22,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    28,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "bottom": 1,
+    "colour": "#f2efe6",
+    "frameColour": "#8f8a7e"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -50,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 12
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "length": 110
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     5
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ }
+}

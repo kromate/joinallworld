@@ -1,0 +1,967 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jewel_Changi_Airport_13-11-2023(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LN9267",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/jewel4.jpg",
+   "used": "low elliptical glass-and-steel gridshell with diagonal ribs, big arched glazed gable at the front, white-columned canopy at ground, glass tube bridge in front on Y-legs, Changi control tower behind-left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jewel_Changi_Airport_sunset.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gerald Waldo Luis",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/jewel3.jpg",
+   "used": "green-tinted glass, base podium and canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/744520551",
+   "used": "oval size 203 x 153 m, height 37 m (whole model scaled 0.62 to fit the scene)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "shell",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       62.0,
+       47.1
+      ],
+      "colour": "#5f6e78"
+     },
+     {
+      "z": 4.34,
+      "ellipse": [
+       62.0,
+       47.1
+      ],
+      "colour": "#7b8f96"
+     },
+     {
+      "z": 7.44,
+      "ellipse": [
+       61.1,
+       46.4
+      ],
+      "colour": "#8fb1ad"
+     },
+     {
+      "z": 11.16,
+      "ellipse": [
+       57.7,
+       43.8
+      ]
+     },
+     {
+      "z": 14.88,
+      "ellipse": [
+       52.1,
+       39.6
+      ]
+     },
+     {
+      "z": 17.98,
+      "ellipse": [
+       43.4,
+       33.0
+      ]
+     },
+     {
+      "z": 20.46,
+      "ellipse": [
+       32.2,
+       24.5
+      ],
+      "colour": "#a9c4c2"
+     },
+     {
+      "z": 22.32,
+      "ellipse": [
+       18.6,
+       14.1
+      ]
+     },
+     {
+      "z": 23.25,
+      "ellipse": [
+       6.2,
+       4.7
+      ]
+     }
+    ],
+    "smooth": true,
+    "steps": 3,
+    "round": 28,
+    "colour": "#8fb1ad",
+    "topColour": "#a9c4c2"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "shell-lo",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       62.0,
+       47.1
+      ],
+      "colour": "#6b7d85"
+     },
+     {
+      "z": 8.68,
+      "ellipse": [
+       59.5,
+       45.2
+      ]
+     },
+     {
+      "z": 17.36,
+      "ellipse": [
+       44.6,
+       33.9
+      ]
+     },
+     {
+      "z": 23.25,
+      "ellipse": [
+       12.4,
+       9.4
+      ]
+     }
+    ],
+    "round": 10,
+    "colour": "#8fb1ad"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    -49.6,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -27.42383999999999,
+      2
+     ],
+     [
+      0,
+      -24.681455999999994,
+      8.063286
+     ],
+     [
+      0,
+      -16.454303999999993,
+      13.194467999999999
+     ],
+     [
+      0,
+      -6.855959999999998,
+      14.660519999999998
+     ],
+     [
+      0,
+      0,
+      14.953730399999998
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    -39.68,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -35.11965091749609,
+      2
+     ],
+     [
+      0,
+      -31.60768582574648,
+      10.038965185011834
+     ],
+     [
+      0,
+      -21.071790550497653,
+      16.42739757547391
+     ],
+     [
+      0,
+      -8.779912729374022,
+      18.25266397274879
+     ],
+     [
+      0,
+      0,
+      18.617717252203764
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    -29.759999999999998,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -40.09678441893833,
+      2
+     ],
+     [
+      0,
+      -36.087105977044494,
+      11.316701756926449
+     ],
+     [
+      0,
+      -24.058070651362996,
+      18.518239238606913
+     ],
+     [
+      0,
+      -10.024196104734582,
+      20.575821376229904
+     ],
+     [
+      0,
+      0,
+      20.987337803754503
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    -19.84,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -43.303045168460095,
+      2
+     ],
+     [
+      0,
+      -38.97274065161409,
+      12.139817435372919
+     ],
+     [
+      0,
+      -25.981827101076057,
+      19.865155803337505
+     ],
+     [
+      0,
+      -10.825761292115024,
+      22.07239533704167
+     ],
+     [
+      0,
+      0,
+      22.513843243782503
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    -9.92,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -45.11756510424098,
+      2
+     ],
+     [
+      0,
+      -40.60580859381688,
+      12.605643494035718
+     ],
+     [
+      0,
+      -27.070539062544587,
+      20.6274166266039
+     ],
+     [
+      0,
+      -11.279391276060245,
+      22.919351807337666
+     ],
+     [
+      0,
+      0,
+      23.37773884348442
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    0.0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -45.706399999999995,
+      2
+     ],
+     [
+      0,
+      -41.13576,
+      12.756810000000002
+     ],
+     [
+      0,
+      -27.423839999999995,
+      20.87478
+     ],
+     [
+      0,
+      -11.426599999999999,
+      23.194200000000002
+     ],
+     [
+      0,
+      0,
+      23.658084000000002
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    9.92,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -45.11756510424098,
+      2
+     ],
+     [
+      0,
+      -40.60580859381688,
+      12.605643494035718
+     ],
+     [
+      0,
+      -27.070539062544587,
+      20.6274166266039
+     ],
+     [
+      0,
+      -11.279391276060245,
+      22.919351807337666
+     ],
+     [
+      0,
+      0,
+      23.37773884348442
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    19.84,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -43.303045168460095,
+      2
+     ],
+     [
+      0,
+      -38.97274065161409,
+      12.139817435372919
+     ],
+     [
+      0,
+      -25.981827101076057,
+      19.865155803337505
+     ],
+     [
+      0,
+      -10.825761292115024,
+      22.07239533704167
+     ],
+     [
+      0,
+      0,
+      22.513843243782503
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    29.759999999999998,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -40.09678441893833,
+      2
+     ],
+     [
+      0,
+      -36.087105977044494,
+      11.316701756926449
+     ],
+     [
+      0,
+      -24.058070651362996,
+      18.518239238606913
+     ],
+     [
+      0,
+      -10.024196104734582,
+      20.575821376229904
+     ],
+     [
+      0,
+      0,
+      20.987337803754503
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    39.68,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -35.11965091749609,
+      2
+     ],
+     [
+      0,
+      -31.60768582574648,
+      10.038965185011834
+     ],
+     [
+      0,
+      -21.071790550497653,
+      16.42739757547391
+     ],
+     [
+      0,
+      -8.779912729374022,
+      18.25266397274879
+     ],
+     [
+      0,
+      0,
+      18.617717252203764
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "at": [
+    49.6,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      -27.42383999999999,
+      2
+     ],
+     [
+      0,
+      -24.681455999999994,
+      8.063286
+     ],
+     [
+      0,
+      -16.454303999999993,
+      13.194467999999999
+     ],
+     [
+      0,
+      -6.855959999999998,
+      14.660519999999998
+     ],
+     [
+      0,
+      0,
+      14.953730399999998
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#c9d3d6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -44.763999999999996,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.8
+     ]
+    },
+    "arc": {
+     "steps": 14,
+     "centre": [
+      0,
+      0,
+      2
+     ],
+     "radius": 16,
+     "startDeg": 0,
+     "endDeg": 180,
+     "plane": "xz"
+    },
+    "colour": "#dfe6e8"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -53.12,
+    4.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 8,
+    "height": 4.4,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#dfe3e5"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -56.12,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 10,
+      "height": 4.4,
+      "colour": "#f0f0ee"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "tube",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "ellipse": [
+      2.4,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      -80,
+      -42,
+      8
+     ],
+     [
+      -52,
+      -42,
+      8.2
+     ],
+     [
+      -38,
+      -48,
+      8.2
+     ],
+     [
+      -32,
+      -50,
+      8.2
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#7f9a9d"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -70,
+     -42,
+     0
+    ],
+    "end": [
+     -44,
+     -45,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.7,
+      "n": 8,
+      "height": 6.5,
+      "colour": "#b9bfc2"
+     }
+    }
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -60,
+    28,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#d5d8da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-block",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -40,
+    44
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8da0a8",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa5ab"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -25,
+     -68
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -68
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -68
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -68
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     25,
+     -68
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -68
+    ]
+   }
+  ],
+  "extent": [
+   118,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Dome is rounder and taller than the flat gridshell, no triangulated glass facets; bridge tube lacks the Y-legs and sits lower; ground planting and road absent; scaled 0.62."
+ }
+}

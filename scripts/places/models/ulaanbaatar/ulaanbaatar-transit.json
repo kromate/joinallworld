@@ -1,0 +1,344 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ulaanbaatar_Railway_Station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/st1.jpg",
+   "used": "taller central block with stepped crest and clock, long two-storey wings with balustrade parapets, pink-grey granite cladding, regular tall windows, fir trees in forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ulaanbaatar_railway_station.jpg",
+   "licence": "CC0",
+   "author": "Lawsonstu",
+   "view": "back",
+   "used": "arched ground-floor windows, lamp standards, flat platform, parapet and dark red eaves"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ulaanbaatar_Railway_Station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "detail",
+   "used": "entrance bay with carved capitals, cream stone bands, kiosk bay with silver dome"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/77747320",
+   "used": "overall size only (73 x 33 m, nearest match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9086",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#dcd4c2",
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6a60",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     30,
+     15
+    ]
+   },
+   "at": [
+    -32,
+    1.5
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9086",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#dcd4c2",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6a60",
+    "material": "membrane",
+    "parapet": 1.0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     38,
+     15
+    ]
+   },
+   "at": [
+    24,
+    1.5
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d9086",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#dcd4c2",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6a60",
+    "material": "membrane",
+    "parapet": 1.0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     3
+    ],
+    "z0": 17.6,
+    "height": 3.2,
+    "colour": "#9a8f85",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "z0": 20.8,
+    "height": 1.8,
+    "colour": "#b9684a",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -6,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.4,
+    "height": 8,
+    "columns": 4,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#e0d8c6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    -6,
+    11,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "depth": 12,
+    "height": 1
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -30,
+    18,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 6,
+    "height": 4
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    -6,
+    26,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 3,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -2,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     10,
+     -22
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     36,
+     -21
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -26
+    ],
+    "yawDeg": 90,
+    "colour": "#f2f2f2"
+   },
+   {
+    "at": [
+     -4,
+     -28
+    ],
+    "yawDeg": 90,
+    "colour": "#333333"
+   },
+   {
+    "at": [
+     14,
+     -27
+    ],
+    "yawDeg": 90,
+    "colour": "#9aa0a6"
+   },
+   {
+    "at": [
+     30,
+     -26
+    ],
+    "yawDeg": 90,
+    "colour": "#f2f2f2"
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no stepped crest ornament or kiosk dome, no signage lettering, platform and tracks not seen in photo"
+ }
+}

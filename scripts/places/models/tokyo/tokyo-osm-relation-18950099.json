@@ -1,0 +1,317 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tsurumi_Univercity_2025-11_ac.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/tokyo/tsu2.jpg",
+   "used": "tan tile-clad blocks with hooded paired windows, pale concrete frame portico with square columns, green-tinted glass block, lower left wing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tsurumiuniv.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hykw-a4",
+   "view": "street",
+   "file": "/tmp/places-evidence/tokyo/tsu1.jpg",
+   "used": "hillside herringbone concrete retaining wall, steps, cream older block with white columns"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/18950099",
+   "used": "campus extent 267 x 163 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 5,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "fit": "building",
+  "shiftX": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c49b78",
+    "trimColour": "#d9d4c8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#d9d4c8",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbc",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    18,
+    -4
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db8b0",
+    "glassColour": "#8fb0a8",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "trimColour": "#d9d4c8",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd0cc",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -44,
+    6
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c9a280",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "bands": "#d9d4c8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbc",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-block",
+   "footprint": {
+    "rect": [
+     60,
+     12
+    ]
+   },
+   "at": [
+    0,
+    60
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1dccf",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "bands": "#f2f0ea",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e1dccf",
+       "#b9b5aa"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     14,
+     50
+    ]
+   },
+   "at": [
+    60,
+    30
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d7c4a8",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d7c4a8",
+       "#b9a98e"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-slab",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    14,
+    -12
+   ],
+   "z0": 4.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4d0c6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d0c6"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "height": 4.2,
+      "colour": "#cfcbc0"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     3,
+     -14
+    ],
+    "end": [
+     25,
+     -14
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 8,
+    "colour": "#8f8f86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -8
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-relation-18950099",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tan tile main block, glass wing and columned portico present; no window hoods, concrete frame simplified, no hillside wall, layout invented"
+ }
+}

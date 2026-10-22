@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Taipower_Building_20131012_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Solomon203",
+   "view": "street",
+   "file": "/tmp/places-evidence/taipei/tp1.jpg",
+   "used": "the Taipower headquarters above the station: tan granite-look 27-storey slab with dense horizontal slit windows, lower 10-storey tan block beside it with ribbon windows, small street trees; the photo shows the offices, not the underground station"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1540007773",
+   "used": "station polygon (220 x 78 m, underground), used only for the extent; the five stair exits are shown as entrance portals"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Taipower_Building_metro_station",
+   "used": "underground station with five exits"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     38,
+     28
+    ]
+   },
+   "at": [
+    -22,
+    12
+   ],
+   "height": 114,
+   "storeys": 22,
+   "wall": {
+    "material": "stone",
+    "colour": "#b99b78",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "glassColour": "#3a3028",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "cornice": true,
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8468",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    18,
+    2
+   ],
+   "height": 42,
+   "storeys": 10,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0a07c",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#4a4236",
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "bay": 12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8468",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     70,
+     10
+    ]
+   },
+   "at": [
+    -2,
+    -16
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5560",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "metro-portal",
+   "at": [
+    -8,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 10,
+    "kiosk": false
+   }
+  },
+  {
+   "type": "metro-portal",
+   "at": [
+    24,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 9,
+    "kiosk": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 5,
+    "colour": "#c4c4bf"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "count": 3,
+    "kind": "broadleaf",
+    "gap": 4.5,
+    "height_min": 6,
+    "height_max": 8
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "granite panel joints, the stepped back of the lower block and the street furniture are not modelled; the underground station is shown only by two entrance portals and steps, and the photo shows the offices rather than the station"
+ }
+}

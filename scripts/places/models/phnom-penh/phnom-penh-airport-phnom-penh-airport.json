@@ -1,0 +1,274 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-airport-phnom-penh-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/phnom-penh.json#phnom-penh-airport-phnom-penh-airport",
+   "used": "Techo International Airport (Foster + Partners, 2025): long glazed head house under a sweeping pale roof, pier with jet bridges, control tower, solar, forecourt car park; pale cream and sage-green accents from brief colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1172638379",
+   "used": "overall scale only (about 800 m terminal, zigzag outline unreliable): a 110 m portion is modelled to fit the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "head-house",
+   "footprint": {
+    "rect": [
+     110,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcbf",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e6df",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -4,
+    13.2
+   ],
+   "params": {
+    "form": "curved",
+    "width": 116,
+    "depth": 50,
+    "height": 0,
+    "thickness": 0.9,
+    "rise": 5,
+    "colour": "#e9e6df",
+    "edgeColour": "#7a9a7c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     100,
+     18
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b7c4c6",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#dfe3e4",
+    "material": "metal-sheet",
+    "rise": 2.5,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b7c4c6",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe3e4",
+    "material": "metal-sheet",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    62,
+    30,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "style": "round",
+    "colour": "#e9e6df",
+    "cabColour": "#7a9a7c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/jet-bridge",
+     "params": {
+      "length": 16
+     }
+    },
+    "mode": "line",
+    "start": [
+     -36,
+     52,
+     0
+    ],
+    "end": [
+     36,
+     52,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    -30,
+    76,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    34,
+    76,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "core/solar-panels",
+   "at": [
+    -66,
+    10,
+    0
+   ],
+   "params": {
+    "rows": 4,
+    "cols": 8
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    18,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -28
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no exterior photo available on Commons (only aircraft and interiors); roof sweep, glazing and colours from the brief; a 110 m portion of an 800 m terminal"
+ }
+}

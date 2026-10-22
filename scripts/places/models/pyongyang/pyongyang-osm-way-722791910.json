@@ -1,0 +1,370 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kumsusan_Memorial_Palace,_Pyongyang.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Mark Scott Johnson",
+   "view": "front",
+   "file": "/tmp/places-evidence/pyongyang/kum1.jpg",
+   "used": "pale grey granite stepped palace: tall central block with two receding cornice tiers, long wing on the left with a row of tall round-arched windows, low deep front podium with dark recesses and a row of flags, right wing with vertical recessed panels, vast paved plaza with wide steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:General_view_of_Kumsusan_Memorial_Palace.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Mark Scott Johnson",
+   "view": "front",
+   "file": "/tmp/places-evidence/pyongyang/kum2.jpg",
+   "used": "overall width and stepped silhouette"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/722791910",
+   "used": "overall extent (about 375 x 185 m); modelled as separate blocks from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 34,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     71.5,
+     9.9
+    ]
+   },
+   "at": [
+    11.0,
+    -14.3
+   ],
+   "z0": 0.0,
+   "height": 4.95,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d5d2ca",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#c4c1b8",
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 2,
+      "spacing": 3.8,
+      "width": 0.9,
+      "kind": "square",
+      "colour": "#c4c0b4",
+      "backColour": "#6b6a66",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c98",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     33.0,
+     26.400000000000002
+    ]
+   },
+   "at": [
+    0.0,
+    3.3000000000000003
+   ],
+   "z0": 0.0,
+   "height": 19.8,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#d5d2ca",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#c4c1b8",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.8,
+      "depth": 0.4,
+      "spacing": 3.4,
+      "colour": "#b4b0a4",
+      "margin": 2.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c98",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     25.3,
+     18.700000000000003
+    ]
+   },
+   "at": [
+    0.0,
+    3.3000000000000003
+   ],
+   "z0": 19.8,
+   "height": 4.95,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d5d2ca",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#c4c1b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c98",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     16.5,
+     12.100000000000001
+    ]
+   },
+   "at": [
+    0.0,
+    3.3000000000000003
+   ],
+   "z0": 24.750000000000004,
+   "height": 3.3000000000000003,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d5d2ca",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#c4c1b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c98",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     49.50000000000001,
+     18.700000000000003
+    ]
+   },
+   "at": [
+    -38.5,
+    2.2
+   ],
+   "z0": 0.0,
+   "height": 9.9,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d5d2ca",
+    "windows": "arched",
+    "windowRatio": 0.55,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#c4c1b8",
+    "bay": 5,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c98",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     28.6,
+     16.5
+    ]
+   },
+   "at": [
+    30.800000000000004,
+    3.3000000000000003
+   ],
+   "z0": 0.0,
+   "height": 8.8,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d5d2ca",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 1.5,
+    "cornice": true,
+    "bands": "#c4c1b8",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.8,
+      "depth": 0.4,
+      "spacing": 3.4,
+      "colour": "#b4b0a4",
+      "margin": 2.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c98",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "plaza-steps",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "rise": 0.9,
+    "run": 1.4,
+    "count": 5,
+    "colour": "#c4c0b6"
+   }
+  },
+  {
+   "type": "array",
+   "id": "flagpoles",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -22,
+     0
+    ],
+    "end": [
+     34,
+     -22,
+     0
+    ],
+    "count": 12,
+    "lod1Step": 3,
+    "lod2Step": 16,
+    "of": [
+     {
+      "type": "flag",
+      "params": {
+       "height": 6,
+       "colours": [
+        "#c8362f"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "balustrade",
+   "params": {
+    "points": [
+     [
+      -34,
+      -48
+     ],
+     [
+      34,
+      -48
+     ]
+    ],
+    "height": 1.1,
+    "thickness": 0.8,
+    "colour": "#cfcbc0",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hedges",
+   "at": [
+    -18,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.8,
+    "count": 3,
+    "spread": 2,
+    "line": 36,
+    "colour": "#3c6e34"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-722791910",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped tiers and long arched wing match the photo; the cornice friezes, relief panels and moat are missing, the right-hand wings are shortened and the building is modelled at reduced scale (about 0.55 of true) to fit the scene clamp."
+ }
+}

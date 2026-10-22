@@ -1,0 +1,362 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-404699628",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2014.11.17.101441_Jade_Buddha_Temple_Shanghai.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hermann Luyken",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/jade1.jpg",
+   "used": "saffron-yellow walls, dark red lattice doors under a red column front, double-eave grey-tile roof with a recessed upper storey and swept eaves, stone balustrade and steps, incense burner pavilion"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1246090704",
+   "used": "main hall extent about 71 x 43 m and its stepped layout"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-lower",
+   "footprint": {
+    "rect": [
+     34,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a23f",
+    "windows": "screen",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "screen",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4.5,
+    "plinth": 0.6,
+    "glassColour": "#8a2f25",
+    "bands": "#8c2f27"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "id": "eave-lower",
+   "at": [
+    0,
+    0,
+    6.5
+   ],
+   "params": {
+    "width": 34,
+    "depth": 17,
+    "rise": 1.6,
+    "overhang": 2.4,
+    "upturn": 1.0,
+    "colour": "#4f5a60",
+    "trim": "#8c2f27"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-upper",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 7.6,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7a2e26",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.2,
+    "plinth": 0.6,
+    "glassColour": "#8a2f25",
+    "bands": "#d9a23f"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "id": "eave-upper",
+   "at": [
+    0,
+    0,
+    11.8
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "rise": 3.6,
+    "overhang": 2.6,
+    "upturn": 1.2,
+    "colour": "#4f5a60",
+    "trim": "#8c2f27"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-hall",
+   "footprint": {
+    "rect": [
+     9,
+     24
+    ]
+   },
+   "at": [
+    -34,
+    6
+   ],
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a23f",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.2,
+    "plinth": 0.6,
+    "glassColour": "#8a2f25",
+    "bands": "#8c2f27"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "at": [
+    -34,
+    6,
+    5.0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 24,
+    "rise": 2.4,
+    "overhang": 1.6,
+    "upturn": 0.7,
+    "colour": "#4f5a60",
+    "trim": "#8c2f27"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-hall",
+   "footprint": {
+    "rect": [
+     9,
+     24
+    ]
+   },
+   "at": [
+    34,
+    6
+   ],
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a23f",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.2,
+    "plinth": 0.6,
+    "glassColour": "#8a2f25",
+    "bands": "#8c2f27"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "curved-roof",
+   "at": [
+    34,
+    6,
+    5.0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 24,
+    "rise": 2.4,
+    "overhang": 1.6,
+    "upturn": 0.7,
+    "colour": "#4f5a60",
+    "trim": "#8c2f27"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.0,
+    "run": 1.1,
+    "count": 4,
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 3.4,
+    "thickness": 0.6,
+    "colour": "#d9a23f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "depth": 3.5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.6,
+    "colour": "#2e2b2b",
+    "cap_colour": "#3c4144"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -6,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#33302f",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.6,
+      0
+     ],
+     [
+      1.8,
+      0.6
+     ],
+     [
+      1.3,
+      1.4
+     ],
+     [
+      1.0,
+      2.2
+     ],
+     [
+      1.2,
+      2.8
+     ],
+     [
+      0,
+      2.8
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -18
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "roof ornament, carved fascia boards, red column colonnade and stone balustrades are not modelled; upper storey plaques omitted; side halls placed from layout not photo; front gate hall omitted so the main hall faces the viewer"
+ }
+}

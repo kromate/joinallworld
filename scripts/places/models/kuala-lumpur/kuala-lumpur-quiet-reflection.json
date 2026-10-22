@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1186724693",
+   "used": "mosque outline (88 x 63 m, stepped zigzag edges), 0.3 m match; no photo of Masjid As-Saadah KL found (Commons 'Masjid Saadah' files are in Sumatra, not used)"
+  },
+  {
+   "kind": "text",
+   "url": "briefs/kuala-lumpur.json",
+   "used": "KL style: cream render, green-capped dome, one slender minaret"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "bands": "#d6b24c",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f8f6a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -4,
+    11
+   ],
+   "params": {
+    "rect": [
+     34,
+     30
+    ],
+    "height": 6,
+    "colour": "#f2eee3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "trimColour": "#d6b24c"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -6,
+    -4,
+    17
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#e8e2d2"
+     ],
+     [
+      13,
+      0,
+      "#e8e2d2"
+     ],
+     [
+      13,
+      1.5,
+      "#2f8f6a"
+     ],
+     [
+      12,
+      5,
+      "#2f8f6a"
+     ],
+     [
+      9,
+      9,
+      "#2f8f6a"
+     ],
+     [
+      5,
+      12,
+      "#2f8f6a"
+     ],
+     [
+      1.5,
+      14,
+      "#2f8f6a"
+     ],
+     [
+      0.4,
+      14,
+      "#2f8f6a"
+     ],
+     [
+      0.4,
+      18,
+      "#d6b24c"
+     ]
+    ],
+    "segments": 28
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    28,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "style": "pencil",
+    "colour": "#f2eee3",
+    "trim": "#d6b24c",
+    "cap_colour": "#2f8f6a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real outline with typical KL mosque dome and minaret, roof and facade details assumed"
+ }
+}

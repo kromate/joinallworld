@@ -1,0 +1,264 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MCUT.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "CCMCUT",
+   "view": "front",
+   "file": "/tmp/places-evidence/taipei/community-wo-0.jpg",
+   "used": "main teaching block in pink-brown tile with projecting balcony bands every storey, dark sloped top fascia; round white gatehouse pavilion with deep dark overhang and glazed ribbon; steel-truss walkway canopy on stone columns"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5456014",
+   "used": "campus extent only (860 x 449 m); the block is placed individually"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.2,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c58a72",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.8,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.6,
+      "width": 3.6,
+      "every": 6.4,
+      "colour": "#b8715a",
+      "railColour": "#7a5448",
+      "floors": "upper",
+      "slab": 0.25
+     }
+    ],
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 2.2,
+    "colour": "#5d4a42",
+    "material": "concrete",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    34,
+    -4
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e0d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b8f7e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    -26,
+    -12
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efefec",
+    "windows": "curtain",
+    "windowRatio": 0.55
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e7e7e4",
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-soffit",
+   "at": [
+    -26,
+    -12
+   ],
+   "params": {
+    "radius": 7.2,
+    "n": 20,
+    "z0": 4.4,
+    "height": 0.5,
+    "colour": "#34383c",
+    "topColour": "#34383c"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -26,
+    -18.5,
+    5.2
+   ],
+   "params": {
+    "width": 12,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#dcdcd8",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 8,
+    "height": 5.2,
+    "thickness": 0.5,
+    "columns": 3,
+    "colour": "#bdbab0",
+    "edgeColour": "#aaa79c"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -2,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#bcb7ab"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -20,
+    6,
+    24.2
+   ],
+   "params": {
+    "radius": 1.5,
+    "height": 2,
+    "legs": 1.1,
+    "colour": "#cfd3d4"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -42,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-community-workshop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is a cropped composite; truss canopy is a plain slab on columns; gatehouse glazing simplified; block length and annex are estimates."
+ }
+}

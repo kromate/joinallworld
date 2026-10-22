@@ -1,0 +1,327 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-872196107",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Namhansanseong_IMG_2090.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "G41rn8",
+   "view": "front",
+   "file": "/tmp/places-evidence/seoul/nam1.jpg",
+   "used": "two stepped rubble-stone terraces with a central granite stair, tall red-timber gate hall with dark grey tiled roof flanked by lower wings on a whitish stone-banded base, pond at right, wooded hill behind, sandy forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/872196107",
+   "used": "identity and position only: the OSM building is one 9 x 5 m roof, the model shows the compound frontage"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     6
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#b1a893",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     6
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#a39a88",
+    "top": true
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -13.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.2,
+    "run": 4,
+    "colour": "#c4bba6",
+    "rails": false
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -7.2,
+    2.2
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.2,
+    "run": 4,
+    "colour": "#c4bba6",
+    "rails": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    1.2,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     56,
+     0.8
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#cfcabd",
+    "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-hall",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    3.5
+   ],
+   "z0": 4.4,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a3a2c",
+    "glassColour": "#2b2b28",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 1.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#45494d",
+    "material": "slate",
+    "overhang": 1.8,
+    "pitch": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-range",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    -22,
+    3
+   ],
+   "z0": 4.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8e3d2e",
+    "glassColour": "#2b2b28",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 1.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d51",
+    "material": "slate",
+    "overhang": 1.3,
+    "pitch": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-range",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    20,
+    3
+   ],
+   "z0": 4.4,
+   "height": 2.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8e3d2e",
+    "glassColour": "#2b2b28",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 1.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d51",
+    "material": "slate",
+    "overhang": 1.3,
+    "pitch": 24
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    0.4,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#d0ccc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    0.4,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#d0ccc0"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    38,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "shape": "rect",
+    "colour": "#5d7a6a",
+    "bank": true
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    22,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "count": 8,
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    22,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14,
+    "count": 6,
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      0,
+      -17
+     ]
+    ],
+    "width": 14,
+    "colour": "#d6c7a4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   96,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Terraces, stair, red-timber gate hall and wings with grey tile roofs match in massing and colour; roofs lack curved eaves and ridge ornaments, stone coursing is flat colour, pond and hill are only suggested."
+ }
+}

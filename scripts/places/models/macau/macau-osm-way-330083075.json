@@ -1,0 +1,307 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museu_das_Comunica%C3%A7%C3%B5es.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "9old9 (assumed)",
+   "view": "front",
+   "file": "/tmp/places-evidence/macau/comm1.jpg",
+   "used": "pink-beige granite cladding, upper block cantilevered over a glazed entrance on heavy piers, blue entrance frame, steps, retaining sign wall on the right, floodlights along the soffit"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/330083075",
+   "used": "size (about 63x47 m) and 31.6 m height; the jagged outline was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": -6,
+  "fovDeg": 60
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "photo is a low steep angle; fine granite panel joints, floodlights, hillside behind and the real stepped footprint are not modelled"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     40,
+     24
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "wall": {
+    "material": "granite",
+    "colour": "#cdb6a4",
+    "windows": "punched",
+    "plinth": 0.5,
+    "windowRatio": 0.04,
+    "bay": 9,
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59c",
+    "parapet": 0.4
+   },
+   "storeys": 3
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     44,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 13,
+   "height": 12,
+   "wall": {
+    "material": "granite",
+    "colour": "#cdb6a4",
+    "windows": "punched",
+    "plinth": 0.5,
+    "windowRatio": 0.05,
+    "bay": 10,
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 4,
+      "depth": 0.3,
+      "width": 0.6,
+      "colour": "#bfa896",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59c",
+    "parapet": 0.5
+   },
+   "storeys": 2
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     18,
+     3
+    ]
+   },
+   "at": [
+    -6,
+    -11.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5b6f7e",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#4f6678"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#444444",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    6,
+    -13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "wall": {
+    "material": "granite",
+    "colour": "#cdb6a4",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -18,
+    -13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "wall": {
+    "material": "granite",
+    "colour": "#cdb6a4",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "signwall",
+   "footprint": {
+    "rect": [
+     20,
+     1.4
+    ]
+   },
+   "at": [
+    24,
+    -15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "wall": {
+    "material": "granite",
+    "colour": "#cdb6a4",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfa896",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    24,
+    -15.8,
+    2.4
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "colour": "#1f4fa0"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 4,
+    "height": 1.2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    24,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -8,
+    -17,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -4,
+     10.8
+    ],
+    "end": [
+     10,
+     -4,
+     10.8
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.4
+      ],
+      "height": 0.4,
+      "colour": "#2c2c2c"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-330083075"
+}

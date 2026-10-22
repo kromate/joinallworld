@@ -1,0 +1,414 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Taipei_County_Hall_far_view_20100208.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Undefined",
+   "view": "street",
+   "file": "/tmp/places-evidence/taipei/community-vo-0.jpg",
+   "used": "massing: tall grey stone slab with a teal glass wedge, shorter left tower with a round crown, stepped glass link, wide podium with a round grey drum, colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:New_Taipei_City_Hall_20131108.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Undefined~commonswiki",
+   "view": "street",
+   "file": "/tmp/places-evidence/taipei/community-vo-1.jpg",
+   "used": "tower proportions, stone-tile face with small punched windows, glass wedge, drum"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:New_Taipei_City_Hall_%E6%96%B0%E5%8C%97%E5%B8%82%E6%94%BF%E5%BA%9C_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "lienyuan lee",
+   "view": "street",
+   "file": "/tmp/places-evidence/taipei/community-vo-2.jpg",
+   "used": "stepped notches between slabs, grey tile cladding, glass slices"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4202253",
+   "used": "33 levels, 140.5 m height, complex size 165 x 91 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "at": [
+    10,
+    10
+   ],
+   "z0": 0,
+   "height": 138,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#a7a5a0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 9,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-wedge",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    24,
+    -1
+   ],
+   "z0": 0,
+   "height": 118,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f7488",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8a8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-tower",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    -18,
+    12
+   ],
+   "z0": 0,
+   "height": 104,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#9d9b97",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 9,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "crown",
+   "at": [
+    -18,
+    12,
+    104
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#7f98a4"
+     ],
+     [
+      11,
+      0,
+      "#7f98a4"
+     ],
+     [
+      11,
+      6,
+      "#7f98a4"
+     ],
+     [
+      10,
+      7,
+      "#9aa0a3"
+     ],
+     [
+      0,
+      7,
+      "#9aa0a3"
+     ]
+    ],
+    "segments": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-link",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    -6
+   ],
+   "z0": 0,
+   "height": 88,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a7c92",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8a8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-step",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -13
+   ],
+   "z0": 0,
+   "height": 62,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5a8aa0",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8a8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     56,
+     30
+    ]
+   },
+   "at": [
+    14,
+    -32
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#a9a8a3",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 9,
+    "faces": {
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     38,
+     38
+    ]
+   },
+   "at": [
+    40,
+    -38
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#b7b6b2",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-glass",
+   "footprint": {
+    "rect": [
+     50,
+     22
+    ]
+   },
+   "at": [
+    -46,
+    -34
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d5560",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    10,
+    10,
+    138.8
+   ],
+   "params": {
+    "radius": 6,
+    "colour": "#8c9096"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    -56,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -58
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-community-voting-game",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Heavily simplified windows to fit 20k budget; stepped notches, glass slices and real twisting podium footprint not modelled; neighbours omitted."
+ }
+}

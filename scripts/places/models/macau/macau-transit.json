@@ -1,0 +1,246 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Riviera_Macau_Terminal_25-09-2025.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LN9267",
+   "view": "interior",
+   "file": "/tmp/places-evidence/macau/tr2.jpg",
+   "used": "interior only: open concrete-soffit bay hall, square pale-grey tile-clad columns with a navy tile skirt, kerbed bus bays, red pipework; colours taken, not compared as a view"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:RIVIERA_MACAU_TERMINAL_202610.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Enviro2800",
+   "view": "detail",
+   "file": "/tmp/places-evidence/macau/tr1.jpg",
+   "used": "red blank stop-sign board on a tile column, tile cladding"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/670669099",
+   "used": "Riviera Block I plan (about 48 x 29 m, 45 levels, 147 m) for the tower above the terminal"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     48,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d9d6cb",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.2,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 0.5,
+      "spacing": 8,
+      "width": 1.6,
+      "kind": "square",
+      "colour": "#cfccc0",
+      "backColour": "#5a5d5f",
+      "storeys": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-band",
+   "params": {
+    "rect": [
+     48.4,
+     30.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#243a5c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "red-sign-board",
+   "params": {
+    "rect": [
+     3.4,
+     0.3
+    ],
+    "z0": 4.2,
+    "height": 1.4,
+    "colour": "#b04a3c"
+   },
+   "at": [
+    -14,
+    -15.4
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stop-canopy",
+   "params": {
+    "rect": [
+     30,
+     3
+    ],
+    "z0": 4.8,
+    "height": 0.4,
+    "colour": "#8a8f94"
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "buses",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -18,
+     -22,
+     0
+    ],
+    "end": [
+     18,
+     -22,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        3.0,
+        11
+       ],
+       "z0": 0.4,
+       "height": 3.1,
+       "colour": "#d8d6d2",
+       "topColour": "#b04a3c"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "params": {
+    "points": [
+     [
+      -14,
+      -8
+     ],
+     [
+      12,
+      -10
+     ],
+     [
+      15,
+      8
+     ],
+     [
+      -12,
+      9
+     ]
+    ],
+    "z0": 9.5,
+    "height": 120,
+    "colour": "#d8d0bf",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#d8d0bf",
+      "#bfb7a4"
+     ]
+    }
+   },
+   "at": [
+    0,
+    4
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photos show only the interior bay hall, so no exterior comparison; tower massing is a simplified OSM-scale block, podium facade is guessed"
+ }
+}

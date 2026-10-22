@@ -1,0 +1,284 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bangkok_Metropolitan_Government_Building_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Manrat Thiusthas",
+   "view": "front",
+   "file": "/tmp/places-evidence/bangkok/m0_hall.jpg",
+   "used": "tall teal-glass ribbon tower with blue spandrel bands, silver balcony spine on its left edge, plant/louvre stage, stepped crown with curved cap, red-brick arched-window podium"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1",
+   "used": "podium size cue only (outline is 106 x 101 m with forecourt wings, simplified to a rectangle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 38,
+  "aspect": 0.644,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     74,
+     44
+    ]
+   },
+   "at": [
+    2,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4604a",
+    "glassColour": "#4d7f8f",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8a58f",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     40,
+     28
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 118,
+   "storeys": 34,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c6fa0",
+    "glassColour": "#4fb0b8",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "plinth": 0.2,
+    "bay": 20,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfc6c9",
+    "material": "concrete",
+    "overhang": 2.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "silver-spine",
+   "footprint": {
+    "rect": [
+     7,
+     28
+    ]
+   },
+   "at": [
+    -21.5,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 118,
+   "storeys": 34,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aeb5b9",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfc6c9",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-stage",
+   "footprint": {
+    "rect": [
+     34,
+     6
+    ]
+   },
+   "at": [
+    -2,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 30,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9ccce",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": {
+     "kind": "louvres",
+     "colour": "#8a9095",
+     "floors": "all"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d6",
+    "material": "concrete",
+    "overhang": 2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crown",
+   "footprint": {
+    "rect": [
+     32,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 116,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c5c9",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9d1d4",
+    "material": "concrete",
+    "overhang": 1.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "bottom": 1,
+    "colour": "#e8e1d0",
+    "frameColour": "#8f8a7e"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 1.2,
+    "run": 2.4,
+    "count": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -48
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tower tall-and-narrow ratio and teal reflections approximate; podium is a simplified rectangle with fewer arched bays and no big round window; plant stage has no louvres"
+ }
+}

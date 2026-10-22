@@ -1,0 +1,195 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:San_Beda_Alabang_Gym.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "TNSD",
+   "view": "interior",
+   "file": "/tmp/places-evidence/manila/sb.jpg",
+   "used": "interior only: cream walls, maroon steel trusses and a sheet roof of the covered gym; no exterior photo found"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23378044",
+   "used": "campus is 374x335 m so it is not modelled as one building; one academic block plus the gym is composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "academic-U",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     80,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3c6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#7a1f2a",
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ],
+    "bay": 5.5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 18,
+    "colour": "#8c3a30",
+    "material": "metal-sheet",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gym",
+   "footprint": {
+    "rect": [
+     34,
+     28
+    ]
+   },
+   "at": [
+    58,
+    10
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dbb8",
+    "windows": "none",
+    "bands": "#7a1f2a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 14,
+    "colour": "#7d3a30",
+    "material": "metal-sheet",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "arcade",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 4.2,
+    "thickness": 3.5,
+    "colour": "#ece3c6"
+   }
+  },
+  {
+   "type": "bell-tower",
+   "at": [
+    0,
+    -22,
+    16
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -32,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -32,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 6,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -50,
+     -30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     50,
+     -35
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -20,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo; one plausible academic U-block and gym from the campus brief and gym interior colours; maroon accents partly guessed."
+ }
+}

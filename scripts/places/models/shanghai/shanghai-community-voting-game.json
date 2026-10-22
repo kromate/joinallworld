@@ -1,0 +1,227 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shanghai_Government_Building.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "Baycrest",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/gov.jpg",
+   "used": "pale stone slab of about 15 storeys with vertical window columns and glazed slit centre, wider rounded pink-grey stone entrance drum at the base with pilasters, flagpole on the plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/178801539",
+   "used": "height 50 m and overall width; the polygon is odd-angled so the photo massing was used"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "window grid coarser than the real facade (budget), no recessed side bays or tall slit columns on the wing tops, entrance drum fluted rather than pilastered"
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab-left",
+   "footprint": {
+    "rect": [
+     36,
+     28
+    ]
+   },
+   "at": [
+    -34,
+    8
+   ],
+   "height": 54,
+   "storeys": 15,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8d3c6",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 17,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-right",
+   "footprint": {
+    "rect": [
+     36,
+     28
+    ]
+   },
+   "at": [
+    34,
+    8
+   ],
+   "height": 54,
+   "storeys": 15,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8d3c6",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 17,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-centre",
+   "footprint": {
+    "rect": [
+     34,
+     28
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 57,
+   "storeys": 16,
+   "wall": {
+    "material": "stone",
+    "colour": "#dcd7ca",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 17,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-drum",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     56,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#b5a58d",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#a89878",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d907a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     26,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -25.5
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3538",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d907a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    2,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 17,
+    "colour": "#c8202a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-community-voting-game"
+}

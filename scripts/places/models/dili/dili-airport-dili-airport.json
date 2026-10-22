@@ -1,0 +1,442 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Presidente_Nicolau_Lobato_International_Airport_terminal,_2023_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "front",
+   "used": "arrival pavilion: tall red pyramidal metal roof on stone-clad pillars, second smaller pavilion left, dark long name wall, black-white kerbs, mast, flagpoles",
+   "file": "/tmp/places-evidence/dili/air1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Airport_Pres_Lobato.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "yuhui-timor",
+   "view": "side",
+   "used": "terminal wing with dark red steep pyramidal roof, red-white striped lighting mast"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1212813986",
+   "used": "terminal footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.0,
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d4a3c",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arr-pil-1-1",
+   "footprint": {
+    "rect": [
+     1.4300000000000002,
+     1.4300000000000002
+    ]
+   },
+   "at": [
+    8.48,
+    -55.52
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.620000000000001,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arr-pil-11",
+   "footprint": {
+    "rect": [
+     1.4300000000000002,
+     1.4300000000000002
+    ]
+   },
+   "at": [
+    8.48,
+    -48.48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.620000000000001,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arr-pil1-1",
+   "footprint": {
+    "rect": [
+     1.4300000000000002,
+     1.4300000000000002
+    ]
+   },
+   "at": [
+    15.52,
+    -55.52
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.620000000000001,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arr-pil11",
+   "footprint": {
+    "rect": [
+     1.4300000000000002,
+     1.4300000000000002
+    ]
+   },
+   "at": [
+    15.52,
+    -48.48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.620000000000001,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arr-roof",
+   "footprint": {
+    "rect": [
+     9.9,
+     9.9
+    ]
+   },
+   "at": [
+    12,
+    -52
+   ],
+   "rotDeg": 0,
+   "z0": 4.620000000000001,
+   "height": 0.55,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b99c",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#d8452b",
+    "material": "metal-sheet",
+    "rise": 10,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dep-pil-1-1",
+   "footprint": {
+    "rect": [
+     0.7150000000000001,
+     0.7150000000000001
+    ]
+   },
+   "at": [
+    -49.76,
+    -49.76
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.3100000000000005,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dep-pil-11",
+   "footprint": {
+    "rect": [
+     0.7150000000000001,
+     0.7150000000000001
+    ]
+   },
+   "at": [
+    -49.76,
+    -46.24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.3100000000000005,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dep-pil1-1",
+   "footprint": {
+    "rect": [
+     0.7150000000000001,
+     0.7150000000000001
+    ]
+   },
+   "at": [
+    -46.24,
+    -49.76
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.3100000000000005,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dep-pil11",
+   "footprint": {
+    "rect": [
+     0.7150000000000001,
+     0.7150000000000001
+    ]
+   },
+   "at": [
+    -46.24,
+    -46.24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.3100000000000005,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dep-roof",
+   "footprint": {
+    "rect": [
+     4.95,
+     4.95
+    ]
+   },
+   "at": [
+    -48,
+    -48
+   ],
+   "rotDeg": 0,
+   "z0": 2.3100000000000005,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b99c",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#d8452b",
+    "material": "metal-sheet",
+    "rise": 3.575,
+    "overhang": 0.8250000000000001
+   }
+  },
+  {
+   "type": "mass",
+   "id": "namewall",
+   "footprint": {
+    "rect": [
+     22,
+     1
+    ]
+   },
+   "at": [
+    -22,
+    -50
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a4c4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5c5e"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -60,
+    -35,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "round",
+    "colour": "#d9d9d6",
+    "bandColour": "#c8362f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -40,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#cccccc",
+    "count": 6,
+    "spacing": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -56
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -55
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-airport-dili-airport",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "pavilion roof lacks the concave Timorese flare and stone-clad tapered pillars; terminal behind is a bounding-box hip roof over the irregular OSM outline; no kerb stripes, name wall plain, background trees sparse"
+ }
+}

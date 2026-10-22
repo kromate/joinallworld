@@ -1,0 +1,138 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1059930836",
+   "used": "nearest OSM building (25.8 m, not name-matched) gives size 43 x 17 m, 3 levels, green hipped roof; not trusted as the station's own outline"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q717274",
+   "used": "Puhung metro station 1987; the only photo found is of the platform interior, so it was not used for the exterior"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     43,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#e2d8c0",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "bands": "#b9b6ae",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7a56",
+    "material": "clay-tile",
+    "rise": 3,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium",
+   "params": {
+    "rect": [
+     47,
+     21
+    ],
+    "height": 0.5,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "core/portico",
+   "id": "entrance",
+   "at": [
+    0,
+    -10,
+    0.5
+   ],
+   "params": {
+    "width": 13,
+    "depth": 3.2,
+    "height": 8,
+    "columns": 6,
+    "pediment": false,
+    "steps": 4,
+    "colour": "#eeeeea",
+    "roofColour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    -9,
+    -14,
+    0.5
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -26,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26,
+     -8
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   75,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-transit",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No exterior photo; entrance portico and arch rhythm are typical of the style."
+ }
+}

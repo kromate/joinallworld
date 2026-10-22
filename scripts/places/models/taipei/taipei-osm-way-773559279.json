@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-773559279",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/909674980",
+   "used": "only a 22 x 17 m bungalow is mapped 28 m from the venue point (nearest match, not named), so it informs the size of the bungalow only"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/way/773559279",
+   "used": "name Sanban Bridge (three-plank bridge): a stone three-slab bridge over a stream with a small lookout, per the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 20,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "width": 11,
+    "depth": 44,
+    "shape": "rect",
+    "colour": "#6f9aa3",
+    "bank": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-w",
+   "params": {
+    "rect": [
+     1.4,
+     3.4
+    ],
+    "height": 1.6,
+    "colour": "#8d8a84",
+    "topColour": "#8d8a84"
+   },
+   "at": [
+    -5,
+    0,
+    -0.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-e",
+   "params": {
+    "rect": [
+     1.4,
+     3.4
+    ],
+    "height": 1.6,
+    "colour": "#8d8a84",
+    "topColour": "#8d8a84"
+   },
+   "at": [
+    5,
+    0,
+    -0.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab1",
+   "params": {
+    "rect": [
+     11.5,
+     1.0
+    ],
+    "height": 0.45,
+    "colour": "#a39f97",
+    "topColour": "#b0aca4"
+   },
+   "at": [
+    0,
+    -1.1,
+    1.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab2",
+   "params": {
+    "rect": [
+     11.5,
+     1.0
+    ],
+    "height": 0.45,
+    "colour": "#a39f97",
+    "topColour": "#b0aca4"
+   },
+   "at": [
+    0,
+    0,
+    1.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab3",
+   "params": {
+    "rect": [
+     11.5,
+     1.0
+    ],
+    "height": 0.45,
+    "colour": "#a39f97",
+    "topColour": "#b0aca4"
+   },
+   "at": [
+    0,
+    1.1,
+    1.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bank-w",
+   "params": {
+    "points": [
+     [
+      -30,
+      -21.0
+     ],
+     [
+      -6,
+      -21.0
+     ],
+     [
+      -6,
+      21.0
+     ],
+     [
+      -30,
+      21.0
+     ]
+    ],
+    "height": 1.2,
+    "colour": "#7a9a58",
+    "topColour": "#6f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank-e",
+   "params": {
+    "points": [
+     [
+      6,
+      -21.0
+     ],
+     [
+      30,
+      -21.0
+     ],
+     [
+      30,
+      21.0
+     ],
+     [
+      6,
+      21.0
+     ]
+    ],
+    "height": 1.2,
+    "colour": "#7a9a58",
+    "topColour": "#6f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lookout",
+   "params": {
+    "points": [
+     [
+      -12,
+      2
+     ],
+     [
+      -6,
+      2
+     ],
+     [
+      -6,
+      9
+     ],
+     [
+      -12,
+      9
+     ]
+    ],
+    "height": 1.4,
+    "colour": "#8d8a84",
+    "topColour": "#b5b8b6"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -12,
+    9,
+    1.4
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "postEvery": 1.5,
+    "colour": "#b5b8b6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bungalow",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    16,
+    12
+   ],
+   "rotDeg": 10,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8a84",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7f8c",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9,
+    9.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.7,
+    "run": 1.2,
+    "count": 2,
+    "colour": "#b5b8b6"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -18,
+    14,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 12,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    2,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 6,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and the place is not identified beyond its name: bridge, lookout and bungalow are assumed from the name and the brief"
+ }
+}

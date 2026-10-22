@@ -1,0 +1,344 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: node, roadside open-air grilled-food restaurant, tin pitched roof on timber posts, tables and grills at the front; no footprint, no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     10
+    ],
+    "height": 0.25,
+    "colour": "#b8b2a2",
+    "topColour": "#b8b2a2"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -9,
+     -4,
+     0
+    ],
+    "end": [
+     9,
+     -4,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.25,
+        0.25
+       ],
+       "height": 3.4,
+       "colour": "#4a3a2e",
+       "topColour": "#4a3a2e"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -9,
+     4,
+     0
+    ],
+    "end": [
+     9,
+     4,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.25,
+        0.25
+       ],
+       "height": 3.4,
+       "colour": "#4a3a2e",
+       "topColour": "#4a3a2e"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "rect": [
+     21,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.4,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7d8083",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8083",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     20,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    4.8
+   ],
+   "z0": 0.25,
+   "height": 3.1,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8b6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a2e"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     -1.5,
+     0
+    ],
+    "end": [
+     7,
+     -1.5,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.25
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        0.8
+       ],
+       "height": 0.75,
+       "colour": "#8b6a44",
+       "topColour": "#8b6a44"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -1.1,
+       0,
+       0.25
+      ],
+      "params": {
+       "rect": [
+        0.4,
+        0.4
+       ],
+       "height": 0.45,
+       "colour": "#4a3a2e",
+       "topColour": "#4a3a2e"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       1.1,
+       0,
+       0.25
+      ],
+      "params": {
+       "rect": [
+        0.4,
+        0.4
+       ],
+       "height": 0.45,
+       "colour": "#4a3a2e",
+       "topColour": "#4a3a2e"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -7,
+     0
+    ],
+    "end": [
+     2,
+     -7,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.2,
+        0.6
+       ],
+       "height": 0.9,
+       "colour": "#3a3a3a",
+       "topColour": "#3a3a3a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        1.0,
+        0.5
+       ],
+       "height": 0.15,
+       "colour": "#c9c6bb",
+       "topColour": "#c9c6bb"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    -5.2,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#c0553a",
+    "topColour": "#c0553a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 1,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-osm-node-3645511715",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or footprint; generic open-air roadside grill shed, layout invented"
+ }
+}

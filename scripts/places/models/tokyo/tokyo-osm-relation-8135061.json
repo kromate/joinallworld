@@ -1,0 +1,278 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E4%B8%AD%E5%B1%B1%E7%AB%B6%E9%A6%AC%E5%A0%B420240914-IMG_2264.jpg",
+   "licence": "CC BY 4.0",
+   "author": "くろふね",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/nak2.jpg",
+   "used": "white grandstand: tall blue-glass front, long cantilevered roof with brown soffit, white stepped terraces, round glass-banded rotunda at the left end, boundary fence, turf"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E4%B8%AD%E5%B1%B1%E7%AB%B6%E9%A6%AC%E5%A0%B420260922-IMG_6845.jpg",
+   "licence": "CC BY 4.0",
+   "author": "くろふね",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tokyo/nak1.jpg",
+   "used": "turf, dirt track, white rails and the infield video screen"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8135061",
+   "used": "overall size only (815 m): about 130 m of the grandstand is modelled at true proportions"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stand-body",
+   "footprint": {
+    "rect": [
+     96,
+     22
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f98b4",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e8e8e4",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d9d5",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-band",
+   "footprint": {
+    "rect": [
+     96,
+     6
+    ]
+   },
+   "at": [
+    8,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 17,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ecebe7",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d9d5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rotunda-round",
+   "at": [
+    -52,
+    2,
+    0
+   ],
+   "params": {
+    "n": 28,
+    "radius": 15,
+    "height": 15,
+    "colour": "#f0efec",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4d7fa6",
+    "storeys": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-cantilever",
+   "at": [
+    10,
+    -8,
+    22.6
+   ],
+   "params": {
+    "rect": [
+     104,
+     40
+    ],
+    "height": 3.2,
+    "colour": "#cfd1d0",
+    "topColour": "#c6c9cb",
+    "topScale": [
+     1,
+     0.96
+    ],
+    "topOffset": [
+     0,
+     -0.6
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-soffit",
+   "at": [
+    10,
+    -8,
+    21.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     102,
+     38
+    ],
+    "height": 0.7,
+    "colour": "#9a8872"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "terraces",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     64,
+     -36
+    ],
+    "end": [
+     -44,
+     -36
+    ],
+    "rows": 5,
+    "rise": 1.2,
+    "run": 2.4,
+    "firstHeight": 0.5,
+    "under": "solid",
+    "concreteColour": "#f0efec",
+    "seatColour": "#e9e7e2",
+    "underColour": "#e6e4df"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -56,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#7ea88a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turf",
+   "at": [
+    0,
+    -70,
+    0
+   ],
+   "params": {
+    "rect": [
+     130,
+     40
+    ],
+    "height": 0.05,
+    "colour": "#6aa53f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dirt-track",
+   "at": [
+    0,
+    -98,
+    0
+   ],
+   "params": {
+    "rect": [
+     130,
+     16
+    ],
+    "height": 0.08,
+    "colour": "#8d7b6a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 18,
+    "colours": [
+     "#d9d9d5"
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is a flat slab, not the swept, tilted cantilever; no stepped balcony tiers under the roof, no green JRA logo, no light masts; only about 130 m of the 360 m stand is modelled."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-relation-8135061"
+}

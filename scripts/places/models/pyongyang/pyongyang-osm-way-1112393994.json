@@ -1,0 +1,478 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-1112393994",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chongchun_Street_-_17.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jan Engelhardt",
+   "view": "front",
+   "file": "/tmp/places-evidence/pyongyang/sosan2.jpg",
+   "used": "main stand elevation: sand-yellow concrete, ribbon-window upper storey, open ground storey on raking V struts, flanking low wings, two tall floodlight masts with square lamp heads"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chongchun_Street_-_16.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jan Engelhardt",
+   "view": "side",
+   "file": "/tmp/places-evidence/pyongyang/sosan1.jpg",
+   "used": "stand end with sloped raking beam, pink-red curved roof of the far bowl, mast heads, wooded hill behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1112393994",
+   "used": "size only (about 227 x 186 m including surrounds); modelled as a bowl scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-stand",
+   "footprint": {
+    "rect": [
+     78,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcc69a",
+    "glassColour": "#4a5a58",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#cdb487",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 3,
+      "spacing": 6,
+      "width": 1.0,
+      "colour": "#dcc69a",
+      "storeys": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a67c",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -47,
+    0
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8c294",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a67c",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    47,
+    0
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8c294",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a67c",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -10.5,
+     0
+    ],
+    "end": [
+     36,
+     -10.5,
+     0
+    ],
+    "count": 13,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#dcc69a",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          1.0,
+          1.2
+         ],
+         "cy": 0
+        },
+        {
+         "z": 8,
+         "rect": [
+          1.0,
+          1.2
+         ],
+         "cy": 2.5
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     50
+    ],
+    "radius": 42,
+    "radiusY": 34,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 2.5,
+    "facetDeg": 14,
+    "under": "open",
+    "concreteColour": "#d8c294",
+    "seatColour": "#9c7a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      46.0,
+      0.0
+     ],
+     [
+      45.43,
+      5.94
+     ],
+     [
+      43.75,
+      11.74
+     ],
+     [
+      40.99,
+      17.25
+     ],
+     [
+      37.21,
+      22.34
+     ],
+     [
+      32.53,
+      26.87
+     ],
+     [
+      27.04,
+      30.74
+     ],
+     [
+      20.88,
+      33.86
+     ],
+     [
+      14.21,
+      36.14
+     ],
+     [
+      7.2,
+      37.53
+     ],
+     [
+      0.0,
+      38.0
+     ],
+     [
+      -7.2,
+      37.53
+     ],
+     [
+      -14.21,
+      36.14
+     ],
+     [
+      -20.88,
+      33.86
+     ],
+     [
+      -27.04,
+      30.74
+     ],
+     [
+      -32.53,
+      26.87
+     ],
+     [
+      -37.21,
+      22.34
+     ],
+     [
+      -40.99,
+      17.25
+     ],
+     [
+      -43.75,
+      11.74
+     ],
+     [
+      -45.43,
+      5.94
+     ],
+     [
+      -46.0,
+      0.0
+     ],
+     [
+      -45.43,
+      -5.94
+     ],
+     [
+      -43.75,
+      -11.74
+     ],
+     [
+      -40.99,
+      -17.25
+     ],
+     [
+      -37.21,
+      -22.34
+     ],
+     [
+      -32.53,
+      -26.87
+     ],
+     [
+      -27.04,
+      -30.74
+     ],
+     [
+      -20.88,
+      -33.86
+     ],
+     [
+      -14.21,
+      -36.14
+     ],
+     [
+      -7.2,
+      -37.53
+     ],
+     [
+      -0.0,
+      -38.0
+     ],
+     [
+      7.2,
+      -37.53
+     ],
+     [
+      14.21,
+      -36.14
+     ],
+     [
+      20.88,
+      -33.86
+     ],
+     [
+      27.04,
+      -30.74
+     ],
+     [
+      32.53,
+      -26.87
+     ],
+     [
+      37.21,
+      -22.34
+     ],
+     [
+      40.99,
+      -17.25
+     ],
+     [
+      43.75,
+      -11.74
+     ],
+     [
+      45.43,
+      -5.94
+     ]
+    ],
+    "z0": 7.4,
+    "height": 0.6,
+    "colour": "#b4655a",
+    "top": true
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "head_width": 6,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "head_width": 6,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -40,
+    96,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    40,
+    96,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 8,
+    "count": 9,
+    "kind": "conifer"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "V struts are vertical not splayed, no entrance glazing detail, far bowl roof only an oval cap, mast heads simplified"
+ }
+}

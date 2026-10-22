@@ -1,0 +1,341 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-619916134",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/619916134",
+   "used": "real park outline (name match, about 50 x 33 m, wikidata Q109437921), used as a polygon at true size"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/way/619916134",
+   "used": "brief: neighbourhood pocket park between apartment blocks with a pavilion and a playground; no photo of the park was found (nearby Commons images are street food shots and a church)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -26,
+      -17.1
+     ],
+     [
+      -19.2,
+      16.4
+     ],
+     [
+      22.4,
+      17.4
+     ],
+     [
+      23.5,
+      -14.8
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#6f9a52",
+    "topColour": "#6f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "params": {
+    "points": [
+     [
+      -24,
+      -3
+     ],
+     [
+      22,
+      -2
+     ],
+     [
+      22.5,
+      1.5
+     ],
+     [
+      -23,
+      2.5
+     ]
+    ],
+    "z0": 0.12,
+    "height": 0.05,
+    "colour": "#b5b8b6",
+    "topColour": "#b5b8b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "params": {
+    "points": [
+     [
+      -6,
+      -8
+     ],
+     [
+      8,
+      -8
+     ],
+     [
+      8,
+      8
+     ],
+     [
+      -6,
+      8
+     ]
+    ],
+    "z0": 0.12,
+    "height": 0.06,
+    "colour": "#d8cfc0",
+    "topColour": "#d8cfc0"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    1,
+    0,
+    0.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.6,
+    "kind": "hip",
+    "roof_colour": "#5f625f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "play-floor",
+   "params": {
+    "points": [
+     [
+      -20,
+      5
+     ],
+     [
+      -10,
+      5
+     ],
+     [
+      -10,
+      13
+     ],
+     [
+      -20,
+      13
+     ]
+    ],
+    "z0": 0.12,
+    "height": 0.05,
+    "colour": "#a8574a",
+    "topColour": "#a8574a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "play-frame",
+   "params": {
+    "rect": [
+     3.5,
+     2.5
+    ],
+    "height": 2.6,
+    "colour": "#4f7fb0",
+    "topColour": "#e0b040",
+    "windows": "none"
+   },
+   "at": [
+    -17,
+    9,
+    0.17
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slide",
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      3.4
+     ],
+     [
+      0,
+      3.4
+     ]
+    ],
+    "height": 0.6,
+    "topScale": 1.0,
+    "colour": "#e0b040",
+    "topColour": "#e0b040"
+   },
+   "at": [
+    -14.2,
+    7.4,
+    0.3
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -26,
+    -17.1,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "rail",
+    "colour": "#6a6d6a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -4,
+    12,
+    0
+   ],
+   "params": {
+    "width": 38,
+    "depth": 8,
+    "count": 7,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-back",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "height": 20,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c6bd",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-side",
+   "footprint": {
+    "rect": [
+     12,
+     32
+    ]
+   },
+   "at": [
+    -38,
+    0
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5b8b6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: pavilion, playground and flanking apartment blocks are typical assumptions placed inside the real outline"
+ }
+}

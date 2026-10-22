@@ -1,0 +1,286 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Natural_History_Museum_(Ulaanbaatar).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/v1_0.jpg",
+   "used": "symmetrical block: cream stone upper floor with five round relief medallions in square panels, maroon end piers, central small dark gable with finial, yellow sign canopy, low ground floor, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/129230039",
+   "used": "size and levels (56.6 x 44.5 m, 3 levels); modelled front-facing rather than at the OSM bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     57,
+     45
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#b4a893",
+    "windows": "punched",
+    "plinth": 0.8,
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true,
+    "bands": "#8a2f2a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    -24.5,
+    -23.5
+   ],
+   "z0": 0,
+   "height": 12.6,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7d2a26",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d2a26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    24.5,
+    -23.5
+   ],
+   "z0": 0,
+   "height": 12.6,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7d2a26",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d2a26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "z0": 17.0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3836",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a3836",
+    "rise": 4.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "finial",
+   "at": [
+    0,
+    -3,
+    21.6
+   ],
+   "params": {
+    "height": 2.4,
+    "balls": 2,
+    "radius": 0.3,
+    "colour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -22.7,
+     9.4
+    ],
+    "end": [
+     20,
+     -22.7,
+     9.4
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        7.4,
+        0.5
+       ],
+       "height": 6.8,
+       "colour": "#cfc7b4"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.3,
+       1.6
+      ],
+      "params": {
+       "rect": [
+        4.2,
+        0.3
+       ],
+       "height": 3.6,
+       "colour": "#6a6760"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -24.7,
+    4.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 4.4,
+    "height": 0.0,
+    "thickness": 1.1,
+    "colour": "#e5cf7a",
+    "edgeColour": "#e5cf7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -25.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     6
+    ],
+    "height": 3.6,
+    "colour": "#b09a7c"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -33,
+    0
+   ],
+   "params": {
+    "colour": "#222222",
+    "count": 5,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-way-129230039",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "relief medallions are square dark panels not round; maroon end piers simplified; no cafe awning on left; gable and sign band approximate"
+ }
+}

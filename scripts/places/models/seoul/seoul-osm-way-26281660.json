@@ -1,0 +1,416 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-26281660",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lotte_World_seen_from_Lotte_World_Tower.jpg",
+   "licence": "see Commons page",
+   "author": "Wikimedia Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/seoul/lotte3.jpg",
+   "used": "aerial: huge flat green roof with a long oval glazed barrel skylight, light-blue annex roofs, white hotel tower at the near end, lake and Magic Island castle to the left, white dome beside the road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lotte_World.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "SJ Yang",
+   "view": "interior",
+   "file": "/tmp/places-evidence/seoul/lotte1.jpg",
+   "used": "glazed ribbed barrel vault on white columns, pastel castle fronts (cream, teal turrets, terracotta roofs)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26281660",
+   "used": "overall size only (about 406 x 235 m complex); the Adventure building is modelled at about 118 x 84 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 58,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "adventure-hall",
+   "footprint": {
+    "rect": [
+     70,
+     116
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "height": 32,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9d9c8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5cc08e",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-blue",
+   "footprint": {
+    "rect": [
+     28,
+     34
+    ]
+   },
+   "at": [
+    50,
+    -40
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d6c4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58a9d9",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    22,
+    4,
+    32.6
+   ],
+   "params": {
+    "colour": "#7f9097",
+    "smooth": true,
+    "curve": true,
+    "steps": 4,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       18,
+       50
+      ],
+      "colour": "#6f8088"
+     },
+     {
+      "z": 2.5,
+      "ellipse": [
+       17.5,
+       49
+      ],
+      "colour": "#8fa0a8"
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       14,
+       42
+      ],
+      "colour": "#9fb0b6"
+     },
+     {
+      "z": 4.6,
+      "ellipse": [
+       9,
+       34
+      ],
+      "colour": "#a8bac0"
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-tower",
+   "footprint": {
+    "rect": [
+     24,
+     19
+    ]
+   },
+   "at": [
+    4,
+    -60
+   ],
+   "height": 74,
+   "storeys": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6e0",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#8aa0ac",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e8e6e0",
+       "#d9d6cf"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5cc08e",
+    "material": "membrane",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -78,
+    12,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 90,
+    "shape": "oval",
+    "colour": "#4d7a66",
+    "bank": true
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -76,
+    30,
+    0.4
+   ],
+   "params": {
+    "segments": 20,
+    "profile": [
+     [
+      0,
+      0,
+      "#d9cdb9"
+     ],
+     [
+      9,
+      0,
+      "#d9cdb9"
+     ],
+     [
+      9,
+      7,
+      "#e9d9c8"
+     ],
+     [
+      7,
+      7,
+      "#e9d9c8"
+     ],
+     [
+      7,
+      9,
+      "#c9a24a"
+     ],
+     [
+      4,
+      10,
+      "#7fb2bd"
+     ],
+     [
+      0,
+      17,
+      "#7fb2bd"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -62,
+    -6,
+    0.4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      0,
+      0,
+      "#e9d9c8"
+     ],
+     [
+      4,
+      0,
+      "#e9d9c8"
+     ],
+     [
+      4,
+      9,
+      "#e9d9c8"
+     ],
+     [
+      5,
+      9,
+      "#58a9d9"
+     ],
+     [
+      0,
+      18,
+      "#58a9d9"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -92,
+    -4,
+    0.4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      0,
+      0,
+      "#e9d9c8"
+     ],
+     [
+      3.5,
+      0,
+      "#e9d9c8"
+     ],
+     [
+      3.5,
+      8,
+      "#e9d9c8"
+     ],
+     [
+      4.5,
+      8,
+      "#58a9d9"
+     ],
+     [
+      0,
+      16,
+      "#58a9d9"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -30,
+    28,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "profile": [
+     [
+      0,
+      0,
+      "#f2f2f0"
+     ],
+     [
+      11,
+      0,
+      "#f2f2f0"
+     ],
+     [
+      10.5,
+      2,
+      "#f2f2f0"
+     ],
+     [
+      7,
+      6,
+      "#f2f2f0"
+     ],
+     [
+      0,
+      8.5,
+      "#f2f2f0"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 4,
+    "bottom": 3,
+    "colour": "#5cc08e",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     40
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -72
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Aerial photo matched for roof/tower/skylight layout; annexes, Magic Island castle and surroundings are simplified, hotel tower is a rectangle not an oval."
+ }
+}

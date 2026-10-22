@@ -1,0 +1,388 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-45895096",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bandar_Seri_Begawan_24_December_2022_21.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pangalau",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/hosp1.jpg",
+   "used": "white 10-11 storey slab with banded ribbon windows and coloured slats, two free-standing vertical pylons, stepped white podium with ribbon windows, curved open car-park deck at the base"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Raja_Isteri_Pengiran_Anak_Saleha_Hospital_(24032022).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DeltaSquad833",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/hosp2.jpg",
+   "used": "twin slabs of the women and children tower over the podium and an elevated deck, white with dark banded windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/45895096",
+   "used": "site is 711 x 301 m: only the Women and Children tower group is modelled, not the whole complex"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 5,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     104,
+     40
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#dcd9d2",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "pilotis"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c7c1"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     72,
+     26
+    ]
+   },
+   "at": [
+    2,
+    -2
+   ],
+   "z0": 6,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece6",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#4a5560",
+    "plinth": 0,
+    "bay": 20,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfca"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-main",
+   "footprint": {
+    "rect": [
+     46,
+     13
+    ]
+   },
+   "at": [
+    -2,
+    8
+   ],
+   "z0": 21,
+   "height": 34,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee8",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#2f3a44",
+    "plinth": 0,
+    "bay": 20,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-left",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    -33,
+    8
+   ],
+   "z0": 21,
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe8e1",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#2f3a44",
+    "plinth": 0,
+    "bay": 20,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfca"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    34,
+    10
+   ],
+   "z0": 21,
+   "height": 38,
+   "storeys": 11,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dedbd4",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#3b4650",
+    "plinth": 0,
+    "bay": 20,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfca"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-back-a",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -20,
+    34
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e5de",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#58626c",
+    "plinth": 0,
+    "bay": 20,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfca"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-back-b",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    26,
+    34
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e5de",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#58626c",
+    "plinth": 0,
+    "bay": 20,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfca"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-1",
+   "at": [
+    -11,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 55,
+    "colour": "#bdbab3",
+    "topColour": "#bdbab3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-2",
+   "at": [
+    -24,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 50,
+    "colour": "#bdbab3",
+    "topColour": "#bdbab3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "helipad",
+   "at": [
+    34,
+    10,
+    59
+   ],
+   "params": {
+    "n": 16,
+    "radius": 5,
+    "height": 0.3,
+    "colour": "#7d8084",
+    "topColour": "#7d8084"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -20
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     10
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -24
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     4
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Slabs read as plain ribbon-window boxes: no coloured slats, no stepped sloping podium wing with curved sweep, no cantilevered slab over glazed lobby, no crescent roundel (logo skipped). Only the Women and Children tower group modelled, not the 711 m site."
+ }
+}

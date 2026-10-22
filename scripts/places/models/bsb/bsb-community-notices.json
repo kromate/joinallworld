@@ -1,0 +1,239 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ministry_of_Religious_Affairs_building_(Brunei).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pangalau",
+   "view": "street",
+   "file": "/tmp/places-evidence/bsb/notices.jpg",
+   "used": "tall teal-green glazed tower with tall pointed-arch windows on the front, dark green flat roof with narrow eaves, lower teal wing with arched openings, pale green-roofed pavilion with small dome at right, concrete retaining wall and grass bank"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/521756870",
+   "used": "overall extent only (101 x 66 m); massing composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     38,
+     26
+    ]
+   },
+   "at": [
+    -8,
+    8
+   ],
+   "height": 30,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fb3a6",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.6,
+    "bay": 9,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true,
+    "glassColour": "#4f7f77"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5a4f",
+    "overhang": 1.4,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    26,
+    -4
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#86aeae",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.35,
+    "bay": 7,
+    "plinth": 0.4,
+    "bands": "#2f5a4f",
+    "glassColour": "#4f7f77",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5a4f",
+    "overhang": 1.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    40,
+    18
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8ebdc",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.35,
+    "bay": 6,
+    "plinth": 0.4,
+    "glassColour": "#4f7f77",
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 14,
+    "overhang": 1.6,
+    "colour": "#8fb58a",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "on": "pavilion",
+   "params": {
+    "radius": 3.5,
+    "profile": "onion",
+    "drum": 1.5,
+    "colour": "#9fc7b8"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 14,
+    "depth": 8,
+    "height": 4.2,
+    "thickness": 0.4,
+    "columns": 4,
+    "rise": 1.2,
+    "colour": "#2f5a4f",
+    "edgeColour": "#2f5a4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 2.4,
+    "thickness": 0.5,
+    "colour": "#b9b8b0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#bfc3bd",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower's tall pointed-arch bays are plain windows with one pointed shape, no stepped corner pavilions; retaining wall is a plain fence; right pavilion simplified; OSM outline not used (photo massing preferred)"
+ }
+}

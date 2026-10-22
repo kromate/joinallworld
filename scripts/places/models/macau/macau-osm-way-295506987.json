@@ -1,0 +1,552 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GRAND_LISBOA_PALACE_RESORT.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hugo F.H.C",
+   "view": "front",
+   "used": "cream Beaux-Arts stone, central tall block with pilaster bays and mansard crown, stepped wings, central porch with four columns and blank board",
+   "file": "/tmp/places-evidence/macau/glp1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grand_Lisboa_Palace_Macau.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sunnysunnyasd",
+   "view": "front",
+   "used": "wing recession, dormered slate mansard towers, tan stone colour",
+   "file": "/tmp/places-evidence/macau/glp2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/295506987",
+   "used": "overall extent only (about 297 x 215 m): the front hotel block is modelled at reduced width"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     118,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9ccac",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.28,
+    "bay": 9,
+    "glassColour": "#56626b",
+    "cornice": false,
+    "plinth": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     50,
+     30
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 62,
+   "storeys": 11,
+   "wall": {
+    "material": "stone",
+    "colour": "#e0d4b6",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "glassColour": "#56626b",
+    "cornice": false,
+    "plinth": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   },
+   "z0": 21
+  },
+  {
+   "type": "mass",
+   "id": "centre-crown",
+   "footprint": {
+    "rect": [
+     28,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#e6dcc0",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "glassColour": "#56626b",
+    "cornice": false,
+    "plinth": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   },
+   "z0": 83
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     32,
+     24
+    ]
+   },
+   "at": [
+    -41,
+    8
+   ],
+   "height": 34,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#d4c5a2",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "glassColour": "#56626b",
+    "cornice": false,
+    "plinth": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   },
+   "z0": 21
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     32,
+     24
+    ]
+   },
+   "at": [
+    41,
+    8
+   ],
+   "height": 34,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#d4c5a2",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "glassColour": "#56626b",
+    "cornice": false,
+    "plinth": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   },
+   "z0": 21
+  },
+  {
+   "type": "mass",
+   "id": "tower-e",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    48,
+    12
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9cba8",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "glassColour": "#56626b",
+    "cornice": false,
+    "plinth": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   },
+   "z0": 55
+  },
+  {
+   "type": "mass",
+   "id": "wing-w-far",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    -52,
+    16
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdbf9c",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "glassColour": "#56626b",
+    "cornice": false,
+    "plinth": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   },
+   "z0": 21
+  },
+  {
+   "type": "mass",
+   "id": "wing-e-far",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    52,
+    16
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdbf9c",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "glassColour": "#56626b",
+    "cornice": false,
+    "plinth": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   },
+   "z0": 21
+  },
+  {
+   "type": "prism",
+   "id": "m-crown",
+   "at": [
+    0,
+    6,
+    91
+   ],
+   "params": {
+    "rect": [
+     28,
+     22
+    ],
+    "height": 6,
+    "topScale": 0.62,
+    "colour": "#6a7479",
+    "topColour": "#737d82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "m-wing-w",
+   "at": [
+    -41,
+    8,
+    55
+   ],
+   "params": {
+    "rect": [
+     32,
+     24
+    ],
+    "height": 5,
+    "topScale": 0.7,
+    "colour": "#6a7479",
+    "topColour": "#737d82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "m-wing-e",
+   "at": [
+    41,
+    8,
+    55
+   ],
+   "params": {
+    "rect": [
+     32,
+     24
+    ],
+    "height": 5,
+    "topScale": 0.7,
+    "colour": "#6a7479",
+    "topColour": "#737d82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "m-tower",
+   "at": [
+    48,
+    12,
+    75
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "height": 6,
+    "topScale": 0.5,
+    "colour": "#5f6a70",
+    "topColour": "#6a7479"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "m-far-w",
+   "at": [
+    -52,
+    16,
+    45
+   ],
+   "params": {
+    "rect": [
+     14,
+     20
+    ],
+    "height": 4,
+    "topScale": 0.6,
+    "colour": "#6a7479",
+    "topColour": "#737d82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "m-far-e",
+   "at": [
+    52,
+    16,
+    45
+   ],
+   "params": {
+    "rect": [
+     14,
+     20
+    ],
+    "height": 4,
+    "topScale": 0.6,
+    "colour": "#6a7479",
+    "topColour": "#737d82"
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    -2,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 14,
+    "columns": 4,
+    "pediment": false,
+    "steps": 4,
+    "kind": "round",
+    "colour": "#ece3cb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-attic",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    -2,
+    -22
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#e2d6b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc3a4",
+    "parapet": 0.8
+   },
+   "z0": 21
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -2,
+    -29.5,
+    15.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.6,
+    "colour": "#f0ead8"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -2,
+    -29.2,
+    5
+   ],
+   "params": {
+    "width": 10,
+    "height": 9,
+    "colour": "#2e2a28"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -36
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -36
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-295506987",
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Beaux-Arts ornament, pilasters, dormers and arched windows reduced to ribbon windows and tapered prisms to fit LOD1 4k; only the front block at reduced width"
+ }
+}

@@ -1,0 +1,444 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-osm-way-252392612",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_University_of_Phnom_Penh_Campus_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Leng Len",
+   "view": "front",
+   "file": "/tmp/places-evidence/phnom-penh/252392612_0.jpg",
+   "used": "entrance pavilion: four stepped cantilever slabs, slim dark columns, brick side walls, pointed Khmer gable, grey podium and brick-red steps, cream concrete"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_University_of_Phnom_Penh.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Natebailey",
+   "view": "street",
+   "used": "long cream mid-rise teaching block with ribbon windows behind the gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/252392612",
+   "used": "real outline of the 203 x 40 m block (7 levels)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 7,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "block",
+   "params": {
+    "points": [
+     [
+      -83.23,
+      -7.54
+     ],
+     [
+      -81.75,
+      -19.43
+     ],
+     [
+      83.23,
+      1.8
+     ],
+     [
+      81.75,
+      13.69
+     ],
+     [
+      38.05,
+      7.95
+     ],
+     [
+      38.29,
+      21.16
+     ],
+     [
+      33.54,
+      24.11
+     ],
+     [
+      33.29,
+      27.96
+     ],
+     [
+      25.99,
+      27.47
+     ],
+     [
+      26.32,
+      23.62
+     ],
+     [
+      22.71,
+      20.25
+     ],
+     [
+      26.98,
+      6.48
+     ],
+     [
+      -30.09,
+      -1.07
+     ],
+     [
+      -29.44,
+      11.15
+     ],
+     [
+      -33.78,
+      14.51
+     ],
+     [
+      -34.03,
+      18.37
+     ],
+     [
+      -41.08,
+      17.79
+     ],
+     [
+      -40.84,
+      13.78
+     ],
+     [
+      -43.87,
+      9.35
+     ],
+     [
+      -40.18,
+      -2.3
+     ]
+    ],
+    "z0": 0,
+    "height": 24,
+    "storeys": 7,
+    "colour": "#ddd6c4",
+    "topColour": "#9a9a94",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "glassColour": "#38414a",
+    "trimColour": "#efece4",
+    "plinth": 0.6,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-core",
+   "at": [
+    0.0,
+    -17.0,
+    0
+   ],
+   "params": {
+    "z0": 0,
+    "height": 13,
+    "colour": "#cdc3ae",
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "pav-podium",
+   "at": [
+    0.51,
+    -20.97,
+    0
+   ],
+   "params": {
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#aeb0ac",
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "pav-steps",
+   "at": [
+    1.14,
+    -25.93,
+    0
+   ],
+   "params": {
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#c8a58f",
+    "rect": [
+     22,
+     5
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "brick-l",
+   "at": [
+    -18.85,
+    -19.41,
+    0
+   ],
+   "params": {
+    "z0": 0,
+    "height": 11,
+    "colour": "#a85b45",
+    "rect": [
+     6,
+     11
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "brick-r",
+   "at": [
+    18.85,
+    -14.59,
+    0
+   ],
+   "params": {
+    "z0": 0,
+    "height": 11,
+    "colour": "#a85b45",
+    "rect": [
+     6,
+     11
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "slab1",
+   "at": [
+    0.13,
+    -17.99,
+    0
+   ],
+   "params": {
+    "z0": 7.5,
+    "height": 1.0,
+    "colour": "#e6dfcf",
+    "rect": [
+     62,
+     20
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "slab2",
+   "at": [
+    0.13,
+    -17.99,
+    0
+   ],
+   "params": {
+    "z0": 11.0,
+    "height": 1.0,
+    "colour": "#e9e3d4",
+    "rect": [
+     48,
+     16
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "slab3",
+   "at": [
+    0.13,
+    -17.99,
+    0
+   ],
+   "params": {
+    "z0": 14.5,
+    "height": 1.0,
+    "colour": "#e9e3d4",
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "prism",
+   "id": "slab4",
+   "at": [
+    0.0,
+    -17.0,
+    0
+   ],
+   "params": {
+    "z0": 17.5,
+    "height": 1.0,
+    "colour": "#e9e3d4",
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "rotDeg": 7.3
+  },
+  {
+   "type": "array",
+   "id": "cols",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10.89,
+     -26.46
+    ],
+    "end": [
+     12.92,
+     -23.41
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 0,
+      "height": 17.5,
+      "colour": "#2b303c"
+     }
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable",
+   "at": [
+    0.06,
+    -17.5,
+    0
+   ],
+   "rotDeg": 7.3,
+   "params": {
+    "colour": "#e9e2cf",
+    "sections": [
+     {
+      "z": 18.5,
+      "rect": [
+       13,
+       1.6
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       10.4,
+       1.6
+      ]
+     },
+     {
+      "z": 25.5,
+      "rect": [
+       7.8,
+       1.6
+      ]
+     },
+     {
+      "z": 29,
+      "rect": [
+       5.2,
+       1.6
+      ]
+     },
+     {
+      "z": 32.5,
+      "rect": [
+       2.6,
+       1.6
+      ]
+     },
+     {
+      "z": 35,
+      "rect": [
+       0.5,
+       1.2
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo shows only the entrance pavilion, not the 203 m block; pavilion is simplified (no stepped central stair, flag, trees, stone walls); block scaled 0.82 to fit the 170 m limit."
+ }
+}

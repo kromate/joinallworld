@@ -1,0 +1,412 @@
+{
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "granite portal and stripes present but camera framing differs; no bamboo grove, name board text or housing backdrop; stripe pattern simplified"
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ma_Wo_Road_Garden_2026.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tombus20032000",
+   "view": "street",
+   "file": "/tmp/places-evidence/hong-kong/recreation-0.jpg",
+   "used": "granite entrance portal with blank name board, plaza paved in light and dark grey granite stripes, black bollards, planter wall, bamboo grove, young trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10700987",
+   "used": "garden outline as the paved ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b9b6ae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c7c3b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe0",
+   "at": [
+    -17.0,
+    -6
+   ],
+   "params": {
+    "rect": [
+     5,
+     34
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#8a8d90",
+    "topColour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe1",
+   "at": [
+    -9.2,
+    -6
+   ],
+   "params": {
+    "rect": [
+     5,
+     34
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#d9d0bf",
+    "topColour": "#d9d0bf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe2",
+   "at": [
+    -1.4,
+    -6
+   ],
+   "params": {
+    "rect": [
+     5,
+     34
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#7d8084",
+    "topColour": "#7d8084"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe3",
+   "at": [
+    6.4,
+    -6
+   ],
+   "params": {
+    "rect": [
+     5,
+     34
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#cfc6b4",
+    "topColour": "#cfc6b4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe4",
+   "at": [
+    14.2,
+    -6
+   ],
+   "params": {
+    "rect": [
+     5,
+     34
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#8a8d90",
+    "topColour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-a",
+   "at": [
+    12,
+    -14
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.2
+    ],
+    "z0": 0.5,
+    "height": 4.0,
+    "colour": "#a6a8a4",
+    "topColour": "#a6a8a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-b",
+   "at": [
+    19,
+    -14
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.2
+    ],
+    "z0": 0.5,
+    "height": 4.0,
+    "colour": "#a6a8a4",
+    "topColour": "#a6a8a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    15.5,
+    -14
+   ],
+   "params": {
+    "rect": [
+     9.0,
+     1.8
+    ],
+    "z0": 4.2,
+    "height": 1.4,
+    "colour": "#9c9e9a",
+    "topColour": "#9c9e9a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board",
+   "at": [
+    15.5,
+    -15
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     0.2
+    ],
+    "z0": 4.6,
+    "height": 0.8,
+    "colour": "#c9cbc6",
+    "topColour": "#c9cbc6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "back-wall",
+   "at": [
+    15.5,
+    -12
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.8
+    ],
+    "z0": 0.5,
+    "height": 2.2,
+    "colour": "#8c8e8a",
+    "topColour": "#8c8e8a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "bollards",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -12,
+     -14
+    ],
+    "end": [
+     20,
+     -12
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 1.0,
+      "colour": "#3b3e42"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter",
+   "at": [
+    -14,
+    2
+   ],
+   "params": {
+    "rect": [
+     16,
+     1.6
+    ],
+    "z0": 0.5,
+    "height": 0.9,
+    "colour": "#4e5258",
+    "topColour": "#4e5258"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bamboo",
+   "at": [
+    -22,
+    4
+   ],
+   "params": {
+    "rect": [
+     10,
+     3
+    ],
+    "z0": 0.5,
+    "height": 6,
+    "colour": "#4e7a3e",
+    "topColour": "#4e7a3e"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    2,
+    24,
+    0.5
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.5,
+    "posts": 4,
+    "colour": "#7a5a44",
+    "cap_colour": "#4f7f66"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -6,
+    12,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    20,
+    -9,
+    0.5
+   ],
+   "params": {
+    "height": 4.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 5.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 5.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 5.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 5.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    20
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 5.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-recreation"
+}

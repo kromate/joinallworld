@@ -1,0 +1,289 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-658766450",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tancheon_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ahmedd",
+   "view": "interior",
+   "file": "/tmp/places-evidence/seoul/stad1.jpg",
+   "used": "roofed stand on the long side with folded grey-blue steel canopy over yellow and blue seats; lower open stands in orange-red and blue; red running track, green pitch, scoreboard at the end, floodlight mast, apartment blocks behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tancheon_Stadium_E-stand.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "User:\uc8fc\uc804\uc790",
+   "view": "interior",
+   "file": "/tmp/places-evidence/seoul/stad2.jpg",
+   "used": "opposite open stand: red seats with aisle blocks, white parapet, lime-green gantry over the entrance"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/658766450",
+   "used": "oval plan about 193 x 225 m, long axis ~ north-south; modelled as an oval bowl scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     88
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#9a9a92",
+    "top": true
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "length": 92,
+    "width": 58,
+    "lane_width": 8.5,
+    "infield": true,
+    "pitch": false,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "length": 68,
+    "width": 38,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 49,
+    "radiusY": 36,
+    "startDeg": 206,
+    "endDeg": 334,
+    "rows": 18,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 2.2,
+    "facetDeg": 8,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#e3b92a",
+     "#3f6fb0",
+     "#e3b92a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#bdbab3",
+    "underColour": "#9a9a94",
+    "canopy": {
+     "height": 5,
+     "depth": 13,
+     "thickness": 1.4,
+     "slopeDeg": 4,
+     "colour": "#8798a4",
+     "edgeColour": "#6f8896",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 49,
+    "radiusY": 36,
+    "startDeg": -26,
+    "endDeg": 206,
+    "rows": 12,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.6,
+    "facetDeg": 10,
+    "under": "open",
+    "stepped": false,
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#c9553a",
+     "#c9553a",
+     "#3f6fb0"
+    ],
+    "blocks": 4,
+    "concreteColour": "#ecebe6",
+    "underColour": "#bdbab3"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55.099999999999994,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    55.099999999999994,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55.099999999999994,
+    40,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    55.099999999999994,
+    40,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -47,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     14,
+     2.5
+    ],
+    "z0": 8,
+    "height": 0.8,
+    "colour": "#a7c43a"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -55,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 10,
+    "height": 5,
+    "post_height": 3,
+    "facing": "east"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     -40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   118,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Interior-only photos: shown from outside in a high view; track/pitch/stands/yellow-blue seats and grey-blue folded canopy match, canopy is a smooth slab not folded steel, no gantry or apartment blocks."
+ }
+}

@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-osm-node-6978079256",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1020179075",
+   "used": "15 x 15 m footprint (nearest match, bearing 14 deg)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 15,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcb6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.0,
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#c9c3b4",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#c9c3b4"
+      ],
+      "height": 0.4,
+      "at": 0.0,
+      "proud": 0.1,
+      "floors": [
+       1
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#2f5f8a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    6,
+    -11,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     4
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; footprint plus brief only"
+ }
+}

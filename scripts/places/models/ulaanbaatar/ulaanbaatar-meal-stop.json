@@ -1,0 +1,617 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mongolian_National_Amusement_Park_Castle.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Foxparabola",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/castle2.jpg",
+   "used": "clock tower left, two round turrets with dark conical tile roofs and pink tips, crenellated sandstone-coloured stone-veneer blocks, dark grey low battlement wall at left, timber pier and railing at right, dark pitched roofs behind, glazed timber-framed gable"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Castle_UB.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lady Anu",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/castle1.jpg",
+   "used": "overall massing: tall central tower with open belfry, two flanking turrets, long low crenellated range on the water"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/236503062",
+   "used": "name-quality match, 35 x 32 m footprint, centre"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 0.667
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "keep",
+   "footprint": {
+    "polygon": [
+     [
+      -9,
+      -4
+     ],
+     [
+      11,
+      -4
+     ],
+     [
+      11,
+      6
+     ],
+     [
+      -9,
+      6
+     ]
+    ]
+   },
+   "at": [
+    2,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d9b27a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.8,
+    "bands": "#c49a62"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a66",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-roof",
+   "footprint": {
+    "polygon": [
+     [
+      -6,
+      -3
+     ],
+     [
+      8,
+      -3
+     ],
+     [
+      8,
+      5
+     ],
+     [
+      -6,
+      5
+     ]
+    ]
+   },
+   "at": [
+    3,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 8.5,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d9b27a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2e2833",
+    "pitch": 32,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -8,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#dcb67e",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a66"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-belfry",
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "z0": 16,
+    "height": 4.2,
+    "colour": "#4a3a36",
+    "topColour": "#4a3a36"
+   },
+   "at": [
+    -8,
+    -3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock-cap",
+   "params": {
+    "rect": [
+     7.4,
+     7.4
+    ],
+    "z0": 20.2,
+    "height": 7.4,
+    "topScale": 0.04,
+    "colour": "#2e2833",
+    "topColour": "#2e2833"
+   },
+   "at": [
+    -8,
+    -3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock-pink-tip",
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 26.4,
+    "height": 1.8,
+    "colour": "#c8605a",
+    "topColour": "#c8605a"
+   },
+   "at": [
+    -8,
+    -3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock-face",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "z0": 13.0,
+    "height": 2.4,
+    "colour": "#efe9d8",
+    "topColour": "#efe9d8"
+   },
+   "at": [
+    -8,
+    -6.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-glass",
+   "params": {
+    "rect": [
+     4.4,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 7.2,
+    "topScale": [
+     0.1,
+     1
+    ],
+    "colour": "#202a33",
+    "topColour": "#202a33"
+   },
+   "at": [
+    -4.2,
+    -4.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-roof-left",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "z0": 6,
+    "height": 2,
+    "topScale": [
+     0.6,
+     0.9
+    ],
+    "colour": "#2e2833",
+    "topColour": "#2e2833"
+   },
+   "at": [
+    -16,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -16,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d3a977",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a66",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    19,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d3a977",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2e2833",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grey-wall",
+   "params": {
+    "rect": [
+     11,
+     1.4
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#5f5d6d",
+    "topColour": "#4a4858",
+    "windows": "punched",
+    "windowRatio": 0.06
+   },
+   "at": [
+    -21,
+    -6
+   ]
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "grey-merlons",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -26.5,
+    -6.7,
+    4.6
+   ],
+   "params": {
+    "length": 11,
+    "height": 0.6,
+    "thickness": 1.4,
+    "colour": "#5f5d6d",
+    "trim": "#5f5d6d"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "keep-front-merlons",
+   "lod": [
+    0
+   ],
+   "at": [
+    -7,
+    -4.8,
+    8.4
+   ],
+   "params": {
+    "length": 19.5,
+    "height": 1.0,
+    "thickness": 1.0,
+    "colour": "#dcb67e",
+    "trim": "#dcb67e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "params": {
+    "rect": [
+     17,
+     3
+    ],
+    "z0": -0.1,
+    "height": 0.9,
+    "colour": "#4a3126",
+    "topColour": "#5a3d2e"
+   },
+   "at": [
+    22,
+    -6.5
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pier-rail",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     14.5,
+     -7.8,
+     0.9
+    ],
+    "end": [
+     30,
+     -7.8,
+     0.9
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 1.1,
+      "colour": "#3a2418",
+      "topColour": "#3a2418"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-top",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.2
+    ],
+    "z0": 1.9,
+    "height": 0.15,
+    "colour": "#3a2418",
+    "topColour": "#3a2418"
+   },
+   "at": [
+    22,
+    -7.8
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2.6,
+    -3.4,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d9b27a",
+    "profile": [
+     [
+      3.2,
+      0,
+      "#d9b27a"
+     ],
+     [
+      3.2,
+      12.5
+     ],
+     [
+      3.7,
+      12.5,
+      "#4a3d44"
+     ],
+     [
+      3.7,
+      13.0
+     ],
+     [
+      3.0,
+      13.0,
+      "#2e2833"
+     ],
+     [
+      0.0,
+      19.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2.6,
+    -3.4,
+    19.5
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#cccccc",
+    "profile": [
+     [
+      0.15,
+      0,
+      "#c8605a"
+     ],
+     [
+      0.15,
+      2.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    11.5,
+    -3.4,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d9b27a",
+    "profile": [
+     [
+      2.9,
+      0,
+      "#d9b27a"
+     ],
+     [
+      2.9,
+      11
+     ],
+     [
+      3.4,
+      11,
+      "#4a3d44"
+     ],
+     [
+      3.4,
+      11.5
+     ],
+     [
+      2.6999999999999997,
+      11.5,
+      "#2e2833"
+     ],
+     [
+      0.0,
+      17.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    11.5,
+    -3.4,
+    17.2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#cccccc",
+    "profile": [
+     [
+      0.15,
+      0,
+      "#c8605a"
+     ],
+     [
+      0.15,
+      2.2
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Turret and tower proportions are close; the photo has stone-veneer texture, a glazed timber gable, dark pitched roofs and a clock face that are only approximated; lake is paving, not water."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-meal-stop"
+}

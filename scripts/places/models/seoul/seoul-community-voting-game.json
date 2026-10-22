@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bugahyeon-dong_Community_Service_Center_20140513_155048.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "An Useok",
+   "view": "front",
+   "file": "/tmp/places-evidence/seoul/buga.jpg",
+   "used": "tall narrow glass-curtain block in sea-green with pale horizontal bands, beige stone ground floor with long green canopy over the entrance, roof pavilion with orange-edged overhang and planted trees, flagpoles, hemmed in by neighbours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/472113204",
+   "used": "47 x 30 m site footprint size only (plan is skewed and wider than the street frontage seen in the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     28,
+     22
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d3cbb8",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-tower",
+   "footprint": {
+    "rect": [
+     28,
+     22
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "z0": 5,
+   "height": 19,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9d8c6",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bands": "#e9e6dc",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pale-side",
+   "footprint": {
+    "rect": [
+     4,
+     20
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "granite",
+    "colour": "#d9d6cc",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-canopy",
+   "at": [
+    -3,
+    -13
+   ],
+   "params": {
+    "rect": [
+     30,
+     4
+    ],
+    "z0": 4.6,
+    "height": 0.7,
+    "colour": "#3f8f6f",
+    "topColour": "#4ca482"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "z0": 24,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d3c5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfd0",
+    "overhang": 2.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "orange-fascia",
+   "at": [
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     19.5,
+     15
+    ],
+    "z0": 28,
+    "height": 0.5,
+    "colour": "#d9733a",
+    "topColour": "#d9733a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -4,
+    29
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    3,
+    -4,
+    29
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -3,
+    -12.4,
+    4.3
+   ],
+   "params": {
+    "width": 18,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#e6f0ea",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 4,
+    "count": 3,
+    "spread": 3,
+    "line": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Block is a simplified box: the photo's stepped glass bands and side wing, utility poles, neighbours, wooden planters and trellis at the entrance are not modelled; render glass reads darker than the photo's sea-green."
+ }
+}

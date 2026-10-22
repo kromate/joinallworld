@@ -1,0 +1,356 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-248297920",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: head-office campus at Pondok Cabe, 3-5 storey administrative blocks, Balai Sidang hall, Wisma guesthouses, lawns; no photo of the Pondok Cabe site found (Commons images are regional offices, interiors and training events)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/248297920",
+   "used": "1132 x 279 m campus polygon is a whole-site boundary, unusable as one building; used only to know the site is large and open"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin-core",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0.0,
+    0.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bands": "#f3f1ea",
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin-west",
+   "footprint": {
+    "rect": [
+     16,
+     34
+    ]
+   },
+   "at": [
+    -22.400000000000002,
+    8.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bands": "#f3f1ea",
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin-east",
+   "footprint": {
+    "rect": [
+     16,
+     34
+    ]
+   },
+   "at": [
+    22.400000000000002,
+    8.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bands": "#f3f1ea",
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0.0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 6,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f3f1ea",
+    "roofColour": "#b4573a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "balai-sidang",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    -41.6,
+    -24.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none",
+     "front": "none"
+    },
+    "plinth": 0.6,
+    "bay": 6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wisma-1",
+   "footprint": {
+    "rect": [
+     28,
+     11
+    ]
+   },
+   "at": [
+    41.6,
+    -24.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "bands": "#b4573a",
+    "bay": 12,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none",
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wisma-2",
+   "footprint": {
+    "rect": [
+     28,
+     11
+    ]
+   },
+   "at": [
+    41.6,
+    -9.600000000000001
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d6",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "bands": "#b4573a",
+    "bay": 12,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none",
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0.0,
+    -49.6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.5,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#e8e3d6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -6.4,
+    -20.8,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    6.4,
+    -20.8,
+    0
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24.0,
+    -40.0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 6,
+    "line": 70
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the Pondok Cabe site; typical admin blocks, hall and wisma from brief"
+ }
+}

@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tolgoit_Mosque.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "side",
+   "file": "/tmp/places-evidence/ulaanbaatar/tolgoit.jpg",
+   "used": "two-storey whitewashed house-like volumes with low hip eaves, white pencil minaret with one balcony at rear right, front porch reached by a wide stair with black wrought iron railing, small timber windows, no dome"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/894883931",
+   "used": "size and bearing (19 x 16 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     10,
+     11
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d8d6d0",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     10,
+     11
+    ]
+   },
+   "at": [
+    6,
+    1.5
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d8d6d0",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    6,
+    -6.2,
+    3.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 5,
+    "depth": 2.6,
+    "height": 0.2,
+    "thickness": 0.3,
+    "columns": 2,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    9,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.55,
+    "run": 0.7,
+    "count": 6,
+    "colour": "#ece8e0"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    6.5,
+    -8,
+    1.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "colour": "#202020"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "pencil",
+    "colour": "#f2f0ea",
+    "trim": "#e0ddd5",
+    "cap_colour": "#d8d6d0",
+    "base_width": 2.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.8,
+    "colour": "#d8d3c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "stair is a plain flight without the iron railing curve, no side drainpipes, roofs lighter than photo, camera pitch higher"
+ }
+}

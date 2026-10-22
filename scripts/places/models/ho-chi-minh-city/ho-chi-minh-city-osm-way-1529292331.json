@@ -1,0 +1,240 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-1529292331",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_City_Hospital_for_tropical_diseases.jpg",
+   "licence": "CC0",
+   "author": "Welches2012",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/hcm5-tropical.jpg",
+   "used": "entrance gate: dark red-brown brick piers carrying a white blank sign lintel with side arms, white 5-storey ward block behind with columns of small arched windows, white iron railing, trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1529292331",
+   "used": "hospital compound area only (41,000 m2); the tagged building polygon is a 28 x 18 m annex so it is not used for massing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     64,
+     13
+    ]
+   },
+   "at": [
+    8,
+    14
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ee",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "windowShape": "round",
+    "plinth": 0.4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d9d4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -14,
+    -9
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#86302a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d9d4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-mid",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    2,
+    -9
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#86302a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d9d4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     3.0,
+     3.0
+    ]
+   },
+   "at": [
+    16,
+    -8
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#86302a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d9d4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-lintel",
+   "footprint": {
+    "rect": [
+     16,
+     1.4
+    ]
+   },
+   "at": [
+    -6,
+    -9
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ef",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d9d4",
+    "parapet": 0.3
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    -26,
+    -10
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d9d4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    28,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     -2
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -3
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "the real lintel is a shallow arch rising to the right pier with red cross marks (blank here), arched ward windows are plain rounds, rails, pavement stalls and the neighbouring tower are not modelled; ward block position and length are estimated"
+ }
+}

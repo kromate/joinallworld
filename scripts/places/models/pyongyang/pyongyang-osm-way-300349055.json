@@ -1,0 +1,246 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-300349055",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/300349055",
+   "used": "campus outline only (298 x 277 m, a site polygon not a building); a modest H of ward blocks is placed inside it"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large campus of multi-storey ward blocks, cream render with pale green bands, courtyard, ambulance bay, 1980s socialist hospital"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 48,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     16,
+     56
+    ]
+   },
+   "at": [
+    -42,
+    0
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "plinth": 0.5,
+    "bands": "#bfd8c8",
+    "cornice": false,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     16,
+     56
+    ]
+   },
+   "at": [
+    42,
+    0
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "plinth": 0.5,
+    "bands": "#bfd8c8",
+    "cornice": false,
+    "faces": {
+     "right": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     68,
+     14
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "plinth": 0.5,
+    "bands": "#bfd8c8",
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfd8c8",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 2,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 3
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    -22,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 8,
+    "count": 5,
+    "kind": "conifer"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "count": 5,
+    "kind": "conifer"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: typical ward blocks, no real facade colours or signage verified"
+ }
+}

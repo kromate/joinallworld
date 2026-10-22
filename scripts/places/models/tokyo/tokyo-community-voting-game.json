@@ -1,0 +1,189 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sokacityoffice.jpg",
+   "licence": "Public domain",
+   "author": "ja:User:Hykw-a4",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/a_soka1.jpg",
+   "used": "five-level beige concrete block: recessed ground floor of dark glazing and small windows, long projecting slab at first floor, upper floors with exposed vertical piers and horizontal spandrel bands, dark ribbon windows, top storey parapet band, green entrance canopy at right, clipped pines and a low stone wall in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/351764142",
+   "used": "real footprint 50 x 32 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9a8f7c",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8ab94",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-floors",
+   "footprint": {
+    "osm": true,
+    "scale": 0.97
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5.2,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b3a58f",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bay": 5,
+    "bands": "#a89c86",
+    "faces": {
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9395",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.4,
+    "colour": "#4c6b55",
+    "edgeColour": "#3d5846"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    4,
+    -21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "colour": "#c9ccd0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "exposed piers, pine hedges and stone wall not modelled; window bands are regular rather than the irregular pier bays; ground floor is simplified"
+ }
+}

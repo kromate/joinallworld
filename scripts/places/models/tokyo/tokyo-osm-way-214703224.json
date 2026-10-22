@@ -1,0 +1,194 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E6%AD%A6%E8%94%B5%E5%B0%8F%E6%9D%89%E6%9D%B1%E6%80%A5%E3%82%B9%E3%82%AF%E3%82%A8%E3%82%A2%E3%83%BB%E4%B8%AD%E5%8E%9F%E5%9B%B3%E6%9B%B8%E9%A4%A8_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "インターネット川崎ガイド",
+   "view": "street",
+   "file": "/tmp/places-evidence/tokyo/tok1.jpg",
+   "used": "tall pale-grey horizontal-louvre screen over the upper storeys, darker glazed return wall on the right, teal-glass low podium at the left, beige base with street trees, highrise towers behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/214703224",
+   "used": "footprint, 5 levels, 26 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9cccc",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#e8eaea",
+      "backColour": "#a3a7ab",
+      "pitch": 0.55,
+      "depth": 0.3,
+      "band": 0.95,
+      "at": 0.02,
+      "floors": [
+       1,
+       2,
+       3,
+       4
+      ],
+      "margin": 1,
+      "faces": [
+       "front",
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    -24
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fc2bd",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c0b0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base-band",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    16,
+    -37
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b99a78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bd"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3,
+    -18,
+    12
+   ],
+   "params": {
+    "width": 5,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#2d7f8a",
+    "frameColour": "#d9d9d9",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    3,
+    -18,
+    16
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#c9314a",
+    "frameColour": "#d9d9d9",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -46,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 4,
+    "line": 18,
+    "spread": 2,
+    "colour": "#7b8a58"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-way-214703224",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Louvre screen only on two faces and ground floor plain; no tower block behind, no shop signage, no green wall bays on the right face; OSM footprint has narrow legs the photo does not show."
+ }
+}

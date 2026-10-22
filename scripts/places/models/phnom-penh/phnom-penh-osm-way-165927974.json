@@ -1,0 +1,283 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-osm-way-165927974",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Preah_Monivong_Boulevard_Near_Calmette_Hospital.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kiensvay",
+   "view": "street",
+   "file": "/tmp/places-evidence/phnom-penh/calm1.jpg",
+   "used": "hospital seen along Monivong Boulevard: a tall stepped ten-storey ochre block with ribbon windows and green screened stair core, lower pale wings, palms and flagpoles along the frontage, hedges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/165927974",
+   "used": "real compound outline (auto-fitted to 118 m) for the low wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12.6,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": {
+     "colour": "#cdbf98",
+     "height": 0.4
+    },
+    "bay": 9,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-low",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 12.6,
+   "height": 16.2,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c18a",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": {
+     "colour": "#e8dcc0",
+     "height": 0.5
+    },
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9486",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-high",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    -6
+   ],
+   "z0": 28.8,
+   "height": 12.6,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c18a",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": {
+     "colour": "#e8dcc0",
+     "height": 0.5
+    },
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9486",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    19.5,
+    -14
+   ],
+   "z0": 0,
+   "height": 41.4,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f8f5a",
+    "windows": "none",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8578"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -26,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#e6dcc0",
+    "roofColour": "#b5532f",
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 1.2,
+    "colour": "#dfe6ea",
+    "frameColour": "#a8b0b4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     0,
+     0
+    ],
+    "end": [
+     40,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     3,
+     0
+    ],
+    "end": [
+     30,
+     3,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "core/flag",
+     "params": {
+      "height": 9,
+      "colours": [
+       "#c8362f",
+       "#2f4f9a",
+       "#efece4"
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo shows the hospital only as a distant ochre stepped block down the avenue; massing and colour follow it but wing heights, the real outline scale (halved to fit 118 m), roofs and the screened stair core are estimates"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   150,
+   150
+  ]
+ }
+}

@@ -1,0 +1,340 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-airport-bangkok-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bangkok_-_Suvarnabhumi_International_(BKK_-_VTBS)_AN1822384.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Gleb Osokin - Russian AviaPhoto Team",
+   "view": "front",
+   "file": "/tmp/places-evidence/bangkok/m0_airport1.jpg",
+   "used": "row of white pointed wave-roof bays over dark glazing, barrel-vault pier at right, central dish roof on pylons, tall slim grey control tower at left, apron in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Suvarnabhumi_airport_by_Don_Ramey_Logan.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Don Ramey Logan",
+   "view": "aerial",
+   "used": "checked terminal plan only (very long, shown as central portion)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1459583553",
+   "used": "nothing (match is an apron, terminal is far longer than the scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "margin": 0.06
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only a central portion of the 1 km terminal; far wave bays, jet bridges and apron markings omitted; tower scaled to 80 m"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-hall",
+   "footprint": {
+    "rect": [
+     116,
+     36
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#43545e",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8ebec",
+    "material": "membrane",
+    "overhang": 2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -4,
+     0
+    ],
+    "end": [
+     48,
+     -4,
+     0
+    ],
+    "count": 9,
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#eef0ef",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          12,
+          22
+         ]
+        },
+        {
+         "z": 3,
+         "rect": [
+          11.4,
+          22
+         ]
+        },
+        {
+         "z": 6,
+         "rect": [
+          9.6,
+          22
+         ]
+        },
+        {
+         "z": 8.5,
+         "rect": [
+          7,
+          22
+         ]
+        },
+        {
+         "z": 10.5,
+         "rect": [
+          3.8,
+          22
+         ]
+        },
+        {
+         "z": 11.5,
+         "rect": [
+          0.8,
+          22
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-glazing",
+   "footprint": {
+    "rect": [
+     110,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4d6470",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d4",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault-pier",
+   "footprint": {
+    "rect": [
+     18,
+     38
+    ]
+   },
+   "at": [
+    50,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f5663",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#e9ecea",
+    "material": "membrane",
+    "rise": 5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "colour": "#aeb6ba",
+    "sections": [
+     {
+      "z": 19,
+      "ellipse": [
+       26,
+       14
+      ]
+     },
+     {
+      "z": 20.5,
+      "ellipse": [
+       24,
+       13
+      ]
+     },
+     {
+      "z": 22,
+      "ellipse": [
+       10,
+       5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.4,
+        1.4
+       ],
+       "height": 19,
+       "colour": "#b9c0c4"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -70,
+    90,
+    0
+   ],
+   "params": {
+    "height": 80,
+    "style": "round",
+    "colour": "#7d8388",
+    "shaftRadius": 2.8,
+    "cabRadius": 4.6,
+    "cabColour": "#b8c4cb",
+    "bandColour": "#aeb5ba"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    28,
+    -42,
+    0
+   ],
+   "rotDeg": 100,
+   "params": {
+    "scale": 1.0,
+    "colour": "#3f8fd4",
+    "tailColour": "#2f6fb4"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -34,
+    -46,
+    0
+   ],
+   "rotDeg": 80,
+   "params": {
+    "scale": 0.9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   130
+  ]
+ }
+}

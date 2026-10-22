@@ -1,0 +1,392 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-way-342904301",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MARA-Japan_Industrial_Institute.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "SNN95",
+   "view": "street",
+   "file": "/tmp/places-evidence/kuala-lumpur/mjii2.jpg",
+   "used": "main teaching blocks: yellow four-storey block with dark grey stair towers, brick-pink three-storey blocks, green wing, flat roofs with white parapet caps, orange pyramid-roofed gatehouse, palms, flags"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Morning_Scenery.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Naz Amann",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kuala-lumpur/mjii1.jpg",
+   "used": "hostel blocks are cream with pitched roofs (not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/342904301",
+   "used": "whole 481x236 m campus outline NOT used; only the main entrance cluster is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 5,
+  "fovDeg": 52,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "yellow-block",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    4
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3c43e",
+    "glassColour": "#93a9b3",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c4",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower-1",
+   "footprint": {
+    "rect": [
+     6,
+     7
+    ]
+   },
+   "at": [
+    -11,
+    -1
+   ],
+   "height": 17.6,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3b3e44",
+    "glassColour": "#93a9b3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2e32",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower-2",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -48,
+    -1
+   ],
+   "height": 17.6,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3b3e44",
+    "glassColour": "#93a9b3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2e32",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-block",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -2,
+    6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4b4c55",
+    "glassColour": "#93a9b3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c4",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-block",
+   "footprint": {
+    "rect": [
+     32,
+     14
+    ]
+   },
+   "at": [
+    22,
+    8
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b94a5c",
+    "glassColour": "#93a9b3",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8dc",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-block-rear",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    24,
+    20
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8a8a8",
+    "glassColour": "#93a9b3",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8dc",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-wing",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    46,
+    6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f7f6a",
+    "glassColour": "#93a9b3",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8dc",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    28,
+    -20
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e08a4a",
+    "glassColour": "#7a9aa0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4c3b32",
+    "material": "concrete",
+    "overhang": 1.4,
+    "parapet": 0,
+    "pitch": 25
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.6,
+    "bottom": 0.4,
+    "colour": "#2f3a44",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 10,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 2,
+    "spread": 6,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 6,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 8,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "block layout approximate; no angled gable roofs on the red wing; tiny colour accents and window detail missing; only the entrance cluster of a 481 m campus"
+ }
+}

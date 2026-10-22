@@ -1,0 +1,377 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BroadwayMacau20150728.jpg",
+   "licence": "CC0",
+   "author": "Cdip150",
+   "view": "front",
+   "file": "/tmp/places-evidence/macau/bw1.jpg",
+   "used": "cream three-storey podium with green neon edging, blue curtain-wall slab tower with a rooftop steel frame, second taller blue tower, blue wing at right with a lit LED screen box, palm planting and round porte-cochere canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/346331627",
+   "used": "resort extent (about 390x170 m); only the front hotel and podium group is modelled because the outline exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 3,
+  "fovDeg": 60
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "rooftop ring logo and the big LED panel are blank boards, curved porte-cochere is a flat canopy, the long food street and the real 380 m extent are not modelled"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     90,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d3c1",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 9,
+    "bands": {
+     "colour": "#3fae82",
+     "height": 0.5
+    },
+    "plinth": 0.6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   },
+   "storeys": 3
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     84,
+     24
+    ]
+   },
+   "at": [
+    -3,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 15,
+   "height": 34,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a74b6",
+    "windows": "none",
+    "glassColour": "#4a74b6",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 3.2,
+      "depth": 0.25,
+      "width": 0.25,
+      "colour": "#1f3f80",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7078",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower2",
+   "footprint": {
+    "rect": [
+     20,
+     22
+    ]
+   },
+   "at": [
+    16,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 15,
+   "height": 50,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a74b6",
+    "windows": "none",
+    "glassColour": "#4a74b6",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 3.2,
+      "depth": 0.25,
+      "width": 0.25,
+      "colour": "#1f3f80",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7078",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     28,
+     26
+    ]
+   },
+   "at": [
+    56,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 10,
+   "height": 30,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a74b6",
+    "windows": "none",
+    "glassColour": "#4a74b6",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 3.2,
+      "depth": 0.25,
+      "width": 0.25,
+      "colour": "#1f3f80",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7078",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ledbox",
+   "footprint": {
+    "rect": [
+     16,
+     4
+    ]
+   },
+   "at": [
+    42,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 6,
+   "height": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d3c1",
+    "windows": "none",
+    "bands": "#3fae82"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    42,
+    -20.2,
+    10.5
+   ],
+   "params": {
+    "width": 13,
+    "height": 6,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -6.2,
+    24
+   ],
+   "params": {
+    "width": 32,
+    "height": 12,
+    "colour": "#3a3a2a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     4,
+     49
+    ],
+    "end": [
+     2,
+     4,
+     49
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 12,
+      "colour": "#555a60"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    4,
+    60.6
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#555a60"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    4,
+    49
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#555a60"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 8,
+    "height": 5.5,
+    "thickness": 0.4,
+    "colour": "#e6e0cf",
+    "edgeColour": "#3fae82"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -22,
+     0
+    ],
+    "end": [
+     -8,
+     -22,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 7
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -22,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-346331627"
+}

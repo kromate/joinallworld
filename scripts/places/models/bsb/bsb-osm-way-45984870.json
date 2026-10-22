@@ -1,0 +1,413 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-45984870",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bandar_Seri_Begawan_Lapau_Diraja_0004.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Stefan Fussan",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/lapau1.jpg",
+   "used": "long hall on slender white columns with glazed ground floor, dark patterned frieze band under a white flat roof, gilded stepped Malay roof with upturned ends over the middle, tall grey tapering tower with gold lantern and crescent beside a shallow pool with a gold basin fountain, brick-paved forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lapau_Brunei_2024_01.jpg",
+   "licence": "CC BY 2.0",
+   "author": "xiquinhosilva",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/lapau2.jpg",
+   "used": "tower proportions (grey fluted shaft, flared gold lantern, crescent finial), pool and lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/45984870",
+   "used": "hall outline 77 x 29 m (rectangle, name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.38,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     77,
+     29
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6dd",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#6b5a3c",
+    "bay": 7,
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "spacing": 5.5,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#6e6c66"
+      ],
+      "height": 1.6,
+      "at": 0.97,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dfd6",
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gold-1",
+   "at": [
+    -10,
+    0,
+    8.9
+   ],
+   "params": {
+    "rect": [
+     32,
+     15
+    ],
+    "height": 1.8,
+    "colour": "#c9a227",
+    "topColour": "#c9a227",
+    "topScale": 0.92
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gold-2",
+   "at": [
+    -10,
+    0,
+    10.7
+   ],
+   "params": {
+    "rect": [
+     24,
+     10
+    ],
+    "height": 1.8,
+    "colour": "#c9a227",
+    "topColour": "#c9a227",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gold-3",
+   "at": [
+    -10,
+    0,
+    12.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "height": 3.0,
+    "colour": "#d6b23a",
+    "topColour": "#d6b23a",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower",
+   "at": [
+    36,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#7d7b76",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.2,
+       3.0
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       3.4,
+       2.6
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       3.4,
+       2.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "lantern",
+   "at": [
+    36,
+    -26,
+    34
+   ],
+   "params": {
+    "colour": "#d6b23a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.4,
+       3.2
+      ]
+     },
+     {
+      "z": 2.2,
+      "rect": [
+       6.6,
+       4.8
+      ]
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       5.4,
+       3.8
+      ]
+     },
+     {
+      "z": 4.4,
+      "rect": [
+       4.2,
+       3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "lantern-2",
+   "at": [
+    36,
+    -26,
+    38.4
+   ],
+   "params": {
+    "colour": "#6e6c66",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       2.2
+      ]
+     },
+     {
+      "z": 5,
+      "rect": [
+       2.6,
+       1.8
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool",
+   "at": [
+    6,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     26
+    ],
+    "height": 0.25,
+    "colour": "#5f8f8a",
+    "topColour": "#6aa09a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "basin",
+   "at": [
+    0,
+    -28,
+    0.25
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d6b23a",
+    "profile": [
+     [
+      0.01,
+      0.3
+     ],
+     [
+      5,
+      0.7
+     ],
+     [
+      7,
+      1.3
+     ],
+     [
+      7.2,
+      1.6
+     ],
+     [
+      6.6,
+      1.4
+     ],
+     [
+      0.01,
+      0.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -52,
+    -6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a4503b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8b86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    -30,
+    -17.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     7
+    ],
+    "height": 3,
+    "colour": "#d3d0c6",
+    "topColour": "#d3d0c6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -28
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gold roof is stacked pyramid tiers without upturned horn ends or carved eaves; frieze is a plain dark band, not a lattice pattern; tower lacks vertical fluting and the hexagonal lantern detail; stair, fountain jets and planters omitted."
+ }
+}

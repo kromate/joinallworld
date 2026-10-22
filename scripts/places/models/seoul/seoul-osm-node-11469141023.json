@@ -1,0 +1,314 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1235504069",
+   "used": "site outline 6.7 m across (real shape of the fenced plot); stone arrangement is the generic capstone-on-supports table type, not surveyed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plot",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.4,
+      0.1
+     ],
+     [
+      -2.8,
+      -1.9
+     ],
+     [
+      -2,
+      -2.7
+     ],
+     [
+      0,
+      -3.4
+     ],
+     [
+      1,
+      -3.2
+     ],
+     [
+      2.8,
+      -2
+     ],
+     [
+      3.4,
+      0.1
+     ],
+     [
+      2.5,
+      2.3
+     ],
+     [
+      0.5,
+      3.4
+     ],
+     [
+      -1.8,
+      2.9
+     ],
+     [
+      -2.7,
+      2.1
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#7f8f5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "capstone",
+   "at": [
+    0,
+    0.2,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2.6,
+      -0.5
+     ],
+     [
+      -1.4,
+      -1.7
+     ],
+     [
+      0.8,
+      -1.9
+     ],
+     [
+      2.4,
+      -1.0
+     ],
+     [
+      2.7,
+      0.6
+     ],
+     [
+      1.2,
+      1.8
+     ],
+     [
+      -1.3,
+      1.7
+     ],
+     [
+      -2.5,
+      0.8
+     ]
+    ],
+    "z0": 1.55,
+    "height": 0.75,
+    "topScale": 0.9,
+    "colour": "#8a8c8a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "support-w",
+   "at": [
+    -1.6,
+    0.2,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.3,
+       0.6
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       1.0,
+       0.5
+      ],
+      "cx": 0.1
+     }
+    ],
+    "colour": "#7d8080"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "support-e",
+   "at": [
+    1.5,
+    0.4,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       0.7
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       0.9,
+       0.5
+      ],
+      "cx": -0.1
+     }
+    ],
+    "colour": "#85878a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "support-n",
+   "at": [
+    0.1,
+    1.0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       0.5
+      ]
+     },
+     {
+      "z": 1.55,
+      "rect": [
+       0.8,
+       0.45
+      ]
+     }
+    ],
+    "colour": "#767979"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fallen-stone",
+   "at": [
+    -1.8,
+    -1.9,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -0.6,
+      -0.3
+     ],
+     [
+      0.5,
+      -0.4
+     ],
+     [
+      0.7,
+      0.3
+     ],
+     [
+      -0.3,
+      0.45
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#8f9190"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "rail",
+    "height": 0.9,
+    "thickness": 0.08,
+    "colour": "#7a5a3f",
+    "points": [
+     [
+      -4.2,
+      -3.8
+     ],
+     [
+      4.2,
+      -3.8
+     ],
+     [
+      4.2,
+      4.0
+     ],
+     [
+      -4.2,
+      4.0
+     ],
+     [
+      -4.2,
+      -3.8
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     3
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-node-11469141023",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; capstone-on-supports table type, stone shapes not surveyed"
+ }
+}

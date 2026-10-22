@@ -1,0 +1,945 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-506728677",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hassanal_Bolkiah_National_Stadium_2017.jpg",
+   "licence": "Copyrighted free use",
+   "author": "Pudt",
+   "view": "interior",
+   "file": "/tmp/places-evidence/bsb/stad1.jpg",
+   "used": "main west stand seen across the pitch: tiered orange-brown seating, glazed box band and a row of nine cream arched vault shells on the roof edge, green pitch with red running track, lower stands round the bowl, tall floodlight mast with lamp panel"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hassanal_Bolkiah_National_Stadium_27_November_2022_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pangalau",
+   "view": "side",
+   "file": "/tmp/places-evidence/bsb/stad2.jpg",
+   "used": "tall tapered floodlight masts with wide lamp panels, the leaning mast, dark video scoreboard at the stand end"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4244164",
+   "used": "oval bowl about 260 x 195 m; modelled at about 0.4 scale to stay inside the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.8,
+  "fit": "all",
+  "margin": 0.02,
+  "shiftY": 0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      40.0,
+      0.0
+     ],
+     [
+      39.51,
+      4.38
+     ],
+     [
+      38.04,
+      8.65
+     ],
+     [
+      35.64,
+      12.71
+     ],
+     [
+      32.36,
+      16.46
+     ],
+     [
+      28.28,
+      19.8
+     ],
+     [
+      23.51,
+      22.65
+     ],
+     [
+      18.16,
+      24.95
+     ],
+     [
+      12.36,
+      26.63
+     ],
+     [
+      6.26,
+      27.66
+     ],
+     [
+      0.0,
+      28.0
+     ],
+     [
+      -6.26,
+      27.66
+     ],
+     [
+      -12.36,
+      26.63
+     ],
+     [
+      -18.16,
+      24.95
+     ],
+     [
+      -23.51,
+      22.65
+     ],
+     [
+      -28.28,
+      19.8
+     ],
+     [
+      -32.36,
+      16.46
+     ],
+     [
+      -35.64,
+      12.71
+     ],
+     [
+      -38.04,
+      8.65
+     ],
+     [
+      -39.51,
+      4.38
+     ],
+     [
+      -40.0,
+      0.0
+     ],
+     [
+      -39.51,
+      -4.38
+     ],
+     [
+      -38.04,
+      -8.65
+     ],
+     [
+      -35.64,
+      -12.71
+     ],
+     [
+      -32.36,
+      -16.46
+     ],
+     [
+      -28.28,
+      -19.8
+     ],
+     [
+      -23.51,
+      -22.65
+     ],
+     [
+      -18.16,
+      -24.95
+     ],
+     [
+      -12.36,
+      -26.63
+     ],
+     [
+      -6.26,
+      -27.66
+     ],
+     [
+      -0.0,
+      -28.0
+     ],
+     [
+      6.26,
+      -27.66
+     ],
+     [
+      12.36,
+      -26.63
+     ],
+     [
+      18.16,
+      -24.95
+     ],
+     [
+      23.51,
+      -22.65
+     ],
+     [
+      28.28,
+      -19.8
+     ],
+     [
+      32.36,
+      -16.46
+     ],
+     [
+      35.64,
+      -12.71
+     ],
+     [
+      38.04,
+      -8.65
+     ],
+     [
+      39.51,
+      -4.38
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#5f9a4a",
+    "topColour": "#5f9a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    -0.02
+   ],
+   "params": {
+    "points": [
+     [
+      47.0,
+      0.0
+     ],
+     [
+      46.42,
+      5.48
+     ],
+     [
+      44.7,
+      10.82
+     ],
+     [
+      41.88,
+      15.89
+     ],
+     [
+      38.02,
+      20.57
+     ],
+     [
+      33.23,
+      24.75
+     ],
+     [
+      27.63,
+      28.32
+     ],
+     [
+      21.34,
+      31.19
+     ],
+     [
+      14.52,
+      33.29
+     ],
+     [
+      7.35,
+      34.57
+     ],
+     [
+      0.0,
+      35.0
+     ],
+     [
+      -7.35,
+      34.57
+     ],
+     [
+      -14.52,
+      33.29
+     ],
+     [
+      -21.34,
+      31.19
+     ],
+     [
+      -27.63,
+      28.32
+     ],
+     [
+      -33.23,
+      24.75
+     ],
+     [
+      -38.02,
+      20.57
+     ],
+     [
+      -41.88,
+      15.89
+     ],
+     [
+      -44.7,
+      10.82
+     ],
+     [
+      -46.42,
+      5.48
+     ],
+     [
+      -47.0,
+      0.0
+     ],
+     [
+      -46.42,
+      -5.48
+     ],
+     [
+      -44.7,
+      -10.82
+     ],
+     [
+      -41.88,
+      -15.89
+     ],
+     [
+      -38.02,
+      -20.57
+     ],
+     [
+      -33.23,
+      -24.75
+     ],
+     [
+      -27.63,
+      -28.32
+     ],
+     [
+      -21.34,
+      -31.19
+     ],
+     [
+      -14.52,
+      -33.29
+     ],
+     [
+      -7.35,
+      -34.57
+     ],
+     [
+      -0.0,
+      -35.0
+     ],
+     [
+      7.35,
+      -34.57
+     ],
+     [
+      14.52,
+      -33.29
+     ],
+     [
+      21.34,
+      -31.19
+     ],
+     [
+      27.63,
+      -28.32
+     ],
+     [
+      33.23,
+      -24.75
+     ],
+     [
+      38.02,
+      -20.57
+     ],
+     [
+      41.88,
+      -15.89
+     ],
+     [
+      44.7,
+      -10.82
+     ],
+     [
+      46.42,
+      -5.48
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#b5604a",
+    "topColour": "#b5604a"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 55,
+    "radiusY": 43,
+    "startDeg": 38,
+    "endDeg": 142,
+    "rows": 24,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 2.0,
+    "facetDeg": 10,
+    "under": "open",
+    "stepped": false,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#c98a66",
+    "concreteColour": "#c9c3b6",
+    "underColour": "#a9a59a"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "bowl-stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 52,
+    "radiusY": 40,
+    "startDeg": 146,
+    "endDeg": 394,
+    "rows": 14,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "facetDeg": 14,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#c98a66",
+    "concreteColour": "#c9c3b6",
+    "underColour": "#a9a59a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "box-band",
+   "at": [
+    0,
+    47.5,
+    16
+   ],
+   "params": {
+    "rect": [
+     78,
+     5
+    ],
+    "height": 3.4,
+    "colour": "#d9d4b8",
+    "topColour": "#d9d4b8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "vaults",
+   "at": [
+    0,
+    47,
+    19.4
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     0,
+     0
+    ],
+    "end": [
+     36,
+     0,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 1,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#d8cfa6",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          8.4,
+          9
+         ]
+        },
+        {
+         "z": 1.6,
+         "rect": [
+          8.1,
+          9
+         ]
+        },
+        {
+         "z": 3.0,
+         "rect": [
+          7.0,
+          9
+         ]
+        },
+        {
+         "z": 4.2,
+         "rect": [
+          5.2,
+          9
+         ]
+        },
+        {
+         "z": 5.0,
+         "rect": [
+          3.0,
+          9
+         ]
+        },
+        {
+         "z": 5.5,
+         "rect": [
+          1.0,
+          9
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-spine",
+   "at": [
+    0,
+    51.5,
+    19.4
+   ],
+   "params": {
+    "rect": [
+     80,
+     1.2
+    ],
+    "height": 5.6,
+    "colour": "#cfc7a0",
+    "topColour": "#cfc7a0"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast-0",
+   "at": [
+    -58,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#c6c3ba",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 36,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "lamps-0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -58,
+    -34,
+    36
+   ],
+   "params": {
+    "colour": "#7e8387",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       1
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       8,
+       1.2
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       11,
+       1.2
+      ]
+     },
+     {
+      "z": 6.9,
+      "rect": [
+       11,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast-1",
+   "at": [
+    58,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#c6c3ba",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 36,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "lamps-1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    58,
+    -34,
+    36
+   ],
+   "params": {
+    "colour": "#7e8387",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       1
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       8,
+       1.2
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       11,
+       1.2
+      ]
+     },
+     {
+      "z": 6.9,
+      "rect": [
+       11,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast-2",
+   "at": [
+    -58,
+    34,
+    0
+   ],
+   "params": {
+    "colour": "#c6c3ba",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 36,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "lamps-2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -58,
+    34,
+    36
+   ],
+   "params": {
+    "colour": "#7e8387",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       1
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       8,
+       1.2
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       11,
+       1.2
+      ]
+     },
+     {
+      "z": 6.9,
+      "rect": [
+       11,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast-3",
+   "at": [
+    58,
+    34,
+    0
+   ],
+   "params": {
+    "colour": "#c6c3ba",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 36,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "lamps-3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    58,
+    34,
+    36
+   ],
+   "params": {
+    "colour": "#7e8387",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       1
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       8,
+       1.2
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       11,
+       1.2
+      ]
+     },
+     {
+      "z": 6.9,
+      "rect": [
+       11,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -62,
+    0,
+    6
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     12
+    ],
+    "height": 7,
+    "colour": "#2b2d30",
+    "topColour": "#2b2d30"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard-post",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -62,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1.2
+    ],
+    "height": 6,
+    "colour": "#8a8d90",
+    "topColour": "#8a8d90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Main stand, nine-vault canopy, orange seating, red track and tall lamp masts read like the photo; missing the glazed box band detail, stair aisles, side stand blocks in grey, the leaning V mast and the real 260 m scale (modelled at about 0.4 scale)."
+ }
+}

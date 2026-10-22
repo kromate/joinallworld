@@ -1,0 +1,227 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/652934807",
+   "used": "real 19 x 14 m building outline (rotated parallelogram), the nearest building to the venue point (78 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:서울_호암산성.jpg",
+   "licence": "CC (Wikimedia Commons)",
+   "author": "Wikimedia Commons contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/seoul/hoam.jpg",
+   "used": "excavated rubble stone foundations only; not the pavilion, so no photo comparison. Took the rough grey granite tone for ramparts."
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stylobate",
+   "footprint": {
+    "polygon": [
+     [
+      -12.4,
+      1.9
+     ],
+     [
+      -5.7,
+      -11.2
+     ],
+     [
+      12.4,
+      -1.8
+     ],
+     [
+      5.7,
+      11.2
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a5a7a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaaaa5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "polygon": [
+     [
+      -10.4,
+      1.5
+     ],
+     [
+      -4.9,
+      -9.5
+     ],
+     [
+      10.4,
+      -1.5
+     ],
+     [
+      4.9,
+      9.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a3f",
+    "windows": "screen",
+    "windowRatio": 0.35,
+    "bands": "#d6c5a5",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4b4f55",
+    "material": "clay-tile",
+    "rise": 3.0,
+    "overhang": 1.8,
+    "pitch": 28
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "rampart-back",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "rotDeg": 63,
+   "params": {
+    "length": 44,
+    "height": 5.5,
+    "thickness": 2.4,
+    "colour": "#9d9f9c"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "id": "parapet",
+   "at": [
+    0,
+    16,
+    5.5
+   ],
+   "rotDeg": 63,
+   "params": {
+    "length": 44,
+    "height": 1.2,
+    "thickness": 0.7,
+    "pitch": 1.8,
+    "colour": "#a5a7a6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 1.0,
+    "run": 1.1,
+    "count": 4,
+    "colour": "#a5a7a6"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "rampart-side",
+   "at": [
+    -24,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "height": 3.5,
+    "thickness": 2,
+    "colour": "#9d9f9c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     18,
+     -12
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     2
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     -16
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     12
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-node-8573225768",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only a rampart-excavation photo exists, not the pavilion; massing is a typical fortress pavilion on a granite platform at the real OSM footprint"
+ }
+}

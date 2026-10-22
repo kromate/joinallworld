@@ -1,0 +1,394 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%A5%E0%B8%B1%E0%B8%A2%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%9A%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B8%B4%E0%B8%95%E0%B8%A2%E0%B9%8C.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mrapisit",
+   "view": "front",
+   "file": "/tmp/places-evidence/bangkok/m0_dpu2.jpg",
+   "used": "cream tall tower with side stair strip, 12-storey slab, long 8-storey wing at left, lower right wing with arched entrance, brick block and red-tiled Thai pavilions at far right, round lawn with flagpoles in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DPU1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mrapisit",
+   "view": "detail",
+   "used": "flagpoles and terraced multi-storey car-park block colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2840322",
+   "used": "campus extent only (365 x 346 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tall-block",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    8,
+    20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 58,
+   "storeys": 15,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd2b4",
+    "glassColour": "#6f7c80",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "pattern": {
+     "kind": "fins",
+     "colour": "#d4cbb6",
+     "spacing": 3.6,
+     "faces": [
+      "front"
+     ]
+    },
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b2",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid-slab",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    -20,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 44,
+   "storeys": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd2b4",
+    "glassColour": "#6f7c80",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b2",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "long-wing",
+   "footprint": {
+    "rect": [
+     50,
+     18
+    ]
+   },
+   "at": [
+    -48,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd2b4",
+    "glassColour": "#6f7c80",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "pattern": {
+     "kind": "bands",
+     "colour": "#cfc6b0",
+     "height": 0.5
+    },
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b2",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    40,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd2b4",
+    "glassColour": "#6f7c80",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b19f",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-hall",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    22,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dac6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6cfbc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-block",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    66,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5f4c",
+    "glassColour": "#6d7f86",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8174",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "thai-pavilion-a",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    54,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c8b894",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a5502e",
+    "material": "clay-tile",
+    "overhang": 1.2,
+    "pitch": 38
+   }
+  },
+  {
+   "type": "mass",
+   "id": "thai-pavilion-b",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    68,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c8b894",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a5502e",
+    "material": "clay-tile",
+    "overhang": 1.2,
+    "pitch": 38
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "count": 3,
+    "spacing": 2.2
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    0,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 16,
+    "count": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 8,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower fins and Thai pavilion detail simplified; trees/lawn circle not matched; flagpoles shown without purple flag"
+ }
+}

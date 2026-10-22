@@ -1,0 +1,185 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/503561771",
+   "used": "hall outline: elongated quadrilateral about 83 x 30 m, bearing 103 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+   "used": "Vietnamese Buddhist temple language: two-tier tiled hall, tower, tam quan gate, statue in walled forecourt. Wikidata Q10748461 and its photos belong to the Da Lat temple, not this one, so no photo was used."
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3b8",
+    "windows": "none",
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a8332a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4623a",
+    "material": "clay-tile",
+    "pitch": 16,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -12,
+   "z0": 8.8,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4623a",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mosque-domed/pagoda-tower",
+   "at": [
+    -46,
+    -24,
+    0
+   ],
+   "params": {
+    "storeys": 4,
+    "base_width": 7,
+    "height": 20,
+    "sides": 4,
+    "colour": "#efe3b8",
+    "accent": "#a8332a",
+    "cap_colour": "#c4623a"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    30,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "steps": 2,
+    "figure_colour": "#f1ede4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 6,
+    "colour": "#b8a98c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 6,
+    "colour": "#b8a98c"
+   }
+  },
+  {
+   "type": "mosque-domed/pagoda-roof",
+   "at": [
+    11,
+    -38,
+    5.5
+   ],
+   "params": {
+    "width": 13,
+    "depth": 5,
+    "rise": 2,
+    "overhang": 1.2,
+    "colour": "#c4623a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this temple (Wikidata photos show the Da Lat temple); typical two-tier tiled hall on the real outline, small tower, gate and statue are generic."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-503561771"
+}

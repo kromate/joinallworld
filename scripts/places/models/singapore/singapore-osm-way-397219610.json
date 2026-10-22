@@ -1,0 +1,227 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-way-397219610",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PEH_Facade.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gemyen",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/peh.jpg",
+   "used": "corner view: tall plain white end block with a blank sign panel, stepped roofline dropping to the right, stone-beige wings with deep vertical white fin-boxes in stacked window bays, horizontal slab bands on the right wing, low glazed entrance canopy at the base, palms and a brick arcaded fence in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/801746053",
+   "used": "footprint 80 x 42 m, skewed rectangle with a serrated rear edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.65,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "osm": true,
+    "simplify": 3.0
+   },
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cdb8",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "left": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.7,
+      "depth": 0.9,
+      "spacing": 4.8,
+      "colour": "#f1efe9",
+      "margin": 1.5
+     },
+     {
+      "type": "bands",
+      "colour": "#ece8de"
+     }
+    ],
+    "bay": 5.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-end",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     15
+    ],
+    "z0": 0,
+    "height": 36,
+    "colour": "#f4f3ef",
+    "topColour": "#cfd1d2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-step",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     15
+    ],
+    "z0": 22,
+    "height": 8,
+    "colour": "#f0efea",
+    "topColour": "#cfd1d2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-rooftop",
+   "at": [
+    -28,
+    -6,
+    36
+   ],
+   "params": {
+    "rect": [
+     9,
+     6
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#d9dadb",
+    "topColour": "#b8bbbd"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "blank-sign",
+   "at": [
+    -34,
+    -15.7,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 9,
+    "bottom": 22,
+    "colour": "#f4f3ef",
+    "frameColour": "#f4f3ef",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance",
+   "at": [
+    18,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 5,
+    "height": 4,
+    "thickness": 0.5,
+    "columns": 3,
+    "colour": "#a99f8c",
+    "edgeColour": "#c8c1b0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "brick-fence",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -25
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wing facades are ribbon windows with fins rather than the deep stacked fin-boxes; stepped gable roofline of the tall end block is a plain box with one setback; no brick arcaded fence detail, no signage (blank board only); rear serrated outline simplified."
+ }
+}

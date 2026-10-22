@@ -1,0 +1,254 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-way-403889844",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/403889844",
+   "used": "campus outline only (569 x 388 m, a site polygon not a building); a U of teaching blocks is placed inside it"
+  },
+  {
+   "kind": "text",
+   "used": "brief: founded 1959, 5-storey pink-rendered teaching block with concrete trim, front steps, flags, quad"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 14,
+  "fovDeg": 46,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     100,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c3c0",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 12,
+    "plinth": 0.6,
+    "bands": "#b9b6ae",
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-pavilion",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2b9b5",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 12,
+    "plinth": 0.6,
+    "bands": "#b9b6ae",
+    "cornice": false,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390",
+    "material": "concrete",
+    "parapet": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     18,
+     48
+    ]
+   },
+   "at": [
+    -41,
+    33
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c3c0",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 12,
+    "plinth": 0.6,
+    "bands": "#b9b6ae",
+    "cornice": false,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     18,
+     48
+    ]
+   },
+   "at": [
+    41,
+    33
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c3c0",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 12,
+    "plinth": 0.6,
+    "bands": "#b9b6ae",
+    "cornice": false,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9390",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 4.5,
+    "columns": 2,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#c43c3c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#3c5fa8"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 8,
+    "count": 5,
+    "kind": "conifer"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "count": 6,
+    "kind": "conifer"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: typical teaching block U, pink render from brief only"
+ }
+}

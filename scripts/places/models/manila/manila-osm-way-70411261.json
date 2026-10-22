@@ -1,0 +1,272 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-70411261",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Taguig_City_University",
+   "used": "public city university (2000) on Gen. Santos Ave; no exterior photo found on Commons or Wikidata (no P18); the brief's four-storey cream U-shaped block with an arched entrance and flags is a plausible type for the city, not verified"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/70411261",
+   "used": "checked and not used as a footprint: the 379 x 232 m outline is the whole campus (amenity=university), not a building; used only for scale (a main block, covered court and annex are modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this campus exists in the evidence set; the block layout, entrance, colours and covered court are typical-for-city estimates and may not match the real buildings."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-u",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     80,
+     46
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee6d0",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "plinth": 0.8,
+    "bands": "#2f6f9a",
+    "cornice": true,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -25
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d6b4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b4573a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4573a",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -28.2,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 9,
+    "depth": 0.8,
+    "archWidth": 6.4,
+    "springHeight": 5.2,
+    "colour": "#2f6f9a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -29,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.2,
+    "bottom": 14.5,
+    "colour": "#2f6f9a",
+    "frameColour": "#eee6d0",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "covered-court",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    -48,
+    8
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d1b8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4573a",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    48,
+    -4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee6d0",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#2f6f9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quad-paving",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "rect": [
+     60,
+     24
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#b9b4a6",
+    "topColour": "#b9b4a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#2f6f9a",
+     "#c8362f"
+    ],
+    "count": 2,
+    "spacing": 28
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "count": 4,
+    "kind": "broadleaf",
+    "gap": 4.5,
+    "height_min": 8,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -22,
+    -44,
+    0
+   ],
+   "params": {
+    "colour": "#7b8c9c",
+    "count": 4,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   90
+  ]
+ }
+}

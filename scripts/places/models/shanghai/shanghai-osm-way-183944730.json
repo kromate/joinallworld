@@ -1,0 +1,322 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-183944730",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Guyiyuan.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Fayhoo",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/guyi.jpg",
+   "used": "two whitewashed pavilions on stone plinths with dark grey tiled hip roofs and upturned eaves on the far pond bank, rockwork edge, pines and broadleaf trees, green pond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/183944730",
+   "used": "park identity (450 m extent); a 100 m vignette around the pond is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.78,
+  "margin": 0.0,
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -8,
+    0.02
+   ],
+   "params": {
+    "width": 110,
+    "depth": 44,
+    "shape": "rect",
+    "colour": "#3f6f4a",
+    "bank": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-west",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    16
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2efe6",
+    "windows": "screen",
+    "windowRatio": 0.35,
+    "plinth": 0.7,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 34,
+    "colour": "#3d4046",
+    "material": "clay-tile",
+    "overhang": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    22,
+    15
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f1e8",
+    "windows": "screen",
+    "windowRatio": 0.3,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 36,
+    "colour": "#3d4046",
+    "material": "clay-tile",
+    "overhang": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-small",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    24
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 30,
+    "colour": "#454a50",
+    "material": "clay-tile",
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      6
+     ],
+     [
+      52,
+      6
+     ],
+     [
+      52,
+      12
+     ],
+     [
+      40,
+      13
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      -30,
+      10
+     ],
+     [
+      -52,
+      12
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#7c735f",
+    "top": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -3,
+      0.9
+     ],
+     [
+      -22,
+      -9,
+      0.9
+     ],
+     [
+      -14,
+      -3,
+      0.9
+     ],
+     [
+      -6,
+      -9,
+      0.9
+     ],
+     [
+      2,
+      -3,
+      0.9
+     ]
+    ],
+    "width": 1.6,
+    "height": 0.35,
+    "colour": "#a89f90"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    36,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 3.2,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Whitewashed pavilions on plinths with grey hip roofs by a green pond; upturned eaves, carved gable ends, rockwork and dense pines missing; pavilions too symmetrical."
+ }
+}

@@ -1,0 +1,480 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Khmer%E2%80%93Soviet_Friendship_Hospital_Dec_2022.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kiensvay",
+   "view": "front",
+   "file": "/tmp/places-evidence/phnom-penh/hosp2.jpg",
+   "used": "main ward block from the courtyard: five stepped-back storeys, horizontal louvre bands, cream render, two rooftop plant blocks, flanking louvred three-storey wings, flagpole"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Khmer%E2%80%93Soviet_Friendship_Hospital.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kiensvay",
+   "view": "street",
+   "used": "gate piers, overall cream/white colour, palm planting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/171309629",
+   "used": "campus only (385 m), not modelled: one main block shown"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     56,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier1",
+   "footprint": {
+    "rect": [
+     54,
+     16
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 4.2,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.0,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#c9c6bb",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     52,
+     14
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 7.8,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.0,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#c9c6bb",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     50,
+     13
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 11.4,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.0,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#c9c6bb",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier4",
+   "footprint": {
+    "rect": [
+     48,
+     12
+    ]
+   },
+   "at": [
+    0,
+    3.5
+   ],
+   "z0": 15.0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.0,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#c9c6bb",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pent-l",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -18,
+    4
+   ],
+   "z0": 18.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c3",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pent-r",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    18,
+    4
+   ],
+   "z0": 18.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c3",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    -37,
+    -8
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe7dc",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "right"
+      ]
+     }
+    ],
+    "bands": "#c9c6bb",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete",
+    "overhang": 0.7,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    37,
+    -8
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe7dc",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "left"
+      ]
+     }
+    ],
+    "bands": "#c9c6bb",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete",
+    "overhang": 0.7,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 2,
+    "spacing": 1.4,
+    "colours": [
+     "#2f4a9c",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -9.5,
+    3.2
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#f3f1ea",
+    "frameColour": "#b0aaa0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -8.5,
+    7
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#f3f1ea",
+    "frameColour": "#b0aaa0",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper tiers read flatter than the real deep louvre overhangs; wings are plain boxes at the near ends; courtyard shade tent, shrine and hedges omitted"
+ }
+}

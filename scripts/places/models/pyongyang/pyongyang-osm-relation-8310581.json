@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-relation-8310581",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/8310581",
+   "used": "stepped multi-wing banquet-hall outline about 90 x 61 m"
+  },
+  {
+   "kind": "text",
+   "used": "Wikidata Q116757504 (1972); brief: low 2-storey banquet halls, hip roof, stone colonnade"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "halls",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdca0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.8,
+    "bay": 10
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d6d6b",
+    "material": "metal-sheet",
+    "overhang": 1.6,
+    "rise": 3.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -8,
+     -60,
+     0
+    ],
+    "end": [
+     8,
+     -60,
+     0
+    ],
+    "count": 6,
+    "lod2Step": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "height": 6,
+      "colour": "#b9b6ae"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; hip roof fitted to bounding rectangle of irregular outline; windows coarse for budget; colonnade is a short row of piers"
+ }
+}

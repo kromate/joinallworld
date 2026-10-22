@@ -1,0 +1,265 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tai_Hing_Government_Offices.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Exploringlife",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/gov1.jpg",
+   "used": "white-tiled tall block, bronze glass curtain wall on the entrance corner, low white entrance canopy, grey dental-clinic block behind, white annex on the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/220337682",
+   "used": "overall size 65 x 53 m, 4 levels (irregular outline, composed from masses instead)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e9e7e0",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-front",
+   "footprint": {
+    "rect": [
+     18,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -10.4
+   ],
+   "z0": 2.5,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5a4a38",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b5a46"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    -24,
+    14
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb0b0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     15
+    ]
+   },
+   "at": [
+    -34,
+    2
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#efeee9",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    22,
+    16
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#dcd6c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "height": 3.6,
+    "thickness": 0.4,
+    "colour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 3,
+    "width": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -19,
+     -17
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -18
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-community-notices",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glass curtain tint too dark and no mullion grid; lettering band and dental-clinic wall details absent; surrounding towers not modelled; real outline is irregular and composed from boxes."
+ }
+}

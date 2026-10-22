@@ -1,0 +1,249 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-192206043",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Xinhua_Hospital.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Intern1984",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/xinhua.jpg",
+   "used": "grey-beige tiled inpatient tower with a blue glazed service strip, projecting flat grey-bronze entrance canopy, blue curtain-glass block, beige lower wings, second pale tower at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/192206043",
+   "used": "campus identity only (393 m); front entrance block modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 16,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    -12,
+    14
+   ],
+   "height": 50,
+   "storeys": 14,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d8d3c6",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 5.5,
+    "plinth": 0.3,
+    "bands": "#bdb7aa"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-2",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    36,
+    18
+   ],
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c5c3bd",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -18,
+    -4
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#cbbfa9",
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7e8388",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-block",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    20,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f7fae",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bands": "#8da7c0",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#707579",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     14
+    ],
+    "z0": 13.0,
+    "height": 2.0,
+    "colour": "#76736f",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.8
+    ],
+    "z0": 2,
+    "height": 46,
+    "colour": "#3f6fb2",
+    "top": true
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -2,
+    -14.5,
+    15.4
+   ],
+   "params": {
+    "width": 28,
+    "height": 2.2,
+    "colour": "#1f3a8a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -18
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tiled tower, blue strip, canopy and curtain-glass block present; massing is a simplified cluster, tower is wider and canopy thinner than the photo, no sign lettering."
+ }
+}

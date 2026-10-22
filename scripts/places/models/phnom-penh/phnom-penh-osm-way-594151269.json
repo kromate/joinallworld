@@ -1,0 +1,474 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/594151269",
+   "used": "zoo site about 547 x 440 m: used for scale only, a visitor-entrance zone of about 110 m is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q58322404",
+   "used": "zoo park; gate, kiosks, pavilions, animal sheds and fenced enclosures typed from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 5.5,
+    "pillar": 1.6,
+    "leaf": "bars",
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 5.5,
+    "colour": "#7aa05a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      0
+     ],
+     [
+      -9,
+      0
+     ]
+    ],
+    "height": 2.2,
+    "kind": "fence",
+    "colour": "#6b6f66"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      9,
+      0
+     ],
+     [
+      50,
+      0
+     ]
+    ],
+    "height": 2.2,
+    "kind": "fence",
+    "colour": "#6b6f66"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -22,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.6,
+    "colour": "#c8531f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.6,
+    "colour": "#e8c04a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "height": 4,
+    "roof": "hip",
+    "colour": "#e8dcc0",
+    "cap_colour": "#b5532f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 8,
+    "height": 4.2,
+    "roof": "hip",
+    "colour": "#e8dcc0",
+    "cap_colour": "#b5532f"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    -38,
+    34,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.4,
+    "colour": "#c9b98d",
+    "roofColour": "#8f8a80"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    34,
+    36,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 3.4,
+    "colour": "#c9b98d",
+    "roofColour": "#8f8a80"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    48,
+    14,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3,
+    "colour": "#c9b98d",
+    "roofColour": "#8f8a80"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      26,
+      24
+     ],
+     [
+      62,
+      24
+     ],
+     [
+      62,
+      52
+     ],
+     [
+      26,
+      52
+     ],
+     [
+      26,
+      24
+     ]
+    ],
+    "height": 2.4,
+    "kind": "fence",
+    "colour": "#5f635a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      24
+     ],
+     [
+      -26,
+      24
+     ],
+     [
+      -26,
+      52
+     ],
+     [
+      -60,
+      52
+     ],
+     [
+      -60,
+      24
+     ]
+    ],
+    "height": 2.4,
+    "kind": "fence",
+    "colour": "#5f635a"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -8,
+    50,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "shape": "oval"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -26
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      24
+     ]
+    ],
+    "width": 4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists: layout is a typical zoo entrance zone (gate, ticket hall, kiosks, pavilions, sheds, two fenced paddocks, pond), not the real plan of the 547 m site."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-osm-way-594151269"
+}

@@ -1,0 +1,214 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Remains_of_Divine_Bridge_leading_to_Synonan_Jinja_at_MacRitchie_Reservoir,_Singapore,_1_-_2022-07-02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wzhkevin",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/singapore-osm-way-890591248-0.jpg",
+   "used": "setting only: dense rainforest wall behind a reservoir edge with a row of broken bridge footings standing in the water, reed grass in front; no steps visible"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/890591248",
+   "used": "52 x 16 m footprint of the steps (rotated 4 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "slope",
+   "params": {
+    "points": [
+     [
+      -10,
+      -25
+     ],
+     [
+      6,
+      -26
+     ],
+     [
+      10,
+      25
+     ],
+     [
+      -6,
+      26
+     ]
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#4f6a4a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       11,
+       3.2
+      ],
+      "height": 0.45,
+      "colour": "#8d8f83"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -22,
+     0.1
+    ],
+    "end": [
+     6,
+     22,
+     3.9
+    ],
+    "count": 18,
+    "vary": {}
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -9,
+    -8,
+    0
+   ],
+   "rotDeg": 94,
+   "params": {
+    "length": 16,
+    "height": 1.4,
+    "thickness": 0.6,
+    "colour": "#7a7d73"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    9,
+    6,
+    3
+   ],
+   "rotDeg": 94,
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "thickness": 0.6,
+    "colour": "#7a7d73"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "landing",
+   "params": {
+    "points": [
+     [
+      -9,
+      23
+     ],
+     [
+      9,
+      23
+     ],
+     [
+      9,
+      28
+     ],
+     [
+      -9,
+      28
+     ]
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#9a9c90"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 1.6,
+      "colour": "#9a9c90"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -60,
+     0
+    ],
+    "end": [
+     6,
+     -34,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    0,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 60,
+    "count": 9,
+    "min_height": 12,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    0,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 60,
+    "count": 9,
+    "min_height": 12,
+    "max_height": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": 0,
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-way-890591248",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the steps; footprint plus text only, step wear and moss not modelled"
+ }
+}

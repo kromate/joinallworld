@@ -1,0 +1,103 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-way-152598430",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/152598430",
+   "used": "footprint, levels"
+  },
+  {
+   "kind": "text",
+   "used": "OSM tags: 7 levels, concrete, colour #9099a0, 2007. The Wikidata image (The icon.jpg) shows the 40-storey Icon Loft tower, not this 7-storey block, so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9099a0",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9099a0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.5,
+    "bottom": 6,
+    "colour": "#6e8aa0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.5,
+    "bottom": 6,
+    "colour": "#6e8aa0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 8,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this block (Wikidata image is the Icon Loft tower); OSM outline, 7 levels, grey colour only; facade details generic"
+ }
+}

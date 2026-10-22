@@ -1,0 +1,293 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "taipei",
+ "venueId": "taipei-osm-way-396909006",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/396909006",
+   "used": "hospital grounds outline (289 x 252 m, bearing 127) as the paved site plate"
+  },
+  {
+   "kind": "text",
+   "used": "brief: mid-rise tile-clad hospital blocks around green yards, ~7 storeys. Nearby Commons photos (Songde area) show a different mixed-use building and were not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "grounds",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8ad",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb3a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "uSpine",
+   "footprint": {
+    "rect": [
+     84,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d8cfc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "uWingA",
+   "footprint": {
+    "rect": [
+     18,
+     50
+    ]
+   },
+   "at": [
+    -33,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#cfc5b4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "uWingB",
+   "footprint": {
+    "rect": [
+     18,
+     50
+    ]
+   },
+   "at": [
+    33,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#cfc5b4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -55,
+    -48
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e0d9cb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    52,
+    -52
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e0d9cb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -10,
+    -26,
+    28.6
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 2,
+    "colour": "#b5b8b6"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    12,
+    -26,
+    28.6
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 2,
+    "colour": "#b5b8b6"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -8,
+    -36,
+    22
+   ],
+   "params": {
+    "size": 3
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -42,
+    0.6
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "No photo of the hospital itself; U-shaped block layout is inferred from the brief on a footprint-scaled site plate."
+ }
+}

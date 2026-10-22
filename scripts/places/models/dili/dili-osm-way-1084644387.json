@@ -1,0 +1,312 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-way-1084644387",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1084644387",
+   "used": "real outline 23.4 x 20.8 m (leisure=park)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/dili.json dili-osm-way-1084644387",
+   "used": "small paved town square with trees, benches, low stone wall and kiosk; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 20,
+  "fovDeg": 45,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "paving",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b7b1a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b1a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inner-path",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     2.2
+    ],
+    "z0": 0.5,
+    "height": 0.03,
+    "colour": "#d9c7a0",
+    "material": "paving-block"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall0",
+   "at": [
+    -0.7,
+    11.7
+   ],
+   "rotDeg": 3.3,
+   "params": {
+    "rect": [
+     20.634921855921824,
+     0.3
+    ],
+    "z0": 0.5,
+    "height": 0.8,
+    "colour": "#8a8a80",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall1",
+   "at": [
+    10.35,
+    0.6
+   ],
+   "rotDeg": -86.3,
+   "params": {
+    "rect": [
+     23.448027635602955,
+     0.3
+    ],
+    "z0": 0.5,
+    "height": 0.8,
+    "colour": "#8a8a80",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall2",
+   "at": [
+    0.7,
+    -11.65
+   ],
+   "rotDeg": -177.0,
+   "params": {
+    "rect": [
+     20.829066229670495,
+     0.3
+    ],
+    "z0": 0.5,
+    "height": 0.8,
+    "colour": "#8a8a80",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall3",
+   "at": [
+    -10.35,
+    -0.55
+   ],
+   "rotDeg": 93.2,
+   "params": {
+    "rect": [
+     23.336237914453985,
+     0.3
+    ],
+    "z0": 0.5,
+    "height": 0.8,
+    "colour": "#8a8a80",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "tree0",
+   "at": [
+    -5,
+    6,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "tree1",
+   "at": [
+    5,
+    6,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "tree2",
+   "at": [
+    -6,
+    -2,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "tree3",
+   "at": [
+    6,
+    -2,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench0",
+   "at": [
+    -2.5,
+    -5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.8,
+     0.45
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#7a6a50"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench1",
+   "at": [
+    2.5,
+    -5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.8,
+     0.45
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#7a6a50"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench2",
+   "at": [
+    -8.5,
+    2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "rect": [
+     1.8,
+     0.45
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#7a6a50"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench3",
+   "at": [
+    8.5,
+    2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "rect": [
+     1.8,
+     0.45
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#7a6a50"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "id": "kiosk",
+   "at": [
+    7,
+    8.5,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#d9c7a0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -12.3,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b7b1a2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo: layout of trees, benches and kiosk is typed"
+ }
+}

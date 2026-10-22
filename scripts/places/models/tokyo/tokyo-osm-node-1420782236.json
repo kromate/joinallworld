@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-node-1420782236",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kyorin_University_Hospital.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/kyorin1.jpg",
+   "used": "tall white-tile slab of about ten storeys with long green-tinted ribbon windows, grey penthouse on the roof, curved green glass wing at its right end, lower brown tiled annex"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kyorin_Univ._Hospital,_Mitaka,_Tokyo.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Tatawidepine",
+   "view": "detail",
+   "file": "/tmp/places-evidence/tokyo/kyorin2.jpg",
+   "used": "curved green curtain-wall wing, grey panel cladding block, low entrance canopy on columns, long balcony-banded ward wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3345903",
+   "used": "podium outline (scaled 0.65 to fit), 44 m height"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 0.645,
+    "simplify": 16
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#ddd8cb",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#ddd8cb",
+      "#9fb0aa"
+     ]
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     52,
+     15
+    ]
+   },
+   "at": [
+    -18,
+    -26
+   ],
+   "height": 40,
+   "storeys": 10,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#eceae3",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": {
+     "type": "floors",
+     "faces": [
+      "left",
+      "right",
+      "back"
+     ],
+     "colours": [
+      "#eceae3",
+      "#a9bdb6"
+     ]
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "penthouse",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    -8,
+    -26
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9296",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#80858a"
+   },
+   "z0": 40
+  },
+  {
+   "type": "mass",
+   "id": "curve",
+   "footprint": {
+    "polygon": [
+     [
+      -11,
+      -2
+     ],
+     [
+      -8,
+      -6
+     ],
+     [
+      -2,
+      -8
+     ],
+     [
+      4,
+      -7
+     ],
+     [
+      9,
+      -4
+     ],
+     [
+      11,
+      2
+     ],
+     [
+      8,
+      6
+     ],
+     [
+      -2,
+      8
+     ],
+     [
+      -8,
+      6
+     ]
+    ]
+   },
+   "at": [
+    17,
+    -30
+   ],
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f8f7e",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#3f8f7e",
+      "#2f6f62"
+     ]
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9498",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    40,
+    -34
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#b9a57a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/canopy",
+   "at": [
+    -25,
+    -40,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#b6b8ba"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "hospital/helipad",
+   "at": [
+    -30,
+    -10,
+    12
+   ],
+   "params": {
+    "radius": 7
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "hospital/ambulance-bay",
+   "at": [
+    30,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/tree",
+   "at": [
+    -5,
+    -47,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 3,
+    "spread": 30
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "green ribbon windows reduced to storey banding on the podium and curved wing, no balconies on the slab side; rear and side wings follow only the OSM outline; slab position and the curved wing are approximate"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ }
+}

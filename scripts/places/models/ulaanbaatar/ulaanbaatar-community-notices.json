@@ -1,0 +1,155 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ministry_of_Health_(Mongolia).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/ministry.jpg",
+   "used": "four-storey ochre-buff render block with pale pilaster piers, punched windows with grilles, flat roof with a blank billboard frame, small flat entrance canopy on a post, dimpled grey concrete wall at the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/217273942",
+   "used": "real irregular footprint (about 83 x 57 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ministry",
+   "footprint": {
+    "osm": true,
+    "simplify": 3.5
+   },
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b878",
+    "trimColour": "#e6d2a0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.8,
+    "plinth": 0.7,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6b64",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6,
+    "depth": 4,
+    "height": 3.4,
+    "thickness": 0.4,
+    "columns": 1,
+    "colour": "#7e7a72",
+    "edgeColour": "#cfc7b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concrete-wall",
+   "footprint": {
+    "rect": [
+     16,
+     0.8
+    ]
+   },
+   "at": [
+    -34,
+    -8
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a09d94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "billboard",
+   "footprint": {
+    "rect": [
+     7,
+     0.6
+    ]
+   },
+   "at": [
+    -14,
+    18
+   ],
+   "z0": 16.5,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9dbdf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a60"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 5,
+    "line": 36
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM outline is simplified so the facade is a plain grid; real pilaster piers, window grilles, concrete wall and rooftop billboard are approximated; no street trees as dense as the photo."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-community-notices"
+}

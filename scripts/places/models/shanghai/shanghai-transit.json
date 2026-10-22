@@ -1,0 +1,583 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:E_Nanjing_Road,_Shanghai.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "螺钉",
+   "view": "street",
+   "file": "/tmp/places-evidence/shanghai/transit-1.jpg",
+   "used": "view down the pedestrian street: wide pale paved walkway, continuous 6-9 storey stone and render frontages left and right, tall vertical red signboards on the left, glass tower with billboards on the right, round clipped trees, taller towers closing the vista"
+  },
+  {
+   "kind": "text",
+   "used": "Wikipedia Nanjing Road: pedestrian section about 1.2 km, ~28 m wide, 1920s-30s department stores"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/160023919",
+   "used": "attraction polygon 474 x 51 m (street axis, not used as a building footprint)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "street-paving",
+   "at": [
+    0,
+    36
+   ],
+   "params": {
+    "rect": [
+     26,
+     84
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#b8a99a",
+    "topColour": "#c4b3a3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "L1",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 30,
+   "storeys": 7,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc8b6",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "glassColour": "#566570",
+    "plinth": 0.5,
+    "cornice": false,
+    "bay": 6.2,
+    "groundKind": "glass-shopfront",
+    "groundHeight": 4.8,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "L2",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -20,
+    24
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 38,
+   "storeys": 9,
+   "wall": {
+    "material": "stone",
+    "colour": "#a8553e",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "glassColour": "#566570",
+    "plinth": 0.5,
+    "cornice": false,
+    "bay": 6.2,
+    "groundKind": "glass-shopfront",
+    "groundHeight": 4.8,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "L3",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    -20,
+    50
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9d3c3",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "glassColour": "#566570",
+    "plinth": 0.5,
+    "cornice": false,
+    "bay": 6.2,
+    "groundKind": "glass-shopfront",
+    "groundHeight": 4.8,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "R1",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    20,
+    4
+   ],
+   "rotDeg": -90,
+   "z0": 0,
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a98a0",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#6d8290",
+    "plinth": 0.5,
+    "cornice": false,
+    "bay": 6.2,
+    "groundKind": "glass-shopfront",
+    "groundHeight": 4.8,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "R2",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    20,
+    30
+   ],
+   "rotDeg": -90,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8a08a",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "glassColour": "#566570",
+    "plinth": 0.5,
+    "cornice": false,
+    "bay": 6.2,
+    "groundKind": "glass-shopfront",
+    "groundHeight": 4.8,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "R3",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    20,
+    56
+   ],
+   "rotDeg": -90,
+   "z0": 0,
+   "height": 36,
+   "storeys": 9,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4b8a2",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "glassColour": "#566570",
+    "plinth": 0.5,
+    "cornice": false,
+    "bay": 6.2,
+    "groundKind": "glass-shopfront",
+    "groundHeight": 4.8,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-red-1",
+   "at": [
+    -9.4,
+    18
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     2.6
+    ],
+    "z0": 6,
+    "height": 12,
+    "colour": "#b9262b",
+    "topColour": "#8c1b20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-red-2",
+   "at": [
+    -9.2,
+    36
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     3.0
+    ],
+    "z0": 8,
+    "height": 14,
+    "colour": "#c63a2f",
+    "topColour": "#8c1b20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-white",
+   "at": [
+    -9.4,
+    62
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     2.4
+    ],
+    "z0": 6,
+    "height": 10,
+    "colour": "#e8e2d4",
+    "topColour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-wide-dark",
+   "at": [
+    -9.2,
+    2
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     14
+    ],
+    "z0": 9,
+    "height": 6,
+    "colour": "#2a2d33",
+    "topColour": "#2a2d33"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "billboard-r1",
+   "at": [
+    9.2,
+    12
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     3.6
+    ],
+    "z0": 9,
+    "height": 11,
+    "colour": "#d7b9a2",
+    "topColour": "#b9a08a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "billboard-r2",
+   "at": [
+    9.2,
+    19
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     3.6
+    ],
+    "z0": 9,
+    "height": 11,
+    "colour": "#c8a96a",
+    "topColour": "#a88f56"
+   }
+  },
+  {
+   "type": "array",
+   "id": "banners-left",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     8
+    ],
+    "end": [
+     -11,
+     16
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       1.2
+      ],
+      "z0": 3.5,
+      "height": 3.5,
+      "colour": "#cfcad8",
+      "topColour": "#cfcad8"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "awnings",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10.2,
+     46
+    ],
+    "end": [
+     -10.2,
+     70
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       5
+      ],
+      "z0": 4.4,
+      "height": 0.25,
+      "colour": "#7a3b2e",
+      "topColour": "#7a3b2e"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "street-trees",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     6
+    ],
+    "end": [
+     -6,
+     76
+    ],
+    "count": 6,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 7,
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "street-trees-r",
+   "params": {
+    "mode": "line",
+    "start": [
+     6,
+     10
+    ],
+    "end": [
+     6,
+     76
+    ],
+    "count": 5,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 6.5,
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     10
+    ],
+    "end": [
+     0,
+     76
+    ],
+    "count": 5,
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 6,
+      "count": 1
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-planter",
+   "at": [
+    8,
+    2
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     4.4
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#8c5a46",
+    "topColour": "#6b5a3a"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   60,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Street canyon is a generic 6 to 9 storey frontage mix; neon signboards are plain red and white blocks, no billboards imagery, the clipped trees and crowd are simplified."
+ }
+}

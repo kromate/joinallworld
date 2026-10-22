@@ -1,0 +1,207 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Timor_Plaza,_2023_(08)_(cropped).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "front",
+   "file": "/tmp/places-evidence/dili/plaza1.jpg",
+   "used": "four-storey white block, vertical grey-beige pier strips between glazed bays with blank sign boards, stepped white parapet, tall central sign tower, low white fence with piers at street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/254293086",
+   "used": "footprint about 101 x 64 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.25
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.6,
+      "depth": 0.5,
+      "spacing": 7.5,
+      "colour": "#a9a398",
+      "margin": 2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5ab",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 5,
+      "height": 7,
+      "bottom": 5,
+      "colour": "#2d5e9e",
+      "frameColour": "#e8e8e8",
+      "posts": false
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -33.5,
+     0
+    ],
+    "end": [
+     34,
+     -33.5,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "params": {
+    "width": 6,
+    "height": 12,
+    "bottom": 5,
+    "colour": "#4a4a4c",
+    "frameColour": "#d8d8d8",
+    "posts": false
+   },
+   "at": [
+    28,
+    -33.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fence",
+   "at": [
+    0,
+    -39
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.4
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#e8e8e8"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1,
+       1
+      ],
+      "height": 3,
+      "colour": "#f0f0f0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     -39,
+     0
+    ],
+    "end": [
+     44,
+     -39,
+     0
+    ],
+    "count": 12
+   }
+  },
+  {
+   "type": "core/flag",
+   "params": {
+    "height": 10,
+    "count": 4,
+    "spacing": 5
+   },
+   "at": [
+    -30,
+    -42
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -45
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "sign boards too saturated and large vs real mixed adverts; no stepped parapet or central sign tower; neighbouring warehouse and street furniture omitted"
+ }
+}

@@ -1,0 +1,265 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-1435976373",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Medical_City_Ortigas.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "A.C.T. Alejandre",
+   "view": "street",
+   "file": "/tmp/places-evidence/manila/tmc1.jpg",
+   "used": "tall beige concrete ward tower of about 16 floors with deep blue recessed window bays, projecting piers at the corners, trellis frame on the roof, lower blue-glass podium wing at left, palms on the street frontage"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Medical_City_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Idawriter",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/manila/tmc2.jpg",
+   "used": "tan painted-render wall colour, small punched windows on the side faces, garden courtyard between wings"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7150661",
+   "used": "podium outline (4 levels)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "simplify": 8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#566f86",
+    "windows": "none",
+    "bands": "#d9d0b8",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    -8,
+    4
+   ],
+   "z0": 17,
+   "height": 52,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6cbb0",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d6cbb0",
+       "#3f5f86"
+      ]
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-pier-a",
+   "at": [
+    -25.5,
+    -8.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.6
+    ],
+    "height": 69,
+    "colour": "#cfc4a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-pier-b",
+   "at": [
+    9.5,
+    -8.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.6
+    ],
+    "height": 69,
+    "colour": "#cfc4a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-pier-c",
+   "at": [
+    -25.5,
+    16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.6
+    ],
+    "height": 69,
+    "colour": "#cfc4a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-pier-d",
+   "at": [
+    9.5,
+    16.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.6
+    ],
+    "height": 69,
+    "colour": "#cfc4a8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-trellis",
+   "at": [
+    -8,
+    4,
+    69
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "closed": true,
+    "points": [
+     [
+      -17,
+      -12,
+      0
+     ],
+     [
+      17,
+      -12,
+      0
+     ],
+     [
+      17,
+      12,
+      0
+     ],
+     [
+      -17,
+      12,
+      0
+     ]
+    ],
+    "colour": "#4a5560"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -9,
+    70
+   ],
+   "params": {
+    "width": 16,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#cfd6dc",
+    "frameColour": "#4a5560",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 4,
+    "line": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower reads more blue and squatter than the beige, pier-framed photo; podium is a simplified OSM outline with no window detail; no roof trellis detail or street palms density"
+ }
+}

@@ -1,0 +1,276 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-way-35096650",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Masjid_En-Naeem_at_Kovan.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Muhammad Adrian",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/naeem1.jpg",
+   "used": "low two-level prayer building clad in white horizontal metal boards, small framed windows with green sills, flat roof with raised clerestory block behind, single square white minaret with a gold onion dome set behind the main hall, green canopy on the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Masjid_En-Naeem,_June_2022.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GoAheadFan95",
+   "view": "street",
+   "file": "/tmp/places-evidence/singapore/naeem2.jpg",
+   "used": "minaret proportions: tall slender square shaft (about 1:9), vertical green tile strip, flared gold onion dome with finial, pale arched entrance on the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/35096650",
+   "used": "footprint of the whole mosque plot, 56 x 54 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e9ebec",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 4.5,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9cdd0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea4a8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     24,
+     17
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "z0": 7.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e4e6e7",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f969b",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "id": "minaret-shaft",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.2,
+       5.2
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       5,
+       5
+      ]
+     }
+    ],
+    "colour": "#eceeee",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-strip",
+   "at": [
+    8,
+    -8.25,
+    6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "z0": 0,
+    "height": 18,
+    "colour": "#3f8f6f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-collar",
+   "at": [
+    8,
+    -6,
+    28
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#d9d9d4"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "onion",
+   "at": [
+    8,
+    -6,
+    28.6
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e0b240",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      2.4,
+      0.2
+     ],
+     [
+      3.0,
+      1.2
+     ],
+     [
+      2.6,
+      2.4
+     ],
+     [
+      1.6,
+      3.4
+     ],
+     [
+      0.6,
+      4.2
+     ],
+     [
+      0.15,
+      4.9
+     ],
+     [
+      0.1,
+      6.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "green-awning",
+   "at": [
+    -18,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 5,
+    "height": 3.2,
+    "thickness": 0.25,
+    "columns": 3,
+    "colour": "#3f9a62",
+    "edgeColour": "#2f7a5a"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-porch",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 7,
+    "depth": 2.4,
+    "height": 3.1,
+    "thickness": 0.3,
+    "colour": "#c9cdd0",
+    "edgeColour": "#b0b5b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM plan is a cross-shaped footprint so the real long low front is only approximated; windows lack green sills and horizontal board ribs; green side canopy simplified; minaret slightly slimmer than the photo."
+ }
+}

@@ -1,0 +1,203 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/516639172",
+   "used": "campus polygon (about 309 x 97 m) is the whole campus, so only its scale and bearing informed a 110 x 30 m teaching block; no usable exterior photo (viwiki lead image is a logo)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q10829086",
+   "used": "University of Labour and Social Affairs, campus 2, Hoc Mon / district 12; cream five-storey corridor-balcony block typical of Vietnamese universities"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     100,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.8,
+    "bay": 6,
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b88a4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair2",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    30,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b88a4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -40,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.5,
+    "pillar": 1.2,
+    "colour": "#ede6cf"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "line": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No exterior photo and the OSM polygon is the whole campus, so the block is a typical cream five-storey teaching building; real massing unknown."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-516639172"
+}

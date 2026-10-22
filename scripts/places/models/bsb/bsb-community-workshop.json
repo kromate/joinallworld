@@ -1,0 +1,266 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lambak_Kanan_Library_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pangalau",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/lib2.jpg",
+   "used": "teal and yellow striped modernist block, dark-tile entrance panel under a wavy teal parapet, curved dark canopy, taller yellow-tiled tower at right, yellow-orange low wing; no hipped roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lambak_Kanan_Library_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pangalau",
+   "view": "side",
+   "file": "/tmp/places-evidence/bsb/lib1.jpg",
+   "used": "left end: cream concrete two-storey end with deep sunshade, teal wall behind, yellow tower top, fence, gate pier sign"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/548051510",
+   "used": "footprint 39 x 21 m, name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stripe-block",
+   "footprint": {
+    "rect": [
+     13,
+     14
+    ]
+   },
+   "at": [
+    -13,
+    -1
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#2f9aa0",
+    "windows": "none",
+    "bay": 6,
+    "plinth": 0.3,
+    "pattern": {
+     "type": "fins",
+     "colour": "#e0a92e"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#2d3a47",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f9aa0",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -4,
+    9
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 12,
+    "depth": 1.2,
+    "rise": 1.4,
+    "waves": 1,
+    "thickness": 0.8,
+    "colour": "#2d3a47",
+    "edgeColour": "#2f9aa0",
+    "foldAxis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "teal-slab",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    6,
+    7
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#2a8e98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a8e98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-tower",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    10,
+    5
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e3b83e",
+    "windows": "none",
+    "bands": "#d4a62c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3b83e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yellow-wing",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    17,
+    -3
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8a63a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "pattern": {
+     "type": "bands",
+     "colour": "#2f9aa0"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d7cfb8",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -1,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.4,
+    "columns": 0,
+    "rise": 1.4,
+    "colour": "#2d3a47",
+    "edgeColour": "#2d3a47"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#8c9094"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "vertical teal/yellow stripes approximated by fins pattern; wavy parapet is a single wave; tiled grid texture, deep sunshade at right and flagpoles omitted"
+ }
+}

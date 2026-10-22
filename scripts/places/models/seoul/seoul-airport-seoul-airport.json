@@ -1,0 +1,273 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-airport-seoul-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SEOUL_INCHEON_AIRPORT_SOUTH_KOREA_OCT_2012_(8643117346).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user via Wikimedia Commons",
+   "view": "back",
+   "file": "/tmp/places-evidence/seoul/o4.jpg",
+   "used": "airside elevation: low beige base with ribbon windows and dark openings, tall dark glazed band above, flat roof with skylight boxes and masts, beige gate piers with jet bridges"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:인천공항T1_전경2_2024.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Narubaru7",
+   "view": "front",
+   "used": "landside: large flat overhanging canopy slab over the departures road, elevated roadway on piers; brief dimensions only (1060 x 149 m): a 112 m section is modelled, no OSM outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 178,
+  "pitchDeg": 3,
+  "fovDeg": 44,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     112,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3cbbb",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#b9b2a4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbd",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     112,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2d3b42",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#a9aeb0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c7cbce",
+    "material": "metal-sheet",
+    "overhang": 2.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "id": "gate-piers",
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     19,
+     0
+    ],
+    "end": [
+     42,
+     19,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       9,
+       7
+      ],
+      "z0": 0,
+      "height": 11,
+      "colour": "#d3cbbb",
+      "topColour": "#bfc3c4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "jet-bridges",
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     25,
+     4.2
+    ],
+    "end": [
+     28,
+     25,
+     4.2
+    ],
+    "count": 3,
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 13,
+      "colour": "#b5bbc0"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "skylights",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -2,
+     20
+    ],
+    "end": [
+     40,
+     -2,
+     20
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       14,
+       3
+      ],
+      "z0": 0,
+      "height": 1.6,
+      "colour": "#bdc3c6",
+      "topColour": "#9fc0cf"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "roof-masts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     10,
+     20
+    ],
+    "end": [
+     48,
+     10,
+     20
+    ],
+    "count": 5,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 9,
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -52,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 60,
+    "style": "square",
+    "colour": "#d5d7d8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "landside-canopy",
+   "at": [
+    0,
+    -21
+   ],
+   "params": {
+    "rect": [
+     112,
+     10
+    ],
+    "z0": 8.2,
+    "height": 1.2,
+    "colour": "#8d9498",
+    "topColour": "#9aa1a5"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    10,
+    52,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "scale": 1.0,
+    "colour": "#e8f0f2",
+    "tailColour": "#4aa3c7"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only a 112 m section of the 1060 m terminal; roof masts and skylights simplified; the real glass band is a long continuous ribbon and the upper roof edge is more layered; no landside road deck."
+ }
+}

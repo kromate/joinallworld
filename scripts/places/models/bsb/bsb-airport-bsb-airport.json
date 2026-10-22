@@ -1,0 +1,299 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-airport-bsb-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Brunei_International_Airport_(18403054078).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jorge L\u00e1scar",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/airport2.jpg",
+   "used": "landside: long low white scalloped arch canopy over the car park, curved glazed terminal hall rising behind, pale grey-white colours, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Brunei_International_Airport_departure.jpg",
+   "licence": "Public domain",
+   "author": "Novelty",
+   "view": "detail",
+   "used": "interior only: white tiled columns, green-tinted glazing (glass tint)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9391566",
+   "used": "overall scale only (336 m, irregular); a 150 m central portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     76,
+     30
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#aebfc0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 3,
+    "colour": "#e6e8e8",
+    "material": "metal-sheet",
+    "overhang": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     20,
+     22
+    ]
+   },
+   "at": [
+    -48,
+    14
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4e2db",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9dbdb",
+    "material": "metal-sheet",
+    "overhang": 2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     20,
+     22
+    ]
+   },
+   "at": [
+    48,
+    14
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4e2db",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9dbdb",
+    "material": "metal-sheet",
+    "overhang": 2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     20,
+     40
+    ]
+   },
+   "at": [
+    0,
+    50
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcdad3",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d2",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -8,
+    5.6
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 112,
+    "depth": 20,
+    "rise": 2.6,
+    "waves": 10,
+    "thickness": 0.5,
+    "colour": "#f1f2f1",
+    "edgeColour": "#e3e5e5"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     -14,
+     0
+    ],
+    "end": [
+     54,
+     -14,
+     0
+    ],
+    "count": 11,
+    "lod2Step": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 5.2,
+      "colour": "#7e8387"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     -2,
+     0
+    ],
+    "end": [
+     54,
+     -2,
+     0
+    ],
+    "count": 11,
+    "lod2Step": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 5.2,
+      "colour": "#7e8387"
+     }
+    }
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    34,
+    58,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     42,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "canopy scallops are one wave surface, not overlapping arches; hall glazing tint and crane/lampposts not modelled; real terminal is 336 m, only 112 m modelled"
+ }
+}

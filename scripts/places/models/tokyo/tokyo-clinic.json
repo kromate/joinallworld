@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/13591428",
+   "used": "real stepped outline (78 x 70 m, 4238 m2), building:levels 7"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/tokyo.json",
+   "used": "Saiseikai Kawaguchi General Hospital: pale tile cladding, ribbon windows, flat roof with rooftop plant; the only nearby Commons photo was of a person and was discarded"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 29,
+   "storeys": 7,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e6e2d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b9b2a2",
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 12,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-room",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    -2,
+    2
+   ],
+   "z0": 29,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#cfcbbf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9395",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    14,
+    8,
+    29
+   ],
+   "params": {}
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    4,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#e8e4d8",
+    "roofColour": "#b9b2a2",
+    "vans": 2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 1.6,
+    "colour": "#f4f2ec",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3,
+    "colour": "#c9ccd0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the building; massing from the OSM outline and 7 levels, cladding and colours typical of a Japanese general hospital"
+ }
+}

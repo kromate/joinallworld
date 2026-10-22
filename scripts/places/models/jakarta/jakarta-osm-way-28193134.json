@@ -1,0 +1,332 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-28193134",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Taman_Menteng_JKT.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rantemario",
+   "view": "front",
+   "file": "/tmp/places-evidence/jakarta/tm2.jpg",
+   "used": "round stone-edged fountain basin with tiered bowl and flowering hedge ring, large beige and terracotta paving in diamond bands, lamp posts, palms and broadleaf trees, playground colours in the distance"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Taman_Menteng.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Josipstalin",
+   "view": "aerial",
+   "used": "second plaza with circular red/white star paving and low dark stone planters, lawns beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28193134",
+   "used": "park is 175 x 157 m; a 118 m scene window is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "court-floor",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 50,
+    "colour": "#d9bf9a",
+    "pool": false
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 11,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 1,
+    "width": 22,
+    "depth": 22,
+    "colours": [
+     "#6f9a6a"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    24,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "greenhouse",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -40,
+    44
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bcd4cf",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.5,
+    "bands": "#e9e5dc"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9ea1a3",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    30,
+    40,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "width": 24,
+    "lane_width": 2,
+    "infield": true,
+    "pitch": false,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "court-floor",
+   "at": [
+    60,
+    8,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 15,
+    "colour": "#7a8fa0",
+    "pool": false
+   }
+  },
+  {
+   "type": "court-floor",
+   "at": [
+    60,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 15,
+    "colour": "#5f8a6a",
+    "pool": false
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -52,
+    -8,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "width": 7,
+    "depth": 5,
+    "colours": [
+     "#d9453a",
+     "#e8c53a"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 2.6,
+    "height": 2.8,
+    "colour": "#cfc7b8"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    34,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 2.6,
+    "height": 2.8,
+    "colour": "#cfc7b8"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    22,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "head_width": 2.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "head_width": 2.5
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -22,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    10,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 50,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 20,
+    "count": 10,
+    "kind": "palm",
+    "min_height": 9,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   130,
+   115
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "fountain plaza at wrong scale vs photo, tree canopy sparse, no playground; courts/greenhouse positions typed"
+ }
+}

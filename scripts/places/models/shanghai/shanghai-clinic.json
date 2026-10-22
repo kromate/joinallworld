@@ -1,0 +1,260 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/242365340",
+   "used": "hospital campus extent only (400 x 266 m is the whole campus, not one building); block sizes come from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: pale render and glass mid-rise children's hospital, about 10 storeys; no usable photo (the only nearby Commons image is a metro entrance)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     96,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4da",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "plinth": 0.4,
+    "bay": 8,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f0a24a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-tower",
+   "footprint": {
+    "rect": [
+     62,
+     20
+    ]
+   },
+   "at": [
+    8,
+    4
+   ],
+   "z0": 13,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe7df",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 10,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#7f95a8",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     40
+    ]
+   },
+   "at": [
+    58,
+    6
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2ddd2",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "bay": 10,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "bands": "#6fa3b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-link",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    -26,
+    -22
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb6c4",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a5"
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    -8,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 8,
+    "height": 4.8,
+    "columns": 4,
+    "colour": "#f0a24a",
+    "edge_colour": "#e8523e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "count": 3,
+    "rise": 0.15,
+    "run": 0.9
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#2f7fb0"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    34,
+    -34,
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    42,
+    -34,
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    50,
+    -34,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     74,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the building found; shape typical of a Chinese children's hospital with podium plus ward tower"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-clinic"
+}

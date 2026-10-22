@@ -1,0 +1,113 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-osm-node-3090689020",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/132362930",
+   "used": "3-level multi-wing building outline about 140 x 72 m containing the venue node"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Soviet-era hybrid with green traditional-style hip roof, cream render, steps and flags"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 12
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4b7a5a",
+    "material": "metal-sheet",
+    "overhang": 2.0,
+    "rise": 5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -42,
+     0
+    ],
+    "end": [
+     20,
+     -42,
+     0
+    ],
+    "count": 2,
+    "lod2Step": 2,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.4,
+        0,
+        "#eeeeea"
+       ],
+       [
+        0.4,
+        9,
+        "#eeeeea"
+       ],
+       [
+        0.1,
+        9.2,
+        "#d33"
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -80,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; hip roof fitted to bounding rectangle of the irregular outline so it overhangs the notches; windows coarse for budget"
+ }
+}

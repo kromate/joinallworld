@@ -1,0 +1,291 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rama_IX_Park.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Heurist (th.wikipedia uploader)",
+   "view": "street",
+   "file": "/tmp/places-evidence/bangkok/rama9.jpg",
+   "used": "curving lake bank on the left, red/white/orange flower beds in the foreground, distant gold-based pavilion with a tall white pointed spire, broadleaf trees behind, small brown-roofed pavilion at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/33042465",
+   "used": "park size only (1324 x 1209 m): scene shows a recognisable portion"
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "lake and gold-based white-spire pavilion, beds and trees placed as in photo; flower beds are rectangular not sinuous, no sky-line tree mass detail, grass flat, flower beds do not show in the render (foreground bed parts too thin), lake is an oval not a winding channel"
+ },
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 5,
+  "fovDeg": 60,
+  "aspect": 1.35,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    -35,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 50,
+    "shape": "ellipse",
+    "colour": "#8fa5a8",
+    "bank": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-base",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    25,
+    45
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b43a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9a82a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pavilion-spire",
+   "at": [
+    25,
+    45,
+    3
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 9
+     },
+     {
+      "z": 3,
+      "circle": 6
+     },
+     {
+      "z": 9,
+      "circle": 3
+     },
+     {
+      "z": 18,
+      "circle": 1.0
+     },
+     {
+      "z": 24,
+      "circle": 0.3
+     }
+    ],
+    "colour": "#f4f4f0",
+    "curve": true,
+    "capTop": true
+   }
+  },
+  {
+   "type": "finial",
+   "at": [
+    25,
+    45,
+    27
+   ],
+   "params": {
+    "height": 4,
+    "colour": "#d4a82f"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 9,
+    "colour": "#c8372a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -2,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "colour": "#f2f2f0",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 7,
+    "colour": "#c8372a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    40,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "colour": "#d9a82a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    58,
+    40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "colour": "#c9b99a",
+    "cap_colour": "#9a4a2c"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -10,
+    45,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    75,
+    15,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 40,
+    "count": 8,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -45,
+    12,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "width": 2.4,
+    "height": 0.5,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15,
+      -5
+     ],
+     [
+      10,
+      10
+     ],
+     [
+      25,
+      30
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    30,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 4,
+    "count": 4,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-recreation"
+}

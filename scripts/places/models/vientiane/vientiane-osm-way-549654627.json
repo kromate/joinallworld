@@ -1,0 +1,227 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-osm-way-549654627",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LaosNationalMuseum.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "neajjean",
+   "view": "front",
+   "file": "/tmp/places-evidence/vientiane/mus0.jpg",
+   "used": "cream-white two-storey colonial building, deep two-storey verandah with white balustrade over round white columns, shallow dark tile hip roof with bracket eaves"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/549654627",
+   "used": "overall extent and area (about 2300 m2); its diagonal serrated outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 5,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     58,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.4,
+    "plinth": 0.8,
+    "cornice": true,
+    "trimColour": "#d8d0ba"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#55504a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wingL",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    -22,
+    19
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.4,
+    "plinth": 0.8,
+    "cornice": true,
+    "trimColour": "#d8d0ba"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#55504a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wingR",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    22,
+    19
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.4,
+    "plinth": 0.8,
+    "cornice": true,
+    "trimColour": "#d8d0ba"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#55504a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "count": 7,
+    "height": 5.2,
+    "radius": 0.5,
+    "kind": "round",
+    "beamHeight": 0.7,
+    "roofDepth": 4.5,
+    "colour": "#f2eee2",
+    "roofColour": "#e4ddc8"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -14.4,
+    5.8
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.1,
+    "postEvery": 1.0,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -8.6,
+    0.4
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#d8d0ba"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -25
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Gold column capitals and bracketed eaves missing, balustrades simplified, wings inferred from OSM area not outline"
+ }
+}

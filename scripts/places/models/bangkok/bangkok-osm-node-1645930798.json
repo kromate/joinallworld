@@ -1,0 +1,515 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-osm-node-1645930798",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Panyananthaphikkhu_Chonprathan_Medical_Center_2566.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Chainwit.",
+   "view": "front",
+   "file": "/tmp/places-evidence/bangkok/m5/hospital.jpg",
+   "used": "symmetrical plan: tall white central tower with glazed spine and round crown, two tall dark-grey louvre-clad wings, lower white links with red bands, red-framed corner pavilions, broad stepped terrace and stair, red sky-bridge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1193748547",
+   "used": "scale only (84 x 73 m hospital outline; weak match to the photographed frontage)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "stair is a single flight instead of the stepped terraces with side ramps; sky-bridge has no A-frame; louvre cladding approximate"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 6,
+   "height": 52,
+   "storeys": 13,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e2",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bay": 4.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a8364a",
+      "height": 0.7,
+      "proud": 0.2,
+      "at": 0.95,
+      "floors": [
+       3,
+       9
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     9,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -5.2
+   ],
+   "z0": 6,
+   "height": 52,
+   "storeys": 13,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f9a9d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a9d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crown",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 58,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7c9aa3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6be",
+    "overhang": 1.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     17,
+     22
+    ]
+   },
+   "at": [
+    -33,
+    4
+   ],
+   "z0": 6,
+   "height": 42,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#46464a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#2e2e31",
+      "backColour": "#55555a",
+      "pitch": 0.5,
+      "band": 0.8,
+      "at": 0.1,
+      "floors": "all",
+      "faces": [
+       "front"
+      ],
+      "margin": 1.0
+     },
+     {
+      "type": "bands",
+      "colour": "#a8364a",
+      "height": 0.8,
+      "proud": 0.2,
+      "at": 0.05,
+      "floors": [
+       4
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3d",
+    "parapet": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     17,
+     22
+    ]
+   },
+   "at": [
+    33,
+    4
+   ],
+   "z0": 6,
+   "height": 42,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#46464a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#2e2e31",
+      "backColour": "#55555a",
+      "pitch": 0.5,
+      "band": 0.8,
+      "at": 0.1,
+      "floors": "all",
+      "faces": [
+       "front"
+      ],
+      "margin": 1.0
+     },
+     {
+      "type": "bands",
+      "colour": "#a8364a",
+      "height": 0.8,
+      "proud": 0.2,
+      "at": 0.05,
+      "floors": [
+       4
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3d",
+    "parapet": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-l",
+   "footprint": {
+    "rect": [
+     15,
+     16
+    ]
+   },
+   "at": [
+    -16,
+    0
+   ],
+   "z0": 6,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 7,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a8364a",
+      "height": 0.8,
+      "proud": 0.25,
+      "at": 0.9,
+      "floors": [
+       1,
+       3
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb9b0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-r",
+   "footprint": {
+    "rect": [
+     15,
+     16
+    ]
+   },
+   "at": [
+    16,
+    0
+   ],
+   "z0": 6,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 7,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a8364a",
+      "height": 0.8,
+      "proud": 0.25,
+      "at": 0.9,
+      "floors": [
+       1,
+       3
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb9b0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-l",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -46,
+    -14
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8364a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#3d3d40",
+      "backColour": "#55555a",
+      "pitch": 0.45,
+      "band": 0.8,
+      "at": 0.1,
+      "floors": "all",
+      "faces": [
+       "front"
+      ],
+      "margin": 1.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece9e2",
+    "overhang": 2.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-r",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    46,
+    -14
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8364a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#3d3d40",
+      "backColour": "#55555a",
+      "pitch": 0.45,
+      "band": 0.8,
+      "at": 0.1,
+      "floors": "all",
+      "faces": [
+       "front"
+      ],
+      "margin": 1.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece9e2",
+    "overhang": 2.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skybridge",
+   "footprint": {
+    "rect": [
+     16,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 20,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7d4a4d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8364a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 42,
+    "rise": 0.8,
+    "run": 2.2,
+    "count": 7,
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     46,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b5aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourtDepth": 8,
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ }
+}

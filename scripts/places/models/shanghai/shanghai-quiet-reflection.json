@@ -1,0 +1,602 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jiangwan_Mosque.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/quiet-reflection-0.jpg",
+   "used": "white rendered box with three tall pointed-arch windows filled with dark green lattice, big gold hemispherical dome on a short drum with crescent finial, rooftop railing, corner minaret with two gold onion domes on balconies, small gold corner cupolas, lower stair wing at right with small arched windows, black iron fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/463240119",
+   "used": "footprint 34 x 32 m, 5-sided plot (checked against the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d6cc",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b8",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     28,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 3.6,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ede4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front",
+       "left",
+       "right",
+       "back"
+      ],
+      "colour": "#d9d5c8",
+      "height": 0.6,
+      "proud": 0.12,
+      "at": 10.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "id": "front-arches",
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.8,
+     -10.1
+    ],
+    "end": [
+     8.8,
+     -10.1
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5.2,
+       0.35
+      ],
+      "z0": 6.4,
+      "height": 5.6,
+      "colour": "#2f5a45",
+      "topColour": "#2f5a45",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "front-arch-tops",
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.8,
+     -10.1
+    ],
+    "end": [
+     8.8,
+     -10.1
+    ],
+    "count": 3,
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 12.0,
+        "rect": [
+         5.2,
+         0.35
+        ]
+       },
+       {
+        "z": 12.8,
+        "rect": [
+         3.6,
+         0.35
+        ]
+       },
+       {
+        "z": 13.4,
+        "rect": [
+         1.2,
+         0.35
+        ]
+       }
+      ],
+      "colour": "#2f5a45",
+      "capTop": true
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "stair-wing",
+   "footprint": {
+    "rect": [
+     5.5,
+     12
+    ]
+   },
+   "at": [
+    16.2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    -2,
+    3,
+    14.6
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#d9a82c",
+    "profile": [
+     [
+      7.0,
+      0
+     ],
+     [
+      7.0,
+      1.4
+     ],
+     [
+      6.4,
+      1.6
+     ],
+     [
+      7.2,
+      3.0
+     ],
+     [
+      6.0,
+      5.6
+     ],
+     [
+      3.4,
+      7.6
+     ],
+     [
+      0.9,
+      8.6
+     ],
+     [
+      0,
+      8.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "at": [
+    -2,
+    3,
+    23.4
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d9a82c",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.3,
+      1.5
+     ],
+     [
+      0,
+      2.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crescent-post",
+   "at": [
+    -2,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "z0": 25.6,
+    "height": 1.6,
+    "colour": "#d9d5c0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "roof-rail",
+   "params": {
+    "mode": "line",
+    "start": [
+     -13.5,
+     -9.6
+    ],
+    "end": [
+     13.5,
+     -9.6
+    ],
+    "count": 28,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.07,
+       0.07
+      ],
+      "z0": 14.6,
+      "height": 1.1,
+      "colour": "#2a2d2e"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "minaret-shaft",
+   "at": [
+    -12,
+    3
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     3.0
+    ],
+    "z0": 14.6,
+    "height": 9.5,
+    "colour": "#efece2",
+    "topColour": "#efece2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-balcony",
+   "at": [
+    -12,
+    3
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     4.0
+    ],
+    "z0": 19.4,
+    "height": 0.5,
+    "colour": "#efece2",
+    "topColour": "#efece2"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "minaret-dome-low",
+   "at": [
+    -12,
+    3,
+    14.6
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d9a82c",
+    "profile": [
+     [
+      1.4,
+      0
+     ],
+     [
+      1.5,
+      0.312
+     ],
+     [
+      2.0,
+      1.04
+     ],
+     [
+      1.7,
+      1.8199999999999998
+     ],
+     [
+      0.7,
+      2.418
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "minaret-dome-high",
+   "at": [
+    -12,
+    3,
+    24.1
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d9a82c",
+    "profile": [
+     [
+      1.0499999999999998,
+      0
+     ],
+     [
+      1.125,
+      0.384
+     ],
+     [
+      1.5,
+      1.2800000000000002
+     ],
+     [
+      1.275,
+      2.2399999999999998
+     ],
+     [
+      0.5249999999999999,
+      2.9760000000000004
+     ],
+     [
+      0,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "corner-dome-right",
+   "at": [
+    13,
+    -7,
+    14.6
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d9a82c",
+    "profile": [
+     [
+      1.19,
+      0
+     ],
+     [
+      1.275,
+      0.384
+     ],
+     [
+      1.7,
+      1.2800000000000002
+     ],
+     [
+      1.4449999999999998,
+      2.2399999999999998
+     ],
+     [
+      0.595,
+      2.9760000000000004
+     ],
+     [
+      0,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "corner-dome-back",
+   "at": [
+    8,
+    7,
+    14.6
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d9a82c",
+    "profile": [
+     [
+      1.3299999999999998,
+      0
+     ],
+     [
+      1.4249999999999998,
+      0.408
+     ],
+     [
+      1.9,
+      1.36
+     ],
+     [
+      1.615,
+      2.38
+     ],
+     [
+      0.6649999999999999,
+      3.162
+     ],
+     [
+      0,
+      3.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -2,
+    -14.5,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.8,
+    "thickness": 0.12,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#2a2d2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -14.6
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 2.5,
+    "count": 6,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Lattice window tracery is flat dark green, dome slightly large, recessed ground floor and minaret balconies simplified, right stair wing approximate."
+ }
+}

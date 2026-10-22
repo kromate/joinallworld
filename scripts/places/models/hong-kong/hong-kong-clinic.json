@@ -1,0 +1,284 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:North_Lantau_Hospital_(2013_May)_(Hong_Kong).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mk2010",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/clinic1.jpg",
+   "used": "tall pale-grey clad tower on the left, stepped dark-glazed ward wings to the right with white frames, low glazed podium with entrance canopy, perimeter wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:North_Lantau_Hospital,_north_west_corner_(Hong_Kong).jpg",
+   "licence": "CC BY",
+   "author": "Wikimedia Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/hong-kong/clinic2.jpg",
+   "used": "round faceted A&E drum at the base, grey tile boundary wall, tower slab with stepped balcony edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/407737469",
+   "used": "real outline of the low podium (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f5360",
+    "windows": "none",
+    "bands": "#d9dcdc",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a6a8a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -34,
+    -8
+   ],
+   "z0": 9,
+   "height": 52,
+   "storeys": 13,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d4d8d8",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "left": "none"
+    },
+    "bands": "#e8eaea",
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9d",
+    "parapet": 0.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-wing",
+   "footprint": {
+    "rect": [
+     50,
+     16
+    ]
+   },
+   "at": [
+    8,
+    -6
+   ],
+   "z0": 9,
+   "height": 34,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#46606c",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#eef0f0",
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9392",
+    "parapet": 0.8,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-low",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    36,
+    6
+   ],
+   "z0": 9,
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4e6672",
+    "windows": "none",
+    "bands": "#eef0f0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9392",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "ae-drum",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      11,
+      0,
+      "#e6e8e8"
+     ],
+     [
+      11,
+      6,
+      "#e6e8e8"
+     ],
+     [
+      11,
+      6.5,
+      "#9a9d9d"
+     ],
+     [
+      0,
+      6.5,
+      "#9a9d9d"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 5,
+    "height": 4.5,
+    "thickness": 0.5,
+    "colour": "#d8dada"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    8,
+    -6,
+    43
+   ],
+   "params": {
+    "radius": 5.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#b9b6ad"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -36
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-clinic",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tower too boxy (real one has stepped balcony edges and glazed slots); ward wings are straight not angled; podium simplified to glass band with no entrance canopy triangles; ribbon windows only on front ward wing."
+ }
+}

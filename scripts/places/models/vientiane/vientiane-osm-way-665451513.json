@@ -1,0 +1,670 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-osm-way-665451513",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadium_Laos_National_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Icebooke",
+   "view": "interior",
+   "file": "/tmp/places-evidence/vientiane/v20_osm-way-665451513-0.jpg",
+   "used": "oval bowl, red track inside a teal-green apron, yellow/red/green seating, curved steel roof ring, floodlight masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Trib%C3%BCne_(2025).jpg",
+   "licence": "CC0",
+   "author": "Welsal80",
+   "view": "interior",
+   "file": "/tmp/places-evidence/vientiane/v20_osm-way-665451513-1.jpg",
+   "used": "long curved roof truss on slim raking columns, yellow and maroon seat blocks, grey concrete"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9096961",
+   "used": "overall size only (228 x 222 m); modelled as an oval bowl scaled to 0.5"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 2.0,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      52.0,
+      0.0
+     ],
+     [
+      49.45,
+      15.45
+     ],
+     [
+      42.07,
+      29.39
+     ],
+     [
+      30.56,
+      40.45
+     ],
+     [
+      16.07,
+      47.55
+     ],
+     [
+      0.0,
+      50.0
+     ],
+     [
+      -16.07,
+      47.55
+     ],
+     [
+      -30.56,
+      40.45
+     ],
+     [
+      -42.07,
+      29.39
+     ],
+     [
+      -49.45,
+      15.45
+     ],
+     [
+      -52.0,
+      0.0
+     ],
+     [
+      -49.45,
+      -15.45
+     ],
+     [
+      -42.07,
+      -29.39
+     ],
+     [
+      -30.56,
+      -40.45
+     ],
+     [
+      -16.07,
+      -47.55
+     ],
+     [
+      -0.0,
+      -50.0
+     ],
+     [
+      16.07,
+      -47.55
+     ],
+     [
+      30.56,
+      -40.45
+     ],
+     [
+      42.07,
+      -29.39
+     ],
+     [
+      49.45,
+      -15.45
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#bdb9ac",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      36.0,
+      0.0
+     ],
+     [
+      34.24,
+      8.65
+     ],
+     [
+      29.12,
+      16.46
+     ],
+     [
+      21.16,
+      22.65
+     ],
+     [
+      11.12,
+      26.63
+     ],
+     [
+      0.0,
+      28.0
+     ],
+     [
+      -11.12,
+      26.63
+     ],
+     [
+      -21.16,
+      22.65
+     ],
+     [
+      -29.12,
+      16.46
+     ],
+     [
+      -34.24,
+      8.65
+     ],
+     [
+      -36.0,
+      0.0
+     ],
+     [
+      -34.24,
+      -8.65
+     ],
+     [
+      -29.12,
+      -16.46
+     ],
+     [
+      -21.16,
+      -22.65
+     ],
+     [
+      -11.12,
+      -26.63
+     ],
+     [
+      -0.0,
+      -28.0
+     ],
+     [
+      11.12,
+      -26.63
+     ],
+     [
+      21.16,
+      -22.65
+     ],
+     [
+      29.12,
+      -16.46
+     ],
+     [
+      34.24,
+      -8.65
+     ]
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#3f8f78",
+    "top": true
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "length": 76,
+    "width": 46,
+    "lane_width": 6,
+    "colour": "#c4553a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 45,
+    "radiusY": 42,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 13,
+    "rise": 0.75,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 16,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#d6a62c",
+     "#9c3b30",
+     "#d6a62c",
+     "#4a7a56"
+    ],
+    "blocks": 5,
+    "concreteColour": "#d4d1c6",
+    "underColour": "#a9a69c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      55.0,
+      0.0,
+      23
+     ],
+     [
+      51.68,
+      17.79,
+      23
+     ],
+     [
+      42.13,
+      33.42,
+      23
+     ],
+     [
+      27.5,
+      45.03,
+      23
+     ],
+     [
+      9.55,
+      51.21,
+      23
+     ],
+     [
+      -9.55,
+      51.21,
+      23
+     ],
+     [
+      -27.5,
+      45.03,
+      23
+     ],
+     [
+      -42.13,
+      33.42,
+      23
+     ],
+     [
+      -51.68,
+      17.79,
+      23
+     ],
+     [
+      -55.0,
+      0.0,
+      23
+     ],
+     [
+      -51.68,
+      -17.79,
+      23
+     ],
+     [
+      -42.13,
+      -33.42,
+      23
+     ],
+     [
+      -27.5,
+      -45.03,
+      23
+     ],
+     [
+      -9.55,
+      -51.21,
+      23
+     ],
+     [
+      9.55,
+      -51.21,
+      23
+     ],
+     [
+      27.5,
+      -45.03,
+      23
+     ],
+     [
+      42.13,
+      -33.42,
+      23
+     ],
+     [
+      51.68,
+      -17.79,
+      23
+     ]
+    ],
+    "closed": true,
+    "colour": "#6d6a64"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      1.0
+     ]
+    },
+    "points": [
+     [
+      40.0,
+      0.0,
+      16.5
+     ],
+     [
+      37.59,
+      12.65,
+      16.5
+     ],
+     [
+      30.64,
+      23.78,
+      16.5
+     ],
+     [
+      20.0,
+      32.04,
+      16.5
+     ],
+     [
+      6.95,
+      36.44,
+      16.5
+     ],
+     [
+      -6.95,
+      36.44,
+      16.5
+     ],
+     [
+      -20.0,
+      32.04,
+      16.5
+     ],
+     [
+      -30.64,
+      23.78,
+      16.5
+     ],
+     [
+      -37.59,
+      12.65,
+      16.5
+     ],
+     [
+      -40.0,
+      0.0,
+      16.5
+     ],
+     [
+      -37.59,
+      -12.65,
+      16.5
+     ],
+     [
+      -30.64,
+      -23.78,
+      16.5
+     ],
+     [
+      -20.0,
+      -32.04,
+      16.5
+     ],
+     [
+      -6.95,
+      -36.44,
+      16.5
+     ],
+     [
+      6.95,
+      -36.44,
+      16.5
+     ],
+     [
+      20.0,
+      -32.04,
+      16.5
+     ],
+     [
+      30.64,
+      -23.78,
+      16.5
+     ],
+     [
+      37.59,
+      -12.65,
+      16.5
+     ]
+    ],
+    "closed": true,
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 53,
+    "radiusY": 50,
+    "startDeg": 0,
+    "endDeg": 345,
+    "count": 16,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 16,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#8a8780",
+       "sections": [
+        {
+         "z": 23,
+         "rect": [
+          1.0,
+          5
+         ]
+        },
+        {
+         "z": 11,
+         "rect": [
+          1.0,
+          2.5
+         ],
+         "cy": 2
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#b9b6ac",
+       "sections": [
+        {
+         "z": 16.5,
+         "rect": [
+          0.7,
+          1.0
+         ],
+         "cy": 6
+        },
+        {
+         "z": 23,
+         "rect": [
+          0.7,
+          1.0
+         ],
+         "cy": 0
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 55,
+    "radiusY": 52,
+    "startDeg": 30,
+    "endDeg": 330,
+    "count": 4,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": [
+     {
+      "type": "floodlight-mast",
+      "params": {
+       "height": 30,
+       "head_width": 4
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     8
+    ],
+    "height": 0.06,
+    "colour": "#c9c5b8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     -60
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   116,
+   116
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Oval bowl at 0.5 scale with yellow/maroon seat blocks, ring-truss canopy and masts; real roof is a deep cantilevered truss over the long stands only, mine is an even ring with posts; no tower stairs or scoreboard."
+ }
+}

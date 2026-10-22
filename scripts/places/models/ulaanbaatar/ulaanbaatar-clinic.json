@@ -1,0 +1,303 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Cancer_Center_of_Mongolia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/clinic.jpg",
+   "used": "long five-storey buff-brick block with regular punched windows, blank pale blue-white name board (unlettered), flat roof with taller blocks behind, conifer plaza with benches, lamp and bust monument"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1021984771",
+   "used": "campus extent (about 200 x 180 m) and orientation; wings sized from it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     100,
+     19
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#c9a577",
+    "trimColour": "#d8c29a",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#d8c29a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a63",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     18,
+     40
+    ]
+   },
+   "at": [
+    -44,
+    -2
+   ],
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#c9a577",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5.2,
+    "plinth": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a63",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     18,
+     40
+    ]
+   },
+   "at": [
+    44,
+    -2
+   ],
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#c9a577",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5.2,
+    "plinth": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a63",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-tower",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    10,
+    46
+   ],
+   "z0": 0,
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e1d6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#80807a",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "name-board",
+   "footprint": {
+    "rect": [
+     24,
+     0.6
+    ]
+   },
+   "at": [
+    -20,
+    18.2
+   ],
+   "z0": 18.3,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8f0"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    20,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "steps": 1,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#4d4b49"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    45,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 4,
+    "spacing": 3,
+    "colours": [
+     "#d8d8d8"
+    ]
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -50,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6,
+    "count": 8,
+    "spread": 5,
+    "line": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 3,
+    "spread": 4,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Buff brick is flat colour; photo shows a single long block with lower setback wings hidden by trees, wings and rear tower are inferred from the OSM extent; name board is blank; benches and bust are simplified."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-clinic"
+}

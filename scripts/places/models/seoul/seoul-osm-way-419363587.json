@@ -1,0 +1,576 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsa-museum_side.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kang Byeong Kee",
+   "view": "front",
+   "file": "/tmp/places-evidence/seoul/amsa-side.jpg",
+   "used": "long low museum with broad hipped thatch roof and deep eaves on round dark timber posts, wattle-panel and dark board walls, glazed entrance bays, a curved vaulted dark-brown roof rising behind, concrete ramp walls in front, mown grass"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/419363587",
+   "used": "park 604 x 242 m along the river: setting, reconstructed pit-dwelling huts spread on the grass behind the museum"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.49,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "rect": [
+     36,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "z0": 0.8,
+   "wall": {
+    "material": "timber",
+    "colour": "#5a3a2a",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 4,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b7a5c",
+    "material": "thatch",
+    "pitch": 24,
+    "overhang": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-left",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    -26,
+    5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "z0": 0.8,
+   "wall": {
+    "material": "timber",
+    "colour": "#6a4631",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b7a5c",
+    "material": "thatch",
+    "pitch": 30,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    6,
+    9
+   ],
+   "height": 4.5,
+   "z0": 0.8,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3226",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#4c3a2c",
+    "rise": 3.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium",
+   "params": {
+    "rect": [
+     44,
+     16
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#b9b8b2",
+    "topColour": "#b9b8b2"
+   },
+   "at": [
+    -3,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "retain-wall-a",
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      26,
+      0
+     ],
+     [
+      26,
+      0.7
+     ],
+     [
+      0,
+      3.0
+     ]
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#b3b1aa",
+    "topColour": "#c0beb7"
+   },
+   "at": [
+    -24,
+    -10,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "retain-wall-b",
+   "params": {
+    "rect": [
+     22,
+     0.7
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#b3b1aa",
+    "topColour": "#c0beb7"
+   },
+   "at": [
+    10,
+    -9,
+    0
+   ]
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    -14,
+    -7.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#6b3b2a",
+    "profile": [
+     [
+      0.35000000000000003,
+      0
+     ],
+     [
+      0.35000000000000003,
+      0.4
+     ],
+     [
+      0.28,
+      0.5
+     ],
+     [
+      0.28,
+      2.5
+     ],
+     [
+      0.336,
+      2.6
+     ],
+     [
+      0.336,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    -8,
+    -7.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#6b3b2a",
+    "profile": [
+     [
+      0.35000000000000003,
+      0
+     ],
+     [
+      0.35000000000000003,
+      0.4
+     ],
+     [
+      0.28,
+      0.5
+     ],
+     [
+      0.28,
+      2.5
+     ],
+     [
+      0.336,
+      2.6
+     ],
+     [
+      0.336,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    -2,
+    -7.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#6b3b2a",
+    "profile": [
+     [
+      0.35000000000000003,
+      0
+     ],
+     [
+      0.35000000000000003,
+      0.4
+     ],
+     [
+      0.28,
+      0.5
+     ],
+     [
+      0.28,
+      2.5
+     ],
+     [
+      0.336,
+      2.6
+     ],
+     [
+      0.336,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    4,
+    -7.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#6b3b2a",
+    "profile": [
+     [
+      0.35000000000000003,
+      0
+     ],
+     [
+      0.35000000000000003,
+      0.4
+     ],
+     [
+      0.28,
+      0.5
+     ],
+     [
+      0.28,
+      2.5
+     ],
+     [
+      0.336,
+      2.6
+     ],
+     [
+      0.336,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    10,
+    -7.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#6b3b2a",
+    "profile": [
+     [
+      0.35000000000000003,
+      0
+     ],
+     [
+      0.35000000000000003,
+      0.4
+     ],
+     [
+      0.28,
+      0.5
+     ],
+     [
+      0.28,
+      2.5
+     ],
+     [
+      0.336,
+      2.6
+     ],
+     [
+      0.336,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "revolve",
+   "at": [
+    16,
+    -7.2,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#6b3b2a",
+    "profile": [
+     [
+      0.35000000000000003,
+      0
+     ],
+     [
+      0.35000000000000003,
+      0.4
+     ],
+     [
+      0.28,
+      0.5
+     ],
+     [
+      0.28,
+      2.5
+     ],
+     [
+      0.336,
+      2.6
+     ],
+     [
+      0.336,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "thatched-hut",
+   "at": [
+    -36,
+    24,
+    0
+   ],
+   "params": {
+    "radius": 2.8,
+    "kind": "round"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "thatched-hut",
+   "at": [
+    -22,
+    32,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "kind": "round"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "thatched-hut",
+   "at": [
+    -8,
+    36,
+    0
+   ],
+   "params": {
+    "radius": 2.6,
+    "kind": "round"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "thatched-hut",
+   "at": [
+    10,
+    34,
+    0
+   ],
+   "params": {
+    "radius": 2.9,
+    "kind": "round"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "thatched-hut",
+   "at": [
+    28,
+    28,
+    0
+   ],
+   "params": {
+    "radius": 2.7,
+    "kind": "round"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "thatched-hut",
+   "at": [
+    40,
+    16,
+    0
+   ],
+   "params": {
+    "radius": 3.1,
+    "kind": "round"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-419363587",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wattle wall panels and curved vault shape simplified; thatch is a plain hip; huts positioned from general knowledge"
+ }
+}

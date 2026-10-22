@@ -1,0 +1,322 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shatin_Town_Hall_201307.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Wing1990hk",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/hong-kong/vote1.jpg",
+   "used": "massing: tall tan fly-tower box at the back, red-terracotta hall block with a ribbon of glazing, tan cylindrical stair drums, white dome-roof structure in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ShatinTownHall_20070529.jpg",
+   "licence": "CC BY 3.0",
+   "author": "WiNG",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/vote2.jpg",
+   "used": "terracotta tile colour (#c8553d), ribbon window above a low glazed foyer, entrance canopy, tan side tower with slit windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/159044473",
+   "used": "overall size 97 x 72 m (irregular outline composed from masses)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fly-tower",
+   "footprint": {
+    "rect": [
+     34,
+     32
+    ]
+   },
+   "at": [
+    -22,
+    18
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d9a574",
+    "windows": "none",
+    "bands": "#c99560",
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b69a80",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     60,
+     30
+    ]
+   },
+   "at": [
+    14,
+    10
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c4583f",
+    "windows": "none",
+    "plinth": 0.0,
+    "faces": {
+     "front": "ribbon",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a06a55",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     56,
+     12
+    ]
+   },
+   "at": [
+    10,
+    -9
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a4440",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4583f",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-block",
+   "footprint": {
+    "rect": [
+     18,
+     22
+    ]
+   },
+   "at": [
+    48,
+    6
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e3a679",
+    "windows": "none",
+    "faces": {
+     "front": "punched"
+    },
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b69a80",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum-a",
+   "at": [
+    -6,
+    2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      6,
+      0,
+      "#e3a679"
+     ],
+     [
+      6,
+      16,
+      "#e3a679"
+     ],
+     [
+      0,
+      16,
+      "#b69a80"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum-b",
+   "at": [
+    42,
+    -4,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      5,
+      0,
+      "#e3a679"
+     ],
+     [
+      5,
+      12,
+      "#e3a679"
+     ],
+     [
+      0,
+      12,
+      "#b69a80"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 8,
+    "height": 4.2,
+    "thickness": 0.5,
+    "colour": "#b5503a"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "white-dome",
+   "at": [
+    2,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 26,
+    "depth": 22,
+    "rise": 7,
+    "thickness": 0.4,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "rise": 1.2,
+    "run": 2.0,
+    "count": 3,
+    "colour": "#c9c0b0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3,
+    "colour": "#c8362f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -30
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-community-voting-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Foyer/podium and plaza structure simplified; terracotta cylinders and fly-tower proportions approximate; white dome-roof reads glassy; no tent-roof cone on left."
+ }
+}

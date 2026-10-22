@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nerima_Syakujii_park_sampoji_pond.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ribbon",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/shaku1.jpg",
+   "used": "calm pond in the foreground, wooded far bank of broadleaf and pine, small timber pavilion on posts at the water edge, red-and-white shrine hall under a dark hip roof among conifers on the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shakujii_Park_-_boatpond_-_may_10_2015.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nesnad",
+   "view": "side",
+   "file": "/tmp/places-evidence/tokyo/shaku2.jpg",
+   "used": "boat pond: narrow water channel with willows and broadleaf banks"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2658286",
+   "used": "park extent about 450 x 350 m; two ponds (Sanpoji, Shakujii) laid out in a reduced stretch"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 56,
+    "shape": "oval",
+    "colour": "#5f8a86",
+    "bank": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -72,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 44,
+    "shape": "oval",
+    "colour": "#5f8a86",
+    "bank": true
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    34,
+    40,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 2.0,
+    "colour": "#b5342a",
+    "cap_colour": "#3f3a36"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    16,
+    42,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.5,
+    "colour": "#6b4a3c",
+    "cap_colour": "#3f3a36"
+   }
+  },
+  {
+   "type": "torii",
+   "at": [
+    48,
+    46,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 3.8,
+    "colour": "#b5342a"
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    42,
+    38,
+    0
+   ],
+   "params": {
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -72,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "width": 3,
+    "height": 0.8,
+    "rails": true,
+    "piles": true,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -60,
+      -48
+     ],
+     [
+      -20,
+      -36
+     ],
+     [
+      10,
+      -32
+     ],
+     [
+      50,
+      -22
+     ],
+     [
+      70,
+      0
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    62,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 10,
+    "count": 55,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    48,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 6,
+    "count": 14,
+    "kind": "conifer",
+    "min_height": 10,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -78,
+    8,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14,
+    "count": 24,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 5,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Pond, ringed trees, red shrine hall, pavilion, torii and boat pier are present, but the shrine hall and pavilion are hidden by the tree belt from the photo camera and trees are generic low-poly broadleaf, not pine-heavy."
+ }
+}

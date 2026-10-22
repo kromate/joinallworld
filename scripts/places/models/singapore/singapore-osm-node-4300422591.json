@@ -1,0 +1,547 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-node-4300422591",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Coastal_boardwalk_at_Chek_Jawa_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "panoramio contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/cj1.jpg",
+   "used": "narrow timber-decked coastal boardwalk on short piles over the tidal water, grey steel mesh handrails, mangrove line on the shore"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chek_Jawa,_Singapore_(3940295137).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/singapore/cj2.jpg",
+   "used": "rocky sand shore, long thin jetty running out over the sea, dense tree edge"
+  },
+  {
+   "kind": "text",
+   "used": "Jejawi viewing tower and the kampong house placed from the brief (no photo of them viewed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 58,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    10,
+    10,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 90,
+    "shape": "rect",
+    "colour": "#6b8a84",
+    "bank": false
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "deck",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.2,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      0,
+      -34,
+      1.4
+     ],
+     [
+      0,
+      2,
+      1.4
+     ],
+     [
+      9,
+      22,
+      1.4
+     ],
+     [
+      26,
+      34,
+      1.4
+     ],
+     [
+      44,
+      38,
+      1.4
+     ]
+    ],
+    "colour": "#8a6a46",
+    "slot": "timber-boards"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-l",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.05,
+      1.1
+     ]
+    },
+    "points": [
+     [
+      -1.6,
+      -34.0,
+      1.95
+     ],
+     [
+      -1.58,
+      2.25,
+      1.95
+     ],
+     [
+      7.76,
+      23.01,
+      1.95
+     ],
+     [
+      25.33,
+      35.46,
+      1.95
+     ],
+     [
+      43.65,
+      39.56,
+      1.95
+     ]
+    ],
+    "colour": "#a8aeb2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.05,
+      1.1
+     ]
+    },
+    "points": [
+     [
+      1.6,
+      -34.0,
+      1.95
+     ],
+     [
+      1.58,
+      1.75,
+      1.95
+     ],
+     [
+      10.24,
+      20.99,
+      1.95
+     ],
+     [
+      26.67,
+      32.54,
+      1.95
+     ],
+     [
+      44.35,
+      36.44,
+      1.95
+     ]
+    ],
+    "colour": "#a8aeb2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      1.2,
+      -34.0,
+      2.55
+     ],
+     [
+      1.18,
+      1.81,
+      2.55
+     ],
+     [
+      9.93,
+      21.24,
+      2.55
+     ],
+     [
+      26.5,
+      32.91,
+      2.55
+     ],
+     [
+      44.26,
+      36.83,
+      2.55
+     ]
+    ],
+    "colour": "#7d8488"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -1.2,
+      -34.0,
+      2.55
+     ],
+     [
+      -1.18,
+      2.19,
+      2.55
+     ],
+     [
+      8.07,
+      22.76,
+      2.55
+     ],
+     [
+      25.5,
+      35.09,
+      2.55
+     ],
+     [
+      43.74,
+      39.17,
+      2.55
+     ]
+    ],
+    "colour": "#7d8488"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -32,
+     0
+    ],
+    "end": [
+     0,
+     -2,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.22,
+      "n": 6,
+      "height": 1.4,
+      "z0": -1.0,
+      "colour": "#5d4a38"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shore",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -20
+     ],
+     [
+      -18,
+      0
+     ],
+     [
+      -6,
+      22
+     ],
+     [
+      0,
+      54
+     ],
+     [
+      -40,
+      54
+     ]
+    ],
+    "height": 0.5,
+    "z0": -0.1,
+    "colour": "#cdb98d",
+    "material": "sand",
+    "slot": "sand"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -14,
+     0
+    ],
+    "end": [
+     -8,
+     48,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 9,
+      "count": 2,
+      "spread": 9,
+      "colour": "#3f6a44"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     56,
+     0
+    ],
+    "end": [
+     48,
+     60,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 9,
+      "count": 2,
+      "spread": 8,
+      "colour": "#3f6a44"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "at": [
+    40,
+    48,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "n": 6,
+    "height": 14,
+    "topScale": 0.8,
+    "colour": "#8a6a46",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-deck",
+   "at": [
+    40,
+    48,
+    14
+   ],
+   "params": {
+    "radius": 3.8,
+    "n": 6,
+    "height": 2.2,
+    "colour": "#7a5c3c"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-roof",
+   "at": [
+    40,
+    48,
+    16.2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#8d8f90",
+    "profile": [
+     [
+      4.6,
+      0
+     ],
+     [
+      4.6,
+      0.3
+     ],
+     [
+      0.3,
+      3.0
+     ],
+     [
+      0,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kampong-house",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    18,
+    50
+   ],
+   "z0": 1.0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8cdb4",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d8f90",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    18,
+    50,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 2,
+    "dx": 3.3,
+    "dy": 5.6,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.15,
+      "n": 6,
+      "height": 1.0,
+      "colour": "#5d4a38"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Photo is a eye-level view along the deck; the render is an overview with sky-high camera; mesh railings are plain bars, no mangrove canopy mass; tower and house placed from text."
+ }
+}

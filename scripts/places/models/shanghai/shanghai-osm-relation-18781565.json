@@ -1,0 +1,310 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-relation-18781565",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tongjidaxue_Tushuguan.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Fayhoo",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/tj1.jpg",
+   "used": "campus library on the Tongji campus: long three-storey brick-piered block with cream spandrels and a taller projecting entrance bay, stepped paved forecourt, pink precast tower in two cantilevered lobes with a glazed gap rising behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tongji_Daxue_Xi%27nan_Yilou.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Fayhoo",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/tj2.jpg",
+   "used": "campus character only: cream-rendered 1950s-era building among metasequoia trees (not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/18781565",
+   "used": "campus extent only (768 m x 607 m); the venue is modelled as its library, the best documented building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Library only (campus is 768 m wide); tower shown as two flat lobes without the cantilever overhang, balconies or trees; brick piers simplified to bays and cream bands; entrance glazing generic"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "low-block",
+   "footprint": {
+    "rect": [
+     100,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c2785a",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bay": 4.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e4d9c4",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d88",
+    "material": "membrane",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b05d42",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e4d9c4",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d88",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-slab",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "z0": 4,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4d9c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4d9c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobe-17",
+   "footprint": {
+    "rect": [
+     32,
+     26
+    ]
+   },
+   "at": [
+    -17,
+    16
+   ],
+   "z0": 11,
+   "height": 44,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8b8a4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 16,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#c9a794"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d88",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobe17",
+   "footprint": {
+    "rect": [
+     32,
+     26
+    ]
+   },
+   "at": [
+    17,
+    16
+   ],
+   "z0": 11,
+   "height": 44,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8b8a4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 16,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#c9a794"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d88",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-link",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "z0": 11,
+   "height": 44,
+   "storeys": 8,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8aa0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#999999"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     -8.3,
+     0
+    ],
+    "end": [
+     46,
+     -8.3,
+     0
+    ],
+    "count": 19,
+    "lod1Step": 3,
+    "lod2Step": 19,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.7
+      ],
+      "z0": 0,
+      "height": 10,
+      "colour": "#a85a40"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -22
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -22
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   90
+  ]
+ }
+}

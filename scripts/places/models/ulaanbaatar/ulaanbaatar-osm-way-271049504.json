@@ -1,0 +1,275 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Manzushir_Monastery.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chongkian",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/v3_0.jpg",
+   "used": "two-storey timber hall: stone plinth with steps, dark brown ground wall with carved panelled doors and teal-framed lattice windows, open upper gallery with orange balustrade, slim timber posts, wide dark-red bracketed eaves, small gold finial"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     28,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b3a58e",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a58e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     25,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.7,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5b3a2c",
+    "windows": "punched",
+    "plinth": 0,
+    "windowRatio": 0.28,
+    "windowShape": "rect",
+    "glassColour": "#3b6a73",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d3126"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     25,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 4.7,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a2f27",
+    "windows": "punched",
+    "plinth": 0,
+    "windowRatio": 0.45,
+    "glassColour": "#2d3438",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a2f27"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "eaves",
+   "footprint": {
+    "rect": [
+     29,
+     17
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "z0": 8.3,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e3a2a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4030",
+    "rise": 1.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.7
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12.5,
+     -6.8,
+     0
+    ],
+    "end": [
+     12.5,
+     -6.8,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.45
+      ],
+      "height": 7.6,
+      "colour": "#a2643b"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12.5,
+    -7.2,
+    4.7
+   ],
+   "params": {
+    "length": 25,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "rail",
+    "pillarEvery": 1.1,
+    "colour": "#c98a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.2,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.8
+    ],
+    "height": 0.5,
+    "colour": "#8c7f6b"
+   }
+  },
+  {
+   "type": "finial",
+   "at": [
+    0,
+    -1,
+    10.1
+   ],
+   "params": {
+    "height": 1.4,
+    "balls": 1,
+    "radius": 0.3,
+    "colour": "#d4a82f"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    14,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 9,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    14,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 7,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-way-271049504",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "carved eaves brackets, lattice and painted panels absent; roof is a simple hip not the swept Tibetan form; side wings and rock slope missing"
+ }
+}

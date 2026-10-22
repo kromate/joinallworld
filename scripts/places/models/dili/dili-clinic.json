@@ -1,0 +1,328 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Nacional_Guido_Valadares,_2023_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "front",
+   "used": "emergency block: single storey, pale peach render, ribbon glazing, green plinth, flat roof, covered ambulance canopy right, tall poplar-like trees, flag",
+   "file": "/tmp/places-evidence/dili/hosp2.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ambulanz_des_Hospital_Nasional_Guido_Valadares_2016-04-08.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jose Fernando Real",
+   "view": "detail",
+   "used": "green-fascia corrugated roofs and brick/render ward block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/167365491",
+   "used": "small block under pin only; U of ward wings composed from photo and brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "emergency",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0d9bd",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.9,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc8",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-plinth",
+   "footprint": {
+    "rect": [
+     24.4,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -6.1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9ccf8a",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ccf8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-block",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -19,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9d3b4",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    8,
+    24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4d0",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9fa6a6",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -26,
+    38
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4d0",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9fa6a6",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-c",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    40,
+    38
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c9a8",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7fa88a",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    22,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "height": 4.2,
+    "columns": 3,
+    "colour": "#dcd7cc",
+    "roofColour": "#4a4d50",
+    "vans": 1
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -6,
+    16,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#bdbdb0",
+    "roofColour": "#8fb59a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    34,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#c8362f",
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "kind": "fence",
+    "colour": "#3f8f6a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     -8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     6,
+     -8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -26,
+     -12
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "emergency block mass and green plinth read right; missing the tall slender trees at scale, side canopy is simplified, ward wings are generic from brief, no signage or street furniture"
+ }
+}

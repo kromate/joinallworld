@@ -1,0 +1,341 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "phnom-penh",
+ "venueId": "phnom-penh-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_University_of_Agriculture.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kiensvay",
+   "view": "front",
+   "file": "/tmp/places-evidence/phnom-penh/rua.jpg",
+   "used": "campus entrance only: brick-orange gate wall with gold-framed relief panels, two gate piers, white banner board and green notice board on posts, blue signboard, tall broadleaf trees. The teaching block behind is NOT in the photo; it is typed from the brief (1960s Cambodian campus, tile hip roof)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/44675931",
+   "used": "campus outline 1224 m, not modelled; one block shown"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-wall-l",
+   "footprint": {
+    "rect": [
+     30,
+     0.8
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9c5b2e",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c99a4a",
+    "material": "concrete",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-l",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    -3.5,
+    0
+   ],
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9a24a",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c99a4a",
+    "material": "concrete",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-wall-r",
+   "footprint": {
+    "rect": [
+     30,
+     0.8
+    ]
+   },
+   "at": [
+    19,
+    0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9c5b2e",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c99a4a",
+    "material": "concrete",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-r",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    3.5,
+    0
+   ],
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9a24a",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c99a4a",
+    "material": "concrete",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -0.5,
+    3.0
+   ],
+   "params": {
+    "width": 11.25,
+    "height": 5.76,
+    "bottom": 0,
+    "colour": "#f1efe8",
+    "frameColour": "#7a3b2a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -0.5,
+    3.0
+   ],
+   "params": {
+    "width": 8.75,
+    "height": 4.32,
+    "bottom": 0,
+    "colour": "#2f7d45",
+    "frameColour": "#c9a24a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -0.5,
+    3.0
+   ],
+   "params": {
+    "width": 6.25,
+    "height": 1.44,
+    "bottom": 0,
+    "colour": "#2d6fb8",
+    "frameColour": "#2d6fb8",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     60,
+     16
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bands": "#b5b0a5",
+    "bay": 4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-bay",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1,
+    "spacing": 3,
+    "colours": [
+     "#c8362f",
+     "#2f4a9c"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only the entrance gate is photographed; teaching block behind is typed from the brief. Gate relief panels, railings and overhead wires not modelled; trees are stock broadleaf"
+ }
+}

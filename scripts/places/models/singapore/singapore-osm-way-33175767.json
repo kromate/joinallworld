@@ -1,0 +1,317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-way-33175767",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/33175767",
+   "used": "park outline (551 x 429 m, 13.8 ha) scaled 0.2 to fit the scene; layout inside is typical, not surveyed"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/way/33175767",
+   "used": "brief: 14 ha town park with a pond, lawns, playgrounds and a pavilion among HDB blocks (the nearby Commons photos show a private swimming club, not the park, so they were not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -45.67,
+      20.55
+     ],
+     [
+      -37.81,
+      53.31
+     ],
+     [
+      -20.23,
+      52.69
+     ],
+     [
+      -16.81,
+      51.89
+     ],
+     [
+      -13.89,
+      50.77
+     ],
+     [
+      -10.89,
+      49.23
+     ],
+     [
+      -7.89,
+      47.19
+     ],
+     [
+      45.01,
+      -2.83
+     ],
+     [
+      45.67,
+      -6.49
+     ],
+     [
+      33.05,
+      -22.07
+     ],
+     [
+      28.83,
+      -27.57
+     ],
+     [
+      25.01,
+      -34.43
+     ],
+     [
+      22.77,
+      -42.29
+     ],
+     [
+      22.35,
+      -48.73
+     ],
+     [
+      0.13,
+      -45.49
+     ],
+     [
+      -11.35,
+      -46.37
+     ],
+     [
+      -28.13,
+      -53.31
+     ],
+     [
+      -30.79,
+      -47.95
+     ],
+     [
+      -36.95,
+      -33.51
+     ],
+     [
+      -18.03,
+      -18.75
+     ],
+     [
+      -28.21,
+      16.31
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#6f9a4a",
+    "top": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "pond",
+   "at": [
+    10,
+    -4,
+    0.2
+   ],
+   "params": {
+    "width": 28,
+    "depth": 16,
+    "shape": "oval",
+    "colour": "#5f8ea3",
+    "bank": true
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -14,
+    -28,
+    0.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#b5533c"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    24,
+    -24,
+    0.2
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    28,
+    10,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.0,
+    "kind": "hip",
+    "roof_colour": "#b5533c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "playground",
+   "at": [
+    -20,
+    30,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     16,
+     10
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#b5533c",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-a",
+   "at": [
+    4,
+    -34,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     60,
+     2.2
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#cdbfa3",
+    "top": true
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "prism",
+   "id": "path-b",
+   "at": [
+    -2,
+    20,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     60,
+     2.2
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#cdbfa3",
+    "top": true
+   },
+   "rotDeg": -42
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -6,
+    -30,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.8,
+    "roof_colour": "#b5533c"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -24,
+    34,
+    0.2
+   ],
+   "params": {
+    "width": 22,
+    "depth": 12,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    32,
+    -14,
+    0.2
+   ],
+   "params": {
+    "width": 16,
+    "depth": 14,
+    "count": 10,
+    "kind": "palm",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -22,
+    -42,
+    0.2
+   ],
+   "params": {
+    "length": 50,
+    "count": 9,
+    "kind": "broadleaf",
+    "height_min": 8,
+    "height_max": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the park itself (nearby Commons images show a swimming club). Park outline is real but scaled 0.2; pond, pavilion, playground and paths are typical placements, not surveyed; HDB edge blocks not modelled."
+ }
+}

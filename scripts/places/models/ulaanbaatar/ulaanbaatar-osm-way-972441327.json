@@ -1,0 +1,179 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-way-972441327",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Intermed_Hospital.jpg",
+   "licence": "CC BY 4.0",
+   "author": "LittleT889",
+   "view": "street",
+   "file": "/tmp/places-evidence/ulaanbaatar/intermed.jpg",
+   "used": "nine-storey slab, beige panel facade with dark teal horizontal bands and a window grid, taller dark teal sign wall on the left end, glazed rooftop canopy, dark glazed ground floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/972441327",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 33,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9ae",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bands": "#2a4f52",
+    "plinth": 0.3,
+    "groundKind": "plain",
+    "groundHeight": 4.2,
+    "bay": 10,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -24
+   ],
+   "params": {
+    "rect": [
+     9,
+     22
+    ],
+    "z0": 33,
+    "height": 7,
+    "colour": "#254a50",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    14,
+    -30,
+    4.3
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 7,
+    "height": 0.3,
+    "thickness": 0.4,
+    "columns": 2,
+    "colour": "#2f5a5e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    8
+   ],
+   "params": {
+    "rect": [
+     18,
+     5
+    ],
+    "z0": 33.8,
+    "height": 1.6,
+    "colour": "#9fb2b6",
+    "material": "glass-curtain"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -48
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -12,
+     -50
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     -50
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -8,
+     -42
+    ],
+    "yawDeg": 90,
+    "colour": "#f2f2f2"
+   },
+   {
+    "at": [
+     8,
+     -44
+    ],
+    "yawDeg": 90,
+    "colour": "#333333"
+   },
+   {
+    "at": [
+     22,
+     -42
+    ],
+    "yawDeg": 90,
+    "colour": "#9aa0a6"
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "bands thicker than photo, sign wall placement approximate, OSM outline is irregular so plan differs from the photographed slab"
+ }
+}

@@ -1,0 +1,220 @@
+{
+ "verified": "photo",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is an inside-the-pitch view so only massing, colours and stand heights compared; red fascia band, scoreboard tower and end-stand detail are simplified; stands are stock raked parts"
+ },
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SCG_STADION_MTU.jpg",
+   "licence": "Copyrighted free use",
+   "author": "Pudt",
+   "view": "interior",
+   "file": "/tmp/places-evidence/bangkok/scg2.jpg",
+   "used": "main stand: two-level glazed box front under a flat dark roof with red fascia band, raked red and white seating, low far stand, tall floodlight mast with scoreboard at the corner"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ScG_Stadium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Slak",
+   "view": "interior",
+   "file": "/tmp/places-evidence/bangkok/scg1.jpg",
+   "used": "stand heights and red/white seat blocks, floodlight mast, scoreboard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/175314200",
+   "used": "stadium size and orientation (87 x 68 m outline, 10 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 2.03,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 105,
+    "width": 68
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "id": "main",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 104,
+    "depth": 22,
+    "height": 15,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 2,
+    "seat_colour": "#c8302a",
+    "seat_colour2": "#e8e1d0"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "id": "near",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 104,
+    "depth": 14,
+    "height": 8,
+    "roof": "none",
+    "rear": "plain",
+    "storeys": 1,
+    "seat_colour": "#c8302a",
+    "seat_colour2": "#e8e1d0"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "id": "west",
+   "at": [
+    -66,
+    0,
+    0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "length": 60,
+    "depth": 12,
+    "height": 9,
+    "roof": "none",
+    "rear": "plain",
+    "storeys": 1,
+    "seat_colour": "#c8302a",
+    "seat_colour2": "#e8e1d0"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "id": "east",
+   "at": [
+    66,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 60,
+    "depth": 12,
+    "height": 9,
+    "roof": "none",
+    "rear": "plain",
+    "storeys": 1,
+    "seat_colour": "#c8302a",
+    "seat_colour2": "#e8e1d0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    70,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    70,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    62,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "post_height": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -80,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     80,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangkok",
+ "venueId": "bangkok-osm-way-175314200"
+}

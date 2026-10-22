@@ -1,0 +1,253 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Daigo_Fukury%C5%AB_Maru_02.JPG",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/tokyo/daigo2.jpg",
+   "used": "tall A-frame section: two steep dark-bronze clad slopes meeting at a ridge, fully glazed gabled front with mullion grid, low grey-tile annexe at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Daigo-Fukuryuu-Maru-Tenjikan.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tokyo-Walk",
+   "view": "side",
+   "file": "/tmp/places-evidence/tokyo/daigo1.jpg",
+   "used": "dark glazing, arched side bay, black pebble bed at foot"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/776436833",
+   "used": "overall size about 44 x 26 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "glass-gable",
+   "at": [
+    4,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#2b3640",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       24,
+       26
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       15.0,
+       26
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       6,
+       26
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       1.2,
+       26
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "slope--1",
+   "at": [
+    4,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#5a4638",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       26.8
+      ],
+      "cx": -10.8
+     },
+     {
+      "z": 8,
+      "rect": [
+       2.4,
+       26.8
+      ],
+      "cx": -6.3
+     },
+     {
+      "z": 16,
+      "rect": [
+       2.4,
+       26.8
+      ],
+      "cx": -1.8
+     },
+     {
+      "z": 22,
+      "rect": [
+       2.4,
+       26.8
+      ],
+      "cx": 0.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "slope-1",
+   "at": [
+    4,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#5a4638",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       26.8
+      ],
+      "cx": 10.8
+     },
+     {
+      "z": 8,
+      "rect": [
+       2.4,
+       26.8
+      ],
+      "cx": 6.3
+     },
+     {
+      "z": 16,
+      "rect": [
+       2.4,
+       26.8
+      ],
+      "cx": 1.8
+     },
+     {
+      "z": 22,
+      "rect": [
+       2.4,
+       26.8
+      ],
+      "cx": -0.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annexe",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -14,
+    -4
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#aeb7b4",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a4a40",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pebbles",
+   "lod": [
+    0
+   ],
+   "at": [
+    4,
+    -14.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     1.6
+    ],
+    "height": 0.2,
+    "colour": "#2c2c2e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     12
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     10
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-node-1420795772",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "A-frame massing, bronze slopes and dark glazed gable match; no mullion grid, ridge too narrow, tree canopy and arched side bay absent, annexe is generic"
+ }
+}

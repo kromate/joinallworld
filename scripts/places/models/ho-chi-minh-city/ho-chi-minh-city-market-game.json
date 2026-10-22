@@ -1,0 +1,187 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ben_Thanh_market_in_Vietnam_(340932410).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "MrTMan from Jyv\u00e4skyl\u00e4, Finland",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/hcm5-benthanh.jpg",
+   "used": "south gate: cream square clock tower with hipped cap over a tall arched gate pavilion with pilasters, low arcaded wings of round arches, red tiled clerestory roofs behind, trimmed topiary at the arches"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ben_Thanh_Market_2018.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Christophe95",
+   "view": "side",
+   "used": "north gate: lower pavilion with raised parapet and low arcade wing, flat roofs, red tile roof of hall behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/39514795",
+   "used": "overall size only (the real outline is a rotated rhombus; modelled as a 100 x 70 m block facing the south gate)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "outer-wing",
+   "footprint": {
+    "rect": [
+     100,
+     70
+    ]
+   },
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6d9ae",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "plinth": 0.4,
+    "cornice": true,
+    "bay": 7,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cfa8",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     60,
+     38
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5.6,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9dcb4",
+    "windows": "none",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a3a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south-gate",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -35
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6c4",
+    "windows": "arched",
+    "plinth": 0.3,
+    "cornice": true,
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "arched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cfa8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "clock-tower",
+   "on": "south-gate",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 14,
+    "cap": "hip",
+    "cap_rise": 3,
+    "wall_colour": "#f0e8d0",
+    "roof_colour": "#7d6a5c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -52
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -52
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "clock faces and French ornament on the tower, decorative pilasters and topiary, real rhombus outline, stalls and the clerestory detail of the roofs"
+ }
+}

@@ -1,0 +1,426 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/200560100",
+   "used": "real plan of the mosque (building=mosque, 117 x 106 m, name match): the stepped outline is used as the main prayer-hall mass, scaled to the scene clamp"
+  },
+  {
+   "kind": "text",
+   "url": "https://ms.wikipedia.org/wiki/Masjid_Al-Munawwarah,_Petaling",
+   "used": "identity only; no photo of this mosque found on Commons or Wikidata, so the dome layout (central dome, four corner domes, one minaret) follows the brief and is typical for Malaysian state-style mosques"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photograph available: dome count, colours and minaret placement are inferred from the brief, not seen; facade arcades and the courtyard are not modelled beyond the OSM outline."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 2
+   },
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#c9a64a",
+    "faces": {
+     "front": "arched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#3d7f72",
+    "profile": [
+     [
+      13,
+      0,
+      "#e8e2d0"
+     ],
+     [
+      13,
+      2
+     ],
+     [
+      13.4,
+      2,
+      "#3d7f72"
+     ],
+     [
+      12.61,
+      5.0
+     ],
+     [
+      10.66,
+      8.600000000000001
+     ],
+     [
+      7.15,
+      11.84
+     ],
+     [
+      2.6,
+      13.64
+     ],
+     [
+      0,
+      14
+     ]
+    ],
+    "topColour": "#3d7f72"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3d7f72",
+    "profile": [
+     [
+      13,
+      0
+     ],
+     [
+      13,
+      2
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      0,
+      14
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    26
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#c9a64a",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.3,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -24,
+    -18,
+    12
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#3d7f72",
+    "profile": [
+     [
+      6,
+      0,
+      "#e8e2d0"
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      6.4,
+      2,
+      "#3d7f72"
+     ],
+     [
+      5.82,
+      3.5
+     ],
+     [
+      4.92,
+      5.300000000000001
+     ],
+     [
+      3.3000000000000003,
+      6.92
+     ],
+     [
+      1.2000000000000002,
+      7.82
+     ],
+     [
+      0,
+      8
+     ]
+    ],
+    "topColour": "#3d7f72"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    24,
+    -18,
+    12
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#3d7f72",
+    "profile": [
+     [
+      6,
+      0,
+      "#e8e2d0"
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      6.4,
+      2,
+      "#3d7f72"
+     ],
+     [
+      5.82,
+      3.5
+     ],
+     [
+      4.92,
+      5.300000000000001
+     ],
+     [
+      3.3000000000000003,
+      6.92
+     ],
+     [
+      1.2000000000000002,
+      7.82
+     ],
+     [
+      0,
+      8
+     ]
+    ],
+    "topColour": "#3d7f72"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -24,
+    20,
+    12
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#3d7f72",
+    "profile": [
+     [
+      6,
+      0,
+      "#e8e2d0"
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      6.4,
+      2,
+      "#3d7f72"
+     ],
+     [
+      5.82,
+      3.5
+     ],
+     [
+      4.92,
+      5.300000000000001
+     ],
+     [
+      3.3000000000000003,
+      6.92
+     ],
+     [
+      1.2000000000000002,
+      7.82
+     ],
+     [
+      0,
+      8
+     ]
+    ],
+    "topColour": "#3d7f72"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    24,
+    20,
+    12
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#3d7f72",
+    "profile": [
+     [
+      6,
+      0,
+      "#e8e2d0"
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      6.4,
+      2,
+      "#3d7f72"
+     ],
+     [
+      5.82,
+      3.5
+     ],
+     [
+      4.92,
+      5.300000000000001
+     ],
+     [
+      3.3000000000000003,
+      6.92
+     ],
+     [
+      1.2000000000000002,
+      7.82
+     ],
+     [
+      0,
+      8
+     ]
+    ],
+    "topColour": "#3d7f72"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -46,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 58,
+    "radius": 2.2,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f3efe4",
+    "capColour": "#3d7f72"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   118,
+   118
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -50
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-way-200560100"
+}

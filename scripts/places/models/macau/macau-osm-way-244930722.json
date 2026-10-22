@@ -1,0 +1,412 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jardim_Ramalho_Eanes_13-01-2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LN9267",
+   "view": "street",
+   "used": "red-brick paved paths, granite-kerbed beds with clipped hedge, tall shade trees, red lanterns, red festival arch, green trellis arch",
+   "file": "/tmp/places-evidence/macau/jre1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jardim_Ramalho_Eanes_10-02-2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LN9267",
+   "view": "street",
+   "used": "curved kerb along the road, rose beds, trellis arch, concrete benches, black lamp posts",
+   "file": "/tmp/places-evidence/macau/jre2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/244930722",
+   "used": "outline of the garden (29 x 17 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "granite-kerb",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8a84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-paving",
+   "footprint": {
+    "osm": true,
+    "scale": 0.93
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.55,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a65a4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bed-west",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -7,
+    0.5
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4f7a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8f4a"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "bed-east",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    7,
+    0.5
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4f7a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a9a4c"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -7,
+    -2.2,
+    0.55
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.7,
+    "depth": 0.8,
+    "colour": "#3f6a33"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    7,
+    -2.2,
+    0.55
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.7,
+    "depth": 0.8,
+    "colour": "#3f6a33"
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -7,
+    0.7,
+    1.0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 2,
+    "width": 3.6,
+    "depth": 3.4,
+    "colours": [
+     "#d9456a",
+     "#e6c23a"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    7,
+    0.7,
+    1.0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 2,
+    "width": 3.6,
+    "depth": 3.4,
+    "colours": [
+     "#c9384f",
+     "#e6c23a"
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    1,
+    0.55
+   ],
+   "params": {
+    "section": {
+     "circle": 0.07
+    },
+    "points": [
+     [
+      -1.5,
+      0,
+      0
+     ],
+     [
+      -1.5,
+      0,
+      2.2
+     ],
+     [
+      0,
+      0,
+      3.4
+     ],
+     [
+      1.5,
+      0,
+      2.2
+     ],
+     [
+      1.5,
+      0,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#356b3a"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    11,
+    1.5,
+    0.55
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 1.2,
+    "height": 3.4,
+    "colour": "#c43a2c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    11,
+    1.5,
+    0.55
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.6,
+      0.35
+     ]
+    },
+    "points": [
+     [
+      -2,
+      0,
+      3.6
+     ],
+     [
+      2,
+      0,
+      3.6
+     ]
+    ],
+    "colour": "#c93a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench-w",
+   "footprint": {
+    "rect": [
+     3,
+     0.7
+    ]
+   },
+   "at": [
+    -7,
+    -4
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd"
+   },
+   "z0": 0.55
+  },
+  {
+   "type": "mass",
+   "id": "bench-e",
+   "footprint": {
+    "rect": [
+     3,
+     0.7
+    ]
+   },
+   "at": [
+    7,
+    -4
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd"
+   },
+   "z0": 0.55
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -13,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 3.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    12,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 3.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -2,
+    -6.5,
+    0
+   ],
+   "params": {
+    "height": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     3
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     2,
+     5
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     3
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   34,
+   26
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "macau",
+ "venueId": "macau-osm-way-244930722",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "trees are generic low-poly; no lanterns, red festival arch detail or planting texture; outline is small OSM traffic island"
+ }
+}

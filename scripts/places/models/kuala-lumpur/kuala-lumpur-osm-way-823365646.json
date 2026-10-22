@@ -1,0 +1,314 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-way-823365646",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Persiaran_Cakerawala_2.jpg",
+   "licence": "CC0",
+   "author": "Wiki Farazi",
+   "view": "street",
+   "file": "/tmp/places-evidence/kuala-lumpur/help1.jpg",
+   "used": "white stone-clad five-storey block with red-orange window bands and dark glazing, grey stair core, lower white wings, flat roofs with plant boxes, dark hedge and fence along the road, tall road lamps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/823365646",
+   "used": "campus outline 571 x 164 m NOT used: one teaching-block cluster modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeae0",
+    "glassColour": "#2f3a44",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9452f",
+      "height": 0.5,
+      "at": 0.3,
+      "floors": "upper",
+      "proud": 0.05
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d7d6d0",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-block",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    -30,
+    -3
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8de",
+    "glassColour": "#2f3a44",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9452f",
+      "height": 0.5,
+      "at": 0.3,
+      "floors": "upper",
+      "proud": 0.05
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d7d6d0",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     20,
+     26
+    ]
+   },
+   "at": [
+    28,
+    22
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeae0",
+    "glassColour": "#93a9b3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       1.5
+      ],
+      "colours": [
+       "#e8e4d8",
+       "#e4e0d4"
+      ],
+      "mode": "random",
+      "gap": 0.04,
+      "slits": {
+       "fraction": 0.1
+      }
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d7d6d0",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -14,
+    -9
+   ],
+   "height": 23.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7b8086",
+    "glassColour": "#93a9b3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7479",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-plant",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    12,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e0d4",
+    "glassColour": "#93a9b3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cec6",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -8.2,
+    17
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.2,
+    "bottom": 0,
+    "colour": "#f7f6f2",
+    "frameColour": "#d0d0cc",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.4,
+    "bottom": 0.4,
+    "colour": "#c9452f",
+    "posts": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.6,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#2f3a34"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 6,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stair core is not at the corner of the tall block; no logo by design; red bands too thin, no stone panel joints on the tall block; hedge missing"
+ }
+}

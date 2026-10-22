@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/999355279",
+   "used": "ferry terminal / port extent about 300 x 124 m, rotated to its long axis (wharf on the NE side)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Port_of_Dili,_2023_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/dili/port.jpg",
+   "used": "only a distant harbour view: low sheds, a red-roofed administration building, red and white ferry at the quay (colours and building types, not a close comparison)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "points": [
+     [
+      79.0,
+      21.0
+     ],
+     [
+      33.0,
+      28.6
+     ],
+     [
+      -11.7,
+      35.3
+     ],
+     [
+      -26.4,
+      34.0
+     ],
+     [
+      -39.5,
+      32.4
+     ],
+     [
+      -74.1,
+      21.0
+     ],
+     [
+      -78.1,
+      -28.0
+     ],
+     [
+      73.7,
+      -30.8
+     ]
+    ],
+    "height": 0.6,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "yard",
+   "params": {
+    "rect": [
+     70,
+     16
+    ],
+    "height": 0.65,
+    "colour": "#8d8f92"
+   },
+   "at": [
+    -10,
+    -0.8000000000000007,
+    0
+   ]
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    -45,
+    17.2,
+    0.6
+   ],
+   "params": {
+    "width": 26,
+    "depth": 12,
+    "height": 8,
+    "roof": "gable",
+    "doors": 3,
+    "colour": "#e8e4d8",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    -15,
+    17.2,
+    0.6
+   ],
+   "params": {
+    "width": 26,
+    "depth": 12,
+    "height": 8,
+    "roof": "gable",
+    "doors": 3,
+    "colour": "#e8e4d8",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    15,
+    17.2,
+    0.6
+   ],
+   "params": {
+    "width": 26,
+    "depth": 12,
+    "height": 8,
+    "roof": "gable",
+    "doors": 3,
+    "colour": "#e8e4d8",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "container-stack",
+   "at": [
+    -10,
+    -0.8000000000000007,
+    0.65
+   ],
+   "params": {
+    "nx": 4,
+    "ny": 2,
+    "levels": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    45,
+    17.2
+   ],
+   "z0": 0.6,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e4d8",
+    "windows": "louvre",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "rise": 3.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    -65,
+    -0.8000000000000007
+   ],
+   "z0": 0.6,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9b99a",
+    "windows": "louvre",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -65,
+    9.2,
+    0.6
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.5,
+    "bottom": 2.5,
+    "colour": "#2f5f9e"
+   }
+  },
+  {
+   "type": "storage-tank",
+   "at": [
+    62,
+    4.199999999999999,
+    0.6
+   ],
+   "params": {
+    "radius": 5,
+    "height": 8,
+    "colour": "#d9dcde"
+   }
+  },
+  {
+   "type": "cargo-ship",
+   "rotDeg": 0,
+   "at": [
+    -20,
+    -39.8,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "width": 15,
+    "hull_colour": "#e8e8e8",
+    "stripe_colour": "#c8362f"
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "rotDeg": 180,
+   "at": [
+    50,
+    -30.8,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "width": 8,
+    "shelter": false
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -62,
+    19.2,
+    0.6
+   ],
+   "params": {
+    "length": 20,
+    "kind": "mixed",
+    "density": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -70,
+     -27.8
+    ],
+    "end": [
+     65,
+     -27.8
+    ],
+    "count": 6,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 8
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Footprint-based: rotated OSM apron, sheds, containers, admin hip roof, ship; ro-ro ramps, crane and true wharf edge/water not modelled; no close photo."
+ }
+}

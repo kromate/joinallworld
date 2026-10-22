@@ -1,0 +1,244 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-936719394",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/936719394",
+   "used": "real park outline (about 315 x 171 m, 30,387 m2), scaled to fit; contents typed from the brief, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#6f9a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      2
+     ],
+     [
+      -30,
+      18
+     ],
+     [
+      -5,
+      30
+     ],
+     [
+      10,
+      20
+     ],
+     [
+      20,
+      5
+     ],
+     [
+      30,
+      -10
+     ],
+     [
+      45,
+      -30
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc2ad"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      18
+     ],
+     [
+      -10,
+      -2
+     ],
+     [
+      18,
+      -12
+     ],
+     [
+      30,
+      -10
+     ]
+    ],
+    "width": 2.0,
+    "colour": "#cbc2ad"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -8,
+    8,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    24,
+    -4,
+    0.5
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -34,
+    12,
+    0.5
+   ],
+   "rotDeg": -30,
+   "params": {}
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -48,
+    2,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6,
+    "height": 3,
+    "pillar": 0.8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -12,
+    -4,
+    0.5
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14,
+    "count": 10,
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    2,
+    6,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12,
+    "count": 8,
+    "min_height": 6,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    -2,
+    0.5
+   ],
+   "params": {
+    "width": 12,
+    "depth": 24,
+    "count": 6,
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -48,
+    -12,
+    0.5
+   ],
+   "rotDeg": 78,
+   "params": {
+    "length": 28,
+    "height": 1.2,
+    "thickness": 0.25,
+    "kind": "fence",
+    "colour": "#8a5a3c"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; outline is real but scaled down to 118 m and the shelters, kiosk, gate, paths and tree groups are typical placements, not surveyed."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   135,
+   100
+  ]
+ }
+}

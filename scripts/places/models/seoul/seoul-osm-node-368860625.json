@@ -1,0 +1,248 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yonggungsa_Temple_(Incheon)_016.JPG",
+   "licence": "CC BY-SA (Wikimedia Commons)",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/seoul/yong016.jpg",
+   "used": "hall massing, low stone platform, red columns, white plaster with stone-chip panels, green dancheong beams, grey tile hip-and-gable roof with upturned ridge ends, open front bay"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yonggungsa_Temple_(Incheon)_005.JPG",
+   "licence": "CC BY-SA (Wikimedia Commons)",
+   "author": "Wikimedia Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/seoul/yong005.jpg",
+   "used": "small shrine hall: gable front, red frame, blue/green painted gable, ridge end ornament"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9a94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a39c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     12.4,
+     6.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.7,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e6dccb",
+    "windows": "none",
+    "bay": 3.1
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4b4f55",
+    "material": "clay-tile",
+    "rise": 1.7,
+    "overhang": 1.5,
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-eave-beam",
+   "footprint": {
+    "rect": [
+     13.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.3
+   ],
+   "z0": 3.8,
+   "height": 0.55,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3f7a63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.22,
+      "n": 8,
+      "height": 3.3,
+      "z0": 0.7,
+      "colour": "#8a2f26"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5.8,
+     -3.4
+    ],
+    "end": [
+     5.8,
+     -3.4
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrine",
+   "footprint": {
+    "rect": [
+     4.2,
+     5.2
+    ]
+   },
+   "at": [
+    11.5,
+    -0.5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a2f26",
+    "windows": "plain",
+    "windowRatio": 0.3,
+    "bands": "#3fa8a0",
+    "plinth": 0.4,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4f55",
+    "material": "clay-tile",
+    "rise": 1.9,
+    "overhang": 1.1,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -5,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.7,
+    "run": 0.9,
+    "count": 1,
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.2,
+    "thickness": 0.4,
+    "colour": "#a3a39c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -22,
+     18
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     18
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     3,
+     24
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-node-368860625",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "no dancheong detail or stone-chip wall panels, open front bay and carved eave rafters simplified; roof lacks upturned corner ends; shrine hall is a plain gable"
+ }
+}

@@ -1,0 +1,285 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HK_Correctional_Services_Museum_201112_10.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Tksteven",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/v19_0.jpg",
+   "used": "two-storey front of white panel cladding between khaki-tan bands, corner mock guard tower with cantilevered railed cab and flat roof, small glazed openings, green glazed canopy on the right wing, low stone retaining wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HK_HongKongCorrectionalServicesMuseum.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chong Fat",
+   "view": "side",
+   "file": "/tmp/places-evidence/hong-kong/v19_1.jpg",
+   "used": "white slender tower with tinted-glass cab, low white wing, stone retaining wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/457242085",
+   "used": "footprint (name match), rotated 16 degrees so the long front edge faces the camera"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "khaki cladding bands and vertical white sign strip only approximated; no ramp rails, mock tower cab railings are sparse posts; right-wing canopy simplified; trees and retaining wall roughly placed"
+ },
+ "camera": {
+  "yawDeg": -45,
+  "pitchDeg": -8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -16
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 5,
+    "pattern": {
+     "type": "bands"
+    },
+    "bands": {
+     "colour": "#b09a6e",
+     "height": 1.1
+    },
+    "plinth": 0.5,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.3,
+    -8.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     5.2
+    ],
+    "height": 10.5,
+    "colour": "#b9a276",
+    "plinth": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.3,
+    -8.4,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.3
+    ],
+    "height": 9.6,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.3,
+    -8.4,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 0.8,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.3,
+    -8.4,
+    11.1
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "height": 3.2,
+    "colour": "#d8d4ca"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.3,
+    -8.4,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     7.8,
+     7.8
+    ],
+    "height": 0.5,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12.5,
+     -11.6
+    ],
+    "end": [
+     -6.1,
+     -11.6
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      11.1
+     ],
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 2.9,
+      "colour": "#2a2a2a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3,
+    -8.8,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     9,
+     2.5
+    ],
+    "height": 0.35,
+    "colour": "#3f7f6c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -0.5,
+     -9.6
+    ],
+    "end": [
+     7.5,
+     -9.6
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 3.4,
+      "colour": "#bfc3c1"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.5,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     16
+    ],
+    "height": 1.1,
+    "colour": "#a89c88"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-way-457242085"
+}

@@ -1,0 +1,321 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%EC%82%BC%EC%9C%A1%EC%9D%98%EB%A3%8C%EC%9B%90_%EC%84%9C%EC%9A%B8%EB%B3%91%EC%9B%90.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Younghopark7",
+   "view": "front",
+   "file": "/tmp/places-evidence/seoul/hosp.jpg",
+   "used": "grey metal-panel wings with banded windows, low glazed teal central entrance block with a blank roof sign frame, blue-green glass curtain-wall block in the foreground right, grassed embankment with a wide stair, paved plaza and car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/416586666",
+   "used": "hospital complex about 359 x 308 m: scale and setting; individual blocks from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "embankment",
+   "params": {
+    "points": [
+     [
+      -56,
+      -14
+     ],
+     [
+      56,
+      -14
+     ],
+     [
+      56,
+      10
+     ],
+     [
+      -56,
+      10
+     ]
+    ],
+    "z0": 0,
+    "height": 6,
+    "topScale": [
+     1,
+     0.45
+    ],
+    "topOffset": [
+     0,
+     3
+    ],
+    "colour": "#a8964f",
+    "topColour": "#a8964f"
+   },
+   "at": [
+    0,
+    10,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    28
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f8d86",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#a6a49d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7d7e",
+    "parapet": 0.5
+   },
+   "z0": 6
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa7a3",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "bay": 3.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9b",
+    "parapet": 0.4
+   },
+   "z0": 6
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    30,
+    28
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8983",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#a6a49d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7d7e",
+    "parapet": 0.5
+   },
+   "z0": 6
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     20,
+     22
+    ]
+   },
+   "at": [
+    36,
+    -8
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f7f93",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 3.3,
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "right": "curtain",
+     "back": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c7a80",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-frame",
+   "params": {
+    "rect": [
+     22,
+     0.6
+    ],
+    "z0": 8.2,
+    "height": 2.2,
+    "colour": "#f2f2f0",
+    "topColour": "#f2f2f0"
+   },
+   "at": [
+    0,
+    22,
+    6
+   ]
+  },
+  {
+   "type": "array",
+   "id": "stair-steps",
+   "at": [
+    -44,
+    -6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "step": [
+     0,
+     2.1,
+     0.5
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       8,
+       2.1
+      ],
+      "z0": 0,
+      "height": 0.5,
+      "colour": "#8e8d89"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp-wall",
+   "params": {
+    "rect": [
+     0.8,
+     26
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#d8d8d4"
+   },
+   "at": [
+    -48.5,
+    6,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ramp-wall2",
+   "params": {
+    "rect": [
+     0.8,
+     26
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#d8d8d4"
+   },
+   "at": [
+    -39.5,
+    6,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     36
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     34
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-416586666",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stair is a ramp-walled flight at left; no roof sign text/frame detail or footbridge; camera is frontal not oblique"
+ }
+}

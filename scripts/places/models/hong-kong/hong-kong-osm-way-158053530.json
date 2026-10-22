@@ -1,0 +1,275 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HK_WoYiHopRoadSportsGround.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chong Fat",
+   "view": "street",
+   "file": "/tmp/places-evidence/hong-kong/3_1.jpg",
+   "used": "long low flat-roofed covered stand on slim teal posts beside the road, pale blank walls with purple/teal panel ends, black lattice floodlight masts, housing towers behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HK_WoYiHopRoadSportsGround_RunningTracks.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chong Fat",
+   "view": "detail",
+   "used": "red-brown track, green infield, lattice masts around the fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/158053530",
+   "used": "overall extent 164 x 89 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "width": 50,
+    "lane_width": 6,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -26,
+     6
+    ],
+    "end": [
+     26,
+     6
+    ],
+    "flip": false,
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColour": "#6c9aa8",
+    "under": "open",
+    "backWall": 0.8,
+    "canopy": {
+     "height": 4.6,
+     "depth": 5,
+     "colour": "#cdc49c",
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d9d5c6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -31,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#7a56a3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -35,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#3f86a6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -33,
+    0,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d9d5c6"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    16,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4,
+    "colour": "#2e3338"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    16,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4,
+    "colour": "#2e3338"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    58,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4,
+    "colour": "#2e3338"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    58,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4,
+    "colour": "#2e3338"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    64,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 3,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#2e3338"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-b",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -6,
+    78
+   ],
+   "height": 70,
+   "storeys": 28,
+   "wall": {
+    "material": "render",
+    "colour": "#cdbf9f",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "pattern": {
+     "type": "floors"
+    },
+    "bands": "#a89c84"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    64,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 10,
+    "count": 8,
+    "min_height": 8,
+    "max_height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   110,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "housing towers are a single plain block, no teal posts or striped boundary wall, lattice masts simplified; camera is oblique so the stand is seen end-on"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-way-158053530"
+}

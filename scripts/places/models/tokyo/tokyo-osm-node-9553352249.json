@@ -1,0 +1,166 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1137593337",
+   "used": "mound footprint about 14 x 8 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 40,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "mound",
+   "params": {
+    "colour": "#6f7a4c",
+    "topColour": "#7c8a55",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       7.2,
+       4.6
+      ]
+     },
+     {
+      "z": 1.5,
+      "ellipse": [
+       6,
+       3.8
+      ]
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       3.8,
+       2.4
+      ]
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       1.8,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 1.8,
+    "rise": 0.55,
+    "run": 0.9,
+    "count": 8,
+    "colour": "#8f8f86"
+   }
+  },
+  {
+   "type": "torii",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    0,
+    0.4,
+    5
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 2,
+    "height": 2,
+    "roof": "gable",
+    "rise": 0.8,
+    "posts": 4,
+    "colour": "#5a3a2c",
+    "cap_colour": "#4a4f55"
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    2.2,
+    -8.5,
+    0
+   ],
+   "params": {
+    "scale": 0.9
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    -2.2,
+    -8.5,
+    0
+   ],
+   "params": {
+    "scale": 0.9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -7,
+     -9
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tokyo",
+ "venueId": "tokyo-osm-node-9553352249",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this mound; modest earth mound, stone stair, torii, tiny shrine, from brief and footprint size"
+ }
+}

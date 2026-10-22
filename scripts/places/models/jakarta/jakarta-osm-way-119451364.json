@@ -1,0 +1,304 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jakarta",
+ "venueId": "jakarta-osm-way-119451364",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Carrefour_Kramat_Jati_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Akhmad Fauzi",
+   "view": "front",
+   "file": "/tmp/places-evidence/jakarta/lippo2.jpg",
+   "used": "anchor-store frontage: tall flat grey tower block at left with coloured tile board, dark blue glazed curtain wall behind white steel frame, big rooftop sign frame, guard booths, brick paved parking, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lippo_Plaza_Kramat_Jati_Jakarta_indonesia.jpg",
+   "licence": "CC0",
+   "author": "Edogang1",
+   "view": "street",
+   "used": "cream stone-tile cladding, glazed entrance bay with warm-lit portal, low boundary wall and hedge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/119451364",
+   "used": "real mall outline (name match), 5 levels, 193 x 92 m, scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true,
+    "fit": 100
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -11.7,
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d6cd",
+    "windows": "ribbon",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "bands": "#a9a8a2",
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -52,
+    -52
+   ],
+   "rotDeg": -11.7,
+   "z0": 0,
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a7a9ab",
+    "windows": "none",
+    "bands": "#8f9193",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9193",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    -18,
+    -52
+   ],
+   "rotDeg": -11.7,
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f3a5f",
+    "bay": 5,
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8186",
+    "overhang": 0.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -50,
+    19
+   ],
+   "params": {
+    "width": 28,
+    "height": 4,
+    "bottom": 1.5,
+    "colour": "#1f3d7a",
+    "frameColour": "#e5e5e5",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -60,
+    17
+   ],
+   "params": {
+    "width": 8,
+    "height": 10,
+    "bottom": 2,
+    "colour": "#e8a83a",
+    "frameColour": "#6a2b6a",
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    24,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 4,
+    "drop": 0.6,
+    "height": 4,
+    "colours": [
+     "#cfdbe0",
+     "#b4573a"
+    ]
+   }
+  },
+  {
+   "type": "guard-kiosk",
+   "at": [
+    -34,
+    -70,
+    0
+   ],
+   "params": {
+    "colour": "#e5e1d6",
+    "roofColour": "#c8362f"
+   }
+  },
+  {
+   "type": "guard-kiosk",
+   "at": [
+    -28,
+    -70,
+    0
+   ],
+   "params": {
+    "colour": "#e5e1d6",
+    "roofColour": "#c8362f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -68,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "spread": 5,
+    "line": 38
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -72
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -76
+    ],
+    "height": 10
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -10,
+     -82
+    ],
+    "colour": "#e5e5e5"
+   },
+   {
+    "at": [
+     2,
+     -84
+    ],
+    "colour": "#2f3338",
+    "yawDeg": 180
+   },
+   {
+    "at": [
+     14,
+     -82
+    ],
+    "colour": "#a8aeb4"
+   },
+   {
+    "at": [
+     40,
+     -84
+    ],
+    "colour": "#8a2f2f"
+   },
+   {
+    "at": [
+     -44,
+     -84
+    ],
+    "colour": "#e5e5e5"
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tree-hidden entrance, rooftop truss sign frame and steel lattice over glazing not modelled; glass colour approximate"
+ }
+}

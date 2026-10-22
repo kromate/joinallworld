@@ -1,0 +1,345 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "pyongyang",
+ "venueId": "pyongyang-airport-pyongyang-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:North_Korea-Pyongyang-Sunan_International_Airport-02.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Flickr user (see Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/pyongyang/airport1.jpg",
+   "used": "airside elevation of the original terminal: two-level glazed central hall with a thin overhanging roof slab, lower two-storey wings with window bands, octagonal-stack control tower at the right, cream render, blank rooftop sign boards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sunan_airport_terminal.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mimura",
+   "view": "front",
+   "file": "/tmp/places-evidence/pyongyang/airport2.jpg",
+   "used": "second view confirming hall height, side stair and wing roof lines"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/356324168",
+   "used": "terminal size 116 x 34 m, 3 levels (named as the first terminal, matching the photographed building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     60,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d3c2",
+    "windows": "curtain",
+    "windowRatio": 0.62,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "groundKind": "plain",
+    "bands": "#c9c3b2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabf",
+    "overhang": 1.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     28,
+     26
+    ]
+   },
+   "at": [
+    -44,
+    1
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6cfbd",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "none",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bfb3",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "at": [
+    45,
+    1
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6cfbd",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "none",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bfb3",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-far",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -58,
+    2
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2cbb9",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bfb3",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    51,
+    10
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7d1c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#c4beae",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c3b6",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-cab",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    51,
+    10
+   ],
+   "z0": 18,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#566670",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cbbf",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    6,
+    -2,
+    12.6
+   ],
+   "params": {
+    "width": 16,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#b3262c",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -24,
+    -2,
+    12.6
+   ],
+   "params": {
+    "width": 7,
+    "height": 2,
+    "bottom": 0,
+    "colour": "#b3262c",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    0,
+    12.6
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 4.5,
+    "bottom": 0,
+    "colour": "#e9e4d6",
+    "frameColour": "#b0aca0",
+    "posts": false
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 6,
+    "colour": "#a9a59a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 6,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -66,
+     -8
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -70,
+     -4
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -62,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photo shows the old terminal (OSM names it terminal 1), modelled from it; tower is a plain stack not the stepped octagon, rooftop signs render blue-ish, no murals/stairs, render glass tint is bluer than the cream/grey photo."
+ }
+}

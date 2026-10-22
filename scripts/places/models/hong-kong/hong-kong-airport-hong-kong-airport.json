@@ -1,0 +1,210 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A_View_of_Hong_Kong_Airport.JPG",
+   "licence": "CC BY-SA",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/hong-kong/air2.jpg",
+   "used": "landside: huge swept roof with exposed grey triangulated steel soffit and overhanging prow, green-tinted glass curtain wall, free-standing curved departures canopy on a row of steel columns, kerb road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Airport_ramp_of_Hong_Kong_International_Airport_-01.jpg",
+   "licence": "CC BY-SA",
+   "author": "Commons contributor",
+   "view": "back",
+   "file": "/tmp/places-evidence/hong-kong/air1.jpg",
+   "used": "airside: long low dark terminal with a white banded curved roof edge, apron, aircraft"
+  },
+  {
+   "kind": "text",
+   "used": "no OSM outline (match none); a ~120 m portion of the 1.2 km terminal is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     110,
+     36
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa690",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "curtain",
+     "right": "curtain",
+     "back": "plain"
+    },
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea6a8",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "surface",
+   "id": "vault-roof",
+   "at": [
+    0,
+    0,
+    20
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 126,
+    "depth": 56,
+    "rise": 1.2,
+    "folds": 2,
+    "thickness": 2.2,
+    "colour": "#b8bec0",
+    "underColour": "#8e969a",
+    "edgeColour": "#c9cfd0"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "prow",
+   "at": [
+    0,
+    -30,
+    17
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 126,
+    "depth": 18,
+    "rise": -3,
+    "folds": 6,
+    "thickness": 1.4,
+    "colour": "#aab1b3",
+    "underColour": "#7d868a",
+    "edgeColour": "#c4cacb"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 116,
+    "depth": 12,
+    "height": 7.5,
+    "thickness": 0.8,
+    "columns": 14,
+    "rise": 1.6,
+    "colour": "#dfe3e4",
+    "edgeColour": "#f0f2f2"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -70,
+    40,
+    0
+   ],
+   "params": {
+    "height": 70,
+    "style": "round",
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -54,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "mixed",
+    "density": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 3,
+    "colour": "#1f3f6e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-airport-hong-kong-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is a smooth slab plus zigzag prow, not the triangulated steel truss soffit; no jet bridges or airside shown; only about 110 m of 1.2 km terminal; canopy is flat-curved without the wing-shaped cantilever."
+ }
+}

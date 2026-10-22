@@ -1,0 +1,159 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: a small glazed subway-station entrance over stairs at the street edge, bus bays, blank signage; the OSM match is an unrelated overpass and the only nearby photo shows a different building (Jegi-dong community centre), so neither was used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "metro-portal",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 11,
+    "kiosk": true,
+    "accent": "#2f7fb8"
+   }
+  },
+  {
+   "type": "metro-portal",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 8,
+    "kiosk": false,
+    "accent": "#2f7fb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-block",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d7dadb",
+    "glassColour": "#5a6b78",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#6f8896"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -8,
+    14
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#cfc9bf",
+    "glassColour": "#5a6b78",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    26,
+    -3,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {}
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "count": 6,
+    "kind": "broadleaf",
+    "gap": 4.5,
+    "height_min": 7,
+    "height_max": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence of the real station: a typical Seoul subway entrance (glazed stair canopy, kiosk, second small exit, bus shelter, tiled mid-rise neighbours) rather than a measured copy."
+ }
+}

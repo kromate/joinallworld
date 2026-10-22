@@ -1,0 +1,692 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-osm-way-430464616",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Istana-nurul-iman.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "de:Benutzer:Chtrede",
+   "view": "front",
+   "file": "/tmp/places-evidence/bsb/istana.jpg",
+   "used": "huge cream upswept gable with dark glazed front and lattice motif, inverted-boat eaves of the neighbouring wing, golden onion dome behind, lawn court in front, yellow trim bands"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/430464616",
+   "used": "palace outline (318 x 225 m) for the low base; Wikipedia: 1788 rooms, Locsin 1984"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "palace-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "params": {
+    "rect": [
+     135.0,
+     76.5
+    ],
+    "height": 4.5,
+    "colour": "#eadba0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "palace-base",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "params": {
+    "points": [
+     [
+      -59.2,
+      -44.2
+     ],
+     [
+      -25.3,
+      -81.3
+     ],
+     [
+      -18.2,
+      -82.4
+     ],
+     [
+      6.8,
+      -58.7
+     ],
+     [
+      6.5,
+      -50.6
+     ],
+     [
+      11.7,
+      -45.0
+     ],
+     [
+      12.5,
+      -41.4
+     ],
+     [
+      59.4,
+      1.3
+     ],
+     [
+      66.1,
+      28.8
+     ],
+     [
+      56.6,
+      36.9
+     ],
+     [
+      45.3,
+      37.6
+     ],
+     [
+      16.0,
+      68.0
+     ],
+     [
+      12.8,
+      65.5
+     ],
+     [
+      1.5,
+      78.2
+     ],
+     [
+      -48.6,
+      32.0
+     ],
+     [
+      -37.3,
+      20.7
+     ],
+     [
+      -39.8,
+      18.2
+     ],
+     [
+      -17.2,
+      -4.7
+     ],
+     [
+      -24.9,
+      -12.1
+     ],
+     [
+      -34.1,
+      -11.4
+     ],
+     [
+      -58.8,
+      -33.7
+     ]
+    ],
+    "height": 4.5,
+    "colour": "#eadba0",
+    "windows": "none",
+    "bay": 9,
+    "storeys": 2,
+    "trimColour": "#d4a72c"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "upper-hall-a",
+   "at": [
+    -13.5,
+    18.0,
+    4.5
+   ],
+   "rotDeg": 41,
+   "params": {
+    "rect": [
+     27.0,
+     11.7
+    ],
+    "height": 4.5,
+    "colour": "#e9dfc0"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "upper-hall-b",
+   "at": [
+    27.0,
+    18.0,
+    4.5
+   ],
+   "rotDeg": 41,
+   "params": {
+    "rect": [
+     31.5,
+     10.8
+    ],
+    "height": 4.05,
+    "colour": "#e9dfc0"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    9.0,
+    -27.0,
+    4.5
+   ],
+   "rotDeg": 41,
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       29.48,
+       9.9
+      ]
+     },
+     {
+      "z": 3.99,
+      "rect": [
+       23.18,
+       9.9
+      ]
+     },
+     {
+      "z": 7.97,
+      "rect": [
+       17.49,
+       9.9
+      ]
+     },
+     {
+      "z": 11.96,
+      "rect": [
+       12.44,
+       9.9
+      ]
+     },
+     {
+      "z": 15.94,
+      "rect": [
+       8.1,
+       9.9
+      ]
+     },
+     {
+      "z": 19.93,
+      "rect": [
+       4.55,
+       9.9
+      ]
+     },
+     {
+      "z": 23.91,
+      "rect": [
+       1.95,
+       9.9
+      ]
+     },
+     {
+      "z": 27.9,
+      "rect": [
+       0.68,
+       9.9
+      ]
+     }
+    ],
+    "colour": "#f0e2a8",
+    "curve": true,
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -27.0,
+    -18.0,
+    4.5
+   ],
+   "rotDeg": 41,
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       20.48,
+       7.2
+      ]
+     },
+     {
+      "z": 2.57,
+      "rect": [
+       16.15,
+       7.2
+      ]
+     },
+     {
+      "z": 5.14,
+      "rect": [
+       12.23,
+       7.2
+      ]
+     },
+     {
+      "z": 7.71,
+      "rect": [
+       8.76,
+       7.2
+      ]
+     },
+     {
+      "z": 10.29,
+      "rect": [
+       5.78,
+       7.2
+      ]
+     },
+     {
+      "z": 12.86,
+      "rect": [
+       3.34,
+       7.2
+      ]
+     },
+     {
+      "z": 15.43,
+      "rect": [
+       1.56,
+       7.2
+      ]
+     },
+     {
+      "z": 18.0,
+      "rect": [
+       0.68,
+       7.2
+      ]
+     }
+    ],
+    "colour": "#f0e2a8",
+    "curve": true,
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "glass-a",
+   "at": [
+    9.0,
+    -27.9,
+    4.5
+   ],
+   "rotDeg": 41,
+   "params": {
+    "rect": [
+     9.9,
+     2.7
+    ],
+    "height": 7.2,
+    "colour": "#25343a"
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -4.5,
+    15.75,
+    7.2
+   ],
+   "rotDeg": 41,
+   "params": {
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       4.5,
+       27.0
+      ],
+      "colour": "#e6e2d2"
+     },
+     {
+      "z": 1.35,
+      "rect": [
+       15.3,
+       34.2
+      ],
+      "colour": "#e6e2d2"
+     },
+     {
+      "z": 2.7,
+      "rect": [
+       4.5,
+       26.1
+      ]
+     }
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    4.5,
+    9.0,
+    11.7
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#d6a82a",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      4.05,
+      0.0
+     ],
+     [
+      4.28,
+      0.68
+     ],
+     [
+      4.5,
+      1.8
+     ],
+     [
+      3.83,
+      4.05
+     ],
+     [
+      2.48,
+      5.85
+     ],
+     [
+      1.12,
+      6.93
+     ],
+     [
+      0.18,
+      7.38
+     ],
+     [
+      0.18,
+      8.55
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    31.5,
+    13.5,
+    9.9
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d6a82a",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      2.7,
+      0.0
+     ],
+     [
+      2.88,
+      0.54
+     ],
+     [
+      3.06,
+      1.35
+     ],
+     [
+      2.61,
+      2.93
+     ],
+     [
+      1.71,
+      4.23
+     ],
+     [
+      0.72,
+      4.95
+     ],
+     [
+      0.14,
+      5.31
+     ],
+     [
+      0.14,
+      6.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22.5,
+    27.0,
+    8.55
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d6a82a",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      2.25,
+      0.0
+     ],
+     [
+      2.43,
+      0.45
+     ],
+     [
+      2.56,
+      1.17
+     ],
+     [
+      2.16,
+      2.43
+     ],
+     [
+      1.44,
+      3.51
+     ],
+     [
+      0.59,
+      4.05
+     ],
+     [
+      0.14,
+      4.41
+     ],
+     [
+      0.14,
+      5.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -45.0,
+    -13.5,
+    5.4
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d6a82a",
+    "profile": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      1.8,
+      0.0
+     ],
+     [
+      1.94,
+      0.45
+     ],
+     [
+      2.02,
+      0.99
+     ],
+     [
+      1.71,
+      1.98
+     ],
+     [
+      1.08,
+      2.79
+     ],
+     [
+      0.41,
+      3.15
+     ],
+     [
+      0.09,
+      3.42
+     ],
+     [
+      0.09,
+      4.05
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "court",
+   "at": [
+    -4.5,
+    -38.25,
+    0.0
+   ],
+   "rotDeg": 41,
+   "params": {
+    "rect": [
+     36.0,
+     18.0
+    ],
+    "height": 0.07,
+    "colour": "#5f9a3a",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -31.5,
+    -45.0,
+    0.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 4.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    13.5,
+    -54.0,
+    0.0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "scaled to 0.45 to fit scene limit; gables are simple lofts (no dark glazing, lattice, notched crown), boat-shaped eaves and dome drums approximate; base is a plain extrusion of the outline"
+ }
+}

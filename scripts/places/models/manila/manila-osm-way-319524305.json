@@ -1,0 +1,360 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:168_Shopping_Mall_11d.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "SwarmCheng",
+   "view": "street",
+   "file": "/tmp/places-evidence/manila/19524305_0.jpg",
+   "used": "blue painted tall end facade of the mall with a large blank sign board and a decorative panel, flanked by multi-coloured pink, green, cream and blue tall shopfront blocks, crowded street with tricycles, trucks, stall awnings and cabling"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/319524305",
+   "used": "overall mall size 118 x 74 m at 4 levels (matched way is a neighbouring wing, outline not adopted)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     62,
+     60
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f64b8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#2f64b8",
+       "#3d73c6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "material": "corrugated",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     28,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -20.4
+   ],
+   "rotDeg": 0,
+   "z0": 8.5,
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f4f9c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f4f9c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deco-panel",
+   "footprint": {
+    "rect": [
+     11,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -20.8
+   ],
+   "rotDeg": 0,
+   "z0": 3,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6a2a30",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a2a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block-pink",
+   "footprint": {
+    "rect": [
+     16,
+     24
+    ]
+   },
+   "at": [
+    -28,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e19aa8",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e19aa8",
+       "#f2c4cc"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aa6f7a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block-blue",
+   "footprint": {
+    "rect": [
+     13,
+     24
+    ]
+   },
+   "at": [
+    -40,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7db5d6",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#7db5d6",
+       "#a8d0e6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a9ab5",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block-green",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    30,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fc08b",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8fc08b",
+       "#b5d8b0"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a9a67",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block-cream",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    43,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cdb0",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9cdb0",
+       "#bfb394"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9078",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#2f6cb5",
+     "#e0a030",
+     "#c0392b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#2f6cb5",
+     "#e0a030",
+     "#c0392b"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    2,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#2f55a8",
+    "count": 1
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -26,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "colours": [
+     "#2f6cb5",
+     "#ffffff"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 30,
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-osm-way-319524305",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Only the blue end facade and flanking coloured blocks are modelled; no cables, vehicles, stall clutter or the real irregular footprint (matched OSM way is a neighbouring wing)."
+ }
+}

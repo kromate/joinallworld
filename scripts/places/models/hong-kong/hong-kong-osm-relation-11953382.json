@@ -1,0 +1,217 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cityplaza_entrance.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "LN5806",
+   "view": "front",
+   "file": "/tmp/places-evidence/hong-kong/cp1.jpg",
+   "used": "warm sandstone-tan cladding in stepped pilaster bays, small square punched windows, dark glazed entrance bays with steel canopies, rounded white grid-windowed corner behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cityplaza071026.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "cychk",
+   "view": "street",
+   "used": "flat-roofed tan podium with central glazed bay under a dark stone fascia, towers behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28845847",
+   "used": "Cityplaza II footprint (153 x 116 m, cross-notched rectangle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d6b98c",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 18,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#c3a273"
+      ],
+      "height": 0.8,
+      "at": 0.9,
+      "proud": 0.15,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     34,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -59.5
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#46535c",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3b3b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -60.5,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     34,
+     5
+    ],
+    "height": 0.5,
+    "colour": "#8e979c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -59,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.4,
+        2.4
+       ],
+       "height": 15,
+       "colour": "#cbac7d"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rotunda",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     30,
+     30
+    ]
+   },
+   "at": [
+    -45,
+    30
+   ],
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e8eaea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a0a4a6",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -70
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -70
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a close entrance view; no stepped pilaster fascia, canopies simplified, rotunda grid windows omitted, red arch interior not modelled"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hong-kong",
+ "venueId": "hong-kong-osm-relation-11953382"
+}

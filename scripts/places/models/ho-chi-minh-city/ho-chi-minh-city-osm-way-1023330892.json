@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-1023330892",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1023330892",
+   "used": "real 85 x 82 m rotated outline of the university block (name-quality match)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+   "used": "brief: five-storey cream-rendered teaching block with corridor balconies, flag and gate; no photograph of this campus found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede6cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#b88a4c",
+    "cornice": true,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    },
+    "bay": 6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d",
+    "parapet": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-hall",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -50
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none",
+    "bands": "#b88a4c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b88a4c",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -46,
+    0
+   ],
+   "params": {
+    "colour": "#c8201f",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: inner courtyard, real window rhythm, gate and annexes are inferred from the brief; only the outline is real"
+ }
+}

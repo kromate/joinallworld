@@ -1,0 +1,280 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%E8%8E%98%E5%BA%84%E6%95%99%E5%A0%82_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "dengzheng-yu",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/church1.jpg",
+   "used": "three-storey red-brown rendered gable-front block with stepped parapet, tall central white pointed-arch window, pointed white window surrounds in a regular rhythm, tall central red spire and a smaller spire at the right corner, small corner pinnacle at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/279318210",
+   "used": "overall extent 44 x 29 m; rear hall wing sized from it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#b24d3a",
+    "windows": "pointed",
+    "windowRatio": 0.38,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "plain",
+     "right": "pointed-arch"
+    },
+    "bay": 4.6,
+    "plinth": 1.0,
+    "glassColour": "#4a5560",
+    "trimColour": "#f0ebe2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c4635",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-step",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "z0": 13.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b24d3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c4635"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    -1,
+    18
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c0634d",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a6a5a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -7.05,
+    0
+   ],
+   "params": {
+    "width": 6.4,
+    "height": 9.5,
+    "archWidth": 4.4,
+    "springHeight": 6.5,
+    "pointed": true,
+    "colour": "#eeeae0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.8,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -3,
+    16.5
+   ],
+   "params": {
+    "colour": "#a8402f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.4,
+       4.4
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    11.5,
+    -3,
+    13.5
+   ],
+   "params": {
+    "colour": "#a8402f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -11.5,
+    -3,
+    13.5
+   ],
+   "params": {
+    "colour": "#a8402f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.2,
+       0.2
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -12
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -13
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-279318210",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "white pointed window surrounds are plain recesses, no large central glazed arch, no gold roofline lettering, rear hall wing guessed from OSM extent"
+ }
+}

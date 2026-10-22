@@ -1,0 +1,272 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:USIM_Campus,_Bandar_Baru_Nilai,_Negeri_Sembilan.jpg",
+   "used": "general character only: pale colonnaded blocks with a central pavilion under a small dome, green lawns, palms; no single building matches this venue"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "U-shaped lecture and faculty block, 4 storeys, arched windows, pitched clay-tile roof (OSM is the whole campus, not a building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     48
+    ]
+   },
+   "at": [
+    -38,
+    0
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#2f7a6a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 24,
+    "colour": "#b4573a",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     48
+    ]
+   },
+   "at": [
+    38,
+    0
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#2f7a6a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 24,
+    "colour": "#b4573a",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     98,
+     18
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#2f7a6a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 24,
+    "colour": "#b4573a",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdf",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#c9a64a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 20,
+    "colour": "#b4573a",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    12,
+    18
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#e8e2d0",
+    "profile": [
+     [
+      6,
+      0
+     ],
+     [
+      6,
+      3
+     ],
+     [
+      5.2,
+      3.4,
+      "#c9a64a"
+     ],
+     [
+      4.6,
+      5
+     ],
+     [
+      3,
+      7.5,
+      "#2f7a6a"
+     ],
+     [
+      1.2,
+      9.6
+     ],
+     [
+      0.2,
+      11.5,
+      "#c9a64a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this block; typical USIM-style U-shaped faculty block with arched windows, clay roof, small dome; real layout unknown."
+ }
+}

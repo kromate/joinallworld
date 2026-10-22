@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manila",
+ "venueId": "manila-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Katipunan_station",
+   "used": "(Commons interior photos of the platform and concourse show nothing of the exterior) underground LRT-2 station on Aurora Boulevard with street-level entrances either side; entrance modelled as a small glazed stairwell pavilion with a flat canopy and blank sign board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/402888750",
+   "used": "checked and rejected: the 153 x 72 m outline is the underground station box, not a surface building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo exists (platform and concourse interiors only), so the entrance pavilion form, glazing and colours are plausible estimates, not verified."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9c4cc",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "none",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#3d3d3d"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 2.0,
+    "overhang": 0.8,
+    "colour": "#a8adb0",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-head",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    9
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8cbcd",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8adb0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "opening",
+   "at": [
+    4,
+    -5.15
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "z0": 0.4,
+    "height": 3.6,
+    "colour": "#2b2f33",
+    "topColour": "#2b2f33"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 6,
+    "height": 3.8,
+    "thickness": 0.35,
+    "columns": 4,
+    "colour": "#a8adb0",
+    "edgeColour": "#6b8aa3"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    4,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.15,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#9a9d9f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.4,
+    "bottom": 3.3,
+    "colour": "#6b8aa3",
+    "frameColour": "#3d3d3d",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-guard",
+   "at": [
+    -2,
+    -13.5
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.15
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#3d3d3d",
+    "topColour": "#3d3d3d"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 0.9,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#3d3d3d"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

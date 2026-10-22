@@ -1,0 +1,430 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-way-232204347",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Masjid_Al-Iman.jpg",
+   "licence": "CC0",
+   "author": "Actuall7",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/iman1.jpg",
+   "used": "cream-yellow walls with salmon pink panels and terracotta trim bands, orange pointed pyramid turrets on corners, dark red-brown hip roof, tall pink minaret with red cone and crescent"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Masjid_Al-Iman_at_Bukit_Panjang.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Muhammad Adrian",
+   "view": "side",
+   "used": "minaret height relative to hall, turret spacing, lattice arch panels"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/232204347",
+   "used": "footprint, levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 8,
+  "fovDeg": 38,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4d98c",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "bands": "#e3a98d",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c4623f",
+      "height": 0.5,
+      "at": 0.9
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a22",
+    "pitch": 12,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret--19--2",
+   "at": [
+    -19,
+    -2
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -2
+     ],
+     [
+      2,
+      -2
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      -2,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 15.5,
+    "colour": "#f4d98c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -19,
+    -2,
+    15.5
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      3,
+      0,
+      "#b5532f"
+     ],
+     [
+      2.6,
+      0.8,
+      "#b5532f"
+     ],
+     [
+      2.4,
+      1.0,
+      "#e9a05a"
+     ],
+     [
+      0,
+      5.5,
+      "#e9a05a"
+     ]
+    ],
+    "colour": "#e9a05a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-18--14",
+   "at": [
+    18,
+    -14
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -2
+     ],
+     [
+      2,
+      -2
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      -2,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 15.5,
+    "colour": "#f4d98c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    18,
+    -14,
+    15.5
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      3,
+      0,
+      "#b5532f"
+     ],
+     [
+      2.6,
+      0.8,
+      "#b5532f"
+     ],
+     [
+      2.4,
+      1.0,
+      "#e9a05a"
+     ],
+     [
+      0,
+      5.5,
+      "#e9a05a"
+     ]
+    ],
+    "colour": "#e9a05a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-17-5",
+   "at": [
+    17,
+    5
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -2
+     ],
+     [
+      2,
+      -2
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      -2,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 15.5,
+    "colour": "#f4d98c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    5,
+    15.5
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      3,
+      0,
+      "#b5532f"
+     ],
+     [
+      2.6,
+      0.8,
+      "#b5532f"
+     ],
+     [
+      2.4,
+      1.0,
+      "#e9a05a"
+     ],
+     [
+      0,
+      5.5,
+      "#e9a05a"
+     ]
+    ],
+    "colour": "#e9a05a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret--14-15",
+   "at": [
+    -14,
+    15
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -2
+     ],
+     [
+      2,
+      -2
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      -2,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 15.5,
+    "colour": "#f4d98c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    15,
+    15.5
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      3,
+      0,
+      "#b5532f"
+     ],
+     [
+      2.6,
+      0.8,
+      "#b5532f"
+     ],
+     [
+      2.4,
+      1.0,
+      "#e9a05a"
+     ],
+     [
+      0,
+      5.5,
+      "#e9a05a"
+     ]
+    ],
+    "colour": "#e9a05a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret",
+   "at": [
+    -21,
+    10
+   ],
+   "params": {
+    "points": [
+     [
+      -2.2,
+      -2.2
+     ],
+     [
+      2.2,
+      -2.2
+     ],
+     [
+      2.2,
+      2.2
+     ],
+     [
+      -2.2,
+      2.2
+     ]
+    ],
+    "z0": 0,
+    "height": 30,
+    "colour": "#e8b3a0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -21,
+    10,
+    30
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      3.2,
+      0,
+      "#b5532f"
+     ],
+     [
+      2.8,
+      1.2,
+      "#b5532f"
+     ],
+     [
+      2.6,
+      1.4,
+      "#c4452f"
+     ],
+     [
+      0,
+      8,
+      "#c4452f"
+     ]
+    ],
+    "colour": "#c4452f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -30
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 8,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Octagonal stepped roof, lattice arch panels and ornamental frieze missing; roof overhang too wide; turret positions approximate"
+ }
+}

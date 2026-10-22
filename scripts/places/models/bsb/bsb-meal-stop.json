@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bsb",
+ "venueId": "bsb-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1051831769",
+   "used": "Block B outline (65 x 17 m, containing the pin), 3 levels"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-storey commercial shophouse block, covered ground-floor walkway, blank shop signs and awnings"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "osm": true
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efe8d8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "bands": "#bfbab0",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": "front"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8084",
+    "parapet": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -25.96,
+     9.51,
+     0
+    ],
+    "end": [
+     13.87,
+     -23.91,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "shopfront",
+     "rotDeg": -40,
+     "params": {
+      "width": 6.5,
+      "height": 3.4,
+      "kind": "glass",
+      "colour": "#7a6a55",
+      "sign_colour": "#2f6b4f",
+      "awning_colours": [
+       "#b6323a",
+       "#2f6fa8",
+       "#e0b13a"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16.91,
+    -1.48,
+    0
+   ],
+   "rotDeg": -40,
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 3.4,
+    "colour": "#2f6b4f",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -16.41,
+    -7.11,
+    0
+   ],
+   "rotDeg": -40,
+   "params": {
+    "colour": "#d8dadc",
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15.27,
+    -28.48,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -32.99,
+    12.02,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "rooftop-plant",
+   "at": [
+    10.72,
+    -9.0,
+    12
+   ],
+   "rotDeg": -40,
+   "params": {
+    "width": 10,
+    "depth": 6,
+    "water_tank": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; massing from the real OSM outline and brief, details typed"
+ }
+}

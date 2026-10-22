@@ -1,0 +1,284 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Med_Centre_A_-_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Joyce See",
+   "view": "front",
+   "file": "/tmp/places-evidence/singapore/singapore-osm-way-74715098-0.jpg",
+   "used": "Medical Centre A block: white-grey render, 5 storeys, teal glass strip split by a round column, orange-yellow vertical fins, grey porte-cochere with yellow edge, round white columns"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37552597",
+   "used": "complex outline simplified and fitted (146 x 102 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "complex",
+   "footprint": {
+    "osm": true,
+    "fit": 116,
+    "simplify": 20
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e4df",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "glassColour": "#2f8f94",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9d",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "medical-centre",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -42
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e8e4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 5,
+    "glassColour": "#2f8f94",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f90",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-strip",
+   "footprint": {
+    "rect": [
+     9,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -49.3
+   ],
+   "z0": 6,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3aa0a3",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd0cc"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 15,
+      "colour": "#e8a61e"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -13,
+     -49.2,
+     5
+    ],
+    "end": [
+     13,
+     -49.2,
+     5
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porte-cochere",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -54
+   ],
+   "z0": 4.6,
+   "height": 1.4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d7f80",
+    "windows": "none",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85878a",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-edge",
+   "footprint": {
+    "rect": [
+     40,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -59.2
+   ],
+   "z0": 4.2,
+   "height": 0.9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a61e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8a61e"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.6,
+      "n": 10,
+      "height": 4.6,
+      "colour": "#f2f2ef"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -17,
+     -58,
+     0
+    ],
+    "end": [
+     17,
+     -58,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chapel-tower",
+   "at": [
+    -48,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 26,
+    "colour": "#efe6d0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "singapore",
+ "venueId": "singapore-osm-way-74715098",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "photo is a close view of one block; complex outline simplified, no glass-block detail, window rhythm and column drum simplified"
+ }
+}

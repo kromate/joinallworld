@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-node-4880999164",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1260397124",
+   "used": "near-circular 12 m footprint (19-point outline), tagged tourism=museum; no photo of this building found (candidate geo photos showed a metro exit and a court)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo evidence: colours, window layout and entrance are plausible placeholders; only the round 12 m plan and museum use are measured"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "osm": true,
+    "fit": 12
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 3.2,
+    "bands": "#e0a13a",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a84",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 6.25,
+    "n": 24,
+    "z0": 3.9,
+    "height": 0.35,
+    "colour": "#e0a13a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 5,
+    "depth": 3,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#e0a13a",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    7.5,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#e0a13a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -6
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     5
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   40,
+   35
+  ]
+ }
+}

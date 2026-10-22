@@ -1,0 +1,663 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-way-1084644386",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1084644386",
+   "used": "real outline 27.8 x 8.1 m, 1 level, amenity=marketplace"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/dili.json dili-osm-way-1084644386",
+   "used": "open-sided stall shed under a low corrugated roof; no photo of this market exists on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": 33,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9a98c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "osm": true,
+    "scale": 1.08
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7d8084",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8084",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.4
+   },
+   "z0": 3.2
+  },
+  {
+   "type": "prism",
+   "id": "post00",
+   "at": [
+    -9.67,
+    -9.17
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post01",
+   "at": [
+    -3.77,
+    -12.55
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post10",
+   "at": [
+    -7.48,
+    -5.63
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post11",
+   "at": [
+    -1.58,
+    -9.0
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post20",
+   "at": [
+    -5.29,
+    -2.08
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post21",
+   "at": [
+    0.61,
+    -5.46
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post30",
+   "at": [
+    -3.1,
+    1.46
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post31",
+   "at": [
+    2.8,
+    -1.91
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post40",
+   "at": [
+    -0.91,
+    5.01
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post41",
+   "at": [
+    4.99,
+    1.63
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post50",
+   "at": [
+    1.28,
+    8.55
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post51",
+   "at": [
+    7.18,
+    5.18
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post60",
+   "at": [
+    3.47,
+    12.1
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post61",
+   "at": [
+    9.37,
+    8.72
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "z0": 0.5,
+    "height": 2.85,
+    "colour": "#8a6f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall0",
+   "at": [
+    -7.5,
+    -9.26
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#a8967a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall1",
+   "at": [
+    -3.55,
+    -8.58
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#c9b99a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall2",
+   "at": [
+    -4.82,
+    -4.92
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#7d8084"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall3",
+   "at": [
+    -0.87,
+    -4.24
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#a8967a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall4",
+   "at": [
+    -2.14,
+    -0.59
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#c9b99a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall5",
+   "at": [
+    1.81,
+    0.09
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#7d8084"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall6",
+   "at": [
+    0.55,
+    3.75
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#a8967a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall7",
+   "at": [
+    4.49,
+    4.43
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#c9b99a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall8",
+   "at": [
+    3.23,
+    8.09
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#7d8084"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stall9",
+   "at": [
+    7.17,
+    8.77
+   ],
+   "rotDeg": 58.3,
+   "params": {
+    "rect": [
+     2.0,
+     1.1
+    ],
+    "z0": 0.5,
+    "height": 0.85,
+    "colour": "#a8967a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "umb0",
+   "at": [
+    -9.92,
+    -5.0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#6d5a40"
+     ],
+     [
+      0.05,
+      2.2,
+      "#6d5a40"
+     ],
+     [
+      1.5,
+      2.3,
+      "#c0392b"
+     ],
+     [
+      0.05,
+      2.8,
+      "#c0392b"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "umb1",
+   "at": [
+    -6.76,
+    0.1,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#6d5a40"
+     ],
+     [
+      0.05,
+      2.2,
+      "#6d5a40"
+     ],
+     [
+      1.5,
+      2.3,
+      "#d9a21b"
+     ],
+     [
+      0.05,
+      2.8,
+      "#d9a21b"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "umb2",
+   "at": [
+    -3.61,
+    5.21,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#6d5a40"
+     ],
+     [
+      0.05,
+      2.2,
+      "#6d5a40"
+     ],
+     [
+      1.5,
+      2.3,
+      "#2c6e8f"
+     ],
+     [
+      0.05,
+      2.8,
+      "#2c6e8f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "umb3",
+   "at": [
+    -0.46,
+    10.31,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#6d5a40"
+     ],
+     [
+      0.05,
+      2.2,
+      "#6d5a40"
+     ],
+     [
+      1.5,
+      2.3,
+      "#c0392b"
+     ],
+     [
+      0.05,
+      2.8,
+      "#c0392b"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     12
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo: open shed, stalls and umbrellas typed from the brief on the real outline"
+ }
+}

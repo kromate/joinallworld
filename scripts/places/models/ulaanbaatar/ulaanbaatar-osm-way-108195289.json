@@ -1,0 +1,252 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Sports_Stadium_(Mongolia).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "see Commons",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/ulaanbaatar/v0_1.jpg",
+   "used": "oval bowl, salmon-pink outer wall under a teal-green roof ring, red and blue seating, taller west stand with roof, tree-lined street"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2019_National_Sports_Stadium_(Mongolia)_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "JukoFF",
+   "view": "front",
+   "file": "/tmp/places-evidence/ulaanbaatar/v0_0.jpg",
+   "used": "green entrance block with four white columns, arched doors, mosaic panels, rooftop railing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/108195289",
+   "used": "overall size and oval plan (about 220 x 149 m, scaled to the scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 104,
+    "depth": 72,
+    "colour": "#7fb04f"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "length": 84,
+    "width": 50,
+    "lane_width": 3.5,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b86a52"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 35,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 9,
+    "rise": 0.55,
+    "run": 0.8,
+    "firstHeight": 2.2,
+    "facetDeg": 8,
+    "under": "solid",
+    "slab": 0.6,
+    "seatColours": [
+     "#b44a4a",
+     "#4a6fa8",
+     "#b44a4a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d7a79a",
+    "underColour": "#d9a595",
+    "canopy": {
+     "height": 2.6,
+     "depth": 5,
+     "thickness": 0.5,
+     "slopeDeg": 4,
+     "colour": "#5aa392",
+     "edgeColour": "#4f8f80",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     28,
+     8
+    ]
+   },
+   "at": [
+    -62,
+    -6
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4d7a62",
+    "windows": "punched",
+    "plinth": 0.9,
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6a55",
+    "parapet": 0.6
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -66.2,
+     -14,
+     0
+    ],
+    "end": [
+     -66.2,
+     2,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "height": 7.5,
+      "colour": "#f0eee8"
+     }
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    30,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    30,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 90,
+    "count": 9,
+    "kind": "broadleaf",
+    "gap": 4.5,
+    "height_min": 6,
+    "height_max": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ulaanbaatar",
+ "venueId": "ulaanbaatar-osm-way-108195289",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "outer wall ring and teal roof ring match; real bowl is a rounded rectangle with one taller roofed stand and red/blue seats on far side, here a plain oval; entrance block moved to west end; no signage boards"
+ }
+}

@@ -1,0 +1,357 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-osm-way-51051520",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TenthPeoplehospital.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Proteintissue",
+   "view": "front",
+   "file": "/tmp/places-evidence/shanghai/osm-way-51051520-0.jpg",
+   "used": "tall cream tile inpatient slab with regular punched windows and a rounded end bay, four-storey podium with big grey-green glazed windows, projecting flat roof canopy with louvred pergola and round cut-outs on top of the podium, glazed ground floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/51051520",
+   "used": "hospital campus extent 264 x 252 m (not used for the building massing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     62,
+     26
+    ]
+   },
+   "at": [
+    6,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e6e2d8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#7f95a8",
+    "plinth": 0.3,
+    "bay": 4.6,
+    "cornice": true,
+    "groundKind": "glass-shopfront",
+    "groundHeight": 4.2,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     60,
+     17
+    ]
+   },
+   "at": [
+    -12,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 54,
+   "storeys": 14,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#ece8df",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "glassColour": "#7f95a8",
+    "plinth": 0.3,
+    "bay": 6.8,
+    "cornice": false,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d5cb",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "round-end",
+   "at": [
+    27,
+    15
+   ],
+   "params": {
+    "radius": 8.8,
+    "n": 28,
+    "z0": 0,
+    "height": 50,
+    "colour": "#ece8df",
+    "topColour": "#d9d5cb",
+    "windows": "none",
+    "storeys": 13,
+    "pattern": [
+     {
+      "type": "floors"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-core",
+   "at": [
+    -44,
+    10
+   ],
+   "params": {
+    "rect": [
+     6,
+     10
+    ],
+    "z0": 0,
+    "height": 56,
+    "colour": "#d5d0c4",
+    "topColour": "#c9c4b8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-slab",
+   "at": [
+    8,
+    -8
+   ],
+   "params": {
+    "rect": [
+     52,
+     22
+    ],
+    "z0": 15.2,
+    "height": 1.3,
+    "colour": "#e8e5dd",
+    "topColour": "#c9c6be"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -12
+    ],
+    "end": [
+     24,
+     -12
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       10
+      ],
+      "z0": 16.5,
+      "height": 0.35,
+      "colour": "#bfc3c4"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     -17
+    ],
+    "end": [
+     30,
+     -17
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 15.2,
+      "height": -4.2,
+      "colour": "#aeb3b6"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "podium-glass-top",
+   "at": [
+    8,
+    -4
+   ],
+   "params": {
+    "rect": [
+     40,
+     14
+    ],
+    "z0": 16.5,
+    "height": 4,
+    "colour": "#7f95a8",
+    "topColour": "#8b9096",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -19
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "hospital/ambulance-bay",
+   "at": [
+    30,
+    -18
+   ],
+   "rotDeg": 0,
+   "params": {}
+  },
+  {
+   "type": "hospital/red-cross-plate",
+   "at": [
+    -22,
+    -17.5,
+    10
+   ],
+   "params": {
+    "size": 1.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -27
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -10,
+    -33
+   ],
+   "params": {
+    "colour": "#2f3b52",
+    "count": 2,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    28,
+    -33
+   ],
+   "params": {
+    "colour": "#b8332e",
+    "count": 2,
+    "spacing": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tall slab is wider and less ribbed than the photo, rounded end bay simplified to a plain cylinder, podium roof pergola and round cut-outs approximated, no lettering, street furniture generic."
+ }
+}

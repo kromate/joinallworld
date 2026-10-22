@@ -1,0 +1,156 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Parliament_building,_Dili,_2023_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "front",
+   "used": "low white two-level block, ground arcade of round arches, scalloped cornice, flag row, green iron gate between white pillars with globe lamps, brick paving, palms",
+   "file": "/tmp/places-evidence/dili/par1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28904880",
+   "used": "real parliament footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "parliament",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c8362f",
+    "count": 8,
+    "spacing": 4.5
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 2.8,
+    "pillar": 1.3,
+    "leaf": "bars",
+    "colour": "#e9e6dc",
+    "leafColour": "#2f8a62"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "height": 2.0,
+    "kind": "fence",
+    "colour": "#2f8a62"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     6,
+     -32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "arcade, flags and green gate present; scalloped cornice and wall lettering board missing, gate leaf is plain, tall facade proportion slightly low"
+ }
+}

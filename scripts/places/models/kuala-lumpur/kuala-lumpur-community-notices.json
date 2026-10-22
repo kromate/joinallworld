@@ -1,0 +1,327 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Malaysia_Bangunan_Parlimen_Malaysia-02.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "CEphoto, Uwe Aranas",
+   "view": "front",
+   "used": "17-storey white tower with double sunbreaker grille and dark capping box, two white concrete arches over the entrance road, low chamber block with pale pyramidal roof behind",
+   "file": "/tmp/places-evidence/kuala-lumpur/parl1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/229254507",
+   "used": "overall extent only; composed by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     80,
+     46
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e5dc",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamber",
+   "footprint": {
+    "rect": [
+     50,
+     34
+    ]
+   },
+   "at": [
+    -12,
+    -20
+   ],
+   "z0": 6,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#eceae2",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc4",
+    "overhang": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dewan-roof",
+   "at": [
+    -12,
+    -20,
+    16
+   ],
+   "params": {
+    "rect": [
+     40,
+     28
+    ],
+    "height": 12,
+    "topScale": [
+     0.25,
+     0.25
+    ],
+    "colour": "#f2f0ea",
+    "topColour": "#e2e0d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    22,
+    10
+   ],
+   "z0": 0,
+   "height": 72,
+   "storeys": 17,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efede6",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f4f2ec",
+      "height": 0.9,
+      "proud": 0.5,
+      "floors": "all"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.5,
+      "depth": 0.9,
+      "spacing": 3.2,
+      "colour": "#e2dfd5",
+      "margin": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d3c9",
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    22,
+    10
+   ],
+   "z0": 72,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9a92",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdbab0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-lodge",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    6,
+    -46
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ebe8df",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0cdc4",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-1",
+   "at": [
+    -14,
+    -50,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      3.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 22,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 24
+    },
+    "colour": "#f1efe9"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-2",
+   "at": [
+    16,
+    -50,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      3.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 28,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 24
+    },
+    "colour": "#f1efe9"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -36,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colours": [
+     "#cc2233",
+     "#1f3b8f"
+    ],
+    "count": 2,
+    "spacing": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -35
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tower grille is flat bands and not the double precast sunbreaker; arches are faceted sections and cross rather than sweep as winged gate; Dewan roof is a simple pyramid."
+ }
+}

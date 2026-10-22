@@ -1,0 +1,245 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dam_Sen_Cultural_Park.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Jean-Marie Hullot",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/ds1.jpg",
+   "used": "two-tier Chinese-style pavilion on a lake platform with orange-yellow tile roofs and red posts, small hip-roofed kiosk across the water, lotus lake, tree line"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B%E1%BA%BFn_thuy%E1%BB%81n_2,_C%C3%B4ng_vi%C3%AAn_%C4%90%E1%BA%A7m_Sen.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Prenn",
+   "view": "front",
+   "file": "/tmp/places-evidence/ho-chi-minh-city/ds2.jpg",
+   "used": "boat pier with red-tiled hip roof and paddle boats"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32735046",
+   "used": "park extent about 1000 x 640 m; only a lakeside corner modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    10,
+    5,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 60,
+    "shape": "rect",
+    "colour": "#2f4a35",
+    "bank": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    -32,
+    38
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d9a92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     17,
+     8
+    ]
+   },
+   "at": [
+    -32,
+    38
+   ],
+   "z0": 2.2,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8a3f26",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c96a1e"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    -32,
+    38,
+    6.4
+   ],
+   "params": {
+    "width": 22,
+    "depth": 12,
+    "rise": 2.2,
+    "overhang": 1.6,
+    "upturn": 0.9,
+    "colour": "#d9892a",
+    "trim": "#c0442a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -30,
+    38
+   ],
+   "z0": 8.2,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8a3f26",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c96a1e"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    -30,
+    38,
+    11.2
+   ],
+   "params": {
+    "width": 14,
+    "depth": 9,
+    "rise": 2.6,
+    "overhang": 1.4,
+    "upturn": 1.0,
+    "colour": "#d9892a",
+    "trim": "#c0442a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    34,
+    44,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 2.2,
+    "colour": "#b5442a",
+    "cap_colour": "#c95a24"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    6,
+    56,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 12,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "spread": 5,
+    "line": 12
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    -50,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 3,
+    "shelter": false,
+    "timber": false
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "One lakeside corner of a 50 ha park; the pavilion is two stacked hip roofs without carved ridge ornaments and railings; monorail, water-screen and Roman square omitted."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ho-chi-minh-city",
+ "venueId": "ho-chi-minh-city-osm-way-32735046"
+}

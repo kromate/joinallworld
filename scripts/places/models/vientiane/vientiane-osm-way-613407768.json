@@ -1,0 +1,406 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "vientiane",
+ "venueId": "vientiane-osm-way-613407768",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:StadAnouvong.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chaoborus",
+   "view": "interior",
+   "file": "/tmp/places-evidence/vientiane/v20_osm-way-613407768-0.jpg",
+   "used": "red running track and green pitch, low stands with blue and orange seats, white-edged roof over the main stand, tall floodlight mast"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:StadAnouvong-entrance-2011.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chaoborus",
+   "view": "front",
+   "used": "entrance hall: white render, red clay-tile hipped roof with a white gabled porch, steps either side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/613407768",
+   "used": "overall size only (187 x 184 m); modelled as an oval bowl scaled to 0.6 for the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      52.0,
+      0.0
+     ],
+     [
+      49.45,
+      15.45
+     ],
+     [
+      42.07,
+      29.39
+     ],
+     [
+      30.56,
+      40.45
+     ],
+     [
+      16.07,
+      47.55
+     ],
+     [
+      0.0,
+      50.0
+     ],
+     [
+      -16.07,
+      47.55
+     ],
+     [
+      -30.56,
+      40.45
+     ],
+     [
+      -42.07,
+      29.39
+     ],
+     [
+      -49.45,
+      15.45
+     ],
+     [
+      -52.0,
+      0.0
+     ],
+     [
+      -49.45,
+      -15.45
+     ],
+     [
+      -42.07,
+      -29.39
+     ],
+     [
+      -30.56,
+      -40.45
+     ],
+     [
+      -16.07,
+      -47.55
+     ],
+     [
+      -0.0,
+      -50.0
+     ],
+     [
+      16.07,
+      -47.55
+     ],
+     [
+      30.56,
+      -40.45
+     ],
+     [
+      42.07,
+      -29.39
+     ],
+     [
+      49.45,
+      -15.45
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#b8b3a4",
+    "top": true
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "length": 80,
+    "width": 48,
+    "lane_width": 6,
+    "colour": "#a8452e"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 45,
+    "radiusY": 42,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 10,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "facetDeg": 10,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#3f8aa0",
+     "#c8602f"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8d2c4",
+    "underColour": "#bdb7a8",
+    "canopy": {
+     "height": 7,
+     "depth": 9,
+     "thickness": 0.6,
+     "slopeDeg": 3,
+     "colour": "#f0ece0",
+     "edgeColour": "#f4f2ea",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 45,
+    "radiusY": 42,
+    "startDeg": -25,
+    "endDeg": 205,
+    "rows": 7,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "facetDeg": 30,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#3f8aa0",
+     "#c8602f",
+     "#8a2f22"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d8d2c4",
+    "underColour": "#bdb7a8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 54,
+    "radiusY": 51,
+    "startDeg": 45,
+    "endDeg": 315,
+    "count": 4,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "floodlight-mast",
+      "params": {
+       "height": 30,
+       "head_width": 4
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -59
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "glassColour": "#4b4f55"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0432a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-porch",
+   "footprint": {
+    "rect": [
+     9,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -66
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f3ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0432a",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -71.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 0.9,
+    "colour": "#e7d8b0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -70,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -66
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -66
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -56
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -54
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Bowl scaled to 0.6 with a low roofed main stand, red track and floodlights; photo is an interior view so the render (outside, from the entrance) cannot match it; no distant skyline, no fence rails, entrance hall simplified."
+ }
+}

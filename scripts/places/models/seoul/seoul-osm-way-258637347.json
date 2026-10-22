@@ -1,0 +1,288 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-osm-way-258637347",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%EA%B2%BD%EA%B8%B0%EC%9E%A5_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Bohao Zhao",
+   "view": "side",
+   "file": "/tmp/places-evidence/seoul/dome2.jpg",
+   "used": "exterior in construction: low drum with columns, steel lattice dome rising in a smooth curve to a flat pale cap, oval plan"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gocheok_Sky_Dome_(36530170325).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "redlegsfan21",
+   "view": "interior",
+   "file": "/tmp/places-evidence/seoul/dome1.jpg",
+   "used": "steel truss structure and grey-white roof membrane; interior only, colours taken"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/258637347",
+   "used": "oval plan about 153 x 215 m and 62 m height; composed as an ellipse 200 x 144 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a9aeb2",
+    "smooth": true,
+    "curve": true,
+    "steps": 4,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       78,
+       56
+      ],
+      "colour": "#a9aeb2"
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       78,
+       56
+      ],
+      "colour": "#8f969b"
+     },
+     {
+      "z": 20,
+      "ellipse": [
+       78,
+       56
+      ],
+      "colour": "#7c8c97"
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       73,
+       52
+      ],
+      "colour": "#b8bec2"
+     },
+     {
+      "z": 42,
+      "ellipse": [
+       63,
+       45
+      ],
+      "colour": "#c9cdd0"
+     },
+     {
+      "z": 52,
+      "ellipse": [
+       50,
+       35
+      ],
+      "colour": "#d6d9db"
+     },
+     {
+      "z": 58,
+      "ellipse": [
+       40,
+       28
+      ],
+      "colour": "#e2e5e6"
+     },
+     {
+      "z": 62,
+      "ellipse": [
+       34,
+       23
+      ],
+      "colour": "#eceeef"
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 79.5,
+    "radiusY": 57.2,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 28,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 10,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#c9c5bd",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.8,
+         1.6
+        ]
+       },
+       {
+        "z": 14,
+        "rect": [
+         1.6,
+         1.4
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -61,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 1.2,
+    "run": 1.0,
+    "count": 5,
+    "colour": "#c9c5bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     28,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -68
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb0b8",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8dadb",
+    "overhang": 2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -65,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 10,
+    "height": 6,
+    "thickness": 0.5,
+    "columns": 4,
+    "colour": "#d8dadb",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -80,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 7,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -80,
+     -60
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     80,
+     -60
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -80,
+     62
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     80,
+     62
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is the under-construction steel lattice; render is a solid clad skin without lattice, perimeter piers simplified, dome slightly too tall at the cap."
+ }
+}

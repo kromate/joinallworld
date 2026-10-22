@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dili",
+ "venueId": "dili-osm-way-1084635480",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1084635480",
+   "used": "real outline 18.4 x 8.5 m, 1 level (name match), rotated to align the long axis"
+  },
+  {
+   "kind": "text",
+   "used": "brief: tiny open-sided village market hall, gable corrugated roof over concrete stall benches"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "floor",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 21.7
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 17.6,
+    "depth": 7.6,
+    "height": 3.6,
+    "roof": "gable",
+    "post_pitch": 4.4,
+    "goods": "sacks",
+    "roof_colour": "#8a8f94",
+    "wall_colour": "#e8dcc0",
+    "trim_colour": "#8a8a80"
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.9
+      ],
+      "z0": 0.5,
+      "height": 0.8,
+      "colour": "#8a8a80"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -7.5,
+     0.5
+    ],
+    "end": [
+     7.5,
+     0.5
+    ],
+    "count": 6,
+    "align": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.9,
+    "bottom": 1.8,
+    "colour": "#7ea0a0",
+    "frameColour": "#8a8a80"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: real OSM outline with a typed open market shed and stall benches"
+ }
+}

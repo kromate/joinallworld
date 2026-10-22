@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "seoul",
+ "venueId": "seoul-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/491089021",
+   "used": "real 24 x 18 m rotated-rectangle outline; no photo of this chapel was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chapel-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5b47",
+    "glassColour": "#4d5760",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "windowShape": "rect",
+    "plinth": 0.6,
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    },
+    "bands": "#ecebe6"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8f91",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    -2,
+    -10.5,
+    0
+   ],
+   "rotDeg": -27,
+   "params": {
+    "width": 6,
+    "depth": 3,
+    "height": 3.4,
+    "columns": 2
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    0,
+    14.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "rotDeg": -27,
+   "params": {
+    "length": 22,
+    "height": 1.2,
+    "thickness": 0.25,
+    "colour": "#bdbab3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: real outline plus typed 3-storey brick block with gable roof, entrance canopy and cross; facade details unknown."
+ }
+}

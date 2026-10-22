@@ -1,0 +1,228 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Assunta_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Assunta Marketing",
+   "view": "front",
+   "file": "/tmp/places-evidence/kuala-lumpur/as1.jpg",
+   "used": "entrance side: pale horizontal louvre screens on the left wing, green glass stair/lift slab, white upper blocks with green balcony inserts, red vertical fin, white porte-cochere canopy on square piers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/138738296",
+   "used": "real hospital outline (name match, 125 x 62 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "OSM block is a plain banded slab; louvre screens only on one added wing, green balcony inserts and signage are not modelled; photo is a tight street crop so only the entrance corner is compared."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e0",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece9e0",
+       "#b9c9c3"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "green-slab",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "rect": [
+     7,
+     14
+    ],
+    "height": 28,
+    "colour": "#59b58f",
+    "topColour": "#59b58f",
+    "windows": "curtain",
+    "glassColour": "#4fae8a",
+    "windowRatio": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "louvre-wing",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     10
+    ],
+    "height": 18,
+    "colour": "#cfc9b8",
+    "topColour": "#cfc9b8",
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#a9a392"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "white-block",
+   "at": [
+    6,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "height": 32,
+    "colour": "#f0eee6",
+    "topColour": "#f0eee6",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f0eee6",
+       "#9fcfba"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-fin",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     3
+    ],
+    "height": 34,
+    "z0": 0,
+    "colour": "#c8362f",
+    "topColour": "#c8362f"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -40,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 10,
+    "height": 4.8,
+    "thickness": 0.8,
+    "columns": 4,
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    10,
+    -46,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 3,
+    "spread": 5,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   118,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -30
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuala-lumpur",
+ "venueId": "kuala-lumpur-osm-relation-17060995"
+}

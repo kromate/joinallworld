@@ -1,0 +1,533 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shanghai_International_Airport,_from_Terminal_2_(3020087506).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Dave Proffer",
+   "view": "street",
+   "file": "/tmp/places-evidence/shanghai/airport.jpg",
+   "used": "view from under the terminal forecourt roof: huge V-shaped steel struts carrying a pale slatted roof edge, two long pale 8-9 storey ribbon-window hotel blocks beyond the road, a saucer-topped walkway tower on splayed legs between them"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/39023151",
+   "used": "overall size only (T2 complex is 1.4 km long; a central 116 m landside portion is modelled)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shanghai_Pudong_Airport_2024_(cropped).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yuezhi Huang",
+   "view": "aerial",
+   "used": "overall layout only (long terminals with a tower); not compared"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hotel blocks too tall and glassy, saucer tower legs simplified, roof edge is a plain folded plate, terminal and control tower behind are not in the photo"
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hotel-left",
+   "footprint": {
+    "rect": [
+     54,
+     24
+    ]
+   },
+   "at": [
+    -40,
+    12
+   ],
+   "z0": 0,
+   "height": 33,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe1df",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "plinth": 0.3,
+    "cornice": true,
+    "bay": 14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#8fa3b3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdbd",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-right",
+   "footprint": {
+    "rect": [
+     60,
+     24
+    ]
+   },
+   "at": [
+    38,
+    12
+   ],
+   "z0": 0,
+   "height": 33,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe1df",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "plinth": 0.3,
+    "cornice": true,
+    "bay": 14,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#8fa3b3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdbd",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     28,
+     5
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 23,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#aebdc7",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8ccce"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "colour": "#e9ebea",
+    "segments": 20,
+    "profile": [
+     [
+      0,
+      27,
+      "#e9ebea"
+     ],
+     [
+      6.5,
+      27,
+      "#e9ebea"
+     ],
+     [
+      7.5,
+      28.5,
+      "#cfd5d8"
+     ],
+     [
+      7.5,
+      30.5,
+      "#9fb2be"
+     ],
+     [
+      5,
+      31.8,
+      "#dfe3e4"
+     ],
+     [
+      0,
+      32,
+      "#dfe3e4"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e9ebea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": -9,
+      "cy": 2
+     },
+     {
+      "z": 27,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": -2,
+      "cy": 9
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e9ebea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": 9,
+      "cy": 2
+     },
+     {
+      "z": 27,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": 2,
+      "cy": 9
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e9ebea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": -9,
+      "cy": 18
+     },
+     {
+      "z": 27,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": -2,
+      "cy": 11
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#e9ebea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": 9,
+      "cy": 18
+     },
+     {
+      "z": 27,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "cx": 2,
+      "cy": 11
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     116,
+     34
+    ]
+   },
+   "at": [
+    0,
+    62
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c5d2d8",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.4,
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "wave",
+    "waves": 3,
+    "rise": 4,
+    "thickness": 0.8,
+    "infill": "glass",
+    "colour": "#e6e8e8",
+    "material": "metal-sheet",
+    "overhang": 3
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -64,
+    88,
+    0
+   ],
+   "params": {
+    "height": 58,
+    "style": "round",
+    "colour": "#d9dcdc"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -30,
+    17
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 126,
+    "depth": 22,
+    "rise": 1.4,
+    "folds": 14,
+    "thickness": 0.7,
+    "colour": "#dcdfdd"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#7d858b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "cx": -37,
+      "cy": -34
+     },
+     {
+      "z": 17,
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "cx": -28,
+      "cy": -30
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#7d858b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "cx": -19,
+      "cy": -34
+     },
+     {
+      "z": 17,
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "cx": -28,
+      "cy": -30
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#7d858b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "cx": 19,
+      "cy": -34
+     },
+     {
+      "z": 17,
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "cx": 28,
+      "cy": -30
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#7d858b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "cx": 37,
+      "cy": -34
+     },
+     {
+      "z": 17,
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "cx": 28,
+      "cy": -30
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "shanghai",
+ "venueId": "shanghai-airport-shanghai-airport"
+}

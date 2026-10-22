@@ -1,0 +1,346 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Est%C3%A1dio_JK_Parano%C3%A1.jpg",
+   "licence": "CC0",
+   "author": "OboeBlanket",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/brasilia/pj1.jpg",
+   "used": "blue and white painted perimeter wall, grass pitch with wire fence, long far stand with a row of small blue roofed cabins and a red stair, small white two-storey block at the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Reformas_s%C3%A3o_conclu%C3%ADdas_no_Complexo_Esportivo_JK,_no_Parano%C3%A1_(53009070441).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Ag\u00eancia Bras\u00edlia",
+   "view": "side",
+   "used": "blue/white striped stand fascias, low open stands on both sides"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/382528304",
+   "used": "150 x 130 m rotated outline, bearing 157 deg; modelled at pitch scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 55,
+  "aspect": 0.75,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "rect": [
+     100,
+     64
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5f9a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f9a4a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     50,
+     38
+    ],
+    "end": [
+     -50,
+     38
+    ],
+    "rows": 12,
+    "concreteColour": "#eef0ee",
+    "backWall": 0.0,
+    "under": "solid",
+    "seatColours": [
+     "#2f63b0",
+     "#eef0ee"
+    ],
+    "blocks": 3,
+    "firstHeight": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     50,
+     4.6
+    ],
+    "end": [
+     46,
+     50,
+     4.6
+    ],
+    "count": 18,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       2.6
+      ],
+      "height": 2.4,
+      "colour": "#2a6fc4",
+      "material": "metal-sheet"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-block",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    -58,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0ee",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#2f63b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     -44.3,
+     0
+    ],
+    "end": [
+     46,
+     -44.3,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6,
+       0.3
+      ],
+      "height": 2.4,
+      "colour": "#2f63b0"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -39,
+     -44.3,
+     0
+    ],
+    "end": [
+     53,
+     -44.3,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6,
+       0.3
+      ],
+      "height": 2.4,
+      "colour": "#eef0ee"
+     }
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -54,
+    -44,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -54,
+    44,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    54,
+    -44,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    54,
+    44,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.4
+    ],
+    "height": 2.2,
+    "colour": "#eef0ee"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -41,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.6,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#a9b0b4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    43,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     3,
+     6
+    ],
+    "height": 0.4,
+    "colour": "#b8322c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 3,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-382528304",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "west and east low stands omitted; red stair and cabin roofs approximate; perimeter wall straight rather than curved; pitch markings absent"
+ }
+}

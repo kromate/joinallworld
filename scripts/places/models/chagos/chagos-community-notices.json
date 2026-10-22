@@ -1,0 +1,108 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chagos",
+ "venueId": "chagos-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: tiny hip-roofed render hall with notice board and flagpole"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c0a6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "bands": "#e6e1d2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a3f",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8.5,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 0.9,
+    "colour": "#e6e1d2",
+    "frameColour": "#5f5a4f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#8a5a3f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists (placeholder game venue); modest plantation-style building from brief text"
+ }
+}

@@ -1,0 +1,188 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-osm-way-310211852",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/310211852",
+   "used": "name-matched 8.8 x 6.4 m footprint, rotated 139 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/alofi.json#alofi-osm-way-310211852",
+   "used": "stilted timber beach shed, blue-grey boards, corrugated blue roof, reef-facing veranda. Commons Avatele Beach photos (Avatele_Beach.JPG, Avatele_Beach,_looking_southwest.jpg) were viewed but show no cafe; used only for the white coral shingle beach, palm backdrop and teal water colours"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stilt-core",
+   "footprint": {
+    "polygon": [
+     [
+      -4.24,
+      0.96
+     ],
+     [
+      0.4,
+      -4.32
+     ],
+     [
+      4.24,
+      -0.96
+     ],
+     [
+      -0.4,
+      4.32
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b5a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b5a44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "polygon": [
+     [
+      -6.89,
+      1.56
+     ],
+     [
+      0.65,
+      -7.02
+     ],
+     [
+      6.89,
+      -1.56
+     ],
+     [
+      -0.65,
+      7.02
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9fc3c9",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f1ece0",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3d6b8a",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -1.5,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.0,
+    "bottom": 1.6,
+    "colour": "#f1ece0",
+    "frameColour": "#3d6b8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the cafe exists; appearance (stilted shed, blue-grey boards, reef-side veranda) is typed, only footprint is real."
+ }
+}

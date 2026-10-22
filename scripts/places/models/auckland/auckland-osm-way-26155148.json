@@ -1,0 +1,426 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-way-26155148",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mt_Smart_Stadium.jpg",
+   "licence": "CC BY 2.0",
+   "author": "greenishseal",
+   "view": "interior",
+   "file": "/tmp/places-evidence/auckland/mts1.jpg",
+   "used": "long main grandstand: two raked seating tiers with white concrete band fronts, wide flat cantilever roof with blue edge on slim columns, glazed box level between tiers; floodlight masts; open grass sides"
+  },
+  {
+   "kind": "text",
+   "used": "quarried cone setting with grass banks from the brief (Wikipedia Mount Smart Stadium)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26155148",
+   "used": "not used: outline covers the whole 700 m precinct; sizes taken from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     66
+    ],
+    "height": 0.15,
+    "colour": "#7fb04f"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "closeEnds": true,
+    "start": [
+     -50,
+     -34
+    ],
+    "end": [
+     50,
+     -34
+    ],
+    "firstHeight": 2.5,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#2f2f33",
+    "concreteColour": "#d5d3cb",
+    "underColour": "#b8b5ad",
+    "canopy": {
+     "height": 10.5,
+     "depth": 20,
+     "thickness": 1.4,
+     "slopeDeg": 5,
+     "colour": "#dcdcd8",
+     "edgeColour": "#2f5a8f",
+     "overhangBack": 1.0,
+     "supports": true
+    },
+    "tiers": [
+     {
+      "rows": 9,
+      "rise": 0.9,
+      "run": 0.85
+     },
+     {
+      "rows": 10,
+      "rise": 0.9,
+      "run": 0.85,
+      "gap": 3,
+      "lift": 3.2
+     }
+    ],
+    "seatColours": [
+     "#2f3a4a",
+     "#3a4a60"
+    ],
+    "blocks": 1,
+    "facetDeg": 6,
+    "rise": 0.9
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    66,
+    0
+   ],
+   "params": {
+    "colour": "#6f9a4a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       100,
+       14
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       84,
+       8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -65,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6f9a4a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       70
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       17.6,
+       35.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    65,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6f9a4a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       70
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       17.6,
+       35.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -62,
+    -48,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    -48,
+    34
+   ],
+   "params": {
+    "rect": [
+     12,
+     1.4
+    ],
+    "height": 4.5,
+    "colour": "#f4f1d8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    62,
+    -48,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    62,
+    -48,
+    34
+   ],
+   "params": {
+    "rect": [
+     12,
+     1.4
+    ],
+    "height": 4.5,
+    "colour": "#f4f1d8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -62,
+    46,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    46,
+    34
+   ],
+   "params": {
+    "rect": [
+     12,
+     1.4
+    ],
+    "height": 4.5,
+    "colour": "#f4f1d8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    62,
+    46,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    62,
+    46,
+    34
+   ],
+   "params": {
+    "rect": [
+     12,
+     1.4
+    ],
+    "height": 4.5,
+    "colour": "#f4f1d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    48,
+    4.1
+   ],
+   "params": {
+    "rect": [
+     10,
+     1.2
+    ],
+    "height": 5,
+    "colour": "#2f2f33"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -43.6,
+    8.7
+   ],
+   "params": {
+    "rect": [
+     86,
+     3.2
+    ],
+    "height": 3.2,
+    "colour": "#e8e6df",
+    "windows": "band",
+    "windowShape": "rect"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Two-tier stand with white concrete band and glazed box added and pushed forward; cantilever roof still renders as a thin line detached from the stand (canopy height tuning did not connect it), stand reads uniform blue, banks lowered, floodlight heads still small panels."
+ }
+}

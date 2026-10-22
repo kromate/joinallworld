@@ -1,0 +1,252 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Domo_Jos%C3%A9_Mar%C3%ADa_Vargas_Venezuela.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jonathan V. Garcia",
+   "view": "interior",
+   "used": "interior only (steel roof trusses, dark underside, blue/green/yellow/red seat blocks in tiers); not compared to render"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/378723909",
+   "used": "93 x 77 m oval footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd3d5",
+    "windows": "none",
+    "bands": "#2f6aa0",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#2f6aa0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    10
+   ],
+   "params": {
+    "colour": "#c9ced1",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       45,
+       38
+      ]
+     },
+     {
+      "z": 2.5,
+      "ellipse": [
+       43,
+       36
+      ]
+     },
+     {
+      "z": 5.5,
+      "ellipse": [
+       36,
+       30
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       24,
+       20
+      ]
+     },
+     {
+      "z": 9.8,
+      "ellipse": [
+       10,
+       8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -39,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 7,
+    "height": 5,
+    "colour": "#e6e8e9",
+    "edgeColour": "#2f6aa0",
+    "columns": 4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "gate-piers",
+     "params": {
+      "width": 3,
+      "height": 3.2
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     -44
+    ],
+    "end": [
+     10,
+     -44
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    30,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     130,
+     110
+    ],
+    "height": 0.08,
+    "colour": "#55585b",
+    "z0": -0.08
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -56,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    56,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No exterior photo (interior only): domed roof, blue band and entrance canopy inferred from name, OSM oval and brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-378723909"
+}

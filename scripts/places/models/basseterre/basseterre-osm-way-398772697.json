@@ -1,0 +1,786 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-way-398772697",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Medical_University_of_the_Americas_2025.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Christian.d.campbell",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/basseterre/mua.jpg",
+   "used": "cream two-storey main building: two red hip-roofed end pavilions, recessed two-level veranda with white balustrade, raised red hip block behind, small red-roofed house at left, orange/white chequered block at right, open lawn and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/398772697",
+   "used": "campus outline is 294 m wide and irregular so it is not extruded; only the main teaching building seen in the photo is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.25,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     165,
+     110
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#a39a55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    76,
+    0
+   ],
+   "params": {
+    "rect": [
+     165,
+     42
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#1c4f96"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 4,
+    "spread": 6,
+    "line": 42,
+    "colour": "#2b4f26"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5.5,
+    "count": 3,
+    "spread": 6,
+    "line": 30,
+    "colour": "#2b4f26"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 4,
+    "spread": 6,
+    "line": 22,
+    "colour": "#2b4f26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    -12.5,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cb",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "glassColour": "#3a464c",
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#f4f0e2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9372c",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    12.5,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cb",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "glassColour": "#3a464c",
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#f4f0e2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9372c",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cb",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "glassColour": "#3d4a52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery-back",
+   "footprint": {
+    "rect": [
+     10,
+     1.5
+    ]
+   },
+   "at": [
+    0,
+    3.2
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#3a464c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c2",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -5.0,
+    0.4
+   ],
+   "params": {
+    "length": 10,
+    "count": 5,
+    "height": 3.8,
+    "radius": 0.25,
+    "kind": "square",
+    "beamHeight": 0.4,
+    "colour": "#f4f0e2",
+    "roofColour": "#efe9d8"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -5.0,
+    4.6
+   ],
+   "params": {
+    "length": 10,
+    "count": 5,
+    "height": 3.6,
+    "radius": 0.22,
+    "kind": "square",
+    "beamHeight": 0.4,
+    "colour": "#f4f0e2",
+    "roofColour": "#efe9d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4.4,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     10.4,
+     3.4
+    ],
+    "height": 0.3,
+    "colour": "#e6dfcc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.0,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     0.15
+    ],
+    "height": 0.9,
+    "colour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.0,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     0.15
+    ],
+    "height": 0.9,
+    "colour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.0,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     10.4,
+     0.2
+    ],
+    "height": 0.4,
+    "colour": "#f0ebdc"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -7.0,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16,
+    0.06
+   ],
+   "params": {
+    "rect": [
+     34,
+     16
+    ],
+    "height": 0.05,
+    "colour": "#d5d1c3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -40,
+    0.06
+   ],
+   "params": {
+    "rect": [
+     5,
+     40
+    ],
+    "height": 0.05,
+    "colour": "#cfcabb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-house",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    -40,
+    -6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cb",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "glassColour": "#3d4a52"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9372c",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -13,
+    -18
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9372c",
+    "material": "metal-sheet",
+    "pitch": 25,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hostel-block",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    52,
+    16
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "at": [
+    36.4,
+    10.8,
+    0.9
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    42.0,
+    10.8,
+    0.9
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    47.599999999999994,
+    10.8,
+    0.9
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    53.199999999999996,
+    10.8,
+    0.9
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    58.8,
+    10.8,
+    0.9
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    64.4,
+    10.8,
+    0.9
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    39.199999999999996,
+    10.8,
+    4.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    44.8,
+    10.8,
+    4.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50.4,
+    10.8,
+    4.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    56.0,
+    10.8,
+    4.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    61.599999999999994,
+    10.8,
+    4.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    67.19999999999999,
+    10.8,
+    4.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e2762f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -22
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -2,
+     -21
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -22
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -21
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -36
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -40
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -24
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "open two-level gallery, cream walls, olive grass, sea band, chequer hostel and scrub added; scene is small in frame, scrub clumps are lollipop trees not dense thicket, sea is a flat slab, rear roof terrace plain"
+ }
+}

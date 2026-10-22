@@ -1,0 +1,458 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-osm-way-201214783",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/201214783",
+   "used": "stadium oval 176 x 102 m (bearing 52 deg), scaled to a 110 x 64 m bowl to fit the scene clamp; Wikidata Q790237 confirms identity"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/avarua.json#avarua-osm-way-201214783",
+   "used": "capacity 5,000, grass pitch, one covered main stand, light towers, built 1984/85; no photo of it found on Commons, stand and masts are typed not observed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      61.0,
+      0.0
+     ],
+     [
+      58.01,
+      11.74
+     ],
+     [
+      49.35,
+      22.34
+     ],
+     [
+      35.85,
+      30.74
+     ],
+     [
+      18.85,
+      36.14
+     ],
+     [
+      0.0,
+      38.0
+     ],
+     [
+      -18.85,
+      36.14
+     ],
+     [
+      -35.85,
+      30.74
+     ],
+     [
+      -49.35,
+      22.34
+     ],
+     [
+      -58.01,
+      11.74
+     ],
+     [
+      -61.0,
+      0.0
+     ],
+     [
+      -58.01,
+      -11.74
+     ],
+     [
+      -49.35,
+      -22.34
+     ],
+     [
+      -35.85,
+      -30.74
+     ],
+     [
+      -18.85,
+      -36.14
+     ],
+     [
+      -0.0,
+      -38.0
+     ],
+     [
+      18.85,
+      -36.14
+     ],
+     [
+      35.85,
+      -30.74
+     ],
+     [
+      49.35,
+      -22.34
+     ],
+     [
+      58.01,
+      -11.74
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#b9b39f",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      47.0,
+      0.0
+     ],
+     [
+      44.7,
+      7.42
+     ],
+     [
+      38.02,
+      14.11
+     ],
+     [
+      27.63,
+      19.42
+     ],
+     [
+      14.52,
+      22.83
+     ],
+     [
+      0.0,
+      24.0
+     ],
+     [
+      -14.52,
+      22.83
+     ],
+     [
+      -27.63,
+      19.42
+     ],
+     [
+      -38.02,
+      14.11
+     ],
+     [
+      -44.7,
+      7.42
+     ],
+     [
+      -47.0,
+      0.0
+     ],
+     [
+      -44.7,
+      -7.42
+     ],
+     [
+      -38.02,
+      -14.11
+     ],
+     [
+      -27.63,
+      -19.42
+     ],
+     [
+      -14.52,
+      -22.83
+     ],
+     [
+      -0.0,
+      -24.0
+     ],
+     [
+      14.52,
+      -22.83
+     ],
+     [
+      27.63,
+      -19.42
+     ],
+     [
+      38.02,
+      -14.11
+     ],
+     [
+      44.7,
+      -7.42
+     ]
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#5f9a45",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 55,
+    "radiusY": 32,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "facetDeg": 10,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#2f6fb0",
+    "concreteColour": "#c9c3b3",
+    "underColour": "#b4ae9e",
+    "canopy": {
+     "height": 4.6,
+     "depth": 9,
+     "thickness": 0.4,
+     "slopeDeg": 4,
+     "colour": "#8c9296",
+     "edgeColour": "#ffffff",
+     "overhangBack": 0.6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 55,
+    "radiusY": 32,
+    "startDeg": 25,
+    "endDeg": 155,
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "facetDeg": 12,
+    "under": "open",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColour": "#2f6fb0",
+    "concreteColour": "#c9c3b3",
+    "blocks": 1
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    32,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    32,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     7,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    29
+   ],
+   "z0": 3,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2a2f36",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2f36",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.2,
+    "kind": "wall",
+    "thickness": 0.3,
+    "colour": "#d8d2c0",
+    "pillarEvery": 10,
+    "points": [
+     [
+      -62,
+      -42
+     ],
+     [
+      62,
+      -42
+     ]
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 4,
+    "colours": [
+     "#0a2a6b",
+     "#c8102e"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   140,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -66,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     64,
+     -10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -48
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -48
+    ],
+    "height": 11
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: single covered stand, opposite open stand and four light masts typed; bowl scaled from 176 m to 110 m"
+ }
+}

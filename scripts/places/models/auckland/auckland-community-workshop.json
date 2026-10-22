@@ -1,0 +1,318 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Massey_University,_Albany_Campus_I.jpg",
+   "licence": "Public domain",
+   "author": "Ingolfson",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/mass1.jpg",
+   "used": "cream-white walls under terracotta-orange hipped roofs, stepped upper dark clerestory storey, square clock-tower with pyramid cap, long low wing with round-arch arcade, lawns"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/51949995",
+   "used": "campus extent only; individual building outlines were not available"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 2.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     56,
+     24
+    ]
+   },
+   "at": [
+    -26,
+    10
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3d0",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 3.6,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9663a",
+    "material": "clay-tile",
+    "rise": 2.6,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-storey",
+   "footprint": {
+    "rect": [
+     36,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    10
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a3631",
+    "windows": "ribbon",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9663a",
+    "material": "clay-tile",
+    "rise": 3,
+    "overhang": 1.8
+   },
+   "z0": 8.6
+  },
+  {
+   "type": "mass",
+   "id": "lantern",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -26,
+    10
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ece0cc",
+    "windows": "punched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9663a",
+    "rise": 2.5,
+    "overhang": 0.8
+   },
+   "z0": 11.8
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     4.6,
+     4.6
+    ]
+   },
+   "at": [
+    2,
+    3
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#f3eee4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9663a",
+    "rise": 3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     52,
+     17
+    ]
+   },
+   "at": [
+    32,
+    6
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f2ebdd",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 3.8,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9663a",
+    "material": "clay-tile",
+    "rise": 3,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "wing-sculpture",
+   "at": [
+    20,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d9a21e",
+    "profile": [
+     [
+      0.6,
+      0
+     ],
+     [
+      0.6,
+      2
+     ],
+     [
+      1.2,
+      5
+     ],
+     [
+      0.2,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    56,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "arcade",
+   "at": [
+    32,
+    -3.8,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 4.2,
+    "thickness": 2.5,
+    "shape": "round",
+    "colour": "#f1e9d8",
+    "trim": "#d9d0bb",
+    "bays": 12
+   }
+  },
+  {
+   "type": "arcade",
+   "at": [
+    -26,
+    -3.2,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 3.8,
+    "thickness": 2.2,
+    "shape": "round",
+    "colour": "#efe7d6",
+    "trim": "#d9d0bb",
+    "bays": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-lantern",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    44,
+    6
+   ],
+   "z0": 9.5,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0e9dc",
+    "windows": "punched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9663a",
+    "rise": 2,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   160,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Terracotta roof tiling simplified; arcade is a generic round-arch part; raised-lawn hilltop only suggested by grass and trees behind; only a few buildings of the Albany campus."
+ }
+}

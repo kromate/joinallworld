@@ -1,0 +1,243 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/217701255",
+   "used": "real quadrilateral outline of the plaza, 44 x 30 m"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oblique_view_of_Iglesia_Nuestra_Se%C3%B1ora_de_Lourdes_from_Plaza_Italia,_Caracas,_Venezuela.jpg",
+   "licence": "CC0",
+   "author": "Wilfredor",
+   "view": "street",
+   "used": "plaza floor of pale paving with grey stripes, wide low steps up to the church terrace, green steel handrails, street lamps, broadleaf tree; the church itself lies outside the plaza outline and is not modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "paving",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdbfa0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbfa0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "stripe",
+     "footprint": {
+      "rect": [
+       1.6,
+       14
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": -0.05,
+     "height": 0.5,
+     "storeys": 1,
+     "wall": {
+      "material": "stone",
+      "colour": "#7d7d79",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#7d7d79"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     -2
+    ],
+    "end": [
+     10,
+     -2
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    14,
+    0.3
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.8,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#8a8478"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    10,
+    0.3
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "market-open/statue-on-plinth",
+   "at": [
+    2,
+    -6,
+    0.3
+   ],
+   "params": {
+    "height": 3.2,
+    "plinth": 1.1,
+    "colour": "#5a5148"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -8,
+    -8,
+    0.3
+   ],
+   "params": {
+    "radius": 2.2
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    13,
+    -12,
+    0.3
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    2,
+    0.3
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -16,
+    0.3
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 3,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only the street-level photo of the adjoining church exists; plaza layout (statue, fountain, kiosk placement) is typical rather than seen; church beyond the steps not modelled"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-217701255"
+}

@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/216491572",
+   "used": "real outline (name match, ParkShopping), 6 levels / 21.7 m tags; main mass scaled to the clamp. No photo of this building found on Commons"
+  },
+  {
+   "kind": "text",
+   "used": "brief: concrete and glass-curtain facade colours typed from city style, 4,005-space car park, atrium glass"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e1ddd3",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b9b4aa",
+      "height": 0.5,
+      "floors": "all"
+     },
+     {
+      "type": "panels",
+      "size": [
+       8,
+       3.5
+      ],
+      "colours": [
+       "#e1ddd3",
+       "#6f8a9a",
+       "#d2cdc2"
+      ],
+      "mode": "random",
+      "floors": "upper",
+      "gap": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4a8aa",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.5,
+    "bottom": 6,
+    "colour": "#e8e8e8",
+    "frameColour": "#8a8f93"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -45,
+    5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 5,
+    "colour": "#6f8a9a",
+    "frameColour": "#8a8f93"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -75,
+     0
+    ],
+    "end": [
+     40,
+     -70,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "tree",
+      "params": {
+       "kind": "broadleaf",
+       "height": 8
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -85,
+    0
+   ],
+   "params": {
+    "colour": "#cfd2d4",
+    "count": 8,
+    "spacing": 3.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "real outline scaled 0.37 to the clamp so footprint is not true size; facade colours and panels typed, no photo; car-park decks not modelled"
+ }
+}

@@ -1,0 +1,212 @@
+{
+ "verified": "footprint",
+ "name": "Hio Cafe",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/660565953",
+   "used": "containing building 8.7x5.6 m, bearing 39 deg; footprint and orientation"
+  },
+  {
+   "kind": "text",
+   "used": "brief: beach cafe hut with a deck under a gently pitched corrugated roof near the Hio coast. Commons 'Sunset at Hio' shows only the cove (cliffs, sand, bush), not the cafe, so it was not used as a comparison photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e7b98f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#f1ece0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     8.7,
+     2.6
+    ]
+   },
+   "at": [
+    3.19,
+    -2.58
+   ],
+   "rotDeg": 51,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    3.42,
+    -2.77,
+    0.6
+   ],
+   "rotDeg": 51,
+   "params": {
+    "width": 8.0,
+    "depth": 2.2,
+    "height": 2.4,
+    "colours": [
+     "#e7b98f",
+     "#f1ece0"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    0.68,
+    -3.77,
+    2.5
+   ],
+   "rotDeg": 51,
+   "params": {
+    "rect": [
+     2.4,
+     0.15
+    ],
+    "height": 0.7,
+    "colour": "#f1ece0",
+    "topColour": "#b5483c"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    6.77,
+    -0.85
+   ],
+   "rotDeg": 51,
+   "params": {
+    "width": 1.6,
+    "height": 0.6,
+    "run": 1.2,
+    "colour": "#c9a77c",
+    "rails": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tank",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -5.88,
+    -1.54
+   ],
+   "rotDeg": 51,
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9fb4a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fb4a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -9
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-osm-node-5084852122",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "The only Hio photo shows the cove, not the cafe; footprint from OSM, roof, deck and awning typed from the brief."
+ }
+}

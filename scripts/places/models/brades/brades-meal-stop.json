@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/525911948",
+   "used": "real 17 x 16 m outline of Isle's Bay Beach Bar (name match)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief brades-meal-stop",
+   "used": "open-sided timber bar-restaurant, red corrugated hip roof, deck, awning, umbrellas, beach palms"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "osm": true,
+    "scale": 1.12
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a98a5e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98a5e",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar-core",
+   "footprint": {
+    "osm": true,
+    "scale": 0.45
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0.9,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f2eee3",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2eee3",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-hip",
+   "footprint": {
+    "osm": true,
+    "scale": 0.98
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 3.0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0463c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7.4,
+     -6.9,
+     0
+    ],
+    "end": [
+     7.4,
+     -6.9,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "fence-wall",
+     "params": {
+      "length": 1.2,
+      "height": 2.1,
+      "thickness": 0.22,
+      "colour": "#c9a77a"
+     }
+    }
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 9,
+    "colours": [
+     "#a9cfe0",
+     "#f2eee3",
+     "#c9a77a"
+    ]
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -9,
+    -17,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 4.5,
+    "colours": [
+     "#a9cfe0",
+     "#f2eee3"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   60,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     13,
+     13
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; footprint real, open-sided timber bar, red hip roof and beach furniture typed"
+ }
+}

@@ -1,0 +1,1000 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:EstadioLopesPumarejoUNAL.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rubashkyn",
+   "view": "interior",
+   "file": "/tmp/places-evidence/bogota/pum1.jpg",
+   "used": "open oval bowl: grass pitch inside a dark running track, raked concrete terraces ringed by a low white parapet wall, two tall white pylons on the far side, covered stand's heavy white concrete canopy, orange-brick apartment blocks beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Alfonso_L%C3%B3pez,_Universidad_Nacional.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "JuanGris (Lucia Estevez)",
+   "view": "interior",
+   "used": "white curving concrete ribs under the covered west stand, timber bench rows, green railings along the track"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24410567",
+   "used": "overall oval about 202 x 163 m, modelled at about 70 percent scale to stay near the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 20,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      48.0,
+      0.0
+     ],
+     [
+      45.65,
+      9.89
+     ],
+     [
+      38.83,
+      18.81
+     ],
+     [
+      28.21,
+      25.89
+     ],
+     [
+      14.83,
+      30.43
+     ],
+     [
+      0.0,
+      32.0
+     ],
+     [
+      -14.83,
+      30.43
+     ],
+     [
+      -28.21,
+      25.89
+     ],
+     [
+      -38.83,
+      18.81
+     ],
+     [
+      -45.65,
+      9.89
+     ],
+     [
+      -48.0,
+      0.0
+     ],
+     [
+      -45.65,
+      -9.89
+     ],
+     [
+      -38.83,
+      -18.81
+     ],
+     [
+      -28.21,
+      -25.89
+     ],
+     [
+      -14.83,
+      -30.43
+     ],
+     [
+      -0.0,
+      -32.0
+     ],
+     [
+      14.83,
+      -30.43
+     ],
+     [
+      28.21,
+      -25.89
+     ],
+     [
+      38.83,
+      -18.81
+     ],
+     [
+      45.65,
+      -9.89
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#3b3d42"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      38.0,
+      0.0
+     ],
+     [
+      36.14,
+      7.11
+     ],
+     [
+      30.74,
+      13.52
+     ],
+     [
+      22.34,
+      18.61
+     ],
+     [
+      11.74,
+      21.87
+     ],
+     [
+      0.0,
+      23.0
+     ],
+     [
+      -11.74,
+      21.87
+     ],
+     [
+      -22.34,
+      18.61
+     ],
+     [
+      -30.74,
+      13.52
+     ],
+     [
+      -36.14,
+      7.11
+     ],
+     [
+      -38.0,
+      0.0
+     ],
+     [
+      -36.14,
+      -7.11
+     ],
+     [
+      -30.74,
+      -13.52
+     ],
+     [
+      -22.34,
+      -18.61
+     ],
+     [
+      -11.74,
+      -21.87
+     ],
+     [
+      -0.0,
+      -23.0
+     ],
+     [
+      11.74,
+      -21.87
+     ],
+     [
+      22.34,
+      -18.61
+     ],
+     [
+      30.74,
+      -13.52
+     ],
+     [
+      36.14,
+      -7.11
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.2,
+    "colour": "#74a845"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 40,
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "facetDeg": 16,
+    "concreteColour": "#a9a79f",
+    "underColour": "#8f8c84",
+    "seatColour": "#5e4333",
+    "backWall": 1.2,
+    "startDeg": 35,
+    "endDeg": 145,
+    "canopy": {
+     "height": 2.4,
+     "depth": 11,
+     "thickness": 1.4,
+     "slopeDeg": 2,
+     "colour": "#f4f3ee",
+     "edgeColour": "#e2e0d8",
+     "overhangBack": 0.6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 40,
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "facetDeg": 16,
+    "concreteColour": "#a9a79f",
+    "underColour": "#8f8c84",
+    "seatColour": "#5e4333",
+    "backWall": 1.2,
+    "startDeg": 145,
+    "endDeg": 360
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 40,
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "facetDeg": 16,
+    "concreteColour": "#a9a79f",
+    "underColour": "#8f8c84",
+    "seatColour": "#5e4333",
+    "backWall": 1.2,
+    "startDeg": 0,
+    "endDeg": 35
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    43,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "height": 16,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    43,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "height": 16,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-block",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    0,
+    56
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efede6",
+    "windows": "none",
+    "bands": "#8d8a82"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc4",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 26
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    30,
+    0
+   ],
+   "params": {
+    "height": 26
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -33,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.4,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#3f6b4a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      1.0
+     ]
+    },
+    "points": [
+     [
+      56.0,
+      0.0,
+      1.4
+     ],
+     [
+      54.09,
+      10.35,
+      1.4
+     ],
+     [
+      48.5,
+      20.0,
+      1.4
+     ],
+     [
+      39.6,
+      28.28,
+      1.4
+     ],
+     [
+      28.0,
+      34.64,
+      1.4
+     ],
+     [
+      14.49,
+      38.64,
+      1.4
+     ],
+     [
+      0.0,
+      40.0,
+      1.4
+     ],
+     [
+      -14.49,
+      38.64,
+      1.4
+     ],
+     [
+      -28.0,
+      34.64,
+      1.4
+     ],
+     [
+      -39.6,
+      28.28,
+      1.4
+     ],
+     [
+      -48.5,
+      20.0,
+      1.4
+     ],
+     [
+      -54.09,
+      10.35,
+      1.4
+     ],
+     [
+      -56.0,
+      0.0,
+      1.4
+     ],
+     [
+      -54.09,
+      -10.35,
+      1.4
+     ],
+     [
+      -48.5,
+      -20.0,
+      1.4
+     ],
+     [
+      -39.6,
+      -28.28,
+      1.4
+     ],
+     [
+      -28.0,
+      -34.64,
+      1.4
+     ],
+     [
+      -14.49,
+      -38.64,
+      1.4
+     ],
+     [
+      -0.0,
+      -40.0,
+      1.4
+     ],
+     [
+      14.49,
+      -38.64,
+      1.4
+     ],
+     [
+      28.0,
+      -34.64,
+      1.4
+     ],
+     [
+      39.6,
+      -28.28,
+      1.4
+     ],
+     [
+      48.5,
+      -20.0,
+      1.4
+     ],
+     [
+      54.09,
+      -10.35,
+      1.4
+     ]
+    ],
+    "closed": true,
+    "colour": "#f7f6f1"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      1.0
+     ]
+    },
+    "points": [
+     [
+      65.0,
+      0.0,
+      7.4
+     ],
+     [
+      62.79,
+      12.68,
+      7.4
+     ],
+     [
+      56.29,
+      24.5,
+      7.4
+     ],
+     [
+      45.96,
+      34.65,
+      7.4
+     ],
+     [
+      32.5,
+      42.44,
+      7.4
+     ],
+     [
+      16.82,
+      47.33,
+      7.4
+     ],
+     [
+      0.0,
+      49.0,
+      7.4
+     ],
+     [
+      -16.82,
+      47.33,
+      7.4
+     ],
+     [
+      -32.5,
+      42.44,
+      7.4
+     ],
+     [
+      -45.96,
+      34.65,
+      7.4
+     ],
+     [
+      -56.29,
+      24.5,
+      7.4
+     ],
+     [
+      -62.79,
+      12.68,
+      7.4
+     ],
+     [
+      -65.0,
+      0.0,
+      7.4
+     ],
+     [
+      -62.79,
+      -12.68,
+      7.4
+     ],
+     [
+      -56.29,
+      -24.5,
+      7.4
+     ],
+     [
+      -45.96,
+      -34.65,
+      7.4
+     ],
+     [
+      -32.5,
+      -42.44,
+      7.4
+     ],
+     [
+      -16.82,
+      -47.33,
+      7.4
+     ],
+     [
+      -0.0,
+      -49.0,
+      7.4
+     ],
+     [
+      16.82,
+      -47.33,
+      7.4
+     ],
+     [
+      32.5,
+      -42.44,
+      7.4
+     ],
+     [
+      45.96,
+      -34.65,
+      7.4
+     ],
+     [
+      56.29,
+      -24.5,
+      7.4
+     ],
+     [
+      62.79,
+      -12.68,
+      7.4
+     ]
+    ],
+    "closed": true,
+    "colour": "#f7f6f1"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.1,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      49.5,
+      0.0,
+      0.7
+     ],
+     [
+      48.75,
+      5.82,
+      0.7
+     ],
+     [
+      46.51,
+      11.46,
+      0.7
+     ],
+     [
+      42.87,
+      16.75,
+      0.7
+     ],
+     [
+      37.92,
+      21.53,
+      0.7
+     ],
+     [
+      31.82,
+      25.66,
+      0.7
+     ],
+     [
+      24.75,
+      29.01,
+      0.7
+     ],
+     [
+      16.93,
+      31.48,
+      0.7
+     ],
+     [
+      8.6,
+      32.99,
+      0.7
+     ],
+     [
+      0.0,
+      33.5,
+      0.7
+     ],
+     [
+      -8.6,
+      32.99,
+      0.7
+     ],
+     [
+      -16.93,
+      31.48,
+      0.7
+     ],
+     [
+      -24.75,
+      29.01,
+      0.7
+     ],
+     [
+      -31.82,
+      25.66,
+      0.7
+     ],
+     [
+      -37.92,
+      21.53,
+      0.7
+     ],
+     [
+      -42.87,
+      16.75,
+      0.7
+     ],
+     [
+      -46.51,
+      11.46,
+      0.7
+     ],
+     [
+      -48.75,
+      5.82,
+      0.7
+     ],
+     [
+      -49.5,
+      0.0,
+      0.7
+     ],
+     [
+      -48.75,
+      -5.82,
+      0.7
+     ],
+     [
+      -46.51,
+      -11.46,
+      0.7
+     ],
+     [
+      -42.87,
+      -16.75,
+      0.7
+     ],
+     [
+      -37.92,
+      -21.53,
+      0.7
+     ],
+     [
+      -31.82,
+      -25.66,
+      0.7
+     ],
+     [
+      -24.75,
+      -29.01,
+      0.7
+     ],
+     [
+      -16.93,
+      -31.48,
+      0.7
+     ],
+     [
+      -8.6,
+      -32.99,
+      0.7
+     ],
+     [
+      -0.0,
+      -33.5,
+      0.7
+     ],
+     [
+      8.6,
+      -32.99,
+      0.7
+     ],
+     [
+      16.93,
+      -31.48,
+      0.7
+     ],
+     [
+      24.75,
+      -29.01,
+      0.7
+     ],
+     [
+      31.82,
+      -25.66,
+      0.7
+     ],
+     [
+      37.92,
+      -21.53,
+      0.7
+     ],
+     [
+      42.87,
+      -16.75,
+      0.7
+     ],
+     [
+      46.51,
+      -11.46,
+      0.7
+     ],
+     [
+      48.75,
+      -5.82,
+      0.7
+     ]
+    ],
+    "closed": true,
+    "colour": "#2f6b45"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 78,
+    "radiusY": 66,
+    "count": 7,
+    "startDeg": 25,
+    "endDeg": 155,
+    "facing": "outward",
+    "of": {
+     "type": "mass",
+     "id": "apt",
+     "footprint": {
+      "rect": [
+       22,
+       10
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 19,
+     "storeys": 6,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#c06a45",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#8a6048"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -75,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     78,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     52
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-way-24410567",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Modelled about 70 percent of real size; coffered soffit simplified to a thick slab with a white fascia; parapet and fence are thin rings; apartment backdrop is a regular ring of identical blocks; bowl is an ellipse not the OSM outline"
+ }
+}

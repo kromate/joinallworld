@@ -1,0 +1,276 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-osm-way-480461489",
+ "name": "Barbados Community College",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/480461489",
+   "used": "campus site is 458 x 257 m; too large for one model so a representative cluster of blocks around two courts is modelled"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Barbados_Community_College",
+   "used": "founded 1968; contemporary two- and three-storey teaching blocks; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "bands": "#2f7fa0",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     16,
+     56
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "bands": "#2f7fa0",
+    "bay": 6,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     16,
+     56
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "bands": "#2f7fa0",
+    "bay": 6,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-d",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "bay": 6,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "eastry-house",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e4d6b4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f5a46",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -39,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 4,
+    "height": 3.4,
+    "colour": "#2f7fa0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -44,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     18
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; only a representative cluster of the campus is shown, not the 458 m site; Eastry House is described not seen."
+ }
+}

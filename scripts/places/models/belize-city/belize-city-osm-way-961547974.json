@@ -1,0 +1,149 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/295698076",
+   "used": "real hospital outline, 68 x 37 m, 1988 build"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q4882975",
+   "used": "private hospital, three storeys, light render with teal accent and glazed entrance (brief)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eddf",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#2f7f9f",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a0a4a6",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "colour": "#2f7f9f"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -20,
+    8
+   ],
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    10,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "roof-vents",
+   "at": [
+    6,
+    0,
+    12
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-961547974",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo of the building; real OSM outline plus brief colours. Ribbon windows and canopy are typical, not observed."
+ }
+}

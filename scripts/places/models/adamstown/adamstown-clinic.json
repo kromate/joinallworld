@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/128192181",
+   "used": "building outline containing the venue point; no photo of this building found, so form, colour and details come from the brief and Pitcairn village style (painted render, corrugated roof, solar roof)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8574a",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -1,
+    -12.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6,
+    "depth": 3.5,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#a9c7d4",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -1,
+    -12.4,
+    2.4
+   ],
+   "params": {}
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    14,
+    0,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#f2efe6",
+    "roofColour": "#b8574a",
+    "vans": 1
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    3,
+    2,
+    5.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rows": 2,
+    "cols": 5,
+    "tilt": 20
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 1.3,
+    "tankHeight": 2,
+    "colour": "#2f5f8f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     12
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the Pitcairn Health Centre found; real OSM L outline with hip corrugated roof, entrance canopy, ambulance bay and rooftop solar array placed from the brief."
+ }
+}

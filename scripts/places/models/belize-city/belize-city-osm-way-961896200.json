@@ -1,0 +1,214 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/961896200",
+   "used": "campus boundary is 697 x 292 m, too large for the scene; only its extent and setting informed a modest core of the campus (no building outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 52
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lecture-block",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eadb",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "bands": "#c9533d",
+    "plinth": 0.4,
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dorm-west",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    -34,
+    16
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "bands": "#c9533d",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dorm-east",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    34,
+    16
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "bands": "#c9533d",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "width": 2.8,
+    "height": 3,
+    "colour": "#ffffff",
+    "roofColour": "#a3462f"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 4,
+    "colour": "#c9533d"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "width": 54,
+    "depth": 22
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 10,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     0
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-961896200",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and OSM outline is a 697 m campus boundary; modest H-less block cluster typed from brief."
+ }
+}

@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-375289101",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/375289101",
+   "used": "real cross-plan outline (26 x 24.5 m): arm widths, chamfered crossing"
+  },
+  {
+   "kind": "text",
+   "used": "brief: pale walls, steep gabled red roof, blocky entrance belfry; no exterior photo found (nearby Commons images are satellite and unrelated)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body-osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdc",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave-arm",
+   "footprint": {
+    "rect": [
+     28,
+     7.4
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdc",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "plinth": 0.2,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "rise": 3.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept-arm",
+   "footprint": {
+    "rect": [
+     7.4,
+     29
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdc",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "rise": 3.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -16.8
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdc",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f6f9f",
+    "material": "corrugated",
+    "rise": 2.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 1.2,
+    "kind": "wall",
+    "colour": "#c9bfa5",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      36,
+      0
+     ],
+     [
+      36,
+      42
+     ],
+     [
+      0,
+      42
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -18
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     20
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no exterior photo; cross plan from OSM outline, gable arms and blocky belfry from brief; roof junctions simplified"
+ }
+}

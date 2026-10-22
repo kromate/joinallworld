@@ -1,0 +1,287 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-node-4379937704",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vista_frontal_de_la_Casa_de_la_Independencia,_Asunci%C3%B3n,_Paraguay.jpg",
+   "licence": "CC0",
+   "author": "Chipachyryry",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/casa0.jpg",
+   "used": "long low whitewashed street wall, arched dark doors and barred windows with sill brackets, low brick-stepped plinth, deep-eaved clay-tile roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "node/4379937704",
+   "used": "venue point; house footprint about 35 x 27 m (rotated), modelled as an L of 28 x 9 plus a rear wing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-range",
+   "footprint": {
+    "rect": [
+     28,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -5
+   ],
+   "height": 4.3,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3efe4",
+    "windows": "none",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 5.4,
+    "plinth": 0.9,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     9,
+     16
+    ]
+   },
+   "at": [
+    -9.5,
+    12.5
+   ],
+   "height": 3.9,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efeadd",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    8,
+    16,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#e6e0d2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -9,
+    -10.2,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#e6e0d2"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4.8,
+    -10.4,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 4,
+    "colour": "#9a5a45"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    10.5,
+    -10.4,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 4,
+    "colour": "#9a5a45"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -11,
+    -10.4,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#9a5a45"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -11,
+    -9.5,
+    0.9
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.6,
+    "arch": true,
+    "colour": "#2b211c",
+    "trim": "#e9e3d4"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -4.8,
+    -9.5,
+    0.9
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 3.2,
+    "arch": true,
+    "colour": "#2b211c",
+    "trim": "#e9e3d4"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    10.5,
+    -9.5,
+    0.9
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 3.5,
+    "arch": true,
+    "colour": "#2b211c",
+    "trim": "#e9e3d4"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -8,
+    -9.5,
+    1.2
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 2.1,
+    "kind": "rect",
+    "trim": "#e9e3d4"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -9.5,
+    1.2
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 2.1,
+    "kind": "rect",
+    "trim": "#e9e3d4"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    5,
+    -9.5,
+    1.2
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 2.1,
+    "kind": "rect",
+    "trim": "#e9e3d4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Whitewash walls, low gable tile roof, brick-stepped plinth and 3 doors/3 windows now placed; doors and windows are generic recesses without iron grilles, shutters or plaster hood mouldings; rear wing approximate."
+ }
+}

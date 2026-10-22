@@ -1,0 +1,435 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bounty_Bay_Jetty_1970s.jpg",
+   "licence": "Public domain",
+   "author": "NOAA",
+   "view": "aerial",
+   "used": "jetty plan: broad concrete landing deck with a derrick mast and angled boom, longboats alongside, surf and black boulders beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Landing_for_Long_Boats_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Panoramio contributor (via Wikimedia Commons)",
+   "view": "aerial",
+   "used": "modern concrete quay with curved sheet-piled end, apron behind, shed at the back"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 38,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 30,
+    "colour": "#2b7586",
+    "bank": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "params": {
+    "points": [
+     [
+      -26,
+      3
+     ],
+     [
+      22,
+      3
+     ],
+     [
+      22,
+      -4
+     ],
+     [
+      14,
+      -6
+     ],
+     [
+      14,
+      -16
+     ],
+     [
+      -26,
+      -16
+     ],
+     [
+      -30,
+      -11
+     ],
+     [
+      -30,
+      -3
+     ]
+    ],
+    "height": 0.9,
+    "colour": "#b3afa3",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill-foot",
+   "params": {
+    "points": [
+     [
+      -26,
+      3
+     ],
+     [
+      22,
+      3
+     ],
+     [
+      22,
+      12
+     ],
+     [
+      -26,
+      12
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#9d9a90",
+    "material": "rough-concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "params": {
+    "points": [
+     [
+      10,
+      3
+     ],
+     [
+      16,
+      3
+     ],
+     [
+      16,
+      9
+     ],
+     [
+      10,
+      9
+     ]
+    ],
+    "height": 1.5,
+    "colour": "#a29f95",
+    "material": "rough-concrete",
+    "topScale": [
+     1.0,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "winch-house",
+   "footprint": {
+    "rect": [
+     4.5,
+     3.5
+    ]
+   },
+   "at": [
+    16,
+    -1
+   ],
+   "z0": 0.9,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8574a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b8590",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "longboat-12",
+   "footprint": {
+    "rect": [
+     10,
+     2.4
+    ]
+   },
+   "at": [
+    -12,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0.1,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e6e6df",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8a6a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "longboat-3",
+   "footprint": {
+    "rect": [
+     10,
+     2.4
+    ]
+   },
+   "at": [
+    -3,
+    -13
+   ],
+   "rotDeg": 6,
+   "z0": 0.1,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e6e6df",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8a6a"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -26,
+    -15.8,
+    0.9
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.0,
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -29,
+    -4,
+    0.9
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.0,
+    "colour": "#9ea3a8"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -20,
+    -3,
+    0.9
+   ],
+   "params": {
+    "height": 3,
+    "width": 1.0
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    28,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 9,
+    "height": 1.8,
+    "stairs": false,
+    "boulders": 9,
+    "rock_colour": "#3a3835"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 1.4,
+    "stairs": false,
+    "boulders": 6,
+    "rock_colour": "#3a3835"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mast",
+   "params": {
+    "section": {
+     "circle": 0.18
+    },
+    "points": [
+     [
+      -6,
+      -2,
+      0.8
+     ],
+     [
+      -6,
+      -2,
+      9
+     ]
+    ],
+    "colour": "#6b4a35"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "boom",
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      -6,
+      -2,
+      7.5
+     ],
+     [
+      -15,
+      -6,
+      12
+     ]
+    ],
+    "colour": "#33383c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "stay",
+   "params": {
+    "section": {
+     "circle": 0.03
+    },
+    "points": [
+     [
+      -15,
+      -6,
+      12
+     ],
+     [
+      -2,
+      1,
+      0.8
+     ]
+    ],
+    "colour": "#222222"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "stay2",
+   "params": {
+    "section": {
+     "circle": 0.03
+    },
+    "points": [
+     [
+      -6,
+      -2,
+      9
+     ],
+     [
+      -18,
+      -3,
+      0.8
+     ]
+    ],
+    "colour": "#222222"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     17
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     18
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     16
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     12
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Deck plan, derrick mast with boom, winch house and two longboats match the layout; real deck is irregular rock-and-concrete with a sea wall, boats are larger and the surf and cliffs are not modelled."
+ }
+}

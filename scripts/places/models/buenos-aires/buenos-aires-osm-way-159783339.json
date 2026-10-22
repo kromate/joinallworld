@@ -1,0 +1,318 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:El_futuro_ya_llego_-_Torre_espacial.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Federico Juan Mazza",
+   "view": "front",
+   "file": "/tmp/places-evidence/buenos-aires/torre3.jpg",
+   "used": "slender white square shaft, wide hexagonal observation deck with dark sloping underside and glazed rim, narrower neck and smaller upper deck, antenna, four guy cables to the ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gigante_espacial.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Agustina Lucia Cacabelos",
+   "view": "detail",
+   "file": "/tmp/places-evidence/buenos-aires/torre2.jpg",
+   "used": "hexagonal deck plan, stepped soffit, ribbed shaft cladding"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DefPuebloCABA_-_Torre_Espacial.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Defensoria del Pueblo CABA",
+   "view": "back",
+   "file": "/tmp/places-evidence/buenos-aires/torre1.jpg",
+   "used": "proportions of decks to shaft"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/159783339",
+   "used": "128 m height tag, 82 m2 shaft footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": -5,
+  "fovDeg": 32,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#e9e8e2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.5,
+       9.5
+      ]
+     },
+     {
+      "z": 90,
+      "rect": [
+       8,
+       8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     15,
+     15
+    ],
+    "height": 0.4,
+    "colour": "#bdb8ae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "n": 6,
+    "radius": 5,
+    "z0": 90,
+    "height": 4,
+    "topScale": 2.8,
+    "colour": "#3a3c40",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "n": 6,
+    "radius": 14.0,
+    "z0": 94,
+    "height": 3,
+    "colour": "#d6d8d8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4f5d66"
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#e9e8e2",
+    "sections": [
+     {
+      "z": 97,
+      "rect": [
+       5.5,
+       5.5
+      ]
+     },
+     {
+      "z": 112,
+      "rect": [
+       5.5,
+       5.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "n": 6,
+    "radius": 3,
+    "z0": 112,
+    "height": 3,
+    "topScale": 2.8,
+    "colour": "#3a3c40",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "n": 6,
+    "radius": 8.399999999999999,
+    "z0": 115,
+    "height": 2.2,
+    "colour": "#d6d8d8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#4f5d66"
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#e9e8e2",
+    "sections": [
+     {
+      "z": 119.2,
+      "rect": [
+       3.5,
+       3.5
+      ]
+     },
+     {
+      "z": 122,
+      "rect": [
+       3.5,
+       3.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.25,
+    "points": [
+     [
+      0,
+      0,
+      122
+     ],
+     [
+      0,
+      0,
+      128
+     ]
+    ],
+    "colour": "#8a8e92"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      96
+     ],
+     [
+      42.42640687119285,
+      42.426406871192846,
+      0.3
+     ]
+    ],
+    "colour": "#5a5d60"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      96
+     ],
+     [
+      -42.426406871192846,
+      42.42640687119285,
+      0.3
+     ]
+    ],
+    "colour": "#5a5d60"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      96
+     ],
+     [
+      -42.42640687119286,
+      -42.426406871192846,
+      0.3
+     ]
+    ],
+    "colour": "#5a5d60"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0,
+      0,
+      96
+     ],
+     [
+      42.42640687119284,
+      -42.42640687119286,
+      0.3
+     ]
+    ],
+    "colour": "#5a5d60"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -15,
+     -12
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     10
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   140,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-osm-way-159783339",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Deck rims lack the stepped inner soffit, shaft ribbing and rooftop plant of the real tower; trees around base are generic"
+ }
+}

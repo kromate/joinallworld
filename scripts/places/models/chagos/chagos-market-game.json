@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chagos",
+ "venueId": "chagos-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/chagos.json#chagos-market-game",
+   "used": "16 x 10 m clearing with four stalls under thatch and tin awnings, three umbrellas, palms (placeholder venue, no photo or OSM match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back-store",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    5,
+    3.5
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a58b66",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7e8583",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "thatch-stall",
+   "footprint": {
+    "rect": [
+     5,
+     3.2
+    ]
+   },
+   "at": [
+    -5.5,
+    2.5
+   ],
+   "rotDeg": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b27a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "bands": "#d8d2c0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a3f",
+    "material": "thatch",
+    "rise": 1.4,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -1,
+    -2.5,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "pitch": 3.4,
+    "kind": "awning",
+    "size": 1.0,
+    "colours": [
+     "#d8d2c0",
+     "#c9b27a",
+     "#a58b66",
+     "#8a5a3f"
+    ],
+    "jitter": 0.2
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    4.5,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "radius": 1.4,
+    "colours": [
+     "#d8d2c0",
+     "#c9b27a",
+     "#7c6a4c"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     0
+    ]
+   }
+  ],
+  "extent": [
+   34,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Typed placeholder, no photo; stall layout and thatch roof are typical, not observed."
+ }
+}

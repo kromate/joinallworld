@@ -1,0 +1,359 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-way-68312672",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20220918_110149_Fred_Taylor_Park.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Prosperosity",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/68312672-2.jpg",
+   "used": "grass football pitch with tubular rail fence and path along the touchline, goals, corner flag, tall pines and broadleaf trees as backdrop"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20220918_110215_Fred_Taylor_Park.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Prosperosity",
+   "view": "street",
+   "file": "/tmp/places-evidence/auckland/68312672-0.jpg",
+   "used": "two-level grey timber-clad clubrooms at the far end of an open lawn with car park, mature trees and flax"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/68312672",
+   "used": "park extent (376 x 291 m); the pitch and clubrooms are placed inside a reduced 150 m scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     110
+    ],
+    "height": 0.03,
+    "colour": "#9fbd33",
+    "top": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 10,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     2.2
+    ],
+    "height": 0.07,
+    "colour": "#4a4c50"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 1.0,
+    "thickness": 0.12,
+    "kind": "rail",
+    "colour": "#b9bfc4",
+    "pillarEvery": 3.0
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "clubrooms",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -52,
+    -45
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a908c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#b4b8b3",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7f858a",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -38,
+    -44
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6f8a74",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f7a66",
+    "material": "corrugated",
+    "rise": 0.8
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "colour": "#7d8b9a",
+    "count": 6,
+    "spacing": 3,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     52,
+     0
+    ],
+    "end": [
+     56,
+     52,
+     0
+    ],
+    "count": 13,
+    "lod1Step": 6,
+    "lod2Step": 99,
+    "of": {
+     "type": "core/tree",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "kind": "conifer",
+      "height": 24
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     56,
+     0
+    ],
+    "end": [
+     56,
+     56,
+     0
+    ],
+    "count": 12,
+    "lod1Step": 6,
+    "lod2Step": 99,
+    "of": {
+     "type": "core/tree",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "kind": "conifer",
+      "height": 20
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     48,
+     0
+    ],
+    "end": [
+     56,
+     48,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 6,
+    "lod2Step": 99,
+    "of": {
+     "type": "core/tree",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "kind": "broadleaf",
+      "height": 13
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     -10,
+     0
+    ],
+    "end": [
+     -56,
+     40,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 6,
+    "of": {
+     "type": "core/tree",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "kind": "broadleaf",
+      "height": 12
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     56,
+     -10,
+     0
+    ],
+    "end": [
+     56,
+     40,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 6,
+    "of": {
+     "type": "core/tree",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "kind": "broadleaf",
+      "height": 12
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 4,
+  "trees": [],
+  "extent": [
+   118,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Bright mown lawn overlay, tarmac path, rail fence and continuous tree belt added; pitch grass itself stays dark green (no colour param), goals/corner flag small, clubrooms position still assumed, scene clamped to 120 m."
+ }
+}

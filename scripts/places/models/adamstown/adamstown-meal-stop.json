@@ -1,0 +1,130 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/302471162",
+   "used": "11x10 m building outline containing the point"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3c9a0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8574a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "verandah-arcade",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "depth": 2.2,
+    "height": 2.8,
+    "kind": "square",
+    "colour": "#3f6b4f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "height": 0.8,
+    "bottom": 1.0,
+    "colour": "#ffffff",
+    "frameColour": "#3f6b4f"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -5,
+    -9,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     11,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the pizzeria; domestic bungalow with verandah typed from village style."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-meal-stop"
+}

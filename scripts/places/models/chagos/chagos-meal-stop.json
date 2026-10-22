@@ -1,0 +1,195 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chagos",
+ "venueId": "chagos-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/chagos.json#chagos-meal-stop",
+   "used": "12 x 8 m timber beach shack, corrugated gable roof, shaded terrace with awning, palms (placeholder venue, no photo or OSM match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shack",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -1.5,
+    1
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b99a6b",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "bands": "#e6e1d2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7e8583",
+    "material": "corrugated",
+    "rise": 1.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-deck",
+   "footprint": {
+    "rect": [
+     12,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -3.4
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7c6a4c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c6a4c",
+    "material": "concrete",
+    "rise": 1.2,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#e6e1d2",
+     "#b99a6b"
+    ]
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3,
+    -3.4,
+    0.4
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -3.4,
+    0.4
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1.5,
+    -2.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.8,
+    "bottom": 3.1,
+    "colour": "#e6e1d2",
+    "frameColour": "#7c6a4c",
+    "posts": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    7,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   30,
+   22
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Typed placeholder, no photo; shack proportions from the brief, details typical not observed."
+ }
+}

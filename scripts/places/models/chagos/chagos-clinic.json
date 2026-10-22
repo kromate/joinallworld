@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chagos",
+ "venueId": "chagos-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: placeholder game venue, plantation-era whitewashed outpost clinic"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e1d2",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "bands": "#9a9482"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7e8583",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.8,
+    "height": 2.7,
+    "colours": [
+     "#e6e1d2",
+     "#c9c0a6"
+    ]
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    4.5,
+    -4.05,
+    2.4
+   ],
+   "params": {
+    "size": 1.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    11,
+    1,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.3,
+    "tankHeight": 2.2,
+    "legHeight": 3,
+    "colour": "#7e8583"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists (placeholder game venue); modest plantation-style building from brief text"
+ }
+}

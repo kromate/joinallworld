@@ -1,0 +1,108 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashmore",
+ "venueId": "ashmore-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+   "used": "small notice hut, two blank boards, flag pole"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9d2d6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "bands": "#6f7f86"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa3a7",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4.5,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.4,
+    "bottom": 0.9,
+    "colour": "#f1eee4",
+    "frameColour": "#6f7f86",
+    "posts": true
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    1.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.4,
+    "bottom": 0.9,
+    "colour": "#f1eee4",
+    "frameColour": "#6f7f86",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    6,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#6f7f86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text-only hut; no photo exists."
+ }
+}

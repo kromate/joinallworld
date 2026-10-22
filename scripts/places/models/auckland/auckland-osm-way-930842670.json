@@ -1,0 +1,656 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Church_of_Jesus_Christ_of_Latter-day_Saints,_Auckland_New_Zealand_Temple_IMG_6522.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AnnWoolliams",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/temple2.jpg",
+   "used": "long low pale stone body with flat parapet roof, tall columnar window bays on the long face, arched wing at the left end, square tower with stepped spire at the right end, lawn and palm plantings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Auckland_New_Zealand_Temple_-_2025-03-10.jpg",
+   "licence": "CC0",
+   "author": "CreatorPtah",
+   "view": "side",
+   "file": "/tmp/places-evidence/auckland/temple1.jpg",
+   "used": "tower proportions and stepped spire, fin-like columns between tall windows, carved frieze band under the parapet"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/930842670",
+   "used": "overall size (about 65 x 31 m), orientation not used because the outline is a noisy zigzag"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 0,
+  "fovDeg": 50,
+  "aspect": 1.72
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#e4e1d9",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9c6bd",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfccc3",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#e8e5dd",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfccc3",
+    "parapet": 1.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#e8e5dd",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfccc3",
+    "parapet": 1.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "z0": 0.6,
+      "height": 10.6,
+      "colour": "#f1efe8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -15,
+     -10.9
+    ],
+    "end": [
+     19,
+     -10.9
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-bays",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.4
+    ],
+    "z0": 1.6,
+    "height": 8.6,
+    "colour": "#c9b79a",
+    "topColour": "#c9b79a"
+   },
+   "at": [
+    2,
+    -10.05
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frieze",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     44.4,
+     20.4
+    ],
+    "z0": 10.6,
+    "height": 0.9,
+    "colour": "#bdb9ae",
+    "topColour": "#bdb9ae"
+   },
+   "at": [
+    2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-recess",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     8
+    ],
+    "z0": 0.6,
+    "height": 15,
+    "colour": "#a39d8f",
+    "topColour": "#a39d8f"
+   },
+   "at": [
+    -32.7,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tower-shaft",
+   "params": {
+    "colour": "#e8e5dd",
+    "sections": [
+     {
+      "z": 14,
+      "rect": [
+       6.6,
+       6.6
+      ]
+     },
+     {
+      "z": 23.5,
+      "rect": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 24,
+      "rect": [
+       6.4,
+       6.4
+      ]
+     }
+    ]
+   },
+   "at": [
+    28,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-win",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.4
+    ],
+    "z0": 17,
+    "height": 5,
+    "colour": "#7f8a96"
+   },
+   "at": [
+    28,
+    -3.4
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "spire",
+   "params": {
+    "colour": "#dcd9d0",
+    "sections": [
+     {
+      "z": 24,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 24.1,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 28.1,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 31,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 31.1,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 36,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     },
+     {
+      "z": 40,
+      "rect": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   },
+   "at": [
+    28,
+    0
+   ]
+  },
+  {
+   "type": "steps",
+   "at": [
+    28,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 2,
+    "run": 2,
+    "count": 6,
+    "colour": "#d8d5cc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-step1",
+   "params": {
+    "rect": [
+     11,
+     18
+    ],
+    "z0": 22,
+    "height": 2.6,
+    "colour": "#e8e5dd",
+    "topColour": "#cfccc3"
+   },
+   "at": [
+    -26,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-step2",
+   "params": {
+    "rect": [
+     8,
+     13
+    ],
+    "z0": 24.6,
+    "height": 2.4,
+    "colour": "#e8e5dd",
+    "topColour": "#cfccc3"
+   },
+   "at": [
+    -26,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-top",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     4.5
+    ],
+    "z0": 15.5,
+    "height": 3,
+    "topScale": 0.3,
+    "colour": "#a39d8f",
+    "topColour": "#a39d8f"
+   },
+   "at": [
+    -32.7,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mid-step",
+   "params": {
+    "rect": [
+     44,
+     16
+    ],
+    "z0": 12.6,
+    "height": 1.4,
+    "colour": "#dcd9d0",
+    "topColour": "#cfccc3"
+   },
+   "at": [
+    2,
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -20,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 1.3,
+    "depth": 1.4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -14,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 1.3,
+    "depth": 1.4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -8,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 1.3,
+    "depth": 1.4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 1.3,
+    "depth": 1.4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    4,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 1.3,
+    "depth": 1.4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    10,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 1.3,
+    "depth": 1.4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    16,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 1.3,
+    "depth": 1.4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    22,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 4.5,
+    "height": 1.3,
+    "depth": 1.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-front",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 15,
+    "colour": "#a39d8f",
+    "topColour": "#a39d8f"
+   },
+   "at": [
+    -26,
+    -11.2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -19
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -14.5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -2,
+     -14.5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -14.5
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stepped end wing, recessed arches, thicker columns, frieze and hedges added; spire now too short and stepped crudely, arch recess and wing proportions approximate, landscaping generic (no nikau)"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-way-930842670"
+}

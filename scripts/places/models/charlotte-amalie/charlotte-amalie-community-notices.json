@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Charlotte_Amalie_-_Government_House.jpg",
+   "licence": "Public domain",
+   "author": "John N. Lightbourn",
+   "view": "front",
+   "file": "/tmp/places-evidence/charlotte-amalie/gh1.jpg",
+   "used": "three storeys with two-tier galleries across the front, hipped roof with low pitch, clapboard upper walls, steps up the hill beside it, flagpole, white balustrades"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/323829748",
+   "used": "footprint size 21 x 18 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8e4d8",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.8,
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#cfc6ae",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bands": "#f4f1ea",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b5a52",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "gallery",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 2.4,
+    "storeyHeight": 3.8,
+    "wallTop": 7.6,
+    "colour": "#f4f1ea",
+    "railColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4,
+    "rise": 0.8,
+    "run": 2.0,
+    "count": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.6,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#7a7f78"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    18,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#b3202a",
+    "colours": [
+     "#b3202a",
+     "#ffffff",
+     "#2a4a8c"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "1930s b/w postcard so colours assumed; shutters not modelled; sloped hillside street and neighbouring houses omitted; flag simplified"
+ }
+}

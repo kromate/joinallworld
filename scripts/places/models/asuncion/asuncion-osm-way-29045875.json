@@ -1,0 +1,432 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-way-29045875",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "enclosure language only (Commons Rey_Leon_Zoo.jpg, CC BY-SA 4.0, Beacazal): boulder outcrops on sandy ground under tall shady trees behind a wire fence; not a view of the house"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 275 ha garden and zoo, 150-year-old broadleaf trees, 1840s Lopez country house (Casa Alta) as whitewashed two-storey house with timber veranda and clay-tile hip roof, emblem statue, animal enclosures. No OSM outline, no photo of the house found."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "casa-alta",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f2eee3",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.6,
+    "glassColour": "#4a3524",
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mosque-domed/veranda",
+   "at": [
+    0,
+    -13.4,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 3.4,
+    "height": 3.4,
+    "rise": 0.8,
+    "colour": "#7a5230",
+    "cap_colour": "#b5603f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.7,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 4.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -70,
+    3.2
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "colour": "#7a5230"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -70,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 48,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#9a8f78"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    30,
+    -70,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#9a8f78"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    -55,
+    0
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#6a583b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -38,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     6,
+     64
+    ],
+    "height": 0.04,
+    "colour": "#c9b48a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -45,
+    -20,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -8
+     ],
+     [
+      12,
+      -10
+     ],
+     [
+      14,
+      6
+     ],
+     [
+      0,
+      11
+     ],
+     [
+      -13,
+      7
+     ]
+    ],
+    "height": 4,
+    "topScale": 0.6,
+    "colour": "#8c8372"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -45,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 3,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50,
+    -10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -10,
+      -6
+     ],
+     [
+      10,
+      -8
+     ],
+     [
+      12,
+      6
+     ],
+     [
+      -8,
+      8
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#5f8aa0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    45,
+    35,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     10
+    ],
+    "height": 3.4,
+    "colour": "#e5ddc8",
+    "windows": "punched",
+    "windowRatio": 0.15
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    35,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     8
+    ],
+    "height": 3.2,
+    "colour": "#e5ddc8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -40,
+    25,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "crown_radius": 14
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    35,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "crown_radius": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "crown_radius": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    20,
+    40,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "crown_radius": 15
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -22
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -24
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     8
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     10
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -45
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -45
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     60
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     60
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     35
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the house or garden layout; house colours, enclosures and paths are typed from the brief; 275 ha garden reduced to its entrance and house area"
+ }
+}

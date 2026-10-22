@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-141496566",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/141496566",
+   "used": "real outline (103 x 59 m, name match, Wikidata Q18484548), brief: 2-3 storey painted block with ribbon windows"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "college",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dfc9",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.5,
+    "glassColour": "#5f7f95",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9b79c",
+      "height": 0.3,
+      "floors": "all"
+     },
+     {
+      "type": "balconies",
+      "depth": 1.4,
+      "floors": "upper",
+      "continuous": true,
+      "railKind": "solid",
+      "colour": "#c9b79c",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "columns": 4,
+    "colour": "#8d8a82"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#8d8a82",
+    "frameColour": "#c9b79c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -42,
+     0
+    ],
+    "end": [
+     30,
+     -30,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "tree",
+      "params": {
+       "kind": "broadleaf",
+       "height": 8
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "outline and height real; facade colours, ribbon windows and entrance canopy typed; no photo"
+ }
+}

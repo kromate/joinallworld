@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chagos",
+ "venueId": "chagos-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: open-sided timber meeting shelter on palm posts, low hip roof"
+  }
+ ],
+ "parts": [
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -2.6,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "count": 6,
+    "height": 2.9,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#7c6a4c"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    2.6,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "count": 6,
+    "height": 2.9,
+    "radius": 0.14,
+    "kind": "round",
+    "beamHeight": 0.2,
+    "colour": "#7c6a4c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "rect": [
+     12.4,
+     6.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 2.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a58b66",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a1673f",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "pitch": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench-platform",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8d2c0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a58b66",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     7
+    ]
+   }
+  ],
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists (placeholder game venue); modest plantation-style building from brief text"
+ }
+}

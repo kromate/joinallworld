@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/383348061",
+   "used": "the real round storage tank outline (8.8 m across) used for the tank; the workshop shed is a modest typical Niue block shed, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5aca0",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "bands": "#8f877c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f7f86",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tank",
+   "footprint": {
+    "osm": true,
+    "fit": 8.8
+   },
+   "at": [
+    8,
+    1
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa398",
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -1,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 1
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Placeholder game venue, no photo; shed invented, tank outline real."
+ }
+}

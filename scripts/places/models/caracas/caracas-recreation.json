@@ -1,0 +1,484 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Vinicio_Adames_3.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Veronidae",
+   "view": "front",
+   "file": "/tmp/places-evidence/caracas/park.jpg",
+   "used": "low long pavilion with red clay-tile hipped roof, stucco walls and open columned verandah, gravel plaza with low curved stone seat wall, big spreading trees, grass bank with fallen red flowers, forested hill behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/6464064",
+   "used": "park is 853 x 533 m; only a ~120 m corner around the pavilion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 6,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     54,
+     26
+    ],
+    "height": 0.06,
+    "colour": "#c8bca6",
+    "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     27,
+     9
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#33241d",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5653f",
+    "material": "clay-tile",
+    "rise": 2.5,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    20.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     25,
+     0.8
+    ],
+    "height": 3.3,
+    "colour": "#a86b4d",
+    "top": true
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 3.3,
+      "colour": "#d9ccb8",
+      "top": true
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12.5,
+     11.6
+    ],
+    "end": [
+     12.5,
+     11.6
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    11.4,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     27,
+     0.5
+    ],
+    "height": 0.25,
+    "colour": "#d9ccb8",
+    "top": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      8,
+      0.5,
+      0.25
+     ],
+     [
+      14,
+      2.5,
+      0.25
+     ],
+     [
+      20,
+      6,
+      0.25
+     ],
+     [
+      24,
+      11,
+      0.25
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -24,
+      3,
+      0.25
+     ],
+     [
+      -18,
+      1.2,
+      0.25
+     ],
+     [
+      -12,
+      0.8,
+      0.25
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     9
+    ],
+    "height": 0.7,
+    "colour": "#4f8a3a",
+    "top": true,
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -30,
+      -1
+     ],
+     [
+      -20,
+      3
+     ],
+     [
+      -8,
+      1
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#cfc7b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "rect": [
+     66,
+     20
+    ],
+    "height": 16,
+    "colour": "#3d6a38",
+    "top": true,
+    "topScale": 0.45
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    15,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 24
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "width": 58,
+    "depth": 10,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -6,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.4
+    ],
+    "height": 0.05,
+    "colour": "#c0492b",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -8,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.4
+    ],
+    "height": 0.05,
+    "colour": "#c0492b",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -5,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.4
+    ],
+    "height": 0.05,
+    "colour": "#c0492b",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -9,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.4
+    ],
+    "height": 0.05,
+    "colour": "#c0492b",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -9,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.4
+    ],
+    "height": 0.05,
+    "colour": "#c0492b",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -12,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.4
+    ],
+    "height": 0.05,
+    "colour": "#c0492b",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -12,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.4
+    ],
+    "height": 0.05,
+    "colour": "#c0492b",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -5,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     1.4
+    ],
+    "height": 0.05,
+    "colour": "#c0492b",
+    "top": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 10,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion still smaller in frame than photo and trees are low-poly blobs rather than one big spreading crown; seat wall is a thin arc; flowers are flat red patches; hill backdrop is a plain green taper; no kerb along foreground path."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-recreation"
+}

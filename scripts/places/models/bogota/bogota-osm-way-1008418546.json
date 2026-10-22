@@ -1,0 +1,386 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Partido_de_Atletico_Bucaramanga_Vs_Academia.jpg",
+   "licence": "CC BY 2.0",
+   "author": "yonolatengo",
+   "view": "front",
+   "file": "/tmp/places-evidence/bogota/comp1.jpg",
+   "used": "match at Compensar (home of Academia): dark artificial turf, low terraces of red-brown concrete on the far side with a wavy steel canopy over the left half, tall floodlight lattice mast, grey wall on the right, brick buildings behind (home ground of Academia FC per the match caption; not independently confirmed)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1008418546",
+   "used": "pitch/stadium extent about 117 x 97 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -32
+     ],
+     [
+      52,
+      -32
+     ],
+     [
+      52,
+      32
+     ],
+     [
+      -52,
+      32
+     ]
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     55,
+     36
+    ],
+    "end": [
+     -8,
+     36
+    ],
+    "rows": 9,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "concreteColour": "#8c5a48",
+    "underColour": "#6e4638",
+    "seatColour": "#7a4a3a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -8,
+     36
+    ],
+    "end": [
+     -55,
+     36
+    ],
+    "rows": 9,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "concreteColour": "#8c5a48",
+    "underColour": "#6e4638",
+    "seatColour": "#7a4a3a"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -31,
+    41,
+    4.6
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 47,
+    "depth": 9,
+    "rise": 0.9,
+    "waves": 5,
+    "thickness": 0.3,
+    "colour": "#8fa89a",
+    "edgeColour": "#6f867a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "post",
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 4.6,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#5f6f66",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#5f6f66"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -53,
+     41
+    ],
+    "end": [
+     -9,
+     41
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-left-brick",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -52,
+    58
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b2674a",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#d9c2a5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6048"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wall",
+   "footprint": {
+    "rect": [
+     34,
+     0.8
+    ]
+   },
+   "at": [
+    38,
+    39
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a89c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6048"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    14,
+    48,
+    0
+   ],
+   "params": {
+    "height": 46,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#8d8d85"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -52,
+    0,
+    0
+   ],
+   "params": {
+    "length": 68,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#8d8d85"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    52,
+    0,
+    0
+   ],
+   "params": {
+    "length": 68,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#8d8d85"
+   },
+   "rotDeg": 90
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     71
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     67
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     70
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     66
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     69
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     72
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     68
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     71
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     67
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     70
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -45
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-way-1008418546",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Wavy canopy is a thin sine surface on posts; terrace crowd/detail plain; brick building and tree line are placed from the photo only roughly; attribution to Compensar relies on caption"
+ }
+}

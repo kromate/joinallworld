@@ -1,0 +1,326 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_de_Cl%C3%ADnicas_de_Asunci%C3%B3n.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "FF MM",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/clinic1.jpg",
+   "used": "two tall storeys of ochre-yellow render, arched windows, balustraded parapet, terracotta-red plinth and entrance terrace with steps, pilastered porch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/977038513",
+   "used": "26 x 21 m footprint of the historic pavilion fragment"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c866",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 1.6,
+    "bands": "#dcb552",
+    "cornice": true,
+    "trimColour": "#f4ebc8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf99",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    3,
+    -13.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     4
+    ],
+    "height": 1.6,
+    "colour": "#b9553b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    3,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.6,
+    "run": 4.5,
+    "count": 8,
+    "colour": "#b7ada0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -3,
+     -11.3,
+     2.2
+    ],
+    "end": [
+     9,
+     -11.3,
+     2.2
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "id": "pilBase",
+     "params": {
+      "rect": [
+       1.2,
+       1.0
+      ],
+      "height": 1.4,
+      "colour": "#b9553b",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -3,
+     -11.3,
+     3.6
+    ],
+    "end": [
+     9,
+     -11.3,
+     3.6
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "id": "pilaster",
+     "params": {
+      "rect": [
+       0.9,
+       0.7
+      ],
+      "height": 7.5,
+      "colour": "#e2b95a",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entranceDark",
+   "at": [
+    3,
+    -10.4,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.4
+    ],
+    "height": 5,
+    "colour": "#3a2a22",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porchLintel",
+   "at": [
+    3,
+    -10.9,
+    11.5
+   ],
+   "params": {
+    "rect": [
+     13,
+     1.2
+    ],
+    "height": 0.8,
+    "colour": "#f1e6c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -10.5,
+    12.5
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.0,
+    "colour": "#f0e8d0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "endPavilion",
+   "at": [
+    -14.5,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     23
+    ],
+    "height": 13.4,
+    "colour": "#e8c866",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "endCornice",
+   "at": [
+    -14.5,
+    -1,
+    13.4
+   ],
+   "params": {
+    "rect": [
+     6.8,
+     23.8
+    ],
+    "height": 0.6,
+    "colour": "#f4ebc8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sideWing",
+   "at": [
+    19,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     16
+    ],
+    "height": 7,
+    "colour": "#e8c866",
+    "windows": "punched",
+    "windowShape": "arched"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sideTerrace",
+   "at": [
+    19,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     6
+    ],
+    "height": 1.4,
+    "colour": "#b9553b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -21,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 10,
+    "count": 2,
+    "spread": 10,
+    "colour": "#5f9a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 2,
+    "spread": 7,
+    "colour": "#5f9a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pilastered porch, parapet, end pavilion and side wing added; arched window rhythm on wing and tree canopies still approximate; OSM fragment only"
+ }
+}

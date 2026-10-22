@@ -1,0 +1,304 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-airport-bogota-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_a%C3%A9reo_de_Bogot%C3%A1,_Cund_-_Colombia.jpg",
+   "file": "/tmp/places-evidence/bogota/b0-airport1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "EEIM",
+   "view": "street",
+   "used": "long low terminal frontage, flat dark canopy over the taxi rank, grey paving, araucaria on the forecourt, grass verge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eldorado_terminal_nacional_1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Baiji",
+   "view": "interior",
+   "used": "tall glazed curtain wall with grey columns, sloping soffit roof"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bogota.json#bogota-airport-bogota-airport",
+   "used": "H-shaped terminal with piers and control tower (article)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -55,
+  "pitchDeg": 4,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     120,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f7377",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50",
+    "overhang": 4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-bay",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d8185",
+    "windows": "none",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "overhang": 0.5,
+    "pitch": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-pier",
+   "footprint": {
+    "rect": [
+     18,
+     70
+    ]
+   },
+   "at": [
+    -40,
+    52
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#75797c",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55585b",
+    "overhang": 1,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south-pier",
+   "footprint": {
+    "rect": [
+     18,
+     70
+    ]
+   },
+   "at": [
+    40,
+    52
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#75797c",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55585b",
+    "overhang": 1,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    10,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 110,
+    "depth": 7,
+    "height": 3.8,
+    "columns": 16,
+    "colour": "#3d4044"
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    -10,
+    40,
+    0
+   ],
+   "params": {
+    "height": 48,
+    "style": "round",
+    "colour": "#d8dadb",
+    "cabColour": "#4f6f80"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -70,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 16,
+    "bottom": 0.5,
+    "colour": "#c0392b",
+    "posts": true,
+    "frameColour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -20,
+    -36,
+    0
+   ],
+   "params": {
+    "colour": "#f2c200",
+    "count": 6,
+    "spacing": 3.4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "colour": "#24442b"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -60,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 8,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    0,
+    95,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 1.0,
+    "colour": "#eef1f2",
+    "tailColour": "#c0392b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "verge",
+   "params": {
+    "points": [
+     [
+      -80,
+      -45
+     ],
+     [
+      80,
+      -45
+     ],
+     [
+      80,
+      -32
+     ],
+     [
+      -80,
+      -32
+     ]
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#5f8f45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Low single-storey frontage, level long canopy, red-white pylon, grass verge, dark conifer added; render is aerial-ish so pavers and kerb read weakly, red pitched section is small, T1 piers/tower from text."
+ }
+}

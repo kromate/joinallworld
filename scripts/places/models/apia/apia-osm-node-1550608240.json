@@ -1,0 +1,1534 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-node-1550608240",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sopoaga_Falls_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Viktor Pinchuk",
+   "view": "front",
+   "file": "/tmp/places-evidence/apia/sopoaga1.jpg",
+   "used": "single narrow fall about 50 m high dropping from a notch in a dark basalt cliff into a round plunge pool; heavy jungle slope on the left, vertical cliff and trees on the right, rocky pool edge; viewed from a lookout above and across the gorge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sopoaga_Falls_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Viktor Pinchuk",
+   "view": "detail",
+   "file": "/tmp/places-evidence/apia/sopoaga2.jpg",
+   "used": "second view of the same gorge, checked for the pool and cliff colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "node/1550608240",
+   "used": "point only, no outline (match none)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      10
+     ],
+     [
+      14,
+      10
+     ],
+     [
+      18,
+      28
+     ],
+     [
+      8,
+      38
+     ],
+     [
+      -8,
+      38
+     ],
+     [
+      -18,
+      28
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#3a4644"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      32
+     ],
+     [
+      30,
+      32
+     ],
+     [
+      34,
+      44
+     ],
+     [
+      -34,
+      44
+     ]
+    ],
+    "z0": 0,
+    "height": 50,
+    "colour": "#2e2f2c",
+    "topColour": "#3f6a34"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      31.8
+     ],
+     [
+      -12,
+      31.8
+     ],
+     [
+      -12,
+      44
+     ],
+     [
+      -30,
+      44
+     ]
+    ],
+    "z0": 0,
+    "height": 49,
+    "colour": "#3d4a30"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.2,
+      31.4
+     ],
+     [
+      5.2,
+      31.4
+     ],
+     [
+      5.2,
+      33
+     ],
+     [
+      -3.2,
+      33
+     ]
+    ],
+    "z0": 0,
+    "height": 50,
+    "colour": "#171817"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      31.5
+     ],
+     [
+      6,
+      31.5
+     ],
+     [
+      6,
+      33
+     ],
+     [
+      -4,
+      33
+     ]
+    ],
+    "z0": 49,
+    "height": 2,
+    "colour": "#4d453d"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    1,
+    30.7,
+    0.5
+   ],
+   "params": {
+    "colour": "#ffffff",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.8,
+       0.9
+      ]
+     },
+     {
+      "z": 25,
+      "rect": [
+       2.1,
+       0.8
+      ]
+     },
+     {
+      "z": 49.5,
+      "rect": [
+       1.7,
+       0.7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    1,
+    28,
+    0.1
+   ],
+   "params": {
+    "colour": "#eef4f4",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       9,
+       7
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       8,
+       6.2
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    1,
+    28,
+    0.3
+   ],
+   "params": {
+    "colour": "#2a3a3a",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6.8,
+       4.9
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.35,
+      "ellipse": [
+       6.6,
+       4.7
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    1,
+    30,
+    0.3
+   ],
+   "params": {
+    "colour": "#ffffff",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3.2,
+       1.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.6,
+      "ellipse": [
+       2.6,
+       1.4
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -64,
+      6
+     ],
+     [
+      -20,
+      28
+     ],
+     [
+      -18,
+      46
+     ],
+     [
+      -64,
+      46
+     ]
+    ],
+    "z0": 0,
+    "height": 36,
+    "colour": "#3a7a33",
+    "topColour": "#4a8a3c",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      9,
+      16
+     ],
+     [
+      32,
+      12
+     ],
+     [
+      34,
+      44
+     ],
+     [
+      10,
+      38
+     ]
+    ],
+    "z0": 0,
+    "height": 50,
+    "colour": "#3a4a30",
+    "topColour": "#3f7a37",
+    "topScale": 0.97
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      10,
+      30
+     ],
+     [
+      30,
+      28
+     ],
+     [
+      36,
+      46
+     ],
+     [
+      10,
+      46
+     ]
+    ],
+    "z0": 46,
+    "height": 8,
+    "colour": "#2f6a2e"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    22,
+    44,
+    0
+   ],
+   "params": {
+    "colour": "#3f7a37",
+    "curve": true,
+    "steps": 3,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       20,
+       12
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       16,
+       10
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 54,
+      "ellipse": [
+       14,
+       8
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36,
+    2,
+    41
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "height": 0.4,
+    "colour": "#b9b2a4",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -36,
+    -1.6,
+    41.4
+   ],
+   "params": {
+    "length": 9,
+    "height": 1.1,
+    "colour": "#7a5a2e"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -31.6,
+    2,
+    41.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 7,
+    "height": 1.1,
+    "colour": "#7a5a2e"
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    -41,
+    6,
+    41.4
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "deck_height": 0.4,
+    "post_height": 2.6,
+    "roof": "pyramid",
+    "rail": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -42,
+    -6,
+    36
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 5,
+    "colour": "#b9b2a4"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -43.1,
+    22.3,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -35.4,
+    22.2,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -57.3,
+    14.0,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -42.4,
+    27.0,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -49.1,
+    26.1,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44.9,
+    17.2,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40.5,
+    12.2,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -36.0,
+    23.0,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -39.7,
+    2.2,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -43.2,
+    3.8,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34.7,
+    0.2,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -35.0,
+    5.0,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -25.4,
+    41.7,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16.0,
+    39.0,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14.9,
+    39.5,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -25.2,
+    36.9,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -15.0,
+    36.1,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -25.2,
+    38.8,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20.5,
+    39.7,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -25.0,
+    40.5,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18.9,
+    35.5,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18.7,
+    34.5,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14.8,
+    36.9,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -29.7,
+    40.3,
+    40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    20.0,
+    41.9,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    14.7,
+    37.3,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    15.9,
+    37.7,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    19.5,
+    38.5,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    18.0,
+    39.2,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    26.0,
+    41.6,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -29.3,
+    41.6,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -25.8,
+    38.1,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11.6,
+    36.7,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -19.1,
+    36.5,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -23.9,
+    40.4,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -27.0,
+    39.5,
+    48
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    14,
+    0
+   ],
+   "params": {
+    "colour": "#4d4640",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.2,
+       1.7600000000000002
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.54,
+      "ellipse": [
+       1.6500000000000001,
+       1.32
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       0.44000000000000006,
+       0.44000000000000006
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    13,
+    17,
+    0
+   ],
+   "params": {
+    "colour": "#4d4640",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.6,
+       1.2800000000000002
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.1199999999999999,
+      "ellipse": [
+       1.2000000000000002,
+       0.96
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       0.32000000000000006,
+       0.32000000000000006
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    10,
+    0
+   ],
+   "params": {
+    "colour": "#4d4640",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.4,
+       1.1199999999999999
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.9799999999999999,
+      "ellipse": [
+       1.0499999999999998,
+       0.84
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       0.27999999999999997,
+       0.27999999999999997
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    8.6,
+    28.0,
+    0
+   ],
+   "params": {
+    "colour": "#6a6862",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.1,
+       0.9
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.7,
+      "ellipse": [
+       0.8,
+       0.7
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -6.1416639179729025,
+    29.915312802623745,
+    0
+   ],
+   "params": {
+    "colour": "#6a6862",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.1,
+       0.9
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.7,
+      "ellipse": [
+       0.8,
+       0.7
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -6.141663917972903,
+    26.084687197376255,
+    0
+   ],
+   "params": {
+    "colour": "#6a6862",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.1,
+       0.9
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.7,
+      "ellipse": [
+       0.8,
+       0.7
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -2.8000000000000034,
+    23.150257738807145,
+    0
+   ],
+   "params": {
+    "colour": "#6a6862",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.1,
+       0.9
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.7,
+      "ellipse": [
+       0.8,
+       0.7
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2.319726150268668,
+    22.485076583131637,
+    0
+   ],
+   "params": {
+    "colour": "#6a6862",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.1,
+       0.9
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.7,
+      "ellipse": [
+       0.8,
+       0.7
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    6.821937767704231,
+    24.40038938575538,
+    0
+   ],
+   "params": {
+    "colour": "#6a6862",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.1,
+       0.9
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.7,
+      "ellipse": [
+       0.8,
+       0.7
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Slopes and cliff are smooth coloured prisms without jungle texture or basalt banding; fall is a straight ribbon; plunge pool and boulder edge are small; lookout terrace is a stand-in."
+ }
+}

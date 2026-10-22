@@ -1,0 +1,120 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/480462342",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: pale rendered walls, hipped clay-tile roof, balcony bands, wide terrace (no photo found; outline is containing-quality)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e1d3",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#c98a7a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a5a40",
+    "material": "clay-tile",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -5,
+    -27.6,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "floors": 2,
+    "storeyHeight": 4.2,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.5,
+    "colours": [
+     "#c98a7a",
+     "#ffffff"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -25,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     15
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-osm-node-8393535458",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; irregular hotel outline so roof is flat clay colour rather than hipped"
+ }
+}

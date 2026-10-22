@@ -1,0 +1,382 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/226086260",
+   "used": "real outline (912 x 602 m hillside zoo, start 1977), fitted to 118 m as the lawn base"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Zoologico_de_Caricuao_2000_051.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Veronidae",
+   "view": "detail",
+   "used": "dense tropical planting (tall palms, tree trunks, low walls and stone-edged paths); no building visible"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paisajismo_y_vegetacion_Zoologico_de_Caricuao._Caracas_-_Venezuela.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Veronidae",
+   "view": "detail",
+   "used": "palms, bamboo, shaded stone paths, a ruined brick-and-stone tower in the park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "grounds",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5f8247",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8247"
+   }
+  },
+  {
+   "type": "gate-arch",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 6.5,
+    "thickness": 2.2,
+    "opening": 7,
+    "shape": "arch",
+    "finials": false,
+    "colour": "#e9e2d0",
+    "trim": "#b4684f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -12,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "depth": 2.2,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    12,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "depth": 2.2,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2,
+    "colour": "#e9e2d0",
+    "cap_colour": "#a2573f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    24,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 1.8,
+    "colour": "#e9e2d0",
+    "cap_colour": "#a2573f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    6,
+    14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "gable",
+    "rise": 1.8,
+    "colour": "#e9e2d0",
+    "cap_colour": "#a2573f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#b4684f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.7,
+    "run": 1.4,
+    "count": 3,
+    "colour": "#b8b0a0"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -34,
+    24,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 9,
+    "colour": "#9a6b53"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 1,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photos show only vegetation and a ruin, no gate or pavilions; the entrance gate, kiosks and pavilions are brief-based, 900 m hillside squeezed into 118 m, paths and enclosures not modelled"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-226086260"
+}

@@ -1,0 +1,721 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iglesia_de_Luque_120609.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Cmasi",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/luque.jpg",
+   "used": "stepped cream facade with grey-violet mouldings, central arched portal on steps, rose window, single square clock tower with belfry and small pyramidal cap, lower side bays with barred windows, pink-buff paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/166748772",
+   "used": "overall size about 74 x 22 m, long axis behind the facade"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": -2,
+  "fovDeg": 46,
+  "aspect": 0.5625,
+  "fit": "building",
+  "shiftY": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     20,
+     62
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccfa6",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "plinth": 1.0,
+    "cornice": true,
+    "trimColour": "#7b7884"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a3d",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-front-l",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -9.5,
+    -31
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccfa6",
+    "windows": "none",
+    "plinth": 1.0,
+    "cornice": true,
+    "trimColour": "#7b7884"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a3d",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-front-r",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    9.5,
+    -31
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccfa6",
+    "windows": "none",
+    "plinth": 1.0,
+    "cornice": true,
+    "trimColour": "#7b7884"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a3d",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -31.5
+   ],
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccfa6",
+    "windows": "none",
+    "plinth": 1.4,
+    "cornice": true,
+    "trimColour": "#7b7884",
+    "bands": "#9c8f6e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7884",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 16,
+    "count": 5,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    22,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "count": 4,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -31
+   ],
+   "z0": 15,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccfa6",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "plain",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "cornice": true,
+    "trimColour": "#7b7884"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7884",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -31
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     7.2
+    ],
+    "z0": 23,
+    "height": 0.7,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-upper",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -31
+   ],
+   "z0": 23.7,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccfa6",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "trimColour": "#7b7884"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7884",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -31
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     6.4
+    ],
+    "z0": 29.7,
+    "height": 0.6,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    0,
+    -31,
+    30.3
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#c9bf9a",
+    "profile": [
+     [
+      2.6,
+      0,
+      "#7b7884"
+     ],
+     [
+      2.7,
+      0.3,
+      "#7b7884"
+     ],
+     [
+      2.0,
+      0.8,
+      "#c9bf9a"
+     ],
+     [
+      1.9,
+      1.8,
+      "#c9bf9a"
+     ],
+     [
+      1.0,
+      3.0
+     ],
+     [
+      0.4,
+      3.8
+     ],
+     [
+      0.3,
+      4.2,
+      "#7b7884"
+     ],
+     [
+      0.15,
+      5.0,
+      "#7b7884"
+     ],
+     [
+      0.0,
+      5.2,
+      "#7b7884"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -31,
+    35.4
+   ],
+   "params": {
+    "height": 1.6,
+    "colour": "#8c8c8c"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    0,
+    -33.55,
+    26.2
+   ],
+   "params": {
+    "radius": 0.9
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -33.2
+   ],
+   "params": {
+    "rect": [
+     16,
+     1.2
+    ],
+    "z0": 15,
+    "height": 1.2,
+    "colour": "#dccfa6"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -33.2
+   ],
+   "params": {
+    "rect": [
+     16.6,
+     1.4
+    ],
+    "z0": 16.2,
+    "height": 0.4,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -33.2
+   ],
+   "params": {
+    "rect": [
+     11,
+     1.2
+    ],
+    "z0": 16.6,
+    "height": 1.2,
+    "colour": "#dccfa6"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -33.2
+   ],
+   "params": {
+    "rect": [
+     11.6,
+     1.4
+    ],
+    "z0": 17.8,
+    "height": 0.4,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4.2,
+    -34.3
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.7
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#cdbb8f"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4.2,
+    -34.3
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.9
+    ],
+    "z0": 14.4,
+    "height": 0.6,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.2,
+    -34.3
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.7
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#cdbb8f"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.2,
+    -34.3
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.9
+    ],
+    "z0": 14.4,
+    "height": 0.6,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9.4,
+    -34.3
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.7
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#cdbb8f"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9.4,
+    -34.3
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.9
+    ],
+    "z0": 14.4,
+    "height": 0.6,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    9.4,
+    -34.3
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.7
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#cdbb8f"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    9.4,
+    -34.3
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.9
+    ],
+    "z0": 14.4,
+    "height": 0.6,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -34.2
+   ],
+   "params": {
+    "rect": [
+     20.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -34.1
+   ],
+   "params": {
+    "rect": [
+     19,
+     0.4
+    ],
+    "z0": 13.2,
+    "height": 0.5,
+    "colour": "#7b7884"
+   }
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "at": [
+    -5.5,
+    -34.1,
+    7.0
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 3.6,
+    "trim": "#7b7884"
+   }
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "at": [
+    5.5,
+    -34.1,
+    7.0
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 3.6,
+    "trim": "#7b7884"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7.6,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    -35.5
+   ],
+   "height": 8.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbb8f",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#7b7884"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b7884",
+    "pitch": 16,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -38.4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 1.6,
+    "count": 2,
+    "colour": "#b9a57f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-recess",
+   "footprint": {
+    "rect": [
+     3.8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -36.9
+   ],
+   "z0": 0.2,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a2a1e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2a1e"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    0,
+    -34.1,
+    10.8
+   ],
+   "params": {
+    "radius": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "two-stage tower with bulbous cap, stepped gable, pilasters added; porch opening is a flat dark door not a deep round arch, rose window still octagonal, no clock discs visible from this angle, camera is higher than the photo"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-quiet-reflection"
+}

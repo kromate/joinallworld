@@ -1,0 +1,139 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/179958526",
+   "used": "real multi-wing outline (114 x 62 m), healthcare use, 1970 start date"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2_3_2022_12_01_34_p._m..jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Iskra Granado",
+   "view": "detail",
+   "used": "only a stained-glass window (St John of God, dated 1550/1950); no facade visible, so used for the dedication and the warm amber palette only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dfca",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 14,
+    "plinth": 1.0,
+    "bands": "#ffffff",
+    "glassColour": "#52666d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a2573f",
+    "material": "clay-tile",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 12,
+    "depth": 4,
+    "height": 7,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f4efe2",
+    "roofColour": "#b4684f"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    22,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    24,
+    -42,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -45
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "no photo of the building exists in the evidence (only a stained-glass window); outline is real, facade, storeys and tile roof come from the brief; hip roof not possible on irregular outline so flat tiled-colour roof"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-179958526"
+}

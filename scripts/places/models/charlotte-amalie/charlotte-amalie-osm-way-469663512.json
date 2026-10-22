@@ -1,0 +1,360 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-osm-way-469663512",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CoralWorldTower.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gruepig",
+   "view": "front",
+   "file": "/tmp/places-evidence/charlotte-amalie/coral1.jpg",
+   "used": "underwater observatory tower: blue-grey clad base standing in the water, white faceted dome with a glazed window bay and balcony rail, long white-railed jetty on piles to the left, low annex"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/469663512",
+   "used": "park extent only (277 x 111 m zoo polygon); layout of tank, pool and pavilions placed within it from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "water",
+   "at": [
+    -12,
+    -6,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     84,
+     40
+    ],
+    "height": 0.25,
+    "colour": "#2a7a8c",
+    "topColour": "#2f8aa0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "obs-base",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 8.2,
+    "height": 5.0,
+    "colour": "#8da0b2",
+    "topColour": "#6f8396",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "obs-annex",
+   "at": [
+    -10.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     8
+    ],
+    "height": 6.4,
+    "colour": "#e2e6e8",
+    "topColour": "#e8eaec"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "obs-dome",
+   "at": [
+    0.5,
+    0,
+    5.0
+   ],
+   "params": {
+    "segments": 10,
+    "smooth": false,
+    "crease": 10,
+    "colour": "#f4f5f6",
+    "profile": [
+     [
+      9.6,
+      0
+     ],
+     [
+      9.6,
+      1.1
+     ],
+     [
+      8.0,
+      3.0
+     ],
+     [
+      5.2,
+      4.6
+     ],
+     [
+      0,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "obs-window",
+   "at": [
+    0.5,
+    -6.4,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     2.0
+    ],
+    "height": 2.0,
+    "colour": "#3b4650",
+    "topColour": "#f4f5f6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "obs-balcony",
+   "at": [
+    0.5,
+    -8.0,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     7.0,
+     0.5
+    ],
+    "height": 0.9,
+    "colour": "#f4f5f6"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -10,
+    0,
+    4.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "width": 2.4,
+    "height": 0.5,
+    "rails": true,
+    "piles": true,
+    "colour": "#e8e6e0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "reef-tank",
+   "at": [
+    -32,
+    24,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#b9c4c9",
+    "profile": [
+     [
+      11,
+      0
+     ],
+     [
+      11,
+      3.2
+     ],
+     [
+      10.4,
+      3.2
+     ],
+     [
+      10.4,
+      2.6,
+      "#2f7f94"
+     ],
+     [
+      0,
+      2.6,
+      "#2f7f94"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sealion-pool",
+   "at": [
+    -52,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     14
+    ],
+    "height": 1.2,
+    "colour": "#c9c4b4",
+    "topColour": "#3f8fa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -46,
+    36
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4e0d4",
+    "windows": "none",
+    "bands": "#e8c15a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6a8a",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe-pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -24,
+    40
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4e0d4",
+    "windows": "none",
+    "bands": "#3f6a8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6a8a",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -46,
+    30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#3f6a8a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -58,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "dome facets approximated by 10-sided revolve, base is a decagonal drum not the slab-sided box, window bay simplified; tank, sea lion pool and pavilions are brief-based placements; pier not clearly visible in render and camera frames the whole park so the tower reads small"
+ }
+}

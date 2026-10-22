@@ -1,0 +1,358 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-relation-13281096",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Biblioteca_USB.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Csar13",
+   "view": "front",
+   "file": "/tmp/places-evidence/caracas/usb1.jpg",
+   "used": "library block: four storeys of beige concrete with vertical piers and small window pairs, low terracotta hip roof with mast, raised terrace on slender pilotis, mown slopes and red bromeliad garden beds"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vista_panor%C3%A1mica,_Universidad_Sim%C3%B3n_Bol%C3%ADvar.jpg",
+   "licence": "CC0",
+   "author": "Kamizer",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/caracas/usb2.jpg",
+   "used": "campus is beige blocks with terracotta hipped roofs among palms, lawns and forested hills (brief's flat-roof brutalist guess contradicted)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/158926805",
+   "used": "only nearest-building size hint; the outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 7,
+  "fovDeg": 55,
+  "aspect": 1.337,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     62,
+     24
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9bda0",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 3.0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#8f8a7e",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b24a38",
+    "material": "clay-tile",
+    "pitch": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     100,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "rotDeg": 0,
+   "z0": 2.8,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d9a90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0ada2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "pilotis",
+     "footprint": {
+      "rect": [
+       0.7,
+       0.7
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": 0,
+     "height": 2.8,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#8f8c82",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#a9a69c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -19
+    ],
+    "end": [
+     46,
+     -19
+    ],
+    "count": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    -26,
+    -5.0
+   ],
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6b645a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4640"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-pier-l",
+   "footprint": {
+    "rect": [
+     1.6,
+     2
+    ]
+   },
+   "at": [
+    -32.3,
+    -6.5
+   ],
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 14.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8a7e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a7e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-pier-r",
+   "footprint": {
+    "rect": [
+     1.6,
+     2
+    ]
+   },
+   "at": [
+    -19.7,
+    -6.5
+   ],
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 14.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8a7e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a7e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mast",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 20.6,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8d8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 5,
+    "spread": 3,
+    "line": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 3,
+    "line": 14
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "colour": "#a8323c",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -34,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 5,
+    "colour": "#8c2a4a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 3,
+    "spread": 8,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 8,
+    "line": 10
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "portal reads as a flat dark panel and piers are finer than the real coarse concrete grid; red bromeliad beds sit outside the frame and the sloped lawn is omitted; mast is a thin stub"
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   150,
+   110
+  ]
+ }
+}

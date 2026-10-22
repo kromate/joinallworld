@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-osm-node-6322922716",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/castries.json#castries-osm-node-6322922716",
+   "used": "timber trailhead shelter, wooden steps, blank signboard, tree-fern forest; no OSM outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4.5,
+    "height": 3.0,
+    "roof": "hip",
+    "rise": 1.4,
+    "colour": "#a58b66",
+    "cap_colour": "#3f6e4f",
+    "floor_colour": "#8a7556"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -7,
+    -4,
+    0
+   ]
+  },
+  {
+   "type": "steps",
+   "at": [
+    4,
+    10,
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -4,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    3,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; modest typical trailhead, every element is a guess."
+ }
+}

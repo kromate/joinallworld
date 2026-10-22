@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chagos",
+ "venueId": "chagos-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Salomon_Islands",
+   "used": "Ile Boddam had a plantation jetty; placeholder venue, no photo of a real place exists. Modest weathered concrete-and-coral jetty 34 x 6 m with a small corrugated waiting shed at the landward end."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "params": {
+    "rect": [
+     34,
+     6
+    ],
+    "z0": 0.9,
+    "height": 0.45,
+    "colour": "#bdb5a0",
+    "topColour": "#a9a392"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "coral-kerb",
+   "params": {
+    "rect": [
+     34.6,
+     0.5
+    ],
+    "z0": 1.35,
+    "height": 0.3,
+    "colour": "#e6e1d2"
+   },
+   "at": [
+    0,
+    -2.9,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "coral-kerb-back",
+   "params": {
+    "rect": [
+     34.6,
+     0.5
+    ],
+    "z0": 1.35,
+    "height": 0.3,
+    "colour": "#e6e1d2"
+   },
+   "at": [
+    0,
+    2.9,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "landing-apron",
+   "params": {
+    "rect": [
+     6,
+     9
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#8a8f8c"
+   },
+   "at": [
+    -19.5,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "piles-front",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -14,
+     -2.4
+    ],
+    "end": [
+     16,
+     -2.4
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#8a8f8c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "piles-back",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -14,
+     2.4
+    ],
+    "end": [
+     16,
+     2.4
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#8a8f8c"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     9,
+     4.4
+    ]
+   },
+   "at": [
+    -11,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 1.35,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb5a0",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7e8583",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "params": {
+    "rect": [
+     6,
+     0.5
+    ],
+    "z0": 1.35,
+    "height": 0.5,
+    "colour": "#e6e1d2"
+   },
+   "at": [
+    -11,
+    1.4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "bollards",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     3,
+     -2.6
+    ],
+    "end": [
+     16,
+     -2.6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.22,
+      "n": 8,
+      "z0": 1.35,
+      "height": 0.5,
+      "colour": "#3d4240"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "end-head",
+   "params": {
+    "rect": [
+     3,
+     6.6
+    ],
+    "z0": 0.9,
+    "height": 0.6,
+    "colour": "#8a8f8c"
+   },
+   "at": [
+    16.5,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo exists (placeholder venue); appearance of the Boddam jetty undocumented, so form is typical plantation-style; forecourt water pool sits beside, not beneath, the deck."
+ }
+}

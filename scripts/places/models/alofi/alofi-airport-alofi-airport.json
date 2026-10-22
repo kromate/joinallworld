@@ -1,0 +1,277 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-airport-alofi-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Niue_International_Airport.jpg",
+   "licence": "Public domain",
+   "author": "Pseudopanax at English Wikipedia",
+   "view": "front",
+   "file": "/tmp/places-evidence/alofi/air1.jpg",
+   "used": "airside elevation: low white single-storey terminal with teal-green low-pitch roof, taller white control tower in the middle, open covered apron walkway, small separate white shed with grey roof to the left, light poles, palms behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/110028544",
+   "used": "terminal footprint 55 x 20 m, skewed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    4,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9eef0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#5b7f95",
+    "bands": "#9fc4cf",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f9c95",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -9,
+    -1
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0ee",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd5d6",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -9,
+    -1,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "style": "square",
+    "colour": "#eef0ee",
+    "cabColour": "#8fb0c0",
+    "bandColour": "#dfe5e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    33,
+    -1
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe9ee",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#3d6b8a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4c88b8",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -34,
+    6
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2ee",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8a90",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -10.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 38,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 8,
+    "colour": "#dde3e4",
+    "edgeColour": "#3d6b8a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     17
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     15
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Terminal real outline is a skewed 55 m parallelogram and modelled as straight rects; apron, antenna masts and dense tree backdrop not modelled; photo is a distant view so details are inferred."
+ }
+}

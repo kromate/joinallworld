@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1489966432",
+   "used": "real 11.7 x 8.6 m outline (amenity=townhall), rotated 9 deg"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "louvre",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#a9cde0",
+    "faces": {
+     "back": "louvre",
+     "left": "louvre",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.4,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.5,
+    -6.4,
+    0.0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 0.9,
+    "bottom": 1.2,
+    "colour": "#4a79a3",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    5.5,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#c8202f",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     13,
+     -3
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; outline is real, facade and roof typed from Samoan village-office style."
+ }
+}

@@ -1,0 +1,581 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-airport-bridgetown-airport",
+ "name": "Grantley Adams International Airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sir_Grantley_Adams_Int_Airport,_Barbados-01.jpg",
+   "licence": "Public domain",
+   "author": "CaribDigita",
+   "view": "front",
+   "file": "/tmp/places-evidence/bridgetown/air2.jpg",
+   "used": "forecourt view: white peaked tensile canopy with blue steel trusses and a small glazed lantern, pale two-level terminal behind with a grey fascia board, blue-edged white canopy over the kerb, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sir_Grantley_Adams_Int_Airport,_Barbados-05.jpg",
+   "licence": "Public domain",
+   "author": "CaribDigita",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/bridgetown/air1.jpg",
+   "used": "airside: groups of white tent roofs of different sizes over a low pale flat-roofed terminal, long flat canopy to the pier"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25639014",
+   "used": "overall extent only (429 x 147 m irregular outline); a central 120 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     84,
+     26
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9df",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#46586a",
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#b9bcbd"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d5d6d2",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-wing",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    -48,
+    18
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#46586a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d5d6d2",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    46,
+    24
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#46586a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d5d6d2",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia-board",
+   "at": [
+    -4,
+    -0.5,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.8
+    ],
+    "height": 3.6,
+    "colour": "#9a9d9c"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "kerb-canopy",
+   "at": [
+    34,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 36,
+    "depth": 7,
+    "height": 4.4,
+    "thickness": 0.7,
+    "columns": 4,
+    "colour": "#f2f2ee",
+    "edgeColour": "#2f6fae"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "big-tent",
+   "at": [
+    -18,
+    -11,
+    0
+   ],
+   "params": {
+    "colour": "#f4f4f0",
+    "sections": [
+     {
+      "z": 5.2,
+      "rect": [
+       38,
+       38
+      ]
+     },
+     {
+      "z": 6.1,
+      "rect": [
+       27.36,
+       27.36
+      ]
+     },
+     {
+      "z": 8.0,
+      "rect": [
+       9.88,
+       9.88
+      ]
+     },
+     {
+      "z": 11.2,
+      "rect": [
+       4.18,
+       4.18
+      ]
+     },
+     {
+      "z": 14.2,
+      "rect": [
+       2.28,
+       2.28
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "big-tent-lantern",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18,
+    -11,
+    12.4
+   ],
+   "params": {
+    "colour": "#5c6b78",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "tent-posts",
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 30,
+    "dy": 30,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 5.4,
+      "colour": "#2f6fae"
+     }
+    }
+   },
+   "at": [
+    -18,
+    -11,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "tent-truss",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -37,
+     -11,
+     5.0
+    ],
+    "end": [
+     1,
+     -11,
+     5.0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       38
+      ],
+      "height": 0.6,
+      "colour": "#2f6fae"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tent-truss-x",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -30,
+     5.0
+    ],
+    "end": [
+     -18,
+     8,
+     5.0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       38,
+       0.6
+      ],
+      "height": 0.6,
+      "colour": "#2f6fae"
+     }
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tent-b",
+   "at": [
+    16,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ed",
+    "sections": [
+     {
+      "z": 4.8,
+      "rect": [
+       24,
+       24
+      ]
+     },
+     {
+      "z": 5.7,
+      "rect": [
+       17.28,
+       17.28
+      ]
+     },
+     {
+      "z": 7.6,
+      "rect": [
+       6.24,
+       6.24
+      ]
+     },
+     {
+      "z": 10.8,
+      "rect": [
+       2.64,
+       2.64
+      ]
+     },
+     {
+      "z": 13.8,
+      "rect": [
+       1.44,
+       1.44
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tent-c",
+   "at": [
+    40,
+    -7,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ed",
+    "sections": [
+     {
+      "z": 4.4,
+      "rect": [
+       19,
+       19
+      ]
+     },
+     {
+      "z": 5.3,
+      "rect": [
+       13.68,
+       13.68
+      ]
+     },
+     {
+      "z": 7.2,
+      "rect": [
+       4.94,
+       4.94
+      ]
+     },
+     {
+      "z": 10.4,
+      "rect": [
+       2.09,
+       2.09
+      ]
+     },
+     {
+      "z": 13.4,
+      "rect": [
+       1.14,
+       1.14
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tent-air",
+   "at": [
+    -46,
+    2,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ed",
+    "sections": [
+     {
+      "z": 4.4,
+      "rect": [
+       26,
+       20
+      ]
+     },
+     {
+      "z": 5.3,
+      "rect": [
+       19,
+       14.5
+      ]
+     },
+     {
+      "z": 7.2,
+      "rect": [
+       7,
+       5.5
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       3,
+       2.5
+      ]
+     },
+     {
+      "z": 12.5,
+      "rect": [
+       1.6,
+       1.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "id": "tower",
+   "at": [
+    -40,
+    58,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "style": "round",
+    "colour": "#e8e6df",
+    "cabColour": "#4d6f86",
+    "bandColour": "#c8362f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign-a",
+   "at": [
+    -4,
+    -1.6,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "height": 2.2,
+    "bottom": 7.4,
+    "colour": "#c9c4a0"
+   }
+  },
+  {
+   "type": "car",
+   "id": "cars",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4.2,
+    "yaw": 0,
+    "colour": "#3a5fa8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms-front",
+   "at": [
+    -20,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 4,
+    "line": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tents now flared with blue truss beams and lantern but truss is a simple frame not a diagonal lattice; GRANTLEY ADAMS lettering omitted (blank grey fascia); tower moved well behind; only central ~120 m of the 430 m terminal modelled"
+ }
+}

@@ -1,0 +1,319 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NZ_AK_St_Mary%27s_Old_Convent_Chapel_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Itineris55",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/chapel1.jpg",
+   "used": "cream weatherboard walls, dark grey corrugated steep gable roof, red-brown trimmed pointed windows, buttresses, slim spire with cross at the west gable, transept gable, low hedges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/396119569",
+   "used": "cruciform plan about 21 x 16 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.67
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     20,
+     7.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f0ede2",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bay": 4.2,
+    "trimColour": "#8a4a3a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f757b",
+    "material": "corrugated",
+    "pitch": 50,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     16,
+     6.4
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f0ede2",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bay": 4,
+    "trimColour": "#8a4a3a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f757b",
+    "material": "corrugated",
+    "pitch": 50,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.2,
+     4.2
+    ]
+   },
+   "at": [
+    -11.4,
+    0
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f0ede2",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f757b",
+    "material": "corrugated",
+    "pitch": 45,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-base",
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 5.2,
+    "height": 3.4,
+    "colour": "#f0ede2",
+    "topColour": "#f0ede2"
+   },
+   "at": [
+    -8.2,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "spire",
+   "params": {
+    "colour": "#b9bfc4",
+    "sections": [
+     {
+      "z": 8.6,
+      "rect": [
+       2.6,
+       2.6
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 13.5,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 16.5,
+      "rect": [
+       0.12,
+       0.12
+      ]
+     }
+    ]
+   },
+   "at": [
+    -8.2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross",
+   "params": {
+    "rect": [
+     0.12,
+     0.7
+    ],
+    "z0": 16.5,
+    "height": 0.12,
+    "colour": "#555555"
+   },
+   "at": [
+    -8.2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "z0": 16.4,
+    "height": 1.2,
+    "colour": "#555555"
+   },
+   "at": [
+    -8.2,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.7
+      ],
+      "z0": 0,
+      "height": 3.2,
+      "topScale": 0.5,
+      "colour": "#f0ede2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -4.1
+    ],
+    "end": [
+     7,
+     -4.1
+    ],
+    "count": 4,
+    "lod1Step": 2,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -10,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.9,
+    "depth": 1
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "depth": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -17,
+     -3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -15,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no red-brown arched window trim or kauri detail, tall lancet windows rendered as small pointed windows, adjacent modern building and hedges omitted, roof pitch slightly steeper"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-quiet-reflection"
+}

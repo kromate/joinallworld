@@ -1,0 +1,495 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belize_City_Hall.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Padraic",
+   "view": "front",
+   "file": "/tmp/places-evidence/belize-city/hall1.jpg",
+   "used": "two-storey cream building with open upper loggia on square columns, white balustrade, stepped parapet gable over the front, green painted plinth, tall narrow windows with green trim on the long side, pitched roof behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belizecity-cityhall.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Stephan Luecke",
+   "view": "side",
+   "file": "/tmp/places-evidence/belize-city/hall2.jpg",
+   "used": "long side bay rhythm with pilasters, shuttered windows, teal-green base, low sloping roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/295592929",
+   "used": "size (50 x 26 m, name quality); modelled as a simplified rectangle with the gable end as front"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     17,
+     24
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcad",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    },
+    "bay": 3.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 1.2,
+      "proud": 0.08,
+      "at": 0,
+      "floors": [
+       0
+      ],
+      "colour": "#8fd4a2"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "left",
+       "right"
+      ],
+      "width": 0.5,
+      "depth": 0.3,
+      "spacing": 3.2,
+      "colours": [
+       "#f1ead0",
+       "#f1ead0"
+      ],
+      "skipGround": false,
+      "margin": 0.2
+     }
+    ],
+    "glassColour": "#4a5a3e",
+    "trimColour": "#f4efd8",
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b9b3a2",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-floor",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     16.4,
+     5.6
+    ],
+    "z0": 4.2,
+    "height": 0.5,
+    "colour": "#efe6c3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-roof",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     16.8,
+     6
+    ],
+    "z0": 9.2,
+    "height": 0.5,
+    "colour": "#eadfb0"
+   }
+  },
+  {
+   "type": "hospital/balustrade",
+   "at": [
+    0,
+    -7.9,
+    4.7
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "postEvery": 0.5,
+    "colour": "#f3eddc"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.7,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#cfd0c4"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -11,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "id": "col0",
+   "at": [
+    -7.4,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 9.2,
+    "colour": "#eee5bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "colbase0",
+   "at": [
+    -7.4,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 1.2,
+    "colour": "#8fd4a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col1",
+   "at": [
+    -2.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 9.2,
+    "colour": "#eee5bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "colbase1",
+   "at": [
+    -2.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 1.2,
+    "colour": "#8fd4a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col2",
+   "at": [
+    2.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 9.2,
+    "colour": "#eee5bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "colbase2",
+   "at": [
+    2.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 1.2,
+    "colour": "#8fd4a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col3",
+   "at": [
+    7.4,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 9.2,
+    "colour": "#eee5bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "colbase3",
+   "at": [
+    7.4,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 1.2,
+    "colour": "#8fd4a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable0",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     17.4,
+     1.0
+    ],
+    "z0": 9.7,
+    "height": 0.75,
+    "colour": "#ece3b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable1",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     13.999999999999998,
+     1.0
+    ],
+    "z0": 10.45,
+    "height": 0.75,
+    "colour": "#ece3b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable2",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     10.599999999999998,
+     1.0
+    ],
+    "z0": 11.2,
+    "height": 0.75,
+    "colour": "#ece3b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable3",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.199999999999999,
+     1.0
+    ],
+    "z0": 11.95,
+    "height": 0.75,
+    "colour": "#ece3b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable4",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.799999999999999,
+     1.0
+    ],
+    "z0": 12.7,
+    "height": 0.75,
+    "colour": "#ece3b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable5",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3999999999999986,
+     1.0
+    ],
+    "z0": 13.45,
+    "height": 0.75,
+    "colour": "#ece3b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roundel",
+   "at": [
+    3,
+    -8.2,
+    11.4
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.15
+    ],
+    "height": 1.8,
+    "colour": "#f6f3e8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lettering",
+   "at": [
+    0,
+    -8.2,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     0.12
+    ],
+    "height": 0.5,
+    "colour": "#4a4a40"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -7.4,
+    -8.5,
+    9.2
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#2b3f8c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roundel is a square plaque and the flag a flat block; balustrade is a simplified rail; green arched lintels, shutters and the red-roof neighbour are missing; recessed loggia wall reads blue-grey in shade."
+ }
+}

@@ -1,0 +1,333 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Papapapaitai.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Viktor Pinchuk",
+   "view": "street",
+   "file": "/tmp/places-evidence/apia/falls2.jpg",
+   "used": "single very tall ribbon fall in a sheer dark gorge across a forested valley; a small roofed lookout hut on the far rim"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Samoa_waterfall_scenery.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Usoilena",
+   "view": "street",
+   "file": "/tmp/places-evidence/apia/falls2.jpg",
+   "used": "view from the rim through broadleaf canopy; fall drops about 100 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 0.75,
+  "margin": 0.0,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lookout",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -46
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5aca0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5aca0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    36
+   ],
+   "params": {
+    "rect": [
+     108,
+     10
+    ],
+    "z0": 0,
+    "height": 92,
+    "colour": "#2d5a2c",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -32,
+    22,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 44,
+    "height": 75,
+    "stairs": false,
+    "rock_colour": "#2c5a2a",
+    "boulders": 0,
+    "seed": 3
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    32,
+    22,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 44,
+    "height": 75,
+    "stairs": false,
+    "rock_colour": "#2c5a2a",
+    "boulders": 0,
+    "seed": 7
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    29
+   ],
+   "params": {
+    "rect": [
+     34,
+     6
+    ],
+    "z0": 0,
+    "height": 95,
+    "colour": "#2f3a33",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    25.4,
+    0
+   ],
+   "params": {
+    "colour": "#e9f1f2",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 3,
+      "rect": [
+       3.2,
+       0.5
+      ]
+     },
+     {
+      "z": 40,
+      "rect": [
+       3.0,
+       0.5
+      ]
+     },
+     {
+      "z": 85,
+      "rect": [
+       2.4,
+       0.5
+      ]
+     },
+     {
+      "z": 95,
+      "rect": [
+       1.0,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    22
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#9fc4cc",
+    "topScale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    23.5
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "z0": 0,
+    "height": 5,
+    "colour": "#e4eeee",
+    "topScale": 0.4
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -18,
+    35,
+    93
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4.5,
+    "height": 3,
+    "roof": "hip",
+    "rise": 1.4,
+    "posts": 4,
+    "colour": "#d8d4c8",
+    "cap_colour": "#7d8187"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -36,
+    20,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 34,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    36,
+    20,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 34,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 18,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 10,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    22,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "valley still blocky rock-hills with few trees (budget-limited), no layered canopy on slopes; gorge is a flat dark slab with straight ribbon fall; hut on rim is tiny; mist/pool minimal"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-node-689554231"
+}

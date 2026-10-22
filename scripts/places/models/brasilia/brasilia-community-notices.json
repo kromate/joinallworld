@@ -1,0 +1,257 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1525243618",
+   "used": "nearest building (13 m): 22 x 9 m single storey, 4.4 m high; extended into an L with a lower wing as the brief describes"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Resid%C3%AAncia_Oficial_do_Torto.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "J.Vergari",
+   "view": "detail",
+   "file": "/tmp/places-evidence/brasilia/torto.jpg",
+   "used": "entrance only (blue blank sign board, chain-link security fence, clay-tile roofed gate pavilion, tall pines, lawn); the house itself is not visible so no match comparison"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "polygon": [
+     [
+      -11.7,
+      -0.8
+     ],
+     [
+      8.9,
+      -7.6
+     ],
+     [
+      11.7,
+      0.8
+     ],
+     [
+      -8.9,
+      7.6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ece0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5654a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -8,
+    -8
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ece0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5654a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/portico",
+   "id": "veranda",
+   "at": [
+    3,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "height": 3.4,
+    "columns": 4,
+    "pediment": false,
+    "steps": 2,
+    "colour": "#f0ece0",
+    "roofColour": "#b5654a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    26,
+    -14
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5654a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "gate-sign",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 0.9,
+    "colour": "#2d3a78",
+    "frameColour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "pines",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 16,
+    "count": 8,
+    "spread": 6,
+    "line": 50,
+    "colour": "#2e5a34"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drive",
+   "at": [
+    28,
+    -16
+   ],
+   "params": {
+    "rect": [
+     8,
+     30
+    ],
+    "height": 0.05,
+    "colour": "#55595c",
+    "z0": 0.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 12,
+  "treeKind": "broadleaf",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "House itself never photographed (only gate sign); L plan, tile hip roofs and pavilion are typical-for-place, colours unverified."
+ }
+}

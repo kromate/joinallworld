@@ -1,0 +1,299 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-airport-buenos-aires-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeropuerto_Internacional_de_Ezeiza_Terminal_B.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Cadaverexquisito",
+   "view": "front",
+   "file": "/tmp/places-evidence/buenos-aires/ezeizaB.jpg",
+   "used": "stone-clad 4-storey terminal block with ribbon windows over a deep dark ground-floor arrival canopy, control tower cab on the roof, blank letter board, forecourt road and lamp masts"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Ministro_Pistarini_International_Airport",
+   "used": "terminal complex identity and eras"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     96,
+     38
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3a3a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3a",
+    "overhang": 2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     72,
+     24
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 4.5,
+   "height": 18.5,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d867c",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wing",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    44,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 4.5,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8d867c",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-glazed",
+   "footprint": {
+    "rect": [
+     20,
+     30
+    ]
+   },
+   "at": [
+    -52,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3a",
+    "overhang": 1,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    8,
+    6,
+    23
+   ],
+   "params": {
+    "height": 6,
+    "style": "round",
+    "colour": "#9a9a96",
+    "shaftRadius": 1.4,
+    "cabRadius": 2.6,
+    "cabColour": "#6f8a96"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    24,
+    -8.3,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 6,
+    "bottom": 4.6,
+    "colour": "#1c1d20",
+    "frameColour": "#2a2a2a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -34,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "bottom": 7.5,
+    "colour": "#2a2a2a",
+    "frameColour": "#c8c8c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-step",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    6
+   ],
+   "z0": 23,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d867c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     8,
+     26
+    ],
+    "end": [
+     22,
+     8,
+     26
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "pilotis-row",
+      "params": {
+       "length": 1,
+       "height": 4,
+       "radius": 0.25,
+       "pitch": 2,
+       "colour": "#777"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     56,
+     -16
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -22
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     -14,
+     -22
+    ],
+    "yawDeg": 90
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stone block, dark canopy, tower and B board match; rooftop antennas/dishes simplified, no parked cars lot or lamp masts, side wing generic"
+ }
+}

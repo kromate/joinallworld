@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Government_of_Niue.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dyt10",
+   "view": "front",
+   "file": "/tmp/places-evidence/alofi/gov.jpg",
+   "used": "central cross-gabled block with red-brown gable end and white barge boards, clerestory louvre band, lower hipped wings with pale roofs and dark-posted verandah, white picket fence, tall white flagpole, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/311687088",
+   "used": "overall extent 38 x 24 m, irregular wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "punched",
+     "right": "punched"
+    },
+    "glassColour": "#3a4650",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9b58f",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a4650"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b3a2f",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.7,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -9.5,
+    -4.8,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.6,
+    "height": 3.0,
+    "balustrade": false,
+    "steps": true,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    10.5,
+    -4.8,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "depth": 2.6,
+    "height": 3.0,
+    "balustrade": false,
+    "steps": true,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "none",
+    "bands": "#5a2b22"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b3a2f",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    2.5,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "colour": "#f2c230"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "picket",
+    "pillarEvery": 2.0,
+    "colour": "#f7f7f4"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.0,
+    "colour": "#7c8288"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -27,
+     6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     8
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -3
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo-matched cross-gabled hall with hipped wings; real plan is irregular and rotated, wings simplified to a rect; fence is posts only; stone memorial blocks and sign not modelled."
+ }
+}

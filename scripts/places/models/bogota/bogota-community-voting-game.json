@@ -1,0 +1,311 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_Principal_de_Soacha_-_Soacha%C2%B4s_Central_Square.jpg",
+   "file": "/tmp/places-evidence/bogota/b0-soacha1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Oscarin (Commons)",
+   "view": "street",
+   "used": "pink-brown paved open plaza, cream-yellow church with triangular gabled front and tall tower with red pointed cap at right, yellow civic block at back, low red/white market stalls, tall light mast"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/546691700",
+   "used": "nearest building only; not used (40 m away shop row)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 60
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "rect": [
+     24,
+     22
+    ]
+   },
+   "at": [
+    26,
+    28
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e2cc82",
+    "pitch": 48,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     5.5,
+     5.5
+    ]
+   },
+   "at": [
+    41,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 28,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c46e",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "pitch": 65
+   }
+  },
+  {
+   "type": "mass",
+   "id": "civic",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    36
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c65a",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a44",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -30,
+     15
+    ],
+    "end": [
+     24,
+     15
+    ],
+    "of": {
+     "type": "mass",
+     "id": "stall",
+     "footprint": {
+      "rect": [
+       4.2,
+       2.4
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 2.2,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f1ece4",
+      "windows": "none",
+      "bands": "#b8332f",
+      "plinth": 0.5
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#a8573e",
+      "pitch": 12
+     }
+    }
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -32,
+    8,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "count": 1,
+    "spacing": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "civic-balcony",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    0,
+    27
+   ],
+   "z0": 3,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5a4a3e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8573e",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tiled-roofs",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    -20,
+    24
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9d9a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8573e",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza-brick",
+   "params": {
+    "points": [
+     [
+      -60,
+      -30
+     ],
+     [
+      60,
+      -30
+     ],
+     [
+      60,
+      13
+     ],
+     [
+      -60,
+      13
+     ]
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#b8806c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-recess",
+   "footprint": {
+    "rect": [
+     0.6,
+     9
+    ]
+   },
+   "at": [
+    26,
+    16.4
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a2f2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a2f2a",
+    "pitch": 62
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pink-brown plaza, wider A-frame church with tall tower, red/white gabled stalls, taller civic block with balcony; dark triangular portal recess is hidden/not legible, background buildings and civic detail simplified."
+ }
+}

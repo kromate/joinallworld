@@ -1,0 +1,203 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-1015283263",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1015283263",
+   "used": "stadium outline (about 99 x 82 m, long side bearing 103 degrees) sets the pitch orientation, stand side and boundary wall"
+  },
+  {
+   "kind": "text",
+   "used": "brief: concrete stand with blue accents, shed roof over the stand, four floodlights, scoreboard, perimeter wall; no photo found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": -13,
+   "params": {
+    "length": 84,
+    "width": 56,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    2,
+    -33,
+    0
+   ],
+   "rotDeg": -13,
+   "params": {
+    "length": 64,
+    "depth": 11,
+    "height": 8,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 1,
+    "seat_colour": "#2f6fb0",
+    "seat_colour2": "#ffffff"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -34,
+     38
+    ],
+    "end": [
+     30,
+     28
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "seatColour": "#2f6fb0",
+    "concreteColour": "#d6d0c0",
+    "canopy": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -48.5,
+      -31
+     ],
+     [
+      36.9,
+      -50.9
+     ],
+     [
+      52.1,
+      28.8
+     ],
+     [
+      -40.6,
+      50.9
+     ],
+     [
+      -48.5,
+      -31
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 0,
+    "colour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -46,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    36,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    27,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -39,
+    49,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    48,
+    -10,
+    0
+   ],
+   "rotDeg": -13,
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "facing": "west"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: stand sizes, seat colours and pitch size are assumed from the brief; only the outline orientation is measured; no terracing on the other three sides beyond one low stand, no ticket booths"
+ },
+ "site": {
+  "ground": "grass",
+  "extent": [
+   130,
+   120
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -35
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     40
+    ],
+    "height": 9
+   }
+  ]
+ }
+}

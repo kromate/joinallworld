@@ -1,0 +1,182 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/906514156",
+   "used": "real footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 8
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 9,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#3f6a8a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    26,
+    -14
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f6a8a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    26,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#3f6a8a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "helipad",
+   "on": "wards",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "ground": false
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "wards",
+   "at": [
+    18,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 2.2,
+    "height": 2.4,
+    "colour": "#b5473a"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "colour": "#8a8f94"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo anywhere; real OSM wing outline (name match), storeys, colours, atrium and helipad guessed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-osm-way-396954377"
+}

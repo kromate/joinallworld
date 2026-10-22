@@ -1,0 +1,102 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: basalt rock face with shallow carvings above the shoreline path, low timber rail"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "grotto-rock",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 3.5,
+    "height": 3.2,
+    "colour": "#6b6a66",
+    "statue": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -4,
+    -3,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.0,
+    "thickness": 0.12,
+    "kind": "fence",
+    "pillarEvery": 2,
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.5,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 0.8,
+    "bottom": 0.7,
+    "colour": "#c9c3b5",
+    "frameColour": "#6b6a66"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   30,
+   25
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; rock outcrop approximated by a grotto-rock mound, carvings not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-osm-node-1196324630"
+}

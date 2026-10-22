@@ -1,0 +1,204 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chagos",
+ "venueId": "chagos-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/chagos.json#chagos-quiet-reflection",
+   "used": "8 x 5 m whitewashed prayer hut with low gable and corrugated roof, arched windows, small gate, echoing the plantation church (placeholder, no photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e6e1d2",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.35,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#9a9482"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7e8583",
+    "material": "corrugated",
+    "rise": 1.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.2,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -3.2
+   ],
+   "rotDeg": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e6e1d2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7e8583",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.3,
+    "run": 0.4,
+    "count": 1,
+    "colour": "#9a9482"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "pillar": 0.5,
+    "leaf": "bars",
+    "colour": "#c9c0a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yard-wall",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -7
+   ],
+   "rotDeg": 0,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9c0a6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9482",
+    "material": "concrete",
+    "rise": 1.2,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -7,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    7,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   26,
+   22
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Typed placeholder, no photo; hut is a modest invention echoing the brief, yard wall is conjectural."
+ }
+}

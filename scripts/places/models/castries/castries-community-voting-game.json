@@ -1,0 +1,101 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/396114466",
+   "used": "real 9.4 x 7.1 m outline (name match); nearby Commons photos show other buildings so none used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true,
+    "fit": 10
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4b84a",
+    "windows": "louvre",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 20,
+    "colour": "#3f6e4f",
+    "material": "corrugated",
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1,
+    "bottom": 2.2,
+    "colour": "#5a3a2e",
+    "posts": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 1.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; shape and colours are guesses on the real outline"
+ }
+}

@@ -1,0 +1,179 @@
+{
+ "verified": "footprint",
+ "name": "Niue Cultural Centre",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/111378893",
+   "used": "tourism=museum, name match, 13.1x9.9 m at bearing 143 deg: main footprint and orientation"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey hipped corrugated roof, carved-board entrance with hiapo-style relief panels; no photo found on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#9fc3c9",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4.2,
+     2.4
+    ]
+   },
+   "at": [
+    -4.95,
+    -3.73
+   ],
+   "rotDeg": -53,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a2e",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "carved-board",
+   "at": [
+    -5.99,
+    -4.51,
+    0.6
+   ],
+   "rotDeg": -53,
+   "params": {
+    "rect": [
+     3.2,
+     0.18
+    ],
+    "height": 2.2,
+    "colour": "#7a5a2e",
+    "topColour": "#7a5a2e"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    -7.11,
+    -5.36
+   ],
+   "rotDeg": -53,
+   "params": {
+    "width": 3.2,
+    "height": 0.6,
+    "run": 1.6,
+    "colour": "#bdb6a8",
+    "rails": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -11.76,
+    -1.35
+   ],
+   "rotDeg": -53,
+   "params": {
+    "length": 12,
+    "height": 0.5,
+    "thickness": 0.25,
+    "colour": "#f1ece0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11,
+     9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     11,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-osm-way-111378893",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM footprint, hip roof and carved entrance board typed from the brief."
+ }
+}

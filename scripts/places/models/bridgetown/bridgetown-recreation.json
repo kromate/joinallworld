@@ -1,0 +1,393 @@
+{
+ "name": "Farley Hill National Park",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FARLEY_HILL_RUINS_-_ST._PETER_PARISH_-_BARBADOS.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jerrye and Roy Klotz MD",
+   "view": "front",
+   "file": "/tmp/places-evidence/bridgetown/fh1.jpg",
+   "used": "two-storey roofless coral-stone shell: weathered buff-grey ashlar, heavy corner quoins, string course, tall arched openings with hood moulds, open arched ground floor, stepped gable end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barbados,_Karibik_-_Farley_Hill_House_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "giggel",
+   "view": "street",
+   "used": "house set in lawn among royal palms, tropical shrubs and big trees; central gabled bay"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/471281496",
+   "used": "park outline is 450 x 370 m and not the house: only the setting is taken from it, the house is sized from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 42,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.534,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house-shell",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b3a688",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "bay": 6.0,
+    "bands": "#8d8168",
+    "glassColour": "#6f8f6a",
+    "plinth": 0.7,
+    "cornice": true,
+    "parapet": 0.5,
+    "pattern": [
+     {
+      "type": "arcade"
+     },
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8168",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "quoin-w0",
+   "params": {
+    "mode": "line",
+    "start": [
+     -16.9,
+     -7.05,
+     0.6
+    ],
+    "end": [
+     -16.9,
+     -7.05,
+     9.6
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.3
+      ],
+      "height": 0.5,
+      "colour": "#c4b898"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "quoin-w1",
+   "params": {
+    "mode": "line",
+    "start": [
+     -16.9,
+     -7.05,
+     1.15
+    ],
+    "end": [
+     -16.9,
+     -7.05,
+     10.15
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.3
+      ],
+      "height": 0.5,
+      "colour": "#9d9075"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "quoin-e0",
+   "params": {
+    "mode": "line",
+    "start": [
+     16.9,
+     -7.05,
+     0.6
+    ],
+    "end": [
+     16.9,
+     -7.05,
+     9.6
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.3
+      ],
+      "height": 0.5,
+      "colour": "#c4b898"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "quoin-e1",
+   "params": {
+    "mode": "line",
+    "start": [
+     16.9,
+     -7.05,
+     1.15
+    ],
+    "end": [
+     16.9,
+     -7.05,
+     10.15
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.3
+      ],
+      "height": 0.5,
+      "colour": "#9d9075"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "front-steps",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#b1a687"
+   }
+  },
+  {
+   "type": "array",
+   "id": "base-ferns",
+   "params": {
+    "mode": "line",
+    "start": [
+     -15,
+     -8.3,
+     0
+    ],
+    "end": [
+     15,
+     -8.3,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 3.2,
+      "height": 1.1,
+      "depth": 1.4,
+      "colour": "#2f6b32"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "ginger-lilies",
+   "params": {
+    "mode": "line",
+    "start": [
+     -13,
+     -9.6,
+     0
+    ],
+    "end": [
+     13,
+     -9.6,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 3.5,
+      "height": 1.7,
+      "depth": 1.5,
+      "colour": "#3f8a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "garden-bed",
+   "id": "red-flowers-a",
+   "at": [
+    -8,
+    -9.8,
+    0.05
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.4,
+    "colour": "#c4262a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "id": "red-flowers-b",
+   "at": [
+    8,
+    -9.8,
+    0.05
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.4,
+    "colour": "#c4262a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "tree",
+   "id": "royal-palm-1",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "id": "royal-palm-2",
+   "at": [
+    21,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17
+   }
+  },
+  {
+   "type": "big-tree",
+   "id": "mahogany",
+   "at": [
+    28,
+    6,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "crown_radius": 8,
+    "trunk_radius": 0.8,
+    "colour": "#3f6b35"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "path-slab",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 0.02,
+    "run": 1.2,
+    "count": 2,
+    "colour": "#b9b29c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "areca-palms",
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -9,
+     0
+    ],
+    "end": [
+     12,
+     -9,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 7
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-recreation",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "park outline unusable so house sized from photos; window glazing cannot be left empty so a sky-blue glass colour stands in; hood moulds and quoin relief are thin blocks; no stained streaks"
+ }
+}

@@ -1,0 +1,196 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/6788507",
+   "used": "park outline, scaled to the 118 m scene limit"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeroparque_Jorge_Newberry-Overview_(by_Dar%C3%ADo_Crusaf%C3%B3n).jpg",
+   "licence": "CC BY-SA 2.5 es",
+   "author": "Dario Crusafon",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/buenos-aires/park1.jpg",
+   "used": "only context (Palermo parkland: dense broadleaf canopy, lawns); the park itself is not resolvable, so not used for verification"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park-ground",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f9a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    -30,
+    -20,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      20,
+      12
+     ],
+     [
+      40,
+      14
+     ],
+     [
+      60,
+      30
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    -10,
+    -50,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      20
+     ],
+     [
+      12,
+      45
+     ],
+     [
+      25,
+      70
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    8,
+    6,
+    0.5
+   ],
+   "params": {
+    "radius": 4,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    24,
+    22,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "kind": "hip"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -34,
+    -22,
+    0.5
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.4,
+    "pillar": 1.0,
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    10,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 14,
+    "spread": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -30,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 12,
+    "spread": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-osm-relation-6788507",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the park itself; generic Palermo park content (paths, pavilion, fountain, trees) on the real outline, layout invented"
+ }
+}

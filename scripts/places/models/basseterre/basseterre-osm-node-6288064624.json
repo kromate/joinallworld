@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-node-6288064624",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/basseterre.json#basseterre-osm-node-6288064624",
+   "used": "small L-shaped single-storey strip plaza about 40 x 18 m, covered arcade of shops, car park; the OSM match is the 254 m Marriott resort so it is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-strip",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e3c2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "cornice": true,
+    "bands": "#d6743b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "return-wing",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    -10.5,
+    -7
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e3c2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "cornice": true,
+    "bands": "#d6743b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    4.5,
+    -1.3,
+    0
+   ],
+   "params": {
+    "length": 21,
+    "width": 2.6,
+    "height": 3.2,
+    "colour": "#d6743b",
+    "roofColour": "#ffffff"
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -3,
+    -0.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.2,
+    "kind": "glass",
+    "colour": "#d6743b",
+    "sign_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    3,
+    -0.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.2,
+    "kind": "glass",
+    "colour": "#d6743b",
+    "sign_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    9,
+    -0.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.2,
+    "kind": "shutter",
+    "colour": "#d6743b",
+    "sign_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    8,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text only; typical strip plaza, OSM match was the Marriott so ignored."
+ }
+}

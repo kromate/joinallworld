@@ -1,0 +1,453 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-way-60261200",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_Kitts_-_Brimstone_Hill_Fortress_01.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Martin Falbisoner",
+   "view": "front",
+   "file": "/tmp/places-evidence/basseterre/brim1.jpg",
+   "used": "Citadel courtyard: dark basalt walls with pale dressed arches, arcaded inner range, parapet with a gun line, square corner tower, flag pole, paved court"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_Kitts_-_Brimstone_Hill_Fortress_03.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Martin Falbisoner",
+   "view": "detail",
+   "used": "rubble-stone parapet in brown-grey, black iron cannon on a carriage, paved gun platform"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/60261200",
+   "used": "overall extent only (479 m park outline); the Citadel and bastions are modelled at 1:1 on the summit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 60,
+  "aspect": 1.8,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "hill-1",
+   "at": [
+    0,
+    -10
+   ],
+   "params": {
+    "rect": [
+     160,
+     115
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#6f8a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill-2",
+   "at": [
+    0,
+    -6
+   ],
+   "params": {
+    "rect": [
+     140,
+     100
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#7b8450"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill-3",
+   "at": [
+    0,
+    -2
+   ],
+   "params": {
+    "rect": [
+     108,
+     78
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#8a7a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill-4",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     54
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#6a8247"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-back",
+   "footprint": {
+    "rect": [
+     58,
+     6
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "z0": 3,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#55534f",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6b63",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-front",
+   "footprint": {
+    "rect": [
+     58,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "z0": 3,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#55534f",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6b63",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-left",
+   "footprint": {
+    "rect": [
+     6,
+     28
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "z0": 3,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#55534f",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6b63",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-right",
+   "footprint": {
+    "rect": [
+     6,
+     28
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "z0": 3,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#55534f",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6b63",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lower-bastion",
+   "footprint": {
+    "polygon": [
+     [
+      -44,
+      -6
+     ],
+     [
+      44,
+      -6
+     ],
+     [
+      50,
+      6
+     ],
+     [
+      -50,
+      6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4f4d49",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a766d",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "keep-tower",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -22,
+    17
+   ],
+   "z0": 12,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a5853",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6b63",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -26,
+    -19.5,
+    12
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.2,
+    "thickness": 0.8,
+    "merlons": false
+   }
+  },
+  {
+   "type": "cannon",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18,
+    -17.5,
+    12.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 6,
+    "spacing": 6,
+    "yaw": 270
+   }
+  },
+  {
+   "type": "cannon",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -28,
+    -38,
+    5.1
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 7,
+    "yaw": 270
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -22,
+    17,
+    19
+   ],
+   "params": {}
+  },
+  {
+   "type": "corner-tower",
+   "at": [
+    29,
+    20,
+    12
+   ],
+   "params": {
+    "radius": 3,
+    "height": 9,
+    "kind": "square",
+    "cap": "flat"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "id": "court-floor",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     30
+    ],
+    "z0": 3,
+    "height": 0.15,
+    "colour": "#46443f"
+   }
+  },
+  {
+   "type": "arcade-bays",
+   "at": [
+    0,
+    13.2,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 44,
+    "depth": 2.6,
+    "springHeight": 2.4,
+    "topHeight": 3.6,
+    "bayWidth": 4.2,
+    "pierWidth": 1.0,
+    "shape": "round",
+    "colour": "#9d968a",
+    "roofColour": "#55534f"
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -26,
+    -40,
+    5
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.2,
+    "thickness": 0.8,
+    "merlons": true
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -26,
+    -34.5,
+    5
+   ],
+   "params": {
+    "length": 52,
+    "height": 0.6,
+    "thickness": 0.8,
+    "merlons": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "inner arcade now round pale arches, hillside terraces, taller towers; gun-platform wall still a plain slab, no carriages detail, rubble coursing only by texture, only Citadel+bastion modelled"
+ }
+}

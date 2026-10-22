@@ -1,0 +1,533 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-airport-belize-city-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Philip_S._W._Goldson_International_Airport_Laslovarga1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Laslovarga",
+   "view": "front",
+   "file": "/tmp/places-evidence/belize-city/air3.jpg",
+   "used": "airside elevation: ochre-tan two-storey terminal, upper floor under a white roof edge with a sawtooth of white wedge fins over dark maroon soffits, white sign fascia, long low flat white canopy on slim dark posts, white control tower with a dark glazed octagonal cab behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Philip_S._W._Goldson_International_Airport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Pgbk87",
+   "view": "front",
+   "used": "tower proportions (shaft with red door strip, cab with red band), stepped right wing, tan render colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17268586",
+   "used": "overall size only (355 x 46 m); a 100 m central portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "rect": [
+     74,
+     15
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9ab72",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "glassColour": "#2a2d2e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d2",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-floor",
+   "footprint": {
+    "rect": [
+     66,
+     11
+    ]
+   },
+   "at": [
+    3,
+    7
+   ],
+   "z0": 5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6bf8a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0eee8",
+    "material": "membrane",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-fascia",
+   "footprint": {
+    "rect": [
+     44,
+     3
+    ]
+   },
+   "at": [
+    -8,
+    -1.8
+   ],
+   "z0": 4.4,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1eb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f1eb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     50,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    18
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2cf",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfc2c0",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    -42,
+    4
+   ],
+   "z0": 5,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc4",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-beam",
+   "footprint": {
+    "rect": [
+     67,
+     1.0
+    ]
+   },
+   "at": [
+    3,
+    1.0
+   ],
+   "z0": 8.9,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit-dark",
+   "footprint": {
+    "rect": [
+     66,
+     0.8
+    ]
+   },
+   "at": [
+    3,
+    1.15
+   ],
+   "z0": 7.6,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a1e22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a1e22"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -29,
+     0.6,
+     0
+    ],
+    "end": [
+     35,
+     0.6,
+     0
+    ],
+    "count": 27,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#f4f2ec",
+       "sections": [
+        {
+         "z": 8.9,
+         "rect": [
+          2.1,
+          0.8
+         ]
+        },
+        {
+         "z": 7.5,
+         "rect": [
+          0.12,
+          0.8
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 78,
+    "depth": 10,
+    "height": 4.4,
+    "thickness": 0.55,
+    "columns": 0,
+    "colour": "#e2e2dc",
+    "edgeColour": "#d4d4cd"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -11.5,
+     0
+    ],
+    "end": [
+     36,
+     -11.5,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 1,
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.35,
+        0.35
+       ],
+       "height": 4.2,
+       "colour": "#4a3226"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "at": [
+    -10,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 14,
+    "colour": "#f1efe9",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-roof",
+   "at": [
+    -10,
+    16,
+    17.2
+   ],
+   "params": {
+    "n": 8,
+    "radius": 6.0,
+    "height": 0.6,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#e4a43a",
+    "frameColour": "#555555"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-door",
+   "at": [
+    -10,
+    12.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "height": 2.6,
+    "colour": "#8a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cab",
+   "at": [
+    -10,
+    16,
+    14
+   ],
+   "params": {
+    "n": 8,
+    "radius": 5.4,
+    "height": 3.4,
+    "topScale": 1.0,
+    "colour": "#eeeae2",
+    "windows": "ribbon",
+    "windowRatio": 0.75,
+    "glassColour": "#2c3236",
+    "trimColour": "#7a2428"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-gallery",
+   "at": [
+    -10,
+    16,
+    13.4
+   ],
+   "params": {
+    "n": 8,
+    "radius": 6.8,
+    "height": 0.6,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-rail",
+   "at": [
+    -10,
+    16,
+    14
+   ],
+   "params": {
+    "n": 8,
+    "radius": 6.7,
+    "height": 0.9,
+    "colour": "#7f8386",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "antenna0",
+   "at": [
+    -8.5,
+    16,
+    18
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 4.5,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "antenna1",
+   "at": [
+    -11.5,
+    15,
+    18
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "height": 3.2,
+    "colour": "#8a8d90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -47,
+     16
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -54,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Terminal is shorter than the real one and the tower shaft is stubby; wedge fins are a regular sawtooth without the real stepped right wing; ground wall lacks the lattice screen and doors."
+ }
+}

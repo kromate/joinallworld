@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-osm-way-1430525424",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1430525424",
+   "used": "playing field outline 106 x 72 m, bearing 27 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/castries.json#castries-osm-way-1430525424",
+   "used": "mown grass pitch, goalposts, small pavilion, floodlights"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "field",
+   "footprint": {
+    "osm": true
+   },
+   "z0": -0.38,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6a8f4a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a8f4a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    -6,
+    0,
+    0.14
+   ],
+   "rotDeg": 27,
+   "params": {
+    "length": 74,
+    "width": 42,
+    "stripes": 6,
+    "goals": true
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "rotDeg": 27,
+   "params": {
+    "width": 9,
+    "depth": 4.5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.2,
+    "colour": "#d8d2c0",
+    "cap_colour": "#7d8587"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 14
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    48,
+    0
+   ],
+   "params": {
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; pitch outline real, pavilion position and floodlights are guesses."
+ }
+}

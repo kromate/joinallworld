@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-way-399489244",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/399489244",
+   "used": "overall size and orientation only (outline is a 29 x 24 m, 441 m2 star-like polygon that is likely a digitising artefact, so a 20 x 14 m nave is modelled)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: stone-walled chapel, arched windows, corrugated grey roof, whitewash trim; no photo of this church found (Commons 'Nevis Methodist' is a historic engraving of the Charlestown chapel, not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9bfa5",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "glassColour": "#39434a",
+    "plinth": 0.6,
+    "bands": "#f4f0e2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c9296",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-tower",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    -9.6
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f0e2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "glassColour": "#39434a",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c9296",
+    "material": "corrugated",
+    "pitch": 40,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.6,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "rise": 0.6,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "height": 0.9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     14
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this church; nave rectangle, gable roof, tower position and window count are assumed from the brief and OSM size"
+ }
+}

@@ -1,0 +1,314 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Marriott_Frenchman%27s_Reef_Resort_-_St._Thomas,_U._S._Virgin_Islands.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Farragutful",
+   "view": "front",
+   "file": "/tmp/places-evidence/charlotte-amalie/frenchman1.jpg",
+   "used": "two-tier resort: dark brick-brown three-storey base with blue-glazed bays between piers, cream upper block of four floors with white balcony rails, small gabled dormers along the roofline, taller end tower with a hip cap, waterside pavilion with a pale metal roof, palms and grass slope"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/452341661",
+   "used": "building outline (144 x 20 m, 6 levels, long axis north-south)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 90,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "polygon": [
+     [
+      -9,
+      -57
+     ],
+     [
+      9,
+      -57
+     ],
+     [
+      9,
+      55
+     ],
+     [
+      -9,
+      55
+     ]
+    ]
+   },
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#9a7a66",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "bay": 15,
+    "faces": {
+     "left": "curtain",
+     "right": "curtain"
+    },
+    "glassColour": "#3f8aa8",
+    "plinth": 0.4,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f92",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "polygon": [
+     [
+      -8.5,
+      -55
+     ],
+     [
+      8.5,
+      -55
+     ],
+     [
+      8.5,
+      50
+     ],
+     [
+      -8.5,
+      50
+     ]
+    ]
+   },
+   "z0": 9,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ebc896",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 12,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "trimColour": "#fbf8f0",
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "left",
+       "right"
+      ],
+      "colour": "#fbf8f0"
+     }
+    ],
+    "glassColour": "#7b8f98"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b6a98c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "dormers",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "d",
+     "footprint": {
+      "rect": [
+       3.2,
+       3.0
+      ]
+     },
+     "height": 2.2,
+     "storeys": 1,
+     "wall": {
+      "material": "stucco",
+      "colour": "#f6ead0",
+      "windows": "punched",
+      "windowRatio": 0.3,
+      "trimColour": "#fbf8f0"
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#b6bcc0",
+      "pitch": 35,
+      "axis": "y"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     -46,
+     23.2
+    ],
+    "end": [
+     0,
+     46,
+     23.2
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "at": [
+    0,
+    53
+   ],
+   "z0": 9,
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ecd2b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9a99b",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "at": [
+    24,
+    -5
+   ],
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "height": 4,
+   "storeys": 1,
+   "rotDeg": 90,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8c9a6",
+    "windows": "punched",
+    "windowRatio": 0.45
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e6e9ea",
+    "pitch": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     23,
+     50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -35
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     -45
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Upper block has balcony rail bands and cream piers but windows still read as a grid; base is a piered brown podium with teal glazing but not set back; hill slope and sea frontage are flat grass; pavilion is a simple gabled box, not an open veranda; OSM outline replaced by a straight slab."
+ }
+}

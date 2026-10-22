@@ -1,0 +1,412 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-113653382",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belize_City_Digi_Park_sculpture_Jan_2016.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Asdfjrjjj",
+   "view": "street",
+   "file": "/tmp/places-evidence/belize-city/digi.jpg",
+   "used": "mown lawn, pale limestone boulder sculpture with a notched top, concrete paths, open grey-and-navy covered stage with square piers, slim palms, thatched beach huts and black lamp posts along a seafront promenade"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/113653382",
+   "used": "park outline, drawn at 0.55 scale to fit the 120 m model clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 3,
+  "fovDeg": 26,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -35.1,
+      -44.4
+     ],
+     [
+      -28.1,
+      -17.4
+     ],
+     [
+      -20.5,
+      14.1
+     ],
+     [
+      -16.2,
+      28.6
+     ],
+     [
+      -6.1,
+      57.1
+     ],
+     [
+      35.8,
+      44.7
+     ],
+     [
+      35.2,
+      41.5
+     ],
+     [
+      30.5,
+      26.2
+     ],
+     [
+      24.6,
+      2.4
+     ],
+     [
+      22.8,
+      -2.6
+     ],
+     [
+      20.5,
+      -10.2
+     ],
+     [
+      19.2,
+      -13.3
+     ],
+     [
+      18.4,
+      -17.2
+     ],
+     [
+      7.2,
+      -58.1
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#5f8f3c",
+    "topColour": "#5f8f3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "promenade",
+   "params": {
+    "points": [
+     [
+      -2,
+      -45
+     ],
+     [
+      8,
+      -45
+     ],
+     [
+      26,
+      56
+     ],
+     [
+      16,
+      56
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#cfc9b8",
+    "topColour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    20,
+    -18,
+    0.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16,
+    "depth": 9.5,
+    "height": 5.8,
+    "form": "flat",
+    "support": "steel",
+    "colour": "#d6d8da",
+    "accent": "#24324a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stage-back",
+   "at": [
+    25.5,
+    -18,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     1,
+     14
+    ],
+    "height": 2.6,
+    "colour": "#24324a",
+    "topColour": "#24324a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "sculpture",
+   "at": [
+    8,
+    -26,
+    0.12
+   ],
+   "rotDeg": -20,
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.6,
+       3.4
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       4.2,
+       3.0
+      ],
+      "cx": 0.2
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       3.4,
+       2.4
+      ],
+      "cx": -0.2
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       2.4,
+       1.6
+      ],
+      "cx": 0.5
+     },
+     {
+      "z": 4.1,
+      "rect": [
+       1.2,
+       1.0
+      ],
+      "cx": 0.9,
+      "cy": 0.2
+     }
+    ],
+    "colour": "#ece4cf"
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    30,
+    0,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "deck_height": 0.3,
+    "post_height": 2.4,
+    "roof": "pyramid"
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    26,
+    -30,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "deck_height": 0.3,
+    "post_height": 2.4,
+    "roof": "pyramid"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    10,
+    -40,
+    0.2
+   ],
+   "rotDeg": 80,
+   "params": {
+    "height": 4.5,
+    "count": 8,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rock-lump",
+   "at": [
+    11.5,
+    -27,
+    0.12
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       1.8
+      ]
+     },
+     {
+      "z": 0.9,
+      "rect": [
+       1.6,
+       1.3
+      ],
+      "cx": 0.2
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       0.8,
+       0.7
+      ]
+     }
+    ],
+    "colour": "#d9d0ba"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    20,
+    -18,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     11,
+     17
+    ],
+    "height": 0.5,
+    "colour": "#dfe1e3",
+    "topColour": "#dfe1e3"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    48,
+    0,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 120,
+    "colour": "#4f8fa8",
+    "bank": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    5,
+    -10,
+    0.2
+   ],
+   "rotDeg": 80,
+   "params": {
+    "height": 4.5,
+    "count": 6,
+    "spacing": 14
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "sculpture only roughly notched, stage roof is a flat slab on steel supports, beach huts small and far, photo is a close-up so park layout and sea strip cannot be compared"
+ },
+ "site": {
+  "ground": "grass",
+  "extent": [
+   110,
+   130
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -4,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     40
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     3,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -30
+    ],
+    "height": 8
+   }
+  ]
+ }
+}

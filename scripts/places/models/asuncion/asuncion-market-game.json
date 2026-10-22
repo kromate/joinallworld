@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shopping_Mariscal_101002.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Cmasi",
+   "view": "street",
+   "file": "/tmp/places-evidence/asuncion/mall2.jpg",
+   "used": "corner glazed rotunda with white-ringed balconies, tall beige blank-wall block with small slot windows, ground-floor shopfront glazing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mariscal_shopping_mall_in_Asunci%C3%B3n.jpg",
+   "licence": "CC BY 4.0",
+   "author": "aismallard",
+   "view": "detail",
+   "file": "/tmp/places-evidence/asuncion/mall0.jpg",
+   "used": "rotunda: grey drum balconies, white mullioned glass, blue mirror-glass wings, flagpoles on top"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/31143117",
+   "used": "irregular outline, 87 x 82 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbfa8",
+    "windows": "none",
+    "windowRatio": 0.03,
+    "bay": 20,
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8f8272",
+      "height": 0.9,
+      "at": 0.93,
+      "floors": [
+       2
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#e6dcc8",
+      "height": 0.4,
+      "at": 0.97,
+      "floors": [
+       2
+      ]
+     }
+    ],
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9893",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rot-1",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     24,
+     24
+    ]
+   },
+   "at": [
+    -30,
+    -30
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d6df",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.35,
+      "depth": 0.35,
+      "spacing": 8,
+      "colour": "#f4f4f0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee",
+    "parapet": 0.3,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rot-2",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     21,
+     21
+    ]
+   },
+   "at": [
+    -30,
+    -30
+   ],
+   "z0": 5,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d6df",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee",
+    "parapet": 0.3,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -30,
+    -30,
+    14.3
+   ],
+   "params": {
+    "height": 6,
+    "count": 5,
+    "spacing": 3.5,
+    "colours": [
+     "#d52b1e",
+     "#ffffff",
+     "#0038a8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-orange",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    42,
+    -38
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9853f",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a85",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-blue",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    58,
+    -36
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f7fa8",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a85",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront",
+   "footprint": {
+    "rect": [
+     40,
+     2
+    ]
+   },
+   "at": [
+    8,
+    -42
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfe0ea",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dcc8",
+    "overhang": 1.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 8,
+  "trees": 0,
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Warmer beige block with dark frieze band and cornice, 2-tier white-ringed glazed rotunda, orange/blue wings and shopfront added; slot-window row dropped to fit the LOD2 budget so the block is still blank; rotunda hidden behind block from this camera."
+ }
+}

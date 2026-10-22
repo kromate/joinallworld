@@ -1,0 +1,452 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Middlemore_Hospital_Buildings_West_I.jpg",
+   "licence": "Public domain",
+   "author": "Ingolfson",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/auckland/mid1.jpg",
+   "used": "cream ward blocks with ribbon windows between vertical piers, taller service tower with dark plant top, low blue-glazed link wings, red clay-tile ward roof, twin steel flues"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/140637954",
+   "used": "name match only; outline is a 45 m fragment of a 14 ha campus so not used for massing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     62,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    10
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e0b8",
+    "windows": "ribbon",
+    "windowRatio": 0.62,
+    "bay": 7,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#eadfb4",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2d9ae",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -8,
+    1.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     0,
+     0
+    ],
+    "end": [
+     27,
+     0,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.2
+      ],
+      "height": 17,
+      "colour": "#dccf9c",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-tower",
+   "footprint": {
+    "rect": [
+     14,
+     13
+    ]
+   },
+   "at": [
+    28,
+    16
+   ],
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d8ae",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cfa4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-top",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    30,
+    17
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5a5f63",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4b4f53"
+   },
+   "z0": 30
+  },
+  {
+   "type": "mass",
+   "id": "east-ward",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    50,
+    12
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#eadfb4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c98",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-wing",
+   "footprint": {
+    "rect": [
+     34,
+     7
+    ]
+   },
+   "at": [
+    -14,
+    -2
+   ],
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f88aa",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bands": "#e2dab6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4a6a2",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-wing-2",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    -2,
+    -14
+   ],
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f88aa",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-ward",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    22,
+    -10
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9d3a6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b05a3c",
+    "material": "clay-tile",
+    "rise": 3.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-clad",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -40,
+    -24
+   ],
+   "height": 8,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e9e3c6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#eceeea",
+    "material": "metal-sheet",
+    "rise": 1.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    36,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "vans": 2,
+    "colour": "#e4dbb4",
+    "roofColour": "#9a9c98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    27,
+    15,
+    34.5
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 10,
+    "colour": "#c9ccce",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flue-box",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    48,
+    -1
+   ],
+   "z0": 7,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4dcb4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c98"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    48,
+    -1,
+    10
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -1.2,
+     0,
+     0
+    ],
+    "end": [
+     1.2,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "brick-stack",
+     "params": {
+      "height": 3.5,
+      "radius": 0.25,
+      "colour": "#b8bcbc"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-units",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    8,
+    -18
+   ],
+   "z0": 7,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9da09e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is an oblique aerial courtyard view so angles differ; flues, rooftop plant and blue link wings are simplified blocks; corrugated roof of the foreground wing is a gable; rest of the 14 ha campus not modelled."
+ }
+}

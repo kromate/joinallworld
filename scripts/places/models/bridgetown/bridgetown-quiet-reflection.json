@@ -1,0 +1,293 @@
+{
+ "name": "St. Philip's Parish Church",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pg260_StPhilipps_church_in_Barbados_(cropped).jpg",
+   "licence": "Public domain",
+   "author": "unknown (19th century engraving)",
+   "view": "front",
+   "file": "/tmp/places-evidence/bridgetown/stp1.jpg",
+   "used": "period engraving of the 1837 church: pale plastered west tower with crenellated top, corner pinnacles, pointed west door and lancets, lower long nave with dark gabled roof and tall pointed side windows, chancel at the east end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/741736399",
+   "used": "overall 39 x 17 m footprint: tower, nave, chancel and a south porch"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.6,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eae2cc",
+    "windows": "pointed",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9ae94",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "array",
+   "id": "tower-pinnacles",
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 4.5,
+    "dy": 4.5,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 4,
+      "height": 3.2,
+      "topScale": 0.15,
+      "colour": "#eae2cc"
+     }
+    }
+   },
+   "at": [
+    -12,
+    0,
+    20.1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    1.5,
+    0
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "pointed",
+    "windowRatio": 0.24,
+    "bay": 2.6,
+    "faces": {
+     "left": "pointed",
+     "right": "pointed",
+     "front": "pointed",
+     "back": "pointed"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f5a57",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    15.5,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "pointed",
+    "windowRatio": 0.22,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f5a57",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    1,
+    -7.3
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "pointed"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f5a57",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "porch-steps",
+   "at": [
+    1,
+    -9.3,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b4a98d"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "casuarina-1",
+   "at": [
+    -22,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "big-tree",
+   "id": "mahogany-1",
+   "at": [
+    8,
+    14,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "crown_radius": 6,
+    "trunk_radius": 0.6,
+    "colour": "#3f6b35"
+   }
+  },
+  {
+   "type": "big-tree",
+   "id": "mahogany-2",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "crown_radius": 5,
+    "trunk_radius": 0.5,
+    "colour": "#46743a"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm-back",
+   "at": [
+    -4,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "earth-rampart",
+   "id": "hillside",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "length": 55,
+    "width": 18,
+    "height": 8,
+    "colour": "#6d9a4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "compared with a 19th c. engraving only; tower now slender with 3 m pinnacles but no clock oculus; hillside is a simple rampart; render colour guessed, no stepped east gable"
+ }
+}

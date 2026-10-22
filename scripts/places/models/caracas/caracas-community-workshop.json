@@ -1,0 +1,425 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Campus_Santa_Maria.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Universidad Santa Maria",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/caracas/usm2.jpg",
+   "used": "tall white slab block with dark louvred panel windows and projecting end balconies, lower stepped wings to the right, palms, curving access road, hillside greenery, national flag"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/6176737",
+   "used": "site extent only; the 981 m campus outline is not modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 36,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4da",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 5.2,
+      "depth": 0.25,
+      "width": 3.8,
+      "colour": "#5b5853",
+      "faces": [
+       "front",
+       "back"
+      ]
+     },
+     {
+      "type": "floors",
+      "colours": [
+       "#e8e4da",
+       "#dcd8cc"
+      ],
+      "faces": [
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d1c4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     14,
+     13
+    ]
+   },
+   "at": [
+    23,
+    0
+   ],
+   "height": 38,
+   "storeys": 9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ece8de",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "glassColour": "#4a4a48",
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.6,
+      "every": 3.6,
+      "width": 9,
+      "colour": "#f3efe6",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabd",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rooftop-plant",
+   "at": [
+    26,
+    0,
+    38
+   ],
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "height": 3.5,
+    "colour": "#d8d3c8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    46,
+    16
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ece8de",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece8de",
+       "#c9c4b6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    70,
+    24
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ece8de",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "colour": "#3f6e3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       170,
+       70
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       120,
+       48
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       60,
+       24
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "road",
+   "params": {
+    "section": {
+     "rect": [
+      9,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -70,
+      -48,
+      0.2
+     ],
+     [
+      -30,
+      -46,
+      0.2
+     ],
+     [
+      10,
+      -40,
+      0.2
+     ],
+     [
+      45,
+      -28,
+      0.2
+     ],
+     [
+      70,
+      -14,
+      0.2
+     ]
+    ],
+    "curve": true,
+    "colour": "#55575a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "kerb",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -70,
+      -53,
+      0.2
+     ],
+     [
+      -30,
+      -51,
+      0.2
+     ],
+     [
+      10,
+      -45,
+      0.2
+     ],
+     [
+      45,
+      -33,
+      0.2
+     ],
+     [
+      70,
+      -19,
+      0.2
+     ]
+    ],
+    "curve": true,
+    "colour": "#e3c12a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 11
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     -48
+    ],
+    "end": [
+     60,
+     -20
+    ],
+    "count": 8,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    62,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#e3c12a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 8,
+    "spread": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -35,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 8,
+    "spread": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 5,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 6,
+    "spread": 14
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Louvre bays are dark fins on white, not true louvres; hill is a smooth mound with generic trees; access road is a single curve without median, junction or kerbed islands; flag is a plain pole."
+ }
+}

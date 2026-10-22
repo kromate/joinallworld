@@ -1,0 +1,382 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-way-28439068",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Preferencias_Estadio_Arsenio_Erico.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Robslpy",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/m/estadio1.jpg",
+   "used": "Preferencia stand: two-tier blue, white and red seating split into blocks, thin flat roof edge, row of tall posts carrying a long lighting truss behind the stand"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Street_view_of_the_Arsenio_Erico_Stadium_of_the_soccer_club_Club_Nacional.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "PeaceCorpPY",
+   "view": "street",
+   "used": "outer wall: pale weathered concrete panels with vertical pilasters on a plinth, tall blank street wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28439068",
+   "used": "overall footprint 95 x 88 m, modelled axis-aligned so the main stand faces the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.79,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     96,
+     90
+    ],
+    "height": 0.1,
+    "colour": "#7a9a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     68,
+     44
+    ],
+    "height": 0.05,
+    "colour": "#4e8a3e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 3,
+    "thickness": 0.4,
+    "colour": "#d4d0c6"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -45,
+     -27
+    ],
+    "end": [
+     45,
+     -27
+    ],
+    "rows": 6,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#1d3f8f",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "blocks": 3,
+    "concreteColour": "#cfcbc0",
+    "underColour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -45,
+     -34.5
+    ],
+    "end": [
+     45,
+     -34.5
+    ],
+    "rows": 6,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 5.0,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#1d3f8f",
+     "#ffffff",
+     "#c8102e"
+    ],
+    "blocks": 3,
+    "concreteColour": "#cfcbc0",
+    "underColour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.4
+    ],
+    "height": 1.1,
+    "colour": "#7a1a22"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -31.2,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     90,
+     2.2
+    ],
+    "height": 0.5,
+    "colour": "#c9c6be"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "rect": [
+     92,
+     3
+    ],
+    "height": 12,
+    "colour": "#d4d0c6",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#b9b6ae"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -36,
+    11.6
+   ],
+   "params": {
+    "rect": [
+     92,
+     12
+    ],
+    "height": 0.5,
+    "colour": "#c9c6be"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 30,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -29,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 30,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 30,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 30,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    25,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 30,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    37,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 30,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -40,
+    29.5
+   ],
+   "params": {
+    "rect": [
+     86,
+     1.6
+    ],
+    "height": 1.2,
+    "colour": "#8a8f92"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     -40,
+     30.7
+    ],
+    "end": [
+     44,
+     -40,
+     30.7
+    ],
+    "count": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.0
+      ],
+      "height": 0.8,
+      "colour": "#f2f2f0"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "seat colours (blue/white/red blocks) read as washed blue-grey in the render, truss is a simple beam with lamp boxes not a lattice, end stands removed, no advertising board lettering, stand shell only roughly two-tier"
+ }
+}

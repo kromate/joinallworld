@@ -1,0 +1,594 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Market_of_Niue_in_Alofi.jpg",
+   "licence": "Public domain",
+   "author": "Pseudopanax",
+   "view": "front",
+   "file": "/tmp/places-evidence/alofi/market.jpg",
+   "used": "open-sided shed on green posts with a red-orange gable end under a low corrugated blue-grey gable roof, green rail fence along the front, whitewashed coral-stone low walls, slatted cream neighbour at left, palms behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/547136282",
+   "used": "27 x 12 m footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.75,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     27.4,
+     12.3
+    ],
+    "height": 0.3,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    5.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     27,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#efece2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.4,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.3,
+     11
+    ],
+    "height": 2.6,
+    "colour": "#efece2"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.1,
+      "colour": "#2f8a4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12.5,
+     -5
+    ],
+    "end": [
+     12.5,
+     -5
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.5,
+      "colour": "#2f8a4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12.5,
+     0
+    ],
+    "end": [
+     12.5,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "rect": [
+     27.4,
+     12.3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.1,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c4573a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7f8f9a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -8.2,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.55,
+    "thickness": 0.5,
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    9,
+    -8.2,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.55,
+    "thickness": 0.5,
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       1.8,
+       0.8
+      ],
+      "height": 0.8,
+      "colour": "#c9a77c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     -1.5
+    ],
+    "end": [
+     10,
+     -1.5
+    ],
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       1.8,
+       0.8
+      ],
+      "height": 0.8,
+      "colour": "#c9a77c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     2.8
+    ],
+    "end": [
+     10,
+     2.8
+    ],
+    "count": 6,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    -9.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 7.5,
+    "colour": "#e6e6e6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15.4,
+    -9.5,
+    7.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.8,
+     1.0
+    ],
+    "height": 0.12,
+    "colour": "#3b4a66"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "visitor",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -26,
+    -1
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#efe7d6",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#f7f4ea",
+      "backColour": "#e4d9bb",
+      "pitch": 0.22,
+      "band": 0.9,
+      "at": 0.05,
+      "margin": 0.3,
+      "depth": 0.12
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8f8f",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0.1
+     ],
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       0.08,
+       0.06
+      ],
+      "height": 1.0,
+      "colour": "#2f8f3f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12.5,
+     -6.1
+    ],
+    "end": [
+     12.5,
+     -6.1
+    ],
+    "count": 50,
+    "lod1Step": 5,
+    "lod2Step": 50
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.1,
+    0.95
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     25.2,
+     0.07
+    ],
+    "height": 0.07,
+    "colour": "#2f8f3f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.1,
+    0.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     25.2,
+     0.07
+    ],
+    "height": 0.07,
+    "colour": "#2f8f3f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.4,
+    0,
+    3.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "points": [
+     [
+      -0.1,
+      -6.2
+     ],
+     [
+      0.1,
+      -6.2
+     ],
+     [
+      0.1,
+      6.2
+     ],
+     [
+      -0.1,
+      6.2
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#c4573a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    13.7,
+    0,
+    3.1
+   ],
+   "params": {
+    "colour": "#c4573a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.2,
+       12.0
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       0.2,
+       6.5
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       0.2,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -13.7,
+    0,
+    3.1
+   ],
+   "params": {
+    "colour": "#c4573a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.2,
+       12.0
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       0.2,
+       6.5
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       0.2,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.8,
+    0,
+    4.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.12,
+     3.4
+    ],
+    "height": 1.1,
+    "colour": "#f3ead2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -19,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     4,
+     12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -33,
+     6
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no hand-painted sign board or slats on neighbour beyond louvre bands; gable end only red triangle; roof still has texture shimmer"
+ }
+}

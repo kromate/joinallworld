@@ -1,0 +1,182 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-osm-way-593816781",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/593816781",
+   "used": "building=commercial outline 95 x 72 m, bearing 41 deg, used as the shed plan"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/avarua.json#avarua-osm-way-593816781",
+   "used": "trade store and building-supplies warehouse, wide gable shed roof, covered trade yard; no photo found, colours and signage typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "warehouse",
+   "footprint": {
+    "polygon": [
+     [
+      -53.5,
+      -4.2
+     ],
+     [
+      -26,
+      27.4
+     ],
+     [
+      31.3,
+      48.1
+     ],
+     [
+      48,
+      10.8
+     ],
+     [
+      24.9,
+      0
+     ],
+     [
+      33.7,
+      -13.8
+     ],
+     [
+      2.8,
+      -49
+     ],
+     [
+      0.4,
+      -51.2
+     ]
+    ]
+   },
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd3d4",
+    "windows": "none",
+    "windowRatio": 0.03,
+    "bands": "#c8412f",
+    "plinth": 0.6,
+    "groundKind": "plain"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c9296",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "pitch": 8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 5.4,
+    "colour": "#c8412f",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -4,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 6,
+    "height": 4,
+    "form": "flat",
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -48
+    ],
+    "end": [
+     30,
+     -48
+    ],
+    "count": 8,
+    "of": {
+     "type": "car",
+     "params": {}
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "extent": [
+   130,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     55,
+     40
+    ],
+    "height": 10
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: real outline with a low gable shed, red band, blank sign boards and a car row typed; roof simplified"
+ }
+}

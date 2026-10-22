@@ -1,0 +1,394 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Posadas_(2019).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Frodar",
+   "view": "front",
+   "file": "/tmp/places-evidence/buenos-aires/posadas.jpg",
+   "used": "long glazed upper slab over lower dark-brick pavilions, central columned entry, lift cores on the roof, lawn front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/129852442",
+   "used": "identity and site scale only; the 518 m site outline is too large, one frontage of the pavilion complex is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.93,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-slab",
+   "footprint": {
+    "rect": [
+     110,
+     15
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 14.5,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f3550",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c86",
+    "overhang": 1.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-pavilion",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    -24,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#5e3a30",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 0.6,
+    "bay": 13
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-right",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    26,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#5e3a30",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-left",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -46,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c4057",
+    "windows": "ribbon",
+    "windowRatio": 0.75,
+    "bands": "#a8a49a",
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-lowerright",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    50,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c4057",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d8a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift-core-left",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -40,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 26.3,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift-core-right",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    30,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 26.3,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d8a"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 4,
+    "height": 11,
+    "columns": 8,
+    "pediment": false,
+    "steps": 2,
+    "colour": "#9a9a96",
+    "roofColour": "#8f8c86"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "height": 2,
+    "bottom": 11.5,
+    "colour": "#f2f2f2",
+    "frameColour": "#c0c0c0",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-under",
+   "footprint": {
+    "rect": [
+     110,
+     15.5
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 11.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-over",
+   "footprint": {
+    "rect": [
+     110,
+     15.5
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 25.5,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f8c86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recess",
+   "footprint": {
+    "rect": [
+     100,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2a2d31",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -8,
+     -16
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     16,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Long dark-blue glazed ribbon on concrete bands over recessed ground floor with 8 columns and brick pavilions matches; no pilotis under the slab on the left, brick windows simplified, lift cores boxy"
+ }
+}

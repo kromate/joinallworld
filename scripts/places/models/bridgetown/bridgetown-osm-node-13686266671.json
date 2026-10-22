@@ -1,0 +1,163 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small coral-stone clifftop viewing spot with rail and steps; no OSM outline, no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -4
+     ],
+     [
+      8,
+      -5
+     ],
+     [
+      10,
+      1
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      -6,
+      5
+     ],
+     [
+      -10,
+      1
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#cdbfa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "seaward-wall",
+   "footprint": {
+    "rect": [
+     16,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a8e75",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5a98c"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    4.4,
+    1.0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "colour": "#7b6f5a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#b5a98c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall",
+   "footprint": {
+    "rect": [
+     0.6,
+     8
+    ]
+   },
+   "at": [
+    -9.5,
+    0
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a8e75",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5a98c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-osm-node-13686266671",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no outline or photo; modest typical stone look-out"
+ }
+}

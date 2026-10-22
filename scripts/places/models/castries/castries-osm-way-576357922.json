@@ -1,0 +1,533 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-osm-way-576357922",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beausejour_Cricket_Ground.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "PaddyBriggs",
+   "view": "front",
+   "file": "/tmp/places-evidence/castries/cricket2.jpg",
+   "used": "pavilion stand: open raked cream seating under a cantilevered gallery with red railings, cream upper boxes with ribbon windows, seven arched barrel roofs with green steel edges, green posts, white apron wall, green outfield"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beausejour_Stadium_Cricket_St_Lucia.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Timothy Barton",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/castries/cricket1.jpg",
+   "used": "layout: oval ground with the long pavilion building on one side, a second stand with blue seats opposite, six floodlight masts around, hills behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/576357922",
+   "used": "precinct extent only (oval and stands modelled at about 105 x 88 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 38,
+  "aspect": 1.55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "oval",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      52.0,
+      0.0
+     ],
+     [
+      51.0,
+      8.58
+     ],
+     [
+      48.04,
+      16.84
+     ],
+     [
+      43.24,
+      24.45
+     ],
+     [
+      36.77,
+      31.11
+     ],
+     [
+      28.89,
+      36.58
+     ],
+     [
+      19.9,
+      40.65
+     ],
+     [
+      10.14,
+      43.15
+     ],
+     [
+      0.0,
+      44.0
+     ],
+     [
+      -10.14,
+      43.15
+     ],
+     [
+      -19.9,
+      40.65
+     ],
+     [
+      -28.89,
+      36.58
+     ],
+     [
+      -36.77,
+      31.11
+     ],
+     [
+      -43.24,
+      24.45
+     ],
+     [
+      -48.04,
+      16.84
+     ],
+     [
+      -51.0,
+      8.58
+     ],
+     [
+      -52.0,
+      0.0
+     ],
+     [
+      -51.0,
+      -8.58
+     ],
+     [
+      -48.04,
+      -16.84
+     ],
+     [
+      -43.24,
+      -24.45
+     ],
+     [
+      -36.77,
+      -31.11
+     ],
+     [
+      -28.89,
+      -36.58
+     ],
+     [
+      -19.9,
+      -40.65
+     ],
+     [
+      -10.14,
+      -43.15
+     ],
+     [
+      -0.0,
+      -44.0
+     ],
+     [
+      10.14,
+      -43.15
+     ],
+     [
+      19.9,
+      -40.65
+     ],
+     [
+      28.89,
+      -36.58
+     ],
+     [
+      36.77,
+      -31.11
+     ],
+     [
+      43.24,
+      -24.45
+     ],
+     [
+      48.04,
+      -16.84
+     ],
+     [
+      51.0,
+      -8.58
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#5f9a3c",
+    "topColour": "#5f9a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     20
+    ],
+    "height": 0.06,
+    "colour": "#c8b27a",
+    "topColour": "#c8b27a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -24,
+     34
+    ],
+    "end": [
+     24,
+     34
+    ],
+    "rows": 14,
+    "rise": 0.55,
+    "run": 0.8,
+    "seatColour": "#eadfbf",
+    "under": "open",
+    "concreteColour": "#d8d3c3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    33.2
+   ],
+   "params": {
+    "rect": [
+     48,
+     0.5
+    ],
+    "height": 1.3,
+    "colour": "#f1eee4",
+    "topColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    41,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 7,
+      "colour": "#2f6b4f",
+      "topColour": "#2f6b4f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -22,
+     0,
+     0
+    ],
+    "end": [
+     22,
+     0,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gallery",
+   "at": [
+    0,
+    43.5,
+    7
+   ],
+   "params": {
+    "rect": [
+     50,
+     11
+    ],
+    "height": 0.6,
+    "colour": "#f2efe4",
+    "topColour": "#e8e4d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail",
+   "at": [
+    0,
+    38.2,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     48,
+     0.25
+    ],
+    "height": 1.1,
+    "colour": "#c4344a",
+    "topColour": "#c4344a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "boxes",
+   "footprint": {
+    "rect": [
+     46,
+     6
+    ]
+   },
+   "at": [
+    0,
+    46
+   ],
+   "z0": 7.6,
+   "height": 4.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee8d2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    44,
+    12
+   ],
+   "params": {
+    "of": {
+     "type": "canopy",
+     "params": {
+      "form": "curved",
+      "width": 6.4,
+      "depth": 9,
+      "height": 3.0,
+      "rise": 3.4,
+      "thickness": 0.3,
+      "colour": "#c9d0d4",
+      "edgeColour": "#2f6b4f",
+      "axis": "y"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -19.5,
+     0,
+     0
+    ],
+    "end": [
+     19.5,
+     0,
+     0
+    ],
+    "count": 7,
+    "lod2Step": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stairtower",
+   "at": [
+    -27,
+    44,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     8
+    ],
+    "height": 12,
+    "colour": "#6e7479",
+    "topColour": "#6e7479"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -20,
+     -46
+    ],
+    "end": [
+     20,
+     -46
+    ],
+    "rows": 3,
+    "rise": 0.5,
+    "run": 0.8,
+    "seatColour": "#2a52a0",
+    "under": "open",
+    "flip": true,
+    "concreteColour": "#d8d3c3"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -56,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 5,
+    "facing": "east"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    28,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    24,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    0,
+    60,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pavilion now unobstructed with 14-row cream tiers, pale grey green-edged vaults; vaults/tiers still simplified, no green hills backdrop, near blue stand reduced to a low solid-blue bank."
+ }
+}

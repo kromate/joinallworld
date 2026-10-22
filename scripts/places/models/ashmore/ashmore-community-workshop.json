@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashmore",
+ "venueId": "ashmore-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+   "used": "long corrugated shed with louvres and a small solar array"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9b4b8",
+    "windows": "louvre",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none"
+    },
+    "bands": "#6f7f86"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c959a",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -2,
+    -3.1
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.15
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#6f7f86"
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    0,
+    9,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "panelWidth": 1.7,
+    "panelDepth": 1.0,
+    "tilt": 20,
+    "gap": 0.2,
+    "colour": "#2c3e57"
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    6,
+    9,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "panelWidth": 1.7,
+    "panelDepth": 1.0,
+    "tilt": 20,
+    "gap": 0.2,
+    "colour": "#2c3e57"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   50,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text-only shed; no photo exists."
+ }
+}

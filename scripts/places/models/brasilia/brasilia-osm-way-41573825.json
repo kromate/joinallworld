@@ -1,0 +1,178 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-41573825",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Olhos_D%27%C3%81gua_visto_da_412.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Camilo do Nascimento Beze",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/brasilia/park1.jpg",
+   "used": "long wedge of open cerrado: dense dark-green tree mass in the centre, pale grass clearings, a footpath through the lawn, roads along both edges"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Olhos_D%27%C3%81gua.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "AlRomariz",
+   "view": "street",
+   "file": "/tmp/places-evidence/brasilia/park2.jpg",
+   "used": "green lawn, interlocking-paver path, sparse bare cerrado trees, stone"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/41573825",
+   "used": "park outline 723 x 314 m, fitted into the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8a9a55",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9a55"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    -26
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9c8161",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6f50",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    10,
+    20,
+    0.3
+   ],
+   "params": {
+    "kind": "flat",
+    "width": 24,
+    "depth": 14,
+    "colour": "#5f8ea3",
+    "thickness": 0.1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   90,
+   130
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     30
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -14
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     22
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     -40
+    ],
+    "height": 7
+   }
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "outline and tree mass only; lake, paths and the pavilion are typed from the name and brief, not seen in a photo"
+ }
+}

@@ -1,0 +1,343 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Cristal,_Caracas.JPG",
+   "licence": "CC0",
+   "author": "Wilfredor",
+   "view": "front",
+   "file": "/tmp/places-evidence/caracas/pc1.jpg",
+   "used": "cube-like glass tower with a huge square void cut into the upper front, white precast flank with horizontal slabs, glass podium, palms, colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Cristal.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Alejandro Toro",
+   "view": "street",
+   "used": "confirms the void and mirrored grey-blue curtain wall, flat roof with plant"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19078807",
+   "used": "size 73 x 49 m, 16 levels (outline is a bean shape not matched by the photo, so rectangles are used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 5,
+  "fovDeg": 52,
+  "aspect": 1.2,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "curtain-wall grid is coarser than the real mirrored glass; white flank slabs simplified; neighbouring blue tower and street furniture omitted"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     62,
+     44
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f93ab",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 7,
+    "faces": {
+     "left": "plain"
+    },
+    "plinth": 1,
+    "bands": "#d8d6d0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9adb0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     25,
+     44
+    ]
+   },
+   "at": [
+    -18.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 10,
+   "height": 48,
+   "storeys": 14,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7a9db5",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#6a90ab"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccd0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     12.4,
+     44
+    ]
+   },
+   "at": [
+    24.8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 10,
+   "height": 48,
+   "storeys": 14,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7a9db5",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 8,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccd0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beam-top",
+   "footprint": {
+    "rect": [
+     24.4,
+     44
+    ]
+   },
+   "at": [
+    6.2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 43,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7a9db5",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bay": 7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc1",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "notch-back",
+   "footprint": {
+    "rect": [
+     24.4,
+     22
+    ]
+   },
+   "at": [
+    6.2,
+    11
+   ],
+   "rotDeg": 0,
+   "z0": 10,
+   "height": 33,
+   "storeys": 9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4d7391",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9097"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-edge",
+   "footprint": {
+    "rect": [
+     3.2,
+     44
+    ]
+   },
+   "at": [
+    -30.4,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 10,
+   "height": 48,
+   "storeys": 14,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ecebe5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-flank",
+   "footprint": {
+    "rect": [
+     1.5,
+     40
+    ]
+   },
+   "at": [
+    -31.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 58,
+   "storeys": 16,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d7cf",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#d9d7cf",
+      "#9b9a95"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2dc"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 3.5,
+    "colour": "#2a5a98",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "spread": 4,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -36,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   150,
+   110
+  ]
+ }
+}

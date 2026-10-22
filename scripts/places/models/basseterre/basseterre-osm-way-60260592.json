@@ -1,0 +1,789 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-way-60260592",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FortCharles.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Icelandic Hurricane",
+   "view": "side",
+   "file": "/tmp/places-evidence/basseterre/fort.jpg",
+   "used": "the surviving gable end of the magazine/barrack ruin: pale grey-tan rubble, steep gable with small square window, low broken rubble walls running off to the right, dry yellow grass and scrub, flat horizon"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/60260592",
+   "used": "headland outline (200 x 182 m) scaled to 55 percent, low ruined walls follow its edge; cannon on the seaward side from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "margin": 0.02,
+  "fit": "building",
+  "shiftX": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -36.8,
+      9.7
+     ],
+     [
+      -30.3,
+      12.2
+     ],
+     [
+      -26.5,
+      15.1
+     ],
+     [
+      -21.3,
+      18.8
+     ],
+     [
+      -17.8,
+      21.4
+     ],
+     [
+      24.8,
+      13.7
+     ],
+     [
+      23.8,
+      13.0
+     ],
+     [
+      22.3,
+      12.4
+     ],
+     [
+      20.4,
+      11.1
+     ],
+     [
+      18.0,
+      8.0
+     ],
+     [
+      15.8,
+      -0.3
+     ],
+     [
+      24.0,
+      -2.7
+     ],
+     [
+      23.4,
+      -12.7
+     ],
+     [
+      27.8,
+      -30.0
+     ],
+     [
+      27.5,
+      -36.3
+     ],
+     [
+      -15.0,
+      -36.8
+     ],
+     [
+      -24.1,
+      -15.1
+     ],
+     [
+      -23.6,
+      -4.3
+     ],
+     [
+      -32.4,
+      2.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#b89b52"
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -36.8,
+      9.7
+     ],
+     [
+      -30.3,
+      12.2
+     ],
+     [
+      -26.5,
+      15.1
+     ],
+     [
+      -21.3,
+      18.8
+     ],
+     [
+      -17.8,
+      21.4
+     ],
+     [
+      24.8,
+      13.7
+     ],
+     [
+      23.8,
+      13.0
+     ],
+     [
+      22.3,
+      12.4
+     ],
+     [
+      20.4,
+      11.1
+     ],
+     [
+      18.0,
+      8.0
+     ],
+     [
+      15.8,
+      -0.3
+     ],
+     [
+      24.0,
+      -2.7
+     ],
+     [
+      23.4,
+      -12.7
+     ],
+     [
+      27.8,
+      -30.0
+     ],
+     [
+      27.5,
+      -36.3
+     ],
+     [
+      -15.0,
+      -36.8
+     ],
+     [
+      -24.1,
+      -15.1
+     ],
+     [
+      -23.6,
+      -4.3
+     ],
+     [
+      -32.4,
+      2.7
+     ],
+     [
+      -36.8,
+      9.7
+     ]
+    ],
+    "height": 1.4,
+    "thickness": 0.9,
+    "merlons": false,
+    "ruin": 0.45,
+    "batter": 0.1,
+    "colour": "#a89f8a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    -3,
+    0
+   ],
+   "params": {
+    "colour": "#a89f8a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8.4,
+       0.9
+      ]
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       8.4,
+       0.9
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       5.6,
+       0.9
+      ],
+      "cx": 0.4
+     },
+     {
+      "z": 6.4,
+      "rect": [
+       3.0,
+       0.9
+      ],
+      "cx": 0.9
+     },
+     {
+      "z": 7.2,
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "cx": 1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -12.2,
+    -3.5,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.8,
+    "thickness": 0.9,
+    "colour": "#a89f8a",
+    "gaps": 0.4
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.8,
+    "thickness": 0.8,
+    "colour": "#a89f8a",
+    "gaps": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "n": 10,
+    "z0": 0,
+    "height": 1.1,
+    "colour": "#8f8a7b",
+    "top": true
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -12.0,
+    8.8,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4.5,
+    "yaw": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "cannon",
+   "at": [
+    10.4,
+    -12.0,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 4.5,
+    "yaw": 90
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#9a9484"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.8,
+    -3.5,
+    2.4
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.4
+    ],
+    "height": 1.0,
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.6,
+    -3,
+    5.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.63,
+    "n": 6,
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#9a917c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.0,
+    -3,
+    5.6
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.5599999999999999,
+    "n": 6,
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#9a917c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.2,
+    -3,
+    6.3999999999999995
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.48999999999999994,
+    "n": 6,
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#9a917c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.0,
+    -3,
+    3.6999999999999997
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.7,
+    "n": 6,
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#9a917c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.2,
+    -3,
+    2.0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.9799999999999999,
+    "n": 6,
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#9a917c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -19.253403154178535,
+    -25.25436242538707,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.8376349455664086,
+    "n": 7,
+    "z0": 0,
+    "height": 0.6774861354012052,
+    "colour": "#6f6f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30.929872470454022,
+    -4.727514950737863,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.7736254504343226,
+    "n": 7,
+    "z0": 0,
+    "height": 1.0950124128355183,
+    "colour": "#6f6f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20.01587851272285,
+    -5.3127196239585786,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.7660095860648701,
+    "n": 7,
+    "z0": 0,
+    "height": 0.6863322646426845,
+    "colour": "#6f6f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17.86714275495989,
+    13.376130570947225,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.6153838090401293,
+    "n": 7,
+    "z0": 0,
+    "height": 0.9203443207094533,
+    "colour": "#4f5a30"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.224183281320173,
+    -21.10196157111496,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.7859099743797213,
+    "n": 7,
+    "z0": 0,
+    "height": 0.913487801206565,
+    "colour": "#7d7a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    19.889839993052263,
+    9.032346803563343,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.8234358567895811,
+    "n": 7,
+    "z0": 0,
+    "height": 1.0223946131983843,
+    "colour": "#4f5a30"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.271878651889558,
+    -6.726126317320894,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.7066741045444707,
+    "n": 7,
+    "z0": 0,
+    "height": 0.8367939437925727,
+    "colour": "#6f6f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    19.00720067670771,
+    7.622612802775734,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 1.1653243327780314,
+    "n": 7,
+    "z0": 0,
+    "height": 1.0202313397088862,
+    "colour": "#6f6f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17.078995628393066,
+    -3.67112712244899,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 1.1293903439272739,
+    "n": 7,
+    "z0": 0,
+    "height": 1.0240220441118173,
+    "colour": "#7d7a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -21.46324065064575,
+    -10.508370402828056,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.7729221422867909,
+    "n": 7,
+    "z0": 0,
+    "height": 0.8256861968387685,
+    "colour": "#6f6f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15.523973792632095,
+    7.379246657192553,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.6259430814433491,
+    "n": 7,
+    "z0": 0,
+    "height": 0.6231609995017563,
+    "colour": "#7d7a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.863487073357355,
+    -6.131884034033103,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.98879884990114,
+    "n": 7,
+    "z0": 0,
+    "height": 0.9504393597798171,
+    "colour": "#6f6f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.853059205294066,
+    -21.00361926066749,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.847676793844395,
+    "n": 7,
+    "z0": 0,
+    "height": 0.7013353080861982,
+    "colour": "#7d7a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.177794360217,
+    -21.54963215911229,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.8615546006572663,
+    "n": 7,
+    "z0": 0,
+    "height": 0.8943843391562585,
+    "colour": "#7d7a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.8394348864968286,
+    11.598494670410254,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.6605876632307157,
+    "n": 7,
+    "z0": 0,
+    "height": 0.6308051210200879,
+    "colour": "#6f6f3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17.01614533872336,
+    -3.2187786228219046,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 1.117259427476304,
+    "n": 7,
+    "z0": 0,
+    "height": 0.6610727009589485,
+    "colour": "#6f6f3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "gable is now 7 m rubble-coloured with stepped ragged top, scrub, tan ground, trees removed, wall recoloured; camera fit cannot lock onto the loft gable so the headland is still framed small instead of the gable filling the left third"
+ }
+}

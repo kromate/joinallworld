@@ -1,0 +1,409 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universidad_Cat%C3%B3lica_Nuestra_Se%C3%B1ora_de_la_Asunci%C3%B3n_1.jpg",
+   "licence": "CC0",
+   "author": "Mx. Granger",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/uc1.jpg",
+   "used": "three-storey old brick block with shuttered windows, cream columned entrance portico with balcony over it, red lower boundary wall and iron gates, taller brick wing with arches at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universidad_Cat%C3%B3lica_Nuestra_Se%C3%B1ora_de_la_Asunci%C3%B3n_2.jpg",
+   "licence": "CC0",
+   "author": "Mx. Granger",
+   "view": "front",
+   "used": "portico depth, flag poles, blue glass screen between columns"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/130888813",
+   "used": "not used: the outline is the whole 640 x 490 m campus, only the street-front block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     48,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#bf9468",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 1.2,
+    "bay": 6,
+    "bands": "#a97c58",
+    "cornice": true,
+    "trimColour": "#e2d3ae"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d6a52",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     13,
+     16
+    ]
+   },
+   "at": [
+    31,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c08a62",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "trimColour": "#e8d9b4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d6a52",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    -28.5,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c09a72",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 2.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d6a52",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -11,
+    -9,
+    7.5
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 6,
+    "colours": [
+     "#2d4fa8",
+     "#d52b1e",
+     "#f2c62b"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6,
+    "colour": "#5f9a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-base",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     19,
+     3
+    ],
+    "height": 0.5,
+    "colour": "#e8dcb2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "pedestals",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -10,
+     0.5
+    ],
+    "end": [
+     3,
+     -10,
+     0.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       1.3
+      ],
+      "height": 1.9,
+      "colour": "#eadfb4",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -10,
+     2.4
+    ],
+    "end": [
+     3,
+     -10,
+     2.4
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 4.3,
+      "colour": "#f2ead0",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-slab",
+   "at": [
+    -4,
+    -10,
+    6.7
+   ],
+   "params": {
+    "rect": [
+     19,
+     4
+    ],
+    "height": 0.7,
+    "colour": "#eadfb4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-rail",
+   "at": [
+    -4,
+    -11.8,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     19,
+     0.4
+    ],
+    "height": 1.1,
+    "colour": "#f0e8cf",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-screen",
+   "at": [
+    -4,
+    -9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     13,
+     0.2
+    ],
+    "height": 3.5,
+    "colour": "#1f3550",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate",
+   "at": [
+    -4,
+    -9.4,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     13,
+     0.2
+    ],
+    "height": 2.5,
+    "colour": "#2a3038",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-wall-l",
+   "at": [
+    -19,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     19,
+     0.6
+    ],
+    "height": 2.0,
+    "colour": "#b4463c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-wall-r",
+   "at": [
+    24,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.6
+    ],
+    "height": 2.0,
+    "colour": "#b4463c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-wall-gap",
+   "at": [
+    10,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.6
+    ],
+    "height": 2.0,
+    "colour": "#b4463c",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-community-workshop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "portico now pedestal columns with balcony slab and gate but columns not paired, brick weathering/shutters not modelled, right arched wing and left neighbour approximate"
+ }
+}

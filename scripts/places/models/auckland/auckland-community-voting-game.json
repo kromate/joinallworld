@@ -1,0 +1,226 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ellen_Melville_Centre,_Freyberg_Square,_Auckland,_New_Zealand.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MurielMary",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/ellen1.jpg",
+   "used": "two-storey 1960s box on tall concrete piers: open glazed ground floor, upper ribbon glazing with pale-blue spandrel band, clerestory strip, taller cream building behind, cobbled square"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/293127423",
+   "used": "29 x 15 m size and orientation only (nearest match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-glass",
+   "footprint": {
+    "rect": [
+     27,
+     9.6
+    ]
+   },
+   "at": [
+    0,
+    2.2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6b7a78",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a8a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-hall",
+   "footprint": {
+    "rect": [
+     29,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4ad",
+    "windows": "ribbon",
+    "windowRatio": 0.75,
+    "bands": "#a9cad2",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b8b0",
+    "parapet": 0.7
+   },
+   "z0": 3.6
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -13.5,
+     0,
+     0
+    ],
+    "end": [
+     13.5,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.8
+      ],
+      "height": 10.8,
+      "colour": "#b4b1a6",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    17
+   ],
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d6a2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -40,
+    20
+   ],
+   "height": 32,
+   "storeys": 9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f7595",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c8185"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     29,
+     7
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 9.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9aa9b0",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "bands": "#d5d6d0",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b8b0",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Piers are plain slabs (no stepped profile) and evenly spaced; glazing blinds not modelled; neighbouring towers simplified; no signage lettering."
+ }
+}

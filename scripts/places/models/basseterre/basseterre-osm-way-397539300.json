@@ -1,0 +1,180 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-way-397539300",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/397539300",
+   "used": "park polygon 410 x 249 m, too large to model; gate area and pavilion are modelled"
+  },
+  {
+   "kind": "text",
+   "used": "brief: hillside tropical garden-park, timber entrance gate, covered thatch pavilion, steps, mature trees; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#9a7c54",
+    "leafColour": "#4a3c2a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.4,
+    "bottom": 1.4,
+    "colour": "#6b7a45",
+    "frameColour": "#9a7c54",
+    "posts": true
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "at": [
+    14,
+    5,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "height": 3.6,
+    "thatch": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -20,
+    12
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a7c54",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a7a5a",
+    "material": "thatch",
+    "pitch": 30,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 1.0,
+    "run": 1.8,
+    "count": 5,
+    "colour": "#6d6f68"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 9,
+    "spread": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 7,
+    "spread": 18
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     25
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     28
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; gate, thatch pavilion and trees from the brief only"
+ }
+}

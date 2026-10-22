@@ -1,0 +1,236 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:L%C3%ADnea_E,_andenes_de_la_estaci%C3%B3n_Av._La_Plata_(Buenos_Aires,_septiembre_2008).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Cristian O. Arone",
+   "view": "interior",
+   "file": "/tmp/places-evidence/buenos-aires/laplata1.jpg",
+   "used": "only the Line E purple signage colour; it shows the underground platform, not the street entrance, so no exterior comparison was possible"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/476721906",
+   "used": "not used: nearest building is a restaurant, not the station; its size (13 x 10 m) only guides the kiosk scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo of the street entrance: stair-head, railings, corner kiosk and purple line sign are typical subte entrance elements, positions are assumed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "corner-kiosk",
+   "footprint": {
+    "rect": [
+     8,
+     5.5
+    ]
+   },
+   "at": [
+    7,
+    3
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d2cfc6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.3,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-pit",
+   "at": [
+    -5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     6
+    ],
+    "height": 0.05,
+    "colour": "#2b2c2e"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -5,
+    -3,
+    0
+   ],
+   "params": {
+    "length": 4.2,
+    "height": 1.0,
+    "colour": "#5a5d62"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -7.1,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "colour": "#5a5d62"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -2.9,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "colour": "#5a5d62"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-slope",
+   "at": [
+    -5,
+    0.4,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.8,
+      -2
+     ],
+     [
+      1.8,
+      -2
+     ],
+     [
+      1.8,
+      2.4
+     ],
+     [
+      -1.8,
+      2.4
+     ]
+    ],
+    "z0": -0.0,
+    "height": 0.12,
+    "colour": "#7a7a76"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -9,
+    -3.2,
+    0
+   ],
+   "params": {
+    "height": 4.4,
+    "width": 1.6,
+    "colour": "#5d2f84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "line-blade",
+   "at": [
+    -9,
+    -3.2,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.15
+    ],
+    "height": 0.9,
+    "colour": "#6b3a8e"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-transit"
+}

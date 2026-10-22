@@ -1,0 +1,243 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/142609045",
+   "used": "real irregular 8-point terminal outline (43.5 x 23.3 m, bearing 46 deg)"
+  },
+  {
+   "kind": "text",
+   "url": "brief",
+   "used": "photos listed near the place (street scenes, a Ports Authority gate sign) show other buildings, so were not used; harbour setting and ferry berth from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 15,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal-hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bands": "#4a79a3"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f93",
+    "material": "metal-sheet",
+    "rise": 2.4,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "loading-apron",
+   "at": [
+    -8,
+    22,
+    0
+   ],
+   "rotDeg": 46,
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 7,
+    "height": 4.0,
+    "thickness": 0.35,
+    "columns": 6,
+    "colour": "#8a8f93",
+    "edgeColour": "#4a79a3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wharf",
+   "at": [
+    8,
+    30,
+    0
+   ],
+   "rotDeg": 46,
+   "params": {
+    "rect": [
+     56,
+     12
+    ],
+    "height": 0.9,
+    "colour": "#b9b6ad"
+   }
+  },
+  {
+   "type": "array",
+   "id": "bollards",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.3,
+      "n": 6,
+      "height": 0.7,
+      "colour": "#2f3338"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     40,
+     0.9
+    ],
+    "end": [
+     30,
+     22,
+     0.9
+    ],
+    "count": 7
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ferry-hull",
+   "at": [
+    18,
+    46,
+    0
+   ],
+   "rotDeg": 46,
+   "params": {
+    "rect": [
+     38,
+     9
+    ],
+    "height": 3.2,
+    "topScale": [
+     0.9,
+     0.8
+    ],
+    "colour": "#f2f2ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ferry-deck",
+   "at": [
+    18,
+    46,
+    3.2
+   ],
+   "rotDeg": 46,
+   "params": {
+    "rect": [
+     26,
+     6.5
+    ],
+    "height": 3.2,
+    "colour": "#4a79a3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "signboard",
+   "at": [
+    -20,
+    -14,
+    0
+   ],
+   "rotDeg": 46,
+   "params": {
+    "rect": [
+     5,
+     0.25
+    ],
+    "z0": 4.6,
+    "height": 1.2,
+    "colour": "#4a79a3"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "coach",
+   "id": "bus-bays",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "stripe": "#4a79a3",
+    "count": 2,
+    "spacing": 4,
+    "length": 10,
+    "yaw": 46
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     5
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this terminal (nearby images show other buildings): massing on the OSM outline; wharf and ferry sit on paving, not over water."
+ }
+}

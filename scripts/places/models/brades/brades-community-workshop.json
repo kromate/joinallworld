@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/750181857",
+   "used": "college site extent 132 x 80 m and its tilt (bearing 18); blocks are typed low classroom ranges around a green with covered walkways, no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-west",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -14
+   ],
+   "rotDeg": 18,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee3",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#a9cfe0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8a8f",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    28,
+    6
+   ],
+   "rotDeg": 18,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee3",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#a9cfe0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8a8f",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-north",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    10,
+    40
+   ],
+   "rotDeg": 18,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#a9cfe0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b8a8f",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -38,
+    22
+   ],
+   "rotDeg": 18,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#b9b4aa"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0463c",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy-walkway",
+   "at": [
+    -4,
+    -2,
+    0
+   ],
+   "rotDeg": 18,
+   "params": {
+    "length": 40,
+    "height": 3.2,
+    "spans": 8,
+    "tower": false,
+    "rails": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#2a4a9a",
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; block positions typed inside the OSM site extent, real building layout unknown"
+ }
+}

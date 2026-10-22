@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/alofi.json#alofi-recreation",
+   "used": "authored game venue; mown green with an open fale-style shelter (about 14 x 10 m, scale from the nearest OSM building way/383348085) and shade trees. Commons Manila palm and Alofi photos viewed for palm and lawn look only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fale-plinth",
+   "footprint": {
+    "rect": [
+     15,
+     11
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d0c0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0c0"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "fale",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "width": 13,
+    "depth": 9,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 6,
+    "colour": "#c9a77c",
+    "cap_colour": "#3d6b8a",
+    "floor_colour": "#d8d0c0"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "fale-small",
+   "at": [
+    -16,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 2.6,
+    "roof": "hip",
+    "rise": 1.4,
+    "posts": 4,
+    "colour": "#c9a77c",
+    "cap_colour": "#3d6b8a",
+    "floor_colour": "#d8d0c0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 0.9,
+    "thickness": 0.25,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#f1ece0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     2
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   46
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text only: fale shelter scale from nearest OSM building, no photo."
+ }
+}

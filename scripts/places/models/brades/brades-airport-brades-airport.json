@@ -1,0 +1,205 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-airport-brades-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Montserrat_Airport_(15632994595).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Stefan Krasowski",
+   "view": "side",
+   "used": "single-storey salmon-pink terminal, green metal hip roof, small porch canopy on posts, squat glazed control tower cab behind the left end, grass apron, curved taxiway"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/404584261",
+   "used": "terminal outline 39 x 20 m with entrance notch"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "scale": 0.7
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6a898",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "bands": "#f0e4d8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7d66",
+    "material": "metal-sheet",
+    "pitch": 15,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    6,
+    10,
+    0
+   ],
+   "params": {
+    "height": 5.5,
+    "style": "square",
+    "colour": "#f0e8d4",
+    "cabColour": "#8fb8b8",
+    "bandColour": "#e6a898",
+    "shaftRadius": 1.0,
+    "cabRadius": 1.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    5,
+    -8.2,
+    0
+   ],
+   "params": {
+    "form": "gable",
+    "width": 4.5,
+    "depth": 2.5,
+    "height": 2.8,
+    "columns": 2,
+    "colour": "#3f7d66",
+    "edgeColour": "#3f7d66",
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    9,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#d8423a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      7,
+      0.15
+     ]
+    },
+    "curve": true,
+    "steps": 8,
+    "colour": "#6e6e70",
+    "points": [
+     [
+      -30,
+      -14,
+      0.08
+     ],
+     [
+      -14,
+      -17,
+      0.08
+     ],
+     [
+      0,
+      -24,
+      0.08
+     ],
+     [
+      14,
+      -28,
+      0.08
+     ],
+     [
+      28,
+      -24,
+      0.08
+     ],
+     [
+      34,
+      -14,
+      0.08
+     ]
+    ]
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    10,
+    55,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 30,
+    "height": 15,
+    "stairs": false,
+    "rock_colour": "#3f5a40",
+    "boulders": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower cab still reads slightly round via the generic part; hill is a low-poly mound not a ridge; parked Islander not modelled; apron curve simplified"
+ }
+}

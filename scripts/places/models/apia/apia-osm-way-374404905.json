@@ -1,0 +1,478 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Samoan_Home_of_Robert_Louis_Stevenson_(30595201572).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Michael Coghlan",
+   "view": "front",
+   "file": "/tmp/places-evidence/apia/rls1.jpg",
+   "used": "two hipped red-roofed wings with a lower gabled link, white weatherboard walls, two-storey wraparound verandah with white railings and fretwork posts, lower end wing, lawn and forest backdrop"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Robert_Lewis_Stevenson_Museum.jpg",
+   "licence": "see Commons page",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/apia/rls2.jpg",
+   "used": "proportions of the two wings, window rhythm, verandah depth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/374404905",
+   "used": "overall size (49 x 21 m); the zig-zag outline is represented by stepped rectangular wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 32,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f2efe8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "faces": {
+     "left": "punched",
+     "right": "none",
+     "back": "plain",
+     "front": "punched"
+    },
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "rise": 3.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f2efe8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "rise": 2.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    13,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f2efe8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "right": "none"
+    },
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "rise": 3.2,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    26.5,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f2efe8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "two-level-gallery",
+   "id": "verandah-front",
+   "at": [
+    3,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "depth": 2.6,
+    "floors": 2,
+    "floor_height": 4.2,
+    "posts_every": 2.7,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.15
+      ],
+      "height": 0.5,
+      "colour": "#ffffff"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -7.1,
+     3.4
+    ],
+    "end": [
+     26,
+     -7.1,
+     3.4
+    ],
+    "count": 18
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.15
+      ],
+      "height": 0.5,
+      "colour": "#ffffff"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -7.1,
+     7.6
+    ],
+    "end": [
+     26,
+     -7.1,
+     7.6
+    ],
+    "count": 18
+   }
+  },
+  {
+   "type": "prism",
+   "id": "verandah-roof-front",
+   "params": {
+    "rect": [
+     46,
+     1.6
+    ],
+    "z0": 8.8,
+    "height": 0.3,
+    "colour": "#ffffff"
+   },
+   "at": [
+    3,
+    -6.9,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "chimney",
+   "at": [
+    -14,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 9,
+    "height": 4.5,
+    "colour": "#9b6b52"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "front-steps",
+   "at": [
+    8,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flagpole",
+   "at": [
+    15,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 15,
+    "colour": "#eeeeee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "villa-board",
+   "at": [
+    7,
+    -7.0,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.15
+    ],
+    "height": 0.7,
+    "colour": "#f6f6f2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       14,
+       12
+      ],
+      "height": 18,
+      "topScale": 0.75,
+      "colour": "#1f3a22"
+     }
+    },
+    "mode": "line",
+    "start": [
+     20,
+     14,
+     0
+    ],
+    "end": [
+     56,
+     6,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       14,
+       12
+      ],
+      "height": 15,
+      "topScale": 0.75,
+      "colour": "#2a4a2a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     26,
+     24,
+     0
+    ],
+    "end": [
+     54,
+     20,
+     0
+    ],
+    "count": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     22
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-way-374404905",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Verandah now open with posts, brackets and rails but rails are plain balustrade not X-lattice; wings only subtly stepped, east-end wrap verandah missing; forest backdrop is a merged dark block (too wall-like); no flower beds."
+ }
+}

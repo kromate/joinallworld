@@ -1,0 +1,267 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_universit%C3%A1rio_realiza_cinco_transplantes_renais_em_uma_semana_(41912953752).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Universidade de Brasilia",
+   "view": "street",
+   "file": "/tmp/places-evidence/brasilia/hosp1.jpg",
+   "used": "weathered beige-grey concrete; tall vertical-fin tower with a blank green-white board on top; ribbed ward wing with white-and-louvre bays; low horizontal block with ribbon windows over a stone-rubble plinth wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centro_de_Alta_Complexidade_em_Oncologia_do_Hospital_Universit%C3%A1rio_(14775554398).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Universidade de Brasilia",
+   "view": "detail",
+   "file": "/tmp/places-evidence/brasilia/hosp2.jpg",
+   "used": "cream render with deep roof slab and yellow louvred ducts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1203826294",
+   "used": "real wing outline for the low blocks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a89c82",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 1.4,
+    "bands": "#9a8f78",
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "at": [
+    6,
+    -42
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9c9078",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "left"
+      ],
+      "colour": "#c4b9a2",
+      "spacing": 1.4
+     }
+    ],
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a39f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "board-white",
+   "footprint": {
+    "rect": [
+     13,
+     0.8
+    ]
+   },
+   "at": [
+    6,
+    -47.5
+   ],
+   "z0": 24.4,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f2ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f2ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "board-green",
+   "footprint": {
+    "rect": [
+     13,
+     0.8
+    ]
+   },
+   "at": [
+    6,
+    -47.5
+   ],
+   "z0": 27.0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a6cf3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fb83a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.6,
+    "thickness": 0.6,
+    "colour": "#9d8a72"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -26,
+    -38
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8ae98",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#e9e6da"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "left",
+       "right"
+      ],
+      "colour": "#d6d0be",
+      "spacing": 1.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -25,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.2,
+    "thickness": 0.8,
+    "colour": "#7f7566"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   140
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -62
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -55
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     60
+    ],
+    "height": 8
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-41573440",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "OSM outline wing layout differs from photo; rubble plinth only a low wall; no yellow louvre boxes or stains; board is plain colour bands"
+ }
+}

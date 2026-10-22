@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1079371490",
+   "used": "9-vertex footprint 26 x 23 m (nearest match, building shell kept low and open-fronted)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rarotonga,_Tutakimoa_Road,_Bus,_2019-01-07.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sleeps-Darkly",
+   "view": "street",
+   "file": "/tmp/places-evidence/avarua/bus.jpg",
+   "used": "16 m from the point: cream-and-yellow island bus, white-post verandah with corrugated roof, pale blue shopfront nearby; not a confirmed view of the terminal itself"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee8d8",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9296",
+    "material": "corrugated",
+    "pitch": 4,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 4,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#ffffff",
+    "edgeColour": "#2f6fb0"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -5,
+    -14.5,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.6
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#eee8d8",
+    "sign_colour": "#2f6fb0"
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#f1eee0",
+    "stripe": "#e6b422",
+    "length": 9,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 2.4,
+    "colour": "#2f6fb0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is street context 16 m away, not the terminal; bus is a generic coach (no yellow/black front), shopfront and verandah columns simplified"
+ }
+}

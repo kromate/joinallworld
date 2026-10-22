@@ -1,0 +1,1140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-airport-apia-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Faleolo_International_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Viktor Pinchuk",
+   "view": "front",
+   "file": "/tmp/places-evidence/apia/airport1.jpg",
+   "used": "terminal frontage: a row of copper-brown pointed-arch gable ends with silver standing-seam roofs, perforated copper screens, low flat forecourt canopy, glazed end gable"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Faleolo.jpg",
+   "licence": "CC BY 3.0",
+   "author": "MBPilot",
+   "view": "aerial",
+   "used": "small terminal set between runway apron and coconut plantation, grass surround"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/139314497",
+   "used": "overall size 177x59 m; a 118 m portion is modelled (scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 36,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     118,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a65a35",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "windowRatio": 0.2,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       1.6,
+       1.6
+      ],
+      "colours": [
+       "#8f4a2b",
+       "#a85a32",
+       "#7a3d24"
+      ],
+      "slits": 0.15
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cdd0",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-end",
+   "at": [
+    52,
+    -10
+   ],
+   "params": {
+    "rect": [
+     10,
+     14
+    ],
+    "height": 11,
+    "colour": "#3d5a73",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#4b6f8f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -20.5,
+    8.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#f1ede4",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -36,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 1
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    60,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c8202f",
+    "count": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "bays",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -52,
+     0
+    ],
+    "end": [
+     52,
+     0
+    ],
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       -19.6,
+       4.0
+      ],
+      "params": {
+       "colour": "#a85a32",
+       "sections": [
+        {
+         "z": 0.0,
+         "rect": [
+          11.4,
+          1.0
+         ]
+        },
+        {
+         "z": 2.62,
+         "rect": [
+          11.06,
+          1.0
+         ]
+        },
+        {
+         "z": 5.25,
+         "rect": [
+          9.35,
+          1.0
+         ]
+        },
+        {
+         "z": 7.35,
+         "rect": [
+          6.61,
+          1.0
+         ]
+        },
+        {
+         "z": 8.92,
+         "rect": [
+          3.65,
+          1.0
+         ]
+        },
+        {
+         "z": 9.97,
+         "rect": [
+          1.37,
+          1.0
+         ]
+        },
+        {
+         "z": 10.5,
+         "rect": [
+          0.23,
+          1.0
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "at": [
+       0,
+       -19.720000000000002,
+       4.0
+      ],
+      "params": {
+       "colour": "#2b1a14",
+       "sections": [
+        {
+         "z": 0.0,
+         "rect": [
+          9.8,
+          0.3
+         ]
+        },
+        {
+         "z": 2.46,
+         "rect": [
+          9.51,
+          0.3
+         ]
+        },
+        {
+         "z": 4.92,
+         "rect": [
+          8.04,
+          0.3
+         ]
+        },
+        {
+         "z": 6.89,
+         "rect": [
+          5.69,
+          0.3
+         ]
+        },
+        {
+         "z": 8.36,
+         "rect": [
+          3.14,
+          0.3
+         ]
+        },
+        {
+         "z": 9.35,
+         "rect": [
+          1.18,
+          0.3
+         ]
+        },
+        {
+         "z": 9.84,
+         "rect": [
+          0.2,
+          0.3
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "at": [
+       0,
+       -19.84,
+       4.0
+      ],
+      "params": {
+       "colour": "#a85a32",
+       "sections": [
+        {
+         "z": 0.0,
+         "rect": [
+          7.75,
+          0.3
+         ]
+        },
+        {
+         "z": 2.25,
+         "rect": [
+          7.52,
+          0.3
+         ]
+        },
+        {
+         "z": 4.49,
+         "rect": [
+          6.36,
+          0.3
+         ]
+        },
+        {
+         "z": 6.29,
+         "rect": [
+          4.5,
+          0.3
+         ]
+        },
+        {
+         "z": 7.64,
+         "rect": [
+          2.48,
+          0.3
+         ]
+        },
+        {
+         "z": 8.54,
+         "rect": [
+          0.93,
+          0.3
+         ]
+        },
+        {
+         "z": 8.99,
+         "rect": [
+          0.16,
+          0.3
+         ]
+        }
+       ]
+      },
+      "lod": [
+       0
+      ]
+     },
+     {
+      "type": "loft",
+      "at": [
+       0,
+       -19.96,
+       4.0
+      ],
+      "params": {
+       "colour": "#2b1a14",
+       "sections": [
+        {
+         "z": 0.0,
+         "rect": [
+          6.84,
+          0.3
+         ]
+        },
+        {
+         "z": 2.15,
+         "rect": [
+          6.63,
+          0.3
+         ]
+        },
+        {
+         "z": 4.31,
+         "rect": [
+          5.61,
+          0.3
+         ]
+        },
+        {
+         "z": 6.03,
+         "rect": [
+          3.97,
+          0.3
+         ]
+        },
+        {
+         "z": 7.32,
+         "rect": [
+          2.19,
+          0.3
+         ]
+        },
+        {
+         "z": 8.18,
+         "rect": [
+          0.82,
+          0.3
+         ]
+        },
+        {
+         "z": 8.61,
+         "rect": [
+          0.14,
+          0.3
+         ]
+        }
+       ]
+      },
+      "lod": [
+       0
+      ]
+     },
+     {
+      "type": "loft",
+      "at": [
+       0,
+       -20.080000000000002,
+       4.0
+      ],
+      "params": {
+       "colour": "#a85a32",
+       "sections": [
+        {
+         "z": 0.0,
+         "rect": [
+          4.56,
+          0.3
+         ]
+        },
+        {
+         "z": 1.92,
+         "rect": [
+          4.42,
+          0.3
+         ]
+        },
+        {
+         "z": 3.83,
+         "rect": [
+          3.74,
+          0.3
+         ]
+        },
+        {
+         "z": 5.37,
+         "rect": [
+          2.64,
+          0.3
+         ]
+        },
+        {
+         "z": 6.52,
+         "rect": [
+          1.46,
+          0.3
+         ]
+        },
+        {
+         "z": 7.28,
+         "rect": [
+          0.55,
+          0.3
+         ]
+        },
+        {
+         "z": 7.67,
+         "rect": [
+          0.09,
+          0.3
+         ]
+        }
+       ]
+      },
+      "lod": [
+       0
+      ]
+     },
+     {
+      "type": "loft",
+      "at": [
+       0,
+       -20.200000000000003,
+       4.0
+      ],
+      "params": {
+       "colour": "#2b1a14",
+       "sections": [
+        {
+         "z": 0.0,
+         "rect": [
+          3.88,
+          0.3
+         ]
+        },
+        {
+         "z": 1.85,
+         "rect": [
+          3.76,
+          0.3
+         ]
+        },
+        {
+         "z": 3.69,
+         "rect": [
+          3.18,
+          0.3
+         ]
+        },
+        {
+         "z": 5.17,
+         "rect": [
+          2.25,
+          0.3
+         ]
+        },
+        {
+         "z": 6.27,
+         "rect": [
+          1.24,
+          0.3
+         ]
+        },
+        {
+         "z": 7.01,
+         "rect": [
+          0.47,
+          0.3
+         ]
+        },
+        {
+         "z": 7.38,
+         "rect": [
+          0.08,
+          0.3
+         ]
+        }
+       ]
+      },
+      "lod": [
+       0
+      ]
+     },
+     {
+      "type": "loft",
+      "at": [
+       0,
+       -4,
+       4.3
+      ],
+      "params": {
+       "colour": "#d3d6d8",
+       "sections": [
+        {
+         "z": 0.0,
+         "rect": [
+          10.8,
+          32
+         ]
+        },
+        {
+         "z": 2.5,
+         "rect": [
+          10.48,
+          32
+         ]
+        },
+        {
+         "z": 5.0,
+         "rect": [
+          8.86,
+          32
+         ]
+        },
+        {
+         "z": 7.0,
+         "rect": [
+          6.26,
+          32
+         ]
+        },
+        {
+         "z": 8.5,
+         "rect": [
+          3.46,
+          32
+         ]
+        },
+        {
+         "z": 9.5,
+         "rect": [
+          1.3,
+          32
+         ]
+        },
+        {
+         "z": 10.0,
+         "rect": [
+          0.22,
+          32
+         ]
+        }
+       ],
+       "material": "corrugated"
+      }
+     }
+    ],
+    "lod2Step": 9,
+    "lod1Step": 1
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -23.4,
+    6.5
+   ],
+   "params": {
+    "colour": "#a85a32",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       24,
+       1.0
+      ]
+     },
+     {
+      "z": 4.12,
+      "rect": [
+       23.28,
+       1.0
+      ]
+     },
+     {
+      "z": 8.25,
+      "rect": [
+       19.68,
+       1.0
+      ]
+     },
+     {
+      "z": 11.55,
+      "rect": [
+       13.92,
+       1.0
+      ]
+     },
+     {
+      "z": 14.03,
+      "rect": [
+       7.68,
+       1.0
+      ]
+     },
+     {
+      "z": 15.67,
+      "rect": [
+       2.88,
+       1.0
+      ]
+     },
+     {
+      "z": 16.5,
+      "rect": [
+       0.48,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -23.52,
+    6.5
+   ],
+   "params": {
+    "colour": "#2b1a14",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       20.64,
+       0.3
+      ]
+     },
+     {
+      "z": 3.87,
+      "rect": [
+       20.02,
+       0.3
+      ]
+     },
+     {
+      "z": 7.73,
+      "rect": [
+       16.92,
+       0.3
+      ]
+     },
+     {
+      "z": 10.82,
+      "rect": [
+       11.97,
+       0.3
+      ]
+     },
+     {
+      "z": 13.14,
+      "rect": [
+       6.6,
+       0.3
+      ]
+     },
+     {
+      "z": 14.69,
+      "rect": [
+       2.48,
+       0.3
+      ]
+     },
+     {
+      "z": 15.46,
+      "rect": [
+       0.41,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -23.639999999999997,
+    6.5
+   ],
+   "params": {
+    "colour": "#a85a32",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       16.32,
+       0.3
+      ]
+     },
+     {
+      "z": 3.53,
+      "rect": [
+       15.83,
+       0.3
+      ]
+     },
+     {
+      "z": 7.06,
+      "rect": [
+       13.38,
+       0.3
+      ]
+     },
+     {
+      "z": 9.89,
+      "rect": [
+       9.47,
+       0.3
+      ]
+     },
+     {
+      "z": 12.01,
+      "rect": [
+       5.22,
+       0.3
+      ]
+     },
+     {
+      "z": 13.42,
+      "rect": [
+       1.96,
+       0.3
+      ]
+     },
+     {
+      "z": 14.12,
+      "rect": [
+       0.33,
+       0.3
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -23.759999999999998,
+    6.5
+   ],
+   "params": {
+    "colour": "#2b1a14",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       14.4,
+       0.3
+      ]
+     },
+     {
+      "z": 3.38,
+      "rect": [
+       13.97,
+       0.3
+      ]
+     },
+     {
+      "z": 6.77,
+      "rect": [
+       11.81,
+       0.3
+      ]
+     },
+     {
+      "z": 9.47,
+      "rect": [
+       8.35,
+       0.3
+      ]
+     },
+     {
+      "z": 11.5,
+      "rect": [
+       4.61,
+       0.3
+      ]
+     },
+     {
+      "z": 12.85,
+      "rect": [
+       1.73,
+       0.3
+      ]
+     },
+     {
+      "z": 13.53,
+      "rect": [
+       0.29,
+       0.3
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -23.88,
+    6.5
+   ],
+   "params": {
+    "colour": "#a85a32",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       9.6,
+       0.3
+      ]
+     },
+     {
+      "z": 3.01,
+      "rect": [
+       9.31,
+       0.3
+      ]
+     },
+     {
+      "z": 6.02,
+      "rect": [
+       7.87,
+       0.3
+      ]
+     },
+     {
+      "z": 8.43,
+      "rect": [
+       5.57,
+       0.3
+      ]
+     },
+     {
+      "z": 10.24,
+      "rect": [
+       3.07,
+       0.3
+      ]
+     },
+     {
+      "z": 11.44,
+      "rect": [
+       1.15,
+       0.3
+      ]
+     },
+     {
+      "z": 12.05,
+      "rect": [
+       0.19,
+       0.3
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -24.0,
+    6.5
+   ],
+   "params": {
+    "colour": "#2b1a14",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       8.16,
+       0.3
+      ]
+     },
+     {
+      "z": 2.9,
+      "rect": [
+       7.92,
+       0.3
+      ]
+     },
+     {
+      "z": 5.8,
+      "rect": [
+       6.69,
+       0.3
+      ]
+     },
+     {
+      "z": 8.12,
+      "rect": [
+       4.73,
+       0.3
+      ]
+     },
+     {
+      "z": 9.86,
+      "rect": [
+       2.61,
+       0.3
+      ]
+     },
+     {
+      "z": 11.02,
+      "rect": [
+       0.98,
+       0.3
+      ]
+     },
+     {
+      "z": 11.6,
+      "rect": [
+       0.16,
+       0.3
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -5,
+    6.8
+   ],
+   "params": {
+    "colour": "#d3d6d8",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       23,
+       36
+      ]
+     },
+     {
+      "z": 3.88,
+      "rect": [
+       22.31,
+       36
+      ]
+     },
+     {
+      "z": 7.75,
+      "rect": [
+       18.86,
+       36
+      ]
+     },
+     {
+      "z": 10.85,
+      "rect": [
+       13.34,
+       36
+      ]
+     },
+     {
+      "z": 13.17,
+      "rect": [
+       7.36,
+       36
+      ]
+     },
+     {
+      "z": 14.72,
+      "rect": [
+       2.76,
+       36
+      ]
+     },
+     {
+      "z": 15.5,
+      "rect": [
+       0.46,
+       36
+      ]
+     }
+    ],
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -5,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 100,
+    "depth": 5,
+    "height": 3.8,
+    "thickness": 0.35,
+    "columns": 16,
+    "colour": "#3a2c25",
+    "edgeColour": "#7a4128"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     66,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     64,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof still renders blue-tinted (sky reflection) rather than silver; arches are nested lofts, not true ogee ribs; lattice screens approximated by copper panel cladding; only 118 m of 177 m modelled."
+ }
+}

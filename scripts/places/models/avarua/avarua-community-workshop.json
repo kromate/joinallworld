@@ -1,0 +1,221 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/207000207",
+   "used": "campus boundary only (198 x 103 m, not a building); NOT used as footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "north-block",
+   "footprint": {
+    "rect": [
+     56,
+     10
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#7aa7c7",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3463a",
+    "material": "corrugated",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    -23,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3463a",
+    "material": "corrugated",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    23,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3463a",
+    "material": "corrugated",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     9,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#faf8f0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3463a",
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 11,
+    "cap": "pyramid",
+    "colour": "#faf8f0",
+    "cap_colour": "#a3463a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     28
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-community-workshop",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; OSM is the campus boundary so U-plan, chapel and bell tower are typical mission-college assumptions"
+ }
+}

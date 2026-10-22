@@ -1,0 +1,441 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/%C5%8Ctuataua_Stonefields",
+   "used": "about 100 ha reserve: quarried volcanic cone with a shallow grassy crater, 15th-century Maori stone garden mounds, low basalt dry-stone walls, Manukau shore; no building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "cone",
+   "params": {
+    "colour": "#8fa45e",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       40,
+       36
+      ]
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       31,
+       28
+      ]
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       22,
+       20
+      ]
+     },
+     {
+      "z": 15,
+      "ellipse": [
+       17,
+       15
+      ]
+     }
+    ]
+   },
+   "at": [
+    -30,
+    40
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "crater",
+   "params": {
+    "segments": 28,
+    "colour": "#7c9650",
+    "profile": [
+     [
+      17,
+      15
+     ],
+     [
+      13,
+      12.8
+     ],
+     [
+      9,
+      12.0
+     ],
+     [
+      5,
+      12.4
+     ],
+     [
+      0,
+      12.5
+     ]
+    ]
+   },
+   "at": [
+    -30,
+    40
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "rim-rock",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#4f4a45",
+    "profile": [
+     [
+      16,
+      14.6
+     ],
+     [
+      17.4,
+      14.9
+     ],
+     [
+      17.8,
+      14.6
+     ]
+    ]
+   },
+   "at": [
+    -30,
+    40
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.7,
+    "colour": "#4f4a45",
+    "points": [
+     [
+      -45,
+      -30
+     ],
+     [
+      -20,
+      -26
+     ],
+     [
+      5,
+      -30
+     ],
+     [
+      30,
+      -24
+     ],
+     [
+      52,
+      -28
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.7,
+    "colour": "#4f4a45",
+    "points": [
+     [
+      -48,
+      -8
+     ],
+     [
+      -22,
+      -4
+     ],
+     [
+      0,
+      -9
+     ],
+     [
+      28,
+      -3
+     ],
+     [
+      54,
+      -6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.7,
+    "colour": "#4f4a45",
+    "points": [
+     [
+      -46,
+      16
+     ],
+     [
+      -18,
+      20
+     ],
+     [
+      8,
+      14
+     ],
+     [
+      34,
+      19
+     ],
+     [
+      56,
+      15
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-3",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.7,
+    "colour": "#4f4a45",
+    "points": [
+     [
+      40,
+      -26
+     ],
+     [
+      42,
+      -4
+     ],
+     [
+      38,
+      18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "mounds",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 6,
+      "colour": "#6f6a62",
+      "profile": [
+       [
+        1.8,
+        0
+       ],
+       [
+        1.5,
+        0.5
+       ],
+       [
+        0.8,
+        0.8
+       ],
+       [
+        0,
+        0.9
+       ]
+      ]
+     }
+    },
+    "mode": "grid",
+    "cols": 4,
+    "rows": 2,
+    "dx": 9,
+    "dy": 9,
+    "lod1Step": 4,
+    "lod2Step": 18
+   },
+   "at": [
+    -6,
+    -20,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "mounds2",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 6,
+      "colour": "#7b756c",
+      "profile": [
+       [
+        1.5,
+        0
+       ],
+       [
+        1.2,
+        0.4
+       ],
+       [
+        0.6,
+        0.7
+       ],
+       [
+        0,
+        0.8
+       ]
+      ]
+     }
+    },
+    "mode": "grid",
+    "cols": 3,
+    "rows": 2,
+    "dx": 8,
+    "dy": 8,
+    "lod1Step": 4,
+    "lod2Step": 10
+   },
+   "at": [
+    34,
+    6,
+    0
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#5a6b4a",
+    "frameColour": "#4f4a45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "car-park",
+   "params": {
+    "rect": [
+     20,
+     9
+    ],
+    "z0": 0.02,
+    "height": 0.08,
+    "colour": "#7d7a74",
+    "topColour": "#7d7a74"
+   },
+   "at": [
+    -30,
+    -46
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -34,
+    -46,
+    0
+   ],
+   "params": {
+    "colour": "#b8bcc0",
+    "count": 1,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     36
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and no OSM outline: composed from the brief only (crater cone, dark basalt walls, garden mounds); wall layout and mound pattern are schematic, not the real survey"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-way-97144423"
+}

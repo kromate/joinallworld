@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/901216183",
+   "used": "Raemaru Park outline 179 x 118 m (name match)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/avarua.json",
+   "used": "grassy hillside park, picnic pavilion, flagpole, broadleaf trees and palms; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 118
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f9b4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9b4e",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -15,
+    -20,
+    0.3
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#a3463a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    20,
+    -38,
+    0.3
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    35,
+    -10,
+    0.3
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#b6323a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      20,
+      -38
+     ],
+     [
+      10,
+      -25
+     ],
+     [
+      -8,
+      -18
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#c9bfa5"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -6,
+    -26,
+    0.3
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -10,
+    0.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 6,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    25,
+    0.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 6,
+    "line": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    40,
+    0.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 5,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    30,
+    0.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 5,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo; hillside relief not modelled (flat lawn on OSM outline), pavilion and flagpole positions typed"
+ }
+}

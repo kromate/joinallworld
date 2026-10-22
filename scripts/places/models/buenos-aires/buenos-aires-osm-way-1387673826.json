@@ -1,0 +1,138 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1156438126",
+   "used": "real two-level footprint, 30 x 9 m, levels tag"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Una_de_las_sedes_de_la_Iglesia_de_Dios_Sociedad_Misionera_Mundial,_enero_de_2026.jpg",
+   "licence": "CC0",
+   "author": "Epidemia2023x",
+   "view": "street",
+   "file": "/tmp/places-evidence/buenos-aires/iglesia1.jpg",
+   "used": "a different branch of the same church (Peru): only the style cue of a plain rendered shopfront-sized building with a dark blank sign board; not compared"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e4d8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "punched",
+     "right": "punched"
+    },
+    "glassColour": "#5c6c78",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.8,
+    "bottom": 3.2,
+    "colour": "#2a2f36",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.9,
+    "run": 0.35,
+    "count": 3,
+    "colour": "#bdb8ae"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.8,
+    "thickness": 0.2,
+    "kind": "bars",
+    "colour": "#3a3d41"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-osm-way-1387673826",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only the OSM footprint and levels are real; the available church photos show other branches, so facade and sign position are generic"
+ }
+}

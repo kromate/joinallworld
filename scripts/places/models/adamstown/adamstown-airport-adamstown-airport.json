@@ -1,0 +1,386 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-airport-adamstown-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Landing_for_Long_Boats_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Panoramio contributor (via Wikimedia Commons)",
+   "view": "aerial",
+   "used": "Bounty Bay landing: long grey-white corrugated boat shed with open slipway end, concrete apron, curved-ended concrete quay running out beside a small cove, palms and rock either side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bounty_Bay_Jetty_1970s.jpg",
+   "licence": "Public domain",
+   "author": "NOAA",
+   "view": "aerial",
+   "used": "earlier jetty: derrick mast with boom, longboats, black boulders, surf"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 38,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    -12,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 56,
+    "depth": 34,
+    "colour": "#2f7f8c",
+    "bank": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "points": [
+     [
+      -16,
+      -2
+     ],
+     [
+      16,
+      -2
+     ],
+     [
+      16,
+      -9
+     ],
+     [
+      8,
+      -13
+     ],
+     [
+      -6,
+      -13
+     ],
+     [
+      -16,
+      -9
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#b4b0a4",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quay",
+   "params": {
+    "points": [
+     [
+      -12,
+      -2
+     ],
+     [
+      -34,
+      -2
+     ],
+     [
+      -38,
+      -6
+     ],
+     [
+      -38,
+      -10
+     ],
+     [
+      -34,
+      -14
+     ],
+     [
+      -12,
+      -14
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#bab6aa",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     28,
+     9
+    ]
+   },
+   "at": [
+    5,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd3d4",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#dfe3e4",
+    "material": "corrugated",
+    "pitch": 13,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lean-to",
+   "footprint": {
+    "rect": [
+     28,
+     3.5
+    ]
+   },
+   "at": [
+    5,
+    11.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f9ea6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#aab3b8",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "open-end",
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#2d3438",
+    "z0": 0.2
+   },
+   "at": [
+    2,
+    0.4,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slip",
+   "params": {
+    "points": [
+     [
+      -3,
+      -2
+     ],
+     [
+      7,
+      -2
+     ],
+     [
+      8,
+      -12
+     ],
+     [
+      -4,
+      -12
+     ]
+    ],
+    "height": 0.6,
+    "colour": "#8e8c84",
+    "material": "rough-concrete"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail1",
+   "params": {
+    "section": {
+     "rect": [
+      0.15,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      -1,
+      -1,
+      0.7
+     ],
+     [
+      -1.6,
+      -11,
+      0.7
+     ]
+    ],
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail2",
+   "params": {
+    "section": {
+     "rect": [
+      0.15,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      5,
+      -1,
+      0.7
+     ],
+     [
+      5.6,
+      -11,
+      0.7
+     ]
+    ],
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -35,
+    -2.3,
+    0.8
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.0,
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "colour": "#2f5f8f",
+    "tankHeight": 1.7
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    24,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 7,
+    "height": 1.6,
+    "stairs": false,
+    "boulders": 8,
+    "rock_colour": "#3a3835"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -40,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 7,
+    "height": 1.6,
+    "stairs": false,
+    "boulders": 8,
+    "rock_colour": "#3a3835"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     12
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     17
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     16
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Single-cove landing with shed, apron, quay and slipway matches layout; real shed is longer with a lower second roof bay, quay end is curved sheet-piled, cliffs and dense palms surrounding are not modelled."
+ }
+}

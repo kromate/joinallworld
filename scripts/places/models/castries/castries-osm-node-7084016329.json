@@ -1,0 +1,110 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-osm-node-7084016329",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/castries.json#castries-osm-node-7084016329",
+   "used": "long corrugated green shed, rows of stalls under blue tarps, car park by the road; nearest OSM building is an unrelated office (scale only)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 12,
+    "height": 4,
+    "roof": "shed",
+    "roof_colour": "#3f6e4f",
+    "roof_material": "corrugated",
+    "wall_colour": "#e4e0d4"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#2f6fb5",
+     "#3b7fc4",
+     "#2f6fb5"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 9,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the market; layout is typical of a St Lucia village market."
+ }
+}

@@ -1,0 +1,130 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/661247351",
+   "used": "size only (7.3 x 6.6 m); the nearest OSM building is 30 m away so it is not trusted as this venue"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     7.3,
+     6.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7a5a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -3.6,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "depth": 1.8,
+    "height": 2.4,
+    "balustrade": false,
+    "steps": true,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    6,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.6,
+    "bottom": 0.7,
+    "colour": "#f6f3ea",
+    "frameColour": "#6b4a2f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -7,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Placeholder game venue, no photo; typical small hip-roofed hut."
+ }
+}

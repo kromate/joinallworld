@@ -1,0 +1,389 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-way-58379525",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:North_Shore_Hospital_across_Lake_Pupuke.jpg",
+   "licence": "Public domain",
+   "author": "Karora",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/58379525-0.jpg",
+   "used": "tall slab tower of taupe concrete with ribbon windows and two vertical red panel stripes, darker plant room on top with masts, wide white-cream podium of ribbon-windowed storeys, small lakeside building at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/11501813",
+   "used": "complex is 291 x 121 m with six levels; only the tower and its main podium wing are modelled, at their relative positions"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     96,
+     30
+    ]
+   },
+   "at": [
+    14,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efece4",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#d98a8a",
+    "plinth": 0.4,
+    "glassColour": "#7d8a90"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f",
+    "material": "membrane",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-high",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    56,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ece9e0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "glassColour": "#7d8a90"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    -14,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 44,
+   "storeys": 11,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a99a8b",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#ece8dd",
+    "plinth": 0.3,
+    "glassColour": "#e9e6dc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    -14,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 47,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#7c6a5a",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7173",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -1,
+     -5.2,
+     7
+    ],
+    "end": [
+     -1,
+     -5.2,
+     40
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2.4,
+       0.5
+      ],
+      "height": 2.4,
+      "colour": "#c8322b"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -17,
+     -5.2,
+     7
+    ],
+    "end": [
+     -17,
+     -5.2,
+     40
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2.4,
+       0.5
+      ],
+      "height": 2.4,
+      "colour": "#c8322b"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lake-building",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -52,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e8e2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdedd",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 40
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-recess",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -14,
+    6
+   ],
+   "z0": 44,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2e2925",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e2925"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    6,
+    53
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 7,
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    6,
+    53
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 5,
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    5,
+    53
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 2,
+    "colour": "#b0aca4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 8,
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Tower recoloured taupe with cream ribbon bands and dark recess under plant room; centre face not fully solid, podium blocks simplified, lakeside building lacks curved end, no lake."
+ }
+}

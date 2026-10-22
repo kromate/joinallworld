@@ -1,0 +1,1245 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_San_Mart%C3%ADn_(Quilmes)_III.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Quilme\u00f1o89",
+   "view": "street",
+   "file": "/tmp/places-evidence/buenos-aires/quilmes1.jpg",
+   "used": "equestrian monument on a tall pale stone plinth with a relief panel, ringed by a red-painted low base and black railings, grey paved axial path, double black lamp posts, benches, tall plane trees and lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/711562796",
+   "used": "square plot of about 87 x 87 m (drawn axis-aligned, its bearing is 149 degrees in the real city)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.35,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "horse and rider built from blocks; lamps single-headed; plane trees are generic broadleaf; background buildings omitted"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "path-main",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     36
+    ],
+    "z0": 0.0,
+    "height": 0.05,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-cross",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     3.5
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-base",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#b5392e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -5.5,
+    0.9
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    5.5,
+    0.9
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -5.5,
+    0,
+    0.9
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#1c1c1c"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    5.5,
+    0,
+    0.9
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#1c1c1c"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "id": "plinth-base",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "z0": 0.8,
+    "height": 0.7,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     3.0
+    ],
+    "z0": 1.5,
+    "height": 5.6,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "relief-frame",
+   "at": [
+    0,
+    -1.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.12
+    ],
+    "z0": 2.4,
+    "height": 3.0,
+    "colour": "#b9b4a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief-panel",
+   "at": [
+    0,
+    -1.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.12
+    ],
+    "z0": 2.65,
+    "height": 2.5,
+    "colour": "#6c675d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-cap",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     3.5
+    ],
+    "z0": 7.1,
+    "height": 0.35,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-base--1-0",
+   "at": [
+    -3.9,
+    -24,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.55,
+    "height": 0.7,
+    "topScale": 0.5,
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -3.9,
+    -24,
+    0.6
+   ],
+   "params": {
+    "height": 4.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-arms--1-0",
+   "at": [
+    -3.9,
+    -24,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-base--1-1",
+   "at": [
+    -3.9,
+    -12,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.55,
+    "height": 0.7,
+    "topScale": 0.5,
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -3.9,
+    -12,
+    0.6
+   ],
+   "params": {
+    "height": 4.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-arms--1-1",
+   "at": [
+    -3.9,
+    -12,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-seat--1-0",
+   "at": [
+    -4.8,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     1.8
+    ],
+    "z0": 0.45,
+    "height": 0.08,
+    "colour": "#8a6a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-back--1-0",
+   "at": [
+    -5.05,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     1.8
+    ],
+    "z0": 0.6,
+    "height": 0.45,
+    "colour": "#8a6a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-end-a--1-0",
+   "at": [
+    -4.8,
+    -18.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 0.0,
+    "height": 0.5,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-end-b--1-0",
+   "at": [
+    -4.8,
+    -17.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 0.0,
+    "height": 0.5,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-seat--1-1",
+   "at": [
+    -4.8,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     1.8
+    ],
+    "z0": 0.45,
+    "height": 0.08,
+    "colour": "#8a6a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-back--1-1",
+   "at": [
+    -5.05,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     1.8
+    ],
+    "z0": 0.6,
+    "height": 0.45,
+    "colour": "#8a6a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-end-a--1-1",
+   "at": [
+    -4.8,
+    -6.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 0.0,
+    "height": 0.5,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-end-b--1-1",
+   "at": [
+    -4.8,
+    -5.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 0.0,
+    "height": 0.5,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-base-1-0",
+   "at": [
+    3.9,
+    -24,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.55,
+    "height": 0.7,
+    "topScale": 0.5,
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    3.9,
+    -24,
+    0.6
+   ],
+   "params": {
+    "height": 4.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-arms-1-0",
+   "at": [
+    3.9,
+    -24,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-base-1-1",
+   "at": [
+    3.9,
+    -12,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.55,
+    "height": 0.7,
+    "topScale": 0.5,
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    3.9,
+    -12,
+    0.6
+   ],
+   "params": {
+    "height": 4.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-arms-1-1",
+   "at": [
+    3.9,
+    -12,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-seat-1-0",
+   "at": [
+    4.8,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     1.8
+    ],
+    "z0": 0.45,
+    "height": 0.08,
+    "colour": "#8a6a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-back-1-0",
+   "at": [
+    5.05,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     1.8
+    ],
+    "z0": 0.6,
+    "height": 0.45,
+    "colour": "#8a6a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-end-a-1-0",
+   "at": [
+    4.8,
+    -18.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 0.0,
+    "height": 0.5,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-end-b-1-0",
+   "at": [
+    4.8,
+    -17.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 0.0,
+    "height": 0.5,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-seat-1-1",
+   "at": [
+    4.8,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     1.8
+    ],
+    "z0": 0.45,
+    "height": 0.08,
+    "colour": "#8a6a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-back-1-1",
+   "at": [
+    5.05,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.08,
+     1.8
+    ],
+    "z0": 0.6,
+    "height": 0.45,
+    "colour": "#8a6a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-end-a-1-1",
+   "at": [
+    4.8,
+    -6.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 0.0,
+    "height": 0.5,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bench-end-b-1-1",
+   "at": [
+    4.8,
+    -5.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 0.0,
+    "height": 0.5,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8.5,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8.5,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8.5,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8.5,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8.5,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8.5,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8.5,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8.5,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8.5,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8.5,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-body",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.9
+    ],
+    "z0": 8.45,
+    "height": 1.0,
+    "colour": "#3a3d3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-neck",
+   "at": [
+    -1.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "z0": 9.05,
+    "height": 1.5,
+    "colour": "#3a3d3a",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "horse-head",
+   "at": [
+    -1.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.35
+    ],
+    "z0": 10.15,
+    "height": 0.45,
+    "colour": "#3a3d3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rider-torso",
+   "at": [
+    0.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "z0": 9.45,
+    "height": 1.1,
+    "colour": "#3a3d3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rider-head",
+   "at": [
+    0.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 10.55,
+    "height": 0.35,
+    "colour": "#3a3d3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cloak",
+   "at": [
+    0.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.7
+    ],
+    "z0": 9.35,
+    "height": 0.9,
+    "colour": "#3a3d3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "leg0",
+   "at": [
+    -0.95,
+    -0.3
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 7.45,
+    "height": 1.1,
+    "colour": "#3a3d3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "leg1",
+   "at": [
+    -0.95,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 7.45,
+    "height": 1.1,
+    "colour": "#3a3d3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "leg2",
+   "at": [
+    0.95,
+    -0.3
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 7.45,
+    "height": 1.1,
+    "colour": "#3a3d3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "leg3",
+   "at": [
+    0.95,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 7.45,
+    "height": 1.1,
+    "colour": "#3a3d3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tail",
+   "at": [
+    1.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "z0": 8.35,
+    "height": 0.9,
+    "colour": "#3a3d3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-recreation"
+}

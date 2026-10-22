@@ -1,0 +1,101 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-way-86369735",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/86369735",
+   "used": "real outline (L-shaped 38 x 36 m block, bearing 144 deg), name match"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bogota.json#bogota-osm-way-86369735",
+   "used": "two storeys, about 8 m, gable roof, render walls with timber accent; SENA photos found are other sites or a different building, so none used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "workshop",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d6cdb7",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8b5a3c",
+    "plinth": 0.5,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8a86",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    -6,
+    -30
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 2.2,
+    "colour": "#2f6b3a",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "id": "timber-store",
+   "at": [
+    26,
+    -18
+   ],
+   "rotDeg": 54,
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3,
+    "colour": "#8b5a3c",
+    "roofColour": "#6d6f72"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 3,
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this block; storey heights, roof and colours typed from the brief"
+ }
+}

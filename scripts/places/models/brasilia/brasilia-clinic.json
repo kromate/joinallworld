@@ -1,0 +1,303 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Sarah_Kubitschek_Visto_da_W3_Sul_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "LeaLTudo",
+   "view": "street",
+   "file": "/tmp/places-evidence/brasilia/clinic2.jpg",
+   "used": "long pale horizontal block with rows of round porthole windows, two taller square stair/service towers at the ends, a tall plain street wall in grey concrete, cobogo screen at right, pinkish-cream concrete"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Sarah_Kubitschek.jpg",
+   "licence": "CC BY 3.0 br",
+   "author": "Agencia Brasil",
+   "view": "front",
+   "used": "NOT used for geometry: the Wikidata image is the Belem Sarah (white barrel-vault with louvres), a different building; only the white-and-ribbed shed idea informs the low wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/20967995",
+   "used": "10 levels / 37 m tallest part, overall size 175 x 104 m, elongated bent footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     104,
+     22
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2b8a2",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a8",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     96,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcae98",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4a898",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-w",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -34,
+    4
+   ],
+   "z0": 0,
+   "height": 29,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b6a0",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-e",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    34,
+    4
+   ],
+   "z0": 0,
+   "height": 29,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b6a0",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-top",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b6a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-wing",
+   "footprint": {
+    "rect": [
+     56,
+     18
+    ]
+   },
+   "at": [
+    0,
+    32
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2cdbd",
+    "windows": "none",
+    "bands": "#cfc9be"
+   },
+   "roof": {
+    "form": "sawtooth",
+    "colour": "#c3c3bd",
+    "material": "concrete"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "street-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "height": 3.6,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#a3a39c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cobogo",
+   "at": [
+    34,
+    -17
+   ],
+   "params": {
+    "rect": [
+     26,
+     1.2
+    ],
+    "height": 4.5,
+    "colour": "#cfc4b4",
+    "z0": 0
+   }
+  },
+  {
+   "type": "big-tree",
+   "id": "canopy0",
+   "at": [
+    -42,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "crown_radius": 8,
+    "colour": "#4f7a38"
+   }
+  },
+  {
+   "type": "big-tree",
+   "id": "canopy1",
+   "at": [
+    46,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "crown_radius": 8,
+    "colour": "#4f7a38"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Windows are still small evenly spaced portholes with cross mullions on a flat face (no deep dark recess or irregular grouping); terrace setback is subtle; towers are plain pink blocks; tree canopies are low-poly lollipops rather than spreading crowns."
+ }
+}

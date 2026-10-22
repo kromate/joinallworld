@@ -1,0 +1,284 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pitcairn_-_Kapelle.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gerold Steinhorst",
+   "view": "street",
+   "file": "/tmp/places-evidence/adamstown/kapelle.jpg",
+   "used": "cream render nave, two arched green-framed windows, red barge-boards and ridge finials, porch at the left end, stone retaining wall and green mesh fence in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pitcairn_-_Church_of_Adamstown.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Makemake (de.wikipedia)",
+   "view": "front",
+   "file": "/tmp/places-evidence/adamstown/church.jpg",
+   "used": "red verandah posts, cross-gable porch, Norfolk pines, wooden rails of the approach ramp"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/adamstown.json#adamstown-quiet-reflection",
+   "used": "OSM nearest building is not trusted; the church is the island Seventh-day Adventist church (1954)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     7.5,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.8,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bay": 3.4,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#3f7a5a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdd6c9",
+    "material": "metal-sheet",
+    "pitch": 34,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wing",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -6.2,
+    -2.5
+   ],
+   "z0": 0.8,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "punched",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c3cfc0",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lean-to",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 0.8,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b9c4b8",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/spire",
+   "on": "nave",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "baseWidth": 0.22,
+    "height": 2.4,
+    "colour": "#9b2f26",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/spire",
+   "on": "nave",
+   "at": [
+    0,
+    3.5,
+    0
+   ],
+   "params": {
+    "baseWidth": 0.22,
+    "height": 2.4,
+    "colour": "#9b2f26",
+    "finial": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -1,
+    -7.5,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 0.8,
+    "thickness": 0.6,
+    "colour": "#8c7a60"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -1,
+    -7.5,
+    0.8
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "thickness": 0.06,
+    "kind": "fence",
+    "pillarEvery": 2.5,
+    "colour": "#5d8a62"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    7,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.8,
+    "run": 2.2,
+    "count": 4,
+    "colour": "#8c7a60"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -8.2,
+    -5.2,
+    0.8
+   ],
+   "params": {
+    "length": 3.6,
+    "count": 2,
+    "height": 2.8,
+    "radius": 0.1,
+    "kind": "square",
+    "beamHeight": 0.2,
+    "colour": "#9b2f26"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 1,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 1,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 1,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ridge finials and red barge-boards not visible, side wing windows oversized, retaining wall and hillside backdrop only suggested; exact dimensions estimated."
+ }
+}

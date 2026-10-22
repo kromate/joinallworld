@@ -1,0 +1,186 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Graffiti_na_Pra%C3%A7a_do_DI,_Taguatinga_DF_(87165853).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user via Commons",
+   "view": "front",
+   "file": "/tmp/places-evidence/brasilia/di1.jpg",
+   "used": "low flat-roofed pavilion with blue/green painted wall, pale render, speckled mosaic and diagonal-panel paving in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/20694993",
+   "used": "56 x 56 m square outline, building 1 level 3.4 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "blue-band",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9fd6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9fd6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-band",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 1.8,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6fbf7a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fbf7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet",
+   "footprint": {
+    "rect": [
+     14.6,
+     8.6
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 3.0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfd6d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd6d8",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     16
+    ],
+    "height": 0.1,
+    "colour": "#8f8c86"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -6,
+    0.12
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 11,
+    "rows": 6,
+    "dx": 2.4,
+    "dy": 3.0,
+    "stagger": 1.2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.35
+      ],
+      "height": 0.03,
+      "colour": "#e8e6e0"
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   30,
+   24
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-202664538",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "only a graffiti-wall photo exists; mural is flat green/blue bands, speckle paving approximate, diagonal joints omitted"
+ }
+}

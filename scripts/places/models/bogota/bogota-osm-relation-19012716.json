@@ -1,0 +1,544 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-relation-19012716",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Plaza_de_Toros_de_Santa_Maria.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dvwoud09",
+   "view": "front",
+   "used": "red-brick ring, arched openings, lattice spandrels, central portal flanked by taller lattice towers, battlements, grey tiers",
+   "file": "/tmp/places-evidence/bogota/osm-relation-19012716-1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Santa_Maria.JPG",
+   "licence": "CC BY-SA 2.5",
+   "author": "Carlos Andres Prada Duran",
+   "view": "aerial",
+   "used": "round plan, open arena of sand with red barrera, grey tiers, rim ledge, side annexes",
+   "file": "/tmp/places-evidence/bogota/osm-relation-19012716-0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19012716",
+   "used": "90 m diameter ring"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "ring-low",
+   "params": {
+    "segments": 12,
+    "colour": "#a4452f",
+    "arcade": {
+     "from": 0.2,
+     "to": 6.3,
+     "count": 6,
+     "width": 5.5,
+     "height": 4.6,
+     "sill": 0,
+     "shape": "round",
+     "depth": 0.5,
+     "innerColour": "#3a1a12"
+    },
+    "profile": [
+     [
+      40,
+      0,
+      "#a4452f"
+     ],
+     [
+      45,
+      0
+     ],
+     [
+      45,
+      6.3
+     ],
+     [
+      45.4,
+      6.6
+     ],
+     [
+      40,
+      6.6
+     ]
+    ],
+    "smooth": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "ring-up",
+   "params": {
+    "segments": 10,
+    "colour": "#b5573c",
+    "arcade": {
+     "from": 6.6,
+     "to": 13.4,
+     "count": 12,
+     "width": 2.2,
+     "height": 3.2,
+     "sill": 2.0,
+     "shape": "round",
+     "depth": 0.4,
+     "innerColour": "#3a1a12"
+    },
+    "profile": [
+     [
+      40,
+      6.6,
+      "#b5573c"
+     ],
+     [
+      44.4,
+      6.6
+     ],
+     [
+      44.4,
+      13.4
+     ],
+     [
+      45.2,
+      13.4,
+      "#7a3322"
+     ],
+     [
+      45.2,
+      15
+     ],
+     [
+      44.2,
+      15,
+      "#8a6a58"
+     ],
+     [
+      42,
+      15
+     ],
+     [
+      41,
+      7
+     ]
+    ],
+    "smooth": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 44.8,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 8,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.7
+      ],
+      "height": 1.0,
+      "colour": "#7a3322"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -45.5
+   ],
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5573c",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3322",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-9",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -9.5,
+    -44
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5573c",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.3,
+       2.3
+      ],
+      "colours": [
+       "#b5573c",
+       "#a4452f",
+       "#c26548"
+      ],
+      "slits": {
+       "fraction": 0.22,
+       "colour": "#3a1a12"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3322",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower+9",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    9.5,
+    -44
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5573c",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.3,
+       2.3
+      ],
+      "colours": [
+       "#b5573c",
+       "#a4452f",
+       "#c26548"
+      ],
+      "slits": {
+       "fraction": 0.22,
+       "colour": "#3a1a12"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3322",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -12.5,
+    -44,
+    19.2
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     6,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 1.2,
+      "colour": "#7a3322"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    6.5,
+    -44,
+    19.2
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     6,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 1.2,
+      "colour": "#7a3322"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -48.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.4
+    ],
+    "height": 11,
+    "colour": "#e8e1d0"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -48.4,
+    0
+   ],
+   "params": {
+    "width": 6.4,
+    "height": 10.4,
+    "depth": 0.4,
+    "archWidth": 4.6,
+    "springHeight": 5.5,
+    "colour": "#2a1510"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -41.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.5
+    ],
+    "height": 3.6,
+    "colour": "#a01c1c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -41.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.5
+    ],
+    "height": 3.6,
+    "colour": "#a01c1c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    66,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "height": 42,
+    "colour": "#a8553a",
+    "windows": "none",
+    "storeys": 1
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    62,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "height": 50,
+    "colour": "#a8553a",
+    "windows": "none",
+    "storeys": 1
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lo-ring",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 45,
+    "n": 16,
+    "height": 15,
+    "colour": "#b5573c",
+    "topColour": "#bdbab2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lo-arena",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "params": {
+    "radius": 24,
+    "n": 12,
+    "height": 0.2,
+    "colour": "#d9c08a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "two-tier ring with round arches and pointed-free simple arcade, battlemented lattice-panel towers and arched portal added, plaza slab removed; horseshoe arch is a plain round arch, no paired ajimez windows or lattice spandrels, Torres del Parque are plain boxes, tiers inside omitted for budget"
+ }
+}

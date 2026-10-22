@@ -1,0 +1,242 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/383348128",
+   "used": "nearest building 11.6 x 7.7 m at bearing 33 deg: slab and shelter size and orientation; no photo of this stop exists, form from brief (pitched corrugated roof on posts, blank sign board)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 15,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     11.6,
+     7.7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 33,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5aca0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5aca0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "rect": [
+     11.0,
+     6.2
+    ]
+   },
+   "at": [
+    0,
+    -0.3
+   ],
+   "rotDeg": 33,
+   "z0": 2.8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3d6b8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d6b8a",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     10.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    2.4
+   ],
+   "rotDeg": 33,
+   "z0": 0.5,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6f7f86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7f86",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     -2.3,
+     0
+    ],
+    "end": [
+     5,
+     -2.3,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "mass",
+     "id": "post",
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": 0.5,
+     "height": 2.3,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#6f7f86",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#6f7f86",
+      "material": "concrete"
+     }
+    }
+   },
+   "rotDeg": 33,
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bench",
+   "footprint": {
+    "rect": [
+     4.0,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    1.7
+   ],
+   "rotDeg": 33,
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f1ece0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ece0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    -3.2,
+    -2.9
+   ],
+   "rotDeg": 33,
+   "z0": 0.5,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f1ece0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d6b8a",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo of this stop exists; form is from the brief and OSM outline (nearest match), posts clamped to 0.5 m"
+ }
+}

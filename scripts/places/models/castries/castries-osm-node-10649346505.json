@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-osm-node-10649346505",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/920086127",
+   "used": "pavilion 13.1 x 7.3 m (nearest match, 15 m)"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found on Commons or Wikidata; modelled from the brief and OSM facts only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a58b66",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6e4f",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 2.2,
+    "height": 2.8,
+    "balustrade": true,
+    "steps": true,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#3f6e4f",
+    "frameColour": "#e4dcc4"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 3,
+    "colour": "#a58b66",
+    "board_colour": "#e4dcc4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 5,
+    "spread": 22
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#f2efe6",
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Pavilion form and gate are typical guesses; OSM building is only the nearest match."
+ }
+}

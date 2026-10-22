@@ -1,0 +1,700 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-306847206",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aula_Magna_UMC_con_banderas.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Pulkstenis",
+   "view": "front",
+   "file": "/tmp/places-evidence/caracas/umc2.jpg",
+   "used": "Aula Magna block: pale-blue curved-end volume with a recessed darker blue parapet, five-bay glazed window with white frames, tall dark-blue square tower with white lookout cabin on the right, low flat walkway slab on painted poles across the front, blue annexes, big open paved parade ground, palms at left; blank boards only"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universidad_Mar%C3%ADtima_del_Caribe,_instituci%C3%B3n_en_la_que_curso_la_carrera_de_Ingenier%C3%ADa_Mar%C3%ADtima.jpg",
+   "licence": "Public domain",
+   "author": "uploader (Domingoa.navarrofleitas assumed)",
+   "view": "side",
+   "file": "/tmp/places-evidence/caracas/umc1.jpg",
+   "used": "same block from the east: curved end wall, tower height relative to block, light-blue colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/306847206",
+   "used": "campus site only (593 x 227 m); the model shows the principal Aula Magna block seen in the photos, not the whole campus"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 46,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "aula",
+   "footprint": {
+    "polygon": [
+     [
+      -18,
+      -9
+     ],
+     [
+      -14,
+      -9.6
+     ],
+     [
+      -9,
+      -10.4
+     ],
+     [
+      -4.5,
+      -10.9
+     ],
+     [
+      0,
+      -11
+     ],
+     [
+      4.5,
+      -10.9
+     ],
+     [
+      9,
+      -10.4
+     ],
+     [
+      14,
+      -9.6
+     ],
+     [
+      18,
+      -9
+     ],
+     [
+      18,
+      9
+     ],
+     [
+      -18,
+      9
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9d3ea",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fb4c6",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 12,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3c6ea8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5a8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-bay",
+   "footprint": {
+    "rect": [
+     14,
+     1.0
+    ]
+   },
+   "at": [
+    0,
+    -10.9
+   ],
+   "z0": 5.0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#ffffff",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#7f9bb8",
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 2.33
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.5,
+     5.5
+    ]
+   },
+   "at": [
+    21,
+    -1
+   ],
+   "height": 28,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f5f9b",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a4f80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lookout",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    21,
+    -1
+   ],
+   "z0": 28,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#27364f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4dde6",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    21,
+    -1,
+    31.6
+   ],
+   "params": {
+    "length": 6.4,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#e8eef4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walkway-roof",
+   "footprint": {
+    "rect": [
+     64,
+     6
+    ]
+   },
+   "at": [
+    3,
+    -14
+   ],
+   "z0": 3.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9cfb6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ae"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -27,
+     -16.6,
+     0
+    ],
+    "end": [
+     33,
+     -16.6,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "colour": "#2f6aa0",
+      "profile": [
+       [
+        0.35,
+        0
+       ],
+       [
+        0.35,
+        3.5
+       ],
+       [
+        0.35,
+        3.5
+       ]
+      ],
+      "segments": 8
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -22,
+     -16.6,
+     0
+    ],
+    "end": [
+     28,
+     -16.6,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "colour": "#d9a928",
+      "profile": [
+       [
+        0.35,
+        0
+       ],
+       [
+        0.35,
+        3.5
+       ],
+       [
+        0.35,
+        3.5
+       ]
+      ],
+      "segments": 8
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "annex-left",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -32,
+    -4
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6ecf1",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9d1d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-right",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    39,
+    -9
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fb0dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4edf4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    2
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 4,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -24,
+     -16.6,
+     0
+    ],
+    "end": [
+     30,
+     -16.6,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "colour": "#c8373a",
+      "profile": [
+       [
+        0.36,
+        0
+       ],
+       [
+        0.36,
+        3.5
+       ],
+       [
+        0.36,
+        3.5
+       ]
+      ],
+      "segments": 8
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -20,
+     -16.6,
+     0
+    ],
+    "end": [
+     26,
+     -16.6,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "colour": "#f4f4f0",
+      "profile": [
+       [
+        0.36,
+        0
+       ],
+       [
+        0.36,
+        3.5
+       ],
+       [
+        0.36,
+        3.5
+       ]
+      ],
+      "segments": 8
+     }
+    },
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "door0",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -0.9,
+    -10.9
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3a2a1e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2a1e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door1",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    0.9,
+    -10.9
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3a2a1e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a2a1e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      0.5,
+      -11.1,
+      11.2
+     ],
+     [
+      0.43301270189221935,
+      -11.1,
+      11.45
+     ],
+     [
+      0.25000000000000006,
+      -11.1,
+      11.633012701892218
+     ],
+     [
+      3.061616997868383e-17,
+      -11.1,
+      11.7
+     ],
+     [
+      -0.24999999999999992,
+      -11.1,
+      11.633012701892218
+     ],
+     [
+      -0.43301270189221935,
+      -11.1,
+      11.45
+     ],
+     [
+      -0.5,
+      -11.1,
+      11.2
+     ],
+     [
+      -0.4330127018922194,
+      -11.1,
+      10.95
+     ],
+     [
+      -0.2500000000000002,
+      -11.1,
+      10.76698729810778
+     ],
+     [
+      -9.184850993605148e-17,
+      -11.1,
+      10.7
+     ],
+     [
+      0.25000000000000006,
+      -11.1,
+      10.76698729810778
+     ],
+     [
+      0.4330127018922192,
+      -11.1,
+      10.95
+     ]
+    ],
+    "closed": true,
+    "colour": "#f4f4f0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    21,
+    -3.95,
+    0
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 8,
+    "bottom": 9,
+    "colour": "#f4f4f0",
+    "frameColour": "#c9d1d8",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -13,
+    4.0
+   ],
+   "params": {
+    "height": 6,
+    "count": 9,
+    "spacing": 2.0,
+    "colours": [
+     "#f2c230",
+     "#2d5fa8",
+     "#c8373a",
+     "#f4f4f0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Curved front is faceted but shallow, framing is wider than the photo so the block reads small, walkway slab is lower and thinner but sits behind a wide plaza, flags are simple pennants, wheel emblem is a thin ring, lettering is a blank board, no ground-floor arcade depth"
+ }
+}

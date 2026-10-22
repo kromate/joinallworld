@@ -1,0 +1,170 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-226265822",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/226265822",
+   "used": "real five-sided plan, about 94 x 79 m, 5 levels, building=retail"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centro_Comercial_El_Valle,_Caracas,_Venezuela_Julio_2025_(1).jpg",
+   "licence": "CC0",
+   "author": "Warairarepano&G",
+   "view": "interior",
+   "file": "/tmp/places-evidence/caracas/elvalle_c1.jpg",
+   "used": "interior only, not compared: raw board-marked concrete, warm brown-grey, curved stepped balconies, red-painted railings, red-brown tile floors; used for wall colours and the red accents"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centro_Comercial_El_Valle,_Caracas,_Venezuela_Julio_2025_(2).jpg",
+   "licence": "CC0",
+   "author": "Warairarepano&G",
+   "view": "interior",
+   "used": "same atrium, level count and red railings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a79d8b",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#a79d8b",
+       "#9a8f7c"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#b0553d"
+     }
+    ],
+    "groundKind": "shopfront",
+    "groundHeight": 4.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rooftop-deck-stair",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    8,
+    4
+   ],
+   "z0": 20,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d9382",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -6,
+    20
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -52
+   ],
+   "rotDeg": 33,
+   "params": {
+    "width": 9,
+    "height": 3,
+    "bottom": 14,
+    "colour": "#b0553d",
+    "frameColour": "#d7d1c3",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -40
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 5,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    62,
+    30
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo anywhere (only interior atrium views): real OSM plan and 5 levels, colours from interior concrete and red railings; facade detail, curved atrium terraces and rooftop parking layout are plausible, not seen"
+ }
+}

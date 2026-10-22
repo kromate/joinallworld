@@ -1,0 +1,115 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/139537638",
+   "used": "real 12.5 x 8 m outline (amenity=library)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0d98c",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "plinth": 0.45,
+    "bands": "#4a79a3",
+    "faces": {
+     "right": "none",
+     "left": "louvre"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a79a3",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.0,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 0.45,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#d6d0c3"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    8.5,
+    2,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "height": 1.4,
+    "legs": 1.8,
+    "colour": "#2f4f6f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -11,
+     -3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     11,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   36,
+   28
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; outline is real, colours typed from Samoan school buildings."
+ }
+}

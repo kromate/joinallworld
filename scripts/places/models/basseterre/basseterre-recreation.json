@@ -1,0 +1,680 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Independence_Square_with_fountain_and_Basseterre_Co-Cathedral_of_Immaculate_Conception.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gertjan R.",
+   "view": "street",
+   "file": "/tmp/places-evidence/basseterre/sq1.jpg",
+   "used": "two-tier fountain in a round green basin with stone kerb, cobbled path, lawns, royal palms and red flamboyant trees, grey stone cathedral with twin spired towers at the back right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24800627",
+   "used": "square extent 120 x 108 m; fountain and cathedral placement"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 12,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0.03
+   ],
+   "params": {
+    "width": 110,
+    "depth": 100,
+    "colour": "#5fa83f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.06
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      -45
+     ],
+     [
+      -10,
+      -12
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      12,
+      30
+     ]
+    ],
+    "width": 3.5,
+    "colour": "#9a948a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.06
+   ],
+   "params": {
+    "points": [
+     [
+      55,
+      -40
+     ],
+     [
+      20,
+      -12
+     ],
+     [
+      0,
+      10
+     ]
+    ],
+    "width": 3.5,
+    "colour": "#9a948a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.06
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      5
+     ],
+     [
+      -25,
+      12
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      55,
+      15
+     ]
+    ],
+    "width": 3.5,
+    "colour": "#9a948a"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "radius": 13,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      13.2,
+      0,
+      "#8d887e"
+     ],
+     [
+      13.2,
+      0.9,
+      "#8d887e"
+     ],
+     [
+      12.2,
+      0.9,
+      "#8d887e"
+     ],
+     [
+      12.2,
+      0.5,
+      "#4f9a4a"
+     ],
+     [
+      0,
+      0.5,
+      "#4f9a4a"
+     ]
+    ],
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "profile": [
+     [
+      0,
+      0.5,
+      "#f1ead6"
+     ],
+     [
+      3.2,
+      0.5,
+      "#f1ead6"
+     ],
+     [
+      3.2,
+      2.6,
+      "#f1ead6"
+     ],
+     [
+      2.4,
+      2.8,
+      "#3f9a5a"
+     ],
+     [
+      2.4,
+      3.4,
+      "#f1ead6"
+     ],
+     [
+      0.9,
+      3.4,
+      "#f1ead6"
+     ],
+     [
+      0.9,
+      6,
+      "#f1ead6"
+     ],
+     [
+      2.6,
+      6.4,
+      "#f1ead6"
+     ],
+     [
+      2.6,
+      6.9,
+      "#f1ead6"
+     ],
+     [
+      0.6,
+      7,
+      "#f1ead6"
+     ],
+     [
+      0.6,
+      8.2,
+      "#d4663a"
+     ],
+     [
+      1.0,
+      9.6,
+      "#2a8bb0"
+     ],
+     [
+      0,
+      10,
+      "#3f9a5a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -48,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "roof_colour": "#d8512b"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -5,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "roof_colour": "#d8512b"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "roof_colour": "#d8512b"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    25,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "roof_colour": "#d8512b"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -38,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "roof_colour": "#d8512b"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "roof_colour": "#d8512b"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -15,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "roof_colour": "#d8512b"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "roof_colour": "#d8512b"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    18,
+    -30,
+    0.05
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "width": 8,
+    "depth": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cathedral-nave",
+   "footprint": {
+    "rect": [
+     22,
+     34
+    ]
+   },
+   "at": [
+    12,
+    52
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#77736c",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a655d",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cathedral-front",
+   "footprint": {
+    "rect": [
+     24,
+     6
+    ]
+   },
+   "at": [
+    12,
+    34
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#77736c",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "windowShape": "pointed",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a655d",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    3,
+    36
+   ],
+   "height": 26,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e6a63",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "windowShape": "pointed",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a63"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    3,
+    36,
+    26
+   ],
+   "params": {
+    "baseWidth": 6,
+    "height": 16,
+    "colour": "#5f5b55"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    21,
+    36
+   ],
+   "height": 26,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e6a63",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "windowShape": "pointed",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a63"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    21,
+    36,
+    26
+   ],
+   "params": {
+    "baseWidth": 6,
+    "height": 16,
+    "colour": "#5f5b55"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "fountain pedestal is a simplified revolve (no green S-scrolls, small vs photo); cathedral still a simplified twin-spire block; camera is a high overview not at the fountain"
+ }
+}

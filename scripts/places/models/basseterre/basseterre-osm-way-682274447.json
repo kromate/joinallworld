@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-way-682274447",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/682274447",
+   "used": "overall size only (834 x 426 m stadium polygon, the strip itself); a 120 m start-line section with its spectator side is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "brief basseterre-osm-way-682274447",
+   "used": "asphalt strip, low covered grandstand and timing tower on one side, palms, floodlights, signage board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 16,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -2
+     ],
+     [
+      58,
+      -2
+     ]
+    ],
+    "width": 14,
+    "colour": "#3b3d40"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.08
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -2
+     ],
+     [
+      -29,
+      -2
+     ]
+    ],
+    "width": 14,
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -44,
+     12
+    ],
+    "end": [
+     10,
+     12
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColours": [
+     "#d9a23a",
+     "#c9c3b3"
+    ],
+    "canopy": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timing-tower",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    24,
+    12
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "none"
+    },
+    "bands": "#d9a23a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pit-shed",
+   "footprint": {
+    "rect": [
+     22,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    22
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c3b3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9296",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -56,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "height": 1.1,
+    "kind": "fence",
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    40,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.2,
+    "bottom": 2,
+    "colour": "#d9a23a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    16,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    16,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -2,
+    0.1
+   ],
+   "params": {
+    "colour": "#d9a23a",
+    "count": 2,
+    "spacing": 5,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: grandstand, timing tower and pit shed are plausible placeholders for the 120 m start section; the strip surface and ground pad blend visually"
+ }
+}

@@ -1,0 +1,598 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Norberto_Tomaghello.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ignacio Her11",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/buenos-aires/tomaghello2.jpg",
+   "used": "layout: long uncovered yellow and green stand on one side, covered grey-roofed stand opposite, small stand at the far end, low club building at the near end, four lattice floodlight masts at the corners"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dyjmanda",
+   "view": "street",
+   "used": "yellow and green seating, lattice floodlight mast, low fence wall at pitch side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/53012324",
+   "used": "overall size (about 142 x 101 m), axis-aligned here"
+  }
+ ],
+ "camera": {
+  "yawDeg": -90,
+  "pitchDeg": 35,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stands meet at back corners with no dedicated corner infill; houses are generic blocks; no club lettering"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     158,
+     138
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#575a5d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turf",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     114,
+     72
+    ],
+    "z0": 0.1,
+    "height": 0.14,
+    "colour": "#2f7d2f"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.26
+   ],
+   "params": {
+    "length": 102,
+    "width": 66,
+    "stripes": 10,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     57,
+     38
+    ],
+    "end": [
+     -57,
+     38
+    ],
+    "rows": 9,
+    "seatColours": [
+     "#e6c320",
+     "#2f7a3a"
+    ],
+    "seatColour": "#e6c320",
+    "blocks": 6,
+    "backWall": 0.8,
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -57,
+     -38
+    ],
+    "end": [
+     57,
+     -38
+    ],
+    "rows": 9,
+    "seatColours": [
+     "#e0c43a",
+     "#e0c43a",
+     "#2f7a3a"
+    ],
+    "seatColour": "#e0c43a",
+    "blocks": 4,
+    "backWall": 1.0,
+    "under": "open",
+    "canopy": {
+     "height": 9,
+     "depth": 8,
+     "colour": "#9a9fa4",
+     "slopeDeg": 6,
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     59,
+     -38
+    ],
+    "end": [
+     59,
+     38
+    ],
+    "rows": 7,
+    "seatColours": [
+     "#e6c320",
+     "#2f7a3a"
+    ],
+    "seatColour": "#e6c320",
+    "blocks": 3,
+    "backWall": 0.8,
+    "under": "open"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     7,
+     64
+    ]
+   },
+   "at": [
+    -62,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4d3cb",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "punched",
+     "right": "none",
+     "front": "none",
+     "back": "none"
+    },
+    "bands": "#2f7a3a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard",
+   "at": [
+    -62,
+    0,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     1,
+     9
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#2b2e31"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34.5,
+    0.1
+   ],
+   "params": {
+    "length": 108,
+    "height": 1.1,
+    "thickness": 0.3,
+    "colour": "#2f7a3a",
+    "kind": "wall"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    34.5,
+    0.1
+   ],
+   "params": {
+    "length": 108,
+    "height": 1.1,
+    "thickness": 0.3,
+    "colour": "#2f7a3a",
+    "kind": "wall"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -54,
+    0,
+    0.1
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 69,
+    "height": 1.1,
+    "thickness": 0.3,
+    "colour": "#2f7a3a",
+    "kind": "wall"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    54,
+    0,
+    0.1
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 69,
+    "height": 1.1,
+    "thickness": 0.3,
+    "colour": "#2f7a3a",
+    "kind": "wall"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -70,
+    50,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    68,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    68,
+    50,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-0-0",
+   "at": [
+    -64,
+    -60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 5.5,
+    "colour": "#c9b9a0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-0-2",
+   "at": [
+    -32,
+    -60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 10.5,
+    "colour": "#d3c8b4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-0-4",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 8.0,
+    "colour": "#c9b9a0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-0-6",
+   "at": [
+    32,
+    -60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 5.5,
+    "colour": "#d3c8b4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-0-8",
+   "at": [
+    64,
+    -60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 10.5,
+    "colour": "#c9b9a0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-1-0",
+   "at": [
+    -64,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 5.5,
+    "colour": "#b8a690"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-1-2",
+   "at": [
+    -32,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 10.5,
+    "colour": "#a89f94"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-1-4",
+   "at": [
+    0,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 8.0,
+    "colour": "#b8a690"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-1-6",
+   "at": [
+    32,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 5.5,
+    "colour": "#a89f94"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-1-8",
+   "at": [
+    64,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0.0,
+    "height": 10.5,
+    "colour": "#b8a690"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-osm-way-53012324"
+}

@@ -1,0 +1,404 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-way-316831439",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ISE_-_Instituto_Superior_de_Educaci%C3%B3n.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dani O S",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/m/ise1.jpg",
+   "used": "entrance gate: two tall red slab pylons leaning slightly, rubble-stone bases, blank dark signboard on a small flat canopy, chain-link fence, shady acacias, red kerb band, paved drive"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/316831439",
+   "used": "site is 300 x 260 m (4.8 ha), too large for the scene clamp: a 100 m portion with the entrance and classroom wings is modelled"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey classroom wings around yards, painted render, clay-tile roofs; buildings behind the gate are typed, not photographed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.875,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    -46,
+    0
+   ],
+   "params": {
+    "colour": "#d6334a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       2
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       6,
+       2
+      ],
+      "cx": 0.6
+     },
+     {
+      "z": 22,
+      "rect": [
+       6,
+       2
+      ],
+      "cx": 2.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    -46,
+    0
+   ],
+   "params": {
+    "colour": "#d6334a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       2
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       6,
+       2
+      ],
+      "cx": -0.6
+     },
+     {
+      "z": 22,
+      "rect": [
+       6,
+       2
+      ],
+      "cx": -2.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -46,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     3.4
+    ],
+    "height": 3.6,
+    "colour": "#8a8272"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -46,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     3.4
+    ],
+    "height": 3.6,
+    "colour": "#8a8272"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -46.5,
+    13
+   ],
+   "params": {
+    "rect": [
+     11,
+     5
+    ],
+    "height": 0.4,
+    "colour": "#2e3236"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -49.2,
+    13.4
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.5
+    ],
+    "height": 2.6,
+    "colour": "#3a2d24"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -36,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 2.4,
+    "kind": "fence",
+    "colour": "#8a9094"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    42,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 2.4,
+    "kind": "fence",
+    "colour": "#8a9094"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -48,
+     0
+    ],
+    "end": [
+     -14,
+     -48,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 2.6,
+      "colour": "#9a9486"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -50,
+    0
+   ],
+   "params": {
+    "rect": [
+     36,
+     0.6
+    ],
+    "height": 0.5,
+    "colour": "#c9513a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     11,
+     40
+    ],
+    "height": 0.05,
+    "colour": "#cdbfa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-back",
+   "footprint": {
+    "rect": [
+     50,
+     13
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cf",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "glassColour": "#4d6a52"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a3d",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -20,
+     -40
+    ],
+    "height": 13
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -12,
+     -30
+    ],
+    "height": 15
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -4,
+     -24
+    ],
+    "height": 17
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     6,
+     -22
+    ],
+    "height": 13
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     18,
+     -34
+    ],
+    "height": 15
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     22,
+     -44
+    ],
+    "height": 17
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -24,
+     -52
+    ],
+    "height": 13
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -3,
+     -12
+    ],
+    "height": 15
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     10,
+     -14
+    ],
+    "height": 17
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -16,
+     -16
+    ],
+    "height": 13
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     26,
+     -24
+    ],
+    "height": 15
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     -30
+    ],
+    "height": 17
+   }
+  ],
+  "extent": [
+   90,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate only: canopy sign is a blank dark board (no lettering by rule), stone bases are plain boxes, chain-link drawn as thin fence, trees are low-poly acacias not a dense dappled canopy; classroom block behind is typed, not photographed"
+ }
+}

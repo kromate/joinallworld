@@ -1,0 +1,337 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/800800257",
+   "used": "shed footprint 17 x 8 m and bearing (nearest building, 3 m from the venue point)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/avarua.json#avarua-market-game",
+   "used": "nightly open-air food-stall market beside Muri Lagoon road, tin shed, string lights; no photo found, stalls and lights are typical, not observed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "open-shelter",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "length": 17,
+    "depth": 8.3,
+    "height": 3.0,
+    "form": "gable",
+    "support": "steel",
+    "colour": "#8c9296",
+    "accent": "#d95b3c",
+    "roof_colour": "#8c9296"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "mass",
+   "id": "back-counter",
+   "footprint": {
+    "rect": [
+     16,
+     0.9
+    ]
+   },
+   "at": [
+    -2.99,
+    1.62
+   ],
+   "rotDeg": 61.6,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b794",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3efe0",
+    "material": "concrete",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     17,
+     0.5
+    ]
+   },
+   "at": [
+    -3.52,
+    1.9
+   ],
+   "rotDeg": 61.6,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b794",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "material": "metal-sheet",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -5.03,
+    -4.67,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.4,
+    "depth": 1.5,
+    "height": 2.3,
+    "colour": "#d95b3c"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -3.46,
+    -1.77,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.4,
+    "depth": 1.5,
+    "height": 2.3,
+    "colour": "#f3efe0"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -1.89,
+    1.13,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.4,
+    "depth": 1.5,
+    "height": 2.3,
+    "colour": "#d95b3c"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -0.32,
+    4.04,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.4,
+    "depth": 1.5,
+    "height": 2.3,
+    "colour": "#c9b794"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    1.25,
+    6.94,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.4,
+    "depth": 1.5,
+    "height": 2.3,
+    "colour": "#f3efe0"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -1.67,
+    -4.78,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#f3efe0",
+    "chair_colour": "#d95b3c"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0.34,
+    -1.89,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#f3efe0",
+    "chair_colour": "#d95b3c"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "table-set",
+   "at": [
+    1.74,
+    1.33,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#f3efe0",
+    "chair_colour": "#d95b3c"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3.76,
+    4.22,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#f3efe0",
+    "chair_colour": "#d95b3c"
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "string-lights",
+   "at": [
+    -0.51,
+    -7.68,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 3.3,
+    "count": 16
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "string-lights",
+   "at": [
+    -3.77,
+    -5.92,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 3.4,
+    "count": 16
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.05,
+    -2.19,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "bottom": 2.6,
+    "colour": "#d95b3c",
+    "frameColour": "#f3efe0",
+    "posts": true
+   },
+   "rotDeg": 61.6
+  },
+  {
+   "type": "tree",
+   "at": [
+    -13,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; stall count, colours and lighting are typical of a Cook Islands night market, not observed."
+ }
+}

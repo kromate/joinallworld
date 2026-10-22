@@ -1,0 +1,309 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fiscalia_Colombia_4.jpg",
+   "file": "/tmp/places-evidence/bogota/b0-fiscalia.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Ministerio de Defensa Nacional de Colombia (Wikidata image)",
+   "view": "front",
+   "used": "beige exposed-concrete massing, stepped central tower with dark rooftop pavilion, grey stone-block pier at right, blue banner board, paved plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/18995838",
+   "used": "footprint 77 x 26 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 4,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b19c",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#a79f8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -6,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b19c",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#a79f8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rooftop-pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 14,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f92",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a48",
+    "overhang": 3.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier",
+   "footprint": {
+    "rect": [
+     5,
+     9
+    ]
+   },
+   "at": [
+    14,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8c8e8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7c7e"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -26,
+    -16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    26,
+    6
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b19c",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#a79f8b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-arcade",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8c8e8f",
+    "windows": "none",
+    "pattern": {
+     "type": "pilotis",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8a6e",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -13.2,
+    4.6
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#1d3f8c",
+    "frameColour": "#8c8e8f",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -12,
+     -20
+    ],
+    "end": [
+     6,
+     -20
+    ],
+    "of": {
+     "type": "mass",
+     "id": "bench",
+     "footprint": {
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 0.6,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#a8a8a2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#a8a8a2"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped 4-floor tower with cantilevered cap, 2-storey base, right wing, stone pier/arcade and blue banner added; stone-faced planter roof, greenery and board-marked texture only approximate."
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/148893960",
+   "used": "SLASPA ferry terminal outline (113 x 36 m, bearing 102)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 12
+   },
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#3f6a8a",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 10,
+    "colour": "#3f6a8a",
+    "edgeColour": "#f0ece0"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "kind": "mixed",
+    "density": 0.5
+   }
+  },
+  {
+   "type": "quay",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "depth": 20,
+    "water_depth": 40
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -56,
+    -10,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    58,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the terminal found; real outline used with typical Caribbean port terminal massing, so building style is a guess."
+ }
+}

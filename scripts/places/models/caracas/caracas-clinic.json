@@ -1,0 +1,109 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/220598788",
+   "used": "real campus outline (name match) for the main wing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f0efe8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#4f93b3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b4b6",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "at": [
+    0,
+    -70
+   ],
+   "params": {
+    "rect": [
+     26,
+     10
+    ],
+    "height": 8,
+    "colour": "#4f93b3",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "topColour": "#e8e8e2"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    60,
+    0,
+    15
+   ],
+   "params": {}
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -60,
+    -60,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -75,
+    6
+   ],
+   "params": {
+    "size": 2.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 10,
+  "treeKind": "palm",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; real campus outline scaled to 30 percent to fit the scene clamp, wings and curved glazed entrance are generic; height/storeys estimated."
+ }
+}

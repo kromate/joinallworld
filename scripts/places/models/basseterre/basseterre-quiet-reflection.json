@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/400006986",
+   "used": "real 27 x 11 m outline of St Theresa Church, Charlestown (Wikidata Q24039674)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief basseterre-quiet-reflection",
+   "used": "whitewashed narrow hall church, red corrugated gable roof, arched windows, small porch with cross"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 27.1
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f1e6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "bay": 3.2,
+    "plinth": 0.5,
+    "bands": "#7aa7c7",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4.2,
+     3.2
+    ]
+   },
+   "at": [
+    -15.2,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f1e6",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "pitch": 32,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -17.6,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#c9bfa5"
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    -15.2,
+    0,
+    5.6
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: massing from the OSM outline and brief; porch end, door and window rhythm are plausible, not observed"
+ }
+}

@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-osm-node-9451357027",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/9451357027",
+   "used": "no OSM building; text only. Commons TrunkOverlook.jpg (CC BY-SA 4.0, Gruepig) shows only the view from the overlook (palm and sea-grape hillside, white sand, turquoise bay), used for setting trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "polygon": [
+     [
+      -12,
+      -5
+     ],
+     [
+      12,
+      -4
+     ],
+     [
+      13,
+      3
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      -12,
+      4
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12,
+    5,
+    0
+   ],
+   "params": {
+    "length": 25,
+    "height": 1.0,
+    "thickness": 0.6,
+    "colour": "#b9a98a",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      2.5
+     ],
+     [
+      22,
+      2
+     ],
+     [
+      25,
+      -4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 1.1,
+    "colour": "#6a4a2f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 6,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -2
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Roadside pull-off typed from the brief; no photo of the structure. Slope and sea below not modelled."
+ }
+}

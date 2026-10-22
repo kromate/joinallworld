@@ -1,0 +1,258 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-relation-13278974",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/13278974",
+   "used": "real park outline (858 x 424 m, auto-fitted to the scene clamp)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Los_Caobos,_Caracas_Venezuela_06.jpg",
+   "licence": "CC BY 4.0",
+   "author": "QuinteroP",
+   "view": "detail",
+   "file": "/tmp/places-evidence/caracas/caob1.jpg",
+   "used": "a grey wheel-and-gear sculpture on a concrete plinth in a raised concrete-edged bed, bare brown earth, tall shady trees behind"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Fuente Venezuela monumental fountain group, statues, shaded caoba (mahogany) trees, entrance gates, pavilion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 38,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6c9a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c9a4a"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -4,
+    0.3
+   ],
+   "params": {
+    "width": 26,
+    "depth": 20,
+    "colour": "#cdbfa0",
+    "border_colour": "#9a8e75"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    -4,
+    0.3
+   ],
+   "params": {
+    "radius": 8,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    -4,
+    3
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#8a8a82"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -3,
+    -6,
+    0.5
+   ],
+   "params": {
+    "height": 3.5,
+    "colour": "#8a8a82"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    3,
+    -2,
+    0.5
+   ],
+   "params": {
+    "height": 3.5,
+    "colour": "#8a8a82"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36,
+    -8,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -1
+     ],
+     [
+      6,
+      -1
+     ],
+     [
+      6,
+      1
+     ],
+     [
+      -6,
+      1
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#b8b3a6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -36,
+    -8,
+    2.4
+   ],
+   "params": {
+    "section": {
+     "circle": 2.2
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 2.2,
+     "startDeg": 0,
+     "endDeg": 360
+    },
+    "colour": "#8c9094"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    34,
+    12,
+    0.3
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "hip",
+    "colour": "#cdbfa0",
+    "cap_colour": "#a65a3c"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    15,
+    0.3
+   ],
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    28,
+    -10,
+    0.3
+   ],
+   "params": {
+    "width": 50,
+    "depth": 28,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -5,
+    14,
+    0.3
+   ],
+   "params": {
+    "length": 60,
+    "count": 9,
+    "kind": "broadleaf",
+    "gap": 4,
+    "height_min": 15,
+    "height_max": 19
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -32,
+    0.3
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only a sculpture detail photo exists, so the layout inside the real outline (fountain plaza, sculpture, pavilion, grove positions) is schematic and not compared whole to a photo"
+ }
+}

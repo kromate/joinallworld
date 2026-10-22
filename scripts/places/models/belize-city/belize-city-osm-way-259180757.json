@@ -1,0 +1,288 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-259180757",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HRrubenFromEast.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ruben Wong",
+   "view": "front",
+   "file": "/tmp/places-evidence/belize-city/cath2.jpg",
+   "used": "cream plastered walls, white metal-sheet roof, square stub tower with pyramid cap and cross, lower side tower, arched porch with dark roof, round and arched louvred windows, brown trim bands, brown boundary wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HRrubenFromWest.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ruben Wong",
+   "view": "side",
+   "file": "/tmp/places-evidence/belize-city/cath1.jpg",
+   "used": "tower and nave proportions, arched nave windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/259180757",
+   "used": "overall size only (outline too irregular, replaced by a clean nave rectangle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.35
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     17,
+     30
+    ]
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a0",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "bay": 4.2,
+    "windowShape": "arched",
+    "trimColour": "#6b4630",
+    "plinth": 0.6,
+    "bands": {
+     "colour": "#a2623f",
+     "height": 0.35
+    },
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f1f3f4",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "at": [
+    5.5,
+    -15
+   ],
+   "footprint": {
+    "rect": [
+     5.2,
+     5.2
+    ]
+   },
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a0",
+    "windows": "none",
+    "bands": {
+     "colour": "#a2623f",
+     "height": 0.35
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#f1f3f4",
+    "material": "metal-sheet",
+    "rise": 3.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower2",
+   "at": [
+    -6,
+    -15
+   ],
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a0",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#f1f3f4",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "at": [
+    -6,
+    -18.5
+   ],
+   "footprint": {
+    "rect": [
+     9,
+     3.6
+    ]
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfb8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "count": 3
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d5058",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.1,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#8a5a44"
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    5.5,
+    -15,
+    17.7
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -23,
+    1.1
+   ],
+   "params": {
+    "length": 32,
+    "height": 0.9,
+    "thickness": 0.08,
+    "kind": "railing",
+    "pillarEvery": 0,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -15.1,
+    3.2
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 4.0,
+    "kind": "rect",
+    "trim": "#ffffff"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    5.5,
+    -17.65,
+    11
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "kind": "arch",
+    "trim": "#ffffff"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    5.5,
+    -17.65,
+    6
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 1.2,
+    "kind": "arch",
+    "trim": "#ffffff"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "round spoked windows not modelled, side-wall doors and brown shutters missing, tower belfry louvre only approximated, roof shows a blue sky-reflection patch on the nave side, boundary wall has no tall pillars at the photo scale"
+ },
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   70,
+   60
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ],
+    "height": 9
+   }
+  ]
+ }
+}

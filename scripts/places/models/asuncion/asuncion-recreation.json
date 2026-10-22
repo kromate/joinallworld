@@ -1,0 +1,190 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%91u_Guasu_010.jpg",
+   "licence": "Public domain",
+   "author": "Wikimedia Commons user",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/nug010.jpg",
+   "used": "open timber gazebo with grey hip roof and lattice gable, rust-brown posts, climbers, low stone base on lawn by water, eucalyptus plantation behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%91u_Guasu_003.jpg",
+   "licence": "Public domain",
+   "author": "Patty P",
+   "view": "side",
+   "file": "/tmp/places-evidence/asuncion/nug003.jpg",
+   "used": "outdoor basketball court on blue and red hard surface, blue and red steel hoops, small blue-white canopies, tall eucalyptus behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%C3%91u_Guasu_012.jpg",
+   "licence": "Public domain",
+   "author": "Patty P",
+   "view": "street",
+   "used": "white-barked eucalyptus stands over short lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "fit": "building",
+  "shiftX": 0,
+  "shiftY": 0
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "width": 150,
+    "depth": 18,
+    "shape": "rect",
+    "colour": "#8a9a8a",
+    "bank": true
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    -2,
+    0.5
+   ],
+   "params": {
+    "width": 9,
+    "depth": 8,
+    "height": 4.6,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 4,
+    "colour": "#7a4a35",
+    "cap_colour": "#6d6a66",
+    "floor_colour": "#cfc4a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gazebo-base",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9bfa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bfa8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13.200000000000001,
+    "count": 50,
+    "spread": 2.2,
+    "line": 100,
+    "colour": "#6f8a58"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14.850000000000001,
+    "count": 50,
+    "spread": 2.2,
+    "line": 100,
+    "colour": "#6f8a58"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-marker",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.0
+    ]
+   },
+   "at": [
+    -12,
+    -1
+   ],
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8d2c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.6,
+    "count": 4,
+    "spread": 9,
+    "colour": "#5f8a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gazebo enlarged on stone base with lawn, thin lake strip and eucalyptus wall, car park/kiosks/courts removed; trees are conifer stand-ins (no eucalyptus kind), no lattice gable or climbing vines, grass colour greener than the dry photo, camera cannot be pulled back to frame whole site"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-recreation"
+}

@@ -1,0 +1,233 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Charles_Fort_(33729930758).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "side",
+   "used": "low grey-tan coral-stone battery wall with crenellated parapet, cannon barrels on the rampart, small roofed shelter and red/white flagpole, trees behind, white sand and turquoise sea in front",
+   "file": "/tmp/places-evidence/bridgetown/fort.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/255443003",
+   "used": "real fort outline (72 x 50 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.3
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "battery",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9b9484",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8777",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guardhouse",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    18,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a6a58"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -47,
+    0.02
+   ],
+   "params": {
+    "width": 150,
+    "depth": 34,
+    "shape": "rect",
+    "colour": "#3cc4d0",
+    "bank": false
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -34,
+    -24.5,
+    4.6
+   ],
+   "params": {
+    "length": 68,
+    "height": 1.2,
+    "thickness": 0.8,
+    "merlons": true,
+    "batter": 0.0
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -34,
+    24.5,
+    4.6
+   ],
+   "params": {
+    "length": 68,
+    "height": 1.2,
+    "thickness": 0.8,
+    "merlons": true,
+    "batter": 0.0
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -24,
+    -23,
+    5.8
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 14,
+    "yaw": 270,
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -6,
+    4.6
+   ],
+   "params": {
+    "height": 16,
+    "colour": "#c8362f",
+    "colours": [
+     "#c8362f",
+     "#f2f2f2"
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    18,
+    20,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 14,
+    "count": 7,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -20,
+    22,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 10,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rock-toe",
+   "footprint": {
+    "rect": [
+     76,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -26.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8070",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8070"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-osm-way-255443003",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a beach view so the fort reads small; sea/sand are rectangles not a curved shore; striped flagpole is a plain flag; no rocky toe visible"
+ }
+}

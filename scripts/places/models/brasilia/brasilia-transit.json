@@ -1,0 +1,113 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/20685096",
+   "used": "real station outline (about 290 m long, scaled to the 118 m scene clamp), 3 levels, 12.7 m"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "concrete modernist station, ribbon windows, platform canopies and bus bays; no usable photo of the building was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true,
+    "scale": 0.39
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12.7,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c9c5ba",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#8d8a82",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "overhang": 1.0,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/array",
+   "id": "bus-canopies",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       12,
+       3
+      ],
+      "height": 0.5,
+      "z0": 4.2,
+      "colour": "#6b7f8f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -52,
+     -25,
+     0
+    ],
+    "end": [
+     -52,
+     35,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -55,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real outline scaled 0.39 so storey height is relatively tall; canopies and bays are typical not measured"
+ }
+}

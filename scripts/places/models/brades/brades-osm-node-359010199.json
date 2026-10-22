@@ -1,0 +1,207 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "setting only: Pat Hawks CC BY 3.0 photo (File:Montserrat_Exclusion_Zone_-_Old_Airport.jpg) shows a green scrub hillside over a pale grey ash plain and sea; no lookout structure visible, so the platform is typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4b0a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59b",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    -4.3,
+    0.9
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.1,
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -9.8,
+    0,
+    0.9
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 8.5,
+    "height": 1.1,
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    9.8,
+    0,
+    0.9
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 8.5,
+    "height": 1.1,
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step1",
+   "footprint": {
+    "rect": [
+     5,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    5.4
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a59b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench",
+   "footprint": {
+    "rect": [
+     3,
+     0.6
+    ]
+   },
+   "at": [
+    -5,
+    2
+   ],
+   "height": 0.5,
+   "z0": 0.9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8a84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bench2",
+   "footprint": {
+    "rect": [
+     3,
+     0.6
+    ]
+   },
+   "at": [
+    5,
+    2
+   ],
+   "height": 0.5,
+   "z0": 0.9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8a84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    7,
+    3,
+    0.9
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     13
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-osm-node-359010199",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the structure itself; terrace, rails, steps and benches are typed"
+ }
+}

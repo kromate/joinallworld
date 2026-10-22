@@ -1,0 +1,193 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/376110638",
+   "used": "real park polygon, 84 x 75 m, as a lawn pad"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Belize_City",
+   "used": "lagoon-side green with palms; pavilion, path and benches from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 28,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn-pad",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6a9f5a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a9f5a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -12
+     ],
+     [
+      -10,
+      4
+     ],
+     [
+      10,
+      10
+     ],
+     [
+      34,
+      20
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    6,
+    8,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#8c9296"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -14,
+    -2,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    18,
+    20,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -4,
+    0.5
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    16,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    0,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    22,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    28,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-recreation",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "OSM polygon exact; park furniture and pavilion typed, no photo."
+ }
+}

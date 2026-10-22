@@ -1,0 +1,402 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-node-3448719953",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Black_Rocks_St._Kitts.JPG",
+   "licence": "CC0",
+   "author": "NoTalkMan",
+   "view": "side",
+   "file": "/tmp/places-evidence/basseterre/blackrocks.jpg",
+   "used": "black lava headland running left to the sea, boulders in surf, green scrub slope at upper right, dry grass cliff-top path in the foreground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/856084425",
+   "used": "small bandstand-type shelter tagged nearby (9.8 x 7.9 m); placed small on the cliff top, not visible in the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 16,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    -18,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 60,
+    "colour": "#1f8fa5",
+    "bank": false
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    10,
+    4,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 24,
+    "height": 17,
+    "seed": 11,
+    "stairs": false,
+    "rock_colour": "#26252a",
+    "boulders": 50
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -6,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "height": 4,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#2b2a2c",
+    "boulders": 24
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 12,
+    "height": 4,
+    "seed": 5,
+    "stairs": false,
+    "rock_colour": "#2b2a2c",
+    "boulders": 20
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -22,
+    6,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 10,
+    "height": 4,
+    "seed": 8,
+    "stairs": false,
+    "rock_colour": "#2b2a2c",
+    "boulders": 16
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    22,
+    22,
+    3
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 40,
+    "depth": 28,
+    "colour": "#4e8a3c",
+    "material": "grass",
+    "heights": [
+     [
+      0,
+      6,
+      12,
+      18
+     ],
+     [
+      0,
+      8,
+      14,
+      20
+     ],
+     [
+      2,
+      8,
+      15,
+      20
+     ],
+     [
+      0,
+      5,
+      10,
+      16
+     ]
+    ],
+    "thickness": 0.6
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -18,
+    0.4
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 30,
+    "depth": 12,
+    "colour": "#a08a5a",
+    "material": "grass",
+    "heights": [
+     [
+      0,
+      0.2,
+      0.5
+     ],
+     [
+      0,
+      0.3,
+      0.6
+     ],
+     [
+      0,
+      0.1,
+      0.4
+     ]
+    ],
+    "thickness": 0.4
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -4,
+    -1,
+    0.2
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 31.2,
+    "depth": 7.5,
+    "colour": "#f4f8f8",
+    "material": "plain",
+    "heights": [
+     [
+      0,
+      0.15,
+      0
+     ],
+     [
+      0.15,
+      0,
+      0.15
+     ],
+     [
+      0,
+      0.15,
+      0
+     ]
+    ],
+    "thickness": 0.15
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -14,
+    -8,
+    0.2
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 26.4,
+    "depth": 7.5,
+    "colour": "#f4f8f8",
+    "material": "plain",
+    "heights": [
+     [
+      0,
+      0.15,
+      0
+     ],
+     [
+      0.15,
+      0,
+      0.15
+     ],
+     [
+      0,
+      0.15,
+      0
+     ]
+    ],
+    "thickness": 0.15
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -24,
+    -18,
+    0.2
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 24.0,
+    "depth": 9.0,
+    "colour": "#f4f8f8",
+    "material": "plain",
+    "heights": [
+     [
+      0,
+      0.15,
+      0
+     ],
+     [
+      0.15,
+      0,
+      0.15
+     ],
+     [
+      0,
+      0.15,
+      0
+     ]
+    ],
+    "thickness": 0.15
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -28,
+    2,
+    0.2
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 19.2,
+    "depth": 7.5,
+    "colour": "#f4f8f8",
+    "material": "plain",
+    "heights": [
+     [
+      0,
+      0.15,
+      0
+     ],
+     [
+      0.15,
+      0,
+      0.15
+     ],
+     [
+      0,
+      0.15,
+      0
+     ]
+    ],
+    "thickness": 0.15
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -34,
+    -10,
+    0.2
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 14.399999999999999,
+    "depth": 7.5,
+    "colour": "#f4f8f8",
+    "material": "plain",
+    "heights": [
+     [
+      0,
+      0.15,
+      0
+     ],
+     [
+      0.15,
+      0,
+      0.15
+     ],
+     [
+      0,
+      0.15,
+      0
+     ]
+    ],
+    "thickness": 0.15
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -10,
+    10,
+    0.2
+   ],
+   "params": {
+    "kind": "heights",
+    "width": 19.2,
+    "depth": 6.0,
+    "colour": "#f4f8f8",
+    "material": "plain",
+    "heights": [
+     [
+      0,
+      0.15,
+      0
+     ],
+     [
+      0.15,
+      0,
+      0.15
+     ],
+     [
+      0,
+      0.15,
+      0
+     ]
+    ],
+    "thickness": 0.15
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Headland is a taller jagged-boulder mound with scrub hill and tan path, but still blobby with no true seaward cliff face; foam is flat white strips, water is a small sheet that does not reach the horizon; bandstand removed."
+ }
+}

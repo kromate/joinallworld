@@ -1,0 +1,346 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio.Arsenal.Futbol.Club.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "Arsenico (assumed)",
+   "view": "interior",
+   "file": "/tmp/places-evidence/buenos-aires/p0_0.jpg",
+   "used": "sky-blue raked terraces with red seat block, red fascia band and red railings, steel fence, blank boards above the stand, flat green pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/161797198",
+   "used": "overall size 136 x 117 m, orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 8,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     52,
+     36
+    ],
+    "end": [
+     -52,
+     36
+    ],
+    "rows": 17,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "under": "open",
+    "backWall": 5,
+    "seatColour": "#7fb6e6",
+    "seatColours": [
+     "#86bdea",
+     "#86bdea",
+     "#c43a33",
+     "#86bdea"
+    ],
+    "blocks": 4,
+    "concreteColour": "#b9c4cc",
+    "underColour": "#a9b3ba"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -52,
+     -36
+    ],
+    "end": [
+     52,
+     -36
+    ],
+    "rows": 6,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.6,
+    "under": "open",
+    "seatColour": "#c8403a",
+    "seatColours": [
+     "#c8403a",
+     "#86bdea"
+    ],
+    "blocks": 6,
+    "concreteColour": "#b9c4cc",
+    "underColour": "#a9b3ba"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -57,
+     28
+    ],
+    "end": [
+     -57,
+     -28
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "seatColour": "#86bdea",
+    "concreteColour": "#b9c4cc",
+    "underColour": "#a9b3ba"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     57,
+     -28
+    ],
+    "end": [
+     57,
+     28
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "seatColour": "#86bdea",
+    "concreteColour": "#b9c4cc",
+    "underColour": "#a9b3ba"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    33,
+    1.0
+   ],
+   "params": {
+    "length": 104,
+    "height": 3.0,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#23272c"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    44,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    44,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-back-wall",
+   "footprint": {
+    "rect": [
+     96,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    45.5
+   ],
+   "z0": 0,
+   "height": 15.350000000000001,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#86bdea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#86bdea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lettering-red",
+   "footprint": {
+    "rect": [
+     30,
+     0.9
+    ]
+   },
+   "at": [
+    -22,
+    44.9
+   ],
+   "z0": 7.350000000000001,
+   "height": 3.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c43a33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c43a33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lettering-club",
+   "footprint": {
+    "rect": [
+     26,
+     0.9
+    ]
+   },
+   "at": [
+    24,
+    44.9
+   ],
+   "z0": 7.350000000000001,
+   "height": 3.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f4f9a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4f9a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    34.5,
+    1.0
+   ],
+   "params": {
+    "length": 104,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#c43a33"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    32.5,
+    0.0
+   ],
+   "params": {
+    "length": 104,
+    "height": 0.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#b9bec2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Far stand now open blue terrace with red/blue lettering blocks, fence and railings; painted diagonal graphics, dugout and real club lettering omitted; model is exterior 3/4 vs elevated seat-level photo."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-osm-way-161797198"
+}

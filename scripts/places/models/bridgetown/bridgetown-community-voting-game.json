@@ -1,0 +1,404 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-community-voting-game",
+ "name": "Barbados Supreme Court Complex",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barbados_Supreme_Court,_Bridgetown-1.jpg",
+   "licence": "Public domain",
+   "author": "CaribDigita",
+   "view": "front",
+   "file": "/tmp/places-evidence/bridgetown/sc1.jpg",
+   "used": "symmetrical front: cream-yellow three-storey block, central four-column portico with pediment and steps, small dark dome on the roof ridge, stepped end pavilions with white corner pilasters, dark hipped roofs behind white cornices, regular tall windows, fountain forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barbados_Supreme_Court,_Bridgetown-2.jpg",
+   "licence": "Public domain",
+   "author": "CaribDigita",
+   "view": "side",
+   "file": "/tmp/places-evidence/bridgetown/sc2.jpg",
+   "used": "side elevation: two-storey colonnaded loggia on the wing, deep cornice, pale yellow render with white trim"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/235142705",
+   "used": "overall size (117 x 57 m); the irregular outline is simplified into wing masses"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dda8",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "trimColour": "#f4f1e6",
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#f4f1e6",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4d4f",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    -28,
+    8
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dda8",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "trimColour": "#f4f1e6",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4d4f",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    28,
+    8
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dda8",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "trimColour": "#f4f1e6",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4d4f",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-left",
+   "footprint": {
+    "rect": [
+     12,
+     22
+    ]
+   },
+   "at": [
+    -48,
+    8
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1d79c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "trimColour": "#f4f1e6",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4d4f",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-right",
+   "footprint": {
+    "rect": [
+     12,
+     22
+    ]
+   },
+   "at": [
+    48,
+    8
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1d79c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "trimColour": "#f4f1e6",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4d4f",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    8,
+    30
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd29a",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "trimColour": "#f4f1e6",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b4b6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "id": "portico",
+   "at": [
+    0,
+    -10,
+    0.6
+   ],
+   "params": {
+    "width": 15,
+    "depth": 5,
+    "height": 12.5,
+    "columns": 4,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#f1eee2",
+    "roofColour": "#e9e5d6"
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "dome",
+   "at": [
+    0,
+    8,
+    16.5
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "hemi",
+    "drum": 1.0,
+    "colour": "#3a3f45",
+    "drumColour": "#cfc9b4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "forecourt-steps",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.6,
+    "run": 1.8,
+    "count": 3,
+    "colour": "#cfcabd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fountain-basin",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "height": 1.0,
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fountain-block",
+   "at": [
+    0,
+    -26,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     10,
+     3
+    ],
+    "height": 0.8,
+    "colour": "#5d5c58"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 2,
+    "spread": 4,
+    "line": 44
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag-pole",
+   "at": [
+    -17,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1a3f8f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a close crop of the centre so the model reads wider; upper-floor loggia balustrades, window grouping and portico column scale only approximated"
+ }
+}

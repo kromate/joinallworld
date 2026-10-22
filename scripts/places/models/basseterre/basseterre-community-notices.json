@@ -1,0 +1,350 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Government_House,_Basseterre.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Government of Saint Kitts and Nevis",
+   "view": "front",
+   "file": "/tmp/places-evidence/basseterre/govhouse.jpg",
+   "used": "long two-storey white clapboard house, deep red hipped roof, lower red verandah roof over ground-floor gallery with white rails and flag-striped balustrade, gabled central porch with steps, projecting right wing with upper balcony, shuttered windows, tarmac drive and lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/398547811",
+   "used": "size only (45 x 27 m irregular outline; massing taken from the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e2326",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    22.5,
+    1.5
+   ],
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e2326",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -19,
+    -10.2,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "count": 16,
+    "height": 3.4,
+    "radius": 0.1,
+    "kind": "square",
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -19,
+    -10.3,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    4,
+    -10.5
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f6f4ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e2326",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -13.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.7,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#bdb8ae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag-band",
+   "params": {
+    "rect": [
+     38,
+     0.2
+    ],
+    "z0": 0.5,
+    "height": 1.0,
+    "colour": "#1e8a4a"
+   },
+   "at": [
+    0,
+    -10.35
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "height": 6.7,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e2326",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recess-wall",
+   "footprint": {
+    "rect": [
+     38,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -6.25
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2b2622",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2622"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "verandah-roof",
+   "params": {
+    "kind": "folded",
+    "width": 40,
+    "depth": 4.4,
+    "rise": 0,
+    "thickness": 0.25,
+    "folds": 1,
+    "slopeY": -0.2,
+    "z": 3.5,
+    "colour": "#6e2326"
+   },
+   "at": [
+    0,
+    -8.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "valance",
+   "params": {
+    "rect": [
+     40,
+     0.1
+    ],
+    "z0": 3.0,
+    "height": 0.45,
+    "colour": "#ffffff"
+   },
+   "at": [
+    0,
+    -10.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balcony",
+   "params": {
+    "rect": [
+     5,
+     2.2
+    ],
+    "z0": 4.2,
+    "height": 0.2,
+    "colour": "#f6f4ee"
+   },
+   "at": [
+    23,
+    -7.1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    20.5,
+    -8.2,
+    4.4
+   ],
+   "params": {
+    "length": 5,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#1e8a4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": 0,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Open gallery, gabled right wing, stepped-down left wing and maroon roof now match; still no lattice fretwork on the valance (plain white band), no shutters, wing gable/balcony is simplified, porch lacks fretwork canopy, wing verandah roof not wrapped; OSM outline not used."
+ }
+}

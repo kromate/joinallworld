@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-1119389631",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mapillary_(485490175864823,_slfre5s84ad2s43vhejgvk)_(charlieplett)_2020-03-11_18H50M02S000.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "charlieplett",
+   "view": "street",
+   "file": "/tmp/places-evidence/belize-city/hosp1.jpg",
+   "used": "single-storey grey-cream metal-clad shed with red-brown fascia, flat entrance canopy on a square pier with a blue sign board (blank here), kerbed planter and surface car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mapillary_(835220554092088,_slfre5s84ad2s43vhejgvk)_(charlieplett)_2020-03-11_18H50M09S000.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "charlieplett",
+   "view": "street",
+   "file": "/tmp/places-evidence/belize-city/hosp2.jpg",
+   "used": "surrounding street and neighbouring yellow two-storey block (not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1119389631",
+   "used": "L-shaped footprint, 1 level"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9b5a2",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3,
+    "bands": {
+     "colour": "#8d3f33",
+     "height": 0.9
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "left",
+       "right",
+       "back"
+      ],
+      "colour": "#9d9a88"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d3f33",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy",
+   "at": [
+    -4,
+    -24.4
+   ],
+   "footprint": {
+    "rect": [
+     14,
+     5.2
+    ]
+   },
+   "z0": 3.4,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8d3f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e2f27",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "at": [
+    -9.8,
+    -26.2
+   ],
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e0cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0cc"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -27.1,
+    3.5
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.1,
+    "bottom": 0.1,
+    "colour": "#2f7fb8",
+    "frameColour": "#f4f1ea",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter",
+   "at": [
+    -4,
+    -32
+   ],
+   "params": {
+    "rect": [
+     16,
+     2.6
+    ],
+    "height": 0.5,
+    "colour": "#8d3f33",
+    "topColour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    -32,
+    0.5
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "depth": 1.6,
+    "colour": "#3f7a35"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "fascia band not continuous along whole front, no doors/small windows on front wall, planter reads as separate hedge blobs, neighbouring yellow block not modelled"
+ },
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   90,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -34
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     3,
+     -32
+    ],
+    "height": 8
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -18,
+     -38
+    ],
+    "yawDeg": 90,
+    "colour": "#f2f2f0"
+   },
+   {
+    "at": [
+     -24,
+     -38
+    ],
+    "yawDeg": 90,
+    "colour": "#1f2224"
+   },
+   {
+    "at": [
+     10,
+     -38
+    ],
+    "yawDeg": 90,
+    "colour": "#9aa0a6"
+   }
+  ]
+ }
+}

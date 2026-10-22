@@ -1,0 +1,481 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadiolafe01.JPG",
+   "licence": "CC BY 3.0",
+   "author": "SergioDeLafe",
+   "view": "side",
+   "file": "/tmp/places-evidence/buenos-aires/p1_0.jpg",
+   "used": "low white two-storey covered tribune with green trim and flat roof, white terraces with green stairs and rails, domed shed at far right, flat pitch, low boards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tribuna_Jos%C3%A9_Luis_%22Garrafa%22_S%C3%A1nchez_(Estadio_Ciudad_de_Laferrere).jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "detail",
+   "file": "/tmp/places-evidence/buenos-aires/p1_1.jpg",
+   "used": "white concrete steps with green rails and chain-link fence, dark red back wall with blank board above"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/173109152",
+   "used": "size 132 x 87 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 98,
+    "width": 62,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tribune",
+   "footprint": {
+    "rect": [
+     44,
+     9
+    ]
+   },
+   "at": [
+    -12,
+    40
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f3ee",
+    "windows": "rect",
+    "bands": "#2f6a3a",
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain"
+    },
+    "windowRatio": 0.25,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f44",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     28,
+     37
+    ],
+    "end": [
+     -48,
+     37
+    ],
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "seatColour": "#f4f4ef",
+    "concreteColour": "#f4f4ef",
+    "underColour": "#c9c8c0",
+    "backWall": 0
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -52,
+     -26
+    ],
+    "end": [
+     -52,
+     30
+    ],
+    "rows": 6,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "under": "solid",
+    "seatColour": "#f4f4ef",
+    "concreteColour": "#f4f4ef",
+    "underColour": "#c9c8c0",
+    "backWall": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "backwall-end",
+   "footprint": {
+    "rect": [
+     1,
+     62
+    ]
+   },
+   "at": [
+    -60,
+    2
+   ],
+   "z0": 0,
+   "height": 3.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a3a32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3029"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -48,
+     -35
+    ],
+    "end": [
+     10,
+     -35
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "seatColour": "#d9dad4",
+    "concreteColour": "#d9dad4",
+    "underColour": "#c9c8c0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    42,
+    -38
+   ],
+   "z0": 0,
+   "height": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f7a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#7f9288",
+    "rise": 3.2,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -33,
+    0.6
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.8,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#6f747a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    34,
+    0.5
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d6d6d0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    45,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    45,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-band",
+   "footprint": {
+    "rect": [
+     44,
+     0.6
+    ]
+   },
+   "at": [
+    -12,
+    35.4
+   ],
+   "z0": 5.2,
+   "height": 2.4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a3338",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a3338"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-0",
+   "footprint": {
+    "rect": [
+     1.6,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    31.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-1",
+   "footprint": {
+    "rect": [
+     1.6,
+     5
+    ]
+   },
+   "at": [
+    -20,
+    31.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-2",
+   "footprint": {
+    "rect": [
+     1.6,
+     5
+    ]
+   },
+   "at": [
+    -10,
+    31.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-3",
+   "footprint": {
+    "rect": [
+     1.6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    31.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-4",
+   "footprint": {
+    "rect": [
+     1.6,
+     5
+    ]
+   },
+   "at": [
+    10,
+    31.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6a3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -32,
+    0.0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.0,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#2f6a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 3,
+  "extent": [
+   136,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tribune two-storey with dark glazed band and green stair strips; end shed is simplified barrel box; chain-link and advertising boards omitted; camera lower than photo."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-osm-way-173109152"
+}

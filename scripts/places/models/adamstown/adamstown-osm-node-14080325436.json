@@ -1,0 +1,108 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: low stone plinth carrying a blank bronze plaque beside the path"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "base",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 0.3,
+    "colour": "#d5d0c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.0
+    ],
+    "height": 1.1,
+    "topScale": 0.92,
+    "colour": "#a9a59b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -0.55,
+    0.75
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.08
+    ],
+    "height": 0.6,
+    "colour": "#7a5a2e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -2.5,
+    -2.6,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 0.5,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#a9a59b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   20,
+   16
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; plaque and plinth typed from brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-osm-node-14080325436"
+}

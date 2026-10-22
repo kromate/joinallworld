@@ -1,0 +1,559 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-84830646",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Memorial_J_Kubitschek_Brasilia_2009.jpg",
+   "licence": "see Commons page",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/brasilia/jk1.jpg",
+   "used": "slim square beige-grey pylon, curved sickle sheet with statue at its head, long low white ramped marble block, white ring-shaped skylight on top, marble-edged stepped water basins, flag"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Brasilia_DF_Brasil_-_Memorial_JK_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Josue Marinho",
+   "view": "side",
+   "used": "sickle seen edge-on as a thin curved blade, pylon proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/84830646",
+   "used": "footprint of the low marble block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "ramp",
+   "at": [
+    -2,
+    10,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       116,
+       44
+      ],
+      "cx": 0,
+      "colour": "#ece9e1"
+     },
+     {
+      "z": 5.4,
+      "rect": [
+       24,
+       44
+      ],
+      "cx": 46,
+      "colour": "#e9e6de"
+     }
+    ],
+    "capTop": true,
+    "colour": "#ece9e1",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "skylight-ring",
+   "at": [
+    44,
+    10,
+    5.4
+   ],
+   "params": {
+    "profile": [
+     [
+      4,
+      0,
+      "#f4f2ec"
+     ],
+     [
+      11,
+      0
+     ],
+     [
+      12.5,
+      0.8
+     ],
+     [
+      12,
+      2.0
+     ],
+     [
+      9,
+      2.6
+     ],
+     [
+      6,
+      2.3
+     ],
+     [
+      4.5,
+      1.5
+     ],
+     [
+      4,
+      0.6
+     ]
+    ],
+    "segments": 24,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon",
+   "at": [
+    -42,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 28,
+    "colour": "#c9bca3",
+    "material": "concrete",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "capital",
+   "at": [
+    -42,
+    -38,
+    27.6
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 0.7,
+    "colour": "#c9bca3",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "sickle",
+   "at": [
+    -42,
+    -38,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      11
+     ]
+    },
+    "points": [
+     [
+      2.5,
+      0,
+      28.3
+     ],
+     [
+      -2,
+      0,
+      28.5
+     ],
+     [
+      -6,
+      0,
+      30.5
+     ],
+     [
+      -8.2,
+      0,
+      34
+     ],
+     [
+      -8,
+      0,
+      38
+     ],
+     [
+      -5.5,
+      0,
+      41
+     ]
+    ],
+    "curve": true,
+    "steps": 16,
+    "up": [
+     0,
+     1,
+     0
+    ],
+    "colour": "#a79d8d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue",
+   "at": [
+    -44.5,
+    -38,
+    28.3
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 5,
+    "colour": "#4d4538",
+    "material": "marble",
+    "topScale": 0.45
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool1-n",
+   "at": [
+    -6,
+    -52.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     64,
+     0.5
+    ],
+    "height": 1.1,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool1-s",
+   "at": [
+    -6,
+    -67.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     64,
+     0.5
+    ],
+    "height": 1.1,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool1-w",
+   "at": [
+    -37.75,
+    -60,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     15.0
+    ],
+    "height": 1.1,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool1-e",
+   "at": [
+    25.75,
+    -60,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     15.0
+    ],
+    "height": 1.1,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool1-water",
+   "at": [
+    -6,
+    -60,
+    0
+   ],
+   "params": {
+    "rect": [
+     63.0,
+     15.0
+    ],
+    "height": 0.8500000000000001,
+    "colour": "#8fc7b8",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool2-n",
+   "at": [
+    -6,
+    -45.75,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     58,
+     0.5
+    ],
+    "height": 1.1,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool2-s",
+   "at": [
+    -6,
+    -52.25,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     58,
+     0.5
+    ],
+    "height": 1.1,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool2-w",
+   "at": [
+    -34.75,
+    -49,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     6.0
+    ],
+    "height": 1.1,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool2-e",
+   "at": [
+    22.75,
+    -49,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     6.0
+    ],
+    "height": 1.1,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool2-water",
+   "at": [
+    -6,
+    -49,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     57.0,
+     6.0
+    ],
+    "height": 0.8500000000000001,
+    "colour": "#8fc7b8",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool3-n",
+   "at": [
+    8,
+    -41.25,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     56,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool3-s",
+   "at": [
+    8,
+    -44.75,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     56,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool3-w",
+   "at": [
+    -19.75,
+    -43,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     3.0
+    ],
+    "height": 1.0,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool3-e",
+   "at": [
+    35.75,
+    -43,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     3.0
+    ],
+    "height": 1.0,
+    "colour": "#8b9a92",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool3-water",
+   "at": [
+    8,
+    -43,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     55.0,
+     3.0
+    ],
+    "height": 0.75,
+    "colour": "#8fc7b8",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag-plate",
+   "at": [
+    44,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 0.4,
+    "colour": "#999999",
+    "material": "marble"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    48,
+    -64,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -60,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ramp is a loft wedge with a tiled-looking marble texture, pools are three flat tiers without the real green-grey veining; sickle lip tilt approximate; flag is a plain white pennant, no emblem"
+ }
+}

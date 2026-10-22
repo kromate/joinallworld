@@ -1,0 +1,743 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_Francia2.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "ruurmo",
+   "view": "front",
+   "file": "/tmp/places-evidence/caracas/plaza1.jpg",
+   "used": "tall beige obelisk with pyramidal tip over a tiered fountain, flanking stairs with teal rails, water cascade, two beige apartment blocks behind, orange flags, mountain backdrop"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1221023817",
+   "used": "obelisk position and 3 m base"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "obelisk",
+   "at": [
+    0,
+    0,
+    5
+   ],
+   "params": {
+    "colour": "#d9c3a3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.5,
+       4.5
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 33,
+      "rect": [
+       0.2,
+       0.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "fountain",
+   "params": {
+    "colour": "#e3d3b3",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      1
+     ],
+     [
+      7,
+      1.2
+     ],
+     [
+      7,
+      1.8
+     ],
+     [
+      8,
+      2.0
+     ],
+     [
+      8,
+      2.6
+     ],
+     [
+      5.5,
+      2.8
+     ],
+     [
+      5.5,
+      3.4
+     ],
+     [
+      6.5,
+      3.6
+     ],
+     [
+      6.5,
+      4.2
+     ],
+     [
+      3.5,
+      4.4
+     ],
+     [
+      3.5,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "z0": 0,
+    "height": 5,
+    "colour": "#cdb994"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza-floor",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     50
+    ],
+    "height": 0.3,
+    "colour": "#e2d7c3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cascade-pool",
+   "at": [
+    0,
+    -26,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     14,
+     22
+    ],
+    "height": 0.3,
+    "colour": "#9fdde0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cascade-wall-l",
+   "at": [
+    -7.6,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     22
+    ],
+    "height": 2.2,
+    "colour": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cascade-wall-r",
+   "at": [
+    7.6,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     22
+    ],
+    "height": 2.2,
+    "colour": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balustrade-wall",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     1.2
+    ],
+    "height": 2.6,
+    "colour": "#e3d5b8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "colour": "#e3d5b8",
+      "profile": [
+       [
+        0,
+        2.6
+       ],
+       [
+        0.6,
+        2.6
+       ],
+       [
+        0.6,
+        3.0
+       ],
+       [
+        0.3,
+        3.6
+       ],
+       [
+        0,
+        3.8
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -10
+    ],
+    "end": [
+     18,
+     -10
+    ],
+    "count": 7,
+    "lod2Step": 9,
+    "lod1Step": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief-panel",
+   "at": [
+    0,
+    -2.4,
+    4
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.5
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#b9a47f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -14,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.25,
+    "run": 1.6,
+    "count": 12,
+    "colour": "#8e8578"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    14,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.25,
+    "run": 1.6,
+    "count": 12,
+    "colour": "#8e8578"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-wall-ll",
+   "at": [
+    -18,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     20
+    ],
+    "height": 2.2,
+    "colour": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-wall-rr",
+   "at": [
+    18,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     20
+    ],
+    "height": 2.2,
+    "colour": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-l",
+   "params": {
+    "section": {
+     "rect": [
+      0.2,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      -11.3,
+      -37,
+      2.0
+     ],
+     [
+      -11.3,
+      -18,
+      3.2
+     ]
+    ],
+    "colour": "#2f8a7a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-r",
+   "params": {
+    "section": {
+     "rect": [
+      0.2,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      11.3,
+      -37,
+      2.0
+     ],
+     [
+      11.3,
+      -18,
+      3.2
+     ]
+    ],
+    "colour": "#2f8a7a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "apt-left",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    22
+   ],
+   "height": 26,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9cbb0",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9cbb0",
+       "#f2eee4"
+      ]
+     },
+     {
+      "type": "balconies",
+      "depth": 1.2,
+      "every": 3,
+      "width": 3,
+      "colour": "#f4f0e6",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a948a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-right",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    12,
+    22
+   ],
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9cbb0",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9cbb0",
+       "#f2eee4"
+      ]
+     },
+     {
+      "type": "balconies",
+      "depth": 1.2,
+      "every": 3,
+      "width": 3,
+      "colour": "#f4f0e6",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a948a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apt-step-l",
+   "footprint": {
+    "rect": [
+     12,
+     14
+    ]
+   },
+   "at": [
+    -28,
+    26
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9cbb0",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a948a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-far",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -52,
+    38
+   ],
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c3b9a5",
+    "windows": "none",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "ridge",
+   "at": [
+    0,
+    90,
+    0
+   ],
+   "params": {
+    "colour": "#3d6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       150,
+       40
+      ]
+     },
+     {
+      "z": 25,
+      "rect": [
+       120,
+       30
+      ]
+     },
+     {
+      "z": 40,
+      "rect": [
+       80,
+       16
+      ]
+     },
+     {
+      "z": 46,
+      "rect": [
+       50,
+       8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "market-open/flagpole",
+     "params": {
+      "height": 18,
+      "colour": "#e07a2d"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -12
+    ],
+    "end": [
+     40,
+     -12
+    ],
+    "count": 2,
+    "lod2Step": 9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 5,
+    "spread": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 5,
+    "spread": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 6
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Cascade basin, stairs, balustrade and tiered fountain now modelled; teal rails are thin, no relief carving or statue, trees generic low-poly, ridge is a smooth slab."
+ }
+}

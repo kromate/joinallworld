@@ -1,0 +1,431 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-airport-basseterre-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Kitts_Airport_Terminal_from_side.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Sunnya343",
+   "view": "side",
+   "file": "/tmp/places-evidence/basseterre/airport.jpg",
+   "used": "long low terminal under a thin white swept roof, glazed two-storey right end, cream plastered centre bay with strip window, white sail fins rising over the middle, round colonnaded pavilion with flat rust roof at the left end, grassy berm in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/242801112",
+   "used": "identity only (aerodrome polygon is the 2.6 km airfield, terminal massing taken from the photo and brief 90 x 35 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.667,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "id": "swept-roof",
+   "params": {
+    "section": {
+     "rect": [
+      30,
+      0.6
+     ]
+    },
+    "points": [
+     [
+      -26,
+      0,
+      7.4
+     ],
+     [
+      -8,
+      0,
+      8.4
+     ],
+     [
+      14,
+      0,
+      9.8
+     ],
+     [
+      34,
+      0,
+      11.0
+     ],
+     [
+      46,
+      0,
+      12.4
+     ],
+     [
+      52,
+      0,
+      13.2
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#f4f4f0"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "sail-fin",
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       12,
+       0.7
+      ],
+      "cx": 0
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       6,
+       0.5
+      ],
+      "cx": 3
+     },
+     {
+      "z": 4.4,
+      "rect": [
+       1,
+       0.4
+      ],
+      "cx": 6.5
+     }
+    ],
+    "colour": "#f2f2ee",
+    "curve": true
+   },
+   "at": [
+    2,
+    1,
+    10.0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pavilion-roof",
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 8.8,
+      "colour": "#8e4a3c"
+     },
+     {
+      "z": 0.5,
+      "circle": 9.4,
+      "colour": "#8e4a3c"
+     },
+     {
+      "z": 0.9,
+      "circle": 8.6,
+      "colour": "#8e4a3c"
+     }
+    ],
+    "colour": "#8e4a3c",
+    "capBottom": true
+   },
+   "at": [
+    -48,
+    -2,
+    6.0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "pavilion-truss",
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "arc": {
+     "radius": 9.2,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "closed": true,
+    "colour": "#9a9a96"
+   },
+   "at": [
+    -48,
+    -2,
+    5.9
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pavilion-core",
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 6.0
+     },
+     {
+      "z": 6.0,
+      "circle": 6.0
+     }
+    ],
+    "colour": "#d8d4c8"
+   },
+   "at": [
+    -48,
+    -2,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -48,
+     -2,
+     0
+    ],
+    "radius": 8.4,
+    "count": 10,
+    "of": {
+     "type": "core/colonnade",
+     "params": {
+      "length": 1,
+      "count": 1,
+      "height": 6.0,
+      "radius": 0.18,
+      "colour": "#e6e2d6"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    },
+    "lod2Step": 3,
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-end",
+   "footprint": {
+    "rect": [
+     26,
+     26
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb3c2",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee",
+    "overhang": 0.0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-bay",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "height": 9.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcb4",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee",
+    "overhang": 0.0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     26,
+     26
+    ]
+   },
+   "at": [
+    -18,
+    0
+   ],
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f98aa",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2ee",
+    "overhang": 0.0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    48,
+    10,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -58,
+    8,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 3,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "cars": [
+   {
+    "at": [
+     -4,
+     -24
+    ],
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     0,
+     -24
+    ],
+    "colour": "#b0302a"
+   },
+   {
+    "at": [
+     4,
+     -24
+    ],
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     8,
+     -24
+    ],
+    "colour": "#33404f"
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is a single swept slab but its rise is a simple curve without the rolled edge; sail fin is one lofted shell, not the double fin; right glazed block lacks the slim mullion grid and slender canopy columns; pavilion truss is a plain ring and roof, no lattice; generic parking foreground; only the terminal is modelled."
+ }
+}

@@ -1,0 +1,125 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-node-5793564354",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small one-storey rural clinic (Hospital indigena), veranda, corrugated roof; no OSM building or photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cf",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 4,
+    "plinth": 0.4,
+    "bands": "#7aa05a",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f92",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "market-open/veranda",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 2.4,
+    "height": 2.8,
+    "roof": "lean-to",
+    "wall_colour": "#e8e1cf",
+    "roof_colour": "#8a8f92"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 2,
+    "colour": "#bdb5a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No building, outline or photo found: a modest generic rural clinic from the brief, dimensions and colours assumed."
+ }
+}

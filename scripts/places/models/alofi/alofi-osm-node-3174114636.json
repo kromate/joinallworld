@@ -1,0 +1,210 @@
+{
+ "verified": "footprint",
+ "name": "Vaiolama Cafe & Mini-golf",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/383348065",
+   "used": "nearest building 6.3x3.7 m, 144 deg bearing; hut footprint and orientation"
+  },
+  {
+   "kind": "text",
+   "used": "brief: hut cafe with veranda, painted mini-golf, shade trees, blue corrugated roof; no photo exists on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#9fc3c9"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3d6b8a",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-deck",
+   "footprint": {
+    "rect": [
+     6.3,
+     2.0
+    ]
+   },
+   "at": [
+    -2.33,
+    -1.72
+   ],
+   "rotDeg": -53.5,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8865a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8865a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2.89,
+    -2.14,
+    0.5
+   ],
+   "rotDeg": -53.5,
+   "params": {
+    "width": 6.0,
+    "depth": 2.0,
+    "height": 2.4,
+    "colours": [
+     "#9fc3c9",
+     "#f1ece0"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "menu-board",
+   "at": [
+    -4.91,
+    1.59,
+    0.9
+   ],
+   "rotDeg": -53.5,
+   "params": {
+    "rect": [
+     1.6,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#f1ece0",
+    "topColour": "#9fc3c9"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "golf-green",
+   "at": [
+    -6.64,
+    -6.16,
+    0
+   ],
+   "rotDeg": -53.5,
+   "params": {
+    "rect": [
+     12,
+     4
+    ],
+    "height": 0.12,
+    "colour": "#5f9a4a",
+    "topColour": "#5f9a4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8.44,
+    -0.03
+   ],
+   "rotDeg": -53.5,
+   "params": {
+    "length": 12,
+    "height": 0.3,
+    "thickness": 0.2,
+    "colour": "#f1ece0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -11.98,
+    -2.64
+   ],
+   "rotDeg": -53.5,
+   "params": {
+    "length": 12,
+    "height": 0.3,
+    "thickness": 0.2,
+    "colour": "#f1ece0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     7,
+     7
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-osm-node-3174114636",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; hut footprint from the nearest OSM building, roof, deck and mini-golf typed from the brief."
+ }
+}

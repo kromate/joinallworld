@@ -1,0 +1,305 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-osm-relation-14618378",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Unlz-predio.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Universidad Nacional de Lomas de Zamora",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/buenos-aires/unlz1.jpg",
+   "used": "campus aerial: dark barrel-vault hall with a cream window wall and a recessed arched entry at its near end, low blocks and a blue sports court beyond, grass and playing fields, tree lines"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/14618378",
+   "used": "campus is 856 x 425 m, far over the 118 m scene limit; outline NOT used, one signature cluster is modelled instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 32,
+  "fovDeg": 52,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "vault-hall",
+   "footprint": {
+    "rect": [
+     24,
+     60
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#8a9aa0",
+    "plinth": 0.6,
+    "bands": "#cfc6b0",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "rise": 6,
+    "axis": "y",
+    "curve": "arch",
+    "colour": "#2e343a",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    -40,
+    42
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d2",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#cfc6b0",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    -34,
+    10
+   ],
+   "height": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    46,
+    8
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9fc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9fc8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     9,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -30.2
+   ],
+   "height": 4.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a2420",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "stadium/football-pitch",
+   "at": [
+    50,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "width": 26,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "hospital/lattice-mast",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "baseWidth": 2,
+    "topWidth": 0.5,
+    "panels": 8,
+    "colour": "#aeb4ba",
+    "colour2": "#d8dcde"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -5,
+    -36,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     40,
+     6,
+     0
+    ],
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 9,
+      "spread": 6
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -5,
+    -36,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     40,
+     6,
+     0
+    ],
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 9,
+      "spread": 6
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -38
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     16
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "roof arch is symmetric (real shell sweeps to the ground on one side); portal is a dark slab not a recessed arch; campus layout, road and fields only suggested"
+ }
+}

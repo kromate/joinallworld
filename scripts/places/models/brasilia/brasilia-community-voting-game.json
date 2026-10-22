@@ -1,0 +1,306 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pca_dos_Orixas.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nevinho",
+   "view": "front",
+   "file": "/tmp/places-evidence/brasilia/orix1.jpg",
+   "used": "reddish interlocking paving, statues on grey ribbed concrete plinths in a gentle arc along the lakeshore with white kerbs, red and gold polychrome figures, mango/broadleaf trees and Lago Paranoa behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:P%C3%A7aOrix%C3%A1s-Bsb-202301_(4)_(52631960585).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Alexandre Marino",
+   "view": "side",
+   "file": "/tmp/places-evidence/brasilia/orix2.jpg",
+   "used": "second view (not compared)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/261771198",
+   "used": "Prainha park polygon 158 x 128 m on the lake shore (orientation and extent only)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "paving",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "rect": [
+     64,
+     36
+    ],
+    "height": 0.15,
+    "colour": "#9c6e55",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lake",
+   "at": [
+    0,
+    40
+   ],
+   "params": {
+    "rect": [
+     90,
+     30
+    ],
+    "height": 0.05,
+    "colour": "#6f93a8",
+    "z0": -0.05
+   }
+  },
+  {
+   "type": "array",
+   "id": "kerbs",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     -8,
+     0
+    ],
+    "radius": 24,
+    "radiusY": 10,
+    "startDeg": 38,
+    "endDeg": 142,
+    "count": 8,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4,
+       0.5
+      ],
+      "height": 0.3,
+      "colour": "#eeece6",
+      "z0": 0
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "orixas",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     -6,
+     0
+    ],
+    "radius": 24,
+    "radiusY": 10,
+    "startDeg": 30,
+    "endDeg": 150,
+    "count": 8,
+    "facing": "outward",
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.6,
+        1.6
+       ],
+       "height": 2.4,
+       "colour": "#8e8f8b",
+       "pattern": {
+        "type": "fins",
+        "width": 0.12,
+        "depth": 0.08,
+        "spacing": 0.3,
+        "colour": "#6b6c69"
+       },
+       "topColour": "#cfcfcb"
+      }
+     },
+     {
+      "type": "loft",
+      "lod": [
+       0,
+       1
+      ],
+      "at": [
+       0,
+       0,
+       2.4
+      ],
+      "params": {
+       "colour": "#c0392b",
+       "sections": [
+        {
+         "z": 0,
+         "circle": 1.08
+        },
+        {
+         "z": 0.9,
+         "circle": 1.02
+        },
+        {
+         "z": 1.3,
+         "circle": 0.54
+        },
+        {
+         "z": 1.8,
+         "circle": 0.6
+        },
+        {
+         "z": 2.0,
+         "circle": 0.36
+        }
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "lod": [
+       0,
+       1
+      ],
+      "at": [
+       0,
+       0,
+       4.3
+      ],
+      "params": {
+       "segments": 8,
+       "colour": "#d4af37",
+       "profile": [
+        [
+         0.25,
+         0
+        ],
+        [
+         0.3,
+         0.3
+        ],
+        [
+         0.2,
+         0.5
+        ],
+        [
+         0,
+         0.6
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "lake-steps",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#cfc6b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     12
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     16
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     14
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     12
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -4
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -4
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Statues are lofted red bell figures on ribbed plinths, not human-shaped with costume detail; arc is a single row of 8 but trees are generic round canopies and the lake is a flat quad; paving still too red."
+ }
+}

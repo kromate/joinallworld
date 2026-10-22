@@ -1,0 +1,62 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashmore",
+ "venueId": "ashmore-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+   "used": "bare open lean-to with a single bench facing the lagoon (5 x 4 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "depth": 4,
+    "height": 2.8,
+    "form": "shed",
+    "support": "timber",
+    "colour": "#a58a64",
+    "roof_colour": "#9aa3a7"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   24,
+   20
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no real counterpart; bare lean-to"
+ }
+}

@@ -1,0 +1,480 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iglesia_San_Constantino_and_Santa_Elena_2000_000.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Veronidae",
+   "view": "front",
+   "file": "/tmp/places-evidence/caracas/church.jpg",
+   "used": "Maramures-style timber church: dark red-brown log walls with a low skirt roof, steep grey shingled gable roof, tall square tower with long grey needle spire and four small corner spires, low brown shed to the right, stone boundary wall, forested hillside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/712547967",
+   "used": "26 x 11 m footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "log-walls",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a2c24",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a4638",
+    "rise": 0.9,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13.5,
+     9.5
+    ]
+   },
+   "at": [
+    1,
+    0
+   ],
+   "z0": 3.4,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a2c24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6d7072",
+    "material": "metal-sheet",
+    "rise": 6.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -0.5,
+    0
+   ],
+   "z0": 5,
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6a4a3a",
+    "windows": "none",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7072",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    -0.5,
+    0
+   ],
+   "z0": 15.5,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3f2a22",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7072",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -0.5,
+    0,
+    16.8
+   ],
+   "params": {
+    "colour": "#6d7072",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       0.2,
+       0.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -2.8,
+    -2.3,
+    16.5
+   ],
+   "params": {
+    "colour": "#6d7072",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       0.08,
+       0.08
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -2.8,
+    2.3,
+    16.5
+   ],
+   "params": {
+    "colour": "#6d7072",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       0.08,
+       0.08
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.7999999999999998,
+    -2.3,
+    16.5
+   ],
+   "params": {
+    "colour": "#6d7072",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       0.08,
+       0.08
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.7999999999999998,
+    2.3,
+    16.5
+   ],
+   "params": {
+    "colour": "#6d7072",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       0.08,
+       0.08
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5e5650",
+    "rise": 1,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -14
+     ],
+     [
+      30,
+      -14
+     ]
+    ],
+    "height": 1.3,
+    "thickness": 0.7,
+    "colour": "#9a968a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -2,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    32,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    33,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 8,
+  "treeKind": "broadleaf",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped Maramures roof approximated by a skirt plus a single hip; tower has no open gallery arcade (solid ring) and spirelets are simple lofts; trees are generic low-poly, no real forested slope or tiny windows; stone wall is a plain strip."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-quiet-reflection"
+}

@@ -1,0 +1,378 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-way-164810076",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Asuncion_Cathedral.JPG",
+   "licence": "CC BY-SA 2.5",
+   "author": "Jan Pesula (Sapfan)",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/cat0.jpg",
+   "used": "twin-tower facade with domed caps, central pedimented gable, three round-arched portals, pink pilasters, cream stucco"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Catedral_de_Asunci%C3%B3n_Paraguay.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "FF MM",
+   "view": "side",
+   "file": "/tmp/places-evidence/asuncion/cat1.jpg",
+   "used": "long nave with lower side aisle, front steps, tower proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/164810076",
+   "used": "overall size 77.6 x 30.8 m (axis re-aligned to face the camera)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     30,
+     66
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6c8",
+    "windows": "punched",
+    "plinth": 0.8,
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-body",
+   "footprint": {
+    "rect": [
+     31,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -33.5
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6c8",
+    "windows": "none",
+    "plinth": 0.8,
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "bay": 7.5,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 1.1,
+      "depth": 0.25,
+      "spacing": 3.9,
+      "colour": "#c98f8c",
+      "margin": 1.5
+     },
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 10,
+      "opening": 0.4,
+      "height": 0.65,
+      "depth": 0.9,
+      "colour": "#2e2824",
+      "pierColour": "#efe6c8"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-front",
+   "footprint": {
+    "rect": [
+     19,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -34.5
+   ],
+   "z0": 10.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6c8",
+    "windows": "punched",
+    "plinth": 0,
+    "windowShape": "rect",
+    "windowRatio": 0.08,
+    "bay": 8,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 1.0,
+      "depth": 0.25,
+      "spacing": 3.6,
+      "colour": "#c98f8c",
+      "margin": 0.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6c8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "tower",
+   "id": "tower-left",
+   "at": [
+    -12.5,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 27,
+    "cap": "flat",
+    "windows": "none",
+    "windowRatio": 0.06,
+    "colour": "#f1ead2",
+    "capColour": "#fbf7ea"
+   }
+  },
+  {
+   "type": "tower",
+   "id": "tower-right",
+   "at": [
+    12.5,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 27,
+    "cap": "flat",
+    "windows": "none",
+    "windowRatio": 0.06,
+    "colour": "#f1ead2",
+    "capColour": "#fbf7ea"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "rise": 0.9,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -12.5,
+    -33,
+    27
+   ],
+   "params": {
+    "radius": 2.8,
+    "height": 5,
+    "profile": "onion",
+    "lantern": 1.2,
+    "finial": 2,
+    "colour": "#fbf7ea"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -12.5,
+    -36.5,
+    19
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 3,
+    "kind": "arch",
+    "trim": "#fbf7ea"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    12.5,
+    -33,
+    27
+   ],
+   "params": {
+    "radius": 2.8,
+    "height": 5,
+    "profile": "onion",
+    "lantern": 1.2,
+    "finial": 2,
+    "colour": "#fbf7ea"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    12.5,
+    -36.5,
+    19
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 3,
+    "kind": "arch",
+    "trim": "#fbf7ea"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -37,
+    13.5
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 3.2,
+    "kind": "arch",
+    "trim": "#fbf7ea"
+   }
+  },
+  {
+   "type": "baroque-gable",
+   "at": [
+    0,
+    -37,
+    10.5
+   ],
+   "params": {
+    "width": 23,
+    "nave_width": 19,
+    "lower_height": 0.5,
+    "upper_height": 8,
+    "rise": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": 0,
+  "cars": [
+   {
+    "at": [
+     -14,
+     -52
+    ],
+    "yawDeg": 90,
+    "colour": "#d9d9d9"
+   },
+   {
+    "at": [
+     12,
+     -52
+    ],
+    "yawDeg": 90,
+    "colour": "#7a2c2c"
+   },
+   {
+    "at": [
+     24,
+     -52
+    ],
+    "yawDeg": 90,
+    "colour": "#e3d27a"
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Towers narrower and taller with onion domes, but belfry arch is only a small window, no clock/cornice; pediment is a triangular gable not a segmental arch, no oculus; portals still tall arches; red roof visible behind gable."
+ }
+}

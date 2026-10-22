@@ -1,0 +1,195 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-way-397170032",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/397170032",
+   "used": "campus polygon 778 x 297 m is not a building; only an H-plan teaching/clinic block is modelled, sized from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: low two-storey teaching and clinic buildings around lawns, animal hospital block, hip corrugated roofs, blue accents; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching",
+   "footprint": {
+    "kind": "H",
+    "size": [
+     60,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#2f7f9f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    42,
+    6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "trimColour": "#2f7f9f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f7f9f",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stables",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -42,
+    18
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece4d0",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f92",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 3.2,
+    "colour": "#2f7f9f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    12,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; H block, clinic and stables are plausible, not the real campus layout"
+ }
+}

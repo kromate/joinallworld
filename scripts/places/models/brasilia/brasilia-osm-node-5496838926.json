@@ -1,0 +1,125 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-node-5496838926",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/20730970",
+   "used": "real outline (5-point polygon, 32 x 22 m), 4 levels, 13.4 m height"
+  },
+  {
+   "kind": "text",
+   "used": "painted render, blue accent and corrugated roof typed from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 13.4,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e1d0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "plinth": 0.5,
+    "glassColour": "#5f7f95",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a9a59c",
+      "height": 0.3,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "corrugated",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    3,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.18,
+    "run": 0.4,
+    "count": 5,
+    "colour": "#a9a59c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#5f7f95",
+    "frameColour": "#a9a59c"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "outline and height real; facade, roof and colours typed from the brief; no photo"
+ }
+}

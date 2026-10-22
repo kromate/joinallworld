@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-node-4258039707",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/HMS_Orpheus_(1860)",
+   "used": "three marked graves and an information board near Cornwallis Beach, Manukau Heads; wreck of 1863; overgrown surroundings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1310968771",
+   "used": "the car park beside the graves is long and narrow (84 x 16 m): a short gravel strip is modelled; the graves clearing is typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     6
+    ],
+    "height": 0.15,
+    "colour": "#7c8a62",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.5,
+    2,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     2.0
+    ],
+    "height": 0.35,
+    "colour": "#8e8a80"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     2.0
+    ],
+    "height": 0.35,
+    "colour": "#8e8a80"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    2,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     2.0
+    ],
+    "height": 0.35,
+    "colour": "#8e8a80"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.5,
+    3.2,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.15
+    ],
+    "height": 0.9,
+    "colour": "#9a968c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    3.2,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.15
+    ],
+    "height": 0.9,
+    "colour": "#9a968c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    3.2,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.15
+    ],
+    "height": 0.9,
+    "colour": "#9a968c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -5,
+    -1,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.12,
+    "kind": "wall",
+    "colour": "#6f6a60"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    7,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.0,
+    "bottom": 0.9,
+    "colour": "#d8d3c4",
+    "frameColour": "#4a4a46"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     8
+    ],
+    "height": 0.05,
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    8,
+    -12,
+    0.05
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 2,
+    "spacing": 3.5,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 8,
+    "spread": 6,
+    "line": 16,
+    "colour": "#4a6a46"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 6,
+    "spread": 6,
+    "colour": "#55744a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; typed graves clearing with board and car-park strip"
+ }
+}

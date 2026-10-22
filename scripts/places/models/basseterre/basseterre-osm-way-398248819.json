@@ -1,0 +1,293 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-way-398248819",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Basseterre_-_National_Museum.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "P. Hughes",
+   "view": "front",
+   "file": "/tmp/places-evidence/basseterre/museum2.jpg",
+   "used": "front elevation: two-storey dark rubble-stone walls, cream quoins and window surrounds, projecting centre pavilion with pediment, arched carriage gate, three arched upper windows, red sign board, tiny dome with red lantern"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Old_Treasury_Building_2.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gertjan R.",
+   "view": "street",
+   "file": "/tmp/places-evidence/basseterre/museum1.jpg",
+   "used": "left and right bays: ground-floor galleries with iron balustrade, end bays with plain sash windows, flat cornice line"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/398248819",
+   "used": "overall size 37 x 12.5 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 52,
+  "aspect": 1.31,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     37,
+     12.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#5e4338",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.4,
+    "trimColour": "#e6dcc0",
+    "bands": "#e6dcc0",
+    "cornice": true,
+    "parapet": 0.5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ac",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     10.5,
+     13.4
+    ]
+   },
+   "at": [
+    0,
+    -0.45
+   ],
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a4034",
+    "windows": "none",
+    "bands": "#e6dcc0",
+    "cornice": true,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "windowRatio": 0.22,
+    "bay": 3.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6a4a3e",
+    "pitch": 17,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-l",
+   "footprint": {
+    "rect": [
+     1.5,
+     13.5
+    ]
+   },
+   "at": [
+    -5.6,
+    -0.5
+   ],
+   "height": 9.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dfc4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dfc4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-r",
+   "footprint": {
+    "rect": [
+     1.5,
+     13.5
+    ]
+   },
+   "at": [
+    5.6,
+    -0.5
+   ],
+   "height": 9.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dfc4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dfc4"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 6.6,
+    "height": 5.0,
+    "depth": 1.4,
+    "archWidth": 5.0,
+    "springHeight": 3.0,
+    "colour": "#e8dfc4",
+    "pointed": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 0.8,
+    "bottom": 5.3,
+    "colour": "#a32f2a",
+    "frameColour": "#e8dfc4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/dome",
+   "on": "pavilion",
+   "at": [
+    0,
+    0.5,
+    0.5
+   ],
+   "params": {
+    "radius": 2.9,
+    "height": 2.2,
+    "profile": "hemi",
+    "drum": 1.8,
+    "drumRadius": 1.5,
+    "lantern": 1.8,
+    "finial": 1.8,
+    "colour": "#e9dcc3",
+    "drumColour": "#b8332b"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -7.15,
+    0
+   ],
+   "params": {
+    "width": 4.0,
+    "height": 3.4,
+    "pillar": 0.1,
+    "leaf": "bars",
+    "colour": "#2a2a2a",
+    "arch": true,
+    "leafColour": "#1e1e1e"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -2.6,
+    -7.2,
+    6.3
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 2.2,
+    "kind": "arch",
+    "trim": "#e8dfc4"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -7.2,
+    6.3
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 2.2,
+    "kind": "arch",
+    "trim": "#e8dfc4"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    2.6,
+    -7.2,
+    6.3
+   ],
+   "params": {
+    "width": 1.7,
+    "height": 2.2,
+    "kind": "arch",
+    "trim": "#e8dfc4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper windows render pointed not round-arched; gate arch is a flat-topped frame; side-bay surrounds thin; dome drum/lantern small; paving plain grid"
+ }
+}

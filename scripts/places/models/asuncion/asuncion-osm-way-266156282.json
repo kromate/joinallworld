@@ -1,0 +1,158 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-way-266156282",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/266156282",
+   "used": "name-matched footprint 67.5 x 60.9 m at bearing 32, 3 levels"
+  },
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_entrance_to_the_Mall_Excelsior_in_down_town_Asuncion.jpg",
+   "used": "only an interior photo exists (not modelled); it shows the teal glass band, timber panelling, pale tile and red/yellow shop accents, used for colour accents"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     61,
+     67.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -32,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d2d6",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#5a7690",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -3.2,
+    -34.7
+   ],
+   "rotDeg": -32,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fbfcc",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "membrane",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -31,
+    14.6
+   ],
+   "rotDeg": -32,
+   "params": {
+    "width": 14,
+    "height": 3.2,
+    "bottom": 0,
+    "colour": "#e9e4d8",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -31,
+    10.8
+   ],
+   "rotDeg": -32,
+   "params": {
+    "width": 14,
+    "height": 0.6,
+    "bottom": 0,
+    "colour": "#3fa58f",
+    "frameColour": "#3fa58f",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo exists (only an interior), so massing is from the OSM outline and brief; glass entrance, blank signboards and facade pattern are typed."
+ }
+}

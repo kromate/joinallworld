@@ -1,0 +1,302 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belice-City-Novelos_Bus-Terminal.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bjorn Christian Torrissen",
+   "view": "street",
+   "file": "/tmp/places-evidence/belize-city/novelo.jpg",
+   "used": "two-storey yellow block with teal band, pink fascia, lower yellow-pink entrance wing with teal sign board, pink rooftop lookout box, green fences"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/883873660",
+   "used": "bus yard outline 77 x 51 m as asphalt pad"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "yard",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8b8d8f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85878a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-east",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    9,
+    -16
+   ],
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2c230",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "bay": 5.5,
+    "faces": {
+     "back": "none"
+    },
+    "pattern": {
+     "type": "bands",
+     "colour": "#2aa79b",
+     "height": 2,
+     "at": 0.5
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0707a",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-west",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    -16
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2c230",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0707a",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lookout-box",
+   "footprint": {
+    "rect": [
+     2.5,
+     2.5
+    ]
+   },
+   "at": [
+    -18,
+    -16
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e48a95",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e48a95",
+    "pitch": 35,
+    "overhang": 0.3
+   },
+   "z0": 7
+  },
+  {
+   "type": "mass",
+   "id": "ticket-wing",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -2,
+    -19.5
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2a33a",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0707a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    8,
+    0.5
+   ],
+   "params": {
+    "length": 42,
+    "depth": 8,
+    "height": 4.2,
+    "form": "shed",
+    "colour": "#8c9296",
+    "accent": "#2f6fb0"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -3,
+    0.5
+   ],
+   "params": {
+    "length": 44,
+    "kind": "coach",
+    "density": 0.7,
+    "colours": [
+     "#f5c13a",
+     "#2f6fb0",
+     "#d6cfbf",
+     "#e0702a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    16,
+    0.5
+   ],
+   "params": {
+    "length": 44,
+    "kind": "coach",
+    "density": 0.6,
+    "colours": [
+     "#f5c13a",
+     "#d6cfbf",
+     "#2f6fb0"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "roof-sign",
+   "at": [
+    -2,
+    -23.1,
+    2.4
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.1,
+    "colour": "#2aa79b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -23.5,
+    0.5
+   ],
+   "params": {
+    "length": 50,
+    "height": 2,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#3f8f5a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -14,
+    -20.6,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#8a6a4a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-transit",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Water/canal in front not modelled (asphalt yard instead); ticket wing, green railing, awning and teal band added but wing stagger and lookout cap are simplified; no sign lettering."
+ }
+}

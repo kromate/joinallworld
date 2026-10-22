@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-osm-way-298302151",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/298302151",
+   "used": "real outline, 33 x 11 m, rotated to the long axis"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey restaurant with veranda and hipped red corrugated roof; no photo of the building found (the nearby Commons photo shows kayaks, not the restaurant)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 31,
+    "fit": 36
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2dfa7",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4472f",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 2.6,
+    "height": 2.9,
+    "columns": 8,
+    "colour": "#5f9b8a",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 0.9,
+    "bottom": 2.6,
+    "colour": "#5f9b8a",
+    "frameColour": "#ffffff",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the restaurant; veranda, colours and roof from the brief only"
+ }
+}

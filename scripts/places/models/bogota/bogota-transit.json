@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/8237819",
+   "used": "real 113 x 54 m outline of the bus station (bearing 32 deg)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bogot%C3%A1,_av_D%C3%A9cima_Estaci%C3%B3n_Bicentenario.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Felipe Restrepo Acosta",
+   "view": "street",
+   "file": "/tmp/places-evidence/bogota/m20-bic1.jpg",
+   "used": "setting only: red-pink paving plaza, concrete ramp walls, yellow guard rails, grey station pylon; photo does not show the station hall so it is not a verification"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 25,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9bec2",
+    "windows": "curtain",
+    "windowRatio": 0.65,
+    "bands": "#d3392c",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "metal-sheet",
+    "parapet": 0.4,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "id": "canopy-a",
+   "at": [
+    -4,
+    -2,
+    0
+   ],
+   "rotDeg": 32,
+   "params": {
+    "width": 50,
+    "depth": 9,
+    "height": 3.8,
+    "roof_colour": "#d3392c"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "id": "entry",
+   "at": [
+    12,
+    26,
+    0
+   ],
+   "rotDeg": 32,
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "colour": "#d3392c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   140,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "station hall interior, bus bays and exact canopy lengths not visible in any photo; typed from the TransMilenio livery"
+ }
+}

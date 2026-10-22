@@ -1,0 +1,261 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522515683",
+   "used": "real 31.7 x 23.4 m outline of the Bordeaux Farmers' Market pavilion, used for the roof and floor slab"
+  },
+  {
+   "kind": "text",
+   "used": "open-sided pavilion with metal roof and produce stalls, from the brief; no photo of this building was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d4c8",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcbbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f6e4f",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6e4f",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "market-open/colonnade",
+   "at": [
+    -12.5,
+    -9.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 6,
+    "spacing": 5.0,
+    "height": 4.2,
+    "radius": 0.22,
+    "kind": "square",
+    "beam": 0.3,
+    "wall_colour": "#e4e0d4"
+   }
+  },
+  {
+   "type": "market-open/colonnade",
+   "at": [
+    -12.5,
+    9.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 6,
+    "spacing": 5.0,
+    "height": 4.2,
+    "radius": 0.22,
+    "kind": "square",
+    "beam": 0.3,
+    "wall_colour": "#e4e0d4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    13,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4e0d4",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f6e4f",
+    "pitch": 6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -5,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 6,
+    "pitch": 4.2,
+    "kind": "table",
+    "colours": [
+     "#a63d2f",
+     "#3f6e4f",
+     "#e6b84a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    2,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 6,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "colours": [
+     "#a63d2f",
+     "#3f6e4f",
+     "#e6b84a"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 36
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    -15,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this pavilion; open posts, green gable roof and stalls are typical, not verified"
+ }
+}

@@ -1,0 +1,330 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-way-274541627",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/274541627",
+   "used": "name-matched leisure=stadium, 151 x 116 m outline (axis-aligned here)"
+  },
+  {
+   "kind": "text",
+   "url": "https://es.wikipedia.org/wiki/Estadio_Roberto_Bettega",
+   "used": "opened 2002, capacity 7,000, pitch 102 x 69 m, ex-home of Club Tacuary; no photo of the ground found (the evidence list photo is the Colosseum, rejected)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     114
+    ],
+    "height": 0.15,
+    "colour": "#b4ae9e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     104,
+     70
+    ],
+    "height": 0.1,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50,
+     -44
+    ],
+    "end": [
+     50,
+     -44
+    ],
+    "rows": 12,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#1f3f8f",
+     "#e8e4d8"
+    ],
+    "blocks": 6,
+    "concreteColour": "#c4c0b6",
+    "underColour": "#e6e3da",
+    "canopy": {
+     "height": 0.8,
+     "depth": 12,
+     "thickness": 0.6,
+     "slopeDeg": 4,
+     "colour": "#8a8f92",
+     "edgeColour": "#1f3f8f",
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     50,
+     44
+    ],
+    "end": [
+     -50,
+     44
+    ],
+    "rows": 9,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#e8e4d8",
+     "#1f3f8f"
+    ],
+    "blocks": 8,
+    "concreteColour": "#c4c0b6",
+    "underColour": "#e6e3da"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     50,
+     0
+    ],
+    "radius": 28,
+    "radiusY": 44,
+    "startDeg": -90,
+    "endDeg": 90,
+    "rows": 6,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.5,
+    "seatColours": [
+     "#e8e4d8",
+     "#1f3f8f"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c9c5bb",
+    "underColour": "#c0bcb1",
+    "facetDeg": 14
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -50,
+     0
+    ],
+    "radius": 28,
+    "radiusY": 44,
+    "startDeg": 90,
+    "endDeg": 270,
+    "rows": 6,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.5,
+    "seatColours": [
+     "#1f3f8f",
+     "#e8e4d8"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c9c5bb",
+    "underColour": "#c0bcb1",
+    "facetDeg": 14
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72,
+    52,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72,
+    52,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    58,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -74,
+      -56
+     ],
+     [
+      74,
+      -56
+     ],
+     [
+      74,
+      56
+     ],
+     [
+      -74,
+      56
+     ],
+     [
+      -74,
+      -56
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#c9c5bb"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -84,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     84,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the ground found; stands, floodlights and scoreboard are typed from the brief, camera not verified."
+ }
+}

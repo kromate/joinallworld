@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-295702032",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/295702032",
+   "used": "campus outline (102 x 92 m): compact block placed inside it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mapillary_(2264564477009660,_slfre5s84ad2s43vhejgvk)_(charlieplett)_2020-03-11_18H56M02S000.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "charlieplett",
+   "view": "street",
+   "used": "checked only: roadside views show a wire fence, palms, a red roofed open shelter and green walled houses; the campus block is not visible so no match was claimed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "campus-lawn",
+   "params": {
+    "points": [
+     [
+      -50,
+      18.4
+     ],
+     [
+      -44.9,
+      -40.2
+     ],
+     [
+      54.1,
+      -31.5
+     ],
+     [
+      53.8,
+      6.3
+     ],
+     [
+      47.5,
+      29.3
+     ],
+     [
+      13.2,
+      30.9
+     ],
+     [
+      -8.4,
+      38.8
+     ],
+     [
+      -24.4,
+      53.6
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#a3b88f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     50,
+     24
+    ]
+   },
+   "at": [
+    2,
+    -8
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3b2e",
+    "material": "corrugated",
+    "rise": 3.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    2,
+    -23
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe2",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3b2e",
+    "material": "corrugated",
+    "rise": 1.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-annex",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -18,
+    16
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3b2e",
+    "material": "corrugated",
+    "rise": 2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    2,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 3.6,
+    "form": "flat",
+    "colour": "#9a3b2e"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 11,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -25
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     -20
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -45
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo of the block; compact two-storey hip-roof block placed in the real outline from brief; colours/roof typed"
+ }
+}

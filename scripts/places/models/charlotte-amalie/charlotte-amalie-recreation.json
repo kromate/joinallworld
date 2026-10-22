@@ -1,0 +1,345 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/38485624",
+   "used": "FDR Park outline (about 74 x 52 m, leisure=park) as the lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Charlotte_Amalie,_St._Thomas,_US_Virgin_Islands_-_Government_House,_Kongens_Gade_-_panoramio_(3).jpg",
+   "licence": "CC BY 3.0",
+   "author": "MARELBU",
+   "view": "street",
+   "file": "/tmp/places-evidence/charlotte-amalie/fdr1.jpg",
+   "used": "rejected as park evidence (shows Government House brick wall and verandah); only the palms and harbour backdrop are consistent with the setting"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -28,
+      -29.7
+     ],
+     [
+      -22.5,
+      38.4
+     ],
+     [
+      28,
+      35.1
+     ],
+     [
+      23.7,
+      -30.6
+     ],
+     [
+      17.5,
+      -38.7
+     ],
+     [
+      -25.5,
+      -35.3
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#6a8f4a",
+    "topColour": "#6a8f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-long",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     3,
+     66
+    ],
+    "height": 0.06,
+    "colour": "#d8d2c0",
+    "topColour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-cross",
+   "at": [
+    0,
+    6,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     46,
+     2.4
+    ],
+    "height": 0.06,
+    "colour": "#d8d2c0",
+    "topColour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    6,
+    0.25
+   ],
+   "params": {
+    "radius": 6,
+    "n": 16,
+    "height": 0.08,
+    "colour": "#cfc8b4",
+    "topColour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "bandstand",
+   "id": "stage-shelter",
+   "at": [
+    0,
+    6,
+    0.33
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "harbour-wall",
+   "at": [
+    -3,
+    -36.5
+   ],
+   "rotDeg": -3,
+   "params": {
+    "length": 44,
+    "height": 0.9,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "road-rail-east",
+   "at": [
+    26,
+    3
+   ],
+   "rotDeg": 93,
+   "params": {
+    "length": 64,
+    "height": 0.9,
+    "thickness": 0.1,
+    "kind": "bars",
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches-west",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.5
+      ],
+      "height": 0.5,
+      "z0": 0.3,
+      "colour": "#7a5a3a",
+      "topColour": "#7a5a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.2,
+     -24,
+     0
+    ],
+    "end": [
+     -3.2,
+     32,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches-east",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.5
+      ],
+      "height": 0.5,
+      "z0": 0.3,
+      "colour": "#7a5a3a",
+      "topColour": "#7a5a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     3.2,
+     -24,
+     0
+    ],
+    "end": [
+     3.2,
+     32,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "core/lamp",
+   "id": "lamp-w",
+   "at": [
+    -3.8,
+    -10,
+    0.25
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -19,
+     22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     -22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     17,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     32
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     34
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -31
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     36
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     28
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No usable photo of the park: layout (lawn, crossing paths, central bandstand, benches, harbour wall) is a plausible arrangement on the real OSM outline, the stage shelter and species of trees are not confirmed."
+ }
+}

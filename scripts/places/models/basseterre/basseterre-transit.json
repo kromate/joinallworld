@@ -1,0 +1,183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/656437846",
+   "used": "26 x 9 m terminal building outline (containing-quality, untagged) near Major's Bay"
+  },
+  {
+   "kind": "text",
+   "ref": "brief basseterre-transit",
+   "used": "Seabridge vehicle ferry landing: low shed terminal, concrete jetty, car marshalling area, palms, water in front"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 26
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2cf",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bands": "#2f6f9f",
+    "plinth": 0.4,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9296",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 4,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#8c9296",
+    "edgeColour": "#2f6f9f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.4,
+    "colour": "#2f6f9f"
+   }
+  },
+  {
+   "type": "jetty",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "width": 8,
+    "height": 0.9
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 12,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#c9c9c9",
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: orientation of canopy, car-marshalling area and jetty relative to the real building is assumed; shed shape from OSM outline only"
+ }
+}

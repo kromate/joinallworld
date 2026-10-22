@@ -1,0 +1,417 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-airport-caracas-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maiquetiaairport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/caracas/apt1.jpg",
+   "used": "low terminal blocks with green metal roofs and brick bay, beige banded office block with green roof, jet bridges and airliners on apron, car park and palm-lined road"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3345513",
+   "used": "overall scale only (759 m long; a ~130 m portion is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 30,
+  "fovDeg": 55,
+  "aspect": 1.7,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "blk1",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -48,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d0c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4a5a5e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fa85f",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay1",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -1
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0613f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blk2",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d0c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4a5a5e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fa85f",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay2",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    6,
+    -1
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0613f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blk3",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    24,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d0c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4a5a5e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fa85f",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay3",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    42,
+    -1
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0613f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blk4",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    58,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d0c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4a5a5e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fa85f",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -12,
+    -34
+   ],
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc6b2",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#3d4448",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d8d0bd",
+       "#6d6a62"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6fa85f",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-box",
+   "at": [
+    -12,
+    -34,
+    26
+   ],
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 3,
+    "colour": "#c9c3b2"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 18
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     12
+    ],
+    "end": [
+     46,
+     12
+    ],
+    "count": 4,
+    "lod1Step": 2,
+    "lod2Step": 9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    26,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 22,
+    "density": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -48,
+    -50,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 60,
+    "count": 6,
+    "kind": "palm"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -44,
+    40,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.8,
+    "tailColour": "#2b4a8a"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -14,
+    40,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.8,
+    "tailColour": "#2b4a8a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    16,
+    40,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.8,
+    "tailColour": "#2b4a8a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    46,
+    40,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.8,
+    "tailColour": "#2b4a8a"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "palm",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Four stepped terminal blocks stand in for the 760 m terminal; blue glazed hall, roof terrace, apron markings and tower omitted; liners and bridges approximate."
+ }
+}

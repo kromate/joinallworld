@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "alofi",
+ "venueId": "alofi-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/547134917",
+   "used": "real L-shaped outline 14 x 13 m (nearest 2.3 m, untagged); no photo of the cafe found, veranda, hip roof and colours from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.0,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7b98f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "trimColour": "#f1ece0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     9,
+     2.6
+    ]
+   },
+   "at": [
+    -1.5,
+    6.6
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3f7a5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -1.5,
+    8.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.9,
+    "bottom": 2.6,
+    "colour": "#f1ece0",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 2.6,
+      "colour": "#3f7a5a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5.5,
+     8.0
+    ],
+    "end": [
+     2.5,
+     8.0
+    ],
+    "count": 5,
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 0.75,
+      "colour": "#e9e6dc"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5,
+     10.2
+    ],
+    "end": [
+     3,
+     10.2
+    ],
+    "count": 3,
+    "lod1Step": 3,
+    "lod2Step": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -9
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     6
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   36,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the cafe; L outline from OSM, veranda, hip roof and colours from the brief"
+ }
+}

@@ -1,0 +1,777 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-airport-auckland-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Auckland_airport_international_terminal.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Wangi (assumed)",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/air1.jpg",
+   "used": "forecourt elevation: glazed hall under a swept white curved roof, lower east wing with white arc fascia, two white sail canopies at the west end, forecourt canopies, blue bus, signboard"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/11818752",
+   "used": "overall scale only (820 m terminal complex); a ~150 m frontage is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 2.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     20,
+     26
+    ]
+   },
+   "at": [
+    -44,
+    5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "colour": "#7e97a3",
+    "bands": "#e8eaeb",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc0",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     46,
+     34
+    ]
+   },
+   "at": [
+    -14,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "colour": "#8fa8b5",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#eef0f1",
+    "material": "metal-sheet",
+    "rise": 6,
+    "overhang": 4.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     44,
+     30
+    ]
+   },
+   "at": [
+    32,
+    4
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9cbca",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#e6e8e8",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#f1f2f2",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 8,
+    "height": 5,
+    "columns": 6,
+    "colour": "#d9dcde",
+    "edgeColour": "#aeb3b7"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    40,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 7,
+    "height": 4.6,
+    "columns": 6,
+    "colour": "#d9dcde",
+    "edgeColour": "#aeb3b7"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    38,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "height": 1.6,
+    "bottom": 5.5,
+    "colour": "#dfe3e6",
+    "frameColour": "#7b848b"
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#2f78b5",
+    "stripe": "#e8eef2"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 7,
+    "spacing": 17
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    -14,
+    -2
+   ],
+   "z0": 14,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "windows": "none",
+    "windowRatio": 0.8,
+    "colour": "#a9c0cb",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#f4f5f5",
+    "material": "metal-sheet",
+    "rise": 2.5,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      1.1
+     ]
+    },
+    "points": [
+     [
+      -39.0,
+      -21.5,
+      16.6
+     ],
+     [
+      -33.44,
+      -21.5,
+      19.05
+     ],
+     [
+      -27.89,
+      -21.5,
+      20.89
+     ],
+     [
+      -22.33,
+      -21.5,
+      22.11
+     ],
+     [
+      -16.78,
+      -21.5,
+      22.72
+     ],
+     [
+      -11.22,
+      -21.5,
+      22.72
+     ],
+     [
+      -5.67,
+      -21.5,
+      22.11
+     ],
+     [
+      -0.11,
+      -21.5,
+      20.89
+     ],
+     [
+      5.44,
+      -21.5,
+      19.05
+     ],
+     [
+      11.0,
+      -21.5,
+      16.6
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#f7f8f8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -39.0,
+      -21.5,
+      15.6
+     ],
+     [
+      -33.44,
+      -21.5,
+      17.97
+     ],
+     [
+      -27.89,
+      -21.5,
+      19.75
+     ],
+     [
+      -22.33,
+      -21.5,
+      20.93
+     ],
+     [
+      -16.78,
+      -21.5,
+      21.53
+     ],
+     [
+      -11.22,
+      -21.5,
+      21.53
+     ],
+     [
+      -5.67,
+      -21.5,
+      20.93
+     ],
+     [
+      -0.11,
+      -21.5,
+      19.75
+     ],
+     [
+      5.44,
+      -21.5,
+      17.97
+     ],
+     [
+      11.0,
+      -21.5,
+      15.6
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#e9ecee"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      1.0
+     ]
+    },
+    "points": [
+     [
+      8.0,
+      -17.5,
+      12.6
+     ],
+     [
+      13.33,
+      -17.5,
+      14.26
+     ],
+     [
+      18.67,
+      -17.5,
+      15.5
+     ],
+     [
+      24.0,
+      -17.5,
+      16.33
+     ],
+     [
+      29.33,
+      -17.5,
+      16.75
+     ],
+     [
+      34.67,
+      -17.5,
+      16.75
+     ],
+     [
+      40.0,
+      -17.5,
+      16.33
+     ],
+     [
+      45.33,
+      -17.5,
+      15.5
+     ],
+     [
+      50.67,
+      -17.5,
+      14.26
+     ],
+     [
+      56.0,
+      -17.5,
+      12.6
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#f7f8f8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "under-dark",
+   "at": [
+    -14,
+    -17.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.8
+    ],
+    "height": 4.6,
+    "colour": "#3b4146",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sail1",
+   "at": [
+    -52,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     13,
+     8
+    ],
+    "height": 20,
+    "topScale": [
+     0.04,
+     0.04
+    ],
+    "topOffset": [
+     2,
+     0
+    ],
+    "colour": "#f7f8f8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sail2",
+   "at": [
+    -62,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     6
+    ],
+    "height": 16,
+    "topScale": [
+     0.04,
+     0.04
+    ],
+    "topOffset": [
+     2,
+     0
+    ],
+    "colour": "#eceeee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag0",
+   "at": [
+    -74,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d5d8da",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flag1",
+   "at": [
+    -70,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d5d8da",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flag2",
+   "at": [
+    -66,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d5d8da",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -10,
+      -14,
+      0.2
+     ],
+     [
+      -5,
+      -20,
+      4.6
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#f7f8f8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -4,
+      -14,
+      0.2
+     ],
+     [
+      1,
+      -20,
+      4.6
+     ]
+    ],
+    "curve": true,
+    "steps": 3,
+    "colour": "#f7f8f8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lattice",
+   "at": [
+    54,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 22,
+    "topScale": [
+     0.4,
+     0.4
+    ],
+    "colour": "#eef0f1",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lattice2",
+   "at": [
+    60,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 18,
+    "topScale": [
+     0.4,
+     0.4
+    ],
+    "colour": "#eef0f1",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant-box",
+   "at": [
+    -6,
+    10,
+    14
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     10,
+     8
+    ],
+    "height": 6,
+    "colour": "#b7b9ba",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -44
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only ~150 m of the 820 m complex; wave roof approximated with offset arcs and white fascia sweeps; sails are pyramids not true curved sails; stair struts and lattice towers simplified; tomokanga gate omitted."
+ }
+}

@@ -1,0 +1,170 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/717669370",
+   "used": "Baron von Bretton House footprint 11.7 x 7.2 m (2 m from the library point); nearby cathedral photos are a different building and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "polygon": [
+     [
+      -3.9,
+      5.6
+     ],
+     [
+      3.2,
+      6
+     ],
+     [
+      3.9,
+      -5.6
+     ],
+     [
+      -3.2,
+      -6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8c15a",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    },
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9b44c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "polygon": [
+     [
+      -3.9,
+      5.6
+     ],
+     [
+      3.2,
+      6
+     ],
+     [
+      3.9,
+      -5.6
+     ],
+     [
+      -3.2,
+      -6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.8,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8c15a",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#f4f1ea",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d2f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -6.4,
+    3.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 7,
+    "depth": 1.5,
+    "height": 3.0,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    7,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the house: typical Danish-period yellow townhouse with arched ground floor and red hip roof from the brief"
+ }
+}

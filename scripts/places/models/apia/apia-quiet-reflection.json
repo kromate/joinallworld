@@ -1,0 +1,190 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/190324852",
+   "used": "real cruciform outline for the temple body (67 x 42 m)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Apia_Samoa_Temple",
+   "used": "single central spire with gilt Moroni statue, total height 23 m (75 ft), pale granite finish, rebuilt 2005; no photo of the building was found on Commons (the listed images are a Salt Lake statue and a map)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "temple-body",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "granite",
+    "colour": "#e6e2d6",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#cfc9b9"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d2",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "central-tower",
+   "at": [
+    -5,
+    -5
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "z0": 6.5,
+    "height": 7,
+    "topScale": 0.7,
+    "colour": "#e8e4da",
+    "topColour": "#6f7f86",
+    "windows": "arched",
+    "windowRatio": 0.1
+   }
+  },
+  {
+   "type": "spire",
+   "id": "spire",
+   "at": [
+    -5,
+    -5,
+    13.5
+   ],
+   "params": {
+    "baseWidth": 3.6,
+    "height": 9,
+    "shaftHeight": 4,
+    "sides": 4,
+    "colour": "#e8e4da",
+    "finial": false
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "moroni",
+   "at": [
+    -5,
+    -5,
+    22.5
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d9b44a",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.45,
+      0.6
+     ],
+     [
+      0.5,
+      1.6
+     ],
+     [
+      0.3,
+      2.4
+     ],
+     [
+      0.1,
+      2.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "entry-steps",
+   "at": [
+    9,
+    -17,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "rise": 0.9,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#d8d3c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -22
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -12
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -35
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     30
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the temple found: OSM cruciform body with a stepped central tower, single spire and gilt statue from text; granite panelling, arched windows and fountain approximate."
+ }
+}

@@ -1,0 +1,352 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Ecol%C3%B3gico_de_%C3%81guas_Claras_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tulio F",
+   "view": "front",
+   "file": "/tmp/places-evidence/brasilia/park1.jpg",
+   "used": "small park service pavilion: yellow-painted walls above a white-tiled dado, flat slab roof with overhang, open door bay, paved path in front, dark woodland behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Ecol%C3%B3gico_de_%C3%81guas_Claras_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tulio F",
+   "view": "street",
+   "used": "park entrance: green-and-white information board on two white posts, grass verge, shrubs, tarmac path, tree cover"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/125232972",
+   "used": "park is 2 km wide; only the entrance area is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tiled-dado",
+   "footprint": {
+    "rect": [
+     9.1,
+     5.1
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e8e8e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.1,
+   "height": 2.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b820",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d5cc",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    0,
+    -0.8,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     10.4,
+     6.6
+    ],
+    "height": 0.25,
+    "colour": "#d8d5cc",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-dark",
+   "at": [
+    1.5,
+    -2.53,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.1
+    ],
+    "height": 2.4,
+    "colour": "#2b2823",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-tile",
+   "at": [
+    1.5,
+    -2.45,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.1
+    ],
+    "height": 2.3,
+    "colour": "#e6e4dc",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-frame-l",
+   "at": [
+    0.7,
+    -2.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.14
+    ],
+    "height": 2.8,
+    "colour": "#cfc08a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-frame-r",
+   "at": [
+    2.3,
+    -2.56,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.14
+    ],
+    "height": 2.8,
+    "colour": "#cfc08a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo-blue",
+   "at": [
+    -2.2,
+    -2.53,
+    1.7
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.08
+    ],
+    "height": 1.4,
+    "colour": "#2b6cb0",
+    "material": "concrete",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo-green",
+   "at": [
+    -2.2,
+    -2.53,
+    1.45
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.08
+    ],
+    "height": 0.4,
+    "colour": "#2f7a47",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "logo-yellow",
+   "at": [
+    -2.2,
+    -2.57,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.08
+    ],
+    "height": 0.5,
+    "colour": "#f0c030",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wc-sign",
+   "at": [
+    0.35,
+    -2.56,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.06
+    ],
+    "height": 0.3,
+    "colour": "#1f5fbf",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp1",
+   "at": [
+    -2,
+    -1.5,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 0.2,
+    "colour": "#fff6d0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp2",
+   "at": [
+    2.5,
+    -2.8,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 0.2,
+    "colour": "#fff6d0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 5.2,
+    "height": 2.2,
+    "bottom": 1.6,
+    "colour": "#2f7a47",
+    "frameColour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 14,
+    "spread": 60,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    19,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 10,
+    "spread": 60,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "only a night photo of the toilet pavilion: logo mural is simplified blocks, tile grid comes from the material not a true 0.5 m grid, door recess is a flat dark panel with frame; park itself shown as an entrance area"
+ }
+}

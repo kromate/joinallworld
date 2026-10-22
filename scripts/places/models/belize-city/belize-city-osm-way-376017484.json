@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-376017484",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/376017484",
+   "used": "real outline (17 x 12.5 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: timber waterside bar on stilts, thatched palapa roof, jetty; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 2.0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a77f56",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c2a265",
+    "material": "thatch",
+    "rise": 3.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "params": {
+    "rect": [
+     22,
+     16
+    ],
+    "height": 0.3,
+    "z0": 1.7,
+    "colour": "#8f6e49"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 1.8,
+      "colour": "#6e5236"
+     }
+    },
+    "mode": "grid",
+    "cols": 5,
+    "rows": 4,
+    "dx": 5,
+    "dy": 5
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    2,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "width": 2.4,
+    "height": 1.2,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -10,
+    2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2,
+    "height": 2.6,
+    "colours": [
+     "#4fa8b0",
+     "#f5d57a"
+    ]
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 3.5,
+    "width": 2,
+    "colour": "#4fa8b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     5
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     6
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; stilt timber bar, thatched hip roof and jetty typed from brief; outline from OSM"
+ }
+}

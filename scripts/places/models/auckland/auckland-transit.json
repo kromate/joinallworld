@@ -1,0 +1,546 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Glen_Eden_Train_Station_Seen_From_West.jpg",
+   "licence": "Public domain",
+   "author": "Ingolfson",
+   "view": "street",
+   "file": "/tmp/places-evidence/auckland/glenstn2.jpg",
+   "used": "view along the double track from the level crossing: small tan timber station building with a green hipped roof on the right-hand platform, concrete platforms with grey mesh fences and ramps, overhead mast poles, platform shelters"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Glen_Eden_railway_station_20220518_130556.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Prosperosity",
+   "view": "front",
+   "used": "building as a low timber cafe with a green roof beside the platform ramp"
+  },
+  {
+   "kind": "text",
+   "used": "two side platforms, two tracks, 1880 station building with 1929/1940 verandahs (Wikipedia)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "rail-track",
+   "params": {
+    "length": 70,
+    "tracks": 2,
+    "spacing": 5.4
+   },
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "rotDeg": 90
+  },
+  {
+   "type": "station-platform",
+   "params": {
+    "length": 55,
+    "depth": 5,
+    "height": 1.0
+   },
+   "at": [
+    -8.3,
+    22,
+    0
+   ],
+   "rotDeg": 90
+  },
+  {
+   "type": "station-platform",
+   "params": {
+    "length": 55,
+    "depth": 5,
+    "height": 1.0
+   },
+   "at": [
+    8.3,
+    22,
+    0
+   ],
+   "rotDeg": -90
+  },
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     6,
+     18
+    ]
+   },
+   "at": [
+    13.8,
+    26
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c49a78",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.4,
+    "trimColour": "#f0ede4"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7f6c",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "kind": "railing",
+    "length": 55,
+    "height": 1.1,
+    "colour": "#9a9ea3"
+   },
+   "at": [
+    -9.3,
+    -5,
+    1
+   ],
+   "rotDeg": -90
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "kind": "railing",
+    "length": 55,
+    "height": 1.1,
+    "colour": "#9a9ea3"
+   },
+   "at": [
+    9.3,
+    -5,
+    1
+   ],
+   "rotDeg": -90
+  },
+  {
+   "type": "station-canopy",
+   "params": {
+    "length": 12,
+    "depth": 3.4,
+    "height_inner": 3.6,
+    "height_outer": 3.0,
+    "kind": "iron",
+    "colour": "#6e7479"
+   },
+   "at": [
+    -6.5,
+    8,
+    1
+   ],
+   "rotDeg": -90
+  },
+  {
+   "type": "station-canopy",
+   "params": {
+    "length": 12,
+    "depth": 3.4,
+    "height_inner": 3.6,
+    "height_outer": 3.0,
+    "kind": "iron",
+    "colour": "#6e7479"
+   },
+   "at": [
+    6.5,
+    6,
+    1
+   ],
+   "rotDeg": -90
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.14,
+      "n": 6,
+      "z0": 0,
+      "height": 7.5,
+      "colour": "#6a6e72"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5.4,
+     -6
+    ],
+    "end": [
+     -5.4,
+     44
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "params": {
+    "rect": [
+     50,
+     9
+    ],
+    "z0": 0.02,
+    "height": 0.05,
+    "colour": "#6b6e72",
+    "topColour": "#6b6e72"
+   },
+   "at": [
+    0,
+    -10
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crossing-yellow",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     12,
+     6
+    ],
+    "z0": 0.1,
+    "height": 0.03,
+    "colour": "#e3c640",
+    "topColour": "#e3c640"
+   },
+   "at": [
+    0,
+    -10
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -5,
+    36,
+    0
+   ],
+   "params": {
+    "length": 4,
+    "height": 0.5,
+    "depth": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "rect": [
+     34,
+     86
+    ],
+    "z0": 0.0,
+    "height": 0.04,
+    "colour": "#8d9094",
+    "topColour": "#8d9094"
+   },
+   "at": [
+    0,
+    20
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.14,
+      "n": 6,
+      "z0": 0,
+      "height": 7.5,
+      "colour": "#6a6e72"
+     }
+    },
+    "mode": "line",
+    "start": [
+     5.4,
+     -6
+    ],
+    "end": [
+     5.4,
+     44
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "verandah-roof",
+   "params": {
+    "rect": [
+     2.6,
+     18
+    ],
+    "z0": 2.9,
+    "height": 0.2,
+    "colour": "#4f7f6c",
+    "topColour": "#4f7f6c"
+   },
+   "at": [
+    9.6,
+    26
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.08,
+      "n": 6,
+      "z0": 0,
+      "height": 2.9,
+      "colour": "#f0ede4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     8.4,
+     17.5
+    ],
+    "end": [
+     8.4,
+     34.5
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sig-7",
+   "params": {
+    "radius": 0.12,
+    "n": 8,
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#d8d8d8"
+   },
+   "at": [
+    -7,
+    -6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sigbox-7",
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "z0": 2.6,
+    "height": 1.0,
+    "colour": "#c0392b",
+    "topColour": "#c0392b"
+   },
+   "at": [
+    -7,
+    -6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sig7",
+   "params": {
+    "radius": 0.12,
+    "n": 8,
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#d8d8d8"
+   },
+   "at": [
+    7,
+    -6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sigbox7",
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "z0": 2.6,
+    "height": 1.0,
+    "colour": "#c0392b",
+    "topColour": "#c0392b"
+   },
+   "at": [
+    7,
+    -6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "barrier1",
+   "params": {
+    "rect": [
+     5,
+     0.15
+    ],
+    "z0": 1.0,
+    "height": 0.15,
+    "colour": "#d8d8d8",
+    "topColour": "#d8d8d8"
+   },
+   "at": [
+    -4.5,
+    -6.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "barrier2",
+   "params": {
+    "rect": [
+     5,
+     0.15
+    ],
+    "z0": 1.0,
+    "height": 0.15,
+    "colour": "#c0392b",
+    "topColour": "#c0392b"
+   },
+   "at": [
+    4.5,
+    -6.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crossing-yellow2",
+   "params": {
+    "rect": [
+     12,
+     3
+    ],
+    "z0": 0.1,
+    "height": 0.03,
+    "colour": "#e3c640",
+    "topColour": "#e3c640"
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ramp-8.3",
+   "params": {
+    "rect": [
+     5,
+     6
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "topScale": 0.5,
+    "colour": "#b9b4aa",
+    "topColour": "#b9b4aa"
+   },
+   "at": [
+    -8.3,
+    -1.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ramp8.3",
+   "params": {
+    "rect": [
+     5,
+     6
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "topScale": 0.5,
+    "colour": "#b9b4aa",
+    "topColour": "#b9b4aa"
+   },
+   "at": [
+    8.3,
+    -1.5
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     32
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     56
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "longer gabled station with verandah, crossing signals/barriers, masts, ramps added; camera is higher/farther than the photo, no yellow box grid, ballast and rails read blue-grey, mesh fences simplified"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-transit"
+}

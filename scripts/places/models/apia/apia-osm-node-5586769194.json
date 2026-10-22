@@ -1,0 +1,1331 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-node-5586769194",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fuipisia_waterfall_-_Samoa.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Neil",
+   "view": "front",
+   "file": "/tmp/places-evidence/apia/fuipisia2.jpg",
+   "used": "tall straight-sided cliff about 55 m with a wide main stream and a thin second stream, brown plunge pool with spray, mossy green cliff walls, dense jungle rim and ferns, viewed from a lookout across the gorge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fuipisia_Falls.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Viktor Pinchuk",
+   "view": "side",
+   "file": "/tmp/places-evidence/apia/fuipisia1.jpg",
+   "used": "two streams on the right edge of a basalt lip with a grassy talus slope at left and a dark rocky pool edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1450138060",
+   "used": "checked only: the 323 m wide leisure=garden polygon is far larger than the viewing area, so the fall and a small garden terrace are modelled from photos and the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 0.667,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      6
+     ],
+     [
+      12,
+      6
+     ],
+     [
+      16,
+      26
+     ],
+     [
+      2,
+      36
+     ],
+     [
+      -12,
+      28
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#4a4a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      30
+     ],
+     [
+      26,
+      30
+     ],
+     [
+      28,
+      44
+     ],
+     [
+      -28,
+      44
+     ]
+    ],
+    "z0": 0,
+    "height": 56,
+    "colour": "#3f5a34",
+    "topColour": "#3f7a37"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2.5,
+      29.8
+     ],
+     [
+      7,
+      29.8
+     ],
+     [
+      7,
+      44
+     ],
+     [
+      -2.5,
+      44
+     ]
+    ],
+    "z0": 0,
+    "height": 55,
+    "colour": "#2b2926"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    3.5,
+    29.2,
+    0.5
+   ],
+   "params": {
+    "colour": "#ffffff",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.0,
+       1.6
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       4.0,
+       1.2
+      ]
+     },
+     {
+      "z": 55,
+      "rect": [
+       3.0,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -1.2,
+    29.2,
+    0.5
+   ],
+   "params": {
+    "colour": "#f2f6f6",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.6,
+       1.4
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       1.3,
+       1.1
+      ]
+     },
+     {
+      "z": 54,
+      "rect": [
+       1.2,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    26,
+    0.1
+   ],
+   "params": {
+    "colour": "#8a8274",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       7.5,
+       6.5
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.4,
+      "ellipse": [
+       7,
+       6
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    26,
+    0.3
+   ],
+   "params": {
+    "colour": "#e9f0f0",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       3.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.6,
+      "ellipse": [
+       3.8,
+       3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    27,
+    0.3
+   ],
+   "params": {
+    "colour": "#ffffff",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       3
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.5,
+      "ellipse": [
+       3.5,
+       2.2
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       1.5,
+       1.2
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      6
+     ],
+     [
+      -24,
+      24
+     ],
+     [
+      -22,
+      46
+     ],
+     [
+      -60,
+      46
+     ]
+    ],
+    "z0": 0,
+    "height": 42,
+    "colour": "#3a7a33",
+    "topColour": "#4a8a3c",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      24
+     ],
+     [
+      -16,
+      28
+     ],
+     [
+      -14,
+      44
+     ],
+     [
+      -34,
+      44
+     ]
+    ],
+    "z0": 0,
+    "height": 54,
+    "colour": "#2f6a2e",
+    "topColour": "#3f7a37"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      10,
+      18
+     ],
+     [
+      28,
+      14
+     ],
+     [
+      30,
+      44
+     ],
+     [
+      11,
+      36
+     ]
+    ],
+    "z0": 0,
+    "height": 56,
+    "colour": "#3f5a34",
+    "topColour": "#3f7a37"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      29
+     ],
+     [
+      -23,
+      29
+     ],
+     [
+      -23,
+      44
+     ],
+     [
+      -26,
+      44
+     ]
+    ],
+    "z0": 0,
+    "height": 58,
+    "colour": "#2f6a2e",
+    "topColour": "#2f6a2e"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "colour": "#3f7a37",
+    "curve": true,
+    "steps": 3,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       32,
+       10
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       28,
+       8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 58,
+      "ellipse": [
+       26,
+       8
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "height": 0.5,
+    "colour": "#b9b2a4",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -2,
+    3.3,
+    0.5
+   ],
+   "params": {
+    "length": 7,
+    "height": 1.0,
+    "colour": "#7a5a2e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.4,
+    "run": 1.6,
+    "count": 5,
+    "colour": "#b9b2a4"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "deck_height": 0.5,
+    "post_height": 2.8,
+    "roof": "pyramid",
+    "rail": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.0,
+    "thickness": 0.2,
+    "kind": "rail",
+    "colour": "#8a6a45"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    6,
+    -24,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#4a79a3",
+    "frameColour": "#f4f1ea",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2.0,
+    -8.0,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 1.4,
+    "count": 1,
+    "colour": "#b9b2a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2.0,
+    -9.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 1.4,
+    "count": 1,
+    "colour": "#b9b2a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2.0,
+    -10.4,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 1.4,
+    "count": 1,
+    "colour": "#b9b2a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2.0,
+    -11.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 1.4,
+    "count": 1,
+    "colour": "#b9b2a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2.0,
+    -12.8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.2,
+    "run": 1.4,
+    "count": 1,
+    "colour": "#b9b2a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -27.7,
+    -4.6,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22.5,
+    5.4,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -19.6,
+    3.6,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -23.6,
+    5.8,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16.3,
+    11.9,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -25.3,
+    -0.2,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    23.0,
+    -7.1,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    15.7,
+    -0.4,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    14.9,
+    -0.7,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    21.3,
+    12.0,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    29.6,
+    -0.0,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    25.0,
+    -3.0,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -17.9,
+    36.0,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20.4,
+    40.2,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8.6,
+    38.3,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9.9,
+    33.8,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18.2,
+    39.8,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    13.8,
+    39.9,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    19.1,
+    38.6,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    13.8,
+    39.0,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    21.4,
+    34.6,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    19.5,
+    41.6,
+    50
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    10.0,
+    26.0,
+    0
+   ],
+   "params": {
+    "colour": "#4d4a44",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.3,
+       1.0
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -6.0,
+    26.0,
+    0
+   ],
+   "params": {
+    "colour": "#4d4a44",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.3,
+       1.0
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -4.47213595499958,
+    22.179395860098925,
+    0
+   ],
+   "params": {
+    "colour": "#4d4a44",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.3,
+       1.0
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -0.4721359549995805,
+    19.8181326440815,
+    0
+   ],
+   "params": {
+    "colour": "#4d4a44",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.3,
+       1.0
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    4.472135954999578,
+    19.8181326440815,
+    0
+   ],
+   "params": {
+    "colour": "#4d4a44",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.3,
+       1.0
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8.47213595499958,
+    22.17939586009892,
+    0
+   ],
+   "params": {
+    "colour": "#4d4a44",
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.3,
+       1.0
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.9,
+       0.8
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0,
+      "cy": 0
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Cliff is a blocky green prism; no spray cloud, foreground ferns or tapering fall; left slope is a flat-faced prism; garden path, kiosk and fale are typed from the brief, not photographed."
+ }
+}

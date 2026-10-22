@@ -1,0 +1,268 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Caf%C3%A9_de_Garc%C3%ADa_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Roberto Fiadone",
+   "view": "front",
+   "file": "/tmp/places-evidence/buenos-aires/cafe1.jpg",
+   "used": "single-storey corner building with a chamfered corner, pale cream-yellow upper walls over a rust-brown base, white balustrade parapet over the corner, wide moulded cornice, corrugated/tile lean-to awnings either side, timber-framed shopfront doors on the chamfer, tree in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Buenos_Aires_-_Classic_bar_-_6197.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jorge Royan",
+   "view": "front",
+   "used": "classic bar context (Wikidata image); not used for geometry"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "corner",
+   "footprint": {
+    "polygon": [
+     [
+      -12,
+      0
+     ],
+     [
+      -8,
+      -6
+     ],
+     [
+      8,
+      -6
+     ],
+     [
+      12,
+      0
+     ],
+     [
+      12,
+      11
+     ],
+     [
+      -12,
+      11
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6deaa",
+    "windows": "none",
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#bfa86a",
+    "parapet": 0.9,
+    "groundKind": "shopfront",
+    "groundHeight": 3.4,
+    "glassColour": "#7f9ea0",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "pattern": [
+     {
+      "type": "fins",
+      "colours": [
+       "#d8cf94"
+      ],
+      "width": 0.5,
+      "depth": 0.15,
+      "spacing": 4,
+      "skipGround": true
+     },
+     {
+      "type": "bands",
+      "colour": "#c79a52",
+      "height": 0.7,
+      "at": 0.92,
+      "proud": 0.12
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "polygon": [
+     [
+      -12.1,
+      0
+     ],
+     [
+      -8.1,
+      -6.1
+     ],
+     [
+      8.1,
+      -6.1
+     ],
+     [
+      12.1,
+      0
+     ],
+     [
+      12.1,
+      11.1
+     ],
+     [
+      -12.1,
+      11.1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a66a3d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a66a3d"
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -12.5,
+    -1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "drop": 0.8,
+    "height": 3.0,
+    "colours": [
+     "#a8553a",
+     "#b96a48"
+    ],
+    "stripe": 0.5,
+    "posts": false
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    12.5,
+    -1,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "drop": 0.8,
+    "height": 3.0,
+    "colours": [
+     "#a8553a",
+     "#b96a48"
+    ],
+    "stripe": 0.5,
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.6,
+    "bottom": 3.4,
+    "colour": "#2f8f5a",
+    "frameColour": "#d8d8d0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.5,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    15,
+    -9,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "hospital/balustrade",
+   "at": [
+    0,
+    -5.9,
+    6.0
+   ],
+   "params": {
+    "length": 15,
+    "height": 0.9,
+    "postEvery": 0.8,
+    "colour": "#f0ece0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "extent": [
+   44,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "ground-floor glazed timber shopfront not rendered (shopfront needs windows, blank at 2 rounds); balustrade plain, no pierced panels; sign/awnings simplified"
+ }
+}

@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Unicenter_entrada_lateral.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fernando Martello",
+   "view": "front",
+   "file": "/tmp/places-evidence/buenos-aires/unicenter1.jpg",
+   "used": "side entrance: beige stucco walls with a dark brown horizontal band, deep projecting flat canopy with a large blank sign band, round steel columns, glazed door bays, wide stone stair with steel handrails"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Unicenter,_Mart%C3%ADnez.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Claudio Drews",
+   "view": "street",
+   "used": "overall: long low beige slab behind a vast asphalt car park with light masts and small trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/122963275",
+   "used": "real outline (398 x 282 m), fitted to the 118 m scene limit"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 60,
+  "aspect": 1.35,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cbb0",
+    "windows": "none",
+    "cornice": true,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#6d5848"
+      ],
+      "height": 2.2,
+      "at": 0.86,
+      "proud": 0.15,
+      "floors": [
+       2
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    -12,
+    -48
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cbb0",
+    "windows": "none",
+    "bands": "#6d5848",
+    "groundKind": "shopfront",
+    "groundHeight": 3.4,
+    "glassColour": "#4a5a60"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -12,
+    -52.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 6,
+    "height": 4,
+    "thickness": 0.6,
+    "colour": "#6d5848",
+    "edgeColour": "#5a4638"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -58.6,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "height": 1.1,
+    "bottom": 3.0,
+    "colour": "#c04a40",
+    "frameColour": "#6d5848",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -12,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "count": 5,
+    "height": 3.9,
+    "radius": 0.25,
+    "kind": "round",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -12,
+    -61,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 5,
+    "colour": "#cdbf9f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -62
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -66
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -70
+    ],
+    "height": 9
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -40,
+     -84
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -18,
+     -84
+    ],
+    "yawDeg": 0,
+    "colour": "#2f4f7a"
+   },
+   {
+    "at": [
+     4,
+     -84
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     26,
+     -84
+    ],
+    "yawDeg": 0,
+    "colour": "#2f4f7a"
+   },
+   {
+    "at": [
+     48,
+     -84
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "mall outline scaled to fit 118 m; entrance, stair and sign band only suggested"
+ }
+}

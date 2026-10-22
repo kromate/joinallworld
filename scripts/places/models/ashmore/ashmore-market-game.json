@@ -1,0 +1,75 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashmore",
+ "venueId": "ashmore-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+   "used": "four trestle stalls under pale canvas umbrellas on coral sand (16 x 8 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "pitch": 4,
+    "kind": "umbrella",
+    "colours": [
+     "#e6dcc0",
+     "#c9d2d6"
+    ]
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -9,
+    -5,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "colour": "#e6dcc0"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    9,
+    -5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no real counterpart; stalls generic"
+ }
+}

@@ -1,0 +1,116 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/128192190",
+   "used": "setting only: the real 40x23 m gabled building is far larger than the stall market"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "gable",
+    "cladding": "timber",
+    "wall_colour": "#c9a77c",
+    "roof_colour": "#3f6b4f"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#f2efe6",
+     "#7b8590",
+     "#3f6b4f"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    9,
+    -7,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "colours": [
+     "#f2efe6",
+     "#c9a77c"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 0.9,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#c9a77c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     2
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; invented stall layout in the Square from brief text."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-market-game"
+}

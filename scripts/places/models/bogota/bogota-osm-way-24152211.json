@@ -1,0 +1,643 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_olaya_herrera_vista_frontal.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jairo1005",
+   "view": "front",
+   "file": "/tmp/places-evidence/bogota/olaya1.jpg",
+   "used": "one long side of raked grey concrete terraces in three bays, steel-framed flat canopies over the left, centre and right bays with open gaps, central press box with yellow band, tall floodlight mast, chain-link fence, bright green pitch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Olaya_Herrera_vista_poserior.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jairo1005",
+   "view": "back",
+   "file": "/tmp/places-evidence/bogota/olaya2.jpg",
+   "used": "two-storey rear block with painted yellow/red/cream bays and steel canopy frames"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24152211",
+   "used": "park polygon only; stadium pitch size taken from brief (110 x 80 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -36
+     ],
+     [
+      58,
+      -36
+     ],
+     [
+      58,
+      36
+     ],
+     [
+      -58,
+      36
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#5d9a3e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -32
+     ],
+     [
+      52,
+      -32
+     ],
+     [
+      52,
+      32
+     ],
+     [
+      -52,
+      32
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.12,
+    "colour": "#6fae45"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -58,
+     -40
+    ],
+    "end": [
+     -24,
+     -40
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "concreteColour": "#85888a",
+    "underColour": "#7d807b",
+    "seatColour": "#8a8c86"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -22,
+     -40
+    ],
+    "end": [
+     22,
+     -40
+    ],
+    "rows": 11,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "concreteColour": "#85888a",
+    "underColour": "#7d807b",
+    "seatColour": "#8a8c86"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     24,
+     -40
+    ],
+    "end": [
+     58,
+     -40
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "concreteColour": "#85888a",
+    "underColour": "#7d807b",
+    "seatColour": "#8a8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-box",
+   "footprint": {
+    "rect": [
+     16,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -45
+   ],
+   "z0": 4.6,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9aca6",
+    "glassColour": "#4a5560",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": {
+     "colour": "#d94a3a",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcb7",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     4,
+     70
+    ]
+   },
+   "at": [
+    56,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b4aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8c",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -2,
+    28,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 2.4,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#2f5a35"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 1.6,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#3f6b3f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-l",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    -41,
+    -45
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9fa5a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa5a0"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -56.0,
+     -49.5,
+     0
+    ],
+    "end": [
+     -26.0,
+     -49.5,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "mass",
+      "id": "col",
+      "footprint": {
+       "rect": [
+        0.6,
+        0.6
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 7.0,
+      "storeys": 1,
+      "wall": {
+       "material": "concrete",
+       "colour": "#6f767a",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#6f767a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-c",
+   "footprint": {
+    "rect": [
+     44,
+     11
+    ]
+   },
+   "at": [
+    0,
+    -45
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9fa5a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa5a0"
+   },
+   "z0": 8.6
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20.0,
+     -49.5,
+     0
+    ],
+    "end": [
+     20.0,
+     -49.5,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "mass",
+      "id": "col",
+      "footprint": {
+       "rect": [
+        0.6,
+        0.6
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 8.6,
+      "storeys": 1,
+      "wall": {
+       "material": "concrete",
+       "colour": "#6f767a",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#6f767a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-r",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    41,
+    -45
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9fa5a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa5a0"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     26.0,
+     -49.5,
+     0
+    ],
+    "end": [
+     56.0,
+     -49.5,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "mass",
+      "id": "col",
+      "footprint": {
+       "rect": [
+        0.6,
+        0.6
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 7.0,
+      "storeys": 1,
+      "wall": {
+       "material": "concrete",
+       "colour": "#6f767a",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#6f767a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair--24",
+   "footprint": {
+    "rect": [
+     1.2,
+     9
+    ]
+   },
+   "at": [
+    -24,
+    -43
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9822b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9822b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-23",
+   "footprint": {
+    "rect": [
+     1.2,
+     9
+    ]
+   },
+   "at": [
+    23,
+    -43
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9822b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9822b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redseats--47",
+   "footprint": {
+    "rect": [
+     4,
+     1.6
+    ]
+   },
+   "at": [
+    -47,
+    -38
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c63a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c63a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "redseats-49",
+   "footprint": {
+    "rect": [
+     4,
+     1.6
+    ]
+   },
+   "at": [
+    49,
+    -38
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c63a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c63a30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     65,
+     45
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-way-24152211",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Canopies are flat 1 m slabs on columns, no arched trusses; stairs/red seats are simple blocks; chain-link is a solid green fence line; hills backdrop absent"
+ }
+}

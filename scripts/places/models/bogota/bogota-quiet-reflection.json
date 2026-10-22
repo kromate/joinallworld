@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1224832137",
+   "used": "35 x 12 m outline, bearing 61 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bogota.json#bogota-quiet-reflection",
+   "used": "long plain auditorium hall with a taller front, blank sign board and entrance steps; no exterior photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.3
+   },
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e3ddd0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8387",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     13,
+     3
+    ]
+   },
+   "at": [
+    -12,
+    -13
+   ],
+   "rotDeg": -29,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ece2",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#2c4f7a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c4f7a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    -14,
+    -22
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 3,
+    "colour": "#2c4f7a",
+    "frameColour": "#d0d3d6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    -12,
+    -16
+   ],
+   "rotDeg": -29,
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 2,
+    "count": 4,
+    "colour": "#b9b4a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 2,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo of this church; massing and colours typed from the brief and the real outline"
+ }
+}

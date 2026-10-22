@@ -1,0 +1,287 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hassel_Island_1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Captain-tucker",
+   "view": "front",
+   "file": "/tmp/places-evidence/charlotte-amalie/hassel1.jpg",
+   "used": "Fort Willoughby garrison house seen from the water: two-storey rubble-and-stucco ruin, brick quoins and arched windows, low rust-red hip roof, a row of brick piers on a retaining terrace, steps at the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FortWilloughbyGarrisonHouseHasselIslandUSVI.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Gruepig",
+   "view": "side",
+   "file": "/tmp/places-evidence/charlotte-amalie/hassel0.jpg",
+   "used": "depth of the house, tall brick piers, rubble gable end, corroded roof"
+  },
+  {
+   "kind": "text",
+   "used": "Danish battery c.1801-02 and Cowell's Battery from the brief; battery wall and cannon are inferred, no OSM footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8a80",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d806a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     11,
+     9
+    ]
+   },
+   "at": [
+    1,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b3a998",
+    "windows": "arched",
+    "windowRatio": 0.05,
+    "plinth": 0.3,
+    "cornice": false,
+    "faces": {
+     "front": "arched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3b2e",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -4.5,
+    -3.2,
+    1.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 3.2,
+      "colour": "#c8b48a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     13,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    -10,
+    -5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.2,
+    "rise": 1.0,
+    "run": 0.55,
+    "count": 4,
+    "colour": "#80807a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 50,
+    "depth": 10,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quoin0",
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 3.6,
+    "colour": "#c9a66b"
+   },
+   "at": [
+    -5.4,
+    -1.5,
+    1.0
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "prism",
+   "id": "quoin1",
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 3.6,
+    "colour": "#c9a66b"
+   },
+   "at": [
+    7.4,
+    -1.5,
+    1.0
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "church-door",
+   "at": [
+    1,
+    -1.5,
+    1.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 1.3,
+    "height": 2.3,
+    "arch": true,
+    "colour": "#4a3320",
+    "trim": "#c9a66b"
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    -6,
+    -9,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "count": 14,
+    "colour": "#7d7a70"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 60,
+    "depth": 10,
+    "count": 22,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 70,
+    "depth": 20,
+    "height": 9,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#5f6b4a",
+    "boulders": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "forecourtDepth": 14,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-osm-node-356559567",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ground is flat green, not a rocky pebble shore and scrubby slope; stucco has no rubble patches; ruined stair is small; trees are cartoonish lollipops"
+ }
+}

@@ -1,0 +1,104 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/682739853",
+   "used": "not used: venue point falls on a supermarket, not the Auditor General's office; modest two-storey office from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     25,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee3",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#9ec8a0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6b4f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    0,
+    -6.1,
+    0
+   ],
+   "params": {
+    "length": 21,
+    "depth": 2.2,
+    "eaveHeight": 3.2,
+    "attachHeight": 4.2,
+    "post": "square",
+    "postEvery": 3.0,
+    "railHeight": 0.9,
+    "colour": "#f2eee3",
+    "roofColour": "#9ec8a0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1,
+    "bottom": 1,
+    "colour": "#9ec8a0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -9
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or real footprint; typical two-storey veranda office"
+ }
+}

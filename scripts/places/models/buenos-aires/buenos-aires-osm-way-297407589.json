@@ -1,0 +1,322 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Dr._Teodoro_%C3%81lvarez,_Primer_Pabell%C3%B3n.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/buenos-aires/p4_2.jpg",
+   "used": "two-storey white stucco villa-style pavilion with dark pyramid slate roof, balcony and gabled window hoods, blue-grey roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_alvarez_gcba.jpg",
+   "licence": "CC BY 2.5 ar",
+   "author": "GCBA",
+   "view": "front",
+   "file": "/tmp/places-evidence/buenos-aires/p4_0.jpg",
+   "used": "cream stucco, yellow Corinthian-style columns and pediment over arched door, tall shuttered rectangular windows, red dado band"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/297407589",
+   "used": "overall extent (254 x 104 m, bearing 69); modelled as a U of three pavilions at reduced span"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-pavilion",
+   "footprint": {
+    "rect": [
+     96,
+     15
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1ece0",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "bay": 6.6,
+    "plinth": 1.0,
+    "bands": "#a8453a",
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4e5662",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     15,
+     56
+    ]
+   },
+   "at": [
+    -40,
+    12
+   ],
+   "z0": 0,
+   "height": 11.0,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1ece0",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "plinth": 1.0,
+    "bands": "#a8453a",
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4e5662",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     15,
+     56
+    ]
+   },
+   "at": [
+    40,
+    12
+   ],
+   "z0": 0,
+   "height": 11.0,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1ece0",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "plinth": 1.0,
+    "bands": "#a8453a",
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4e5662",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     22,
+     17
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1ece0",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 6.6,
+    "plinth": 1.0,
+    "bands": "#e6c34a",
+    "cornice": true,
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4e5662",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -30.5,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 2.6,
+    "height": 8,
+    "columns": 4,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#e6c34a",
+    "roofColour": "#f1ece0"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -30.8,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 8,
+    "depth": 0.4,
+    "archWidth": 3.4,
+    "springHeight": 4.0,
+    "pointed": false,
+    "colour": "#4a3a30"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -24,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 3,
+    "colour": "#eadfbf",
+    "roofColour": "#8a8f92",
+    "vans": 1
+   }
+  },
+  {
+   "type": "courtyard-garden",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 40,
+    "fountainRadius": 0,
+    "trees": 0,
+    "paths": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 108,
+    "height": 1.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#efe6c8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -31.5,
+    8.4
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#e8e4d4",
+    "frameColour": "#f1ece0",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -38
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -38
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pedimented yellow-column portico, slate roofs, red dado applied; Corinthian capitals, arched fanlight and shutters simplified; model is whole U-plan vs close-up photo."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-osm-way-297407589"
+}

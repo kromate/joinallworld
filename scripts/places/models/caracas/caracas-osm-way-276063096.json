@@ -1,0 +1,735 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-276063096",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Caracas_Venezuela_Temple.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Guillermo Ramos Flamerich",
+   "view": "front",
+   "file": "/tmp/places-evidence/caracas/temple1.jpg",
+   "used": "stepped pale grey-cream granite tiers, three roundels on the upper tier, blank plaque band, square stepped spire base with narrow shaft and gilded figure, white iron fence with pillars in front, palms and shrubs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Templo_Caracas_entrada.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bobjgalindo",
+   "view": "front",
+   "used": "entrance side check"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/276063096",
+   "used": "overall extent 36 x 29 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.253
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     36,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4c6c1",
+    "windows": "none",
+    "cornice": true,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aaa6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cornice1",
+   "footprint": {
+    "rect": [
+     37,
+     29
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2e3de",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d7d2",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     29,
+     19
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 6.0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8cac5",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aaa6",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cornice2",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2e3de",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d7d2",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 11.0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cbcdc8",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aaa6",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cornice3",
+   "footprint": {
+    "rect": [
+     19,
+     13
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 14.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2e3de",
+    "windows": "none",
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d7d2",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "spire-base",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 14.5,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4c6c1",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aaa6",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    3,
+    0
+   ],
+   "params": {
+    "colour": "#c0c2bd",
+    "sections": [
+     {
+      "z": 18.0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 19.0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 19.0,
+      "rect": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 22.5,
+      "rect": [
+       5.4,
+       5.4
+      ]
+     },
+     {
+      "z": 22.5,
+      "rect": [
+       5.0,
+       5.0
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       4.4,
+       4.4
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       4.0,
+       4.0
+      ]
+     },
+     {
+      "z": 29.5,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 29.5,
+      "rect": [
+       3.0,
+       3.0
+      ]
+     },
+     {
+      "z": 32,
+      "rect": [
+       2.5,
+       2.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    3,
+    32.0
+   ],
+   "params": {
+    "colour": "#d9b24a",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.55,
+      0
+     ],
+     [
+      0.4,
+      0.9
+     ],
+     [
+      0.55,
+      2.2
+     ],
+     [
+      0.3,
+      3.1
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 1.3,
+    "bottom": 6.5,
+    "colour": "#b9bbb6",
+    "frameColour": "#e2e3de",
+    "posts": false
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      -5.25,
+      -7.15,
+      9.2
+     ],
+     [
+      -5.350480947161671,
+      -7.15,
+      9.575
+     ],
+     [
+      -5.625,
+      -7.15,
+      9.849519052838328
+     ],
+     [
+      -6.0,
+      -7.15,
+      9.95
+     ],
+     [
+      -6.375,
+      -7.15,
+      9.849519052838328
+     ],
+     [
+      -6.649519052838329,
+      -7.15,
+      9.575
+     ],
+     [
+      -6.75,
+      -7.15,
+      9.2
+     ],
+     [
+      -6.649519052838329,
+      -7.15,
+      8.825
+     ],
+     [
+      -6.375,
+      -7.15,
+      8.55048094716167
+     ],
+     [
+      -6.0,
+      -7.15,
+      8.45
+     ],
+     [
+      -5.625,
+      -7.15,
+      8.55048094716167
+     ],
+     [
+      -5.350480947161671,
+      -7.15,
+      8.825
+     ]
+    ],
+    "closed": true,
+    "colour": "#8e908c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      0.75,
+      -7.15,
+      9.2
+     ],
+     [
+      0.649519052838329,
+      -7.15,
+      9.575
+     ],
+     [
+      0.3750000000000001,
+      -7.15,
+      9.849519052838328
+     ],
+     [
+      4.592425496802574e-17,
+      -7.15,
+      9.95
+     ],
+     [
+      -0.3749999999999999,
+      -7.15,
+      9.849519052838328
+     ],
+     [
+      -0.649519052838329,
+      -7.15,
+      9.575
+     ],
+     [
+      -0.75,
+      -7.15,
+      9.2
+     ],
+     [
+      -0.6495190528383291,
+      -7.15,
+      8.825
+     ],
+     [
+      -0.37500000000000033,
+      -7.15,
+      8.55048094716167
+     ],
+     [
+      -1.3777276490407724e-16,
+      -7.15,
+      8.45
+     ],
+     [
+      0.3750000000000001,
+      -7.15,
+      8.55048094716167
+     ],
+     [
+      0.6495190528383288,
+      -7.15,
+      8.825
+     ]
+    ],
+    "closed": true,
+    "colour": "#8e908c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.12,
+    "points": [
+     [
+      6.75,
+      -7.15,
+      9.2
+     ],
+     [
+      6.649519052838329,
+      -7.15,
+      9.575
+     ],
+     [
+      6.375,
+      -7.15,
+      9.849519052838328
+     ],
+     [
+      6.0,
+      -7.15,
+      9.95
+     ],
+     [
+      5.625,
+      -7.15,
+      9.849519052838328
+     ],
+     [
+      5.350480947161671,
+      -7.15,
+      9.575
+     ],
+     [
+      5.25,
+      -7.15,
+      9.2
+     ],
+     [
+      5.350480947161671,
+      -7.15,
+      8.825
+     ],
+     [
+      5.625,
+      -7.15,
+      8.55048094716167
+     ],
+     [
+      6.0,
+      -7.15,
+      8.45
+     ],
+     [
+      6.375,
+      -7.15,
+      8.55048094716167
+     ],
+     [
+      6.649519052838329,
+      -7.15,
+      8.825
+     ]
+    ],
+    "closed": true,
+    "colour": "#8e908c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 33,
+    "height": 3.0,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 4.5,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 33,
+    "height": 0.8,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#b9b5a6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13,
+    -20.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -20.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -20.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3,
+    -20.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -20.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -20.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -8,
+    -16.8
+   ],
+   "params": {
+    "length": 13,
+    "height": 0.8,
+    "depth": 1.2,
+    "colour": "#b8323a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    8,
+    -16.8
+   ],
+   "params": {
+    "length": 13,
+    "height": 0.8,
+    "depth": 1.2,
+    "colour": "#d9a928"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Smooth tiers, taller stepped spire, palms and red/yellow hedges added; plaque and roundels are faint on the front, shaft steps read soft, gate is a plain railing not the barred gate, no neighbouring apartment blocks"
+ }
+}

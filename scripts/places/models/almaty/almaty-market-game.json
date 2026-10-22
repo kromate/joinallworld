@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/17023570",
+   "used": "real retail outline (fitted to scene), 3 storeys"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q619735",
+   "used": "identity only; P18 is a logo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8dde0",
+    "windows": "none",
+    "bands": "#4b5a66",
+    "plinth": 0.5,
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium-west",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -25,
+    -52
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4b5a66",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "right": "curtain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0",
+    "material": "membrane",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium-east",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    25,
+    -52
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4b5a66",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain",
+     "left": "curtain",
+     "right": "curtain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0",
+    "material": "membrane",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 4,
+    "bottom": 1,
+    "colour": "#b23a32"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 8,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; outline scaled 0.25 to fit, atria positions guessed, facade typed."
+ }
+}

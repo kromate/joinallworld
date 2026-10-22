@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/194878815",
+   "used": "nearest-only match (24 m away): size 21.5 x 8.2 m taken from brief, outline not trusted"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9b27c",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#dbd2bd",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f7478",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    -5,
+    -5.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dbd2bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a3c",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.6,
+    "colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM match only nearest so size from brief, finish typed"
+ }
+}

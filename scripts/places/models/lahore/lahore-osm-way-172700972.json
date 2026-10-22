@@ -1,0 +1,196 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-way-172700972",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/13831582",
+   "used": "real oval outline (about 208 x 163 m, 2 levels, 20 m) as the podium, scaled to the scene clamp; stand ellipse sized to it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b9b4a8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a82"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    2.5
+   ],
+   "params": {
+    "length": 48,
+    "width": 28,
+    "stripes": 2,
+    "markings": true,
+    "goals": false
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    2.5
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 58,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 1.0,
+    "facetDeg": 14,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#a24f3a",
+    "concreteColour": "#bdb8ac",
+    "underColour": "#8e8a82"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    64,
+    3
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -54,
+    0,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    54,
+    0,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    52,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    52,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     -62
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -60
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this stadium was found; shape follows the real outline and sourced facts (open two-tier terraced bowl, six floodlight masts, scoreboard). Stand is a plain ellipse inside the scaled outline; real finish, entrances and terrace detail unknown. Pitch is a plain turf (hockey markings not drawn)."
+ }
+}

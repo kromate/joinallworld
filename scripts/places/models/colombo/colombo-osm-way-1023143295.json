@@ -1,0 +1,468 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-osm-way-1023143295",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Lawrence%27s_Church,_Wellawatte.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AntanO",
+   "view": "side",
+   "file": "/tmp/places-evidence/colombo/col-lawrence.jpg",
+   "used": "pink rendered walls with cream pilasters and pointed windows, long gabled nave in pink tile, square crossing tower with pyramidal roof and cross, lean-to aisle with open arcaded veranda in front, tall pointed gable tower at the right end, low porch arch at the left end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1023143295",
+   "used": "overall extent about 57 x 36 m, stepped plan"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 7,
+  "fovDeg": 42,
+  "aspect": 2.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    3
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f95",
+    "windows": "pointed-arch",
+    "plinth": 0.5,
+    "bands": "#ebd9a3",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.0,
+      "depth": 0.35,
+      "spacing": 2.0,
+      "colour": "#ebd9a3",
+      "margin": 1.0
+     }
+    ],
+    "windowShape": "pointed",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9686f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle",
+   "footprint": {
+    "rect": [
+     34,
+     5
+    ]
+   },
+   "at": [
+    2,
+    -6.5
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f95",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#ebd9a3",
+    "pattern": [],
+    "windowRatio": 0.62,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#2a2420"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d98f95",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    10,
+    3
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f95",
+    "windows": "pointed-arch",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "bands": "#ebd9a3",
+    "faces": {
+     "front": "pointed-arch",
+     "back": "pointed-arch",
+     "left": "pointed-arch",
+     "right": "pointed-arch"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 2.0,
+      "depth": 0.3,
+      "spacing": 5,
+      "colour": "#ebd9a3",
+      "margin": 1
+     }
+    ]
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#c9686f",
+    "material": "clay-tile",
+    "rise": 4.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-front",
+   "footprint": {
+    "rect": [
+     9,
+     18
+    ]
+   },
+   "at": [
+    24,
+    2
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f95",
+    "windows": "pointed-arch",
+    "plinth": 0.5,
+    "bands": "#ebd9a3",
+    "windowShape": "pointed",
+    "windowRatio": 0.16,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9686f",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.8,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    26,
+    -4.5
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f95",
+    "windows": "pointed-arch",
+    "windowRatio": 0.14,
+    "windowShape": "pointed",
+    "bands": "#ebd9a3",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.0,
+      "depth": 0.4,
+      "spacing": 3.0,
+      "colour": "#ebd9a3",
+      "margin": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9686f",
+    "material": "clay-tile",
+    "pitch": 62,
+    "overhang": 0.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-porch",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    26,
+    -9
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f95",
+    "windows": "none",
+    "bands": "#ebd9a3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9686f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-end",
+   "footprint": {
+    "rect": [
+     9,
+     15
+    ]
+   },
+   "at": [
+    -28,
+    3
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f95",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#ebd9a3",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 3,
+      "depth": 0.3,
+      "spacing": 9,
+      "colour": "#ebd9a3",
+      "margin": 1.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9686f",
+    "material": "clay-tile",
+    "pitch": 35,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-porch",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -31,
+    -8
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f95",
+    "windows": "none",
+    "pattern": [],
+    "windowShape": "pointed",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8787c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    -31,
+    -12.05,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 6.4,
+    "depth": 0.3,
+    "archWidth": 5.6,
+    "springHeight": 3.4,
+    "pointed": true,
+    "colour": "#2a2024"
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    10,
+    3,
+    23.7
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "pinnacle-w",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    26,
+    -8.2
+   ],
+   "z0": 20,
+   "height": 1.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebd9a3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#c9686f",
+    "rise": 1.4,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "arcade-bays",
+   "at": [
+    2,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 1.2,
+    "springHeight": 2.4,
+    "topHeight": 3.6,
+    "bayWidth": 4.0,
+    "pierWidth": 0.8,
+    "shape": "round",
+    "colour": "#ebd9a3"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -15,
+    -10.4,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.0,
+    "postEvery": 1.8,
+    "colour": "#f4f4f4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -35,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "west tower and central tower now taller with cream pilasters and an open arcaded veranda in cooler pink; east porch arch still a plain portal, west gable has only a small pinnacle cap, road sits in front of the veranda rather than a dirt forecourt"
+ }
+}

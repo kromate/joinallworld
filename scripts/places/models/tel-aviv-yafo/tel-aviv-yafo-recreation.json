@@ -1,0 +1,399 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D7%9E%D7%95%D7%96%D7%99%D7%90%D7%95%D7%9F_%D7%97%D7%95%D7%A1%D7%9E%D7%A1%D7%94_%D7%99%D7%93_%D7%9C%22%D7%94%D7%92%D7%A0%D7%94%22.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons user (Hebrew museum photo)",
+   "view": "side",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/hosmasa.jpg",
+   "used": "white streamline-modern house: rounded two-storey end with a projecting curved canopy slab and curved ribbon glazing with a rail, tall rectangular stair tower behind, cream stucco, rubble-stone garden wall, lawn, broadleaf trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/107456924",
+   "used": "park outline (about 117 x 126 m, lobed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 5,
+  "fovDeg": 38,
+  "aspect": 1.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true,
+    "fit": 84,
+    "simplify": 1.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#86a557",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#86a557"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "house-ground",
+   "at": [
+    -4,
+    -22
+   ],
+   "params": {
+    "radius": 10,
+    "n": 20,
+    "z0": 0.1,
+    "height": 5.4,
+    "colour": "#f1eee3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-slab",
+   "at": [
+    -4,
+    -22
+   ],
+   "params": {
+    "radius": 12.2,
+    "n": 20,
+    "z0": 5.5,
+    "height": 0.7,
+    "colour": "#f7f4ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "house-upper",
+   "at": [
+    -4,
+    -22
+   ],
+   "params": {
+    "radius": 9.8,
+    "n": 20,
+    "z0": 6.2,
+    "height": 5.2,
+    "colour": "#f1eee3",
+    "windows": "ribbon",
+    "windowRatio": 0.65,
+    "glassColour": "#2f3d44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper-rail",
+   "at": [
+    -4,
+    -22
+   ],
+   "params": {
+    "radius": 10.1,
+    "n": 20,
+    "z0": 6.2,
+    "height": 0.9,
+    "colour": "#59666b",
+    "top": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    -4,
+    -22
+   ],
+   "params": {
+    "radius": 10.6,
+    "n": 20,
+    "z0": 11.4,
+    "height": 0.55,
+    "colour": "#f7f4ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-block",
+   "at": [
+    10,
+    -19
+   ],
+   "params": {
+    "rect": [
+     22,
+     14
+    ],
+    "z0": 0.1,
+    "height": 11.4,
+    "colour": "#f1eee3",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "front": "punched",
+     "right": "punched"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower",
+   "at": [
+    6,
+    -10.5
+   ],
+   "params": {
+    "rect": [
+     7.5,
+     6
+    ],
+    "z0": 0.1,
+    "height": 23,
+    "colour": "#f3f0e7"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-step",
+   "at": [
+    6,
+    -10.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     4
+    ],
+    "z0": 23.1,
+    "height": 1.6,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "masts",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     4.5,
+     -10.5,
+     24.7
+    ],
+    "end": [
+     7.5,
+     -10.5,
+     24.7
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.08,
+      "n": 5,
+      "height": 4,
+      "colour": "#555a5e"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tower-slits",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     4.5,
+     -13.6,
+     14
+    ],
+    "end": [
+     7.5,
+     -13.6,
+     14
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.2
+      ],
+      "height": 5,
+      "colour": "#3e4b52"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "retaining-wall",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -4,
+     -22
+    ],
+    "radius": 17,
+    "startDeg": 200,
+    "endDeg": 340,
+    "count": 22,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       1.0
+      ],
+      "height": 0.9,
+      "colour": "#c4a56f",
+      "slot": "stone-blocks"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "retaining-wall2",
+   "params": {
+    "mode": "line",
+    "start": [
+     14,
+     -34,
+     0
+    ],
+    "end": [
+     26,
+     -30,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.8,
+       1.0
+      ],
+      "height": 0.9,
+      "colour": "#c4a56f",
+      "slot": "stone-blocks"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "memorial-wall",
+   "at": [
+    22,
+    10
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.8
+    ],
+    "z0": 0.1,
+    "height": 2.2,
+    "colour": "#cbbd9c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -20
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -10
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -32
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -2
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     0
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-recreation",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Rotunda now large with canopy and ribbon band but upper band glass reads busy; tower is plain with two slits, no ladder; retaining wall is arc of blocks not continuous; trees generic low-poly; no gate or railings."
+ }
+}

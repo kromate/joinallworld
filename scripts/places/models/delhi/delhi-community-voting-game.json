@@ -1,0 +1,23 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "delhi", "venueId": "delhi-community-voting-game", "verified": "text",
+ "evidence": [
+  {"kind": "text", "ref": "https://en.wikipedia.org/wiki/Delhi", "used": "no photo found for Bawana Chowk (Commons search returned nothing) and no OSM building matched; modelled as a typical outer-Delhi road junction: two-storey shop rows with shutters on three sides, awnings, a few street stalls and kiosks, and a central traffic island"}
+ ],
+ "parts": [
+  {"type": "shop-block", "at": [0, 22, 0], "params": {"width": 46, "depth": 9, "storeys": 2, "floor_height": 3.4, "ground_height": 3.8, "windows": "punched", "window_ratio": 0.2, "roof": "flat", "parapet": 0.8, "shop_kind": "mixed", "awning_ratio": 0.5, "rooftop": true, "wall_colour": "#d9b878", "trim_colour": "#efeae0", "accent_colour": "#d8a8a0"}},
+  {"type": "shop-block", "at": [-28, -2, 0], "rotDeg": 90, "params": {"width": 30, "depth": 9, "storeys": 2, "floor_height": 3.4, "ground_height": 3.8, "windows": "punched", "window_ratio": 0.2, "roof": "flat", "parapet": 0.8, "shop_kind": "mixed", "awning_ratio": 0.4, "rooftop": false, "wall_colour": "#d8a8a0", "trim_colour": "#efeae0", "accent_colour": "#d9b878"}},
+  {"type": "shop-block", "at": [28, 8, 0], "rotDeg": -90, "params": {"width": 26, "depth": 8, "storeys": 2, "floor_height": 3.2, "ground_height": 3.6, "windows": "punched", "window_ratio": 0.18, "roof": "flat", "parapet": 0.6, "shop_kind": "mixed", "awning_ratio": 0.4, "rooftop": false, "wall_colour": "#c9b99c", "trim_colour": "#efeae0", "accent_colour": "#a8553a"}},
+  {"type": "lock-up-row", "at": [14, -20, 0], "params": {"length": 22, "depth": 3.2, "height": 3.0, "roof": "shed", "unit_width": 2.6, "veranda": 1.0}},
+  {"type": "stall-row", "at": [-14, -14, 0], "params": {"count": 6, "pitch": 3.2, "kind": "umbrella"}},
+  {"type": "kiosk", "at": [-6, 8, 0], "params": {"kind": "container", "width": 3, "depth": 2.2, "height": 2.6}},
+  {"type": "kiosk", "at": [8, 10, 0], "params": {"kind": "container", "width": 3, "depth": 2.2, "height": 2.6}},
+  {"type": "kiosk", "at": [21, -10, 0], "params": {"kind": "container", "width": 2.6, "depth": 2.2, "height": 2.6}},
+  {"type": "core/sign-board", "at": [-18, 18, 0], "params": {"width": 5, "height": 2.4, "bottom": 3, "colour": "#2f5d9a", "posts": true}},
+  {"type": "core/sign-board", "at": [18, 18, 0], "params": {"width": 5, "height": 2.4, "bottom": 3, "colour": "#c9a52f", "posts": true}},
+  {"type": "lamp", "at": [-20, 0, 0], "params": {"height": 8, "count": 3, "spacing": 18}},
+  {"type": "car", "at": [-4, -2, 0], "params": {"count": 3, "spacing": 3.4, "yaw": 90}}
+ ],
+ "site": {"ground": "asphalt", "forecourt": "road", "extent": [90, 70],
+  "trees": [{"kind": "broadleaf", "at": [22, -4], "height": 8}, {"kind": "broadleaf", "at": [-34, 20], "height": 7}]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "No evidence of the real junction; shop rows, stalls and kiosks are typical outer-Delhi forms, not measured."}
+}

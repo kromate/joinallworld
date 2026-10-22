@@ -1,0 +1,881 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parliament_of_Tajikistan_2026_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zinhor Nasri",
+   "view": "front",
+   "file": "/tmp/places-evidence/dushanbe/parl1.jpg",
+   "used": "symmetrical white-marble front: central block with six-column portico over tall arched windows and orange doors, central white dome on an attic, four small blue domes on corner towers, long two-storey wings with pilasters, balustrade parapet, stepped approach, fountain basin"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_new_Parliament_building_of_Tajikistan_03.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Shukhrat Sadiev",
+   "view": "side",
+   "file": "/tmp/places-evidence/dushanbe/parl2.jpg",
+   "used": "side depth, grouped corner pavilions with blue domes, pinnacles, long reflecting pool"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/528417507",
+   "used": "overall width only (149 m); the polygon is irregular and is not used for the massing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 70,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     44,
+     36
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 26,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "arched",
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    -40,
+    1
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "cornice": true,
+    "plinth": 1.0,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "parapet": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    40,
+    1
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "plinth": 1.0,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "parapet": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 8,
+   "z0": 26,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "faces": {},
+    "cornice": true,
+    "windowShape": "arched",
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    34.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#ecebe5",
+    "profile": [
+     [
+      6.24,
+      0.0,
+      "#f1efe8"
+     ],
+     [
+      6.24,
+      2.4960000000000004
+     ],
+     [
+      6.24,
+      2.4960000000000004,
+      "#ecebe5"
+     ],
+     [
+      6.084,
+      3.7128
+     ],
+     [
+      5.6238,
+      4.8672
+     ],
+     [
+      4.875,
+      5.8968
+     ],
+     [
+      3.8922000000000003,
+      6.7626
+     ],
+     [
+      2.7066000000000003,
+      7.4178
+     ],
+     [
+      1.3884,
+      7.8156
+     ],
+     [
+      0.0,
+      7.9559999999999995
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "core/spire",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    2,
+    44.7
+   ],
+   "params": {
+    "baseWidth": 0.8,
+    "height": 6,
+    "colour": "#c9a23a",
+    "sides": 6
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "count": 6,
+    "height": 20,
+    "radius": 0.6,
+    "kind": "round",
+    "beamHeight": 2.4,
+    "roofDepth": 3.5,
+    "colour": "#f1efe8",
+    "roofColour": "#e8e5dc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "rise": 3,
+    "run": 7,
+    "count": 3,
+    "colour": "#d9d6cc"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -18.6,
+    0.5
+   ],
+   "params": {
+    "width": 22,
+    "height": 15,
+    "bottom": 0.5,
+    "colour": "#5f86b0",
+    "frameColour": "#f4f2ec",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -18.7,
+    0.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 4.5,
+    "bottom": 0,
+    "colour": "#c8641e",
+    "frameColour": "#f4f2ec",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pav-in-w",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -28,
+    -9
+   ],
+   "height": 24,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "windowShape": "arched",
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -28,
+    -9,
+    24.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4d6c9c",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#e8e5dc"
+     ],
+     [
+      2.8,
+      1.5
+     ],
+     [
+      2.8,
+      1.5,
+      "#4d6c9c"
+     ],
+     [
+      2.6,
+      2.1
+     ],
+     [
+      2.0,
+      2.8
+     ],
+     [
+      1.1,
+      3.3
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-out-w",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    -52,
+    -6
+   ],
+   "height": 21,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "windowShape": "arched",
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -52.0,
+    -6,
+    21.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4d6c9c",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#e8e5dc"
+     ],
+     [
+      2.8,
+      1.5
+     ],
+     [
+      2.8,
+      1.5,
+      "#4d6c9c"
+     ],
+     [
+      2.6,
+      2.1
+     ],
+     [
+      2.0,
+      2.8
+     ],
+     [
+      1.1,
+      3.3
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -19,
+    -12,
+    26.2
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4d6c9c",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#e8e5dc"
+     ],
+     [
+      2.8,
+      1.5
+     ],
+     [
+      2.8,
+      1.5,
+      "#4d6c9c"
+     ],
+     [
+      2.6,
+      2.1
+     ],
+     [
+      2.0,
+      2.8
+     ],
+     [
+      1.1,
+      3.3
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -50.0,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "count": 2,
+    "line": 12,
+    "colour": "#2f4a2f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-in-e",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    28,
+    -9
+   ],
+   "height": 24,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "windowShape": "arched",
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    28,
+    -9,
+    24.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4d6c9c",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#e8e5dc"
+     ],
+     [
+      2.8,
+      1.5
+     ],
+     [
+      2.8,
+      1.5,
+      "#4d6c9c"
+     ],
+     [
+      2.6,
+      2.1
+     ],
+     [
+      2.0,
+      2.8
+     ],
+     [
+      1.1,
+      3.3
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-out-e",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    52,
+    -6
+   ],
+   "height": 21,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "windowShape": "arched",
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    52.0,
+    -6,
+    21.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4d6c9c",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#e8e5dc"
+     ],
+     [
+      2.8,
+      1.5
+     ],
+     [
+      2.8,
+      1.5,
+      "#4d6c9c"
+     ],
+     [
+      2.6,
+      2.1
+     ],
+     [
+      2.0,
+      2.8
+     ],
+     [
+      1.1,
+      3.3
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    19,
+    -12,
+    26.2
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4d6c9c",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#e8e5dc"
+     ],
+     [
+      2.8,
+      1.5
+     ],
+     [
+      2.8,
+      1.5,
+      "#4d6c9c"
+     ],
+     [
+      2.6,
+      2.1
+     ],
+     [
+      2.0,
+      2.8
+     ],
+     [
+      1.1,
+      3.3
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    50.0,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "count": 2,
+    "line": 12,
+    "colour": "#2f4a2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 0.9,
+    "colour": "#b9bcb8",
+    "points": [
+     [
+      -18,
+      -7
+     ],
+     [
+      18,
+      -7
+     ],
+     [
+      18,
+      7
+     ],
+     [
+      -18,
+      7
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -40,
+    0.9
+   ],
+   "params": {
+    "height": 0.05,
+    "colour": "#4f7f93",
+    "points": [
+     [
+      -16.8,
+      -5.8
+     ],
+     [
+      16.8,
+      -5.8
+     ],
+     [
+      16.8,
+      5.8
+     ],
+     [
+      -16.8,
+      5.8
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wings lengthened but capped at 36 m each by the 120 m contract clamp (real facade about 150 m); blue-glazed centre, six slender columns, drum-dome attic, squat 8-segment blue domes on wider pavilions, rectangular basin, sparse conifers. Pilaster rhythm, balustrade, pinnacles and fountain jets not modelled; windows sparse for budget."
+ }
+}

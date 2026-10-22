@@ -1,0 +1,197 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-osm-node-4406724595",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1227310447",
+   "used": "kiosk building outline and size (36 x 19 m); no photo of the terrace found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "polygon": [
+     [
+      -32,
+      -30
+     ],
+     [
+      30,
+      -26
+     ],
+     [
+      34,
+      8
+     ],
+     [
+      12,
+      27
+     ],
+     [
+      -30,
+      24
+     ]
+    ]
+   },
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dac593",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe7d3",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "z0": 0.6,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#bba982",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe7d3",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.6,
+    "run": 0.9,
+    "count": 1,
+    "colour": "#bba982"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "balustrade",
+   "params": {
+    "length": 60,
+    "height": 1.0,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 3,
+    "colour": "#efe7d3",
+    "points": [
+     [
+      -32,
+      -30
+     ],
+     [
+      30,
+      -26
+     ],
+     [
+      34,
+      8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    18,
+    0.6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 4,
+    "spread": 9,
+    "line": 0.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    18,
+    0.6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 3,
+    "spread": 7,
+    "line": 0.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -42,
+     10
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     44,
+     -10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     40
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the terrace or kiosk found; terrace outline, balustrade and pines are typed from the name and brief, only the kiosk outline is real."
+ }
+}

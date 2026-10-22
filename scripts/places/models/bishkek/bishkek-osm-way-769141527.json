@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-osm-way-769141527",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/155014648",
+   "used": "outline of the nearest university building (73.7 x 45 m, building=university, 5 levels); match is nearest at 60 m, not by name"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bishkek.json",
+   "used": "warm render, ribbon windows, glazed stair tower, flat roof, flags, plaza forecourt (finish typed, not photographed; the Commons photos nearby show a flower)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.8,
+    "bands": "#b99a5a",
+    "cornice": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "height": 23.5,
+    "colour": "#6f8aa2",
+    "topColour": "#8a8f94",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-mullions",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -32.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     0.4
+    ],
+    "height": 23.5,
+    "colour": "#b99a5a",
+    "topColour": "#b99a5a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -40
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#bdb6a6"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -14,
+     -42
+    ],
+    "end": [
+     -6,
+     -42
+    ],
+    "of": {
+     "type": "core/flag",
+     "params": {}
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "trees": 8,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building exists on Commons nearby; outline is the nearest OSM university building (not name-matched), facade colours, glazed stair tower, steps and flags are typed from the brief and placed approximately; steps and flags are not aligned to a real entrance."
+ }
+}

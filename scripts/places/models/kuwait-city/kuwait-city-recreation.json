@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/937507535",
+   "used": "park outline (about 102 x 78 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: lawn, palms, walking paths, small pavilion, fountain in sandy surroundings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 118
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8fa56e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fa56e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-ns",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     86
+    ],
+    "z0": 0.5,
+    "height": 0.12,
+    "colour": "#d8cdb2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-ew",
+   "at": [
+    0,
+    -5
+   ],
+   "params": {
+    "rect": [
+     70,
+     3
+    ],
+    "z0": 0.5,
+    "height": 0.12,
+    "colour": "#d8cdb2"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    -5,
+    0.5
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    16,
+    18,
+    0.5
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "colour": "#d8cdb2",
+    "cap_colour": "#c9bfa6"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -18,
+    -22,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "colour": "#d8cdb2",
+    "cap_colour": "#c9bfa6"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -1.8,
+    -30,
+    0.5
+   ],
+   "params": {
+    "height": 5,
+    "count": 6,
+    "spacing": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -36
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     36
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     45
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     35
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; park layout (paths, fountain, pavilions) typed from municipal parks; checked render for massing/budget only (no photo to compare)"
+ }
+}

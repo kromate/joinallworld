@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-osm-node-14177476101",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1221406515",
+   "used": "containing building, 24x13 m, bearing 176"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cf",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#9d3b30",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-tower",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -1,
+    -12.5
+   ],
+   "rotDeg": -4,
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9d3b30",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c7569",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -1,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.5,
+    "depth": 8,
+    "height": 3.2,
+    "colour": "#7c7569",
+    "axis": "y"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "drop": 0.5,
+    "height": 3,
+    "colours": [
+     "#9d3b30",
+     "#ece3cf"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -12.8,
+    6.4
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "colour": "#9d3b30"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; only the OSM outline is real. Red entrance tower, drive-through lean-to and glazing are typical-chain guesses."
+ }
+}

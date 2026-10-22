@@ -1,0 +1,1542 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-osm-node-1721989476",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muscat,_moschea_del_sultano_qaboos,_esterno_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sailko",
+   "view": "front",
+   "file": "/tmp/places-evidence/muscat/mosque2.jpg",
+   "used": "prayer hall massing seen from the courtyard: cream limestone block with crenellated parapet, pointed windows over a blind arcade, central pointed iwan, lattice dome with gold finial, arched cloister gate and pale minaret with arcaded galleries"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sultan_Qaboos_Grand_Mosque_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mostafa Meraji",
+   "view": "street",
+   "file": "/tmp/places-evidence/muscat/mosque3.jpg",
+   "used": "slim banded minaret, low hall and shallow lattice dome, palm and flower gardens"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12252336",
+   "used": "dimensions and placement: 72 m square prayer hall, courtyard and cloister ring, east gate block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 105,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.48,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "courtyard compressed for clamp; dome ribs not visible, lattice not achieved; iwan recess shallow; minaret moved to far corner; carved panels omitted"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     72,
+     71.4
+    ]
+   },
+   "at": [
+    -31.4,
+    0.3
+   ],
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d6b0",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "bay": 8,
+    "parapet": 1.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 5,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 0.5,
+      "faces": [
+       "right"
+      ]
+     },
+     {
+      "type": "fins",
+      "width": 2,
+      "depth": 0.9,
+      "spacing": 12,
+      "colour": "#dccfb4",
+      "margin": 2,
+      "faces": [
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9cdb2",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "iwan",
+   "at": [
+    7.6,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2,
+     15
+    ],
+    "z0": 0,
+    "height": 17,
+    "colour": "#dccfb4",
+    "topColour": "#d4c6a6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    -31.4,
+    0.3
+   ],
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "params": {
+    "radius": 15.5,
+    "n": 8,
+    "z0": 19,
+    "height": 8,
+    "colour": "#e8dcc2",
+    "topColour": "#d4c6a6"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -31.4,
+    0.3,
+    27
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#d6c79e",
+    "profile": [
+     [
+      14.56,
+      0.0,
+      "#d6c79e"
+     ],
+     [
+      15.01,
+      1.2
+     ],
+     [
+      14.11,
+      2.8
+     ],
+     [
+      12.32,
+      5.2
+     ],
+     [
+      9.63,
+      7.36
+     ],
+     [
+      6.27,
+      9.12
+     ],
+     [
+      2.91,
+      10.08
+     ],
+     [
+      1.12,
+      10.4
+     ],
+     [
+      1.12,
+      11.36,
+      "#c9a24a"
+     ],
+     [
+      0.11,
+      13.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -31.4,
+    0.3,
+    27
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d6c79e",
+    "profile": [
+     [
+      13,
+      0
+     ],
+     [
+      11,
+      6.5
+     ],
+     [
+      5,
+      11.5
+     ],
+     [
+      0.1,
+      16.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cloister",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     24,
+     41
+    ]
+   },
+   "at": [
+    16.6,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc4",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 0.8,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 6,
+      "opening": 0.6,
+      "height": 0.85,
+      "depth": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9cdb2",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-block",
+   "footprint": {
+    "rect": [
+     8,
+     28
+    ]
+   },
+   "at": [
+    33,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d6b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9cdb2",
+    "parapet": 1
+   }
+  },
+  {
+   "type": "stadium/arch-gateway",
+   "at": [
+    14,
+    26,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 18,
+    "depth": 6,
+    "height": 22,
+    "openings": 1,
+    "kind": "pointed",
+    "pier": "#d9cdb2"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    -66,
+    -34,
+    0
+   ],
+   "params": {
+    "segments": 5,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      3.19,
+      18.93
+     ],
+     [
+      4.63,
+      18.93,
+      "#d4c6a6"
+     ],
+     [
+      4.63,
+      20.38
+     ],
+     [
+      2.71,
+      20.38,
+      "#eadfc4"
+     ],
+     [
+      2.71,
+      26.94
+     ],
+     [
+      4.31,
+      26.94,
+      "#d4c6a6"
+     ],
+     [
+      4.31,
+      28.39
+     ],
+     [
+      2.55,
+      28.39,
+      "#eadfc4"
+     ],
+     [
+      2.55,
+      32.76
+     ],
+     [
+      3.51,
+      32.76,
+      "#d4c6a6"
+     ],
+     [
+      3.51,
+      33.86
+     ],
+     [
+      2.23,
+      33.86,
+      "#eadfc4"
+     ],
+     [
+      1.91,
+      35.3
+     ],
+     [
+      0.96,
+      36.04,
+      "#c9a24a"
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -66,
+    -34,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      3.19,
+      18.93
+     ],
+     [
+      4.63,
+      18.93,
+      "#d4c6a6"
+     ],
+     [
+      4.63,
+      20.38
+     ],
+     [
+      2.71,
+      20.38,
+      "#eadfc4"
+     ],
+     [
+      2.71,
+      26.94
+     ],
+     [
+      4.31,
+      26.94,
+      "#d4c6a6"
+     ],
+     [
+      4.31,
+      28.39
+     ],
+     [
+      2.55,
+      28.39,
+      "#eadfc4"
+     ],
+     [
+      2.55,
+      32.76
+     ],
+     [
+      3.51,
+      32.76,
+      "#d4c6a6"
+     ],
+     [
+      3.51,
+      33.86
+     ],
+     [
+      2.23,
+      33.86,
+      "#eadfc4"
+     ],
+     [
+      1.91,
+      35.3
+     ],
+     [
+      0.96,
+      36.04,
+      "#c9a24a"
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ],
+    "arcade": {
+     "from": 20.75,
+     "to": 26.94,
+     "count": 6,
+     "width": 1.65,
+     "height": 4.37,
+     "sill": 0.73,
+     "shape": "pointed",
+     "depth": 0.4,
+     "innerColour": "#6b5a44"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -66,
+    -34,
+    0
+   ],
+   "params": {
+    "segments": 3,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0
+     ],
+     [
+      3.83,
+      20.02
+     ],
+     [
+      2.55,
+      29.12
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    -66,
+    34,
+    0
+   ],
+   "params": {
+    "segments": 5,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      3.19,
+      18.93
+     ],
+     [
+      4.63,
+      18.93,
+      "#d4c6a6"
+     ],
+     [
+      4.63,
+      20.38
+     ],
+     [
+      2.71,
+      20.38,
+      "#eadfc4"
+     ],
+     [
+      2.71,
+      26.94
+     ],
+     [
+      4.31,
+      26.94,
+      "#d4c6a6"
+     ],
+     [
+      4.31,
+      28.39
+     ],
+     [
+      2.55,
+      28.39,
+      "#eadfc4"
+     ],
+     [
+      2.55,
+      32.76
+     ],
+     [
+      3.51,
+      32.76,
+      "#d4c6a6"
+     ],
+     [
+      3.51,
+      33.86
+     ],
+     [
+      2.23,
+      33.86,
+      "#eadfc4"
+     ],
+     [
+      1.91,
+      35.3
+     ],
+     [
+      0.96,
+      36.04,
+      "#c9a24a"
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -66,
+    34,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      3.19,
+      18.93
+     ],
+     [
+      4.63,
+      18.93,
+      "#d4c6a6"
+     ],
+     [
+      4.63,
+      20.38
+     ],
+     [
+      2.71,
+      20.38,
+      "#eadfc4"
+     ],
+     [
+      2.71,
+      26.94
+     ],
+     [
+      4.31,
+      26.94,
+      "#d4c6a6"
+     ],
+     [
+      4.31,
+      28.39
+     ],
+     [
+      2.55,
+      28.39,
+      "#eadfc4"
+     ],
+     [
+      2.55,
+      32.76
+     ],
+     [
+      3.51,
+      32.76,
+      "#d4c6a6"
+     ],
+     [
+      3.51,
+      33.86
+     ],
+     [
+      2.23,
+      33.86,
+      "#eadfc4"
+     ],
+     [
+      1.91,
+      35.3
+     ],
+     [
+      0.96,
+      36.04,
+      "#c9a24a"
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ],
+    "arcade": {
+     "from": 20.75,
+     "to": 26.94,
+     "count": 6,
+     "width": 1.65,
+     "height": 4.37,
+     "sill": 0.73,
+     "shape": "pointed",
+     "depth": 0.4,
+     "innerColour": "#6b5a44"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -66,
+    34,
+    0
+   ],
+   "params": {
+    "segments": 3,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0
+     ],
+     [
+      3.83,
+      20.02
+     ],
+     [
+      2.55,
+      29.12
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    4.8,
+    -34,
+    0
+   ],
+   "params": {
+    "segments": 5,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      3.19,
+      18.93
+     ],
+     [
+      4.63,
+      18.93,
+      "#d4c6a6"
+     ],
+     [
+      4.63,
+      20.38
+     ],
+     [
+      2.71,
+      20.38,
+      "#eadfc4"
+     ],
+     [
+      2.71,
+      26.94
+     ],
+     [
+      4.31,
+      26.94,
+      "#d4c6a6"
+     ],
+     [
+      4.31,
+      28.39
+     ],
+     [
+      2.55,
+      28.39,
+      "#eadfc4"
+     ],
+     [
+      2.55,
+      32.76
+     ],
+     [
+      3.51,
+      32.76,
+      "#d4c6a6"
+     ],
+     [
+      3.51,
+      33.86
+     ],
+     [
+      2.23,
+      33.86,
+      "#eadfc4"
+     ],
+     [
+      1.91,
+      35.3
+     ],
+     [
+      0.96,
+      36.04,
+      "#c9a24a"
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    4.8,
+    -34,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      3.19,
+      18.93
+     ],
+     [
+      4.63,
+      18.93,
+      "#d4c6a6"
+     ],
+     [
+      4.63,
+      20.38
+     ],
+     [
+      2.71,
+      20.38,
+      "#eadfc4"
+     ],
+     [
+      2.71,
+      26.94
+     ],
+     [
+      4.31,
+      26.94,
+      "#d4c6a6"
+     ],
+     [
+      4.31,
+      28.39
+     ],
+     [
+      2.55,
+      28.39,
+      "#eadfc4"
+     ],
+     [
+      2.55,
+      32.76
+     ],
+     [
+      3.51,
+      32.76,
+      "#d4c6a6"
+     ],
+     [
+      3.51,
+      33.86
+     ],
+     [
+      2.23,
+      33.86,
+      "#eadfc4"
+     ],
+     [
+      1.91,
+      35.3
+     ],
+     [
+      0.96,
+      36.04,
+      "#c9a24a"
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ],
+    "arcade": {
+     "from": 20.75,
+     "to": 26.94,
+     "count": 6,
+     "width": 1.65,
+     "height": 4.37,
+     "sill": 0.73,
+     "shape": "pointed",
+     "depth": 0.4,
+     "innerColour": "#6b5a44"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    4.8,
+    -34,
+    0
+   ],
+   "params": {
+    "segments": 3,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0
+     ],
+     [
+      3.83,
+      20.02
+     ],
+     [
+      2.55,
+      29.12
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    4.8,
+    34,
+    0
+   ],
+   "params": {
+    "segments": 5,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      3.19,
+      18.93
+     ],
+     [
+      4.63,
+      18.93,
+      "#d4c6a6"
+     ],
+     [
+      4.63,
+      20.38
+     ],
+     [
+      2.71,
+      20.38,
+      "#eadfc4"
+     ],
+     [
+      2.71,
+      26.94
+     ],
+     [
+      4.31,
+      26.94,
+      "#d4c6a6"
+     ],
+     [
+      4.31,
+      28.39
+     ],
+     [
+      2.55,
+      28.39,
+      "#eadfc4"
+     ],
+     [
+      2.55,
+      32.76
+     ],
+     [
+      3.51,
+      32.76,
+      "#d4c6a6"
+     ],
+     [
+      3.51,
+      33.86
+     ],
+     [
+      2.23,
+      33.86,
+      "#eadfc4"
+     ],
+     [
+      1.91,
+      35.3
+     ],
+     [
+      0.96,
+      36.04,
+      "#c9a24a"
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    4.8,
+    34,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      3.19,
+      18.93
+     ],
+     [
+      4.63,
+      18.93,
+      "#d4c6a6"
+     ],
+     [
+      4.63,
+      20.38
+     ],
+     [
+      2.71,
+      20.38,
+      "#eadfc4"
+     ],
+     [
+      2.71,
+      26.94
+     ],
+     [
+      4.31,
+      26.94,
+      "#d4c6a6"
+     ],
+     [
+      4.31,
+      28.39
+     ],
+     [
+      2.55,
+      28.39,
+      "#eadfc4"
+     ],
+     [
+      2.55,
+      32.76
+     ],
+     [
+      3.51,
+      32.76,
+      "#d4c6a6"
+     ],
+     [
+      3.51,
+      33.86
+     ],
+     [
+      2.23,
+      33.86,
+      "#eadfc4"
+     ],
+     [
+      1.91,
+      35.3
+     ],
+     [
+      0.96,
+      36.04,
+      "#c9a24a"
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ],
+    "arcade": {
+     "from": 20.75,
+     "to": 26.94,
+     "count": 6,
+     "width": 1.65,
+     "height": 4.37,
+     "sill": 0.73,
+     "shape": "pointed",
+     "depth": 0.4,
+     "innerColour": "#6b5a44"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    4.8,
+    34,
+    0
+   ],
+   "params": {
+    "segments": 3,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      3.19,
+      0.0
+     ],
+     [
+      3.83,
+      20.02
+     ],
+     [
+      2.55,
+      29.12
+     ],
+     [
+      0.14,
+      36.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    36,
+    38,
+    0
+   ],
+   "params": {
+    "segments": 5,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      5.67,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      5.67,
+      20.8
+     ],
+     [
+      8.22,
+      20.8,
+      "#d4c6a6"
+     ],
+     [
+      8.22,
+      22.4
+     ],
+     [
+      4.82,
+      22.4,
+      "#eadfc4"
+     ],
+     [
+      4.82,
+      29.6
+     ],
+     [
+      7.66,
+      29.6,
+      "#d4c6a6"
+     ],
+     [
+      7.66,
+      31.2
+     ],
+     [
+      4.53,
+      31.2,
+      "#eadfc4"
+     ],
+     [
+      4.53,
+      36.0
+     ],
+     [
+      6.23,
+      36.0,
+      "#d4c6a6"
+     ],
+     [
+      6.23,
+      37.2
+     ],
+     [
+      3.97,
+      37.2,
+      "#eadfc4"
+     ],
+     [
+      3.4,
+      38.8
+     ],
+     [
+      1.7,
+      39.6,
+      "#c9a24a"
+     ],
+     [
+      0.16,
+      40.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    36,
+    38,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      5.67,
+      0.0,
+      "#eadfc4"
+     ],
+     [
+      5.67,
+      20.8
+     ],
+     [
+      8.22,
+      20.8,
+      "#d4c6a6"
+     ],
+     [
+      8.22,
+      22.4
+     ],
+     [
+      4.82,
+      22.4,
+      "#eadfc4"
+     ],
+     [
+      4.82,
+      29.6
+     ],
+     [
+      7.66,
+      29.6,
+      "#d4c6a6"
+     ],
+     [
+      7.66,
+      31.2
+     ],
+     [
+      4.53,
+      31.2,
+      "#eadfc4"
+     ],
+     [
+      4.53,
+      36.0
+     ],
+     [
+      6.23,
+      36.0,
+      "#d4c6a6"
+     ],
+     [
+      6.23,
+      37.2
+     ],
+     [
+      3.97,
+      37.2,
+      "#eadfc4"
+     ],
+     [
+      3.4,
+      38.8
+     ],
+     [
+      1.7,
+      39.6,
+      "#c9a24a"
+     ],
+     [
+      0.16,
+      40.0
+     ]
+    ],
+    "arcade": {
+     "from": 22.8,
+     "to": 29.6,
+     "count": 6,
+     "width": 1.9,
+     "height": 4.8,
+     "sill": 0.8,
+     "shape": "pointed",
+     "depth": 0.4,
+     "innerColour": "#6b5a44"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    36,
+    38,
+    0
+   ],
+   "params": {
+    "segments": 3,
+    "colour": "#eadfc4",
+    "profile": [
+     [
+      5.67,
+      0.0
+     ],
+     [
+      6.81,
+      22.0
+     ],
+     [
+      4.53,
+      32.0
+     ],
+     [
+      0.16,
+      40.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -31,
+    -48
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 6,
+    "line": 50
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     4.2,
+     -34,
+     19
+    ],
+    "end": [
+     4.2,
+     34,
+     19
+    ],
+    "count": 26,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       2.2
+      ],
+      "height": 1.2,
+      "colour": "#eadfc4",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "stadium/arch-gateway",
+   "at": [
+    -4.7,
+    0.3,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 12,
+    "depth": 3,
+    "height": 16,
+    "openings": 1,
+    "kind": "pointed",
+    "pier": "#dccfb4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -31.4,
+     0.3,
+     27
+    ],
+    "radius": 12.2,
+    "count": 16,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.6
+      ],
+      "height": 7,
+      "colour": "#b59e6a",
+      "windows": "none"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   125,
+   90
+  ]
+ }
+}

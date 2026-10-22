@@ -1,0 +1,305 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-airport-yangon-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yangon_International_Airport_(8387825241).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Michael Coghlan",
+   "view": "front",
+   "file": "/tmp/places-evidence/yangon/airport-airside.jpg",
+   "used": "terminal massing: long two-level block, ground floor of dark green-bronze glazing between grey concrete piers, railing band, large plain tan upper block, stepped plant mass behind, apron with light masts and an airliner"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:YIA-entrance.JPG",
+   "licence": "Public domain",
+   "author": "Hyberantor",
+   "view": "interior",
+   "used": "pale round columns and bronze-green glass wall tint only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 1,
+  "fovDeg": 62,
+  "aspect": 1.57,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-ground",
+   "footprint": {
+    "rect": [
+     118,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#26403a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block",
+   "footprint": {
+    "rect": [
+     120,
+     31
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "z0": 6.4,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b59a74",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none"
+    },
+    "windowRatio": 0.1,
+    "bands": "#a68d69"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d8b6e",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-step",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    34,
+    7
+   ],
+   "z0": 13.9,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a88f6c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8068",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -58,
+     -15.2,
+     0
+    ],
+    "end": [
+     58,
+     -15.2,
+     0
+    ],
+    "count": 40,
+    "lod1Step": 3,
+    "lod2Step": 40,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.6
+      ],
+      "height": 6.4,
+      "colour": "#9c9b95"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -15.2,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     120,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#b9b6ac"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "rotDeg": -20,
+   "params": {
+    "scale": 0.8,
+    "colour": "#d8403c",
+    "tailColour": "#f1eded"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -34,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    14,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -20,
+    22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 10,
+    "height": 5.5,
+    "columns": 8,
+    "colour": "#b3b1aa"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -48,
+    26,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    -32,
+    20
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.6
+    ],
+    "height": 0.7,
+    "colour": "#b8b8b4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -32,
+    20
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.6
+    ],
+    "height": 0.7,
+    "colour": "#b8b8b4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     34
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Terminal capped at the 120 m scene clamp (real is longer); glazing reads dark bronze between grey piers and upper block is tan with a stepped plant mass at right, but railing band, roof-edge sign, busy apron vehicles and the airliner's livery/engines are simplified or absent."
+ }
+}

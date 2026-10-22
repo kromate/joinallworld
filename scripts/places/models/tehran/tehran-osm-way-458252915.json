@@ -1,0 +1,275 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/458252915",
+   "used": "real park outline, 171 x 113 m, turned to square up and scaled 0.97 to fit the scene limit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -80.1,
+      -55.5
+     ],
+     [
+      81.7,
+      -53.0
+     ],
+     [
+      83.4,
+      53.0
+     ],
+     [
+      -0.6,
+      53.9
+     ],
+     [
+      -83.0,
+      54.2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#6f9a52",
+    "topColour": "#6f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-a",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     140,
+     3
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#c9b9a0",
+    "topColour": "#c9b9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-b",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "rotDeg": -30,
+   "params": {
+    "rect": [
+     80,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#c9b9a0",
+    "topColour": "#c9b9a0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "basin",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#9aa7a8"
+     ],
+     [
+      4.5,
+      0,
+      "#9aa7a8"
+     ],
+     [
+      4.5,
+      0.7,
+      "#b8b2a4"
+     ],
+     [
+      4.0,
+      0.7,
+      "#b8b2a4"
+     ],
+     [
+      4.0,
+      0.35,
+      "#5f8ea0"
+     ],
+     [
+      0,
+      0.35,
+      "#5f8ea0"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    36,
+    -28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9c2b4",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a5a3e",
+    "material": "clay-tile",
+    "rise": 1.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -72,
+    -4,
+    0.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#8d8f8c",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -54.4,
+    -25.3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 5,
+    "spread": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    23.7,
+    -37.0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 5,
+    "spread": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40.7,
+    26.8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 4,
+    "spread": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -27.5,
+    33.9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 5,
+    "spread": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17.4,
+    -21.6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; paths, pavilion, fountain and trees are typed placements inside the real outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-osm-way-458252915"
+}

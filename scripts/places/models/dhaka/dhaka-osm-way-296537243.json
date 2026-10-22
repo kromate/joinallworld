@@ -1,0 +1,1130 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-osm-way-296537243",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Holy_Rosary_Church_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Asivechowdhury",
+   "view": "front",
+   "file": "/tmp/places-evidence/dhaka/296537243_1.jpg",
+   "used": "the blue parish entrance gate: gabled centre with scalloped edge and cross, arched opening, two domed side turrets with white pinnacles, round painted medallions, grey compound walls; whitewashed dome of the church visible behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/296537243",
+   "used": "compound extent (about 109 x 96 m); church massing from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "rect": [
+     28,
+     26
+    ]
+   },
+   "at": [
+    0,
+    52
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f0e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e4d8"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    52,
+    11
+   ],
+   "params": {
+    "radius": 8.5,
+    "drum": 4,
+    "colour": "#f5f2ea",
+    "drumColour": "#f0ece0",
+    "finial": true,
+    "profile": "hemi",
+    "height": 7
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    52,
+    22.7
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#ece6d8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -17.0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 2.6,
+    "thickness": 0.4,
+    "colour": "#7e8076"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    17.0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 2.6,
+    "thickness": 0.4,
+    "colour": "#7e8076"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.4
+    ]
+   },
+   "at": [
+    -4.3,
+    -26
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f55a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f55a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.4
+    ]
+   },
+   "at": [
+    4.3,
+    -26
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f55a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f55a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lint1",
+   "footprint": {
+    "rect": [
+     8.4,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "z0": 5.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb4e6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fb4e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lint2",
+   "footprint": {
+    "rect": [
+     5.6,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "z0": 6.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dbe8f8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dbe8f8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-body",
+   "footprint": {
+    "rect": [
+     12,
+     2.0
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "z0": 6.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f55a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f55a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-top",
+   "footprint": {
+    "rect": [
+     12,
+     2.0
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 5.0,
+   "storeys": 1,
+   "z0": 8.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f55a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a63b8",
+    "pitch": 60,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -26,
+    13.4
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#dfe3ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tur-l",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -7.5,
+    -26
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6cbc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6cbc"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -7.95,
+      -26.85,
+      0
+     ],
+     [
+      -7.95,
+      -26.85,
+      11
+     ]
+    ],
+    "colour": "#f2f2ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -7.05,
+      -26.85,
+      0
+     ],
+     [
+      -7.05,
+      -26.85,
+      11
+     ]
+    ],
+    "colour": "#f2f2ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "cap-l",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "at": [
+    -7.5,
+    -26
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "z0": 11.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -7.5,
+    -26,
+    12.0
+   ],
+   "params": {
+    "radius": 1.1,
+    "drum": 0.9,
+    "colour": "#f2efe6",
+    "drumColour": "#e9e4d8",
+    "finial": true,
+    "profile": "onion",
+    "height": 1.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -8.25,
+      -26.75,
+      11.5
+     ],
+     [
+      -8.25,
+      -26.75,
+      13.1
+     ]
+    ],
+    "colour": "#f6f6f0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -6.75,
+      -26.75,
+      11.5
+     ],
+     [
+      -6.75,
+      -26.75,
+      13.1
+     ]
+    ],
+    "colour": "#f6f6f0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -3.7500000000000004,
+      -27.35,
+      7.0
+     ],
+     [
+      -3.837538537612021,
+      -27.35,
+      7.4400859472198535
+     ],
+     [
+      -4.0868272016354705,
+      -27.35,
+      7.81317279836453
+     ],
+     [
+      -4.459914052780147,
+      -27.35,
+      8.06246146238798
+     ],
+     [
+      -4.9,
+      -27.35,
+      8.15
+     ],
+     [
+      -5.340085947219854,
+      -27.35,
+      8.06246146238798
+     ],
+     [
+      -5.71317279836453,
+      -27.35,
+      7.81317279836453
+     ],
+     [
+      -5.96246146238798,
+      -27.35,
+      7.4400859472198535
+     ],
+     [
+      -6.050000000000001,
+      -27.35,
+      7.0
+     ],
+     [
+      -5.96246146238798,
+      -27.35,
+      6.5599140527801465
+     ],
+     [
+      -5.71317279836453,
+      -27.35,
+      6.18682720163547
+     ],
+     [
+      -5.340085947219854,
+      -27.35,
+      5.937538537612021
+     ],
+     [
+      -4.9,
+      -27.35,
+      5.85
+     ],
+     [
+      -4.459914052780147,
+      -27.35,
+      5.937538537612021
+     ],
+     [
+      -4.0868272016354705,
+      -27.35,
+      6.18682720163547
+     ],
+     [
+      -3.837538537612021,
+      -27.35,
+      6.5599140527801465
+     ],
+     [
+      -3.7500000000000004,
+      -27.35,
+      7.0
+     ]
+    ],
+    "closed": true,
+    "colour": "#f6f6f0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      -4.15,
+      -27.3,
+      7.0
+     ],
+     [
+      -4.207090350616536,
+      -27.3,
+      7.287012574273818
+     ],
+     [
+      -4.36966991411009,
+      -27.3,
+      7.5303300858899105
+     ],
+     [
+      -4.612987425726183,
+      -27.3,
+      7.6929096493834646
+     ],
+     [
+      -4.9,
+      -27.3,
+      7.75
+     ],
+     [
+      -5.187012574273818,
+      -27.3,
+      7.6929096493834646
+     ],
+     [
+      -5.430330085889911,
+      -27.3,
+      7.5303300858899105
+     ],
+     [
+      -5.592909649383465,
+      -27.3,
+      7.287012574273818
+     ],
+     [
+      -5.65,
+      -27.3,
+      7.0
+     ],
+     [
+      -5.592909649383466,
+      -27.3,
+      6.712987425726182
+     ],
+     [
+      -5.430330085889911,
+      -27.3,
+      6.4696699141100895
+     ],
+     [
+      -5.187012574273818,
+      -27.3,
+      6.3070903506165354
+     ],
+     [
+      -4.9,
+      -27.3,
+      6.25
+     ],
+     [
+      -4.612987425726183,
+      -27.3,
+      6.3070903506165354
+     ],
+     [
+      -4.36966991411009,
+      -27.3,
+      6.4696699141100895
+     ],
+     [
+      -4.207090350616536,
+      -27.3,
+      6.712987425726182
+     ],
+     [
+      -4.15,
+      -27.3,
+      7.0
+     ]
+    ],
+    "closed": true,
+    "colour": "#c4503c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tur-r",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    7.5,
+    -26
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6cbc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6cbc"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      7.05,
+      -26.85,
+      0
+     ],
+     [
+      7.05,
+      -26.85,
+      11
+     ]
+    ],
+    "colour": "#f2f2ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      7.95,
+      -26.85,
+      0
+     ],
+     [
+      7.95,
+      -26.85,
+      11
+     ]
+    ],
+    "colour": "#f2f2ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "cap-r",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "at": [
+    7.5,
+    -26
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "z0": 11.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    7.5,
+    -26,
+    12.0
+   ],
+   "params": {
+    "radius": 1.1,
+    "drum": 0.9,
+    "colour": "#f2efe6",
+    "drumColour": "#e9e4d8",
+    "finial": true,
+    "profile": "onion",
+    "height": 1.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      6.75,
+      -26.75,
+      11.5
+     ],
+     [
+      6.75,
+      -26.75,
+      13.1
+     ]
+    ],
+    "colour": "#f6f6f0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      8.25,
+      -26.75,
+      11.5
+     ],
+     [
+      8.25,
+      -26.75,
+      13.1
+     ]
+    ],
+    "colour": "#f6f6f0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      6.050000000000001,
+      -27.35,
+      7.0
+     ],
+     [
+      5.96246146238798,
+      -27.35,
+      7.4400859472198535
+     ],
+     [
+      5.71317279836453,
+      -27.35,
+      7.81317279836453
+     ],
+     [
+      5.340085947219854,
+      -27.35,
+      8.06246146238798
+     ],
+     [
+      4.9,
+      -27.35,
+      8.15
+     ],
+     [
+      4.459914052780147,
+      -27.35,
+      8.06246146238798
+     ],
+     [
+      4.0868272016354705,
+      -27.35,
+      7.81317279836453
+     ],
+     [
+      3.837538537612021,
+      -27.35,
+      7.4400859472198535
+     ],
+     [
+      3.7500000000000004,
+      -27.35,
+      7.0
+     ],
+     [
+      3.8375385376120206,
+      -27.35,
+      6.5599140527801465
+     ],
+     [
+      4.0868272016354705,
+      -27.35,
+      6.18682720163547
+     ],
+     [
+      4.459914052780147,
+      -27.35,
+      5.937538537612021
+     ],
+     [
+      4.9,
+      -27.35,
+      5.85
+     ],
+     [
+      5.340085947219854,
+      -27.35,
+      5.937538537612021
+     ],
+     [
+      5.71317279836453,
+      -27.35,
+      6.18682720163547
+     ],
+     [
+      5.96246146238798,
+      -27.35,
+      6.5599140527801465
+     ],
+     [
+      6.050000000000001,
+      -27.35,
+      7.0
+     ]
+    ],
+    "closed": true,
+    "colour": "#f6f6f0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      5.65,
+      -27.3,
+      7.0
+     ],
+     [
+      5.592909649383465,
+      -27.3,
+      7.287012574273818
+     ],
+     [
+      5.430330085889911,
+      -27.3,
+      7.5303300858899105
+     ],
+     [
+      5.187012574273818,
+      -27.3,
+      7.6929096493834646
+     ],
+     [
+      4.9,
+      -27.3,
+      7.75
+     ],
+     [
+      4.612987425726183,
+      -27.3,
+      7.6929096493834646
+     ],
+     [
+      4.36966991411009,
+      -27.3,
+      7.5303300858899105
+     ],
+     [
+      4.207090350616536,
+      -27.3,
+      7.287012574273818
+     ],
+     [
+      4.15,
+      -27.3,
+      7.0
+     ],
+     [
+      4.207090350616535,
+      -27.3,
+      6.712987425726182
+     ],
+     [
+      4.36966991411009,
+      -27.3,
+      6.4696699141100895
+     ],
+     [
+      4.612987425726183,
+      -27.3,
+      6.3070903506165354
+     ],
+     [
+      4.9,
+      -27.3,
+      6.25
+     ],
+     [
+      5.187012574273818,
+      -27.3,
+      6.3070903506165354
+     ],
+     [
+      5.430330085889911,
+      -27.3,
+      6.4696699141100895
+     ],
+     [
+      5.592909649383465,
+      -27.3,
+      6.712987425726182
+     ],
+     [
+      5.65,
+      -27.3,
+      7.0
+     ]
+    ],
+    "closed": true,
+    "colour": "#2f8a8a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -27.45,
+    7.4
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 0.7,
+    "bottom": 0,
+    "colour": "#f4f4ee",
+    "frameColour": "#f4f4f4",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -22
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     40
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   60,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Gate has steep gable with cross, slim striped turrets with onion domes and pinnacles, ring medallions and lighter inner arch band; arch is stepped not pointed, gable edge not scalloped, church dome behind enlarged."
+ }
+}

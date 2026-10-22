@@ -1,0 +1,790 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-node-7116277007",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shalamar_Gardens,_Lahore_06.jpg",
+   "licence": "CC BY-SA (Commons)",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/lahore/sh2.jpg",
+   "used": "marble platform with chevron paving, long still tank crossed by a red sandstone arcaded causeway with a white central platform, rows of tapered fountain spouts, two white open pavilions at the far end, tree belts, distant minaret"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%27Pakistan%27-_Shalimar_Gardens_Lahore-_By_@ibneazhar_Sep_2016_(12).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ibnazhar",
+   "view": "side",
+   "file": "/tmp/places-evidence/lahore/sh1.jpg",
+   "used": "cream boundary wall with arched niches and scalloped parapet, red sandstone corner chhatri with grey dome, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/232344024",
+   "used": "garden outline (about 630 x 370 m, only the middle terrace is shown in the 120 m scene)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     46,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#cfcdc2",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d2c8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chini-khana",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#f0ece0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tank-near",
+   "footprint": {
+    "rect": [
+     100,
+     38
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#2f4a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#35544c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "causeway",
+   "footprint": {
+    "rect": [
+     104,
+     4
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b4553d",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "bay": 6,
+     "shape": "arch",
+     "colour": "#c4694f"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4694f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central-platform",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1eee4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tank-far",
+   "footprint": {
+    "rect": [
+     100,
+     14
+    ]
+   },
+   "at": [
+    0,
+    49
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#2f4a44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#35544c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-w",
+   "footprint": {
+    "rect": [
+     1.6,
+     112
+    ]
+   },
+   "at": [
+    -57,
+    50
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "left",
+      "right"
+     ],
+     "bay": 9,
+     "shape": "arch",
+     "colour": "#d8cdb0"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4",
+    "parapet": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wall-e",
+   "footprint": {
+    "rect": [
+     1.6,
+     112
+    ]
+   },
+   "at": [
+    57,
+    50
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "left",
+      "right"
+     ],
+     "bay": 9,
+     "shape": "arch",
+     "colour": "#d8cdb0"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4",
+    "parapet": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "chhatri-base-w",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -57,
+    105
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#a8513c",
+    "windows": "arched",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8513c"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/dome",
+   "at": [
+    -57,
+    105,
+    4.5
+   ],
+   "params": {
+    "radius": 2.4,
+    "profile": "hemi",
+    "drum": 0.8,
+    "colour": "#9a8f86",
+    "finial": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "trees-w",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     25,
+     0
+    ],
+    "end": [
+     -40,
+     100,
+     0
+    ],
+    "count": 5,
+    "lod2Step": 3,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 13,
+      "colour": "#3f5a35"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chhatri-base-e",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    57,
+    105
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#a8513c",
+    "windows": "arched",
+    "windowRatio": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8513c"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/dome",
+   "at": [
+    57,
+    105,
+    4.5
+   ],
+   "params": {
+    "radius": 2.4,
+    "profile": "hemi",
+    "drum": 0.8,
+    "colour": "#9a8f86",
+    "finial": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "trees-e",
+   "params": {
+    "mode": "line",
+    "start": [
+     40,
+     25,
+     0
+    ],
+    "end": [
+     40,
+     100,
+     0
+    ],
+    "count": 5,
+    "lod2Step": 3,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 13,
+      "colour": "#3f5a35"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "spouts-0",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     6,
+     0
+    ],
+    "end": [
+     44,
+     6,
+     0
+    ],
+    "count": 12,
+    "lod2Step": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 6,
+      "height": 3.2,
+      "topScale": 0.2,
+      "colour": "#e2cfae"
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "spouts-1",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     13,
+     0
+    ],
+    "end": [
+     44,
+     13,
+     0
+    ],
+    "count": 12,
+    "lod2Step": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 6,
+      "height": 3.2,
+      "topScale": 0.2,
+      "colour": "#e2cfae"
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "spouts-2",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     20,
+     0
+    ],
+    "end": [
+     44,
+     20,
+     0
+    ],
+    "count": 12,
+    "lod2Step": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 6,
+      "height": 3.2,
+      "topScale": 0.2,
+      "colour": "#e2cfae"
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "spouts-3",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     27,
+     0
+    ],
+    "end": [
+     44,
+     27,
+     0
+    ],
+    "count": 12,
+    "lod2Step": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 6,
+      "height": 3.2,
+      "topScale": 0.2,
+      "colour": "#e2cfae"
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "spouts-4",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     34,
+     0
+    ],
+    "end": [
+     44,
+     34,
+     0
+    ],
+    "count": 12,
+    "lod2Step": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 6,
+      "height": 3.2,
+      "topScale": 0.2,
+      "colour": "#e2cfae"
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-pav-a",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -9,
+    88
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#f1ece0",
+    "windows": "arched",
+    "windowRatio": 0.65,
+    "windowShape": "arched",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d0",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-pav-b",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    9,
+    88
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#f1ece0",
+    "windows": "arched",
+    "windowRatio": 0.65,
+    "windowShape": "arched",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d0",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "chevron",
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -16,
+     0
+    ],
+    "end": [
+     20,
+     -16,
+     0
+    ],
+    "count": 14,
+    "lod2Step": 4,
+    "of": {
+     "type": "mass",
+     "id": "chev",
+     "footprint": {
+      "rect": [
+       1.4,
+       13
+      ]
+     },
+     "z0": 1.2,
+     "height": 0.05,
+     "storeys": 1,
+     "wall": {
+      "material": "marble",
+      "colour": "#8f8a7c",
+      "windows": "none",
+      "windowRatio": 0
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#8f8a7c"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rail-0",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.4
+    ]
+   },
+   "at": [
+    -6,
+    -6
+   ],
+   "z0": 1.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f0e4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f0e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rail-1",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.4
+    ]
+   },
+   "at": [
+    6,
+    -6
+   ],
+   "z0": 1.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f0e4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f0e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rail-2",
+   "footprint": {
+    "rect": [
+     12.3,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "z0": 1.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f0e4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f0e4"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mosque-like dome/minaret removed and replaced by two small open-arched white pavilions; tank darkened with 5x12 spouts; marble railing and chevron strips are simple blocks, wall niches coarse, no scalloped parapet; trees generic; aerial camera instead of low photo view."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   130,
+   130
+  ]
+ }
+}

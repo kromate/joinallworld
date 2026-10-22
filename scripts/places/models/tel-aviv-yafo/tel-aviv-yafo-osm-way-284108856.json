@@ -1,0 +1,350 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-way-284108856",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_46147_Sarona_Market.JPG",
+   "licence": "CC BY 2.5",
+   "author": "Dr. Avishai Teicher",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/sarona1.jpg",
+   "used": "entrance atrium: dark glazed grid cube with a projecting black canopy flanked by pale precast stone buildings with tall pilasters and dark glazing; plaza with young trees in planters, lamp posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/284108856",
+   "used": "hall footprint 158 x 22 m; modelled as an entrance cluster at the centre of the hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     28,
+     18
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d3ca",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#262d34",
+    "plinth": 0.3,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.2,
+      "depth": 0.6,
+      "spacing": 4.5,
+      "colour": "#e8e5de",
+      "margin": 1.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     28,
+     18
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d3ca",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#262d34",
+    "plinth": 0.3,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.2,
+      "depth": 0.6,
+      "spacing": 4.5,
+      "colour": "#e8e5de",
+      "margin": 1.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back",
+   "footprint": {
+    "rect": [
+     60,
+     10
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfccc3",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "glassColour": "#2a3138",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3a44",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#3d5262",
+    "plinth": 0,
+    "faces": {
+     "front": "curtain",
+     "back": "curtain",
+     "left": "curtain",
+     "right": "curtain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#1c2228"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7780",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -12,
+    5.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 0,
+    "thickness": 0.9,
+    "colour": "#1f1f1f",
+    "edgeColour": "#1f1f1f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -12.2,
+    6.4
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.1,
+    "bottom": 0.2,
+    "colour": "#222222",
+    "frameColour": "#222222",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 5.5,
+      "colour": "#6f9a4f"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -16,
+     -17,
+     0
+    ],
+    "end": [
+     16,
+     -17,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#7a4a33",
+      "topColour": "#5f8f4a"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -16,
+     -17.5,
+     0
+    ],
+    "end": [
+     16,
+     -17.5,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 6.5
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -21,
+     -14,
+     0
+    ],
+    "end": [
+     21,
+     -14,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only the entrance cluster of the 158 m hall is modelled; atrium glazing grid simplified; no foreground planting bed, people or street furniture detail; balconies on upper floors missing"
+ }
+}

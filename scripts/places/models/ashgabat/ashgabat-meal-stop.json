@@ -1,0 +1,121 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/372035437",
+   "used": "unnamed 75 x 31 m building outline, nearest match (59 m): used as the cafeteria footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ashgabat.json",
+   "used": "one-storey flat-roofed cafeteria with terrace, awning and blank signboard; white-render and blue-glazing palette of Ashgabat"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafeteria",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e1d4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "glassColour": "#6f8fa8",
+    "bands": "#f4f2ec"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -3,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 6,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#f4f2ec",
+    "edgeColour": "#6f8fa8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 3.4,
+    "colour": "#6f8fa8",
+    "frameColour": "#f4f2ec"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -20
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     10
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real nearby OSM outline only. Facade, terrace and signage are typical, not seen."
+ }
+}

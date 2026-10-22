@@ -1,0 +1,796 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beyrouth_bois_des_pins_09.jpg",
+   "licence": "CC0",
+   "author": "Patrice Bon",
+   "view": "front",
+   "file": "/tmp/places-evidence/beirut/horsh.jpg",
+   "used": "open lawn with a dirt path leading to a low open timber pavilion on a dark wooden deck under a pale straw-coloured roof, clipped round hedges, olive trees at either side, a dense dark line of stone pines on the horizon and apartment blocks beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/5037938",
+   "used": "park is 758 x 688 m, far too large for one tile; a corner clearing is shown, outline not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2.5,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    -6,
+    22,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     22
+    ],
+    "height": 1.0,
+    "colour": "#3a2c22"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    -24,
+    26,
+    1.0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "height": 3.8,
+    "colour": "#3d2e24"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    2,
+    22,
+    1.0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 15,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 3.0,
+    "posts": 14,
+    "colour": "#3d2e24",
+    "cap_colour": "#e2d4a8",
+    "floor_colour": "#3a2c22"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    28.5,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     33,
+     0.1
+    ],
+    "height": 0.9,
+    "colour": "#3d2e24"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -2,
+      -40
+     ],
+     [
+      3,
+      -24
+     ],
+     [
+      -3,
+      -8
+     ],
+     [
+      -6,
+      10
+     ],
+     [
+      -8,
+      28
+     ]
+    ],
+    "width": 4.4,
+    "colour": "#d3a873"
+   },
+   "at": [
+    0,
+    0,
+    0.05
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -6
+    ],
+    "end": [
+     -10,
+     -10
+    ],
+    "count": 5,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 5,
+      "height": 2.6,
+      "depth": 3.6,
+      "colour": "#3f6b35"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -14
+    ],
+    "end": [
+     -12,
+     -18
+    ],
+    "count": 3,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 5,
+      "height": 2.6,
+      "depth": 3.6,
+      "colour": "#44723a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     6,
+     -6
+    ],
+    "end": [
+     30,
+     -10
+    ],
+    "count": 4,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 5,
+      "height": 2.6,
+      "depth": 3.6,
+      "colour": "#4a7a3d"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "colour": "#6b7d62"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#728568"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7.5,
+    "colour": "#6b7d62"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.5,
+    "colour": "#788a6c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "colour": "#7a8c70"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -2
+    ],
+    "end": [
+     40,
+     2
+    ],
+    "count": 12,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 1.6,
+      "height": 0.7,
+      "depth": 1.4,
+      "colour": "#7b8f6a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     8
+    ],
+    "end": [
+     38,
+     12
+    ],
+    "count": 10,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 1.2,
+      "height": 0.6,
+      "depth": 1.2,
+      "colour": "#98a58c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     56
+    ],
+    "end": [
+     50,
+     54
+    ],
+    "count": 22,
+    "lod1Step": 6,
+    "lod2Step": 4,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "pine",
+      "height": 15,
+      "colour": "#1f3320"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     48
+    ],
+    "end": [
+     46,
+     47
+    ],
+    "count": 22,
+    "lod1Step": 6,
+    "lod2Step": 4,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "pine",
+      "height": 15,
+      "colour": "#1f3320"
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -52,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#7a4a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -60,
+    86,
+    0
+   ],
+   "params": {
+    "rect": [
+     11.200000000000001,
+     12
+    ],
+    "height": 10.6,
+    "colour": "#f1efea",
+    "windows": "ribbon"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -38,
+    90,
+    0
+   ],
+   "params": {
+    "rect": [
+     14.4,
+     10
+    ],
+    "height": 13.2,
+    "colour": "#f1efea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    85,
+    0
+   ],
+   "params": {
+    "rect": [
+     11.200000000000001,
+     9
+    ],
+    "height": 11.4,
+    "colour": "#f1efea",
+    "windows": "ribbon"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    90,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.8,
+     12
+    ],
+    "height": 12.3,
+    "colour": "#f1efea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    86,
+    0
+   ],
+   "params": {
+    "rect": [
+     11.200000000000001,
+     9
+    ],
+    "height": 10.6,
+    "colour": "#f1efea",
+    "windows": "ribbon"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    52,
+    90,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.8,
+     11
+    ],
+    "height": 13.2,
+    "colour": "#f1efea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    72,
+    86,
+    0
+   ],
+   "params": {
+    "rect": [
+     11.200000000000001,
+     8
+    ],
+    "height": 11.4,
+    "colour": "#f1efea",
+    "windows": "ribbon"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#7b8a6a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#7b8a6a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    22,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     9,
+     13
+    ],
+    "height": 0.35,
+    "colour": "#d9c995",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    22,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     9,
+     13
+    ],
+    "height": 0.35,
+    "colour": "#d9c995",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7.5,
+    "colour": "#76866a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#6f7f64"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7.5,
+    "colour": "#76866a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#6f7f64"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -12,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 2.2,
+    "depth": 2.8,
+    "colour": "#4a7a3d"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -9,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 2.2,
+    "depth": 2.8,
+    "colour": "#3f6b35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -16,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 2.2,
+    "depth": 2.8,
+    "colour": "#4a7a3d"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 2.2,
+    "depth": 2.8,
+    "colour": "#3f6b35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    13,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 2.2,
+    "depth": 2.8,
+    "colour": "#4a7a3d"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    7,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 2.2,
+    "depth": 2.8,
+    "colour": "#3f6b35"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -22,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 2.2,
+    "depth": 2.8,
+    "colour": "#4a7a3d"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    20,
+    -31,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 2.2,
+    "depth": 2.8,
+    "colour": "#3f6b35"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "open frame pavilion with lower side canopies, denser dark pine band, olives and clipped hedges added; pines still umbrella-lowpoly, foreground hedges not at photo scale, camera still higher than eye level"
+ }
+}

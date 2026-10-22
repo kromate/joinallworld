@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-osm-way-991874984",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/991874984",
+   "used": "real 95x57 m L/U-shaped outline, name-matched hospital"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Bahrain_Specialist_Hospital",
+   "used": "opened 2003, private hospital in Juffair; storeys and finish are estimates"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee6d1",
+    "glassColour": "#6b8b9b",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#b5a98c",
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 7.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3afa6",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    8,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 9,
+    "height": 5.2,
+    "form": "flat",
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "rooftop-helipad",
+   "at": [
+    -10,
+    0,
+    26.4
+   ],
+   "params": {
+    "radius": 7
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -10,
+    -66,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "kind": "mixed",
+    "density": 0.5,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -56
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -56
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; outline is real, storeys/height/finish and entrance position are estimates."
+ }
+}

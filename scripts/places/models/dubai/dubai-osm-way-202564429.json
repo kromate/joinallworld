@@ -1,0 +1,409 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Al_maktoum_stadium.jpg",
+   "licence": "CC0",
+   "author": "Ethereality.001",
+   "view": "interior",
+   "file": "/tmp/places-evidence/dubai/alm1.jpg",
+   "used": "blue raked seats, steel lattice roof ring with translucent cream panels over the stands, flood-lit rim, open centre over the pitch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iran_%26_Iraq_match_by_Amir_Ostovari,_2019_AFC_Asian_Cup_1.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Amir Ostovari",
+   "view": "interior",
+   "file": "/tmp/places-evidence/dubai/alm2.jpg",
+   "used": "the diagonal-lattice facade skin lit in colour under the roof, ring of full oval roof, blue seat bowl"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8865102",
+   "used": "oval bowl 135 x 170 m plus the retained 1995 west grandstand block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "id": "bowl",
+   "params": {
+    "centre": [
+     7,
+     0
+    ],
+    "radius": 36,
+    "radiusY": 54,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 20,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 2.5,
+    "facetDeg": 12,
+    "under": "solid",
+    "backWall": 1.0,
+    "seatColour": "#2f5fa8",
+    "seatColours": [
+     "#2f5fa8",
+     "#2f5fa8",
+     "#3a6fc0",
+     "#274f92"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d8d6cf",
+    "underColour": "#c9c7c0"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    7,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 105,
+    "width": 68,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "loft",
+   "id": "facade",
+   "params": {
+    "colour": "#9fb0cc",
+    "capTop": false,
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       60,
+       78
+      ],
+      "cx": 7
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       61,
+       79
+      ],
+      "cx": 7
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       62,
+       80
+      ],
+      "cx": 7
+     }
+    ],
+    "round": 48
+   }
+  },
+  {
+   "type": "loft",
+   "id": "roof-skin",
+   "params": {
+    "colour": "#e9dfbf",
+    "topColour": "#f4efd8",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 19,
+      "ellipse": [
+       48,
+       66
+      ],
+      "cx": 7
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       62,
+       80
+      ],
+      "cx": 7
+     }
+    ],
+    "round": 48,
+    "material": null
+   }
+  },
+  {
+   "type": "array",
+   "id": "ribs",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     7,
+     0,
+     0
+    ],
+    "radius": 1,
+    "radiusY": 1,
+    "count": 48,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "lod1Step": 4,
+    "lod2Step": 48,
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         0.9,
+         1.4
+        ]
+       },
+       "points": [
+        [
+         50,
+         0,
+         19.2
+        ],
+        [
+         56,
+         0,
+         23
+        ],
+        [
+         62,
+         0,
+         12.2
+        ]
+       ],
+       "colour": "#22407a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "lattice-a",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     7,
+     0,
+     0
+    ],
+    "radius": 1,
+    "radiusY": 1,
+    "count": 48,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "lod1Step": 40,
+    "lod2Step": 40,
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         1.3,
+         1.3
+        ]
+       },
+       "points": [
+        [
+         62.2,
+         -6.0,
+         0.27906976744186046
+        ],
+        [
+         62.8,
+         6.0,
+         12.0
+        ]
+       ],
+       "colour": "#5f7fae"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "lattice-b",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     7,
+     0,
+     0
+    ],
+    "radius": 1,
+    "radiusY": 1,
+    "count": 48,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "lod1Step": 40,
+    "lod2Step": 40,
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         1.3,
+         1.3
+        ]
+       },
+       "points": [
+        [
+         62.2,
+         6.0,
+         0.27906976744186046
+        ],
+        [
+         62.8,
+         -6.0,
+         12.0
+        ]
+       ],
+       "colour": "#5f7fae"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ring-beam",
+   "params": {
+    "section": {
+     "rect": [
+      2,
+      2
+     ]
+    },
+    "arc": {
+     "centre": [
+      7,
+      0,
+      19.3
+     ],
+     "radius": 48,
+     "radiusY": 66,
+     "plane": "xy"
+    },
+    "closed": true,
+    "colour": "#3b4048"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-stand",
+   "footprint": {
+    "rect": [
+     14,
+     70
+    ]
+   },
+   "at": [
+    -63,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e9e9e6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -66,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    64,
+    66,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -92
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -94
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -92
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-way-202564429",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Cream sloped roof annulus added over the bowl, blue-grey lattice and west block attached and lowered; roof ribs read sparse vs dense steel lattice, compared with interior photos only."
+ }
+}

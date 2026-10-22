@@ -1,0 +1,228 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1456526444",
+   "used": "station outline 151.5 x 20.8 m (scaled to 112 x 15.6 m to fit the 118 m footprint clamp, same 7.3:1 proportion)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Novza_station_of_Chilanzar_Line_of_Tashkent_Metro_in_Tashkent_Uzbekistan.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Tim Adams",
+   "view": "interior",
+   "used": "interior only (pale ribbed vault, honey-grey marble and granite wall facing); not an exterior view, so not compared; used only for the stone colour and the vaulted roof idea"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 40
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No exterior photo found; surface/covered status of the station is unconfirmed, so a curved-roof surface hall on the real outline proportion is assumed. Vestibule positions, glazing and the approaching metro bridge are guesses; no rolling stock."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "bed",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     9
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#7b766c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       118,
+       0.15
+      ],
+      "z0": 0.5,
+      "height": 0.15,
+      "colour": "#55524c",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     -1.4
+    ],
+    "end": [
+     0,
+     1.4
+    ],
+    "count": 2,
+    "lod2Step": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     112,
+     15.6
+    ]
+   },
+   "height": 8,
+   "storeys": 1,
+   "z0": 0.5,
+   "wall": {
+    "material": "granite",
+    "colour": "#c9bfa8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 1.0,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "curtain",
+     "right": "curtain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 3.6,
+    "colour": "#9aa3a8",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestibule",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    -8,
+    -11
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d6cfbe",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.6,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f93",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#bdb5a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestibule2",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    34,
+    11
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#d6cfbe",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain",
+     "back": "curtain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f93",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.4,
+    "bottom": 5.2,
+    "colour": "#2f6ba0",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   116,
+   50
+  ]
+ }
+}

@@ -1,0 +1,1179 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:1_Dubai_International_Airport_Terminal_3.jpg",
+   "licence": "CC0",
+   "author": "EditQ",
+   "view": "side",
+   "file": "/tmp/places-evidence/dubai/air1.jpg",
+   "used": "airside view of the Terminal 3 concourse: huge glazed barrel vault in blue-tinted glass with diagonal bracing, tall banded control tower behind, low glass link block, jet bridges and wide-body aircraft"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q193439",
+   "used": "identity and sizes (Concourse B about 945 m long, 49.5 m high, tower about 87 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "vault",
+   "footprint": {
+    "rect": [
+     120,
+     34
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6fa3c4",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "curtain",
+     "right": "curtain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#7fb2d0",
+    "material": "glass",
+    "rise": 24,
+    "axis": "x",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    30,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "count": 2,
+    "spacing": 30
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -50,
+    48,
+    0
+   ],
+   "params": {
+    "height": 50,
+    "style": "round",
+    "colour": "#d9d4c7",
+    "shaftRadius": 6.5,
+    "cabRadius": 9.5,
+    "cabColour": "#d9d4c7",
+    "bandColour": "#8f98a0"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -30,
+    -22,
+    5
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 24,
+    "colour": "#f2f4f5"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -32,
+    9.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#f4f4f4",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    44,
+    -21,
+    8
+   ],
+   "params": {
+    "width": 14,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#f2f2f2",
+    "posts": false
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -15,
+    -45,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 2.2,
+    "colour": "#ffffff",
+    "tailColour": "#ffffff"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.04
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -42,
+      0
+     ],
+     [
+      -30,
+      -62,
+      0
+     ],
+     [
+      -22,
+      -80,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#c0392b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.04
+     ]
+    },
+    "points": [
+     [
+      -28.8,
+      -42,
+      0
+     ],
+     [
+      -28.8,
+      -62,
+      0
+     ],
+     [
+      -20.8,
+      -80,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.04
+     ]
+    },
+    "points": [
+     [
+      20,
+      -42,
+      0
+     ],
+     [
+      20,
+      -62,
+      0
+     ],
+     [
+      28,
+      -80,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#c0392b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.04
+     ]
+    },
+    "points": [
+     [
+      21.2,
+      -42,
+      0
+     ],
+     [
+      21.2,
+      -62,
+      0
+     ],
+     [
+      29.2,
+      -80,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -45,
+     -22,
+     5
+    ],
+    "end": [
+     45,
+     -22,
+     5
+    ],
+    "count": 4,
+    "of": {
+     "type": "jet-bridge",
+     "rotDeg": -90,
+     "params": {
+      "length": 14,
+      "colour": "#f2f4f5"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -60,
+      -16.8,
+      3
+     ],
+     [
+      -57,
+      -11,
+      17
+     ],
+     [
+      -53,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -60,
+      16.8,
+      3
+     ],
+     [
+      -57,
+      11,
+      17
+     ],
+     [
+      -53,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -49,
+      -16.8,
+      3
+     ],
+     [
+      -46,
+      -11,
+      17
+     ],
+     [
+      -42,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -49,
+      16.8,
+      3
+     ],
+     [
+      -46,
+      11,
+      17
+     ],
+     [
+      -42,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -38,
+      -16.8,
+      3
+     ],
+     [
+      -35,
+      -11,
+      17
+     ],
+     [
+      -31,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -38,
+      16.8,
+      3
+     ],
+     [
+      -35,
+      11,
+      17
+     ],
+     [
+      -31,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -27,
+      -16.8,
+      3
+     ],
+     [
+      -24,
+      -11,
+      17
+     ],
+     [
+      -20,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -27,
+      16.8,
+      3
+     ],
+     [
+      -24,
+      11,
+      17
+     ],
+     [
+      -20,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -16,
+      -16.8,
+      3
+     ],
+     [
+      -13,
+      -11,
+      17
+     ],
+     [
+      -9,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -16,
+      16.8,
+      3
+     ],
+     [
+      -13,
+      11,
+      17
+     ],
+     [
+      -9,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -5,
+      -16.8,
+      3
+     ],
+     [
+      -2,
+      -11,
+      17
+     ],
+     [
+      2,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -5,
+      16.8,
+      3
+     ],
+     [
+      -2,
+      11,
+      17
+     ],
+     [
+      2,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      6,
+      -16.8,
+      3
+     ],
+     [
+      9,
+      -11,
+      17
+     ],
+     [
+      13,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      6,
+      16.8,
+      3
+     ],
+     [
+      9,
+      11,
+      17
+     ],
+     [
+      13,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      17,
+      -16.8,
+      3
+     ],
+     [
+      20,
+      -11,
+      17
+     ],
+     [
+      24,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      17,
+      16.8,
+      3
+     ],
+     [
+      20,
+      11,
+      17
+     ],
+     [
+      24,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      28,
+      -16.8,
+      3
+     ],
+     [
+      31,
+      -11,
+      17
+     ],
+     [
+      35,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      28,
+      16.8,
+      3
+     ],
+     [
+      31,
+      11,
+      17
+     ],
+     [
+      35,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      39,
+      -16.8,
+      3
+     ],
+     [
+      42,
+      -11,
+      17
+     ],
+     [
+      46,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      39,
+      16.8,
+      3
+     ],
+     [
+      42,
+      11,
+      17
+     ],
+     [
+      46,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      50,
+      -16.8,
+      3
+     ],
+     [
+      53,
+      -11,
+      17
+     ],
+     [
+      57,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      50,
+      16.8,
+      3
+     ],
+     [
+      53,
+      11,
+      17
+     ],
+     [
+      57,
+      0,
+      26
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe8ee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Vault limited to the 120 m scene clamp (real ~945 m) but now a continuous low-springing blue barrel with diagonal bracing, thicker shorter banded tower behind, larger airliner; tower overlaps vault end, airliner is generic (blue tint), jet bridges basic."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-airport-dubai-airport"
+}

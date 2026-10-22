@@ -1,0 +1,875 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-way-247152234",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Donishgohi_davlatii_tijorati_Tojikiston.JPG",
+   "licence": "Public domain",
+   "author": "Foteh Rahimov",
+   "view": "front",
+   "file": "/tmp/places-evidence/dushanbe/univ1.jpg",
+   "used": "four-storey salmon-pink rendered block, flat roof with slight eave, punched white-framed windows in rhythm, central projecting two-storey glazed window bay, low glazed entrance hall with a blank cream sign band, steps, clipped hedges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/247152234",
+   "used": "campus polygon (230 x 199 m) not used for massing; only the building proportions from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     70,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2b7ae",
+    "windows": "punched",
+    "windowRatio": 0.62,
+    "bay": 4.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#e6cfc4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "parapet": 0.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     24,
+     3
+    ]
+   },
+   "at": [
+    -6,
+    -9
+   ],
+   "z0": 4.2,
+   "height": 11.8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2b7ae",
+    "windows": "none",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "bands": "#f2f2ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    8,
+    -9.5
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e8eeee",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a79c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signband",
+   "at": [
+    8,
+    -12.2
+   ],
+   "params": {
+    "rect": [
+     20,
+     1.6
+    ],
+    "z0": 3.4,
+    "height": 0.9,
+    "colour": "#efe9db"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ac0",
+   "at": [
+    -27,
+    -7.8,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ac1",
+   "at": [
+    -20,
+    -7.8,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ac2",
+   "at": [
+    20,
+    -7.8,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ac3",
+   "at": [
+    27,
+    -7.8,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "vents",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     -7.7,
+     15.1
+    ],
+    "end": [
+     32,
+     -7.7,
+     15.1
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       0.15
+      ],
+      "z0": 0,
+      "height": 0.4,
+      "colour": "#6d6a66"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge0",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge1",
+   "at": [
+    22,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grid0",
+   "at": [
+    -6,
+    -10.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.15
+    ],
+    "z0": 4.9,
+    "height": 3.4,
+    "colour": "#a9bcc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "mull0",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -16.5,
+     -10.7,
+     4.9
+    ],
+    "end": [
+     4.5,
+     -10.7,
+     4.9
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.18,
+       0.12
+      ],
+      "z0": 0,
+      "height": 3.5,
+      "colour": "#f4f4f0"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grid1",
+   "at": [
+    -6,
+    -10.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.15
+    ],
+    "z0": 9.0,
+    "height": 3.4,
+    "colour": "#a9bcc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "mull1",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -16.5,
+     -10.7,
+     9.0
+    ],
+    "end": [
+     4.5,
+     -10.7,
+     9.0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.18,
+       0.12
+      ],
+      "z0": 0,
+      "height": 3.5,
+      "colour": "#f4f4f0"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signedge",
+   "at": [
+    8,
+    -12.2
+   ],
+   "params": {
+    "rect": [
+     20.2,
+     1.7
+    ],
+    "z0": 3.3,
+    "height": 0.12,
+    "colour": "#3a3a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "steps2",
+   "params": {
+    "mode": "line",
+    "start": [
+     8,
+     -12.8,
+     0
+    ],
+    "end": [
+     8,
+     -14.0,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       16,
+       0.5
+      ],
+      "z0": 0,
+      "height": 0.2,
+      "colour": "#9a9a94"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pipeL",
+   "at": [
+    -8,
+    -7.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0,
+    "height": 16,
+    "colour": "#f0eee8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pipeR",
+   "at": [
+    6.2,
+    -7.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0,
+    "height": 16,
+    "colour": "#f0eee8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dentil",
+   "at": [
+    0,
+    -7.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.35
+    ],
+    "z0": 15.2,
+    "height": 0.5,
+    "colour": "#d9a99f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge2",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "rect": [
+     50,
+     1.5
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#264d26"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grid2",
+   "at": [
+    -6,
+    -10.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.15
+    ],
+    "z0": 13.1,
+    "height": 2.2,
+    "colour": "#a9bcc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "mull2",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -16.5,
+     -10.7,
+     13.1
+    ],
+    "end": [
+     4.5,
+     -10.7,
+     13.1
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.18,
+       0.12
+      ],
+      "z0": 0,
+      "height": 2.3,
+      "colour": "#f4f4f0"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "transom",
+   "at": [
+    -6,
+    -10.7
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.12
+    ],
+    "z0": 8.55,
+    "height": 0.35,
+    "colour": "#f4f4f0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "transom2",
+   "at": [
+    -6,
+    -10.7
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.12
+    ],
+    "z0": 12.7,
+    "height": 0.35,
+    "colour": "#f4f4f0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "eave",
+   "at": [
+    0,
+    -8.4
+   ],
+   "params": {
+    "rect": [
+     72,
+     1.8
+    ],
+    "z0": 15.9,
+    "height": 0.45,
+    "colour": "#d98f86"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "acx0",
+   "at": [
+    -30,
+    -7.8,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "acx1",
+   "at": [
+    -24,
+    -7.8,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "acx2",
+   "at": [
+    -14,
+    -7.8,
+    6.8
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "acx3",
+   "at": [
+    12,
+    -7.8,
+    10.3
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "acx4",
+   "at": [
+    24,
+    -7.8,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "acx5",
+   "at": [
+    30,
+    -7.8,
+    10.4
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "acx6",
+   "at": [
+    18,
+    -7.8,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "acx7",
+   "at": [
+    -33,
+    -7.8,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "acx8",
+   "at": [
+    34,
+    -7.8,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "centre bay glazing is flat panels with mullions (projects but has no true window grid depth); main windows are uniform, not paired; no downpipes/dentil detail match; hedges plain blocks; sign band blank"
+ }
+}

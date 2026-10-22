@@ -1,0 +1,652 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-airport-ashgabat-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ashgabat_-_Main_airport_terminal.jpg",
+   "licence": "CC BY 4.0",
+   "author": "P. Hughes",
+   "view": "front",
+   "file": "/tmp/places-evidence/ashgabat/airport1.jpg",
+   "used": "falcon plan: blue glazed body, white swept wing roofs rising to a raised rounded head over the centre, low podium and forecourt with fountains, lamps and trimmed hedges"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ashgabat_Airport_entrance.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "PLBechly",
+   "view": "street",
+   "used": "white clad curving tubular roof edge on round white columns, shell-like head over the entrance"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ashgabat_Airport_view_from_runway.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "PLBechly",
+   "view": "back",
+   "used": "white arched concourse piers lined up behind the terminal"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.8,
+  "margin": 0.06
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Span clamped to ~120 m; wings are straight-swept slabs not concave fascia; head is a ribbed egg dome, beak taper weak; no blue arches, cypress pair removed, walkway is a short strip."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass",
+   "footprint": {
+    "rect": [
+     118,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f6bb5",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#2f6bb5",
+    "bay": 10,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "id": "head",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f6f6f4",
+    "smooth": true,
+    "curve": true,
+    "sections": [
+     {
+      "z": 10,
+      "ellipse": [
+       6,
+       8
+      ],
+      "cy": 0
+     },
+     {
+      "z": 14,
+      "ellipse": [
+       9,
+       9
+      ],
+      "cy": -0.5
+     },
+     {
+      "z": 18,
+      "ellipse": [
+       8.5,
+       8.5
+      ],
+      "cy": -1.5
+     },
+     {
+      "z": 21,
+      "ellipse": [
+       6,
+       7
+      ],
+      "cy": -3.5
+     },
+     {
+      "z": 23,
+      "ellipse": [
+       3.2,
+       4.2
+      ],
+      "cy": -6.5
+     },
+     {
+      "z": 24,
+      "ellipse": [
+       1,
+       1.6
+      ],
+      "cy": -9
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -45,
+     22,
+     0
+    ],
+    "end": [
+     45,
+     22,
+     0
+    ],
+    "count": 7,
+    "lod1Step": 2,
+    "lod2Step": 7,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       7,
+       30
+      ]
+     },
+     "height": 7,
+     "storeys": 1,
+     "wall": {
+      "material": "render",
+      "colour": "#f6f6f4",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f6f6f4",
+      "overhang": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -50,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 6,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30,
+    16,
+    5
+   ],
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "wing-r",
+   "params": {
+    "section": {
+     "rect": [
+      20,
+      4
+     ]
+    },
+    "points": [
+     [
+      60,
+      -1,
+      6.2
+     ],
+     [
+      48,
+      -1.5,
+      7.6
+     ],
+     [
+      34,
+      -2,
+      9.2
+     ],
+     [
+      20,
+      -1.5,
+      11.2
+     ],
+     [
+      9,
+      -1,
+      13
+     ],
+     [
+      3,
+      0,
+      14.5
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#f6f6f4",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "wing-l",
+   "params": {
+    "section": {
+     "rect": [
+      20,
+      4
+     ]
+    },
+    "points": [
+     [
+      -60,
+      -1,
+      6.2
+     ],
+     [
+      -48,
+      -1.5,
+      7.6
+     ],
+     [
+      -34,
+      -2,
+      9.2
+     ],
+     [
+      -20,
+      -1.5,
+      11.2
+     ],
+     [
+      -9,
+      -1,
+      13
+     ],
+     [
+      -3,
+      0,
+      14.5
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#f6f6f4",
+    "caps": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-white",
+   "footprint": {
+    "rect": [
+     118,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f6f6f4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f4"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -45,
+     -30,
+     0
+    ],
+    "end": [
+     45,
+     -30,
+     0
+    ],
+    "count": 4,
+    "lod1Step": 3,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 18,
+      "height": 1.1,
+      "depth": 2.2,
+      "colour": "#3f6b30"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -26,
+     0
+    ],
+    "end": [
+     -14,
+     -30,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "smooth": true,
+      "colour": "#4a7a34",
+      "profile": [
+       [
+        0.05,
+        0
+       ],
+       [
+        1.6,
+        0.6
+       ],
+       [
+        1.8,
+        1.5
+       ],
+       [
+        1.2,
+        2.3
+       ],
+       [
+        0.05,
+        2.6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     14,
+     -30,
+     0
+    ],
+    "end": [
+     40,
+     -26,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "smooth": true,
+      "colour": "#4a7a34",
+      "profile": [
+       [
+        0.05,
+        0
+       ],
+       [
+        1.6,
+        0.6
+       ],
+       [
+        1.8,
+        1.5
+       ],
+       [
+        1.2,
+        2.3
+       ],
+       [
+        0.05,
+        2.6
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walk",
+   "footprint": {
+    "rect": [
+     8,
+     34
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d0"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -8.6,
+     0
+    ],
+    "end": [
+     52,
+     -8.6,
+     0
+    ],
+    "count": 14,
+    "lod1Step": 2,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "smooth": true,
+      "colour": "#f6f6f4",
+      "profile": [
+       [
+        0.8,
+        0
+       ],
+       [
+        0.6,
+        0.4
+       ],
+       [
+        0.6,
+        8.5
+       ],
+       [
+        0.8,
+        9
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -55,
+     -18,
+     0
+    ],
+    "end": [
+     55,
+     -18,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 6,
+      "smooth": false,
+      "colour": "#dcdcd8",
+      "profile": [
+       [
+        0.3,
+        0
+       ],
+       [
+        0.2,
+        0.5
+       ],
+       [
+        0.2,
+        14
+       ],
+       [
+        0.5,
+        14.6
+       ],
+       [
+        0.05,
+        15
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ }
+}

@@ -1,0 +1,330 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-osm-relation-7188720",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AMH_Zwemer_Clinic.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mejoel",
+   "view": "street",
+   "file": "/tmp/places-evidence/manama/amh-zwemer.jpg",
+   "used": "tall white block with heavy vertical ribs at left, glazed overhead bridge with green glass band, low peach-cream entrance building with green fascia/roof edge, dark timber lattice screens, timber entrance canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7188720",
+   "used": "real outline of the hospital complex (name match), auto-fitted"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.775,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "tower now ribbed and taller, entrance wing peach with thin green fascia and tall lattice panels; glazed bridge still not visible from this camera (hidden by wards mass); placement on outline approximate, lattice is plain panels"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "scale": 0.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 10,
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#d8c69c"
+      ],
+      "height": 0.5,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     20,
+     26
+    ]
+   },
+   "at": [
+    -32,
+    -24
+   ],
+   "height": 34,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#e4e0d5",
+      "depth": 1.5,
+      "width": 1.4,
+      "spacing": 2.2,
+      "faces": [
+       "front",
+       "left",
+       "right",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wing",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -12,
+    -52
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c9a4",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8c9a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fas-f",
+   "at": [
+    -12,
+    -58.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.6,
+     0.5
+    ],
+    "z0": 6.5,
+    "height": 0.5,
+    "colour": "#2f7d4f",
+    "topColour": "#2f7d4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fas-b",
+   "at": [
+    -12,
+    -45.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     34.6,
+     0.5
+    ],
+    "z0": 6.5,
+    "height": 0.5,
+    "colour": "#2f7d4f",
+    "topColour": "#2f7d4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fas-l",
+   "at": [
+    -29,
+    -51.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     13.6
+    ],
+    "z0": 6.5,
+    "height": 0.5,
+    "colour": "#2f7d4f",
+    "topColour": "#2f7d4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fas-r",
+   "at": [
+    5,
+    -51.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     13.6
+    ],
+    "z0": 6.5,
+    "height": 0.5,
+    "colour": "#2f7d4f",
+    "topColour": "#2f7d4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen-big",
+   "at": [
+    -12,
+    -58.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 4.2,
+    "colour": "#5a3a28",
+    "topColour": "#4a2f20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "screen-small",
+   "at": [
+    -24,
+    -58.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 4.0,
+    "colour": "#5a3a28",
+    "topColour": "#4a2f20"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -60,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#5a3a28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge",
+   "at": [
+    -24,
+    -36,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     24
+    ],
+    "z0": 6,
+    "height": 3.2,
+    "colour": "#ffffff",
+    "topColour": "#d8d8d0",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#3f8a64",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -58.9,
+    5.0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#2f7d4f",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -75,
+     -70
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ }
+}

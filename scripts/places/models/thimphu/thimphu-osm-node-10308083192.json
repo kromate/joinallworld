@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-node-10308083192",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/thimphu.json#thimphu-osm-node-10308083192",
+   "used": "open roofed vegetable market about 18 x 14 m; OSM match is nearest at 24 m with an address name, so outline not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "length": 17,
+    "depth": 9,
+    "height": 4.2,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#6e7a5a",
+    "accent": "#8f8b82"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-store",
+   "footprint": {
+    "rect": [
+     18,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a59a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7a5a",
+    "material": "metal-sheet",
+    "rise": 1,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "table",
+    "colours": [
+     "#c9b79a",
+     "#a8452d"
+    ],
+    "goods_colours": [
+     "#4f8f3a",
+     "#c8362f",
+     "#e0a82e",
+     "#f1ede4"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    3.5,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "table",
+    "colours": [
+     "#c9b79a",
+     "#3b6e8f"
+    ],
+    "goods_colours": [
+     "#4f8f3a",
+     "#e0a82e",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -12,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.6,
+    "colours": [
+     "#a8452d",
+     "#f1ede4"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     11
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; massing from OSM outline/brief, details typical of Bhutanese roadside buildings (no painted timber ornament)"
+ }
+}

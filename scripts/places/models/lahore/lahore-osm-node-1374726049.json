@@ -1,0 +1,1115 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-node-1374726049",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Model_Town_Park,_Lahore.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Taha Tahir",
+   "view": "front",
+   "file": "/tmp/places-evidence/lahore/mt1.jpg",
+   "used": "black wrought-iron entrance gate and fence with pillars, wide pale paved walk, mass flowerbeds in magenta, pink, white and red in the foreground, big shade trees behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Model_Town_Park_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tahir mq",
+   "view": "street",
+   "file": "/tmp/places-evidence/lahore/mt2.jpg",
+   "used": "open dry-grass lawns with scattered young trees, brick paving edge, benches, tall mature trees at the edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 100,
+    "colour": "#9aa34a"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 12,
+    "border": 0.4,
+    "colour": "#e6dfd2",
+    "border_colour": "#b9ae9c"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "height": 6.5,
+    "pillar": 1.6,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#1b2220",
+    "leafColour": "#1b2220"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "length": 23,
+    "height": 4.0,
+    "thickness": 0.2,
+    "kind": "bars",
+    "pillarEvery": 4.5,
+    "colour": "#1b2220"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    7,
+    0,
+    0
+   ],
+   "params": {
+    "length": 23,
+    "height": 4.0,
+    "thickness": 0.2,
+    "kind": "bars",
+    "pillarEvery": 4.5,
+    "colour": "#1b2220"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 6.8,
+    "colour": "#3f8a4f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 0.8,
+    "bottom": 2.2,
+    "colour": "#d63a3a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5.5,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 0.8,
+    "bottom": 2.2,
+    "colour": "#3f8a4f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "statue-figure",
+     "params": {
+      "height": 1.7,
+      "colour": "#d63a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -11.0,
+     -4.5
+    ],
+    "end": [
+     10.0,
+     -3.5
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "statue-figure",
+     "params": {
+      "height": 1.7,
+      "colour": "#f2f2e6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10.3,
+     -3.3
+    ],
+    "end": [
+     10.5,
+     -5.1
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "statue-figure",
+     "params": {
+      "height": 1.7,
+      "colour": "#3a7ca5"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -9.6,
+     -2.1
+    ],
+    "end": [
+     11.0,
+     -3.5
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "statue-figure",
+     "params": {
+      "height": 1.7,
+      "colour": "#e0c040"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8.9,
+     -4.5
+    ],
+    "end": [
+     11.5,
+     -5.1
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "statue-figure",
+     "params": {
+      "height": 1.7,
+      "colour": "#7a3a8a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8.2,
+     -3.3
+    ],
+    "end": [
+     12.0,
+     -3.5
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "statue-figure",
+     "params": {
+      "height": 1.7,
+      "colour": "#3f8a4f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -7.5,
+     -2.1
+    ],
+    "end": [
+     12.5,
+     -5.1
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "statue-figure",
+     "params": {
+      "height": 1.7,
+      "colour": "#d98a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6.800000000000001,
+     -4.5
+    ],
+    "end": [
+     13.0,
+     -3.5
+    ],
+    "count": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 5,
+    "spread": 9,
+    "line": 28,
+    "colour": "#3f6a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 4,
+    "spread": 9,
+    "line": 22,
+    "colour": "#456f30"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 4,
+    "spread": 6,
+    "line": 20,
+    "colour": "#5d7a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 4,
+    "spread": 8,
+    "line": 22,
+    "colour": "#3a6a30"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -22,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -24,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 8,
+    "colour": "#c83a8a",
+    "hedge": false
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 16,
+    "colour": "#c83a8a",
+    "hedge": false
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -8.0,
+    -6.0,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "colour": "#d63a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -5.4,
+    -4.6,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "colour": "#f2d24a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -2.8,
+    -3.2,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "colour": "#3a7ca5"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -0.1999999999999993,
+    -6.0,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "colour": "#7a3a8a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    2.4000000000000004,
+    -4.6,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "colour": "#e07a9a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    5.0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "colour": "#2f8a6a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    7.600000000000001,
+    -6.0,
+    0
+   ],
+   "params": {
+    "height": 1.7,
+    "colour": "#e0822e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -36
+   ],
+   "params": {
+    "rect": [
+     40,
+     3.6
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#e0409a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -19,
+    -36,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0.7,
+        "#e0409a"
+       ],
+       [
+        1.0,
+        0.6,
+        "#e0409a"
+       ],
+       [
+        1.5,
+        0.25,
+        "#e0409a"
+       ],
+       [
+        1.7,
+        0,
+        "#e0409a"
+       ]
+      ],
+      "segments": 6,
+      "colour": "#e0409a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     38,
+     0
+    ],
+    "count": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -32.5
+   ],
+   "params": {
+    "rect": [
+     40,
+     3.6
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#d63a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -19,
+    -32.5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0.7,
+        "#d63a3a"
+       ],
+       [
+        1.0,
+        0.6,
+        "#d63a3a"
+       ],
+       [
+        1.5,
+        0.25,
+        "#d63a3a"
+       ],
+       [
+        1.7,
+        0,
+        "#d63a3a"
+       ]
+      ],
+      "segments": 6,
+      "colour": "#d63a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     38,
+     0
+    ],
+    "count": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -29
+   ],
+   "params": {
+    "rect": [
+     40,
+     3.6
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#8e2a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -19,
+    -29,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0.7,
+        "#8e2a8c"
+       ],
+       [
+        1.0,
+        0.6,
+        "#8e2a8c"
+       ],
+       [
+        1.5,
+        0.25,
+        "#8e2a8c"
+       ],
+       [
+        1.7,
+        0,
+        "#8e2a8c"
+       ]
+      ],
+      "segments": 6,
+      "colour": "#8e2a8c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     38,
+     0
+    ],
+    "count": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -25.5
+   ],
+   "params": {
+    "rect": [
+     40,
+     3.6
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#e0409a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -19,
+    -25.5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0.7,
+        "#e0409a"
+       ],
+       [
+        1.0,
+        0.6,
+        "#e0409a"
+       ],
+       [
+        1.5,
+        0.25,
+        "#e0409a"
+       ],
+       [
+        1.7,
+        0,
+        "#e0409a"
+       ]
+      ],
+      "segments": 6,
+      "colour": "#e0409a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     38,
+     0
+    ],
+    "count": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -22
+   ],
+   "params": {
+    "rect": [
+     40,
+     3.6
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#f2f2ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -19,
+    -22,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0.7,
+        "#f2f2ee"
+       ],
+       [
+        1.0,
+        0.6,
+        "#f2f2ee"
+       ],
+       [
+        1.5,
+        0.25,
+        "#f2f2ee"
+       ],
+       [
+        1.7,
+        0,
+        "#f2f2ee"
+       ]
+      ],
+      "segments": 6,
+      "colour": "#f2f2ee"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     38,
+     0
+    ],
+    "count": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -18.5
+   ],
+   "params": {
+    "rect": [
+     40,
+     3.6
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#d63a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -19,
+    -18.5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0.7,
+        "#d63a3a"
+       ],
+       [
+        1.0,
+        0.6,
+        "#d63a3a"
+       ],
+       [
+        1.5,
+        0.25,
+        "#d63a3a"
+       ],
+       [
+        1.7,
+        0,
+        "#d63a3a"
+       ]
+      ],
+      "segments": 6,
+      "colour": "#d63a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     38,
+     0
+    ],
+    "count": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -15
+   ],
+   "params": {
+    "rect": [
+     40,
+     3.6
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#e0409a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -19,
+    -15,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0.7,
+        "#e0409a"
+       ],
+       [
+        1.0,
+        0.6,
+        "#e0409a"
+       ],
+       [
+        1.5,
+        0.25,
+        "#e0409a"
+       ],
+       [
+        1.7,
+        0,
+        "#e0409a"
+       ]
+      ],
+      "segments": 6,
+      "colour": "#e0409a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     38,
+     0
+    ],
+    "count": 24
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Continuous banded flower carpet, taller wider gate, broadleaf trees, drier lawn, paler walk; beds are banded stripes not mixed petunia, gate lacks scrollwork, figures small blocky, carpet sits further back than photo."
+ }
+}

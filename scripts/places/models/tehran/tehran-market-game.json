@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/471736211",
+   "used": "named building outline (48 x 24 m, matched by name), single storey, bearing 97 degrees"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q7462298",
+   "used": "Shahrvand chain supermarket: low box with a glazed front, blank sign board, entrance canopy and front car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this store was found (the Commons Shahrvand photos are of other branches), so facade, signage layout and colours are typed from the chain and the footprint only."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d7d3c8",
+    "windows": "none",
+    "bands": "#7f9aa8",
+    "plinth": 0.4,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazing",
+   "at": [
+    -1.6,
+    -12.5
+   ],
+   "rotDeg": -7.4,
+   "params": {
+    "rect": [
+     38,
+     0.4
+    ],
+    "z0": 0.5,
+    "height": 3.6,
+    "colour": "#7f9aa8",
+    "topColour": "#7f9aa8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "at": [
+    7.4,
+    -12.6
+   ],
+   "rotDeg": -7.4,
+   "params": {
+    "rect": [
+     7,
+     0.6
+    ],
+    "z0": 0.2,
+    "height": 3.8,
+    "colour": "#4c6573",
+    "topColour": "#4c6573",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    7.4,
+    -14.0,
+    4.2
+   ],
+   "rotDeg": -7.4,
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 3.5,
+    "height": 0.4,
+    "thickness": 0.35,
+    "colour": "#a9a59a",
+    "edgeColour": "#8a8580"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    -7.6,
+    -12.7
+   ],
+   "rotDeg": -7.4,
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 7.2,
+    "height": 2.2,
+    "colour": "#c9c4b6",
+    "topColour": "#c9c4b6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-band",
+   "at": [
+    -7.6,
+    -12.95
+   ],
+   "rotDeg": -7.4,
+   "params": {
+    "rect": [
+     16.4,
+     0.3
+    ],
+    "z0": 7.0,
+    "height": 0.4,
+    "colour": "#7f9aa8",
+    "topColour": "#7f9aa8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hvac1",
+   "at": [
+    8,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "z0": 7.8,
+    "height": 1.6,
+    "colour": "#a9a59a",
+    "topColour": "#a9a59a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hvac2",
+   "at": [
+    -10,
+    5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4,
+     2.5
+    ],
+    "z0": 7.8,
+    "height": 1.4,
+    "colour": "#a9a59a",
+    "topColour": "#a9a59a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "at": [
+    -2,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 12,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ }
+}

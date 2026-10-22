@@ -1,0 +1,955 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%BA%D0%B8%D1%82_%D0%BC%D0%BE%D0%BD%D0%B0%D1%88%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B2_%D0%90%D0%BA%D1%81%D0%B0%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D1%89%D0%B5%D0%BB%D0%B8.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chingiz Momyshev",
+   "view": "side",
+   "file": "/tmp/places-evidence/almaty/quiet-reflection-right.jpg",
+   "used": "right half of the image: log church of stacked octagonal tiers with green metal roofs, gilded onion dome and cross, spruce forest around (left half is a forest path, not used)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1512139326",
+   "used": "hermitage compound is ~125 x 65 m; only the church and cell are modelled, outline not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 24,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "nave-logs",
+   "params": {
+    "z0": 0,
+    "height": 6.0,
+    "colour": "#d58a3a",
+    "radius": 4.5,
+    "n": 8,
+    "topColour": "#d58a3a",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "storeys": 1,
+    "plinth": 0.4,
+    "trimColour": "#8a5a28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hip-roof-lower",
+   "params": {
+    "z0": 6.0,
+    "height": 3.2,
+    "colour": "#2f8a5c",
+    "radius": 6.4,
+    "n": 8,
+    "topColour": "#2f8a5c",
+    "topScale": 0.42
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-1",
+   "params": {
+    "z0": 6.0,
+    "height": 4.6,
+    "colour": "#d58a3a",
+    "radius": 3.0,
+    "n": 8,
+    "topColour": "#d58a3a",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "storeys": 1,
+    "trimColour": "#8a5a28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-1",
+   "params": {
+    "z0": 10.6,
+    "height": 1.8,
+    "colour": "#2f8a5c",
+    "radius": 4.0,
+    "n": 8,
+    "topColour": "#2f8a5c",
+    "topScale": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-2",
+   "params": {
+    "z0": 12.4,
+    "height": 2.0,
+    "colour": "#d58a3a",
+    "radius": 2.1,
+    "n": 8,
+    "topColour": "#d58a3a",
+    "windows": "rect",
+    "windowRatio": 0.12,
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-2",
+   "params": {
+    "z0": 14.4,
+    "height": 1.0,
+    "colour": "#2f8a5c",
+    "radius": 2.8,
+    "n": 8,
+    "topColour": "#2f8a5c",
+    "topScale": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-3",
+   "params": {
+    "z0": 15.4,
+    "height": 1.6,
+    "colour": "#d58a3a",
+    "radius": 1.5,
+    "n": 8,
+    "topColour": "#d58a3a",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-3",
+   "params": {
+    "z0": 17.0,
+    "height": 0.9,
+    "colour": "#2f8a5c",
+    "radius": 2.0,
+    "n": 8,
+    "topColour": "#2f8a5c",
+    "topScale": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-4",
+   "params": {
+    "z0": 17.9,
+    "height": 1.0,
+    "colour": "#d58a3a",
+    "radius": 0.85,
+    "n": 8,
+    "topColour": "#d58a3a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "log-courses",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     0,
+     0,
+     0.7
+    ],
+    "end": [
+     0,
+     0,
+     5.7
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 0,
+      "height": 0.22,
+      "colour": "#f0b866",
+      "radius": 4.62,
+      "n": 8
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "id": "log-ends",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 8,
+    "radius": 4.4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 0.6,
+      "height": 3.8,
+      "colour": "#f0b866",
+      "rect": [
+       0.45,
+       0.45
+      ]
+     }
+    },
+    "height": 5.2
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "onion",
+   "at": [
+    0,
+    0,
+    18.9
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d5a830",
+    "profile": [
+     [
+      0.4,
+      0
+     ],
+     [
+      0.9,
+      0.2
+     ],
+     [
+      1.3,
+      0.8
+     ],
+     [
+      1.35,
+      1.4
+     ],
+     [
+      0.95,
+      2.0
+     ],
+     [
+      0.4,
+      2.6
+     ],
+     [
+      0.1,
+      3.0
+     ],
+     [
+      0,
+      3.1
+     ]
+    ],
+    "topColour": "#e2bb44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "params": {
+    "z0": 21.9,
+    "height": 1.8,
+    "colour": "#d5a830",
+    "rect": [
+     0.18,
+     0.18
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "params": {
+    "z0": 22.9,
+    "height": 0.15,
+    "colour": "#d5a830",
+    "rect": [
+     0.9,
+     0.14
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-post0",
+   "params": {
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#6d4a26",
+    "rect": [
+     0.25,
+     0.25
+    ]
+   },
+   "at": [
+    -1.9,
+    -7.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-post1",
+   "params": {
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#6d4a26",
+    "rect": [
+     0.25,
+     0.25
+    ]
+   },
+   "at": [
+    1.9,
+    -7.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-post2",
+   "params": {
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#6d4a26",
+    "rect": [
+     0.25,
+     0.25
+    ]
+   },
+   "at": [
+    -1.9,
+    -5.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-post3",
+   "params": {
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#6d4a26",
+    "rect": [
+     0.25,
+     0.25
+    ]
+   },
+   "at": [
+    1.9,
+    -5.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-roof",
+   "params": {
+    "z0": 2.6,
+    "height": 1.8,
+    "colour": "#2f8a5c",
+    "rect": [
+     5.0,
+     4.0
+    ],
+    "topColour": "#2f8a5c",
+    "topScale": 0.12
+   },
+   "at": [
+    0,
+    -6.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-wall",
+   "params": {
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#c98f4c",
+    "rect": [
+     3.4,
+     0.8
+    ],
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "storeys": 1
+   },
+   "at": [
+    0,
+    -4.9
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apse-east",
+   "params": {
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#c47f3c",
+    "rect": [
+     4,
+     3.5
+    ],
+    "topColour": "#c47f3c",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "storeys": 1
+   },
+   "at": [
+    0,
+    5.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apse-roof",
+   "params": {
+    "z0": 3.6,
+    "height": 1.5,
+    "colour": "#2f8a5c",
+    "rect": [
+     5,
+     4.5
+    ],
+    "topColour": "#2f8a5c",
+    "topScale": 0.3
+   },
+   "at": [
+    0,
+    5.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cell-west",
+   "params": {
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#c99358",
+    "rect": [
+     6,
+     5
+    ],
+    "topColour": "#c99358",
+    "windows": "rect",
+    "windowRatio": 0.12,
+    "storeys": 1
+   },
+   "at": [
+    -8.6,
+    -2.0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cell-roof",
+   "params": {
+    "z0": 3.2,
+    "height": 1.6,
+    "colour": "#2f8a5c",
+    "rect": [
+     7,
+     6
+    ],
+    "topColour": "#2f8a5c",
+    "topScale": 0.2
+   },
+   "at": [
+    -8.6,
+    -2.0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cell-snow",
+   "params": {
+    "z0": 4.0,
+    "height": 0.5,
+    "colour": "#f4f7fa",
+    "rect": [
+     5.2,
+     2.0
+    ],
+    "topColour": "#f4f7fa",
+    "topScale": 0.7
+   },
+   "at": [
+    -8.6,
+    -2.0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-snow",
+   "params": {
+    "z0": 3.9,
+    "height": 0.35,
+    "colour": "#f4f7fa",
+    "rect": [
+     3.5,
+     1.5
+    ],
+    "topColour": "#f4f7fa",
+    "topScale": 0.6
+   },
+   "at": [
+    0,
+    -6.3
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hip-snow",
+   "params": {
+    "z0": 8.2,
+    "height": 0.4,
+    "colour": "#f4f7fa",
+    "rect": [
+     2.5,
+     1.5
+    ],
+    "topColour": "#f4f7fa",
+    "topScale": 0.6
+   },
+   "at": [
+    -2.5,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow0",
+   "params": {
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f6f8fb",
+    "rect": [
+     5.38558069669709,
+     3.8849005675541006
+    ],
+    "topColour": "#f6f8fb"
+   },
+   "at": [
+    3.441247456911654,
+    -5.840343118131976
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow1",
+   "params": {
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f6f8fb",
+    "rect": [
+     3.087015684850844,
+     2.9312453087562105
+    ],
+    "topColour": "#f6f8fb"
+   },
+   "at": [
+    6.717160092718061,
+    -3.8544250366804125
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow2",
+   "params": {
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f6f8fb",
+    "rect": [
+     5.702701475251868,
+     2.2264119293062885
+    ],
+    "topColour": "#f6f8fb"
+   },
+   "at": [
+    12.413988075952783,
+    -6.861279915493833
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow3",
+   "params": {
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f6f8fb",
+    "rect": [
+     4.6312825777077915,
+     3.1478823758562013
+    ],
+    "topColour": "#f6f8fb"
+   },
+   "at": [
+    -0.8660666620994153,
+    -11.287698841181866
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow4",
+   "params": {
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f6f8fb",
+    "rect": [
+     3.838447098033331,
+     3.832690743617104
+    ],
+    "topColour": "#f6f8fb"
+   },
+   "at": [
+    -13.632802691510738,
+    -11.61597219489767
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow5",
+   "params": {
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f6f8fb",
+    "rect": [
+     5.391440974293614,
+     2.2775348367978063
+    ],
+    "topColour": "#f6f8fb"
+   },
+   "at": [
+    7.440312645615968,
+    -12.24435366406158
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow6",
+   "params": {
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f6f8fb",
+    "rect": [
+     3.005324586607604,
+     3.742809489448564
+    ],
+    "topColour": "#f6f8fb"
+   },
+   "at": [
+    3.2886705730512666,
+    -12.606308441947032
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow7",
+   "params": {
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f6f8fb",
+    "rect": [
+     5.947263326477776,
+     3.7448155308736037
+    ],
+    "topColour": "#f6f8fb"
+   },
+   "at": [
+    -8.135221290136698,
+    -11.629707138527944
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow8",
+   "params": {
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#f6f8fb",
+    "rect": [
+     4.617670406612432,
+     3.3556609545011846
+    ],
+    "topColour": "#f6f8fb"
+   },
+   "at": [
+    -5.899455303086057,
+    -3.423742121549081
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce0",
+   "at": [
+    -11,
+    -1,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce1",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 21,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce2",
+   "at": [
+    -4,
+    10,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 23,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce3",
+   "at": [
+    4,
+    9,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce4",
+   "at": [
+    11,
+    4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 21,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce5",
+   "at": [
+    12,
+    -3,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 23,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce6",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce7",
+   "at": [
+    -6,
+    13,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 21,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce8",
+   "at": [
+    14,
+    8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 23,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "spruce9",
+   "at": [
+    -16,
+    3,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "spread": 3.2,
+    "colour": "#2a5a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   44
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Spruces are low-poly cones, not the dense overhanging foliage that half hides the church; log texture is colour courses only; porch/cell/apse windows and snow patches are approximate; camera is a wider aerial view than the photo."
+ }
+}

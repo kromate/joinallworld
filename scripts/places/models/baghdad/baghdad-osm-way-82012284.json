@@ -1,0 +1,23 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "baghdad", "venueId": "baghdad-osm-way-82012284",
+ "verified": "text",
+ "evidence": [
+  {"kind": "text", "ref": "briefs/baghdad.json", "used": "small natural Tigris island about 110 x 70 m, date palms, paths, a landing pier, a small pavilion and kiosk; no OSM outline and no photo found, so plausible rather than observed"}
+ ],
+ "parts": [
+  {"type": "water-surface", "id": "river", "at": [0, 0, 0], "params": {"width": 150, "depth": 110, "shape": "rect", "colour": "#7f9a96", "bank": false}},
+  {"type": "prism", "id": "island-sand", "at": [0, 0, 0], "params": {"points": [[-55, -4], [-44, -22], [-20, -30], [8, -33], [34, -26], [52, -10], [55, 4], [42, 22], [14, 31], [-18, 29], [-42, 20]], "z0": 0.1, "height": 1.4, "colour": "#c9b48f", "windows": "none"}},
+  {"type": "prism", "id": "island-grass", "at": [0, 0, 0], "params": {"points": [[-47, -2], [-38, -16], [-16, -23], [8, -25], [30, -19], [44, -8], [46, 3], [35, 16], [12, 23], [-16, 22], [-36, 14]], "z0": 1.4, "height": 0.2, "colour": "#7a8a4a", "windows": "none"}},
+  {"type": "prism", "id": "path", "at": [4, -6, 0], "params": {"points": [[-30, -4], [-2, -8], [30, -4], [30, -2], [-2, -6], [-30, -2]], "z0": 1.6, "height": 0.1, "colour": "#d8cdb5", "windows": "none"}},
+  {"type": "prism", "id": "pier", "at": [0, -38, 0], "params": {"rect": [3, 14], "z0": 0.6, "height": 0.6, "colour": "#8f8472", "windows": "none"}},
+  {"type": "array", "at": [0, -45, 0.6], "params": {"mode": "line", "start": [-1.2, -2, 0], "end": [-1.2, 2, 0], "count": 3, "of": {"type": "prism", "params": {"rect": [0.3, 0.3], "height": 2.5, "colour": "#5d513f", "windows": "none"}}}},
+  {"type": "mass", "id": "pavilion", "footprint": {"rect": [9, 7]}, "at": [-12, 4], "z0": 1.6, "height": 3.2, "storeys": 1,
+   "wall": {"material": "whitewash", "colour": "#e3d9c0", "windows": "none"}, "roof": {"form": "hip", "colour": "#b7a27c", "overhang": 1}},
+  {"type": "mass", "id": "kiosk", "footprint": {"rect": [3.5, 3]}, "at": [16, -12], "z0": 1.6, "height": 2.8, "storeys": 1,
+   "wall": {"material": "whitewash", "colour": "#d8cdb5", "windows": "none"}, "roof": {"form": "flat", "colour": "#a98c52", "overhang": 0.4}},
+  {"type": "array", "at": [0, 0, 1.6], "params": {"mode": "line", "start": [-36, 6, 0], "end": [38, 2, 0], "count": 9, "vary": {}, "of": {"type": "tree", "params": {"kind": "palm", "height": 9}}}},
+  {"type": "array", "at": [0, 0, 1.6], "params": {"mode": "line", "start": [-30, 16, 0], "end": [28, 15, 0], "count": 7, "of": {"type": "tree", "params": {"kind": "palm", "height": 8}}}}
+ ],
+ "site": {"ground": "grass", "forecourt": "water", "trees": 0, "extent": [150, 110]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "No outline or photo: island shape, pier, pavilion and kiosk positions are assumed from the brief, not observed; palm placement is regular."}
+}

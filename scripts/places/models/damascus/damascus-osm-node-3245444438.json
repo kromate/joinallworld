@@ -1,0 +1,205 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/damascus.json",
+   "used": "narrow covered lane of small shops under a corrugated metal cover; the nearby OSM building is only a nearest match (41 m) so it is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shops-west",
+   "footprint": {
+    "rect": [
+     8,
+     32
+    ]
+   },
+   "at": [
+    -8.2,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "bay": 3.2,
+    "faces": {
+     "back": "none"
+    },
+    "material": "limestone",
+    "colour": "#cdb98e",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8576",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shops-east",
+   "footprint": {
+    "rect": [
+     8,
+     32
+    ]
+   },
+   "at": [
+    8.2,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "bay": 3.2,
+    "faces": {
+     "back": "none"
+    },
+    "material": "limestone",
+    "colour": "#cdb98e",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8576",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cover",
+   "at": [
+    0,
+    0,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     32
+    ],
+    "height": 2.6,
+    "topScale": [
+     0.12,
+     1
+    ],
+    "colour": "#8d9296",
+    "bottom": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-wall",
+   "at": [
+    0,
+    -16.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.6
+    ],
+    "height": 0.2,
+    "colour": "#b3a487"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4.4,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "depth": 1.4,
+    "colours": [
+     "#a85a3c",
+     "#cdb98e"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    4.4,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "depth": 1.4,
+    "colours": [
+     "#6f8a6a",
+     "#cdb98e"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4.4,
+    2,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "depth": 1.4,
+    "colours": [
+     "#c9a24a",
+     "#cdb98e"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    4.4,
+    8,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "depth": 1.4,
+    "colours": [
+     "#a85a3c",
+     "#cdb98e"
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; lane runs front to back with stone shop rows, an arched cover and awnings per the brief; stalls, signs and the wider souq fabric are absent."
+ },
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-osm-node-3245444438"
+}

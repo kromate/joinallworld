@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-osm-way-665595615",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Al_Muharraq_Stadium.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Unknown",
+   "view": "side",
+   "file": "/tmp/places-evidence/manama/mstad.jpg",
+   "used": "one long covered main stand with a white flat canopy and red seating, red running track round the pitch, floodlight mast, low open stand opposite (small night photo); canopy attached low, ends removed, mesh fence round track"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/665595615",
+   "used": "site extent and north-south orientation; stand radii sized to the real 234 x 158 m site"
+  }
+ ],
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 128,
+    "width": 84,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     70,
+     48
+    ],
+    "end": [
+     -70,
+     48
+    ],
+    "rows": 22,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 1.4,
+    "under": "solid",
+    "seatColours": [
+     "#c8202b",
+     "#d8a8a0"
+    ],
+    "concreteColour": "#e6dccb",
+    "bay": 6,
+    "canopy": {
+     "height": 2.0,
+     "depth": 18,
+     "thickness": 0.5,
+     "slopeDeg": 4,
+     "colour": "#fafafa",
+     "edgeColour": "#d9737a",
+     "overhangBack": 0.5
+    },
+    "blocks": 3
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -74,
+     30
+    ],
+    "end": [
+     -74,
+     -30
+    ],
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "seatColours": [
+     "#c8202b",
+     "#d8a8a0"
+    ],
+    "concreteColour": "#cfc9bb",
+    "bay": 6,
+    "blocks": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "fence",
+    "height": 2,
+    "thickness": 0.1,
+    "pillarEvery": 8,
+    "colour": "#7a7f84",
+    "points": [
+     [
+      -66,
+      -46
+     ],
+     [
+      66,
+      -46
+     ],
+     [
+      66,
+      46
+     ],
+     [
+      -66,
+      46
+     ],
+     [
+      -66,
+      -46
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    76,
+    -60,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -76,
+    -60,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    76,
+    40,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -76,
+    40,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Camera still a distant overview (clamped framing), not track-side; main stand seats render blue-grey from the raked-surface lighting despite red colours; canopy is a thin white slab without columns or zig-zag blocks; stand outside the track fence and far-end buildings omitted; no night lighting."
+ }
+}

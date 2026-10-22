@@ -1,0 +1,994 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Al-Zawra_Tower_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MohammadHuzam",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/baghdad/zawra1.jpg",
+   "used": "slender pink-brown concrete shaft with one collar, wide flat dark saucer drum with shallow copper cone and thin spike, dense park canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/82643837",
+   "used": "29 m round base footprint, height 50 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 24,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a1968a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a1968a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0.8
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#8a6e66",
+    "profile": [
+     [
+      8.8,
+      0,
+      "#c9c3b6"
+     ],
+     [
+      8.0,
+      0.5
+     ],
+     [
+      6.0,
+      1.6,
+      "#b9aea0"
+     ],
+     [
+      3.4,
+      4.0,
+      "#9a766b"
+     ],
+     [
+      3.0,
+      5.4,
+      "#a27c70"
+     ],
+     [
+      3.0,
+      16
+     ],
+     [
+      3.8,
+      16.1,
+      "#6f5650"
+     ],
+     [
+      3.8,
+      16.9
+     ],
+     [
+      3.0,
+      17.0,
+      "#a27c70"
+     ],
+     [
+      3.0,
+      28.6
+     ],
+     [
+      3.6,
+      29,
+      "#4d4038"
+     ],
+     [
+      6.5,
+      29.8,
+      "#3c4e5c"
+     ],
+     [
+      9.0,
+      31,
+      "#33475a"
+     ],
+     [
+      9.6,
+      32.4,
+      "#456276"
+     ],
+     [
+      9.0,
+      33.8,
+      "#4a687c"
+     ],
+     [
+      7.5,
+      34.3,
+      "#6f5a3e"
+     ],
+     [
+      5.0,
+      35.2,
+      "#8f9a8a"
+     ],
+     [
+      2.2,
+      36.2,
+      "#9fa896"
+     ],
+     [
+      0.4,
+      37.0
+     ],
+     [
+      0.2,
+      42,
+      "#c4b080"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0.8
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#8a6e66",
+    "profile": [
+     [
+      11,
+      0
+     ],
+     [
+      3.2,
+      4
+     ],
+     [
+      3.0,
+      28
+     ],
+     [
+      9.6,
+      31
+     ],
+     [
+      9.6,
+      34
+     ],
+     [
+      0.3,
+      42
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "drum-ribs",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 28,
+    "radius": 9.4,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.35
+      ],
+      "z0": 30.2,
+      "height": 3.2,
+      "colour": "#2a2c30"
+     }
+    },
+    "centre": [
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav0",
+   "at": [
+    -20,
+    6
+   ],
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6dfd0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfd0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pavdome0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -20,
+    6,
+    3.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f0ece2",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      0.4
+     ],
+     [
+      2.0,
+      1.5
+     ],
+     [
+      1,
+      2.3
+     ],
+     [
+      0.1,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav1",
+   "at": [
+    20,
+    8
+   ],
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6dfd0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfd0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pavdome1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20,
+    8,
+    3.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f0ece2",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      0.4
+     ],
+     [
+      2.0,
+      1.5
+     ],
+     [
+      1,
+      2.3
+     ],
+     [
+      0.1,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav2",
+   "at": [
+    -12,
+    -20
+   ],
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6dfd0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfd0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pavdome2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12,
+    -20,
+    3.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f0ece2",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      0.4
+     ],
+     [
+      2.0,
+      1.5
+     ],
+     [
+      1,
+      2.3
+     ],
+     [
+      0.1,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav3",
+   "at": [
+    14,
+    -20
+   ],
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6dfd0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfd0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pavdome3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    14,
+    -20,
+    3.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f0ece2",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      0.4
+     ],
+     [
+      2.0,
+      1.5
+     ],
+     [
+      1,
+      2.3
+     ],
+     [
+      0.1,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "lattice-a",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     0,
+     0,
+     6
+    ],
+    "end": [
+     0,
+     0,
+     26
+    ],
+    "of": {
+     "type": "prism",
+     "rotDeg": 0,
+     "params": {
+      "rect": [
+       0.9,
+       5.6
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#3f3330"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "lattice-b",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     0,
+     0,
+     6
+    ],
+    "end": [
+     0,
+     0,
+     26
+    ],
+    "of": {
+     "type": "prism",
+     "rotDeg": 90,
+     "params": {
+      "rect": [
+       0.9,
+       5.6
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#3f3330"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tent0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f2f0e8",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      3.6,
+      1.2
+     ],
+     [
+      0.2,
+      3.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tent1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8,
+    -27,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f2f0e8",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      3.6,
+      1.2
+     ],
+     [
+      0.2,
+      3.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tent2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    26,
+    -4,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f2f0e8",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      3.6,
+      1.2
+     ],
+     [
+      0.2,
+      3.8
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     2.0,
+     26.5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -19.2,
+     20.5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10.3,
+     -10.4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     33.8,
+     2.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -1.1,
+     18.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24.7,
+     -0.7
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12.9,
+     -21.3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10.8,
+     -12.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -23.0,
+     -26.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -31.2,
+     -4.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6.9,
+     -12.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     1.4,
+     -27.7
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -4.4,
+     13.1
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16.5,
+     -18.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6.8,
+     -34.3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8.1,
+     -35.1
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26.1,
+     20.2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34.2,
+     12.4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     11.2,
+     -10.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12.1,
+     13.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     23.3,
+     -5.1
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14.4,
+     -14.7
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22.6,
+     -1.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16.4,
+     22.3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30.7,
+     -18.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -15.0,
+     -33.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     23.4,
+     -29.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8.1,
+     -15.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     23.8,
+     -28.5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22.5,
+     -15.4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -4.1,
+     -17.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13.4,
+     -23.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -3.2,
+     14.2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22.9,
+     -30.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28.0,
+     17.4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14.2,
+     8.9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8.8,
+     31.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9.8,
+     -10.1
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10.6,
+     -9.3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4.2,
+     -20.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     27.5,
+     -25.5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -37.9,
+     -1.3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -5.5,
+     13.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11.2,
+     -8.1
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     7.5,
+     21.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -13.0,
+     -10.8
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "drum is a smooth revolve with thin rib boxes, no glazing detail; tower slightly taller/slimmer than photo; amusement park omitted; pavilion domes remain"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-osm-way-82643837"
+}

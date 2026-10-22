@@ -1,0 +1,268 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-osm-way-1213517675",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1213517675",
+   "used": "real site outline, lofted into an eroded earthen mound with sloping flanks"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q25524412",
+   "used": "archaeological site (tepa); mud and grass colours from the brief, height typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "mound",
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -51.2,
+        3.8
+       ],
+       [
+        -19.5,
+        53.5
+       ],
+       [
+        71.6,
+        -23.9
+       ],
+       [
+        53.2,
+        -35.7
+       ],
+       [
+        26.6,
+        -22.4
+       ],
+       [
+        -23.5,
+        -36.1
+       ],
+       [
+        -41.1,
+        -19.2
+       ]
+      ],
+      "scale": 1.0,
+      "colour": "#8f7b55"
+     },
+     {
+      "z": 1.5,
+      "poly": [
+       [
+        -51.2,
+        3.8
+       ],
+       [
+        -19.5,
+        53.5
+       ],
+       [
+        71.6,
+        -23.9
+       ],
+       [
+        53.2,
+        -35.7
+       ],
+       [
+        26.6,
+        -22.4
+       ],
+       [
+        -23.5,
+        -36.1
+       ],
+       [
+        -41.1,
+        -19.2
+       ]
+      ],
+      "scale": 0.97,
+      "colour": "#a89268"
+     },
+     {
+      "z": 4,
+      "poly": [
+       [
+        -51.2,
+        3.8
+       ],
+       [
+        -19.5,
+        53.5
+       ],
+       [
+        71.6,
+        -23.9
+       ],
+       [
+        53.2,
+        -35.7
+       ],
+       [
+        26.6,
+        -22.4
+       ],
+       [
+        -23.5,
+        -36.1
+       ],
+       [
+        -41.1,
+        -19.2
+       ]
+      ],
+      "scale": 0.88,
+      "colour": "#a89268"
+     },
+     {
+      "z": 6.2,
+      "poly": [
+       [
+        -51.2,
+        3.8
+       ],
+       [
+        -19.5,
+        53.5
+       ],
+       [
+        71.6,
+        -23.9
+       ],
+       [
+        53.2,
+        -35.7
+       ],
+       [
+        26.6,
+        -22.4
+       ],
+       [
+        -23.5,
+        -36.1
+       ],
+       [
+        -41.1,
+        -19.2
+       ]
+      ],
+      "scale": 0.78,
+      "colour": "#9a9a5c"
+     },
+     {
+      "z": 7,
+      "poly": [
+       [
+        -51.2,
+        3.8
+       ],
+       [
+        -19.5,
+        53.5
+       ],
+       [
+        71.6,
+        -23.9
+       ],
+       [
+        53.2,
+        -35.7
+       ],
+       [
+        26.6,
+        -22.4
+       ],
+       [
+        -23.5,
+        -36.1
+       ],
+       [
+        -41.1,
+        -19.2
+       ]
+      ],
+      "scale": 0.74,
+      "colour": "#7f9a52"
+     }
+    ],
+    "smooth": true,
+    "curve": true,
+    "steps": 3,
+    "capTop": true,
+    "topColour": "#7f9a52",
+    "colour": "#a89268"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spoil-heap",
+   "at": [
+    -30,
+    44
+   ],
+   "rotDeg": 40,
+   "params": {
+    "points": [
+     [
+      -5,
+      -3
+     ],
+     [
+      5,
+      -4
+     ],
+     [
+      7,
+      1
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      -6,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#c2b08a",
+    "topColour": "#9aa361"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; only the outline is real, mound height, erosion gullies and vegetation are typed"
+ }
+}

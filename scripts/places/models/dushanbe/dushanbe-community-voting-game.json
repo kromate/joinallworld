@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1474421170",
+   "used": "real 49 x 38 m outline (rotated rectangle, bearing 84 deg)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "four-storey Soviet-type ministry block, cream render, flat roof, flagpole forecourt"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 55
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d4b5",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#a9a28c",
+    "groundKind": "punched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 1.2,
+    "run": 2,
+    "count": 4,
+    "colour": "#c9c2ad"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colours": [
+     "#cc0000",
+     "#ffffff",
+     "#006600"
+    ],
+    "count": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#3f5f86",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "bars",
+    "pillarEvery": 6,
+    "colour": "#7c7c78"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "line": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Outline is the real OSM building but no photo exists; facade is a typical cream Soviet office block, entrance position assumed."
+ }
+}

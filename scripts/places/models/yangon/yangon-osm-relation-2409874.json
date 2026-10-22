@@ -1,0 +1,1102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-osm-relation-2409874",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yangon,_Maha_Wizaya_Zedi_Pagode_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Stefan Fussan",
+   "view": "front",
+   "file": "/tmp/places-evidence/yangon/maha0.jpg",
+   "used": "gilded bell stupa on three stepped cream/gold terraces, banded bell, ringed spire and hti, small corner stupas, white-and-gold arched shrine gable at left, pillared hall at right, lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2016_Rangun,_Pagoda_Maha_Wizaya_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marcin Konsek",
+   "view": "detail",
+   "file": "/tmp/places-evidence/yangon/maha2.jpg",
+   "used": "cream wall with gold trim, green/red tiered roofs of the entrance gate (gate itself not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/160698623",
+   "used": "cross-shaped terrace outline (105 x 104 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.7,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdcaa",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0cf98",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     40,
+     40
+    ],
+    "height": 1.0,
+    "colour": "#ecd9a0",
+    "topColour": "#e0c880"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    2.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "profile": [
+     [
+      0.0,
+      0.0,
+      "#f1e6c0"
+     ],
+     [
+      25.35,
+      0.0,
+      "#f1e6c0"
+     ],
+     [
+      25.35,
+      1.56,
+      "#b8861a"
+     ],
+     [
+      22.82,
+      1.56,
+      "#f1e6c0"
+     ],
+     [
+      22.82,
+      3.12,
+      "#b8861a"
+     ],
+     [
+      20.28,
+      3.12,
+      "#f1e6c0"
+     ],
+     [
+      20.28,
+      4.68,
+      "#b8861a"
+     ],
+     [
+      17.75,
+      4.68,
+      "#f1e6c0"
+     ],
+     [
+      17.75,
+      5.98,
+      "#b8861a"
+     ],
+     [
+      16.25,
+      5.98,
+      "#d9a521"
+     ],
+     [
+      16.3,
+      7.8,
+      "#d9a521"
+     ],
+     [
+      17.4,
+      10.4,
+      "#d9a521"
+     ],
+     [
+      17.6,
+      10.4,
+      "#b8861a"
+     ],
+     [
+      17.6,
+      11.0,
+      "#b8861a"
+     ],
+     [
+      17.4,
+      11.0,
+      "#d9a521"
+     ],
+     [
+      17.2,
+      12.8,
+      "#d9a521"
+     ],
+     [
+      17.6,
+      12.8,
+      "#b8861a"
+     ],
+     [
+      17.6,
+      13.4,
+      "#b8861a"
+     ],
+     [
+      17.2,
+      13.4,
+      "#d9a521"
+     ],
+     [
+      17.03,
+      12.87,
+      "#d9a521"
+     ],
+     [
+      15.99,
+      15.34,
+      "#d9a521"
+     ],
+     [
+      14.17,
+      17.42,
+      "#d9a521"
+     ],
+     [
+      11.57,
+      19.24,
+      "#d9a521"
+     ],
+     [
+      9.1,
+      20.8,
+      "#d9a521"
+     ],
+     [
+      7.27,
+      22.1,
+      "#d9a521"
+     ],
+     [
+      8.28,
+      22.1,
+      "#b8861a"
+     ],
+     [
+      8.28,
+      23.14,
+      "#b8861a"
+     ],
+     [
+      7.1,
+      23.66,
+      "#d9a521"
+     ],
+     [
+      7.77,
+      24.44,
+      "#b8861a"
+     ],
+     [
+      6.42,
+      25.09,
+      "#d9a521"
+     ],
+     [
+      6.08,
+      25.35,
+      "#d9a521"
+     ],
+     [
+      5.41,
+      28.6,
+      "#d9a521"
+     ],
+     [
+      4.39,
+      32.5,
+      "#d9a521"
+     ],
+     [
+      3.55,
+      36.4,
+      "#d9a521"
+     ],
+     [
+      2.7,
+      39.65,
+      "#d9a521"
+     ],
+     [
+      2.2,
+      40.95,
+      "#d9a521"
+     ],
+     [
+      2.87,
+      40.95,
+      "#b8861a"
+     ],
+     [
+      2.87,
+      41.86,
+      "#b8861a"
+     ],
+     [
+      1.86,
+      42.38,
+      "#d9a521"
+     ],
+     [
+      1.69,
+      43.55,
+      "#d9a521"
+     ],
+     [
+      2.2,
+      44.98,
+      "#d9a521"
+     ],
+     [
+      1.69,
+      46.8,
+      "#d9a521"
+     ],
+     [
+      0.68,
+      48.36,
+      "#d9a521"
+     ],
+     [
+      0.43,
+      50.05,
+      "#b8861a"
+     ],
+     [
+      0.0,
+      52.0,
+      "#b8861a"
+     ]
+    ],
+    "segments": 18,
+    "colour": "#d9a521"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    2.5
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "colour": "#d9a521",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       31,
+       31
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       12,
+       12
+      ]
+     },
+     {
+      "z": 52,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.5
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 22,
+    "startDeg": 45,
+    "endDeg": 405,
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0,
+        "#f1e6c0"
+       ],
+       [
+        3,
+        0,
+        "#f1e6c0"
+       ],
+       [
+        3,
+        0.9,
+        "#b8861a"
+       ],
+       [
+        2.6,
+        1.4,
+        "#f1e6c0"
+       ],
+       [
+        3.8,
+        3.2,
+        "#d9a521"
+       ],
+       [
+        4.2,
+        5.2,
+        "#d9a521"
+       ],
+       [
+        4.3,
+        5.6,
+        "#b8861a"
+       ],
+       [
+        4.0,
+        6.2,
+        "#d9a521"
+       ],
+       [
+        2.4,
+        8.0,
+        "#d9a521"
+       ],
+       [
+        1.6,
+        8.4,
+        "#b8861a"
+       ],
+       [
+        1.3,
+        9.6,
+        "#d9a521"
+       ],
+       [
+        1.0,
+        11,
+        "#b8861a"
+       ],
+       [
+        0.8,
+        12.5,
+        "#d9a521"
+       ],
+       [
+        0.5,
+        14.5,
+        "#d9a521"
+       ],
+       [
+        0,
+        17,
+        "#b8861a"
+       ]
+      ],
+      "segments": 8,
+      "colour": "#d9a521"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.5
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 44,
+    "startDeg": 45,
+    "endDeg": 405,
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0,
+        "#f1e6c0"
+       ],
+       [
+        3,
+        0,
+        "#f1e6c0"
+       ],
+       [
+        3,
+        0.9,
+        "#b8861a"
+       ],
+       [
+        2.6,
+        1.4,
+        "#f1e6c0"
+       ],
+       [
+        3.8,
+        3.2,
+        "#d9a521"
+       ],
+       [
+        4.2,
+        5.2,
+        "#d9a521"
+       ],
+       [
+        4.3,
+        5.6,
+        "#b8861a"
+       ],
+       [
+        4.0,
+        6.2,
+        "#d9a521"
+       ],
+       [
+        2.4,
+        8.0,
+        "#d9a521"
+       ],
+       [
+        1.6,
+        8.4,
+        "#b8861a"
+       ],
+       [
+        1.3,
+        9.6,
+        "#d9a521"
+       ],
+       [
+        1.0,
+        11,
+        "#b8861a"
+       ],
+       [
+        0.8,
+        12.5,
+        "#d9a521"
+       ],
+       [
+        0.5,
+        14.5,
+        "#d9a521"
+       ],
+       [
+        0,
+        17,
+        "#b8861a"
+       ]
+      ],
+      "segments": 8,
+      "colour": "#d9a521"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrine-left",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -22,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 1.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f8f2de",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "windowShape": "arched",
+    "plinth": 0.3,
+    "bands": "#b8861a",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d4a62a",
+    "material": "concrete",
+    "pitch": 45,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrine-right",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    22,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 1.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f8f2de",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "windowShape": "arched",
+    "plinth": 0.3,
+    "bands": "#b8861a",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d4a62a",
+    "material": "concrete",
+    "pitch": 45,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrine-west",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    -26,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 1.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f8f2de",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "windowShape": "arched",
+    "plinth": 0.3,
+    "bands": "#b8861a",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d4a62a",
+    "material": "concrete",
+    "pitch": 45,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-hall",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -47
+   ],
+   "z0": 1.5,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe0",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "plinth": 0.3,
+    "bands": "#b8861a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9961a",
+    "material": "concrete",
+    "pitch": 40,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.5,
+    "run": 1.6,
+    "count": 6,
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 12,
+    "line": 0
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    6.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     -26,
+     0
+    ],
+    "end": [
+     -17,
+     -26,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       0.6
+      ],
+      "height": 1.6,
+      "colour": "#d9a521",
+      "topScale": 0.15
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    6.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     17,
+     -26,
+     0
+    ],
+    "end": [
+     27,
+     -26,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       0.6
+      ],
+      "height": 1.6,
+      "colour": "#d9a521",
+      "topScale": 0.15
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-hall",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    36,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 1.5,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#b8861a",
+    "pattern": {
+     "type": "arcade",
+     "faces": "front"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a62a",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -26,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     6.6000000000000005,
+     4.4
+    ],
+    "height": 3.5,
+    "colour": "#c43a2a",
+    "topScale": 0.6,
+    "topColour": "#d9a521"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -26,
+    10
+   ],
+   "params": {
+    "rect": [
+     3.5999999999999996,
+     2.4
+    ],
+    "height": 4,
+    "colour": "#d9a521",
+    "topScale": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -26,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     6.6000000000000005,
+     4.4
+    ],
+    "height": 3.5,
+    "colour": "#c43a2a",
+    "topScale": 0.6,
+    "topColour": "#d9a521"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -26,
+    10
+   ],
+   "params": {
+    "rect": [
+     3.5999999999999996,
+     2.4
+    ],
+    "height": 4,
+    "colour": "#d9a521",
+    "topScale": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -16,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     6.6000000000000005
+    ],
+    "height": 3.5,
+    "colour": "#c43a2a",
+    "topScale": 0.6,
+    "topColour": "#d9a521"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -16,
+    10
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     3.5999999999999996
+    ],
+    "height": 4,
+    "colour": "#d9a521",
+    "topScale": 0.1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    7.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     26,
+     -6,
+     0
+    ],
+    "end": [
+     46,
+     -6,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       3.4
+      ],
+      "height": 4,
+      "colour": "#2f7a55",
+      "topScale": 0.3,
+      "topColour": "#d9a521"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -34,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     84,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#f4ecd0",
+    "topColour": "#d9a521"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    34,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     84,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#f4ecd0",
+    "topColour": "#d9a521"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    0,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     68
+    ],
+    "height": 1.6,
+    "colour": "#f4ecd0",
+    "topColour": "#d9a521"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    42,
+    0,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     68
+    ],
+    "height": 1.6,
+    "colour": "#f4ecd0",
+    "topColour": "#d9a521"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -60
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -50
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "bell ornament is bands only; shrine halls have simple tiered roofs, no naga finials or ornate gables; perimeter wall plain; photo is a close view of part of the terrace"
+ }
+}

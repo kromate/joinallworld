@@ -1,0 +1,975 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:As_Salt_Great_Mosque.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Freedom's Falcon",
+   "view": "side",
+   "file": "/tmp/places-evidence/amman/salt1.jpg",
+   "used": "honey-cream dressed limestone, long street wall as a deep pier colonnade, square tower base carrying a round minaret with a single balcony and small dome, pointed arched upper windows with balcony rails, ground-floor doors, hillside town behind; Note: this photo IS the venue (brief and OSM way/696170482 name the Great Mosque of As-Salt, Wikidata Q107810622); critic's evidenceOk=false was wrong."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/696170482",
+   "used": "prayer-hall outline, about 57 x 25 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 55,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6bd8e",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#e7d5a9",
+    "bay": 4.2,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "depth": 0.45,
+      "rail": 0.9,
+      "width": 1.5,
+      "every": 4.2,
+      "slab": 0.12,
+      "railKind": "solid",
+      "colour": "#e7d5a9",
+      "railColour": "#f6f4ee",
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf9f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "rotDeg": 12.6,
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#dcc794"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    -29.0,
+    -14.06,
+    0
+   ],
+   "rotDeg": -6.8,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    -34.0,
+    -13.66,
+    0
+   ],
+   "rotDeg": -6.8,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    -24.0,
+    -14.46,
+    0
+   ],
+   "rotDeg": -6.8,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    -19.0,
+    -14.98,
+    0
+   ],
+   "rotDeg": -4.7,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    -14.0,
+    -15.26,
+    0
+   ],
+   "rotDeg": -1.8,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    -9.0,
+    -15.26,
+    0
+   ],
+   "rotDeg": 1.8,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    -4.0,
+    -14.94,
+    0
+   ],
+   "rotDeg": 5.6,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    1.0,
+    -14.28,
+    0
+   ],
+   "rotDeg": 9.4,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    6.0,
+    -13.29,
+    0
+   ],
+   "rotDeg": 12.8,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    11.0,
+    -12.02,
+    0
+   ],
+   "rotDeg": 15.6,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier",
+   "at": [
+    16.0,
+    -10.52,
+    0
+   ],
+   "rotDeg": 17.6,
+   "params": {
+    "rect": [
+     1.7,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c",
+    "material": "limestone",
+    "topColour": "#e0cb98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    -21.5,
+    -14.72,
+    12.2
+   ],
+   "rotDeg": -5.9,
+   "params": {
+    "rect": [
+     5.026295250854336,
+     3.0
+    ],
+    "height": 1.1,
+    "colour": "#e2cd9c",
+    "material": "limestone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -21.5,
+    -12.82,
+    0
+   ],
+   "rotDeg": -5.9,
+   "params": {
+    "rect": [
+     5.026295250854336,
+     0.3
+    ],
+    "height": 11.0,
+    "colour": "#bfa573"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    -16.5,
+    -15.12,
+    12.2
+   ],
+   "rotDeg": -3.3,
+   "params": {
+    "rect": [
+     5.008247361813933,
+     3.0
+    ],
+    "height": 1.1,
+    "colour": "#e2cd9c",
+    "material": "limestone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16.5,
+    -13.219999999999999,
+    0
+   ],
+   "rotDeg": -3.3,
+   "params": {
+    "rect": [
+     5.008247361813933,
+     0.3
+    ],
+    "height": 11.0,
+    "colour": "#bfa573"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    -11.5,
+    -15.26,
+    12.2
+   ],
+   "rotDeg": -0.0,
+   "params": {
+    "rect": [
+     5.000000349647765,
+     3.0
+    ],
+    "height": 1.1,
+    "colour": "#e2cd9c",
+    "material": "limestone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.5,
+    -13.36,
+    0
+   ],
+   "rotDeg": -0.0,
+   "params": {
+    "rect": [
+     5.000000349647765,
+     0.3
+    ],
+    "height": 11.0,
+    "colour": "#bfa573"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    -6.5,
+    -15.1,
+    12.2
+   ],
+   "rotDeg": 3.7,
+   "params": {
+    "rect": [
+     5.010432539200763,
+     3.0
+    ],
+    "height": 1.1,
+    "colour": "#e2cd9c",
+    "material": "limestone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.5,
+    -13.2,
+    0
+   ],
+   "rotDeg": 3.7,
+   "params": {
+    "rect": [
+     5.010432539200763,
+     0.3
+    ],
+    "height": 11.0,
+    "colour": "#bfa573"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    -1.5,
+    -14.61,
+    12.2
+   ],
+   "rotDeg": 7.5,
+   "params": {
+    "rect": [
+     5.0436473930999774,
+     3.0
+    ],
+    "height": 1.1,
+    "colour": "#e2cd9c",
+    "material": "limestone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.5,
+    -12.709999999999999,
+    0
+   ],
+   "rotDeg": 7.5,
+   "params": {
+    "rect": [
+     5.0436473930999774,
+     0.3
+    ],
+    "height": 11.0,
+    "colour": "#bfa573"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    3.5,
+    -13.79,
+    12.2
+   ],
+   "rotDeg": 11.2,
+   "params": {
+    "rect": [
+     5.09651203743122,
+     3.0
+    ],
+    "height": 1.1,
+    "colour": "#e2cd9c",
+    "material": "limestone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.5,
+    -11.889999999999999,
+    0
+   ],
+   "rotDeg": 11.2,
+   "params": {
+    "rect": [
+     5.09651203743122,
+     0.3
+    ],
+    "height": 11.0,
+    "colour": "#bfa573"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    8.5,
+    -12.66,
+    12.2
+   ],
+   "rotDeg": 14.3,
+   "params": {
+    "rect": [
+     5.159401397589496,
+     3.0
+    ],
+    "height": 1.1,
+    "colour": "#e2cd9c",
+    "material": "limestone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.5,
+    -10.76,
+    0
+   ],
+   "rotDeg": 14.3,
+   "params": {
+    "rect": [
+     5.159401397589496,
+     0.3
+    ],
+    "height": 11.0,
+    "colour": "#bfa573"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    13.5,
+    -11.27,
+    12.2
+   ],
+   "rotDeg": 16.7,
+   "params": {
+    "rect": [
+     5.219787756139419,
+     3.0
+    ],
+    "height": 1.1,
+    "colour": "#e2cd9c",
+    "material": "limestone"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.5,
+    -9.37,
+    0
+   ],
+   "rotDeg": 16.7,
+   "params": {
+    "rect": [
+     5.219787756139419,
+     0.3
+    ],
+    "height": 11.0,
+    "colour": "#bfa573"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "rotDeg": 12.6,
+   "params": {
+    "rect": [
+     40,
+     3.0
+    ],
+    "height": 12.2,
+    "colour": "#d8be8c"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-base",
+   "at": [
+    -34,
+    -17.5,
+    0
+   ],
+   "rotDeg": 12.6,
+   "params": {
+    "rect": [
+     7.5,
+     7.5
+    ],
+    "height": 17,
+    "colour": "#d6bc88",
+    "material": "stone-ashlar",
+    "topColour": "#cdb585"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "minaret",
+   "at": [
+    -34,
+    -17.5,
+    17.0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#dcc698",
+    "profile": [
+     [
+      0,
+      0,
+      "#dcc698"
+     ],
+     [
+      2.6,
+      0
+     ],
+     [
+      2.4,
+      0.5
+     ],
+     [
+      2.2,
+      1.0
+     ],
+     [
+      2.2,
+      2.4
+     ],
+     [
+      2.45,
+      2.5
+     ],
+     [
+      2.45,
+      2.7
+     ],
+     [
+      2.2,
+      2.8
+     ],
+     [
+      2.2,
+      4.4
+     ],
+     [
+      2.45,
+      4.5
+     ],
+     [
+      2.45,
+      4.7
+     ],
+     [
+      2.2,
+      4.8
+     ],
+     [
+      2.2,
+      6.4
+     ],
+     [
+      2.6,
+      6.55
+     ],
+     [
+      3.4,
+      6.8
+     ],
+     [
+      3.5,
+      7.1
+     ],
+     [
+      0,
+      7.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "balcony-posts",
+   "at": [
+    -34,
+    -17.5,
+    24.1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 1.6,
+      "colour": "#d6bc8a"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 2.2,
+    "count": 8,
+    "startDeg": 0,
+    "endDeg": 315,
+    "facing": "outward"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "balcony-roof",
+   "at": [
+    -34,
+    -17.5,
+    25.7
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3f342c",
+    "profile": [
+     [
+      0,
+      0,
+      "#3f342c"
+     ],
+     [
+      3.1,
+      0
+     ],
+     [
+      3.0,
+      0.2
+     ],
+     [
+      2.2,
+      0.7
+     ],
+     [
+      1.5,
+      1.0
+     ],
+     [
+      0,
+      1.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "minaret-dome",
+   "at": [
+    -34,
+    -17.5,
+    26.8
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d8c9a0",
+    "profile": [
+     [
+      0,
+      0,
+      "#d8c9a0"
+     ],
+     [
+      1.3,
+      0
+     ],
+     [
+      1.35,
+      0.5
+     ],
+     [
+      1.1,
+      1.0
+     ],
+     [
+      0.6,
+      1.5
+     ],
+     [
+      0.12,
+      1.8
+     ],
+     [
+      0.06,
+      2.5
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": 0,
+  "forecourt": "none",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Colonnade now sweeps to a taller wider tower base with minaret, deep piers and no plaza; still missing fan window, dark door leaves and paired upper windows with rails, and end face still carries arched windows"
+ }
+}

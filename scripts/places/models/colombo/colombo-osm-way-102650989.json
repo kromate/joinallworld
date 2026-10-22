@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-osm-way-102650989",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1028948060",
+   "used": "footprint (69 x 66 m, name match), 11 levels, flat roof, white concrete"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -10.8
+   },
+   "height": 44,
+   "storeys": 11,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f1f1ee",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "faces": {
+     "front": "curtain"
+    },
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d3ce",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium",
+   "params": {
+    "rect": [
+     44,
+     10
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#5f8aa3",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "at": [
+    0,
+    -40
+   ]
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -24,
+    -47,
+    0
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "bottom": 2.4,
+    "colour": "#f1f1ee",
+    "frameColour": "#5f8aa3"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "tower",
+   "at": [
+    10,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 2,
+    "colour": "#c9cbc8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#b9bcc0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0
+    ],
+    "count": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo: OSM footprint, levels and colours only; podium, ambulance bay and glazing are assumptions."
+ }
+}

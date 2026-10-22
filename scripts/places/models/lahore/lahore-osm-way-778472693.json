@@ -1,0 +1,1289 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-way-778472693",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Packages_Mall,_Lahore_5.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tahir mq",
+   "view": "front",
+   "file": "/tmp/places-evidence/lahore/pk2.jpg",
+   "used": "entrance end: curved dark-banded glass drum, two raked pitched roof wings with steel struts, pink V legs, pale beige render side blocks with ribbon glazing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Packages_Mall,_Lahore_4.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tahir mq",
+   "view": "street",
+   "file": "/tmp/places-evidence/lahore/pk0.jpg",
+   "used": "long blank beige render wall over a dark ground-floor band, blank sign boards, light poles, forecourt parking"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/778472693",
+   "used": "overall size only (352 x 204 m): about 118 m of the entrance end is modelled, the real outline exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 34,
+  "aspect": 1.778,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     40,
+     34
+    ]
+   },
+   "at": [
+    -39,
+    0
+   ],
+   "height": 23,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#7f98a6",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c0b6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     26,
+     34
+    ]
+   },
+   "at": [
+    32,
+    0
+   ],
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d8c6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#7f98a6",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c0b6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     84,
+     2
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#2b2d30"
+   },
+   "at": [
+    0,
+    -17.2
+   ],
+   "id": "dark-base"
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     30,
+     24
+    ],
+    "z0": 0,
+    "height": 22,
+    "colour": "#d8d0bf"
+   },
+   "at": [
+    0,
+    6
+   ],
+   "id": "atrium-core"
+  },
+  {
+   "type": "canopy",
+   "params": {
+    "width": 30,
+    "depth": 5,
+    "height": 5,
+    "form": "flat",
+    "colour": "#2b2d30"
+   },
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "id": "entry-canopy"
+  },
+  {
+   "type": "core/sign-board",
+   "params": {
+    "width": 18.2,
+    "height": 3.5999999999999996,
+    "bottom": 12,
+    "colour": "#ece6d8",
+    "posts": false
+   },
+   "at": [
+    -39,
+    -17.3,
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "params": {
+    "width": 15.600000000000001,
+    "height": 12.0,
+    "bottom": 5,
+    "colour": "#2c3a8e",
+    "posts": false
+   },
+   "at": [
+    32,
+    -17.3,
+    0
+   ]
+  },
+  {
+   "type": "car-park",
+   "params": {
+    "width": 60,
+    "depth": 20,
+    "density": 0.8
+   },
+   "at": [
+    -10,
+    -32,
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43",
+    "count": 2,
+    "spacing": 6
+   },
+   "at": [
+    34,
+    -28,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "atrium-drum",
+   "params": {
+    "colour": "#2f4552",
+    "capTop": true,
+    "round": 28,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       17,
+       12
+      ],
+      "cy": 0
+     },
+     {
+      "z": 17,
+      "ellipse": [
+       17,
+       12
+      ],
+      "cy": 0
+     }
+    ]
+   },
+   "at": [
+    0,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "drum-band-0",
+   "params": {
+    "colour": "#1f2225",
+    "round": 28,
+    "sections": [
+     {
+      "z": 5.2,
+      "ellipse": [
+       17.25,
+       12.25
+      ],
+      "cy": 0
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       17.25,
+       12.25
+      ],
+      "cy": 0
+     }
+    ]
+   },
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "drum-band-1",
+   "params": {
+    "colour": "#1f2225",
+    "round": 28,
+    "sections": [
+     {
+      "z": 11.0,
+      "ellipse": [
+       17.25,
+       12.25
+      ],
+      "cy": 0
+     },
+     {
+      "z": 12.3,
+      "ellipse": [
+       17.25,
+       12.25
+      ],
+      "cy": 0
+     }
+    ]
+   },
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "drum-band-2",
+   "params": {
+    "colour": "#1f2225",
+    "round": 28,
+    "sections": [
+     {
+      "z": 16.4,
+      "ellipse": [
+       17.25,
+       12.25
+      ],
+      "cy": 0
+     },
+     {
+      "z": 17.7,
+      "ellipse": [
+       17.25,
+       12.25
+      ],
+      "cy": 0
+     }
+    ]
+   },
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "drum-cap",
+   "params": {
+    "colour": "#1f2225",
+    "round": 28,
+    "sections": [
+     {
+      "z": 17,
+      "ellipse": [
+       18,
+       13
+      ],
+      "cy": 0
+     },
+     {
+      "z": 18.4,
+      "ellipse": [
+       18,
+       13
+      ],
+      "cy": 0
+     }
+    ]
+   },
+   "at": [
+    0,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "wing-slab-l",
+   "params": {
+    "section": {
+     "rect": [
+      40,
+      3.0
+     ]
+    },
+    "points": [
+     [
+      -4,
+      4,
+      22.5
+     ],
+     [
+      -15.0,
+      4,
+      41
+     ]
+    ],
+    "colour": "#d6d8da"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "wing-edge-l",
+   "params": {
+    "section": {
+     "rect": [
+      44,
+      0.8
+     ]
+    },
+    "points": [
+     [
+      -4,
+      4,
+      21.2
+     ],
+     [
+      -15.0,
+      4,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-l0",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      -4,
+      -8,
+      21.2
+     ],
+     [
+      -9.5,
+      -8,
+      26
+     ],
+     [
+      -15.0,
+      -8,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-l0",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      -4,
+      -8,
+      21.2
+     ],
+     [
+      -15.0,
+      -8,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-l1",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      -4,
+      -1.5,
+      21.2
+     ],
+     [
+      -9.5,
+      -1.5,
+      26
+     ],
+     [
+      -15.0,
+      -1.5,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-l1",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      -4,
+      -1.5,
+      21.2
+     ],
+     [
+      -15.0,
+      -1.5,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-l2",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      -4,
+      5,
+      21.2
+     ],
+     [
+      -9.5,
+      5,
+      26
+     ],
+     [
+      -15.0,
+      5,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-l2",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      -4,
+      5,
+      21.2
+     ],
+     [
+      -15.0,
+      5,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-l3",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      -4,
+      11.5,
+      21.2
+     ],
+     [
+      -9.5,
+      11.5,
+      26
+     ],
+     [
+      -15.0,
+      11.5,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-l3",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      -4,
+      11.5,
+      21.2
+     ],
+     [
+      -15.0,
+      11.5,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-l4",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      -4,
+      18,
+      21.2
+     ],
+     [
+      -9.5,
+      18,
+      26
+     ],
+     [
+      -15.0,
+      18,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-l4",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      -4,
+      18,
+      21.2
+     ],
+     [
+      -15.0,
+      18,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "wing-slab-r",
+   "params": {
+    "section": {
+     "rect": [
+      40,
+      3.0
+     ]
+    },
+    "points": [
+     [
+      4,
+      4,
+      22.5
+     ],
+     [
+      15.0,
+      4,
+      41
+     ]
+    ],
+    "colour": "#d6d8da"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "wing-edge-r",
+   "params": {
+    "section": {
+     "rect": [
+      44,
+      0.8
+     ]
+    },
+    "points": [
+     [
+      4,
+      4,
+      21.2
+     ],
+     [
+      15.0,
+      4,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-r0",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      4,
+      -8,
+      21.2
+     ],
+     [
+      9.5,
+      -8,
+      26
+     ],
+     [
+      15.0,
+      -8,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-r0",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      4,
+      -8,
+      21.2
+     ],
+     [
+      15.0,
+      -8,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-r1",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      4,
+      -1.5,
+      21.2
+     ],
+     [
+      9.5,
+      -1.5,
+      26
+     ],
+     [
+      15.0,
+      -1.5,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-r1",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      4,
+      -1.5,
+      21.2
+     ],
+     [
+      15.0,
+      -1.5,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-r2",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      4,
+      5,
+      21.2
+     ],
+     [
+      9.5,
+      5,
+      26
+     ],
+     [
+      15.0,
+      5,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-r2",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      4,
+      5,
+      21.2
+     ],
+     [
+      15.0,
+      5,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-r3",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      4,
+      11.5,
+      21.2
+     ],
+     [
+      9.5,
+      11.5,
+      26
+     ],
+     [
+      15.0,
+      11.5,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-r3",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      4,
+      11.5,
+      21.2
+     ],
+     [
+      15.0,
+      11.5,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut-r4",
+   "params": {
+    "section": {
+     "circle": 0.42
+    },
+    "points": [
+     [
+      4,
+      18,
+      21.2
+     ],
+     [
+      9.5,
+      18,
+      26
+     ],
+     [
+      15.0,
+      18,
+      39.7
+     ]
+    ],
+    "colour": "#8c9298"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "brace-r4",
+   "params": {
+    "section": {
+     "circle": 0.308
+    },
+    "points": [
+     [
+      4,
+      18,
+      21.2
+     ],
+     [
+      15.0,
+      18,
+      39.7
+     ]
+    ],
+    "colour": "#a3a8ad"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "vleg--1-0--1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      -5,
+      -21.5,
+      0
+     ],
+     [
+      -9.032,
+      -21.5,
+      9
+     ]
+    ],
+    "colour": "#c0307a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "vleg--1-0-1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      -5,
+      -21.5,
+      0
+     ],
+     [
+      -0.968,
+      -21.5,
+      9
+     ]
+    ],
+    "colour": "#c0307a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "vleg--1-1--1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      -11,
+      -21.5,
+      0
+     ],
+     [
+      -15.032,
+      -21.5,
+      9
+     ]
+    ],
+    "colour": "#c0307a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "vleg--1-1-1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      -11,
+      -21.5,
+      0
+     ],
+     [
+      -6.967999999999999,
+      -21.5,
+      9
+     ]
+    ],
+    "colour": "#c0307a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "vleg-1-0--1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      5,
+      -21.5,
+      0
+     ],
+     [
+      0.968,
+      -21.5,
+      9
+     ]
+    ],
+    "colour": "#c0307a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "vleg-1-0-1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      5,
+      -21.5,
+      0
+     ],
+     [
+      9.032,
+      -21.5,
+      9
+     ]
+    ],
+    "colour": "#c0307a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "vleg-1-1--1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      11,
+      -21.5,
+      0
+     ],
+     [
+      6.967999999999999,
+      -21.5,
+      9
+     ]
+    ],
+    "colour": "#c0307a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "vleg-1-1-1",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      11,
+      -21.5,
+      0
+     ],
+     [
+      15.032,
+      -21.5,
+      9
+     ]
+    ],
+    "colour": "#c0307a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Wings now deep thick slabs but splay as a V rather than sit as pitched roofs on the drum; side blocks are still square-cornered boxes with ribbon glazing; legs are thicker but read as W shapes; only the 118 m entrance end is modelled."
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 5,
+  "treeKind": "broadleaf",
+  "extent": [
+   90,
+   70
+  ]
+ }
+}

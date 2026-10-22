@@ -1,0 +1,227 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-osm-node-4365886397",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/403210105",
+   "used": "only a 13x10 m roof outline 44 m away (nearest quality), not used for the footprint; size taken from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     25,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5dcc6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#a9b6bb",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69e",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9b6bb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 3.5,
+    "height": 3.6,
+    "colour": "#9a9488",
+    "columns": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    9,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.8,
+    "bottom": 2.2,
+    "colour": "#f2efe8",
+    "frameColour": "#b3392f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      -20
+     ],
+     [
+      22,
+      -20
+     ],
+     [
+      22,
+      16
+     ],
+     [
+      -22,
+      16
+     ],
+     [
+      -22,
+      -20
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "pillarEvery": 5,
+    "colour": "#d6cdb8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "pillar": 0.6,
+    "colour": "#d6cdb8",
+    "leafColour": "#4a4f52"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#2e7d32"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     6
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable footprint: modest typical government health centre from the brief size; no real detail."
+ }
+}

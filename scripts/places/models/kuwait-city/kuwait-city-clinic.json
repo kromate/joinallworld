@@ -1,0 +1,574 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:New_Amiri_Hospital_%26_Amiri_Residences.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jhezz21",
+   "view": "front",
+   "file": "/tmp/places-evidence/kuwait-city/kwc-amiri.jpg",
+   "used": "curved blue and green chequer-glazed hospital block over a cream two-level podium with pillared arcade; cream residence tower with green glass strips and stepped crown; palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/154721776",
+   "used": "hospital footprint, 13 levels / 60 m tag"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     84,
+     32
+    ]
+   },
+   "at": [
+    16,
+    -22
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e3cfa4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 2,
+      "spacing": 8,
+      "width": 0.7,
+      "colour": "#efe6d0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4aa",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hospital",
+   "at": [
+    16,
+    8,
+    7
+   ],
+   "params": {
+    "points": [
+     [
+      -34.0,
+      5.11
+     ],
+     [
+      -28.74,
+      2.37
+     ],
+     [
+      -23.26,
+      0.1
+     ],
+     [
+      -17.6,
+      -1.68
+     ],
+     [
+      -11.81,
+      -2.97
+     ],
+     [
+      -5.93,
+      -3.74
+     ],
+     [
+      -0.0,
+      -4.0
+     ],
+     [
+      5.93,
+      -3.74
+     ],
+     [
+      11.81,
+      -2.97
+     ],
+     [
+      17.6,
+      -1.68
+     ],
+     [
+      23.26,
+      0.1
+     ],
+     [
+      28.74,
+      2.37
+     ],
+     [
+      34.0,
+      5.11
+     ],
+     [
+      27.0,
+      17.23
+     ],
+     [
+      22.82,
+      15.06
+     ],
+     [
+      18.47,
+      13.26
+     ],
+     [
+      13.98,
+      11.84
+     ],
+     [
+      9.38,
+      10.82
+     ],
+     [
+      4.71,
+      10.21
+     ],
+     [
+      -0.0,
+      10.0
+     ],
+     [
+      -4.71,
+      10.21
+     ],
+     [
+      -9.38,
+      10.82
+     ],
+     [
+      -13.98,
+      11.84
+     ],
+     [
+      -18.47,
+      13.26
+     ],
+     [
+      -22.82,
+      15.06
+     ],
+     [
+      -27.0,
+      17.23
+     ]
+    ],
+    "height": 20,
+    "colour": "#4d7fb5",
+    "material": "glass-curtain",
+    "storeys": 5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#9fb8c8",
+       "#c9d6dc"
+      ]
+     },
+     {
+      "type": "panels",
+      "size": [
+       4.5,
+       4.0
+      ],
+      "colours": [
+       "#4f7fb0",
+       "#7aa9cc",
+       "#5b8ec0",
+       "#6fae9c"
+      ],
+      "mode": "random",
+      "slits": {
+       "fraction": 0.15,
+       "colour": "#bcd8e0"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    -41,
+    0
+   ],
+   "z0": 0,
+   "height": 58,
+   "storeys": 18,
+   "wall": {
+    "material": "render",
+    "colour": "#e4cc9e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 6,
+    "faces": {
+     "back": "none",
+     "right": "none",
+     "left": "none"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "back",
+       "right",
+       "left"
+      ],
+      "size": [
+       8,
+       6.4
+      ],
+      "colours": [
+       "#e4cc9e",
+       "#d3bb8e",
+       "#6fa38a"
+      ],
+      "mode": "random"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4aa",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-0",
+   "at": [
+    -51,
+    -10.15,
+    4
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.5
+    ],
+    "height": 52,
+    "colour": "#2f7f62",
+    "material": "glass-green"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "strip-1",
+   "at": [
+    -43.5,
+    -10.15,
+    4
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.5
+    ],
+    "height": 52,
+    "colour": "#4fa07f",
+    "material": "glass-green"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "strip-2",
+   "at": [
+    -36,
+    -10.15,
+    4
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.5
+    ],
+    "height": 46,
+    "colour": "#3f9070",
+    "material": "glass-green"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "strip-3",
+   "at": [
+    -29,
+    -10.15,
+    4
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.5
+    ],
+    "height": 40,
+    "colour": "#3f9070",
+    "material": "glass-green"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mull-0",
+   "at": [
+    -47,
+    -10.2,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.5
+    ],
+    "height": 54,
+    "colour": "#efe3c4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mull-1",
+   "at": [
+    -40,
+    -10.2,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.5
+    ],
+    "height": 54,
+    "colour": "#efe3c4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mull-2",
+   "at": [
+    -33,
+    -10.2,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.5
+    ],
+    "height": 54,
+    "colour": "#efe3c4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "setback-1",
+   "at": [
+    -41,
+    0,
+    58
+   ],
+   "params": {
+    "rect": [
+     26,
+     18
+    ],
+    "height": 3,
+    "colour": "#e0d2b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "setback-2",
+   "at": [
+    -41,
+    0,
+    61
+   ],
+   "params": {
+    "rect": [
+     22,
+     16
+    ],
+    "height": 3,
+    "colour": "#e4cc9e"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "crown",
+   "at": [
+    -41,
+    0,
+    64
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       11,
+       8
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       10.5,
+       7.5
+      ]
+     }
+    ],
+    "colour": "#3f9070",
+    "material": "glass-green",
+    "topColour": "#cfc4aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    16,
+    -45,
+    8
+   ],
+   "params": {
+    "rect": [
+     84,
+     7
+    ],
+    "height": 0.6,
+    "colour": "#efe6d0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "at": [
+    16,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     3
+    ],
+    "height": 1.6,
+    "colour": "#4a7a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -48
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -50
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -40
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 14,
+  "trees": 0,
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hospital is a faceted arc but shorter and with chequer cells larger than the photo; tower crown is a round glass drum on two setbacks rather than the curved-front stepped crown; tower front strips are applied prisms; hedge is a flat green strip; no road/street furniture"
+ }
+}

@@ -1,0 +1,389 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cadet_Corps_in_Tashkent_14-55.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bobyrr",
+   "view": "side",
+   "file": "/tmp/places-evidence/tashkent/clinic1.jpg",
+   "used": "buff-brown moulded brick, 3-storey central block with stacked kokoshnik gables and a stepped crest, long lower wing with arched windows, small entrance canopy, rust-red roof edges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/105820896",
+   "used": "multi-wing outline of the long building"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ornate moulded brick relief, kokoshnik arches and scalloped crest reduced to stepped gable tiers with pilaster strips; wing is straight with plain arched windows; OSM zig-zag outline not used"
+ },
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     24,
+     22
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b49a6c",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "bay": 9,
+    "bands": "#cdb88c",
+    "plinth": 1.2,
+    "cornice": true,
+    "glassColour": "#4a5a60",
+    "trimColour": "#e8e0cc",
+    "faces": {
+     "front": "arched",
+     "right": "arched",
+     "left": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 6,
+      "depth": 0.6,
+      "width": 0.9,
+      "colour": "#a58b5c",
+      "faces": [
+       "front",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b49a6c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "z0": 16,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4aa7c",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 4.5,
+    "bands": "#cdb88c",
+    "plinth": 1.2,
+    "cornice": true,
+    "glassColour": "#4a5a60",
+    "trimColour": "#e8e0cc",
+    "faces": {
+     "front": "arched",
+     "right": "arched",
+     "left": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 4.5,
+      "depth": 0.6,
+      "width": 0.9,
+      "colour": "#a58b5c",
+      "faces": [
+       "front",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b49a6c",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "z0": 21,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4aa7c",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 4.5,
+    "bands": "#cdb88c",
+    "plinth": 1.2,
+    "cornice": true,
+    "glassColour": "#4a5a60",
+    "trimColour": "#e8e0cc",
+    "faces": {
+     "front": "arched",
+     "right": "arched",
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b8a074",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crest-drum",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "z0": 25.5,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#bba278",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 2.7,
+    "bands": "#cdb88c",
+    "plinth": 1.2,
+    "cornice": true,
+    "glassColour": "#4a5a60",
+    "trimColour": "#e8e0cc",
+    "faces": {
+     "front": "arched",
+     "right": "arched",
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a58b5c",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crest-top",
+   "footprint": {
+    "rect": [
+     4.5,
+     4
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "z0": 29,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4aa7c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a58b5c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "long-wing",
+   "footprint": {
+    "rect": [
+     66,
+     14
+    ]
+   },
+   "at": [
+    -22,
+    -2
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b49a6c",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 10,
+    "bands": "#cdb88c",
+    "plinth": 1.2,
+    "cornice": true,
+    "glassColour": "#4a5a60",
+    "trimColour": "#e8e0cc",
+    "faces": {
+     "front": "arched",
+     "right": "plain",
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b49a6c",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-pavilion",
+   "footprint": {
+    "rect": [
+     13,
+     16
+    ]
+   },
+   "at": [
+    -58,
+    -1
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b49a6c",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "bay": 7,
+    "bands": "#cdb88c",
+    "plinth": 1.2,
+    "cornice": true,
+    "glassColour": "#4a5a60",
+    "trimColour": "#e8e0cc",
+    "faces": {
+     "front": "arched",
+     "right": "plain",
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a58b5c",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    3,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 3,
+    "height": 3.2,
+    "colour": "#b8a890",
+    "edgeColour": "#8a4636"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    3,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.7,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#bdb8ae"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     -20
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-clinic"
+}

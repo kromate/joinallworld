@@ -1,0 +1,450 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iranian_Hospital,_Dubai.jpg",
+   "licence": "CC0",
+   "author": "LittleT889",
+   "view": "street",
+   "file": "/tmp/places-evidence/dubai/iran1.jpg",
+   "used": "long low sand-cream frontage with a taller central glazed block, tan box block and flagpoles to the right, white tensile canopies on poles along the front, tan patterned boundary wall with a hedge, date palms, street lamp"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/230629140",
+   "used": "compound size (194 x 167 m); a 118 m frontage is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.03,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     28,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4c49a",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bands": "#bfa97c",
+    "plinth": 0.6,
+    "bay": 8,
+    "parapet": 0.8,
+    "cornice": true,
+    "glassColour": "#6f93a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ada0",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    -36,
+    2
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c8a0",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bands": "#bfa97c",
+    "bay": 9,
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ada0",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     32,
+     16
+    ]
+   },
+   "at": [
+    30,
+    2
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfbd92",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bands": "#bfa97c",
+    "bay": 9,
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ada0",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-box",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    53,
+    1
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48a",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a090",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     60,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    24
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2c298",
+    "windows": "none",
+    "windowRatio": 0.16,
+    "bay": 5.5,
+    "parapet": 0.8,
+    "bands": "#bfa97c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ada0",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    52,
+    -6,
+    12
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 2.6,
+    "colours": [
+     "#3a8a4a",
+     "#f1f1ee",
+     "#c0392b",
+     "#2b2b2b"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -11,
+    11.8
+   ],
+   "params": {
+    "width": 16,
+    "height": 1.8,
+    "bottom": 0.4,
+    "colour": "#2f4f7a",
+    "frameColour": "#d6cdb4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 118,
+    "depth": 14,
+    "height": 6,
+    "thickness": 0.25,
+    "columns": 24,
+    "colour": "#f2eee2",
+    "edgeColour": "#d6cdb4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -37,
+    0
+   ],
+   "params": {
+    "length": 118,
+    "height": 0.9,
+    "thickness": 0.5,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#8a7048"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -37,
+    0.6
+   ],
+   "params": {
+    "length": 118,
+    "height": 0.6,
+    "thickness": 0.55,
+    "kind": "wall",
+    "pillarEvery": 2,
+    "colour": "#d2bf92"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "hedge",
+   "at": [
+    0,
+    -35.2,
+    0
+   ],
+   "params": {
+    "length": 118,
+    "height": 1.1,
+    "depth": 1.6,
+    "colour": "#3f6b34"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    -43,
+    0
+   ],
+   "params": {
+    "width": 118,
+    "depth": 7,
+    "colour": "#b9b48a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -46,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -41,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -41,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -44,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -65,
+      -62
+     ],
+     [
+      65,
+      -62
+     ]
+    ],
+    "width": 14,
+    "colour": "#4a4c50"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -65,
+      -54.5
+     ],
+     [
+      65,
+      -54.5
+     ]
+    ],
+    "width": 1.2,
+    "colour": "#cfc8b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 20,
+  "trees": [],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-way-230629140",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Camera pulled in with asphalt road foreground, canopies now visible over a lowered hedge, wings lowered to 2 storeys, tall lamp and big palm on left; still missing wall tile pattern, glazed centre is a simple curtain block, tan box block is plain, no pedestrians or cars."
+ }
+}

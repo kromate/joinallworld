@@ -1,0 +1,368 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Building_B_of_IAAU.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nataev",
+   "view": "front",
+   "file": "/tmp/places-evidence/bishkek/uni-b.jpg",
+   "used": "two-storey salmon-render block with cream bands, red piers, stone-tile plinth, low hip metal roof, glazed entrance under a small red canopy at the right end; blank signage"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_campus_of_IAAU.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nataev",
+   "view": "street",
+   "used": "pinkish-red rendered blocks, cream bands, arcade walkway, paved court"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/341105734",
+   "used": "campus is 419 m wide, too big for the scene; one building (Building B) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -45,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.03,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     32,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d3c6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "bands": "#c9786a",
+    "plinth": 0.3,
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d4038",
+    "material": "metal-sheet",
+    "pitch": 5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "rect": [
+     8,
+     18
+    ]
+   },
+   "at": [
+    20,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9786a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "bands": "#d9d3c6",
+    "plinth": 0.3,
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d4038",
+    "material": "metal-sheet",
+    "pitch": 5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-plinth",
+   "footprint": {
+    "rect": [
+     32.4,
+     16.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbbfa6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbfa6"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.8,
+       0.6
+      ]
+     },
+     "at": [
+      0,
+      -8
+     ],
+     "z0": 0,
+     "height": 9,
+     "storeys": 2,
+     "wall": {
+      "material": "render",
+      "colour": "#c9786a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#c9786a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -16,
+     0
+    ],
+    "end": [
+     16,
+     0
+    ],
+    "count": 5
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pier-a",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    16.5,
+    -9.5
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9786a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9786a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-b",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    23.5,
+    -9.5
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9786a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9786a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    20,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 7,
+    "depth": 4,
+    "height": 3.6,
+    "colour": "#8c3f36",
+    "edgeColour": "#8c3f36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-recess",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    20,
+    -10.2
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a8f9a",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a8f9a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "signage",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -8.2
+   ],
+   "z0": 5.2,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1f2f8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f2f8f"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0,
+        "#2f5a34"
+       ],
+       [
+        0.9,
+        0.3,
+        "#2f5a34"
+       ],
+       [
+        1.1,
+        1.6,
+        "#2f5a34"
+       ],
+       [
+        0.8,
+        3.0,
+        "#2f5a34"
+       ],
+       [
+        0.0,
+        3.8,
+        "#2f5a34"
+       ]
+      ],
+      "segments": 8
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -12
+    ],
+    "end": [
+     8,
+     -12
+    ],
+    "count": 5
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "salmon band sits at sill and lintel only roughly, windows are fewer and larger than the real grouped casements, signage is a plain blue board with no lettering, shrubs are simple ovoids, building is viewed from a different yaw"
+ }
+}

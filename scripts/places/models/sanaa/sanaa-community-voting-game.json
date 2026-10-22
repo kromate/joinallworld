@@ -1,0 +1,179 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/60750456",
+   "used": "real 149 x 128 m townhall compound outline (bearing 62): perimeter wall follows it, and the main block is aligned to its long south-east edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -91.3,
+      28.1
+     ],
+     [
+      -36,
+      -87
+     ],
+     [
+      95.1,
+      -16.8
+     ],
+     [
+      35.3,
+      81
+     ],
+     [
+      -91.3,
+      28.1
+     ]
+    ],
+    "height": 2.4,
+    "kind": "wall",
+    "pillarEvery": 8,
+    "colour": "#c9bd9f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     80,
+     45
+    ]
+   },
+   "at": [
+    16,
+    -24
+   ],
+   "rotDeg": 28,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d8c6a2",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#f1ece0",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 0.5,
+    "bay": 4.2,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29c92",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    28,
+    -62,
+    0
+   ],
+   "rotDeg": 28,
+   "params": {
+    "width": 16,
+    "depth": 6,
+    "height": 4.2,
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    44,
+    -72,
+    0
+   ],
+   "rotDeg": 28,
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 1.6,
+    "colour": "#2f6b4f",
+    "frameColour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    36,
+    -66,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    44,
+    -52,
+    0
+   ],
+   "rotDeg": 28,
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "rotDeg": 28,
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Wall follows real compound outline; U block and canopy typed, opening direction guessed."
+ }
+}

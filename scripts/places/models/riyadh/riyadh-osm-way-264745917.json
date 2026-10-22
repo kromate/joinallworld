@@ -1,0 +1,591 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-way-264745917",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kingdomcentreinriyadhsaudiarabia.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "King Eliot",
+   "view": "front",
+   "file": "/tmp/places-evidence/riyadh/kingdom.jpg",
+   "used": "blade-like almond tower, slight taper, parabolic inverted-arch opening in the top third with a pale concrete rim, silver-blue mirror glass, low pink-rendered shop blocks in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/264745917",
+   "used": "mall podium (4 levels, 16 m; OSM outline is 280 m). The whole model is drawn at 0.457 scale because the pipeline caps height at 140 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 0.735,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "tower-shaft",
+   "at": [
+    0,
+    4.57,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       18.75,
+       8.5
+      ]
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       18.34,
+       8.33
+      ]
+     },
+     {
+      "z": 60,
+      "ellipse": [
+       17.94,
+       8.15
+      ]
+     },
+     {
+      "z": 81.0,
+      "ellipse": [
+       17.65,
+       8.03
+      ]
+     }
+    ],
+    "colour": "#a9c0cd",
+    "capBottom": false,
+    "capTop": false,
+    "smooth": true,
+    "steps": 4,
+    "round": 28
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    4.57,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 81.0,
+      "ellipse": [
+       7.89,
+       8.03
+      ],
+      "cx": -9.76,
+      "cy": 0
+     },
+     {
+      "z": 82.58,
+      "ellipse": [
+       6.8,
+       8.02
+      ],
+      "cx": -10.84,
+      "cy": 0
+     },
+     {
+      "z": 85.2,
+      "ellipse": [
+       6.09,
+       8.01
+      ],
+      "cx": -11.5,
+      "cy": 0
+     },
+     {
+      "z": 89.4,
+      "ellipse": [
+       5.32,
+       7.98
+      ],
+      "cx": -12.2,
+      "cy": 0
+     },
+     {
+      "z": 96.75,
+      "ellipse": [
+       4.36,
+       7.94
+      ],
+      "cx": -13.08,
+      "cy": 0
+     },
+     {
+      "z": 107.25,
+      "ellipse": [
+       3.29,
+       7.88
+      ],
+      "cx": -14.0,
+      "cy": 0
+     },
+     {
+      "z": 120.38,
+      "ellipse": [
+       2.21,
+       7.8
+      ],
+      "cx": -14.91,
+      "cy": 0
+     },
+     {
+      "z": 133.5,
+      "ellipse": [
+       1.29,
+       7.73
+      ],
+      "cx": -15.66,
+      "cy": 0
+     },
+     {
+      "z": 138.2,
+      "ellipse": [
+       1.29,
+       7.73
+      ],
+      "cx": -15.66,
+      "cy": 0
+     }
+    ],
+    "colour": "#a9c0cd",
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    4.57,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 81.0,
+      "ellipse": [
+       9.76,
+       8.03
+      ],
+      "cx": 7.89,
+      "cy": 0
+     },
+     {
+      "z": 82.58,
+      "ellipse": [
+       8.68,
+       8.02
+      ],
+      "cx": 8.96,
+      "cy": 0
+     },
+     {
+      "z": 85.2,
+      "ellipse": [
+       7.96,
+       8.01
+      ],
+      "cx": 9.62,
+      "cy": 0
+     },
+     {
+      "z": 89.4,
+      "ellipse": [
+       7.2,
+       7.98
+      ],
+      "cx": 10.32,
+      "cy": 0
+     },
+     {
+      "z": 96.75,
+      "ellipse": [
+       6.24,
+       7.94
+      ],
+      "cx": 11.2,
+      "cy": 0
+     },
+     {
+      "z": 107.25,
+      "ellipse": [
+       5.16,
+       7.88
+      ],
+      "cx": 12.12,
+      "cy": 0
+     },
+     {
+      "z": 120.38,
+      "ellipse": [
+       4.09,
+       7.8
+      ],
+      "cx": 13.04,
+      "cy": 0
+     },
+     {
+      "z": 133.5,
+      "ellipse": [
+       3.16,
+       7.73
+      ],
+      "cx": 13.79,
+      "cy": 0
+     },
+     {
+      "z": 138.2,
+      "ellipse": [
+       3.16,
+       7.73
+      ],
+      "cx": 13.79,
+      "cy": 0
+     }
+    ],
+    "colour": "#a9c0cd",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crown-beam",
+   "at": [
+    0,
+    4.57
+   ],
+   "params": {
+    "rect": [
+     33.25,
+     14.8
+    ],
+    "z0": 133.5,
+    "height": 4.699999999999989,
+    "topScale": 0.97,
+    "colour": "#e4dfd3",
+    "topColour": "#ece8de"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-rim-l",
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      -1.88,
+      -7.4,
+      81.0
+     ],
+     [
+      -4.04,
+      -7.4,
+      82.58
+     ],
+     [
+      -5.41,
+      -7.4,
+      85.2
+     ],
+     [
+      -6.88,
+      -7.4,
+      89.4
+     ],
+     [
+      -8.73,
+      -7.4,
+      96.75
+     ],
+     [
+      -10.71,
+      -7.4,
+      107.25
+     ],
+     [
+      -12.7,
+      -7.4,
+      120.38
+     ],
+     [
+      -14.38,
+      -7.4,
+      133.5
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#e6e1d4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-rim-r",
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      -1.88,
+      -7.4,
+      81.0
+     ],
+     [
+      0.29,
+      -7.4,
+      82.58
+     ],
+     [
+      1.66,
+      -7.4,
+      85.2
+     ],
+     [
+      3.12,
+      -7.4,
+      89.4
+     ],
+     [
+      4.97,
+      -7.4,
+      96.75
+     ],
+     [
+      6.96,
+      -7.4,
+      107.25
+     ],
+     [
+      8.95,
+      -7.4,
+      120.38
+     ],
+     [
+      10.62,
+      -7.4,
+      133.5
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#e6e1d4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-bottom",
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      -4.38,
+      -7.4,
+      82.2
+     ],
+     [
+      4.38,
+      -7.4,
+      82.2
+     ]
+    ],
+    "colour": "#e6e1d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sky-bridge",
+   "at": [
+    0,
+    4.57
+   ],
+   "params": {
+    "rect": [
+     28.88,
+     1.8
+    ],
+    "z0": 130.3,
+    "height": 1.4,
+    "colour": "#7f98a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-front",
+   "footprint": {
+    "rect": [
+     100,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -23
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c68f80",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#d9b3a2",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08273",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-left",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    -36,
+    0
+   ],
+   "height": 8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9988a",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#d9b3a2",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08273",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-right",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    36,
+    0
+   ],
+   "height": 8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4907f",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#d9b3a2",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08273",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -32,
+    -33,
+    0
+   ],
+   "params": {
+    "kind": "clipped",
+    "height": 5,
+    "count": 6,
+    "spread": 3,
+    "line": 64
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -34
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "opening bottom is pointed not a round parabola and symmetric (real one leans left); no glass grid texture; podium simplified to pink blocks; drawn at 0.457 scale for the 140 m cap"
+ }
+}

@@ -1,0 +1,278 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baghdad_mall.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mohammad Ali Huzam",
+   "view": "street",
+   "file": "/tmp/places-evidence/baghdad/mall1.jpg",
+   "used": "glass-clad hotel tower proportion (tall oval, blue glass with a lit vertical band) and the long low horizontal car-park decks; mall block itself is not visible"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/832799038",
+   "used": "mall outline, 4 levels, building:colour #41839B"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#41839b",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       1.6
+      ],
+      "colours": [
+       "#41839b",
+       "#4a8ea8",
+       "#38788f"
+      ],
+      "mode": "stripes-h",
+      "floors": "all",
+      "slits": {
+       "fraction": 0.06,
+       "colour": "#dfe6ea",
+       "width": 1.4,
+       "height": 0.5
+      }
+     },
+     {
+      "type": "bands",
+      "colour": "#dfe6ea",
+      "height": 0.5,
+      "at": 0.9
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-entrance",
+   "at": [
+    0,
+    -36
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     28,
+     4
+    ],
+    "z0": 0,
+    "height": 14,
+    "colour": "#2b3b45",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entry-canopy",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 8,
+    "height": 5,
+    "colour": "#dfe6ea",
+    "edgeColour": "#2b3b45",
+    "columns": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "car-park",
+   "at": [
+    -56,
+    40
+   ],
+   "rotDeg": 34,
+   "params": {
+    "rect": [
+     26,
+     42
+    ],
+    "z0": 0,
+    "height": 32,
+    "colour": "#bdb6a8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8e8a80",
+      "height": 0.6,
+      "at": 0.95
+     }
+    ],
+    "storeys": 10
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hotel-tower",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    28,
+    70,
+    0
+   ],
+   "params": {
+    "colour": "#3f6aa8",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       15,
+       12
+      ]
+     },
+     {
+      "z": 100,
+      "ellipse": [
+       14,
+       11
+      ]
+     },
+     {
+      "z": 120,
+      "ellipse": [
+       13,
+       10.5
+      ],
+      "colour": "#2d3b50"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hotel-tower-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    28,
+    70,
+    0
+   ],
+   "params": {
+    "colour": "#3f6aa8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       26,
+       20
+      ]
+     },
+     {
+      "z": 120,
+      "rect": [
+       24,
+       18
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "sign-1",
+   "at": [
+    -45,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#dfe6ea",
+    "frameColour": "#2b3b45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -62
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -62
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the mall itself; car park position and hotel tower placement are guesses, cladding detail plain"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-osm-way-832799038"
+}

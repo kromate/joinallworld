@@ -1,0 +1,591 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/Category:Jamuna_Future_Park",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/dhaka/jfp0.jpg",
+   "used": "grey aluminium-panel towers with blue glazed slit bands, brown/tan striped podium base, dark stepped cornices, curved blue glass atrium dome at right, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/586535435",
+   "used": "overall size only (229 x 212 m): the real outline exceeds the 118 m scene clamp, so a front corner portion of about 120 m is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.49
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium-a",
+   "footprint": {
+    "rect": [
+     42,
+     32
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8643f",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d49a62",
+       "#2a1a14"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     40,
+     30
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "z0": 9,
+   "height": 29,
+   "storeys": 6,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7bbc2",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 2.6,
+      "depth": 0.3,
+      "spacing": 20,
+      "colour": "#2f5d9e",
+      "margin": 4
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6a66",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-slab",
+   "footprint": {
+    "rect": [
+     10,
+     0.8
+    ]
+   },
+   "at": [
+    -28,
+    -15.5
+   ],
+   "z0": 9,
+   "height": 29,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f4a8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3b3f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-b",
+   "footprint": {
+    "rect": [
+     28,
+     36
+    ]
+   },
+   "at": [
+    2,
+    8
+   ],
+   "height": 8,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8643f",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d49a62",
+       "#2a1a14"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     26,
+     34
+    ]
+   },
+   "at": [
+    2,
+    8
+   ],
+   "z0": 8,
+   "height": 25,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7bbc2",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 2.6,
+      "depth": 0.3,
+      "spacing": 20,
+      "colour": "#2f5d9e",
+      "margin": 4
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6a66",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium-glass",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    34,
+    -10
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f5fa6",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5fa6"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    34,
+    -10,
+    15
+   ],
+   "params": {
+    "colour": "#2f5fa6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       30,
+       24
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       28.5,
+       24
+      ],
+      "cx": -0.5
+     },
+     {
+      "z": 5,
+      "rect": [
+       24,
+       24
+      ],
+      "cx": -1.5
+     },
+     {
+      "z": 7.2,
+      "rect": [
+       16,
+       24
+      ],
+      "cx": -3.5
+     },
+     {
+      "z": 9,
+      "rect": [
+       6,
+       24
+      ],
+      "cx": -6.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    60,
+    -6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9ccd0",
+    "windows": "ribbon",
+    "windowRatio": 0.45
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crown-a",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     42,
+     3
+    ],
+    "z0": 38,
+    "height": 1.5,
+    "colour": "#3a3b3f",
+    "topColour": "#3a3b3f"
+   },
+   "at": [
+    -34,
+    -14
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "crown-b",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     28,
+     3
+    ],
+    "z0": 33,
+    "height": 1.5,
+    "colour": "#3a3b3f",
+    "topColour": "#3a3b3f"
+   },
+   "at": [
+    2,
+    -8
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 7
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-1",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    -8,
+    -6
+   ],
+   "z0": 9,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7bbc2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6a66",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-1-cap",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     10,
+     14
+    ],
+    "z0": 31,
+    "height": 1.0,
+    "colour": "#33343a",
+    "topColour": "#33343a"
+   },
+   "at": [
+    -8,
+    -6
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "step-2",
+   "footprint": {
+    "rect": [
+     8,
+     10
+    ]
+   },
+   "at": [
+    16,
+    -2
+   ],
+   "z0": 8,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7bbc2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6a66",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-2-cap",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     10,
+     12
+    ],
+    "z0": 20,
+    "height": 1.0,
+    "colour": "#33343a",
+    "topColour": "#33343a"
+   },
+   "at": [
+    16,
+    -2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "turret-a",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -52,
+    -12
+   ],
+   "z0": 38,
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7bbc2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6a66",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-a-cap",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 43,
+    "height": 1.0,
+    "colour": "#33343a",
+    "topColour": "#33343a"
+   },
+   "at": [
+    -52,
+    -12
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "turret-b",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -18,
+    -12
+   ],
+   "z0": 38,
+   "height": 3,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7bbc2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c6a66",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-b-cap",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 41,
+    "height": 1.0,
+    "colour": "#33343a",
+    "topColour": "#33343a"
+   },
+   "at": [
+    -18,
+    -12
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glazed strip is a flat blue slab and the corner pavilions are plain boxes with dark caps; atrium is a barrel-loft vault, not the exact angled shell; only a ~120 m corner of the mall is modelled."
+ }
+}

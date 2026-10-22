@@ -1,0 +1,428 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-osm-way-441724047",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:President%27s_House,_Colombo.jpg",
+   "licence": "CC BY 4.0",
+   "author": "LittleT889",
+   "view": "street",
+   "file": "/tmp/places-evidence/colombo/pres1.jpg",
+   "used": "white gabled gate pavilion on four square piers, white balustrade boundary wall with urn piers, tall white two-storey block behind with balustraded parapet and arched upper windows, setted forecourt, big trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/441724047",
+   "used": "real irregular wing footprint, two levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.56,
+  "fit": "all",
+  "margin": 0.02,
+  "shiftX": 0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "bands": "#ece8dc",
+    "cornice": true,
+    "parapet": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ede4",
+    "material": "membrane",
+    "parapet": 0.9,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -52,
+    -37.4,
+    0.7
+   ],
+   "params": {
+    "length": 37,
+    "height": 0.95,
+    "postEvery": 1.0,
+    "colour": "#f6f4ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -1,
+    -37.4,
+    0.7
+   ],
+   "params": {
+    "length": 51,
+    "height": 0.95,
+    "postEvery": 1.0,
+    "colour": "#f6f4ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -37.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     104,
+     1.1
+    ],
+    "height": 0.7,
+    "colour": "#e9e6dc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -37.4,
+     0
+    ],
+    "end": [
+     51,
+     -37.4,
+     0
+    ],
+    "count": 20,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.9,
+        0.9
+       ],
+       "height": 1.9,
+       "colour": "#f6f4ee"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       1.9
+      ],
+      "params": {
+       "rect": [
+        1.15,
+        1.15
+       ],
+       "height": 0.25,
+       "colour": "#f6f4ee"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       2.15
+      ],
+      "params": {
+       "radius": 0.3,
+       "n": 8,
+       "height": 0.5,
+       "topScale": 0.3,
+       "colour": "#f6f4ee"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -8,
+    -34,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 15.0,
+    "dy": 8,
+    "centred": true,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.3,
+        1.3
+       ],
+       "height": 4.0,
+       "colour": "#f6f4ee"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.7,
+        1.7
+       ],
+       "height": 0.5,
+       "colour": "#f6f4ee"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -31,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.6
+    ],
+    "height": 3.8,
+    "colour": "#2e2d2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -34,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     20.4,
+     11
+    ],
+    "height": 0.3,
+    "colour": "#34322f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -34,
+    4.3
+   ],
+   "params": {
+    "rect": [
+     20,
+     11
+    ],
+    "height": 6.0,
+    "topScale": [
+     0.04,
+     1
+    ],
+    "colour": "#f6f4ee",
+    "topColour": "#f1efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -40.6,
+    4.3
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.4
+    ],
+    "height": 3.0,
+    "topScale": [
+     0.04,
+     1
+    ],
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     24
+    ],
+    "height": 0.09,
+    "colour": "#8a8378"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -34.3,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "height": 3.8,
+    "topScale": [
+     0.9,
+     1
+    ],
+    "colour": "#1d1c1b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -30
+    ],
+    "height": 30
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     -28
+    ],
+    "height": 34
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -30
+    ],
+    "height": 32
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -28
+    ],
+    "height": 26
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -26
+    ],
+    "height": 24
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -33
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -33
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   124,
+   58
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "R4: refit camera tight, larger porch with dark opening, bigger canopies, setts-toned forecourt. Porch is still a gabled prism not true arched portico; wall balusters are posts; house is long OSM wing outline; trees generic."
+ }
+}

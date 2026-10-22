@@ -1,0 +1,274 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wedding_palace.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kooljohn",
+   "view": "front",
+   "file": "/tmp/places-evidence/almaty/wed1.jpg",
+   "used": "low white ground-floor ring with shallow entrance porch and glazed foyer; grey lattice grille ring in a Kazakh key ornament above; white ring band and smaller white upper drum; tall conifers each side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1148828088",
+   "used": "34.5 m round plan"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-ring",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     31,
+     31
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "glassColour": "#3d4a52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grille-ring",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     32,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.8,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a4f52",
+    "windows": "none",
+    "windowRatio": 0.6,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.2,
+       1.2
+      ],
+      "colours": [
+       "#4d5256",
+       "#42474b",
+       "#585d60"
+      ],
+      "slits": {
+       "fraction": 0.25,
+       "colour": "#171b1d"
+      }
+     }
+    ],
+    "glassColour": "#2a3034"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d6d0",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-ring",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     33,
+     33
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efede6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-drum",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     20,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 10.2,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1,
+    "run": 2,
+    "count": 4,
+    "colour": "#8a8680"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#ebe8e0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#3d4a52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e3dc",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8.5,
+    -14.6,
+    0.4
+   ],
+   "params": {
+    "width": 3,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#d9873a",
+    "frameColour": "#3a6aa8",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -22,
+     -14
+    ],
+    "height": 26
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     24,
+     -12
+    ],
+    "height": 28
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -27,
+     -6
+    ],
+    "height": 24
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     27,
+     -6
+    ],
+    "height": 24
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Grille is a dark slit panel grid, not the true Kazakh key lattice; mosaic is a plain orange block; conifers are generic low-poly in lighter green than the dark spruce"
+ }
+}

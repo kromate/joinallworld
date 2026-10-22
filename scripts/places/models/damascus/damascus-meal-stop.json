@@ -1,0 +1,353 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "U-shaped two-storey stone restaurant and leisure complex with a gate-style frontage, courtyard with palms, car park; OSM leisure area is only a 159 x 114 m site, no building outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 20,
+  "fovDeg": 42,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back-range",
+   "footprint": {
+    "rect": [
+     64,
+     14
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#3a3a3a",
+       "#d9c9a3"
+      ],
+      "height": 0.9,
+      "at": 0.1,
+      "proud": 0.05,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     16,
+     32
+    ]
+   },
+   "at": [
+    -24,
+    -5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "faces": {
+     "right": "arched"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#3a3a3a",
+       "#d9c9a3"
+      ],
+      "height": 0.9,
+      "at": 0.1,
+      "proud": 0.05,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     32
+    ]
+   },
+   "at": [
+    24,
+    -5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "faces": {
+     "left": "arched"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#3a3a3a",
+       "#d9c9a3"
+      ],
+      "height": 0.9,
+      "at": 0.1,
+      "proud": 0.05,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate",
+   "footprint": {
+    "rect": [
+     18,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -21.5
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e3d6b4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 9,
+      "opening": 0.7,
+      "height": 0.75,
+      "depth": 1.2,
+      "pierColour": "#3a3a3a",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#3a3a3a",
+       "#d9c9a3"
+      ],
+      "height": 0.8,
+      "at": 0.1,
+      "proud": 0.1,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "id": "gate-crown",
+   "at": [
+    0,
+    -24,
+    13
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.6,
+    "thickness": 0.6,
+    "colour": "#e3d6b4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    0,
+    -25,
+    9.5
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#3a3a3a",
+    "frameColour": "#d9c9a3",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "court-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.1,
+    "thickness": 0.4,
+    "colour": "#d9c9a3"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "court-palms",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     10
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -30,
+     -34
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     -22,
+     -29
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     -14,
+     -34
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     -6,
+     -29
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     2,
+     -34
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     10,
+     -29
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     18,
+     -34
+    ],
+    "yaw": 90
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Typed composition only: gate frontage, ablaq bands, U plan and courtyard are inferred from the name; leisure-area outline is not a building, so footprint is invented."
+ }
+}

@@ -1,0 +1,450 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Open_University_of_Israel_-_Raanana_campus.jpg",
+   "licence": "see Commons page",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/tlv-ou1.jpg",
+   "used": "entrance corner: five-storey board-marked grey concrete block with tall slit windows, sand-coloured limestone block with punched windows and a ribbon strip at its foot, glazed stair tower between them, low glass entrance canopy, dark flagpoles, railing fence, cypress trees. Note: OSM way/77161070 is the Open University of Israel (Ra'anana campus), the venue named in the brief; photo matches the named venue."
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:115675_raanana_the_open_university._PikiWiki_Israel.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Zeler Zelmanson (PikiWiki)",
+   "view": "street",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/ou1.jpg",
+   "used": "limestone-clad long block with stone piers and vertical windows, white-grey ventilation stacks over the car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/77161070",
+   "used": "campus outline only (338 m x 173 m); the entrance group is composed as a U of wings, sized from the brief (about 120 m x 60 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -42,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "concrete-block",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a8a2",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 9.0,
+    "plinth": 0.3,
+    "faces": {
+     "right": "plain",
+     "back": "plain",
+     "left": "punched"
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ae",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-block",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    12,
+    3
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 6.0,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ae",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-arm",
+   "footprint": {
+    "rect": [
+     26,
+     48
+    ]
+   },
+   "at": [
+    40,
+    26
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 7.0,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ae",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-spine",
+   "footprint": {
+    "rect": [
+     76,
+     16
+    ]
+   },
+   "at": [
+    2,
+    46
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3c4a0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 8.0,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ae",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-arm",
+   "footprint": {
+    "rect": [
+     18,
+     36
+    ]
+   },
+   "at": [
+    -36,
+    32
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b4ab",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 6.0,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ae",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-glass",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -9,
+    -9.5
+   ],
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fc4d8",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#8fb8d0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -6,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 8,
+    "height": 4.4,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#a8aeb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    -6,
+    -13.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f6372",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8aeb0"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    4,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "colour": "#2d3a3a",
+    "count": 3,
+    "spacing": 1.8,
+    "colours": [
+     "#2d3a3a",
+     "#3a5a8a",
+     "#2d3a3a"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -2,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.2,
+    "kind": "fence",
+    "colour": "#8c9094"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "cypress",
+    "height": 9,
+    "count": 3,
+    "spread": 3.5
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -24,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0,
+    "colour": "#e8e8e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     2,
+     6
+    ]
+   },
+   "at": [
+    -14.5,
+    -9.5
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     2,
+     6
+    ]
+   },
+   "at": [
+    -3.5,
+    -9.5
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-panel",
+   "footprint": {
+    "rect": [
+     7,
+     0.6
+    ]
+   },
+   "at": [
+    -26,
+    -11.3
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8a8a86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -16
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -20
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo is a tight corner view; concrete block has no board-marking relief and windows are still more numerous than the few tall slits; glass lantern is flanked by piers but mullions are coarse; entrance canopy/fence/flagpoles approximate; rear U wings inferred."
+ }
+}

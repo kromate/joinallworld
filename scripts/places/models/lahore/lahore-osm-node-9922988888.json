@@ -1,0 +1,174 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-node-9922988888",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1309440720",
+   "used": "real park outline (187 x 123 m, leisure=park, unnamed, N-S long axis) as a kerbed lawn, scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park-lawn",
+   "footprint": {
+    "osm": true,
+    "fit": 110
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39b88",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9a6a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.45
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -52
+     ],
+     [
+      0,
+      52
+     ]
+    ],
+    "width": 3,
+    "colour": "#d6cdb4"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.45
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -30
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      30,
+      30
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d6cdb4"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    8,
+    6,
+    0.4
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "kind": "hip",
+    "roof_colour": "#c7bfa8"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.6,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -24,
+    10,
+    0.4
+   ],
+   "params": {
+    "width": 22,
+    "depth": 60,
+    "count": 9,
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    -6,
+    0.4
+   ],
+   "params": {
+    "width": 16,
+    "depth": 50,
+    "count": 6,
+    "min_height": 7,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -4,
+    -20,
+    0.4
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo (unnamed park S-60); outline from OSM, interior layout (paths, pavilion, gate, groves) is typical for a Lahore neighbourhood park, not surveyed."
+ }
+}

@@ -1,0 +1,379 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-osm-way-1084732338",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1084732338",
+   "used": "real 106 x 65 m rectangular ground outline (rotated so the long side faces the camera); wikidata Q135089978 'Jas Qyran Stadium'; no photo of this ground was found, so the stand layout is a modest typical small football ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      49.2,
+      37.9
+     ],
+     [
+      -56.2,
+      26.5
+     ],
+     [
+      -49.2,
+      -37.9
+     ],
+     [
+      56.2,
+      -26.5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#7a7f80",
+    "top": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0.0,
+    0.0,
+    0.15
+   ],
+   "rotDeg": 6,
+   "params": {
+    "length": 70,
+    "width": 44,
+    "stripes": 8,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -26.7,
+     -32.97
+    ],
+    "end": [
+     32.97,
+     -26.7
+    ],
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 2.2,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#37506b",
+    "seatColours": [
+     "#37506b",
+     "#9aa3a8"
+    ],
+    "blocks": 5,
+    "concreteColour": "#9aa3a8",
+    "underColour": "#8b9398",
+    "closeEnds": true,
+    "canopy": {
+     "height": 1.2,
+     "depth": 9,
+     "thickness": 0.6,
+     "slopeDeg": 4,
+     "colour": "#5b6670",
+     "edgeColour": "#aeb4b8",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -33.08,
+     27.69
+    ],
+    "end": [
+     26.6,
+     33.97
+    ],
+    "flip": true,
+    "rows": 4,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColour": "#4b5a66",
+    "concreteColour": "#9aa3a8",
+    "underColour": "#8b9398"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -43.45,
+     -26.69
+    ],
+    "end": [
+     -48.05,
+     17.07
+    ],
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.6,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColour": "#4b5a66",
+    "concreteColour": "#9aa3a8",
+    "underColour": "#8b9398"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     43.45,
+     26.69
+    ],
+    "end": [
+     48.05,
+     -17.07
+    ],
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.6,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColour": "#4b5a66",
+    "concreteColour": "#9aa3a8",
+    "underColour": "#8b9398"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -53.71,
+      -43.85
+     ],
+     [
+      61.65,
+      -31.73
+     ],
+     [
+      53.71,
+      43.85
+     ],
+     [
+      -61.65,
+      31.73
+     ],
+     [
+      -53.71,
+      -43.85
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.25,
+    "kind": "fence",
+    "colour": "#4b5a66"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing-rooms",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    4.6,
+    -43.76
+   ],
+   "rotDeg": 6,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9bcba",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -4.29,
+    40.78,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "post_height": 2.6,
+    "facing": "south",
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -51.93,
+    -41.66,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    59.46,
+    -29.95,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -59.46,
+    29.95,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    51.93,
+    41.66,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this ground; outline is real but stand arrangement, roof and fence are a plausible small-stadium guess."
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -48
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -48
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     44
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ }
+}

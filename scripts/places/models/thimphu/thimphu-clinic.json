@@ -1,0 +1,428 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jdw.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Drnirola",
+   "view": "street",
+   "used": "cream-yellow rendered walls, grey stone base storey, 5-storey corner block with dark brown overhanging hip roof, carved timber oriel and framed windows, lower 4-storey wing with open timber verandah arcade, taller stepped block behind",
+   "file": "/tmp/places-evidence/thimphu/jdw1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/425635150",
+   "used": "campus size only (265 x 194 m); main ward blocks modelled by hand from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-front",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    -18,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfa6",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 3.4,
+    "bands": "#6b4a30",
+    "cornice": true,
+    "bay": 4.2,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a2a20",
+    "trimColour": "#c9bd8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3328",
+    "material": "metal-sheet",
+    "rise": 3.4,
+    "overhang": 4.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     52,
+     15
+    ]
+   },
+   "at": [
+    34,
+    4
+   ],
+   "rotDeg": 0,
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfa6",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0,
+    "bands": "#6b4a30",
+    "cornice": true,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a2a20",
+    "trimColour": "#c9bd8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3328",
+    "material": "metal-sheet",
+    "rise": 2,
+    "overhang": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-back",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    50,
+    22
+   ],
+   "rotDeg": 0,
+   "height": 19.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfa6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 3.4,
+    "bands": "#6b4a30",
+    "cornice": true,
+    "bay": 7,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a2a20",
+    "trimColour": "#c9bd8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3328",
+    "material": "metal-sheet",
+    "rise": 2,
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-back-upper",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    50,
+    22
+   ],
+   "rotDeg": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfa6",
+    "windows": "none",
+    "windowRatio": 0.26,
+    "plinth": 3.4,
+    "bands": "#6b4a30",
+    "cornice": true,
+    "bay": 7,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a2a20",
+    "trimColour": "#c9bd8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3328",
+    "material": "metal-sheet",
+    "rise": 2.4,
+    "overhang": 2
+   },
+   "z0": 21.5
+  },
+  {
+   "type": "mass",
+   "id": "wing-rear",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    14,
+    24
+   ],
+   "rotDeg": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfa6",
+    "windows": "none",
+    "windowRatio": 0.26,
+    "plinth": 3.4,
+    "bands": "#6b4a30",
+    "cornice": true,
+    "bay": 16,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#3a2a20",
+    "trimColour": "#c9bd8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3328",
+    "material": "metal-sheet",
+    "rise": 2,
+    "overhang": 2.6
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "id": "oriel",
+   "at": [
+    -24,
+    -11.2,
+    7
+   ],
+   "params": {
+    "length": 7,
+    "floors": 3,
+    "storeyHeight": 3.2,
+    "proud": 1.2,
+    "rail": false,
+    "colour": "#4a2f1e"
+   }
+  },
+  {
+   "type": "arcade-bays",
+   "at": [
+    34,
+    -4.5,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "depth": 2.8,
+    "springHeight": 3.2,
+    "topHeight": 3.8,
+    "bayWidth": 4.6,
+    "pierWidth": 0.7,
+    "shape": "round",
+    "colour": "#4a2f1e",
+    "roofColour": "#4a3328"
+   }
+  },
+  {
+   "type": "gallery",
+   "at": [
+    34,
+    -4.5,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "depth": 2.4,
+    "storeyHeight": 3.6,
+    "wallTop": 7.6,
+    "colour": "#5a3a26",
+    "railColour": "#4a2f1e"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -18,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#f1ede4",
+    "roofColour": "#4a3328",
+    "vans": 1
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#e8a317",
+    "count": 1
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "colour": "#d8506a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "colour": "#e8a317",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "colour": "#c8384a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    18,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "colour": "#d8506a",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    36,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "colour": "#e8a317",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    52,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "colour": "#c8384a",
+    "hedge": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     75,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "timber gallery and posts on the east wing, deeper stepped brown hip roof, warmer cream walls and flower beds added; carved oriel is a plain brown band, no stone-wall detail, rear blocks windowless to fit budget"
+ }
+}

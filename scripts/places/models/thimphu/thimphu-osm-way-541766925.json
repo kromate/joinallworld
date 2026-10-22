@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-way-541766925",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/541766925",
+   "used": "real parallelogram outline 23.6 x 8.6 m (bearing 148 deg), name-matched Chamgang BHU"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "one-storey whitewashed basic health unit under a green sloping metal roof; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bay": 3.0,
+    "bands": "#a8452d"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7a5a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -6.8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.0,
+    "bottom": 1.4,
+    "colour": "#f4f4f1",
+    "frameColour": "#a8452d"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    15,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this clinic; walls, roof colour and window rhythm follow the brief and Bhutanese practice, not evidence"
+ }
+}

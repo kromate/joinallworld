@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-osm-node-4792118722",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/462327684",
+   "used": "commercial building outline containing the venue point (24 x 12 m, 8-point plan, bearing 29 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d3a0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#c04a2f",
+    "parapet": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f93",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "depth": 2.2,
+    "colours": [
+     "#c04a2f",
+     "#f4efe2"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.3,
+    "bottom": 3.6,
+    "colour": "#c04a2f",
+    "frameColour": "#f4efe2",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "colour": "#c04a2f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; real outline used, facade, awning and sign colours are typical for a grill-chicken shop and not verified."
+ }
+}

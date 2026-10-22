@@ -1,0 +1,190 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/842962557",
+   "used": "none: no OSM building matches the square; the geo photos near it show churches and a stadium sign, not the square, so they were not used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large paved traffic plaza, round, about 110 m, with a central garden and fountain, railings, flags, street trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 104,
+    "depth": 104,
+    "border": 3,
+    "colour": "#b7b0a2",
+    "border_colour": "#d9c9a3"
+   }
+  },
+  {
+   "type": "roundabout",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 40,
+    "road_width": 9,
+    "island_colour": "#7da05a",
+    "trees": 12,
+    "kerb": true
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "width": 34,
+    "depth": 34,
+    "colour": "#7da05a"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "radius": 9,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "height": 14,
+    "base_width": 2.4,
+    "style": "square",
+    "steps": 2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -14,
+    0.2
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#d8d8d2",
+    "count": 4,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 26,
+    "count": 10,
+    "startDeg": 0,
+    "endDeg": 360,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 8,
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17,
+    -17,
+    0.2
+   ],
+   "params": {
+    "length": 34,
+    "height": 1,
+    "kind": "rail",
+    "colour": "#2f3236"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8,
+    -24,
+    0.2
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 14,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline: typed round garden roundabout with fountain and obelisk; real layout and traffic lanes unknown."
+ }
+}

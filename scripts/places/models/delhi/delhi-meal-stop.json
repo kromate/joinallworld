@@ -1,0 +1,575 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Karim%27s_Hotel,_Delhi.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anupmehra",
+   "view": "front",
+   "file": "/tmp/places-evidence/delhi/k3.jpg",
+   "used": "street-level entrance: red blank-able fascia board above a glazed timber-framed opening on the left, carved brown arched doorway with pilasters on the right, cream-white stucco walls, white marble dado, pipes and fans"
+  },
+  {
+   "kind": "text",
+   "used": "Brief: narrow three-storey old-city frontage in a lane beside Jama Masjid, about 14 x 22 m, 11 m high, blank sign board, awnings. No OSM building matched."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "karims",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9dcae",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#cdbd8a",
+    "plinth": 1.1,
+    "cornice": true,
+    "groundKind": "shopfront",
+    "groundHeight": 3.4,
+    "windowShape": "arched",
+    "glassColour": "#3b2a1c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nbr-w",
+   "footprint": {
+    "rect": [
+     4,
+     16
+    ]
+   },
+   "at": [
+    -7,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dccf9e",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "windowShape": "arched",
+    "glassColour": "#3b2a1c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a948a",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nbr-e",
+   "footprint": {
+    "rect": [
+     4,
+     16
+    ]
+   },
+   "at": [
+    7,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#cfc3a0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "windowShape": "arched",
+    "glassColour": "#3b2a1c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a948a",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1.9,
+    -8.35,
+    0
+   ],
+   "params": {
+    "width": 5.0,
+    "height": 1.9,
+    "bottom": 3.4,
+    "colour": "#c4282d",
+    "frameColour": "#e8d9a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.7,
+    -8.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.15
+    ],
+    "z0": 3.5,
+    "height": 1.6,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.7,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "z0": 3.8,
+    "height": 0.9,
+    "colour": "#c4282d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9,
+    -8.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.3
+    ],
+    "z0": 0.5,
+    "height": 2.7,
+    "colour": "#6b4a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9,
+    -8.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     0.15
+    ],
+    "z0": 1.1,
+    "height": 1.8,
+    "colour": "#e8b86a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9,
+    -8.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.4
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#efe9dc"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    2.3,
+    -8.0,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "height": 5.2,
+    "depth": 0.7,
+    "archWidth": 2.0,
+    "springHeight": 3.4,
+    "pointed": false,
+    "colour": "#6b3f2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.3,
+    -8.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.1
+    ],
+    "z0": 2.0,
+    "height": 2.6,
+    "colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.9,
+    -8.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#7a4a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.8,
+    -8.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#7a4a35"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.5,
+    -8.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 0.3,
+    "height": 10,
+    "colour": "#9a9fa2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.5,
+    -8.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 3.4,
+    "height": 0.35,
+    "colour": "#80858a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.5,
+    -8.7,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 16,
+    "z0": 2.6,
+    "height": 0.1,
+    "colour": "#6f7478"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.5,
+    -8.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.5
+    ],
+    "z0": 2.4,
+    "height": 0.6,
+    "colour": "#5a5f62"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     9.4,
+     1.3
+    ],
+    "z0": 5.6,
+    "height": 0.3,
+    "colour": "#bfae80"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     9.4,
+     0.08
+    ],
+    "z0": 5.9,
+    "height": 0.8,
+    "colour": "#5a4632"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     9.4,
+     1.3
+    ],
+    "z0": 8.8,
+    "height": 0.3,
+    "colour": "#bfae80"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -7,
+    -8.1,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "depth": 1.2,
+    "height": 2.8,
+    "colours": [
+     "#2e6b4f",
+     "#e8dcc0"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    7,
+    -8.1,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "depth": 1.2,
+    "height": 2.6,
+    "colours": [
+     "#c4282d",
+     "#e8dcc0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -7,
+    -8.3,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.2,
+    "bottom": 5.0,
+    "colour": "#2b5fa8",
+    "frameColour": "#d9c7a0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -8.3,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.1,
+    "bottom": 5.4,
+    "colour": "#e8b830",
+    "frameColour": "#d9c7a0",
+    "posts": false
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.04,
+      0.04
+     ]
+    },
+    "points": [
+     [
+      -8,
+      -8.8,
+      8.5
+     ],
+     [
+      0,
+      -9.5,
+      7.6
+     ],
+     [
+      8,
+      -8.8,
+      8.8
+     ]
+    ],
+    "sag": 0.6,
+    "colour": "#222222"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.04,
+      0.04
+     ]
+    },
+    "points": [
+     [
+      -8,
+      -8.8,
+      10
+     ],
+     [
+      0,
+      -9.4,
+      9.4
+     ],
+     [
+      8,
+      -8.8,
+      10.2
+     ]
+    ],
+    "sag": 0.5,
+    "colour": "#222222"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "trees": [],
+  "extent": [
+   22,
+   20
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "cropped close-up not matched: whole 3-storey lane frontage shown; ground windows still show beside fascia and portal; no carved relief, lattice fanlight or lane narrowing; wall reads greyer than cream-yellow in render"
+ }
+}

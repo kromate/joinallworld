@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: Wikidata lists Jallo Manhala as a small railway station; no OSM building matched and no photos found. Modest single-storey colonial-style brick platform building with verandah, platform canopy, small clock turret and two tracks, typed from Punjab Railways stations"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a24f3a",
+    "trimColour": "#e6dcc4",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a38",
+    "material": "clay-tile",
+    "rise": 2.6,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booking-hall",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a24f3a",
+    "trimColour": "#e6dcc4",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a38",
+    "material": "clay-tile",
+    "rise": 2.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "clock-tower",
+   "params": {
+    "width": 3.2,
+    "height": 10.5,
+    "cap": "hip",
+    "cap_rise": 2.4,
+    "clock": true
+   },
+   "at": [
+    -9,
+    -3,
+    0
+   ],
+   "id": "clock-turret"
+  },
+  {
+   "type": "station-platform",
+   "params": {
+    "length": 50,
+    "depth": 6,
+    "colour": "#b9b4aa"
+   },
+   "at": [
+    0,
+    5,
+    0
+   ],
+   "id": "platform"
+  },
+  {
+   "type": "platform-canopy",
+   "params": {
+    "width": 30,
+    "depth": 4.5,
+    "height": 3.4
+   },
+   "at": [
+    0,
+    6,
+    0.9
+   ],
+   "id": "platform-canopy"
+  },
+  {
+   "type": "rail-track",
+   "params": {
+    "length": 70,
+    "tracks": 2,
+    "spacing": 5.4
+   },
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "id": "tracks"
+  },
+  {
+   "type": "ticket-kiosk",
+   "params": {
+    "width": 2.6,
+    "depth": 2.2,
+    "height": 2.6
+   },
+   "at": [
+    16,
+    -8,
+    0
+   ],
+   "id": "kiosk"
+  },
+  {
+   "type": "tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   },
+   "at": [
+    -22,
+    -9,
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   },
+   "at": [
+    24,
+    -7,
+    0
+   ]
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -5
+     ],
+     [
+      0,
+      -24
+     ]
+    ],
+    "width": 4,
+    "colour": "#bdb6a8"
+   },
+   "at": [
+    0,
+    0,
+    0.03
+   ],
+   "id": "forecourt-path"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or building outline exists: everything beyond 'small railway station' is typed from regional norms, so size, roof and layout are plausible rather than seen."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ }
+}

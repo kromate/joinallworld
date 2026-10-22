@@ -1,0 +1,274 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u0417\u0434\u0430\u043d\u0438\u0435_\u0448\u0442\u0430\u0431\u0430_\u0422\u0443\u0440\u043a\u0412\u041e.jpg",
+   "licence": "Public domain",
+   "author": "Just (Russian Wikipedia)",
+   "view": "street",
+   "file": "/tmp/places-evidence/tashkent/mod1.jpg",
+   "used": "long ten-storey pale slab with continuous horizontal window bands, taller central block, lower stepped wing to the left, flat roof, trees along the street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/87902526",
+   "used": "bent two-wing outline, 10 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "slab shortened to 70 m to fit the 120 m clamp; no window-band detail or stair-core windows, trees are generic conifers; lower wing is a plain box"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "long-slab",
+   "footprint": {
+    "rect": [
+     70,
+     15
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "z0": 0,
+   "height": 34,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ebe6d8",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "glassColour": "#c4ccd0",
+    "plinth": 1.2,
+    "cornice": true,
+    "bay": 6,
+    "trimColour": "#f4f0e6",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f93",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central-block",
+   "footprint": {
+    "rect": [
+     26,
+     17
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "z0": 0,
+   "height": 41,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ebe6d8",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "glassColour": "#c4ccd0",
+    "plinth": 1.2,
+    "cornice": true,
+    "bay": 5,
+    "trimColour": "#f4f0e6",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f93",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    -52,
+    0
+   ],
+   "z0": 0,
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ebe6d8",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "glassColour": "#c4ccd0",
+    "plinth": 1.2,
+    "cornice": true,
+    "bay": 7,
+    "trimColour": "#f4f0e6",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f93",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -39.5,
+    -9.2
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 42,
+    "colour": "#d9d3c3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    45,
+    -7.8
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 35,
+    "colour": "#d9d3c3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -8.9
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.8
+    ],
+    "height": 35,
+    "colour": "#d9d3c3",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -52,
+     -18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     -16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -28,
+     -18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     -16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -4,
+     -18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     8,
+     -16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     20,
+     -18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     32,
+     -16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     44,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-community-notices"
+}

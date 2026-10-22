@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-osm-node-9805150731",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/182343232",
+   "used": "real 36 x 28 m footprint, bearing 83 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "banquet hall: two storeys, pale cream render, glazed front, flat roof, blank gold-coloured signage board, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 39
+   },
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee6d3",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4.5,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#b99a5a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-foyer",
+   "footprint": {
+    "rect": [
+     14,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -15.5
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8aa2",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99a5a",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 4.5,
+    "colour": "#b99a5a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; outline real, facade typed from brief"
+ }
+}

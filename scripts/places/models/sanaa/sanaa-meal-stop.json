@@ -1,0 +1,238 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1013497074",
+   "used": "size only (26x24 m): the nearest building is 65 m from the venue point so its outline is not trusted"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey roadside broast restaurant, rooftop family section, blank signboard; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     26,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d3a0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#a0583a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29c92",
+    "material": "concrete",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "family-room",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -3,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 7.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c8d6d4",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe2",
+    "material": "concrete",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "roof-terrace",
+   "id": "terrace",
+   "at": [
+    6,
+    -1,
+    7.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 8,
+    "depth": 10,
+    "tables": 4,
+    "pergola": true,
+    "glass": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    0,
+    -12.2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 16,
+    "depth": 2.2,
+    "height": 3,
+    "colours": [
+     "#a0583a",
+     "#f4efe2"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    -8,
+    -12.4,
+    5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#a0583a",
+    "frameColour": "#f4efe2",
+    "posts": false
+   }
+  },
+  {
+   "type": "roof-sign",
+   "id": "roof-sign",
+   "at": [
+    8,
+    -10,
+    8.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "id": "vent",
+   "at": [
+    9,
+    6,
+    7.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 1.4,
+    "height": 1.8,
+    "pots": 1
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp",
+   "at": [
+    16,
+    -18,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "sign-pole",
+   "id": "pole",
+   "at": [
+    -17,
+    -17,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 8,
+    "width": 1.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; facade detail and rooftop section typed"
+ }
+}

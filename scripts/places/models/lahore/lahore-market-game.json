@@ -1,0 +1,2961 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Inside_view_of_anarkali_bazar.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ali lahoti",
+   "view": "street",
+   "file": "/tmp/places-evidence/lahore/anarkali2.jpg",
+   "used": "narrow street between joined 3-4 storey plaster shop buildings of uneven height, shopfront awnings and blank signboards, bikes and cars in the lane, flat roofs, cream/ochre/pink-brown walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Street_view_anarkali_lahore.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ali lahoti",
+   "view": "street",
+   "file": "/tmp/places-evidence/lahore/anarkali1.jpg",
+   "used": "crowded lane, stalls and canvas canopies in the street, hung goods, tight frontages"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 70,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "core/prism",
+   "id": "w0",
+   "at": [
+    -5.0,
+    -17.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     4.95
+    ],
+    "z0": 0,
+    "height": 10.5,
+    "colour": "#be965b",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    -17.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 4.8,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#b83a3a",
+    "awning_colours": [
+     "#d9a62e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.65,
+    -17.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 4.4,
+    "height": 1.8,
+    "bottom": 7.053185729978271,
+    "colour": "#b83a3a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w1",
+   "at": [
+    -5.0,
+    -12.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     4.95
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#a2755d",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 4,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    -12.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 4.8,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#e9c46a",
+    "awning_colours": [
+     "#d9a62e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -2.5,
+    -12.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 4.2,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w2",
+   "at": [
+    -5.0,
+    -8.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 13.5,
+    "colour": "#9f7b5a",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    -8.1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#4a4440",
+    "sign_colour": "#e9c46a",
+    "awning_colours": [
+     "#d9a62e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.65,
+    -8.1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.1999999999999997,
+    "height": 1.8,
+    "bottom": 6.377618134478464,
+    "colour": "#b83a3a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w3",
+   "at": [
+    -5.0,
+    -4.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 10.5,
+    "colour": "#b08a63",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    -4.3,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#3a7ca5",
+    "awning_colours": [
+     "#e0822e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -2.5,
+    -4.3,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.0,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w4",
+   "at": [
+    -5.0,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 10.5,
+    "colour": "#be9d72",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    -0.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#e9c46a",
+    "awning_colours": [
+     "#2f7d4f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.65,
+    -0.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.1999999999999997,
+    "height": 1.8,
+    "bottom": 6.047847608928663,
+    "colour": "#3a7ca5",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w5",
+   "at": [
+    -5.0,
+    3.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#be9d72",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 4,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    3.3,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#e0822e",
+    "awning_colours": [
+     "#c8362f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -2.5,
+    3.3,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.0,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w6",
+   "at": [
+    -5.0,
+    7.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#bca47e",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 4,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    7.1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#6b4a3a",
+    "sign_colour": "#b83a3a",
+    "awning_colours": [
+     "#3a7ca5",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.65,
+    7.1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.1999999999999997,
+    "height": 1.8,
+    "bottom": 6.780276914365384,
+    "colour": "#3a7ca5",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w7",
+   "at": [
+    -5.0,
+    10.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#b08a63",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 4,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    10.9,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#6b4a3a",
+    "sign_colour": "#e0822e",
+    "awning_colours": [
+     "#3a7ca5",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -2.5,
+    10.9,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.0,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w8",
+   "at": [
+    -5.0,
+    15.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     5.55
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#b08370",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    15.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 5.3999999999999995,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#f4f1e6",
+    "awning_colours": [
+     "#2f7d4f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.65,
+    15.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 5.0,
+    "height": 1.8,
+    "bottom": 5.749417492159206,
+    "colour": "#e9c46a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w9",
+   "at": [
+    -5.0,
+    20.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     4.3500000000000005
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#b08a63",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    20.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 4.2,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#f4f1e6",
+    "awning_colours": [
+     "#2f7d4f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -2.5,
+    20.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.6000000000000005,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w10",
+   "at": [
+    -5.0,
+    25.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     5.55
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#be9d72",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    25.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 5.3999999999999995,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#4a4440",
+    "sign_colour": "#3a7ca5",
+    "awning_colours": [
+     "#e0822e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.65,
+    25.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 5.0,
+    "height": 1.8,
+    "bottom": 5.412405259108933,
+    "colour": "#2f6b4f",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "w11",
+   "at": [
+    -5.0,
+    30.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     4.3500000000000005
+    ],
+    "z0": 0,
+    "height": 13.5,
+    "colour": "#9f7b5a",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2.75,
+    30.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 4.2,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#4a4440",
+    "sign_colour": "#e0822e",
+    "awning_colours": [
+     "#d9a62e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -2.5,
+    30.6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 3.6000000000000005,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e0",
+   "at": [
+    5.0,
+    -17.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     4.95
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#aa6956",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    -17.5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 4.8,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#f4f1e6",
+    "awning_colours": [
+     "#3a7ca5",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.65,
+    -17.5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 4.4,
+    "height": 1.8,
+    "bottom": 6.992229939553986,
+    "colour": "#b83a3a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e1",
+   "at": [
+    5.0,
+    -13.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#be9d72",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    -13.1,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#e0822e",
+    "awning_colours": [
+     "#d9a62e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    2.5,
+    -13.1,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.0,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e2",
+   "at": [
+    5.0,
+    -9.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#b08370",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    -9.3,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#6b4a3a",
+    "sign_colour": "#e0822e",
+    "awning_colours": [
+     "#e0822e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.65,
+    -9.3,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.1999999999999997,
+    "height": 1.8,
+    "bottom": 7.21760073059523,
+    "colour": "#2f6b4f",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e3",
+   "at": [
+    5.0,
+    -5.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 13.5,
+    "colour": "#be9d72",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    -5.5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#4a4440",
+    "sign_colour": "#3a7ca5",
+    "awning_colours": [
+     "#d9a62e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    2.5,
+    -5.5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.0,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e4",
+   "at": [
+    5.0,
+    -0.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     5.55
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#9f7b5a",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    -0.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 5.3999999999999995,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#6b4a3a",
+    "sign_colour": "#e9c46a",
+    "awning_colours": [
+     "#c8362f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.65,
+    -0.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 5.0,
+    "height": 1.8,
+    "bottom": 5.994744196365581,
+    "colour": "#f4f1e6",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e5",
+   "at": [
+    5.0,
+    3.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     3.75
+    ],
+    "z0": 0,
+    "height": 10.5,
+    "colour": "#b08a63",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    3.9,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.5999999999999996,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#6b4a3a",
+    "sign_colour": "#3a7ca5",
+    "awning_colours": [
+     "#2f7d4f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    2.5,
+    3.9,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.0,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e6",
+   "at": [
+    5.0,
+    8.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     4.3500000000000005
+    ],
+    "z0": 0,
+    "height": 13.5,
+    "colour": "#be9d72",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    8.0,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 4.2,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#f4f1e6",
+    "awning_colours": [
+     "#2f7d4f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.65,
+    8.0,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.8000000000000003,
+    "height": 1.8,
+    "bottom": 6.706807648468629,
+    "colour": "#f4f1e6",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e7",
+   "at": [
+    5.0,
+    12.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     4.3500000000000005
+    ],
+    "z0": 0,
+    "height": 10.5,
+    "colour": "#b08370",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    12.4,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 4.2,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#4a4440",
+    "sign_colour": "#e9c46a",
+    "awning_colours": [
+     "#c8362f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    2.5,
+    12.4,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.6000000000000005,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e8",
+   "at": [
+    5.0,
+    16.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     4.3500000000000005
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#b08a63",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    16.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 4.2,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#e9c46a",
+    "awning_colours": [
+     "#2f7d4f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.65,
+    16.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.8000000000000003,
+    "height": 1.8,
+    "bottom": 5.704826805816844,
+    "colour": "#e9c46a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e9",
+   "at": [
+    5.0,
+    21.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     5.55
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#9f7b5a",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 4,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    21.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 5.3999999999999995,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#3a7ca5",
+    "awning_colours": [
+     "#2f7d4f",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    2.5,
+    21.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 4.8,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e10",
+   "at": [
+    5.0,
+    26.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     4.3500000000000005
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#b08a63",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 4,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    26.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 4.2,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#6b4a3a",
+    "sign_colour": "#e0822e",
+    "awning_colours": [
+     "#3a7ca5",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.65,
+    26.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 3.8000000000000003,
+    "height": 1.8,
+    "bottom": 5.980947267228172,
+    "colour": "#f4f1e6",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "e11",
+   "at": [
+    5.0,
+    31.8
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     4.5,
+     5.55
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#b08370",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "storeys": 3,
+    "bay": 3.2,
+    "topColour": "#7a756d",
+    "pattern": null
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2.75,
+    31.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 5.3999999999999995,
+    "height": 3.5,
+    "kind": "shutter",
+    "colour": "#3f4a44",
+    "sign_colour": "#f4f1e6",
+    "awning_colours": [
+     "#d9a62e",
+     "#f1e6c8"
+    ],
+    "depth": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balcony",
+   "at": [
+    2.5,
+    31.8,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 4.8,
+    "depth": 0.9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5.4,
+    "height": 2.2,
+    "bottom": 6.2,
+    "colour": "#b83a3a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5.4,
+    "height": 1.0,
+    "bottom": 8.0,
+    "colour": "#2f6b4f",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5.4,
+    "height": 0.9,
+    "bottom": 9.0,
+    "colour": "#e9c46a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -1.2,
+    -12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#d9d5cb"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    1.2,
+    6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#6b6f73"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -2.4,
+    2,
+    6.5
+   ],
+   "params": {
+    "height": 2,
+    "colours": [
+     "#2f7d4f",
+     "#f4f1e6"
+    ],
+    "count": 6,
+    "spacing": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "motorbike",
+     "params": {
+      "colour": "#222222"
+     },
+     "rotDeg": 90
+    },
+    "mode": "line",
+    "start": [
+     -2.2,
+     -18
+    ],
+    "end": [
+     -2.2,
+     30
+    ],
+    "count": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "motorbike",
+     "params": {
+      "colour": "#8a1c1c"
+     },
+     "rotDeg": 90
+    },
+    "mode": "line",
+    "start": [
+     -1.7,
+     -18
+    ],
+    "end": [
+     -1.7,
+     30
+    ],
+    "count": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 0.5,
+      "height": 2.6,
+      "bottom": 4.0,
+      "colour": "#c8362f",
+      "posts": false
+     },
+     "rotDeg": 0
+    },
+    "mode": "line",
+    "start": [
+     -2.3,
+     -14
+    ],
+    "end": [
+     -2.3,
+     30
+    ],
+    "count": 11,
+    "vary": null
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 0.5,
+      "height": 2.6,
+      "bottom": 4.0,
+      "colour": "#c8362f",
+      "posts": false
+     },
+     "rotDeg": 0
+    },
+    "mode": "line",
+    "start": [
+     2.3,
+     -14
+    ],
+    "end": [
+     2.3,
+     30
+    ],
+    "count": 11,
+    "vary": null
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sweep-path",
+     "params": {
+      "points": [
+       [
+        -2.7,
+        0,
+        8
+       ],
+       [
+        2.7,
+        0,
+        8.6
+       ]
+      ],
+      "sag": 0.5,
+      "section": {
+       "circle": 0.04
+      },
+      "colour": "#1a1a1a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     -15
+    ],
+    "end": [
+     0,
+     20
+    ],
+    "count": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    2.0,
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 6,
+    "pitch": 6,
+    "kind": "canopy",
+    "size": 1.2,
+    "colours": [
+     "#d9a62e",
+     "#c8362f",
+     "#2f7d4f",
+     "#e0822e",
+     "#3a7ca5"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -19.9,
+    2.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.8,
+    "height": 1.4,
+    "bottom": 3.0,
+    "colour": "#e9c46a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5,
+    -19.9,
+    2.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.8,
+    "height": 1.4,
+    "bottom": 3.0,
+    "colour": "#c8362f",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "lod2-w",
+   "at": [
+    -5.0,
+    7
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     54
+    ],
+    "height": 12,
+    "colour": "#9a8670",
+    "storeys": 3
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "lod2-e",
+   "at": [
+    5.0,
+    7
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     54
+    ],
+    "height": 12,
+    "colour": "#8f8270",
+    "storeys": 3
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5.4,
+    "height": 1.1,
+    "bottom": 6.5,
+    "colour": "#3a7ca5",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5.4,
+    "height": 1.1,
+    "bottom": 7.5,
+    "colour": "#c8362f",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    9,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5.4,
+    "height": 1.1,
+    "bottom": 6.5,
+    "colour": "#c8362f",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5.4,
+    "height": 1.1,
+    "bottom": 8.5,
+    "colour": "#e0822e",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5.4,
+    "height": 1.1,
+    "bottom": 7.5,
+    "colour": "#e9c46a",
+    "posts": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    1.9,
+    -6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      8.5
+     ]
+    ],
+    "section": {
+     "circle": 0.12
+    },
+    "colour": "#4a4a48"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      1.9,
+      -6,
+      8.2
+     ],
+     [
+      -2.7,
+      -9,
+      7.6
+     ]
+    ],
+    "sag": 0.6,
+    "section": {
+     "circle": 0.04
+    },
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      1.9,
+      -6,
+      7.9
+     ],
+     [
+      -2.7,
+      -4,
+      7.300000000000001
+     ]
+    ],
+    "sag": 0.6,
+    "section": {
+     "circle": 0.04
+    },
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      1.9,
+      -6,
+      8.4
+     ],
+     [
+      -2.7,
+      -2,
+      7.800000000000001
+     ]
+    ],
+    "sag": 0.6,
+    "section": {
+     "circle": 0.04
+    },
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    1.9,
+    12,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      8.5
+     ]
+    ],
+    "section": {
+     "circle": 0.12
+    },
+    "colour": "#4a4a48"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      1.9,
+      12,
+      8.2
+     ],
+     [
+      -2.7,
+      9,
+      7.6
+     ]
+    ],
+    "sag": 0.6,
+    "section": {
+     "circle": 0.04
+    },
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      1.9,
+      12,
+      7.9
+     ],
+     [
+      -2.7,
+      14,
+      7.300000000000001
+     ]
+    ],
+    "sag": 0.6,
+    "section": {
+     "circle": 0.04
+    },
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      1.9,
+      12,
+      8.4
+     ],
+     [
+      -2.7,
+      16,
+      7.800000000000001
+     ]
+    ],
+    "sag": 0.6,
+    "section": {
+     "circle": 0.04
+    },
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -1.0,
+    -2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#b0b3b5"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    1.0,
+    18,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#23303f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -1.0,
+    24,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#e9e4d6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "motorbike",
+     "params": {
+      "colour": "#2a3f6a"
+     },
+     "rotDeg": 90
+    },
+    "mode": "line",
+    "start": [
+     2.2,
+     -18
+    ],
+    "end": [
+     2.2,
+     30
+    ],
+    "count": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "motorbike",
+     "params": {
+      "colour": "#d8d4c8"
+     },
+     "rotDeg": 90
+    },
+    "mode": "line",
+    "start": [
+     1.7,
+     -18
+    ],
+    "end": [
+     1.7,
+     30
+    ],
+    "count": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -1.6,
+    2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 6,
+    "pitch": 6,
+    "kind": "canopy",
+    "size": 1.1,
+    "colours": [
+     "#c8362f",
+     "#e9c46a",
+     "#3a7ca5",
+     "#2f7d4f"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 3.4,
+      "height": 0.9,
+      "bottom": 3.7,
+      "colour": "#f4f1e6",
+      "posts": false
+     },
+     "rotDeg": 90
+    },
+    "mode": "line",
+    "start": [
+     -2.62,
+     -17.5
+    ],
+    "end": [
+     -2.62,
+     31.5
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 3.2,
+      "height": 1.4,
+      "bottom": 5.7,
+      "colour": "#3a7ca5",
+      "posts": false
+     },
+     "rotDeg": 90
+    },
+    "mode": "line",
+    "start": [
+     -2.62,
+     -17.5
+    ],
+    "end": [
+     -2.62,
+     31.5
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 3.0,
+      "height": 1.6,
+      "bottom": 8.0,
+      "colour": "#e0822e",
+      "posts": false
+     },
+     "rotDeg": 90
+    },
+    "mode": "line",
+    "start": [
+     -2.62,
+     -17.5
+    ],
+    "end": [
+     -2.62,
+     31.5
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 3.4,
+      "height": 0.9,
+      "bottom": 3.7,
+      "colour": "#3a7ca5",
+      "posts": false
+     },
+     "rotDeg": -90
+    },
+    "mode": "line",
+    "start": [
+     2.62,
+     -17.5
+    ],
+    "end": [
+     2.62,
+     31.5
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 3.2,
+      "height": 1.4,
+      "bottom": 5.7,
+      "colour": "#e0822e",
+      "posts": false
+     },
+     "rotDeg": -90
+    },
+    "mode": "line",
+    "start": [
+     2.62,
+     -17.5
+    ],
+    "end": [
+     2.62,
+     31.5
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 3.0,
+      "height": 1.6,
+      "bottom": 8.0,
+      "colour": "#e0822e",
+      "posts": false
+     },
+     "rotDeg": -90
+    },
+    "mode": "line",
+    "start": [
+     2.62,
+     -17.5
+    ],
+    "end": [
+     2.62,
+     31.5
+    ],
+    "count": 8
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": 0,
+  "extent": [
+   14,
+   72
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Asphalt, dense sign layers, banners, wires, more bikes/cars added; facades still simple prisms with stock windows, no night/emissive lighting, no hanging garments or crowd, lane still tidier than photo."
+ }
+}

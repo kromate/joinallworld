@@ -1,0 +1,212 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/993587672",
+   "used": "campus polygon only (513 x 243 m); too large for one building so only a main teaching block is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "long four-storey Soviet academic block with central entrance, founded 1931, buildings 1950s-70s"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d7b8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#a86f4f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    -43,
+    5
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d7b8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#a86f4f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    43,
+    5
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d7b8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#a86f4f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 9,
+    "columns": 6,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#f1ece0",
+    "roofColour": "#a86f4f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colours": [
+     "#cc0000",
+     "#ffffff",
+     "#006600"
+    ],
+    "count": 2,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "bars",
+    "pillarEvery": 6,
+    "colour": "#7c7c78"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "line": 60
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the main block (nearby street photos show other buildings); massing is a typical long Soviet academic block, not measured."
+ }
+}

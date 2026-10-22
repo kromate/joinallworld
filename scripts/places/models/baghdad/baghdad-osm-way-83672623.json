@@ -1,0 +1,159 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%A7%D9%84%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%A7%D9%84%D8%AA%D9%83%D9%86%D9%88%D9%84%D9%88%D8%AC%D9%8A%D8%A9_2024_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ayat Jaryan",
+   "view": "front",
+   "file": "/tmp/places-evidence/baghdad/uot1.jpg",
+   "used": "campus cladding palette: pale beige travertine-type stone tiles in horizontal courses, salmon brick inset, rough concrete frame; gate itself not modelled (separate structure)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%A7%D9%84%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%A7%D9%84%D8%AA%D9%83%D9%86%D9%88%D9%84%D9%88%D8%AC%D9%8A%D8%A9_2024_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ayat Jaryan",
+   "view": "street",
+   "file": "/tmp/places-evidence/baghdad/uot2.jpg",
+   "used": "regular punched window grids and a low older block with ribbon windows and iron fence; a different, newer block with red bands is visible and not copied"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/848334442",
+   "used": "60 x 16 m college block outline (bearing 121 deg)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9cdb0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 3.6,
+    "bands": "#bba98a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a392",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "rotDeg": -59,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9b88f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a392"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-slab",
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -59,
+   "params": {
+    "rect": [
+     10,
+     4
+    ],
+    "z0": 3.4,
+    "height": 0.5,
+    "colour": "#bba98a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.6,
+    "colour": "#2e2e2e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this block; facade uses campus palette only"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-osm-way-83672623"
+}

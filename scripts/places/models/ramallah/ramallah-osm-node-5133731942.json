@@ -1,0 +1,368 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-node-5133731942",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palestine_Medical_Complex_005.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Amin",
+   "view": "street",
+   "file": "/tmp/places-evidence/ramallah/p0_1.jpg",
+   "used": "gate only: cream coursed stone boundary wall and piers, cypress trees, steel gate with a footbridge behind; the buildings themselves are not visible so no comparison render was possible"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1490265446",
+   "used": "campus outline (about 225 x 202 m), scaled by 0.52 to the scene clamp and used as the paved site pad; wings placed inside it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "site-pad",
+   "params": {
+    "points": [
+     [
+      -61.8,
+      27.8
+     ],
+     [
+      -50.5,
+      42.5
+     ],
+     [
+      -22.7,
+      50.4
+     ],
+     [
+      -10.4,
+      51.7
+     ],
+     [
+      5.7,
+      46.9
+     ],
+     [
+      24.0,
+      54.3
+     ],
+     [
+      44.4,
+      14.7
+     ],
+     [
+      68.0,
+      -38.7
+     ],
+     [
+      27.3,
+      -46.9
+     ],
+     [
+      -11.6,
+      -43.1
+     ],
+     [
+      -37.5,
+      -47.6
+     ],
+     [
+      -56.1,
+      -14.4
+     ],
+     [
+      -38.9,
+      -8.2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#bdb8ac",
+    "topColour": "#bdb8ac"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-a",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    2,
+    26
+   ],
+   "rotDeg": 0,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d4b4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 9,
+    "glassColour": "#8fa7b3",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b3a8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-b",
+   "footprint": {
+    "rect": [
+     16,
+     46
+    ]
+   },
+   "at": [
+    -36,
+    -4
+   ],
+   "rotDeg": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d4b4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 9,
+    "glassColour": "#8fa7b3",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b3a8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-c",
+   "footprint": {
+    "rect": [
+     16,
+     42
+    ]
+   },
+   "at": [
+    34,
+    -12
+   ],
+   "rotDeg": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d4b4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 9,
+    "glassColour": "#8fa7b3",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b3a8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9ccaa",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 9,
+    "glassColour": "#8fa7b3",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b3a8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "emergency",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    -10,
+    -26
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#efe7d6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8362f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/water-tank",
+   "on": "wing-b",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 3,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "helipad",
+   "on": "link",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 6,
+    "n": 16,
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#7c8c93",
+    "topColour": "#7c8c93"
+   },
+   "at": [
+    4,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -45,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.2,
+    "kind": "wall",
+    "colour": "#d6c9a8",
+    "pillarEvery": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     -38
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -40
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -40
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the buildings exists in the evidence (only the gate); wing count, positions, heights and window rhythm are inferred from the brief and the campus outline; wing end walls plain; no helipad mark, solar panels or red-cross sign."
+ }
+}

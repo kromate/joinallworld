@@ -1,0 +1,470 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-way-256250988",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barzan_Tower_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Davide Mauro",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/barzan2.jpg",
+   "used": "tall battered tower behind a lower crenellated wing, entrance stair, conical base buttresses, cream gypsum plaster, line of timber drain spouts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Staircased_Barzan_Tower.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "takwing.kwong",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/barzan1.jpg",
+   "used": "tapering walls, crenellated parapet, small square loopholes, big staircase wings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Umm_Salal_Muhammed_Fort.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Tak Wing Kwong",
+   "view": "side",
+   "file": "/tmp/places-evidence/doha/barzan3.jpg",
+   "used": "low majlis block with timber-posted veranda, small mosque with bell niche, paved court"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/256250988",
+   "used": "overall site extent only (156 x 90 m includes grounds); buildings composed from photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    -6,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "height": 20,
+    "colour": "#d9c18d",
+    "windows": "none",
+    "topScale": 0.85,
+    "topColour": "#cdb27c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing",
+   "at": [
+    9,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     10
+    ],
+    "height": 10.5,
+    "colour": "#d9c18d",
+    "windows": "none",
+    "topScale": [
+     0.97,
+     0.95
+    ],
+    "topColour": "#cdb27c"
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -6,
+    -7.2,
+    20
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "height": 1.9,
+    "thickness": 1.2,
+    "merlons": true,
+    "batter": 0,
+    "pinnacle": 0.5
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -6,
+    3.2,
+    20
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "height": 1.9,
+    "thickness": 1.2,
+    "merlons": true,
+    "batter": 0,
+    "pinnacle": 0.5
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -11.2,
+    -2,
+    20
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 10,
+    "height": 1.9,
+    "thickness": 1.2,
+    "merlons": true,
+    "batter": 0,
+    "pinnacle": 0.5
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -0.8,
+    -2,
+    20
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 10,
+    "height": 1.9,
+    "thickness": 1.2,
+    "merlons": true,
+    "batter": 0,
+    "pinnacle": 0.5
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    9,
+    -7.2,
+    10.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 15,
+    "height": 1.7,
+    "thickness": 1.2,
+    "merlons": true,
+    "batter": 0,
+    "pinnacle": 0.5
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    9,
+    1.2,
+    10.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 15,
+    "height": 1.7,
+    "thickness": 1.2,
+    "merlons": true,
+    "batter": 0,
+    "pinnacle": 0.5
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    16.2,
+    -3,
+    10.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 8.5,
+    "height": 1.7,
+    "thickness": 1.2,
+    "merlons": true,
+    "batter": 0,
+    "pinnacle": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -12.2,
+    -7.4,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d9c18d",
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      1.8,
+      3
+     ],
+     [
+      1.3,
+      6
+     ],
+     [
+      0.8,
+      8.5
+     ],
+     [
+      0,
+      9.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -3.4,
+    -7.6,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d9c18d",
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      1.8,
+      3
+     ],
+     [
+      1.3,
+      6
+     ],
+     [
+      0.8,
+      8.5
+     ],
+     [
+      0,
+      9.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    1,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.45,
+    "run": 1.0,
+    "count": 5,
+    "colour": "#d9c18d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    1,
+    -8.1,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     2,
+     0.3
+    ],
+    "height": 3,
+    "colour": "#5a3d22",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cheek",
+   "at": [
+    -2.6,
+    -10.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     4.6
+    ],
+    "height": 2.2,
+    "colour": "#d9c18d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cheek",
+   "at": [
+    4.6,
+    -10.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     4.6
+    ],
+    "height": 2.2,
+    "colour": "#d9c18d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     4,
+     -8.2,
+     9.2
+    ],
+    "end": [
+     15,
+     -8.2,
+     9.2
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.9
+      ],
+      "height": 0.3,
+      "colour": "#4a3523",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    30
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d9c18d",
+    "windows": "none",
+    "windowRatio": 0.03,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbd98",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -42,
+      -22
+     ],
+     [
+      46,
+      -22
+     ],
+     [
+      46,
+      44
+     ],
+     [
+      -42,
+      44
+     ],
+     [
+      -42,
+      -22
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.6,
+    "colour": "#d9c18d",
+    "kind": "wall"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower still not massive enough or battered like photo; buttresses short free cones not merged tall into corners; merlons only lightly pointed; stair narrower than photo; small mosque box at left remains; minor buildings approximate"
+ }
+}

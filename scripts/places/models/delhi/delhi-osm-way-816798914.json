@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-osm-way-816798914",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/352436189",
+   "used": "real outline (about 111 x 70 m, irregular 11-corner polygon) and 5 levels"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/delhi.json",
+   "used": "white painted state hospital block, ribbon windows, blue accent, flat roof with water tanks, ambulance bay, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photograph found; finish, colours, entrance position and roof plant are typed from the brief, only the outline and 5 levels are measured."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 12,
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.5,
+      "floors": [
+       2,
+       4
+      ],
+      "colour": "#4f7f9a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -8,
+    -10,
+    20.8
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.8,
+    "tankHeight": 2.4,
+    "legHeight": 2.2,
+    "legs": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    12,
+    -20,
+    20.8
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.8,
+    "tankHeight": 2.4,
+    "legHeight": 2.2,
+    "legs": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    8,
+    8
+   ],
+   "z0": 20.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -20,
+    -40,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 5,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#4f7f9a"
+   }
+  },
+  {
+   "type": "car",
+   "lod": [
+    0
+   ],
+   "at": [
+    -40,
+    -52,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "lod": [
+    0
+   ],
+   "at": [
+    30,
+    -52,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    62,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -50,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   130
+  ]
+ }
+}

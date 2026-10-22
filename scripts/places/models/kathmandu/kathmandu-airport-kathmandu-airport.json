@@ -1,0 +1,694 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A_view_of_Tribhuvan_International_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bharatahs",
+   "view": "back",
+   "file": "/tmp/places-evidence/kathmandu/air1.jpg",
+   "used": "airside apron: long low dark hipped terminal, red/white buses, boarding stairs, tall floodlight masts, brick frontage behind (context only)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2009-03_Kathmandu_10.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Ralf Lotys (Sicherlich)",
+   "view": "front",
+   "used": "landside (main camera): red-brick 4-storey office block at left with a short square concrete control tower behind, lower hall at right with a skylight-grid roof and dark arched forecourt canopy, hedged lawn, buses and vans",
+   "file": "/tmp/places-evidence/kathmandu/air2.jpg"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4623f",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#d9cdb8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -1,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a85a3c",
+    "windows": "none",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall-base",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     34
+    ],
+    "height": 3.5,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#8f4f38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "arch-bays",
+   "params": {
+    "of": {
+     "type": "canopy",
+     "params": {
+      "form": "curved",
+      "width": 4.8,
+      "depth": 8,
+      "height": 5.8,
+      "thickness": 0.7,
+      "rise": 2.2,
+      "columns": 0,
+      "colour": "#2c2e32",
+      "edgeColour": "#1f2124"
+     }
+    },
+    "mode": "line",
+    "count": 12,
+    "start": [
+     7,
+     -15,
+     0
+    ],
+    "end": [
+     84,
+     -15,
+     0
+    ],
+    "lod1Step": 3,
+    "lod2Step": 18
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -24,
+    10,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "round",
+    "colour": "#bdb8ad",
+    "shaftRadius": 2.4,
+    "cabRadius": 3.2,
+    "cabColour": "#6f8591",
+    "bandColour": "#b9b3a6"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -47,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#b32a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-slot-0",
+   "lod": [
+    0
+   ],
+   "at": [
+    46,
+    7.6,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     84,
+     28.0
+    ],
+    "height": 0.7,
+    "colour": "#1c1614",
+    "material": "painted-render",
+    "topColour": "#1c1614",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-brick-0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    7.0,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     84,
+     30.0
+    ],
+    "height": 0.7,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#9d5a43",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-slot-1",
+   "lod": [
+    0
+   ],
+   "at": [
+    46,
+    8.8,
+    4.8
+   ],
+   "params": {
+    "rect": [
+     84,
+     25.6
+    ],
+    "height": 0.7,
+    "colour": "#1c1614",
+    "material": "painted-render",
+    "topColour": "#1c1614",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-brick-1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    8.2,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     84,
+     27.6
+    ],
+    "height": 0.7,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#9d5a43",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-slot-2",
+   "lod": [
+    0
+   ],
+   "at": [
+    46,
+    10.0,
+    6.1
+   ],
+   "params": {
+    "rect": [
+     84,
+     23.2
+    ],
+    "height": 0.7,
+    "colour": "#1c1614",
+    "material": "painted-render",
+    "topColour": "#1c1614",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-brick-2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    9.4,
+    6.8
+   ],
+   "params": {
+    "rect": [
+     84,
+     25.2
+    ],
+    "height": 0.7,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#9d5a43",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-slot-3",
+   "lod": [
+    0
+   ],
+   "at": [
+    46,
+    11.2,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     84,
+     20.8
+    ],
+    "height": 0.7,
+    "colour": "#1c1614",
+    "material": "painted-render",
+    "topColour": "#1c1614",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-brick-3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    10.6,
+    8.1
+   ],
+   "params": {
+    "rect": [
+     84,
+     22.8
+    ],
+    "height": 0.7,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#9d5a43",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-slot-4",
+   "lod": [
+    0
+   ],
+   "at": [
+    46,
+    12.4,
+    8.7
+   ],
+   "params": {
+    "rect": [
+     84,
+     18.4
+    ],
+    "height": 0.7,
+    "colour": "#1c1614",
+    "material": "painted-render",
+    "topColour": "#1c1614",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-brick-4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    11.8,
+    9.4
+   ],
+   "params": {
+    "rect": [
+     84,
+     20.4
+    ],
+    "height": 0.7,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#9d5a43",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-slot-5",
+   "lod": [
+    0
+   ],
+   "at": [
+    46,
+    13.6,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     84,
+     16.0
+    ],
+    "height": 0.7,
+    "colour": "#1c1614",
+    "material": "painted-render",
+    "topColour": "#1c1614",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-brick-5",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    13.0,
+    10.7
+   ],
+   "params": {
+    "rect": [
+     84,
+     18.0
+    ],
+    "height": 0.7,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#9d5a43",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-slot-6",
+   "lod": [
+    0
+   ],
+   "at": [
+    46,
+    14.8,
+    11.3
+   ],
+   "params": {
+    "rect": [
+     84,
+     13.6
+    ],
+    "height": 0.7,
+    "colour": "#1c1614",
+    "material": "painted-render",
+    "topColour": "#1c1614",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-brick-6",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    14.2,
+    12.0
+   ],
+   "params": {
+    "rect": [
+     84,
+     15.6
+    ],
+    "height": 0.7,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#9d5a43",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-slot-7",
+   "lod": [
+    0
+   ],
+   "at": [
+    46,
+    16.0,
+    12.6
+   ],
+   "params": {
+    "rect": [
+     84,
+     11.2
+    ],
+    "height": 0.7,
+    "colour": "#1c1614",
+    "material": "painted-render",
+    "topColour": "#1c1614",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-brick-7",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    46,
+    15.4,
+    13.3
+   ],
+   "params": {
+    "rect": [
+     84,
+     13.2
+    ],
+    "height": 0.7,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#9d5a43",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 22
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hall-standin",
+   "lod": [
+    2
+   ],
+   "at": [
+    46,
+    7,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     30
+    ],
+    "height": 15,
+    "colour": "#a65c40",
+    "material": "painted-render",
+    "topColour": "#9d5a43",
+    "windows": "none",
+    "topScale": [
+     1,
+     0.1
+    ],
+    "topOffset": [
+     0,
+     -13
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "coach",
+   "at": [
+    -40,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#2f5f9a",
+    "stripe": "#e08a2a",
+    "count": 1,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "count": 1,
+    "yaw": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "at": [
+    -10,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     2
+    ],
+    "height": 1.2,
+    "colour": "#3d6f38",
+    "windows": "none",
+    "material": "painted-render"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "trees": 0,
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-airport-kathmandu-airport",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Evidence corrected: air2 is landside (main camera), air1 is airside (context). Office now 4 storeys with slimmer tower and floodlight mast, buses added; hall roof is still a stepped brick terrace not the photo's skylight grid, tower is round not square, hedged lawn missing, cars dropped for budget."
+ }
+}

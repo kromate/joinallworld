@@ -1,0 +1,679 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-way-1530760059",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dar_Al_Hajar,_Wadi_Dhahr,_Yemen_(4325716370).jpg",
+   "licence": "CC BY 2.0",
+   "author": "yeowatzup",
+   "view": "front",
+   "file": "/tmp/places-evidence/sanaa/rock2.jpg",
+   "used": "palace stacked on a red sandstone boulder, black basalt lower floors, brown fired-brick upper floors, white lime frames and parapet, stepped shoulders, setback upper block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dar_Al_Hajar,_Wadi_Dhahr,_Yemen_(4325726246).jpg",
+   "licence": "CC BY 2.0",
+   "author": "yeowatzup",
+   "view": "side",
+   "file": "/tmp/places-evidence/sanaa/rock1.jpg",
+   "used": "white zig-zag parapet bands, window frame rhythm, lower wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1530760059",
+   "used": "footprint about 11 x 13 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": -8,
+  "fovDeg": 38,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "boulder",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#b5603f",
+    "capBottom": false,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       10,
+       8.8
+      ],
+      "cx": 0
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       8.4,
+       7.4
+      ],
+      "cx": 0.3
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       7.6,
+       6.8
+      ],
+      "cx": -0.3
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       6.8,
+       6.2
+      ],
+      "cx": 0
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       6.2,
+       5.8
+      ],
+      "cx": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rock-left",
+   "at": [
+    -9,
+    -1,
+    0
+   ],
+   "params": {
+    "colour": "#a85f44",
+    "capBottom": false,
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       2.31,
+       3.85
+      ],
+      "cx": 0.0
+     },
+     {
+      "z": 3.38,
+      "ellipse": [
+       1.96,
+       3.27
+      ],
+      "cx": -0.36
+     },
+     {
+      "z": 6.75,
+      "ellipse": [
+       2.31,
+       3.85
+      ],
+      "cx": 0.18
+     },
+     {
+      "z": 10.12,
+      "ellipse": [
+       1.62,
+       2.7
+      ],
+      "cx": -0.12
+     },
+     {
+      "z": 13.5,
+      "ellipse": [
+       0.81,
+       1.35
+      ],
+      "cx": 0.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rock-back",
+   "at": [
+    0,
+    7,
+    0
+   ],
+   "params": {
+    "colour": "#a45e42",
+    "capBottom": false,
+    "sections": [
+     {
+      "z": 0.0,
+      "ellipse": [
+       4.95,
+       2.2
+      ],
+      "cx": 0.0
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       4.46,
+       1.98
+      ],
+      "cx": 0.3
+     },
+     {
+      "z": 9.0,
+      "ellipse": [
+       4.95,
+       2.2
+      ],
+      "cx": -0.3
+     },
+     {
+      "z": 13.5,
+      "ellipse": [
+       2.97,
+       1.32
+      ],
+      "cx": 0.0
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "basalt",
+   "footprint": {
+    "rect": [
+     13,
+     12.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#3a3a3d",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "trimColour": "#f1ece0",
+    "plinth": 0.5,
+    "bands": {
+     "colour": "#f3eee2",
+     "height": 0.35
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f6a4c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick",
+   "footprint": {
+    "rect": [
+     9.5,
+     9.5
+    ]
+   },
+   "at": [
+    -0.8,
+    0.6
+   ],
+   "z0": 14,
+   "height": 11,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#7b4c33",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "trimColour": "#f6f1e6",
+    "bands": {
+     "colour": "#f6f1e6",
+     "height": 0.4
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ece0",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     6.5,
+     5.8
+    ]
+   },
+   "at": [
+    -2.5,
+    2.5
+   ],
+   "z0": 25,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7b4c33",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "trimColour": "#f6f1e6",
+    "bands": {
+     "colour": "#f6f1e6",
+     "height": 0.4
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ece0",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     6.5,
+     5.5
+    ]
+   },
+   "at": [
+    7.5,
+    -5.5
+   ],
+   "z0": 4,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#7b4c33",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "trimColour": "#f6f1e6",
+    "bands": {
+     "colour": "#f6f1e6",
+     "height": 0.4
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ece0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-step",
+   "footprint": {
+    "rect": [
+     4,
+     4.5
+    ]
+   },
+   "at": [
+    11.8,
+    -3.5
+   ],
+   "z0": 4,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#7b4c33",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "trimColour": "#f6f1e6",
+    "bands": {
+     "colour": "#f6f1e6",
+     "height": 0.4
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3eee2",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay",
+   "footprint": {
+    "rect": [
+     3.4,
+     1.6
+    ]
+   },
+   "at": [
+    -1.5,
+    -5.8
+   ],
+   "z0": 17,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7b4c33",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "trimColour": "#f6f1e6",
+    "bands": {
+     "colour": "#f6f1e6",
+     "height": 0.4
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3eee2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-gable-a",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    1,
+    4.5
+   ],
+   "z0": 25,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#855336",
+    "windows": "none",
+    "trimColour": "#f3eee2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3eee2",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-gable-b",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    4,
+    5
+   ],
+   "z0": 25,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#855336",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3eee2",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "id": "teeth-basalt",
+   "params": {
+    "mode": "line",
+    "count": 14,
+    "start": [
+     -6.4,
+     -6.4,
+     14.4
+    ],
+    "end": [
+     6.4,
+     -6.4,
+     14.4
+    ],
+    "lod1Step": 2,
+    "lod2Step": 99,
+    "of": [
+     {
+      "type": "prism",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "rect": [
+        0.55,
+        0.45
+       ],
+       "z0": 0,
+       "height": 0.9,
+       "colour": "#f3eee2",
+       "topScale": 0.2
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "teeth-brick",
+   "params": {
+    "mode": "line",
+    "count": 13,
+    "start": [
+     -6.4,
+     -5.05,
+     26.0
+    ],
+    "end": [
+     4.8,
+     -5.05,
+     26.0
+    ],
+    "lod1Step": 2,
+    "lod2Step": 99,
+    "of": [
+     {
+      "type": "prism",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "rect": [
+        0.55,
+        0.45
+       ],
+       "z0": 0,
+       "height": 0.9,
+       "colour": "#f3eee2",
+       "topScale": 0.2
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "teeth-attic",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -6.0,
+     -0.8,
+     29.9
+    ],
+    "end": [
+     1.0,
+     -0.8,
+     29.9
+    ],
+    "lod1Step": 2,
+    "lod2Step": 99,
+    "of": [
+     {
+      "type": "prism",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "rect": [
+        0.55,
+        0.45
+       ],
+       "z0": 0,
+       "height": 0.9,
+       "colour": "#f3eee2",
+       "topScale": 0.2
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "teeth-wing",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     4.0,
+     -8.3,
+     15.8
+    ],
+    "end": [
+     10.8,
+     -8.3,
+     15.8
+    ],
+    "lod1Step": 2,
+    "lod2Step": 99,
+    "of": [
+     {
+      "type": "prism",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "rect": [
+        0.55,
+        0.45
+       ],
+       "z0": 0,
+       "height": 0.9,
+       "colour": "#f3eee2",
+       "topScale": 0.2
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "teeth-wing2",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     9.9,
+     -5.8,
+     12.0
+    ],
+    "end": [
+     13.7,
+     -5.8,
+     12.0
+    ],
+    "lod1Step": 2,
+    "lod2Step": 99,
+    "of": [
+     {
+      "type": "prism",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "rect": [
+        0.55,
+        0.45
+       ],
+       "z0": 0,
+       "height": 0.9,
+       "colour": "#f3eee2",
+       "topScale": 0.2
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -9
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Windows are plain tall arches, not dense ornate white-framed fanlights; parapet is a spike row not zig-zag stepped gables; rock is smooth lofts not cracked sandstone cliff; no balustrade."
+ }
+}

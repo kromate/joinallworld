@@ -1,0 +1,174 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1527989327",
+   "used": "real outline of the hall (19.3 x 5.4 m), turned so its long side is the front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "polygon": [
+     [
+      -9.6,
+      2.87
+     ],
+     [
+      9.72,
+      2.52
+     ],
+     [
+      9.6,
+      -2.87
+     ],
+     [
+      -9.72,
+      -2.52
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e1d8c2",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tile-panel",
+   "at": [
+    -3.6,
+    -2.9,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.15
+    ],
+    "z0": 0.0,
+    "height": 3.2,
+    "colour": "#2d7a63",
+    "topColour": "#2d7a63"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-bay",
+   "at": [
+    3.6,
+    -2.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.3
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#7a6a50",
+    "topColour": "#6b5a42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-head",
+   "at": [
+    3.6,
+    -3.0,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#2d7a63",
+    "topColour": "#2d7a63"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -3.4,
+    5.6
+   ],
+   "params": {
+    "height": 4,
+    "colour": "#1a1a1a",
+    "count": 2,
+    "spacing": 1.8,
+    "colours": [
+     "#1a1a1a",
+     "#2d7a63"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0.5,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 0.9,
+    "bottom": 4.1,
+    "colour": "#2d7a63",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   44,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this hall exists; outline, type and green tile panel are typed from OSM and the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-osm-way-1527989327"
+}

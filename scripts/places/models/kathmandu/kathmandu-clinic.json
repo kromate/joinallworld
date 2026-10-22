@@ -1,0 +1,155 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/10953876",
+   "used": "campus outline of Civil Service Hospital (name match, 201 x 196 m) used only as the paved site slab; the 6-storey L ward block, water tanks and entrance canopy come from the brief (no exterior photo found, nearby Commons photos are classroom interiors)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcf",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#c9a98a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ward-L",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -10
+     ],
+     [
+      28,
+      -10
+     ],
+     [
+      28,
+      2
+     ],
+     [
+      -18,
+      2
+     ],
+     [
+      -18,
+      22
+     ],
+     [
+      -30,
+      22
+     ]
+    ],
+    "z0": 6,
+    "height": 18,
+    "colour": "#ece6d8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "storeys": 6,
+    "trimColour": "#c9a98a",
+    "bay": 4.5
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -22,
+    16,
+    24
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 2.5,
+    "legHeight": 2,
+    "legs": 4
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    18,
+    -4,
+    24
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 2.5,
+    "legHeight": 2,
+    "legs": 4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#d8d2c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 8,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No exterior photo of this hospital: OSM outline only as site slab, L ward block, tanks and canopy come from the brief."
+ }
+}

@@ -1,0 +1,399 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Town_Hall,_Colombo_2018-03-23.jpg",
+   "licence": "CC0",
+   "author": "FaysaLB",
+   "view": "street",
+   "file": "/tmp/places-evidence/colombo/town.jpg",
+   "used": "white stuccoed neoclassical block seen from the road at the front corner: tall drum and dome on the centre, tall columned portico, long side colonnade, low attic, white flat roofs, flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13887429",
+   "used": "size only (about 108 x 51 m body; the OSM outline is fragmentary)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 50,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     51,
+     100
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#fffbf2",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "windowShape": "rect",
+    "faces": {
+     "front": "none",
+     "back": "none"
+    },
+    "plinth": 1.2,
+    "cornice": false,
+    "bay": 10,
+    "bands": "#f0eee8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6e1",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     38,
+     50
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 15,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#fffbf2",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6e1",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-block",
+   "footprint": {
+    "rect": [
+     30,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -54
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#fffbf2",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 1.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6e1",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -60,
+    0.6
+   ],
+   "params": {
+    "width": 28,
+    "depth": 9,
+    "height": 17,
+    "columns": 6,
+    "pediment": true,
+    "steps": 8,
+    "colour": "#fffbf2",
+    "roofColour": "#f2f0eb"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -30,
+    0,
+    0.6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 90,
+    "count": 16,
+    "height": 15,
+    "radius": 0.65,
+    "kind": "round",
+    "beamHeight": 1.4,
+    "roofDepth": 3.5,
+    "colour": "#fffbf2",
+    "roofColour": "#e9e7e2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    30,
+    0,
+    0.6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 90,
+    "count": 16,
+    "height": 15,
+    "radius": 0.65,
+    "kind": "round",
+    "beamHeight": 1.4,
+    "roofDepth": 3.5,
+    "colour": "#fffbf2",
+    "roofColour": "#e9e7e2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "params": {
+    "radius": 7,
+    "height": 9,
+    "profile": "hemi",
+    "drum": 11,
+    "drumRadius": 7.4,
+    "lantern": 3,
+    "finial": 4,
+    "colour": "#fffbf2",
+    "drumColour": "#fffbf2"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -18,
+    -57,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "count": 2,
+    "spacing": 36,
+    "colours": [
+     "#8a1c2b",
+     "#1b6b3a"
+    ]
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -66,
+    6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 8,
+    "height": 0,
+    "thickness": 0.6,
+    "colour": "#f6f5f1",
+    "edgeColour": "#e6e3da",
+    "axis": "x",
+    "columns": 4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 7.2,
+    "count": 16,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 11,
+      "colour": "#fffbf2"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -24,
+     0
+    ],
+    "end": [
+     24,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       2.4
+      ],
+      "height": 21,
+      "colour": "#fffbf2"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "drum-base",
+   "footprint": {
+    "rect": [
+     24,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 15,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#fffbf2",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ede6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -27,
+    0,
+    0.6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 90,
+    "count": 16,
+    "height": 15,
+    "radius": 0.65,
+    "kind": "round",
+    "beamHeight": 1.2,
+    "roofDepth": 0.0,
+    "colour": "#fffbf2",
+    "roofColour": "#e9e7e2"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 25,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     55
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Taller white drum on a square base with a domed cap and 6-column portico added; side colonnade is still a wall with pilasters, not a deep tall paired colonnade; dome lacks ogee profile; stucco still reads slightly blue in render."
+ }
+}

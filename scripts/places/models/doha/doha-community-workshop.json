@@ -1,0 +1,367 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:In_front_of_the_Qatar_National_Convention_Centre_in_Gharrafat_Al_Rayyan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/qncc1.jpg",
+   "used": "sandy-limestone panel walls (not white), tall floor-to-roof glass bay with overhanging roof slab on the left, glass side, wavy canopy over the central bridge, metro viaduct beside it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Qatar_National_Convention_Centre_in_Gharrafat_Al_Rayyan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "street",
+   "used": "pale limestone slab walls with vertical grooves, teal-blue glass bay at the corner, flat roof edge, desert planting"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10725661",
+   "used": "overall scale only (539 x 257 m, height 25 m); one 100 m portion is modelled because the outline exceeds the scene clamp"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Qatar_National_Convention_Centre",
+   "used": "scale and function only; the entrance tree columns (Sidrat al-Muntaha) are not shown in any photo found and are not modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.43,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     100,
+     38
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dcc8a0",
+    "windows": "none",
+    "bands": "#c9b78f",
+    "plinth": 1.2,
+    "cornice": true,
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b0a0",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-bay",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    -12
+   ],
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f9a9c",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#3f8087",
+    "faces": {
+     "back": "plain",
+     "left": "curtain",
+     "right": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0d6c0",
+    "overhang": 6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    20,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 22,
+    "depth": 12,
+    "rise": 1.8,
+    "waves": 1.5,
+    "thickness": 0.6,
+    "z": 14,
+    "colour": "#a99a7e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.9,
+    "run": 2,
+    "count": 4,
+    "colour": "#d6cdb8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 5,
+    "spread": 4,
+    "line": 70
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -5,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 4,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     7
+    ],
+    "z0": 8.5,
+    "height": 2.8,
+    "colour": "#d9d3c4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     4,
+     -34,
+     0
+    ],
+    "end": [
+     56,
+     -34,
+     0
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#e3dccd",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.8
+       },
+       {
+        "z": 5,
+        "circle": 1.1
+       },
+       {
+        "z": 8.5,
+        "ellipse": [
+         3.4,
+         2.6
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     6
+    ],
+    "z0": 10,
+    "height": 3.2,
+    "colour": "#6f9b9c",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#4f7f84"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      7,
+      2.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      -30,
+      60,
+      12
+     ],
+     "radius": 88,
+     "startDeg": -48,
+     "endDeg": -12,
+     "plane": "xy"
+    },
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      1.0
+     ]
+    },
+    "arc": {
+     "centre": [
+      -30,
+      60,
+      13.6
+     ],
+     "radius": 91,
+     "startDeg": -48,
+     "endDeg": -12,
+     "plane": "xy"
+    },
+    "colour": "#b4afa4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -30,
+     60,
+     0
+    ],
+    "radius": 88,
+    "startDeg": -46,
+    "endDeg": -14,
+    "count": 5,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#cfcabd",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.4,
+         1.4
+        ]
+       },
+       {
+        "z": 9,
+        "rect": [
+         2.0,
+         2.0
+        ]
+       },
+       {
+        "z": 11,
+        "rect": [
+         5.5,
+         3.5
+        ]
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "limestone hall, one full-height teal curtain-wall bay with 6 m roof slab, curved viaduct deck with flared tulip piers; viaduct sits in front and is only gently curved, bridge canopy small, only a 100 m slice"
+ }
+}

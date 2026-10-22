@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-osm-way-502997496",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1301720659",
+   "used": "footprint 57 x 51 m (quad rotated 82 deg), hospital amenity; Wikidata hospital in Dhaka Cantonment. No photo of the building: the only Commons image nearby is a flower."
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 23,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dccb",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 9.0,
+    "plinth": 0.8,
+    "bands": "#9a4a3a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#9a4a3a",
+      "height": 0.4,
+      "at": 0.9
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.8,
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "osm",
+   "at": [
+    8,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 2.8,
+    "legHeight": 1.4,
+    "colour": "#3a566f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "osm",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 2.8,
+    "legHeight": 1.4,
+    "colour": "#3a566f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -16,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#7a1f1f"
+    ]
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -30,
+    12
+   ],
+   "params": {
+    "size": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     -34
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     30
+    ],
+    "height": 10
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -30,
+     -50
+    ],
+    "yawDeg": 0,
+    "colour": "#d8d8d4"
+   },
+   {
+    "at": [
+     -23,
+     -56
+    ],
+    "yawDeg": 90,
+    "colour": "#7a1f1f"
+   },
+   {
+    "at": [
+     -16,
+     -50
+    ],
+    "yawDeg": 0,
+    "colour": "#2f3f5f"
+   },
+   {
+    "at": [
+     -9,
+     -56
+    ],
+    "yawDeg": 90,
+    "colour": "#c9b27a"
+   },
+   {
+    "at": [
+     -2,
+     -50
+    ],
+    "yawDeg": 0,
+    "colour": "#d8d8d4"
+   },
+   {
+    "at": [
+     5,
+     -56
+    ],
+    "yawDeg": 90,
+    "colour": "#7a1f1f"
+   },
+   {
+    "at": [
+     12,
+     -50
+    ],
+    "yawDeg": 0,
+    "colour": "#2f3f5f"
+   },
+   {
+    "at": [
+     19,
+     -56
+    ],
+    "yawDeg": 90,
+    "colour": "#c9b27a"
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building exists; massing, colours and storeys are from the OSM outline and the brief only."
+ }
+}

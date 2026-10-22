@@ -1,0 +1,821 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KFMC_Hospital_external.jpeg",
+   "licence": "CC BY-SA 3.0",
+   "author": "J. Stiegler",
+   "view": "street",
+   "file": "/tmp/places-evidence/riyadh/clinic3.jpg",
+   "used": "white blocky stepped hospital towers with narrow dark window slots, a lower white podium, green-domed mosque with white minaret at the right, landscaped avenue with palms and lamps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KFMC_Main_Hospital.jpg",
+   "licence": "CC BY 3.0",
+   "author": "haitham alfalah",
+   "view": "interior",
+   "file": "/tmp/places-evidence/riyadh/clinic1.jpg",
+   "used": "atrium finish only: cream travertine walls with dark-framed ribbon windows, curved balcony drums (colour of the warm cream, ribbon rhythm)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/899420525",
+   "used": "overall footprint scale (93 x 75 m); individual wings composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.78,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "w1",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    -40,
+    24
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.4,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "w2",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    18
+   ],
+   "height": 36,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.4,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "c1",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    46
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "none",
+    "windowShape": "rect",
+    "windowRatio": 0.05,
+    "bay": 16,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "e1",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    30,
+    34
+   ],
+   "height": 44,
+   "storeys": 11,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.4,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "e2",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    22,
+    26
+   ],
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.4,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "e3",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    42,
+    30
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "ribbon",
+    "windowShape": "rect",
+    "windowRatio": 0.4,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     44,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    30
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    30,
+    8
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 6,
+      "opening": 0.22,
+      "height": 0.45,
+      "depth": 0.4,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mosque-drum",
+   "at": [
+    30,
+    8,
+    8
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efe6d2",
+    "profile": [
+     [
+      5.2,
+      0
+     ],
+     [
+      5.2,
+      1.4
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "mosque-dome",
+   "at": [
+    30,
+    8,
+    9.4
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#2f9a62",
+    "profile": [
+     [
+      5.4,
+      0
+     ],
+     [
+      5.4,
+      0.4
+     ],
+     [
+      4.8,
+      2.2
+     ],
+     [
+      3.5,
+      3.8
+     ],
+     [
+      1.8,
+      4.9
+     ],
+     [
+      0.2,
+      5.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "minaret-slim",
+   "at": [
+    42,
+    12,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f4f0e6",
+    "profile": [
+     [
+      1.1,
+      0
+     ],
+     [
+      0.9,
+      16
+     ],
+     [
+      1.4,
+      16.5
+     ],
+     [
+      0.9,
+      17
+     ],
+     [
+      0.8,
+      20
+     ],
+     [
+      1.1,
+      20.6
+     ],
+     [
+      0.6,
+      23,
+      "#2f9a62"
+     ],
+     [
+      0.05,
+      25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn0",
+   "at": [
+    -30,
+    -4,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -20.0,
+      -4.0
+     ],
+     [
+      20.0,
+      -4.0
+     ],
+     [
+      20.0,
+      4.0
+     ],
+     [
+      -20.0,
+      4.0
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#4f8a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn1",
+   "at": [
+    -6,
+    -10,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -10.0,
+      -3.0
+     ],
+     [
+      10.0,
+      -3.0
+     ],
+     [
+      10.0,
+      3.0
+     ],
+     [
+      -10.0,
+      3.0
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#4f8a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn2",
+   "at": [
+    26,
+    -4,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -18.0,
+      -4.0
+     ],
+     [
+      18.0,
+      -4.0
+     ],
+     [
+      18.0,
+      4.0
+     ],
+     [
+      -18.0,
+      4.0
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#4f8a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn3",
+   "at": [
+    -24,
+    8,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -13.0,
+      -3.0
+     ],
+     [
+      13.0,
+      -3.0
+     ],
+     [
+      13.0,
+      3.0
+     ],
+     [
+      -13.0,
+      3.0
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#4f8a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 4,
+    "line": 30,
+    "spread": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "line": 50,
+    "spread": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "line": 40,
+    "spread": 2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     60,
+     10
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "bay": 4,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    -16,
+    0.02
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -6
+     ],
+     [
+      58,
+      -6
+     ],
+     [
+      58,
+      6
+     ],
+     [
+      -58,
+      6
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#2b2c2e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pavement",
+   "at": [
+    0,
+    -8.5,
+    0.02
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -1.5
+     ],
+     [
+      58,
+      -1.5
+     ],
+     [
+      58,
+      1.5
+     ],
+     [
+      -58,
+      1.5
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#c9b79a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slot-e1",
+   "at": [
+    30,
+    25.9,
+    10
+   ],
+   "params": {
+    "points": [
+     [
+      -0.6,
+      0
+     ],
+     [
+      0.6,
+      0
+     ],
+     [
+      0.6,
+      0.2
+     ],
+     [
+      -0.6,
+      0.2
+     ]
+    ],
+    "height": 32,
+    "colour": "#2a3a44"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#3a3a3a",
+      "profile": [
+       [
+        0.12,
+        0
+       ],
+       [
+        0.12,
+        5.5
+       ],
+       [
+        0.5,
+        5.8
+       ],
+       [
+        0.55,
+        6.4
+       ],
+       [
+        0.2,
+        6.8
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ribbon windows approximate the dark slots; no true cut-away recesses or curved wings; road is a straight strip not a curving avenue; mosque arches simple."
+ }
+}

@@ -1,0 +1,165 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/220311909",
+   "used": "real 43 x 35 m outline, name match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey colonial-era rendered hall with brick accents, hip roof, veranda, small chapel cupola, old trees (Wikipedia: founded 1845, Seminary Hill)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 51
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9e2cf",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.26,
+    "plinth": 1.0,
+    "bands": "#9a4a35",
+    "cornice": true,
+    "bay": 4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f2c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "cupola",
+   "at": [
+    0,
+    0,
+    9.5
+   ],
+   "on": "hall",
+   "params": {}
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 3,
+    "height": 3.6,
+    "roof_colour": "#7a3f2c",
+    "wall_colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#d9cfb4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "extent": [
+   100,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -14
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -12
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     24
+    ],
+    "height": 16
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     26
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     40
+    ],
+    "height": 18
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-osm-way-220311909",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the seminary hall found; OSM 43x35 m outline with brief-based colonial hall, veranda and cupola assumed; colours and details from text"
+ }
+}

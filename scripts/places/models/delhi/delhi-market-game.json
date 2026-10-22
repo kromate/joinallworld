@@ -1,0 +1,306 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Brief: Metro Walk, Rohini Sector 10, open-plan boxy glass and painted-render mall, 4 storeys about 20 m, about 110 x 70 m, central glass atrium, car park. No OSM building matched. The Commons photos listed for this venue show the Adventure Island amusement park next door, so they were not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     110,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -23
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4cc",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#efeae0",
+    "plinth": 0.6,
+    "glassColour": "#3a6f8f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     26,
+     46
+    ]
+   },
+   "at": [
+    -42,
+    13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeae0",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "curtain"
+    },
+    "bands": "#d8d4cc",
+    "glassColour": "#3a6f8f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     26,
+     46
+    ]
+   },
+   "at": [
+    42,
+    13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeae0",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "curtain",
+     "right": "plain"
+    },
+    "bands": "#d8d4cc",
+    "glassColour": "#3a6f8f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     24,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -37
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3a6f8f",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#4d86a6",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fa8b4",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "width": 58,
+    "depth": 44,
+    "border": 1.4,
+    "colour": "#cfc7b8",
+    "border_colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -37,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 12,
+    "height": 2.6,
+    "bottom": 16.5,
+    "colour": "#efeae0",
+    "frameColour": "#3a6f8f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -37,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 12,
+    "height": 2.6,
+    "bottom": 16.5,
+    "colour": "#efeae0",
+    "frameColour": "#3a6f8f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -40.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 3,
+    "bottom": 20.5,
+    "colour": "#3a6f8f",
+    "frameColour": "#efeae0",
+    "posts": false
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 14,
+    "density": 0.8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    50,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this mall (Commons photos show Adventure Island next door); typed massing only"
+ }
+}

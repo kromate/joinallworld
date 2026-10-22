@@ -1,0 +1,460 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-osm-way-1162586312",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Swami_Sharddhanand_College.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Varunmemememe",
+   "view": "front",
+   "file": "/tmp/places-evidence/delhi/ssc1.jpg",
+   "used": "grey stone-panel cladding with tile grid, projecting glazed bay with concrete frame, cantilevered porch on cream columns, maroon blank signboard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1162586312",
+   "used": "campus plot only (318 x 126 m); the college block is composed at the brief size, not the whole plot"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 3,
+  "fovDeg": 22,
+  "shiftX": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     96,
+     30
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a59d89",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "front": "none"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.2,
+       4
+      ],
+      "colours": [
+       "#a69e8a",
+       "#9c9482",
+       "#aaa28e"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -8,
+    -10
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a59d89",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.2,
+       4
+      ],
+      "colours": [
+       "#a69e8a",
+       "#9c9482",
+       "#aaa28e"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-bay",
+   "params": {
+    "z0": 11,
+    "height": 7,
+    "colour": "#9b978b",
+    "windows": "curtain",
+    "glassColour": "#5d6568",
+    "points": [
+     [
+      -4.2,
+      -1.5
+     ],
+     [
+      4.2,
+      -1.5
+     ],
+     [
+      5.6,
+      0
+     ],
+     [
+      4.2,
+      1.5
+     ],
+     [
+      -4.2,
+      1.5
+     ],
+     [
+      -5.6,
+      0
+     ]
+    ],
+    "windowRatio": 0.5
+   },
+   "at": [
+    -8,
+    -17.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-slab",
+   "params": {
+    "rect": [
+     24,
+     9
+    ],
+    "z0": 3.8,
+    "height": 1.8,
+    "colour": "#b0a68c"
+   },
+   "at": [
+    -8,
+    -15
+   ]
+  },
+  {
+   "type": "array",
+   "id": "porch-columns",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       1.8
+      ],
+      "height": 4.2,
+      "colour": "#d9c9a0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -17
+    ],
+    "end": [
+     2,
+     -17
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "params": {
+    "rect": [
+     22,
+     0.4
+    ],
+    "z0": 11.5,
+    "height": 6.5,
+    "colour": "#7a3b3b"
+   },
+   "at": [
+    6,
+    -16.3
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    38,
+    -4
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a59d89",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.2,
+       4
+      ],
+      "colours": [
+       "#a69e8a",
+       "#9c9482",
+       "#aaa28e"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6d68",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cantilever",
+   "params": {
+    "rect": [
+     26,
+     8
+    ],
+    "z0": 4.2,
+    "height": 1.6,
+    "colour": "#b0a68c"
+   },
+   "at": [
+    -8,
+    -14
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bay-canopy",
+   "params": {
+    "rect": [
+     14,
+     5.2
+    ],
+    "z0": 10.2,
+    "height": 1.2,
+    "colour": "#b0a68c"
+   },
+   "at": [
+    -8,
+    -17.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ac-unit",
+   "params": {
+    "rect": [
+     1.2,
+     0.7
+    ],
+    "z0": 11,
+    "height": 0.7,
+    "colour": "#e6e6e0"
+   },
+   "at": [
+    -13.8,
+    -18.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "red-panel",
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "z0": 14.5,
+    "height": 1.1,
+    "colour": "#9a4a30"
+   },
+   "at": [
+    -12.6,
+    -18.9
+   ]
+  },
+  {
+   "type": "array",
+   "id": "shrubs",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#3f6b2e",
+      "profile": [
+       [
+        0.1,
+        0,
+        "#3f6b2e"
+       ],
+       [
+        2.4,
+        0.8
+       ],
+       [
+        2.2,
+        2.4
+       ],
+       [
+        1.0,
+        3.4
+       ],
+       [
+        0,
+        3.6
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     -24
+    ],
+    "end": [
+     14,
+     -24
+    ],
+    "count": 10,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ground-recess",
+   "params": {
+    "rect": [
+     26,
+     0.4
+    ],
+    "height": 4.2,
+    "colour": "#4a443a"
+   },
+   "at": [
+    -8,
+    -16.2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "main block raised to 4 storeys, warm grey panel grid, larger maroon blank sign, dark recessed ground under cantilever, denser shrubs applied; blue sky tint on side faces persists; cantilever is a slab not a true overhang; east wing plain"
+ }
+}

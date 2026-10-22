@@ -1,0 +1,518 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Narxoz_University_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Narxoz University",
+   "view": "front",
+   "file": "/tmp/places-evidence/almaty/nar1.jpg",
+   "used": "Soviet-era 3-storey block: glazed ground floor with teal frames, white-grey ribbon storey, full-width coloured mosaic frieze (blue, orange, white), plain white attic band, flagpole, memorial bust on a granite plinth in a brick-paved plaza, spruce at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27480946",
+   "used": "identity and diagonal bar orientation; the photographed front block is modelled at its real ~60 m width"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     62,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e6e3da",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#4f8f8c",
+    "groundKind": "curtain",
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdbab2",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ribbon-storey",
+   "footprint": {
+    "rect": [
+     60,
+     23
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4d1c8",
+    "windows": "none",
+    "windowRatio": 0.55,
+    "glassColour": "#2f3a42"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdbab2",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosaic-frieze",
+   "footprint": {
+    "rect": [
+     61,
+     23.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9.6,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f4fa0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.2,
+       1.4
+      ],
+      "colours": [
+       "#2c4a9c",
+       "#e0902c",
+       "#d9b44a",
+       "#f0ece0",
+       "#3a62b8"
+      ],
+      "faces": [
+       "front"
+      ],
+      "gap": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdbab2",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     62,
+     23.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 13.8,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     18,
+     18
+    ]
+   },
+   "at": [
+    42,
+    8
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e3dc",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bust-plinth",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#7a4a3e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55504c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bust-base",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#5a5652",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55504c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1,
+    "colours": [
+     "#00afca"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-strip",
+   "footprint": {
+    "rect": [
+     60.4,
+     23.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 6.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3a42",
+    "windows": "ribbon",
+    "windowRatio": 0.85,
+    "glassColour": "#222c33"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdbab2",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -11.9,
+    14.0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#b32a3a",
+    "frameColour": "#b32a3a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -11.9,
+    14.0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#b32a3a",
+    "frameColour": "#b32a3a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bust-base2",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#6a625c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#55504c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bust",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "z0": 6,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2e2a26",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e2a26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-l",
+   "footprint": {
+    "rect": [
+     8,
+     2
+    ]
+   },
+   "at": [
+    -12,
+    -16
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9588",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6b3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-r",
+   "footprint": {
+    "rect": [
+     8,
+     2
+    ]
+   },
+   "at": [
+    12,
+    -16
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9588",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6b3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrub-24",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    -24,
+    -15
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f6a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrub24",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    24,
+    -15
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f6a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6a30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -36,
+     -14
+    ],
+    "height": 24
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     -6
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Frieze is a blocky multi-colour panel band, not the swirling figurative mosaic; bust is a dark block; paving is grey not pink brick; shrubs are plain green blocks"
+ }
+}

@@ -1,0 +1,1576 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rustam_Minnikhanov%27s_trip_to_Turkmenistan_2008_11.jpg",
+   "licence": "CC BY 4.0",
+   "author": "tatarstan.ru",
+   "view": "front",
+   "file": "/tmp/places-evidence/ashgabat/ruhy.jpg",
+   "used": "white marble central hall with gold ribbed dome on a plain drum, round window and arched portal in a stepped front block, flanking square pavilions with small gold domes, four tall white fluted minarets with gold-capped tops, tan patterned paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/193666465",
+   "used": "complex extent about 188 x 185 m (rotated); composed hall is a simplified plan, not the raw outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Minarets are now an inner pair, taller with gold-capped lanterns, but still smooth-ish 14-sided shafts without real fluting; dome sits on a taller arcaded drum but is smooth with no ribs; pavilion domes are onions on short drums; portal is stepped with arched openings but lacks ornate relief; paving has no star inlay; mausoleum cone behind is a stand-in."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     52,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-block",
+   "footprint": {
+    "rect": [
+     18,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal-step",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -27
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "round-window",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -25.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.6
+    ],
+    "z0": 17.5,
+    "height": 4,
+    "colour": "#bfb8a6",
+    "windows": "round",
+    "windowRatio": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entablature",
+   "at": [
+    0,
+    -22.5,
+    14
+   ],
+   "params": {
+    "rect": [
+     52,
+     2.4
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#f4f2ec",
+    "topColour": "#e6e1d4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#f4f2ec",
+    "slot": "plain",
+    "profile": [
+     [
+      17,
+      0
+     ],
+     [
+      17,
+      5.5
+     ],
+     [
+      17.6,
+      5.6,
+      "#d9d3c4"
+     ],
+     [
+      17.6,
+      6.1
+     ],
+     [
+      17,
+      6.2,
+      "#f4f2ec"
+     ]
+    ],
+    "arcade": {
+     "from": 0.8,
+     "to": 5.2,
+     "count": 12,
+     "width": 1.6,
+     "height": 3.6,
+     "sill": 0.8,
+     "shape": "arched",
+     "depth": 0.5,
+     "innerColour": "#8a8272"
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    28.2
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d4b04a",
+    "slot": "plain",
+    "profile": [
+     [
+      17.5,
+      0.0
+     ],
+     [
+      17.23,
+      1.39
+     ],
+     [
+      16.44,
+      2.74
+     ],
+     [
+      15.16,
+      4.0
+     ],
+     [
+      13.41,
+      5.14
+     ],
+     [
+      11.25,
+      6.13
+     ],
+     [
+      8.75,
+      6.93
+     ],
+     [
+      5.99,
+      7.52
+     ],
+     [
+      3.04,
+      7.88
+     ],
+     [
+      0.0,
+      8.0
+     ]
+    ],
+    "crease": 20
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    36.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d4b04a",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.5,
+      1.5
+     ],
+     [
+      0.2,
+      2
+     ],
+     [
+      0.12,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#c9a85a",
+    "profile": [
+     [
+      17,
+      0
+     ],
+     [
+      17.5,
+      6
+     ],
+     [
+      10,
+      11
+     ],
+     [
+      0,
+      14
+     ]
+    ]
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pav-1",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -30,
+    0,
+    17
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f4f2ec",
+    "slot": "plain",
+    "profile": [
+     [
+      4.4,
+      0
+     ],
+     [
+      4.4,
+      2.6
+     ],
+     [
+      4.9,
+      2.7,
+      "#d9d3c4"
+     ],
+     [
+      4.9,
+      3.1
+     ],
+     [
+      4.4,
+      3.2,
+      "#f4f2ec"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -30,
+    0,
+    20.2
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d4b04a",
+    "slot": "plain",
+    "profile": [
+     [
+      4.9,
+      0
+     ],
+     [
+      5.3,
+      1.0
+     ],
+     [
+      5.4,
+      2.2
+     ],
+     [
+      4.6,
+      3.8
+     ],
+     [
+      3.0,
+      5.2
+     ],
+     [
+      1.4,
+      6.6
+     ],
+     [
+      0.5,
+      7.8
+     ],
+     [
+      0,
+      8.6
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -30,
+    0,
+    28.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d4b04a",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.5,
+      1.5
+     ],
+     [
+      0.2,
+      2
+     ],
+     [
+      0.12,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-1",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    -47,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav1",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    30,
+    0,
+    17
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f4f2ec",
+    "slot": "plain",
+    "profile": [
+     [
+      4.4,
+      0
+     ],
+     [
+      4.4,
+      2.6
+     ],
+     [
+      4.9,
+      2.7,
+      "#d9d3c4"
+     ],
+     [
+      4.9,
+      3.1
+     ],
+     [
+      4.4,
+      3.2,
+      "#f4f2ec"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    30,
+    0,
+    20.2
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d4b04a",
+    "slot": "plain",
+    "profile": [
+     [
+      4.9,
+      0
+     ],
+     [
+      5.3,
+      1.0
+     ],
+     [
+      5.4,
+      2.2
+     ],
+     [
+      4.6,
+      3.8
+     ],
+     [
+      3.0,
+      5.2
+     ],
+     [
+      1.4,
+      6.6
+     ],
+     [
+      0.5,
+      7.8
+     ],
+     [
+      0,
+      8.6
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    30,
+    0,
+    28.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d4b04a",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.5,
+      1.5
+     ],
+     [
+      0.2,
+      2
+     ],
+     [
+      0.12,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing1",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    47,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mausoleum",
+   "footprint": {
+    "rect": [
+     18,
+     18
+    ]
+   },
+   "at": [
+    -22,
+    44
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -22,
+    44,
+    14
+   ],
+   "params": {
+    "segments": 18,
+    "colour": "#f4f2ec",
+    "slot": "plain",
+    "profile": [
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      3
+     ],
+     [
+      5.5,
+      3.1,
+      "#d9d3c4"
+     ],
+     [
+      5.5,
+      3.7
+     ],
+     [
+      5,
+      3.8,
+      "#f4f2ec"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -22,
+    44,
+    17.8
+   ],
+   "params": {
+    "segments": 18,
+    "colour": "#d4b04a",
+    "slot": "plain",
+    "profile": [
+     [
+      6.0,
+      0.0
+     ],
+     [
+      5.82,
+      2.81
+     ],
+     [
+      6.9,
+      4.22
+     ],
+     [
+      6.0,
+      6.56
+     ],
+     [
+      4.2,
+      10.31
+     ],
+     [
+      2.4,
+      14.06
+     ],
+     [
+      0.9,
+      17.34
+     ],
+     [
+      0.0,
+      18.75
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    -33,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     3
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#c9b79a",
+    "topColour": "#c9b79a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-front",
+   "footprint": {
+    "rect": [
+     52,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -22.5
+   ],
+   "height": 14,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f4f2ec",
+    "slot": "plain",
+    "profile": [
+     [
+      2.8499999999999996,
+      0,
+      "#f4f2ec"
+     ],
+     [
+      2.8499999999999996,
+      3
+     ],
+     [
+      1.875,
+      5
+     ],
+     [
+      1.5,
+      7
+     ],
+     [
+      1.5,
+      66
+     ],
+     [
+      1.875,
+      66.3,
+      "#d9d3c4"
+     ],
+     [
+      1.875,
+      66.9
+     ],
+     [
+      1.5,
+      67.2,
+      "#f4f2ec"
+     ],
+     [
+      1.5,
+      69
+     ],
+     [
+      1.9500000000000002,
+      69.3,
+      "#d4b04a"
+     ],
+     [
+      1.9500000000000002,
+      70.2
+     ],
+     [
+      1.0499999999999998,
+      70.8
+     ],
+     [
+      0.3,
+      73
+     ],
+     [
+      0.1,
+      76
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#f4f2ec",
+    "profile": [
+     [
+      2.8499999999999996,
+      0
+     ],
+     [
+      1.5,
+      66
+     ],
+     [
+      0.3,
+      74
+     ]
+    ]
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -43,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f4f2ec",
+    "slot": "plain",
+    "profile": [
+     [
+      2.6599999999999997,
+      0,
+      "#f4f2ec"
+     ],
+     [
+      2.6599999999999997,
+      3
+     ],
+     [
+      1.75,
+      5
+     ],
+     [
+      1.4,
+      7
+     ],
+     [
+      1.4,
+      56
+     ],
+     [
+      1.75,
+      56.3,
+      "#d9d3c4"
+     ],
+     [
+      1.75,
+      56.9
+     ],
+     [
+      1.4,
+      57.2,
+      "#f4f2ec"
+     ],
+     [
+      1.4,
+      59
+     ],
+     [
+      1.8199999999999998,
+      59.3,
+      "#d4b04a"
+     ],
+     [
+      1.8199999999999998,
+      60.2
+     ],
+     [
+      0.9799999999999999,
+      60.8
+     ],
+     [
+      0.3,
+      63
+     ],
+     [
+      0.1,
+      66
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -43,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#f4f2ec",
+    "profile": [
+     [
+      2.6599999999999997,
+      0
+     ],
+     [
+      1.4,
+      56
+     ],
+     [
+      0.3,
+      64
+     ]
+    ]
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    34,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f4f2ec",
+    "slot": "plain",
+    "profile": [
+     [
+      2.8499999999999996,
+      0,
+      "#f4f2ec"
+     ],
+     [
+      2.8499999999999996,
+      3
+     ],
+     [
+      1.875,
+      5
+     ],
+     [
+      1.5,
+      7
+     ],
+     [
+      1.5,
+      66
+     ],
+     [
+      1.875,
+      66.3,
+      "#d9d3c4"
+     ],
+     [
+      1.875,
+      66.9
+     ],
+     [
+      1.5,
+      67.2,
+      "#f4f2ec"
+     ],
+     [
+      1.5,
+      69
+     ],
+     [
+      1.9500000000000002,
+      69.3,
+      "#d4b04a"
+     ],
+     [
+      1.9500000000000002,
+      70.2
+     ],
+     [
+      1.0499999999999998,
+      70.8
+     ],
+     [
+      0.3,
+      73
+     ],
+     [
+      0.1,
+      76
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    34,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#f4f2ec",
+    "profile": [
+     [
+      2.8499999999999996,
+      0
+     ],
+     [
+      1.5,
+      66
+     ],
+     [
+      0.3,
+      74
+     ]
+    ]
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    43,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f4f2ec",
+    "slot": "plain",
+    "profile": [
+     [
+      2.6599999999999997,
+      0,
+      "#f4f2ec"
+     ],
+     [
+      2.6599999999999997,
+      3
+     ],
+     [
+      1.75,
+      5
+     ],
+     [
+      1.4,
+      7
+     ],
+     [
+      1.4,
+      56
+     ],
+     [
+      1.75,
+      56.3,
+      "#d9d3c4"
+     ],
+     [
+      1.75,
+      56.9
+     ],
+     [
+      1.4,
+      57.2,
+      "#f4f2ec"
+     ],
+     [
+      1.4,
+      59
+     ],
+     [
+      1.8199999999999998,
+      59.3,
+      "#d4b04a"
+     ],
+     [
+      1.8199999999999998,
+      60.2
+     ],
+     [
+      0.9799999999999999,
+      60.8
+     ],
+     [
+      0.3,
+      63
+     ],
+     [
+      0.1,
+      66
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    43,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#f4f2ec",
+    "profile": [
+     [
+      2.6599999999999997,
+      0
+     ],
+     [
+      1.4,
+      56
+     ],
+     [
+      0.3,
+      64
+     ]
+    ]
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f4f2ec",
+    "slot": "plain",
+    "profile": [
+     [
+      17,
+      0
+     ],
+     [
+      17,
+      5.5
+     ],
+     [
+      17.6,
+      5.6,
+      "#d9d3c4"
+     ],
+     [
+      17.6,
+      6.1
+     ],
+     [
+      17,
+      6.2,
+      "#f4f2ec"
+     ]
+    ]
+   },
+   "lod": [
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    28.2
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d4b04a",
+    "slot": "plain",
+    "profile": [
+     [
+      17.5,
+      0.0
+     ],
+     [
+      17.23,
+      1.39
+     ],
+     [
+      16.44,
+      2.74
+     ],
+     [
+      15.16,
+      4.0
+     ],
+     [
+      13.41,
+      5.14
+     ],
+     [
+      11.25,
+      6.13
+     ],
+     [
+      8.75,
+      6.93
+     ],
+     [
+      5.99,
+      7.52
+     ],
+     [
+      3.04,
+      7.88
+     ],
+     [
+      0.0,
+      8.0
+     ]
+    ],
+    "crease": 20
+   },
+   "lod": [
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -30,
+    0,
+    20.2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d4b04a",
+    "slot": "plain",
+    "profile": [
+     [
+      4.9,
+      0
+     ],
+     [
+      5.3,
+      1.0
+     ],
+     [
+      5.4,
+      2.2
+     ],
+     [
+      4.6,
+      3.8
+     ],
+     [
+      3.0,
+      5.2
+     ],
+     [
+      1.4,
+      6.6
+     ],
+     [
+      0.5,
+      7.8
+     ],
+     [
+      0,
+      8.6
+     ]
+    ]
+   },
+   "lod": [
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    30,
+    0,
+    20.2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d4b04a",
+    "slot": "plain",
+    "profile": [
+     [
+      4.9,
+      0
+     ],
+     [
+      5.3,
+      1.0
+     ],
+     [
+      5.4,
+      2.2
+     ],
+     [
+      4.6,
+      3.8
+     ],
+     [
+      3.0,
+      5.2
+     ],
+     [
+      1.4,
+      6.6
+     ],
+     [
+      0.5,
+      7.8
+     ],
+     [
+      0,
+      8.6
+     ]
+    ]
+   },
+   "lod": [
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [],
+  "extent": [
+   130,
+   120
+  ],
+  "groundColour": "#c9b79a"
+ }
+}

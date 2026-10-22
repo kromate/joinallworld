@@ -1,0 +1,702 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-osm-relation-2712835",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:O%CA%BBzDJTU.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Optima D",
+   "view": "front",
+   "file": "/tmp/places-evidence/tashkent/uni.jpg",
+   "used": "main building: cream-clad U plan with two four-storey wings projecting toward the street, a round cylindrical entrance rotunda with a blank inscription board between them, a taller stepped attic block behind, glazed stair towers, black iron fence with brick gate piers, paved axial walk, lawns with flower beds"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2712835",
+   "used": "campus extent only (597 x 225 m): the real outline is a multi-building campus so the main block is composed from the photo instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 78,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     16,
+     44
+    ]
+   },
+   "at": [
+    -27,
+    -14.0
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e8dc",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "bay": 4.0,
+    "bands": "#d8d6c8",
+    "plinth": 0.8,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd0c8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     16,
+     44
+    ]
+   },
+   "at": [
+    27,
+    -14.0
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e8dc",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "bay": 4.0,
+    "bands": "#d8d6c8",
+    "plinth": 0.8,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd0c8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     60,
+     18
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.0,
+    "plinth": 0.8,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd0c8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic1",
+   "at": [
+    0,
+    12,
+    19
+   ],
+   "params": {
+    "rect": [
+     34,
+     10
+    ],
+    "height": 3,
+    "colour": "#f1f0e6",
+    "trimColour": "#d8d6c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic2",
+   "at": [
+    0,
+    12,
+    22
+   ],
+   "params": {
+    "rect": [
+     24,
+     8
+    ],
+    "height": 3,
+    "colour": "#eeede2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rotunda",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "n": 28,
+    "radius": 17,
+    "height": 18,
+    "colour": "#f1f0e6",
+    "windows": "none",
+    "trimColour": "#d8d6c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rotunda-cornice",
+   "at": [
+    0,
+    -13,
+    18
+   ],
+   "params": {
+    "n": 28,
+    "radius": 17.4,
+    "height": 0.6,
+    "colour": "#e2e0d2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rotunda-cap",
+   "at": [
+    0,
+    -13,
+    18.6
+   ],
+   "params": {
+    "n": 28,
+    "radius": 16.9,
+    "height": 0.5,
+    "colour": "#f1f0e6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inscription",
+   "at": [
+    0,
+    -30.0,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.4
+    ],
+    "height": 7,
+    "colour": "#cdc8b4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -17.5,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 31,
+    "height": 2.2,
+    "thickness": 0.12,
+    "kind": "railing",
+    "pillarEvery": 0,
+    "colour": "#1f1f22"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "at": [
+    -4.0,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 6.5,
+    "colour": "#7a4234"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-cap-l",
+   "at": [
+    -4.0,
+    -38,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 0.4,
+    "colour": "#c8c2b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bed-l",
+   "at": [
+    -3.6,
+    -34.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     7
+    ],
+    "height": 0.25,
+    "colour": "#7a3f7a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wall-base-l",
+   "at": [
+    -17.5,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     31,
+     0.5
+    ],
+    "height": 0.7,
+    "colour": "#a39a88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    17.5,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 31,
+    "height": 2.2,
+    "thickness": 0.12,
+    "kind": "railing",
+    "pillarEvery": 0,
+    "colour": "#1f1f22"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-r",
+   "at": [
+    4.0,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 6.5,
+    "colour": "#7a4234"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-cap-r",
+   "at": [
+    4.0,
+    -38,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 0.4,
+    "colour": "#c8c2b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bed-r",
+   "at": [
+    3.6,
+    -34.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     7
+    ],
+    "height": 0.25,
+    "colour": "#7a3f7a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wall-base-r",
+   "at": [
+    17.5,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     31,
+     0.5
+    ],
+    "height": 0.7,
+    "colour": "#a39a88"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     0.15
+    ],
+    "height": 2.6,
+    "colour": "#1f1f22"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "walk",
+   "at": [
+    0,
+    -34.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     8
+    ],
+    "height": 0.05,
+    "colour": "#b4b1ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inscription-inner",
+   "at": [
+    0,
+    -30.3,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 5.6,
+    "colour": "#f2f0e6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    0,
+    -32.0,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     9,
+     3.5
+    ],
+    "height": 0.3,
+    "colour": "#8a8d8f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34.0,
+    -36.1,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 17.5,
+    "colour": "#6d8499"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20.3,
+    -36.1,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 17.5,
+    "colour": "#6d8499"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -36.1,
+    16.9
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.25
+    ],
+    "height": 0.5,
+    "colour": "#d4d2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    34.0,
+    -36.1,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 17.5,
+    "colour": "#6d8499"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.3,
+    -36.1,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 17.5,
+    "colour": "#6d8499"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    27,
+    -36.1,
+    16.9
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.25
+    ],
+    "height": 0.5,
+    "colour": "#d4d2c2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -36
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -36
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -36
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -36
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fence is plain railing with brick piers, no ironwork detail; stair-tower strips are flat glazed boards; wings are plain-gridded with no recessed cladding joints; attic is two plain steps; rotunda inscription is a framed flat panel."
+ }
+}

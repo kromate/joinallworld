@@ -1,0 +1,476 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mushrif_Park,_Dubai_-_panoramio_(7).jpg",
+   "licence": "CC BY 3.0",
+   "author": "Jaseem Hamza",
+   "view": "street",
+   "file": "/tmp/places-evidence/dubai/mush1.jpg",
+   "used": "teal-blue miniature train (loco and carriages with red-framed windows), grey interlocking paver path, clipped hedge, lamp post, ghaf-type trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mushrif_Park,_Dubai_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Jaseem Hamza",
+   "view": "street",
+   "file": "/tmp/places-evidence/dubai/mush2.jpg",
+   "used": "dry sandy ground under sparse thorny ghaf/acacia woodland, drip irrigation line"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1264771923",
+   "used": "garden polygon (containing match only; used for extent and tree area)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -80,
+  "pitchDeg": 10,
+  "fovDeg": 65,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "colour": "#d8c08a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -6
+     ],
+     [
+      -8,
+      -5.2
+     ],
+     [
+      8,
+      -5.2
+     ],
+     [
+      26,
+      -6.5
+     ]
+    ],
+    "width": 4,
+    "colour": "#a09d98"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -8.3
+     ],
+     [
+      -8,
+      -7.5
+     ],
+     [
+      8,
+      -7.5
+     ],
+     [
+      26,
+      -8.8
+     ]
+    ],
+    "width": 0.5,
+    "colour": "#cfcbc2"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -3.7
+     ],
+     [
+      -8,
+      -2.9
+     ],
+     [
+      8,
+      -2.9
+     ],
+     [
+      26,
+      -4.2
+     ]
+    ],
+    "width": 0.5,
+    "colour": "#cfcbc2"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "wheel",
+     "footprint": {
+      "rect": [
+       0.9,
+       3.0
+      ]
+     },
+     "at": [
+      0,
+      2
+     ],
+     "z0": 0,
+     "height": 0.8,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#e0b020",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#e0b020"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -17,
+     0,
+     0
+    ],
+    "end": [
+     11,
+     0,
+     0
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    0,
+    -8.8,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "depth": 2.2,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    14,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 3.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loco-cab",
+   "footprint": {
+    "rect": [
+     3.2,
+     2.8
+    ]
+   },
+   "at": [
+    -9.5,
+    2
+   ],
+   "z0": 0.7,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f8f9a",
+    "trimColour": "#1f5f6a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#2f8f9a",
+    "material": "metal-sheet",
+    "axis": "x",
+    "rise": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loco-bonnet",
+   "footprint": {
+    "rect": [
+     4.2,
+     2.6
+    ]
+   },
+   "at": [
+    -13.2,
+    2
+   ],
+   "z0": 0.7,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f8f9a",
+    "trimColour": "#1f5f6a",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f5f6a",
+    "material": "metal-sheet",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grille",
+   "footprint": {
+    "rect": [
+     0.5,
+     1.6
+    ]
+   },
+   "at": [
+    -15.5,
+    2
+   ],
+   "z0": 1.3,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#1c1c1c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car1",
+   "footprint": {
+    "rect": [
+     9.5,
+     2.8
+    ]
+   },
+   "at": [
+    -2.5,
+    2
+   ],
+   "z0": 0.7,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f8fa6",
+    "trimColour": "#c23a2e",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "bay": 1.3,
+    "plinth": 0.3,
+    "windowShape": "rect",
+    "glassColour": "#a8322a",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#2f7f90",
+    "material": "metal-sheet",
+    "axis": "x",
+    "rise": 0.9,
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "car2",
+   "footprint": {
+    "rect": [
+     9.5,
+     2.8
+    ]
+   },
+   "at": [
+    7.5,
+    2
+   ],
+   "z0": 0.7,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f8fa6",
+    "trimColour": "#c23a2e",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "bay": 1.3,
+    "plinth": 0.3,
+    "windowShape": "rect",
+    "glassColour": "#a8322a",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#2f7f90",
+    "material": "metal-sheet",
+    "axis": "x",
+    "rise": 0.9,
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -9.8
+     ],
+     [
+      26,
+      -9.8
+     ]
+    ],
+    "width": 1.2,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 11,
+    "count": 2,
+    "spread": 7,
+    "colour": "#8a9a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -19,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 11,
+    "count": 2,
+    "spread": 7,
+    "colour": "#8a9a4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-way-311254501",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Loco is a cab + bonnet + grille stand-in (no open-sided curved cab, rivets); carriages are barrel-roofed with red-framed windows but windows are a thin row; trees are stock acacia umbrellas, not wispy ghaf; paver path is plain tiles, no herringbone; camera is higher than the photo's eye-level view."
+ }
+}

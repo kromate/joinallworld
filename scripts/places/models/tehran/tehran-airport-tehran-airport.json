@@ -1,0 +1,257 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-airport-tehran-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:IKA_Airport_main_terminal_(cropped).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kat1100",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tehran/tehran-airport-tehran-airport-0.jpg",
+   "used": "long low grey terminal with dark glazed band, raised curved vault behind its centre, round control tower at right, jet-bridge piers with airliners along the front, car park and hotel block behind, bare desert and concrete apron"
+  },
+  {
+   "kind": "text",
+   "used": "OSM has no terminal outline (match none); length clamped to scene budget"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.875,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    -35,
+    0
+   ],
+   "params": {
+    "rect": [
+     140,
+     90
+    ],
+    "height": 0.1,
+    "colour": "#b4b2ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "carpark",
+   "at": [
+    10,
+    75
+   ],
+   "params": {
+    "rect": [
+     80,
+     26
+    ],
+    "height": 0.1,
+    "colour": "#8c8a86"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     116,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a3a6a6",
+    "glassColour": "#2f3b42",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bands": "#a9a8a2",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e9395",
+    "parapet": 0.5,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault",
+   "footprint": {
+    "rect": [
+     70,
+     24
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb1ae",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#b8bcbc",
+    "material": "metal-sheet",
+    "rise": 7,
+    "overhang": 2
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    68,
+    55,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "style": "round",
+    "colour": "#cfcdc6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     50,
+     18
+    ]
+   },
+   "at": [
+    -40,
+    100
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bc",
+    "glassColour": "#5d6f78",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bands": "#5d6f78"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -48,
+    -11,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     96,
+     0,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       14
+      ],
+      "height": 4,
+      "colour": "#a9aaa8",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -45,
+    -32,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     88,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "airliner",
+     "params": {
+      "scale": 0.75,
+      "colour": "#eceff1",
+      "tailColour": "#3a5f8a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "terminal is a long low band with a curved vault behind the centre but vault reads as a barrel box; apron seams, hotel/car park and tower positions approximate; aircraft drawn nose-in; render reports a 189 m scene-side warning from the wide apron"
+ }
+}

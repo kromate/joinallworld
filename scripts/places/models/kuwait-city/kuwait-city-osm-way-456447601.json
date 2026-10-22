@@ -1,0 +1,179 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/456447601",
+   "used": "co-operative society block outline (152 x 92 m, lobed) used directly, scaled to the 118 m clamp"
+  },
+  {
+   "kind": "text",
+   "used": "Kuwaiti co-operative society supermarket pattern from brief: cream render two-storey box with grey-blue ribbon glazing, flat canopy, signage and a large car park; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7dcc2",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "glassColour": "#7f929a",
+    "plinth": 0.4,
+    "bands": "#8c9ea6",
+    "cornice": true,
+    "groundKind": "shopfront",
+    "groundHeight": 4.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69e",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 6,
+    "height": 4.8,
+    "thickness": 0.5,
+    "columns": 5,
+    "colour": "#8c9ea6",
+    "edgeColour": "#b4a68b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -12,
+    10.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.6
+    ],
+    "height": 4.5,
+    "colour": "#b4a68b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    12,
+    10.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     18
+    ],
+    "height": 3.8,
+    "colour": "#8c9ea6"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -44,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 6,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -48,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -52
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-osm-way-456447601",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "No photo found: outline real (scaled 0.79 to fit), finish and canopy typed; entrance position and signage guessed."
+ }
+}

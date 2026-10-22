@@ -1,0 +1,245 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-way-482515768",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/482515768",
+   "used": "real 48 x 113 m oval outline (leisure=stadium) as the track apron; pitch, stands and masts placed inside it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -55,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this ground exists in any source; roofed west stand, east terrace, floodlights and scoreboard come from the brief's typology, not from observation"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8553e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8553e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     30,
+     84
+    ],
+    "z0": 0.5,
+    "height": 0.15,
+    "colour": "#5f8f40",
+    "topColour": "#5f8f40"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -20,
+     32
+    ],
+    "end": [
+     -20,
+     -32
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColours": [
+     "#4f6f8f",
+     "#c9c4b8"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c9c4b8",
+    "under": "solid",
+    "backWall": 1.0,
+    "canopy": {
+     "height": 7.5,
+     "depth": 9,
+     "colour": "#4f6f8f",
+     "slopeDeg": 6,
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     20,
+     -32
+    ],
+    "end": [
+     20,
+     32
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "seatColour": "#b8b2a4",
+    "concreteColour": "#c9c4b8",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard",
+   "params": {
+    "rect": [
+     7,
+     0.8
+    ],
+    "z0": 4.5,
+    "height": 3,
+    "colour": "#2a2d30"
+   },
+   "at": [
+    0,
+    52
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard-post-l",
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#555555"
+   },
+   "at": [
+    -2.5,
+    52
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard-post-r",
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#555555"
+   },
+   "at": [
+    2.5,
+    52
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -27,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    27,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -27,
+    50,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    27,
+    50,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     20
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   150
+  ]
+ }
+}

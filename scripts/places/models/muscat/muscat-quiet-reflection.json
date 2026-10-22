@@ -1,0 +1,667 @@
+{
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "muscat",
+  "venueId": "muscat-quiet-reflection",
+  "verified": "photo",
+  "evidence": [
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Shiva_temple,_Muscat.jpg",
+      "licence": "CC BY-SA 4.0",
+      "author": "Banksboomer",
+      "view": "front",
+      "file": "/tmp/places-evidence/muscat/shiva1.jpg",
+      "used": "grey-green stone hall with flat roof and projecting slab eaves, stepped pyramidal shikhara over the porch, dome with gold finial behind, round pillars, scalloped dark doors, orange flag"
+    },
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Muscat-shiva_temple.jpg",
+      "licence": "CC BY-SA 3.0",
+      "author": "Kasubabu",
+      "view": "side",
+      "used": "long low hall with several doors, domes and small spires above, paved court, walled forecourt, rocky hills behind"
+    }
+  ],
+  "camera": {
+    "yawDeg": 12,
+    "pitchDeg": 8,
+    "fovDeg": 50,
+    "aspect": 1.333,
+    "margin": 0.1
+  },
+  "parts": [
+    {
+      "type": "mass",
+      "id": "hall",
+      "footprint": {
+        "rect": [
+          15,
+          9
+        ]
+      },
+      "at": [
+        0,
+        0
+      ],
+      "height": 5.4,
+      "storeys": 1,
+      "wall": {
+        "material": "stucco",
+        "colour": "#c2cabf",
+        "windows": "none",
+        "plinth": 0.4,
+        "cornice": true,
+        "faces": {
+          "front": "none"
+        },
+        "pattern": {
+          "type": "bands",
+          "colour": "#aab3a8"
+        }
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#a8aea6",
+        "material": "concrete",
+        "overhang": 0.6,
+        "parapet": 0.5
+      }
+    },
+    {
+      "type": "mass",
+      "id": "porch-roof",
+      "footprint": {
+        "rect": [
+          9.0,
+          6.8
+        ]
+      },
+      "at": [
+        1.5,
+        -7.4
+      ],
+      "z0": 3.6,
+      "height": 0.8,
+      "storeys": 1,
+      "wall": {
+        "material": "stone",
+        "colour": "#c3c8c0",
+        "windows": "none"
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#b3b9b1",
+        "material": "concrete",
+        "overhang": 0.3
+      }
+    },
+    {
+      "type": "mass",
+      "id": "porch-dark",
+      "footprint": {
+        "rect": [
+          6.0,
+          0.6
+        ]
+      },
+      "at": [
+        1.5,
+        -4.85
+      ],
+      "height": 3.7,
+      "storeys": 1,
+      "wall": {
+        "material": "stucco",
+        "colour": "#1e1b19",
+        "windows": "none"
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#1e1b19"
+      }
+    },
+    {
+      "type": "mass",
+      "id": "porch-side-l",
+      "footprint": {
+        "rect": [
+          0.6,
+          4.6
+        ]
+      },
+      "at": [
+        -1.5,
+        -6.5
+      ],
+      "height": 3.7,
+      "storeys": 1,
+      "wall": {
+        "material": "stone",
+        "colour": "#b8beb6",
+        "windows": "none"
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#b3b9b1"
+      }
+    },
+    {
+      "type": "mass",
+      "id": "porch-side-r",
+      "footprint": {
+        "rect": [
+          0.6,
+          4.6
+        ]
+      },
+      "at": [
+        4.5,
+        -6.5
+      ],
+      "height": 3.7,
+      "storeys": 1,
+      "wall": {
+        "material": "stone",
+        "colour": "#b8beb6",
+        "windows": "none"
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#b3b9b1"
+      }
+    },
+    {
+      "type": "loft",
+      "id": "shikhara",
+      "at": [
+        1.5,
+        -6.7,
+        4.2
+      ],
+      "params": {
+        "colour": "#bcc4ba",
+        "sections": [
+          {
+            "z": 0.0,
+            "rect": [
+              3.8,
+              2.8
+            ]
+          },
+          {
+            "z": 0.5,
+            "rect": [
+              3.8,
+              2.8
+            ]
+          },
+          {
+            "z": 0.62,
+            "rect": [
+              3.51,
+              2.58
+            ]
+          },
+          {
+            "z": 1.12,
+            "rect": [
+              3.51,
+              2.58
+            ]
+          },
+          {
+            "z": 1.24,
+            "rect": [
+              3.22,
+              2.37
+            ]
+          },
+          {
+            "z": 1.74,
+            "rect": [
+              3.22,
+              2.37
+            ]
+          },
+          {
+            "z": 1.86,
+            "rect": [
+              2.92,
+              2.15
+            ]
+          },
+          {
+            "z": 2.36,
+            "rect": [
+              2.92,
+              2.15
+            ]
+          },
+          {
+            "z": 2.48,
+            "rect": [
+              2.63,
+              1.94
+            ]
+          },
+          {
+            "z": 2.98,
+            "rect": [
+              2.63,
+              1.94
+            ]
+          },
+          {
+            "z": 3.1,
+            "rect": [
+              2.34,
+              1.72
+            ]
+          },
+          {
+            "z": 3.6,
+            "rect": [
+              2.34,
+              1.72
+            ]
+          },
+          {
+            "z": 3.72,
+            "rect": [
+              2.05,
+              1.51
+            ]
+          },
+          {
+            "z": 4.22,
+            "rect": [
+              2.05,
+              1.51
+            ]
+          },
+          {
+            "z": 4.34,
+            "rect": [
+              1.75,
+              1.29
+            ]
+          },
+          {
+            "z": 4.84,
+            "rect": [
+              1.75,
+              1.29
+            ]
+          },
+          {
+            "z": 4.96,
+            "rect": [
+              1.46,
+              1.08
+            ]
+          },
+          {
+            "z": 5.46,
+            "rect": [
+              1.46,
+              1.08
+            ]
+          },
+          {
+            "z": 5.58,
+            "rect": [
+              1.17,
+              0.86
+            ]
+          },
+          {
+            "z": 6.08,
+            "rect": [
+              1.17,
+              0.86
+            ]
+          },
+          {
+            "z": 6.2,
+            "rect": [
+              0.88,
+              0.65
+            ]
+          },
+          {
+            "z": 6.7,
+            "rect": [
+              0.88,
+              0.65
+            ]
+          },
+          {
+            "z": 6.82,
+            "rect": [
+              0.58,
+              0.43
+            ]
+          },
+          {
+            "z": 7.32,
+            "rect": [
+              0.58,
+              0.43
+            ]
+          },
+          {
+            "z": 7.44,
+            "rect": [
+              0.5,
+              0.4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "core/dome",
+      "id": "main-dome",
+      "at": [
+        4.5,
+        1.5,
+        5.9
+      ],
+      "params": {
+        "radius": 3.0,
+        "height": 3.2,
+        "profile": "hemi",
+        "drum": 0.8,
+        "colour": "#b9bfb7",
+        "finial": 1.4
+      }
+    },
+    {
+      "type": "core/dome",
+      "id": "small-dome",
+      "at": [
+        1.5,
+        -2.0,
+        5.9
+      ],
+      "params": {
+        "radius": 1.9,
+        "height": 2.3,
+        "profile": "hemi",
+        "drum": 0.4,
+        "colour": "#b9bfb7",
+        "finial": 1.1
+      }
+    },
+    {
+      "type": "core/colonnade",
+      "at": [
+        1.5,
+        -8.7,
+        0.2
+      ],
+      "params": {
+        "length": 6.0,
+        "count": 4,
+        "height": 3.5,
+        "radius": 0.3,
+        "kind": "round",
+        "colour": "#c4c8c0"
+      }
+    },
+    {
+      "type": "core/gate",
+      "at": [
+        -5.0,
+        -4.55,
+        0
+      ],
+      "params": {
+        "width": 2.2,
+        "height": 3.0,
+        "arch": true,
+        "colour": "#a7ada5",
+        "leafColour": "#1e1b19",
+        "leaf": "solid"
+      }
+    },
+    {
+      "type": "core/steps",
+      "at": [
+        1.5,
+        -9.6,
+        0
+      ],
+      "params": {
+        "width": 5.2,
+        "rise": 0.4,
+        "run": 0.6,
+        "count": 2,
+        "colour": "#c9cdc5"
+      }
+    },
+    {
+      "type": "core/fence-wall",
+      "at": [
+        0,
+        -13.5,
+        0
+      ],
+      "params": {
+        "length": 25,
+        "height": 1.8,
+        "thickness": 0.35,
+        "colour": "#e9e6dc"
+      }
+    },
+    {
+      "type": "core/fence-wall",
+      "at": [
+        -12.5,
+        -2,
+        0
+      ],
+      "rotDeg": 90,
+      "params": {
+        "length": 23,
+        "height": 1.8,
+        "thickness": 0.35,
+        "colour": "#e9e6dc"
+      }
+    },
+    {
+      "type": "core/fence-wall",
+      "at": [
+        12.5,
+        -2,
+        0
+      ],
+      "rotDeg": 90,
+      "params": {
+        "length": 23,
+        "height": 1.8,
+        "thickness": 0.35,
+        "colour": "#e9e6dc"
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -9,
+        -10,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 6
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        8,
+        -11,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 5
+      }
+    },
+    {
+      "type": "revolve",
+      "id": "finial",
+      "at": [
+        1.5,
+        -6.7,
+        11.64
+      ],
+      "params": {
+        "segments": 10,
+        "colour": "#d4a82f",
+        "profile": [
+          [
+            0.25,
+            0
+          ],
+          [
+            0.3,
+            0.2
+          ],
+          [
+            0.12,
+            0.5
+          ],
+          [
+            0.18,
+            0.7
+          ],
+          [
+            0.0,
+            1.1
+          ]
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "core/gate",
+      "at": [
+        -0.3,
+        -9.1,
+        0
+      ],
+      "params": {
+        "width": 1.5,
+        "height": 3.3,
+        "arch": true,
+        "colour": "#d8ddd4",
+        "leafColour": "#1e1b19",
+        "leaf": "solid"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "core/gate",
+      "at": [
+        1.5,
+        -9.1,
+        0
+      ],
+      "params": {
+        "width": 1.5,
+        "height": 3.3,
+        "arch": true,
+        "colour": "#d8ddd4",
+        "leafColour": "#1e1b19",
+        "leaf": "solid"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "core/gate",
+      "at": [
+        3.3,
+        -9.1,
+        0
+      ],
+      "params": {
+        "width": 1.5,
+        "height": 3.3,
+        "arch": true,
+        "colour": "#d8ddd4",
+        "leafColour": "#1e1b19",
+        "leaf": "solid"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "pole",
+      "at": [
+        3.3,
+        -6.7,
+        4.2
+      ],
+      "params": {
+        "rect": [
+          0.08,
+          0.08
+        ],
+        "height": 6.0,
+        "colour": "#b08a2e"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "prism",
+      "id": "pennant",
+      "at": [
+        3.3,
+        -6.7,
+        8.4
+      ],
+      "params": {
+        "rect": [
+          0.05,
+          0.5
+        ],
+        "height": 1.6,
+        "colour": "#e8741f"
+      },
+      "lod": [
+        0,
+        1
+      ]
+    }
+  ],
+  "site": {
+    "ground": "paving",
+    "forecourt": "plaza",
+    "extent": [
+      34,
+      30
+    ]
+  },
+  "review": {
+    "rounds": 2,
+    "match": "fair",
+    "gaps": "porch arches are round gates rather than cusped scallops, no dark fan-shaped door heads, shikhara coursing only as stepped bands, canopy slab still thin"
+  }
+}

@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-node-3351034516",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/663121740",
+   "used": "museum outline contains the aircraft but is 639 m long, so unusable for the aircraft; size from brief airframe data (46 m long, 44 m span, 13 m tail)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     52
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#bfb7a6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    0,
+    0,
+    2.6
+   ],
+   "rotDeg": 8,
+   "params": {
+    "colour": "#d4d7da",
+    "tailColour": "#b4b9bd"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -3.5
+    ],
+    "end": [
+     6,
+     -3.5
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "z0": 1,
+      "height": 1.6,
+      "colour": "#9a9a98",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -27,
+    -25,
+    1
+   ],
+   "params": {
+    "length": 54,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#4d5358"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     34
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; airliner is the generic part (two engines, not four underwing, no 707 tail details), silver colours only; plinth and fence are typical museum display"
+ }
+}

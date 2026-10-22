@@ -1,0 +1,444 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-airport-colombo-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bandaranaike_International_Airport_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/colombo/a_bia2.jpg",
+   "used": "airside elevation of the 1967 terminal: two storeys, white-grey painted wall, continuous glazed ribbon on the upper floor, undercroft apron road on slim columns, blue-grey projecting end block, louvred rooftop plant box, blank sign band"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LK-BIA-abfertigung-02.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/colombo/a_abf.jpg",
+   "used": "pier end with glazed aero-bridge connectors and a blank advert fascia"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28531413",
+   "used": "overall arrangement only (550 m arm-shaped outline too long for scene clamp); a ~110 m stretch is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 8,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-wing",
+   "footprint": {
+    "rect": [
+     84,
+     22
+    ]
+   },
+   "at": [
+    -32,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eef0f0",
+    "windows": "ribbon",
+    "windowRatio": 0.85,
+    "glassColour": "#a9c3cf",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#ffffff",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 5,
+      "spacing": 6,
+      "width": 0.45,
+      "kind": "square",
+      "colour": "#e8e8e6",
+      "backColour": "#6f8d9a",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bbb8",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     26,
+     24
+    ]
+   },
+   "at": [
+    23,
+    -4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a9db0",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "glassColour": "#9fb9c6",
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    },
+    "bands": "#c8d2da",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa4ab",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    -60,
+    4
+   ],
+   "z0": 10,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2ded3",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#bdb7a8",
+      "backColour": "#59544a",
+      "pitch": 0.4,
+      "band": 1.0,
+      "at": 0.05,
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa79f",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     14,
+     56
+    ]
+   },
+   "at": [
+    33,
+    50
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdedf",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#3f5f6a",
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "bands": "#f0f0ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb1b2",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -32,
+    -17,
+    5.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 11,
+    "height": 0,
+    "thickness": 0.9,
+    "colour": "#e8e8e6",
+    "edgeColour": "#cfd3d4",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -11.4,
+    10.3
+   ],
+   "params": {
+    "width": 20,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#dfe3e5",
+    "frameColour": "#a9b3ba",
+    "posts": false
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    33,
+    24,
+    3.6
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 14,
+    "colour": "#c9d0d4"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -5,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#f0f0ee",
+    "count": 3,
+    "spacing": 6,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    62,
+    55,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "style": "round",
+    "colour": "#d8d8d4",
+    "cabColour": "#4d6670"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    23,
+    -17,
+    8.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 8,
+    "height": 0,
+    "thickness": 0.9,
+    "colour": "#dfe4e8",
+    "edgeColour": "#9fb0be",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    23,
+    -16.8,
+    8.2
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#e8ecef",
+    "frameColour": "#7f93a6",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -36,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     50
+    ],
+    "height": 0.05,
+    "colour": "#a7a49e"
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 4,
+    "yaw": 90,
+    "colour": "#f1f1ee",
+    "stripe": "#2f5fa8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -32,
+    -11.2,
+    10.2
+   ],
+   "params": {
+    "width": 80,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#ffffff",
+    "frameColour": "#f2f2f2",
+    "posts": false
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -25,
+    -62,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    45,
+    -70,
+    0
+   ],
+   "rotDeg": 80,
+   "params": {
+    "scale": 0.8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -5,
+    -11,
+    3.6
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 10,
+    "colour": "#c9d0d4"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -45,
+    -11,
+    3.6
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 10,
+    "colour": "#c9d0d4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Terminal now long low pier with glazed open ground floor, plant box and two airliners; apron still shows faint tile grid, end block not clearly lower, still only ~85 m of 550 m modelled."
+ }
+}

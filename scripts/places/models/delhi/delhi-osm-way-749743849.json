@@ -1,0 +1,628 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-osm-way-749743849",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malcha_Mahal.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Krishna Kant Sharma",
+   "view": "side",
+   "file": "/tmp/places-evidence/delhi/749743849_1.jpg",
+   "used": "ruined Tughlaq lodge: coursed golden-brown rubble stone, tall rubble plinth with stone steps at both corners, front and side walls opened by large pointed arches on square piers, broken parapet with corbel remains, no roof dome, bare dry ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/749743849",
+   "used": "overall size (about 28 x 27 m); placement of main block on the plinth"
+  }
+ ],
+ "camera": {
+  "yawDeg": 36,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     30,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b88538",
+    "windows": "none",
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f7650",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "rect": [
+     24,
+     22
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 4.0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "laterite",
+    "colour": "#b8863e",
+    "windows": "none",
+    "bay": 4,
+    "glassColour": "#120c08",
+    "pattern": {
+     "type": "arcade",
+     "shape": "pointed",
+     "bay": 6.0,
+     "opening": 0.88,
+     "height": 0.72,
+     "depth": 2.6,
+     "pierColour": "#cdb07c",
+     "faces": [
+      "front",
+      "right",
+      "left"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a07a40",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    15.6,
+    -10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 4.5,
+    "rise": 0.5,
+    "run": 0.55,
+    "count": 8,
+    "colour": "#c4a46c"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    15.0,
+    -12.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     0.6
+    ],
+    "height": 1.8,
+    "colour": "#a8742f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    15.0,
+    -8.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     0.6
+    ],
+    "height": 3.2,
+    "colour": "#a8742f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -15.4,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 0.5,
+    "run": 0.55,
+    "count": 8,
+    "colour": "#c4a46c"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -12,
+    -9.5,
+    11.4
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.24,
+    "thickness": 1.1,
+    "colour": "#b8863e",
+    "gaps": 0.45
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -12,
+    12.5,
+    11.4
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.66,
+    "thickness": 1.1,
+    "colour": "#b8863e",
+    "gaps": 0.45
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -9,
+    -11.4,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.6
+    ],
+    "height": 5.0,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -9,
+    -11.4,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.8
+    ],
+    "height": 0.6,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    -11.4,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.6
+    ],
+    "height": 5.0,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    -11.4,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.8
+    ],
+    "height": 0.6,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    -11.4,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.6
+    ],
+    "height": 5.0,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    -11.4,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.8
+    ],
+    "height": 0.6,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9,
+    -11.4,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.6
+    ],
+    "height": 5.0,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9,
+    -11.4,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.8
+    ],
+    "height": 0.6,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12.9,
+    -5,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.4
+    ],
+    "height": 5.0,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12.9,
+    -5,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.4
+    ],
+    "height": 5.0,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12.9,
+    5,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.4
+    ],
+    "height": 5.0,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12.9,
+    5,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.4
+    ],
+    "height": 5.0,
+    "colour": "#cdb07c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -24,
+    -10,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#6b5a35",
+    "profile": [
+     [
+      0.05,
+      0
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.3,
+      1.4
+     ],
+     [
+      0,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#6b5a35",
+    "profile": [
+     [
+      0.05,
+      0
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.3,
+      1.4
+     ],
+     [
+      0,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -20,
+    18,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#6b5a35",
+    "profile": [
+     [
+      0.05,
+      0
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.3,
+      1.4
+     ],
+     [
+      0,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    22,
+    16,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#6b5a35",
+    "profile": [
+     [
+      0.05,
+      0
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.3,
+      1.4
+     ],
+     [
+      0,
+      1.5
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ground now pale sand with no lollipop trees, plinth golden, forward piers added; lodge wall still renders pale grey-white instead of golden rubble, ruin parapet segments float off the lodge on the left, no true broken rubble crown"
+ }
+}

@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/50876711",
+   "used": "real thin-wing hospital outline of the City Cardiology Centre complex (306 x 127 m), scaled to the scene clamp; no photo of the building found (nearby street photos show other buildings)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd6c4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#f1efe6",
+    "cornice": true,
+    "bay": 9.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f84",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#f1efe6",
+    "roofColour": "#c8362f",
+    "vans": 2
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    30,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1,
+    "colours": [
+     "#00afca"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -38
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo found; real thin-wing outline only, scaled 0.45; facade, colours and storeys guessed from Soviet hospital blocks"
+ }
+}

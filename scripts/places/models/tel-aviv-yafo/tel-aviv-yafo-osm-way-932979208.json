@@ -1,0 +1,1045 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Roman_Mausoleum_in_Mazor,_Israel.jpg",
+   "licence": "Public domain",
+   "author": "Avishai Teicher",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/mazor.jpg",
+   "used": "open front portico with two round columns between a wide left pier and a narrow right pier, moulded entablature, ashlar limestone in honey and grey tones, parapet course with a cut-out at the back left corner, sandy bare ground with scrub"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/932979208",
+   "used": "size 10.3 x 10.2 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cella",
+   "footprint": {
+    "rect": [
+     10.2,
+     7.2
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "z0": 0,
+   "height": 6.4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdb88c",
+    "windows": "punched",
+    "windowRatio": 0.04,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "right": "none",
+     "left": "punched"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b79a68",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     2.5,
+     3.0
+    ]
+   },
+   "at": [
+    -4.2,
+    -3.6
+   ],
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d2bd92",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbb94"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-left-cap",
+   "at": [
+    -4.2,
+    -3.6
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     3.4
+    ],
+    "z0": 5.0,
+    "height": 0.45,
+    "colour": "#dcc08e",
+    "slot": "stone-ashlar"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     1.3,
+     2.0
+    ]
+   },
+   "at": [
+    4.9,
+    -3.9
+   ],
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9b184",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbb94"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-right-cap",
+   "at": [
+    4.9,
+    -3.9
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     2.4
+    ],
+    "z0": 5.0,
+    "height": 0.45,
+    "colour": "#dcc08e",
+    "slot": "stone-ashlar"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "architrave",
+   "at": [
+    0.4,
+    -3.45
+   ],
+   "params": {
+    "rect": [
+     11.4,
+     2.5
+    ],
+    "z0": 5.45,
+    "height": 0.5,
+    "colour": "#d9c196",
+    "slot": "stone-ashlar"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze",
+   "at": [
+    0.4,
+    -3.45
+   ],
+   "params": {
+    "rect": [
+     11.1,
+     2.3
+    ],
+    "z0": 5.95,
+    "height": 0.55,
+    "colour": "#c6a874"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    0.4,
+    -3.35
+   ],
+   "params": {
+    "rect": [
+     11.8,
+     2.8
+    ],
+    "z0": 6.5,
+    "height": 0.3,
+    "colour": "#dec79c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col1",
+   "at": [
+    -1.0,
+    -4.7
+   ],
+   "params": {
+    "radius": 0.26,
+    "n": 12,
+    "z0": 0.4,
+    "height": 4.6,
+    "colour": "#d8c6a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base1",
+   "at": [
+    -1.0,
+    -4.7
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 12,
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#b9a98a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "base-torus1",
+   "at": [
+    -1.0,
+    -4.7
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 12,
+    "z0": 0.4,
+    "height": 0.18,
+    "colour": "#cdbd9f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap1",
+   "at": [
+    -1.0,
+    -4.7
+   ],
+   "params": {
+    "radius": 0.26,
+    "n": 12,
+    "z0": 5.0,
+    "height": 0.45,
+    "topScale": 1.8,
+    "colour": "#e4d6b8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col2",
+   "at": [
+    2.0,
+    -4.7
+   ],
+   "params": {
+    "radius": 0.26,
+    "n": 12,
+    "z0": 0.4,
+    "height": 4.6,
+    "colour": "#d8c6a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base2",
+   "at": [
+    2.0,
+    -4.7
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 12,
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#b9a98a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "base-torus2",
+   "at": [
+    2.0,
+    -4.7
+   ],
+   "params": {
+    "radius": 0.4,
+    "n": 12,
+    "z0": 0.4,
+    "height": 0.18,
+    "colour": "#cdbd9f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap2",
+   "at": [
+    2.0,
+    -4.7
+   ],
+   "params": {
+    "radius": 0.26,
+    "n": 12,
+    "z0": 5.0,
+    "height": 0.45,
+    "topScale": 1.8,
+    "colour": "#e4d6b8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "doorway",
+   "at": [
+    -2.6,
+    -2.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.3
+    ],
+    "z0": 0.3,
+    "height": 2.4,
+    "colour": "#2a241c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-notch",
+   "at": [
+    -3.8,
+    3.7
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.0
+    ],
+    "z0": 6.3,
+    "height": 0.65,
+    "colour": "#3a3226"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "ragged-a",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.6,
+     -1.7,
+     6.4
+    ],
+    "end": [
+     4.6,
+     -1.7,
+     6.4
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.6
+      ],
+      "height": 0.45,
+      "colour": "#bfa270",
+      "slot": "stone-blocks"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "ragged-b",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.1,
+     -1.7,
+     6.85
+    ],
+    "end": [
+     4.1,
+     -1.7,
+     6.85
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.6
+      ],
+      "height": 0.3,
+      "colour": "#cdb283",
+      "slot": "stone-blocks"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fallen-block",
+   "at": [
+    5.8,
+    -6.6
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.1
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#c4b48e",
+    "slot": "stone-blocks"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fallen-block2",
+   "at": [
+    -6.2,
+    -5.8
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#bfae88",
+    "slot": "stone-blocks"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "right-passage",
+   "at": [
+    3.6,
+    -2.1
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 0.3,
+    "height": 3.0,
+    "colour": "#2a241c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "right-arch-top",
+   "at": [
+    3.6,
+    -2.1
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 3.3,
+    "height": 0.7,
+    "topScale": [
+     0.5,
+     1
+    ],
+    "colour": "#2a241c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub0",
+   "at": [
+    -7.5,
+    -3
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.175,
+    "topScale": 0.55,
+    "colour": "#8c9358"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub1",
+   "at": [
+    -6,
+    -6.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.259,
+    "topScale": 0.55,
+    "colour": "#7c8a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub2",
+   "at": [
+    -8.5,
+    -0.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.34299999999999997,
+    "topScale": 0.55,
+    "colour": "#a3a870"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub3",
+   "at": [
+    -9.5,
+    -5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.175,
+    "topScale": 0.55,
+    "colour": "#6f7d45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub4",
+   "at": [
+    -3.5,
+    -8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.259,
+    "topScale": 0.55,
+    "colour": "#8c9358"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub5",
+   "at": [
+    0.5,
+    -7.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.34299999999999997,
+    "topScale": 0.55,
+    "colour": "#7c8a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub6",
+   "at": [
+    3.5,
+    -8.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.175,
+    "topScale": 0.55,
+    "colour": "#a3a870"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub7",
+   "at": [
+    7,
+    -4
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.259,
+    "topScale": 0.55,
+    "colour": "#6f7d45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub8",
+   "at": [
+    6.2,
+    -6.4
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.34299999999999997,
+    "topScale": 0.55,
+    "colour": "#8c9358"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub9",
+   "at": [
+    -7,
+    2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.175,
+    "topScale": 0.55,
+    "colour": "#7c8a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub10",
+   "at": [
+    -9,
+    3
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -1.2,
+      -0.5
+     ],
+     [
+      -0.3,
+      -0.9
+     ],
+     [
+      0.8,
+      -0.6
+     ],
+     [
+      1.3,
+      0.2
+     ],
+     [
+      0.4,
+      0.8
+     ],
+     [
+      -0.8,
+      0.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.259,
+    "topScale": 0.55,
+    "colour": "#a3a870"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   34
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-way-932979208",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Masonry is regular coursed blocks rather than rough ruined rubble; scrub is flat low patches; right pier shows an open passage but left side recess and parapet cut-out are schematic."
+ }
+}

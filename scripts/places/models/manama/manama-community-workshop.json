@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/401725726",
+   "used": "campus building outline (containing the point), 2 levels, about 92 x 71 m octagonal ring-like plan"
+  },
+  {
+   "kind": "text",
+   "ref": "brief manama-community-workshop",
+   "used": "sand-coloured two-storey teaching blocks, Islamic arches, covered walkway, flags; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus-block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#bfa879",
+    "cornice": true,
+    "bay": 6.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a7",
+    "parapet": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 8,
+    "colour": "#bfa879",
+    "edgeColour": "#8f8a80"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -34,
+    12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 4,
+    "height": 3.4,
+    "columns": 6,
+    "colour": "#bfa879",
+    "edgeColour": "#8f8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-block",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -62,
+    -6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d3b0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bands": "#bfa879",
+    "plinth": 0.5,
+    "bay": 6.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a7",
+    "parapet": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM building outline of one campus block, arches and walkway typed from the brief"
+ }
+}

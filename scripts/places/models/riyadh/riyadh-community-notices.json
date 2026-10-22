@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/302308518",
+   "used": "the real 208 x 204 m outline (name-quality match, Wikidata Q6867032): angular block with a round bite on its east side, scaled to the scene clamp"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ministry_of_Foreign_Affairs_(Saudi_Arabia)",
+   "used": "Henning Larsen 1984, fortress-like sand-coloured stone block around a central atrium court, giant triangular and circular cut-outs, small punched windows, 4 storeys about 28 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fortress",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5
+   },
+   "height": 28,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4bf9a",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "bay": 14,
+    "plinth": 1.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b9a07a"
+      ],
+      "height": 0.7,
+      "at": 0.92,
+      "proud": 0.15,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     1.2
+    ],
+    "height": 3,
+    "colour": "#d4bf9a",
+    "topColour": "#c4ad86"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -66,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 12,
+    "colours": [
+     "#1b7a43",
+     "#1b7a43",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -70,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 3,
+    "line": 60
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    40,
+    -75,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 12,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium-skylight",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -5,
+    -6,
+    28.5
+   ],
+   "params": {
+    "rect": [
+     28,
+     28
+    ],
+    "height": 0.8,
+    "colour": "#3f4a52",
+    "topColour": "#4d5b64"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: massing is the real OSM outline only; the central atrium court, the giant triangular and circular cut-outs and the relief pattern are not modelled; window pattern is generic."
+ }
+}

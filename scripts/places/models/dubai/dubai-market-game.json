@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/797700047",
+   "used": "mall outline (name match, 537 x 308 m, scaled to 118 m), two storeys"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 2
+   },
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9d0c0",
+    "windows": "curtain",
+    "windowRatio": 0.28,
+    "bay": 6,
+    "bands": "#6c6a66",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8a8378"
+      ],
+      "height": 0.9,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bd",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -4,
+    15
+   ],
+   "rotDeg": -43,
+   "params": {
+    "rect": [
+     80,
+     7
+    ],
+    "height": 1.6,
+    "topScale": 0.7,
+    "colour": "#7f98a8",
+    "windows": "none"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "prism",
+   "at": [
+    -2,
+    -4,
+    15
+   ],
+   "rotDeg": -43,
+   "params": {
+    "rect": [
+     40,
+     3
+    ],
+    "height": 3.2,
+    "topScale": 0.5,
+    "colour": "#6f8898",
+    "windows": "none"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/canopy",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "rotDeg": -43,
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 6,
+    "height": 5,
+    "colour": "#8a8378",
+    "columns": 4
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "rotDeg": -43,
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 9,
+    "colour": "#9a8f7a",
+    "frameColour": "#6c6a66"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -4,
+    0
+   ],
+   "rotDeg": -43,
+   "params": {
+    "width": 8,
+    "height": 2.6,
+    "bottom": 9,
+    "colour": "#9a8f7a",
+    "frameColour": "#6c6a66"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -52
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -62
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -70
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -70
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found (only a pre-opening interior render, skipped); outline scaled 0.22 to fit 118 m, rooflight, canopies, and boards positions are estimated, courtyard void not modelled"
+ }
+}

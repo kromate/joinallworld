@@ -1,0 +1,834 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sahid_Beheshti_University.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Xpanah",
+   "view": "front",
+   "file": "/tmp/places-evidence/tehran/sbu_main.jpg",
+   "used": "brick parabolic entrance arch with battered piers and relief panel, pale stone-clad tower block behind, pines"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/222107363",
+   "used": "campus is 1.6 km x 0.65 km, far over the scene clamp; only the entrance and one block are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 80,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 1.8,
+    "count": 4,
+    "colour": "#b8b2a4"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pier-l",
+   "at": [
+    -13.4,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#b5694a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.5,
+       7.8
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       5.4,
+       7.8
+      ]
+     },
+     {
+      "z": 19,
+      "rect": [
+       4.2,
+       7.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pierbase-l",
+   "at": [
+    -13.4,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#b9b4a6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.8,
+       8.1
+      ]
+     },
+     {
+      "z": 1.1,
+      "rect": [
+       7.6,
+       8.0
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "recess-l",
+   "at": [
+    -18.2,
+    -0.2
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     5.2
+    ],
+    "z0": 0,
+    "height": 6.4,
+    "colour": "#5a2e20",
+    "topColour": "#5a2e20"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "recess-roof-l",
+   "at": [
+    -17.4,
+    -3.4
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     2.0
+    ],
+    "z0": 6.4,
+    "height": 1.2,
+    "colour": "#8f4f38",
+    "topColour": "#8f4f38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief-l",
+   "at": [
+    -12.6,
+    -3.95
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.3
+    ],
+    "z0": 9,
+    "height": 10,
+    "colour": "#8a4a33",
+    "topColour": "#8a4a33"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pier-r",
+   "at": [
+    13.4,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#b5694a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.5,
+       7.8
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       5.4,
+       7.8
+      ]
+     },
+     {
+      "z": 19,
+      "rect": [
+       4.2,
+       7.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pierbase-r",
+   "at": [
+    13.4,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#b9b4a6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.8,
+       8.1
+      ]
+     },
+     {
+      "z": 1.1,
+      "rect": [
+       7.6,
+       8.0
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "recess-r",
+   "at": [
+    18.2,
+    -0.2
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     5.2
+    ],
+    "z0": 0,
+    "height": 6.4,
+    "colour": "#5a2e20",
+    "topColour": "#5a2e20"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "recess-roof-r",
+   "at": [
+    17.4,
+    -3.4
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     2.0
+    ],
+    "z0": 6.4,
+    "height": 1.2,
+    "colour": "#8f4f38",
+    "topColour": "#8f4f38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief-r",
+   "at": [
+    12.6,
+    -3.95
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.3
+    ],
+    "z0": 9,
+    "height": 10,
+    "colour": "#8a4a33",
+    "topColour": "#8a4a33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-band",
+   "params": {
+    "section": {
+     "rect": [
+      3.2,
+      7.8
+     ]
+    },
+    "points": [
+     [
+      -12.4,
+      0,
+      0
+     ],
+     [
+      -11.8,
+      0,
+      8
+     ],
+     [
+      -10.6,
+      0,
+      14.5
+     ],
+     [
+      -7.5,
+      0,
+      19.2
+     ],
+     [
+      -3.8,
+      0,
+      21.8
+     ],
+     [
+      0,
+      0,
+      22.6
+     ],
+     [
+      3.8,
+      0,
+      21.8
+     ],
+     [
+      7.5,
+      0,
+      19.2
+     ],
+     [
+      10.6,
+      0,
+      14.5
+     ],
+     [
+      11.8,
+      0,
+      8
+     ],
+     [
+      12.4,
+      0,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#a35a3e",
+    "up": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soffit",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     7.4
+    ],
+    "z0": 14.6,
+    "height": 2.4,
+    "colour": "#a8664a",
+    "topColour": "#a8664a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tympanum",
+   "at": [
+    0,
+    -3.5
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.6
+    ],
+    "z0": 17,
+    "height": 4.2,
+    "colour": "#bf7352",
+    "topColour": "#bf7352"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letter-band",
+   "at": [
+    0,
+    -3.9
+   ],
+   "params": {
+    "rect": [
+     13,
+     0.3
+    ],
+    "z0": 17.2,
+    "height": 0.9,
+    "colour": "#7a3f2c",
+    "topColour": "#7a3f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "emblem",
+   "at": [
+    0,
+    -3.9
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.3
+    ],
+    "z0": 19.2,
+    "height": 2.2,
+    "colour": "#4a2a1e",
+    "topColour": "#4a2a1e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-l",
+   "at": [
+    -10.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     7.9
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#b9b4a6",
+    "topColour": "#b9b4a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stone-r",
+   "at": [
+    10.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     7.9
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#b9b4a6",
+    "topColour": "#b9b4a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-bg",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 34,
+   "storeys": 9,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdbf9e",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 4.2,
+    "plinth": 0.6,
+    "pattern": {
+     "type": "bands",
+     "colour": "#bdb08e"
+    },
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-bg",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -28,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c8b894",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pine-0",
+   "at": [
+    28.749999999999996,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "smooth": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.44999999999999996
+     },
+     {
+      "z": 3.4000000000000004,
+      "circle": 3.1499999999999995
+     },
+     {
+      "z": 8.5,
+      "circle": 4.5
+     },
+     {
+      "z": 13.600000000000001,
+      "circle": 2.9250000000000003
+     },
+     {
+      "z": 17,
+      "circle": 0.6749999999999999
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "trunk-0",
+   "at": [
+    25,
+    -6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 0,
+    "height": 5.949999999999999,
+    "colour": "#4a3524",
+    "topColour": "#4a3524"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pine-1",
+   "at": [
+    -29.9,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "smooth": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.44999999999999996
+     },
+     {
+      "z": 3.0,
+      "circle": 2.8874999999999997
+     },
+     {
+      "z": 7.5,
+      "circle": 4.125
+     },
+     {
+      "z": 12.0,
+      "circle": 2.6812500000000004
+     },
+     {
+      "z": 15,
+      "circle": 0.6187499999999999
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "trunk-1",
+   "at": [
+    -26,
+    -6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 0,
+    "height": 5.25,
+    "colour": "#4a3524",
+    "topColour": "#4a3524"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pine-2",
+   "at": [
+    35.65,
+    6,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "smooth": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.44999999999999996
+     },
+     {
+      "z": 2.8000000000000003,
+      "circle": 2.625
+     },
+     {
+      "z": 7.0,
+      "circle": 3.75
+     },
+     {
+      "z": 11.200000000000001,
+      "circle": 2.4375
+     },
+     {
+      "z": 14,
+      "circle": 0.5625
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "trunk-2",
+   "at": [
+    31,
+    6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 0,
+    "height": 4.8999999999999995,
+    "colour": "#4a3524",
+    "topColour": "#4a3524"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pine-3",
+   "at": [
+    -36.8,
+    6,
+    0
+   ],
+   "params": {
+    "colour": "#2f4a2c",
+    "smooth": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.44999999999999996
+     },
+     {
+      "z": 2.6,
+      "circle": 2.625
+     },
+     {
+      "z": 6.5,
+      "circle": 3.75
+     },
+     {
+      "z": 10.4,
+      "circle": 2.4375
+     },
+     {
+      "z": 13,
+      "circle": 0.5625
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "trunk-3",
+   "at": [
+    -32,
+    6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "z0": 0,
+    "height": 4.55,
+    "colour": "#4a3524",
+    "topColour": "#4a3524"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "arch is a smooth pointed band, not the stepped double-ring brick soffit; no brick relief ornament or legible lettering; pines are simple rounded masses; background is a plain beige tower"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-osm-way-222107363"
+}

@@ -1,0 +1,562 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-osm-way-1532937257",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Amman_Arab_University.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anas Kaso",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/amman/aau2.jpg",
+   "used": "two stepped white-cream blocks with dark ribbon glazing, solar panels on roofs, ochre stone piers at block ends, yellow annex right, long boundary wall and car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Buildings_Amman_Arab_University_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anas Kaso",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/amman/aau1.jpg",
+   "used": "block arrangement: rear block set back right of the front block, annex behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1520593059",
+   "used": "overall scale only (80 x 23 m block); outline is irregular so blocks are composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.62
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     42,
+     19
+    ]
+   },
+   "at": [
+    -22,
+    -4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efe8d6",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#ffffff",
+    "glassColour": "#1c2430"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     36,
+     17
+    ]
+   },
+   "at": [
+    16,
+    24
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#efe8d6",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "plinth": 0.5,
+    "cornice": true,
+    "glassColour": "#1c2430",
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/solar-panels",
+   "at": [
+    -22,
+    -4,
+    11.5
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 9,
+    "panelWidth": 2.4,
+    "panelDepth": 1.2,
+    "tilt": 12,
+    "gap": 0.2,
+    "colour": "#2c3e6a"
+   }
+  },
+  {
+   "type": "core/solar-panels",
+   "at": [
+    16,
+    24,
+    14.5
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 9,
+    "panelWidth": 2.4,
+    "panelDepth": 1.2,
+    "tilt": 12,
+    "gap": 0.2,
+    "colour": "#2c3e6a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 1.2,
+    "run": 2,
+    "count": 6,
+    "colour": "#d9d0bc"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -40,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 3.5,
+    "bottom": 0.5,
+    "colour": "#efe6cf",
+    "frameColour": "#efe6cf",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.2,
+    "thickness": 0.4,
+    "colour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 8,
+    "spacing": 4,
+    "colours": [
+     "#c8242b",
+     "#1b7a43",
+     "#2b6cb0",
+     "#f0ebe0"
+    ]
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "fp-l",
+   "footprint": {
+    "rect": [
+     6.5,
+     22.5
+    ]
+   },
+   "at": [
+    -43.5,
+    -4
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#9c7c52",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c7c52",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fp-r",
+   "footprint": {
+    "rect": [
+     6.5,
+     22.5
+    ]
+   },
+   "at": [
+    -1.5,
+    -4
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#9c7c52",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c7c52",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rp-l",
+   "footprint": {
+    "rect": [
+     6.5,
+     20.5
+    ]
+   },
+   "at": [
+    -2.5,
+    24
+   ],
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#9c7c52",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c7c52",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rp-r",
+   "footprint": {
+    "rect": [
+     6.5,
+     20.5
+    ]
+   },
+   "at": [
+    34.5,
+    24
+   ],
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#9c7c52",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c7c52",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    40,
+    36
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e0bf5c",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8e0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wall",
+   "footprint": {
+    "rect": [
+     3,
+     12
+    ]
+   },
+   "at": [
+    -46.5,
+    -8
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#e6dcc4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dcc4",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "retaining-wall",
+   "footprint": {
+    "rect": [
+     110,
+     3
+    ]
+   },
+   "at": [
+    5,
+    34
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d6d0c0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    -11,
+    -15
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe8d6",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#1c2430"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "parapet": 0.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -11,
+    -17.8,
+    5.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#efe6cf",
+    "frameColour": "#c9b88e",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-1",
+   "footprint": {
+    "rect": [
+     110,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -31
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8cfb8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-2",
+   "footprint": {
+    "rect": [
+     110,
+     3
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9bb98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9a62"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -52,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "spacing": 3.4,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -52,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "spacing": 3.4,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Site is flat grass with a low terrace wall, not a steep hillside; car park thinner than the packed lot; no Arabic lettering (blank boards); atrium is a simple glazed box; piers plain ochre blocks without ragged stone texture."
+ }
+}

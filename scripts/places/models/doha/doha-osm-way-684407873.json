@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-way-684407873",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/684407874",
+   "used": "real building outline (115 x 112 m, stepped west edge), name-quality match"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "pink-sand painted render, 3 storeys, flat roof, skylit atrium, brise-soleil, two flagpoles (no exterior photo found; only interiors on Commons)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a98f",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "rect",
+    "bay": 10,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8b48a",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium-skylight",
+   "at": [
+    14,
+    6
+   ],
+   "rotDeg": 69,
+   "params": {
+    "rect": [
+     28,
+     10
+    ],
+    "z0": 15,
+    "height": 2.6,
+    "colour": "#8fb2bd",
+    "topColour": "#9cc0cb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium-rim",
+   "at": [
+    14,
+    6
+   ],
+   "rotDeg": 69,
+   "params": {
+    "rect": [
+     30,
+     12
+    ],
+    "z0": 15,
+    "height": 0.7,
+    "colour": "#7a4a3a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 0,
+      "height": 10,
+      "colour": "#7a4a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -62
+    ],
+    "end": [
+     40,
+     -62
+    ],
+    "count": 10,
+    "lod1Step": 3,
+    "lod2Step": 10
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -18,
+    -68,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 2,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -55,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 5,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    55,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 5,
+    "line": -12
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo of this building exists on Commons; massing is the real outline extruded, skylight position, brise-soleil line and colours are from the brief and not verified"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   150,
+   150
+  ]
+ }
+}

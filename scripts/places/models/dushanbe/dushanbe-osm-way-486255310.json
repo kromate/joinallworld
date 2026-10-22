@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-way-486255310",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/486255310",
+   "used": "real 52 x 92 m rotated-rectangle outline (leisure=stadium) as the apron; bleachers laid along its two long sides, perimeter walls on the ends"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this field exists in any source; open concrete bleachers, tall end walls and masts come from the brief, not observation"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a8f80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f80"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     30,
+     76
+    ],
+    "z0": 0.5,
+    "height": 0.15,
+    "colour": "#6a9446",
+    "topColour": "#6a9446"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 202.7
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -21,
+     -34
+    ],
+    "end": [
+     -21,
+     34
+    ],
+    "flip": false,
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#b8b2a4",
+    "concreteColour": "#bdb8ac",
+    "under": "solid",
+    "backWall": 0.8
+   },
+   "rotDeg": 202.7
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     21,
+     34
+    ],
+    "end": [
+     21,
+     -34
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#a9a497",
+    "concreteColour": "#bdb8ac",
+    "under": "solid",
+    "backWall": 0.8
+   },
+   "rotDeg": 202.7
+  },
+  {
+   "type": "prism",
+   "id": "wall-n",
+   "params": {
+    "rect": [
+     50,
+     0.6
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#bdb8ac"
+   },
+   "at": [
+    0,
+    45.5
+   ],
+   "rotDeg": 202.7
+  },
+  {
+   "type": "prism",
+   "id": "wall-s",
+   "params": {
+    "rect": [
+     50,
+     0.6
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#bdb8ac"
+   },
+   "at": [
+    0,
+    -45.5
+   ],
+   "rotDeg": 202.7
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -40.546,
+    31.427999999999997,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    6.111,
+    50.925,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    40.546,
+    -31.427999999999997,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -6.111,
+    -50.925,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   140,
+   140
+  ]
+ }
+}

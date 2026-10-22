@@ -1,0 +1,336 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-osm-way-666495757",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:View_of_Altair_and_the_Colombo_City_Centre_from_Baira_Lake.jpg",
+   "licence": "CC0",
+   "author": "Namal Siriwardana",
+   "view": "street",
+   "file": "/tmp/places-evidence/colombo/cc4.jpg",
+   "used": "very tall slim dark-blue glass tower rising from a wide lower retail podium with a gold diamond-lattice facade; proportions and colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UG-LK_Photowalk_-_Colombo_City_Centre_-_2017-03-12.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rehman Abubakr",
+   "view": "street",
+   "used": "stepped podium mass with a deep canopy over the entrance (not the final finish)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/666495757",
+   "used": "podium footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 0.667,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "polygon": [
+     [
+      -56,
+      20
+     ],
+     [
+      56,
+      20
+     ],
+     [
+      58,
+      2
+     ],
+     [
+      53.6,
+      -11.8
+     ],
+     [
+      41.0,
+      -23.5
+     ],
+     [
+      22.2,
+      -31.3
+     ],
+     [
+      0.0,
+      -34.0
+     ],
+     [
+      -22.2,
+      -31.3
+     ],
+     [
+      -41.0,
+      -23.5
+     ],
+     [
+      -53.6,
+      -11.8
+     ],
+     [
+      -58,
+      2
+     ]
+    ]
+   },
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e8c36a",
+    "windows": "curtain",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f1d58a",
+       "#b88a2e"
+      ]
+     }
+    ],
+    "bay": 4,
+    "windowRatio": 0.45,
+    "glassColour": "#3a2a14"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c7447",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -36,
+    5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 6,
+    "height": 0.4,
+    "columns": 0,
+    "colour": "#8c7447"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    28,
+    6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "z0": 18,
+    "height": 118,
+    "topScale": 1,
+    "colour": "#1b3560",
+    "windows": "grid",
+    "windowRatio": 0.7,
+    "glassColour": "#2b4f8a",
+    "storeys": 40,
+    "trimColour": "#16263d",
+    "topColour": "#2a2f35",
+    "bay": 2.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lean-0",
+   "at": [
+    -48.0,
+    8
+   ],
+   "params": {
+    "rect": [
+     18,
+     15
+    ],
+    "z0": 0,
+    "height": 26.5,
+    "colour": "#e6d6a8",
+    "windows": "grid",
+    "windowRatio": 0.35,
+    "glassColour": "#3b3326",
+    "storeys": 8,
+    "bay": 2.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#ecdcae",
+      "#5a4a30"
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lean-1",
+   "at": [
+    -42.5,
+    8
+   ],
+   "params": {
+    "rect": [
+     18,
+     15
+    ],
+    "z0": 26,
+    "height": 26.5,
+    "colour": "#e6d6a8",
+    "windows": "grid",
+    "windowRatio": 0.35,
+    "glassColour": "#3b3326",
+    "storeys": 8,
+    "bay": 2.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#ecdcae",
+      "#5a4a30"
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lean-2",
+   "at": [
+    -37.0,
+    8
+   ],
+   "params": {
+    "rect": [
+     18,
+     15
+    ],
+    "z0": 52,
+    "height": 26.5,
+    "colour": "#e6d6a8",
+    "windows": "grid",
+    "windowRatio": 0.35,
+    "glassColour": "#3b3326",
+    "storeys": 8,
+    "bay": 2.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#ecdcae",
+      "#5a4a30"
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lean-3",
+   "at": [
+    -31.5,
+    8
+   ],
+   "params": {
+    "rect": [
+     18,
+     15
+    ],
+    "z0": 78,
+    "height": 26.5,
+    "colour": "#e6d6a8",
+    "windows": "grid",
+    "windowRatio": 0.35,
+    "glassColour": "#3b3326",
+    "storeys": 8,
+    "bay": 2.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#ecdcae",
+      "#5a4a30"
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gold-slab",
+   "at": [
+    -24,
+    8
+   ],
+   "params": {
+    "rect": [
+     12,
+     16
+    ],
+    "z0": 0,
+    "height": 108,
+    "colour": "#d4a84a",
+    "windows": "grid",
+    "windowRatio": 0.4,
+    "glassColour": "#5a4420",
+    "storeys": 36,
+    "bay": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no true diamond lattice (stepped striped prisms and curtain-glass podium stand in); no lit windows; Altair lean is stepped blocks, not a continuous slab; scene height cap limits towers"
+ }
+}

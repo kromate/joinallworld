@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-osm-node-4201615774",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/amman.json",
+   "used": "25 x 18 m three-storey private clinic in cream limestone with glass entrance; the geo-listed photos show Al-Qastal ruins, a different place, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     25,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6dcc6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f0ebe0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-entrance",
+   "footprint": {
+    "rect": [
+     8,
+     3.5
+    ]
+   },
+   "at": [
+    -3,
+    -10.6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7e98a6",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "overhang": 0.6,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -3,
+    -13.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 2.5,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 2,
+    "colour": "#f0ebe0"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    8,
+    -9.1,
+    8.5
+   ],
+   "params": {
+    "size": 2.2,
+    "colour": "#c8242b",
+    "plateColour": "#f4f4f1",
+    "facing": "front"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.6,
+    "colour": "#7e98a6",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No building polygon and no photo of this clinic; typical small Amman clinic composed from the brief."
+ }
+}

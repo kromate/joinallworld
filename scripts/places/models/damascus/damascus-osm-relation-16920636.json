@@ -1,0 +1,417 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jalaa_stad.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "interior",
+   "file": "/tmp/places-evidence/damascus/dm_jalaa1.jpg",
+   "used": "low roofless concrete bowl, white fascia above green-and-white seat bands, grass pitch inside a grey running track, tall floodlight masts at the corners, a large blank scoreboard board over the far stand, cypress trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/71803",
+   "used": "oval bowl about 208 x 161 m, scaled to the 120 m scene limit"
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Reference is an interior view, render is exterior; stands approximated as rounded rectangle of straight and elliptical stands; scoreboard board blank; cypress trees are generic conifers; dugout barrel roof simple."
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "length": 90,
+    "width": 64,
+    "lane_width": 6,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b0a898"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -49.4,
+    -42.0,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    49.4,
+    -42.0,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -49.4,
+    42.0,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    49.4,
+    42.0,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 6,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "facetDeg": 20,
+    "under": "closed",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColours": [
+     "#8fc79a",
+     "#f1f0ea"
+    ],
+    "blocks": 4,
+    "concreteColour": "#f4f3ee",
+    "underColour": "#e6e3da",
+    "backWall": 0.6,
+    "start": [
+     -36,
+     -36
+    ],
+    "end": [
+     36,
+     -36
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "facetDeg": 20,
+    "under": "closed",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColours": [
+     "#8fc79a",
+     "#f1f0ea"
+    ],
+    "blocks": 4,
+    "concreteColour": "#f4f3ee",
+    "underColour": "#e6e3da",
+    "backWall": 0.6,
+    "start": [
+     36,
+     36
+    ],
+    "end": [
+     -36,
+     36
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "facetDeg": 20,
+    "under": "closed",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColours": [
+     "#8fc79a",
+     "#f1f0ea"
+    ],
+    "blocks": 4,
+    "concreteColour": "#f4f3ee",
+    "underColour": "#e6e3da",
+    "backWall": 0.6,
+    "centre": [
+     36,
+     0
+    ],
+    "radius": 14,
+    "radiusY": 36,
+    "startDeg": -90,
+    "endDeg": 90
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "facetDeg": 20,
+    "under": "closed",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColours": [
+     "#8fc79a",
+     "#f1f0ea"
+    ],
+    "blocks": 4,
+    "concreteColour": "#f4f3ee",
+    "underColour": "#e6e3da",
+    "backWall": 0.6,
+    "centre": [
+     -36,
+     0
+    ],
+    "radius": 14,
+    "radiusY": 36,
+    "startDeg": 90,
+    "endDeg": 270
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     15,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    39
+   ],
+   "z0": 7.0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d2c4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    39,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 7.0,
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    39,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 7.0,
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dugout",
+   "footprint": {
+    "rect": [
+     6,
+     1.8
+    ]
+   },
+   "at": [
+    -12,
+    -27
+   ],
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c9c0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#b8c9c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     53
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     54
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     52
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     53
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -10,
+     54
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     52
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     10,
+     53
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     20,
+     54
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     52
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     53
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     50,
+     54
+    ]
+   }
+  ],
+  "extent": [
+   116,
+   96
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-osm-relation-16920636"
+}

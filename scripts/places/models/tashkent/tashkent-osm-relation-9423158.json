@@ -1,0 +1,301 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-osm-relation-9423158",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/9423158",
+   "used": "only that the campus compound is huge (862 x 413 m, not a single building); the outline is deliberately not used, one academy block is shown"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q4453002",
+   "used": "university record; brief: barracks-style four-storey U block, parade ground, flagpoles, guarded gatehouse, brick and painted render, Soviet-era institute"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     100,
+     22
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#d7c9a5",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 13,
+    "plinth": 1.0,
+    "cornice": false,
+    "glassColour": "#4a5a63",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e7568",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     22,
+     44
+    ]
+   },
+   "at": [
+    -39,
+    -11
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#d7c9a5",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 11,
+    "plinth": 1.0,
+    "cornice": false,
+    "glassColour": "#4a5a63",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e7568",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     22,
+     44
+    ]
+   },
+   "at": [
+    39,
+    -11
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#d7c9a5",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 11,
+    "plinth": 1.0,
+    "cornice": false,
+    "glassColour": "#4a5a63",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e7568",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     4
+    ]
+   },
+   "at": [
+    0,
+    10.5
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9d8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 11
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7568",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flags",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 8,
+    "colour": "#2a6fb0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "gatehouse",
+   "id": "gatehouse",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4.5,
+    "depth": 3.5,
+    "colour": "#d7c9a5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-w",
+   "at": [
+    -30,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#d7c9a5"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-e",
+   "at": [
+    6,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#d7c9a5"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -55,
+     -45
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -55,
+     0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     55,
+     -45
+    ],
+    "height": 9
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     55,
+     35
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found anywhere: block is a typed barracks-style academy U, one block of a huge compound; colours and flag colour are guessed"
+ }
+}

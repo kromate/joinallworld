@@ -1,0 +1,582 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Silk_Museum.jpg",
+   "licence": "Public domain",
+   "author": "Unknown photographer",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/beirut/silk.jpg",
+   "used": "long two-storey honey-stone house under a red-tile hip roof with a shorter cross hip, a taller square tower wing behind right with its own hip roof and an arched passage, stone terrace walls, cypress and palm trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/969550012",
+   "used": "location and rough scale check; the 12 x 11 m outline is smaller than the long house in the photo, so massing follows the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.57
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     25,
+     8.5
+    ]
+   },
+   "at": [
+    -1,
+    0
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b89f6e",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.02,
+    "plinth": 0.5,
+    "bay": 4.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lowerground",
+   "footprint": {
+    "rect": [
+     13,
+     9.4
+    ]
+   },
+   "at": [
+    -6,
+    -0.3
+   ],
+   "z0": -2.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#a89572",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.06,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crosswing",
+   "footprint": {
+    "rect": [
+     8,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    5
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#bfa97c",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.08,
+    "plinth": 0.5,
+    "bay": 3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    15.5,
+    8.5
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b59a6c",
+    "windows": "punched",
+    "windowRatio": 0.04,
+    "plinth": 0.5,
+    "bay": 4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -24,
+    -1,
+    -1
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.0,
+    "thickness": 0.9,
+    "colour": "#a8946a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    -6,
+    -3
+   ],
+   "params": {
+    "length": 40,
+    "height": 2.5,
+    "thickness": 0.9,
+    "colour": "#a8946a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -26,
+    -11,
+    -4.5
+   ],
+   "params": {
+    "length": 48,
+    "height": 3.0,
+    "thickness": 0.9,
+    "colour": "#a8946a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -16,
+    -6
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.5,
+    "thickness": 0.9,
+    "colour": "#a8946a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -6,
+    -21,
+    -7.5
+   ],
+   "params": {
+    "length": 40,
+    "height": 2.3,
+    "thickness": 0.9,
+    "colour": "#a8946a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loggia",
+   "footprint": {
+    "rect": [
+     8,
+     2
+    ]
+   },
+   "at": [
+    -6,
+    -5.2
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b0996c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a60",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "archbase",
+   "footprint": {
+    "rect": [
+     5.5,
+     3
+    ]
+   },
+   "at": [
+    14.5,
+    1.5
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b0996c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a80",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     7,
+     2
+    ]
+   },
+   "at": [
+    5,
+    -5.2
+   ],
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#a89572",
+    "windows": "none",
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a60",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -41.6,
+     -6.7
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40.1,
+     20.4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -31.4,
+     -26.8
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -27.4,
+     29.1
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     31.6,
+     20.9
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -18.3,
+     8.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22.3,
+     24.1
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     36.5,
+     -28.1
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     10.2,
+     11.7
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     41.7,
+     24.9
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     39.3,
+     4.9
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36.7,
+     23.7
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -32.5,
+     -13.3
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30.0,
+     -31.1
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -43.6,
+     8.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -21.1,
+     2.4
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     47.7,
+     -20.7
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -13.8,
+     16.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -17.2,
+     4.0
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     38.8,
+     -27.1
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -42.1,
+     -18.4
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     25.5,
+     7.8
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -31.0,
+     -2.8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -43.9,
+     13.4
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     38.0,
+     30.9
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22.5,
+     31.3
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -46.3,
+     -14.3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44.7,
+     18.7
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8.6,
+     30.1
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     11.6,
+     21.6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     8
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -12,
+     10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-osm-node-2932843969",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Ground is still flat grass, not a steep wooded terraced slope; terrace walls sit out of frame; tower lacks pergola and real arched passage; stone is texture not rubble; windows still more regular than photo"
+ }
+}

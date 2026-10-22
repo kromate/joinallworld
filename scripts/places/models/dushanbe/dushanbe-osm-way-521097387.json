@@ -1,0 +1,980 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-way-521097387",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%B0%D1%80%D0%BA%D0%B8_%D0%B2_%D0%94%D1%83%D1%88%D0%B0%D0%BD%D0%B1%D0%B5.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Shukhrat Saadiev",
+   "view": "front",
+   "file": "/tmp/places-evidence/dushanbe/d19_park.jpg",
+   "used": "white curved entrance colonnade of arched bays with cornice and lettering band, white columned pavilion at left, terracotta paving, low red-brown fountain basins, tall globe lamp"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/521097387",
+   "used": "tourism=theme_park, 459 x 421 m, opened 2011; only the entrance plaza and gate colonnade are composed at true scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 42,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "round arches between colonnade piers do not read in the render (piers + entablature only); pavilions now open arched porticoes but lack engaged columns/capitals; fountain basins are round not lobed; no tile pattern, lettering only as dark band; only entrance plaza modelled"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza-tile",
+   "params": {
+    "rect": [
+     110,
+     80
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#b98a68",
+    "topColour": "#c08f6b"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -15,
+     -40
+    ],
+    "radius": 62,
+    "startDeg": 48,
+    "endDeg": 112,
+    "count": 17,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       -0.45,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.7,
+        1.6
+       ],
+       "z0": 0,
+       "height": 7.4,
+       "colour": "#f2efe6",
+       "topColour": "#f2efe6"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0.45,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.7,
+        1.6
+       ],
+       "z0": 0,
+       "height": 7.4,
+       "colour": "#f2efe6",
+       "topColour": "#f2efe6"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        2.1,
+        2.0
+       ],
+       "z0": 0,
+       "height": 0.6,
+       "colour": "#d8d4c8",
+       "topColour": "#d8d4c8"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        2.0,
+        1.9
+       ],
+       "z0": 6.9,
+       "height": 0.5,
+       "colour": "#e6e2d6",
+       "topColour": "#e6e2d6"
+      }
+     }
+    ],
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "array",
+   "id": "arches",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -15,
+     -40
+    ],
+    "radius": 62,
+    "startDeg": 50,
+    "endDeg": 110,
+    "count": 16,
+    "facing": "outward",
+    "of": {
+     "type": "arcade-bays",
+     "at": [
+      0,
+      0.8,
+      0
+     ],
+     "params": {
+      "length": 3.1,
+      "depth": 0.6,
+      "springHeight": 4.6,
+      "topHeight": 7.4,
+      "bayWidth": 3.0,
+      "pierWidth": 0.1,
+      "shape": "round",
+      "colour": "#f2efe6",
+      "roofColour": "#f2efe6"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "entablature",
+   "at": [
+    0,
+    0,
+    7.4
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      1.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      -15,
+      -40
+     ],
+     "radius": 62,
+     "startDeg": 48,
+     "endDeg": 112
+    },
+    "colour": "#f2efe6",
+    "steps": 24
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "lettering-band",
+   "at": [
+    0,
+    0,
+    7.550000000000001
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.75,
+      0.8
+     ]
+    },
+    "arc": {
+     "centre": [
+      -15,
+      -40
+     ],
+     "radius": 62,
+     "startDeg": 50,
+     "endDeg": 110
+    },
+    "colour": "#4a463e",
+    "steps": 24
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "cornice",
+   "at": [
+    0,
+    0,
+    8.700000000000001
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.3,
+      0.55
+     ]
+    },
+    "arc": {
+     "centre": [
+      -15,
+      -40
+     ],
+     "radius": 62,
+     "startDeg": 48,
+     "endDeg": 112
+    },
+    "colour": "#e0dccf",
+    "steps": 24
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "attic",
+   "at": [
+    0,
+    0,
+    9.25
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.3,
+      0.6
+     ]
+    },
+    "arc": {
+     "centre": [
+      -15,
+      -40
+     ],
+     "radius": 62,
+     "startDeg": 48,
+     "endDeg": 112
+    },
+    "colour": "#f2efe6",
+    "steps": 24
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-l-back",
+   "at": [
+    -46.56309791008162,
+    -2.9185535240753904
+   ],
+   "rotDeg": -25,
+   "params": {
+    "rect": [
+     22,
+     1.0
+    ],
+    "z0": 0,
+    "height": 9.0,
+    "colour": "#f2efe6",
+    "topColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-l-solid",
+   "at": [
+    -47.28154895504081,
+    -4.459276762037695
+   ],
+   "rotDeg": -25,
+   "params": {
+    "rect": [
+     22,
+     4.4
+    ],
+    "z0": 0,
+    "height": 8.0,
+    "colour": "#f2efe6",
+    "topColour": "#f2efe6"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "arcade-bays",
+   "id": "pav-l-arcade",
+   "lod": [
+    0
+   ],
+   "at": [
+    -48,
+    -6,
+    0
+   ],
+   "rotDeg": -25,
+   "params": {
+    "length": 22,
+    "depth": 3.2,
+    "springHeight": 5.4,
+    "topHeight": 8.0,
+    "bayWidth": 4.2,
+    "pierWidth": 1.1,
+    "shape": "round",
+    "colour": "#f2efe6",
+    "roofColour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-l-cornice",
+   "at": [
+    -47.28154895504081,
+    -4.459276762037695
+   ],
+   "rotDeg": -25,
+   "params": {
+    "rect": [
+     23.2,
+     5.4
+    ],
+    "z0": 8.0,
+    "height": 0.9,
+    "colour": "#e0dccf",
+    "topColour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-l-attic",
+   "at": [
+    -47.28154895504081,
+    -4.459276762037695
+   ],
+   "rotDeg": -25,
+   "params": {
+    "rect": [
+     22,
+     4.8
+    ],
+    "z0": 8.9,
+    "height": 1.2,
+    "colour": "#f2efe6",
+    "topColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-l-band",
+   "at": [
+    -48.0,
+    -6.0
+   ],
+   "rotDeg": -25,
+   "params": {
+    "rect": [
+     19,
+     0.3
+    ],
+    "z0": 8.3,
+    "height": 0.5,
+    "colour": "#4a463e",
+    "topColour": "#4a463e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pav-r-back",
+   "at": [
+    50.83713151269273,
+    -0.8050450893279115
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     22,
+     1.0
+    ],
+    "z0": 0,
+    "height": 9.0,
+    "colour": "#f2efe6",
+    "topColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-r-solid",
+   "at": [
+    51.41856575634636,
+    -2.402522544663956
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     22,
+     4.4
+    ],
+    "z0": 0,
+    "height": 8.0,
+    "colour": "#f2efe6",
+    "topColour": "#f2efe6"
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "arcade-bays",
+   "id": "pav-r-arcade",
+   "lod": [
+    0
+   ],
+   "at": [
+    52,
+    -4,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "length": 22,
+    "depth": 3.2,
+    "springHeight": 5.4,
+    "topHeight": 8.0,
+    "bayWidth": 4.2,
+    "pierWidth": 1.1,
+    "shape": "round",
+    "colour": "#f2efe6",
+    "roofColour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-r-cornice",
+   "at": [
+    51.41856575634636,
+    -2.402522544663956
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     23.2,
+     5.4
+    ],
+    "z0": 8.0,
+    "height": 0.9,
+    "colour": "#e0dccf",
+    "topColour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-r-attic",
+   "at": [
+    51.41856575634636,
+    -2.402522544663956
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     22,
+     4.8
+    ],
+    "z0": 8.9,
+    "height": 1.2,
+    "colour": "#f2efe6",
+    "topColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pav-r-band",
+   "at": [
+    52.0,
+    -4.0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     19,
+     0.3
+    ],
+    "z0": 8.3,
+    "height": 0.5,
+    "colour": "#4a463e",
+    "topColour": "#4a463e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "radius": 6.5,
+    "waterColour": "#4f605b",
+    "rimColour": "#8a3f2e"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    -16,
+    0.9
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#d4d0c2",
+    "profile": [
+     [
+      5.8500000000000005,
+      0
+     ],
+     [
+      5.8500000000000005,
+      0.5
+     ],
+     [
+      5.07,
+      0.55
+     ],
+     [
+      5.07,
+      0.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "radius": 5.5,
+    "waterColour": "#4f605b",
+    "rimColour": "#8a3f2e"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    14,
+    -12,
+    0.9
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#d4d0c2",
+    "profile": [
+     [
+      4.95,
+      0
+     ],
+     [
+      4.95,
+      0.5
+     ],
+     [
+      4.29,
+      0.55
+     ],
+     [
+      4.29,
+      0.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17.2,
+    0.9,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#c9a24a",
+    "profile": [
+     [
+      0.45,
+      0
+     ],
+     [
+      0.3,
+      0.6
+     ],
+     [
+      0.2,
+      1.5
+     ],
+     [
+      0.17,
+      9.4
+     ],
+     [
+      0,
+      9.4
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17.2,
+    0.9,
+    9.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#fafafa",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.2
+     ],
+     [
+      0.55,
+      0.55
+     ],
+     [
+      0.45,
+      0.95
+     ],
+     [
+      0,
+      1.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    18.7,
+    0.9,
+    8.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#fafafa",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.2
+     ],
+     [
+      0.55,
+      0.55
+     ],
+     [
+      0.45,
+      0.95
+     ],
+     [
+      0,
+      1.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    15.7,
+    0.9,
+    8.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#fafafa",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.2
+     ],
+     [
+      0.55,
+      0.55
+     ],
+     [
+      0.45,
+      0.95
+     ],
+     [
+      0,
+      1.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17.2,
+    2.4,
+    8.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#fafafa",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.2
+     ],
+     [
+      0.55,
+      0.55
+     ],
+     [
+      0.45,
+      0.95
+     ],
+     [
+      0,
+      1.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17.2,
+    -0.6,
+    8.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#fafafa",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.2
+     ],
+     [
+      0.55,
+      0.55
+     ],
+     [
+      0.45,
+      0.95
+     ],
+     [
+      0,
+      1.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    19.599999999999998,
+    0.9,
+    7.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#fafafa",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.2
+     ],
+     [
+      0.55,
+      0.55
+     ],
+     [
+      0.45,
+      0.95
+     ],
+     [
+      0,
+      1.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    14.799999999999999,
+    0.9,
+    7.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#fafafa",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.2
+     ],
+     [
+      0.55,
+      0.55
+     ],
+     [
+      0.45,
+      0.95
+     ],
+     [
+      0,
+      1.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -26
+    ],
+    "end": [
+     40,
+     -30
+    ],
+    "count": 4,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 8
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ }
+}

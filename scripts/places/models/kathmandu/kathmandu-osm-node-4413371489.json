@@ -1,0 +1,139 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/343238935",
+   "used": "17.4 x 13 m footprint size only (match is 29 m away, not trusted for outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     17,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1d2a8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#a85c42",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d7f80",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "floors": 1,
+    "storeyHeight": 4.0,
+    "proud": 1.4,
+    "rail": true,
+    "railHeight": 1.0,
+    "colour": "#a85c42"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 2.9,
+    "colours": [
+     "#a85c42",
+     "#f1ede0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 4.4,
+    "colour": "#2f6b4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 3,
+    "spread": 4,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; typical two-storey highway lodge from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-osm-node-4413371489"
+}

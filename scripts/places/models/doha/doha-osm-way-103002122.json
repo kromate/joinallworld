@@ -1,0 +1,174 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-way-103002122",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/103002122",
+   "used": "real outline of Landmark Mall (about 406 x 160 m, 2 levels, 8 m high, long diagonal plan with stepped notches) fitted to the 120 m scene limit; the only Commons image is a shop interior and was not used, so facade finish, entrance drums and signs come from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d2b2",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 9,
+    "plinth": 0.4,
+    "bands": "#c9b88f",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c2b4",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "drum-entrance",
+   "at": [
+    -26,
+    -27,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "height": 8,
+    "cap_colour": "#c8c2b4",
+    "canopy": true
+   }
+  },
+  {
+   "type": "drum-entrance",
+   "at": [
+    26,
+    -22,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "height": 8,
+    "cap_colour": "#c8c2b4",
+    "canopy": true
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 6,
+    "height": 5,
+    "columns": 4,
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -30,
+    6.5
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#8aa0b0",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 8,
+    "colours": [
+     "#8a1538",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -45,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo; entrance drums, signage boards and flags are placed from the brief, facade windows are typed"
+ }
+}

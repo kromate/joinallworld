@@ -1,0 +1,253 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-airport-ramallah-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/287710478",
+   "used": "34 x 33 m aeroway=helipad outline (rotated square) for the concrete apron and perimeter wall"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ramallah.json",
+   "used": "presidential heliport inside the Muqata'a compound: concrete pad with painted circle, windsock, small stone guard hut, stone perimeter wall, flag, two floodlights. Nearby Commons photos show the Arafat mausoleum, not the heliport, so none were used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "points": [
+     [
+      -22.7,
+      -6.8
+     ],
+     [
+      -6,
+      22.9
+     ],
+     [
+      22.7,
+      6.8
+     ],
+     [
+      6,
+      -22.9
+     ]
+    ],
+    "height": 0.35,
+    "colour": "#a7a39a",
+    "topColour": "#9a958c"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    0,
+    0,
+    0.35
+   ],
+   "params": {
+    "radius": 12,
+    "colour": "#85888c",
+    "markColour": "#e8e8e2",
+    "ringColour": "#d9c13a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "points": [
+     [
+      -23.608,
+      -7.072
+     ],
+     [
+      -6.24,
+      23.816
+     ],
+     [
+      23.608,
+      7.072
+     ],
+     [
+      6.24,
+      -23.816
+     ],
+     [
+      -23.608,
+      -7.072
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.6,
+    "colour": "#d6c7a2",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guard-hut",
+   "footprint": {
+    "rect": [
+     5,
+     3.6
+    ]
+   },
+   "at": [
+    -17,
+    -11
+   ],
+   "rotDeg": 29,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c6a0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b6",
+    "material": "concrete",
+    "parapet": 0.25,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "windsock-pole",
+   "at": [
+    15,
+    -13,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 7,
+    "colour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "circle": 0.45
+    },
+    "points": [
+     [
+      15,
+      -12.9,
+      7.1
+     ],
+     [
+      17.2,
+      -12.6,
+      6.95
+     ],
+     [
+      19.3,
+      -12.3,
+      6.8
+     ]
+    ],
+    "taper": 0.45,
+    "colour": "#e06a24"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -18,
+    10,
+    0.35
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#000000",
+     "#ffffff",
+     "#007a3d"
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    14,
+    15,
+    0.35
+   ],
+   "params": {
+    "height": 10,
+    "head_width": 2.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -14,
+    -17,
+    0.35
+   ],
+   "params": {
+    "height": 10,
+    "head_width": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the heliport exists; outline, pad, wall and props from OSM and the brief only"
+ }
+}

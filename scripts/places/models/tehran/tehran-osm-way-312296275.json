@@ -1,0 +1,328 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/312296275",
+   "used": "188 x 138 m hospital precinct: layout of low ward blocks set in gardens within it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     56,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e1d6bd",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-w",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -40,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#dccfb2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-e",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    40,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#dccfb2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-back",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    0,
+    48
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e1d6bd",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -62,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9b79a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "height": 4.4,
+    "form": "flat",
+    "colour": "#cfd2d4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.5,
+    "bottom": 1.2,
+    "colour": "#f2f2f2",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 26
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 26
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    70,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    68,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 50
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "height": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; ward block positions are typed, only the precinct size is real"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-osm-way-312296275"
+}

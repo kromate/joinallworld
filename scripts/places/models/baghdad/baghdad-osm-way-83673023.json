@@ -1,0 +1,552 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-osm-way-83673023",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Al_Zawraa_Park_lake_,_Karch_,_Baghdad_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Haleemwitwit",
+   "view": "side",
+   "file": "/tmp/places-evidence/baghdad/osm-way-83673023-1.jpg",
+   "used": "low ochre lakeside pavilion with a flattened green dome, light pergola walkway to its right, stone-edged bank, broadleaf trees and palms, water in the foreground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Al-Zawra'a_Park.png",
+   "licence": "CC BY-SA 4.0",
+   "author": "MohammadHuzam",
+   "view": "aerial",
+   "used": "amusement plaza: sand-coloured tent canopies, white geodesic dome, ferris wheel, wide paved concourse, palm avenue along the edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/83673023",
+   "used": "identity only: the 1.5 km2 park is far over the scene clamp, so one lake-and-plaza corner is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 160,
+    "depth": 68,
+    "colour": "#6f8fa3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     3
+    ],
+    "height": 0.8,
+    "colour": "#d6d1bf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank2",
+   "at": [
+    0,
+    -16.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     150,
+     2
+    ],
+    "height": 0.5,
+    "colour": "#e4dfce"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavilion",
+   "at": [
+    -12,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     14
+    ],
+    "height": 5,
+    "colour": "#d9bf8c",
+    "windows": "none",
+    "storeys": 1,
+    "trimColour": "#c4a672"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -12,
+    0,
+    5
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#7fb1a0",
+    "profile": [
+     [
+      0,
+      1.0,
+      "#7fb1a0"
+     ],
+     [
+      11,
+      0
+     ],
+     [
+      11,
+      0.6
+     ],
+     [
+      9,
+      2.4
+     ],
+     [
+      5,
+      4.6
+     ],
+     [
+      0,
+      5.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    12,
+    55,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d8c391",
+    "profile": [
+     [
+      7,
+      0
+     ],
+     [
+      7,
+      2.8
+     ],
+     [
+      5,
+      3.6
+     ],
+     [
+      0,
+      4.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    70,
+    110,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f1f0ec",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      9,
+      0
+     ],
+     [
+      9,
+      1
+     ],
+     [
+      8,
+      4
+     ],
+     [
+      5.5,
+      7
+     ],
+     [
+      0,
+      9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    10,
+    40,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 60,
+    "colour": "#cbc2b0",
+    "border_colour": "#bdb4a2"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -55,
+     10
+    ],
+    "end": [
+     -55,
+     70
+    ],
+    "count": 8,
+    "lod2Step": 8,
+    "lod1Step": 4,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "palm",
+       "height": 11
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30,
+    38,
+    0
+   ],
+   "params": {
+    "radius": 4,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "park-bench",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    34,
+    50,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d8c391",
+    "profile": [
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      2.2
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -84,
+    -3,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 5,
+    "rows": 3,
+    "dx": 5,
+    "dy": 5,
+    "stagger": 2,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "broadleaf",
+       "height": 8
+      }
+     }
+    ],
+    "lod1Step": 4,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pergolaroof",
+   "at": [
+    36,
+    -4,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     32,
+     3.6
+    ],
+    "height": 0.4,
+    "colour": "#ece7d8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pergolabeam",
+   "at": [
+    36,
+    -4,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.6
+    ],
+    "height": 0.4,
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    36,
+    -4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15,
+     -1.4
+    ],
+    "end": [
+     15,
+     -1.4
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.35,
+        0.35
+       ],
+       "height": 3.4,
+       "colour": "#ece7d8"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    36,
+    -4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15,
+     1.4
+    ],
+    "end": [
+     15,
+     1.4
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.35,
+        0.35
+       ],
+       "height": 3.4,
+       "colour": "#ece7d8"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -60,
+    6,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 3,
+    "dx": 5,
+    "dy": 5,
+    "stagger": 2,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "broadleaf",
+       "height": 13
+      }
+     }
+    ],
+    "lod1Step": 4,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     12
+    ],
+    "end": [
+     75,
+     12
+    ],
+    "count": 14,
+    "lod2Step": 8,
+    "lod1Step": 4,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "broadleaf",
+       "height": 10
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     11
+    ],
+    "end": [
+     75,
+     11
+    ],
+    "count": 8,
+    "lod2Step": 8,
+    "lod1Step": 4,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "palm",
+       "height": 9
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "critic fixes applied: lighter blue-grey water, continuous light stone bank, front tree row removed, tree block shifted left, pergola adjoining pavilion; dome still reads as a sunk saucer under the low camera, water is a flat slab without reflections"
+ }
+}

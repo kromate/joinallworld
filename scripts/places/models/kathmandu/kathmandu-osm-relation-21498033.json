@@ -1,0 +1,1113 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hanuman_Dhoka_Palace_and_Pagoda_Temple_at_Kathmandu_Durbar_Square.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "SristiAwasthi21",
+   "view": "front",
+   "file": "/tmp/places-evidence/kathmandu/hd1.jpg",
+   "used": "white neoclassical Rana wing with three arched windows and giant pilasters, brick plinth steps, three-tier red-brick temple at right with red fringe on swept eaves, tile colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hanuman_Dhoka_Palace,_Durbar_Square_(17851184601).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jorge Lascar",
+   "view": "street",
+   "file": "/tmp/places-evidence/kathmandu/hd2.jpg",
+   "used": "carved brick palace front with tiled pent roofs and upper timber storeys, brick plinth steps, distant tiered temples, paved plaza"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/21498033",
+   "used": "name match; outline is scattered square strips so only the extent (~120 m) guided placement"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rana-wing",
+   "footprint": {
+    "rect": [
+     36,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.5,
+    "plinth": 1.4,
+    "bands": "#e4e0d6",
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e0d6",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace-front",
+   "footprint": {
+    "rect": [
+     56,
+     20
+    ]
+   },
+   "at": [
+    22,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7e3a2a",
+    "windows": "none",
+    "windowRatio": 0.16,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#3a2418",
+    "bands": "#3a2418"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8502f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace-west",
+   "footprint": {
+    "rect": [
+     24,
+     24
+    ]
+   },
+   "at": [
+    -36,
+    44
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b4a37",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.8,
+    "glassColour": "#3a2418",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8502f",
+    "material": "clay-tile",
+    "pitch": 15,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace-east",
+   "footprint": {
+    "rect": [
+     20,
+     36
+    ]
+   },
+   "at": [
+    58,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b4a37",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.8,
+    "glassColour": "#3a2418",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8502f",
+    "material": "clay-tile",
+    "pitch": 15,
+    "overhang": 0.6
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "prism",
+   "id": "courtyard",
+   "at": [
+    22,
+    30
+   ],
+   "params": {
+    "rect": [
+     20,
+     6
+    ],
+    "z0": 13,
+    "height": 0.2,
+    "colour": "#7a3a2a"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/gate",
+   "at": [
+    8,
+    18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 5,
+    "pillar": 1.2,
+    "arch": false,
+    "colour": "#7a3a2a",
+    "leafColour": "#5a3a24"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "statue-figure",
+   "at": [
+    10,
+    16,
+    0
+   ],
+   "params": {
+    "height": 3,
+    "pose": "stand",
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/tree",
+   "at": [
+    -60,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 4,
+    "line": 14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pent0",
+   "at": [
+    22,
+    19
+   ],
+   "params": {
+    "rect": [
+     59,
+     2.4
+    ],
+    "z0": 4.5,
+    "height": 0.4,
+    "colour": "#a8502f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pent1",
+   "at": [
+    22,
+    19
+   ],
+   "params": {
+    "rect": [
+     59,
+     2.4
+    ],
+    "z0": 8.8,
+    "height": 0.4,
+    "colour": "#a8502f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilr0",
+   "at": [
+    -38.0,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.2
+    ],
+    "z0": 0.6,
+    "height": 17.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilr1",
+   "at": [
+    -33.333333333333336,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.2
+    ],
+    "z0": 0.6,
+    "height": 17.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilr2",
+   "at": [
+    -28.666666666666664,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.2
+    ],
+    "z0": 0.6,
+    "height": 17.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilr3",
+   "at": [
+    -24.0,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.2
+    ],
+    "z0": 0.6,
+    "height": 17.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilr4",
+   "at": [
+    -19.333333333333332,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.2
+    ],
+    "z0": 0.6,
+    "height": 17.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilr5",
+   "at": [
+    -14.666666666666668,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.2
+    ],
+    "z0": 0.6,
+    "height": 17.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilr6",
+   "at": [
+    -10.0,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.2
+    ],
+    "z0": 0.6,
+    "height": 17.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door0",
+   "at": [
+    -31,
+    7.9
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.4
+    ],
+    "z0": 0.6,
+    "height": 5.6,
+    "colour": "#4a3022"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door1",
+   "at": [
+    -24,
+    7.9
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.4
+    ],
+    "z0": 0.6,
+    "height": 5.6,
+    "colour": "#4a3022"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door2",
+   "at": [
+    -17,
+    7.9
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.4
+    ],
+    "z0": 0.6,
+    "height": 5.6,
+    "colour": "#4a3022"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rana-cornice",
+   "at": [
+    -24,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     34,
+     2.2
+    ],
+    "z0": 17.8,
+    "height": 1.0,
+    "colour": "#e4e0d6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -24,
+    6,
+    18.8
+   ],
+   "params": {
+    "width": 18,
+    "depth": 0.8,
+    "height": 2.6,
+    "columns": 4,
+    "pediment": true,
+    "steps": 0,
+    "colour": "#f2f0ea",
+    "roofColour": "#e4e0d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nautalle-t0",
+   "at": [
+    -6,
+    48
+   ],
+   "params": {
+    "rect": [
+     7.0,
+     7.0
+    ],
+    "z0": 0.0,
+    "height": 5.333333333333333,
+    "colour": "#9b4a37"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    -6,
+    48,
+    4.333333333333333
+   ],
+   "params": {
+    "width": 8.0,
+    "depth": 8.0,
+    "rise": 1.6,
+    "overhang": 2,
+    "upturn": 0.5,
+    "colour": "#8f3a28",
+    "trim": "#c8362f"
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "nautalle-t1",
+   "at": [
+    -6,
+    48
+   ],
+   "params": {
+    "rect": [
+     5.6000000000000005,
+     5.6000000000000005
+    ],
+    "z0": 5.333333333333333,
+    "height": 5.333333333333333,
+    "colour": "#9b4a37"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    -6,
+    48,
+    9.666666666666666
+   ],
+   "params": {
+    "width": 6.6000000000000005,
+    "depth": 6.6000000000000005,
+    "rise": 1.6,
+    "overhang": 2,
+    "upturn": 0.5,
+    "colour": "#8f3a28",
+    "trim": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "taleju-t0",
+   "at": [
+    14,
+    60
+   ],
+   "params": {
+    "rect": [
+     8.0,
+     8.0
+    ],
+    "z0": 0.0,
+    "height": 6.666666666666667,
+    "colour": "#9b4a37"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    14,
+    60,
+    5.666666666666667
+   ],
+   "params": {
+    "width": 9.0,
+    "depth": 9.0,
+    "rise": 1.6,
+    "overhang": 2,
+    "upturn": 0.5,
+    "colour": "#8f3a28",
+    "trim": "#c8362f"
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "taleju-t1",
+   "at": [
+    14,
+    60
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     6.4
+    ],
+    "z0": 6.666666666666667,
+    "height": 6.666666666666667,
+    "colour": "#9b4a37"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    14,
+    60,
+    12.333333333333334
+   ],
+   "params": {
+    "width": 7.4,
+    "depth": 7.4,
+    "rise": 1.6,
+    "overhang": 2,
+    "upturn": 0.5,
+    "colour": "#8f3a28",
+    "trim": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "east-t0",
+   "at": [
+    46,
+    52
+   ],
+   "params": {
+    "rect": [
+     7.0,
+     7.0
+    ],
+    "z0": 0.0,
+    "height": 4.666666666666667,
+    "colour": "#9b4a37"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    46,
+    52,
+    3.666666666666667
+   ],
+   "params": {
+    "width": 8.0,
+    "depth": 8.0,
+    "rise": 1.6,
+    "overhang": 2,
+    "upturn": 0.5,
+    "colour": "#8f3a28",
+    "trim": "#c8362f"
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "east-t1",
+   "at": [
+    46,
+    52
+   ],
+   "params": {
+    "rect": [
+     5.6000000000000005,
+     5.6000000000000005
+    ],
+    "z0": 4.666666666666667,
+    "height": 4.666666666666667,
+    "colour": "#9b4a37"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    46,
+    52,
+    8.333333333333334
+   ],
+   "params": {
+    "width": 6.6000000000000005,
+    "depth": 6.6000000000000005,
+    "rise": 1.6,
+    "overhang": 2,
+    "upturn": 0.5,
+    "colour": "#8f3a28",
+    "trim": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    10,
+    -12
+   ],
+   "params": {
+    "rect": [
+     100,
+     36
+    ],
+    "height": 0.12,
+    "colour": "#9a5a44"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    22,
+    12,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#8d4a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -3,
+     19.8,
+     2.5
+    ],
+    "end": [
+     47,
+     19.8,
+     2.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       0.3
+      ],
+      "height": 2,
+      "colour": "#3a2418"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -3,
+     19.8,
+     6.6
+    ],
+    "end": [
+     47,
+     19.8,
+     6.6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       0.3
+      ],
+      "height": 2,
+      "colour": "#3a2418"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -3,
+     19.8,
+     10.2
+    ],
+    "end": [
+     47,
+     19.8,
+     10.2
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       0.3
+      ],
+      "height": 2,
+      "colour": "#3a2418"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth0",
+   "at": [
+    32,
+    -14
+   ],
+   "params": {
+    "rect": [
+     32,
+     32
+    ],
+    "z0": 0.0,
+    "height": 0.8,
+    "colour": "#8d4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth1",
+   "at": [
+    32,
+    -14
+   ],
+   "params": {
+    "rect": [
+     29,
+     29
+    ],
+    "z0": 0.8,
+    "height": 0.8,
+    "colour": "#8d4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth2",
+   "at": [
+    32,
+    -14
+   ],
+   "params": {
+    "rect": [
+     26,
+     26
+    ],
+    "z0": 1.6,
+    "height": 0.8,
+    "colour": "#8d4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth3",
+   "at": [
+    32,
+    -14
+   ],
+   "params": {
+    "rect": [
+     23,
+     23
+    ],
+    "z0": 2.4000000000000004,
+    "height": 0.8,
+    "colour": "#8d4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cella0",
+   "at": [
+    32,
+    -14
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "z0": 3.2,
+    "height": 10,
+    "colour": "#7a3a2a"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    32,
+    -14,
+    12.2
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "rise": 5.0,
+    "overhang": 3.2,
+    "upturn": 1.0,
+    "colour": "#8f3a28",
+    "trim": "#c8362f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cella1",
+   "at": [
+    32,
+    -14
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "z0": 16.4,
+    "height": 9,
+    "colour": "#9b4a37"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    32,
+    -14,
+    24.4
+   ],
+   "params": {
+    "width": 24,
+    "depth": 24,
+    "rise": 4.5,
+    "overhang": 3.2,
+    "upturn": 1.0,
+    "colour": "#8f3a28",
+    "trim": "#c8362f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cella2",
+   "at": [
+    32,
+    -14
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "z0": 28.599999999999998,
+    "height": 8,
+    "colour": "#9b4a37"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    32,
+    -14,
+    35.599999999999994
+   ],
+   "params": {
+    "width": 18,
+    "depth": 18,
+    "rise": 4.0,
+    "overhang": 3.2,
+    "upturn": 1.0,
+    "colour": "#8f3a28",
+    "trim": "#c8362f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cella-top",
+   "at": [
+    32,
+    -14
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "z0": 37.4,
+    "height": 3.6,
+    "colour": "#9b4a37"
+   }
+  },
+  {
+   "type": "finial",
+   "at": [
+    32,
+    -14,
+    40.8
+   ],
+   "params": {
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "temple now three tall tiers on stepped plinth but lacks carved struts and red fringe detail; Rana facade lacks fluted pilaster detail; palace front is plain brick with no carved lattice"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-osm-relation-21498033"
+}

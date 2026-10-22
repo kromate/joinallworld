@@ -1,0 +1,399 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-way-228281988",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ness_Ziona_pic06.jpg",
+   "licence": "CC BY 3.0",
+   "author": "MathKnight",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/ness2.jpg",
+   "used": "two-storey ochre render hall, long side with a row of tall pointed-arch windows over small barred arched windows, denticulated cornice, parapet, stepped scrolled gable end with twin arched openings and menorah; venue is the Great Synagogue of Ness Ziona (OSM name and wikidata Q45835604), so the Ness Ziona photo shows this building"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ness_Ziona_pic07.jpg",
+   "licence": "CC BY 3.0",
+   "author": "MathKnight",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/ness3.jpg",
+   "used": "gable end: four tall pointed windows in pairs, pilaster strips, scalloped parapet"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/228281988",
+   "used": "24 x 16 m footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 52,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     15.8
+    ]
+   },
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9c9a0",
+    "windows": "arched",
+    "windowRatio": 0.03,
+    "bay": 3.2,
+    "plinth": 0.6,
+    "cornice": false,
+    "bands": "#c6b68c",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "glassColour": "#4d5156"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper",
+   "params": {
+    "rect": [
+     24,
+     15.8
+    ],
+    "z0": 5.2,
+    "height": 5.8,
+    "colour": "#d9c9a0",
+    "topColour": "#bfae8c",
+    "windows": "pointed",
+    "windowShape": "pointed",
+    "windowRatio": 0.34,
+    "storeys": 1,
+    "bay": 3.2,
+    "glassColour": "#7d8c97",
+    "trimColour": "#c6b68c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "params": {
+    "rect": [
+     24.8,
+     16.6
+    ],
+    "z0": 10.5,
+    "height": 0.6,
+    "colour": "#c6b68c",
+    "topColour": "#c6b68c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet",
+   "params": {
+    "rect": [
+     24.2,
+     16
+    ],
+    "z0": 11.1,
+    "height": 0.9,
+    "colour": "#d9c9a0",
+    "topColour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable0",
+   "at": [
+    11.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     15.4
+    ],
+    "z0": 11,
+    "height": 1.3,
+    "colour": "#d9c9a0",
+    "topColour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable1",
+   "at": [
+    11.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     12
+    ],
+    "z0": 12.3,
+    "height": 1.3,
+    "colour": "#d9c9a0",
+    "topColour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable2",
+   "at": [
+    11.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     8.5
+    ],
+    "z0": 13.6,
+    "height": 1.2,
+    "colour": "#d9c9a0",
+    "topColour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable3",
+   "at": [
+    11.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     4.5
+    ],
+    "z0": 14.8,
+    "height": 1.0,
+    "colour": "#d9c9a0",
+    "topColour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -11,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 1.4,
+    "run": 2.2,
+    "count": 6,
+    "colour": "#cfc7b6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3,
+    "count": 3,
+    "spread": 6,
+    "colour": "#5f8f4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin0",
+   "at": [
+    11.6,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.9
+    ],
+    "z0": 12,
+    "height": 2.3,
+    "colour": "#d9c9a0",
+    "topColour": "#c6b68c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin1",
+   "at": [
+    11.6,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.9
+    ],
+    "z0": 12,
+    "height": 2.3,
+    "colour": "#d9c9a0",
+    "topColour": "#c6b68c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shoulder0",
+   "at": [
+    11.6,
+    -5.2
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     2.6
+    ],
+    "z0": 12,
+    "height": 1.0,
+    "colour": "#d9c9a0",
+    "topColour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shoulder1",
+   "at": [
+    11.6,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     2.6
+    ],
+    "z0": 12,
+    "height": 1.0,
+    "colour": "#d9c9a0",
+    "topColour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gwin0",
+   "at": [
+    12.15,
+    -0.6
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.6
+    ],
+    "z0": 13.5,
+    "height": 1.6,
+    "colour": "#4d5b52",
+    "topColour": "#4d5b52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gwin1",
+   "at": [
+    12.15,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.6
+    ],
+    "z0": 13.5,
+    "height": 1.6,
+    "colour": "#4d5b52",
+    "topColour": "#4d5b52"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.2,
+    "count": 5,
+    "spread": 10,
+    "colour": "#4f7a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 1,
+    "spread": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "lower-storey windows still taller than the small barred ones (window height tied to storey); gable scrolls and scalloped parapet approximated by blocks; no menorah, cabling, side steps or dense shrubs"
+ }
+}

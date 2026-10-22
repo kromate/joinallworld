@@ -1,0 +1,536 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Apple_fountain_(Kok_Tobe_Park).jpg",
+   "licence": "CC BY 2.0",
+   "author": "kalpak-travel.com",
+   "view": "front",
+   "file": "/tmp/places-evidence/almaty/recreation-0.jpg",
+   "used": "granite apple fountain with gilded stalk and leaf on a round granite basin, green timber kiosks with red and green roofs, light paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kok_Tobe_station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/almaty/recreation-1.jpg",
+   "used": "dark mirrored glass entrance hall with green name board on the roof, white curved hotel wing with glazing, paver forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%BE%D0%BA-%D0%A2%D0%BE%D0%B1%D0%B5,_%D0%B2%D0%B8%D0%B4_%D1%81_%D0%BB%D0%B5%D1%81%D1%82%D0%BD%D0%B8%D1%86%D1%8B.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nikolai Bulykin",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/almaty/recreation-3.jpg",
+   "used": "viewing terrace with railing and large green letters, paver surface, city and cableway below"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1569484166",
+   "used": "nearest OSM building is an 11 m kiosk, not the park; outline not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza-paving",
+   "params": {
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#e0d3b4",
+    "rect": [
+     36,
+     22
+    ],
+    "topColour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fountain-basin",
+   "params": {
+    "z0": 0.25,
+    "height": 1.1,
+    "colour": "#2f2c2a",
+    "radius": 9.0,
+    "n": 32,
+    "topColour": "#3c5c68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "basin-rim",
+   "params": {
+    "z0": 1.0,
+    "height": 0.5,
+    "colour": "#8a8078",
+    "radius": 9.4,
+    "n": 32,
+    "topColour": "#9a9086"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "basin-inner",
+   "params": {
+    "z0": 1.0,
+    "height": 0.52,
+    "colour": "#3c5c68",
+    "radius": 8.4,
+    "n": 32,
+    "topColour": "#46707e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "params": {
+    "z0": 1.2,
+    "height": 1.6,
+    "colour": "#8f7d70",
+    "radius": 3.9,
+    "n": 14,
+    "topColour": "#9a8a7c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "plinth-blocks",
+   "params": {
+    "mode": "circle",
+    "count": 6,
+    "radius": 3.8,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 1.4,
+      "height": 1.3,
+      "colour": "#a89686",
+      "rect": [
+       1.8,
+       1.2
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "apple",
+   "at": [
+    0,
+    0,
+    2.8
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#9c8470",
+    "topColour": "#a88e78",
+    "profile": [
+     [
+      0.3,
+      0.0
+     ],
+     [
+      1.15,
+      0.1
+     ],
+     [
+      2.79,
+      0.62
+     ],
+     [
+      4.24,
+      1.54
+     ],
+     [
+      5.41,
+      2.81
+     ],
+     [
+      6.2,
+      4.34
+     ],
+     [
+      6.57,
+      6.02
+     ],
+     [
+      6.5,
+      7.75
+     ],
+     [
+      5.98,
+      9.39
+     ],
+     [
+      5.06,
+      10.84
+     ],
+     [
+      3.79,
+      12.01
+     ],
+     [
+      1.7,
+      11.6
+     ],
+     [
+      0.8,
+      10.8
+     ],
+     [
+      0.0,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "apple-groove",
+   "at": [
+    0,
+    0,
+    2.8
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.25
+     ]
+    },
+    "colour": "#c9a032",
+    "points": [
+     [
+      2.8952090341590515,
+      -3.543929483862124,
+      1.8
+     ],
+     [
+      2.878431592508442,
+      -4.929767095791061,
+      3.2
+     ],
+     [
+      2.7921672966529134,
+      -5.695938412323359,
+      4.6
+     ],
+     [
+      2.712842422758641,
+      -6.046692408106584,
+      6.0
+     ],
+     [
+      2.7107352320571763,
+      -6.024219521587374,
+      7.4
+     ],
+     [
+      2.787712600489345,
+      -5.623151845588337,
+      8.8
+     ],
+     [
+      2.8656986598718786,
+      -4.937270875275281,
+      10.0
+     ]
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "apple-stalk",
+   "at": [
+    0.2,
+    0.5,
+    13.0
+   ],
+   "params": {
+    "section": "circle",
+    "radius": 0.35,
+    "colour": "#d4a93a",
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0.1,
+      0,
+      1.3
+     ],
+     [
+      0.9,
+      0,
+      2.3
+     ],
+     [
+      1.9,
+      0,
+      2.7
+     ]
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "apple-leaf",
+   "at": [
+    2.4,
+    0.4,
+    13.399999999999999
+   ],
+   "params": {
+    "colour": "#8a6a2a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.4,
+       0.9
+      ]
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       1.8,
+       1.4
+      ],
+      "cx": 0.9
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       1.2,
+       0.6
+      ],
+      "cx": 1.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-w",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6fd08a",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "front": "rect"
+    },
+    "trimColour": "#ffffff",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c0392d",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.9
+   },
+   "at": [
+    -13,
+    7
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-e",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6fd08a",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "front": "rect"
+    },
+    "trimColour": "#ffffff",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f8f55",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.9
+   },
+   "at": [
+    13,
+    7
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "ridge0",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "smooth": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       17,
+       4
+      ],
+      "colour": "#7f9086"
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       10.54,
+       2.8
+      ],
+      "colour": "#8c9a94"
+     },
+     {
+      "z": 7.0200000000000005,
+      "ellipse": [
+       5.1,
+       1.6
+      ],
+      "colour": "#f1f4f7"
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       0.8500000000000001,
+       0.32
+      ],
+      "colour": "#ffffff"
+     }
+    ],
+    "colour": "#7f9086"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "ridge1",
+   "at": [
+    9,
+    24,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "smooth": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       19,
+       4
+      ],
+      "colour": "#7f9086"
+     },
+     {
+      "z": 6.0,
+      "ellipse": [
+       11.78,
+       2.8
+      ],
+      "colour": "#8c9a94"
+     },
+     {
+      "z": 9.36,
+      "ellipse": [
+       5.7,
+       1.6
+      ],
+      "colour": "#f1f4f7"
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       0.9500000000000001,
+       0.32
+      ],
+      "colour": "#ffffff"
+     }
+    ],
+    "colour": "#7f9086"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Apple is now the hero but the shared trim material shows wood-grain streaks instead of polished speckled granite; top notch is shallow; mountains are smooth mounds not a jagged snow ridge; kiosks lack scalloped trim; camera is wider than the close photo."
+ }
+}

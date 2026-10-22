@@ -1,0 +1,375 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-osm-way-370071885",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bangladesh_National_Museum_of_Science_and_Technology_Entrance.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "PeRshGo",
+   "view": "front",
+   "file": "/tmp/places-evidence/dhaka/370071885_0.jpg",
+   "used": "stepped cream concrete block of five levels with small punched window groups, sign board on the roof edge, entrance canopy on two columns, low wing running off to the left, palms, coloured flagpoles, red-brick-edged hedge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/370071885",
+   "used": "overall extent 114 x 85 m and 3 levels for the long wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2cf",
+    "windows": "punched",
+    "windowRatio": 0.09,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "bay": 8,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#bdb7a2",
+      "height": 0.5,
+      "at": 0.0
+     },
+     {
+      "type": "bands",
+      "colour": "#b8b29c",
+      "height": 0.4,
+      "at": 0.7
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ac",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    -2,
+    -0.5
+   ],
+   "z0": 17,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e0cb",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0ab9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-top",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -10,
+    -3
+   ],
+   "height": 3,
+   "z0": 21,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-low",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -34,
+    4
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d2",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain"
+    },
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0ab9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    2,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "height": 4.6,
+    "columns": 2,
+    "colour": "#e2dfd2",
+    "edge_colour": "#e2dfd2",
+    "steps": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8.2,
+    16.2
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#2b3f6a",
+    "frameColour": "#e6e6e0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -34,
+    -17.5,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colours": [
+     "#4b2c8c",
+     "#c8242b",
+     "#e8e8f0",
+     "#2f79c8",
+     "#9bd33b",
+     "#f2d21b"
+    ],
+    "count": 8,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -19.5,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.2,
+    "thickness": 2.5,
+    "colour": "#1f5a28"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -22.2,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 0.9,
+    "thickness": 1.8,
+    "colour": "#e2512c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -23.6,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 0.4,
+    "thickness": 0.7,
+    "colour": "#9a4a38"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 0.05,
+    "thickness": 6,
+    "colour": "#8b8a84"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -17
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -11,
+     -16
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -18
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -21,
+     -16
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -18
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -12
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     -2
+    ],
+    "height": 26
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -8
+    ],
+    "height": 28
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     -4
+    ],
+    "height": 24
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -18
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Warm cream stepped block with roof-edge sign, long low wing, canopy, denser palms, conifers, tall flags and orange hedge with brick kerb; hedge is a flat-topped strip, window clusters not true 2x2 groups, drive is plain paving, other museum wings not modelled."
+ }
+}

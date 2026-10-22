@@ -1,0 +1,159 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2844942",
+   "used": "real outline: a long comb of parallel wings with stepped courtyards (332 x 161 m), fitted to the scene; 4 storeys from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "simplify": 20
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede4",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bay": 20,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#c9b48a",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ada0",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -52,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 8,
+    "height": 4.6,
+    "colour": "#e8e2d4",
+    "columns": 4
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    10,
+    6,
+    16
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 2,
+    "colour": "#d9d6cf"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -22,
+    20,
+    16
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 2,
+    "colour": "#d9d6cf"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "colour": "#f1ede4",
+    "frameColour": "#9bb2c2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -58
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -58
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     25,
+     -62
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -62
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-relation-2844942",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: real OSM outline only (simplified), generic hospital facade and details; windows reduced for budget."
+ }
+}

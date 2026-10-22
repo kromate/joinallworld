@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/342566641",
+   "used": "real footprint (32.6 m x 23.2 m, L-shaped with a recessed front corner); nearest-building match 2 m from the brief point, untagged building"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey agency branch in light render with ribbon windows, blank sign board, steps, solar panels, car park; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 15,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e1dac8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#a39a88",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a5",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#d9d3c3"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "core/solar-panels",
+   "at": [
+    8,
+    2,
+    8.6
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 5,
+    "tilt": 12,
+    "colour": "#2c3e57"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -14
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: appearance (render colour, ribbon windows, sign, solar panels) is typed from the brief; only the outline is real; entrance position and sign board placement guessed."
+ }
+}

@@ -1,0 +1,858 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-way-257319379",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D9%83%D9%86%D9%8A%D8%B3%D8%A9_%D8%A7%D9%84%D8%B9%D8%B0%D8%B1%D8%A7%D8%A1_%D8%B3%D9%84%D8%B7%D8%A7%D9%86%D8%A9_%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85_-_%D8%A3%D8%B3%D8%A7%D9%85%D8%A9_%D8%B9%D9%8A%D8%AF.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Osps7",
+   "view": "front",
+   "file": "/tmp/places-evidence/ramallah/p2_0.jpg",
+   "used": "cream coursed limestone gable facade, three-arch round portico on columns, wide steps with black rails, arched window group in the gable, cross finial, red dome with cross behind, two araucaria trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/257319379",
+   "used": "cruciform plan: 11 m nave, 21 m transept, round apse"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     31
+    ]
+   },
+   "at": [
+    0,
+    -4.5
+   ],
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e3d2a8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdb98f",
+    "material": "clay-tile",
+    "pitch": 36,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     15,
+     11
+    ]
+   },
+   "at": [
+    0,
+    5.5
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e3d2a8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdb98f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apse",
+   "params": {
+    "radius": 5,
+    "n": 12,
+    "z0": 0,
+    "height": 9,
+    "colour": "#e3d2a8",
+    "topColour": "#cdb98f",
+    "topScale": 0.85
+   },
+   "at": [
+    0,
+    11
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    5.5,
+    10
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#a8493a",
+    "profile": [
+     [
+      3.4,
+      0,
+      "#dccaa3"
+     ],
+     [
+      3.4,
+      1.8
+     ],
+     [
+      3.6,
+      1.8,
+      "#a8493a"
+     ],
+     [
+      3.2,
+      2.7
+     ],
+     [
+      2.3,
+      3.5
+     ],
+     [
+      1.2,
+      4.0
+     ],
+     [
+      0,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross1",
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 18.6,
+    "height": 2.4,
+    "colour": "#e8dcc0",
+    "topColour": "#e8dcc0"
+   },
+   "at": [
+    0,
+    -20.0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross2",
+   "params": {
+    "rect": [
+     1.4,
+     0.35
+    ],
+    "z0": 20.2,
+    "height": 0.35,
+    "colour": "#e8dcc0",
+    "topColour": "#e8dcc0"
+   },
+   "at": [
+    0,
+    -20.0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cross3",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 14.2,
+    "height": 1.8,
+    "colour": "#3d86b5",
+    "topColour": "#3d86b5"
+   },
+   "at": [
+    0,
+    5.5
+   ]
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "id": "lancet0",
+   "at": [
+    -1.5,
+    -20.0,
+    9.0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 4.0,
+    "kind": "arch",
+    "stained": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "id": "lancet1",
+   "at": [
+    0,
+    -20.0,
+    9.0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 4.6,
+    "kind": "arch",
+    "stained": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "id": "lancet2",
+   "at": [
+    1.5,
+    -20.0,
+    9.0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 4.0,
+    "kind": "arch",
+    "stained": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "id": "rose0",
+   "at": [
+    0,
+    -20.0,
+    14.0
+   ],
+   "params": {
+    "radius": 0.5,
+    "stained": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "id": "rose1",
+   "at": [
+    -2.2,
+    -20.0,
+    12.6
+   ],
+   "params": {
+    "radius": 0.5,
+    "stained": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "id": "rose2",
+   "at": [
+    2.2,
+    -20.0,
+    12.6
+   ],
+   "params": {
+    "radius": 0.5,
+    "stained": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "recess",
+   "params": {
+    "rect": [
+     9.2,
+     0.3
+    ],
+    "z0": 1.5,
+    "height": 4.6,
+    "colour": "#7a5238",
+    "topColour": "#7a5238"
+   },
+   "at": [
+    0,
+    -20.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "params": {
+    "rect": [
+     1.7,
+     0.3
+    ],
+    "z0": 1.5,
+    "height": 3.0,
+    "colour": "#1c1612",
+    "topColour": "#1c1612"
+   },
+   "at": [
+    0,
+    -20.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col-4.4",
+   "params": {
+    "radius": 0.28,
+    "n": 10,
+    "z0": 1.5,
+    "height": 3.4,
+    "colour": "#e0cea4",
+    "topColour": "#e0cea4"
+   },
+   "at": [
+    -4.4,
+    -23.0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col-1.7",
+   "params": {
+    "radius": 0.28,
+    "n": 10,
+    "z0": 1.5,
+    "height": 3.4,
+    "colour": "#e0cea4",
+    "topColour": "#e0cea4"
+   },
+   "at": [
+    -1.7,
+    -23.0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col1.7",
+   "params": {
+    "radius": 0.28,
+    "n": 10,
+    "z0": 1.5,
+    "height": 3.4,
+    "colour": "#e0cea4",
+    "topColour": "#e0cea4"
+   },
+   "at": [
+    1.7,
+    -23.0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col4.4",
+   "params": {
+    "radius": 0.28,
+    "n": 10,
+    "z0": 1.5,
+    "height": 3.4,
+    "colour": "#e0cea4",
+    "topColour": "#e0cea4"
+   },
+   "at": [
+    4.4,
+    -23.0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-3.05",
+   "params": {
+    "arc": {
+     "centre": [
+      -3.05,
+      -23.0,
+      4.9
+     ],
+     "radius": 1.35,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#e0cea4",
+    "section": {
+     "rect": [
+      0.35,
+      0.5
+     ]
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch0",
+   "params": {
+    "arc": {
+     "centre": [
+      0,
+      -23.0,
+      4.9
+     ],
+     "radius": 1.7,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#e0cea4",
+    "section": {
+     "rect": [
+      0.35,
+      0.5
+     ]
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch3.05",
+   "params": {
+    "arc": {
+     "centre": [
+      3.05,
+      -23.0,
+      4.9
+     ],
+     "radius": 1.35,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#e0cea4",
+    "section": {
+     "rect": [
+      0.35,
+      0.5
+     ]
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "architrave",
+   "footprint": {
+    "rect": [
+     10.2,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    -21.8
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0cea4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c69c"
+   },
+   "z0": 6.7
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -23.4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 21,
+    "rise": 0.15,
+    "run": 0.55,
+    "count": 10,
+    "colour": "#d5c6a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-6.5",
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      -6.5,
+      -28.9,
+      1.0
+     ],
+     [
+      -6.5,
+      -23.4,
+      2.6
+     ]
+    ],
+    "colour": "#111111"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-2.5",
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      -2.5,
+      -28.9,
+      1.0
+     ],
+     [
+      -2.5,
+      -23.4,
+      2.6
+     ]
+    ],
+    "colour": "#111111"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail2.5",
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      2.5,
+      -28.9,
+      1.0
+     ],
+     [
+      2.5,
+      -23.4,
+      2.6
+     ]
+    ],
+    "colour": "#111111"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail6.5",
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      6.5,
+      -28.9,
+      1.0
+     ],
+     [
+      6.5,
+      -23.4,
+      2.6
+     ]
+    ],
+    "colour": "#111111"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "tree-9.5",
+   "at": [
+    -14,
+    -23,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#143a1f",
+    "profile": [
+     [
+      0.6,
+      0,
+      "#2a2018"
+     ],
+     [
+      0.6,
+      3
+     ],
+     [
+      4.2,
+      3,
+      "#143a1f"
+     ],
+     [
+      1.6,
+      7
+     ],
+     [
+      3.8,
+      7
+     ],
+     [
+      1.3,
+      12
+     ],
+     [
+      3.0,
+      12
+     ],
+     [
+      1.0,
+      17
+     ],
+     [
+      2.2,
+      17
+     ],
+     [
+      0.6,
+      22
+     ],
+     [
+      1.3,
+      22
+     ],
+     [
+      0,
+      27
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tree9.5",
+   "at": [
+    14,
+    -23,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#143a1f",
+    "profile": [
+     [
+      0.6,
+      0,
+      "#2a2018"
+     ],
+     [
+      0.6,
+      3
+     ],
+     [
+      4.2,
+      3,
+      "#143a1f"
+     ],
+     [
+      1.6,
+      7
+     ],
+     [
+      3.8,
+      7
+     ],
+     [
+      1.3,
+      12
+     ],
+     [
+      3.0,
+      12
+     ],
+     [
+      1.0,
+      17
+     ],
+     [
+      2.2,
+      17
+     ],
+     [
+      0.6,
+      22
+     ],
+     [
+      1.3,
+      22
+     ],
+     [
+      0,
+      27
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     10.6,
+     3.8
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#eadfc8",
+    "topColour": "#eadfc8"
+   },
+   "at": [
+    0,
+    -21.8
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "gable-arch",
+   "params": {
+    "arc": {
+     "centre": [
+      0,
+      -20.15,
+      11.3
+     ],
+     "radius": 3.0,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#d9c9a0",
+    "section": {
+     "rect": [
+      0.45,
+      0.5
+     ]
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Taller gable with stone sides, wide step flight, arched gable window group and cross finial added; facade still narrower and more compact than real, steps low-contrast, rails thin, no inscription or coursing relief, dense araucaria only approximated."
+ }
+}

@@ -1,0 +1,561 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-way-369953190",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bhutan_archery.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Steve Evans",
+   "view": "side",
+   "file": "/tmp/places-evidence/thimphu/369953190_0.jpg",
+   "used": "royal pavilion: white stone podium with steps and gold disc, timber balcony storey, three tiers of dark slate hip roofs with a gold finial, flagpole beside it, green pitch in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Changlimithang_Archery_Ground;_Thimphu,_Bhutan(43332815385).jpg",
+   "licence": "CC BY 2.0",
+   "author": "see Commons page",
+   "view": "side",
+   "file": "/tmp/places-evidence/thimphu/369953190_1.jpg",
+   "used": "long open timber gallery with a wide flat red-brown roof on painted posts above a plain grey wall, archery lane of bare earth, prayer flags"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/369953190",
+   "used": "site location only (about 255 x 123 m); pavilion, gallery and pitch edge composed close-up from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -16,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     36,
+     10
+    ],
+    "height": 0.06,
+    "colour": "#5c9a46"
+   },
+   "id": "pitch"
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-podium",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#f3efe5",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-timber",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a2a22",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#34363a",
+    "material": "slate",
+    "rise": 1.8,
+    "overhang": 4.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-upper",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 10,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4e2d20",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#34363a",
+    "material": "slate",
+    "rise": 1.8,
+    "overhang": 4.0
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pavilion-finial",
+   "at": [
+    0,
+    0,
+    16.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d4af37",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.7,
+      0.8
+     ],
+     [
+      0.9,
+      1.1
+     ],
+     [
+      0.5,
+      1.9
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.8,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     22,
+     2.6
+    ],
+    "height": 0.4,
+    "colour": "#4a2418"
+   },
+   "id": "balcony-slab"
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.9,
+    5.4
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.15
+    ],
+    "height": 0.2,
+    "colour": "#d9a93a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.9,
+    6.3
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.15
+    ],
+    "height": 0.2,
+    "colour": "#6a3524"
+   }
+  },
+  {
+   "type": "array",
+   "id": "balcony-posts",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 16,
+    "start": [
+     -10.5,
+     -7.9
+    ],
+    "end": [
+     10.5,
+     -7.9
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       5.4
+      ],
+      "params": {
+       "rect": [
+        0.2,
+        0.2
+       ],
+       "height": 1.0,
+       "colour": "#6a3524"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.15,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#d4af37"
+   },
+   "id": "gold-disc"
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    7.5,
+    -8.2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5,
+    "rise": 0.85,
+    "run": 1.0,
+    "count": 6,
+    "colour": "#e8e2d4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    9,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     1.2
+    ],
+    "height": 2.4,
+    "colour": "#8f8b82"
+   },
+   "id": "gallery-wall"
+  },
+  {
+   "type": "core/colonnade",
+   "id": "gallery-posts",
+   "at": [
+    -27,
+    6,
+    2.4
+   ],
+   "params": {
+    "length": 27,
+    "count": 8,
+    "height": 4,
+    "radius": 0.28,
+    "kind": "square",
+    "beamHeight": 0.7,
+    "roofDepth": 6,
+    "colour": "#a8452d",
+    "roofColour": "#7a4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    2,
+    0.03
+   ],
+   "params": {
+    "rect": [
+     30,
+     8
+    ],
+    "height": 0.08,
+    "colour": "#a8946f"
+   },
+   "id": "archery-lane"
+  },
+  {
+   "type": "flag",
+   "id": "prayer-flags",
+   "at": [
+    -30,
+    -10.5,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 12,
+    "spacing": 3.5,
+    "colours": [
+     "#2f6fb5",
+     "#f3efe5",
+     "#c8352c",
+     "#3f9a4a",
+     "#e0b030"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    13,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colours": [
+     "#c8352c"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "mid-posts",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -9.5,
+     -6.0
+    ],
+    "end": [
+     9.5,
+     -6.0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       5.4
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 4.6,
+       "colour": "#8a2a22"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "mid-posts-back",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -9.5,
+     6.0
+    ],
+    "end": [
+     9.5,
+     6.0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       5.4
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "height": 4.6,
+       "colour": "#8a2a22"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.0,
+    6.4
+   ],
+   "params": {
+    "rect": [
+     19,
+     0.25
+    ],
+    "height": 0.2,
+    "colour": "#d9a93a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.0,
+    9.4
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5
+    ],
+    "height": 0.6,
+    "colour": "#b03a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6.0,
+    5.4
+   ],
+   "params": {
+    "rect": [
+     19,
+     0.15
+    ],
+    "height": 1.0,
+    "colour": "#6a3524"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     24
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     26
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     24
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "two-tier roofs and open gallery storey now match, but roofs are smooth dark hips (no scaly slate, thin gold fascia), medallion is a gold box not a disc, no 21-row stand, gallery and pitch compressed"
+ }
+}

@@ -1,0 +1,309 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-node-13384264101",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: qat bundle tables under bright tarps and umbrellas on a paved lot, no source for this market; no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lot",
+   "footprint": {
+    "rect": [
+     50,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a968c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "tables-0",
+   "at": [
+    -17,
+    -14,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 9,
+    "pitch": 4.0,
+    "kind": "tarp",
+    "colours": [
+     "#4f7a3a",
+     "#2f6fa8"
+    ],
+    "goods_colours": [
+     "#4f7a3a",
+     "#6a9a45"
+    ],
+    "jitter": 0.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "tables-1",
+   "at": [
+    -17,
+    -5,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 9,
+    "pitch": 4.0,
+    "kind": "tarp",
+    "colours": [
+     "#d9822b",
+     "#4f7a3a"
+    ],
+    "goods_colours": [
+     "#4f7a3a",
+     "#6a9a45"
+    ],
+    "jitter": 0.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "tables-2",
+   "at": [
+    -17,
+    4,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 9,
+    "pitch": 4.0,
+    "kind": "tarp",
+    "colours": [
+     "#2f6fa8",
+     "#c9b48e"
+    ],
+    "goods_colours": [
+     "#4f7a3a",
+     "#6a9a45"
+    ],
+    "jitter": 0.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "tables-3",
+   "at": [
+    -17,
+    13,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 9,
+    "pitch": 4.0,
+    "kind": "tarp",
+    "colours": [
+     "#a0583a",
+     "#4f7a3a"
+    ],
+    "goods_colours": [
+     "#4f7a3a",
+     "#6a9a45"
+    ],
+    "jitter": 0.2
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb-a",
+   "at": [
+    -16,
+    16,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 7,
+    "spread": 5,
+    "colours": [
+     "#d9822b",
+     "#2f6fa8",
+     "#a0583a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb-b",
+   "at": [
+    18,
+    16,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 5,
+    "spread": 4,
+    "colours": [
+     "#4f7a3a",
+     "#c9b48e"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "awning",
+   "id": "aw-a",
+   "at": [
+    -22,
+    -19,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "colours": [
+     "#4f7a3a",
+     "#c9b48e"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "id": "aw-b",
+   "at": [
+    0,
+    -19,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "colours": [
+     "#2f6fa8",
+     "#c9b48e"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "id": "aw-c",
+   "at": [
+    20,
+    -19,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "colours": [
+     "#d9822b",
+     "#c9b48e"
+    ]
+   }
+  },
+  {
+   "type": "parked-car",
+   "id": "pickup",
+   "at": [
+    -30,
+    5,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "parked-car",
+   "id": "pickup2",
+   "at": [
+    30,
+    -6,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#7f8a8f"
+   }
+  },
+  {
+   "type": "motorbike",
+   "id": "bike-a",
+   "at": [
+    28,
+    10,
+    0.5
+   ],
+   "rotDeg": 20,
+   "params": {}
+  },
+  {
+   "type": "motorbike",
+   "id": "bike-b",
+   "at": [
+    -28,
+    -10,
+    0.5
+   ],
+   "rotDeg": -30,
+   "params": {}
+  },
+  {
+   "type": "lamp-post",
+   "id": "lamp",
+   "at": [
+    0,
+    20,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 6.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or outline; 50x40 lot and tarp stall rows typed"
+ }
+}

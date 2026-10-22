@@ -1,0 +1,1071 @@
+{
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "muscat",
+  "venueId": "muscat-recreation",
+  "verified": "photo",
+  "evidence": [
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Qurum_Natural_Park_Muscat_(47954028687).jpg",
+      "licence": "CC BY-SA 2.0",
+      "author": "Eduard Marmet",
+      "view": "front",
+      "file": "/tmp/places-evidence/muscat/qurum1.jpg",
+      "used": "entrance pavilion: flat lattice-banded cream slab on four maroon columns with gold bands and groin-vaulted soffit, cream lattice side walls, palms, patterned paving"
+    },
+    {
+      "kind": "osm",
+      "ref": "way/257266841",
+      "used": "park identity and scale only (980 m x 430 m); the modelled scene is the entrance plaza, the outline is far beyond the 118 m scene clamp"
+    }
+  ],
+  "camera": {
+    "yawDeg": 0,
+    "pitchDeg": 1,
+    "fovDeg": 55,
+    "aspect": 1.5,
+    "margin": 0.1
+  },
+  "parts": [
+    {
+      "type": "mass",
+      "id": "slab",
+      "footprint": {
+        "rect": [
+          22,
+          7.5
+        ]
+      },
+      "at": [
+        0,
+        0
+      ],
+      "z0": 5.0,
+      "height": 1.6,
+      "storeys": 1,
+      "wall": {
+        "material": "stucco",
+        "colour": "#e6d9bf",
+        "windows": "none",
+        "pattern": {
+          "type": "panels",
+          "colours": [
+            "#e9dcc0",
+            "#cdbd98"
+          ],
+          "slits": 0.5,
+          "faces": [
+            "front",
+            "back",
+            "left",
+            "right"
+          ]
+        }
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#e0d2b4",
+        "material": "concrete",
+        "overhang": 0.9
+      }
+    },
+    {
+      "type": "mass",
+      "id": "wall-1",
+      "footprint": {
+        "rect": [
+          9,
+          1.2
+        ]
+      },
+      "at": [
+        -15.5,
+        0
+      ],
+      "height": 3.6,
+      "storeys": 1,
+      "wall": {
+        "material": "stucco",
+        "colour": "#e6d9bf",
+        "windows": "none",
+        "plinth": 0.3,
+        "cornice": true,
+        "pattern": {
+          "type": "panels",
+          "colours": [
+            "#efe3c8",
+            "#e4d5b4"
+          ],
+          "slits": 0.35,
+          "faces": [
+            "front",
+            "back"
+          ]
+        }
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#e3d6bb",
+        "overhang": 0.1
+      }
+    },
+    {
+      "type": "mass",
+      "id": "wall1",
+      "footprint": {
+        "rect": [
+          9,
+          1.2
+        ]
+      },
+      "at": [
+        15.5,
+        0
+      ],
+      "height": 3.6,
+      "storeys": 1,
+      "wall": {
+        "material": "stucco",
+        "colour": "#e6d9bf",
+        "windows": "none",
+        "plinth": 0.3,
+        "cornice": true,
+        "pattern": {
+          "type": "panels",
+          "colours": [
+            "#efe3c8",
+            "#e4d5b4"
+          ],
+          "slits": 0.35,
+          "faces": [
+            "front",
+            "back"
+          ]
+        }
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#e3d6bb",
+        "overhang": 0.1
+      }
+    },
+    {
+      "type": "revolve",
+      "id": "col0",
+      "at": [
+        -3.5,
+        -1.8,
+        0
+      ],
+      "params": {
+        "segments": 14,
+        "colour": "#5a2a2c",
+        "profile": [
+          [
+            0.38,
+            0
+          ],
+          [
+            0.45,
+            0.2,
+            "#c9a24a"
+          ],
+          [
+            0.38,
+            0.35,
+            "#5a2a2c"
+          ],
+          [
+            0.38,
+            3.3,
+            "#5a2a2c"
+          ],
+          [
+            0.45,
+            3.4,
+            "#c9a24a"
+          ],
+          [
+            0.45,
+            3.8,
+            "#c9a24a"
+          ],
+          [
+            0.38,
+            3.9,
+            "#5a2a2c"
+          ],
+          [
+            0.38,
+            4.5
+          ]
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "loft",
+      "id": "vault0",
+      "at": [
+        -3.5,
+        -1.8,
+        3.6
+      ],
+      "params": {
+        "colour": "#e6d9bf",
+        "sections": [
+          {
+            "z": 0,
+            "circle": 0.5
+          },
+          {
+            "z": 0.35,
+            "circle": 1.0
+          },
+          {
+            "z": 0.7,
+            "circle": 2.0
+          },
+          {
+            "z": 1.1,
+            "circle": 3.0
+          },
+          {
+            "z": 1.4,
+            "rect": [
+              7.2,
+              3.8
+            ]
+          }
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "revolve",
+      "id": "col1",
+      "at": [
+        3.5,
+        -1.8,
+        0
+      ],
+      "params": {
+        "segments": 14,
+        "colour": "#5a2a2c",
+        "profile": [
+          [
+            0.38,
+            0
+          ],
+          [
+            0.45,
+            0.2,
+            "#c9a24a"
+          ],
+          [
+            0.38,
+            0.35,
+            "#5a2a2c"
+          ],
+          [
+            0.38,
+            3.3,
+            "#5a2a2c"
+          ],
+          [
+            0.45,
+            3.4,
+            "#c9a24a"
+          ],
+          [
+            0.45,
+            3.8,
+            "#c9a24a"
+          ],
+          [
+            0.38,
+            3.9,
+            "#5a2a2c"
+          ],
+          [
+            0.38,
+            4.5
+          ]
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "loft",
+      "id": "vault1",
+      "at": [
+        3.5,
+        -1.8,
+        3.6
+      ],
+      "params": {
+        "colour": "#e6d9bf",
+        "sections": [
+          {
+            "z": 0,
+            "circle": 0.5
+          },
+          {
+            "z": 0.35,
+            "circle": 1.0
+          },
+          {
+            "z": 0.7,
+            "circle": 2.0
+          },
+          {
+            "z": 1.1,
+            "circle": 3.0
+          },
+          {
+            "z": 1.4,
+            "rect": [
+              7.2,
+              3.8
+            ]
+          }
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "revolve",
+      "id": "col2",
+      "at": [
+        -3.5,
+        1.8,
+        0
+      ],
+      "params": {
+        "segments": 14,
+        "colour": "#5a2a2c",
+        "profile": [
+          [
+            0.38,
+            0
+          ],
+          [
+            0.45,
+            0.2,
+            "#c9a24a"
+          ],
+          [
+            0.38,
+            0.35,
+            "#5a2a2c"
+          ],
+          [
+            0.38,
+            3.3,
+            "#5a2a2c"
+          ],
+          [
+            0.45,
+            3.4,
+            "#c9a24a"
+          ],
+          [
+            0.45,
+            3.8,
+            "#c9a24a"
+          ],
+          [
+            0.38,
+            3.9,
+            "#5a2a2c"
+          ],
+          [
+            0.38,
+            4.5
+          ]
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "loft",
+      "id": "vault2",
+      "at": [
+        -3.5,
+        1.8,
+        3.6
+      ],
+      "params": {
+        "colour": "#e6d9bf",
+        "sections": [
+          {
+            "z": 0,
+            "circle": 0.5
+          },
+          {
+            "z": 0.35,
+            "circle": 1.0
+          },
+          {
+            "z": 0.7,
+            "circle": 2.0
+          },
+          {
+            "z": 1.1,
+            "circle": 3.0
+          },
+          {
+            "z": 1.4,
+            "rect": [
+              7.2,
+              3.8
+            ]
+          }
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "revolve",
+      "id": "col3",
+      "at": [
+        3.5,
+        1.8,
+        0
+      ],
+      "params": {
+        "segments": 14,
+        "colour": "#5a2a2c",
+        "profile": [
+          [
+            0.38,
+            0
+          ],
+          [
+            0.45,
+            0.2,
+            "#c9a24a"
+          ],
+          [
+            0.38,
+            0.35,
+            "#5a2a2c"
+          ],
+          [
+            0.38,
+            3.3,
+            "#5a2a2c"
+          ],
+          [
+            0.45,
+            3.4,
+            "#c9a24a"
+          ],
+          [
+            0.45,
+            3.8,
+            "#c9a24a"
+          ],
+          [
+            0.38,
+            3.9,
+            "#5a2a2c"
+          ],
+          [
+            0.38,
+            4.5
+          ]
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "loft",
+      "id": "vault3",
+      "at": [
+        3.5,
+        1.8,
+        3.6
+      ],
+      "params": {
+        "colour": "#e6d9bf",
+        "sections": [
+          {
+            "z": 0,
+            "circle": 0.5
+          },
+          {
+            "z": 0.35,
+            "circle": 1.0
+          },
+          {
+            "z": 0.7,
+            "circle": 2.0
+          },
+          {
+            "z": 1.1,
+            "circle": 3.0
+          },
+          {
+            "z": 1.4,
+            "rect": [
+              7.2,
+              3.8
+            ]
+          }
+        ]
+      },
+      "lod": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mass",
+      "id": "pier-l",
+      "footprint": {
+        "rect": [
+          1.6,
+          2.0
+        ]
+      },
+      "at": [
+        -10.8,
+        0
+      ],
+      "height": 3.8,
+      "storeys": 1,
+      "wall": {
+        "material": "stucco",
+        "colour": "#d9caa8",
+        "windows": "none",
+        "plinth": 0.2,
+        "cornice": true
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#e3d6bb",
+        "overhang": 0.1
+      }
+    },
+    {
+      "type": "mass",
+      "id": "pier-r",
+      "footprint": {
+        "rect": [
+          1.6,
+          2.0
+        ]
+      },
+      "at": [
+        10.8,
+        0
+      ],
+      "height": 3.8,
+      "storeys": 1,
+      "wall": {
+        "material": "stucco",
+        "colour": "#d9caa8",
+        "windows": "none",
+        "plinth": 0.2,
+        "cornice": true
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#e3d6bb",
+        "overhang": 0.1
+      }
+    },
+    {
+      "type": "prism",
+      "id": "fascia-plate",
+      "at": [
+        0,
+        0,
+        6.5
+      ],
+      "params": {
+        "rect": [
+          23.5,
+          8.5
+        ],
+        "height": 0.25,
+        "colour": "#ddd0b2"
+      }
+    },
+    {
+      "type": "prism",
+      "id": "plaza",
+      "at": [
+        0,
+        -1,
+        0
+      ],
+      "params": {
+        "rect": [
+          34,
+          22
+        ],
+        "height": 0.05,
+        "colour": "#cfa77c"
+      }
+    },
+    {
+      "type": "prism",
+      "id": "tile-a",
+      "at": [
+        0,
+        -1,
+        0.05
+      ],
+      "params": {
+        "rect": [
+          9,
+          22
+        ],
+        "height": 0.03,
+        "colour": "#e0cba3"
+      }
+    },
+    {
+      "type": "prism",
+      "id": "tile-b",
+      "at": [
+        0,
+        -1,
+        0.08
+      ],
+      "params": {
+        "rect": [
+          4,
+          22
+        ],
+        "height": 0.03,
+        "colour": "#b98a63"
+      }
+    },
+    {
+      "type": "prism",
+      "id": "tile-c",
+      "at": [
+        0,
+        -1,
+        0.11
+      ],
+      "params": {
+        "rect": [
+          1.2,
+          22
+        ],
+        "height": 0.03,
+        "colour": "#e4d2a8"
+      }
+    },
+    {
+      "type": "mass",
+      "id": "planter",
+      "footprint": {
+        "rect": [
+          5.6,
+          5.6
+        ]
+      },
+      "at": [
+        -9,
+        -7
+      ],
+      "height": 0.5,
+      "storeys": 1,
+      "wall": {
+        "material": "stone",
+        "colour": "#efe9dc",
+        "windows": "none"
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#efe9dc"
+      }
+    },
+    {
+      "type": "revolve",
+      "id": "urn",
+      "at": [
+        -9,
+        -7,
+        0.5
+      ],
+      "params": {
+        "segments": 16,
+        "colour": "#faf7f0",
+        "profile": [
+          [
+            0.9,
+            0
+          ],
+          [
+            0.9,
+            0.15
+          ],
+          [
+            0.4,
+            0.25
+          ],
+          [
+            0.35,
+            1.4
+          ],
+          [
+            0.55,
+            1.5
+          ],
+          [
+            0.9,
+            1.9
+          ],
+          [
+            1.15,
+            2.5
+          ],
+          [
+            1.2,
+            2.8
+          ],
+          [
+            1.0,
+            2.9
+          ]
+        ]
+      }
+    },
+    {
+      "type": "prism",
+      "id": "bed0",
+      "at": [
+        -9,
+        -10.2,
+        0
+      ],
+      "params": {
+        "rect": [
+          6,
+          1.0
+        ],
+        "height": 0.5,
+        "colour": "#d6244a"
+      }
+    },
+    {
+      "type": "prism",
+      "id": "bed1",
+      "at": [
+        -9,
+        -3.8,
+        0
+      ],
+      "params": {
+        "rect": [
+          6,
+          1.0
+        ],
+        "height": 0.5,
+        "colour": "#d6244a"
+      }
+    },
+    {
+      "type": "prism",
+      "id": "bed2",
+      "at": [
+        -12.3,
+        -7,
+        0
+      ],
+      "params": {
+        "rect": [
+          1.0,
+          6
+        ],
+        "height": 0.5,
+        "colour": "#d6244a"
+      }
+    },
+    {
+      "type": "prism",
+      "id": "bed3",
+      "at": [
+        -5.7,
+        -7,
+        0
+      ],
+      "params": {
+        "rect": [
+          1.0,
+          6
+        ],
+        "height": 0.5,
+        "colour": "#d6244a"
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -15,
+        6,
+        0
+      ],
+      "params": {
+        "kind": "palm",
+        "height": 12
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -12,
+        10,
+        0
+      ],
+      "params": {
+        "kind": "palm",
+        "height": 11
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        14,
+        12,
+        0
+      ],
+      "params": {
+        "kind": "palm",
+        "height": 10
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        9,
+        13,
+        0
+      ],
+      "params": {
+        "kind": "palm",
+        "height": 11
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -5,
+        13,
+        0
+      ],
+      "params": {
+        "kind": "palm",
+        "height": 10
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        3,
+        13,
+        0
+      ],
+      "params": {
+        "kind": "palm",
+        "height": 9
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        15,
+        6,
+        0
+      ],
+      "params": {
+        "kind": "palm",
+        "height": 11
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -15,
+        0,
+        0
+      ],
+      "params": {
+        "kind": "palm",
+        "height": 12
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -14,
+        13,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 8
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        12,
+        13,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 8
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        15,
+        12,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 9
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -2,
+        13,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 8
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -15,
+        12,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 8
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        15,
+        2,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 9
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        7,
+        13,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 9
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -8,
+        13,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 8
+      }
+    },
+    {
+      "type": "loft",
+      "id": "hill",
+      "at": [
+        0,
+        17,
+        0
+      ],
+      "params": {
+        "colour": "#8c7a68",
+        "sections": [
+          {
+            "z": 0,
+            "rect": [
+              34,
+              6
+            ]
+          },
+          {
+            "z": 5,
+            "rect": [
+              20,
+              4
+            ]
+          },
+          {
+            "z": 8,
+            "rect": [
+              8,
+              2
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "site": {
+    "ground": "paving",
+    "forecourt": "plaza",
+    "extent": [
+      34,
+      24
+    ]
+  },
+  "review": {
+    "rounds": 2,
+    "match": "fair",
+    "gaps": "groin-vault flares still conical lofts, lattice only as pixel panels, pavilion still modest in frame with a flat grey ground band, trees low-poly; only the entrance plaza modelled"
+  }
+}

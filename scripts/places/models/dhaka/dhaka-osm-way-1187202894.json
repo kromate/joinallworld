@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-osm-way-1187202894",
+ "verified": "footprint",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the campus exists in the evidence (the two Commons files are a logo and a street vendor). The U-shaped five-storey block arrangement, yellow render with green bands and rooftop water tanks follow the brief and the 84 x 83 m OSM outline only."
+ },
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1187202894",
+   "used": "campus extent 84 x 83 m (6,972 m2); building masses placed inside it"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q4855322",
+   "used": "identity: private university in Dhaka founded 2005; brief gives five storeys, yellow and green render, water tanks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     76,
+     20
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7c97a",
+    "glassColour": "#4f6d7a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 9,
+    "plinth": 0.6,
+    "bands": "#8fa87f",
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     20,
+     50
+    ]
+   },
+   "at": [
+    -28,
+    9
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7c97a",
+    "glassColour": "#4f6d7a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 9,
+    "plinth": 0.6,
+    "bands": "#8fa87f",
+    "cornice": true,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     20,
+     50
+    ]
+   },
+   "at": [
+    28,
+    9
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7c97a",
+    "glassColour": "#4f6d7a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 9,
+    "plinth": 0.6,
+    "bands": "#8fa87f",
+    "cornice": true,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     14,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -37
+   ],
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eee8",
+    "glassColour": "#4f6d7a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 14,
+    "bands": "#8fa87f",
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -39.2,
+    12
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#2f6b4f",
+    "frameColour": "#e7c97a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -28,
+    22,
+    20.9
+   ],
+   "params": {
+    "kind": "cylinder",
+    "radius": 2.0,
+    "tankHeight": 3.0,
+    "legHeight": 1.0,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    28,
+    22,
+    20.9
+   ],
+   "params": {
+    "kind": "cylinder",
+    "radius": 2.0,
+    "tankHeight": 3.0,
+    "legHeight": 1.0,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -42,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 2.2,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#e9e4d8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spread": 18,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   110,
+   110
+  ]
+ }
+}

@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Al_ahli_hospital_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "panoramio contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/hosp1.jpg",
+   "used": "long cream-sand four-storey block with two taller square end towers and a central stair tower, punched window grid, blank sign boards on the parapet, palm and bougainvillea garden in front, low white perimeter wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/247909086",
+   "used": "compound size only (258 x 184 m); one block modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     68,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e2b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#6b8aa0",
+    "bands": "#dccfa8",
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ac",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     22,
+     20
+    ]
+   },
+   "at": [
+    -44,
+    -1
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdfaa",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "none"
+    },
+    "glassColour": "#6b8aa0",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ac",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     24,
+     20
+    ]
+   },
+   "at": [
+    46,
+    -1
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdfaa",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "right": "plain",
+     "back": "plain",
+     "left": "none"
+    },
+    "glassColour": "#6b8aa0",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ac",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    -27,
+    -10
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdfaa",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#6b8aa0",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ac",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    25,
+    -10
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdfaa",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#6b8aa0",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ac",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdfaa",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "glassColour": "#6b8aa0",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ac",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -17.2,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.6,
+    "bottom": 9,
+    "colour": "#f3ecd6",
+    "frameColour": "#d9d0b4",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 1.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 4,
+    "line": 48
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -25,
+    -42,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f2",
+    "count": 3,
+    "spacing": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "photo is oblique so the real stepped wing layout and patterned stair towers are simplified; sign boards blank; bougainvillea hedge not modelled"
+ }
+}

@@ -1,0 +1,282 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-osm-way-80936826",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/80936826",
+   "used": "park polygon (about 359 x 275 m, rhombus rotated 120 degrees), shown reduced to fit the model window"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/delhi.json",
+   "used": "1921 urban park: shade trees, red jogging track, lawns, two gates, pavilion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photograph found; only the outline is measured. Track, paths, pavilion, gates and tree clumps are typical placements, not surveyed; outline is scaled down so the park reads as a compact cut-out."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7aa35c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a54"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      2.0,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -46,
+      -6,
+      0.62
+     ],
+     [
+      18,
+      -43,
+      0.62
+     ],
+     [
+      46,
+      6,
+      0.62
+     ],
+     [
+      -18,
+      43,
+      0.62
+     ]
+    ],
+    "closed": true,
+    "colour": "#c9755a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -65,
+      -3
+     ],
+     [
+      65,
+      3
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#cbbfa8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -60
+     ],
+     [
+      10,
+      60
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#cbbfa8"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "kind": "hip",
+    "roof_colour": "#c9755a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    -20,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 24,
+    "count": 9,
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    22,
+    0.5
+   ],
+   "params": {
+    "width": 28,
+    "depth": 24,
+    "count": 9,
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    -22,
+    0.5
+   ],
+   "params": {
+    "width": 20,
+    "depth": 20,
+    "count": 6,
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    22,
+    0.5
+   ],
+   "params": {
+    "width": 20,
+    "depth": 20,
+    "count": 6,
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    18,
+    -26,
+    0.5
+   ],
+   "rotDeg": 30,
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -20,
+    26,
+    0.5
+   ],
+   "rotDeg": 30,
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -70,
+    -8,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "pillar": 0.9,
+    "colour": "#efeae0"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    66,
+    8,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "pillar": 0.9,
+    "colour": "#efeae0"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -2,
+    0.5
+   ],
+   "params": {
+    "height": 5,
+    "count": 5,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   160,
+   160
+  ]
+ }
+}

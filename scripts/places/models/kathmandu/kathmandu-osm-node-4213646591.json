@@ -1,0 +1,205 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/340431275",
+   "used": "46.9 x 18.8 m irregular outline (nearest, 7 m): terrace/platform plan"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:View_of_Ganesh_Himal_from_Suryachaur,_Nuwakot2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Shadow Ayush",
+   "view": "detail",
+   "used": "setting only (Himalayan outlook from the hilltop); shows no structure, so not used for the building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc7b4",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bba6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -14,
+    0,
+    1.2
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#7a5c3c",
+    "cap_colour": "#7d7f80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tea-shop",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    12,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 1.2,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcd",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d7f80",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 1.2,
+    "run": 0.7,
+    "count": 5,
+    "colour": "#b8b0a0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    6,
+    1.2
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 3.5,
+    "colours": [
+     "#2f6bb0",
+     "#f1eee4",
+     "#c8362f",
+     "#2e8b57",
+     "#e6c229"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 14,
+    "spread": 8,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   110,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     14
+    ],
+    "height": 18
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -22
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     22
+    ],
+    "height": 17
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     36,
+     -18
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     28
+    ],
+    "height": 18
+   }
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the structures; platform plan from OSM, pavilion and tea shop from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-osm-node-4213646591"
+}

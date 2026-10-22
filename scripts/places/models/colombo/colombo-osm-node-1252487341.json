@@ -1,0 +1,374 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-osm-node-1252487341",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Matthias%E2%80%99_Church,_Lakshapathiya,_Sri_Lanka.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "L Manju",
+   "view": "front",
+   "file": "/tmp/places-evidence/colombo/matthias.jpg",
+   "used": "small Anglican church (Wikipedia coordinates match the OSM footprint): grey-rendered gabled front with cross, pointed twin-light window, flanking square buttress turrets, open arched porch with pale canopy, red clay-tile hipped roof, red plinth, side wing with arched windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/997344722",
+   "used": "main nave outline about 38 x 24 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c9c4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.7
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b35",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    1.5,
+    -15
+   ],
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9bcbd",
+    "windows": "none",
+    "plinth": 0.7
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a2",
+    "material": "metal-sheet",
+    "pitch": 50,
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "turret-left",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "at": [
+    -3.0,
+    -17.5
+   ],
+   "z0": 0,
+   "height": 10.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9adaf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9adaf",
+    "pitch": 45,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "turret-right",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "at": [
+    6.0,
+    -17.5
+   ],
+   "z0": 0,
+   "height": 10.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9adaf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9adaf",
+    "pitch": 45,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     8.4,
+     4.2
+    ]
+   },
+   "at": [
+    1.5,
+    -21.6
+   ],
+   "z0": 3.5,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e6e6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e4e6e6",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    1.5,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.6,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#8e3a2a"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    1.5,
+    -19.55,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 3.4,
+    "depth": 0.3,
+    "archWidth": 3.2,
+    "springHeight": 2.0,
+    "pointed": true,
+    "colour": "#a09a8c"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0.95,
+    -19.62,
+    4.6
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 3.6,
+    "depth": 0.2,
+    "archWidth": 0.8,
+    "springHeight": 2.4,
+    "pointed": true,
+    "colour": "#2a3038"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    2.05,
+    -19.62,
+    4.6
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 3.6,
+    "depth": 0.2,
+    "archWidth": 0.8,
+    "springHeight": 2.4,
+    "pointed": true,
+    "colour": "#2a3038"
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    1.5,
+    -15,
+    12.7
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -30
+     ],
+     [
+      16,
+      -30
+     ]
+    ],
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "palisade",
+    "pillarEvery": 3.0,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-col-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -1.8,
+    -23.2
+   ],
+   "z0": 0,
+   "height": 3.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8dad8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8dad8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-col-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    4.8,
+    -23.2
+   ],
+   "z0": 0,
+   "height": 3.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8dad8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8dad8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge",
+   "footprint": {
+    "rect": [
+     26,
+     1.6
+    ]
+   },
+   "at": [
+    2,
+    -28.8
+   ],
+   "z0": 0,
+   "height": 1.1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3d5a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d5a2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "porch is an open canopy on two columns with a lit recess but lacks the curved tracery brackets; lancets and hedge small; palisade posts are not stone; hip roof continues behind gable"
+ }
+}

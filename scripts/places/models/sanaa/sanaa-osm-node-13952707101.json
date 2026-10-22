@@ -1,0 +1,184 @@
+{
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     40,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb4a2",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 4,
+    "groundKind": "shopfront",
+    "groundHeight": 3.4,
+    "plinth": 0.4,
+    "bands": "#a0583a",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d867a",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    17,
+    6
+   ],
+   "height": 10.6,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc3",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d867a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -12,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "colours": [
+     "#a0583a",
+     "#e6dcc3"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "colours": [
+     "#3f6e8c",
+     "#e6dcc3"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    4,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "colours": [
+     "#a0583a",
+     "#e6dcc3"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    12,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "colours": [
+     "#6b8a4f",
+     "#e6dcc3"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -15.2,
+    6.4
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#e6dcc3",
+    "frameColour": "#8d867a",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -21,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-node-13952707101",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or footprint; typical concrete lock-up market block from the brief"
+ }
+}

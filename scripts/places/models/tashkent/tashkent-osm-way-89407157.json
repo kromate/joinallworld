@@ -1,0 +1,482 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-osm-way-89407157",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Toshkent_Davlat_Transport_Universiteti_talabalari.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ulugbek Inomjonov",
+   "view": "front",
+   "file": "/tmp/places-evidence/tashkent/tstu.jpg",
+   "used": "ochre rendered facade with white giant-order columns carrying a pale entablature, tall pointed-arch windows between columns, dark flat roof, dark plinth, steps and a fountain basin in front (building shown is one university block, taken as the main building)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/89407157",
+   "used": "identity only: the OSM area is the whole 939 x 540 m campus, so only one main block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 42,
+  "aspect": 1.0,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     56,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4c88e",
+    "glassColour": "#7f93a6",
+    "windows": "pointed",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 7,
+    "plinth": 1.2,
+    "cornice": "#f0ebdc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3331",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    -33,
+    -1
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc08a",
+    "glassColour": "#7f93a6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4,
+    "plinth": 0.8,
+    "cornice": "#efe9d8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3f3a",
+    "overhang": 0.6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    33,
+    -1
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc08a",
+    "glassColour": "#7f93a6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4,
+    "plinth": 0.8,
+    "cornice": "#efe9d8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3f3a",
+    "overhang": 0.6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -16,
+     -14.5,
+     0
+    ],
+    "end": [
+     16,
+     -14.5,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 12,
+       "colour": "#f4f1ea",
+       "profile": [
+        [
+         1.3,
+         0
+        ],
+        [
+         1.0,
+         0.6
+        ],
+        [
+         0.8,
+         1.5
+        ],
+        [
+         0.7,
+         13
+        ],
+        [
+         0.85,
+         13.4
+        ],
+        [
+         1.2,
+         13.8
+        ],
+        [
+         1.5,
+         14.2
+        ],
+        [
+         1.5,
+         14.6
+        ]
+       ]
+      }
+     }
+    ],
+    "lod2Step": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-entablature",
+   "params": {
+    "rect": [
+     37,
+     3.4
+    ],
+    "z0": 14.6,
+    "height": 1.6,
+    "colour": "#f0ebdc",
+    "topColour": "#f0ebdc"
+   },
+   "at": [
+    0,
+    -14
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice-top",
+   "params": {
+    "rect": [
+     38.5,
+     3.9
+    ],
+    "z0": 16.2,
+    "height": 0.6,
+    "colour": "#efe9d8",
+    "topColour": "#efe9d8"
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -15.9,
+     16.8
+    ],
+    "end": [
+     18,
+     -15.9,
+     16.8
+    ],
+    "count": 19,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.7,
+        0.5
+       ],
+       "height": 0.5,
+       "colour": "#f6f2e6",
+       "topColour": "#f6f2e6"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dark-plinth",
+   "params": {
+    "rect": [
+     40,
+     7
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#46393a",
+    "topColour": "#5a4c4a"
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -18.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -34,
+    0.05
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "shape": "oval",
+    "colour": "#6f9a98",
+    "bank": true
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "radius": 8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    30,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     -48,
+     0
+    ],
+    "end": [
+     56,
+     -48,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "conifer",
+       "height": 8,
+       "count": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     -34,
+     0.2
+    ],
+    "radius": 3.2,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 8,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "radius": 0.12,
+       "points": [
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         1.2,
+         6
+        ],
+        [
+         0,
+         2.6,
+         0.3
+        ]
+       ],
+       "curve": true,
+       "colour": "#eef6f6"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -34,
+    0.2
+   ],
+   "params": {
+    "radius": 0.2,
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      8
+     ]
+    ],
+    "colour": "#eef6f6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "params": {
+    "rect": [
+     3.2,
+     0.6
+    ],
+    "z0": 0.9,
+    "height": 6.5,
+    "colour": "#2a2224",
+    "topColour": "#2a2224"
+   },
+   "at": [
+    0,
+    -12.2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Portico now 6 columns over a full-height front, flat dark roof, stub wings, larger fountain; windows still a ribbon of rectangles rather than tall arched bays with glazing bars."
+ }
+}

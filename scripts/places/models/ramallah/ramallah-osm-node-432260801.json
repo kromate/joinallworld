@@ -1,0 +1,241 @@
+{
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     92,
+     11
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#bfa98a",
+    "topColour": "#7e9a56",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     86,
+     11
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#bfa98a",
+    "topColour": "#7e9a56",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     11
+    ],
+    "z0": 0,
+    "height": 3.1,
+    "colour": "#bfa98a",
+    "topColour": "#7e9a56",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    17,
+    0
+   ],
+   "params": {
+    "rect": [
+     74,
+     10
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#bfa98a",
+    "topColour": "#8a9a5a",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -44,
+      -26
+     ],
+     [
+      -20,
+      -24
+     ],
+     [
+      -10,
+      -12
+     ],
+     [
+      8,
+      -4
+     ],
+     [
+      18,
+      8
+     ],
+     [
+      30,
+      20
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d9c6a0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#d9c6a0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    18,
+    3,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#d9c6a0"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    22,
+    2,
+    3.6
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.0,
+    "kind": "hip",
+    "roof_colour": "#c9c3b6"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#bfa98a"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -14,
+    0.9
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    5,
+    3.6
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "count": 7,
+    "kind": "olive",
+    "min_height": 4,
+    "max_height": 6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    24,
+    20,
+    3.6
+   ],
+   "params": {
+    "width": 24,
+    "depth": 10,
+    "count": 6,
+    "kind": "pine",
+    "min_height": 7,
+    "max_height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No outline or photo; terraced park composed from the brief and highland terrace setting."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-node-432260801"
+}

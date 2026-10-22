@@ -1,0 +1,388 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-way-364819836",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dubai_Silicon_Oasis_-_Dubai_-_United_Arab_Emirates_-_panoramio_(1).jpg",
+   "licence": "CC BY 3.0",
+   "author": "panoramio contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/dubai/dso1.jpg",
+   "used": "district setting only (not the park): date palms, sand-beige render and tan banding, sand-coloured tensile shade sails on poles, striped kerb; used for palette and palm/shade-sail vocabulary"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/364819836",
+   "used": "leisure=park, 596 x 586 m (name match); a 110 m central portion is modelled since the real outline exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the park itself: layout (lawn, crossing paths, fountain plaza, sand shade sails, palms) is typed from the district's look; the 596 m extent is a 110 m portion."
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 96,
+    "colour": "#7fa04e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -30
+     ],
+     [
+      -25,
+      -20
+     ],
+     [
+      0,
+      -4
+     ],
+     [
+      26,
+      8
+     ],
+     [
+      54,
+      14
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#d2c3a4"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      -44
+     ],
+     [
+      -4,
+      -20
+     ],
+     [
+      0,
+      -4
+     ],
+     [
+      4,
+      22
+     ],
+     [
+      10,
+      44
+     ]
+    ],
+    "width": 3.0,
+    "colour": "#d2c3a4"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "waterColour": "#6fb1c8",
+    "rimColour": "#d9cdb4"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 22,
+    "border": 1,
+    "colour": "#dccfb0",
+    "border_colour": "#c9b48a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "curved",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#e6dcc4",
+    "cap_colour": "#d8b878"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    30,
+    6,
+    0
+   ],
+   "rotDeg": -20,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "curved",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#e6dcc4",
+    "cap_colour": "#d8b878"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -16,
+    26,
+    0
+   ],
+   "rotDeg": 35,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "curved",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#e6dcc4",
+    "cap_colour": "#d8b878"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    22,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "curved",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#e6dcc4",
+    "cap_colour": "#d8b878"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -40,
+    30,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#c9a56b"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    40,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 2.6,
+    "height": 2.8,
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 3,
+    "colours": [
+     "#d8b878",
+     "#e6dcc4"
+    ]
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    14,
+    10,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -50,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 6,
+    "spacing": 19
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 16
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    0,
+    44,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1,
+    "depth": 1.1,
+    "colour": "#4f7d3b"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   106
+  ]
+ }
+}

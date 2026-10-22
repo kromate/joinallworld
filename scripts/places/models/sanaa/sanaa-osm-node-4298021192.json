@@ -1,0 +1,139 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1089167456",
+   "used": "hall outline (29 x 13 m, 1.6 m from the venue point)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "bands": "#f4f1e8",
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    0,
+    10.7
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d8d2c4",
+    "profile": [
+     [
+      4.2,
+      0
+     ],
+     [
+      4.2,
+      1.2,
+      "#f4f1e8"
+     ],
+     [
+      3.9,
+      2.2
+     ],
+     [
+      3.0,
+      3.4
+     ],
+     [
+      1.6,
+      4.2
+     ],
+     [
+      0,
+      4.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -8.2,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "pencil",
+    "colour": "#f4f1e8",
+    "trim": "#3f7d5c",
+    "cap_colour": "#3f7d5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     3.4,
+     0.6
+    ]
+   },
+   "at": [
+    7.1,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f7d5c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7d5c"
+   },
+   "rotDeg": 0
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-node-4298021192",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "outline only; dome, minaret and green door typed from the brief, not seen"
+ }
+}

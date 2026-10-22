@@ -1,0 +1,850 @@
+{
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Upper loggia is arcaded mass with rail and merlons but lacks the recessed depth, carved bracket arches and lantern glow; L-wing on the right reads as a low arcaded block; umbrellas are cones in strings, not open canopies."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-node-3424940793",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Souq_Waqif,_Doha,_Catar,_2013-08-05,_DD_84.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Diego Delso",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/souq2.jpg",
+   "used": "two-storey corner building: arched ground arcade on piers, recessed upper loggia with arches and balustrade, crenellated parapet, rows of dark timber beam ends under the roof edge, cream plaster colour, stone-paved square"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Souq_Waqif,_Doha,_Catar,_2013-08-05,_DD_09.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Diego Delso",
+   "view": "street",
+   "file": "/tmp/places-evidence/doha/souq1.jpg",
+   "used": "narrow alley: rubble-stone wall on the left, arcaded plastered shop row on the right with projecting round timber beam ends, hanging coloured umbrellas, grey paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/18139209",
+   "used": "overall extent (about 93 m across) and the building height tag (10 m); the outline is a solid blob so the composition uses separate rows around alleys instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.7,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "corner-arcade",
+   "footprint": {
+    "polygon": [
+     [
+      -36,
+      -26
+     ],
+     [
+      16,
+      -26
+     ],
+     [
+      16,
+      12
+     ],
+     [
+      2,
+      12
+     ],
+     [
+      2,
+      -12
+     ],
+     [
+      -36,
+      -12
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e3cfa6",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "glassColour": "#e8a23a",
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 1.1,
+    "trimColour": "#c9ae80",
+    "bands": {
+     "colour": "#c4ae88",
+     "height": 0.5
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.6,
+      "opening": 0.7,
+      "height": 0.85,
+      "depth": 1.5,
+      "storeys": 2,
+      "colour": "#3a2c20",
+      "pierColour": "#e3cfa6"
+     }
+    ],
+    "faces": {
+     "front": "arched",
+     "right": "arched",
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb78d",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-west-row",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    22
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcc59a",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "glassColour": "#4a3a2a",
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 0.9,
+    "trimColour": "#a98f66",
+    "bands": {
+     "colour": "#c4ae88",
+     "height": 0.5
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.6,
+      "opening": 0.7,
+      "height": 0.85,
+      "depth": 1.5,
+      "storeys": 2,
+      "colour": "#3a2c20",
+      "pierColour": "#c4a97f"
+     }
+    ],
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b89b72",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-east-row",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    14,
+    24
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dcc59a",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "glassColour": "#4a3a2a",
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 0.9,
+    "trimColour": "#a98f66",
+    "bands": {
+     "colour": "#c4ae88",
+     "height": 0.5
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.6,
+      "opening": 0.7,
+      "height": 0.85,
+      "depth": 1.5,
+      "storeys": 2,
+      "colour": "#3a2c20",
+      "pierColour": "#cfb88f"
+     }
+    ],
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98d66",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-house",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    -48,
+    -6
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cdb88e",
+    "windows": "punched",
+    "windowRatio": 0.04,
+    "windowShape": "arched",
+    "glassColour": "#4a3a2a",
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 0.9,
+    "trimColour": "#c9b48c",
+    "bands": {
+     "colour": "#c4ae88",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8946f",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    52,
+    30,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "style": "gulf",
+    "colour": "#e3d6bb",
+    "trim": "#b89b72"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque-block",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    52,
+    30
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e3d6bb",
+    "windows": "none",
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbd9d",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2,
+    "colours": [
+     "#8a2f2a",
+     "#e8dcc3"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    9,
+    -26.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.8,
+    "colours": [
+     "#2d5a7a",
+     "#e8dcc3"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 4,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -35,
+     -26.3,
+     13.0
+    ],
+    "end": [
+     15,
+     -26.3,
+     13.0
+    ],
+    "count": 24,
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.9
+      ],
+      "height": 0.35,
+      "colour": "#3e2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     16.3,
+     -25,
+     13.0
+    ],
+    "end": [
+     16.3,
+     11,
+     13.0
+    ],
+    "count": 18,
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.35
+      ],
+      "height": 0.35,
+      "colour": "#3e2a1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -35,
+     -26,
+     14.0
+    ],
+    "end": [
+     15.5,
+     -26,
+     14.0
+    ],
+    "count": 26,
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 1.0,
+      "colour": "#e3cfa6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     16,
+     -25,
+     14.0
+    ],
+    "end": [
+     16,
+     11,
+     14.0
+    ],
+    "count": 18,
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 1.0,
+      "colour": "#e3cfa6"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -35,
+      -26.6,
+      6.9
+     ],
+     [
+      15.8,
+      -26.6,
+      6.9
+     ],
+     [
+      15.8,
+      11,
+      6.9
+     ]
+    ],
+    "colour": "#efe3c6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -35,
+      -26.6,
+      7.9
+     ],
+     [
+      16.4,
+      -26.6,
+      7.9
+     ],
+     [
+      16.4,
+      11,
+      7.9
+     ]
+    ],
+    "colour": "#efe3c6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -35,
+     -26.5,
+     7.0
+    ],
+    "end": [
+     15.8,
+     -26.5,
+     7.0
+    ],
+    "count": 20,
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 0.9,
+      "colour": "#efe3c6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -30,
+     11.0
+    ],
+    "end": [
+     20,
+     -32,
+     11.5
+    ],
+    "count": 13,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#e2552b",
+      "profile": [
+       [
+        0,
+        0.9
+       ],
+       [
+        1.3,
+        0.1
+       ],
+       [
+        1.3,
+        0
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -34,
+     11.6
+    ],
+    "end": [
+     20,
+     -36,
+     12.1
+    ],
+    "count": 13,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#2fa66a",
+      "profile": [
+       [
+        0,
+        0.9
+       ],
+       [
+        1.3,
+        0.1
+       ],
+       [
+        1.3,
+        0
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -38,
+     11.0
+    ],
+    "end": [
+     20,
+     -40,
+     11.5
+    ],
+    "count": 13,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#27a7c4",
+      "profile": [
+       [
+        0,
+        0.9
+       ],
+       [
+        1.3,
+        0.1
+       ],
+       [
+        1.3,
+        0
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -42,
+     11.6
+    ],
+    "end": [
+     20,
+     -44,
+     12.1
+    ],
+    "count": 13,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#e8b02b",
+      "profile": [
+       [
+        0,
+        0.9
+       ],
+       [
+        1.3,
+        0.1
+       ],
+       [
+        1.3,
+        0
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -46,
+     11.0
+    ],
+    "end": [
+     20,
+     -48,
+     11.5
+    ],
+    "count": 13,
+    "lod1Step": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#e2552b",
+      "profile": [
+       [
+        0,
+        0.9
+       ],
+       [
+        1.3,
+        0.1
+       ],
+       [
+        1.3,
+        0
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -28
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ }
+}

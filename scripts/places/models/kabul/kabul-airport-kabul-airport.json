@@ -1,0 +1,748 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-airport-kabul-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kabul_International_Airport,_international_terminal.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dorkhany",
+   "view": "back",
+   "file": "/tmp/places-evidence/kabul/kabulair-c.jpg",
+   "used": "airside elevation of the international terminal: long low two-level block, arched undercroft on piers, ribbon-glazed upper storey, covered gate corridor, round-cab control tower behind, pale concrete apron and tall mast lights"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kabul_Airport_international_terminal.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tabin112",
+   "view": "back",
+   "used": "gate corridor with ribbon windows ending in a glazed jet bridge, arched undercroft at the terminal end, tower"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Hamid_Karzai_International_Airport",
+   "used": "2008 JICA-funded international terminal, two jet bridges"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "undercroft",
+   "footprint": {
+    "rect": [
+     76,
+     8
+    ]
+   },
+   "at": [
+    20,
+    3
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2a2724",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a90",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     78,
+     9
+    ]
+   },
+   "at": [
+    20,
+    -1
+   ],
+   "z0": 4.6,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9ba",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a8",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dpier0",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.2
+    ]
+   },
+   "at": [
+    -16.0,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dpier1",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.2
+    ]
+   },
+   "at": [
+    -6.5,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dpier2",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.2
+    ]
+   },
+   "at": [
+    3.0,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dpier3",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.2
+    ]
+   },
+   "at": [
+    12.5,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dpier4",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.2
+    ]
+   },
+   "at": [
+    22.0,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dpier5",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.2
+    ]
+   },
+   "at": [
+    31.5,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dpier6",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.2
+    ]
+   },
+   "at": [
+    41.0,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dpier7",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.2
+    ]
+   },
+   "at": [
+    50.5,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dpier8",
+   "footprint": {
+    "rect": [
+     2.4,
+     3.2
+    ]
+   },
+   "at": [
+    60.0,
+    -4
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal-upper",
+   "footprint": {
+    "rect": [
+     76,
+     18
+    ]
+   },
+   "at": [
+    20,
+    6
+   ],
+   "z0": 7,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c6",
+    "windows": "ribbon",
+    "plinth": 0,
+    "windowRatio": 0.6,
+    "glassColour": "#25384a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa89d",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-corridor",
+   "footprint": {
+    "rect": [
+     34,
+     4.6
+    ]
+   },
+   "at": [
+    -35,
+    -6
+   ],
+   "z0": 5.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d2c7",
+    "windows": "ribbon",
+    "plinth": 0,
+    "windowRatio": 0.45,
+    "glassColour": "#3a566b",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0ada3",
+    "overhang": 0.3,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cpier0",
+   "footprint": {
+    "rect": [
+     1.4,
+     3
+    ]
+   },
+   "at": [
+    -47,
+    -6
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb7a8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a8",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cpier1",
+   "footprint": {
+    "rect": [
+     1.4,
+     3
+    ]
+   },
+   "at": [
+    -41,
+    -6
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb7a8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a8",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cpier2",
+   "footprint": {
+    "rect": [
+     1.4,
+     3
+    ]
+   },
+   "at": [
+    -35,
+    -6
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb7a8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a8",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cpier3",
+   "footprint": {
+    "rect": [
+     1.4,
+     3
+    ]
+   },
+   "at": [
+    -29,
+    -6
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb7a8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a8",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cpier4",
+   "footprint": {
+    "rect": [
+     1.4,
+     3
+    ]
+   },
+   "at": [
+    -23,
+    -6
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb7a8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7a8",
+    "overhang": 0,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -58,
+    -12,
+    5.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14,
+    "colour": "#7fb7ad"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -8,
+    30,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "style": "square",
+    "colour": "#d8d3c5",
+    "shaftRadius": 3.2,
+    "cabRadius": 4.6,
+    "cabColour": "#8aa3a8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    50,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1,
+    "colours": [
+     "#1b1b1b",
+     "#b3262b",
+     "#1b6b3a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "baseWidth": 1.6,
+    "topWidth": 0.6,
+    "panels": 8,
+    "colour": "#b9bec2",
+    "colour2": "#b9bec2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "baseWidth": 1.6,
+    "topWidth": 0.6,
+    "panels": 8,
+    "colour": "#b9bec2",
+    "colour2": "#b9bec2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    10,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 3,
+    "spacing": 22
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#2f6fb3",
+    "count": 3,
+    "spacing": 8,
+    "yaw": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "minibus",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#2f6fb3",
+    "count": 2,
+    "spacing": 8,
+    "yaw": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    44,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#eeeeee",
+    "count": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Deck is a flat slab on square piers with dark undercroft (real one has arched soffits); roof is flat not slightly sloped; mast lights, buses and tower placed approximately; vehicles are generic."
+ }
+}

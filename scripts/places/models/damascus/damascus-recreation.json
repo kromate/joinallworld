@@ -1,0 +1,239 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/30419151",
+   "used": "real park outline (1070 x 467 m, auto-fitted to 118 m); the Wikidata image belongs to Tishreen Park and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a54",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a54"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -12
+     ],
+     [
+      -20,
+      -5
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      40,
+      10
+     ],
+     [
+      52,
+      24
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      10,
+      0
+     ],
+     [
+      0,
+      18
+     ],
+     [
+      -10,
+      30
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    10,
+    0,
+    0.2
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    10,
+    -14,
+    0.2
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 3,
+    "width": 6,
+    "depth": 4,
+    "colours": [
+     "#c85a6a",
+     "#e0b33c",
+     "#d9d3c6"
+    ]
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -30,
+    -6,
+    0.2
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#e5ddc8",
+    "cap_colour": "#8d9296"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    28,
+    6,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.4,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    20,
+    0.2
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "count": 18,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    35,
+    -14,
+    0.2
+   ],
+   "params": {
+    "width": 40,
+    "depth": 12,
+    "count": 12,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -45,
+    6,
+    0.2
+   ],
+   "params": {
+    "width": 16,
+    "depth": 20,
+    "count": 8,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -12,
+    0.2
+   ],
+   "params": {
+    "height": 5,
+    "count": 8,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of Umayyads Park found; real outline plus brief features (pavilion, fountain, kiosk, lawns, shade trees); outline scaled to 118 m"
+ }
+}

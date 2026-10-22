@@ -1,0 +1,1601 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-airport-baghdad-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baghdad_International_Airport.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "front",
+   "file": "/tmp/places-evidence/baghdad/airport4.jpg",
+   "used": "landside facade: open ground storey on square cream piers, two long upper storeys of cream concrete with continuous dark green louvre bands and a blank fascia, parapet railing, lower pinkish block and arched annex at the right end, green/white planters along the kerb"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baghdad_International_Airport_(October_2003).jpg",
+   "licence": "Public domain",
+   "author": "Thomas Hartwell, USAID",
+   "view": "interior",
+   "used": "colour palette only (white arches, green signage)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     100,
+     42
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d4ba",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ],
+      "inset": 4.5,
+      "spacing": 9.5,
+      "width": 4.6,
+      "kind": "square",
+      "colour": "#d8ccb2",
+      "backColour": "#0c0a08"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6b0",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     100,
+     42
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 8.0,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cf",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#1c3326",
+      "backColour": "#101c14",
+      "pitch": 0.28,
+      "depth": 0.2,
+      "band": 0.46,
+      "at": 0.3,
+      "margin": 0.05
+     },
+     {
+      "type": "bands",
+      "colour": "#efe9da",
+      "height": 1.4,
+      "at": 0.0,
+      "floors": "all",
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb5a2",
+    "overhang": 0.6,
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     44,
+     0.8
+    ]
+   },
+   "at": [
+    -6,
+    -21.6
+   ],
+   "z0": 15.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe5d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ebe5d6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pink-block",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    36,
+    6
+   ],
+   "z0": 20.5,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8bfa8",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a894",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     20,
+     22
+    ]
+   },
+   "at": [
+    61,
+    12
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2c0",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "bay": 6,
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ad9a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    -26
+   ],
+   "params": {
+    "rect": [
+     100,
+     4
+    ],
+    "height": 0.15,
+    "colour": "#cbbf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lat0",
+   "at": [
+    -25.12,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     0.88,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.2,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat1",
+   "at": [
+    -23.38,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.02,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat2",
+   "at": [
+    -21.62,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.14,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.2,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat3",
+   "at": [
+    -19.88,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.14,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.2,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat4",
+   "at": [
+    -18.12,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.02,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat5",
+   "at": [
+    -16.38,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.02,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat6",
+   "at": [
+    -14.62,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.14,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.2,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat7",
+   "at": [
+    -12.88,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.02,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat8",
+   "at": [
+    -11.12,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     0.88,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.2,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat9",
+   "at": [
+    -9.38,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.14,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.2,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat10",
+   "at": [
+    -7.62,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.2,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat11",
+   "at": [
+    -5.88,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.14,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.2,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat12",
+   "at": [
+    -4.12,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     0.88,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.02,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat13",
+   "at": [
+    -2.38,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.02,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat14",
+   "at": [
+    -0.62,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.2,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat15",
+   "at": [
+    1.12,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 16.5,
+    "height": 1.02,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara0",
+   "at": [
+    6.82,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.31,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 0.85,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara1",
+   "at": [
+    8.45,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     0.82,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 1.0,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara2",
+   "at": [
+    10.09,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     0.82,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 1.0,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara3",
+   "at": [
+    11.73,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     0.82,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 1.0,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara4",
+   "at": [
+    13.36,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.06,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 1.0,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara5",
+   "at": [
+    15.0,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.31,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 1.0,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara6",
+   "at": [
+    16.64,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.31,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 1.0,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara7",
+   "at": [
+    18.27,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.06,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 1.0,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara8",
+   "at": [
+    19.91,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     1.31,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 1.0,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara9",
+   "at": [
+    21.55,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     0.82,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 1.0,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ara10",
+   "at": [
+    23.18,
+    -22.15
+   ],
+   "params": {
+    "rect": [
+     0.82,
+     0.2
+    ],
+    "z0": 15.4,
+    "height": 0.85,
+    "colour": "#1f3a8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tall-block",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    24,
+    12
+   ],
+   "z0": 20.5,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4c4ae",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a894",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "asphalt",
+   "at": [
+    0,
+    -38
+   ],
+   "params": {
+    "rect": [
+     118,
+     12
+    ],
+    "height": 0.08,
+    "colour": "#3a3a3d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter0",
+   "at": [
+    -44,
+    -28.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.0,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tri0a",
+   "at": [
+    -44,
+    -30.22,
+    2.0
+   ],
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tri0b",
+   "at": [
+    -42.28,
+    -28.5,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "planter1",
+   "at": [
+    -33,
+    -28.65
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.0,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tri1a",
+   "at": [
+    -33,
+    -30.369999999999997,
+    2.0
+   ],
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tri1b",
+   "at": [
+    -31.28,
+    -28.65,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "planter2",
+   "at": [
+    -22,
+    -28.8
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.0,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tri2a",
+   "at": [
+    -22,
+    -30.52,
+    2.0
+   ],
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tri2b",
+   "at": [
+    -20.28,
+    -28.8,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "planter3",
+   "at": [
+    -11,
+    -28.95
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.0,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tri3a",
+   "at": [
+    -11,
+    -30.669999999999998,
+    2.0
+   ],
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tri3b",
+   "at": [
+    -9.28,
+    -28.95,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "planter4",
+   "at": [
+    0,
+    -29.1
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.0,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tri4a",
+   "at": [
+    0,
+    -30.82,
+    2.0
+   ],
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tri4b",
+   "at": [
+    1.72,
+    -29.1,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "planter5",
+   "at": [
+    11,
+    -29.25
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.0,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tri5a",
+   "at": [
+    11,
+    -30.97,
+    2.0
+   ],
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tri5b",
+   "at": [
+    12.72,
+    -29.25,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "planter6",
+   "at": [
+    22,
+    -29.4
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.0,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tri6a",
+   "at": [
+    22,
+    -31.119999999999997,
+    2.0
+   ],
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tri6b",
+   "at": [
+    23.72,
+    -29.4,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "planter7",
+   "at": [
+    33,
+    -29.55
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.0,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tri7a",
+   "at": [
+    33,
+    -31.27,
+    2.0
+   ],
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tri7b",
+   "at": [
+    34.72,
+    -29.55,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "planter8",
+   "at": [
+    44,
+    -29.7
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "height": 2.0,
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tri8a",
+   "at": [
+    44,
+    -31.419999999999998,
+    2.0
+   ],
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tri8b",
+   "at": [
+    45.72,
+    -29.7,
+    2.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f6b3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.15
+      ]
+     },
+     {
+      "z": -1.7,
+      "rect": [
+       0.3,
+       0.15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -46,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "terminal capped at 100 m by the 120 m scene clamp (photo facade is longer); lettering abstract blue marks; planters are boxes with green V faces on two sides only; annex schematic"
+ }
+}

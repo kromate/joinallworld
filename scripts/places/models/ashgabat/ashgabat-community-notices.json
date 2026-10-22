@@ -1,0 +1,181 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1391064358",
+   "used": "size only (41 x 37 m, nearest building, untagged, so the outline is not trusted)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found anywhere; a white-marble three-storey block with a six-column portico is typed from the brief and the Ashgabat marble convention."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     41,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#7f9db0",
+    "bay": 4.5,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     28,
+     10
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#e6e1d4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 6,
+    "height": 11.5,
+    "columns": 6,
+    "pediment": true,
+    "steps": 6,
+    "kind": "round",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "flag",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "lamp",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "balustrade",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -20.5,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 41,
+    "height": 1.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -28,
+     -24
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ }
+}

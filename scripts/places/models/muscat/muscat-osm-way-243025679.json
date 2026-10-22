@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-osm-way-243025679",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/243025679",
+   "used": "real campus building outline (about 87 x 73 m, stepped U with a central court), 3 storeys"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/muscat.json",
+   "used": "white rendered 3-storey teaching blocks with ribbon windows, flat roofs, flags, car park, palms"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "blocks",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 3.5
+   },
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9db",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#d9c7a0",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d9c7a0"
+     }
+    ],
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 6.5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#e8dfc9",
+    "roofColour": "#cfcac0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 0.8,
+    "colour": "#9fb3be",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#b32a2a",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -35,
+     -55
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     35,
+     -55
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; facade and entrance are typical for a Gulf campus block; only the outline and 3 storeys are measured"
+ }
+}

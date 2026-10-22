@@ -1,0 +1,399 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-osm-relation-5805151",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/5805151",
+   "used": "identity and setting only: the 20 ha (500 x 495 m) hospital compound is not one building, so a single admin block with ward rows is modelled at building scale"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Yangon_Mental_Health_Hospital",
+   "used": "1,200-bed hospital at Ywar Thar Gyi ward, East Dagon; low rural-style ward blocks in a large compound"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dbc4",
+    "glassColour": "#4f6a5a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#f3f0e6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    -24,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dbc4",
+    "glassColour": "#4f6a5a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7f9a86"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    24,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dbc4",
+    "glassColour": "#4f6a5a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7f9a86"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-rear",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dbc4",
+    "glassColour": "#4f6a5a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7f9a86"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-block-2w",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    -40,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dbc4",
+    "glassColour": "#4f6a5a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7f9a86"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-block-2e",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    40,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dbc4",
+    "glassColour": "#4f6a5a",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7f9a86"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    -12,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dbc4",
+    "glassColour": "#4f6a5a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "bands": "#7f9a86"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     2.5
+    ],
+    "height": 3.2,
+    "colour": "#e2dbc4",
+    "topColour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    18,
+    28,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -58,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 116,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#d8d1b8"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -36,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 1.4,
+    "count": 4,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 30,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     0
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     6
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     56
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; one typical admin block and ward rows stand for a 20 ha compound, layout and colours are assumed"
+ }
+}

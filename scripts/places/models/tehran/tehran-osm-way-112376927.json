@@ -1,0 +1,209 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-osm-way-112376927",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/112381404",
+   "used": "real 115 x 29 m block outline (building=college, name match)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:School_of_Mechanical_Engineering,_Iran_University_of_Science_and_Technology_01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mondephile",
+   "view": "street",
+   "file": "/tmp/places-evidence/tehran/p5.jpg",
+   "used": "campus brick character only (a different IUST building): pale buff face brick, ribbon and small punched windows, brick piers, open undercroft, external stair with blue handrails; not compared to this block"
+  },
+  {
+   "kind": "text",
+   "used": "brief: long five-storey brick and stone academic block, steps, flags, portico"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#d3b88c",
+    "glassColour": "#3b4a55",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 10,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -15
+   ],
+   "z0": 0,
+   "height": 21.5,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9ab7c",
+    "glassColour": "#3b4a55",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    10,
+    -14.3,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "height": 9,
+    "columns": 4,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#cfc4ab",
+    "roofColour": "#8a8580"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    10,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.2,
+    "run": 2.0,
+    "count": 6,
+    "colour": "#bdb5a5"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    26,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 1,
+    "spread": 9,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 24,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     48,
+     -26
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     52,
+     -28
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this block: facade, portico and stair are typed from the campus brick style; storey rhythm and entrance position are guesses"
+ }
+}

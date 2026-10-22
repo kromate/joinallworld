@@ -1,0 +1,526 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Almaty_Akimat_Building_(15120138692).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Tore Khan",
+   "view": "front",
+   "file": "/tmp/places-evidence/almaty/akim2.jpg",
+   "used": "long 6-storey block in grey-beige stone with a heavy attic frieze, tall pilaster piers running the whole upper facade, taller end blocks, central recessed entrance with a banner, a row of flagpoles and low terraces in front, conifers"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3244397",
+   "used": "width 123 m x depth, flat grey roof, townhall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     94,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bdb7a8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 1.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 3.9,
+      "depth": 1.1,
+      "width": 1.5,
+      "colour": "#cdc8ba",
+      "faces": [
+       "front"
+      ],
+      "skipGround": true
+     }
+    ],
+    "bay": 3.9,
+    "glassColour": "#3a444c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8f",
+    "overhang": 0.8,
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     96,
+     29
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 22,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a39e90",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8f8a7c"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8f",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-west",
+   "footprint": {
+    "rect": [
+     14,
+     32
+    ]
+   },
+   "at": [
+    -53,
+    -2
+   ],
+   "height": 31,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4bfb1",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "plinth": 1.2,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8f",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-east",
+   "footprint": {
+    "rect": [
+     14,
+     32
+    ]
+   },
+   "at": [
+    53,
+    -2
+   ],
+   "height": 31,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4bfb1",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "plinth": 1.2,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8f",
+    "overhang": 0.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f6a60",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "glassColour": "#262c30"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 1.8,
+    "run": 2.6,
+    "count": 4,
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -24,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 9,
+    "spacing": 4,
+    "colours": [
+     "#00afca",
+     "#fec50c",
+     "#d6342c",
+     "#2a68b0",
+     "#fec50c",
+     "#d6342c",
+     "#00afca",
+     "#2a68b0",
+     "#fec50c"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14.3,
+    9
+   ],
+   "params": {
+    "width": 8,
+    "height": 15,
+    "bottom": 0,
+    "colour": "#2f78b8",
+    "frameColour": "#d5b44a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14.3,
+    25
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "bottom": 0,
+    "colour": "#00afca",
+    "frameColour": "#d5b44a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-l",
+   "footprint": {
+    "rect": [
+     30,
+     3
+    ]
+   },
+   "at": [
+    -30,
+    -24
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9588",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6b3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-r",
+   "footprint": {
+    "rect": [
+     30,
+     3
+    ]
+   },
+   "at": [
+    30,
+    -24
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9588",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6b3a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "count": 12,
+    "spacing": 3.2,
+    "colours": [
+     "#d6342c",
+     "#fec50c",
+     "#00afca",
+     "#2a68b0",
+     "#d6342c",
+     "#00afca",
+     "#fec50c",
+     "#2a68b0",
+     "#d6342c",
+     "#00afca",
+     "#fec50c",
+     "#2a68b0"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge--34",
+   "footprint": {
+    "rect": [
+     26,
+     2.5
+    ]
+   },
+   "at": [
+    -34,
+    -28
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f5a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f5a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace--34",
+   "footprint": {
+    "rect": [
+     34,
+     5
+    ]
+   },
+   "at": [
+    -34,
+    -20
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a598",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9a5a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-10",
+   "footprint": {
+    "rect": [
+     26,
+     2.5
+    ]
+   },
+   "at": [
+    10,
+    -28
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f5a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f5a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-10",
+   "footprint": {
+    "rect": [
+     34,
+     5
+    ]
+   },
+   "at": [
+    10,
+    -20
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a598",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9a5a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -58,
+     -26
+    ],
+    "height": 22
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -54,
+     -30
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -62,
+     -22
+    ],
+    "height": 21
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     -27
+    ],
+    "height": 19
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 18
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -46,
+     -24
+    ],
+    "height": 21
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     58,
+     -26
+    ],
+    "height": 20
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dense pilaster piers, beige stone, banner, flag row, hedges and terraces added; windows between piers are dark punched, attic cornice not ornamented, trees still low-poly, banner is a plain blue board"
+ }
+}

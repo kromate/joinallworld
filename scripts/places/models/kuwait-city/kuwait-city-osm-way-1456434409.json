@@ -1,0 +1,497 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-osm-way-1456434409",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LiberationTower.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "User:Deepak",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kuwait-city/lib1.jpg",
+   "used": "profile: slim concrete shaft, flared saucer at about 40 percent, drum pod at about 55-62 percent, long tapering spire, grey concrete colour"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Liberationtower_kuwait.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Malaiya",
+   "view": "street",
+   "file": "/tmp/places-evidence/kuwait-city/lib2.jpg",
+   "used": "ribbed grey drum pod over a dish, spire with collars, white arched low government blocks around the base"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1456434409",
+   "used": "round 16 m shaft footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 0.8,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#cfcac0",
+    "bottomCap": true,
+    "profile": [
+     [
+      10,
+      0,
+      "#d8d4cb"
+     ],
+     [
+      6.5,
+      3
+     ],
+     [
+      4.6,
+      10
+     ],
+     [
+      4.0,
+      22
+     ],
+     [
+      3.8,
+      40
+     ],
+     [
+      4.2,
+      50
+     ],
+     [
+      5.2,
+      60
+     ],
+     [
+      13,
+      62,
+      "#bdbab2"
+     ],
+     [
+      18,
+      64.5
+     ],
+     [
+      19,
+      66
+     ],
+     [
+      16,
+      68
+     ],
+     [
+      7,
+      70
+     ],
+     [
+      4,
+      71.5
+     ],
+     [
+      3.4,
+      74
+     ],
+     [
+      3.4,
+      78,
+      "#cfcac0"
+     ],
+     [
+      10.5,
+      80,
+      "#9ea3a6"
+     ],
+     [
+      11.5,
+      82
+     ],
+     [
+      11.5,
+      84,
+      "#8f979b"
+     ],
+     [
+      10.5,
+      84.6,
+      "#cfcac0"
+     ],
+     [
+      11.8,
+      85.6
+     ],
+     [
+      11.8,
+      87.4,
+      "#8f979b"
+     ],
+     [
+      10.5,
+      88,
+      "#cfcac0"
+     ],
+     [
+      11.8,
+      89
+     ],
+     [
+      11.8,
+      90.8,
+      "#8f979b"
+     ],
+     [
+      10.5,
+      91.4,
+      "#cfcac0"
+     ],
+     [
+      11.2,
+      92.4
+     ],
+     [
+      11,
+      94
+     ],
+     [
+      5,
+      96,
+      "#9ea3a6"
+     ],
+     [
+      2.6,
+      97.5,
+      "#cfcac0"
+     ],
+     [
+      2.2,
+      100
+     ],
+     [
+      3.0,
+      100.6
+     ],
+     [
+      3.0,
+      101.6
+     ],
+     [
+      2.0,
+      102.2
+     ],
+     [
+      1.9,
+      108
+     ],
+     [
+      2.6,
+      108.6
+     ],
+     [
+      2.6,
+      109.6
+     ],
+     [
+      1.6,
+      110.2
+     ],
+     [
+      1.5,
+      118
+     ],
+     [
+      2.1,
+      118.6
+     ],
+     [
+      2.1,
+      119.4
+     ],
+     [
+      1.1,
+      120
+     ],
+     [
+      0.9,
+      128
+     ],
+     [
+      0.4,
+      134
+     ],
+     [
+      0.05,
+      138
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 11.3,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 20,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.6
+      ],
+      "height": 10,
+      "z0": 80.5,
+      "colour": "#7d868a"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "podium-north",
+   "footprint": {
+    "rect": [
+     54,
+     22
+    ]
+   },
+   "at": [
+    2,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bay": 4,
+    "cornice": true,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-west",
+   "footprint": {
+    "rect": [
+     24,
+     34
+    ]
+   },
+   "at": [
+    -34,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bay": 4,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-east",
+   "footprint": {
+    "rect": [
+     24,
+     30
+    ]
+   },
+   "at": [
+    34,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bay": 4,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -30,
+     0
+    ],
+    "end": [
+     40,
+     -30,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#2e7d32"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-arcade",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wide saucer, ribbed drum pod and collared spire now read like the photo; shaft and spire scaled to the 140 m clamp, real pod has open fin legs, podium arches are only approximate."
+ }
+}

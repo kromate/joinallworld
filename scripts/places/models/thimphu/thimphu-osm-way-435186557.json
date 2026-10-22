@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-way-435186557",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/435186557",
+   "used": "real outline about 46 x 29 m with a notch on the front, matched by name (Wikidata Q4201619)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/thimphu.json#thimphu-osm-way-435186557",
+   "used": "3 storeys, whitewashed, painted timber window frames, sloping roof; the geo-linked street photos show other buildings so none was used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "fit": 50,
+    "simplify": 0.5
+   },
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.26,
+    "plinth": 0.5,
+    "glassColour": "#3a4650",
+    "bands": "#8a5a3a",
+    "cornice": true,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b4a3a",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.6,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#e0d9c8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.5,
+    "bottom": 1.2,
+    "colour": "#a8452d",
+    "frameColour": "#d9a93a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -19,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colours": [
+     "#e8892b"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -24
+     ],
+     [
+      30,
+      -24
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e6dcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     -8
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -28,
+     18
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building; outline real, details typed from the national style"
+ }
+}

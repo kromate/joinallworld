@@ -1,0 +1,516 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-way-253373054",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Istishari_Arab_Hospital_005.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Amin",
+   "view": "front",
+   "file": "/tmp/places-evidence/ramallah/p1_0.jpg",
+   "used": "cream stone slab blocks with punched window grid, curved centre block with dark horizontal glazing bands, silver cylindrical towers at both ends, blue glass lobby, small tan stone bay, car park wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/253373054",
+   "used": "overall size and extent (about 80 x 55 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 13,
+  "fovDeg": 46,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     24,
+     20
+    ]
+   },
+   "at": [
+    -24,
+    2
+   ],
+   "height": 32,
+   "storeys": 9,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e3d6b8",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "rect",
+    "bay": 6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "centre-lo",
+   "lod": [
+    2
+   ],
+   "at": [
+    4,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -17.26,
+      4.41
+     ],
+     [
+      -14.02,
+      2.84
+     ],
+     [
+      -10.64,
+      1.61
+     ],
+     [
+      -7.15,
+      0.72
+     ],
+     [
+      -3.59,
+      0.18
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      3.59,
+      0.18
+     ],
+     [
+      7.15,
+      0.72
+     ],
+     [
+      10.64,
+      1.61
+     ],
+     [
+      14.02,
+      2.84
+     ],
+     [
+      17.26,
+      4.41
+     ],
+     [
+      11.03,
+      15.82
+     ],
+     [
+      8.96,
+      14.82
+     ],
+     [
+      6.8,
+      14.03
+     ],
+     [
+      4.57,
+      13.46
+     ],
+     [
+      2.3,
+      13.11
+     ],
+     [
+      0.0,
+      13.0
+     ],
+     [
+      -2.3,
+      13.11
+     ],
+     [
+      -4.57,
+      13.46
+     ],
+     [
+      -6.8,
+      14.03
+     ],
+     [
+      -8.96,
+      14.82
+     ],
+     [
+      -11.03,
+      15.82
+     ]
+    ],
+    "z0": 0,
+    "height": 36,
+    "colour": "#e3d6b8",
+    "topColour": "#9a9a96",
+    "storeys": 16
+   }
+  },
+  {
+   "type": "prism",
+   "id": "centre",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    4,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -17.26,
+      4.41
+     ],
+     [
+      -14.02,
+      2.84
+     ],
+     [
+      -10.64,
+      1.61
+     ],
+     [
+      -7.15,
+      0.72
+     ],
+     [
+      -3.59,
+      0.18
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      3.59,
+      0.18
+     ],
+     [
+      7.15,
+      0.72
+     ],
+     [
+      10.64,
+      1.61
+     ],
+     [
+      14.02,
+      2.84
+     ],
+     [
+      17.26,
+      4.41
+     ],
+     [
+      11.03,
+      15.82
+     ],
+     [
+      8.96,
+      14.82
+     ],
+     [
+      6.8,
+      14.03
+     ],
+     [
+      4.57,
+      13.46
+     ],
+     [
+      2.3,
+      13.11
+     ],
+     [
+      0.0,
+      13.0
+     ],
+     [
+      -2.3,
+      13.11
+     ],
+     [
+      -4.57,
+      13.46
+     ],
+     [
+      -6.8,
+      14.03
+     ],
+     [
+      -8.96,
+      14.82
+     ],
+     [
+      -11.03,
+      15.82
+     ]
+    ],
+    "z0": 0,
+    "height": 36,
+    "storeys": 16,
+    "colour": "#e3d6b8",
+    "topColour": "#9a9a96",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e6dbc0",
+       "#27393f"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    28,
+    4
+   ],
+   "height": 35,
+   "storeys": 10,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e3d6b8",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "rect",
+    "bay": 6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "east-silver",
+   "at": [
+    34,
+    -7,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#b4bec8",
+    "profile": [
+     [
+      1.9,
+      0
+     ],
+     [
+      1.9,
+      40
+     ],
+     [
+      0,
+      40
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "west-silver",
+   "at": [
+    -36.2,
+    -7,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#b9c3cc",
+    "profile": [
+     [
+      1.3,
+      0
+     ],
+     [
+      1.3,
+      37
+     ],
+     [
+      0,
+      37
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    -5,
+    -3
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3c586b",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-bay",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    14,
+    -8
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdb78d",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "windowShape": "rect",
+    "bay": 6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -5,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-e",
+   "params": {
+    "rect": [
+     0.5,
+     0.3
+    ],
+    "z0": 3,
+    "height": 34,
+    "colour": "#1f2f3a",
+    "topColour": "#1f2f3a"
+   },
+   "at": [
+    31.6,
+    -6.3
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "strip-w",
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "z0": 3,
+    "height": 30,
+    "colour": "#1f2f3a",
+    "topColour": "#1f2f3a"
+   },
+   "at": [
+    -34.5,
+    -6.3
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     -34
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Towers now slim and taller than slabs; centre block is a convex arc with 8 dark bands (real one curves the other way and rises toward the east tower); lobby is a small pavilion rather than a recessed bay; west block window grid coarser than real."
+ }
+}

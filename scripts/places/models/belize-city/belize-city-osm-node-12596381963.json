@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-node-12596381963",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/906673673",
+   "used": "size 11 x 8.5 m (nearest building, name-only)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 1.0,
+    "height": 0.2,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "z0": 0,
+      "height": 1.0,
+      "colour": "#6e5333"
+     }
+    },
+    "mode": "grid",
+    "cols": 4,
+    "rows": 3,
+    "dx": 3.3,
+    "dy": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "z0": 1.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8fb2c4",
+    "windows": "none",
+    "bands": "#f5d57a",
+    "faces": {
+     "front": "punched"
+    },
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c9296",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -3.6,
+    1.2
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 2.5,
+    "rise": 1.2,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -5,
+    1.2
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#f5d57a",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -2,
+    -5.2,
+    1.2
+   ],
+   "params": {
+    "count": 3,
+    "spread": 2,
+    "radius": 1.0,
+    "height": 1.9,
+    "colours": [
+     "#f5d57a",
+     "#8fb2c4"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   34,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; stilted timber bar from brief"
+ }
+}

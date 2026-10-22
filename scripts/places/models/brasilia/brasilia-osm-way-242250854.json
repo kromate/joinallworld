@@ -1,0 +1,220 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/242250854",
+   "used": "232 x 181 m oval stadium outline, bearing 153 deg: oval bowl with a long main stand on one side and lower curved ends; no photo found for this venue"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "rect": [
+     100,
+     64
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5f9a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f9a4a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     48,
+     -43
+    ],
+    "end": [
+     -48,
+     -43
+    ],
+    "rows": 16,
+    "seatColour": "#7f8c99",
+    "concreteColour": "#b9b4aa",
+    "backWall": 1.0,
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -48,
+     43
+    ],
+    "end": [
+     48,
+     43
+    ],
+    "rows": 18,
+    "seatColour": "#3f6b8f",
+    "concreteColour": "#d9d4c7",
+    "under": "solid",
+    "canopy": {
+     "height": 8,
+     "depth": 9,
+     "colour": "#8d8a82",
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 42,
+    "startDeg": -25,
+    "endDeg": 25,
+    "rows": 9,
+    "seatColour": "#7f8c99",
+    "concreteColour": "#b9b4aa",
+    "under": "solid",
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 42,
+    "startDeg": 155,
+    "endDeg": 205,
+    "rows": 9,
+    "seatColour": "#7f8c99",
+    "concreteColour": "#b9b4aa",
+    "under": "solid",
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -50,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    50,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -50,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    50,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 3,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-242250854",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; oval bowl from OSM outline, stand layout and colours assumed"
+ }
+}

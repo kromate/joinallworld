@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-airport-brasilia-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/20775905",
+   "used": "overall extent and layout: long low terminal body along the road side, piers east and west, and a round satellite behind (OSM tags: transportation building, 12 levels, 28 m max)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bras%C3%ADlia-international-airport-december-2010.jpg",
+   "licence": "CC BY 2.0",
+   "author": "iurikothe",
+   "view": "street",
+   "file": "/tmp/places-evidence/brasilia/air1.jpg",
+   "used": "airside only (grey apron, red lattice floodlight masts, corrugated grey jet bridges, rain-grey light); does not show the terminal facade so NOT used for matching"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeroporto_JK_-_Bras%C3%ADlia_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Frederico Veloso",
+   "view": "street",
+   "file": "/tmp/places-evidence/brasilia/air2.jpg",
+   "used": "grey corrugated jet bridge colour and wide flat apron only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     100,
+     34
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc4",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7adb0",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-pier",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -64,
+    2
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4bd",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7adb0",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-pier",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    62,
+    4
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4bd",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7adb0",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "viaduct",
+   "at": [
+    0,
+    -42
+   ],
+   "params": {
+    "rect": [
+     104,
+     12
+    ],
+    "height": 1.1,
+    "colour": "#b3b3ad",
+    "z0": 7.5
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "road-canopy",
+   "at": [
+    0,
+    -42,
+    7.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 100,
+    "depth": 14,
+    "height": 5.5,
+    "thickness": 0.5,
+    "columns": 8,
+    "colour": "#b9bec1",
+    "edgeColour": "#7f8a90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "satellite",
+   "at": [
+    10,
+    62,
+    0
+   ],
+   "params": {
+    "radius": 30,
+    "n": 20,
+    "height": 9,
+    "colour": "#b8c4ca",
+    "windows": "none",
+    "windowRatio": 0,
+    "topColour": "#a7adb0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "saucer",
+   "at": [
+    10,
+    62,
+    9
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#a7adb0",
+    "profile": [
+     [
+      31.5,
+      0
+     ],
+     [
+      31.5,
+      0.8
+     ],
+     [
+      26,
+      2.2
+     ],
+     [
+      14,
+      3.4
+     ],
+     [
+      0,
+      3.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "control-tower",
+   "id": "tower",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "style": "round",
+    "colour": "#dcdcd6",
+    "cabColour": "#4d6a78"
+   }
+  },
+  {
+   "type": "array",
+   "id": "jetways",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     14,
+     0
+    ],
+    "end": [
+     40,
+     14,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 16,
+      "colour": "#c9ced1"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    10,
+    26
+   ],
+   "params": {
+    "rect": [
+     150,
+     70
+    ],
+    "height": 0.06,
+    "colour": "#8c8f90",
+    "z0": -0.02
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No terminal-facade photo found (airside shots only); massing from OSM extent and brief: canopy, piers, saucer satellite and tower are approximate."
+ }
+}

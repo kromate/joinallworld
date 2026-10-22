@@ -1,0 +1,129 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/142503177",
+   "used": "L-shaped footprint 27.5 x 12.2 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5,
+    "fit": 40
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#b9d7b0",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "verandah",
+   "at": [
+    -1,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 2.8,
+    "height": 2.6,
+    "form": "flat",
+    "colour": "#7a5a2e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -1,
+    -11,
+    2.8
+   ],
+   "params": {
+    "width": 4,
+    "height": 1,
+    "bottom": 2.8,
+    "colour": "#b9d7b0",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 0.9,
+    "colour": "#d9d3c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-way-142503177",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; L-shaped OSM footprint with typed gable roof, verandah and colours."
+ }
+}

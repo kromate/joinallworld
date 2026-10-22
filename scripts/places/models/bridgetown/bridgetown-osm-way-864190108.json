@@ -1,0 +1,523 @@
+{
+ "name": "Gun Hill Signal Station",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GunHillEntrance.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "SamBlob",
+   "view": "front",
+   "file": "/tmp/places-evidence/bridgetown/gun2.jpg",
+   "used": "octagonal tower in red-painted brick, grey-green shingle pyramid roof with flagpole, pale shuttered windows, external stair up the side, cannon at the foot, hillside lawn and steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barbados,_Karibik_-_Transmission_Tower_Gun_Hill_Signal_Station_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "giggel",
+   "view": "aerial",
+   "used": "hill-top setting over sugar-cane country; low pale-roofed outbuildings next to the red/white radio mast"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/864190108",
+   "used": "overall station size 23 x 9 m: tower plus kitchen/magazine wing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 3,
+  "fovDeg": 34,
+  "aspect": 0.665,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "polygon": [
+     [
+      2.2,
+      0.91
+     ],
+     [
+      0.91,
+      2.2
+     ],
+     [
+      -0.91,
+      2.2
+     ],
+     [
+      -2.2,
+      0.91
+     ],
+     [
+      -2.2,
+      -0.91
+     ],
+     [
+      -0.91,
+      -2.2
+     ],
+     [
+      0.91,
+      -2.2
+     ],
+     [
+      2.2,
+      -0.91
+     ]
+    ]
+   },
+   "at": [
+    -5,
+    0
+   ],
+   "height": 10.8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a4a3c",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands"
+     }
+    ],
+    "bands": "#7a3a30"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#6f7b73",
+    "material": "slate",
+    "rise": 4.0,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shutter-front",
+   "at": [
+    -5,
+    -2.3,
+    6.8
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.14
+    ],
+    "height": 1.7,
+    "colour": "#e4e8e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shutter-side",
+   "at": [
+    -3.6,
+    -1.45,
+    6.8
+   ],
+   "rotDeg": -45,
+   "params": {
+    "rect": [
+     1.2,
+     0.14
+    ],
+    "height": 1.7,
+    "colour": "#e8ead8"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flag",
+   "at": [
+    -5,
+    0,
+    14.8
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#2a2218",
+    "colours": [
+     "#2a2218",
+     "#c9a227",
+     "#2a2218"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-wing",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    7.5,
+    3.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a0503f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9aa09c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "cannon",
+   "id": "cannon",
+   "at": [
+    -6.8,
+    -3.2,
+    0.2
+   ],
+   "params": {
+    "yaw": 200,
+    "scale": 1.1
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "lawn-steps",
+   "at": [
+    2,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.2,
+    "run": 0.7,
+    "count": 6,
+    "colour": "#8c8f8a"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree-r",
+   "at": [
+    10,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree-l",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "array",
+   "id": "stair-steps",
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.5,
+     0,
+     5.2
+    ],
+    "end": [
+     3.8,
+     0,
+     0.2
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       1.1
+      ],
+      "height": 0.35,
+      "colour": "#8f4a3e"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "stair-stringer",
+   "params": {
+    "points": [
+     [
+      -2.6,
+      0,
+      4.9
+     ],
+     [
+      3.9,
+      0,
+      -0.1
+     ]
+    ],
+    "section": {
+     "rect": [
+      1.0,
+      0.3
+     ]
+    },
+    "colour": "#8f4a3e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-a",
+   "params": {
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      -2.5,
+      -0.55,
+      6.2
+     ],
+     [
+      3.9,
+      -0.55,
+      1.2
+     ]
+    ],
+    "colour": "#2f3a34"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-b",
+   "params": {
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      -2.5,
+      0.55,
+      6.2
+     ],
+     [
+      3.9,
+      0.55,
+      1.2
+     ]
+    ],
+    "colour": "#2f3a34"
+   }
+  },
+  {
+   "type": "array",
+   "id": "rail-posts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.3,
+     -0.55,
+     5.2
+    ],
+    "end": [
+     3.7,
+     -0.55,
+     0.2
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.06,
+       0.06
+      ],
+      "height": 1.0,
+      "colour": "#2f3a34"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "rail-posts-b",
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.3,
+     0.55,
+     5.2
+    ],
+    "end": [
+     3.7,
+     0.55,
+     0.2
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.06,
+       0.06
+      ],
+      "height": 1.0,
+      "colour": "#2f3a34"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "shrub-row",
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     -6.5,
+     0
+    ],
+    "end": [
+     10,
+     -6.5,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 4,
+      "height": 2.2,
+      "depth": 2.5,
+      "colour": "#4a7a38"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "shrub-row2",
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -9,
+     0
+    ],
+    "end": [
+     8,
+     -9,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 3.5,
+      "height": 1.4,
+      "depth": 2,
+      "colour": "#5c8f3e"
+     }
+    }
+   }
+  },
+  {
+   "type": "garden-bed",
+   "id": "flowers",
+   "at": [
+    -11,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 4,
+    "colour": "#e0702f",
+    "hedge": false
+   }
+  },
+  {
+   "type": "garden-bed",
+   "id": "flowers2",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 3,
+    "colour": "#e8c93a",
+    "hedge": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-osm-way-864190108",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "octagon tower, stair with rails and shrubs added; stair runs perpendicular to the +x face rather than the oblique face, shrubs are low-poly blobs, no brick-course texture or lamp, flat site instead of hillside"
+ }
+}

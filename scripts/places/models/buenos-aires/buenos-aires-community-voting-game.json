@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Antiguo_Palacio_del_Poder_Ejecutivo_de_la_Ciudad_Aut%C3%B3noma_de_Buenos_Aires.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "EncicloPaulo",
+   "view": "street",
+   "file": "/tmp/places-evidence/buenos-aires/cityhall.jpg",
+   "used": "cream stucco 5-storey palace, slate mansard with dormers, two domes on drums (large one right/back, small one left), corner entrance, balconies"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23633883",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dcc7a0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "windowShape": "arched",
+    "bands": "#e9dcbc",
+    "cornice": true,
+    "plinth": 4,
+    "faces": {},
+    "bay": 9.5
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#4a4e59",
+    "material": "slate",
+    "rise": 7,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    14,
+    9,
+    33
+   ],
+   "params": {
+    "radius": 8,
+    "height": 11,
+    "profile": "onion",
+    "drum": 7,
+    "drumRadius": 8.5,
+    "lantern": 2,
+    "finial": 7,
+    "colour": "#3a3d46",
+    "drumColour": "#e0cfa8"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -20,
+    -6,
+    33
+   ],
+   "params": {
+    "radius": 4.5,
+    "height": 7,
+    "profile": "onion",
+    "drum": 5,
+    "drumRadius": 5,
+    "lantern": 1.5,
+    "finial": 6,
+    "colour": "#33363e",
+    "drumColour": "#e0cfa8"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    22,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.5,
+    "height": 7,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#eee6d4",
+    "roofColour": "#d8cfbb"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -22,
+    -26,
+    12
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#74acdf",
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -18,
+     33
+    ],
+    "end": [
+     26,
+     -18,
+     33
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "dormer",
+      "params": {
+       "width": 1.8,
+       "depth": 1.4,
+       "height": 2.2,
+       "colour": "#ece0c8",
+       "roof_colour": "#33363e"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mansard, two ogee domes on drums, dormers and cream stucco present; no rusticated corner pavilion, ironwork balconies, pilasters or pediment-headed French windows; dormers only along one edge"
+ }
+}

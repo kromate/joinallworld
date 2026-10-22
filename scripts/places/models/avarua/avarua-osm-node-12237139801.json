@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-osm-node-12237139801",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/391492176",
+   "used": "15 x 10 m outline, containing the venue point"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/avarua.json#avarua-osm-node-12237139801",
+   "used": "roadside cafe on the Ara Tapu, single storey with veranda, green corrugated hip roof; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6cf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#c9533d",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7d4e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -0.92,
+    -5.02,
+    0
+   ],
+   "params": {
+    "length": 14.9,
+    "depth": 2.4,
+    "height": 2.8,
+    "balustrade": true,
+    "steps": true,
+    "roof": "lean-to",
+    "roof_colour": "#c9533d",
+    "wall_colour": "#ffffff"
+   },
+   "rotDeg": -10.4
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5.52,
+    -7.93,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "height": 0.9,
+    "bottom": 1.0,
+    "colour": "#c9533d",
+    "frameColour": "#ffffff",
+    "posts": true
+   },
+   "rotDeg": -10.4
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -5.09,
+    -5.57,
+    0
+   ],
+   "params": {
+    "chairs": 2,
+    "table_colour": "#ffffff",
+    "chair_colour": "#c9533d"
+   },
+   "rotDeg": -10.4
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -1.16,
+    -6.29,
+    0
+   ],
+   "params": {
+    "chairs": 2,
+    "table_colour": "#ffffff",
+    "chair_colour": "#c9533d"
+   },
+   "rotDeg": -10.4
+  },
+  {
+   "type": "table-set",
+   "at": [
+    2.78,
+    -7.02,
+    0
+   ],
+   "params": {
+    "chairs": 2,
+    "table_colour": "#ffffff",
+    "chair_colour": "#c9533d"
+   },
+   "rotDeg": -10.4
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; colours and veranda come from the brief's typed description, not observed."
+ }
+}

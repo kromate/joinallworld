@@ -1,0 +1,378 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-osm-way-917673033",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522511333",
+   "used": "Dining Pavilion outline (33 x 25 m) as the central hall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_the_Virgin_Islands_Sports_and_Fitness_Center.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Sphilbrick",
+   "view": "front",
+   "file": "/tmp/places-evidence/charlotte-amalie/uvi1.jpg",
+   "used": "fitness centre colours and form only (cream concrete-block wall, tan block end wall, glazed entrance under a louvred sunshade); a different building from the OSM match, so the model is not compared as a whole"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dining-pavilion",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a69a82",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#e9d9b5"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d2f",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fitness-centre",
+   "at": [
+    -8,
+    50
+   ],
+   "footprint": {
+    "rect": [
+     62,
+     34
+    ]
+   },
+   "height": 13.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2dcc9",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "parapet": 0.5,
+    "trimColour": "#b9b2a0",
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.5,
+      "colour": "#cfc8b4"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tan-end",
+   "at": [
+    -34,
+    36.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     2
+    ],
+    "height": 9,
+    "colour": "#c99a84",
+    "topColour": "#c99a84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-glass",
+   "at": [
+    -4,
+    35.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.6
+    ],
+    "height": 7,
+    "colour": "#5f7f86",
+    "topColour": "#5f7f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sunshade",
+   "at": [
+    -4,
+    34.0,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     24,
+     2.6
+    ],
+    "height": 0.5,
+    "colour": "#b4b8bb",
+    "topColour": "#b4b8bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classroom-west",
+   "at": [
+    -34,
+    -2
+   ],
+   "rotDeg": -4,
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a69a82",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#e9d9b5"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d2f",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classroom-east",
+   "at": [
+    36,
+    -4
+   ],
+   "rotDeg": -4,
+   "footprint": {
+    "rect": [
+     28,
+     12
+    ]
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a69a82",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#e9d9b5"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d2f",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library-block",
+   "at": [
+    -2,
+    -30
+   ],
+   "rotDeg": 0,
+   "footprint": {
+    "rect": [
+     38,
+     14
+    ]
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9d9b5",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#e9d9b5"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d2f",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "residence-hall",
+   "at": [
+    46,
+    34
+   ],
+   "rotDeg": -8,
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9d9b5",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#e9d9b5"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d2f",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    -20,
+    -17
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#1f4e9c",
+     "#ffffff",
+     "#1f4e9c"
+    ]
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "id": "walk-a",
+   "at": [
+    -17,
+    -5.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 24,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#d9cfb2",
+    "roofColour": "#a63d2f"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "id": "walk-b",
+   "at": [
+    22,
+    -9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 20,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#d9cfb2",
+    "roofColour": "#a63d2f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   112,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Campus layout is typical (volcanic-rock blocks with red metal roofs, per the brief), not surveyed: only the dining pavilion outline is real; fitness centre sized from the 64,000 sq ft figure; photo shows a different building so no whole-model match."
+ }
+}

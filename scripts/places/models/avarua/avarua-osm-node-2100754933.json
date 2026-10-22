@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-osm-node-2100754933",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1557691904",
+   "used": "20.5 x 8.6 m outline and bearing (nearest building, 3.3 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/avarua.json#avarua-osm-node-2100754933",
+   "used": "small exhibit and shop, lean-to roof, timber verandah, marine-blue accent; whale sculpture is assumed in the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9f0ee",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#2c7fb8",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6a7c8a",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    3.74,
+    -2.12,
+    0
+   ],
+   "params": {
+    "length": 20.5,
+    "depth": 2.4,
+    "eaveHeight": 2.9,
+    "attachHeight": 3.6,
+    "post": "square",
+    "postEvery": 3.0,
+    "railHeight": 0.9,
+    "colour": "#9a7a52",
+    "roofColour": "#6a7c8a"
+   },
+   "rotDeg": 60.4
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10.59,
+    2.04,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.0,
+    "bottom": 1.2,
+    "colour": "#2c7fb8",
+    "frameColour": "#ffffff",
+    "posts": true
+   },
+   "rotDeg": 60.4
+  },
+  {
+   "type": "mass",
+   "id": "whale-plinth",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    0.97,
+    -15.5
+   ],
+   "rotDeg": 60.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb6a6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb6a6",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0.97,
+    -15.5,
+    0.5
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#2c7fb8",
+    "steps": 4,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.9,
+       0.7
+      ]
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       0.6,
+       0.5
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       0.35,
+       0.3
+      ],
+      "cx": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0.97,
+    -15.5,
+    3.1
+   ],
+   "rotDeg": 60.4,
+   "params": {
+    "colour": "#2c7fb8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       0.35
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       2.2,
+       0.25
+      ]
+     },
+     {
+      "z": 0.7,
+      "rect": [
+       0.4,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; match to the OSM building is only nearest; whale sculpture is an assumption from the brief."
+ }
+}

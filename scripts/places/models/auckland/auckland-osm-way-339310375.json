@@ -1,0 +1,432 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-way-339310375",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nathan_Homestead.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Andrew Pettengell",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/39310375-0.jpg",
+   "used": "two-storey Tudor-revival house: roughcast cream walls with dark half-timber gables, terracotta hip roofs, brick chimneys, low brick-pier veranda wing at left, brick-pier entrance porch at right, bay windows, low chequer brick garden wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/339310375",
+   "used": "footprint scale and L plan (38 x 25 m, 2 storeys)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    },
+    "bands": "#3a2f27",
+    "plinth": 0.5,
+    "glassColour": "#2b3438"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4573a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     11,
+     18
+    ]
+   },
+   "at": [
+    8,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#3a2f27",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4573a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-wing",
+   "footprint": {
+    "rect": [
+     10,
+     1.2
+    ]
+   },
+   "at": [
+    -9,
+    -6.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dcc2",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc2"
+   }
+  },
+  {
+   "type": "verandah-arcade",
+   "at": [
+    -9,
+    -7.2,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 3.0,
+    "height": 3.4,
+    "count": 3,
+    "kind": "square",
+    "colour": "#8a4a38",
+    "roof_colour": "#b4573a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    12,
+    -7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4b4a48",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4573a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-wing",
+   "footprint": {
+    "rect": [
+     9,
+     10
+    ]
+   },
+   "at": [
+    3,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1e9d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "none"
+    },
+    "bands": "#2f2620",
+    "plinth": 0.5,
+    "glassColour": "#2b3438"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4573a",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    2,
+    2,
+    6
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 3.2,
+    "pots": 2,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -9,
+    3,
+    6
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.6,
+    "pots": 2,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    11,
+    0,
+    6
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.8,
+    "pots": 2,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    12,
+    -8,
+    3.2
+   ],
+   "params": {
+    "width": 0.8,
+    "height": 2.0,
+    "pots": 1,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.0,
+    "thickness": 0.5,
+    "colour": "#a58563",
+    "pillarEvery": 4.0
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.9,
+    "colour": "#5a7f46"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "half-timber-wall",
+   "at": [
+    3,
+    -11.05,
+    0.2
+   ],
+   "params": {
+    "width": 9,
+    "height": 6.2,
+    "floors": 2,
+    "timber_colour": "#2a211b",
+    "plaster_colour": "#f1e9d6",
+    "windows": true
+   }
+  },
+  {
+   "type": "bay-window",
+   "at": [
+    3,
+    -11.1,
+    3.3
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 0.9,
+    "height": 2.4,
+    "storeys": 1,
+    "colour": "#2a211b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-left",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    -7.5
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#2a211b",
+    "plinth": 0.4,
+    "glassColour": "#2b3438"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4573a",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "half-timber-wall",
+   "at": [
+    -4,
+    -10.55,
+    3.0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.4,
+    "floors": 1,
+    "timber_colour": "#2a211b",
+    "plaster_colour": "#f1e9d6",
+    "windows": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Half-timber gables, bay and open brick-pier veranda added; brick piers are plain posts, entrance porch is a solid stone block, chequer garden wall is plain brick."
+ }
+}

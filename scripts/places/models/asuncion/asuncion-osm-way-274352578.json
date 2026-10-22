@@ -1,0 +1,435 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-way-274352578",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universidad_Aut%C3%B3noma_de_Asunci%C3%B3n_2.jpg",
+   "licence": "CC0",
+   "author": "Mx. Granger",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/uaa.jpg",
+   "used": "stone-grey 10-storey slab with long recessed ribbon windows, blue curtain-wall glass tower and blue-black glazed podium, ochre-yellow end wall, curved louvred canopy over the entry, steel-framed glazed roof canopy, yellow door"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/678631909",
+   "used": "curving banana-shaped footprint, 10 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 10,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "polygon": [
+     [
+      -34,
+      6.4
+     ],
+     [
+      -27.1,
+      18.4
+     ],
+     [
+      -19,
+      22.8
+     ],
+     [
+      -11.2,
+      27.1
+     ],
+     [
+      34.2,
+      -1.3
+     ],
+     [
+      18.9,
+      -26.1
+     ],
+     [
+      5.8,
+      -25.1
+     ],
+     [
+      -27,
+      -3.8
+     ]
+    ]
+   },
+   "height": 38,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b0a0",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 40,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-tower",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -21,
+    -5
+   ],
+   "rotDeg": -33,
+   "height": 47,
+   "storeys": 9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f4f7a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a6670",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     30,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    -14
+   ],
+   "rotDeg": -33,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1c2a44",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 8,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#1c2a44",
+      "#3d7fd6",
+      "#101a2c"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "id": "yellow-wedge",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "rotDeg": -60,
+   "params": {
+    "colour": "#e0b04a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       5
+      ]
+     },
+     {
+      "z": 40,
+      "rect": [
+       22,
+       1.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-canopy",
+   "at": [
+    10,
+    -17,
+    38.6
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     26,
+     6
+    ],
+    "height": 0.25,
+    "colour": "#5d676e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slat0",
+   "at": [
+    -17.7,
+    -15.43,
+    11.6
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#3a3d40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slat1",
+   "at": [
+    -17.94,
+    -15.81,
+    11.48
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#3a3d40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slat2",
+   "at": [
+    -18.19,
+    -16.18,
+    11.36
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#3a3d40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slat3",
+   "at": [
+    -18.44,
+    -16.56,
+    11.24
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#3a3d40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slat4",
+   "at": [
+    -18.68,
+    -16.94,
+    11.12
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#3a3d40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slat5",
+   "at": [
+    -18.93,
+    -17.32,
+    11.0
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#3a3d40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slat6",
+   "at": [
+    -19.17,
+    -17.69,
+    10.879999999999999
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#3a3d40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slat7",
+   "at": [
+    -19.42,
+    -18.07,
+    10.76
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#3a3d40"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yellow-door",
+   "at": [
+    -5.84,
+    -22.89,
+    0
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "height": 3,
+    "colour": "#e8c200"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "yellow-awning",
+   "at": [
+    -6.33,
+    -23.64,
+    3.3
+   ],
+   "rotDeg": -33,
+   "params": {
+    "rect": [
+     4,
+     2
+    ],
+    "height": 0.2,
+    "colour": "#e8c200"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Chequered blue podium, taller glass tower, louvre canopy (flat slats, not a curved sweep), yellow wedge and door now present; slab not stepped back at upper storeys, no steel roof frame detail, ribbon windows only shallowly recessed, banana plan seen frontally."
+ }
+}

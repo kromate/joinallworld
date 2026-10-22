@@ -1,0 +1,277 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Conjunto_Nacional_Brasilia_03.jpg",
+   "licence": "Public domain",
+   "author": "Luis Dantas",
+   "view": "front",
+   "file": "/tmp/places-evidence/brasilia/cn3.jpg",
+   "used": "long low slab with a row of tall vertical advertising panels above a glazed shopfront base, taller dark glass office block at the left end, flat roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Conjunto_Nacional_Brasilia_02.jpg",
+   "licence": "Public domain",
+   "author": "Luis Dantas",
+   "view": "side",
+   "used": "panel rhythm and the sunken road beside the podium"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/141913048",
+   "used": "overall 230 x 92 m, 11 levels, 34.65 m; modelled at about half scale (clamp 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     100,
+     46
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5560",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "concrete",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-slab",
+   "footprint": {
+    "rect": [
+     100,
+     44
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 5,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3d42",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6d68",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     24,
+     46
+    ]
+   },
+   "at": [
+    -45,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4c3bc",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bands": "#e0dfd8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -22.4,
+     5.5
+    ],
+    "end": [
+     44,
+     -22.4,
+     5.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       0.4
+      ],
+      "height": 14,
+      "colour": "#2b5f9e"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     -22.4,
+     5.5
+    ],
+    "end": [
+     48,
+     -22.4,
+     5.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       0.4
+      ],
+      "height": 14,
+      "colour": "#e8e4dc"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -22.4,
+     5.5
+    ],
+    "end": [
+     52,
+     -22.4,
+     5.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       0.4
+      ],
+      "height": 14,
+      "colour": "#b83a32"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -22.4,
+     5.5
+    ],
+    "end": [
+     56,
+     -22.4,
+     5.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       0.4
+      ],
+      "height": 14,
+      "colour": "#c8a22c"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-141913048",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "billboards are plain saturated colour bars without poster detail; office slab shorter than photo; glazed base darker"
+ }
+}

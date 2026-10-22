@@ -1,0 +1,1137 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museo_Alejandro_Otero.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Esclasans",
+   "view": "front",
+   "file": "/tmp/places-evidence/caracas/191586173_1.jpg",
+   "used": "front: sloping glass wall in a square panel grid rising from a low concrete plinth, black recessed entry with canopy, flanking blank stone walls, terracotta block behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museo_de_Artes_Visuales_Alejandro_Otero,_La_Rinconada,_Coche,_Caracas,_Venezuela_Octubre_2024_(2).jpg",
+   "licence": "CC0",
+   "author": "Warairarepano&Guaicaipuro",
+   "view": "side",
+   "used": "tall blank pale limestone wall with deep slot recesses and a few square punched openings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/191586173",
+   "used": "overall size 55 x 50 m, six levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     56,
+     26
+    ]
+   },
+   "at": [
+    0,
+    13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 29,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#d6cfbf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6cfbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    -33,
+    2
+   ],
+   "rotDeg": -20,
+   "z0": 0,
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9d2c2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2c2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    33,
+    2
+   ],
+   "rotDeg": 20,
+   "z0": 0,
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#d4cdbd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4cdbd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-l",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    -9,
+    16
+   ],
+   "rotDeg": -12,
+   "z0": 29,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a65c43",
+    "windows": "ribbon",
+    "glassColour": "#2f4f78",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f4f3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-r",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    9,
+    16
+   ],
+   "rotDeg": 12,
+   "z0": 29,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a65c43",
+    "windows": "ribbon",
+    "glassColour": "#2f4f78",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f4f3a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "glass-pyramid",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#cfe0ef",
+    "material": "plaster",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 2.6,
+      "rect": [
+       52,
+       34
+      ],
+      "cx": 0,
+      "cy": 0
+     },
+     {
+      "z": 21.0,
+      "rect": [
+       21,
+       8
+      ],
+      "cx": 0,
+      "cy": 0,
+      "colour": "#c9dff0"
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -26.0,
+      -17.1,
+      2.6
+     ],
+     [
+      -10.5,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -21.666666666666668,
+      -17.1,
+      2.6
+     ],
+     [
+      -8.75,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -17.333333333333336,
+      -17.1,
+      2.6
+     ],
+     [
+      -7.000000000000001,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul3",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -13.0,
+      -17.1,
+      2.6
+     ],
+     [
+      -5.25,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul4",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -8.666666666666668,
+      -17.1,
+      2.6
+     ],
+     [
+      -3.5000000000000004,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul5",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -4.333333333333332,
+      -17.1,
+      2.6
+     ],
+     [
+      -1.7499999999999996,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul6",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      -17.1,
+      2.6
+     ],
+     [
+      0.0,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul7",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      4.333333333333336,
+      -17.1,
+      2.6
+     ],
+     [
+      1.7500000000000009,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul8",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      8.666666666666664,
+      -17.1,
+      2.6
+     ],
+     [
+      3.499999999999999,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul9",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      13.0,
+      -17.1,
+      2.6
+     ],
+     [
+      5.25,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul10",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      17.333333333333336,
+      -17.1,
+      2.6
+     ],
+     [
+      7.000000000000001,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul11",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      21.666666666666664,
+      -17.1,
+      2.6
+     ],
+     [
+      8.75,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mul12",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      26.0,
+      -17.1,
+      2.6
+     ],
+     [
+      10.5,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -26.0,
+      -17.1,
+      2.6
+     ],
+     [
+      26.0,
+      -17.1,
+      2.6
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -24.27777777777778,
+      -15.655555555555555,
+      4.644444444444444
+     ],
+     [
+      24.27777777777778,
+      -15.655555555555555,
+      4.644444444444444
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -22.555555555555557,
+      -14.21111111111111,
+      6.688888888888888
+     ],
+     [
+      22.555555555555557,
+      -14.21111111111111,
+      6.688888888888888
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail3",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -20.833333333333332,
+      -12.766666666666667,
+      8.733333333333333
+     ],
+     [
+      20.833333333333332,
+      -12.766666666666667,
+      8.733333333333333
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail4",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -19.11111111111111,
+      -11.322222222222221,
+      10.777777777777777
+     ],
+     [
+      19.11111111111111,
+      -11.322222222222221,
+      10.777777777777777
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail5",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -17.38888888888889,
+      -9.877777777777778,
+      12.822222222222221
+     ],
+     [
+      17.38888888888889,
+      -9.877777777777778,
+      12.822222222222221
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail6",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -15.666666666666666,
+      -8.433333333333334,
+      14.866666666666665
+     ],
+     [
+      15.666666666666666,
+      -8.433333333333334,
+      14.866666666666665
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail7",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -13.944444444444443,
+      -6.988888888888887,
+      16.91111111111111
+     ],
+     [
+      13.944444444444443,
+      -6.988888888888887,
+      16.91111111111111
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail8",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -12.222222222222221,
+      -5.544444444444444,
+      18.955555555555556
+     ],
+     [
+      12.222222222222221,
+      -5.544444444444444,
+      18.955555555555556
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail9",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -10.5,
+      -4.1,
+      21.0
+     ],
+     [
+      10.5,
+      -4.1,
+      21.0
+     ]
+    ],
+    "colour": "#c8ccd0",
+    "material": "metal",
+    "caps": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     52,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    -18.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a79f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a79f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     12,
+     3
+    ]
+   },
+   "at": [
+    -3,
+    -17.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#1d1e20",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d1e20"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -3,
+    -18.6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 3,
+    "height": 4,
+    "thickness": 0.6,
+    "colour": "#1d1e20",
+    "edgeColour": "#1d1e20"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaque",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    9,
+    -19.6
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#2a2b2d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2b2d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 1,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-191586173",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "truncated glass pyramid now pale with side slopes and angled flanking walls, but the plaster slope has a noisy texture and the mullion grid reads faintly; no dark-blue panels on the right; V roofline only approximated by two rotated blocks; foreground trees are low-poly and do not overhang; ground is grey paving not gravel"
+ }
+}

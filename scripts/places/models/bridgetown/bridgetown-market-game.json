@@ -1,0 +1,209 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/95179441",
+   "used": "footprint, simplified to every third vertex and scaled 0.63 to fit the scene clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-level rendered shopping centre, open walkways, large car park, south-coast pastels (no photo found; Commons 'Sheraton Centre' hits are Toronto and were rejected)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "polygon": [
+     [
+      -58.0,
+      -8.1
+     ],
+     [
+      -55.1,
+      3.6
+     ],
+     [
+      -29.0,
+      68.1
+     ],
+     [
+      0.3,
+      49.2
+     ],
+     [
+      -7.8,
+      29.3
+     ],
+     [
+      -1.8,
+      10.2
+     ],
+     [
+      15.1,
+      33.0
+     ],
+     [
+      25.1,
+      9.1
+     ],
+     [
+      35.2,
+      10.2
+     ],
+     [
+      41.3,
+      0.2
+     ],
+     [
+      37.5,
+      -8.4
+     ],
+     [
+      34.8,
+      -12.0
+     ],
+     [
+      28.2,
+      -17.4
+     ],
+     [
+      20.4,
+      -36.0
+     ],
+     [
+      17.8,
+      -50.6
+     ],
+     [
+      -21.5,
+      -35.3
+     ],
+     [
+      -25.6,
+      -32.3
+     ],
+     [
+      -56.9,
+      -13.3
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0dcc3",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bands": "#c4574b",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#f0dcc3",
+      "#e6cfb2"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -12,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 5,
+    "height": 4,
+    "colour": "#c4574b"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -55,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    25,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this mall; outline scaled to fit scene clamp; colours and canopy position from the brief only"
+ }
+}

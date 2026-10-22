@@ -1,0 +1,392 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-clinic",
+ "name": "Queen Elizabeth Hospital",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barbados_Queen_Elizabeth_Hospital,_Bridgetown-1.jpg",
+   "licence": "Public domain",
+   "author": "CaribDigita",
+   "view": "front",
+   "file": "/tmp/places-evidence/bridgetown/qeh1.jpg",
+   "used": "main entrance block: three-storey white ward block with grey louvre/window bands, a pale-blue sloping canopy over a recessed ground-floor entrance on square columns, wide steps, curved low wall, flagpole"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barbados_Queen_Elizabeth_Hospital,_Bridgetown-2.jpg",
+   "licence": "Public domain",
+   "author": "CaribDigita",
+   "view": "street",
+   "file": "/tmp/places-evidence/bridgetown/qeh2.jpg",
+   "used": "campus layout: white four-storey ward wing with horizontal window bands and a taller stair/lift tower end, blue-edged entrance roof, lawn and palms, barrier gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/95405735",
+   "used": "overall extent and L-shaped complex (225 x 97 m); modelled as main block plus a rear ward wing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f1ee",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#cdd6dc",
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccce",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-wing",
+   "footprint": {
+    "rect": [
+     18,
+     56
+    ]
+   },
+   "at": [
+    44,
+    28
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#cdd6dc",
+    "plinth": 0.5,
+    "bands": "#c3c9cd",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccce",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-ward",
+   "footprint": {
+    "rect": [
+     60,
+     14
+    ]
+   },
+   "at": [
+    8,
+    58
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8eae6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#cdd6dc",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccce",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    46,
+    -3
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e8e4",
+    "windows": "none",
+    "plinth": 0.5,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccce",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-room",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 11,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfd3d4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbe"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-porch",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -4.5
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a3f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccce"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-canopy",
+   "footprint": {
+    "rect": [
+     26,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -7.5
+   ],
+   "z0": 4.4,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9cde6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9cc6e4",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "id": "canopy-columns",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -10.5,
+     0
+    ],
+    "end": [
+     10,
+     -10.5,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "height": 4.5,
+      "colour": "#d7d9d6"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "entrance-steps",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 1.0,
+    "run": 1.4,
+    "count": 6,
+    "colour": "#a8aaa6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "curved-wall",
+   "at": [
+    4,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     1.8
+    ],
+    "height": 2.4,
+    "colour": "#e2ddcf"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    -3,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#00267f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -32,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 4,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms-r",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 4,
+    "line": 8
+   }
+  },
+  {
+   "type": "ambulance",
+   "id": "amb",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "heading": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "louvre/jalousie texture and recessed balcony bays only approximated by ribbon windows in light grey-blue; curved entrance wall is a straight low wall; steps lack railings; real complex far larger"
+ }
+}

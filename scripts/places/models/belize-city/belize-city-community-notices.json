@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1061466212",
+   "used": "size only (36 x 29 m, 2 levels); nearest-quality match so the outline is not trusted"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "polygon": [
+     [
+      -13,
+      -8
+     ],
+     [
+      13,
+      -8
+     ],
+     [
+      13,
+      8
+     ],
+     [
+      -13,
+      8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#3f7f8f",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -17,
+    -2
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    4,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 3.5,
+    "height": 3.2,
+    "columns": 2,
+    "colour": "#e4e0d4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "id": "mast",
+   "at": [
+    8,
+    0,
+    8
+   ],
+   "params": {
+    "baseWidth": 1.2,
+    "height": 14,
+    "sides": 4,
+    "colour": "#b8bcc0",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#d8d3c3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; a typical small two-storey met office with a lattice mast sized from the nearest OSM building, instrument yard not modelled."
+ }
+}

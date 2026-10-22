@@ -1,0 +1,266 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/391487432",
+   "used": "13 x 10 m outline and orientation, containing the venue point"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/avarua.json#avarua-meal-stop",
+   "used": "open-sided beachside cafe, low gable roof, outdoor tables under a palm; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "open-shelter",
+   "at": [
+    -0.76,
+    -0.24,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "depth": 8.4,
+    "height": 4.0,
+    "form": "gable",
+    "support": "timber",
+    "colour": "#e7d8b8",
+    "accent": "#3f9a98",
+    "roof_colour": "#a3463a"
+   },
+   "rotDeg": -72.4
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-block",
+   "footprint": {
+    "rect": [
+     13,
+     2.6
+    ]
+   },
+   "at": [
+    3.53,
+    1.12
+   ],
+   "rotDeg": -72.4,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e7d8b8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#3f9a98"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a3463a",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar-counter",
+   "footprint": {
+    "rect": [
+     6,
+     0.9
+    ]
+   },
+   "at": [
+    0.46,
+    1.2
+   ],
+   "rotDeg": -72.4,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3f9a98",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff",
+    "material": "concrete",
+    "overhang": 0.08
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4.55,
+    -6.16,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.9,
+    "bottom": 1.2,
+    "colour": "#3f9a98",
+    "frameColour": "#ffffff",
+    "posts": true
+   },
+   "rotDeg": -72.4
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3.16,
+    2.67,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false,
+    "table_colour": "#ffffff",
+    "chair_colour": "#3f9a98"
+   },
+   "rotDeg": -72.4
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -2.52,
+    -1.32,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false,
+    "table_colour": "#ffffff",
+    "chair_colour": "#3f9a98"
+   },
+   "rotDeg": -72.4
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -0.7,
+    -4.42,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false,
+    "table_colour": "#ffffff",
+    "chair_colour": "#3f9a98"
+   },
+   "rotDeg": -72.4
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -8.99,
+    1.87,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true,
+    "table_colour": "#ffffff",
+    "chair_colour": "#e7d8b8"
+   },
+   "rotDeg": -72.4
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -8.58,
+    -2.72,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true,
+    "table_colour": "#ffffff",
+    "chair_colour": "#e7d8b8"
+   },
+   "rotDeg": -72.4
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -6.26,
+    -6.71,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true,
+    "table_colour": "#ffffff",
+    "chair_colour": "#e7d8b8"
+   },
+   "rotDeg": -72.4
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    3,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; open timber pavilion with a rear kitchen block is inferred from the brief, not observed."
+ }
+}

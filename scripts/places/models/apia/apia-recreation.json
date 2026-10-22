@@ -1,0 +1,395 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1445626446",
+   "used": "real park outline (169 x 96 m), uniformly scaled by 0.69 to fit the 118 m scene clamp; pitch, fale and masts placed from the brief (no photo of this park found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 35,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "park-ground",
+   "params": {
+    "points": [
+     [
+      -65.5,
+      11.4
+     ],
+     [
+      -27.2,
+      46.4
+     ],
+     [
+      -15.5,
+      47.1
+     ],
+     [
+      50.1,
+      3.7
+     ],
+     [
+      62.3,
+      -5.3
+     ],
+     [
+      47.3,
+      -29.3
+     ],
+     [
+      20.7,
+      -54.7
+     ],
+     [
+      -21.8,
+      -11.9
+     ],
+     [
+      -31.9,
+      -21.7
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#6f8f4e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mown-pitch",
+   "at": [
+    4.1,
+    0.4,
+    0.15
+   ],
+   "rotDeg": -37,
+   "params": {
+    "rect": [
+     58,
+     34
+    ],
+    "height": 0.05,
+    "colour": "#86a85c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "park-fence",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      -65.5,
+      11.4,
+      0.6
+     ],
+     [
+      -27.2,
+      46.4,
+      0.6
+     ],
+     [
+      -15.5,
+      47.1,
+      0.6
+     ],
+     [
+      50.1,
+      3.7,
+      0.6
+     ],
+     [
+      62.3,
+      -5.3,
+      0.6
+     ],
+     [
+      47.3,
+      -29.3,
+      0.6
+     ],
+     [
+      20.7,
+      -54.7,
+      0.6
+     ],
+     [
+      -21.8,
+      -11.9,
+      0.6
+     ],
+     [
+      -31.9,
+      -21.7,
+      0.6
+     ]
+    ],
+    "closed": true,
+    "colour": "#c9c9c4"
+   }
+  },
+  {
+   "type": "array",
+   "id": "fale-posts",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.22,
+      "n": 6,
+      "height": 3.0,
+      "colour": "#c9a77c"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     -27.9,
+     24.4,
+     0
+    ],
+    "radius": 5.2,
+    "count": 10
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "fale-roof",
+   "at": [
+    -27.9,
+    24.4,
+    3.0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#4a79a3",
+    "profile": [
+     [
+      6.6,
+      0
+     ],
+     [
+      6.3,
+      0.35
+     ],
+     [
+      5,
+      1.5
+     ],
+     [
+      3,
+      2.6
+     ],
+     [
+      1,
+      3.3
+     ],
+     [
+      0,
+      3.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fale-floor",
+   "at": [
+    -27.9,
+    24.4,
+    0
+   ],
+   "params": {
+    "radius": 5.5,
+    "n": 16,
+    "height": 0.45,
+    "colour": "#d8d2c6"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "mast-a",
+   "at": [
+    -23.9,
+    -15.6,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "mast-b",
+   "at": [
+    36.1,
+    24.4,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "goal-a",
+   "at": [
+    -19.9,
+    15.4,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "rect": [
+     0.2,
+     5
+    ],
+    "height": 2.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goal-b",
+   "at": [
+    28.1,
+    -14.6,
+    0
+   ],
+   "rotDeg": -37,
+   "params": {
+    "rect": [
+     0.2,
+     5
+    ],
+    "height": 2.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -59.0,
+     10.3
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24.5,
+     41.8
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14.0,
+     42.4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45.1,
+     3.3
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     56.1,
+     -4.8
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     42.6,
+     -26.4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18.6,
+     -49.2
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -19.6,
+     -10.7
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -28.7,
+     -19.5
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-recreation",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: park outline scaled 0.69 to fit the scene clamp; pitch, fale and masts positions from the brief only."
+ }
+}

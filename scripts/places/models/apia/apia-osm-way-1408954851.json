@@ -1,0 +1,215 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1408954851",
+   "used": "campus polygon only (500 x 265 m); main teaching block typed from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "north",
+   "footprint": {
+    "rect": [
+     60,
+     12
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#4a79a3",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#ffffff"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "metal-sheet",
+    "rise": 1.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    -24,
+    -8
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#4a79a3",
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "right"
+      ],
+      "colour": "#ffffff"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    24,
+    -8
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#4a79a3",
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "left"
+      ],
+      "colour": "#ffffff"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-walk",
+   "footprint": {
+    "rect": [
+     30,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeae0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "overhang": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-way-1408954851",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; U-shaped teaching block typed from the brief, campus OSM polygon is not a building."
+ }
+}

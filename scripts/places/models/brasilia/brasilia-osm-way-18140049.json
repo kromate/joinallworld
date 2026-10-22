@@ -1,0 +1,334 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pal%C3%A1cio_da_Alvorada_brasilia.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "Arne M\u00fcseler",
+   "view": "front",
+   "file": "/tmp/places-evidence/brasilia/alv1.jpg",
+   "used": "low glass box with pale blue glazing and fine mullions, flat white roof slab, row of curved white columns narrowing to a point at the ground, lawn in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/18140049",
+   "used": "158 x 33 m, 3 levels, 10 m (modelled at a reduced length, wings omitted)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-box",
+   "footprint": {
+    "rect": [
+     104,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0.8,
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9deee",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "plinth": 0,
+    "bands": "#f4f2ec"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe9",
+    "material": "concrete",
+    "overhang": 2.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     26
+    ],
+    "height": 0.8,
+    "colour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     0,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 4,
+    "lod1Step": 1,
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.3,
+         1.0
+        ]
+       },
+       {
+        "z": 1.5,
+        "rect": [
+         0.7,
+         1.1
+        ]
+       },
+       {
+        "z": 4,
+        "rect": [
+         1.5,
+         1.2
+        ]
+       },
+       {
+        "z": 7,
+        "rect": [
+         3.0,
+         1.3
+        ]
+       },
+       {
+        "z": 9.6,
+        "rect": [
+         5.2,
+         1.4
+        ]
+       }
+      ],
+      "curve": true,
+      "colour": "#f4f2ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    11.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     0,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 4,
+    "lod1Step": 1,
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.3,
+         1.0
+        ]
+       },
+       {
+        "z": 1.5,
+        "rect": [
+         0.7,
+         1.1
+        ]
+       },
+       {
+        "z": 4,
+        "rect": [
+         1.5,
+         1.2
+        ]
+       },
+       {
+        "z": 7,
+        "rect": [
+         3.0,
+         1.3
+        ]
+       },
+       {
+        "z": 9.6,
+        "rect": [
+         5.2,
+         1.4
+        ]
+       }
+      ],
+      "curve": true,
+      "colour": "#f4f2ec"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    10.2
+   ],
+   "params": {
+    "rect": [
+     112,
+     28
+    ],
+    "height": 0.7,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central-block",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0.8,
+   "height": 9.4,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c7de",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -35,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     35,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-18140049",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "column profile follows critic (wide at roof) though photo reads as flared horns; glazing still reads darker than pale photo glass; wings omitted"
+ }
+}

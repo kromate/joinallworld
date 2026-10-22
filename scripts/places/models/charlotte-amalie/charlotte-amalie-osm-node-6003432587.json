@@ -1,0 +1,178 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-osm-node-6003432587",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522509819",
+   "used": "overall size only (56 x 38 m with deck); outline is jagged and includes the deck, so a pavilion and deck are composed instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b79b6e",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b79b6e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dining",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    2,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e9d9b5",
+    "windows": "screen",
+    "windowRatio": 0.45,
+    "plinth": 0.3,
+    "bands": "#3f6a8a",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d4036",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -22,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5d4036",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -8,
+    -13,
+    0.5
+   ],
+   "params": {
+    "count": 4,
+    "spread": 10,
+    "radius": 1.7,
+    "colours": [
+     "#f4f1ea",
+     "#3f6a8a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    12,
+    -13,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spread": 8,
+    "radius": 1.7,
+    "colours": [
+     "#f4f1ea",
+     "#e9d9b5"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -4
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; hip-roofed open timber restaurant with front deck is typed from the brief, not seen."
+ }
+}

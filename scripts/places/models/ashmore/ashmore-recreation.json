@@ -1,0 +1,80 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashmore",
+ "venueId": "ashmore-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+   "used": "white sand beach strip 60 x 30 m with a shade shelter and three umbrellas"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "beach-row",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 7,
+    "umbrellas": true,
+    "loungers": false,
+    "colours": [
+     "#e6dcc0",
+     "#c9d2d6",
+     "#8c9a5a"
+    ]
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 2.8,
+    "kind": "hip",
+    "roof_colour": "#c9d2d6"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   70,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "beach edge and tussock not modelled; sparse umbrellas"
+ }
+}

@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-way-398077902",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/398077902",
+   "used": "campus parcel only (257 x 230 m, a 6-point boundary, not a building): sets the scale and the garden setting"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-a",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    -6
+   ],
+   "rotDeg": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8553a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#d9d6cf",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b05a3c",
+    "overhang": 1.2,
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-b",
+   "footprint": {
+    "rect": [
+     38,
+     14
+    ]
+   },
+   "at": [
+    26,
+    14
+   ],
+   "rotDeg": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a35238",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#d9d6cf",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b05a3c",
+    "overhang": 1.2,
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    -4,
+    20
+   ],
+   "rotDeg": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8553a",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6f72",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "count": 8,
+    "height": 3.6,
+    "radius": 0.3,
+    "kind": "square",
+    "roofDepth": 2.6,
+    "colour": "#d9d6cf",
+    "roofColour": "#b05a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -32,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     12
+    ],
+    "height": 0.5,
+    "colour": "#c9c3b6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     20
+    ],
+    "height": 0.12,
+    "colour": "#5f8f4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "count": 8,
+    "spread": 25
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 6,
+    "spread": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 6,
+    "spread": 40
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -22,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "colour": "#b8586a"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "colour": "#e0b030"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this El Alcazar site found; two brick teaching pavilions with tile hips, a colonnade and gardens are typical of the university brief (brick style per the main-campus photo, not this site), positions invented"
+ }
+}

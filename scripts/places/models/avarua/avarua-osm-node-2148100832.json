@@ -1,0 +1,222 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:View_from_The_Needle_Lookout,_Rarotonga_-_panoramio_(1).jpg",
+   "licence": "CC BY 3.0",
+   "author": "Bob Linsdell",
+   "view": "street",
+   "file": "/tmp/places-evidence/avarua/needle1.jpg",
+   "used": "setting only: steep jungle-clad ridges and broadleaf foliage at the edge of the platform; the structure itself is not in any photo"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/avarua.json#avarua-osm-node-2148100832",
+   "used": "railed timber viewing platform 16 x 10 m, low stone fence wall, blank signage board facing the Needle; no OSM building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 8,
+    "height": 0.6,
+    "tiers": 1,
+    "colour": "#6d6f68"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     14,
+     6.4
+    ]
+   },
+   "at": [
+    0,
+    0.2
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a7a5a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a5a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    3.3,
+    0.75
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "colour": "#8a7a5a"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -7,
+    0,
+    0.75
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 6.4,
+    "height": 1.1,
+    "colour": "#8a7a5a"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    7,
+    0,
+    0.75
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 6.4,
+    "height": 1.1,
+    "colour": "#8a7a5a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -7,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#6d6f68"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4.3,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 1.0,
+    "count": 1,
+    "colour": "#c9bfa5"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 0.8,
+    "colour": "#5b4a32",
+    "frameColour": "#c9bfa5",
+    "posts": true
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    24,
+    -2
+   ],
+   "params": {
+    "width": 60,
+    "depth": 30,
+    "count": 22,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 20,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 20,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the platform itself; only the surrounding forest view was available, so deck, rails and wall are typed from the brief. Needle peak not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-osm-node-2148100832"
+}

@@ -1,0 +1,318 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rothschild_Francis_Square_(Market_Square)_(39724625551).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Prayitno",
+   "view": "street",
+   "file": "/tmp/places-evidence/charlotte-amalie/mk1.jpg",
+   "used": "long open iron-roofed pavilion with curved scalloped edge, red-trimmed cream roof sheet, white-gold columns, black iron railing around a raised paved floor with steps, green stall boxes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/522510236",
+   "used": "pavilion size 24 x 10 m, bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b2a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cdb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.9,
+   "height": 0.5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a8362b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d8c9a8",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "thickness": 0.25,
+    "pitch": 8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/colonnade",
+     "params": {
+      "length": 1,
+      "count": 1,
+      "height": 3.0,
+      "radius": 0.14,
+      "kind": "round",
+      "colour": "#f1e6c4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     -5.5,
+     0.9
+    ],
+    "end": [
+     12,
+     -5.5,
+     0.9
+    ],
+    "count": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/colonnade",
+     "params": {
+      "length": 1,
+      "count": 1,
+      "height": 3.0,
+      "radius": 0.14,
+      "kind": "round",
+      "colour": "#f1e6c4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12,
+     5.5,
+     0.9
+    ],
+    "end": [
+     12,
+     5.5,
+     0.9
+    ],
+    "count": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -7,
+    0.9
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.2,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#1d1f20"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    7,
+    0.9
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.2,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#1d1f20"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    13,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.9,
+    "run": 1.0,
+    "count": 3
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 4,
+    "kind": "box",
+    "colours": [
+     "#2f6b4f"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -16,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 2,
+    "spacing": 32
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -13,
+    0,
+    0.9
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 12,
+    "height": 1.2,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#1d1f20"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    13,
+    0,
+    0.9
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 12,
+    "height": 1.2,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#1d1f20"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bk1",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    16
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8cdb0",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#999999"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bk2",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    10,
+    16
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#9a9a96",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#888888"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof is a low hip, not the scalloped wavy skirt; no gold capitals or hanging lamps; backdrop buildings are plain boxes; railing is a fence part"
+ }
+}

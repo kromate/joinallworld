@@ -1,0 +1,313 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/409349407",
+   "used": "stadium outline (name match, 185 x 159 m with surroundings) scaled 0.6 to the scene clamp as the fenced ground and lawn; pitch axis along the 87 degree bearing"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Blakes_Estate_Stadium",
+   "used": "MFA Complex football ground, 2002, FIFA funded, capacity 1,000: one short covered stand, perimeter fence, floodlights"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -59.3,
+      14.8
+     ],
+     [
+      -36.4,
+      21.0
+     ],
+     [
+      -38.9,
+      46.0
+     ],
+     [
+      25.2,
+      49.7
+     ],
+     [
+      48.5,
+      26.8
+     ],
+     [
+      53.0,
+      -5.2
+     ],
+     [
+      47.3,
+      -29.6
+     ],
+     [
+      46.9,
+      -32.8
+     ],
+     [
+      44.3,
+      -44.8
+     ],
+     [
+      -27.7,
+      -48.9
+     ],
+     [
+      -29.3,
+      -27.2
+     ],
+     [
+      -57.2,
+      -26.5
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#7f9f5c",
+    "top": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    -2,
+    0.14
+   ],
+   "params": {
+    "length": 84,
+    "width": 56,
+    "stripes": 8,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -22,
+     -38
+    ],
+    "end": [
+     22,
+     -38
+    ],
+    "rows": 7,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "flip": false,
+    "under": "open",
+    "slab": 0.5,
+    "seatColour": "#3c6fa0",
+    "concreteColour": "#c9c5ba",
+    "underColour": "#a8a59c",
+    "canopy": {
+     "height": 5.2,
+     "depth": 6,
+     "thickness": 0.25,
+     "slopeDeg": 4,
+     "colour": "#7b8a8f",
+     "edgeColour": "#7b8a8f"
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -59.3,
+      14.8
+     ],
+     [
+      -36.4,
+      21.0
+     ],
+     [
+      -38.9,
+      46.0
+     ],
+     [
+      25.2,
+      49.7
+     ],
+     [
+      48.5,
+      26.8
+     ],
+     [
+      53.0,
+      -5.2
+     ],
+     [
+      47.3,
+      -29.6
+     ],
+     [
+      46.9,
+      -32.8
+     ],
+     [
+      44.3,
+      -44.8
+     ],
+     [
+      -27.7,
+      -48.9
+     ],
+     [
+      -29.3,
+      -27.2
+     ],
+     [
+      -57.2,
+      -26.5
+     ],
+     [
+      -59.3,
+      14.8
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -45,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    45,
+    34,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    26,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#3c6fa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing-rooms",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    30,
+    -42
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c5ba",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b8a8f",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -48
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -52
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -56,
+     44
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-osm-way-409349407",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: footprint only; stand, fence and lights typed from brief."
+ }
+}

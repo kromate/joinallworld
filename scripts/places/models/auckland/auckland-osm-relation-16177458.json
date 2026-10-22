@@ -1,0 +1,464 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-relation-16177458",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Auckland_Institute_of_Studies_20250129_173415.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Prosperosity",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/ais1.jpg",
+   "used": "six-storey cream slab with projecting vertical fins and a maroon parapet band, rooftop plant, lower white annexes with a maroon-clad mono-pitch block, curved entrance canopy on maroon posts, asphalt car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Auckland_Institute_of_Studies_20250129_173624.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Prosperosity",
+   "view": "street",
+   "used": "the campus also has converted villas and a red-white marker pole; not modelled"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16177458",
+   "used": "whole 270 x 180 m campus outline: not used as a footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 1,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d0",
+    "windows": "ribbon",
+    "windowRatio": 0.65,
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    },
+    "bands": "#d9d2bd",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 2.3,
+      "depth": 0.4,
+      "width": 0.28,
+      "colour": "#f4f1e6",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e2b2b",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -14,
+    14
+   ],
+   "z0": 21,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d6d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    12,
+    21
+   ],
+   "params": {
+    "radius": 1.2,
+    "n": 8,
+    "height": 4,
+    "colour": "#d0d3d6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annexe",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -24,
+    -3
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "maroon-block",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -11,
+    -3
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6e2b2b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5e2424",
+    "pitch": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     28,
+     8
+    ]
+   },
+   "at": [
+    18,
+    -4
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9ca8"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    16,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 16,
+    "depth": 6,
+    "height": 3.4,
+    "rise": 1.0,
+    "colour": "#a9b3be",
+    "edgeColour": "#f4f1e6",
+    "columns": 4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -20,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 0.4,
+    "colour": "#f2f2f2",
+    "frameColour": "#c43a30"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#d8dbe0",
+    "count": 3,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -15,
+    0
+   ],
+   "params": {
+    "colour": "#7e1f26",
+    "count": 2,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -4,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 3.4,
+    "colour": "#6e2b2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.5,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 3.4,
+    "colour": "#6e2b2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18.5,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 3.4,
+    "colour": "#6e2b2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    23,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 3.4,
+    "colour": "#6e2b2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    10,
+    20.2
+   ],
+   "params": {
+    "rect": [
+     46.4,
+     14.4
+    ],
+    "height": 1.5,
+    "colour": "#6e2b2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    15,
+    24
+   ],
+   "params": {
+    "radius": 1.4,
+    "n": 10,
+    "height": 3,
+    "colour": "#dcdcd8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    13,
+    24
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 6,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -38,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     30
+    ],
+    "height": 3,
+    "colour": "#5d7a40"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 22,
+    "count": 4,
+    "spread": 6,
+    "colour": "#2f4a2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 22,
+    "count": 3,
+    "spread": 6,
+    "colour": "#2f4a2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 3,
+    "spread": 8,
+    "colour": "#3d5a34"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ribbon windows and fins approximate, hillside is a flat step not a slope, annexe canopy simplified, plant block and tank generic"
+ }
+}

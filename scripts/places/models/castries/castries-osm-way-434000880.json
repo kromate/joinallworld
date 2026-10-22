@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-osm-way-434000880",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AmericanInternationalMedicalUniversity-12March2016.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gene93k",
+   "view": "front",
+   "file": "/tmp/places-evidence/castries/aimuA.jpg",
+   "used": "cream rendered three-storey block, central projecting portico with four white columns and a pediment, low red hip roof with a small red-capped cupola, arched ground windows, red-trimmed side stair"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1025638481",
+   "used": "footprint (47 x 32 m, projecting entrance bay on the front)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.667
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cc",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "bands": "#efe6cc",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b32a3c",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    6.8,
+    -18.9,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 10,
+      "radius": 0.32,
+      "height": 7.4,
+      "colour": "#fbfaf4",
+      "topColour": "#fbfaf4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3,
+     0,
+     0
+    ],
+    "end": [
+     3,
+     0,
+     0
+    ],
+    "count": 4,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-roof",
+   "footprint": {
+    "rect": [
+     9.0,
+     5.0
+    ]
+   },
+   "at": [
+    6.8,
+    -15.6
+   ],
+   "z0": 7.4,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efdc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f4efdc",
+    "pitch": 32,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cupola",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 10.8,
+   "height": 2.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe7c9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#d8283e",
+    "pitch": 40,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -17,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retaining-wall",
+   "footprint": {
+    "rect": [
+     46,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 1.6,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a5a52",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-rail",
+   "footprint": {
+    "rect": [
+     1.2,
+     6
+    ]
+   },
+   "at": [
+    14,
+    -19
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8323a",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Cream walls, pediment portico, low red hip, cupola, arched windows, stone wall and red stair added; upper walls still render blue-tinted by sky shading, portico is a projecting block not a recessed porch, no chain fence."
+ }
+}

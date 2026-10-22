@@ -1,0 +1,239 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-375230999",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/375230999",
+   "used": "real park outline (134 x 90 m) as the grass field and fence line; no photo of the park found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "field",
+   "params": {
+    "points": [
+     [
+      -60,
+      -21.3
+     ],
+     [
+      -53,
+      14.9
+     ],
+     [
+      -35,
+      59.5
+     ],
+     [
+      79.1,
+      -5.2
+     ],
+     [
+      80.1,
+      -7.7
+     ],
+     [
+      79.9,
+      -9.8
+     ],
+     [
+      77.1,
+      -11.9
+     ],
+     [
+      -15,
+      -55.3
+     ],
+     [
+      -29.7,
+      -18.4
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#6a9f5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "play-court",
+   "params": {
+    "rect": [
+     28,
+     16
+    ],
+    "height": 0.2,
+    "colour": "#b9b5a4"
+   },
+   "at": [
+    10,
+    -10
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    -20,
+    -8
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc9b8",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c9296",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -21,
+    0
+   ],
+   "params": {
+    "height": 1.6,
+    "kind": "fence",
+    "colour": "#9aa0a3",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      7,
+      36
+     ],
+     [
+      25,
+      81
+     ],
+     [
+      139,
+      16
+     ],
+     [
+      140,
+      13
+     ],
+     [
+      137,
+      9
+     ],
+     [
+      75,
+      -23
+     ],
+     [
+      45,
+      -34
+     ],
+     [
+      30,
+      3
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    15,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 25,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo; real outline as field and fence; pavilion, court and trees are typical, not observed"
+ }
+}

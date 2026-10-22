@@ -1,0 +1,222 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/buenos-aires.json",
+   "used": "no photo and no footprint found: two-storey render government office, flag, yard shed, blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8d0bf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#ffffff",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-block",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a9a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vehicle-shed",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    2,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7bcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -13,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#74acdf",
+    "count": 2,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    12,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#2f6f4f",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.8,
+    "kind": "railing",
+    "colour": "#3a3d41",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 1.5,
+    "count": 3,
+    "colour": "#bdbab2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -18
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -12,
+     -24
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     -6,
+     -24
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     14,
+     -24
+    ],
+    "yawDeg": 0
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or footprint found; modest two-storey render office with yard shed, flag and railing typed from the brief"
+ }
+}

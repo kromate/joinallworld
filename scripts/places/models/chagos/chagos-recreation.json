@@ -1,0 +1,101 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "chagos",
+ "venueId": "chagos-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/chagos.json#chagos-recreation",
+   "used": "40 x 28 m open sandy lawn under coconut palms with one small thatched pavilion (placeholder, no photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    6,
+    4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "deck_height": 0.5,
+    "post_height": 2.6,
+    "roof": "pyramid",
+    "thatch": true,
+    "rail": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 5,
+    "line": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 4,
+    "line": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   38
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Typed placeholder, no photo; lawn, pavilion and palm placement are typical, not observed."
+ }
+}

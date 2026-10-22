@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/945638035",
+   "used": "building outline containing the venue point; no photo of this building found, so form, colour and details come from the brief and Pitcairn village style (painted render, corrugated roof, solar roof)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b4f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 2.2,
+    "height": 2.8,
+    "steps": true,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#2f4f8f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "notice-board",
+   "params": {
+    "rect": [
+     2.2,
+     0.12
+    ],
+    "height": 1.4,
+    "z0": 0.8,
+    "colour": "#4f6f8f"
+   },
+   "at": [
+    -9,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "tankHeight": 1.7,
+    "colour": "#2f5f8f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -8
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   40,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM outline with gable green corrugated roof, front verandah, flagpole and a blank notice board per the brief."
+ }
+}

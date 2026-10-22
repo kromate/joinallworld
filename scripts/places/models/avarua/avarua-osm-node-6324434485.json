@@ -1,0 +1,935 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-osm-node-6324434485",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cook_Islands_National_Museum.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tom Ackroyd",
+   "view": "front",
+   "file": "/tmp/places-evidence/avarua/museum1.jpg",
+   "used": "museum hall: yellow rendered walls, yellow round pillars along the front and side, canoe-hull pointed-arch gable roof with swept fascia and grey metal sheet, red-brown lattice entrance panel, louvred gable window, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Te_Are_Karioi_Nui_National_Auditorium_of_the_Cook_Islands.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tom Ackroyd",
+   "view": "front",
+   "file": "/tmp/places-evidence/avarua/museum2.jpg",
+   "used": "dark-green auditorium with nested pale arched gable roof, green steel pole canopies either side, red brick-paved axis"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/avarua.json#avarua-osm-node-6324434485",
+   "used": "identity and civic complex scale; OSM complex outline (182 m, irregular) not used as footprint, the museum hall and auditorium are composed separately"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum-hall",
+   "footprint": {
+    "rect": [
+     15,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b93a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0b93a",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -2.5,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 5,
+      "rect": [
+       19,
+       35
+      ],
+      "colour": "#9a9ea0"
+     },
+     {
+      "z": 7,
+      "rect": [
+       18.6,
+       35
+      ],
+      "colour": "#9a9ea0"
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       17.4,
+       35
+      ],
+      "colour": "#9a9ea0"
+     },
+     {
+      "z": 12,
+      "rect": [
+       15.4,
+       35
+      ],
+      "colour": "#9a9ea0"
+     },
+     {
+      "z": 14.5,
+      "rect": [
+       12.6,
+       35
+      ],
+      "colour": "#9a9ea0"
+     },
+     {
+      "z": 17,
+      "rect": [
+       8.8,
+       35
+      ],
+      "colour": "#9a9ea0"
+     },
+     {
+      "z": 19.5,
+      "rect": [
+       5,
+       35
+      ],
+      "colour": "#9a9ea0"
+     },
+     {
+      "z": 21.2,
+      "rect": [
+       2,
+       35
+      ],
+      "colour": "#9a9ea0"
+     },
+     {
+      "z": 22,
+      "rect": [
+       0.6,
+       35
+      ],
+      "colour": "#9a9ea0"
+     }
+    ],
+    "colour": "#9a9ea0"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -19.7,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 5,
+      "rect": [
+       19.4,
+       0.5
+      ],
+      "colour": "#e0b93a"
+     },
+     {
+      "z": 7,
+      "rect": [
+       19.0,
+       0.5
+      ],
+      "colour": "#e0b93a"
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       17.799999999999997,
+       0.5
+      ],
+      "colour": "#e0b93a"
+     },
+     {
+      "z": 12,
+      "rect": [
+       15.8,
+       0.5
+      ],
+      "colour": "#e0b93a"
+     },
+     {
+      "z": 14.5,
+      "rect": [
+       13.0,
+       0.5
+      ],
+      "colour": "#e0b93a"
+     },
+     {
+      "z": 17,
+      "rect": [
+       9.200000000000001,
+       0.5
+      ],
+      "colour": "#e0b93a"
+     },
+     {
+      "z": 19.5,
+      "rect": [
+       5.4,
+       0.5
+      ],
+      "colour": "#e0b93a"
+     },
+     {
+      "z": 21.2,
+      "rect": [
+       2.4,
+       0.5
+      ],
+      "colour": "#e0b93a"
+     },
+     {
+      "z": 22,
+      "rect": [
+       1.0,
+       0.5
+      ],
+      "colour": "#e0b93a"
+     }
+    ],
+    "colour": "#e0b93a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -20.3,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 5,
+      "rect": [
+       17.900000000000002,
+       0.5
+      ],
+      "colour": "#eadcab"
+     },
+     {
+      "z": 7,
+      "rect": [
+       17.500000000000004,
+       0.5
+      ],
+      "colour": "#eadcab"
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       16.299999999999997,
+       0.5
+      ],
+      "colour": "#eadcab"
+     },
+     {
+      "z": 12,
+      "rect": [
+       14.3,
+       0.5
+      ],
+      "colour": "#eadcab"
+     },
+     {
+      "z": 14.5,
+      "rect": [
+       11.5,
+       0.5
+      ],
+      "colour": "#eadcab"
+     },
+     {
+      "z": 17,
+      "rect": [
+       7.7,
+       0.5
+      ],
+      "colour": "#eadcab"
+     },
+     {
+      "z": 19.5,
+      "rect": [
+       3.9,
+       0.5
+      ],
+      "colour": "#eadcab"
+     },
+     {
+      "z": 21.2,
+      "rect": [
+       0.9000000000000001,
+       0.5
+      ],
+      "colour": "#eadcab"
+     },
+     {
+      "z": 22,
+      "rect": [
+       0.6,
+       0.5
+      ],
+      "colour": "#eadcab"
+     }
+    ],
+    "colour": "#eadcab"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -7.5,
+     -18.5
+    ],
+    "end": [
+     7.5,
+     -18.5
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "profile": [
+        [
+         0.4,
+         0,
+         "#e0b93a"
+        ],
+        [
+         0.4,
+         7.2,
+         "#e0b93a"
+        ],
+        [
+         0,
+         7.2,
+         "#e0b93a"
+        ]
+       ],
+       "segments": 10,
+       "colour": "#e0b93a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.3,
+     -14
+    ],
+    "end": [
+     -8.3,
+     14
+    ],
+    "count": 10,
+    "of": [
+     {
+      "type": "mass",
+      "id": "pier",
+      "footprint": {
+       "rect": [
+        0.6,
+        0.6
+       ]
+      },
+      "height": 3.8,
+      "storeys": 1,
+      "wall": {
+       "material": "painted-render",
+       "colour": "#e0b93a",
+       "windows": "none",
+       "windowRatio": 0
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#e0b93a",
+       "material": "concrete"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "lattice-door",
+   "footprint": {
+    "rect": [
+     4.5,
+     0.5
+    ]
+   },
+   "at": [
+    -3.8,
+    -15.2
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b86a4a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a4a3a",
+    "material": "concrete"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gable-beam",
+   "footprint": {
+    "rect": [
+     11,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -19.2
+   ],
+   "z0": 10.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b93a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0b93a",
+    "material": "concrete"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "porch-beam",
+   "footprint": {
+    "rect": [
+     16,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -18.5
+   ],
+   "z0": 7.0,
+   "height": 1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b93a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0b93a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "louvre-gable",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -15.3
+   ],
+   "z0": 8.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3a30",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a30",
+    "material": "concrete"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 0.9,
+    "bottom": 0.3,
+    "colour": "#2d3a33",
+    "frameColour": "#ffffff",
+    "posts": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "auditorium",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    14,
+    42
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f4a3d",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4a3d",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    42,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 8,
+      "rect": [
+       30,
+       22
+      ],
+      "colour": "#efe4bd"
+     },
+     {
+      "z": 10.5,
+      "rect": [
+       27,
+       22
+      ],
+      "colour": "#efe4bd"
+     },
+     {
+      "z": 13,
+      "rect": [
+       22,
+       22
+      ],
+      "colour": "#efe4bd"
+     },
+     {
+      "z": 15.5,
+      "rect": [
+       16,
+       22
+      ],
+      "colour": "#efe4bd"
+     },
+     {
+      "z": 17.5,
+      "rect": [
+       10,
+       22
+      ],
+      "colour": "#efe4bd"
+     },
+     {
+      "z": 19,
+      "rect": [
+       4,
+       22
+      ],
+      "colour": "#efe4bd"
+     },
+     {
+      "z": 20,
+      "rect": [
+       1,
+       22
+      ],
+      "colour": "#efe4bd"
+     }
+    ],
+    "colour": "#efe4bd"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    42,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 8,
+      "rect": [
+       24,
+       24
+      ],
+      "colour": "#d8cca0"
+     },
+     {
+      "z": 11,
+      "rect": [
+       19,
+       24
+      ],
+      "colour": "#d8cca0"
+     },
+     {
+      "z": 14,
+      "rect": [
+       13,
+       24
+      ],
+      "colour": "#d8cca0"
+     },
+     {
+      "z": 16.5,
+      "rect": [
+       7,
+       24
+      ],
+      "colour": "#d8cca0"
+     },
+     {
+      "z": 18,
+      "rect": [
+       2,
+       24
+      ],
+      "colour": "#d8cca0"
+     }
+    ],
+    "colour": "#d8cca0"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -22,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 18,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#2f6a4a",
+    "edgeColour": "#2f6a4a",
+    "columns": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    26,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 18,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#2f6a4a",
+    "edgeColour": "#2f6a4a",
+    "columns": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      2,
+      -40
+     ],
+     [
+      2,
+      -20
+     ]
+    ],
+    "width": 22,
+    "colour": "#b5654a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glazed-door",
+   "footprint": {
+    "rect": [
+     2,
+     0.5
+    ]
+   },
+   "at": [
+    0.8,
+    -15.3
+   ],
+   "height": 2.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a4a52",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4a52",
+    "material": "concrete"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "balcony-band",
+   "footprint": {
+    "rect": [
+     7,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -15.5
+   ],
+   "z0": 5.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4d5257",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d5257",
+    "material": "concrete"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6,
+    "count": 4,
+    "spread": 8,
+    "colour": "#3f7a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof is a grey-blue stacked-rect pointed hull with no swept prow or exposed rafters; front gable face reads as pale slab, not an open cream soffit; yellow cross-beam, louvres and lattice are small; auditorium is a green box with nested cream arch roof and flat green canopies; palms are generic, rest of the 182 m complex omitted."
+ }
+}

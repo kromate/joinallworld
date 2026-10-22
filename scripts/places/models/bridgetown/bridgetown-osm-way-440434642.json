@@ -1,0 +1,112 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-osm-way-440434642",
+ "name": "St. Margaret's Anglican Church",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/440434642",
+   "used": "real outline, about 23 x 10 m, nave footprint"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/St._Margaret%27s_Church,_Barbados",
+   "used": "built 1862, parish of St John; no photo found, coral-stone gabled parish church with bellcote typical of Barbados"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ddd2b6",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bay": 4.2,
+    "cornice": true,
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b7268",
+    "material": "timber-shingle",
+    "pitch": 34,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "bellcote",
+   "at": [
+    0,
+    -10,
+    8.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -12.8,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     -8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     16
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the building was found; outline from OSM, bellcote and steps placed by guess from the common Barbados parish pattern."
+ }
+}

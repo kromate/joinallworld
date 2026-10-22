@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/423708528",
+   "used": "footprint, 10 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 15,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 1.08
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8ac",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 3
+   },
+   "z0": 5,
+   "height": 31,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcac0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#5f7f95",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a9a498"
+      ],
+      "height": 0.5,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    10,
+    8,
+    36
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 2,
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -20,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM outline extruded with estimated podium, ribbon windows and colours."
+ }
+}

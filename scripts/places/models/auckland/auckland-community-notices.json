@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/324695466",
+   "used": "real 44 x 40 m rotated outline of the containing commercial building (PD Insurance House)"
+  },
+  {
+   "kind": "text",
+   "used": "nearest Commons photos show The Spencer Hotel, a different building, so they were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d6d2",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bands": "#8a9aa3",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6b7f8c",
+    "windows": "curtain"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c8185"
+   },
+   "z0": 8.4
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#e8e6e0",
+    "frameColour": "#6b7f8c"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building (nearby photos show a different hotel); real OSM outline with generic two-storey ribbon-window office, details unverified."
+ }
+}

@@ -1,0 +1,324 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-295702030",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/295702030",
+   "used": "campus outline (165 x 113 m): placed the U of blocks and quad inside it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mapillary_(334339871423166,_slfre5s84ad2s43vhejgvk)_(charlieplett)_2020-03-11_18H55M47S000.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "charlieplett",
+   "view": "street",
+   "used": "checked only: street photos show roadside bush and a distant low pale-green/teal block; building not visible, so not used as a match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "campus-lawn",
+   "params": {
+    "points": [
+     [
+      -58,
+      -52
+     ],
+     [
+      58,
+      -52
+     ],
+     [
+      58,
+      15
+     ],
+     [
+      45,
+      50
+     ],
+     [
+      -58,
+      50
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#a3b88f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-range",
+   "footprint": {
+    "rect": [
+     76,
+     14
+    ]
+   },
+   "at": [
+    2,
+    -36
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee8d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#2b6a8f",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     14,
+     56
+    ]
+   },
+   "at": [
+    -46,
+    -1
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee8d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#2b6a8f",
+    "faces": {
+     "right": "plain",
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     44
+    ]
+   },
+   "at": [
+    43,
+    -8
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee8d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#2b6a8f",
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#2b6a8f",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9296",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    2,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#2b6a8f"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -46,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5,
+    "height": 3.8,
+    "form": "flat",
+    "colour": "#2b6a8f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    20,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -50
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     5
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     2
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -25,
+     15
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no exterior photo of the campus (street photos show only roadside bush); block layout typed from brief inside the real outline; colours generic cream/blue"
+ }
+}

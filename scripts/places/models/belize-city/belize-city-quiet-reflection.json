@@ -1,0 +1,305 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._John%27s_Anglican_Church,_Belize_City.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Adam Buhler",
+   "view": "front",
+   "file": "/tmp/places-evidence/belize-city/sjc1.jpg",
+   "used": "tower at the end of a long brick nave, crenellated stepped tower top, tall arched louvred windows, grey corrugated roof, weathered orange-brown ballast brick"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._John%27s_Cathedral,_Belize_City.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/belize-city/sjc2.jpg",
+   "used": "central three-stage tower with arched door, lower pink-brick side wings, stepped parapet gable behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/130793100",
+   "used": "overall size 30 x 21 m (outline too jagged to use directly)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     12.5
+    ]
+   },
+   "at": [
+    1,
+    2
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a6a45",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.26,
+    "bay": 4.2,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a4",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     8.5,
+     8.5
+    ]
+   },
+   "at": [
+    -14.5,
+    -2.2
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#946540",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c5a3c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wing",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -23.5,
+    0
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8c5f3d",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-0",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    -1,
+    -6.0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a6a45",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a4",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-1",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    7,
+    -6.0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a6a45",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a4",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    -14.5,
+    -2.2,
+    13
+   ],
+   "params": {
+    "length": 8.5,
+    "depth": 8.5,
+    "height": 0.9,
+    "merlon": 0.8,
+    "gap": 0.7,
+    "colour": "#946540"
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    12,
+    2,
+    9.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 11.5,
+    "height": 3.2,
+    "steps": 4,
+    "thickness": 0.6,
+    "colour": "#9a6a45"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    -14.5,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 3.2,
+    "colour": "#5a2a22"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    14,
+    -4.3,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.8,
+    "colour": "#7a2a22"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -4,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Window louvres/fanlight surrounds and parapeted stepped gables on nave sides only approximated (plain arched windows, gabled porches); render brick reads slightly more orange than the weathered ochre; tower still reads wide."
+ }
+}

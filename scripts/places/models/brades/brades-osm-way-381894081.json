@@ -1,0 +1,606 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Montserrat_National_Museum.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Christine Warner Hawks",
+   "view": "front",
+   "file": "/tmp/places-evidence/brades/museum1.jpg",
+   "used": "dusky-pink rendered walls, white metal hip roofs, cream upper band with louvre, entrance porch with white fascia, wooden double door, stone paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Montserrat_%E2%80%94_National_Museum_of_Montserrat_(building).JPG",
+   "licence": "CC BY 2.0 de",
+   "author": "User:Mattes",
+   "view": "side",
+   "file": "/tmp/places-evidence/brades/museum2.jpg",
+   "used": "single-storey main hall with steep white hip roof, lower hipped entrance wing at right, cream band under eaves"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/381894081",
+   "used": "overall size and bearing (about 32 x 29 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     19,
+     12
+    ]
+   },
+   "at": [
+    -5,
+    3
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9858a",
+    "windows": "none",
+    "plinth": 0.2,
+    "bands": "#e8e4d6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e9ecee",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9858a",
+    "windows": "none",
+    "plinth": 0.2,
+    "bands": "#e8e4d6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e9ecee",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    9,
+    -5.6
+   ],
+   "height": 3.4,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9858a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e9ecee",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    9,
+    -7.45,
+    2.5
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.0,
+    "bottom": 2.45,
+    "colour": "#1f6b4f",
+    "frameColour": "#f4f4f0",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "paving",
+   "footprint": {
+    "rect": [
+     7,
+     9
+    ]
+   },
+   "at": [
+    9,
+    -11
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "stone",
+    "colour": "#b5b0a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hallband",
+   "at": [
+    -5,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     19.1,
+     12.1
+    ],
+    "z0": 3.5,
+    "height": 1.1,
+    "colour": "#e8e4d6",
+    "topColour": "#e8e4d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wingband",
+   "at": [
+    11,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     13.1,
+     9.1
+    ],
+    "z0": 2.7,
+    "height": 0.9,
+    "colour": "#e8e4d6",
+    "topColour": "#e8e4d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "vent",
+   "at": [
+    -9,
+    -3.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.1
+    ],
+    "z0": 3.7,
+    "height": 0.6,
+    "colour": "#9aa3a6",
+    "topColour": "#9aa3a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    9,
+    -7.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     0.3
+    ],
+    "z0": 3.2,
+    "height": 0.8,
+    "colour": "#f4f4f0",
+    "topColour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doorrecess",
+   "at": [
+    9,
+    -7.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#8a4a2a",
+    "topColour": "#8a4a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "at": [
+    5.9,
+    -7.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#c9858a",
+    "topColour": "#c9858a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    12.1,
+    -7.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#c9858a",
+    "topColour": "#c9858a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cob0",
+   "at": [
+    6.8,
+    -9,
+    0
+   ],
+   "params": {
+    "radius": 1.0,
+    "n": 9,
+    "z0": 0.5,
+    "height": 0.08,
+    "colour": "#a8a395",
+    "topColour": "#c6c1b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cob1",
+   "at": [
+    9.0,
+    -9,
+    0
+   ],
+   "params": {
+    "radius": 1.0,
+    "n": 9,
+    "z0": 0.5,
+    "height": 0.08,
+    "colour": "#c6c1b3",
+    "topColour": "#c6c1b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cob2",
+   "at": [
+    11.2,
+    -9,
+    0
+   ],
+   "params": {
+    "radius": 1.0,
+    "n": 9,
+    "z0": 0.5,
+    "height": 0.08,
+    "colour": "#a8a395",
+    "topColour": "#c6c1b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cob3",
+   "at": [
+    6.8,
+    -12,
+    0
+   ],
+   "params": {
+    "radius": 1.0,
+    "n": 9,
+    "z0": 0.5,
+    "height": 0.08,
+    "colour": "#c6c1b3",
+    "topColour": "#c6c1b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cob4",
+   "at": [
+    9.0,
+    -12,
+    0
+   ],
+   "params": {
+    "radius": 1.0,
+    "n": 9,
+    "z0": 0.5,
+    "height": 0.08,
+    "colour": "#a8a395",
+    "topColour": "#c6c1b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cob5",
+   "at": [
+    11.2,
+    -12,
+    0
+   ],
+   "params": {
+    "radius": 1.0,
+    "n": 9,
+    "z0": 0.5,
+    "height": 0.08,
+    "colour": "#c6c1b3",
+    "topColour": "#c6c1b3"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    4.6,
+    -10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 2.8,
+    "height": 0.55,
+    "thickness": 0.6,
+    "colour": "#8f8c80"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 2.8,
+    "height": 0.55,
+    "thickness": 0.6,
+    "colour": "#8f8c80"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    4.3,
+    -12.5,
+    0
+   ],
+   "rotDeg": 70,
+   "params": {
+    "length": 2.8,
+    "height": 0.55,
+    "thickness": 0.6,
+    "colour": "#8f8c80"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14.2,
+    -12.5,
+    0
+   ],
+   "rotDeg": 110,
+   "params": {
+    "length": 2.8,
+    "height": 0.55,
+    "thickness": 0.6,
+    "colour": "#8f8c80"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    4.0,
+    -15,
+    0
+   ],
+   "rotDeg": 55,
+   "params": {
+    "length": 2.8,
+    "height": 0.55,
+    "thickness": 0.6,
+    "colour": "#8f8c80"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14.4,
+    -15,
+    0
+   ],
+   "rotDeg": 125,
+   "params": {
+    "length": 2.8,
+    "height": 0.55,
+    "thickness": 0.6,
+    "colour": "#8f8c80"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flower0",
+   "at": [
+    2.7,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 0.5,
+    "colour": "#e8b923",
+    "topColour": "#f0c532"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flower1",
+   "at": [
+    2.4,
+    -13.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 0.5,
+    "colour": "#e8b923",
+    "topColour": "#f0c532"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flower2",
+   "at": [
+    15.4,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 0.5,
+    "colour": "#e8b923",
+    "topColour": "#f0c532"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flower3",
+   "at": [
+    15.6,
+    -13.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 0.5,
+    "colour": "#e8b923",
+    "topColour": "#f0c532"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -2,
+     -9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     4,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     19,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-osm-way-381894081",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "blue strip under eaves and blue sign still render (band/sign colour override not applied), porch gable roof and stone planters only approximate; cobble is discs"
+ }
+}

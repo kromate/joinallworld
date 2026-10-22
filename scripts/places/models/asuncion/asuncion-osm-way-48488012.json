@@ -1,0 +1,249 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/48488012",
+   "used": "checked only: the outline is the whole 187 ha campus (2.3 x 1.3 km), so it is NOT used as a footprint; one representative faculty cluster is modelled; the Commons photo File:Univ_Nacional_de_Asuncion.jpg was looked at and rejected (white neo-baroque mansion, not the campus)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rectorate",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d1cdc2",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "bands": "#e8e1cf",
+    "pattern": {
+     "type": "floors",
+     "colour": "#e8e1cf"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9893",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "faculty-w",
+   "footprint": {
+    "kind": "L",
+    "size": [
+     36,
+     24
+    ]
+   },
+   "at": [
+    -46,
+    -10
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d1cdc2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#e8e1cf",
+    "pattern": {
+     "type": "floors",
+     "colour": "#e8e1cf"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9893",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "faculty-e",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    44,
+    -6
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d1cdc2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#e8e1cf",
+    "pattern": {
+     "type": "floors",
+     "colour": "#e8e1cf"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9893",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture-block",
+   "footprint": {
+    "rect": [
+     18,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e8e1cf",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bands": "#e8e1cf",
+    "pattern": {
+     "type": "floors",
+     "colour": "#e8e1cf"
+    },
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a7770",
+    "pitch": 6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 4,
+    "height": 3.2,
+    "columns": 8,
+    "colour": "#b9b5aa"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    24,
+    -36,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 18,
+    "count": 5,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 16,
+    "count": 5,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the campus; one typical cluster of 1960s-80s concrete faculty blocks from the brief; real extent is a 187 ha campus"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-way-48488012"
+}

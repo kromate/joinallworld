@@ -1,0 +1,136 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/399960352",
+   "used": "footprint 19.8 x 8.1 m, single storey house-shop"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found on Commons or Wikidata; modelled from the brief and OSM facts only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -137
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98c5f",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    },
+    "bands": "#f2efe6",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5473a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 1.8,
+    "height": 2.6,
+    "colours": [
+     "#3f6e4f",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -5.4,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.0,
+    "bottom": 2.9,
+    "colour": "#f2efe6",
+    "frameColour": "#3f6e4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    13,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.6,
+    "depth": 2,
+    "height": 2.4,
+    "colour": "#3f6e4f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Shape and colours are guesses; no photo of this shop exists online."
+ }
+}

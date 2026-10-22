@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-node-12898274696",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/826569078",
+   "used": "scale only (34 x 23 m): the containing building is a shop called Best Value, not confirmed to be the market, so its outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     28
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#bdb8ab",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    6,
+    0.15
+   ],
+   "params": {
+    "length": 34,
+    "depth": 11,
+    "height": 4.6,
+    "roof": "gable",
+    "goods": "none",
+    "post_pitch": 4.5
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    -5,
+    0.15
+   ],
+   "params": {
+    "length": 34,
+    "depth": 11,
+    "height": 4.6,
+    "roof": "gable",
+    "goods": "none",
+    "post_pitch": 4.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       0.9
+      ],
+      "height": 0.8,
+      "colour": "#c9b98a",
+      "material": "timber"
+     }
+    },
+    "mode": "grid",
+    "cols": 9,
+    "rows": 4,
+    "dx": 3.6,
+    "dy": 4.4,
+    "vary": {}
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -14.5,
+    0.15
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 5.2,
+    "kind": "umbrella",
+    "colours": [
+     "#4a79a3",
+     "#f4f1ea",
+     "#e0b23a"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -23,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 3,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    24,
+    -4,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 2,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -12.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#4a79a3",
+    "frameColour": "#f4f1ea",
+    "posts": true
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this market found; a single wide open gable shed with produce tables and a blue accent is typed from the brief and Apia market conventions."
+ }
+}

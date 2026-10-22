@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cornwall_Park_Kiosk_from_NE.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Bjankuloski06",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/kiosk_ne.jpg",
+   "used": "low hipped terracotta-tile roof, cream weatherboard walls with blue-grey trim, glazed window bank left, central entrance with canopy and steps, verandah wing with timber balustrade on the right, dark-roofed turret pavilion at far right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cornwall_Park_Kiosk_from_SE.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Bjankuloski06",
+   "view": "side",
+   "used": "checked wing arrangement"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24010567",
+   "used": "overall size 25 x 23 m, 1908"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e9dfc2",
+    "windows": "punched",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "bands": "#3f506b",
+    "plinth": 0.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8553c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     2.6
+    ]
+   },
+   "at": [
+    -1,
+    -7.4
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f506b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f506b"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -1,
+    -9.3,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 0.6,
+    "run": 0.45,
+    "count": 5,
+    "colour": "#5d6168"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah",
+   "footprint": {
+    "rect": [
+     11,
+     9
+    ]
+   },
+   "at": [
+    14,
+    -3
+   ],
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#46597a",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a93a3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "turret",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    17,
+    3
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#ecdcae",
+    "windows": "punched",
+    "windowRatio": 0.7,
+    "bands": "#3f506b"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3d4448",
+    "material": "slate",
+    "pitch": 30,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    -4,
+    1
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "radius": 1.5,
+    "colours": [
+     "#2c2f3a"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 1,
+    "spread": 8,
+    "colour": "#3d5a34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     9
+    ],
+    "height": 0.05,
+    "colour": "#b8645e"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    8.6,
+    -7.6,
+    1.1
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.0,
+    "postEvery": 1.8,
+    "colour": "#46597a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "verandah wing is a low blue deck with balustrade, turret simplified, no ivy/planting, trees at sides not dense backdrop"
+ }
+}

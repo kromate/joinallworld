@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-240655511",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/240655511",
+   "used": "real five-sided plan, about 84 x 60 m, 7 levels, building=retail"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdbf9f",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#33424f",
+    "plinth": 0.4,
+    "cornice": true,
+    "groundKind": "shopfront",
+    "groundHeight": 4.5,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true,
+    "scale": 0.96,
+    "simplify": 1.5
+   },
+   "z0": 9,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a8b8c4",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "glassColour": "#4a6377",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e6e0d0"
+     }
+    ],
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-room",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 28,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aeb4b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -28,
+    -36
+   ],
+   "rotDeg": 16,
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "bottom": 9.8,
+    "colour": "#c9a24a",
+    "frameColour": "#e3e0d8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -30
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -45,
+    -40
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building: real OSM plan and 7 levels; podium-plus-glazed-upper split and colours are typical for Chacao malls, not verified"
+ }
+}

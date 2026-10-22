@@ -1,0 +1,220 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/376258805",
+   "used": "real 15.9 x 11.5 m angled house outline (building=house, 6.8 m from the venue point)"
+  },
+  {
+   "kind": "text",
+   "used": "single-storey painted Caribbean house, corrugated red hip roof, veranda deck over the water, from the brief; photos found nearby show Cruz Bay on St John, a different place, so none were used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#8fb3a6",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#f4f1ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d2f",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     17,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a98a62",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b39468"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14,
+    "width": 2.4,
+    "height": 0.7,
+    "rails": true,
+    "colour": "#9a7c55"
+   }
+  },
+  {
+   "type": "market-open/colonnade",
+   "at": [
+    -7,
+    -13,
+    0.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 4,
+    "spacing": 4.6,
+    "height": 2.6,
+    "radius": 0.12,
+    "kind": "square",
+    "beam": 0.2,
+    "wall_colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-roof",
+   "footprint": {
+    "rect": [
+     17,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "rotDeg": 0,
+   "z0": 3.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f1ea",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a63d2f",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -11,
+    0.7
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "radius": 1.3,
+    "height": 2.3,
+    "colours": [
+     "#f4f1ea",
+     "#a63d2f"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -13,
+    6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    -2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "forecourtDepth": 24,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -15,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "footprint only; nearby photos were of a different place; colours and veranda inferred"
+ }
+}

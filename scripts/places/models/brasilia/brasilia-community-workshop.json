@@ -1,0 +1,336 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ICC_(14989915721).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Universidade de Brasilia",
+   "view": "front",
+   "file": "/tmp/places-evidence/brasilia/icc1.jpg",
+   "used": "row of tall rectangular raw-concrete columns carrying a beam grid roof, lower storey in orange-brown brick, dark glazing strip, tan concrete upper wall, aggregate pavement"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:IB_UnB.jpg",
+   "licence": "Public domain",
+   "author": "Nossedotti",
+   "view": "detail",
+   "used": "NOT used: shows the Instituto de Biologia, a different building"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/332888307",
+   "used": "campus polygon is 5 km wide so not usable as a footprint; a 110 m portion of the ICC is modelled from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brick-base",
+   "footprint": {
+    "rect": [
+     64,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4825a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-band",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "z0": 3.0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f3a40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concrete-upper",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "z0": 5.4,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c2ad8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -9,
+     0
+    ],
+    "end": [
+     24,
+     -9,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 1,
+    "lod2Step": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.8
+      ],
+      "height": 9.5,
+      "colour": "#c8c3b8",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "edge-beam",
+   "at": [
+    0,
+    -9
+   ],
+   "params": {
+    "rect": [
+     60,
+     0.8
+    ],
+    "height": 1.0,
+    "colour": "#8f8c84",
+    "z0": 9.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "cross-beams",
+   "at": [
+    0,
+    0,
+    9.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     2,
+     0
+    ],
+    "end": [
+     24,
+     2,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       24
+      ],
+      "height": 2.0,
+      "colour": "#7d7a72",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "saw-fins",
+   "at": [
+    0,
+    0,
+    11.5
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -21,
+     2,
+     0
+    ],
+    "end": [
+     27,
+     2,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       23
+      ],
+      "height": 1.6,
+      "colour": "#6a6862",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab",
+   "at": [
+    0,
+    3
+   ],
+   "params": {
+    "rect": [
+     60,
+     18
+    ],
+    "height": 0.6,
+    "colour": "#585650",
+    "z0": 9.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "walk",
+   "at": [
+    0,
+    -12
+   ],
+   "params": {
+    "rect": [
+     66,
+     12
+    ],
+    "height": 0.12,
+    "colour": "#c4bca9",
+    "z0": 0
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "shrubs",
+   "at": [
+    -22,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3,
+    "count": 9,
+    "spread": 12,
+    "colour": "#c4527e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 8,
+  "treeKind": "broadleaf",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Columns are still shorter and thicker-looking than the real tall slender ones; roof is thin fins not a deep cantilevered sawtooth with angled slabs; glazing strip not recessed; no posters/cork boards, shrubs are small pink lollipops."
+ }
+}

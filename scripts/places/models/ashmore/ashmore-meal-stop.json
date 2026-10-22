@@ -1,0 +1,105 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashmore",
+ "venueId": "ashmore-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+   "used": "small white galley hut with green awning and picnic benches on sand (8 x 6 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "galley",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f1eee4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b8bec1",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -3.6,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2.2,
+    "colours": [
+     "#8c9a5a",
+     "#f1eee4"
+    ]
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3,
+    -6.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -6.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no real counterpart; hut typical"
+ }
+}

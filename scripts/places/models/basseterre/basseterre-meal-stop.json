@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/556818036",
+   "used": "footprint (containing match, 26 x 11 m, agrees with the brief)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Circus_from_Ballahoo.JPG",
+   "licence": "see Commons page",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/basseterre/The_Circus_from_Ballahoo.JPG",
+   "used": "taken from Ballahoo looking out, so it shows the neighbouring Circus buildings not Ballahoo itself: cream and yellow painted clapboard upper storeys, white timber balcony railings, pitched roofs, green accents (style palette only)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4e4b8",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "windowShape": "rect",
+    "bands": "#ffffff",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a3462f",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "floors": 1,
+    "storeyHeight": 4.2,
+    "proud": 1.6,
+    "rail": true,
+    "railHeight": 1.0,
+    "colour": "#4f7f6a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.6,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#4f7f6a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.9,
+    "bottom": 3.4,
+    "colour": "#4f7f6a",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of Ballahoo itself (Commons image is taken from it). Outline is real OSM; hip roof fitted to an irregular footprint, balcony gallery and colours inferred from neighbouring Circus buildings."
+ }
+}

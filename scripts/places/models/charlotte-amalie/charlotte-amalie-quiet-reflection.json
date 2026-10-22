@@ -1,0 +1,441 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Synagogue_of_Beracha_Veshalom_Vegemiluth_Hasidim,_Krystalgade_16A_%26_B,_Charlotte_Amalie_(St._Thomas_County,_Virgin_Islands).jpg",
+   "licence": "Public domain (HABS, Library of Congress)",
+   "author": "HABS photographer",
+   "view": "front",
+   "file": "/tmp/places-evidence/charlotte-amalie/syn1.jpg",
+   "used": "temple front with pediment on pillars at the north end, steps up to a gated entry court with low stone retaining walls and iron railing, rubble stone side wall, arched Gothic window, low hip roof, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/215454486",
+   "used": "hall outline (about 12 x 19 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 0.8
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "flint",
+    "colour": "#efe7d4",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "trimColour": "#f6f2e8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d2f",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "at": [
+    -5.62,
+    -11.27,
+    0.5
+   ],
+   "rotDeg": -11,
+   "params": {
+    "rect": [
+     0.75,
+     0.75
+    ],
+    "height": 4.8,
+    "colour": "#efe9da",
+    "topColour": "#efe9da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    -3.46,
+    -11.69,
+    0.5
+   ],
+   "rotDeg": -11,
+   "params": {
+    "rect": [
+     0.75,
+     0.75
+    ],
+    "height": 4.8,
+    "colour": "#efe9da",
+    "topColour": "#efe9da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier2",
+   "at": [
+    -1.3,
+    -12.11,
+    0.5
+   ],
+   "rotDeg": -11,
+   "params": {
+    "rect": [
+     0.75,
+     0.75
+    ],
+    "height": 4.8,
+    "colour": "#efe9da",
+    "topColour": "#efe9da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier3",
+   "at": [
+    0.86,
+    -12.53,
+    0.5
+   ],
+   "rotDeg": -11,
+   "params": {
+    "rect": [
+     0.75,
+     0.75
+    ],
+    "height": 4.8,
+    "colour": "#efe9da",
+    "topColour": "#efe9da"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "back-wall",
+   "at": [
+    -2.19,
+    -10.92,
+    0.5
+   ],
+   "rotDeg": -11,
+   "params": {
+    "rect": [
+     8.4,
+     0.3
+    ],
+    "height": 4.8,
+    "colour": "#efe7d4",
+    "topColour": "#efe7d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entablature",
+   "at": [
+    -2.31,
+    -11.51,
+    5.3
+   ],
+   "rotDeg": -11,
+   "params": {
+    "rect": [
+     8.8,
+     2.0
+    ],
+    "height": 0.6,
+    "colour": "#efe9da",
+    "topColour": "#efe9da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "at": [
+    -2.31,
+    -11.51
+   ],
+   "z0": 5.9,
+   "rotDeg": -11,
+   "footprint": {
+    "rect": [
+     8.8,
+     2.0
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe9da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4dcc8",
+    "pitch": 16,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    -2.4,
+    -12.0,
+    0
+   ],
+   "rotDeg": -11,
+   "params": {
+    "rect": [
+     9.0,
+     3.0
+    ],
+    "height": 0.5,
+    "colour": "#cfc8b8",
+    "topColour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "court-steps",
+   "at": [
+    -4.29,
+    -13.87,
+    0
+   ],
+   "rotDeg": -11,
+   "params": {
+    "width": 3,
+    "rise": 0.3,
+    "run": 0.55,
+    "count": 8,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "iron-arch-gate",
+   "at": [
+    -2.78,
+    -13.96,
+    0
+   ],
+   "rotDeg": -11,
+   "params": {
+    "width": 3.2,
+    "height": 3.4,
+    "pillar": 0.3,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#222222",
+    "leafColour": "#1d1d1d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern",
+   "at": [
+    -2.78,
+    -13.96,
+    3.4
+   ],
+   "rotDeg": -11,
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 0.6,
+    "colour": "#1d1d1d",
+    "topColour": "#1d1d1d"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "retain-l",
+   "at": [
+    -4.75,
+    -12.56,
+    0
+   ],
+   "rotDeg": -101,
+   "params": {
+    "length": 5.0,
+    "height": 1.3,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#b9ad92"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "rail-l",
+   "at": [
+    -4.32,
+    -12.65,
+    0
+   ],
+   "rotDeg": -101,
+   "params": {
+    "length": 4.0,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "bars",
+    "colour": "#1d1d1d"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "retain-r",
+   "at": [
+    -0.43,
+    -13.4,
+    0
+   ],
+   "rotDeg": -101,
+   "params": {
+    "length": 5.0,
+    "height": 1.3,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#b9ad92"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "rail-r",
+   "at": [
+    -0.86,
+    -13.32,
+    0
+   ],
+   "rotDeg": -101,
+   "params": {
+    "length": 4.0,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "bars",
+    "colour": "#1d1d1d"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "court-wall-l",
+   "at": [
+    -9.16,
+    -12.72,
+    0
+   ],
+   "rotDeg": -11,
+   "params": {
+    "length": 5.0,
+    "height": 1.3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#b9ad92"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "court-wall-r",
+   "at": [
+    3.6,
+    -15.21,
+    0
+   ],
+   "rotDeg": -11,
+   "params": {
+    "length": 5.0,
+    "height": 1.3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#b9ad92"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "court-rail",
+   "at": [
+    2.56,
+    -15.31,
+    1.3
+   ],
+   "rotDeg": -11,
+   "params": {
+    "length": 4.0,
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "bars",
+    "colour": "#1d1d1d"
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "gothic-window",
+   "at": [
+    3.01,
+    -11.93,
+    1.6
+   ],
+   "rotDeg": -11,
+   "params": {
+    "width": 1.1,
+    "height": 3.0,
+    "kind": "pointed",
+    "trim": "#efe9da"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Square piers, pediment, gate, steps, retaining walls and Gothic window added; gate arch is a flat lintel not a semicircle with lantern, steps are shallow and hard to read, hall front is not as recessed as photo, and the surrounding plaza replaces the hillside lane."
+ }
+}

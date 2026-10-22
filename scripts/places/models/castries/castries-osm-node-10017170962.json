@@ -1,0 +1,178 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-osm-node-10017170962",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/397364269",
+   "used": "irregular fenced green outline, about 52 x 31 m"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found on Commons or Wikidata; modelled from the brief and OSM facts only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "core/revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#7a6a58",
+    "profile": [
+     [
+      0.5,
+      0,
+      "#6b5a48"
+     ],
+     [
+      1.6,
+      0.6
+     ],
+     [
+      2.4,
+      2.5
+     ],
+     [
+      2.7,
+      5
+     ],
+     [
+      2.4,
+      7.5
+     ],
+     [
+      1.6,
+      9.5
+     ],
+     [
+      0.6,
+      10.5
+     ],
+     [
+      0.2,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    0,
+    10
+   ],
+   "params": {
+    "colour": "#4f7a3a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       5
+      ]
+     },
+     {
+      "z": 2.5,
+      "ellipse": [
+       9,
+       9
+      ]
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       10,
+       10
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 9.5,
+      "ellipse": [
+       1.5,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 0.9,
+    "bottom": 0.8,
+    "colour": "#d8d2c0",
+    "frameColour": "#6b5a48"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Crown is a smooth dome, real baobab has bare branching; fence and plaque guessed."
+ }
+}

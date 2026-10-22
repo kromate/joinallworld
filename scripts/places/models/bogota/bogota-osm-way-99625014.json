@@ -1,0 +1,407 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-way-99625014",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2019_Bogot%C3%A1_-_Iglesia_de_Monserrate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Felipe Restrepo Acosta",
+   "view": "front",
+   "file": "/tmp/places-evidence/bogota/m20-mon1.jpg",
+   "used": "tall white square bell tower with pointed spire and red trim on the left of centre, long whitewashed two-storey body with low terracotta tile roof, arched loggia at lower right, red-framed balcony box beside the tower, rounded curved building on the left, white terrace parapet"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bog_iglesia_de_Monserrate.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Felipe Restrepo Acosta",
+   "view": "street",
+   "file": "/tmp/places-evidence/bogota/m20-mon3.jpg",
+   "used": "overall proportion of tower to body, hilltop setting among eucalyptus"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/99625014",
+   "used": "overall extent (about 92 x 50 m including forecourt); the volumes are composed by hand because the outline mixes forecourt and building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 30,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     84,
+     34
+    ]
+   },
+   "at": [
+    2,
+    -4
+   ],
+   "z0": 0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eeeae0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    2,
+    4
+   ],
+   "z0": 2.2,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "bay": 9,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "plinth": 0.3,
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    28,
+    -5
+   ],
+   "z0": 2.2,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "arcade"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efece4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balcony-box",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -7
+   ],
+   "z0": 6.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#b3312b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3312b",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     5.2,
+     5.2
+    ]
+   },
+   "at": [
+    -5,
+    -2
+   ],
+   "z0": 2.2,
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f8f7f2",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "bands",
+     "colour": "#a8553a"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f8f7f2",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    -5,
+    -2
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "z0": 24.2,
+    "height": 5,
+    "colour": "#f8f7f2",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spire",
+   "at": [
+    -5,
+    -2
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "z0": 29.2,
+    "height": 3.5,
+    "topScale": 0.5,
+    "colour": "#f6f4ee",
+    "topColour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "needle",
+   "at": [
+    -5,
+    -2
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "z0": 32.7,
+    "height": 4,
+    "topScale": 0.03,
+    "colour": "#f6f4ee",
+    "topColour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "spire-mast",
+   "at": [
+    -5,
+    -2
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 36.5,
+    "height": 3,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rotunda",
+   "at": [
+    -27,
+    2
+   ],
+   "params": {
+    "colour": "#f4f2ec",
+    "sections": [
+     {
+      "z": 2.2,
+      "ellipse": [
+       12,
+       10
+      ]
+     },
+     {
+      "z": 7,
+      "ellipse": [
+       12,
+       10
+      ]
+     },
+     {
+      "z": 7.2,
+      "ellipse": [
+       13,
+       11
+      ],
+      "colour": "#e4e0d6"
+     },
+     {
+      "z": 7.8,
+      "ellipse": [
+       13,
+       11
+      ],
+      "colour": "#e4e0d6"
+     },
+     {
+      "z": 7.8,
+      "ellipse": [
+       11.6,
+       9.6
+      ],
+      "colour": "#f4f2ec"
+     },
+     {
+      "z": 12,
+      "ellipse": [
+       11.6,
+       9.6
+      ]
+     },
+     {
+      "z": 12.4,
+      "ellipse": [
+       12.2,
+       10.2
+      ],
+      "colour": "#e4e0d6"
+     },
+     {
+      "z": 12.4,
+      "ellipse": [
+       11.4,
+       9.4
+      ],
+      "colour": "#e4e0d6"
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hill-trees-a",
+   "at": [
+    -44,
+    -18
+   ],
+   "params": {
+    "kind": "eucalyptus",
+    "height": 16,
+    "count": 3,
+    "spread": 8,
+    "line": 0,
+    "colour": "#2f5a2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "hill-trees-b",
+   "at": [
+    44,
+    -18
+   ],
+   "params": {
+    "kind": "eucalyptus",
+    "height": 14,
+    "count": 3,
+    "spread": 8,
+    "line": 0,
+    "colour": "#2f5a2e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hillside forest omitted behind building; rotunda is a plain drum; belfry and loggia detail coarse"
+ }
+}

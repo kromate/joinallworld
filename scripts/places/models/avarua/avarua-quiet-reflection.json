@@ -1,0 +1,209 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/avarua.json",
+   "used": "14 x 8 m whitewashed CICC-style mission chapel, red corrugated gable roof, gable belfry, arched windows, steps; point lies inside Takamoa college grounds (OSM college outline too large to be the chapel, not used); no photo of this placeholder exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f3ea",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3463a",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -5.1
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ffffff",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a3463a",
+    "material": "corrugated",
+    "pitch": 35,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mosque-domed/bellcote",
+   "at": [
+    0,
+    -4.2,
+    6.2
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 2.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -6.35,
+    0.5
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.4,
+    "arch": true,
+    "colour": "#7aa7c7",
+    "trim": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.4,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -9
+     ],
+     [
+      0,
+      -18
+     ],
+     [
+      8,
+      -26
+     ]
+    ],
+    "width": 2.0,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "notes": "Game placeholder; modest typical Cook Islands mission chapel.",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this placeholder; typical CICC whitewashed chapel, belfry and door typed"
+ }
+}

@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-osm-way-276186496",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/14744065",
+   "used": "real 16-point outline (91 x 72 m, 4,771 m2) and building:levels=8"
+  },
+  {
+   "kind": "text",
+   "used": "brief: eight-storey painted-render block, long ribbon window bands, emergency ramp; the Commons eswiki lead photo shows the separate Emergencias Medicas centre (EM sign) and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital-osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7e2d6",
+    "windows": "none",
+    "windowRatio": 0.28,
+    "plinth": 0.6,
+    "bands": "#a9a39a",
+    "glassColour": "#4f6672",
+    "cornice": true,
+    "bay": 12,
+    "faces": {
+     "front": "ribbon"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e7e2d6",
+       "#bdb7a8"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9396",
+    "material": "concrete",
+    "parapet": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    18,
+    32.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     10
+    ],
+    "height": 3.6,
+    "colour": "#cfcac0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    12,
+    32.2
+   ],
+   "params": {
+    "rect": [
+     6,
+     5
+    ],
+    "height": 2.4,
+    "colour": "#a9a39a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -5,
+    -44,
+    0
+   ],
+   "rotDeg": 16,
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "columns": 4,
+    "colour": "#f6f4ee",
+    "roofColour": "#a9a39a",
+    "vans": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -5,
+    -47,
+    6
+   ],
+   "rotDeg": 16,
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -52,
+    0
+   ],
+   "rotDeg": 16,
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 2.2,
+    "colour": "#f6f4ee",
+    "frameColour": "#8f9396"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -26,
+    -52,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2,
+    "colour": "#d9d9d4"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    8,
+    18,
+    35.8
+   ],
+   "params": {
+    "radius": 5.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     -25
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of this hospital (the Commons lead is a different building); finishes, ribbon windows on front faces only and rooftop plant are typed from the brief; helipad unverified"
+ }
+}

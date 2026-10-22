@@ -1,0 +1,287 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/292984598",
+   "used": "scale of the adjoining historic building (15 x 7.5 m), 39 m from the square, nearest match only"
+  },
+  {
+   "kind": "text",
+   "used": "shaded brick-paved pocket square with benches and mature trees beside a historic building, from the brief; Commons photos nearby show the waterfront and market, not the square, so none were used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "paving",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8362b",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8362b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-bed",
+   "footprint": {
+    "rect": [
+     6,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9b79a",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a8f4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-house",
+   "footprint": {
+    "rect": [
+     15,
+     7.5
+    ]
+   },
+   "at": [
+    0,
+    13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9b79a",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#f1e7cf"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8362b",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    -7,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 20,
+    "height": 0.9,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    -7,
+    0.5
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10,
+    -7,
+    0.5
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -7,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3,
+    "height": 2.2,
+    "pillar": 0.5,
+    "leaf": "bars",
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       1.8,
+       0.5
+      ]
+     },
+     "height": 0.5,
+     "wall": {
+      "material": "timber",
+      "colour": "#5c4630"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#5c4630"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -3
+    ],
+    "end": [
+     6,
+     -3
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -7,
+    3,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    7,
+    2,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    5,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -5,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 4.5,
+    "count": 2,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-osm-node-356559520",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the square; side walls and building style inferred"
+ }
+}

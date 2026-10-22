@@ -1,0 +1,521 @@
+{
+ "name": "Speightstown Bus Terminal",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/12724653",
+   "used": "real 67 x 33 m outline and its bearing (about 102 degrees); the open covered bus station on that slab"
+  },
+  {
+   "kind": "text",
+   "used": "no photo exists; brief describes a long corrugated roof on steel posts with bays for blue-and-yellow public buses"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron-slab",
+   "params": {
+    "points": [
+     [
+      23.19,
+      -29.24
+     ],
+     [
+      9.4,
+      36.12
+     ],
+     [
+      -23.19,
+      29.24
+     ],
+     [
+      -9.4,
+      -36.12
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#b9b6ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-main",
+   "params": {
+    "points": [
+     [
+      14.17,
+      -30.12
+     ],
+     [
+      0.8,
+      33.28
+     ],
+     [
+      -14.17,
+      30.12
+     ],
+     [
+      -0.8,
+      -33.28
+     ]
+    ],
+    "z0": 4.3,
+    "height": 0.5,
+    "colour": "#9aa0a4",
+    "material": "metal-roof"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ridge-band",
+   "params": {
+    "points": [
+     [
+      7.47,
+      -31.54
+     ],
+     [
+      -5.91,
+      31.87
+     ],
+     [
+      -7.47,
+      31.54
+     ],
+     [
+      5.91,
+      -31.87
+     ]
+    ],
+    "z0": 4.8,
+    "height": 0.5,
+    "colour": "#adb2b5",
+    "material": "metal-roof"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia-blue",
+   "params": {
+    "points": [
+     [
+      14.17,
+      -30.12
+     ],
+     [
+      0.8,
+      33.28
+     ],
+     [
+      0.05,
+      33.12
+     ],
+     [
+      13.43,
+      -30.28
+     ]
+    ],
+    "z0": 4.0,
+    "height": 0.45,
+    "colour": "#2f5f9a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-0-a",
+   "at": [
+    12.55,
+    -28.01,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-0-b",
+   "at": [
+    -0.17,
+    -30.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-1-a",
+   "at": [
+    10.49,
+    -18.23,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-1-b",
+   "at": [
+    -2.23,
+    -20.91,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-2-a",
+   "at": [
+    8.42,
+    -8.44,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-2-b",
+   "at": [
+    -4.3,
+    -11.13,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-3-a",
+   "at": [
+    6.36,
+    1.34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-3-b",
+   "at": [
+    -6.36,
+    -1.34,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-4-a",
+   "at": [
+    4.3,
+    11.13,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-4-b",
+   "at": [
+    -8.42,
+    8.44,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-5-a",
+   "at": [
+    2.23,
+    20.91,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-5-b",
+   "at": [
+    -10.49,
+    18.23,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-6-a",
+   "at": [
+    0.17,
+    30.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-6-b",
+   "at": [
+    -12.55,
+    28.01,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 4.3,
+    "colour": "#606569"
+   }
+  },
+  {
+   "type": "minibus",
+   "id": "bus-0",
+   "at": [
+    7.81,
+    -24.92,
+    0.25
+   ],
+   "params": {
+    "colour": "#2f5f9a",
+    "stripe": "#f2cc4b",
+    "yaw": 191.91514707126504
+   }
+  },
+  {
+   "type": "minibus",
+   "id": "bus-1",
+   "at": [
+    4.1,
+    -7.31,
+    0.25
+   ],
+   "params": {
+    "colour": "#2f5f9a",
+    "stripe": "#f2cc4b",
+    "yaw": 191.91514707126504
+   }
+  },
+  {
+   "type": "minibus",
+   "id": "bus-2",
+   "at": [
+    0.79,
+    8.34,
+    0.25
+   ],
+   "params": {
+    "colour": "#2f5f9a",
+    "stripe": "#f2cc4b",
+    "yaw": 191.91514707126504
+   }
+  },
+  {
+   "type": "minibus",
+   "id": "bus-3",
+   "at": [
+    -2.92,
+    25.96,
+    0.25
+   ],
+   "params": {
+    "colour": "#2f5f9a",
+    "stripe": "#f2cc4b",
+    "yaw": 191.91514707126504
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "ticket-kiosk",
+   "at": [
+    -5.26,
+    -33.2,
+    0.25
+   ],
+   "rotDeg": 101.9,
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#f2cc4b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board-0",
+   "at": [
+    -11.37,
+    -14.66,
+    0
+   ],
+   "rotDeg": 101.9,
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 2.4,
+    "colour": "#2f5f9a",
+    "frameColour": "#f2cc4b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board-1",
+   "at": [
+    -16.32,
+    8.82,
+    0
+   ],
+   "rotDeg": 101.9,
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 2.4,
+    "colour": "#2f5f9a",
+    "frameColour": "#f2cc4b"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm-0",
+   "at": [
+    24.43,
+    -28.57,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm-1",
+   "at": [
+    -24.43,
+    28.57,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: roof is a flat slab on posts, bus count and kiosk position are guesses"
+ }
+}

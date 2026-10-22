@@ -1,0 +1,446 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Casa_de_Ch%C3%A1_(Pra%C3%A7a_dos_Tr%C3%AAs_Poderes)_-_Bras%C3%ADlia_-_20180803150909.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sandra Soster",
+   "view": "front",
+   "file": "/tmp/places-evidence/brasilia/casa1.jpg",
+   "used": "low glass pavilion under a thin white flat roof slab, sunken stone courtyard with white parapet walls and a flight of steps, plaza paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Casa_de_Ch%C3%A1_-_Bras%C3%ADlia_-_20240915181744.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "T\u00fallio F",
+   "view": "front",
+   "used": "long thin white roof slab, warm glazed front with cream piers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1340424680",
+   "used": "size reference only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     30
+    ],
+    "z0": -0.02,
+    "height": 0.04,
+    "colour": "#b59d80"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    16.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     17
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#d2cdc2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     26
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#d2cdc2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     26
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#d2cdc2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     8
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#d2cdc2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     9.6
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e6e0d2",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#25302f",
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     16
+    ],
+    "z0": 3.0,
+    "height": 0.3,
+    "colour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    -3.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.4
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#f1efe9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16.8,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     30
+    ],
+    "z0": 2.5,
+    "height": 1.0,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16.8,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     30
+    ],
+    "z0": 2.5,
+    "height": 1.0,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.357,
+    "run": 0.9,
+    "count": 7,
+    "colour": "#7a5c44"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#cfc7b8"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    -11,
+    0.6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#cfc7b8"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    -11,
+    0.6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#cfc7b8"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    -11,
+    0.6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#cfc7b8"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    13,
+    -11,
+    0.6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 1.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -27,
+    8,
+    2.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    27,
+    8,
+    2.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "sunken courtyard modelled with deck and parapets but steps not visible from camera and the camera sees mostly plaza; glazing tint bluish, mural/planters are small stand-ins"
+ }
+}

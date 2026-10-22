@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "belize-city",
+ "venueId": "belize-city-osm-way-259179297",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museum_of_Belize_2015.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "ironypoisoning",
+   "view": "side",
+   "file": "/tmp/places-evidence/belize-city/museum2.jpg",
+   "used": "two storeys, white-rendered ground floor and ochre-brown brick upper floor, white window surrounds with barred sashes, white cornice, pedimented end gable, low roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MuseumofBelize.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Pgbk87",
+   "view": "front",
+   "file": "/tmp/places-evidence/belize-city/museum1.jpg",
+   "used": "pedimented projecting end block, peach compound wall with pillars and black iron railings, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/259179297",
+   "used": "footprint (long wing with projecting end blocks)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a7a45",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.6,
+    "trimColour": "#ffffff",
+    "cornice": true,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f6f4ee",
+       "#9a7a45"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#ffffff",
+      "height": 0.3
+     }
+    ],
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d4d7d9",
+    "material": "metal-sheet",
+    "pitch": 5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#e3b58f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    2.2
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.9,
+    "thickness": 0.08,
+    "kind": "railing",
+    "pillarEvery": 0,
+    "colour": "#1d1f22"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "no pedimented gable or dentil cornice on end wing, windows still thin-framed without projecting surrounds or bars, roof overhang visible"
+ },
+ "site": {
+  "ground": "grass",
+  "extent": [
+   80,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -16
+    ],
+    "height": 8
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     26,
+     -36
+    ],
+    "yawDeg": 0,
+    "colour": "#d8dadd"
+   }
+  ]
+ }
+}

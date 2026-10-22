@@ -1,0 +1,323 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashmore",
+ "venueId": "ashmore-airport-ashmore-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Ashmore_Reef.jpg",
+   "used": "distant public-domain aerial of the reef (pale sand rim, turquoise lagoon) for colours only; the cay itself is not resolvable, so no photo comparison. Cay drawn at 0.45 scale of the estimated 300 m to fit the scene clamp"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+   "used": "cay height 2.5-3 m, grass, no buildings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lagoon-shelf",
+   "params": {
+    "points": [
+     [
+      -81.0,
+      -5.4
+     ],
+     [
+      -64.8,
+      -18.9
+     ],
+     [
+      -32.4,
+      -27.0
+     ],
+     [
+      0.0,
+      -29.7
+     ],
+     [
+      37.8,
+      -27.0
+     ],
+     [
+      70.2,
+      -16.2
+     ],
+     [
+      81.0,
+      0.0
+     ],
+     [
+      64.8,
+      18.9
+     ],
+     [
+      32.4,
+      27.0
+     ],
+     [
+      0.0,
+      24.3
+     ],
+     [
+      -32.4,
+      21.6
+     ],
+     [
+      -64.8,
+      16.2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#9fc9c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cay",
+   "params": {
+    "points": [
+     [
+      -67.5,
+      -4.5
+     ],
+     [
+      -54.0,
+      -15.75
+     ],
+     [
+      -27.0,
+      -22.5
+     ],
+     [
+      0.0,
+      -24.75
+     ],
+     [
+      31.5,
+      -22.5
+     ],
+     [
+      58.5,
+      -13.5
+     ],
+     [
+      67.5,
+      0.0
+     ],
+     [
+      54.0,
+      15.75
+     ],
+     [
+      27.0,
+      22.5
+     ],
+     [
+      0.0,
+      20.25
+     ],
+     [
+      -27.0,
+      18.0
+     ],
+     [
+      -54.0,
+      13.5
+     ]
+    ],
+    "z0": 0.05,
+    "height": 2.6,
+    "topScale": 0.9,
+    "colour": "#e6dcc0",
+    "topColour": "#efe6cc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass-w",
+   "params": {
+    "points": [
+     [
+      -24.3,
+      2.25
+     ],
+     [
+      -25.89,
+      9.15
+     ],
+     [
+      -37.25,
+      10.85
+     ],
+     [
+      -42.26,
+      6.08
+     ],
+     [
+      -45.1,
+      -1.58
+     ],
+     [
+      -37.25,
+      -6.35
+     ],
+     [
+      -27.86,
+      -4.65
+     ]
+    ],
+    "z0": 2.5,
+    "height": 0.6,
+    "topScale": 0.9,
+    "colour": "#8c9a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass-c",
+   "params": {
+    "points": [
+     [
+      11.93,
+      -3.6
+     ],
+     [
+      10.67,
+      1.82
+     ],
+     [
+      1.75,
+      3.16
+     ],
+     [
+      -2.19,
+      -0.59
+     ],
+     [
+      -4.42,
+      -6.61
+     ],
+     [
+      1.75,
+      -10.36
+     ],
+     [
+      9.13,
+      -9.02
+     ]
+    ],
+    "z0": 2.5,
+    "height": 0.7,
+    "topScale": 0.85,
+    "colour": "#7f8f50"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass-e",
+   "params": {
+    "points": [
+     [
+      44.33,
+      3.6
+     ],
+     [
+      42.3,
+      8.51
+     ],
+     [
+      33.19,
+      8.51
+     ],
+     [
+      32.18,
+      3.6
+     ],
+     [
+      34.2,
+      -1.31
+     ],
+     [
+      43.31,
+      -1.31
+     ]
+    ],
+    "z0": 2.4,
+    "height": 0.6,
+    "topScale": 0.9,
+    "colour": "#8c9a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bird-patch",
+   "params": {
+    "points": [
+     [
+      -4.95,
+      9.9
+     ],
+     [
+      -6.3,
+      13.17
+     ],
+     [
+      -12.38,
+      13.17
+     ],
+     [
+      -13.05,
+      9.9
+     ],
+     [
+      -11.7,
+      6.63
+     ],
+     [
+      -5.62,
+      6.63
+     ]
+    ],
+    "z0": 2.5,
+    "height": 0.15,
+    "colour": "#f1eee4"
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    9.0,
+    4.5,
+    2.6
+   ],
+   "params": {
+    "height": 9,
+    "banded": false,
+    "colour": "#c9d2d6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the cay; sand-cay outline and 0.45 scale are estimates, cay renders pale grey-white rather than warm sand."
+ }
+}

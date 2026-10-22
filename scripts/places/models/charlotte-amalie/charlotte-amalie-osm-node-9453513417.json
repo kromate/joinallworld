@@ -1,0 +1,120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "charlotte-amalie",
+ "venueId": "charlotte-amalie-osm-node-9453513417",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522492966",
+   "used": "size only (23 x 15 m, 58 m away, nearest match not reliable)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    3,
+    0.5
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "gable",
+    "rise": 1.2,
+    "posts": 6,
+    "colour": "#e4e0d4",
+    "cap_colour": "#8a8d8f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -11,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#e4e0d4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    9,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#3f6a8a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; shelter, wall and sign typed from the brief."
+ }
+}

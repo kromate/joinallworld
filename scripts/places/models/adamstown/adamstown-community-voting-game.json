@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/945638035",
+   "used": "building outline containing the venue point; no photo of this building found, so form, colour and details come from the brief and Pitcairn village style (painted render, corrugated roof, solar roof)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8574a",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -4.6,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "depth": 2.6,
+    "height": 3.0,
+    "steps": true,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -9,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#2f4f8f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench-plinth",
+   "params": {
+    "rect": [
+     12,
+     6
+    ],
+    "height": 0.15,
+    "colour": "#bdb8aa"
+   },
+   "at": [
+    0,
+    -9,
+    0
+   ]
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    2,
+    2,
+    5.2
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 4,
+    "tilt": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -13,
+     9
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     13,
+     9
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -8
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   40,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; same OSM outline as the Secretary's Office but hipped red roof, deeper front verandah, stone-grey trim and a small rooftop solar array."
+ }
+}

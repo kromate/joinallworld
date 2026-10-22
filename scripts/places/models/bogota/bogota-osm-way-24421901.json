@@ -1,0 +1,560 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-way-24421901",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mallplaza_NQS_2023.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Galto14352627",
+   "view": "street",
+   "file": "/tmp/places-evidence/bogota/mall1.jpg",
+   "used": "facade composition: teal glazed left block with blue band, grey framed central entrance with dark swept shade canopies, cream render right block with blank signboards, tall teal glass tower rising behind on the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24421901",
+   "used": "overall size only (293 x 228 m): a 118 m portion of the NQS frontage is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-wing",
+   "footprint": {
+    "rect": [
+     54,
+     34
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5fb5a8",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#8c969c",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-band",
+   "footprint": {
+    "rect": [
+     44,
+     1.2
+    ]
+   },
+   "at": [
+    -34,
+    -17.6
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1d6fb8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d6fb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-portal",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9aa1a6",
+    "windows": "none",
+    "faces": {
+     "front": "curtain"
+    },
+    "bands": "#7c8388"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c8388",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-glass",
+   "footprint": {
+    "rect": [
+     9,
+     1
+    ]
+   },
+   "at": [
+    0,
+    -17.6
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5fa3b5",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-wing",
+   "footprint": {
+    "rect": [
+     44,
+     34
+    ]
+   },
+   "at": [
+    36,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece7dc",
+    "windows": "none",
+    "bands": "#c9c4ba",
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-block",
+   "footprint": {
+    "rect": [
+     96,
+     46
+    ]
+   },
+   "at": [
+    2,
+    32
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d3c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8.5,
+    -17,
+    5
+   ],
+   "params": {
+    "width": 11,
+    "height": 4.5,
+    "bottom": 0.0,
+    "colour": "#e8e4dc",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -17.5,
+    2
+   ],
+   "params": {
+    "width": 14,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#f0b323",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -17.5,
+    7
+   ],
+   "params": {
+    "width": 16,
+    "height": 4,
+    "bottom": 0.0,
+    "colour": "#f2f2f0",
+    "frameColour": "#1d6fb8",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -24,
+     0
+    ],
+    "end": [
+     50,
+     -24,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 3,
+    "lod2Step": 9,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    40,
+    34,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      19,
+      0,
+      "#1a4a52"
+     ],
+     [
+      19,
+      5.7,
+      "#1a4a52"
+     ],
+     [
+      19,
+      6.2,
+      "#102e34"
+     ],
+     [
+      19,
+      11.9,
+      "#27666f"
+     ],
+     [
+      19,
+      12.4,
+      "#102e34"
+     ],
+     [
+      19,
+      18.1,
+      "#1a4a52"
+     ],
+     [
+      19,
+      18.6,
+      "#102e34"
+     ],
+     [
+      19,
+      24.3,
+      "#27666f"
+     ],
+     [
+      19,
+      24.8,
+      "#102e34"
+     ],
+     [
+      19,
+      30.5,
+      "#1a4a52"
+     ],
+     [
+      19,
+      31.0,
+      "#102e34"
+     ],
+     [
+      19,
+      36.7,
+      "#27666f"
+     ],
+     [
+      19,
+      37.2,
+      "#102e34"
+     ],
+     [
+      19,
+      42.9,
+      "#1a4a52"
+     ],
+     [
+      19,
+      43.4,
+      "#102e34"
+     ],
+     [
+      19,
+      49.1,
+      "#27666f"
+     ],
+     [
+      19,
+      49.6,
+      "#102e34"
+     ],
+     [
+      19,
+      55.3,
+      "#1a4a52"
+     ],
+     [
+      19,
+      55.8,
+      "#102e34"
+     ],
+     [
+      19,
+      61.5,
+      "#27666f"
+     ],
+     [
+      19,
+      62.0,
+      "#102e34"
+     ],
+     [
+      18,
+      62,
+      "#4a5459"
+     ],
+     [
+      0.1,
+      62,
+      "#4a5459"
+     ]
+    ],
+    "segments": 20,
+    "bottomCap": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    34,
+    0
+   ],
+   "params": {
+    "radius": 19,
+    "n": 8,
+    "height": 62,
+    "colour": "#27666f"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "surface",
+   "at": [
+    -14,
+    -4,
+    16
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 26,
+    "depth": 22,
+    "rise": 4,
+    "waves": 2,
+    "thickness": 0.3,
+    "colour": "#2b2d30",
+    "edgeColour": "#3a3d40"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    16,
+    -4,
+    16
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 26,
+    "depth": 22,
+    "rise": 4,
+    "waves": 2,
+    "thickness": 0.3,
+    "colour": "#2b2d30",
+    "edgeColour": "#3a3d40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -14,
+    15
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 9,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14,
+    15
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 9,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    27,
+    -14,
+    15
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 9,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     150,
+     6
+    ],
+    "height": 0.15,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -40,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     90,
+     6
+    ],
+    "height": 0.1,
+    "colour": "#3b3b3d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only a 118 m portion of the 293 m frontage; tower is a lofted drum, canopies are simplified sails; no street furniture or traffic"
+ }
+}

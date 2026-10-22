@@ -1,0 +1,264 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "avarua",
+ "venueId": "avarua-osm-node-2111683565",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/avarua.json#avarua-osm-node-2111683565",
+   "used": "hillside roadside lookout over the lagoon with a rail fence and a small viewing platform among palms; no OSM building, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a7a5a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a08c64",
+    "material": "concrete",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-base",
+   "footprint": {
+    "rect": [
+     10,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    0.4
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6d6f68",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6f68",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.47,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#c9bfa5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    1.4
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.1,
+    "thickness": 0.12,
+    "pillarEvery": 1.8,
+    "colour": "#8a7a5a",
+    "points": [
+     [
+      -4.4,
+      -2.3
+     ],
+     [
+      -4.4,
+      2.4
+     ],
+     [
+      4.4,
+      2.4
+     ],
+     [
+      4.4,
+      -2.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.0,
+    "thickness": 0.12,
+    "colour": "#8a7a5a",
+    "points": [
+     [
+      -14,
+      -8
+     ],
+     [
+      -4,
+      -8
+     ],
+     [
+      -2,
+      -5.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.0,
+    "thickness": 0.12,
+    "colour": "#8a7a5a",
+    "points": [
+     [
+      2,
+      -5.5
+     ],
+     [
+      4,
+      -8
+     ],
+     [
+      14,
+      -8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -6.8,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 0.9,
+    "bottom": 1.6,
+    "colour": "#6d6f68",
+    "frameColour": "#c9bfa5",
+    "posts": true
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    13,
+    1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   44,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and no outline; a small timber platform with rail fence is a typical form from the brief."
+ }
+}

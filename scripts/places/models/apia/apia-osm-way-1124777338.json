@@ -1,0 +1,177 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1124777338",
+   "used": "295 x 260 m park outline (name match)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "mown grass, coconut palms in rows, gate lodge at the entrance"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6f9a4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4e"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 13
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     -40,
+     0
+    ],
+    "end": [
+     40,
+     -70,
+     0
+    ],
+    "count": 9
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 13
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     -10,
+     0
+    ],
+    "end": [
+     60,
+     -45,
+     0
+    ],
+    "count": 10
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 12
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     40,
+     0
+    ],
+    "end": [
+     60,
+     5,
+     0
+    ],
+    "count": 10
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "gate-lodge",
+   "at": [
+    -70,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "wall_colour": "#f4f1ea",
+    "roof_colour": "#3f7a5a",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    -62,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; outline scaled 0.37, palm rows and lodge typed from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-way-1124777338"
+}

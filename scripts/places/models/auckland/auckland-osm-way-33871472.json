@@ -1,0 +1,336 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-way-33871472",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barfoot_%26_Thompson_Stadium_-_51634556616.jpg",
+   "licence": "CC BY 2.0",
+   "author": "aklmuseumstaffwikipedia",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/33871472-0.jpg",
+   "used": "long low hall of grey horizontally ribbed cladding, tall glazed gable foyer with blue-tinted glass, glazed lean-to wing at left, raised blue sign board on the roof (blank), blue curved canopy and low dark annex at right, car park in front, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/33871472",
+   "used": "overall extent (about 70 x 60 m) only; the real outline is a ragged 19-point shape, a clean hall rectangle is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     78,
+     44
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9c0c3",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9397",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f87a8",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#4a7aa3",
+    "plinth": 0.3,
+    "bands": "#8b959b"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8a94",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lean-to",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -26,
+    -15.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6a8fae",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "glassColour": "#4a7aa3",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b8a94",
+    "material": "metal-sheet",
+    "rise": 3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign",
+   "footprint": {
+    "rect": [
+     24,
+     1.2
+    ]
+   },
+   "at": [
+    -4,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 11,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c3f8f",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c3f8f",
+    "material": "metal-sheet",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-blue",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    27,
+    -15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f90d4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#3f90d4",
+    "material": "metal-sheet",
+    "rise": 1.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    42,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5b6166",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a7075",
+    "material": "metal-sheet",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "strip-glaze",
+   "footprint": {
+    "rect": [
+     38,
+     2
+    ]
+   },
+   "at": [
+    26,
+    -14.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3b46",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b6166",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -23,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 24,
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Foyer glazing is a plain gable rather than the raked glass prism; no lean-to glass roof detail, ribbed cladding and rooftop sign shape are simplified."
+ }
+}

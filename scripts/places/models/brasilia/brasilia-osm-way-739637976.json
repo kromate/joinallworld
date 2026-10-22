@@ -1,0 +1,107 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brasilia",
+ "venueId": "brasilia-osm-way-739637976",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1198915111",
+   "used": "real zigzag outline (tagged building=roof, 2 levels): a long narrow concrete-roofed block, 130 m long"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ICC_Sul_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Ebm.9",
+   "view": "side",
+   "used": "idiom of the neighbouring ICC building only (not this building): pinkish-beige concrete ribs with deep overhang and corrugated louvre infill"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b8aa98",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ],
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 5,
+    "spread": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building; ribs/louvres typed from the neighbouring ICC idiom, outline is the real OSM zigzag"
+ }
+}

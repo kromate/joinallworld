@@ -1,0 +1,171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-node-1194775794",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small monument of angel figures on a plinth beside a school complex; OSM building match is only nearest (42 m), so not used; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "paving",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     16
+    ],
+    "height": 0.12,
+    "colour": "#b9b3a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     12,
+     8
+    ],
+    "height": 0.7,
+    "colour": "#a8a59c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.2,
+    0.1
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.6,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#cfc9bc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0.5,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "height": 3.2,
+    "topScale": 0.8,
+    "colour": "#cfc9bc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0.5,
+    4
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     2.4
+    ],
+    "height": 0.5,
+    "colour": "#7a6a5a"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    0.5,
+    4.5
+   ],
+   "params": {
+    "height": 3.2,
+    "pose": "stand",
+    "colour": "#8a7e6a"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -2.8,
+    -0.5,
+    0.8
+   ],
+   "params": {
+    "height": 2.6,
+    "pose": "stand",
+    "colour": "#8a7e6a"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    2.8,
+    -0.5,
+    0.8
+   ],
+   "params": {
+    "height": 2.6,
+    "pose": "stand",
+    "colour": "#8a7e6a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     7
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and OSM building is not the monument: modest plinth with three angel figures from the brief; size guessed"
+ }
+}

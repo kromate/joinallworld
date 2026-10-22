@@ -1,0 +1,318 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Heroes_Square2,_Bridgetown_(2000).jpg",
+   "licence": "see Commons page",
+   "author": "uncredited on Commons",
+   "view": "street",
+   "used": "the 1939-1945 granite obelisk cenotaph on a stepped base inside green wrought-iron railings, black lamp standards, the blue/yellow/white striped three-storey commercial building behind",
+   "file": "/tmp/places-evidence/bridgetown/square1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NELSON_SQUARE_-_BARBADOS.jpg",
+   "licence": "Public domain",
+   "author": "unknown (historic print)",
+   "view": "aerial",
+   "used": "scalloped multi-tier fountain in a round basin, paved paths, low 2-storey buildings with hipped roofs on the far side",
+   "file": "/tmp/places-evidence/bridgetown/square2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37935746",
+   "used": "square outline 106 x 34 m"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/National_Heroes_Square",
+   "used": "Parliament buildings with clock tower on the west side; Nelson plinth at the west end"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "paving",
+   "footprint": {
+    "osm": true,
+    "scale": 0.78
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8d2c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    17,
+    0,
+    0.5
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -8,
+    9,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 5,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parliament",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -48,
+    2
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdbf9c",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e5a48",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    -43,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 26,
+    "cap": "hip",
+    "clock": true,
+    "belfry": false,
+    "colour": "#cdbf9c",
+    "trimColour": "#e6dcc0",
+    "capColour": "#5f7f6a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront-row",
+   "footprint": {
+    "rect": [
+     44,
+     9
+    ]
+   },
+   "at": [
+    -2,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7dcc0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2573f"
+   }
+  },
+  {
+   "type": "obelisk-pedestal",
+   "at": [
+    -6,
+    0,
+    0.5
+   ],
+   "params": {
+    "height": 24,
+    "baseWidth": 6,
+    "colour": "#cdb896",
+    "pedestal": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 6,
+    "height": 2.0,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#2f7a4b",
+    "points": [
+     [
+      -6,
+      -6
+     ],
+     [
+      6,
+      -6
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      -6,
+      6
+     ],
+     [
+      -6,
+      -6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    -33,
+    0,
+    0.5
+   ],
+   "params": {
+    "height": 7,
+    "steps": 3,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#2a2622"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -7,
+    0.5
+   ],
+   "params": {
+    "height": 5,
+    "count": 5,
+    "spacing": 11
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamberlain-bldg",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    30,
+    -13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6f0",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bands": "#2f5fb0",
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8c53a",
+    "parapet": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-osm-way-37935746",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "photo is a close cenotaph view; obelisk lacks the large stepped pedestal; iron fence hidden behind obelisk; Chamberlain stripes and Parliament approximated"
+ }
+}

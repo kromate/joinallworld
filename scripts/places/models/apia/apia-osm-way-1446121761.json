@@ -1,0 +1,197 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1446121761",
+   "used": "rotated 73 x 52 m rectangular plot (bearing 141)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 16,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "bands": "#a9cde0",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a79a3",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic-wing",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    -15,
+    -16
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "bands": "#a9cde0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a79a3",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-wing",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    22,
+    -14
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a79a3",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "patient-entrance",
+   "at": [
+    2,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.8,
+    "form": "flat",
+    "colour": "#a9cde0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    2,
+    -12,
+    3.2
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.5,
+    "bottom": 3.2,
+    "colour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -3,
+    -26,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    6,
+    -26,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -32,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     28
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-way-1446121761",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM plot is a rectangle so the complex is typed as three hip-roofed blocks plus entrance canopy."
+ }
+}

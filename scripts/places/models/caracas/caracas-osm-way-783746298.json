@@ -1,0 +1,527 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Macuto_(2023)_(cropped).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wilnel Jose Verdu Guerrero",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/caracas/forum.jpg",
+   "used": "green field with brown infield, covered grey-roofed grandstand along the right side with glazed end, orange/blue/yellow outfield stands in rows, white light lattice towers on the roof, rock breakwater and sea, two beige tower blocks behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/783746298",
+   "used": "playing-area/stadium outline 150 x 144 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 38,
+  "fovDeg": 40,
+  "aspect": 1.155
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -82,
+      -79
+     ],
+     [
+      82,
+      -79
+     ],
+     [
+      82,
+      -74
+     ],
+     [
+      -82,
+      -74
+     ]
+    ],
+    "z0": 0.4,
+    "height": 0.1,
+    "colour": "#1f5560",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -82,
+      -74
+     ],
+     [
+      82,
+      -74
+     ],
+     [
+      82,
+      -69
+     ],
+     [
+      -82,
+      -69
+     ]
+    ],
+    "z0": 0.4,
+    "height": 1.6,
+    "colour": "#4a4845",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -73.2,
+      18.48
+     ],
+     [
+      -32.96,
+      -48.48
+     ],
+     [
+      -27.92,
+      -55.28
+     ],
+     [
+      -22.0,
+      -60.56
+     ],
+     [
+      -12.48,
+      -65.52
+     ],
+     [
+      -1.68,
+      -66.56
+     ],
+     [
+      7.28,
+      -66.4
+     ],
+     [
+      16.16,
+      -62.0
+     ],
+     [
+      23.84,
+      -55.12
+     ],
+     [
+      75.92,
+      3.12
+     ],
+     [
+      65.36,
+      13.2
+     ],
+     [
+      41.28,
+      39.6
+     ],
+     [
+      12.32,
+      60.48
+     ],
+     [
+      -6.96,
+      61.76
+     ],
+     [
+      -38.64,
+      46.56
+     ],
+     [
+      -61.04,
+      26.4
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#3e7a35",
+    "top": true,
+    "z0": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8.0,
+      -24.0
+     ],
+     [
+      9.6,
+      -24.0
+     ],
+     [
+      20.8,
+      -8.0
+     ],
+     [
+      6.4,
+      11.2
+     ],
+     [
+      -11.2,
+      4.8
+     ]
+    ],
+    "z0": 0.5,
+    "height": 0.05,
+    "colour": "#b86a40"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "start": [
+     -6.96,
+     61.6
+    ],
+    "end": [
+     -73.2,
+     18.48
+    ],
+    "rows": 8,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 2.5,
+    "seatColours": [
+     "#d08a2b",
+     "#2f6aa0",
+     "#d08a2b"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d8d9d4",
+    "stepped": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "start": [
+     75.92,
+     3.12
+    ],
+    "end": [
+     23.84,
+     -55.12
+    ],
+    "rows": 10,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 3,
+    "seatColours": [
+     "#c0392b",
+     "#2f6aa0"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8d9d4",
+    "canopy": {
+     "height": 7,
+     "depth": 9,
+     "thickness": 0.8,
+     "slopeDeg": 6,
+     "colour": "#9a9fa3",
+     "edgeColour": "#b9bdc0"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grand-block",
+   "footprint": {
+    "rect": [
+     58,
+     12
+    ]
+   },
+   "at": [
+    52.8,
+    -24.0
+   ],
+   "rotDeg": 48,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4d5d0",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "back": "plain"
+    },
+    "glassColour": "#7fa6b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdc0",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 30,
+      "head_width": 6,
+      "colour": "#d6d9db"
+     }
+    },
+    "mode": "line",
+    "start": [
+     67.2,
+     -11.2
+    ],
+    "end": [
+     35.2,
+     -46.4
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48.0,
+    -28.0,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -24.0,
+    -60.8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 14,
+    "height": 5,
+    "post_height": 3,
+    "facing": "north"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     65.36,
+     13.2
+    ],
+    "end": [
+     41.28,
+     39.6
+    ],
+    "rows": 7,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 2.5,
+    "seatColours": [
+     "#d08a2b",
+     "#2f6aa0",
+     "#c0392b"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8d9d4",
+    "stepped": true,
+    "facetDeg": 24
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     41.28,
+     39.6
+    ],
+    "end": [
+     12.32,
+     60.48
+    ],
+    "rows": 7,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 2.5,
+    "seatColours": [
+     "#2f6aa0",
+     "#d08a2b",
+     "#c0392b"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8d9d4",
+    "stepped": true,
+    "facetDeg": 24
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     12.32,
+     60.48
+    ],
+    "end": [
+     -6.96,
+     61.76
+    ],
+    "rows": 7,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 2.5,
+    "seatColours": [
+     "#c0392b",
+     "#d08a2b"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8d9d4",
+    "stepped": true,
+    "facetDeg": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-0",
+   "footprint": {
+    "rect": [
+     25,
+     15
+    ]
+   },
+   "at": [
+    -18,
+    78
+   ],
+   "rotDeg": 0,
+   "height": 60,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b99a",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "bands": "#b5a585",
+    "glassColour": "#6f7f86"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb3a0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-1",
+   "footprint": {
+    "rect": [
+     25,
+     15
+    ]
+   },
+   "at": [
+    24,
+    80
+   ],
+   "rotDeg": 0,
+   "height": 60,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b99a",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "bands": "#b5a585",
+    "glassColour": "#6f7f86"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb3a0",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Outfield stand now wraps far edge but is a faceted arc without the lattice roof ring; grandstand lacks glazed end detail; sea and rock breakwater are thin strips and no orange warning track (triangle budget); towers are plain boxes without window bands; ground is generic grey paving, no beige apron."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-783746298"
+}

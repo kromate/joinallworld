@@ -1,0 +1,546 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Derek_Walcott_Square_-_bandstand2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Gene93k",
+   "view": "street",
+   "file": "/tmp/places-evidence/castries/square1.jpg",
+   "used": "open lawn, central bandstand with a low brownish-red hip roof on slim white posts and a raised floor, huge spreading saman tree on the left, a tall Norfolk pine on the right, white balustrade railings round the edge, two flag masts, church tower beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/114732971",
+   "used": "square outline (82 x 68 m, near-rectangle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 9,
+  "fovDeg": 28,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.0,
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -42.2,
+      -31.9
+     ],
+     [
+      -38.5,
+      35.9
+     ],
+     [
+      43.8,
+      30.8
+     ],
+     [
+      37.4,
+      -35.4
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#5f9a3c",
+    "topColour": "#5f9a3c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -33
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      41,
+      33
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "points": [
+     [
+      40,
+      -33
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      -39,
+      33
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.22
+   ],
+   "params": {
+    "points": [
+     [
+      2,
+      2
+     ],
+     [
+      2,
+      -3
+     ]
+    ],
+    "width": 9,
+    "colour": "#cfc9b6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -42.2,
+      -31.9
+     ],
+     [
+      37.4,
+      -35.4
+     ],
+     [
+      43.8,
+      30.8
+     ],
+     [
+      -38.5,
+      35.9
+     ],
+     [
+      -42.2,
+      -31.9
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "prism",
+   "id": "saman-trunk",
+   "at": [
+    -9,
+    8,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 2.4,
+    "height": 7,
+    "colour": "#4a3a30",
+    "topColour": "#4a3a30"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "saman-crown",
+   "at": [
+    -9,
+    8,
+    6.5
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 1.5,
+      "ellipse": [
+       20,
+       18
+      ]
+     },
+     {
+      "z": 4.0,
+      "ellipse": [
+       21,
+       19
+      ]
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       14,
+       12
+      ]
+     }
+    ],
+    "colour": "#3f6f35",
+    "topColour": "#3f6f35"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -9,
+    8,
+    7
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       11,
+       1.0
+      ],
+      "height": 0.9,
+      "colour": "#4a3a30",
+      "topColour": "#4a3a30"
+     }
+    },
+    "mode": "arc",
+    "count": 5,
+    "radius": 6,
+    "facing": "outward"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band-plinth",
+   "at": [
+    4,
+    0,
+    0.2
+   ],
+   "params": {
+    "n": 8,
+    "radius": 6.2,
+    "height": 0.9,
+    "colour": "#cfc9b6",
+    "topColour": "#cfc9b6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    4,
+    0,
+    1.1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.2,
+      "colour": "#f4f1e8",
+      "topColour": "#f4f1e8"
+     }
+    },
+    "mode": "arc",
+    "count": 8,
+    "radius": 5.4,
+    "facing": "outward"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "band-roof",
+   "at": [
+    4,
+    0,
+    4.3
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 7.4
+     },
+     {
+      "z": 0.5,
+      "circle": 6.8
+     },
+     {
+      "z": 3.4,
+      "circle": 0.5
+     }
+    ],
+    "colour": "#7c3a30",
+    "topColour": "#7c3a30",
+    "round": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band-valance",
+   "at": [
+    4,
+    0,
+    4.0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 6.9,
+    "height": 0.35,
+    "colour": "#f4f1e8",
+    "topColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "norfolk",
+   "at": [
+    26,
+    6,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.6
+     },
+     {
+      "z": 3,
+      "circle": 3.2
+     },
+     {
+      "z": 10,
+      "circle": 2.4
+     },
+     {
+      "z": 18,
+      "circle": 1.2
+     },
+     {
+      "z": 23,
+      "circle": 0.15
+     }
+    ],
+    "colour": "#23452a",
+    "topColour": "#23452a",
+    "round": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    -56,
+    14
+   ],
+   "height": 9,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9272",
+    "windows": "arched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8352c",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "mass",
+   "id": "church-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -52,
+    -2
+   ],
+   "height": 19,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39b7c",
+    "windows": "arched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8352c",
+    "pitch": 35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-right",
+   "footprint": {
+    "rect": [
+     16,
+     24
+    ]
+   },
+   "at": [
+    56,
+    18
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcae",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#f1e8c4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    17,
+    -8,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    5,
+    60,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       48,
+       8
+      ]
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       24,
+       5
+      ]
+     },
+     {
+      "z": 13,
+      "ellipse": [
+       4,
+       1.5
+      ]
+     }
+    ],
+    "colour": "#3d6b34",
+    "topColour": "#3d6b34"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wide flat saman canopy, octagonal bandstand with valance, dark Norfolk pine, church with tower, cream block, flag masts and hill added; saman limbs are a simple dome, no balustrade posts or fretwork detail, church and block are schematic."
+ }
+}

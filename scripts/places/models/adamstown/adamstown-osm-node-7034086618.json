@@ -1,0 +1,212 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "adamstown",
+ "venueId": "adamstown-osm-node-7034086618",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/128192166",
+   "used": "containing building 17.3x6 m, 1 level, gabled; bearing 131 deg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pitcairn_Island_Adamstown.jpg",
+   "licence": "Public domain",
+   "author": "US government",
+   "view": "street",
+   "file": "/tmp/places-evidence/adamstown/bounty.jpg",
+   "used": "longboats are long white open boats (colour and proportion only; no shed visible)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     17.3,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    2.75
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wall-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     6
+    ]
+   },
+   "at": [
+    -8.5,
+    0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wall-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     6
+    ]
+   },
+   "at": [
+    8.5,
+    0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "rect": [
+     17.3,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4f6f8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b8590",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -2.8,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "count": 6,
+    "height": 3.0,
+    "radius": 0.12,
+    "kind": "square",
+    "beamHeight": 0.2,
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "length": 10,
+    "width": 2.2,
+    "colour": "#f2f2ee",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 6,
+    "width": 3,
+    "height": 0.3,
+    "rails": false,
+    "piles": false,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 1,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   44,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo of the shed; open-fronted gabled boat shelter from OSM outline and brief, boat is a stand-in launch."
+ }
+}

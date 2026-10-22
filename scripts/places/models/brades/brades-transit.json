@@ -1,0 +1,293 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Montserrat_%E2%80%94_Little_Bay_port_ferry_terminal_%E2%80%94_government_building.JPG",
+   "licence": "CC BY 2.0 de",
+   "author": "Mattes",
+   "view": "side",
+   "file": "/tmp/places-evidence/brades/ferry.jpg",
+   "used": "port-side building at the Little Bay ferry terminal: single-storey magenta render walls, white louvred windows, grey-brown hip roof, white veranda with railing at the left end, flagpole, chain-link fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/525908409",
+   "used": "terminal footprint (name match), overall size about 22 x 18 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c6bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     12,
+     6.5
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a02a62",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "plinth": 0.25,
+    "bay": 2.0,
+    "trimColour": "#f1ece0",
+    "glassColour": "#e8ece8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8a091",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     5,
+     6.5
+    ]
+   },
+   "at": [
+    -6.5,
+    0
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e6",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8a091",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c9c5ba"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -1,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.2,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      10,
+      -7
+     ],
+     [
+      10,
+      6
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -9,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 2.4,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#1c1c1c",
+    "leafColour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -3.3
+     ],
+     [
+      -4,
+      -3.3
+     ]
+    ],
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#f4f1e6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -3.3
+     ],
+     [
+      -9,
+      3.3
+     ]
+    ],
+    "height": 1.0,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#f4f1e6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -3.3
+     ],
+     [
+      -4,
+      -3.3
+     ]
+    ],
+    "height": 2.6,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#f4f1e6"
+   }
+  },
+  {
+   "type": "quay",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 6,
+    "water_depth": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   30,
+   24
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-transit",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Louvres are only light glazing, porch roof reads as a separate hip (no railing posts visible), fence is thin rails not chain-link mesh, slab/quay oversized, hillside backdrop absent."
+ }
+}

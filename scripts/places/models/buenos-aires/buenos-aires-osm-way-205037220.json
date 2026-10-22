@@ -1,0 +1,387 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tornu_frente.jpg",
+   "licence": "CC BY 2.5 ar",
+   "author": "Gobierno de la Ciudad de Buenos Aires",
+   "view": "front",
+   "file": "/tmp/places-evidence/buenos-aires/p2_0.jpg",
+   "used": "long two-storey white stucco pavilion with ochre ground floor, shuttered tall windows, low terracotta hip roof, flat entrance canopy on two slim posts, stepped lower end wing, lamp and trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/205038202",
+   "used": "front pavilion 70.5 x 16.1 m; hospital area way/205037220 for context"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.434,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f1e8",
+    "windows": "rect",
+    "windowRatio": 0.34,
+    "bay": 4.2,
+    "plinth": 3.6,
+    "bands": "#e8d9a8",
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9582f",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    -42,
+    2
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f1e8",
+    "windows": "rect",
+    "windowRatio": 0.34,
+    "bay": 4.2,
+    "plinth": 3.6,
+    "bands": "#e8d9a8",
+    "cornice": true,
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9582f",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-pavilion",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    6,
+    30
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4f1e8",
+    "windows": "rect",
+    "windowRatio": 0.34,
+    "bay": 4.2,
+    "plinth": 3.6,
+    "bands": "#e8d9a8",
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "front": "plain"
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9582f",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     6,
+     16
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "z0": 0,
+   "height": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6dcc2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-canopy",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    2,
+    -10.5
+   ],
+   "z0": 4.2,
+   "height": 0.6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d9295",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9295"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -4,
+    -12.5,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "count": 2,
+    "height": 4.2,
+    "radius": 0.15,
+    "kind": "round",
+    "beamHeight": 0.1,
+    "colour": "#8d9295"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 0.7,
+    "count": 5,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    -13,
+    3.2
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.1,
+    "bottom": 0.0,
+    "colour": "#d6d7d4",
+    "frameColour": "#8a8f92",
+    "posts": false
+   },
+   "on": null
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 3,
+    "colour": "#e6dcc2",
+    "roofColour": "#8a8f92",
+    "vans": 1
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    10,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 4.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     10,
+     2
+    ]
+   },
+   "at": [
+    2,
+    -9
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ecdcae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecdcae"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    8,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.25,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e8c43a"
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "colour": "#2f6a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -14
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -17
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -18
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     12
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopy, ochre bay, tall windows and terracotta roof updated; shutters, curving yellow-kerb driveway, shrubs and lettering omitted; rear pavilion invented."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-osm-way-205037220"
+}

@@ -1,0 +1,206 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Falemataaga_-_Museum_of_Samoa.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Tony Bowden",
+   "view": "detail",
+   "file": "/tmp/places-evidence/apia/museum.jpg",
+   "used": "verandah close-up only: white painted weatherboard, blue-grey balustrade and stair rails, dark grey stair, lattice screen, red corrugated roof edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/674412874",
+   "used": "L-shaped footprint, 25 x 22 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -3.7,
+    -14.0,
+    0
+   ],
+   "params": {
+    "length": 12.5,
+    "floors": 2,
+    "storeyHeight": 4.2,
+    "proud": 2.5,
+    "rail": true,
+    "railHeight": 1.0,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.7,
+    -16.3
+   ],
+   "params": {
+    "rect": [
+     13,
+     3.2
+    ],
+    "z0": 8.4,
+    "height": 0.35,
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    -3.7,
+    -17.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 4.2,
+    "run": 5,
+    "colour": "#4a3f38",
+    "rails": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.2,
+    -15.8
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     2.2
+    ],
+    "z0": 0.2,
+    "height": 4.2,
+    "colour": "#7d8791"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.2,
+    -14.3
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.12
+    ],
+    "z0": 4.3,
+    "height": 3.6,
+    "colour": "#7d8791"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -1.6,
+    -15.2,
+    4.3
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#3a2a22"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#ce1126"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "photo is a verandah detail only; massing from OSM L-outline; flush white two-storey gallery, dark timber stair, dark figure added; no lattice screen geometry or legible balusters"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-node-687792042"
+}

@@ -1,0 +1,557 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AMIJAI.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jaluj",
+   "view": "front",
+   "file": "/tmp/places-evidence/buenos-aires/amijai.jpg",
+   "used": "raw grey concrete synagogue front: a tall recessed timber door wall with copper flame-like relief between two sloping concrete wing walls, thin light roof slab, lawn and tall trees in front, apartment blocks behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1279801537",
+   "used": "overall size only (about 40 x 26 m); the irregular outline was not copied because the photo shows a compact rectilinear front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof is stepped, not truly sloped; wing walls have only one sloping side face and no board-marking; flame relief is simple lofted tongues; menorah is a small stand-in"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     15,
+     18
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3526",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c7c9",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "loft",
+   "id": "wing-l",
+   "at": [
+    -11.5,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#aaa9a2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8,
+       22
+      ],
+      "cx": 0
+     },
+     {
+      "z": 8.2,
+      "rect": [
+       4.5,
+       22
+      ],
+      "cx": 1.8
+     }
+    ],
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "wing-r",
+   "at": [
+    11.5,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#aaa9a2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8,
+       22
+      ],
+      "cx": 0
+     },
+     {
+      "z": 8.2,
+      "rect": [
+       4.5,
+       22
+      ],
+      "cx": -1.8
+     }
+    ],
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-front",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     13
+    ],
+    "z0": 8.0,
+    "height": 0.45,
+    "colour": "#c9ccce"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-back",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     11
+    ],
+    "z0": 8.45,
+    "height": 0.45,
+    "colour": "#c9ccce"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rear-block",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     12
+    ],
+    "z0": 0.0,
+    "height": 6.5,
+    "colour": "#b6b2a6",
+    "windows": "punched",
+    "windowRatio": 0.14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-step",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     2
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#b9b5a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "flames",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      -7.9,
+      0
+     ],
+     "params": {
+      "colour": "#c47a35",
+      "sections": [
+       {
+        "z": 2.6,
+        "rect": [
+         0.9,
+         0.2
+        ],
+        "cx": 0
+       },
+       {
+        "z": 3.8,
+        "rect": [
+         0.75,
+         0.2
+        ],
+        "cx": 0.35
+       },
+       {
+        "z": 5.0,
+        "rect": [
+         0.55,
+         0.2
+        ],
+        "cx": -0.35
+       },
+       {
+        "z": 6.2,
+        "rect": [
+         0.3,
+         0.2
+        ],
+        "cx": 0.25
+       },
+       {
+        "z": 6.9,
+        "rect": [
+         0.08,
+         0.2
+        ],
+        "cx": 0
+       }
+      ],
+      "curve": true
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6.3,
+     0
+    ],
+    "end": [
+     6.3,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "array",
+   "id": "hedge",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2.4,
+       0.6
+      ],
+      "height": 0.5,
+      "colour": "#3f6b36"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     -15
+    ],
+    "end": [
+     8,
+     -15
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "menorah-base",
+   "at": [
+    16,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#7d776d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "menorah-stem",
+   "at": [
+    16,
+    -13,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#d6a93a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "menorah-branch-0",
+   "at": [
+    15.04,
+    -13,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 0.9,
+    "height": 1.4,
+    "colour": "#d6a93a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "menorah-branch-1",
+   "at": [
+    15.36,
+    -13,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 0.9,
+    "height": 1.4,
+    "colour": "#d6a93a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "menorah-branch-2",
+   "at": [
+    15.68,
+    -13,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 0.9,
+    "height": 1.4,
+    "colour": "#d6a93a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "menorah-branch-3",
+   "at": [
+    16.0,
+    -13,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 0.9,
+    "height": 1.7,
+    "colour": "#d6a93a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "menorah-branch-4",
+   "at": [
+    16.32,
+    -13,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 0.9,
+    "height": 1.4,
+    "colour": "#d6a93a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "menorah-branch-5",
+   "at": [
+    16.64,
+    -13,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 0.9,
+    "height": 1.4,
+    "colour": "#d6a93a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "menorah-branch-6",
+   "at": [
+    16.96,
+    -13,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 0.9,
+    "height": 1.4,
+    "colour": "#d6a93a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "menorah-bar",
+   "at": [
+    16,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.12
+    ],
+    "z0": 1.1,
+    "height": 0.1,
+    "colour": "#d6a93a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-quiet-reflection"
+}

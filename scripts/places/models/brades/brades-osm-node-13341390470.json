@@ -1,0 +1,183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-osm-node-13341390470",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief brades-osm-node-13341390470",
+   "used": "50 x 35 m hilltop battery ruin: low stone ramparts, three cannon, steps, grass and broadleaf trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "battlement-wall",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.4,
+    "thickness": 1.1,
+    "merlons": false,
+    "batter": 0.3,
+    "ruin": 0.25
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 28,
+    "height": 2.2,
+    "thickness": 1.1,
+    "merlons": false,
+    "batter": 0.3,
+    "ruin": 0.3
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 28,
+    "height": 2.0,
+    "thickness": 1.1,
+    "merlons": false,
+    "batter": 0.3,
+    "ruin": 0.4
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -22,
+    14,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.6,
+    "thickness": 0.9,
+    "colour": "#a8a59c",
+    "gaps": 0.3
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -10,
+    -12,
+    2.4
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 9,
+    "yaw": 270
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.35,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#a8a59c"
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 16,
+    "count": 10,
+    "colour": "#7a8f6a"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    16,
+    8,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#8a6a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   80,
+   60
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     22
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline; ruined battery typed from brief"
+ }
+}

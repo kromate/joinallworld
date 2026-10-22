@@ -1,0 +1,423 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Howick_and_Pakuranga_First_World_War_memorial_20250425_142801.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Prosperosity",
+   "view": "front",
+   "file": "/tmp/places-evidence/auckland/stock3.jpg",
+   "used": "grey granite obelisk on a stepped base with a cap course and inscribed die, white flagstaff with a yardarm and two flags beside it, grassy hilltop, asphalt path"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stockade_Hill_20250425_143011.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Prosperosity",
+   "view": "side",
+   "used": "white flagstaff with yardarm and rigging, mown grass summit, suburbs below"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stockade_Hill_earthworks_20250425_143408.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Prosperosity",
+   "view": "detail",
+   "used": "grassed earth bank and ditch of the 1863 stockade, pohutukawa trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/9796353",
+   "used": "park extent about 260 x 88 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "hill",
+   "params": {
+    "colour": "#8aa05a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       11,
+       10
+      ]
+     },
+     {
+      "z": 0.6,
+      "ellipse": [
+       9,
+       8
+      ]
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       7,
+       6
+      ]
+     }
+    ]
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "params": {
+    "rect": [
+     6.4,
+     6.4
+    ],
+    "z0": 1.2,
+    "height": 0.3,
+    "colour": "#9a9da1",
+    "topColour": "#9a9da1"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "params": {
+    "rect": [
+     5.2,
+     5.2
+    ],
+    "z0": 1.5,
+    "height": 0.3,
+    "colour": "#92959a",
+    "topColour": "#92959a"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "die",
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "z0": 1.7999999999999998,
+    "height": 2.6,
+    "colour": "#7d8186",
+    "topColour": "#7d8186",
+    "topScale": 0.85
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "inscription",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.1
+    ],
+    "z0": 2.5,
+    "height": 1.2,
+    "colour": "#c8a64a",
+    "topColour": "#c8a64a"
+   },
+   "at": [
+    0,
+    -1.45
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shoulder",
+   "params": {
+    "rect": [
+     3.0,
+     3.0
+    ],
+    "z0": 4.4,
+    "height": 0.9,
+    "colour": "#74787d",
+    "topColour": "#74787d",
+    "topScale": 0.55
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shaft",
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 5.3,
+    "height": 11.5,
+    "colour": "#70747a",
+    "topColour": "#70747a",
+    "topScale": 0.55
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "neck",
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 16.8,
+    "height": 0.25,
+    "colour": "#9a9da1",
+    "topColour": "#9a9da1"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "point",
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 17.05,
+    "height": 1.1,
+    "colour": "#70747a",
+    "topColour": "#70747a",
+    "topScale": 0.05
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flagstaff",
+   "params": {
+    "radius": 0.12,
+    "n": 8,
+    "z0": 1.2,
+    "height": 11,
+    "colour": "#f4f4f2",
+    "topColour": "#f4f4f2"
+   },
+   "at": [
+    -6,
+    -2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "yardarm",
+   "params": {
+    "rect": [
+     3.2,
+     0.1
+    ],
+    "z0": 9.5,
+    "height": 0.1,
+    "colour": "#f4f4f2",
+    "topColour": "#f4f4f2"
+   },
+   "at": [
+    -6,
+    -2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flag-top",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.05
+    ],
+    "z0": 11.2,
+    "height": 1.1,
+    "colour": "#2b3a67",
+    "topColour": "#2b3a67"
+   },
+   "at": [
+    -5.1,
+    -2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flag-ya",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.05
+    ],
+    "z0": 8.4,
+    "height": 0.9,
+    "colour": "#b5303a",
+    "topColour": "#b5303a"
+   },
+   "at": [
+    -4.5,
+    -2
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "stay1",
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.03
+    },
+    "points": [
+     [
+      -6,
+      -2,
+      9.5
+     ],
+     [
+      -8.5,
+      -2,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "stay2",
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.03
+    },
+    "points": [
+     [
+      -6,
+      -2,
+      9.5
+     ],
+     [
+      -3.5,
+      -2,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "params": {
+    "points": [
+     [
+      -9,
+      -9
+     ],
+     [
+      -5,
+      -5.5
+     ],
+     [
+      5,
+      -5.5
+     ],
+     [
+      9,
+      -9
+     ],
+     [
+      9,
+      -10.3
+     ],
+     [
+      5,
+      -6.8
+     ],
+     [
+      -5,
+      -6.8
+     ],
+     [
+      -9,
+      -10.3
+     ]
+    ],
+    "z0": 0.05,
+    "height": 0.3,
+    "colour": "#4c4f52",
+    "topColour": "#4c4f52"
+   },
+   "at": [
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   22,
+   22
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "obelisk, stepped plinth, inscription panel, flagstaff with yardarm and stays now fill the frame; no wreaths, suburb backdrop or pyramidal shoulder detail; hill reduced to a low mound"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-recreation"
+}

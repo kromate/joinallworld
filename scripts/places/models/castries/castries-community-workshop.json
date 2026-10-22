@@ -1,0 +1,111 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "castries",
+ "venueId": "castries-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/538375689",
+   "used": "real stepped 39 x 14 m outline (containing the venue point, unnamed); no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "fit": 40
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#3f6a8a",
+    "plinth": 0.4,
+    "cornice": true,
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "floors": 2,
+    "storeyHeight": 3.5,
+    "colour": "#d98c5f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#3f6a8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; shape and colours are guesses on the real outline"
+ }
+}

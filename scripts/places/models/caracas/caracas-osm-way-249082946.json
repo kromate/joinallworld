@@ -1,0 +1,120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "caracas",
+ "venueId": "caracas-osm-way-249082946",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/946721103",
+   "used": "real zig-zag plan of the university building, about 55 x 17 m (inside campus area way/249082946, 3.6 ha)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 20,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe7d5",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 3.4,
+    "cornice": true,
+    "groundKind": "plain",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#7a5a48"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2573f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 0.4,
+    "count": 5,
+    "colour": "#cfc6b4"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -16
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 2.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -14
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: real OSM zig-zag plan, 3 storeys, hip clay-tile roof and cream render from the brief; hillside, courtyard and real facade unknown"
+ }
+}

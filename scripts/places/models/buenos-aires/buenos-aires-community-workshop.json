@@ -1,0 +1,301 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "buenos-aires",
+ "venueId": "buenos-aires-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Biblioteca_Popular_Antonio_Mentruyt_-_Lomas_de_Zamora_(2).jpg",
+   "licence": "CC BY-SA 2.5 ar",
+   "author": "Banfield",
+   "view": "front",
+   "file": "/tmp/places-evidence/buenos-aires/library.jpg",
+   "used": "two-storey Italianate grey-stone facade with triangular pediment, large arched windows, pilasters, small balconies, pedimented timber door"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b0a898",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bands": "#c4bcab",
+    "cornice": true,
+    "plinth": 1.5,
+    "bay": 4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8780",
+    "parapet": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "footprint": {
+    "rect": [
+     11,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "z0": 15.8,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b0a898",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0a898",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -14.6,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "depth": 1.0,
+    "height": 4.6,
+    "columns": 2,
+    "pediment": true,
+    "steps": 2,
+    "colour": "#c4bcab",
+    "roofColour": "#b8b09c"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    4.2,
+    -14.2,
+    6.5
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 1.1,
+    "railing_colour": "#d5cfbe"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -4.2,
+    -14.2,
+    6.5
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 1.0,
+    "railing_colour": "#d5cfbe"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    3,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8a5a2b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a2b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-bay",
+   "footprint": {
+    "rect": [
+     3.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "rotDeg": 0,
+   "z0": 5.5,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e4e0d6",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d2cbbb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-l",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.9
+    ]
+   },
+   "at": [
+    -5.6,
+    -14.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c4bcab",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bcab"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pil-r",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.9
+    ]
+   },
+   "at": [
+    5.6,
+    -14.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c4bcab",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bcab"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cornice",
+   "footprint": {
+    "rect": [
+     12.8,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -13.4
+   ],
+   "rotDeg": 0,
+   "z0": 14,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c4bcab",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bcab"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Narrow tall facade, central timber door, pilasters, side balconies and cornice match; central arch bay and pediment are simplified, no rustication or plaster ornament, sides plain"
+ }
+}

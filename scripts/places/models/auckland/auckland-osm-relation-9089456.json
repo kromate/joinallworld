@@ -1,0 +1,361 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "auckland",
+ "venueId": "auckland-osm-relation-9089456",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sylvia_Park_Seen_From_Northwest_Above.jpg",
+   "licence": "Public domain",
+   "author": "Ingolfson",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/auckland/sylvia1.jpg",
+   "used": "big white-grey flat-roofed mall with low skylight strips and a drum atrium, surface car park with islands, cinema box and rail at the rear"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9089456",
+   "used": "footprint (scaled to scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 50,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 9
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe6",
+    "glassColour": "#6f8190",
+    "windows": "none",
+    "bands": "#c8442f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0efea",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -6,
+    11
+   ],
+   "params": {
+    "rect": [
+     34,
+     6
+    ],
+    "height": 1.6,
+    "colour": "#8d9094",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    24,
+    11
+   ],
+   "params": {
+    "rect": [
+     30,
+     5
+    ],
+    "height": 1.4,
+    "colour": "#8d9094"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    6,
+    6,
+    11
+   ],
+   "params": {
+    "profile": [
+     [
+      9,
+      0,
+      "#8a8f93"
+     ],
+     [
+      9,
+      2.6,
+      "#6f7479"
+     ],
+     [
+      0,
+      2.6,
+      "#9aa0a5"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     26
+    ],
+    "height": 10,
+    "colour": "#f4f3ee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -20,
+    -48,
+    5
+   ],
+   "params": {
+    "width": 14,
+    "height": 4,
+    "colour": "#c8442f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -22,
+    8
+   ],
+   "params": {
+    "rect": [
+     44,
+     22
+    ],
+    "height": 6,
+    "colour": "#eeede8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "grid",
+    "cols": 3,
+    "rows": 2,
+    "dx": 9,
+    "dy": 10,
+    "centred": false,
+    "of": [
+     {
+      "type": "revolve",
+      "at": [
+       36,
+       3,
+       10
+      ],
+      "params": {
+       "profile": [
+        [
+         2.6,
+         0,
+         "#d7d9dc"
+        ],
+        [
+         2.6,
+         0.5,
+         "#c9a89a"
+        ],
+        [
+         0,
+         0.5,
+         "#c9a89a"
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -45,
+      6
+     ],
+     [
+      -50,
+      -10,
+      6.5
+     ],
+     [
+      -44,
+      20,
+      7
+     ],
+     [
+      -30,
+      46,
+      7
+     ]
+    ],
+    "colour": "#8a8d90",
+    "width": 4.5,
+    "height": 1.2,
+    "curve": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 60,
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "cars": [
+   {
+    "at": [
+     -60,
+     -62
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     -38,
+     -62
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     -16,
+     -62
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     6,
+     -62
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     28,
+     -62
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     50,
+     -62
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     72,
+     -62
+    ],
+    "yawDeg": 90
+   },
+   {
+    "at": [
+     62,
+     -40
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     62,
+     -16
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     62,
+     8
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     62,
+     32
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     72,
+     -28
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     72,
+     -4
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     72,
+     20
+    ],
+    "yawDeg": 0
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof now near white with stepped south block, cinema box with skylight discs and a west viaduct added; ground asphalt stays darker than the photo (no mid-grey ground option, paving tiled badly), car-park islands and roundabouts not modelled, cars only along the front and east edge."
+ }
+}

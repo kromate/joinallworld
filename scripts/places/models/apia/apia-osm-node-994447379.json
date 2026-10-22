@@ -1,0 +1,108 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1073430317",
+   "used": "bent 150 m x 22 m school range footprint (containing match)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "two-storey range, open ground corridor, gable corrugated roof, blue accents"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "range",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bands": "#4a79a3",
+    "faces": {
+     "front": "louvre"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#ce1126"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; storeys, colours and corridor guessed, outline scaled 0.8 to fit"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "apia",
+ "venueId": "apia-osm-node-994447379"
+}

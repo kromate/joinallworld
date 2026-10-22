@@ -1,0 +1,224 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Municipalidad_de_San_Antonio,_Paraguay.jpg",
+   "licence": "CC0",
+   "author": "Chipachyryry",
+   "view": "front",
+   "file": "/tmp/places-evidence/asuncion/muni1.jpg",
+   "used": "two-storey white block, blue pilasters, long dark-blue signboard band over the ground floor, blue-framed open porch at the right end, low terracotta tile roof, dark ground windows, aircon units"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/166917816",
+   "used": "52.6 x 20.7 m rectangle"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     52.6,
+     20.7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceff2",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bay": 4.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5603f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "id": "pilasters",
+   "at": [
+    -23,
+    -10.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     46,
+     0,
+     0
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 8.2,
+      "colour": "#2d5aa3",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-band",
+   "at": [
+    0,
+    -10.7,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     48,
+     0.6
+    ],
+    "height": 2.2,
+    "colour": "#1d2f66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-roof",
+   "at": [
+    17.5,
+    -14,
+    4.3
+   ],
+   "params": {
+    "rect": [
+     16,
+     7.5
+    ],
+    "height": 0.5,
+    "colour": "#2d5aa3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "porch-posts",
+   "at": [
+    10.5,
+    -17,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     14,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 4.3,
+      "colour": "#2d5aa3",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-floor",
+   "at": [
+    17.5,
+    -13.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     7
+    ],
+    "height": 0.4,
+    "colour": "#7f9bbd",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -33,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 6,
+    "colour": "#5f9a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asuncion",
+ "venueId": "asuncion-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "signboard band slightly tall/saturated, ground floor glazing larger, no aircon units or wires"
+ }
+}

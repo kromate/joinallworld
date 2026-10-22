@@ -1,0 +1,379 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bogota",
+ "venueId": "bogota-osm-relation-19135828",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CC_Portal_80_Bogot%C3%A1_jun_2018_-_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "EEIM",
+   "view": "front",
+   "used": "charcoal dark panel facade, green-tinted glass band under the roof, pale stone panels, louvred stair window, blank board",
+   "file": "/tmp/places-evidence/bogota/osm-relation-19135828-0.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CC_Portal_80_Bogot%C3%A1_jun_2018_-_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "EEIM",
+   "view": "street",
+   "used": "long low block with louvred pale lower wing, tall board tower, lower blue block, trees and TransMilenio roadside",
+   "file": "/tmp/places-evidence/bogota/osm-relation-19135828-1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19135828",
+   "used": "footprint 225 x 149 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wall",
+   "footprint": {
+    "polygon": [
+     [
+      -56,
+      -21.9
+     ],
+     [
+      -28,
+      -41.5
+     ],
+     [
+      0,
+      -48.0
+     ],
+     [
+      28,
+      -41.5
+     ],
+     [
+      56,
+      -21.9
+     ],
+     [
+      56,
+      22
+     ],
+     [
+      -56,
+      22
+     ]
+    ]
+   },
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2e3032",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.5,
+       1.5
+      ],
+      "colours": [
+       "#2e3032",
+       "#34373a",
+       "#292b2d"
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-band",
+   "footprint": {
+    "polygon": [
+     [
+      -56,
+      -21.9
+     ],
+     [
+      -28,
+      -41.5
+     ],
+     [
+      0,
+      -48.0
+     ],
+     [
+      28,
+      -41.5
+     ],
+     [
+      56,
+      -21.9
+     ],
+     [
+      56,
+      22
+     ],
+     [
+      -56,
+      22
+     ]
+    ]
+   },
+   "z0": 18,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db8ae",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26282a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -45.06666666666666,
+    3
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.6
+    ],
+    "height": 13,
+    "colour": "#d6cfb9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -45.56666666666666,
+    3
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.4
+    ],
+    "height": 8,
+    "colour": "#b9c2c4",
+    "windows": "louvre"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    32,
+    -39.86666666666667,
+    5
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.5
+    ],
+    "height": 8,
+    "colour": "#8fb0a4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -48.6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 6,
+    "bottom": 2,
+    "colour": "#f2f2ee",
+    "frameColour": "#3c3f41",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -48.766666666666666,
+    9
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#3f9a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.4,
+    -48.556999999999995,
+    9
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#e8782a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.4,
+    -48.211999999999996,
+    9
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#2f55b5"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.4,
+    -48.556999999999995,
+    13
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.5
+    ],
+    "height": 1.2,
+    "colour": "#2f55b5"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -60,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     22
+    ],
+    "height": 0.3,
+    "colour": "#8b8f91"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.4,
+    -60,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     22
+    ],
+    "height": 1.2,
+    "colour": "#6f7578"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.6,
+    -60,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     22
+    ],
+    "height": 1.2,
+    "colour": "#6f7578"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -60,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     22
+    ],
+    "height": 0.4,
+    "colour": "#6f7578"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     25,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "curved segmented charcoal wall with green glass band, stone and louvre panel, green glass panel, coloured logo blocks and footbridge added; wall is a coarse 4-segment curve, panel grid noisy, bridge truss only a deck with rails, OSM footprint replaced by simplified curved plan"
+ }
+}

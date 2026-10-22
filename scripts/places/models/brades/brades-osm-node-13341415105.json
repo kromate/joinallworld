@@ -1,0 +1,250 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brades",
+ "venueId": "brades-osm-node-13341415105",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief brades-osm-node-13341415105",
+   "used": "120 x 80 m coastal park near Isles Bay: lawns, palms, a timber pavilion and a bandstand, road edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 24,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 72,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -28
+     ],
+     [
+      -20,
+      -10
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      24,
+      14
+     ],
+     [
+      52,
+      30
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      2,
+      -34
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -26,
+    12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 6.5,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#c9a77a"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    28,
+    -6,
+    0
+   ],
+   "params": {
+    "radius": 4.6,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -34,
+     0
+    ],
+    "end": [
+     40,
+     -34,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 8,
+      "height": 0.8,
+      "colour": "#4f7d3b"
+     }
+    }
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#a9cfe0",
+     "#f2eee3",
+     "#c9a77a"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -36,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 6,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   130,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     -26
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline; park layout typed from brief"
+ }
+}

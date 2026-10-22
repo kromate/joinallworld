@@ -1,0 +1,255 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1042768231",
+   "used": "real campus outline (278 x 205 m, name match), scaled into the scene clamp as the green site"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q60764292",
+   "used": "teacher training college founded 1948; brief: plantation-era house core with low concrete teaching blocks"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "site",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "great-house",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cc",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2573f",
+    "material": "clay-tile",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    2.2,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "depth": 2.6,
+    "height": 3.2,
+    "balustrade": true,
+    "steps": true,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    -22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#4f8a6b",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a82",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    18,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#4f8a6b",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a82",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -6,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cc",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a2573f",
+    "material": "clay-tile",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 2.4,
+    "height": 3,
+    "colour": "#d8d2c0",
+    "roofColour": "#8a8a82"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#00267f",
+     "#ffc726",
+     "#00267f"
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 70,
+    "count": 24,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 12,
+    "keep_out": [
+     [
+      -14,
+      -10,
+      32,
+      34
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bridgetown",
+ "venueId": "bridgetown-osm-way-1042768231",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; great-house U block and concrete teaching blocks are guesses from brief, site outline scaled 0.42"
+ }
+}

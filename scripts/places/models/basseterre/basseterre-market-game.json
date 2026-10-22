@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "basseterre",
+ "venueId": "basseterre-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/basseterre.json#basseterre-market-game",
+   "used": "roadside produce stand, 15 x 10 m, timber and sheet-metal shed, crates, umbrellas, blank sign board; the only OSM building nearby is Ebenezer church (nearest, 55 m), so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back-shed",
+   "footprint": {
+    "rect": [
+     15,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b49a6e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9296",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    -1.5,
+    0
+   ],
+   "params": {
+    "length": 15,
+    "depth": 6,
+    "height": 3,
+    "form": "shed",
+    "support": "timber",
+    "colour": "#5a8a4a",
+    "accent": "#b49a6e",
+    "roof_colour": "#8c9296"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 2.2,
+    "kind": "table",
+    "colours": [
+     "#b49a6e",
+     "#e9e1c9"
+    ],
+    "goods_colours": [
+     "#d9902f",
+     "#5a8a4a",
+     "#c9433a",
+     "#e9d36a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -6.5,
+    -6.5,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "colour": "#5a8a4a"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    6.5,
+    -6.5,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "colour": "#e9e1c9"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#5a8a4a",
+    "frameColour": "#e9e1c9"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -11,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   28
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text only; typical roadside produce stand, nothing observed."
+ }
+}

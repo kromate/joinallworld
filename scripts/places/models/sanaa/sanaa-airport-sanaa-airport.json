@@ -1,0 +1,420 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-airport-sanaa-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sanaa_International_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "The New Arab Staff",
+   "view": "front",
+   "file": "/tmp/places-evidence/sanaa/airport1.jpg",
+   "used": "white banded flat-roofed terminal with deep horizontal fascia and glazed ground floor; big rectangular roof sign board with rounded left end (left blank); square brick-brown control tower with grey-white cab, red/white band, antennas; palms in front"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q1165296",
+   "used": "identity and coordinates"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     62,
+     26
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e7e0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#f2f1ec",
+    "plinth": 0.4,
+    "cornice": true,
+    "parapet": 0.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#ecebe5",
+      "#dcdcd6"
+     ]
+    },
+    "faces": {
+     "back": "none",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b6ae",
+    "parapet": 0.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-hall",
+   "footprint": {
+    "rect": [
+     22,
+     24
+    ]
+   },
+   "at": [
+    -33,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c4ccd0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#f2f1ec",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c7bf",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     40,
+     1.5
+    ]
+   },
+   "at": [
+    10,
+    -12.2
+   ],
+   "rotDeg": 0,
+   "z0": 9.5,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4e4de",
+    "windows": "none",
+    "bands": "#ffffff",
+    "cornice": true,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f2",
+    "parapet": 0.35,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-shaft",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -16,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5a3c",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-cab",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -16,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 19,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e0e1dc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#d9d9d4",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd0cc",
+    "parapet": 0.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-band",
+   "footprint": {
+    "rect": [
+     9.4,
+     9.4
+    ]
+   },
+   "at": [
+    -16,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 18.2,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c0322f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0322f"
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    -16,
+    8,
+    23.2
+   ],
+   "params": {
+    "height": 7,
+    "banded": true
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    8,
+    -15,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 40,
+    "depth": 4,
+    "height": 3.6,
+    "columns": 6,
+    "colour": "#d6d4cc",
+    "edgeColour": "#bdbcb5"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 4,
+    "line": 18
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-end",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.5
+    ]
+   },
+   "at": [
+    -10.6,
+    -12.2
+   ],
+   "z0": 9.5,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4e4de",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f6f2",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-panel",
+   "footprint": {
+    "rect": [
+     34,
+     0.5
+    ]
+   },
+   "at": [
+    11,
+    -12.9
+   ],
+   "z0": 10.8,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9d3d8",
+    "windows": "none",
+    "bands": "#b0bcc2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9d3d8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 5,
+    "spread": 5,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 5,
+    "line": 34
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -28
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof sign board is a plain slab without rounded end or lettering and reads smaller than in the photo; tower cab lacks balcony ring and dish; photo is heavily palm-screened, model palms are sparse; landside only."
+ }
+}

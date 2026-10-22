@@ -1,0 +1,253 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dochula_Pass,_July_2016_09.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Afifa Afrin",
+   "view": "street",
+   "file": "/tmp/places-evidence/thimphu/anniv1.jpg",
+   "used": "a building 90 m from the park (not confirmed to be inside it): grey stone base, orange painted timber upper with arched painted windows and a frieze, red roof edge, tall deodar trees in mist. Used for the park pavilion style and the conifer setting."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1380056477",
+   "used": "park outline 304 x 177 m (name match), auto-fitted to the 118 m scene limit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 32,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7a9a55",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa05a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-base",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 0.5,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a9a92",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-upper",
+   "footprint": {
+    "rect": [
+     9.4,
+     6.4
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 3.1,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e08a3a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "bay": 1.6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#3f6f4f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9552f",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "rise": 2.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eave-frieze",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "rect": [
+     10.4,
+     7.2
+    ],
+    "z0": 6.0,
+    "height": 0.5,
+    "colour": "#d9a93a",
+    "topColour": "#d9a93a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    -2
+   ],
+   "params": {
+    "rect": [
+     3,
+     12
+    ],
+    "z0": 0.5,
+    "height": 0.1,
+    "colour": "#c8c0b0",
+    "topColour": "#c8c0b0"
+   }
+  },
+  {
+   "type": "steps",
+   "id": "steps",
+   "at": [
+    0,
+    -12,
+    0.5
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b9b3a6"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flags",
+   "at": [
+    -8,
+    -8,
+    0.5
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#e9a923",
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "deodar-w",
+   "at": [
+    -30,
+    5,
+    0.5
+   ],
+   "params": {
+    "width": 24,
+    "depth": 20,
+    "count": 12,
+    "kind": "conifer",
+    "min_height": 13,
+    "max_height": 20,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "deodar-e",
+   "at": [
+    28,
+    5,
+    0.5
+   ],
+   "params": {
+    "width": 24,
+    "depth": 22,
+    "count": 12,
+    "kind": "conifer",
+    "min_height": 13,
+    "max_height": 20,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "deodar-back",
+   "at": [
+    0,
+    22,
+    0.5
+   ],
+   "params": {
+    "width": 50,
+    "depth": 8,
+    "count": 9,
+    "kind": "conifer",
+    "min_height": 12,
+    "max_height": 18,
+    "keep_out": []
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   150,
+   110
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "The photo is of a nearby building, not confirmed inside the park, so the pavilion is style-based; the park outline is real but scaled to 0.38; paths, tree positions and flags are assumed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-way-1380056477"
+}

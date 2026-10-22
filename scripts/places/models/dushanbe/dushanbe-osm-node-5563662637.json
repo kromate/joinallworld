@@ -1,0 +1,310 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-node-5563662637",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/5563662637",
+   "used": "point only; the matched way/580819864 is a 5 x 2 m fuel feature, not used for massing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     11
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#8a6a45",
+    "topColour": "#9a7a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "backwall",
+   "at": [
+    0,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.4
+    ],
+    "z0": 0.5,
+    "height": 3.4,
+    "colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sidewall",
+   "at": [
+    -9.8,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     5
+    ],
+    "z0": 0.5,
+    "height": 3.4,
+    "colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a30",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f8591",
+    "material": "corrugated",
+    "rise": 1.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -4.8,
+     0
+    ],
+    "end": [
+     10,
+     -4.8,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "z0": 0.5,
+      "height": 2.9,
+      "colour": "#6b4a30"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tapchans",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -0.3,
+     0
+    ],
+    "end": [
+     6,
+     -0.3,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.4,
+       2.4
+      ],
+      "z0": 0.5,
+      "height": 0.55,
+      "colour": "#7b5a38",
+      "topColour": "#8a4a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "tables",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -0.3,
+     0
+    ],
+    "end": [
+     6,
+     -0.3,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.8
+      ],
+      "z0": 1.05,
+      "height": 0.35,
+      "colour": "#c9b48a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -3.2,
+     0
+    ],
+    "end": [
+     6,
+     -3.2,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.4
+      ],
+      "z0": 0.5,
+      "height": 0.45,
+      "colour": "#6b4a30"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard",
+   "at": [
+    0,
+    -5.9
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.25
+    ],
+    "z0": 3.0,
+    "height": 1.0,
+    "colour": "#d8cfb8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    13.5,
+    2
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8591",
+    "parapet": 0.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     19,
+     -5
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; typical Tajik roadside chaikhana composed from the brief (open pavilion, tapchan platforms, corrugated shed roof)"
+ }
+}

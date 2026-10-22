@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/305877745",
+   "used": "name-matched complex outline 229 x 93 m (9,902 m2): restaurant wing, terrace and pavilions placed along the real long axis; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "complex",
+   "footprint": {
+    "osm": true,
+    "scale": 0.45
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d6b8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a3c",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "rect": [
+     44,
+     17
+    ]
+   },
+   "at": [
+    -4,
+    -8
+   ],
+   "rotDeg": -20,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc2",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched"
+    },
+    "bands": "#8a6a4a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a3c",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fish-pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    18,
+    -16
+   ],
+   "rotDeg": -20,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a4a",
+    "windows": "punched",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4c34",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "rotDeg": -20,
+   "params": {
+    "width": 26,
+    "depth": 5,
+    "height": 3.2,
+    "form": "flat",
+    "colour": "#8fb3c9"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     7,
+     0.5
+    ]
+   },
+   "at": [
+    -14,
+    -30
+   ],
+   "z0": 2.8,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb3c9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e8fa5"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -10,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 12
+   }
+  },
+  {
+   "type": "market-open/tree",
+   "at": [
+    24,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "market-open/tree",
+   "at": [
+    -38,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "market-open/tree",
+   "at": [
+    40,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; real outline used at 0.45 scale as the low complex, restaurant wing and pavilion are typed"
+ }
+}

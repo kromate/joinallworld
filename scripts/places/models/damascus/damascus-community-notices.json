@@ -1,0 +1,674 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Ministry_of_Education_Damascus.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tfoz257",
+   "view": "front",
+   "file": "/tmp/places-evidence/damascus/min1.jpg",
+   "used": "front: curved two-storey entrance bay under a rounded stone-banded parapet, semicircular portico slab on two slender columns over wide steps, rusticated pale limestone ground floor, sand-tan upper cladding, dark grilled windows, round medallions, flat-roofed stone block rising behind with tall slot windows, roundel sign discs (kept blank)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/842962557",
+   "used": "overall size (86 x 39 m, four storeys), main block depth and length"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 0.75,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     26
+    ]
+   },
+   "at": [
+    10,
+    16
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6c59d",
+    "windows": "punched",
+    "windowRatio": 0.04,
+    "bay": 7,
+    "plinth": 0.6,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "windowShape": "rect",
+    "glassColour": "#2a2f2e",
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa59a",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    -24,
+    8
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4c19a",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa59a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    -1
+   ],
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8c096",
+    "windows": "none",
+    "windowRatio": 0.16,
+    "bands": "#bfa574",
+    "cornice": true,
+    "plinth": 0,
+    "bay": 7.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b184",
+    "parapet": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-stone",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     23,
+     15
+    ]
+   },
+   "at": [
+    -4,
+    -1.2
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#eadfc6",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#d3c7a8",
+    "bay": 2.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0d6bd",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -4,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 9,
+    "colour": "#e5dcc8"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4,
+    -7.6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.4,
+    "bottom": 10,
+    "colour": "#6f9a80",
+    "frameColour": "#d8cfb4",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#d9ceb4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -13,
+    -11.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.9,
+      0,
+      "#eee6d2"
+     ],
+     [
+      0.9,
+      0.5,
+      "#eee6d2"
+     ],
+     [
+      0.55,
+      0.8,
+      "#eee6d2"
+     ],
+     [
+      0.55,
+      5.9,
+      "#eee6d2"
+     ],
+     [
+      0.9,
+      6.1,
+      "#e6dcc2"
+     ],
+     [
+      0,
+      6.1,
+      "#e6dcc2"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    5,
+    -11.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.9,
+      0,
+      "#eee6d2"
+     ],
+     [
+      0.9,
+      0.5,
+      "#eee6d2"
+     ],
+     [
+      0.55,
+      0.8,
+      "#eee6d2"
+     ],
+     [
+      0.55,
+      5.9,
+      "#eee6d2"
+     ],
+     [
+      0.9,
+      6.1,
+      "#e6dcc2"
+     ],
+     [
+      0,
+      6.1,
+      "#e6dcc2"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     3.6,
+     0.6
+    ]
+   },
+   "at": [
+    -4,
+    -8.2
+   ],
+   "height": 4.8,
+   "wall": {
+    "colour": "#14201c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1e2a26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win-10",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    -10.5,
+    -8.0
+   ],
+   "z0": 1.2,
+   "height": 4.2,
+   "wall": {
+    "colour": "#2a2c2b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2c2b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win2",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    2.5,
+    -8.0
+   ],
+   "z0": 1.2,
+   "height": 4.2,
+   "wall": {
+    "colour": "#2a2c2b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2c2b"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10,
+    -7.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "profile": [
+     [
+      0,
+      16.2,
+      "#4f8a68"
+     ],
+     [
+      1.0,
+      16.2,
+      "#4f8a68"
+     ],
+     [
+      1.0,
+      16.5,
+      "#d8cfb4"
+     ],
+     [
+      0,
+      16.5,
+      "#d8cfb4"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -4,
+    -7.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "profile": [
+     [
+      0,
+      16.2,
+      "#4f8a68"
+     ],
+     [
+      1.0,
+      16.2,
+      "#4f8a68"
+     ],
+     [
+      1.0,
+      16.5,
+      "#d8cfb4"
+     ],
+     [
+      0,
+      16.5,
+      "#d8cfb4"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2,
+    -7.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "profile": [
+     [
+      0,
+      16.2,
+      "#4f8a68"
+     ],
+     [
+      1.0,
+      16.2,
+      "#4f8a68"
+     ],
+     [
+      1.0,
+      16.5,
+      "#d8cfb4"
+     ],
+     [
+      0,
+      16.5,
+      "#d8cfb4"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -8.2,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      13.0,
+      -0.0
+     ],
+     [
+      12.22,
+      -2.05
+     ],
+     [
+      9.96,
+      -3.86
+     ],
+     [
+      6.5,
+      -5.2
+     ],
+     [
+      2.26,
+      -5.91
+     ],
+     [
+      -2.26,
+      -5.91
+     ],
+     [
+      -6.5,
+      -5.2
+     ],
+     [
+      -9.96,
+      -3.86
+     ],
+     [
+      -12.22,
+      -2.05
+     ],
+     [
+      -13.0,
+      -0.0
+     ]
+    ],
+    "z0": 6.4,
+    "height": 1.0,
+    "colour": "#efe8d6",
+    "topColour": "#e6dcc2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upwin-9",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    -9,
+    -7.9
+   ],
+   "z0": 9.5,
+   "height": 5.5,
+   "wall": {
+    "colour": "#3a302a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a302a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upwin-4",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -7.9
+   ],
+   "z0": 9.5,
+   "height": 5.5,
+   "wall": {
+    "colour": "#3a302a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a302a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upwin1.5",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    1.5,
+    -7.9
+   ],
+   "z0": 9.5,
+   "height": 5.5,
+   "wall": {
+    "colour": "#3a302a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a302a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col-9.5",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -9.5,
+    -12.5
+   ],
+   "height": 6.4,
+   "wall": {
+    "colour": "#efe8d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe8d6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col1.5",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    1.5,
+    -12.5
+   ],
+   "height": 6.4,
+   "wall": {
+    "colour": "#efe8d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe8d6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Portico approximated by a semicircular slab on two columns; drum windows are 3 large dark inserts; rustication approximated by bands; rear and side faces guessed."
+ }
+}

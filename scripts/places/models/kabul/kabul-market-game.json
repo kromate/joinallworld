@@ -1,0 +1,177 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1306745341",
+   "used": "10-vertex footprint of the shopping centre (68.8 x 62 m, 3474 m2), containing match"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Kabul_City_Center",
+   "used": "10 storeys, mall below and hotel on the upper six floors, glass-and-stone postmodern block, blast-resistant glazing; no exterior photo with a free licence was found (Commons has only interiors)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cdbb9a",
+    "windows": "none",
+    "bands": "#e9e3d4",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#cdbb9a",
+      "#9fb0b0"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "osm": true,
+    "scale": 0.82
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 16,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f9ba8",
+    "windows": "none",
+    "bands": "#e9e3d4",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#7f9ba8",
+      "#5f7b88"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      -40
+     ],
+     [
+      -48,
+      50
+     ],
+     [
+      50,
+      50
+     ],
+     [
+      50,
+      -42
+     ],
+     [
+      -48,
+      -40
+     ]
+    ],
+    "height": 3.2,
+    "thickness": 0.5,
+    "colour": "#bdb7a8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.5,
+    "bottom": 2.8,
+    "colour": "#7f9ba8",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.5,
+    "bottom": 2.8,
+    "colour": "#cdbb9a",
+    "frameColour": "#b8bcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No exterior photo found; footprint and storey split only. Rounded corner, glazed atrium and real facade rhythm not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-market-game"
+}

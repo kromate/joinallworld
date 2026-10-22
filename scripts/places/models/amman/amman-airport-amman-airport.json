@@ -1,0 +1,1008 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-airport-amman-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Queen_Alia_International_Airport_-_New_Terminal_-_2013.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Writer.00015",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/amman/qaia1.jpg",
+   "used": "two stepped ranks of shallow dark-blue concrete domes over glazed arcaded fronts with grey piers, sandy arched concourse wing at right, apron with airliners in front, desert-tan ground; critic round: arcaded glazed fronts, 9-per-rank slate vault lattice with ridge ribs, round car-park ramp at left, pale concrete apron"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Outside_Queen_Alia_International_Airport,_Amman.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "used": "old terminal: sandy-pink render with row of arched lattice windows, supports colour of the older wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/155418133",
+   "used": "overall scale only (566 m comb-shaped terminal); a 120 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 24,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-hall",
+   "footprint": {
+    "rect": [
+     80,
+     30
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a9a9c",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#5a7a82",
+    "windowShape": "arched",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    },
+    "bay": 8,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b4858",
+    "overhang": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-hall",
+   "footprint": {
+    "rect": [
+     80,
+     26
+    ]
+   },
+   "at": [
+    0,
+    15
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a9a9c",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#5a7a82",
+    "windowShape": "arched",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "plain"
+    },
+    "bay": 8,
+    "plinth": 0.3,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b4858",
+    "overhang": 2.6
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     74,
+     31
+    ],
+    "height": 12.32,
+    "colour": "#3e4a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     74,
+     33
+    ],
+    "height": 16.32,
+    "colour": "#3e4a5a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 13,
+    "start": [
+     -37,
+     -29.5
+    ],
+    "end": [
+     37,
+     -29.5
+    ],
+    "lod1Step": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.8
+      ],
+      "height": 11,
+      "colour": "#b0b4b5"
+     }
+    },
+    "lod2Step": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "concourse",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    56,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dcc79e",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.6,
+    "bay": 5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0ba90",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    -48,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8f90",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8590"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -16.0,
+    -62,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.75,
+    "colour": "#ffffff",
+    "tailColour": "#9b2c2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    14.4,
+    -64,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.75,
+    "colour": "#ffffff",
+    "tailColour": "#6c7a89"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "service-w",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -20,
+    -34
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9da09d",
+    "windows": "none",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9090"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-e",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    8,
+    -34
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9da09d",
+    "windows": "none",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9090"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -62,
+    -4,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      0,
+      0,
+      "#b8b6b0"
+     ],
+     [
+      26.0,
+      0,
+      "#b8b6b0"
+     ],
+     [
+      26.0,
+      1.2,
+      "#8f9190"
+     ],
+     [
+      24.7,
+      1.2,
+      "#8f9190"
+     ],
+     [
+      24.7,
+      0.4,
+      "#c4c2bb"
+     ],
+     [
+      19.066666666666666,
+      0.4,
+      "#c4c2bb"
+     ],
+     [
+      19.066666666666666,
+      0.9,
+      "#8f9190"
+     ],
+     [
+      18.2,
+      0.9,
+      "#8f9190"
+     ],
+     [
+      18.2,
+      0.4,
+      "#c4c2bb"
+     ],
+     [
+      12.133333333333333,
+      0.4,
+      "#c4c2bb"
+     ],
+     [
+      12.133333333333333,
+      0.9,
+      "#8f9190"
+     ],
+     [
+      11.266666666666667,
+      0.9,
+      "#8f9190"
+     ],
+     [
+      11.266666666666667,
+      0.4,
+      "#c4c2bb"
+     ],
+     [
+      0,
+      0.4,
+      "#c4c2bb"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     -24.33
+    ],
+    "end": [
+     32,
+     -24.33
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 10.5,
+      "z": 9,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 6,
+      "underside": false
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -27.6,
+     -14.0
+    ],
+    "end": [
+     27.6,
+     -14.0
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 10.5,
+      "z": 9,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 6,
+      "underside": false
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     -3.67
+    ],
+    "end": [
+     32,
+     -3.67
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 10.5,
+      "z": 9,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 6,
+      "underside": false
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     -24.33
+    ],
+    "end": [
+     32,
+     -24.33
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 10.5,
+      "z": 9,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 2,
+      "underside": false
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -27.6,
+     -14.0
+    ],
+    "end": [
+     27.6,
+     -14.0
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 10.5,
+      "z": 9,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 2,
+      "underside": false
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     -3.67
+    ],
+    "end": [
+     32,
+     -3.67
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 10.5,
+      "z": 9,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 2,
+      "underside": false
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     6.5
+    ],
+    "end": [
+     32,
+     6.5
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 8.7,
+      "z": 11,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 6,
+      "underside": false
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -27.6,
+     15.0
+    ],
+    "end": [
+     27.6,
+     15.0
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 8.7,
+      "z": 11,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 6,
+      "underside": false
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     23.5
+    ],
+    "end": [
+     32,
+     23.5
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 8.7,
+      "z": 11,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 6,
+      "underside": false
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     6.5
+    ],
+    "end": [
+     32,
+     6.5
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 8.7,
+      "z": 11,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 2,
+      "underside": false
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -27.6,
+     15.0
+    ],
+    "end": [
+     27.6,
+     15.0
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 8.7,
+      "z": 11,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 2,
+      "underside": false
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     23.5
+    ],
+    "end": [
+     32,
+     23.5
+    ],
+    "of": {
+     "type": "surface",
+     "params": {
+      "kind": "dome-cap",
+      "width": 8.8,
+      "depth": 8.7,
+      "z": 11,
+      "rise": 2.0,
+      "thickness": 0.5,
+      "colour": "#46546a",
+      "edgeColour": "#b4b8ba",
+      "res": 2,
+      "underside": false
+     }
+    },
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     40
+    ],
+    "height": 0.15,
+    "colour": "#d6d4cc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    -37,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     14
+    ],
+    "height": 4.5,
+    "colour": "#c9ccce"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    -45,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "height": 4,
+    "colour": "#b8bcbf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14.4,
+    -37,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     14
+    ],
+    "height": 4.5,
+    "colour": "#c9ccce"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14.4,
+    -45,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "height": 4,
+    "colour": "#b8bcbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-44",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    -42,
+    -25
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a9a9c",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#5a7a82",
+    "windowShape": "arched",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#46546a",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing44",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    42,
+    -25
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a9a9c",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#5a7a82",
+    "windowShape": "arched",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#46546a",
+    "overhang": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "lower vault lattice with wings, ramp rings, gate piers, 0.75-scale white airliners added; terminal still two ranks not a continuous comb, apron colour reads blue-grey in render, 120 m slice of 566 m"
+ }
+}

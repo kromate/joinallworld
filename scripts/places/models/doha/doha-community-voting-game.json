@@ -1,0 +1,458 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Doha_-_Katara_Cultural_Village_Entrance.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor (geo-tagged)",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/kat1.jpg",
+   "used": "sand-pink rendered Katara entrance block facing a paved plaza: tall central gate block with a pointed arch and crenellated parapet, crenellated tower at left, lower punched-window wings, low reflecting pool with pyramid lights at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Katara_village_06.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor (geo-tagged)",
+   "view": "street",
+   "used": "checked that the classical cream colonnaded streets are a different part of Katara; not copied"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/548147174",
+   "used": "nearest OSM building is the Katara Wedding Hall (not a match), only its approximate size"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-centre",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    2
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a77c",
+    "windows": "arched",
+    "windowRatio": 0.28,
+    "glassColour": "#2c2420",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 2.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d29b70",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier0",
+   "footprint": {
+    "rect": [
+     4,
+     7
+    ]
+   },
+   "at": [
+    -1,
+    -4
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a77c",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d29b70",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier1",
+   "footprint": {
+    "rect": [
+     4,
+     7
+    ]
+   },
+   "at": [
+    13,
+    -4
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a77c",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d29b70",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -4,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     19,
+     6
+    ],
+    "height": 4.5,
+    "colour": "#e3a975"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-side",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -8,
+    -3
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a77c",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d29b70",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    -1
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a77c",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d29b70",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    28,
+    2
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9a77c",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d29b70",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    6,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 14,
+    "openings": 1,
+    "kind": "pointed",
+    "pier": "#e4ae83",
+    "crenellated": true
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    6,
+    -6.8,
+    15
+   ],
+   "params": {
+    "length": 19,
+    "height": 1.4,
+    "thickness": 0.9,
+    "colour": "#e4ae83",
+    "trim": "#d29b70"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -8,
+    -5.8,
+    12.5
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.4,
+    "thickness": 0.9,
+    "colour": "#e1aa7f",
+    "trim": "#d29b70"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -34,
+    -4.8,
+    11
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.4,
+    "thickness": 0.9,
+    "colour": "#e2ab80",
+    "trim": "#d29b70"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    6,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.3,
+    "run": 1.0,
+    "count": 2,
+    "colour": "#8a7566"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    -34,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 0.8,
+    "height": 5,
+    "openings": 1,
+    "kind": "pointed",
+    "pier": "#e0a470"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    -0.3,
+    -7.6,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 0.6,
+    "height": 6,
+    "openings": 1,
+    "kind": "pointed",
+    "pier": "#e3a975"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    12.3,
+    -7.6,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 0.6,
+    "height": 6,
+    "openings": 1,
+    "kind": "pointed",
+    "pier": "#e3a975"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      5,
+      0.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      22,
+      -14,
+      0.15
+     ],
+     "radius": 14,
+     "radiusY": 8,
+     "startDeg": 200,
+     "endDeg": 340,
+     "plane": "xy"
+    },
+    "colour": "#26343d"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     28,
+     -20,
+     0.5
+    ],
+    "end": [
+     40,
+     -20,
+     0.5
+    ],
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#4a4d52",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         3.2,
+         3.2
+        ]
+       },
+       {
+        "z": 1.6,
+        "rect": [
+         0.2,
+         0.2
+        ]
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "extent": [
+   100,
+   70
+  ],
+  "forecourtColour": "#8d7a6a"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "taller deeper pointed gate, sand-pink #d9a77c, arched window bays, curved pool arc with pyramid lights; paving still pale grey not brick, mural and crenellation detail simplified"
+ }
+}

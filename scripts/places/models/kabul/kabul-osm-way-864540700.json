@@ -1,0 +1,677 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-osm-way-864540700",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mosque_of_the_King_of_Two_Swords.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Michal Hvorecky",
+   "view": "front",
+   "file": "/tmp/places-evidence/kabul/shah.jpg",
+   "used": "yellow ochre stucco two-storey block, two square-shafted minarets with balcony, lantern and teal onion caps flanking the front corners, grey dome on octagonal drum, teal-roofed gabled portico on slim columns centred on the front, tall arched windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/864540700",
+   "used": "17 x 17 m footprint, name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dcbc4c",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.4,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#ecdc9c",
+    "faces": {
+     "front": "arched",
+     "left": "arched",
+     "right": "arched",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f918c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-floor",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     5
+    ],
+    "height": 0.5,
+    "colour": "#c8b898",
+    "topColour": "#c8b898"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "portico-columns",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -5,
+     -14.6
+    ],
+    "end": [
+     5,
+     -14.6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 5,
+      "colour": "#ecdc9c",
+      "topColour": "#ecdc9c"
+     },
+     "at": [
+      0,
+      0,
+      0.5
+     ]
+    },
+    "lod2Step": 3
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portico-beam",
+   "at": [
+    0,
+    -12,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     11.4,
+     6.2
+    ],
+    "height": 0.6,
+    "colour": "#ecdc9c",
+    "topColour": "#ecdc9c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "river-rail",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.2,
+    "kind": "fence",
+    "colour": "#3c8aa0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/car",
+   "id": "cars",
+   "at": [
+    -2,
+    -19,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "colour": "#8e949a",
+    "count": 3,
+    "spacing": 2.8,
+    "yaw": 90
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "min-left-shaft",
+   "at": [
+    -9.8,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 18,
+    "colour": "#dcbc4c",
+    "topColour": "#dcbc4c",
+    "plinth": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "min-left-balcony",
+   "at": [
+    -9.8,
+    -8,
+    17.2
+   ],
+   "params": {
+    "rect": [
+     3.3,
+     3.3
+    ],
+    "height": 0.5,
+    "colour": "#ecdc9c",
+    "topColour": "#ecdc9c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "min-left-rail",
+   "at": [
+    -9.8,
+    -8,
+    17.7
+   ],
+   "params": {
+    "rect": [
+     3.3,
+     3.3
+    ],
+    "height": 0.7,
+    "colour": "#c8a840",
+    "topColour": "#c8a840",
+    "windows": "arched",
+    "windowRatio": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "min-left-lantern",
+   "at": [
+    -9.8,
+    -8,
+    18.4
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     1.7
+    ],
+    "height": 1.8,
+    "colour": "#ecdc9c",
+    "topColour": "#ecdc9c",
+    "windows": "arched",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "min-left-cap",
+   "at": [
+    -9.8,
+    -8,
+    20.2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#3f9a94",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.3,
+      0
+     ],
+     [
+      1.4,
+      0.4
+     ],
+     [
+      1.0,
+      1.0
+     ],
+     [
+      0.5,
+      1.5
+     ],
+     [
+      0.1,
+      1.9
+     ],
+     [
+      0.05,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "min-right-shaft",
+   "at": [
+    9.8,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 18,
+    "colour": "#dcbc4c",
+    "topColour": "#dcbc4c",
+    "plinth": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "min-right-balcony",
+   "at": [
+    9.8,
+    -8,
+    17.2
+   ],
+   "params": {
+    "rect": [
+     3.3,
+     3.3
+    ],
+    "height": 0.5,
+    "colour": "#ecdc9c",
+    "topColour": "#ecdc9c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "min-right-rail",
+   "at": [
+    9.8,
+    -8,
+    17.7
+   ],
+   "params": {
+    "rect": [
+     3.3,
+     3.3
+    ],
+    "height": 0.7,
+    "colour": "#c8a840",
+    "topColour": "#c8a840",
+    "windows": "arched",
+    "windowRatio": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "min-right-lantern",
+   "at": [
+    9.8,
+    -8,
+    18.4
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     1.7
+    ],
+    "height": 1.8,
+    "colour": "#ecdc9c",
+    "topColour": "#ecdc9c",
+    "windows": "arched",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "min-right-cap",
+   "at": [
+    9.8,
+    -8,
+    20.2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#3f9a94",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.3,
+      0
+     ],
+     [
+      1.4,
+      0.4
+     ],
+     [
+      1.0,
+      1.0
+     ],
+     [
+      0.5,
+      1.5
+     ],
+     [
+      0.1,
+      1.9
+     ],
+     [
+      0.05,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "params": {
+    "radius": 6.4,
+    "n": 12,
+    "z0": 13,
+    "height": 2.2,
+    "colour": "#d8b84a",
+    "topColour": "#d8b84a",
+    "windows": "arched",
+    "windowRatio": 0.35
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    0,
+    15.2
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#9a9c98",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      6.6,
+      0
+     ],
+     [
+      6.9,
+      0.4
+     ],
+     [
+      6.4,
+      1.6
+     ],
+     [
+      5.0,
+      2.8
+     ],
+     [
+      3.0,
+      3.6
+     ],
+     [
+      1.2,
+      4.0
+     ],
+     [
+      0.4,
+      4.2
+     ],
+     [
+      0.5,
+      4.6
+     ],
+     [
+      0.3,
+      5.0
+     ],
+     [
+      0.4,
+      5.4
+     ],
+     [
+      0.1,
+      5.8
+     ],
+     [
+      0.05,
+      6.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dome-tiles",
+   "at": [
+    0,
+    0,
+    15.2
+   ],
+   "params": {
+    "radius": 5.6,
+    "n": 16,
+    "height": 0.2,
+    "colour": "#7f827e",
+    "topColour": "#7f827e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portico-roof",
+   "at": [
+    0,
+    -12,
+    6.1
+   ],
+   "params": {
+    "rect": [
+     11.8,
+     6.6
+    ],
+    "height": 1.5,
+    "topScale": [
+     1,
+     0.35
+    ],
+    "colour": "#3f8fa6",
+    "topColour": "#3f8fa6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portico-back",
+   "at": [
+    0,
+    -9.4,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     0.5
+    ],
+    "height": 5,
+    "colour": "#dcbc4c",
+    "topColour": "#dcbc4c",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "arched"
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "portico-arch-side",
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -5.4,
+     -12
+    ],
+    "end": [
+     5.4,
+     -12
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       4.2
+      ],
+      "height": 5,
+      "colour": "#dcbc4c",
+      "topColour": "#dcbc4c",
+      "windows": "arched",
+      "windowRatio": 0.5
+     },
+     "at": [
+      0,
+      0,
+      0.5
+     ]
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pilasters",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -7.2,
+     -8.7
+    ],
+    "end": [
+     7.2,
+     -8.7
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.35
+      ],
+      "height": 12.4,
+      "colour": "#ecdc9c",
+      "topColour": "#ecdc9c"
+     },
+     "at": [
+      0,
+      0,
+      0.2
+     ]
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   60,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     14
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "dome has no scale texture; stucco ornament and portico arches simplified; cars are boxes"
+ }
+}

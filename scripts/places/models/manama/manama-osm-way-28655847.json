@@ -1,0 +1,459 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahrain_National_Stadium.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "Chanad (assumed)",
+   "view": "side",
+   "file": "/tmp/places-evidence/manama/stad1.jpg",
+   "used": "oval bowl with cream concrete raked lower ring on columns, long low grey-green sloping canopy with orange edge, tall red leaning A-frame floodlight masts with light heads, sand car park around"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2341631",
+   "used": "oval bowl 232 x 198 m, modelled at half size to fit the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.325
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 46,
+    "radiusY": 38,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 6.5,
+    "facetDeg": 12,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.9,
+    "bay": 6,
+    "seatColour": "#b3262d",
+    "seatColours": [
+     "#b3262d",
+     "#e8e4dc"
+    ],
+    "concreteColour": "#d8d1bd",
+    "underColour": "#cdc4a8",
+    "canopy": {
+     "height": 0.5,
+     "depth": 20,
+     "thickness": 0.9,
+     "slopeDeg": 16,
+     "colour": "#7e8a7d",
+     "edgeColour": "#d3702a",
+     "overhangBack": 1.5
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      52.0,
+      0.0
+     ],
+     [
+      48.04,
+      16.84
+     ],
+     [
+      36.77,
+      31.11
+     ],
+     [
+      19.9,
+      40.65
+     ],
+     [
+      0.0,
+      44.0
+     ],
+     [
+      -19.9,
+      40.65
+     ],
+     [
+      -36.77,
+      31.11
+     ],
+     [
+      -48.04,
+      16.84
+     ],
+     [
+      -52.0,
+      0.0
+     ],
+     [
+      -48.04,
+      -16.84
+     ],
+     [
+      -36.77,
+      -31.11
+     ],
+     [
+      -19.9,
+      -40.65
+     ],
+     [
+      -0.0,
+      -44.0
+     ],
+     [
+      19.9,
+      -40.65
+     ],
+     [
+      36.77,
+      -31.11
+     ],
+     [
+      48.04,
+      -16.84
+     ]
+    ],
+    "height": 14,
+    "colour": "#d6cfb8",
+    "topColour": "#7f857b"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 50,
+    "startDeg": 35,
+    "endDeg": 325,
+    "count": 4,
+    "facing": "outward",
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#c4302a",
+       "sections": [
+        {
+         "z": 36,
+         "rect": [
+          1.54,
+          1.54
+         ],
+         "cx": 0.5,
+         "cy": -6
+        },
+        {
+         "z": 17,
+         "rect": [
+          2.0999999999999996,
+          2.0999999999999996
+         ],
+         "cx": 3.0,
+         "cy": -3
+        },
+        {
+         "z": 0,
+         "rect": [
+          2.8,
+          2.8
+         ],
+         "cx": 5.6,
+         "cy": 0
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#c4302a",
+       "sections": [
+        {
+         "z": 36,
+         "rect": [
+          1.54,
+          1.54
+         ],
+         "cx": -0.5,
+         "cy": -6
+        },
+        {
+         "z": 17,
+         "rect": [
+          2.0999999999999996,
+          2.0999999999999996
+         ],
+         "cx": -3.0,
+         "cy": -3
+        },
+        {
+         "z": 0,
+         "rect": [
+          2.8,
+          2.8
+         ],
+         "cx": -5.6,
+         "cy": 0
+        }
+       ]
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -2.4,
+       12
+      ],
+      "params": {
+       "rect": [
+        7.4,
+        0.7
+       ],
+       "height": 0.7,
+       "colour": "#c4302a"
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#c4302a",
+       "sections": [
+        {
+         "z": 33,
+         "rect": [
+          1.2,
+          1.2
+         ],
+         "cy": -6
+        },
+        {
+         "z": 41,
+         "rect": [
+          1.0,
+          1.0
+         ],
+         "cy": -20
+        },
+        {
+         "z": 44,
+         "rect": [
+          0.9,
+          0.9
+         ],
+         "cy": -30
+        }
+       ]
+      }
+     },
+     {
+      "type": "prism",
+      "lod": [
+       0,
+       1
+      ],
+      "at": [
+       0,
+       -30,
+       44
+      ],
+      "params": {
+       "rect": [
+        6,
+        2.2
+       ],
+       "height": 1.4,
+       "colour": "#d9d9d4"
+      }
+     },
+     {
+      "type": "loft",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "colour": "#5a5a58",
+       "sections": [
+        {
+         "z": 44,
+         "rect": [
+          0.2,
+          0.2
+         ],
+         "cy": -30
+        },
+        {
+         "z": 0,
+         "rect": [
+          0.25,
+          0.25
+         ],
+         "cy": 14
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 46.5,
+    "radiusY": 38.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 36,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#e0d9c4",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         2.4,
+         1.4
+        ],
+        "cy": -1.8
+       },
+       {
+        "z": 6.5,
+        "rect": [
+         1.6,
+         1.2
+        ],
+        "cy": 1.2
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -64,
+     0
+    ],
+    "end": [
+     40,
+     -64,
+     0
+    ],
+    "count": 18,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.9,
+       4.5
+      ],
+      "height": 1.5,
+      "colour": "#8a8f94"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -70,
+     0
+    ],
+    "end": [
+     34,
+     -70,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.9,
+       4.5
+      ],
+      "height": 1.5,
+      "colour": "#b8352f"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   118,
+   112
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-osm-way-28655847",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Grey-green sloping canopy with orange edge on a cream raked bowl, taller A-frame masts with long booms and cars on the forecourt; lower ring is still a smooth cream wall (open bays went black so were reverted), pillars barely read, canopy is not wave-profiled, ground is pale not gravel, cars are plain boxes."
+ }
+}

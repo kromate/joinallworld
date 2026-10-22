@@ -1,0 +1,170 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shahid_Hemmat_Metro_Station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Youna75",
+   "view": "detail",
+   "file": "/tmp/places-evidence/tehran/hem2.jpg",
+   "used": "interior only, so not a building comparison: cream-grey onyx wall slabs and red station sign band give the entrance materials and accent colour"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hemmat_Metro_station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MRG90",
+   "view": "interior",
+   "file": "/tmp/places-evidence/tehran/hem1.jpg",
+   "used": "platform finishes: cream stone cladding, red seating and red sign colours, grey granite floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/635193381",
+   "used": "size only (12.5 m x 6.5 m building 77 m from the station, nearest match not reliable)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     12.5,
+     6.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#cbc4ae",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "glassColour": "#7f98a6",
+    "bands": {
+     "colour": "#b32a2a",
+     "height": 0.6
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "rise": 1.2,
+    "colour": "#6d737a",
+    "overhang": 1.0,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 3,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#7d848b",
+    "edgeColour": "#b32a2a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.15,
+    "run": 0.35,
+    "count": 5,
+    "colour": "#bdb8a8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7.8,
+    -3.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.2,
+    "bottom": 3,
+    "colour": "#b32a2a",
+    "frameColour": "#4b4f54"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 2,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    5,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spread": 6,
+    "height": 7
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo of the entrance exists in the sources; this is a modest typical Tehran metro entrance pavilion sized from the OSM building and coloured from the station interior photos"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

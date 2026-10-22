@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/siachen.json#siachen-quiet-reflection",
+   "used": "small whitewashed memorial shelter 8 x 6 m with pyramidal red roof, stone plinth, prayer/marker flags (Siachen Base Camp has a martyrs memorial); typed placeholder, no photo, no OSM"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 20,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     13,
+     10
+    ],
+    "height": 0.35,
+    "colour": "#8f969b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     5.6,
+     4.4
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "z0": 0.35,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "whitewash",
+    "colour": "#f1f4f6",
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b5412f",
+    "material": "metal-sheet",
+    "rise": 1.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -1.72,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.3
+    ],
+    "height": 2.0,
+    "colour": "#5d4a3a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "rise": 0.35,
+    "run": 0.9,
+    "count": 1,
+    "colour": "#8f969b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-base",
+   "at": [
+    4.2,
+    -2.4,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 0.7,
+    "topScale": 0.8,
+    "colour": "#8f969b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-stele",
+   "at": [
+    4.2,
+    -2.4,
+    1.05
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 1.5,
+    "topScale": 0.6,
+    "colour": "#d6dadd"
+   }
+  },
+  {
+   "type": "array",
+   "id": "prayer-flags",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.5,
+     -3.8,
+     0.35
+    ],
+    "end": [
+     5.5,
+     3.5,
+     0.35
+    ],
+    "count": 4,
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 4.2,
+      "colours": [
+       "#b5412f",
+       "#d98e3a",
+       "#f1f4f6",
+       "#5d6650"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift-left",
+   "at": [
+    -5.5,
+    3.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     2.5
+    ],
+    "height": 0.8,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift-right",
+   "at": [
+    5.3,
+    3.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 0.7,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   28,
+   22
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or OSM outline exists (game-venue placeholder); composed from the brief only, checked in the standard render"
+ }
+}

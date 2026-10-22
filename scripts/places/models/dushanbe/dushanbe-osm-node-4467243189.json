@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-node-4467243189",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/363315804",
+   "used": "real building=hospital outline, 58.8 x 44.7 m (1450 m2): a zig-zag of joined wings"
+  },
+  {
+   "kind": "text",
+   "used": "brief: district health centre, rendered block, ambulance bay; no photo found, storeys inferred"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 5,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#b6a888"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "bay",
+   "at": [
+    8,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#f4efe3",
+    "roofColour": "#b6a888",
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "id": "cross",
+   "at": [
+    8,
+    -30.3,
+    4.6
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    -34,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree1",
+   "at": [
+    -36,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree2",
+   "at": [
+    32,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree3",
+   "at": [
+    30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; only the outline is real, storeys, facade and ambulance bay position are inferred from the brief"
+ }
+}

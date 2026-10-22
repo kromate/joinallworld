@@ -1,0 +1,726 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-airport-lahore-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AllamaIqbalAirport.JPG",
+   "licence": "Public domain",
+   "author": "WhisperToMe (assumed)",
+   "view": "front",
+   "file": "/tmp/places-evidence/lahore/air1.jpg",
+   "used": "forecourt elevation: pink-red brick terminal with cream bands, arched windows, taller central pavilion with tall pointed recesses, left glazed cream entrance block with control tower, grey two-level departures deck on columns"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/371636667",
+   "used": "overall size 484 x 126 m (a ~140 m portion is modelled because of the 120 m scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "array",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     0,
+     0
+    ],
+    "end": [
+     56,
+     0,
+     0
+    ],
+    "count": 9,
+    "lod2Step": 9,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.55,
+        0
+       ],
+       [
+        0.55,
+        3
+       ]
+      ],
+      "colour": "#b9b8b0"
+     }
+    },
+    "lod1Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     0,
+     0
+    ],
+    "end": [
+     56,
+     0,
+     0
+    ],
+    "count": 9,
+    "lod2Step": 9,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.55,
+        0
+       ],
+       [
+        0.55,
+        3
+       ]
+      ],
+      "colour": "#b9b8b0"
+     }
+    },
+    "lod1Step": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     118,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "z0": 3,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a09f98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9b94",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -34,
+    5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     0,
+     0
+    ],
+    "end": [
+     56,
+     0,
+     0
+    ],
+    "count": 9,
+    "lod2Step": 9,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.55,
+        0
+       ],
+       [
+        0.55,
+        1
+       ]
+      ],
+      "colour": "#b9b8b0"
+     }
+    },
+    "lod1Step": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck-upper",
+   "footprint": {
+    "rect": [
+     118,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -31.5
+   ],
+   "z0": 6,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a79f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9b94",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     50,
+     40
+    ]
+   },
+   "at": [
+    -35,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8605c",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.025,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e6d6bb",
+      "height": 0.9,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d6bb",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-pavilion",
+   "footprint": {
+    "rect": [
+     40,
+     34
+    ]
+   },
+   "at": [
+    10,
+    3
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8605c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.03,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 4,
+      "opening": 0.3,
+      "storeys": 3,
+      "depth": 1.4,
+      "colour": "#4a2024",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#e6d6bb",
+      "height": 0.9,
+      "faces": [
+       "front",
+       "left",
+       "right",
+       "back"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d6bb",
+    "parapet": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     30,
+     36
+    ]
+   },
+   "at": [
+    45,
+    2
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8605c",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.025,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e6d6bb",
+      "height": 0.9,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d6bb",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -36,
+    -21
+   ],
+   "z0": 8.4,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#e6d6bb",
+      "height": 0.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c9ae",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     24,
+     0.6
+    ]
+   },
+   "at": [
+    -34,
+    -27.4
+   ],
+   "z0": 11.5,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c9a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-glass",
+   "footprint": {
+    "rect": [
+     28,
+     10
+    ]
+   },
+   "at": [
+    44,
+    -24
+   ],
+   "z0": 8.4,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0a58c",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -36,
+    -21,
+    16.4
+   ],
+   "params": {
+    "height": 10,
+    "style": "round",
+    "colour": "#d8cdb6",
+    "cabColour": "#5f7480",
+    "shaftRadius": 2.0,
+    "cabRadius": 4.2,
+    "bandColour": "#e6d6bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-window",
+   "footprint": {
+    "rect": [
+     3.8,
+     0.6
+    ]
+   },
+   "at": [
+    -47,
+    -27.3
+   ],
+   "z0": 8.5,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a2024",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a2024"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -38.5,
+    3.5
+   ],
+   "params": {
+    "height": 5,
+    "count": 22,
+    "spacing": 3.2,
+    "colours": [
+     "#d33a3a",
+     "#2e8b57",
+     "#e6b422",
+     "#3a5fd3",
+     "#9b4fc0"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "turret-e",
+   "at": [
+    60,
+    -14,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      12
+     ],
+     [
+      3.3,
+      12
+     ],
+     [
+      3.3,
+      13
+     ],
+     [
+      0.5,
+      15
+     ]
+    ],
+    "colour": "#a8605c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "turret-w",
+   "at": [
+    -58,
+    -18,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      14
+     ],
+     [
+      3.3,
+      14
+     ],
+     [
+      3.3,
+      15
+     ],
+     [
+      0.5,
+      17
+     ]
+    ],
+    "colour": "#a8605c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "entrance-ribbon",
+   "footprint": {
+    "rect": [
+     22,
+     0.5
+    ]
+   },
+   "at": [
+    -36,
+    -27.25
+   ],
+   "z0": 10.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fa89a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa89a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-step",
+   "footprint": {
+    "rect": [
+     46,
+     20
+    ]
+   },
+   "at": [
+    10,
+    10
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8605c",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.06,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d6bb",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret-e-band",
+   "at": [
+    60,
+    -14,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.4,
+      8
+     ],
+     [
+      3.4,
+      9
+     ],
+     [
+      3.1,
+      9
+     ]
+    ],
+    "colour": "#e6d6bb"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "turret-w-band",
+   "at": [
+    -58,
+    -18,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      3.4,
+      10
+     ],
+     [
+      3.4,
+      11
+     ],
+     [
+      3.1,
+      11
+     ]
+    ],
+    "colour": "#e6d6bb"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "forecourtDepth": 26,
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only a ~120 m portion of the 484 m terminal; pavilion recesses are now tall narrow dark pointed slots but still simple boxes with no stepped corner turrets; green ribbon on entrance block is a flat strip; tower cab generic; deck is two fascia levels, not the full roadway; no big pointed window glazing detail."
+ }
+}

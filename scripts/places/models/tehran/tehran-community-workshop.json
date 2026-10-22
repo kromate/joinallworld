@@ -1,0 +1,98 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1275862549",
+   "used": "real outline (60 x 25 m), building:levels=5, building:material=brick"
+  },
+  {
+   "kind": "text",
+   "used": "colours and ribbon windows typed from the Tehran faculty-block style; the only Commons file is the university logo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "faculty",
+   "footprint": {
+    "osm": true
+   },
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8714f",
+    "glassColour": "#5f7886",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8a8d8f",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-room",
+   "at": [
+    -2,
+    0,
+    20
+   ],
+   "params": {
+    "rect": [
+     10,
+     6
+    ],
+    "height": 3,
+    "colour": "#8a8d8f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -35,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 4,
+    "spread": 6,
+    "line": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo exists (only the university logo): real outline and brick/5 levels from OSM, facade rhythm and entrance are typical guesses"
+ }
+}

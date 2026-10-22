@@ -1,0 +1,120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-osm-way-199999770",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/43393719",
+   "used": "real building outline of the main block (148 x 46 m, 3 levels, start 1932), the S-shaped plan"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Kabul_University",
+   "used": "1930s faculty buildings, early-modern, cream stucco with arched ground-floor arcades; no exterior photo of this block was found (Commons files are interiors, a tree avenue and a 1970s faculty entrance)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3d6b6",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#f3eee0",
+    "pattern": [
+     {
+      "type": "arcade"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.7,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 10,
+    "count": 9,
+    "min_height": 7,
+    "max_height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#000000",
+     "#c8362f",
+     "#1b7a43"
+    ],
+    "count": 2,
+    "spacing": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this block; colours, arcade and window rhythm are inferred from the brief and the 1930s style, not seen; entrance portico and steps not placed"
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   110,
+   70
+  ]
+ }
+}

@@ -1,0 +1,418 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Riyadh_train_station,_Saudi_Arabia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Synaps commons",
+   "view": "street",
+   "file": "/tmp/places-evidence/riyadh/station.jpg",
+   "used": "platform view: sandy limestone wing on the right with stepped parapet and patterned arcaded face, cream tent canopy on maroon masts, diamond-paved platforms, trains alongside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/40589068",
+   "used": "U plan: lobby and spine at the west end, two wings 125 m long enclosing the platforms, rebuilt as separate masses"
+  }
+ ],
+ "camera": {
+  "yawDeg": 80,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.77,
+  "margin": 0.05,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     24,
+     56
+    ]
+   },
+   "at": [
+    -45,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9a56a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 1.2,
+    "bands": "#4f7d52",
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4a8",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     9,
+     104
+    ]
+   },
+   "at": [
+    -37,
+    3
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9a56a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 1.0,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#4f7d52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4a8",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north",
+   "footprint": {
+    "rect": [
+     80,
+     19
+    ]
+   },
+   "at": [
+    7,
+    50
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d0a468",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 10,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#4f7d52",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 2.0,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a56a",
+    "parapet": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south",
+   "footprint": {
+    "rect": [
+     80,
+     17
+    ]
+   },
+   "at": [
+    7,
+    -44
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d0a468",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 10,
+    "windowShape": "pointed",
+    "faces": {
+     "back": "pointed-arch",
+     "front": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#4f7d52",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 2.0,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a56a",
+    "parapet": 2.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     80,
+     78
+    ],
+    "height": 0.5,
+    "colour": "#cbbfa8"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    7,
+    0,
+    0.6
+   ],
+   "params": {
+    "length": 80,
+    "tracks": 4,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "train",
+   "at": [
+    -24,
+    -9,
+    0.65
+   ],
+   "params": {
+    "carriages": 9,
+    "colour": "#d8d8dc",
+    "loco_colour": "#2c2f38"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -36,
+     0
+    ],
+    "end": [
+     -30,
+     36,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 6
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -18,
+     0.65
+    ],
+    "end": [
+     44,
+     -18,
+     0.65
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -4.5,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "height": 10,
+       "colour": "#7a2f2f"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       4.5,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "height": 8,
+       "colour": "#7a2f2f"
+      }
+     },
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       6
+      ],
+      "params": {
+       "colour": "#efe6cf",
+       "curve": true,
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          9,
+          10
+         ]
+        },
+        {
+         "z": 1.6,
+         "rect": [
+          5,
+          5.5
+         ]
+        },
+        {
+         "z": 3.2,
+         "circle": 0.5
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    8,
+    -16,
+    0.7
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 9,
+    "dy": 9,
+    "of": {
+     "type": "prism",
+     "rotDeg": 45,
+     "params": {
+      "rect": [
+       6,
+       6
+      ],
+      "height": 0.05,
+      "colour": "#b8a88a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   114
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-transit",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Sandy-ochre wings with green trim bands and arcaded inner faces, cream tensile sails on tall maroon masts, long grey-white train alongside the platform and diamond paving tiles now present; wing facade pattern and cable rigging simplified, wings are plainer than the real stepped crenellated faces."
+ }
+}

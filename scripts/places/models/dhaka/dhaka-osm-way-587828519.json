@@ -1,0 +1,550 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-osm-way-587828519",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Daffodil_International_University_Campus_Building.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Lahsim Niasoh",
+   "view": "front",
+   "file": "/tmp/places-evidence/dhaka/diu1.jpg",
+   "used": "white 9-11 storey academic block with ribbon windows and balcony fronts, round glazed entrance drum under a broad copper-brown curved canopy, taller wing running away to the right, lawn in front, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/587828519",
+   "used": "campus identity only (852 x 672 m outline is not a building); one academic building modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 0,
+  "fovDeg": 62,
+  "aspect": 1.337,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left",
+   "footprint": {
+    "rect": [
+     38,
+     17
+    ]
+   },
+   "at": [
+    -22,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 33,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe0dc",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "bay": 14,
+    "glassColour": "#9db8c6",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.8,
+      "every": 14,
+      "width": 11,
+      "slab": 0.4,
+      "rail": 1.0,
+      "railKind": "glass",
+      "colour": "#f7f4ec",
+      "railColour": "#3d4a52",
+      "continuous": true,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#f6f6f2",
+      "height": 0.4,
+      "proud": 0.25
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right",
+   "footprint": {
+    "rect": [
+     46,
+     15
+    ]
+   },
+   "at": [
+    21,
+    10
+   ],
+   "rotDeg": 12,
+   "z0": 0,
+   "height": 45,
+   "storeys": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe6",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 18,
+    "glassColour": "#9db8c6",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.8,
+      "every": 18,
+      "width": 14,
+      "slab": 0.4,
+      "rail": 1.0,
+      "railKind": "glass",
+      "colour": "#f7f4ec",
+      "railColour": "#3d4a52",
+      "continuous": true,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#f6f6f2",
+      "height": 0.4,
+      "proud": 0.25
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "entry-awning",
+   "at": [
+    -6,
+    -12,
+    3.6
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 13,
+    "depth": 5,
+    "rise": 0.8,
+    "folds": 4,
+    "thickness": 0.25,
+    "colour": "#9c4a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    46,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20,
+    "count": 5,
+    "spread": 5,
+    "line": 9,
+    "colour": "#3c6a30"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    -6,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.0,
+    "run": 2,
+    "count": 3,
+    "colour": "#b5503b"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#a9c4d2",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      12.5,
+      0,
+      "#f7f4ec"
+     ],
+     [
+      12.5,
+      0.6,
+      "#f7f4ec"
+     ],
+     [
+      11.8,
+      0.6,
+      "#a9c4d2"
+     ],
+     [
+      11.8,
+      4.6,
+      "#a9c4d2"
+     ],
+     [
+      12.5,
+      4.6,
+      "#f7f4ec"
+     ],
+     [
+      12.5,
+      5.1,
+      "#f7f4ec"
+     ],
+     [
+      11.8,
+      5.1,
+      "#a9c4d2"
+     ],
+     [
+      11.8,
+      9.1,
+      "#a9c4d2"
+     ],
+     [
+      12.5,
+      9.1,
+      "#f7f4ec"
+     ],
+     [
+      12.5,
+      9.6,
+      "#f7f4ec"
+     ],
+     [
+      11.8,
+      9.6,
+      "#a9c4d2"
+     ],
+     [
+      11.8,
+      13.6,
+      "#a9c4d2"
+     ],
+     [
+      12.5,
+      13.6,
+      "#f7f4ec"
+     ],
+     [
+      12.5,
+      14.1,
+      "#f7f4ec"
+     ],
+     [
+      11.8,
+      14.1,
+      "#a9c4d2"
+     ],
+     [
+      11.8,
+      18.1,
+      "#a9c4d2"
+     ],
+     [
+      12.5,
+      18.1,
+      "#f7f4ec"
+     ],
+     [
+      12.5,
+      18.6,
+      "#f7f4ec"
+     ],
+     [
+      11.8,
+      18.6,
+      "#a9c4d2"
+     ],
+     [
+      11.8,
+      22.6,
+      "#a9c4d2"
+     ],
+     [
+      12.5,
+      22.6,
+      "#f7f4ec"
+     ],
+     [
+      12.5,
+      23.1,
+      "#f7f4ec"
+     ],
+     [
+      0.1,
+      23.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "canopy",
+   "at": [
+    0,
+    -2,
+    23.1
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#8a5a3a",
+    "profile": [
+     [
+      0.1,
+      0,
+      "#6a3f2b"
+     ],
+     [
+      19,
+      0,
+      "#6a3f2b"
+     ],
+     [
+      20,
+      1.2,
+      "#9a6244"
+     ],
+     [
+      19,
+      1.5,
+      "#9a6244"
+     ],
+     [
+      0.1,
+      1.5,
+      "#9a6244"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "id": "lift-drum",
+   "at": [
+    2.5,
+    -12.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.0
+    ],
+    "height": 23,
+    "colour": "#9fb3ba",
+    "trimColour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-posts",
+   "at": [
+    -6,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#f4f4f0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "right-step",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    38,
+    6
+   ],
+   "rotDeg": 12,
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe6",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "bay": 8,
+    "glassColour": "#9db8c6",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f6f6f2",
+      "height": 0.5,
+      "proud": 0.25
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-sign",
+   "at": [
+    21,
+    10,
+    48
+   ],
+   "rotDeg": 12,
+   "params": {
+    "rect": [
+     30,
+     1.2
+    ],
+    "height": 3.2,
+    "colour": "#2f5a8a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "mullions",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -2,
+    0.6
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 16,
+    "radius": 12.0,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 22.5,
+      "colour": "#f2f2ee"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "red-canopy",
+   "at": [
+    -6,
+    -12,
+    3.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#b03a2e",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      6,
+      0
+     ],
+     [
+      6.4,
+      0.5
+     ],
+     [
+      0.1,
+      0.9
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "right wing is two stepped blocks not a curved terraced front; ribbon windows are punched grid; palms stylised; no tall lift tower detail"
+ }
+}

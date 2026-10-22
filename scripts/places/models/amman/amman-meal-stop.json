@@ -1,0 +1,222 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: stone hillside restaurant with view terrace, arched windows, awning (no OSM match, no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 16,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lower-hall",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfc09e",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 4.5,
+    "faces": {
+     "back": "none"
+    },
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-hall",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -3,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 4,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8c9a8",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    },
+    "windowShape": "arched",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-slab",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c4b895",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb199",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -15,
+    -19,
+    0.9
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#cfc09e"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    4,
+    -9.2,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 3.5,
+    "drop": 0.5,
+    "height": 2.9,
+    "colours": [
+     "#8d867a",
+     "#f0ebe0"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    -14,
+    0.9
+   ],
+   "params": {
+    "count": 4,
+    "spread": 8,
+    "colours": [
+     "#f0ebe0",
+     "#d8c9a8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#8d867a",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -28,
+     -8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -5
+    ],
+    "height": 11
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or OSM match found; plausible stone hillside restaurant with terrace; proportions typed from brief."
+ }
+}

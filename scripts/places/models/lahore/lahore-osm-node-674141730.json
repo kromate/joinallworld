@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-node-674141730",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: public hospital, plain concrete and render blocks in a walled compound; no OSM building, the only nearby photo (POB Eye Hospital) is a different institution"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ward-h",
+   "at": [
+    0,
+    6
+   ],
+   "params": {
+    "height": 14.4,
+    "colour": "#e0d6bd",
+    "points": [
+     [
+      -30,
+      -12
+     ],
+     [
+      -22,
+      -12
+     ],
+     [
+      -22,
+      -2
+     ],
+     [
+      22,
+      -2
+     ],
+     [
+      22,
+      -12
+     ],
+     [
+      30,
+      -12
+     ],
+     [
+      30,
+      14
+     ],
+     [
+      22,
+      14
+     ],
+     [
+      22,
+      5
+     ],
+     [
+      -22,
+      5
+     ],
+     [
+      -22,
+      14
+     ],
+     [
+      -30,
+      14
+     ]
+    ],
+    "topColour": "#a5a199",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "storeys": 4,
+    "bay": 3.6,
+    "plinth": 0.4,
+    "trimColour": "#8c887f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "opd",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    -24,
+    -24
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc6ae",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8c887f",
+    "plinth": 0.4,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5a199",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    20,
+    -24
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0d6bd",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8c887f",
+    "plinth": 0.4,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5a199",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "vans": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -8.2,
+    10
+   ],
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -26,
+    14,
+    14.4
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -42,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "gatehouse",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.8,
+    "depth": 3,
+    "colour": "#cfc6ae"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 4,
+    "spread": 6,
+    "line": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   96,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence for this place: modest typical Lahore public hospital (H-plan ward block, OPD and admin blocks, walled compound). All dimensions and layout are assumed."
+ }
+}

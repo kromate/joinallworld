@@ -1,0 +1,549 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kailash_Hospital_Noida.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kailashhc1",
+   "view": "street",
+   "file": "/tmp/places-evidence/delhi/kailash.jpg",
+   "used": "cream stone-tone block with tan horizontal bands, recessed balcony bays between projecting piers, glass entrance bay at the right, setback upper storeys with water tanks, long left wing, name board blank"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/352555201",
+   "used": "size of the main block (31 x 19 m, containing the venue point)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.54,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     17
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c9a8",
+    "windows": "ribbon",
+    "windowRatio": 0.62,
+    "bay": 4.2,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b8935f",
+      "height": 0.6,
+      "proud": 0.2,
+      "faces": [
+       "front",
+       "left"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#c9a578",
+      "height": 0.5,
+      "proud": 0.25,
+      "at": 0.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "none",
+     "right": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     8,
+     2.6
+    ]
+   },
+   "at": [
+    14,
+    -9.4
+   ],
+   "z0": 0,
+   "height": 19.6,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f98a8",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a578",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     22,
+     15
+    ]
+   },
+   "at": [
+    -26,
+    2
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b995",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 3.4,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9a578",
+      "height": 0.45,
+      "proud": 0.12
+     }
+    ],
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-block",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    8,
+    3
+   ],
+   "z0": 20,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b995",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    16,
+    3,
+    28
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#ff9933"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    16,
+    3,
+    28
+   ],
+   "params": {
+    "height": 6.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    16,
+    3,
+    28
+   ],
+   "params": {
+    "height": 4.8,
+    "colour": "#138808"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -9.8,
+    17.8
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#f4f1e8",
+    "frameColour": "#7a6a4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-0",
+   "footprint": {
+    "rect": [
+     3.2,
+     1.6
+    ]
+   },
+   "at": [
+    -10,
+    -9.4
+   ],
+   "z0": 0,
+   "height": 19.6,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9bc90",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99a6c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-1",
+   "footprint": {
+    "rect": [
+     3.2,
+     1.6
+    ]
+   },
+   "at": [
+    -1.5,
+    -9.4
+   ],
+   "z0": 0,
+   "height": 19.6,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9bc90",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99a6c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-2",
+   "footprint": {
+    "rect": [
+     3.2,
+     1.6
+    ]
+   },
+   "at": [
+    7,
+    -9.4
+   ],
+   "z0": 0,
+   "height": 19.6,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9bc90",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99a6c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-3",
+   "footprint": {
+    "rect": [
+     3.2,
+     1.6
+    ]
+   },
+   "at": [
+    21.5,
+    -9.4
+   ],
+   "z0": 0,
+   "height": 19.6,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9bc90",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99a6c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "surround-0",
+   "footprint": {
+    "rect": [
+     1.2,
+     2.4
+    ]
+   },
+   "at": [
+    10,
+    -9.6
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfae84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99a6c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "surround-1",
+   "footprint": {
+    "rect": [
+     1.2,
+     2.4
+    ]
+   },
+   "at": [
+    18,
+    -9.6
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfae84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99a6c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-block-2",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    8,
+    3
+   ],
+   "z0": 28,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3bd98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -8,
+    5,
+    28
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.4,
+    "tankHeight": 2.2,
+    "legHeight": 1.0,
+    "legs": 4,
+    "colour": "#9aa0a3"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -4,
+    5,
+    28
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.4,
+    "tankHeight": 2.2,
+    "legHeight": 1.0,
+    "legs": 4,
+    "colour": "#9aa0a3"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -8,
+    0,
+    28
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.4,
+    "tankHeight": 2.2,
+    "legHeight": 1.0,
+    "legs": 4,
+    "colour": "#9aa0a3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "extent": [
+   80,
+   60
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     -22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -14
+    ],
+    "height": 9
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Piers widened, wing set lower/longer, tricolour flag, glazed entrance; loggias still ribbon windows not true recessed paired bays."
+ }
+}

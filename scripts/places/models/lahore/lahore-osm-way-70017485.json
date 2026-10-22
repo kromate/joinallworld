@@ -1,0 +1,521 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-way-70017485",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gad_and_Birgit_Library.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Shyok",
+   "view": "front",
+   "file": "/tmp/places-evidence/lahore/lums1.jpg",
+   "used": "stepped five-storey red-brick block with setbacks to the right, horizontal brick banding, grouped narrow window triplets, round windows column at left, flat parapet roofs, lower brick wing at left, lawn with trees and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/70017485",
+   "used": "campus outline is about 871 x 582 m so only one representative block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     15,
+     22
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8a5a48",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#7f5241"
+     }
+    ],
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d786f",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crown",
+   "footprint": {
+    "rect": [
+     9,
+     12
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 22,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8a5a48",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d786f",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier-a",
+   "footprint": {
+    "rect": [
+     12,
+     20
+    ]
+   },
+   "at": [
+    7.5,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19.5,
+   "storeys": 5,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8a5a48",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#7f5241"
+     }
+    ],
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d786f",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier-b",
+   "footprint": {
+    "rect": [
+     9,
+     18
+    ]
+   },
+   "at": [
+    17.5,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8a5a48",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#7f5241"
+     }
+    ],
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d786f",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier-c",
+   "footprint": {
+    "rect": [
+     8,
+     16
+    ]
+   },
+   "at": [
+    26,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8a5a48",
+    "windows": "none",
+    "windowRatio": 0.09,
+    "plinth": 0.8,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#7f5241"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d786f",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-step",
+   "footprint": {
+    "rect": [
+     9,
+     18
+    ]
+   },
+   "at": [
+    -17.5,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8a5a48",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#7f5241"
+     }
+    ],
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d786f",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     34,
+     15
+    ]
+   },
+   "at": [
+    -42,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#93604c",
+    "windows": "punched",
+    "windowRatio": 0.04,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [],
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d786f",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porthole0",
+   "footprint": {
+    "rect": [
+     1.3,
+     0.5
+    ]
+   },
+   "at": [
+    -10,
+    -11.2
+   ],
+   "rotDeg": 0,
+   "z0": 3.0,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#1e1814",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1e1814"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porthole1",
+   "footprint": {
+    "rect": [
+     1.3,
+     0.5
+    ]
+   },
+   "at": [
+    -10,
+    -11.2
+   ],
+   "rotDeg": 0,
+   "z0": 7.8,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#1e1814",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1e1814"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porthole2",
+   "footprint": {
+    "rect": [
+     1.3,
+     0.5
+    ]
+   },
+   "at": [
+    -10,
+    -11.2
+   ],
+   "rotDeg": 0,
+   "z0": 12.6,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#1e1814",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1e1814"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porthole3",
+   "footprint": {
+    "rect": [
+     1.3,
+     0.5
+    ]
+   },
+   "at": [
+    -10,
+    -11.2
+   ],
+   "rotDeg": 0,
+   "z0": 17.4,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#1e1814",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1e1814"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Window triplets only approximated by wider bays and lower ratio; portholes are dark rectangular blocks; setback is stepped masses without battered base; one block of a campus; photo is dusk lit; trees generic low-poly"
+ }
+}

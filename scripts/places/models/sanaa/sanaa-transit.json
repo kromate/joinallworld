@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/333920441",
+   "used": "nearest building footprint 33 x 12.5 m (50 m from venue point)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Walking_toward_Bab_al_yemen_(12577956).jpg",
+   "licence": "CC BY 2.0",
+   "author": "mtsrs",
+   "view": "street",
+   "file": "/tmp/places-evidence/sanaa/bab1.jpg",
+   "used": "setting only (street photo near the place, not of the stand): brick and lime-plaster tower houses with white-framed arched windows, crowded street at Bab al-Yaman; not compared"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stand-back",
+   "footprint": {
+    "rect": [
+     33,
+     3
+    ]
+   },
+   "at": [
+    0,
+    4.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a0583a",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7f8a8f",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "shed",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 33,
+    "depth": 10,
+    "height": 4.4,
+    "columns": 6,
+    "colour": "#7f8a8f",
+    "edgeColour": "#f1ece0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -6.4,
+    3.4
+   ],
+   "params": {}
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -11,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#f0f0ec",
+    "stripe": "#2f5f9a",
+    "count": 4,
+    "spacing": 6.5,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-left",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -19,
+    14
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a5236",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "windowShape": "arched",
+    "trimColour": "#f1ece0",
+    "bands": {
+     "colour": "#f1ece0",
+     "height": 0.3
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ece0",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-right",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    17,
+    16
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f4c32",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "windowShape": "arched",
+    "trimColour": "#f1ece0",
+    "bands": {
+     "colour": "#f1ece0",
+     "height": 0.3
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ece0",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-mid",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a65f40",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "windowShape": "arched",
+    "trimColour": "#f1ece0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ece0",
+    "parapet": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only a nearby street photo exists, not of the stand; the shed, bays and backdrop houses are typical and unobserved. Bab al-Yaman gate itself omitted."
+ }
+}

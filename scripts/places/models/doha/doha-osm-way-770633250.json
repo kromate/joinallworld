@@ -1,0 +1,368 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-way-770633250",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aspire_Park,_Doha_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "panoramio contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/aspire1.jpg",
+   "used": "hyperboloid profile (wide base, waist at about 55 percent height, re-flare), khaki-grey skin with pale bands, open lattice torch cage at the top"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/770633250",
+   "used": "proportions of the 70 m base to 300+ m height; modelled at 0.46 scale because the pipeline caps height at 140 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "shaft",
+   "params": {
+    "colour": "#a39c82",
+    "round": 24,
+    "curve": true,
+    "steps": 4,
+    "capTop": false,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 15,
+      "colour": "#a39c82"
+     },
+     {
+      "z": 10,
+      "circle": 12.6,
+      "colour": "#7a7a6c"
+     },
+     {
+      "z": 20,
+      "circle": 10.6,
+      "colour": "#a39c82"
+     },
+     {
+      "z": 30,
+      "circle": 9.2,
+      "colour": "#7a7a6c"
+     },
+     {
+      "z": 40,
+      "circle": 8.4,
+      "colour": "#a39c82"
+     },
+     {
+      "z": 50,
+      "circle": 8.0,
+      "colour": "#7a7a6c"
+     },
+     {
+      "z": 60,
+      "circle": 8.0,
+      "colour": "#a39c82"
+     },
+     {
+      "z": 70,
+      "circle": 8.3,
+      "colour": "#7a7a6c"
+     },
+     {
+      "z": 80,
+      "circle": 9.0,
+      "colour": "#a39c82"
+     },
+     {
+      "z": 90,
+      "circle": 9.9,
+      "colour": "#7a7a6c"
+     },
+     {
+      "z": 100,
+      "circle": 10.8,
+      "colour": "#a39c82"
+     },
+     {
+      "z": 110,
+      "circle": 11.6,
+      "colour": "#7a7a6c"
+     },
+     {
+      "z": 118,
+      "circle": 12.2,
+      "colour": "#a39c82"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 24,
+    "radius": 20,
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#a8a08a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-ring",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 24,
+    "radius": 16.5,
+    "z0": 1.2,
+    "height": 1.4,
+    "colour": "#968f7a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.4,
+        0.4
+       ]
+      },
+      "colour": "#dfe2e3",
+      "points": [
+       [
+        12.2,
+        0,
+        118
+       ],
+       [
+        14.6,
+        1.8,
+        125
+       ],
+       [
+        16.4,
+        3.2,
+        132
+       ],
+       [
+        16.0,
+        4.6,
+        139
+       ]
+      ],
+      "curve": true
+     },
+     "lod": [
+      0,
+      1
+     ]
+    },
+    "mode": "arc",
+    "count": 18,
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 0.01,
+    "facing": "outward",
+    "lod1Step": 3,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.4,
+        0.4
+       ]
+      },
+      "colour": "#dfe2e3",
+      "points": [
+       [
+        12.2,
+        0,
+        118
+       ],
+       [
+        14.6,
+        -1.8,
+        125
+       ],
+       [
+        16.4,
+        -3.2,
+        132
+       ],
+       [
+        16.0,
+        -4.6,
+        139
+       ]
+      ],
+      "curve": true
+     },
+     "lod": [
+      0,
+      1
+     ]
+    },
+    "mode": "arc",
+    "count": 18,
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 0.01,
+    "facing": "outward",
+    "lod1Step": 3,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "closed": true,
+    "colour": "#e3e6e7",
+    "arc": {
+     "centre": [
+      0,
+      0,
+      118
+     ],
+     "radius": 12.4,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "closed": true,
+    "colour": "#e3e6e7",
+    "arc": {
+     "centre": [
+      0.7,
+      0,
+      126
+     ],
+     "radius": 14.8,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "closed": true,
+    "colour": "#e3e6e7",
+    "arc": {
+     "centre": [
+      1.6,
+      0,
+      133
+     ],
+     "radius": 16.4,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.4
+     ]
+    },
+    "closed": true,
+    "colour": "#e3e6e7",
+    "arc": {
+     "centre": [
+      2.6,
+      0,
+      139
+     ],
+     "radius": 16.0,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 2,
+    "spread": 5,
+    "line": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "hourglass deeper with flared lattice cage wider than shaft top; skin is alternating light/dark bands, arched recess slots not modelled; 0.46 scale"
+ }
+}

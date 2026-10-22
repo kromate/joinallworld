@@ -1,0 +1,512 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-osm-way-4493601",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Baghdad_Tower.jpg",
+   "licence": "CC0",
+   "author": "alameedy",
+   "view": "front",
+   "file": "/tmp/places-evidence/baghdad/uni1.jpg",
+   "used": "tall slab tower of about 20 storeys in sandy tan concrete, stepped upper corners with dark recessed window bands and balconies, open pilotis storey, rounded vaulted crown, low cream campus buildings beside it, trees and grass"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/950083698",
+   "used": "nearest OSM building is a faculty library, not the tower; used only to size a low neighbouring block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    -36,
+    16
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#ebdfc0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aa9b",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    40,
+    10
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#ebdfc0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#b0a080",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aa9b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     28,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 62,
+   "storeys": 15,
+   "z0": 12,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d2bb8a",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#cfb98f",
+       "#c4ad80"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#b8a272"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 22,
+    "dy": 15,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       1.8
+      ],
+      "height": 12,
+      "colour": "#c4ae88",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bal-low",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     29.5,
+     23.5
+    ],
+    "z0": 12,
+    "height": 0.8,
+    "colour": "#b8a272",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "service",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     16
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#6b5f4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-f",
+   "at": [
+    0,
+    -11.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.5
+    ],
+    "z0": 13,
+    "height": 60,
+    "colour": "#4f4434",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-f0",
+   "at": [
+    -12.3,
+    -11.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.5
+    ],
+    "z0": 13,
+    "height": 60,
+    "colour": "#5a4c38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-f1",
+   "at": [
+    12.3,
+    -11.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.5
+    ],
+    "z0": 13,
+    "height": 60,
+    "colour": "#5a4c38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strip-b",
+   "at": [
+    0,
+    11.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.5
+    ],
+    "z0": 13,
+    "height": 60,
+    "colour": "#4f4434",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-b0",
+   "at": [
+    -12.3,
+    11.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.5
+    ],
+    "z0": 13,
+    "height": 60,
+    "colour": "#5a4c38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-b1",
+   "at": [
+    12.3,
+    11.15,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.5
+    ],
+    "z0": 13,
+    "height": 60,
+    "colour": "#5a4c38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-l",
+   "at": [
+    -14.1,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     8
+    ],
+    "z0": 13,
+    "height": 60,
+    "colour": "#4f4434",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-r",
+   "at": [
+    14.1,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     8
+    ],
+    "z0": 13,
+    "height": 60,
+    "colour": "#4f4434",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "svc-floor",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     18
+    ],
+    "z0": 74,
+    "height": 4,
+    "colour": "#4a3f30",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "svc-step",
+   "at": [
+    10,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     19
+    ],
+    "z0": 78,
+    "height": 2,
+    "colour": "#cdb98c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "vault",
+   "at": [
+    -4,
+    0,
+    76
+   ],
+   "params": {
+    "colour": "#d6c29a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       16.5,
+       18
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       16.1,
+       18
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       14.2,
+       18
+      ]
+     },
+     {
+      "z": 4.4,
+      "rect": [
+       10.5,
+       18
+      ]
+     },
+     {
+      "z": 5.4,
+      "rect": [
+       6.0,
+       18
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       1.5,
+       18
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -18
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -22
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     -20
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -26
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -24
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -34
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower is a plain slab with a few dark strips (no deep corner balconies or stepped corners); vault crown is a small offset loft without the recessed service floor detail; campus blocks and trees remain generic; no grass/people foreground."
+ }
+}

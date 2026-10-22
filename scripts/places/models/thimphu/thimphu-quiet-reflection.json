@@ -1,0 +1,1222 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Buddha_Dordenma_statue,_Thimphu_06.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bernard Gagnon",
+   "view": "front",
+   "file": "/tmp/places-evidence/thimphu/bd_Buddha_Dordenma_statue__Thimph.jpg",
+   "used": "gilded seated Buddha in lotus pose on a gold lotus throne atop a broad pale terraced hall, hillside setting with conifers, red-brown roofs of side buildings; ground is hillside grass-brown; ground is hillside grass-brown"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Thimphu-Buddha_Dordenma-02-2015-gje.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gerd Eichmann",
+   "view": "side",
+   "file": "/tmp/places-evidence/thimphu/bd_Thimphu_Buddha_Dordenma_02_201.jpg",
+   "used": "side profile: upright torso, forward hands in lap, dark blue hair with ushnisha, golden-bronze skin"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/188067168",
+   "used": "stepped footprint of the throne hall (54 x 48 m), simplified to 12 points for LOD2"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "polygon": [
+     [
+      -24.5,
+      -16
+     ],
+     [
+      -17,
+      -16.5
+     ],
+     [
+      -4.7,
+      -27.6
+     ],
+     [
+      16.5,
+      -23
+     ],
+     [
+      22.5,
+      -9
+     ],
+     [
+      25.8,
+      -4
+     ],
+     [
+      23,
+      7
+     ],
+     [
+      16,
+      18
+     ],
+     [
+      5.5,
+      29.6
+     ],
+     [
+      -16,
+      25
+     ],
+     [
+      -21,
+      17.8
+     ],
+     [
+      -24.5,
+      3.9
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "none",
+    "plinth": 1.2,
+    "bands": "#b5532f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd2b6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall-upper",
+   "at": [
+    0,
+    2,
+    14
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 4,
+    "colour": "#efe6cf",
+    "windows": "none",
+    "points": [
+     [
+      -19.11,
+      -12.48
+     ],
+     [
+      -13.26,
+      -12.870000000000001
+     ],
+     [
+      -3.6660000000000004,
+      -21.528000000000002
+     ],
+     [
+      12.870000000000001,
+      -17.94
+     ],
+     [
+      17.55,
+      -7.0200000000000005
+     ],
+     [
+      20.124000000000002,
+      -3.12
+     ],
+     [
+      17.94,
+      5.46
+     ],
+     [
+      12.48,
+      14.040000000000001
+     ],
+     [
+      4.29,
+      23.088
+     ],
+     [
+      -12.48,
+      19.5
+     ],
+     [
+      -16.38,
+      13.884
+     ],
+     [
+      -19.11,
+      3.042
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step0",
+   "at": [
+    0,
+    -32.2,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     12,
+     2.0
+    ],
+    "height": 1.5,
+    "colour": "#efe6cf",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    0,
+    -30.400000000000002,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     14,
+     2.0
+    ],
+    "height": 2.5,
+    "colour": "#efe6cf",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    0,
+    -28.6,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     16,
+     2.0
+    ],
+    "height": 3.5,
+    "colour": "#efe6cf",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lotus1",
+   "at": [
+    0,
+    4,
+    18
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d8a63c",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      14.0,
+      0
+     ],
+     [
+      16.099999999999998,
+      0.595
+     ],
+     [
+      14.399999999999999,
+      1.19
+     ],
+     [
+      15.6,
+      1.7
+     ],
+     [
+      0.1,
+      1.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lotus2",
+   "at": [
+    0,
+    4,
+    19.5
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d8a63c",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      12.200000000000001,
+      0
+     ],
+     [
+      14.3,
+      0.595
+     ],
+     [
+      12.6,
+      1.19
+     ],
+     [
+      13.8,
+      1.7
+     ],
+     [
+      0.1,
+      1.7
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "lotus3",
+   "at": [
+    0,
+    4,
+    21
+   ],
+   "params": {
+    "segments": 18,
+    "colour": "#d8a63c",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      10.4,
+      0
+     ],
+     [
+      12.5,
+      0.5599999999999999
+     ],
+     [
+      10.799999999999999,
+      1.1199999999999999
+     ],
+     [
+      12.0,
+      1.6
+     ],
+     [
+      0.1,
+      1.6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "legs",
+   "at": [
+    0,
+    4,
+    22.4
+   ],
+   "params": {
+    "colour": "#d9a940",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       13.2,
+       9.8
+      ],
+      "cy": -1
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       12.6,
+       8.8
+      ],
+      "cy": -1
+     },
+     {
+      "z": 4.4,
+      "ellipse": [
+       10,
+       6.5
+      ],
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "torso",
+   "at": [
+    0,
+    5,
+    26.6
+   ],
+   "params": {
+    "colour": "#d9a940",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6.3,
+       5.0
+      ]
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       5.4,
+       4.5
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       6.3,
+       4.2
+      ]
+     },
+     {
+      "z": 13,
+      "ellipse": [
+       6.12,
+       4.0
+      ]
+     },
+     {
+      "z": 15,
+      "ellipse": [
+       4.5,
+       3.4
+      ]
+     },
+     {
+      "z": 16.8,
+      "ellipse": [
+       2.16,
+       2.6
+      ]
+     },
+     {
+      "z": 18,
+      "ellipse": [
+       1.8,
+       2.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "head",
+   "at": [
+    0,
+    5,
+    43.8
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#d9a940",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      1.7,
+      0.1
+     ],
+     [
+      3.0,
+      1.6
+     ],
+     [
+      3.3,
+      3.4
+     ],
+     [
+      2.9,
+      5.4
+     ],
+     [
+      1.9,
+      6.6
+     ],
+     [
+      0.1,
+      7.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hair",
+   "at": [
+    0,
+    5,
+    48.0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#2b3f66",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.1,
+      0
+     ],
+     [
+      3.2,
+      0.3
+     ],
+     [
+      2.9,
+      1.6
+     ],
+     [
+      2.0,
+      2.6
+     ],
+     [
+      0.1,
+      3.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "ushnisha",
+   "at": [
+    0,
+    5,
+    50.6
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#2b3f66",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      2.4,
+      0
+     ],
+     [
+      2.3,
+      1.0
+     ],
+     [
+      1.5,
+      2.0
+     ],
+     [
+      0.1,
+      2.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "topknot",
+   "at": [
+    0,
+    5,
+    53.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e6bf4a",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.6,
+      0.1
+     ],
+     [
+      0.4,
+      0.7
+     ],
+     [
+      0.1,
+      1.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "nose",
+   "at": [
+    0,
+    1.9,
+    44.9
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     1.1
+    ],
+    "height": 1.8,
+    "colour": "#cf9a35",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "brow",
+   "at": [
+    0,
+    2.2,
+    47.0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#cf9a35",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "eye-l",
+   "at": [
+    -1.2,
+    2.1,
+    46.1
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.4
+    ],
+    "height": 0.35,
+    "colour": "#3a2a1a",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "eye-r",
+   "at": [
+    1.2,
+    2.1,
+    46.1
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.4
+    ],
+    "height": 0.35,
+    "colour": "#3a2a1a",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mouth",
+   "at": [
+    0,
+    2.3,
+    43.9
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.5
+    ],
+    "height": 0.3,
+    "colour": "#8a3b2a",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "arm-l",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 1.9,
+    "points": [
+     [
+      -5.6,
+      5,
+      42.0
+     ],
+     [
+      -7.0,
+      3.5,
+      36
+     ],
+     [
+      -5.8,
+      0.5,
+      30.5
+     ],
+     [
+      -2.0,
+      -2.2,
+      28.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#d9a940"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "arm-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 1.9,
+    "points": [
+     [
+      5.6,
+      5,
+      42.0
+     ],
+     [
+      7.0,
+      3.5,
+      36
+     ],
+     [
+      5.8,
+      0.5,
+      30.5
+     ],
+     [
+      2.0,
+      -2.2,
+      28.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#d9a940"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "hands",
+   "at": [
+    0,
+    -2.4,
+    27.2
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e0b04a",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      3.4,
+      0.3
+     ],
+     [
+      3.6,
+      1.0
+     ],
+     [
+      2.2,
+      1.9
+     ],
+     [
+      0.1,
+      2.1
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "side-hall",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -38,
+    -14
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4663a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9972b",
+    "material": "metal-sheet",
+    "rise": 3.0,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-hall-e",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    40,
+    8
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4663a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9972b",
+    "material": "metal-sheet",
+    "rise": 3.0,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hillside",
+   "at": [
+    0,
+    45,
+    0
+   ],
+   "params": {
+    "colour": "#8a7a5a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       160,
+       40
+      ]
+     },
+     {
+      "z": 18,
+      "rect": [
+       156,
+       36
+      ],
+      "cy": 10
+     },
+     {
+      "z": 40,
+      "rect": [
+       150,
+       28
+      ],
+      "cy": 22
+     },
+     {
+      "z": 58,
+      "rect": [
+       140,
+       16
+      ],
+      "cy": 32
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "stair",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "end": [
+     0,
+     -35,
+     5
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       10,
+       1.2
+      ],
+      "height": 1.0,
+      "colour": "#efe6cf",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -60,
+     25
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     62,
+     30
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -55,
+     -30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     60,
+     -32
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -68,
+     0
+    ],
+    "height": 13
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     70,
+     5
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     15,
+     -50
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     -52
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     0,
+     53
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -58,
+     56
+    ],
+    "height": 17
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -2,
+     50
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -25,
+     33
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     55,
+     57
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     32,
+     47
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -2,
+     30
+    ],
+    "height": 19
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -10,
+     43
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -19,
+     59
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     35
+    ],
+    "height": 20
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -47,
+     34
+    ],
+    "height": 18
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     48,
+     34
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -65,
+     57
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -12,
+     54
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -23,
+     57
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     9,
+     40
+    ],
+    "height": 15
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -13,
+     35
+    ],
+    "height": 19
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -15,
+     60
+    ],
+    "height": 17
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "hillside is a flat-faced brown slab not a conifer-forested slope; ground reads grey-green; hall is a pale octagonal podium without red-ochre tiers; Buddha torso still blocky with winged arms; side wings are simple huts"
+ }
+}

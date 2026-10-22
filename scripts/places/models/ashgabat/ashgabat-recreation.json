@@ -1,0 +1,423 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/250279606",
+   "used": "real park outline (about 165 x 87 m, long north-south strip), scaled 0.6 to fit the place size clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this park found (the nearby street photos show other buildings); layout of path, cascade, busts, flower beds and two cafe pavilions comes from the brief text. Outline scaled to 60 percent."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -32.9,
+      -45.1
+     ],
+     [
+      18.7,
+      -52.9
+     ],
+     [
+      31.7,
+      36.2
+     ],
+     [
+      32.0,
+      40.6
+     ],
+     [
+      31.7,
+      42.5
+     ],
+     [
+      31.0,
+      44.2
+     ],
+     [
+      29.6,
+      45.4
+     ],
+     [
+      26.8,
+      46.3
+     ],
+     [
+      -15.1,
+      52.4
+     ],
+     [
+      -17.0,
+      52.2
+     ],
+     [
+      -18.5,
+      51.1
+     ],
+     [
+      -19.0,
+      50.3
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#7fa65a",
+    "topColour": "#7fa65a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "spine-path",
+   "params": {
+    "section": {
+     "rect": [
+      3.2,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -4,
+      -50,
+      0.3
+     ],
+     [
+      3,
+      -10,
+      0.3
+     ],
+     [
+      9,
+      30,
+      0.3
+     ],
+     [
+      2,
+      50,
+      0.3
+     ]
+    ],
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-path",
+   "at": [
+    0,
+    5
+   ],
+   "params": {
+    "rect": [
+     40,
+     2.6
+    ],
+    "z0": 0.25,
+    "height": 0.12,
+    "colour": "#d8d2c4",
+    "topColour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cascade-1",
+   "at": [
+    8,
+    -28
+   ],
+   "params": {
+    "rect": [
+     14,
+     3
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#f4f2ec",
+    "topColour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cascade-2",
+   "at": [
+    8,
+    -25
+   ],
+   "params": {
+    "rect": [
+     11,
+     3
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#f4f2ec",
+    "topColour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cascade-3",
+   "at": [
+    8,
+    -22
+   ],
+   "params": {
+    "rect": [
+     8,
+     3
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#f4f2ec",
+    "topColour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    8,
+    -36
+   ],
+   "params": {
+    "width": 16,
+    "depth": 8,
+    "colour": "#6fa8c4",
+    "bank": true
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12,
+    20,
+    0.25
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 3,
+    "width": 6,
+    "depth": 4
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    14,
+    36,
+    0.25
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "width": 6,
+    "depth": 4
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -26,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.4,
+    "colour": "#f4f2ec",
+    "cap_colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    24,
+    22,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.4,
+    "colour": "#f4f2ec",
+    "cap_colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "id": "plinth",
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.4,
+        1.4
+       ],
+       "z0": 0,
+       "height": 1.6,
+       "colour": "#f4f2ec",
+       "topColour": "#f4f2ec"
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       1.6
+      ],
+      "params": {
+       "segments": 8,
+       "colour": "#b08d57",
+       "profile": [
+        [
+         0.35,
+         0
+        ],
+        [
+         0.45,
+         1.0
+        ],
+        [
+         0.3,
+         1.7
+        ],
+        [
+         0.35,
+         2.0
+        ],
+        [
+         0.0,
+         2.3
+        ]
+       ]
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -6,
+     -14
+    ],
+    "end": [
+     -1,
+     40
+    ],
+    "count": 8,
+    "lod2Step": 8
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 4.5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4,
+     -44
+    ],
+    "end": [
+     4,
+     52
+    ],
+    "count": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     56
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     18,
+     -44
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   120
+  ]
+ }
+}

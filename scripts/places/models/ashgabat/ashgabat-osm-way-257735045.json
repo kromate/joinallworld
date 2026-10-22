@@ -1,0 +1,455 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-osm-way-257735045",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Turkmenistan_banknote_-_2017_series_-_20_manat_-_reverse.jpg",
+   "licence": "Public domain",
+   "author": "Central Bank of Turkmenistan",
+   "view": "front",
+   "file": "/tmp/places-evidence/ashgabat/arena1.jpg",
+   "used": "engraved front elevation: pale marble block with a tall central glazed entrance bay of eight mullion columns under a wide lintel band, two stepped piers either side, lower side wings and round domed corner towers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/257735045",
+   "used": "oval-ish plan 178 x 156 m and 4 levels: massing simplified to a 108 x 82 m block (the outline is irregular and rotated, the photo shows a rectilinear front)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 2.0,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     108,
+     82
+    ]
+   },
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#efece3",
+    "windows": "punched",
+    "plinth": 1.0,
+    "cornice": true,
+    "trimColour": "#cfc9b9",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#cfc9b9",
+      "height": 0.5,
+      "at": 0.5,
+      "floors": "all"
+     }
+    ],
+    "windowRatio": 0.18,
+    "glassColour": "#7d8f96",
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d5ca",
+    "parapet": 1.0
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "upper-hall",
+   "params": {
+    "rect": [
+     70,
+     40
+    ],
+    "z0": 14,
+    "height": 4,
+    "colour": "#f1eee6",
+    "topColour": "#d9d5ca",
+    "windows": "none",
+    "trimColour": "#cfc9b9"
+   },
+   "at": [
+    0,
+    6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "params": {
+    "rect": [
+     46,
+     6
+    ],
+    "z0": 17,
+    "height": 3.2,
+    "colour": "#f4f1e8",
+    "topColour": "#d9d5ca"
+   },
+   "at": [
+    0,
+    -43
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "glass-bay",
+   "params": {
+    "rect": [
+     34,
+     3
+    ],
+    "z0": 0,
+    "height": 17,
+    "colour": "#4d5a60",
+    "topColour": "#cfd8dd",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#46565c",
+    "storeys": 3,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "at": [
+    0,
+    -40.5
+   ]
+  },
+  {
+   "type": "array",
+   "id": "bay-mullions",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -15,
+     -42.2
+    ],
+    "end": [
+     15,
+     -42.2
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "height": 17,
+      "colour": "#f1eee6",
+      "topColour": "#f1eee6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "corner-towers",
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -54,
+     -33
+    ],
+    "end": [
+     54,
+     -33
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "radius": 9.5,
+       "n": 16,
+       "height": 17,
+       "colour": "#efece3",
+       "topColour": "#efece3",
+       "trimColour": "#cfc9b9",
+       "storeys": 4,
+       "windows": "none",
+       "windowRatio": 0.3,
+       "glassColour": "#5f7f8e"
+      },
+      "lod": [
+       0,
+       1
+      ]
+     },
+     {
+      "type": "prism",
+      "params": {
+       "radius": 10.2,
+       "n": 16,
+       "z0": 17,
+       "height": 1.2,
+       "colour": "#f4f1e8",
+       "topColour": "#d9d5ca"
+      },
+      "lod": [
+       0,
+       1
+      ]
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       18.2
+      ],
+      "params": {
+       "segments": 16,
+       "colour": "#dfe6e8",
+       "profile": [
+        [
+         9.4,
+         0
+        ],
+        [
+         8.4,
+         1.2
+        ],
+        [
+         6,
+         2.4
+        ],
+        [
+         3,
+         3.2
+        ],
+        [
+         0,
+         3.5
+        ]
+       ]
+      },
+      "lod": [
+       0,
+       1
+      ]
+     },
+     {
+      "type": "prism",
+      "lod": [
+       2
+      ],
+      "params": {
+       "radius": 9,
+       "n": 8,
+       "height": 21,
+       "colour": "#efece3",
+       "topColour": "#dfe6e8"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "rise": 0.6,
+    "run": 1.6,
+    "count": 5,
+    "colour": "#e6e2d8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bay-block",
+   "params": {
+    "rect": [
+     46,
+     5
+    ],
+    "z0": 0,
+    "height": 0.01,
+    "colour": "#efece3"
+   },
+   "at": [
+    0,
+    -43
+   ],
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier0L",
+   "params": {
+    "rect": [
+     4,
+     6
+    ],
+    "height": 20,
+    "colour": "#f4f1e8",
+    "topColour": "#e3dfd2"
+   },
+   "at": [
+    -22,
+    -43
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier0R",
+   "params": {
+    "rect": [
+     4,
+     6
+    ],
+    "height": 20,
+    "colour": "#f4f1e8",
+    "topColour": "#e3dfd2"
+   },
+   "at": [
+    22,
+    -43
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier1L",
+   "params": {
+    "rect": [
+     4,
+     6
+    ],
+    "height": 17,
+    "colour": "#f4f1e8",
+    "topColour": "#e3dfd2"
+   },
+   "at": [
+    -26,
+    -43
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier1R",
+   "params": {
+    "rect": [
+     4,
+     6
+    ],
+    "height": 17,
+    "colour": "#f4f1e8",
+    "topColour": "#e3dfd2"
+   },
+   "at": [
+    26,
+    -43
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier2L",
+   "params": {
+    "rect": [
+     4,
+     6
+    ],
+    "height": 14.5,
+    "colour": "#f4f1e8",
+    "topColour": "#e3dfd2"
+   },
+   "at": [
+    -30,
+    -43
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier2R",
+   "params": {
+    "rect": [
+     4,
+     6
+    ],
+    "height": 14.5,
+    "colour": "#f4f1e8",
+    "topColour": "#e3dfd2"
+   },
+   "at": [
+    30,
+    -43
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lettering",
+   "params": {
+    "rect": [
+     28,
+     0.6
+    ],
+    "z0": 17.4,
+    "height": 2.2,
+    "colour": "#e3dfd2",
+    "topColour": "#e3dfd2"
+   },
+   "at": [
+    0,
+    -46.3
+   ],
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "banknote engraving reference only; plan is an irregular oval simplified to a rectangle; bay lowered and piers stepped but wings are punched windows, not true narrow slots; lettering is a blank marble board; corner domes shallow but plain"
+ }
+}

@@ -1,0 +1,250 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1474407533",
+   "used": "real 24.7 x 12.5 m hall outline (308 m2); the only building at the point"
+  },
+  {
+   "kind": "text",
+   "used": "brief: neighbourhood bazaar, metal-roofed hall, rows of stalls under umbrellas and awnings; no photo of this place exists (the nearby Commons photos show a meal and are unrelated)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 80
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8bfae",
+    "windows": "none",
+    "plinth": 0.4,
+    "groundKind": "shutter",
+    "groundHeight": 3.2,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f8591",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning-front",
+   "at": [
+    -6,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2.6,
+    "height": 3.1,
+    "colours": [
+     "#b4543c",
+     "#e4dccb"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning-front2",
+   "at": [
+    3,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2.6,
+    "height": 3.1,
+    "colours": [
+     "#3f6f8f",
+     "#e4dccb"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-front",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "colours": [
+     "#b4543c",
+     "#d9a441",
+     "#3f6f8f",
+     "#6f7b6c"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-east",
+   "at": [
+    20,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "colours": [
+     "#d9a441",
+     "#8a3b4a",
+     "#e4dccb"
+    ]
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-west",
+   "at": [
+    -24,
+    4,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#6f8591"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-east",
+   "at": [
+    24,
+    10,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#7d8a8f"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb-cafe",
+   "at": [
+    12,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 4,
+    "colours": [
+     "#b4543c",
+     "#e4dccb"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree1",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree2",
+   "at": [
+    32,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree3",
+   "at": [
+    -6,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamp1",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 3,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this place; hall, stalls and sheds are typical Dushanbe bazaar forms placed around the real outline, stall positions not observed"
+ }
+}

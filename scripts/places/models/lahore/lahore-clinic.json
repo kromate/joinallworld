@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/447968942",
+   "used": "real multi-wing outline of Lahore General Hospital block (124 x 65 m, bearing 163)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Lahore_General_Hospital",
+   "used": "opened 1958/59, Ferozepur Road; no photo found, 1950s public-hospital look typed (plastered walls, brick accents, ribbon windows, water tank)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d4b6",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "bands",
+     "colour": "#a24f3a",
+     "height": 0.3
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a6a199",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    20,
+    -64,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 4,
+    "columns": 3,
+    "colour": "#e0d4b6",
+    "roofColour": "#8e8a82",
+    "vans": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "water-tank",
+   "at": [
+    -8,
+    40,
+    15
+   ],
+   "params": {
+    "radius": 3.5,
+    "n": 12,
+    "height": 5,
+    "colour": "#9a9488"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tank-stand",
+   "at": [
+    -8,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 15,
+    "colour": "#c9bfa5"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo exists; outline is real OSM (scaled 0.93 by the clamp) but wing heights, verandas, colours and tank position are typed; no red-cross sign."
+ }
+}

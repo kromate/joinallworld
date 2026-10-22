@@ -1,0 +1,1386 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u041f\u0430\u0440\u043a_\u041d\u043e\u0432\u044b\u0439_\u0423\u0437\u0431\u0435\u043a\u0438\u0441\u0442\u0430\u043d_-\u042f\u043d\u0433\u0438_\u0423\u0437\u0431\u0435\u043a\u0438\u0441\u0442\u043e\u043d_Yangi_O'zbekiston_-_5_\u0438\u044e\u043b\u044f_2022.jpg",
+   "licence": "Public domain",
+   "author": "Artem Abd",
+   "view": "street",
+   "file": "/tmp/places-evidence/tashkent/yu1.jpg",
+   "used": "the park's landmark monument: a tall white curving blade rising from a wide dotted base to a narrow tip, blue ribbed dome at the foot, dark arched entrance hall, red edge strip and a ring above the tip, ringed by flowerbeds, a curved path and low light poles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1469910241",
+   "used": "small park pavilion footprint (10.7 x 5.5 m, nearest match 33 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -45,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.337
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Blade now bows toward the entrance and stands on a stepped pale base with a cantilevered dark hood sweep, but it is still a smooth loft without the thick perforated face; dome is plain blue on a gold base, not vertically ribbed; crown is a tilted red ring with a stylised bird; flowerbeds are flat colour strips, not dense planting; pavilion position is a guess; comparison camera frames the whole plot wider than the photo."
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "blade",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "curve": true,
+    "steps": 4,
+    "colour": "#ece8e4",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       48,
+       6
+      ],
+      "cx": -16,
+      "cy": -2.5
+     },
+     {
+      "z": 6,
+      "rect": [
+       38,
+       2.6
+      ],
+      "cx": -13,
+      "cy": -3.2
+     },
+     {
+      "z": 16,
+      "rect": [
+       26,
+       2.2
+      ],
+      "cx": -8,
+      "cy": -3.0
+     },
+     {
+      "z": 28,
+      "rect": [
+       16,
+       1.9
+      ],
+      "cx": -4,
+      "cy": -2.0
+     },
+     {
+      "z": 40,
+      "rect": [
+       9,
+       1.6
+      ],
+      "cx": -1,
+      "cy": -1.0
+     },
+     {
+      "z": 50,
+      "rect": [
+       5,
+       1.5
+      ],
+      "cx": 0.6,
+      "cy": -0.3
+     },
+     {
+      "z": 56,
+      "rect": [
+       2.2,
+       1.5
+      ],
+      "cx": 1.2,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12,
+    -1.5,
+    0
+   ],
+   "params": {
+    "capBottom": true,
+    "colour": "#e8e4de",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       44,
+       10
+      ],
+      "colour": "#cfc8b8"
+     },
+     {
+      "z": 0.7,
+      "rect": [
+       43,
+       9.4
+      ],
+      "colour": "#cfc8b8"
+     },
+     {
+      "z": 0.7,
+      "rect": [
+       40,
+       8.2
+      ],
+      "colour": "#ddd7c8"
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       38.5,
+       7.8
+      ],
+      "colour": "#ddd7c8"
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       36,
+       6.8
+      ],
+      "colour": "#e8e4de"
+     },
+     {
+      "z": 3.0,
+      "rect": [
+       32,
+       5.4
+      ],
+      "colour": "#e8e4de"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hood",
+   "at": [
+    2,
+    -5.2,
+    0.4
+   ],
+   "params": {
+    "capBottom": true,
+    "colour": "#2e2a2a",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       10.5,
+       5.0
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       10.5,
+       5.0
+      ]
+     },
+     {
+      "z": 4.4,
+      "ellipse": [
+       9.5,
+       4.2
+      ]
+     },
+     {
+      "z": 4.8,
+      "ellipse": [
+       7,
+       2.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    2,
+    -8.6
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.3
+    ],
+    "z0": 0.4,
+    "height": 2.8,
+    "colour": "#b58a52",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    4,
+    -2.8,
+    3.4
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#1d4f9c",
+    "profile": [
+     [
+      3.6,
+      0,
+      "#c8a24a"
+     ],
+     [
+      4.6,
+      1.0,
+      "#c8a24a"
+     ],
+     [
+      5.146,
+      1.239,
+      "#1d4f9c"
+     ],
+     [
+      4.955,
+      2.154
+     ],
+     [
+      4.643,
+      3.024
+     ],
+     [
+      4.217,
+      3.827
+     ],
+     [
+      3.687,
+      4.543
+     ],
+     [
+      3.066,
+      5.154
+     ],
+     [
+      2.371,
+      5.646
+     ],
+     [
+      1.617,
+      6.006
+     ],
+     [
+      0.823,
+      6.226
+     ],
+     [
+      0.01,
+      6.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 8,
+    "colour": "#c94f55",
+    "points": [
+     [
+      8,
+      -0.9,
+      1
+     ],
+     [
+      6,
+      -0.9,
+      6
+     ],
+     [
+      5,
+      -0.9,
+      16
+     ],
+     [
+      4.1,
+      -0.9,
+      28
+     ],
+     [
+      3.5,
+      -0.9,
+      40
+     ],
+     [
+      3.2,
+      -0.9,
+      50
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.1
+      ],
+      "z0": 0,
+      "height": 0.45,
+      "colour": "#2a2a2c",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -25.7,
+     -0.78,
+     9.5
+    ],
+    "end": [
+     -20.7,
+     -0.78,
+     9.5
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.1
+      ],
+      "z0": 0,
+      "height": 0.45,
+      "colour": "#2a2a2c",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -22.0,
+     -0.78,
+     12.5
+    ],
+    "end": [
+     -17.2,
+     -0.78,
+     12.5
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.1
+      ],
+      "z0": 0,
+      "height": 0.45,
+      "colour": "#2a2a2c",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18.3,
+     -0.78,
+     15.5
+    ],
+    "end": [
+     -13.700000000000001,
+     -0.78,
+     15.5
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.1
+      ],
+      "z0": 0,
+      "height": 0.45,
+      "colour": "#2a2a2c",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -15.3,
+     -0.78,
+     18.5
+    ],
+    "end": [
+     -10.9,
+     -0.78,
+     18.5
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.1
+      ],
+      "z0": 0,
+      "height": 0.45,
+      "colour": "#2a2a2c",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -12.65,
+     -0.78,
+     21.5
+    ],
+    "end": [
+     -8.450000000000001,
+     -0.78,
+     21.5
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.1
+      ],
+      "z0": 0,
+      "height": 0.45,
+      "colour": "#2a2a2c",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10.0,
+     -0.78,
+     24.5
+    ],
+    "end": [
+     -6.0,
+     -0.78,
+     24.5
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.1
+      ],
+      "z0": 0,
+      "height": 0.45,
+      "colour": "#2a2a2c",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -7.35,
+     -0.78,
+     27.5
+    ],
+    "end": [
+     -3.55,
+     -0.78,
+     27.5
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.0,
+      0.12
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "colour": "#d6d1c6",
+    "points": [
+     [
+      -44,
+      -24,
+      0.06
+     ],
+     [
+      -20,
+      -27,
+      0.06
+     ],
+     [
+      0,
+      -27.5,
+      0.06
+     ],
+     [
+      24,
+      -25,
+      0.06
+     ],
+     [
+      46,
+      -19,
+      0.06
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.15
+       },
+       {
+        "z": 4.5,
+        "circle": 0.12
+       },
+       {
+        "z": 4.7,
+        "circle": 0.4
+       }
+      ],
+      "colour": "#8a8d90"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -30,
+     0
+    ],
+    "end": [
+     44,
+     -23,
+     0
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavilion",
+   "at": [
+    38,
+    22
+   ],
+   "rotDeg": -18,
+   "params": {
+    "rect": [
+     10.7,
+     5.5
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#e5dfd2",
+    "windows": "none",
+    "topColour": "#8b8f93"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      7.5,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 8,
+    "colour": "#2a2626",
+    "points": [
+     [
+      -1,
+      -3.5,
+      5.0
+     ],
+     [
+      4,
+      -5.5,
+      5.2
+     ],
+     [
+      9,
+      -8.2,
+      3.6
+     ],
+     [
+      13,
+      -10,
+      1.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.55,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      5.2,
+      1.87,
+      54.0
+     ],
+     [
+      4.923,
+      1.745,
+      55.573
+     ],
+     [
+      4.124,
+      1.386,
+      56.957
+     ],
+     [
+      2.9,
+      0.835,
+      57.984
+     ],
+     [
+      1.399,
+      0.159,
+      58.53
+     ],
+     [
+      -0.199,
+      -0.559,
+      58.53
+     ],
+     [
+      -1.7,
+      -1.235,
+      57.984
+     ],
+     [
+      -2.924,
+      -1.786,
+      56.957
+     ],
+     [
+      -3.723,
+      -2.145,
+      55.573
+     ],
+     [
+      -4.0,
+      -2.27,
+      54.0
+     ],
+     [
+      -3.723,
+      -2.145,
+      52.427
+     ],
+     [
+      -2.924,
+      -1.786,
+      51.043
+     ],
+     [
+      -1.7,
+      -1.235,
+      50.016
+     ],
+     [
+      -0.199,
+      -0.559,
+      49.47
+     ],
+     [
+      1.399,
+      0.159,
+      49.47
+     ],
+     [
+      2.9,
+      0.835,
+      50.016
+     ],
+     [
+      4.124,
+      1.386,
+      51.043
+     ],
+     [
+      4.923,
+      1.745,
+      52.427
+     ]
+    ],
+    "closed": true,
+    "colour": "#bf3f48"
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0.6,
+    -0.2,
+    50.8
+   ],
+   "params": {
+    "colour": "#d8c070",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.6,
+       0.5
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       0.9,
+       0.5
+      ]
+     },
+     {
+      "z": 4.4,
+      "ellipse": [
+       0.5,
+       0.4
+      ]
+     },
+     {
+      "z": 6.2,
+      "ellipse": [
+       0.1,
+       0.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0.09999999999999998,
+    -0.2,
+    53.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#c9423a",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.5,
+       0.2
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       2.0,
+       0.2
+      ],
+      "cx": -1.5
+     },
+     {
+      "z": 3.0,
+      "rect": [
+       0.3,
+       0.2
+      ],
+      "cx": -3.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    1.1,
+    -0.2,
+    53.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#c9423a",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.5,
+       0.2
+      ]
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       2.0,
+       0.2
+      ],
+      "cx": 1.5
+     },
+     {
+      "z": 3.0,
+      "rect": [
+       0.3,
+       0.2
+      ],
+      "cx": 3.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.3,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "colour": "#c9423a",
+    "points": [
+     [
+      -42,
+      -12.0,
+      0.25
+     ],
+     [
+      -20,
+      -16.0,
+      0.25
+     ],
+     [
+      0,
+      -17.5,
+      0.25
+     ],
+     [
+      22,
+      -15.0,
+      0.25
+     ],
+     [
+      44,
+      -9.0,
+      0.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.3,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "colour": "#e3b83c",
+    "points": [
+     [
+      -42,
+      -13.15,
+      0.25
+     ],
+     [
+      -20,
+      -18.3,
+      0.25
+     ],
+     [
+      0,
+      -19.8,
+      0.25
+     ],
+     [
+      22,
+      -17.3,
+      0.25
+     ],
+     [
+      44,
+      -10.379999999999999,
+      0.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.3,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "colour": "#7a2a4a",
+    "points": [
+     [
+      -42,
+      -14.3,
+      0.25
+     ],
+     [
+      -20,
+      -20.6,
+      0.25
+     ],
+     [
+      0,
+      -22.1,
+      0.25
+     ],
+     [
+      22,
+      -19.6,
+      0.25
+     ],
+     [
+      44,
+      -11.76,
+      0.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.3,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "colour": "#e8863a",
+    "points": [
+     [
+      -42,
+      -15.45,
+      0.25
+     ],
+     [
+      -20,
+      -22.9,
+      0.25
+     ],
+     [
+      0,
+      -24.4,
+      0.25
+     ],
+     [
+      22,
+      -21.9,
+      0.25
+     ],
+     [
+      44,
+      -13.14,
+      0.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.3,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "colour": "#d8d0e0",
+    "points": [
+     [
+      -42,
+      -16.6,
+      0.25
+     ],
+     [
+      -20,
+      -25.2,
+      0.25
+     ],
+     [
+      0,
+      -26.7,
+      0.25
+     ],
+     [
+      22,
+      -24.2,
+      0.25
+     ],
+     [
+      44,
+      -14.52,
+      0.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.3,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "colour": "#4a8a3a",
+    "points": [
+     [
+      -42,
+      -17.75,
+      0.25
+     ],
+     [
+      -20,
+      -27.5,
+      0.25
+     ],
+     [
+      0,
+      -29.0,
+      0.25
+     ],
+     [
+      22,
+      -26.5,
+      0.25
+     ],
+     [
+      44,
+      -15.899999999999999,
+      0.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.3,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "colour": "#c9423a",
+    "points": [
+     [
+      -42,
+      -18.9,
+      0.25
+     ],
+     [
+      -20,
+      -29.799999999999997,
+      0.25
+     ],
+     [
+      0,
+      -31.299999999999997,
+      0.25
+     ],
+     [
+      22,
+      -28.799999999999997,
+      0.25
+     ],
+     [
+      44,
+      -17.28,
+      0.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.3,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 10,
+    "colour": "#e3b83c",
+    "points": [
+     [
+      -42,
+      -20.049999999999997,
+      0.25
+     ],
+     [
+      -20,
+      -32.099999999999994,
+      0.25
+     ],
+     [
+      0,
+      -33.599999999999994,
+      0.25
+     ],
+     [
+      22,
+      -31.099999999999998,
+      0.25
+     ],
+     [
+      44,
+      -18.659999999999997,
+      0.25
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.15
+       },
+       {
+        "z": 6,
+        "circle": 0.12
+       },
+       {
+        "z": 6.2,
+        "circle": 0.45
+       }
+      ],
+      "colour": "#8a8d90"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -9,
+     0
+    ],
+    "end": [
+     44,
+     -3,
+     0
+    ],
+    "count": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 5,
+  "treeKind": "conifer",
+  "extent": [
+   110,
+   90
+  ]
+ }
+}

@@ -1,0 +1,332 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-osm-way-189447678",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q130527973",
+   "used": "identity only: an urban park in Dwarka, Delhi; no photo or OSM building found, so the layout is a modest typical Delhi neighbourhood park (lawns, curved paths, centre fountain, two shaded pavilions, a small gate office, tree belts, perimeter wall)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-office",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -10.5,
+    -46.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9755a",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 4.5,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    6.0,
+    -48.0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "colour": "#c9755a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      6.0,
+      -48.0
+     ],
+     [
+      6.0,
+      -22.5
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      0.0,
+      30.0
+     ],
+     [
+      0.0,
+      46.5
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#d6cdbb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52.5,
+      -22.5
+     ],
+     [
+      -30.0,
+      -15.0
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      30.0,
+      15.0
+     ],
+     [
+      56.2,
+      22.5
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#d6cdbb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -45.0,
+      30.0
+     ],
+     [
+      -22.5,
+      18.8
+     ],
+     [
+      0.0,
+      18.8
+     ],
+     [
+      22.5,
+      30.0
+     ],
+     [
+      45.0,
+      36.0
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d6cdbb"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "waterColour": "#6fa8c4",
+    "rimColour": "#d9cfbf"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -33.8,
+    18.8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "floor": true,
+    "roof_colour": "#b8654d"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    36.0,
+    22.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "floor": true,
+    "roof_colour": "#b8654d"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -45.0,
+    -21.0,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 8,
+    "spacing": 12.8
+   }
+  },
+  {
+   "type": "park-bench",
+   "lod": [
+    0
+   ],
+   "at": [
+    -7.5,
+    -9.0,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 15.0
+   }
+  },
+  {
+   "type": "core/lamp",
+   "lod": [
+    0
+   ],
+   "at": [
+    9.0,
+    -36.0,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52.5,
+    -37.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 8,
+    "spread": 6,
+    "line": 13.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52.5,
+    43.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 9,
+    "spread": 6,
+    "line": 13.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22.5,
+    36.0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 4,
+    "spread": 6,
+    "line": 10.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -75.0,
+    -56.2,
+    0
+   ],
+   "params": {
+    "length": 150.0,
+    "height": 1.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline; layout is a typical Delhi neighbourhood park, not observed"
+ }
+}

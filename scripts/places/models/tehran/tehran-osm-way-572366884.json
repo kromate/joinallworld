@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-osm-way-572366884",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/572366884",
+   "used": "real outline of the tekyeh (name match, 443 m2, rotated hexagonal plan), two storeys per Wikidata"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TekkiyeTajrish.jpg",
+   "licence": "Public domain",
+   "author": "Mani1 (assumed)",
+   "view": "detail",
+   "file": "/tmp/places-evidence/tehran/tajrish1.jpg",
+   "used": "bazaar-side wall only, no overall view: pale yellow-buff brick with white joints, dark-brown timber sash window with geometric glazing on the upper storey, turquoise and blue tile panel (blank here) above the shopfront passage, exposed timber beams"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 30
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#d6bd8c",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "rect",
+    "bay": 3.4,
+    "trimColour": "#4a2f1c",
+    "bands": {
+     "colour": "#c4a874",
+     "height": 0.5
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "drum-dome",
+   "at": [
+    -1,
+    -2,
+    9.5
+   ],
+   "params": {
+    "radius": 3.2,
+    "drum_height": 2.4,
+    "cap": "dome",
+    "sides": 12,
+    "cross": false,
+    "colour": "#d6bd8c",
+    "cap_colour": "#2f9aa6"
+   }
+  },
+  {
+   "type": "iwan",
+   "at": [
+    8.9,
+    -4.8,
+    0
+   ],
+   "rotDeg": 58,
+   "params": {
+    "width": 6.5,
+    "height": 8,
+    "depth": 1.4,
+    "archRatio": 0.6,
+    "colour": "#d6bd8c",
+    "accentColour": "#2a8f9e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    9.8,
+    -5.4,
+    0
+   ],
+   "rotDeg": 58,
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "bottom": 5.2,
+    "colour": "#2a8f9e",
+    "frameColour": "#1f4f7a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spread": 4,
+    "height": 6
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior overall photo found; plan is the real outline but facade, entrance position, dome and storey layout follow the detail photo and the brief only"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "extent": [
+   60,
+   50
+  ]
+ }
+}

@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-node-12064585531",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small city-centre Tajik restaurant, shopfront, tiled awning, painted render, flat roof; no OSM building matched and the only nearby Commons photo shows a different building (Faizobod administrative centre), so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8b6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "front": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#3f6f8f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     5,
+     2
+    ]
+   },
+   "at": [
+    -3,
+    -7
+   ],
+   "height": 4.2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#3f6f8f",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5670",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "shopfront",
+   "id": "glazing-left",
+   "at": [
+    -8,
+    -6.1,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 3.2,
+    "kind": "glazed",
+    "colour": "#3f6f8f",
+    "sign_colour": "#f1ece0"
+   }
+  },
+  {
+   "type": "shopfront",
+   "id": "glazing-right",
+   "at": [
+    4,
+    -6.1,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "kind": "glazed",
+    "colour": "#3f6f8f",
+    "sign_colour": "#f1ece0"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "tiled-awning",
+   "at": [
+    3,
+    -7.4,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.4,
+    "height": 3.2,
+    "colours": [
+     "#3f6f8f",
+     "#f1ece0"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    -3,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 1.0,
+    "bottom": 4.4,
+    "colour": "#f1ece0",
+    "frameColour": "#3f6f8f",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "pavement-tables",
+   "at": [
+    -2,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#f1ece0",
+     "#3f6f8f"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-left",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -16,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfbb",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-right",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    16,
+    0
+   ],
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cf",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree1",
+   "at": [
+    -9,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree2",
+   "at": [
+    12,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   56,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence of the real building: size, shopfront and awning are typical for a small Dushanbe restaurant; neighbours are plain context"
+ }
+}

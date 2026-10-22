@@ -1,0 +1,140 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/467555721",
+   "used": "irregular building outline 18 x 16 m, 219 m2 (containing match); two storeys and national-style finishes assumed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ede4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bands": "#a8452d",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f1ede4",
+       "#e6dcc8"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7f8a92",
+    "material": "metal-sheet",
+    "overhang": 1.0,
+    "rise": 2.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    -0.5,
+    -11.9
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     1.2
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#b9b3a6",
+    "topColour": "#b9b3a6"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    -11,
+    -5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 1.0,
+    "colour": "#3b6e8f",
+    "frameColour": "#a8452d",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flag",
+   "at": [
+    -10,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#e9a923",
+    "count": 1,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "conifers",
+   "at": [
+    -12,
+    10,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 8,
+    "count": 5,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 11,
+    "keep_out": []
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   50,
+   45
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists for this small office; massing follows the real outline, windows, colours and roof are typical Bhutanese styling."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-node-11936865369"
+}

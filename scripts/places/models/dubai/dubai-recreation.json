@@ -1,0 +1,372 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/230622240",
+   "used": "the real park outline (167 x 87 m, name match 1.0), turned so its long axis runs left-right"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 32,
+  "fovDeg": 46,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -46.96,
+      31.88
+     ],
+     [
+      -52.32,
+      26.73
+     ],
+     [
+      -54.56,
+      3.38
+     ],
+     [
+      -54.63,
+      -20.99
+     ],
+     [
+      -48.99,
+      -24.83
+     ],
+     [
+      2.39,
+      -26.47
+     ],
+     [
+      60.51,
+      -28.98
+     ],
+     [
+      64.97,
+      -23.88
+     ],
+     [
+      66.99,
+      29.86
+     ],
+     [
+      62.6,
+      33.31
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#6f9a4a",
+    "topColour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "main-path",
+   "at": [
+    0.0,
+    0.0,
+    0.32
+   ],
+   "params": {
+    "points": [
+     [
+      -43.199999999999996,
+      -4.32
+     ],
+     [
+      -21.599999999999998,
+      -8.64
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      21.599999999999998,
+      7.199999999999999
+     ],
+     [
+      44.64,
+      1.44
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#cdbf9e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "cross-path",
+   "at": [
+    0.0,
+    0.0,
+    0.32
+   ],
+   "params": {
+    "points": [
+     [
+      -2.88,
+      -24.48
+     ],
+     [
+      0.0,
+      0.0
+     ],
+     [
+      5.76,
+      24.48
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cdbf9e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "z0": 0.3,
+    "height": 0.1,
+    "colour": "#d6c9a8",
+    "rect": [
+     18,
+     18
+    ]
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "id": "fountain",
+   "at": [
+    0.0,
+    0.0,
+    0.4
+   ],
+   "params": {
+    "radius": 4.2,
+    "waterColour": "#6fb0c8",
+    "rimColour": "#d8d0bd"
+   }
+  },
+  {
+   "type": "bandstand",
+   "id": "bandstand",
+   "at": [
+    -30.24,
+    10.08,
+    0.3
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "id": "pavilion-a",
+   "at": [
+    24.48,
+    -12.959999999999999,
+    0.3
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#b9805a"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "id": "pavilion-b",
+   "at": [
+    -12.959999999999999,
+    15.84,
+    0.3
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.0,
+    "kind": "hip",
+    "roof_colour": "#b9805a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "kiosk",
+   "at": [
+    12.959999999999999,
+    12.959999999999999,
+    0.3
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 3,
+    "height": 2.8,
+    "wall_colour": "#e5d9c0",
+    "roof_colour": "#c9b48a"
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "id": "brollies",
+   "at": [
+    11.52,
+    16.56,
+    0.3
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "colours": [
+     "#efe5d2",
+     "#c9b48a"
+    ],
+    "radius": 1.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "id": "benches-a",
+   "at": [
+    -7.199999999999999,
+    -10.08,
+    0.3
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "park-bench",
+   "id": "benches-b",
+   "at": [
+    17.28,
+    -4.32,
+    0.3
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "id": "beds",
+   "at": [
+    -24.48,
+    -15.84,
+    0.3
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 3,
+    "width": 6,
+    "depth": 4,
+    "colours": [
+     "#e8c24a",
+     "#d8576b",
+     "#f1ede4"
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "palms-w",
+   "at": [
+    -40.32,
+    -7.199999999999999,
+    0.3
+   ],
+   "params": {
+    "width": 12.959999999999999,
+    "depth": 28.799999999999997,
+    "count": 9,
+    "kind": "palm",
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "palms-e",
+   "at": [
+    37.44,
+    -2.88,
+    0.3
+   ],
+   "params": {
+    "width": 14.399999999999999,
+    "depth": 28.799999999999997,
+    "count": 9,
+    "kind": "palm",
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "shade",
+   "at": [
+    -2.88,
+    -21.599999999999998,
+    0.3
+   ],
+   "params": {
+    "width": 36.0,
+    "depth": 10.08,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 5,
+    "max_height": 8
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamps",
+   "at": [
+    -43.199999999999996,
+    -2.88,
+    0.3
+   ],
+   "params": {
+    "height": 5,
+    "count": 7,
+    "spacing": 12.959999999999999
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-recreation",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the park found; real OSM outline with plausible lawn, paths, fountain, pavilions and palms; park furniture positions are typical not surveyed"
+ }
+}

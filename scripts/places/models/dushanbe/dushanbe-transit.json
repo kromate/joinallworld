@@ -1,0 +1,635 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Duschanbe_Bahnhof.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "User Drsweeny on de.wikipedia",
+   "view": "front",
+   "file": "/tmp/places-evidence/dushanbe/transit-0.jpg",
+   "used": "sand-grey stucco block of a Soviet station: lower left wing, glazed central hall under a balcony-terrace with railing, taller right wing with window grid, pale stone block beside the hall, big roof sign board (blank here), benches and conifers on the forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27505635",
+   "used": "overall length 99 m and depth 14 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 2,
+  "fovDeg": 36,
+  "aspect": 1.33,
+  "margin": 0.0,
+  "shiftX": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     32,
+     13
+    ]
+   },
+   "at": [
+    -33.5,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a9a08c",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "bay": 3.4,
+    "plinth": 0.6,
+    "glassColour": "#3a464c",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#e2ddd0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a70",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a9a08c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "plinth": 0.6,
+    "glassColour": "#3a464c",
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#e2ddd0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a70",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    33,
+    0
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a9a08c",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 3.2,
+    "plinth": 0.6,
+    "glassColour": "#3a464c",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#e8e4da"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a70",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "array",
+   "id": "benches",
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -18,
+     0
+    ],
+    "end": [
+     -8,
+     -18,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       0.8
+      ],
+      "height": 0.9,
+      "colour": "#3f6b4a",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    -38,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "colour": "#2d5a32"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    -48,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "colour": "#2d5a32"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    40,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "colour": "#5f8a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-block",
+   "at": [
+    15.5,
+    -2.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     9
+    ],
+    "height": 7,
+    "topScale": [
+     0.55,
+     1.0
+    ],
+    "topOffset": [
+     -1.5,
+     0
+    ],
+    "colour": "#b4b0a6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kiosk",
+   "at": [
+    6,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3
+    ],
+    "height": 2.9,
+    "colour": "#eef2f3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kiosk-glass",
+   "at": [
+    6,
+    -13.55,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.1
+    ],
+    "height": 1.7,
+    "colour": "#7fa7b8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kiosk-roof",
+   "at": [
+    6,
+    -12,
+    2.9
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     3.4
+    ],
+    "height": 0.5,
+    "colour": "#2f7d94",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kiosk-post",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    4.1,
+    -13.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 2.9,
+    "colour": "#5fa3c4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kiosk-post",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    7.9,
+    -13.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 2.9,
+    "colour": "#5fa3c4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall-glass",
+   "at": [
+    -4,
+    -7.0,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.5
+    ],
+    "height": 5.2,
+    "colour": "#3c4a52",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "mullions-v",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15.5,
+     -7.4,
+     0.4
+    ],
+    "end": [
+     7.5,
+     -7.4,
+     0.4
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.3
+      ],
+      "height": 5.2,
+      "colour": "#9a9a92",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    -10,
+    -9.8,
+    5.7
+   ],
+   "params": {
+    "rect": [
+     44,
+     5.6
+    ],
+    "height": 0.9,
+    "colour": "#4a4b4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-rail",
+   "at": [
+    -10,
+    -12.4,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.15
+    ],
+    "height": 0.9,
+    "colour": "#cfd3d4",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "terrace-posts",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -31.5,
+     -12.4,
+     6.6
+    ],
+    "end": [
+     11.5,
+     -12.4,
+     6.6
+    ],
+    "count": 24,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.15,
+       0.15
+      ],
+      "height": 0.9,
+      "colour": "#cfd3d4",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "medallions",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     -7.55,
+     13.0
+    ],
+    "end": [
+     8,
+     -7.55,
+     13.0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.2
+      ],
+      "height": 0.8,
+      "colour": "#7d7a70",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    -4,
+    -0.5,
+    14.9
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.5
+    ],
+    "height": 2.0,
+    "colour": "#6e3a3a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "sign-letters",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8.8,
+     -0.9,
+     15.3
+    ],
+    "end": [
+     0.8,
+     -0.9,
+     15.3
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       0.4
+      ],
+      "height": 1.4,
+      "colour": "#a8453f",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-trim",
+   "at": [
+    -4,
+    -0.5,
+    16.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     12.4,
+     0.6
+    ],
+    "height": 0.3,
+    "colour": "#3f5048",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "conifers",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -16,
+     0
+    ],
+    "end": [
+     -12,
+     -17,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "conifer",
+      "height": 12,
+      "colour": "#2d5a32"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": 0,
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Block reads continuous with balcony running above the glazed hall, but hall is not truly recessed (glass is flush-proud), no sloping stone block detail beyond a wedge, sign is a blank board with raised blocks not script letters, left wing windows approximate, no pedestrians/benches detail."
+ }
+}

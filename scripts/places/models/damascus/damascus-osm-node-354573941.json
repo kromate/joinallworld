@@ -1,0 +1,808 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Damascus-Bab_Kisan.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Heretiq",
+   "view": "front",
+   "file": "/tmp/places-evidence/damascus/dm_babkisan1.jpg",
+   "used": "square gate block of tan coursed limestone: two taller flanking piers with round chi-rho medallions, a slightly lower central bay with a round-arched door and a stone relief panel above, a lower wall stretch to the left, a low pierced stone balustrade in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/316215459",
+   "used": "chapel outline of St Paul placed as a low block behind the gate"
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Stone is regular coursing, not irregular ashlar; archivolt and relief frieze carvings are plain; medallions are ring plus spokes; chapel and flanking walls simplified; no foliage in front."
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     5.6,
+     5.4
+    ]
+   },
+   "at": [
+    -5.2,
+    0
+   ],
+   "z0": 0,
+   "height": 14.2,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b3a58b",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "cornice": false,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a69a84",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     5.6,
+     5.4
+    ]
+   },
+   "at": [
+    5.2,
+    0
+   ],
+   "z0": 0,
+   "height": 14.2,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b3a58b",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "cornice": false,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a69a84",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     4.8,
+     5.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13.0,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b8aa90",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "cornice": false,
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a69a84",
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-panel",
+   "footprint": {
+    "rect": [
+     2.8,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -2.85
+   ],
+   "z0": 8.6,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#9f9279",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9f9279"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "polygon": [
+     [
+      -5.959999999999999,
+      -2.38
+     ],
+     [
+      -1.6899999999999995,
+      0.42
+     ],
+     [
+      -4.21,
+      4.34
+     ],
+     [
+      0.5500000000000003,
+      7.489999999999999
+     ],
+     [
+      -0.5699999999999994,
+      9.17
+     ],
+     [
+      1.32,
+      10.5
+     ],
+     [
+      2.79,
+      8.75
+     ],
+     [
+      3.7,
+      9.31
+     ],
+     [
+      10.419999999999998,
+      -2.3099999999999996
+     ],
+     [
+      12.66,
+      -0.84
+     ],
+     [
+      13.709999999999999,
+      -2.38
+     ],
+     [
+      3.77,
+      -8.959999999999999
+     ],
+     [
+      0.20000000000000018,
+      -3.5
+     ],
+     [
+      -4.279999999999999,
+      -6.51
+     ],
+     [
+      -4.699999999999999,
+      -5.949999999999999
+     ],
+     [
+      -3.9299999999999997,
+      -5.46
+     ]
+    ]
+   },
+   "at": [
+    4,
+    14
+   ],
+   "rotDeg": 41,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c2b497",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0a48c",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -2.78,
+    0.3
+   ],
+   "params": {
+    "width": 5.0,
+    "height": 7.0,
+    "depth": 0.3,
+    "archWidth": 5.0,
+    "springHeight": 4.6,
+    "colour": "#cfc3a8"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -2.95,
+    0.3
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "depth": 0.5,
+    "archWidth": 4.2,
+    "springHeight": 4.0,
+    "colour": "#bfb294"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -2.7,
+    0.3
+   ],
+   "params": {
+    "width": 3.3,
+    "height": 5.4,
+    "depth": 2.2,
+    "archWidth": 3.3,
+    "springHeight": 3.4,
+    "colour": "#1c130d"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 3.0,
+    "rise": 0.25,
+    "run": 0.7,
+    "count": 2,
+    "colour": "#b5a98f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-left",
+   "footprint": {
+    "rect": [
+     9.0,
+     3.0
+    ]
+   },
+   "at": [
+    -13.5,
+    0.8
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ad9f85",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a09580",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-right",
+   "footprint": {
+    "rect": [
+     7.0,
+     3.0
+    ]
+   },
+   "at": [
+    12.5,
+    0.8
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ad9f85",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a09580",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17.5,
+    -4.4,
+    0
+   ],
+   "params": {
+    "length": 14.4,
+    "height": 1.0,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 3.6,
+    "colour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    3.1,
+    -4.4,
+    0
+   ],
+   "params": {
+    "length": 14.4,
+    "height": 1.0,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 3.6,
+    "colour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -3.1,
+    -4.4,
+    0
+   ],
+   "params": {
+    "length": 6.2,
+    "height": 2.0,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#222222"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -5.2,
+    -2.75,
+    10.6
+   ],
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      1.15,
+      0,
+      0.0
+     ],
+     [
+      1.0624614623879796,
+      0,
+      0.4400859472198532
+     ],
+     [
+      0.8131727983645296,
+      0,
+      0.8131727983645295
+     ],
+     [
+      0.4400859472198533,
+      0,
+      1.0624614623879796
+     ],
+     [
+      7.04171909509728e-17,
+      0,
+      1.15
+     ],
+     [
+      -0.44008594721985317,
+      0,
+      1.0624614623879796
+     ],
+     [
+      -0.8131727983645295,
+      0,
+      0.8131727983645296
+     ],
+     [
+      -1.0624614623879796,
+      0,
+      0.44008594721985334
+     ],
+     [
+      -1.15,
+      0,
+      1.408343819019456e-16
+     ],
+     [
+      -1.0624614623879798,
+      0,
+      -0.4400859472198531
+     ],
+     [
+      -0.8131727983645298,
+      0,
+      -0.8131727983645295
+     ],
+     [
+      -0.44008594721985383,
+      0,
+      -1.0624614623879793
+     ],
+     [
+      -2.112515728529184e-16,
+      0,
+      -1.15
+     ],
+     [
+      0.44008594721985345,
+      0,
+      -1.0624614623879796
+     ],
+     [
+      0.8131727983645294,
+      0,
+      -0.8131727983645298
+     ],
+     [
+      1.0624614623879793,
+      0,
+      -0.4400859472198539
+     ]
+    ],
+    "closed": true,
+    "colour": "#9a8c72"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -5.2,
+    -2.75,
+    10.6
+   ],
+   "params": {
+    "radius": 0.16,
+    "points": [
+     [
+      -1.15,
+      0,
+      -0.0
+     ],
+     [
+      1.15,
+      0,
+      0.0
+     ]
+    ],
+    "colour": "#9a8c72"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -5.2,
+    -2.75,
+    10.6
+   ],
+   "params": {
+    "radius": 0.16,
+    "points": [
+     [
+      -0.5750000000000001,
+      0,
+      -0.9959292143521044
+     ],
+     [
+      0.5750000000000001,
+      0,
+      0.9959292143521044
+     ]
+    ],
+    "colour": "#9a8c72"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -5.2,
+    -2.75,
+    10.6
+   ],
+   "params": {
+    "radius": 0.16,
+    "points": [
+     [
+      0.5749999999999997,
+      0,
+      -0.9959292143521045
+     ],
+     [
+      -0.5749999999999997,
+      0,
+      0.9959292143521045
+     ]
+    ],
+    "colour": "#9a8c72"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    5.2,
+    -2.75,
+    10.6
+   ],
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      1.15,
+      0,
+      0.0
+     ],
+     [
+      1.0624614623879796,
+      0,
+      0.4400859472198532
+     ],
+     [
+      0.8131727983645296,
+      0,
+      0.8131727983645295
+     ],
+     [
+      0.4400859472198533,
+      0,
+      1.0624614623879796
+     ],
+     [
+      7.04171909509728e-17,
+      0,
+      1.15
+     ],
+     [
+      -0.44008594721985317,
+      0,
+      1.0624614623879796
+     ],
+     [
+      -0.8131727983645295,
+      0,
+      0.8131727983645296
+     ],
+     [
+      -1.0624614623879796,
+      0,
+      0.44008594721985334
+     ],
+     [
+      -1.15,
+      0,
+      1.408343819019456e-16
+     ],
+     [
+      -1.0624614623879798,
+      0,
+      -0.4400859472198531
+     ],
+     [
+      -0.8131727983645298,
+      0,
+      -0.8131727983645295
+     ],
+     [
+      -0.44008594721985383,
+      0,
+      -1.0624614623879793
+     ],
+     [
+      -2.112515728529184e-16,
+      0,
+      -1.15
+     ],
+     [
+      0.44008594721985345,
+      0,
+      -1.0624614623879796
+     ],
+     [
+      0.8131727983645294,
+      0,
+      -0.8131727983645298
+     ],
+     [
+      1.0624614623879793,
+      0,
+      -0.4400859472198539
+     ]
+    ],
+    "closed": true,
+    "colour": "#9a8c72"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    5.2,
+    -2.75,
+    10.6
+   ],
+   "params": {
+    "radius": 0.16,
+    "points": [
+     [
+      -1.15,
+      0,
+      -0.0
+     ],
+     [
+      1.15,
+      0,
+      0.0
+     ]
+    ],
+    "colour": "#9a8c72"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    5.2,
+    -2.75,
+    10.6
+   ],
+   "params": {
+    "radius": 0.16,
+    "points": [
+     [
+      -0.5750000000000001,
+      0,
+      -0.9959292143521044
+     ],
+     [
+      0.5750000000000001,
+      0,
+      0.9959292143521044
+     ]
+    ],
+    "colour": "#9a8c72"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    5.2,
+    -2.75,
+    10.6
+   ],
+   "params": {
+    "radius": 0.16,
+    "points": [
+     [
+      0.5749999999999997,
+      0,
+      -0.9959292143521045
+     ],
+     [
+      -0.5749999999999997,
+      0,
+      0.9959292143521045
+     ]
+    ],
+    "colour": "#9a8c72"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -17,
+     -3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     -2
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-osm-node-354573941"
+}

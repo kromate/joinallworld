@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-airport-kuwait-city-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Kuwait_International_Airport",
+   "used": "Terminal 1 by Kenzo Tange, opened 1979: long low cast-concrete terminal, vaulted space-frame hall, control tower; no OSM building match and only interior photos found, so exteriors are typical, not verified"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "concourse",
+   "footprint": {
+    "rect": [
+     112,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d8cdb6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 7,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "spacing": 3.5,
+      "depth": 0.6,
+      "width": 0.4,
+      "colour": "#cbbfa5"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69f",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    4,
+    15
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 108,
+    "depth": 24,
+    "folds": 9,
+    "rise": 3,
+    "colour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     14,
+     46
+    ]
+   },
+   "at": [
+    30,
+    38
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8794",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 100,
+    "depth": 12,
+    "height": 6,
+    "columns": 8,
+    "colour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    26,
+    20,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    -20,
+    17,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    -48,
+    8,
+    0
+   ],
+   "params": {
+    "height": 46,
+    "style": "round",
+    "colour": "#d4cab4",
+    "bandColour": "#7d8d96"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 3,
+    "bottom": 5,
+    "colour": "#3d6a86"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -35,
+    -45
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 6,
+    "spread": 70,
+    "line": 70
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "cars": [
+   {
+    "at": [
+     -40,
+     -40
+    ],
+    "yawDeg": 90,
+    "colour": "#d9d9d9"
+   },
+   {
+    "at": [
+     -27,
+     -45
+    ],
+    "yawDeg": 90,
+    "colour": "#2b2f33"
+   },
+   {
+    "at": [
+     -14,
+     -40
+    ],
+    "yawDeg": 90,
+    "colour": "#9aa3ab"
+   },
+   {
+    "at": [
+     -1,
+     -45
+    ],
+    "yawDeg": 90,
+    "colour": "#b8402f"
+   },
+   {
+    "at": [
+     12,
+     -40
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e4da"
+   }
+  ],
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo of Terminal 1 found (only interiors); form is typical of the Tange-era terminal, vault, tower and jet-bridge placement are unverified"
+ }
+}

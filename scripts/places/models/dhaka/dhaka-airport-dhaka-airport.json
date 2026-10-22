@@ -1,0 +1,342 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-airport-dhaka-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HSIA_Terminal_3.jpg",
+   "licence": "CC0",
+   "author": "Dunhill1410",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/dhaka/airport1.jpg",
+   "used": "low glazed front under a wide white flat wave-edged roof, taller rear hall with grid of blue skylights, jet bridges at the left, curved elevated forecourt road, pond, pale apron"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1172183216",
+   "used": "overall scale (730 x 290 m, building=construction); a 116 m portion is modelled because of the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 28,
+  "fovDeg": 60,
+  "aspect": 1.46,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     120,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -18
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9dbdb4",
+    "glassColour": "#86aaa0",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": {
+     "colour": "#f2f2f0",
+     "height": 0.9
+    }
+   },
+   "roof": {
+    "form": "wave",
+    "colour": "#f4f5f5",
+    "material": "metal-sheet",
+    "overhang": 10,
+    "parapet": 0.6,
+    "rise": 1.0,
+    "waves": 3,
+    "thickness": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     120,
+     34
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f2f3f3",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f5f5",
+    "material": "metal-sheet",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "grid",
+    "cols": 15,
+    "rows": 6,
+    "dx": 8,
+    "dy": 8,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      12.4
+     ],
+     "params": {
+      "rect": [
+       3.2,
+       3.6
+      ],
+      "height": 0.2,
+      "colour": "#5f8fc0"
+     }
+    }
+   },
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 4,
+    "colours": [
+     "#006a4e",
+     "#006a4e",
+     "#006a4e",
+     "#006a4e"
+    ]
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -62,
+    -36,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -50,
+    -36,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -38,
+    -36,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     30
+    ],
+    "height": 0.1,
+    "colour": "#c9cccb"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      11,
+      1.0
+     ]
+    },
+    "colour": "#8a8e92",
+    "points": [
+     [
+      -70,
+      -50,
+      4
+     ],
+     [
+      -30,
+      -38,
+      6.5
+     ],
+     [
+      10,
+      -36,
+      7
+     ],
+     [
+      50,
+      -40,
+      6.5
+     ],
+     [
+      85,
+      -54,
+      3
+     ]
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      11.4,
+      0.4
+     ]
+    },
+    "colour": "#f2f2f0",
+    "points": [
+     [
+      -70,
+      -50,
+      4.9
+     ],
+     [
+      -30,
+      -38,
+      7.4
+     ],
+     [
+      10,
+      -36,
+      7.9
+     ],
+     [
+      50,
+      -40,
+      7.4
+     ],
+     [
+      85,
+      -54,
+      3.9
+     ]
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    25,
+    -62,
+    0.05
+   ],
+   "params": {
+    "width": 60,
+    "depth": 16,
+    "colour": "#3f7d6a",
+    "bank": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -62
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -62
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only a 120 m slice of the 730 m terminal (about 2:1, not 2.5:1); skylight grid overshoots the rear edge of the roof; curved road is raised too close and hides the glazing; wave roof edge not the notched real one; pond is a flat patch without landscaped banks"
+ }
+}

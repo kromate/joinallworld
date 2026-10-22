@@ -1,0 +1,834 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Altyn_Asyr_Bazar_Complex_(46090811362).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Hans Birger Nilsen",
+   "view": "street",
+   "file": "/tmp/places-evidence/ashgabat/Altyn_Asyr_Bazar_Complex_46090811362.jpg",
+   "used": "low white prefab pavilions with ribbon glazing and flat/low-pitch light-grey roofs, white metal-framed stall awnings, yellow gate pavilion with red-and-white gabled roof and arched fan gable beyond, wide pale concrete paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Altyn_Asyr_Bazaar_Ashgabat_001.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Hans Birger Nilsen",
+   "view": "street",
+   "used": "setting: conifer trees, green fence, lamp standards, plain concrete forecourt"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Altyn_Asyr_Bazaar",
+   "used": "carpet-ornament plan of pavilions, tall central clock tower"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion-n",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.2,
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#f2f1ec",
+      "#e4e4e0"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c4c7c9",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 0,
+    "rise": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-s",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.2,
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#f2f1ec",
+      "#e4e4e0"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c4c7c9",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 0,
+    "rise": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-e",
+   "footprint": {
+    "rect": [
+     14,
+     56
+    ]
+   },
+   "at": [
+    42,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.2,
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#f2f1ec",
+      "#e4e4e0"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c4c7c9",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 0,
+    "rise": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-w",
+   "footprint": {
+    "rect": [
+     14,
+     56
+    ]
+   },
+   "at": [
+    -42,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.2,
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#f2f1ec",
+      "#e4e4e0"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c4c7c9",
+    "material": "metal-sheet",
+    "overhang": 0.4,
+    "parapet": 0,
+    "rise": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-0",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeece6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9ccce",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "parapet": 0.3,
+    "rise": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-1",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeece6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9ccce",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "parapet": 0.3,
+    "rise": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -50
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdc94",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c8363a",
+    "material": "metal-sheet",
+    "overhang": 1.0,
+    "parapet": 0,
+    "rise": 1.6
+   }
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 20,
+    "cap": "hip",
+    "cap_rise": 0.8,
+    "wall_colour": "#f4f2ec",
+    "roof_colour": "#a9adb0",
+    "trim_colour": "#e0dfd8",
+    "clock": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -24
+    ],
+    "end": [
+     36,
+     -24
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "conifer",
+       "height": 8
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 2.2,
+    "colour": "#f4f2ec",
+    "frameColour": "#c9a227"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-gate",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -61
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe5",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9adb0",
+    "rise": 1.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -55.9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.8
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 10,
+     "startDeg": 0,
+     "endDeg": 180,
+     "cx": 0,
+     "cz": 4
+    },
+    "colour": "#e2e2dc"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -47.4
+    ],
+    "end": [
+     -18,
+     -47.4
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "awning",
+      "params": {
+       "width": 9,
+       "depth": 3.2,
+       "drop": 0.6,
+       "height": 3.2,
+       "colours": [
+        "#f4f4f0",
+        "#e8ecee"
+       ],
+       "stripe": 0.3,
+       "valance": 0.15,
+       "posts": true,
+       "trim_colour": "#f0f0ee"
+      }
+     },
+     {
+      "type": "mass",
+      "footprint": {
+       "rect": [
+        7,
+        1
+       ]
+      },
+      "at": [
+       0,
+       -1.8
+      ],
+      "height": 0.9,
+      "wall": {
+       "colour": "#b98d5a",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#c9a46a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "mode": "line",
+    "start": [
+     18,
+     -47.4
+    ],
+    "end": [
+     36,
+     -47.4
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "awning",
+      "params": {
+       "width": 9,
+       "depth": 3.2,
+       "drop": 0.6,
+       "height": 3.2,
+       "colours": [
+        "#f4f4f0",
+        "#e8ecee"
+       ],
+       "stripe": 0.3,
+       "valance": 0.15,
+       "posts": true,
+       "trim_colour": "#f0f0ee"
+      }
+     },
+     {
+      "type": "mass",
+      "footprint": {
+       "rect": [
+        7,
+        1
+       ]
+      },
+      "at": [
+       0,
+       -1.8
+      ],
+      "height": 0.9,
+      "wall": {
+       "colour": "#b98d5a",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#c9a46a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     47.4
+    ],
+    "end": [
+     -18,
+     47.4
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "awning",
+      "params": {
+       "width": 9,
+       "depth": 3.2,
+       "drop": 0.6,
+       "height": 3.2,
+       "colours": [
+        "#f4f4f0",
+        "#e8ecee"
+       ],
+       "stripe": 0.3,
+       "valance": 0.15,
+       "posts": true,
+       "trim_colour": "#f0f0ee"
+      }
+     },
+     {
+      "type": "mass",
+      "footprint": {
+       "rect": [
+        7,
+        1
+       ]
+      },
+      "at": [
+       0,
+       -1.8
+      ],
+      "height": 0.9,
+      "wall": {
+       "colour": "#b98d5a",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#c9a46a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "mode": "line",
+    "start": [
+     18,
+     47.4
+    ],
+    "end": [
+     36,
+     47.4
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "awning",
+      "params": {
+       "width": 9,
+       "depth": 3.2,
+       "drop": 0.6,
+       "height": 3.2,
+       "colours": [
+        "#f4f4f0",
+        "#e8ecee"
+       ],
+       "stripe": 0.3,
+       "valance": 0.15,
+       "posts": true,
+       "trim_colour": "#f0f0ee"
+      }
+     },
+     {
+      "type": "mass",
+      "footprint": {
+       "rect": [
+        7,
+        1
+       ]
+      },
+      "at": [
+       0,
+       -1.8
+      ],
+      "height": 0.9,
+      "wall": {
+       "colour": "#b98d5a",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#c9a46a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -33
+    ],
+    "end": [
+     28,
+     -33
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         7,
+         0.12
+        ]
+       },
+       "arc": {
+        "plane": "yz",
+        "radius": 3,
+        "startDeg": 20,
+        "endDeg": 160,
+        "cx": 0,
+        "cz": 0.6
+       },
+       "colour": "#3b4048"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     33
+    ],
+    "end": [
+     28,
+     33
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "section": {
+        "rect": [
+         7,
+         0.12
+        ]
+       },
+       "arc": {
+        "plane": "yz",
+        "radius": 3,
+        "startDeg": 20,
+        "endDeg": 160,
+        "cx": 0,
+        "cz": 0.6
+       },
+       "colour": "#3b4048"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 2,
+    "dx": 6,
+    "dy": 8,
+    "of": [
+     {
+      "type": "mass",
+      "footprint": {
+       "rect": [
+        2.5,
+        1.5
+       ]
+      },
+      "height": 1.0,
+      "wall": {
+       "colour": "#d9b24a",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#c0392b"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-market-game",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tower now 20 m and gate pavilion larger with arch hoop; stall awnings still flat white, goods plain boxes, no people or green fence/lamps; paving still shows tile grid; arched fan gable only an outline."
+ }
+}

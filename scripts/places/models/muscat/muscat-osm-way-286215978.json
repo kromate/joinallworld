@@ -1,0 +1,249 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-osm-way-286215978",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Flickr_-_tpower1978_-_World_Cup_Qualifiers_(7).jpg",
+   "licence": "CC BY 2.0",
+   "author": "tpower1978 (Flickr)",
+   "view": "interior",
+   "file": "/tmp/places-evidence/muscat/rop1.jpg",
+   "used": "pitch-level interior only (not compared as a render): low single-tier bowl, one covered stand with beige cornice, red and dark-blue seat blocks, two lattice floodlight masts, barren hill behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/286215978",
+   "used": "overall oval, long axis east-west about 274 x 186 m site; bowl modelled at pitch scale (about 135 x 100 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 24,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 108,
+    "depth": 70,
+    "colour": "#5f8f45"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "south-covered",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -46,
+     -37
+    ],
+    "end": [
+     46,
+     -37
+    ],
+    "rows": 16,
+    "seatColours": [
+     "#496a8a",
+     "#a8483a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8cfba",
+    "backWall": 1.4,
+    "under": "solid",
+    "canopy": {
+     "height": 12,
+     "depth": 12,
+     "colour": "#d9c9a3",
+     "slopeDeg": 3,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "north",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     46,
+     37
+    ],
+    "end": [
+     -46,
+     37
+    ],
+    "rows": 14,
+    "seatColours": [
+     "#496a8a",
+     "#a8483a"
+    ],
+    "blocks": 5,
+    "concreteColour": "#d8cfba",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "east-end",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     46,
+     0
+    ],
+    "radius": 9,
+    "radiusY": 37,
+    "startDeg": -90,
+    "endDeg": 90,
+    "rows": 10,
+    "seatColour": "#496a8a",
+    "concreteColour": "#d8cfba",
+    "under": "solid",
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "stand",
+   "id": "west-end",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -46,
+     0
+    ],
+    "radius": 9,
+    "radiusY": 37,
+    "startDeg": 90,
+    "endDeg": 270,
+    "rows": 10,
+    "seatColour": "#a8483a",
+    "concreteColour": "#d8cfba",
+    "under": "solid",
+    "facetDeg": 12
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    48,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    48,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 130,
+    "height": 2.2,
+    "colour": "#d8cfba"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -62
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -62
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found, so layout is typical for a 12,000-seat Gulf football bowl at pitch scale; stand depths, roof of the covered stand, scoreboard and exact oval are not verified"
+ }
+}

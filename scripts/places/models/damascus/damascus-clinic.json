@@ -1,0 +1,356 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/18482507",
+   "used": "identity only: the compound is 454 x 270 m and its outline is not a single building, so it is not used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: principal H-shaped ward block, about 8 storeys, sand-coloured concrete, ribbon windows, ambulance bay, red-cross sign, water tanks and helipad on the roof, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     22,
+     62
+    ]
+   },
+   "at": [
+    -46,
+    0
+   ],
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4c8ac",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     22,
+     62
+    ]
+   },
+   "at": [
+    46,
+    0
+   ],
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4c8ac",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9cdb0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     110,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9bea2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0a998",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-room",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -56,
+    40
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb392",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "columns": 3,
+    "colour": "#efeae0",
+    "roofColour": "#c8362f",
+    "vans": 2,
+    "marking": true
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -46,
+    -31.2,
+    22
+   ],
+   "params": {
+    "size": 4,
+    "colour": "#c8242b",
+    "plateColour": "#f4f4f1",
+    "facing": "front"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    46,
+    0,
+    30
+   ],
+   "params": {
+    "radius": 7
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -46,
+    18,
+    30
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 2.5,
+    "legs": 4,
+    "colour": "#7a8590"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -38,
+    18,
+    30
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 2.5,
+    "legs": 4,
+    "colour": "#7a8590"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -50,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12,
+    "density": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    24,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#d8d8d2",
+    "count": 2,
+    "spacing": 4
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -48
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     -52
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of this hospital exists on Commons or Wikidata; H-shaped sand-concrete ward block is typed from the brief; real compound is 454 x 270 m with many buildings."
+ }
+}

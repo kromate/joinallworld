@@ -1,0 +1,160 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/457096707",
+   "used": "mall outline (79 x 42 m, pentagon rotated 105 degrees) used directly"
+  },
+  {
+   "kind": "text",
+   "used": "mid-size neighbourhood mall from brief: cream render, three storeys, curtain-glass entrance bay in teal, blank roof signage frame; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d7bb",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "glassColour": "#7a98a8",
+    "plinth": 0.4,
+    "bands": "#b09f82",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0ada5",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-bay",
+   "at": [
+    -6,
+    -21,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "rect": [
+     16,
+     5
+    ],
+    "z0": 0,
+    "height": 17,
+    "colour": "#6b93a6",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "storeys": 3,
+    "glassColour": "#4f8aa0",
+    "topColour": "#b09f82"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -14,
+    17
+   ],
+   "rotDeg": -15,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.6
+    ],
+    "height": 4.5,
+    "colour": "#b09f82"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -38,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spacing": 3.2,
+    "yaw": -15
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -38,
+    -42,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spacing": 3.2,
+    "yaw": 165
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-osm-way-457096707",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo found: outline real, three storeys, teal entrance bay and roof sign frame typed from the brief."
+ }
+}

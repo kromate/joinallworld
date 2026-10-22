@@ -1,0 +1,310 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SL_Colombo_asv2020-01_img33_Maradana_station.jpg",
+   "licence": "FAL",
+   "author": "A.Savin",
+   "view": "side",
+   "file": "/tmp/places-evidence/colombo/mar1.jpg",
+   "used": "white-painted two-storey colonial block with balustraded parapets, square clock tower, lower arcaded veranda wing with terrace balustrade, small red hip roof, dark brick retaining wall and tracks in front"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Maradana_railway_station",
+   "used": "two floors, colonial, opened 1908"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/400153469",
+   "used": "overall size only (about 30 x 30 m); the match is name-weak so the outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 24,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    -2,
+    2
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#e6e2d6",
+    "parapet": 1.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#cfcabb"
+      ]
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0dccf",
+    "material": "membrane",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-wing",
+   "footprint": {
+    "rect": [
+     24,
+     6
+    ]
+   },
+   "at": [
+    2,
+    -6.5
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece1",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front",
+      "left",
+      "right"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    2,
+    -9.3,
+    5.5
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "kind": "balustrade",
+    "pillarEvery": 0.5,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    -4,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 24,
+    "cap": "crenellated",
+    "clockRadius": 1.2,
+    "clock": true,
+    "belfry": true,
+    "colour": "#d9d5c8",
+    "trimColour": "#f2efe6",
+    "capColour": "#d9d4c6",
+    "finial": 1
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cupola",
+   "at": [
+    13,
+    -6.5,
+    5.5
+   ],
+   "params": {
+    "colour": "#ece8dd",
+    "profile": [
+     [
+      0,
+      0,
+      "#ece8dd"
+     ],
+     [
+      2.2,
+      0,
+      "#ece8dd"
+     ],
+     [
+      2.0,
+      1.2,
+      "#ece8dd"
+     ],
+     [
+      1.5,
+      2.4,
+      "#ece8dd"
+     ],
+     [
+      0.7,
+      3.2,
+      "#ece8dd"
+     ],
+     [
+      0,
+      3.7,
+      "#ece8dd"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2,
+    -9.8,
+    5.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 2,
+    "height": 0.1,
+    "columns": 0,
+    "colour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 6,
+    "kind": "wall",
+    "colour": "#4b4440"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 3,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "water-tower",
+   "at": [
+    -8,
+    -25,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "radius": 1.8,
+    "colour": "#6a5f55"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof now flat behind parapet but clock tower cap is a plain louvred box; veranda arcade shows only at lower right; retaining wall is plain dark, no brick courses or coping; tracks/water tower simplified"
+ }
+}

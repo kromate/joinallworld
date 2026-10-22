@@ -1,0 +1,341 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2016_Rangun,_Market_Bogyoke_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marcin Konsek",
+   "view": "front",
+   "file": "/tmp/places-evidence/yangon/market2.jpg",
+   "used": "two-storey cream stucco range with red hip roofs of corrugated iron, red-trimmed round arches on the ground floor, upper verandah with white railings, projecting red-trimmed gables, central tower with clock disc, lean-to hip skirt and white dome"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bogyoke_Aung_San_Market.JPG",
+   "licence": "CC0",
+   "author": "C1815",
+   "view": "detail",
+   "file": "/tmp/places-evidence/yangon/market1.jpg",
+   "used": "tower proportions: square shaft, hipped skirt, drum and plain white dome with a red band, flagpole"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/447311648",
+   "used": "main frontage footprint 137 x 25 m, rotated so the facade faces -y"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.62
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "range",
+   "footprint": {
+    "rect": [
+     137,
+     25
+    ]
+   },
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ece3d6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 5.5,
+    "plinth": 0.5,
+    "faces": {
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b8503f",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 5.5,
+      "depth": 2.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f3f33",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "params": {
+    "rect": [
+     14,
+     12
+    ],
+    "z0": 0,
+    "height": 23,
+    "colour": "#ead9c9",
+    "topColour": "#ead9c9",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-skirt",
+   "params": {
+    "rect": [
+     20,
+     18
+    ],
+    "z0": 12,
+    "height": 6,
+    "topScale": 0.5,
+    "colour": "#8f3f33",
+    "topColour": "#8f3f33"
+   },
+   "at": [
+    0,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-drum",
+   "params": {
+    "rect": [
+     12,
+     12
+    ],
+    "z0": 23,
+    "height": 3.5,
+    "colour": "#f2ece2",
+    "topColour": "#f2ece2"
+   },
+   "at": [
+    0,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    -6,
+    26.5
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f3eee6",
+    "profile": [
+     [
+      7.13,
+      0.0,
+      "#f3eee6"
+     ],
+     [
+      7.24,
+      1.03,
+      "#b8503f"
+     ],
+     [
+      7.24,
+      1.84,
+      "#f3eee6"
+     ],
+     [
+      6.44,
+      3.68
+     ],
+     [
+      4.94,
+      5.4
+     ],
+     [
+      2.76,
+      6.44
+     ],
+     [
+      0.0,
+      6.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-disc",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 2.8,
+    "n": 16,
+    "z0": 16.5,
+    "height": 0.4,
+    "colour": "#b8503f",
+    "topColour": "#f4efe6"
+   },
+   "at": [
+    0,
+    -14.2,
+    0
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    4.5,
+    -8,
+    32.5
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#3b9a45",
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-l",
+   "footprint": {
+    "rect": [
+     9,
+     2.5
+    ]
+   },
+   "at": [
+    -34,
+    -14.5
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f0e8dc",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f3f33",
+    "pitch": 50,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-r",
+   "footprint": {
+    "rect": [
+     9,
+     2.5
+    ]
+   },
+   "at": [
+    34,
+    -14.5
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f0e8dc",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f3f33",
+    "pitch": 50,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-c",
+   "footprint": {
+    "rect": [
+     8,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f0e8dc",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f3f33",
+    "pitch": 50,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "veranda",
+   "id": "verandah-front",
+   "at": [
+    0,
+    -13.8,
+    5.6
+   ],
+   "params": {
+    "length": 100,
+    "depth": 3.2,
+    "height": 4.6,
+    "balustrade": true,
+    "steps": false,
+    "roof": "lean-to",
+    "wall_colour": "#f5f2ec",
+    "roof_colour": "#8f3f33"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower now overtops the ridge with a darker roof, but it is still boxy and plain, and the clock disc and verandah rails barely show. Frontage is scaled to the 118 m clamp, ground is a generic road."
+ }
+}

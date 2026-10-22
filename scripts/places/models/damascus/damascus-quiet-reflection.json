@@ -1,0 +1,382 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NabiHabeel01.jpg",
+   "licence": "Public domain",
+   "author": "Toushiro",
+   "view": "front",
+   "file": "/tmp/places-evidence/damascus/nabi.jpg",
+   "used": "plain pale cream limestone ashlar walls with cornice, smooth white ovoid dome with crescent finial set back behind the wall, pointed ogee entry bay with dark recess and plaque at the right, broad full-length entrance steps; no minaret is visible so none is modelled"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/475003071",
+   "used": "size only (37 x 33 m); L-shaped outline not trusted (match is containing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.2,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tomb-hall",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ebe2c8",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd2b6",
+    "parapet": 0.5,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -6.9,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "rise": 0.35,
+    "run": 0.9,
+    "count": 6,
+    "colour": "#efe6d0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     10
+    ],
+    "height": 0.08,
+    "colour": "#e0d6bd"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    -6,
+    2,
+    11.2
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#f4f2ee",
+    "profile": [
+     [
+      8.6,
+      0,
+      "#f4f2ee"
+     ],
+     [
+      8.6,
+      1.0
+     ],
+     [
+      8.514,
+      2.2
+     ],
+     [
+      8.496,
+      2.892
+     ],
+     [
+      8.431,
+      3.583
+     ],
+     [
+      8.31,
+      4.275
+     ],
+     [
+      8.125,
+      4.967
+     ],
+     [
+      7.869,
+      5.658
+     ],
+     [
+      7.531,
+      6.35
+     ],
+     [
+      7.095,
+      7.042
+     ],
+     [
+      6.541,
+      7.733
+     ],
+     [
+      5.83,
+      8.425
+     ],
+     [
+      4.894,
+      9.117
+     ],
+     [
+      3.554,
+      9.808
+     ],
+     [
+      0.3,
+      10.5
+     ],
+     [
+      0.3,
+      10.9
+     ],
+     [
+      0.3,
+      11.3
+     ]
+    ],
+    "slot": "plain-render"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -6,
+    2,
+    23.5
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "n": 4,
+    "arc": {
+     "steps": 8,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.3,
+     "startDeg": -50,
+     "endDeg": 230,
+     "plane": "xz"
+    },
+    "colour": "#f4f2ee"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    -5.6,
+    0.4
+   ],
+   "params": {
+    "colour": "#d6ccb0",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       7.665,
+       1.5
+      ]
+     },
+     {
+      "z": 5.863,
+      "rect": [
+       7.665,
+       1.5
+      ]
+     },
+     {
+      "z": 7.461,
+      "rect": [
+       6.746,
+       1.5
+      ]
+     },
+     {
+      "z": 8.74,
+      "rect": [
+       5.212,
+       1.5
+      ]
+     },
+     {
+      "z": 9.806,
+      "rect": [
+       3.22,
+       1.5
+      ]
+     },
+     {
+      "z": 10.447,
+      "rect": [
+       1.38,
+       1.5
+      ]
+     },
+     {
+      "z": 10.659,
+      "rect": [
+       0.306,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10,
+    -5.6,
+    0.4
+   ],
+   "params": {
+    "colour": "#3a332e",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       5.474,
+       1.0
+      ]
+     },
+     {
+      "z": 4.728,
+      "rect": [
+       5.474,
+       1.0
+      ]
+     },
+     {
+      "z": 6.017,
+      "rect": [
+       4.817,
+       1.0
+      ]
+     },
+     {
+      "z": 7.048,
+      "rect": [
+       3.724,
+       1.0
+      ]
+     },
+     {
+      "z": 7.909,
+      "rect": [
+       2.299,
+       1.0
+      ]
+     },
+     {
+      "z": 8.424,
+      "rect": [
+       0.986,
+       1.0
+      ]
+     },
+     {
+      "z": 8.596,
+      "rect": [
+       0.22,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    10,
+    -6.9,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.1
+    ],
+    "height": 0.7,
+    "colour": "#f2f0ea"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     12
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "single long plain cream wall with larger cornice, wider ovoid dome and larger crescent, wing removed; entry portal is a stacked-loft ogee that reads as a stone bay without a dark recess or cusps; steps are low; ashlar too regular and plan beyond wall inferred"
+ }
+}

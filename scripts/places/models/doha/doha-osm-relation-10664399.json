@@ -1,0 +1,1240 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-relation-10664399",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Doha,_centro_islamico_culturale_Abdullah_Bin_Zaid_Al_Mahmoud_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Francesco Bini",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/m1.jpg",
+   "used": "long sand-cream three-storey front block with arched ground-floor doors, rows of blue-and-white geometric screens and brown timber shutters, round drum rising behind on the right carrying the spiral minaret with orange bands and a green-domed lantern"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Doha_Abdullah_bin_Zaid_al_Mahmoud_Islamic_Cultural_Center_Exterior_03.jpg",
+   "licence": "CC BY-SA (Commons)",
+   "author": "see Commons page",
+   "view": "back",
+   "file": "/tmp/places-evidence/doha/m3.jpg",
+   "used": "drum proportions, tapered spiral tiers, lantern with open arches and green dome, lower rear wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10664399",
+   "used": "overall size and 25 m body height (about 80 x 75 m); the outline is simplified into a front block plus a rear wing because the photos show the volumes"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     68,
+     26
+    ]
+   },
+   "at": [
+    -4,
+    -10
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc08c",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "front": "none"
+    },
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 11.5,
+      "opening": 0.3,
+      "height": 0.7,
+      "depth": 0.6,
+      "pierColour": "#dcc08c",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#d9a07e",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "windowShape": "rect",
+    "glassColour": "#3a4f7a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfb584",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     58,
+     34
+    ]
+   },
+   "at": [
+    -9,
+    20
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc08c",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfb584",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#dcc08c",
+    "profile": [
+     [
+      13,
+      0,
+      "#dcc08c"
+     ],
+     [
+      13,
+      3.5
+     ],
+     [
+      13,
+      4.5,
+      "#dcc08c"
+     ],
+     [
+      13,
+      4.9
+     ],
+     [
+      13.4,
+      4.95,
+      "#d9a07e"
+     ],
+     [
+      13.4,
+      5.5
+     ],
+     [
+      13,
+      5.55,
+      "#dcc08c"
+     ],
+     [
+      13,
+      9,
+      "#dcc08c"
+     ],
+     [
+      13,
+      9.4
+     ],
+     [
+      13.4,
+      9.45,
+      "#d9a07e"
+     ],
+     [
+      13.4,
+      10.0
+     ],
+     [
+      13,
+      10.05,
+      "#dcc08c"
+     ],
+     [
+      13,
+      13.5,
+      "#dcc08c"
+     ],
+     [
+      13,
+      13.9
+     ],
+     [
+      13.4,
+      13.95,
+      "#d9a07e"
+     ],
+     [
+      13.4,
+      14.5
+     ],
+     [
+      13,
+      14.55,
+      "#dcc08c"
+     ],
+     [
+      13,
+      17,
+      "#dcc08c"
+     ],
+     [
+      13,
+      17.4
+     ],
+     [
+      13.4,
+      17.45,
+      "#d9a07e"
+     ],
+     [
+      13.4,
+      18.0
+     ],
+     [
+      13,
+      18.05,
+      "#dcc08c"
+     ],
+     [
+      13,
+      19.6
+     ],
+     [
+      13.4,
+      19.7,
+      "#d9a07e"
+     ],
+     [
+      13.4,
+      20.4
+     ],
+     [
+      6.8,
+      20.5,
+      "#dcc08c"
+     ],
+     [
+      6.8,
+      28.5
+     ],
+     [
+      7.1,
+      28.6,
+      "#d9a07e"
+     ],
+     [
+      7.1,
+      29.1
+     ],
+     [
+      5.6,
+      29.2,
+      "#dcc08c"
+     ],
+     [
+      5.4,
+      36
+     ],
+     [
+      5.7,
+      36.1,
+      "#d9a07e"
+     ],
+     [
+      5.7,
+      36.6
+     ],
+     [
+      4.2,
+      36.7,
+      "#dcc08c"
+     ],
+     [
+      4.0,
+      43
+     ],
+     [
+      4.3,
+      43.1,
+      "#d9a07e"
+     ],
+     [
+      4.3,
+      43.5
+     ],
+     [
+      2.3,
+      43.6,
+      "#dcc08c"
+     ],
+     [
+      2.3,
+      48
+     ],
+     [
+      2.6,
+      48.1,
+      "#e8dcc3"
+     ],
+     [
+      2.6,
+      48.6
+     ],
+     [
+      2.1,
+      48.7,
+      "#4f8f78"
+     ],
+     [
+      2.0,
+      49.9
+     ],
+     [
+      1.4,
+      51.2
+     ],
+     [
+      0.6,
+      52.0
+     ],
+     [
+      0.1,
+      52.4
+     ],
+     [
+      0.1,
+      54.0,
+      "#d4af37"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    8,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#dcc08c",
+    "profile": [
+     [
+      13,
+      0,
+      "#dcc08c"
+     ],
+     [
+      13,
+      19.6
+     ],
+     [
+      6.8,
+      20.5
+     ],
+     [
+      6.8,
+      28.5
+     ],
+     [
+      5.5,
+      29.2
+     ],
+     [
+      5.4,
+      36
+     ],
+     [
+      4.1,
+      36.7
+     ],
+     [
+      4,
+      43
+     ],
+     [
+      2.3,
+      43.6
+     ],
+     [
+      2.3,
+      48
+     ],
+     [
+      0.1,
+      52.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    16,
+    8,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.28
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      -7.5,
+      20.8
+     ],
+     [
+      1.98,
+      -7.19,
+      21.12
+     ],
+     [
+      3.8,
+      -6.36,
+      21.44
+     ],
+     [
+      5.32,
+      -5.09,
+      21.76
+     ],
+     [
+      6.44,
+      -3.47,
+      22.08
+     ],
+     [
+      7.09,
+      -1.62,
+      22.4
+     ],
+     [
+      7.22,
+      0.32,
+      22.72
+     ],
+     [
+      6.83,
+      2.22,
+      23.04
+     ],
+     [
+      5.95,
+      3.93,
+      23.36
+     ],
+     [
+      4.66,
+      5.34,
+      23.68
+     ],
+     [
+      3.06,
+      6.35,
+      24.0
+     ],
+     [
+      1.25,
+      6.88,
+      24.32
+     ],
+     [
+      -0.62,
+      6.92,
+      24.64
+     ],
+     [
+      -2.43,
+      6.47,
+      24.96
+     ],
+     [
+      -4.03,
+      5.55,
+      25.28
+     ],
+     [
+      -5.33,
+      4.25,
+      25.6
+     ],
+     [
+      -6.22,
+      2.66,
+      25.92
+     ],
+     [
+      -6.66,
+      0.9,
+      26.24
+     ],
+     [
+      -6.62,
+      -0.9,
+      26.56
+     ],
+     [
+      -6.1,
+      -2.61,
+      26.88
+     ],
+     [
+      -5.15,
+      -4.11,
+      27.2
+     ],
+     [
+      -3.84,
+      -5.29,
+      27.52
+     ],
+     [
+      -2.28,
+      -6.08,
+      27.84
+     ],
+     [
+      -0.58,
+      -6.42,
+      28.16
+     ],
+     [
+      1.14,
+      -6.3,
+      28.48
+     ],
+     [
+      2.76,
+      -5.73,
+      28.8
+     ],
+     [
+      4.15,
+      -4.75,
+      29.12
+     ],
+     [
+      5.23,
+      -3.45,
+      29.44
+     ],
+     [
+      5.92,
+      -1.92,
+      29.76
+     ],
+     [
+      6.17,
+      -0.28,
+      30.08
+     ],
+     [
+      5.97,
+      1.36,
+      30.4
+     ],
+     [
+      5.36,
+      2.88,
+      30.72
+     ],
+     [
+      4.36,
+      4.17,
+      31.04
+     ],
+     [
+      3.07,
+      5.14,
+      31.36
+     ],
+     [
+      1.58,
+      5.73,
+      31.68
+     ],
+     [
+      0.0,
+      5.9,
+      32.0
+     ],
+     [
+      -1.56,
+      5.64,
+      32.32
+     ],
+     [
+      -2.98,
+      4.99,
+      32.64
+     ],
+     [
+      -4.17,
+      3.98,
+      32.96
+     ],
+     [
+      -5.03,
+      2.71,
+      33.28
+     ],
+     [
+      -5.53,
+      1.26,
+      33.6
+     ],
+     [
+      -5.62,
+      -0.25,
+      33.92
+     ],
+     [
+      -5.31,
+      -1.72,
+      34.24
+     ],
+     [
+      -4.62,
+      -3.05,
+      34.56
+     ],
+     [
+      -3.61,
+      -4.13,
+      34.88
+     ],
+     [
+      -2.36,
+      -4.9,
+      35.2
+     ],
+     [
+      -0.96,
+      -5.31,
+      35.52
+     ],
+     [
+      0.48,
+      -5.33,
+      35.84
+     ],
+     [
+      1.86,
+      -4.97,
+      36.16
+     ],
+     [
+      3.09,
+      -4.26,
+      36.48
+     ],
+     [
+      4.08,
+      -3.25,
+      36.8
+     ],
+     [
+      4.75,
+      -2.03,
+      37.12
+     ],
+     [
+      5.08,
+      -0.69,
+      37.44
+     ],
+     [
+      5.03,
+      0.68,
+      37.76
+     ],
+     [
+      4.63,
+      1.98,
+      38.08
+     ],
+     [
+      3.9,
+      3.11,
+      38.4
+     ],
+     [
+      2.9,
+      4.0,
+      38.72
+     ],
+     [
+      1.72,
+      4.58,
+      39.04
+     ],
+     [
+      0.43,
+      4.83,
+      39.36
+     ],
+     [
+      -0.86,
+      4.73,
+      39.68
+     ],
+     [
+      -2.06,
+      4.29,
+      40.0
+     ],
+     [
+      -3.1,
+      3.55,
+      40.32
+     ],
+     [
+      -3.89,
+      2.57,
+      40.64
+     ],
+     [
+      -4.39,
+      1.43,
+      40.96
+     ],
+     [
+      -4.57,
+      0.21,
+      41.28
+     ],
+     [
+      -4.42,
+      -1.01,
+      41.6
+     ],
+     [
+      -3.95,
+      -2.12,
+      41.92
+     ],
+     [
+      -3.21,
+      -3.07,
+      42.24
+     ],
+     [
+      -2.25,
+      -3.77,
+      42.56
+     ],
+     [
+      -1.16,
+      -4.19,
+      42.88
+     ],
+     [
+      0.0,
+      -4.3,
+      43.2
+     ]
+    ],
+    "colour": "#d9a07e"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    8,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#dcc08c",
+    "profile": [
+     [
+      2.5,
+      43.6
+     ],
+     [
+      2.5,
+      48
+     ]
+    ],
+    "arcade": {
+     "count": 8,
+     "width": 0.8,
+     "height": 2.6,
+     "sill": 1.0,
+     "shape": "arch",
+     "depth": 0.3
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#dcc08c",
+    "profile": [
+     [
+      15.5,
+      0,
+      "#dcc08c"
+     ],
+     [
+      15.5,
+      14.2
+     ],
+     [
+      15.9,
+      14.3,
+      "#d9a07e"
+     ],
+     [
+      15.9,
+      14.9
+     ],
+     [
+      0.1,
+      14.9,
+      "#cfb584"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -23.2,
+    5.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34.0,
+     0,
+     0
+    ],
+    "step": [
+     7.5,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        2.2,
+        0.4
+       ],
+       "height": 2.2,
+       "colour": "#2f4f86"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.25,
+       0.35
+      ],
+      "rotDeg": 0,
+      "params": {
+       "rect": [
+        1.5,
+        0.2
+       ],
+       "height": 1.5,
+       "colour": "#f2efe6"
+      },
+      "lod": [
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.4,
+       0.65
+      ],
+      "params": {
+       "rect": [
+        0.6,
+        0.2
+       ],
+       "height": 0.9,
+       "colour": "#2f4f86"
+      },
+      "lod": [
+       0
+      ]
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -23.2,
+    5.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30.25,
+     0,
+     0
+    ],
+    "step": [
+     7.5,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        2.2,
+        0.4
+       ],
+       "height": 2.2,
+       "colour": "#7a4a30"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.25,
+       0.3
+      ],
+      "params": {
+       "rect": [
+        1.6,
+        0.2
+       ],
+       "height": 0.9,
+       "colour": "#5e3822"
+      },
+      "lod": [
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.25,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        1.6,
+        0.2
+       ],
+       "height": 0.9,
+       "colour": "#5e3822"
+      },
+      "lod": [
+       0
+      ]
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -23.2,
+    10.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34.0,
+     0,
+     0
+    ],
+    "step": [
+     7.5,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        2.2,
+        0.4
+       ],
+       "height": 2.2,
+       "colour": "#2f4f86"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.25,
+       0.35
+      ],
+      "rotDeg": 0,
+      "params": {
+       "rect": [
+        1.5,
+        0.2
+       ],
+       "height": 1.5,
+       "colour": "#f2efe6"
+      },
+      "lod": [
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.4,
+       0.65
+      ],
+      "params": {
+       "rect": [
+        0.6,
+        0.2
+       ],
+       "height": 0.9,
+       "colour": "#2f4f86"
+      },
+      "lod": [
+       0
+      ]
+     }
+    ],
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -23.2,
+    10.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -30.25,
+     0,
+     0
+    ],
+    "step": [
+     7.5,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        2.2,
+        0.4
+       ],
+       "height": 2.2,
+       "colour": "#7a4a30"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.25,
+       0.3
+      ],
+      "params": {
+       "rect": [
+        1.6,
+        0.2
+       ],
+       "height": 0.9,
+       "colour": "#5e3822"
+      },
+      "lod": [
+       0
+      ]
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -0.25,
+       1.2
+      ],
+      "params": {
+       "rect": [
+        1.6,
+        0.2
+       ],
+       "height": 0.9,
+       "colour": "#5e3822"
+      },
+      "lod": [
+       0
+      ]
+     }
+    ],
+    "lod1Step": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "blue screens simplified to square panels with white insets, no star pattern; drum wrap is a plain cylinder so the curved wing reads less than the photo; spiral band is a thin ramp; ground-floor arches are plain; forecourt props missing"
+ }
+}

@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1322912935",
+   "used": "the real park outline, scaled to 62% so the 180 m long square fits the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; the formal layout (central plaza with a statue, two fountains, steps, pavilion, tree lines) is typed from the brief; outline scaled down."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -27.7,
+      -37.8
+     ],
+     [
+      9.3,
+      -53.4
+     ],
+     [
+      18.2,
+      -10.7
+     ],
+     [
+      18.9,
+      -10.8
+     ],
+     [
+      23.2,
+      9.7
+     ],
+     [
+      22.4,
+      9.8
+     ],
+     [
+      27.2,
+      32.7
+     ],
+     [
+      -7.9,
+      57.8
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#5f8f4a",
+    "topColour": "#6b9a52",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -3,
+    -5,
+    0.2
+   ],
+   "params": {
+    "width": 22,
+    "depth": 30,
+    "colour": "#e6e1d4",
+    "border_colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    -3,
+    -5,
+    0.2
+   ],
+   "params": {
+    "height": 6,
+    "plinthHeight": 3.5
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -36,
+    0.2
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    28,
+    0.2
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "pavilion",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    6,
+    0.2
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 4,
+    "colour": "#f4f2ec",
+    "cap_colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    -22,
+    0.2
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.6,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "flag",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12,
+    -18,
+    0.2
+   ],
+   "params": {
+    "height": 10,
+    "count": 2,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -26,
+    -40,
+    0.2
+   ],
+   "params": {
+    "length": 50,
+    "count": 7,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    32,
+    0.2
+   ],
+   "params": {
+    "width": 24,
+    "depth": 18,
+    "count": 8
+   }
+  },
+  {
+   "type": "lamp",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -20,
+    -30,
+    0.2
+   ],
+   "params": {
+    "height": 5,
+    "count": 6,
+    "spacing": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   120,
+   120
+  ]
+ }
+}

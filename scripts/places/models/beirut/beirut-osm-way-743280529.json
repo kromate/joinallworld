@@ -1,0 +1,288 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-osm-way-743280529",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/743280529",
+   "used": "campus perimeter 347 x 303 m, not a building: used only to size a representative U-shaped core of the campus"
+  },
+  {
+   "kind": "text",
+   "used": "brief: cream sandstone blocks with arcades, red-tile roofed library, tower, rising up a coastal slope; no usable photo found (the only linked image was St Peter's dome in Rome)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-wing",
+   "footprint": {
+    "rect": [
+     64,
+     15
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dcc895",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "trimColour": "#efe7d3",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 9,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 9,
+      "opening": 0.6,
+      "height": 0.8,
+      "depth": 0.8,
+      "pierColour": "#dcc895",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     14,
+     34
+    ]
+   },
+   "at": [
+    -25,
+    -17
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dcc895",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "trimColour": "#efe7d3",
+    "bay": 9,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     34
+    ]
+   },
+   "at": [
+    25,
+    -17
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dcc895",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "trimColour": "#efe7d3",
+    "bay": 9,
+    "faces": {
+     "right": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#efe7d3",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "trimColour": "#efe7d3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5523a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 25,
+    "colour": "#efe7d3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.05
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    -14,
+    25
+   ],
+   "params": {
+    "baseWidth": 5.4,
+    "height": 5,
+    "sides": 4,
+    "colour": "#b5523a",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.2,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#efe7d3"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.0,
+    "thickness": 0.3,
+    "colour": "#cfc6ae"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -45,
+     -30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     45,
+     -30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this campus found: typical Maronite campus U-block from brief, not the real layout"
+ }
+}

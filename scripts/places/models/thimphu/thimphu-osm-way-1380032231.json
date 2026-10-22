@@ -1,0 +1,942 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_Takin_Preserve,_Bhutan_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bernard Gagnon",
+   "view": "front",
+   "file": "/tmp/places-evidence/thimphu/takin3.jpg",
+   "used": "entrance: two thick red-brown log posts of unequal height carrying two log beams, iron gate, grey concrete wall with two grey takin statues, stone-clad panel with red board, forested slope behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_Takin_Preserve,_Bhutan_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bernard Gagnon",
+   "view": "detail",
+   "file": "/tmp/places-evidence/thimphu/takin2.jpg",
+   "used": "red name board with gold corner motifs on grey tiled stone panel (shown blank)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1380032231",
+   "used": "enclosure is 559 x 229 m, too large to model; the entrance gate scene is composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "wall-left",
+   "at": [
+    -14,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.6
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#aeada6",
+    "topColour": "#aeada6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-right",
+   "at": [
+    10,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.6
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#aeada6",
+    "topColour": "#aeada6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-panel",
+   "at": [
+    -9.5,
+    -0.4
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     1.0
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#9b9ca3",
+    "topColour": "#9b9ca3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-board",
+   "at": [
+    -9.5,
+    -1.0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.15
+    ],
+    "z0": 0.8,
+    "height": 2.2,
+    "colour": "#a3201f",
+    "topColour": "#a3201f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "board-edge",
+   "at": [
+    -9.5,
+    -0.95
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     0.1
+    ],
+    "z0": 0.65,
+    "height": 2.5,
+    "colour": "#d6a83a",
+    "topColour": "#d6a83a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "post-l",
+   "at": [
+    -2.7,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#7a3f35",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.85
+     },
+     {
+      "z": 6.8,
+      "circle": 0.72
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "post-r",
+   "at": [
+    2.9,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#7a3f35",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.8
+     },
+     {
+      "z": 5.2,
+      "circle": 0.7
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "beam-low",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "points": [
+     [
+      -5.5,
+      0,
+      5.2
+     ],
+     [
+      5.8,
+      0,
+      5.2
+     ]
+    ],
+    "colour": "#7a3f35"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "beam-up",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "points": [
+     [
+      -5.3,
+      0,
+      6.1
+     ],
+     [
+      5.6,
+      0,
+      6.1
+     ]
+    ],
+    "colour": "#6e382f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar0",
+   "at": [
+    -2.2,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar1",
+   "at": [
+    -1.8000000000000003,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar2",
+   "at": [
+    -1.4000000000000001,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar3",
+   "at": [
+    -1.0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar4",
+   "at": [
+    -0.6000000000000001,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar5",
+   "at": [
+    -0.20000000000000018,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar6",
+   "at": [
+    0.20000000000000018,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar7",
+   "at": [
+    0.6000000000000001,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar8",
+   "at": [
+    1.0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar9",
+   "at": [
+    1.4,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar10",
+   "at": [
+    1.7999999999999998,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bar11",
+   "at": [
+    2.2,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.07
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-a",
+   "at": [
+    0.1,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     0.08
+    ],
+    "z0": 0.4,
+    "height": 0.08,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-b",
+   "at": [
+    0.1,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     0.08
+    ],
+    "z0": 1.4,
+    "height": 0.08,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-c",
+   "at": [
+    0.1,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     0.08
+    ],
+    "z0": 2.4,
+    "height": 0.1,
+    "colour": "#3a2f2c",
+    "topColour": "#3a2f2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "retain",
+   "at": [
+    0,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     16,
+     1.2
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#8b8478",
+    "topColour": "#8b8478"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dirt-road",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "rect": [
+     44,
+     14
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#cfc3ab",
+    "topColour": "#cfc3ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-sign",
+   "at": [
+    0.5,
+    -0.4
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.12
+    ],
+    "z0": 4.2,
+    "height": 0.8,
+    "colour": "#5a3a2c",
+    "topColour": "#5a3a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tl-body",
+   "at": [
+    -6.0,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     2.7,
+     0.9
+    ],
+    "z0": 3.3,
+    "height": 1.1,
+    "colour": "#9aa0a4",
+    "topColour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tl-hump",
+   "at": [
+    -5.7,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "z0": 4.1,
+    "height": 0.5,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tl-head",
+   "at": [
+    -7.7,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.6
+    ],
+    "z0": 3.1,
+    "height": 0.85,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tl-horn",
+   "at": [
+    -7.75,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.12
+    ],
+    "z0": 3.9,
+    "height": 0.14,
+    "colour": "#5c5c58",
+    "topColour": "#5c5c58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tl-leg0",
+   "at": [
+    -7.1,
+    -0.1
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 2.3,
+    "height": 1.0,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tl-leg1",
+   "at": [
+    -7.1,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 2.3,
+    "height": 1.0,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tl-leg2",
+   "at": [
+    -5.0,
+    -0.1
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 2.3,
+    "height": 1.0,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tl-leg3",
+   "at": [
+    -5.0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 2.3,
+    "height": 1.0,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tr-body",
+   "at": [
+    6.4,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     2.7,
+     0.9
+    ],
+    "z0": 3.3,
+    "height": 1.1,
+    "colour": "#9aa0a4",
+    "topColour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tr-hump",
+   "at": [
+    6.1,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.85
+    ],
+    "z0": 4.1,
+    "height": 0.5,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tr-head",
+   "at": [
+    8.1,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.6
+    ],
+    "z0": 3.1,
+    "height": 0.85,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tr-horn",
+   "at": [
+    8.15,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.12
+    ],
+    "z0": 3.9,
+    "height": 0.14,
+    "colour": "#5c5c58",
+    "topColour": "#5c5c58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tr-leg0",
+   "at": [
+    7.5,
+    -0.1
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 2.3,
+    "height": 1.0,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tr-leg1",
+   "at": [
+    7.5,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 2.3,
+    "height": 1.0,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tr-leg2",
+   "at": [
+    5.4,
+    -0.1
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 2.3,
+    "height": 1.0,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tr-leg3",
+   "at": [
+    5.4,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 2.3,
+    "height": 1.0,
+    "colour": "#8a9094",
+    "topColour": "#8a9094"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope",
+   "at": [
+    0,
+    14
+   ],
+   "params": {
+    "rect": [
+     48,
+     22
+    ],
+    "z0": 0,
+    "height": 20,
+    "colour": "#4a6a38",
+    "topColour": "#3a5a2e",
+    "topScale": [
+     1,
+     0.3
+    ],
+    "topOffset": [
+     0,
+     6
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "forest",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "width": 46,
+    "depth": 10,
+    "count": 24,
+    "min_height": 6,
+    "max_height": 11,
+    "keep_out": [
+     [
+      -3,
+      -2,
+      3,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "conifers",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 46,
+    "depth": 12,
+    "count": 28,
+    "kind": "conifer",
+    "min_height": 8,
+    "max_height": 15,
+    "keep_out": [
+     [
+      -3,
+      -2,
+      3,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "upper",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 10,
+    "count": 24,
+    "kind": "conifer",
+    "min_height": 10,
+    "max_height": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   44,
+   34
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Thick log posts (left taller), two stacked beams, hanging blank sign, grey wall both sides, taller stone sign pillar, larger grey takins (blocky), sand ground; slope is a smooth wedge with low-poly trees, no gate grille detail beyond bars."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-way-1380032231"
+}

@@ -1,0 +1,213 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-node-432274045",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/458129070",
+   "used": "nearest building (26 m away, 21x17 m rectangle): size and corner plot only; match is weak so verified stays text"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Ramallah",
+   "used": "stone-faced town buildings in the Ramallah governorate: cream limestone, flat roofs with tanks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d4b4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "plain",
+     "back": "plain"
+    },
+    "groundKind": "shopfront",
+    "groundHeight": 4.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b6",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-shopfront",
+   "footprint": {
+    "rect": [
+     14,
+     0.6
+    ]
+   },
+   "at": [
+    -1,
+    -8.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fa3ae",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -1,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 1.8,
+    "drop": 0.4,
+    "height": 3.4,
+    "colours": [
+     "#b5462f",
+     "#efe7d6"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "signboard",
+   "footprint": {
+    "rect": [
+     9,
+     0.6
+    ]
+   },
+   "at": [
+    -1,
+    -8.6
+   ],
+   "z0": 4.1,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2f6f4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "upper",
+   "at": [
+    -6,
+    -4,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "upper",
+   "at": [
+    -3,
+    -4,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-head",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    6,
+    3
+   ],
+   "z0": 8.4,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9cbab",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     18,
+     -4
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the shop: OSM-size two-storey cream stone block with shopfront, awning and tanks are typical, not observed."
+ }
+}

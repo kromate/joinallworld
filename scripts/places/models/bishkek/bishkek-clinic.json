@@ -1,0 +1,100 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/196047606",
+   "used": "footprint 25 x 10 m, 2 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dbd2bd",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#b8aa90",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6f4f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "colour": "#b8aa90"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real OSM outline with typed finish"
+ }
+}

@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/siachen.json#siachen-meal-stop",
+   "used": "timber mess hut 14 x 7 m with gable roof under snow, kitchen wing with chimney, porch awning, blank sign board; typed placeholder, no photo, no OSM"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    -1.5,
+    0
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "material": "timber",
+    "colour": "#7a5a3e",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#5d6650"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e9eef2",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-wing",
+   "footprint": {
+    "rect": [
+     4.5,
+     5
+    ]
+   },
+   "at": [
+    5.2,
+    1
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "material": "metal-cladding",
+    "colour": "#5d6650",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e9eef2",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "chimney",
+   "id": "chimney",
+   "at": [
+    6.2,
+    2.2,
+    2.8
+   ],
+   "params": {
+    "height": 2.4,
+    "radius": 0.35,
+    "material": "metal",
+    "colour": "#4a4f52"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "porch-awning",
+   "at": [
+    -2,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.6,
+    "height": 2.6,
+    "colours": [
+     "#d98e3a",
+     "#5d6650"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-step",
+   "at": [
+    -2,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.0
+    ],
+    "height": 0.3,
+    "colour": "#8f969b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -6.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 1.6,
+    "colour": "#7a5a3e",
+    "frameColour": "#5d6650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "snow-bank-back",
+   "at": [
+    -1.5,
+    5,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     2.2
+    ],
+    "height": 1.4,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "snow-bank-side",
+   "at": [
+    -8.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     6
+    ],
+    "height": 1.2,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "firewood",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     8.2,
+     -1.2,
+     0
+    ],
+    "end": [
+     8.2,
+     -0.2,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.5
+      ],
+      "height": 0.7,
+      "colour": "#8a6a45"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   36,
+   28
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or OSM outline exists (game-venue placeholder); composed from the brief only, checked in the standard render"
+ }
+}

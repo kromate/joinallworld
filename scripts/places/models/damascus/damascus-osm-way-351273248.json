@@ -1,0 +1,321 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-osm-way-351273248",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/351273248",
+   "used": "hospital compound (651 x 391 m, start 1982-10) is far larger than a model; only the date and scale of the main ward block are used, outline not copied"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     96,
+     16
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 36,
+   "storeys": 9,
+   "wall": {
+    "material": "render",
+    "colour": "#d4c8ac",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": false,
+    "bay": 20,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#5f6e75",
+      "height": 1.3,
+      "at": 0.3,
+      "proud": 0.03,
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     16,
+     62
+    ]
+   },
+   "at": [
+    -40,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "render",
+    "colour": "#d4c8ac",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": false,
+    "bay": 20,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#5f6e75",
+      "height": 1.3,
+      "at": 0.3,
+      "proud": 0.03,
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     16,
+     62
+    ]
+   },
+   "at": [
+    40,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "render",
+    "colour": "#d4c8ac",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": false,
+    "bay": 20,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#5f6e75",
+      "height": 1.3,
+      "at": 0.3,
+      "proud": 0.03,
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efeae0",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8576",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -30,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 3,
+    "colour": "#efeae0",
+    "roofColour": "#8c8576",
+    "vans": 2,
+    "marking": true
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -16.2,
+    5.2
+   ],
+   "params": {
+    "size": 3.2
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -40,
+    -30,
+    30
+   ],
+   "params": {
+    "radius": 8
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -8,
+    10,
+    36
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3,
+    "legHeight": 2.5,
+    "legs": 4,
+    "colour": "#bfb9a9"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    8,
+    10,
+    36
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3,
+    "legHeight": 2.5,
+    "legs": 4,
+    "colour": "#bfb9a9"
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "at": [
+    20,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 14,
+    "density": 0.8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    -42,
+    0.1
+   ],
+   "params": {
+    "width": 40,
+    "depth": 8,
+    "count": 10,
+    "kind": "conifer"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    38,
+    0.1
+   ],
+   "params": {
+    "width": 110,
+    "depth": 8,
+    "count": 14,
+    "kind": "conifer"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     55,
+     -35
+    ],
+    "height": 12
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found (verified text); H-shaped 9-storey 1982 ward block from the brief with dark ribbon bands standing in for cut windows to fit the triangle budget; compound not modelled"
+ }
+}

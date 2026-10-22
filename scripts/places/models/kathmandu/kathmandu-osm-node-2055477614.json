@@ -1,0 +1,396 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:College_panorama.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gasu.glance03",
+   "view": "side",
+   "file": "/tmp/places-evidence/kathmandu/college.jpg",
+   "used": "red painted four-storey main block with regular punched window grid, salmon three-storey wing with red hip roof, round red stair drum at right, hedge, open ground, college bus"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/244107644",
+   "used": "overall campus extent (about 33 x 20 m), nearest match only"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 42,
+  "aspect": 1.6
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -6,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8453b",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 0.4,
+    "bands": "#e0c9b8",
+    "glassColour": "#2e2a2a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b33a35",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    16,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9795a",
+    "windows": "punched",
+    "windowRatio": 0.36,
+    "plinth": 0.4,
+    "bands": "#e8d8b8",
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d8302c",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    29,
+    -14
+   ],
+   "params": {
+    "radius": 6,
+    "n": 16,
+    "height": 18,
+    "colour": "#d8453b",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "storeys": 4,
+    "glassColour": "#2a2626"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "top-setback",
+   "at": [
+    -6,
+    8
+   ],
+   "params": {
+    "rect": [
+     24,
+     8
+    ],
+    "z0": 18,
+    "height": 3.2,
+    "colour": "#d8453b",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "storeys": 1,
+    "glassColour": "#2e2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-box",
+   "at": [
+    -12,
+    8
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "z0": 21.2,
+    "height": 1.2,
+    "colour": "#b33a35"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    16,
+    -12,
+    11.6
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 1.8,
+    "height": 1.8,
+    "roof_colour": "#d3322d",
+    "wall_colour": "#c8664a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.2,
+    "depth": 1.2
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -4,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f2",
+    "stripe": "#c8302c",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "at": [
+    9.5,
+    -13.7
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 10.4,
+    "colour": "#eadfc4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    12.1,
+    -13.7
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 10.4,
+    "colour": "#eadfc4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier2",
+   "at": [
+    14.7,
+    -13.7
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 10.4,
+    "colour": "#eadfc4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier3",
+   "at": [
+    17.3,
+    -13.7
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 10.4,
+    "colour": "#eadfc4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier4",
+   "at": [
+    19.9,
+    -13.7
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 10.4,
+    "colour": "#eadfc4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier5",
+   "at": [
+    22.5,
+    -13.7
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 10.4,
+    "colour": "#eadfc4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "forecourt-earth",
+   "at": [
+    10,
+    -18
+   ],
+   "params": {
+    "rect": [
+     44,
+     10
+    ],
+    "height": 0.08,
+    "colour": "#a8885a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    -8,
+    -15
+   ],
+   "params": {
+    "rect": [
+     26,
+     2.2
+    ],
+    "height": 0.12,
+    "colour": "#8a7a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 6,
+    "spread": 4,
+    "line": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -27,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 5,
+    "spread": 4,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "hedge/tree mass generic; wing lacks per-storey tile pents; photo is a panorama so framing differs"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-osm-node-2055477614"
+}

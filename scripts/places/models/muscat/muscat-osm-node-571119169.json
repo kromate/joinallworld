@@ -1,0 +1,158 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-osm-node-571119169",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/337928440",
+   "used": "real unnamed building outline (stepped zigzag plan, 73x62 m, contains the venue point); two storeys, cream render with glazed bands from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 73
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9bc",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "glassColour": "#8fa3ae",
+    "bands": "#f4efe4",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -50,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -50,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.4,
+    "colour": "#f4efe4",
+    "frameColour": "#8fa3ae"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -40,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    36,
+    -40,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    42,
+    -40,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -56,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -46
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; real outline used, atrium/entrance glazing not located."
+ }
+}

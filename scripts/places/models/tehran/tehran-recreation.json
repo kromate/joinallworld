@@ -1,0 +1,1809 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AmingholamaliJamshidie_Tehran1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Amingholamali",
+   "view": "street",
+   "file": "/tmp/places-evidence/tehran/jam1.jpg",
+   "used": "green-tinted rectangular pond with a low stone coping and wire fence, conifer and broadleaf trees behind and at right, rough stone retaining wall and cobbled path climbing at right, black lamp posts, green railing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jamshidieh_Park_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kasir",
+   "view": "detail",
+   "file": "/tmp/places-evidence/tehran/jam2.jpg",
+   "used": "cobbled stone path with rough dark-grey stone retaining wall, pebble drainage channel, black lamp posts, walnut-type shade trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/206925858",
+   "used": "park is 450 m x 390 m; only the pond terrace corner is modelled at true scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 7,
+  "fovDeg": 62,
+  "aspect": 1.56,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "leaf-ground",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     120,
+     110
+    ],
+    "z0": -0.4,
+    "height": 0.4,
+    "colour": "#6b6a4a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope-rear",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      22
+     ],
+     [
+      60,
+      22
+     ],
+     [
+      60,
+      60
+     ],
+     [
+      -60,
+      60
+     ]
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#7a6f58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope-right",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      14,
+      -20
+     ],
+     [
+      60,
+      -20
+     ],
+     [
+      60,
+      60
+     ],
+     [
+      14,
+      60
+     ]
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#7a6f58",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 74,
+    "depth": 34,
+    "shape": "rect",
+    "colour": "#2f6a4a",
+    "bank": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "coping",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -26
+     ],
+     [
+      16,
+      -26
+     ],
+     [
+      16,
+      10
+     ],
+     [
+      -60,
+      10
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.4,
+    "colour": "#b7ae98",
+    "top": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -5,
+    10,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 1.1,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8d8f8c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bank-right",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      16,
+      -20
+     ],
+     [
+      30,
+      -12
+     ],
+     [
+      34,
+      30
+     ],
+     [
+      20,
+      30
+     ],
+     [
+      18,
+      0
+     ]
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#6e6f6c",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    18,
+    -18,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      6,
+      20
+     ],
+     [
+      8,
+      34
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.9,
+    "kind": "wall",
+    "colour": "#7c7f80"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cobble-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      19,
+      -20
+     ],
+     [
+      23,
+      -20
+     ],
+     [
+      27,
+      26
+     ],
+     [
+      23,
+      26
+     ]
+    ],
+    "z0": 0,
+    "height": 4.7,
+    "colour": "#7a7a76",
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    22,
+    -18,
+    4.6
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      6,
+      20
+     ],
+     [
+      8,
+      34
+     ]
+    ],
+    "height": 1.0,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#2f7a55"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -60,
+    -26,
+    0.4
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      76,
+      0
+     ],
+     [
+      76,
+      36
+     ],
+     [
+      0,
+      36
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.05,
+    "kind": "fence",
+    "colour": "#8a8a86"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -36,
+    -8,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4a3a"
+     },
+     {
+      "z": 6,
+      "circle": 0.3
+     },
+     {
+      "z": 9,
+      "circle": 2.5,
+      "colour": "#6a5a48"
+     },
+     {
+      "z": 11,
+      "circle": 0.5
+     }
+    ],
+    "colour": "#6a5a48"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -38,
+    2,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4a3a"
+     },
+     {
+      "z": 6,
+      "circle": 0.3
+     },
+     {
+      "z": 9,
+      "circle": 2.5,
+      "colour": "#6a5a48"
+     },
+     {
+      "z": 11,
+      "circle": 0.5
+     }
+    ],
+    "colour": "#6a5a48"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -34,
+    12,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4a3a"
+     },
+     {
+      "z": 6,
+      "circle": 0.3
+     },
+     {
+      "z": 9,
+      "circle": 2.5,
+      "colour": "#6a5a48"
+     },
+     {
+      "z": 11,
+      "circle": 0.5
+     }
+    ],
+    "colour": "#6a5a48"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    20.5,
+    -10,
+    4.7
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "snow0",
+   "at": [
+    30,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     10
+    ],
+    "z0": 7.9,
+    "height": 0.2,
+    "colour": "#f4f6f8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow1",
+   "at": [
+    24,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     8
+    ],
+    "z0": 7.9,
+    "height": 0.2,
+    "colour": "#f4f6f8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow2",
+   "at": [
+    -30,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     5
+    ],
+    "z0": 6.9,
+    "height": 0.2,
+    "colour": "#f4f6f8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow3",
+   "at": [
+    8,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     4
+    ],
+    "z0": 6.9,
+    "height": 0.2,
+    "colour": "#f4f6f8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "snow4",
+   "at": [
+    -12,
+    24,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     5
+    ],
+    "z0": 6.9,
+    "height": 0.2,
+    "colour": "#f4f6f8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -34,
+    26,
+    6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 4.4,
+      "circle": 0.35
+     },
+     {
+      "z": 4.4,
+      "circle": 4.36,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 8.14,
+      "circle": 2.378
+     },
+     {
+      "z": 8.8,
+      "circle": 3.568,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 12.540000000000001,
+      "circle": 1.9028
+     },
+     {
+      "z": 13.200000000000003,
+      "circle": 2.776,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 16.940000000000005,
+      "circle": 1.4276000000000002
+     },
+     {
+      "z": 17.6,
+      "circle": 1.9839999999999995,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 21.340000000000003,
+      "circle": 0.9524000000000001
+     },
+     {
+      "z": 22,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -24,
+    30,
+    6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5.2,
+      "circle": 0.35
+     },
+     {
+      "z": 5.2,
+      "circle": 5.08,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 9.620000000000001,
+      "circle": 2.774
+     },
+     {
+      "z": 10.4,
+      "circle": 4.144,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 14.82,
+      "circle": 2.2124
+     },
+     {
+      "z": 15.600000000000001,
+      "circle": 3.2079999999999997,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 20.020000000000003,
+      "circle": 1.6508
+     },
+     {
+      "z": 20.8,
+      "circle": 2.2719999999999994,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 25.22,
+      "circle": 1.0892000000000002
+     },
+     {
+      "z": 26,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -12,
+    28,
+    6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 4.800000000000001,
+      "circle": 0.35
+     },
+     {
+      "z": 4.800000000000001,
+      "circle": 4.720000000000001,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 8.88,
+      "circle": 2.5760000000000005
+     },
+     {
+      "z": 9.600000000000001,
+      "circle": 3.8560000000000003,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 13.680000000000001,
+      "circle": 2.0576000000000003
+     },
+     {
+      "z": 14.400000000000002,
+      "circle": 2.992,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 18.480000000000004,
+      "circle": 1.5392000000000003
+     },
+     {
+      "z": 19.200000000000003,
+      "circle": 2.1279999999999997,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 23.28,
+      "circle": 1.0208000000000004
+     },
+     {
+      "z": 24,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    32,
+    6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5.4,
+      "circle": 0.35
+     },
+     {
+      "z": 5.4,
+      "circle": 5.26,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 9.990000000000002,
+      "circle": 2.873
+     },
+     {
+      "z": 10.8,
+      "circle": 4.288,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 15.39,
+      "circle": 2.2898
+     },
+     {
+      "z": 16.200000000000003,
+      "circle": 3.3159999999999994,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 20.790000000000003,
+      "circle": 1.7066000000000001
+     },
+     {
+      "z": 21.6,
+      "circle": 2.3439999999999994,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 26.19,
+      "circle": 1.1234000000000002
+     },
+     {
+      "z": 27,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    12,
+    28,
+    6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 4.800000000000001,
+      "circle": 0.35
+     },
+     {
+      "z": 4.800000000000001,
+      "circle": 4.720000000000001,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 8.88,
+      "circle": 2.5760000000000005
+     },
+     {
+      "z": 9.600000000000001,
+      "circle": 3.8560000000000003,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 13.680000000000001,
+      "circle": 2.0576000000000003
+     },
+     {
+      "z": 14.400000000000002,
+      "circle": 2.992,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 18.480000000000004,
+      "circle": 1.5392000000000003
+     },
+     {
+      "z": 19.200000000000003,
+      "circle": 2.1279999999999997,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 23.28,
+      "circle": 1.0208000000000004
+     },
+     {
+      "z": 24,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    22,
+    30,
+    1.36
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5.2,
+      "circle": 0.35
+     },
+     {
+      "z": 5.2,
+      "circle": 5.08,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 9.620000000000001,
+      "circle": 2.774
+     },
+     {
+      "z": 10.4,
+      "circle": 4.144,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 14.82,
+      "circle": 2.2124
+     },
+     {
+      "z": 15.600000000000001,
+      "circle": 3.2079999999999997,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 20.020000000000003,
+      "circle": 1.6508
+     },
+     {
+      "z": 20.8,
+      "circle": 2.2719999999999994,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 25.22,
+      "circle": 1.0892000000000002
+     },
+     {
+      "z": 26,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    30,
+    20,
+    2.72
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 4.4,
+      "circle": 0.35
+     },
+     {
+      "z": 4.4,
+      "circle": 4.36,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 8.14,
+      "circle": 2.378
+     },
+     {
+      "z": 8.8,
+      "circle": 3.568,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 12.540000000000001,
+      "circle": 1.9028
+     },
+     {
+      "z": 13.200000000000003,
+      "circle": 2.776,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 16.940000000000005,
+      "circle": 1.4276000000000002
+     },
+     {
+      "z": 17.6,
+      "circle": 1.9839999999999995,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 21.340000000000003,
+      "circle": 0.9524000000000001
+     },
+     {
+      "z": 22,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    34,
+    8,
+    3.4000000000000004
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 4.800000000000001,
+      "circle": 0.35
+     },
+     {
+      "z": 4.800000000000001,
+      "circle": 4.720000000000001,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 8.88,
+      "circle": 2.5760000000000005
+     },
+     {
+      "z": 9.600000000000001,
+      "circle": 3.8560000000000003,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 13.680000000000001,
+      "circle": 2.0576000000000003
+     },
+     {
+      "z": 14.400000000000002,
+      "circle": 2.992,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 18.480000000000004,
+      "circle": 1.5392000000000003
+     },
+     {
+      "z": 19.200000000000003,
+      "circle": 2.1279999999999997,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 23.28,
+      "circle": 1.0208000000000004
+     },
+     {
+      "z": 24,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    36,
+    -6,
+    3.74
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 4.4,
+      "circle": 0.35
+     },
+     {
+      "z": 4.4,
+      "circle": 4.36,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 8.14,
+      "circle": 2.378
+     },
+     {
+      "z": 8.8,
+      "circle": 3.568,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 12.540000000000001,
+      "circle": 1.9028
+     },
+     {
+      "z": 13.200000000000003,
+      "circle": 2.776,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 16.940000000000005,
+      "circle": 1.4276000000000002
+     },
+     {
+      "z": 17.6,
+      "circle": 1.9839999999999995,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 21.340000000000003,
+      "circle": 0.9524000000000001
+     },
+     {
+      "z": 22,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    32,
+    36,
+    3.06
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5.4,
+      "circle": 0.35
+     },
+     {
+      "z": 5.4,
+      "circle": 5.26,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 9.990000000000002,
+      "circle": 2.873
+     },
+     {
+      "z": 10.8,
+      "circle": 4.288,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 15.39,
+      "circle": 2.2898
+     },
+     {
+      "z": 16.200000000000003,
+      "circle": 3.3159999999999994,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 20.790000000000003,
+      "circle": 1.7066000000000001
+     },
+     {
+      "z": 21.6,
+      "circle": 2.3439999999999994,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 26.19,
+      "circle": 1.1234000000000002
+     },
+     {
+      "z": 27,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    20,
+    40,
+    1.02
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5.6000000000000005,
+      "circle": 0.35
+     },
+     {
+      "z": 5.6000000000000005,
+      "circle": 5.44,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 10.360000000000001,
+      "circle": 2.9720000000000004
+     },
+     {
+      "z": 11.200000000000001,
+      "circle": 4.432,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 15.96,
+      "circle": 2.3672000000000004
+     },
+     {
+      "z": 16.800000000000004,
+      "circle": 3.424,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 21.560000000000006,
+      "circle": 1.7624000000000002
+     },
+     {
+      "z": 22.400000000000002,
+      "circle": 2.4159999999999995,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 27.160000000000004,
+      "circle": 1.1576000000000004
+     },
+     {
+      "z": 28,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    6,
+    40,
+    6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5.2,
+      "circle": 0.35
+     },
+     {
+      "z": 5.2,
+      "circle": 5.08,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 9.620000000000001,
+      "circle": 2.774
+     },
+     {
+      "z": 10.4,
+      "circle": 4.144,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 14.82,
+      "circle": 2.2124
+     },
+     {
+      "z": 15.600000000000001,
+      "circle": 3.2079999999999997,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 20.020000000000003,
+      "circle": 1.6508
+     },
+     {
+      "z": 20.8,
+      "circle": 2.2719999999999994,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 25.22,
+      "circle": 1.0892000000000002
+     },
+     {
+      "z": 26,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8,
+    38,
+    6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5.4,
+      "circle": 0.35
+     },
+     {
+      "z": 5.4,
+      "circle": 5.26,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 9.990000000000002,
+      "circle": 2.873
+     },
+     {
+      "z": 10.8,
+      "circle": 4.288,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 15.39,
+      "circle": 2.2898
+     },
+     {
+      "z": 16.200000000000003,
+      "circle": 3.3159999999999994,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 20.790000000000003,
+      "circle": 1.7066000000000001
+     },
+     {
+      "z": 21.6,
+      "circle": 2.3439999999999994,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 26.19,
+      "circle": 1.1234000000000002
+     },
+     {
+      "z": 27,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -20,
+    40,
+    6
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5.0,
+      "circle": 0.35
+     },
+     {
+      "z": 5.0,
+      "circle": 4.9,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 9.25,
+      "circle": 2.6750000000000003
+     },
+     {
+      "z": 10.0,
+      "circle": 4.0,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 14.25,
+      "circle": 2.1350000000000002
+     },
+     {
+      "z": 15.000000000000002,
+      "circle": 3.0999999999999996,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 19.25,
+      "circle": 1.5950000000000002
+     },
+     {
+      "z": 20.0,
+      "circle": 2.1999999999999997,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 24.25,
+      "circle": 1.0550000000000002
+     },
+     {
+      "z": 25,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    26,
+    10,
+    2.04
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 4.0,
+      "circle": 0.35
+     },
+     {
+      "z": 4.0,
+      "circle": 3.9999999999999996,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 7.4,
+      "circle": 2.18
+     },
+     {
+      "z": 8.0,
+      "circle": 3.28,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 11.4,
+      "circle": 1.748
+     },
+     {
+      "z": 12.000000000000002,
+      "circle": 2.5599999999999996,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 15.400000000000002,
+      "circle": 1.316
+     },
+     {
+      "z": 16.0,
+      "circle": 1.8399999999999994,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 19.4,
+      "circle": 0.8840000000000001
+     },
+     {
+      "z": 20,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    28,
+    -10,
+    2.3800000000000003
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 3.6,
+      "circle": 0.35
+     },
+     {
+      "z": 3.6,
+      "circle": 3.6399999999999997,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 6.66,
+      "circle": 1.982
+     },
+     {
+      "z": 7.2,
+      "circle": 2.992,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 10.26,
+      "circle": 1.5932
+     },
+     {
+      "z": 10.8,
+      "circle": 2.344,
+      "colour": "#2f5230"
+     },
+     {
+      "z": 13.860000000000001,
+      "circle": 1.2044000000000001
+     },
+     {
+      "z": 14.4,
+      "circle": 1.6959999999999997,
+      "colour": "#2a4a2c"
+     },
+     {
+      "z": 17.46,
+      "circle": 0.8156000000000001
+     },
+     {
+      "z": 18,
+      "circle": 0.1
+     }
+    ],
+    "colour": "#2f4a30"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -62,
+    -10,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5,
+      "circle": 0.3
+     },
+     {
+      "z": 8,
+      "circle": 2.4,
+      "colour": "#7a5a40"
+     },
+     {
+      "z": 12,
+      "circle": 0.5
+     }
+    ],
+    "colour": "#7a5a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -64,
+    2,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5,
+      "circle": 0.3
+     },
+     {
+      "z": 8,
+      "circle": 2.4,
+      "colour": "#7a5a40"
+     },
+     {
+      "z": 12,
+      "circle": 0.5
+     }
+    ],
+    "colour": "#7a5a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -58,
+    14,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5,
+      "circle": 0.3
+     },
+     {
+      "z": 8,
+      "circle": 2.4,
+      "colour": "#7a5a40"
+     },
+     {
+      "z": 12,
+      "circle": 0.5
+     }
+    ],
+    "colour": "#7a5a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -50,
+    16,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.4,
+      "colour": "#5a4030"
+     },
+     {
+      "z": 5,
+      "circle": 0.3
+     },
+     {
+      "z": 8,
+      "circle": 2.4,
+      "colour": "#7a5a40"
+     },
+     {
+      "z": 12,
+      "circle": 0.5
+     }
+    ],
+    "colour": "#7a5a40"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    17,
+    -2,
+    3
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 9
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "hillside is stepped prisms rather than a smooth slope, pines are simple tiered cones, snow patches sparse, cobbled path and stone wall are plain blocks, no thin wire detail or green railing"
+ },
+ "site": {
+  "ground": "grass",
+  "extent": [
+   160,
+   100
+  ]
+ }
+}

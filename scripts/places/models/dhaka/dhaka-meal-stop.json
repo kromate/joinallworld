@@ -1,0 +1,184 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-meal-stop",
+ "verified": "footprint",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo of this building exists in the evidence (listed Commons files show other subjects); facade, glazing and rooftop terrace are typical for a 2010s Dhanmondi gallery building and guided by the brief only."
+ },
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/298806119",
+   "used": "footprint (24 x 22 m rotated 60 degrees, 520 m2), containing match; brief gives four storeys and about 16 m"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q28739963",
+   "used": "identity only: arts foundation gallery building in Dhanmondi"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gallery-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8ac",
+    "glassColour": "#6f8aa0",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 4,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#e9e4d8",
+    "groundKind": "glazed",
+    "groundHeight": 4.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "material": "concrete",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-entrance",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "rotDeg": 30,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8aa0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "material": "concrete",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-terrace",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 30,
+   "z0": 16,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e9e4d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "material": "concrete",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 2.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -22.5,
+    2.6
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#6f8aa0",
+    "frameColour": "#8c8a84",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -26
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -24
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

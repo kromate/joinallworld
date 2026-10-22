@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-osm-node-4246680743",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1441881652",
+   "used": "nearest building only (6 m away, untagged), 10.8 x 10.1 m, used as the size reference but not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     11,
+     10
+    ]
+   },
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c07a4e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.2,
+    "plinth": 0.4,
+    "bands": "#e9e2d0",
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4b36",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     7,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    -6.3
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6e4a34",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a4b36",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.5,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "bottom": 3.1,
+    "colour": "#e9e2d0",
+    "frameColour": "#7a4b36",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8.5,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 2.6,
+    "colours": [
+     "#c04a2f",
+     "#e9e2d0"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.0,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     6
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     7
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists for this cafe; a modest roadside brick cafe sized from the nearby 10.8 x 10.1 m building and the brief (hip roof, blank signboard, awning). Real layout, colours and verandah unknown."
+ }
+}

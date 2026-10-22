@@ -1,0 +1,724 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-osm-way-331568741",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_ziggurat_at_Aqar_Quf.jpg",
+   "licence": "CC0",
+   "author": "U.S. Army photo by Spc. David Robbins",
+   "view": "front",
+   "file": "/tmp/places-evidence/baghdad/zig1.jpg",
+   "used": "restored buff brick base with rows of tall dark vertical recesses, eroded mud-brick core rising as a ragged leaning wedge off-centre, lower stepped terrace and stair to the right, bare sand ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:1._The_remains_of_the_Kassite_ziggurat_at_Aqar-Quf_(Dur-Kurigalzu),_western_Baghdad,_Iraq.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Osama Shukir Muhammed Amin FRCP(Glasg)",
+   "view": "front",
+   "file": "/tmp/places-evidence/baghdad/zig2.jpg",
+   "used": "base wall colour and buttress spacing, long low terrace wall with sloping stair end, core proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/331568741",
+   "used": "overall extent only (about 80 x 78 m, ragged outline); the base is modelled as a rectangle"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     69,
+     67
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#dcb878",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfae70"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "core",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "colour": "#b49468",
+    "curve": false,
+    "round": 20,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       25.0,
+       21.5
+      ],
+      "cx": -10.7,
+      "cy": 7.9,
+      "colour": "#b89a6c"
+     },
+     {
+      "z": 2,
+      "ellipse": [
+       25.0,
+       21.3
+      ],
+      "cx": -12.8,
+      "cy": 8.0,
+      "colour": "#a38458"
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       25.0,
+       21.7
+      ],
+      "cx": -12.9,
+      "cy": 7.6,
+      "colour": "#c3a574"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       21.4,
+       21.0
+      ],
+      "cx": -10.9,
+      "cy": 7.1,
+      "colour": "#9c7e52"
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       24.8,
+       20.7
+      ],
+      "cx": -10.8,
+      "cy": 8.2,
+      "colour": "#b89a6c"
+     },
+     {
+      "z": 11,
+      "ellipse": [
+       19.7,
+       15.9
+      ],
+      "cx": -11.0,
+      "cy": 7.1,
+      "colour": "#a38458"
+     },
+     {
+      "z": 13.5,
+      "ellipse": [
+       18.5,
+       15.7
+      ],
+      "cx": -12.3,
+      "cy": 7.9,
+      "colour": "#c3a574"
+     },
+     {
+      "z": 16,
+      "ellipse": [
+       18.2,
+       16.5
+      ],
+      "cx": -10.7,
+      "cy": 8.3,
+      "colour": "#9c7e52"
+     },
+     {
+      "z": 18.5,
+      "ellipse": [
+       16.8,
+       14.4
+      ],
+      "cx": -10.7,
+      "cy": 7.6,
+      "colour": "#b89a6c"
+     },
+     {
+      "z": 21,
+      "ellipse": [
+       16.6,
+       13.8
+      ],
+      "cx": -9.3,
+      "cy": 8.4,
+      "colour": "#a38458"
+     },
+     {
+      "z": 23.5,
+      "ellipse": [
+       12.6,
+       10.2
+      ],
+      "cx": -10.8,
+      "cy": 7.1,
+      "colour": "#c3a574"
+     },
+     {
+      "z": 25,
+      "ellipse": [
+       5,
+       5
+      ],
+      "cx": -9.0,
+      "cy": 7.8,
+      "colour": "#9c7e52"
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "slots-f0",
+   "at": [
+    -24,
+    -33.8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     0,
+     0
+    ],
+    "end": [
+     5,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.6
+      ],
+      "z0": 1.5,
+      "height": 8,
+      "colour": "#5a3f26",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "butt-f0",
+   "at": [
+    -24,
+    -34.2,
+    0
+   ],
+   "params": {
+    "colour": "#d4b070",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.1,
+       1.5
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       5.5,
+       1.2
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       3.3,
+       0.9
+      ]
+     },
+     {
+      "z": 13.5,
+      "rect": [
+       1.4,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "slots-f1",
+   "at": [
+    -8,
+    -33.8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     0,
+     0
+    ],
+    "end": [
+     5,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.6
+      ],
+      "z0": 1.5,
+      "height": 8,
+      "colour": "#5a3f26",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "butt-f1",
+   "at": [
+    -8,
+    -34.2,
+    0
+   ],
+   "params": {
+    "colour": "#d4b070",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.1,
+       1.5
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       5.5,
+       1.2
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       3.3,
+       0.9
+      ]
+     },
+     {
+      "z": 13.5,
+      "rect": [
+       1.4,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "slots-f2",
+   "at": [
+    12,
+    -33.8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     0,
+     0
+    ],
+    "end": [
+     5,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.6
+      ],
+      "z0": 1.5,
+      "height": 8,
+      "colour": "#5a3f26",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "butt-f2",
+   "at": [
+    12,
+    -34.2,
+    0
+   ],
+   "params": {
+    "colour": "#d4b070",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.1,
+       1.5
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       5.5,
+       1.2
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       3.3,
+       0.9
+      ]
+     },
+     {
+      "z": 13.5,
+      "rect": [
+       1.4,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "slots-f3",
+   "at": [
+    28,
+    -33.8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     0,
+     0
+    ],
+    "end": [
+     5,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.6
+      ],
+      "z0": 1.5,
+      "height": 8,
+      "colour": "#5a3f26",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "butt-f3",
+   "at": [
+    28,
+    -34.2,
+    0
+   ],
+   "params": {
+    "colour": "#d4b070",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.1,
+       1.5
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       5.5,
+       1.2
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       3.3,
+       0.9
+      ]
+     },
+     {
+      "z": 13.5,
+      "rect": [
+       1.4,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "slots-r0",
+   "at": [
+    34.7,
+    -20,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -3,
+     0
+    ],
+    "end": [
+     0,
+     3,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.9
+      ],
+      "z0": 1.5,
+      "height": 8,
+      "colour": "#5a3f26",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "slots-r1",
+   "at": [
+    34.7,
+    -2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -3,
+     0
+    ],
+    "end": [
+     0,
+     3,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.9
+      ],
+      "z0": 1.5,
+      "height": 8,
+      "colour": "#5a3f26",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "slots-r2",
+   "at": [
+    34.7,
+    18,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -3,
+     0
+    ],
+    "end": [
+     0,
+     3,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.9
+      ],
+      "z0": 1.5,
+      "height": 8,
+      "colour": "#5a3f26",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wall-long",
+   "footprint": {
+    "rect": [
+     5,
+     60
+    ]
+   },
+   "at": [
+    45,
+    2
+   ],
+   "height": 5.5,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d4b070",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a86c"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "ramp",
+   "at": [
+    45,
+    -32,
+    0
+   ],
+   "params": {
+    "colour": "#c9a770",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5,
+       20
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       5,
+       12
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       5,
+       3
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Core is a stack of ellipses (ridged but too round and not as ragged/tall-narrow as the eroded mound); slots are evenly grouped dark boxes not deep recesses; terrace wall is a short detached slab with a plain ramp; base is a rectangle, not the long OSM extent."
+ }
+}

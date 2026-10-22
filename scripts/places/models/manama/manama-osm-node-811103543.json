@@ -1,0 +1,176 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1222710138",
+   "used": "real outline, 47 x 16 m block (containing match, untagged)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 160,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe2cc",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "glassColour": "#7e97a4",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b5a98f"
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a7",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "rect": [
+     10,
+     3.5
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#7e97a4",
+    "topColour": "#9fb0b8",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#7e97a4"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 3,
+    "height": 3.6,
+    "colour": "#b5a98f",
+    "columns": 2
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#ce1126",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 0.8,
+    "colour": "#7e97a4"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 14,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -15
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-osm-node-811103543",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; untagged 47x16 m outline with generic cream render, ribbon windows and glazed entrance."
+ }
+}

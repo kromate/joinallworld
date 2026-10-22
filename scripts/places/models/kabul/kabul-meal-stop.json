@@ -1,0 +1,113 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1067933081",
+   "used": "17.3 x 7 m footprint, containing match"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kabul.json#kabul-meal-stop",
+   "used": "one-storey noodle shop, glazed shopfront, red awning (low confidence, no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5dcc6",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "rotDeg": 35,
+   "params": {
+    "width": 12,
+    "depth": 1.8,
+    "drop": 0.6,
+    "height": 2.9,
+    "colours": [
+     "#b43a2f",
+     "#f2eee2"
+    ],
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "rotDeg": 35,
+   "params": {
+    "width": 6,
+    "height": 1,
+    "bottom": 3.1,
+    "colour": "#b43a2f",
+    "frameColour": "#f2eee2",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; low-confidence typed shopfront on the real footprint."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-meal-stop"
+}

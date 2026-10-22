@@ -1,0 +1,317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1276547397",
+   "used": "bus_station outline 76 by 54 m (match is containing); yard drawn on it"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Ramallah",
+   "used": "central bus and service-taxi station near Al-Manara: open paved yard, canopy, parked buses and vans, kiosks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 24,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "yard",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -29.4,
+      23.9
+     ],
+     [
+      -27.4,
+      13.2
+     ],
+     [
+      -14.9,
+      -40.9
+     ],
+     [
+      26.4,
+      -32.1
+     ],
+     [
+      23.8,
+      -20.3
+     ],
+     [
+      34.8,
+      -18
+     ],
+     [
+      33.8,
+      -11.9
+     ],
+     [
+      24.4,
+      -13.5
+     ],
+     [
+      24.3,
+      -9.8
+     ],
+     [
+      22.2,
+      1.2
+     ],
+     [
+      24.6,
+      2.6
+     ],
+     [
+      25.5,
+      4.3
+     ],
+     [
+      25.9,
+      6
+     ],
+     [
+      25.8,
+      8.4
+     ],
+     [
+      9.8,
+      41.1
+     ],
+     [
+      7.7,
+      42.1
+     ],
+     [
+      -24,
+      31
+     ],
+     [
+      -28.6,
+      27.1
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#7d7f80",
+    "material": "concrete",
+    "slot": "asphalt"
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -17,
+    -4,
+    0.2
+   ],
+   "rotDeg": 87,
+   "params": {
+    "width": 38,
+    "depth": 7,
+    "height": 3.8,
+    "roof_colour": "#8a8f94",
+    "wall_colour": "#c9c3b6"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    4,
+    -6,
+    0.2
+   ],
+   "rotDeg": 87,
+   "params": {
+    "length": 50,
+    "kind": "mixed",
+    "density": 0.85,
+    "coach_share": 0.45,
+    "colours": [
+     "#f1f1ee",
+     "#e8c13a",
+     "#d9d4c8"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    17,
+    -4,
+    0.2
+   ],
+   "rotDeg": 87,
+   "params": {
+    "length": 44,
+    "kind": "taxi",
+    "density": 0.8,
+    "colours": [
+     "#e8c13a",
+     "#f1f1ee"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    26,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#c9c3b6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -8,
+    36,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#e2d4b4"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    21,
+    -28,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#c9c3b6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -34,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 2.6,
+    "colour": "#2f6b8a",
+    "frameColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    30,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 2.6,
+    "colour": "#2f6b8a",
+    "frameColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -26,
+    20,
+    0.2
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.4,
+    "tankHeight": 2,
+    "legHeight": 3,
+    "legs": 4,
+    "colour": "#2a2d30"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -26,
+    -10,
+    0.2
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.4,
+    "tankHeight": 2,
+    "legHeight": 3,
+    "legs": 4,
+    "colour": "#2a2d30"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    2,
+    -30,
+    0.2
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the station: canopy, bus rows and kiosks are typical placements on the OSM outline."
+ }
+}

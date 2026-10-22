@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/526888092",
+   "used": "real outline of the imamzadeh (name match, 617 m2, rotated square 26 x 24 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Imamzadeh_Shoayb_by_Hadi_Dehghanpour-02_(3)_resize.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hadi Dehghanpour",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tehran/imz1.jpg",
+   "used": "style only (the photo is titled Imamzadeh Shoayb but its location is not confirmed as the Tehran/Rey one): flat-roofed square tomb with two tiers of arched recesses, blue-tiled bay frames on cream, blue ribbed dome on a tiled drum, tiled minaret on the forecourt, star-shaped pool, sandy paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mausoleum_of_Shoayb_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ariaami",
+   "view": "detail",
+   "used": "deep blue tiled iwan frame with timber lattice door, white marble plinth"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 2.0,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 36
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#6fa3bf",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "windowShape": "arched",
+    "bay": 4.2,
+    "trimColour": "#2b6aa8",
+    "bands": {
+     "colour": "#d9cfae",
+     "height": 0.9
+    },
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bfa4",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    11.9
+   ],
+   "params": {
+    "radius": 5.6,
+    "height": 6.2,
+    "profile": "hemi",
+    "drum": 3.2,
+    "drumRadius": 6.0,
+    "drumColour": "#3a7fb0",
+    "colour": "#2f7fc0",
+    "finial": 2.5
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "radius": 1.2,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#2f78b8",
+    "capColour": "#2f78b8"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "waterColour": "#4a95c8",
+    "rimColour": "#d8d0bc"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 6,
+    "height": 8
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no confirmed photo of this exact imamzadeh (the Commons images may show another Shoaib shrine); outline and size are real, tile scheme, arch tiers, dome and minaret follow the style photo; forecourt layout approximate"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

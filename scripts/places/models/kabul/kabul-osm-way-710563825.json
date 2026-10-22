@@ -1,0 +1,419 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-osm-way-710563825",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Front_View_of_the_Jinnah_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Umairjibran7",
+   "view": "front",
+   "file": "/tmp/places-evidence/kabul/jinnah1.jpg",
+   "used": "curved two-storey brown-rendered central entrance block with green glazed ribbons and a deep curved sign fascia, red-carpeted entrance steps, taller beige wings either side with window strips, flat roofs"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kabul.json#kabul-osm-way-710563825",
+   "used": "H-shaped four-storey hospital, about 110 m long"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/710563825",
+   "used": "overall campus size only (338 x 203 m); outline too large and loose to use as the block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 45,
+  "aspect": 2.05,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "wings now abut the curved block but the sign fascia is a plain band with no lettering, glazing is a flat green tint with regular mullions, stair/carpet simplified, ground-floor columns not modelled"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "polygon": [
+     [
+      -19.012558718005394,
+      -0.0
+     ],
+     [
+      -16.136412571419775,
+      -1.7395698332523608
+     ],
+     [
+      -13.102555048843241,
+      -3.186645641213623
+     ],
+     [
+      -9.94063796057305,
+      -4.327084235871784
+     ],
+     [
+      -6.681564724116223,
+      -5.149739388831879
+     ],
+     [
+      -3.3571883255253896,
+      -5.646570770462684
+     ],
+     [
+      0.0,
+      -5.812722533128582
+     ],
+     [
+      3.357188325525388,
+      -5.646570770462684
+     ],
+     [
+      6.6815647241162255,
+      -5.149739388831879
+     ],
+     [
+      9.94063796057305,
+      -4.327084235871784
+     ],
+     [
+      13.102555048843241,
+      -3.186645641213623
+     ],
+     [
+      16.136412571419775,
+      -1.7395698332523608
+     ],
+     [
+      19.012558718005394,
+      -0.0
+     ],
+     [
+      19.012558718005394,
+      14
+     ],
+     [
+      -19.012558718005394,
+      14
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f5a46",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#4fbf8a",
+    "bands": "#8f5a46",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    -27.5,
+    4
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccaa4",
+    "windows": "ribbon",
+    "windowRatio": 0.16,
+    "faces": {
+     "right": "plain",
+     "back": "plain",
+     "left": "plain"
+    },
+    "glassColour": "#7f9ba8",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    27.5,
+    4
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccaa4",
+    "windows": "ribbon",
+    "windowRatio": 0.16,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#7f9ba8",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     64,
+     14
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#7f9ba8",
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-band",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -19.012558718005394,
+      -0.05
+     ],
+     [
+      -16.136412571419775,
+      -1.7895698332523609
+     ],
+     [
+      -13.102555048843241,
+      -3.236645641213623
+     ],
+     [
+      -9.94063796057305,
+      -4.377084235871783
+     ],
+     [
+      -6.681564724116223,
+      -5.199739388831879
+     ],
+     [
+      -3.3571883255253896,
+      -5.696570770462684
+     ],
+     [
+      0.0,
+      -5.862722533128582
+     ],
+     [
+      3.357188325525388,
+      -5.696570770462684
+     ],
+     [
+      6.6815647241162255,
+      -5.199739388831879
+     ],
+     [
+      9.94063796057305,
+      -4.377084235871783
+     ],
+     [
+      13.102555048843241,
+      -3.236645641213623
+     ],
+     [
+      16.136412571419775,
+      -1.7895698332523609
+     ],
+     [
+      19.012558718005394,
+      -0.05
+     ],
+     [
+      19.012558718005394,
+      0.9
+     ],
+     [
+      16.136412571419775,
+      -0.8395698332523608
+     ],
+     [
+      13.102555048843241,
+      -2.286645641213623
+     ],
+     [
+      9.94063796057305,
+      -3.4270842358717837
+     ],
+     [
+      6.6815647241162255,
+      -4.249739388831879
+     ],
+     [
+      3.357188325525388,
+      -4.746570770462684
+     ],
+     [
+      0.0,
+      -4.912722533128582
+     ],
+     [
+      -3.3571883255253896,
+      -4.746570770462684
+     ],
+     [
+      -6.681564724116223,
+      -4.249739388831879
+     ],
+     [
+      -9.94063796057305,
+      -3.4270842358717837
+     ],
+     [
+      -13.102555048843241,
+      -2.286645641213623
+     ],
+     [
+      -16.136412571419775,
+      -0.8395698332523608
+     ],
+     [
+      -19.012558718005394,
+      0.9
+     ]
+    ],
+    "z0": 9.5,
+    "height": 2.4,
+    "colour": "#8f5a46",
+    "topColour": "#8f5a46"
+   },
+   "at": [
+    0,
+    -8
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -17.5,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "rise": 0.9,
+    "run": 0.8,
+    "count": 5,
+    "colour": "#a9a69c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "red-carpet",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4,
+     12
+    ],
+    "z0": 0.0,
+    "height": 0.05,
+    "colour": "#b3202b",
+    "topColour": "#b3202b"
+   },
+   "at": [
+    0,
+    -25
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   90
+  ]
+ }
+}

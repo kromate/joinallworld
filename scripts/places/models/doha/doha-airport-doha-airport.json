@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-airport-doha-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hamad_International_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Davide Mauro",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/apt1.jpg",
+   "used": "approach view across the lagoon: long low dark slate-blue terminal block with a pale roof edge, blue glass dome in front, slim white tower, lower pale wings, teal water, control tower far right"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Hamad_International_Airport",
+   "used": "oasis/water theme, wave roofs, 2014"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.82,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     84,
+     22
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#33475a",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "glassColour": "#2a3846",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eef0f0",
+    "overhang": 1.6,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    -60,
+    6
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d7dce0",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#6f8798",
+    "faces": {
+     "left": "plain",
+     "right": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e7e9",
+    "material": "metal-sheet",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    62,
+    6
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d7dce0",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#6f8798",
+    "faces": {
+     "left": "none",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e7e9",
+    "material": "metal-sheet",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "radius": 13.5,
+    "height": 1.8,
+    "profile": "hemi",
+    "colour": "#3f78b4",
+    "material": "glass"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -20,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "radius": 0.5,
+    "balconies": 1,
+    "style": "pencil",
+    "colour": "#f4f4f1",
+    "capColour": "#e9e9e6"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    78,
+    14,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "round",
+    "colour": "#dfe3e6",
+    "shaftRadius": 0.9,
+    "cabRadius": 2.0,
+    "cabColour": "#4d6678",
+    "bandColour": "#f0f0ee"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 150,
+    "depth": 34,
+    "colour": "#3aa7b0",
+    "bank": true
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    4,
+    4.2
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 86,
+    "depth": 24,
+    "rise": 0.5,
+    "waves": 2,
+    "thickness": 0.25,
+    "z": 0,
+    "colour": "#e6e9ea"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -75,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 60,
+    "colour": "#3aa7b0",
+    "bank": true
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    75,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 60,
+    "colour": "#3aa7b0",
+    "bank": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "far-view photo; terminal now one dark block with pale roof band, wider flat glass vault, slim tall tower, longer wings; no jet bridges, far detail approximate"
+ }
+}

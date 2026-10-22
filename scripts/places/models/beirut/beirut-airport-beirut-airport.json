@@ -1,0 +1,582 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-airport-beirut-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BeirutAirport.jpg",
+   "licence": "Copyrighted free use",
+   "author": "Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/beirut/air1.jpg",
+   "used": "long low terminal with stepped pale roofs, a dark square control tower standing out above the middle, wide apron with stands along the airside, runways and breakwater beyond"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Beirut%E2%80%93Rafic_Hariri_International_Airport",
+   "used": "U-shaped terminal, East Wing 1998 and West Wing 2002, four levels, 23 gates"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "landside",
+   "footprint": {
+    "rect": [
+     115.99999999999999,
+     5.22
+    ]
+   },
+   "at": [
+    0.0,
+    15.079999999999998
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d6d0c3",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 16.704,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7aa",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier0",
+   "footprint": {
+    "rect": [
+     5.8,
+     16.24
+    ]
+   },
+   "at": [
+    -46.4,
+    26.099999999999998
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d3cdbf",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "bay": 6.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4beb1",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier1",
+   "footprint": {
+    "rect": [
+     5.8,
+     16.24
+    ]
+   },
+   "at": [
+    -28.999999999999996,
+    26.099999999999998
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc9bd",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 6.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4beb1",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     5.8,
+     16.24
+    ]
+   },
+   "at": [
+    -12.76,
+    26.099999999999998
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d3cdbf",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 6.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4beb1",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier3",
+   "footprint": {
+    "rect": [
+     5.8,
+     16.24
+    ]
+   },
+   "at": [
+    12.76,
+    26.099999999999998
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc9bd",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 6.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4beb1",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier4",
+   "footprint": {
+    "rect": [
+     5.8,
+     16.24
+    ]
+   },
+   "at": [
+    28.999999999999996,
+    26.099999999999998
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d3cdbf",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 6.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4beb1",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier5",
+   "footprint": {
+    "rect": [
+     5.8,
+     16.24
+    ]
+   },
+   "at": [
+    46.4,
+    26.099999999999998
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc9bd",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "bay": 6.4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4beb1",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     110.19999999999999,
+     3.4799999999999995
+    ]
+   },
+   "at": [
+    0.0,
+    34.8
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c3b6",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "bay": 4.64,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7aa",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-hall",
+   "footprint": {
+    "rect": [
+     19.72,
+     5.8
+    ]
+   },
+   "at": [
+    0.0,
+    20.88
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9c3b6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 9.600000000000001,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7aa",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.5
+    ]
+   },
+   "at": [
+    3.4799999999999995,
+    19.72
+   ],
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "render",
+    "colour": "#55595c",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "bay": 4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3e42",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-cab",
+   "footprint": {
+    "rect": [
+     7.2,
+     7.2
+    ]
+   },
+   "at": [
+    3.4799999999999995,
+    19.72
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#22272b",
+    "windows": "none",
+    "windowRatio": 0.4,
+    "bay": 4,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4046",
+    "parapet": 0.4
+   },
+   "z0": 30
+  },
+  {
+   "type": "core/prism",
+   "id": "apron",
+   "at": [
+    0.0,
+    46.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     127.6,
+     57.99999999999999
+    ],
+    "height": 0.15,
+    "colour": "#d4c6a4",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "runway0",
+   "at": [
+    0.0,
+    68.44,
+    0
+   ],
+   "params": {
+    "rect": [
+     139.2,
+     6.959999999999999
+    ],
+    "height": 0.2,
+    "colour": "#4a4c4f",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "rwl0",
+   "at": [
+    0.0,
+    68.44,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     139.2,
+     0.29
+    ],
+    "height": 0.05,
+    "colour": "#f2f2ee",
+    "material": "plain-render"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "runway1",
+   "at": [
+    0.0,
+    78.88,
+    0
+   ],
+   "params": {
+    "rect": [
+     139.2,
+     6.959999999999999
+    ],
+    "height": 0.2,
+    "colour": "#4a4c4f",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "rwl1",
+   "at": [
+    0.0,
+    78.88,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     139.2,
+     0.29
+    ],
+    "height": 0.05,
+    "colour": "#f2f2ee",
+    "material": "plain-render"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "sandstrip",
+   "at": [
+    0.0,
+    90.47999999999999,
+    0
+   ],
+   "params": {
+    "rect": [
+     139.2,
+     10.44
+    ],
+    "height": 0.12,
+    "colour": "#dccfae",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "breakwater",
+   "at": [
+    0.0,
+    97.44,
+    0
+   ],
+   "params": {
+    "rect": [
+     139.2,
+     2.32
+    ],
+    "height": 1.5,
+    "colour": "#a9a59a",
+    "material": "rough-concrete"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0.0,
+    107.3,
+    0
+   ],
+   "params": {
+    "width": 139.2,
+    "depth": 17.4,
+    "colour": "#5f8ea3"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -37.699999999999996,
+    38.279999999999994,
+    0.15
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.4,
+    "tailColour": "#e8e8e4"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -20.88,
+    38.279999999999994,
+    0.15
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.4,
+    "tailColour": "#e8e8e4"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    20.88,
+    38.279999999999994,
+    0.15
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.4,
+    "tailColour": "#e8e8e4"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "airliner",
+   "at": [
+    37.699999999999996,
+    38.279999999999994,
+    0.15
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.4,
+    "tailColour": "#e8e8e4"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rebuilt as a long low strip with six pier fingers and a taller 30 m dark tower cab behind the middle, sand apron, two runways, sand strip, breakwater and sea, five small stand aircraft; compressed to the 120 m scene clamp (real terminal ~200 m), no real-world terminal clutter or car parks."
+ }
+}

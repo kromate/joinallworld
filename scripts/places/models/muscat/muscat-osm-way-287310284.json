@@ -1,0 +1,285 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-osm-way-287310284",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/287310284",
+   "used": "context only: a long park of about 780 x 330 m; the model shows one recognisable corner (the full size is beyond the 120 m scene limit)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/muscat.json",
+   "used": "lawns, palm rows, gravel paths, a fountain, shade pavilions, a car park and a boundary wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    -25,
+    15,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 70,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    35,
+    10,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 50,
+    "colour": "#7aa557"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      -30
+     ],
+     [
+      -20,
+      -20
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      40,
+      30
+     ],
+     [
+      55,
+      50
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#d9c7a0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      50
+     ],
+     [
+      -10,
+      20
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      45,
+      -25
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#d9c7a0"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    10,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -30,
+    25,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.4,
+    "kind": "hip",
+    "roof_colour": "#c8b08a"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    38,
+    35,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 3.0,
+    "kind": "hip",
+    "roof_colour": "#c8b08a"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "count": 9,
+    "kind": "palm",
+    "gap": 6,
+    "height_min": 8,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    10,
+    55,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "count": 9,
+    "kind": "palm",
+    "gap": 6,
+    "height_min": 8,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -35,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 24,
+    "count": 8,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    26,
+    18,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 6,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#cfc5b0"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -20,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 11,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and no description of the park found; layout is an invented but typical Gulf public-park corner; real outline (long strip) not reproduced"
+ }
+}

@@ -1,0 +1,245 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small two-storey Mediterranean-style restaurant (24 x 14 m) with arched windows, awning, terrace and four umbrellas; the OSM point sits inside a 38-storey hotel tower block (see doha-osm-node-6785101974), so no separate outline or photo of this restaurant exists. A nearby street photo shows a school bus and was not used."
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or outline of this restaurant exists; massing, colours and terrace are typed from the brief and Pearl-Qatar Mediterranean style."
+ },
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dcc3",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.28,
+    "glassColour": "#4f5a5e",
+    "plinth": 0.4,
+    "cornice": true,
+    "parapet": 0.7,
+    "trimColour": "#b89a6a",
+    "faces": {
+     "front": "arched",
+     "back": "punched",
+     "left": "arched",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4,
+      "opening": 0.7,
+      "height": 0.85,
+      "depth": 0.8,
+      "storeys": 1,
+      "faces": [
+       "front"
+      ],
+      "colour": "#3f3326",
+      "pierColour": "#d8c9a8"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c2b4",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-pavilion",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    -10.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f2efe8",
+    "windows": "none",
+    "parapet": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b89a6a",
+    "material": "timber-shingle",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    7,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.2,
+    "colours": [
+     "#9a3b2e",
+     "#f2efe8"
+    ],
+    "posts": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -13,
+     0
+    ],
+    "end": [
+     11,
+     -13,
+     0
+    ],
+    "count": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#f2efe8",
+      "profile": [
+       [
+        0,
+        2.8
+       ],
+       [
+        1.6,
+        2.3
+       ],
+       [
+        1.6,
+        2.2
+       ],
+       [
+        0,
+        2.2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -13,
+     0
+    ],
+    "end": [
+     11,
+     -13,
+     0
+    ],
+    "count": 4,
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.07,
+      "n": 6,
+      "height": 2.3,
+      "colour": "#6b5a44"
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 4,
+    "count": 3,
+    "spacing": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -17,
+     -14
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     -13
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ }
+}

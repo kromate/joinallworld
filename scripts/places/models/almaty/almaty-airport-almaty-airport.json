@@ -1,0 +1,301 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-airport-almaty-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Almaty_Airport_Osokin-1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Gleb Osokin",
+   "view": "front",
+   "used": "older terminal landside only: swept white-tiled roof edge over dark glazing (style cue)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_2_Almaty_International_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "YangApinat",
+   "view": "front",
+   "file": "/tmp/places-evidence/almaty/ala1.jpg",
+   "used": "Terminal 2 entrance: tall glazed curtain wall with fine mullions, huge copper-bronze soffit canopy projecting forward, vertical grey-beige metal cladding piers, glazed lower wing to the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1180396891",
+   "used": "Terminal 2 footprint, long angled bar, scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c4c4",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#a99b8c",
+    "glassColour": "#8fb4b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39c",
+    "material": "metal-sheet",
+    "overhang": 2.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 6,
+    "spacing": 3.2,
+    "colour": "#c5c8cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-wing",
+   "footprint": {
+    "rect": [
+     28,
+     14
+    ]
+   },
+   "at": [
+    52,
+    -18
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f4a50",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#8fb4b8",
+    "trimColour": "#2f3a40"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a5358",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    52,
+    -25.4,
+    4
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#f2f2f0",
+    "frameColour": "#f2f2f0",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    -24
+   ],
+   "rotDeg": 3,
+   "height": 22,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9ad9a",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 0.7,
+      "depth": 0.3,
+      "width": 0.3,
+      "colour": "#9a8e7a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9890",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    30,
+    -24
+   ],
+   "rotDeg": -3,
+   "height": 22,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9ad9a",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 0.7,
+      "depth": 0.3,
+      "width": 0.3,
+      "colour": "#9a8e7a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9890",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#a8764a",
+    "topColour": "#b98556",
+    "capBottom": true,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 15.5,
+      "rect": [
+       66,
+       12
+      ],
+      "cy": -6
+     },
+     {
+      "z": 18,
+      "rect": [
+       70,
+       40
+      ],
+      "cy": -20
+     },
+     {
+      "z": 22,
+      "rect": [
+       70,
+       46
+      ],
+      "cy": -23
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     70,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -45
+   ],
+   "height": 4,
+   "z0": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c08a58",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98556"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -70
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     -75
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopy now a thick bronze wedge with fascia, ribbed piers widened; wing is a sloped dark-framed box without diagonal mullions; no ALA lettering; view foreshortening of photo not reproduced"
+ }
+}

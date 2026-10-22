@@ -1,0 +1,481 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Clock_Tower_square,_Norzin_Lam,_Thimphu.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Stephen Shephard",
+   "view": "street",
+   "used": "three-storey white shop buildings with timber-framed windows and dark red / grey sloped metal roofs on three sides, open ground-floor arcade, slim carved red and gold clock tower with dark pagoda cap, paved plaza with stone basins and red steps; identity per brief: Clock Tower Square (the community-voting game slot is a venue label, the place is the plaza)",
+   "file": "/tmp/places-evidence/thimphu/clock1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/91559919",
+   "used": "real plaza outline (69 x 57 m, pentagon) as the paving; building row placed along its back edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40.1,
+      21.4
+     ],
+     [
+      -14.2,
+      29.2
+     ],
+     [
+      14.7,
+      37
+     ],
+     [
+      35.7,
+      -26.2
+     ],
+     [
+      -8.6,
+      -37.3
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#bdbab2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row-left",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    26
+   ],
+   "rotDeg": 16,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f0e6",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "bands": "#7a3526",
+    "cornice": true,
+    "bay": 2.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "pilotis",
+     "colour": "#4a2f1e"
+    },
+    "glassColour": "#3a2218",
+    "trimColour": "#5a3524"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a6e78",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row-mid",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "rotDeg": 16,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f0e6",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "bands": "#7a3526",
+    "cornice": true,
+    "bay": 2.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "pilotis",
+     "colour": "#4a2f1e"
+    },
+    "glassColour": "#3a2218",
+    "trimColour": "#5a3524"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a40",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row-right",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    28,
+    41
+   ],
+   "rotDeg": 16,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f0e6",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "bands": "#7a3526",
+    "cornice": true,
+    "bay": 2.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "pilotis",
+     "colour": "#4a2f1e"
+    },
+    "glassColour": "#3a2218",
+    "trimColour": "#5a3524"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3a30",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-base",
+   "at": [
+    2,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 1.2,
+    "colour": "#8f8c84"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "at": [
+    2,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 9.6,
+    "z0": 1.2,
+    "colour": "#8a2a22"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-clock",
+   "at": [
+    2,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 1.6,
+    "z0": 10.2,
+    "colour": "#d9a93a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-cap",
+   "footprint": {
+    "rect": [
+     3.8,
+     3.8
+    ]
+   },
+   "at": [
+    2,
+    -2
+   ],
+   "rotDeg": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a2f25",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2a2230",
+    "material": "metal-sheet",
+    "rise": 2.6,
+    "overhang": 0.8
+   },
+   "z0": 11.8
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "radius": 3.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    28,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#a8453a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "thickness": 0.6,
+    "colour": "#7e7a70"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    6,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#e8a317",
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.35,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#a8453a"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -26,
+    -12,
+    0
+   ],
+   "params": {
+    "radius": 2.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "paving-inner",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     36
+    ],
+    "height": 0.2,
+    "colour": "#a9a6a0"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3,
+    "colour": "#4f7a3c",
+    "hedge": true
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -4,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3,
+    "colour": "#4f7a3c",
+    "hedge": true
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 5,
+    "colour": "#a8453a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill",
+   "at": [
+    0,
+    72
+   ],
+   "params": {
+    "rect": [
+     150,
+     26
+    ],
+    "height": 24,
+    "colour": "#3c6638",
+    "topScale": [
+     0.55,
+     0.4
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     28
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-community-voting-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "denser timber-framed windows, slim gold-banded tower with dark cap, basins, red steps, planters, trees and forested hill added; tower is a plain red shaft without carving, steps are straight not semicircular, hill is a flat green slab"
+ }
+}

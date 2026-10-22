@@ -1,0 +1,275 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-node-432286032",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1563979642",
+   "used": "nearest building (17 m, 26x16 m, bearing 105): dressing-room block beside the pitch; match weak so verified stays text"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Faisal_Al-Husseini_International_Stadium",
+   "used": "West Bank grounds: artificial turf, light poles, one covered concrete stand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     62
+    ],
+    "height": 0.15,
+    "colour": "#3f8a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     96,
+     4
+    ],
+    "height": 0.02,
+    "colour": "#4a9a50"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -24,
+     -40
+    ],
+    "end": [
+     24,
+     -40
+    ],
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "under": "closed",
+    "backWall": 0.4,
+    "concreteColour": "#c9c3b6",
+    "seatColours": [
+     "#496a8a",
+     "#efe7d6"
+    ],
+    "blocks": 4,
+    "flip": false,
+    "canopy": {
+     "depth": 6,
+     "height": 6.5,
+     "colour": "#8a8f94"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dressing-rooms",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    40,
+    -40
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -52,
+    -33,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 3,
+    "thickness": 0.1,
+    "kind": "mesh",
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -52,
+    33,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 3,
+    "thickness": 0.1,
+    "kind": "mesh",
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -52,
+    -33,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 66,
+    "height": 3,
+    "thickness": 0.1,
+    "kind": "mesh",
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    52,
+    -33,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 66,
+    "height": 3,
+    "thickness": 0.1,
+    "kind": "mesh",
+    "colour": "#6b7075"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    36,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    36,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#1b7a43",
+    "count": 2,
+    "spacing": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -62,
+     10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     64,
+     -5
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: pitch, one covered stand, mesh fence, 4 masts and dressing rooms from the brief; stand position and size assumed."
+ }
+}

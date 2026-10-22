@@ -1,0 +1,313 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-way-701954745",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mausoleo_Arafat_(Muqata,_Ramallah)_02.JPG",
+   "licence": "Public domain",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/ramallah/ramallah-osm-way-701954745-7.jpg",
+   "used": "stone-clad cube massing, large recessed glass opening at ground level, blank calligraphy band near the top, flag poles at the right, paved plaza, low flat-roofed houses behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arafat_Tomb.JPG",
+   "licence": "Public domain",
+   "author": "Wikimedia Commons contributor",
+   "view": "interior",
+   "file": "/tmp/places-evidence/ramallah/ramallah-osm-way-701954745-6.jpg",
+   "used": "glazed walls, dark roof edge and floor of the hall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/701954745",
+   "used": "grave position only (2 m outline), the structure is sized from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 44,
+  "aspect": 1.42
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cube",
+   "footprint": {
+    "rect": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dfcdaa",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c8a6",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-door",
+   "at": [
+    0,
+    -8.9,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.75,
+      0
+     ],
+     [
+      3.75,
+      0
+     ],
+     [
+      3.75,
+      0.5
+     ],
+     [
+      -3.75,
+      0.5
+     ]
+    ],
+    "height": 6.3,
+    "colour": "#7f9aa6",
+    "material": "glass-curtain",
+    "slot": "glass-curtain"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frame-head",
+   "at": [
+    0,
+    -8.9,
+    6.3
+   ],
+   "params": {
+    "points": [
+     [
+      -4.1,
+      0
+     ],
+     [
+      4.1,
+      0
+     ],
+     [
+      4.1,
+      0.6
+     ],
+     [
+      -4.1,
+      0.6
+     ]
+    ],
+    "height": 0.4,
+    "colour": "#cdbb98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "calligraphy-band",
+   "at": [
+    0,
+    -8.6,
+    10.7
+   ],
+   "params": {
+    "points": [
+     [
+      -8.0,
+      0
+     ],
+     [
+      8.0,
+      0
+     ],
+     [
+      8.0,
+      0.2
+     ],
+     [
+      -8.0,
+      0.2
+     ]
+    ],
+    "height": 1.9,
+    "colour": "#cfbd98"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    16,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "count": 3,
+    "spacing": 1.6,
+    "colours": [
+     "#1f1f1f",
+     "#f4f4f0",
+     "#2b7a4b"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    28,
+    22
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6d9bd",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc7b6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-b",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    8,
+    30
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efe7d6",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc7b6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-c",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    26
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcc9a4",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfb6a3",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    28,
+    22,
+    7
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 0.9,
+    "tankHeight": 1.4,
+    "legHeight": 0.6,
+    "legs": 4,
+    "colour": "#2a2d30"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Cube cladding joints are brick-like, no engraved calligraphy, background houses are generic, plaza is a plain slab."
+ }
+}

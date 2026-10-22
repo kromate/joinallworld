@@ -1,0 +1,311 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-way-855746276",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: no OSM building and no photos found for the New Campus; U-plan brick and concrete academic block around a courtyard mall with arcades, flags and parking, typed from Punjab public university campuses"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     84,
+     16
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5694a",
+    "trimColour": "#d4ccba",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d4ccba"
+     }
+    ],
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -34,
+    -4
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5694a",
+    "trimColour": "#d4ccba",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "cornice": false,
+    "bay": 10,
+    "faces": {
+     "left": "plain",
+     "front": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d4ccba"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     34
+    ]
+   },
+   "at": [
+    34,
+    -1
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5694a",
+    "trimColour": "#d4ccba",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "cornice": false,
+    "bay": 10,
+    "faces": {
+     "right": "plain",
+     "front": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d4ccba"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4ccba",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a82",
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -2,
+     0
+    ],
+    "end": [
+     18,
+     -2,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       26
+      ],
+      "height": 0.4,
+      "colour": "#8e8a82"
+     }
+    }
+   },
+   "id": "mall-edges"
+  },
+  {
+   "type": "arcade",
+   "params": {
+    "length": 60,
+    "height": 4.2,
+    "thickness": 3,
+    "bays": 5,
+    "shape": "round",
+    "colour": "#d4ccba",
+    "trim": "#b5694a",
+    "roof": true
+   },
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "id": "covered-walk"
+  },
+  {
+   "type": "flag",
+   "params": {
+    "height": 11,
+    "colour": "#1b7a43",
+    "count": 2,
+    "spacing": 6
+   },
+   "at": [
+    -8,
+    -22,
+    0
+   ]
+  },
+  {
+   "type": "car-park",
+   "params": {
+    "width": 40,
+    "depth": 12,
+    "density": 0.5
+   },
+   "at": [
+    0,
+    -34,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 8,
+    "spread": 6,
+    "line": 50
+   },
+   "at": [
+    -25,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "at": [
+    -52,
+    -30,
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "at": [
+    52,
+    -28,
+    0
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo and no OSM outline exist for this campus: massing is typed from the brief (U plan, brick, three storeys) and the real layout, entrances and building count are unknown."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   90
+  ]
+ }
+}

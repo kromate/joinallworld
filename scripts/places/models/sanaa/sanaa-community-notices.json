@@ -1,0 +1,179 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1089209412",
+   "used": "real 40 x 22 m outline, orientation (bearing 168), storeys from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "building",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 60
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d6c4a0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#f1ece0",
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 0.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#d6c4a0",
+      "#cdb996"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d867a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "on": "building",
+   "at": [
+    6,
+    2
+   ],
+   "params": {
+    "height": 16,
+    "baseWidth": 2.2,
+    "topWidth": 0.6,
+    "panels": 8,
+    "colour": "#c8362f",
+    "colour2": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "building",
+   "at": [
+    -8,
+    5
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "colour": "#274f73"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "building",
+   "at": [
+    -4,
+    6
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "colour": "#274f73"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -30
+     ],
+     [
+      26,
+      -30
+     ],
+     [
+      26,
+      30
+     ],
+     [
+      -26,
+      30
+     ],
+     [
+      -26,
+      -30
+     ]
+    ],
+    "height": 2.4,
+    "kind": "wall",
+    "colour": "#c9bd9f"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Footprint is real, everything above it typed (storeys, mast, tanks)."
+ }
+}

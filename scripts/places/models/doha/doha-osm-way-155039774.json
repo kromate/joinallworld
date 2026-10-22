@@ -1,0 +1,365 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-way-155039774",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2083128",
+   "used": "223 x 189 m oval stadium footprint: bowl proportions (scaled to fit the 118 m scene clamp), stadium-and-ground size"
+  },
+  {
+   "kind": "text",
+   "used": "brief: medium football stadium, low oval bowl, partial canopy over the main stand, 6 floodlights, scoreboard; red accents are a guess (no photo found on Commons)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     122
+    ],
+    "height": 0.15,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     96,
+     62
+    ],
+    "height": 0.1,
+    "colour": "#3f7a45"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "under": "solid",
+    "slab": 0.5,
+    "concreteColour": "#d8d3c6",
+    "underColour": "#c5c0b3",
+    "facetDeg": 10,
+    "start": [
+     -46,
+     -44
+    ],
+    "end": [
+     46,
+     -44
+    ],
+    "rows": 16,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.6,
+    "bay": 6,
+    "seatColours": [
+     "#c8402f",
+     "#e9e4d8",
+     "#c8402f"
+    ],
+    "blocks": 6,
+    "canopy": {
+     "height": 1.0,
+     "depth": 15,
+     "thickness": 0.6,
+     "slopeDeg": 3,
+     "colour": "#a8a6a0",
+     "edgeColour": "#8d8b86",
+     "overhangBack": 0.8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "under": "solid",
+    "slab": 0.5,
+    "concreteColour": "#d8d3c6",
+    "underColour": "#c5c0b3",
+    "facetDeg": 10,
+    "start": [
+     46,
+     44
+    ],
+    "end": [
+     -46,
+     44
+    ],
+    "rows": 11,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "bay": 6,
+    "seatColours": [
+     "#e9e4d8",
+     "#c8402f"
+    ],
+    "blocks": 8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "under": "solid",
+    "slab": 0.5,
+    "concreteColour": "#d8d3c6",
+    "underColour": "#c5c0b3",
+    "facetDeg": 14,
+    "centre": [
+     46,
+     0
+    ],
+    "radius": 44,
+    "radiusY": 40,
+    "startDeg": -90,
+    "endDeg": 90,
+    "rows": 9,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#e9e4d8",
+     "#c8402f"
+    ],
+    "blocks": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "under": "solid",
+    "slab": 0.5,
+    "concreteColour": "#d8d3c6",
+    "underColour": "#c5c0b3",
+    "facetDeg": 14,
+    "centre": [
+     -46,
+     0
+    ],
+    "radius": 44,
+    "radiusY": 40,
+    "startDeg": 90,
+    "endDeg": 270,
+    "rows": 9,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#e9e4d8",
+     "#c8402f"
+    ],
+    "blocks": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72,
+    56,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72,
+    56,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -80,
+    0,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    80,
+    0,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    53,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -74,
+      -62
+     ],
+     [
+      74,
+      -62
+     ],
+     [
+      74,
+      62
+     ],
+     [
+      -74,
+      62
+     ],
+     [
+      -74,
+      -62
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#e9e4d8"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -95,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     95,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: bowl and canopy from brief and outline, red accents guessed"
+ }
+}

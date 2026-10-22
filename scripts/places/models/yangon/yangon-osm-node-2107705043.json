@@ -1,0 +1,181 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-osm-node-2107705043",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/416924307",
+   "used": "containing building outline, about 44 x 31 m, bearing 78 degrees"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Myanmar_Gems_Museum",
+   "used": "four-storey commercial gems-mart building at 66 Kaba Aye Pagoda Road, museum on the third floor; no photo found, facade is a modernist 1990s mart typed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mart",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7d2c4",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "glassColour": "#4a6a86",
+    "bands": "#f0eee8",
+    "plinth": 0.6,
+    "groundKind": "shopfront",
+    "groundHeight": 4.4,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d7d2c4",
+       "#cfcabb"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-bay",
+   "params": {
+    "rect": [
+     10,
+     2.4
+    ],
+    "z0": 0,
+    "height": 17.8,
+    "colour": "#4a6a86",
+    "topColour": "#9a9a96",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "at": [
+    -2,
+    -21,
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    -24.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 2,
+    "count": 4,
+    "colour": "#b8b4aa"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.8,
+    "bottom": 3.5,
+    "colour": "#4a6a86",
+    "frameColour": "#c0bcb0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -23,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#3b9a45",
+    "count": 2,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -34
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Footprint-only: facade, glazing and entrance typed from the brief; no photo of the real building found."
+ }
+}

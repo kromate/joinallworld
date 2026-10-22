@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-osm-way-235938853",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/340444573",
+   "used": "footprint 47 x 19 m, SLIIT Hospitality faculty building"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SLIIT_FOHS.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Amrithsvar",
+   "view": "street",
+   "file": "/tmp/places-evidence/colombo/sliit2.jpg",
+   "used": "campus residential/faculty tower style only (white render, vertical blue fins, balcony bands); not confirmed to be this building so verified stays footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeeea",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.6,
+      "depth": 0.35,
+      "spacing": 4.6,
+      "colour": "#2f55a4",
+      "margin": 1.5
+     }
+    ],
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "block",
+   "at": [
+    8,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.8,
+    "tankHeight": 2.4,
+    "legHeight": 1.5,
+    "colour": "#2d5a3d"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -18,
+    -26,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#6b6e72"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     36,
+     0
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Reference photo may be a different SLIIT tower; real building taller/slimmer with blue balcony bands, model is a plain 8-storey slab on the OSM outline."
+ }
+}

@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-osm-node-2559425023",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/muscat.json",
+   "used": "brief: small two-storey white government clinic block with entrance canopy; OSM match is Al Ansab School 159x99 m so is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     55,
+     25
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#d9c7a0",
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wing",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    -16.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c7a0",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfd0",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -12,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -26,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.2,
+    "bottom": 1.8,
+    "colour": "#f4efe4",
+    "frameColour": "#8f8a80"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -28,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -32,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -32,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    22,
+    -32,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or reliable outline: modest typical Omani white clinic block, size from brief."
+ }
+}

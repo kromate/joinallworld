@@ -1,0 +1,303 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/396441640",
+   "used": "hospital compound only (about 290 x 190 m); no photo found so ward blocks, entrance block, hip corrugated roofs and verandahs are typical 1960s Yangon public hospital forms from the brief; compound is too large to model whole, one representative cluster is composed"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cc",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.6,
+    "bay": 3.2,
+    "bands": "#f1efe8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     30,
+     11
+    ]
+   },
+   "at": [
+    -24,
+    1
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dcc7",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 3.0,
+    "bands": "#7a8b7e",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     11,
+     32
+    ]
+   },
+   "at": [
+    22,
+    17
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dcc7",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 3.0,
+    "bands": "#7a8b7e"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah",
+   "footprint": {
+    "rect": [
+     30,
+     2.4
+    ]
+   },
+   "at": [
+    -24,
+    -7.4
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f1efe8",
+    "windows": "arched",
+    "windowRatio": 0.7,
+    "plinth": 0.2,
+    "bay": 3.0
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 0.8,
+    "colour": "#8a5a3c",
+    "material": "corrugated",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.6,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 4,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#7a8b7e"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -7.1,
+    8
+   ],
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -8,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3.2,
+    "legHeight": 7,
+    "colour": "#9aa3a0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d9d2bc"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.6,
+    "pillar": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#7a8b7e",
+    "frameColour": "#d9d2bc"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -18,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   96,
+   64
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: ward blocks, entrance block and verandah are typical of 1960s Yangon public hospitals, not the real layout of the 5 ha compound."
+ }
+}

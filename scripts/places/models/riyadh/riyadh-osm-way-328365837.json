@@ -1,0 +1,433 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-way-328365837",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/328365837",
+   "used": "campus extent only (636 x 482 m amenity=university area, not a building): modelled as one representative teaching quad"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q7339026",
+   "used": "technical college, 1983; OSM name marks it the girls' campus, hence the walled perimeter and single gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin-block",
+   "footprint": {
+    "rect": [
+     84,
+     16
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccbaa",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#a98c68",
+    "glassColour": "#5f7a86",
+    "trimColour": "#f0e7d4",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classroom-west",
+   "footprint": {
+    "rect": [
+     15,
+     44
+    ]
+   },
+   "at": [
+    -35,
+    -18
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c4a0",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#a98c68",
+    "glassColour": "#5f7a86",
+    "trimColour": "#f0e7d4",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classroom-east",
+   "footprint": {
+    "rect": [
+     15,
+     44
+    ]
+   },
+   "at": [
+    35,
+    -18
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c4a0",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#a98c68",
+    "glassColour": "#5f7a86",
+    "trimColour": "#f0e7d4",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    0,
+    2.5
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a98c68",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f0e7d4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-hall",
+   "footprint": {
+    "rect": [
+     56,
+     22
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d6bb",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": "front"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a948a",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 8,
+    "height": 4.6,
+    "form": "flat",
+    "colour": "#f0e7d4",
+    "edgeColour": "#a98c68",
+    "columns": 4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -47,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.4,
+    "thickness": 0.4,
+    "colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -47,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 35,
+    "height": 2.4,
+    "thickness": 0.4,
+    "colour": "#cdbf9f"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    48,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 35,
+    "height": 2.4,
+    "thickness": 0.4,
+    "colour": "#cdbf9f"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -18,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     50,
+     44
+    ],
+    "height": 0.08,
+    "colour": "#b7ae96"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#b6323a"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    12,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#b6323a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -40
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     -40
+    ],
+    "height": 10
+   }
+  ],
+  "cars": [
+   {
+    "colour": "#e8e8e8",
+    "at": [
+     -30,
+     -58
+    ]
+   },
+   {
+    "colour": "#2b2f33",
+    "at": [
+     -22,
+     -58
+    ]
+   },
+   {
+    "colour": "#9aa0a6",
+    "at": [
+     -14,
+     -58
+    ]
+   },
+   {
+    "colour": "#b8b4a8",
+    "at": [
+     14,
+     -58
+    ]
+   },
+   {
+    "colour": "#6b1f1f",
+    "at": [
+     22,
+     -58
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and the OSM polygon is the whole 300,000 m2 campus: one plausible U-shaped teaching quad, workshop hall and gate only"
+ }
+}

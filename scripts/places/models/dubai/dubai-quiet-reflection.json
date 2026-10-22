@@ -1,0 +1,1049 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grand_Mosque_Bur_Dubai.jpg",
+   "licence": "CC BY-SA (see file page)",
+   "author": "see file page",
+   "view": "front",
+   "file": "/tmp/places-evidence/dubai/mosque2.jpg",
+   "used": "long sand-coloured front wall with crenellated parapet and carved frieze, row of low shallow white domes behind it, six tall dark brown entrance doors under lattice windows and a blank calligraphy board, arched lattice windows and side doors either side, full-width steps, tall square tapering minaret with two balconies and a round lantern behind the right of the front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grand_Mosque_of_Bur_Dubai.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ZI Jony",
+   "view": "front",
+   "file": "/tmp/places-evidence/dubai/mosque1.jpg",
+   "used": "facade detail, colour of render, dome silhouettes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/174965686",
+   "used": "main prayer hall outline (65 x 34 m), rotated so the street facade faces the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "polygon": [
+     [
+      -32.28,
+      -0.53
+     ],
+     [
+      -30.84,
+      2.11
+     ],
+     [
+      -28.67,
+      3.04
+     ],
+     [
+      -27.9,
+      16.93
+     ],
+     [
+      31.94,
+      14.16
+     ],
+     [
+      32.19,
+      10.41
+     ],
+     [
+      32.28,
+      -16.93
+     ],
+     [
+      -29.33,
+      -16.93
+     ],
+     [
+      -29.11,
+      -4.97
+     ],
+     [
+      -30.89,
+      -4.24
+     ],
+     [
+      -31.73,
+      -3.43
+     ],
+     [
+      -32.13,
+      -2.52
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b685",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#bfa57a"
+      ],
+      "height": 0.7,
+      "at": 0.9,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0b283",
+    "parapet": 1.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -17.030229431361075,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 64,
+    "rise": 1.1,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b9ad98"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "doors",
+   "at": [
+    -10,
+    -17.050229431361075,
+    1.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     20,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.5,
+       0.4
+      ],
+      "height": 4.2,
+      "colour": "#4a2a1f",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lattice",
+   "at": [
+    0,
+    -17.05,
+    6.0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     0
+    ],
+    "end": [
+     10,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#8a6b45",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.5,
+         0.3
+        ]
+       },
+       {
+        "z": 1.7999999999999998,
+        "rect": [
+         1.5,
+         0.3
+        ]
+       },
+       {
+        "z": 2.34,
+        "rect": [
+         1.0499999999999998,
+         0.3
+        ]
+       },
+       {
+        "z": 2.7600000000000002,
+        "rect": [
+         0.44999999999999996,
+         0.3
+        ]
+       },
+       {
+        "z": 3.0,
+        "rect": [
+         0.1,
+         0.3
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "calligraphy",
+   "at": [
+    0,
+    -17.030229431361075,
+    0
+   ],
+   "params": {
+    "z0": 8.8,
+    "height": 2.2,
+    "colour": "#f1ead8",
+    "rect": [
+     14,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "flank-1",
+   "at": [
+    -19.36872782055453,
+    -17.05,
+    6.0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.5,
+     0
+    ],
+    "end": [
+     4.5,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#8a6b45",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.5,
+         0.3
+        ]
+       },
+       {
+        "z": 1.7999999999999998,
+        "rect": [
+         1.5,
+         0.3
+        ]
+       },
+       {
+        "z": 2.34,
+        "rect": [
+         1.0499999999999998,
+         0.3
+        ]
+       },
+       {
+        "z": 2.7600000000000002,
+        "rect": [
+         0.44999999999999996,
+         0.3
+        ]
+       },
+       {
+        "z": 3.0,
+        "rect": [
+         0.1,
+         0.3
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "sidedoor-1",
+   "at": [
+    -19.36872782055453,
+    -17.050229431361075,
+    1.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.5,
+     0
+    ],
+    "end": [
+     4.5,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       0.4
+      ],
+      "height": 3.6,
+      "colour": "#4a2a1f",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "flank1",
+   "at": [
+    19.36872782055453,
+    -17.05,
+    6.0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.5,
+     0
+    ],
+    "end": [
+     4.5,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#8a6b45",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.5,
+         0.3
+        ]
+       },
+       {
+        "z": 1.7999999999999998,
+        "rect": [
+         1.5,
+         0.3
+        ]
+       },
+       {
+        "z": 2.34,
+        "rect": [
+         1.0499999999999998,
+         0.3
+        ]
+       },
+       {
+        "z": 2.7600000000000002,
+        "rect": [
+         0.44999999999999996,
+         0.3
+        ]
+       },
+       {
+        "z": 3.0,
+        "rect": [
+         0.1,
+         0.3
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "sidedoor1",
+   "at": [
+    19.36872782055453,
+    -17.050229431361075,
+    1.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.5,
+     0
+    ],
+    "end": [
+     4.5,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       0.4
+      ],
+      "height": 3.6,
+      "colour": "#4a2a1f",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cren-front",
+   "at": [
+    -31.281213034257547,
+    -16.630229431361073,
+    12.7
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     62.562426068515094,
+     0
+    ],
+    "count": 46,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 0.7,
+      "colour": "#d0b283",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cren-back",
+   "at": [
+    -31.281213034257547,
+    15.33918699471876,
+    12.7
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     62.562426068515094,
+     0
+    ],
+    "count": 46,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 0.7,
+      "colour": "#d0b283",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "id": "lamps",
+   "at": [
+    -30,
+    -25.930229431361074,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "frieze",
+   "at": [
+    0,
+    -17.03,
+    0
+   ],
+   "params": {
+    "z0": 10.2,
+    "height": 0.9,
+    "colour": "#b9996a",
+    "rect": [
+     63,
+     0.3
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "calli-ink",
+   "at": [
+    0,
+    -17.35,
+    0
+   ],
+   "params": {
+    "z0": 9.7,
+    "height": 0.45,
+    "colour": "#2b2723",
+    "rect": [
+     11,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    -17.6,
+    0
+   ],
+   "params": {
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#bfa87c",
+    "rect": [
+     65,
+     1.6
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "minaret-lod2",
+   "at": [
+    16.14,
+    -4,
+    0
+   ],
+   "params": {
+    "z0": 0,
+    "height": 50,
+    "colour": "#d3bf98",
+    "rect": [
+     6.2,
+     6.2
+    ]
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "minaret-shaft",
+   "at": [
+    16.14,
+    -4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#d6b987",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.24,
+       9.24
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       5.88,
+       5.88
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "minaret-upper",
+   "at": [
+    16.14,
+    -4,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#d6b987",
+    "sections": [
+     {
+      "z": 30,
+      "rect": [
+       5.88,
+       5.88
+      ]
+     },
+     {
+      "z": 44,
+      "rect": [
+       4.76,
+       4.76
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-g1",
+   "at": [
+    16.14,
+    -4,
+    0
+   ],
+   "params": {
+    "z0": 29.0,
+    "height": 0.4,
+    "colour": "#c9a96f",
+    "rect": [
+     8.68,
+     8.68
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "minaret-rail-g1",
+   "at": [
+    16.14,
+    -4,
+    0
+   ],
+   "params": {
+    "z0": 29.4,
+    "height": 1.1,
+    "colour": "#b8975f",
+    "rect": [
+     8.4,
+     8.4
+    ],
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "minaret-g2",
+   "at": [
+    16.14,
+    -4,
+    0
+   ],
+   "params": {
+    "z0": 43.0,
+    "height": 0.4,
+    "colour": "#c9a96f",
+    "rect": [
+     7.0,
+     7.0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "minaret-rail-g2",
+   "at": [
+    16.14,
+    -4,
+    0
+   ],
+   "params": {
+    "z0": 43.4,
+    "height": 1.1,
+    "colour": "#b8975f",
+    "rect": [
+     6.72,
+     6.72
+    ],
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "minaret-arches",
+   "at": [
+    16.14,
+    -6.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#8a6b45",
+      "sections": [
+       {
+        "z": 8,
+        "rect": [
+         0.9,
+         0.2
+        ]
+       },
+       {
+        "z": 11.5,
+        "rect": [
+         0.9,
+         0.2
+        ]
+       },
+       {
+        "z": 12.5,
+        "rect": [
+         0.4,
+         0.2
+        ]
+       },
+       {
+        "z": 13.1,
+        "rect": [
+         0.1,
+         0.2
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "minaret-lantern",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    16.14,
+    -4,
+    44.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d6b987",
+    "profile": [
+     [
+      2.04,
+      0
+     ],
+     [
+      2.04,
+      3.2
+     ],
+     [
+      2.4,
+      3.4
+     ],
+     [
+      2.4,
+      3.8
+     ],
+     [
+      1.44,
+      4.6
+     ],
+     [
+      0.6,
+      5.4
+     ],
+     [
+      0.18,
+      6.2
+     ],
+     [
+      0.05,
+      7.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "domes-row",
+   "on": "hall",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 12,
+    "rows": 1,
+    "dx": 5.2,
+    "dy": 1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 12,
+      "colour": "#dcc59a",
+      "profile": [
+       [
+        2.6,
+        0.0
+       ],
+       [
+        2.6,
+        0.51
+       ],
+       [
+        2.3,
+        1.53
+       ],
+       [
+        1.5,
+        2.21
+       ],
+       [
+        0.6,
+        2.55
+       ],
+       [
+        0.05,
+        2.63
+       ]
+      ]
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 10
+   }
+  },
+  {
+   "type": "array",
+   "id": "domes-big",
+   "on": "hall",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     9,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "colour": "#e0c9a0",
+      "profile": [
+       [
+        4.3,
+        0.0
+       ],
+       [
+        4.3,
+        0.51
+       ],
+       [
+        3.8,
+        2.21
+       ],
+       [
+        2.5,
+        3.4
+       ],
+       [
+        1.0,
+        4.08
+       ],
+       [
+        0.05,
+        4.25
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "minaret widened with sand balconies and lantern, white calligraphy panel with dark strip, 12 lower domes; arches are plain recesses not lattice pairs, minaret panels minimal, street and neighbours not modelled"
+ }
+}

@@ -1,0 +1,398 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:New_Sri_Lankan_Parliament_in_Kotte.jpg",
+   "licence": "CC0",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/colombo/parl.jpg",
+   "used": "pale verdigris copper hip roofs in three tiers (huge rear roof, mid pavilion roof, small waterfront pavilion), dark timber-and-glass verandah storeys, cream plinth wall on a grassed island edge, water in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/330906531",
+   "used": "overall footprint 55 x 85 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 1,
+  "fovDeg": 48,
+  "aspect": 1.777,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     74,
+     60
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc6",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc7b0",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-pavilion",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    -20
+   ],
+   "z0": 3.2,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5a4332",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "glassColour": "#2f3a3e"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9dc0ac",
+    "pitch": 28,
+    "overhang": 3,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     56,
+     44
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 4,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6a5340",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "glassColour": "#7f98a0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4f3a",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "big-roof",
+   "footprint": {
+    "rect": [
+     68,
+     52
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 16,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a382a",
+    "windows": "none",
+    "windowRatio": 0.55,
+    "glassColour": "#2f3a3e"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9dc0ac",
+    "pitch": 24,
+    "overhang": 5,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -19,
+    4
+   ],
+   "params": {
+    "mode": "line",
+    "count": 28,
+    "start": [
+     -27,
+     0
+    ],
+    "end": [
+     27,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 4.5,
+      "colour": "#3a2a1e"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -19.2,
+    4
+   ],
+   "params": {
+    "rect": [
+     56,
+     0.2
+    ],
+    "height": 1.0,
+    "colour": "#2a2018"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -19,
+    9
+   ],
+   "params": {
+    "mode": "line",
+    "count": 28,
+    "start": [
+     -27,
+     0
+    ],
+    "end": [
+     27,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 4.5,
+      "colour": "#3a2a1e"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -19.2,
+    9
+   ],
+   "params": {
+    "rect": [
+     56,
+     0.2
+    ],
+    "height": 1.0,
+    "colour": "#2a2018"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     78,
+     5
+    ],
+    "height": 1.6,
+    "colour": "#7d7968"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -31,
+    0
+   ],
+   "params": {
+    "rect": [
+     78,
+     4
+    ],
+    "height": 2.8,
+    "colour": "#8b8672"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     78,
+     4
+    ],
+    "height": 3.2,
+    "colour": "#5f8a46"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    19,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 7,
+    "dy": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 5,
+      "colour": "#3a2a1e"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gazebo-roof",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    22.5,
+    -26.5
+   ],
+   "z0": 5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a2a1e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#9dc0ac",
+    "pitch": 32,
+    "overhang": 1.5,
+    "material": "metal-sheet"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ],
+  "forecourtDepth": 30
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Three stepped verdigris roofs, posted verandah storeys, stepped stone bund and larger gazebo added; rear hip is too steep/tall and meets the walls abruptly, verandah reads dark, bund lacks grass terraces."
+ }
+}

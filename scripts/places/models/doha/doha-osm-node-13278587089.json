@@ -1,0 +1,347 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-node-13278587089",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Lusail_Stadium_during_the_daytime.png",
+   "licence": "CC BY 3.0",
+   "author": "Supreme Committee for Delivery & Legacy (Commons upload)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/doha/lusail_aerial.png",
+   "used": "round bowl wider than tall, gold faceted cladding, pale ring roof with dark central opening, plaza apron around it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20221213_Jorge_Barraza.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jorge Barraza",
+   "view": "interior",
+   "file": "/tmp/places-evidence/doha/lusail.jpg",
+   "used": "roof-edge lights and lattice roof structure only"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9489554",
+   "used": "circular plan about 275 m across, scaled to 112 m for the scene; height tag 30 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 38,
+  "aspect": 1.78,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Facade is alternating gold bands, not true diamond facets; roof lattice is sparse spokes; ramps are a simple podium ring; surrounding towers and roads omitted."
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 40,
+      "colour": "#8a6f35"
+     },
+     {
+      "z": 2,
+      "circle": 42,
+      "colour": "#c9a24b"
+     },
+     {
+      "z": 5,
+      "circle": 48,
+      "colour": "#a98736"
+     },
+     {
+      "z": 8,
+      "circle": 52.5,
+      "colour": "#c9a24b"
+     },
+     {
+      "z": 11,
+      "circle": 55,
+      "colour": "#a98736"
+     },
+     {
+      "z": 14,
+      "circle": 56,
+      "colour": "#c9a24b"
+     },
+     {
+      "z": 17,
+      "circle": 56.5,
+      "colour": "#a98736"
+     },
+     {
+      "z": 20,
+      "circle": 55.5,
+      "colour": "#c9a24b"
+     },
+     {
+      "z": 22.5,
+      "circle": 54.5,
+      "colour": "#a98736"
+     }
+    ],
+    "round": 40,
+    "capTop": false,
+    "colour": "#c9a24b"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 48,
+    "openTop": true,
+    "colour": "#e9e6dc",
+    "profile": [
+     [
+      54.5,
+      22
+     ],
+     [
+      55,
+      23.2,
+      "#f2efe6"
+     ],
+     [
+      48,
+      25.2,
+      "#f4f2ea"
+     ],
+     [
+      40,
+      25.8,
+      "#f4f2ea"
+     ],
+     [
+      37,
+      25.6,
+      "#cfcab9"
+     ],
+     [
+      37,
+      24.2,
+      "#8f8a7c"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 48,
+    "colour": "#3b3a38",
+    "profile": [
+     [
+      0,
+      18
+     ],
+     [
+      36,
+      18
+     ],
+     [
+      36.5,
+      24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 54.6,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 32,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       0.5
+      ],
+      "height": 2.2,
+      "z0": 0.3,
+      "colour": "#7a6024"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 55,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 24,
+    "facing": "outward",
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 3,
+      "z0": 23.2,
+      "colour": "#dcd8cc"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 48,
+    "colour": "#d8d2c0",
+    "profile": [
+     [
+      68,
+      0
+     ],
+     [
+      68,
+      0.4
+     ],
+     [
+      64,
+      0.9,
+      "#cfc5a8"
+     ],
+     [
+      60,
+      1.4,
+      "#d6ccb0"
+     ],
+     [
+      56,
+      2.2,
+      "#d8d2c0"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 43,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 36,
+    "facing": "outward",
+    "lod1Step": 99,
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       12
+      ],
+      "height": 0.3,
+      "z0": 25.4,
+      "colour": "#ffffff"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -68,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     12
+    ],
+    "height": 1.2,
+    "topScale": [
+     1,
+     0.3
+    ],
+    "colour": "#e4dfd0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   150
+  ]
+ }
+}

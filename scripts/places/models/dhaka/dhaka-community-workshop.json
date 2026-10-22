@@ -1,0 +1,325 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bangabandhu_Bangladesh-China_Friendship_Exhibition_Center_(BBCFEC)_58.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wasiul Bahar",
+   "view": "front",
+   "file": "/tmp/places-evidence/dhaka/bbc1.jpg",
+   "used": "undulating grey arched roof hood over the entrance, four grey cylinder columns with cream Y-tops, terracotta-red slatted lower walls, dark glass band, reflecting pool"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bangabandhu_Bangladesh-China_Friendship_Exhibition_Center_(BBCFEC)_07.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wasiul Bahar",
+   "view": "detail",
+   "used": "Y-shaped column tops, silver-clad cylinder shafts, dark triangulated vault soffit"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/822108275",
+   "used": "overall size 285 x 99 m, two levels: central hall plus two long wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 62,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     84,
+     48
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8472b",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "glassColour": "#2b3a46",
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "colour": "#a8472b",
+     "gapColour": "#3a1a10"
+    }
+   },
+   "roof": {
+    "form": "wave",
+    "colour": "#8d9195",
+    "material": "metal-sheet",
+    "rise": 18,
+    "overhang": 10,
+    "thickness": 3,
+    "waves": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -52,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f3a24",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#2b3a46",
+    "faces": {
+     "left": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c7c9",
+    "material": "metal-sheet",
+    "overhang": 2,
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    52,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f3a24",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "glassColour": "#2b3a46",
+    "faces": {
+     "right": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c7c9",
+    "material": "metal-sheet",
+    "overhang": 2,
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -15,
+     -27,
+     0
+    ],
+    "end": [
+     15,
+     -27,
+     0
+    ],
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#868b90",
+       "sections": [
+        {
+         "z": 0,
+         "circle": 1.5
+        },
+        {
+         "z": 16,
+         "circle": 1.5
+        }
+       ]
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "colour": "#e1d7c4",
+       "section": {
+        "rect": [
+         1.4,
+         1.4
+        ]
+       },
+       "points": [
+        [
+         0,
+         0,
+         16
+        ],
+        [
+         -3,
+         0,
+         21
+        ]
+       ]
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "colour": "#e1d7c4",
+       "section": {
+        "rect": [
+         1.4,
+         1.4
+        ]
+       },
+       "points": [
+        [
+         0,
+         0,
+         16
+        ],
+        [
+         3,
+         0,
+         21
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     24,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -24.5
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b3a46",
+    "glassColour": "#1c2a33",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -50,
+    0.05
+   ],
+   "params": {
+    "width": 40,
+    "depth": 8,
+    "colour": "#2f3a38"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -38
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -38
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -26,
+     -40
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     34,
+     -41
+    ],
+    "yawDeg": 90,
+    "colour": "#2a2d33"
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "vault soffit is not a deep open arch and entrance bay is only glazed doors; wings short; fins subtle, no banners or reflecting-pool coping"
+ }
+}

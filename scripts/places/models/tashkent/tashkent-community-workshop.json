@@ -1,0 +1,210 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tiue_kampus.png",
+   "licence": "CC BY-SA 4.0",
+   "author": "Adib Djabbarov",
+   "view": "front",
+   "file": "/tmp/places-evidence/tashkent/tashkent-community-workshop-2.jpg",
+   "used": "two-storey cream vertical-ribbed metal-clad building, dark framed windows with white sash, low pitched pale roof, black plinth, large blank navy sign panel, small glazed entrance porch with concrete steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/103133045",
+   "used": "campus extent only"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "vertical rib texture of the cladding, bare tree and drainpipe detail not modelled; brief storeys (5) overruled by the photo (2)"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#dcc99a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain",
+     "back": "punched"
+    },
+    "bay": 4,
+    "glassColour": "#2b3a4a",
+    "plinth": 1.0,
+    "trimColour": "#1c2230"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b7a98f",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -26,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8c590",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "right": "plain",
+     "left": "plain",
+     "back": "plain"
+    },
+    "bay": 4,
+    "glassColour": "#2b3a4a",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#aaa08c",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -8,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a8b6b8",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a655c",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#bdb8ae"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -8.3,
+    3.0
+   ],
+   "params": {
+    "width": 20,
+    "height": 6.5,
+    "bottom": 0.5,
+    "colour": "#1f2a40",
+    "frameColour": "#2d3340",
+    "posts": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-community-workshop"
+}

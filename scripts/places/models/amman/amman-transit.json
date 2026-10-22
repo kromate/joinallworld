@@ -1,0 +1,172 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/800521043",
+   "used": "nearest untagged building, about 22 x 21 m: only the size of the station is taken, the plan is modest typical Hejaz-line stone station"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Ottoman-era limestone station with a clay-tile hip roof, arched windows, a short platform canopy and two rail tracks"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "rotDeg": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8c9a8",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#f0ebe0",
+    "bay": 3.6,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c5764f",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -12.5,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b9a98c",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "plinth": 0.4,
+    "bay": 2.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c5764f",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    5.5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 4,
+    "height": 3.4,
+    "deck_height": 0.9,
+    "roof_colour": "#8d867a",
+    "trim_colour": "#f0ebe0"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    13,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "tracks": 2,
+    "spacing": 4.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 0.9,
+    "bottom": 3.4,
+    "colour": "#2f4f6b",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.4,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#b9a98c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": 0,
+  "forecourt": "road",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-transit",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; plan is a typical Hejaz-line stone station, not the real building"
+ }
+}

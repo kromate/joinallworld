@@ -1,0 +1,647 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-way-168522856",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D9%85%D8%AA%D9%86%D8%B2%D9%87_%D8%A7%D9%84%D8%B3%D9%88%D9%8A%D8%AF%D9%8A_%D8%A8%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "JeedaGhazal",
+   "view": "street",
+   "file": "/tmp/places-evidence/riyadh/suwaidi.jpg",
+   "used": "small cream-white Najdi-style pavilions with crenellated parapets and rectangular openings, dense date-palm groves, clipped hedges and shrubs, lawn, blue-tiled pool edge, black railing with white piers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/168522856",
+   "used": "park outline (440 x 370 m) fitted to 112 m as the lawn base"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "fit": 112
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "stadium/water-surface",
+   "at": [
+    -6,
+    8,
+    0.5
+   ],
+   "params": {
+    "width": 44,
+    "depth": 24,
+    "shape": "oval",
+    "colour": "#4f8fa6",
+    "bank": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-a",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    -16,
+    -20
+   ],
+   "z0": 0.5,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "cornice": true,
+    "parapet": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d2",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-b",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    16,
+    -10
+   ],
+   "z0": 0.5,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "cornice": true,
+    "parapet": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d2",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -10,
+    38,
+    0.5
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 7,
+    "rows": 2,
+    "dx": 13,
+    "dy": 10,
+    "stagger": 3.5,
+    "lod1Step": 6,
+    "lod2Step": 100,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 7,
+      "profile": [
+       [
+        0.4,
+        0.0,
+        "#6b5a40"
+       ],
+       [
+        0.4,
+        6.4,
+        "#6b5a40"
+       ],
+       [
+        0.5,
+        6.4,
+        "#4f7f38"
+       ],
+       [
+        1.8,
+        8.16
+       ],
+       [
+        3.4,
+        8.48
+       ],
+       [
+        4.4,
+        7.36
+       ],
+       [
+        4.0,
+        6.08
+       ],
+       [
+        2.2,
+        6.4
+       ],
+       [
+        0.2,
+        6.64
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -54,
+    6,
+    0.5
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 1,
+    "rows": 4,
+    "dx": 7,
+    "dy": 12,
+    "stagger": 3.5,
+    "lod1Step": 6,
+    "lod2Step": 100,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 7,
+      "profile": [
+       [
+        0.4,
+        0.0,
+        "#6b5a40"
+       ],
+       [
+        0.4,
+        6.4,
+        "#6b5a40"
+       ],
+       [
+        0.5,
+        6.4,
+        "#4f7f38"
+       ],
+       [
+        1.8,
+        8.16
+       ],
+       [
+        3.4,
+        8.48
+       ],
+       [
+        4.4,
+        7.36
+       ],
+       [
+        4.0,
+        6.08
+       ],
+       [
+        2.2,
+        6.4
+       ],
+       [
+        0.2,
+        6.64
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    54,
+    8,
+    0.5
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 1,
+    "rows": 3,
+    "dx": 7,
+    "dy": 12,
+    "stagger": 3.5,
+    "lod1Step": 6,
+    "lod2Step": 100,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 7,
+      "profile": [
+       [
+        0.4,
+        0.0,
+        "#6b5a40"
+       ],
+       [
+        0.4,
+        6.4,
+        "#6b5a40"
+       ],
+       [
+        0.5,
+        6.4,
+        "#4f7f38"
+       ],
+       [
+        1.8,
+        8.16
+       ],
+       [
+        3.4,
+        8.48
+       ],
+       [
+        4.4,
+        7.36
+       ],
+       [
+        4.0,
+        6.08
+       ],
+       [
+        2.2,
+        6.4
+       ],
+       [
+        0.2,
+        6.64
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -24,
+    -44,
+    0.5
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 1,
+    "dx": 16,
+    "dy": 6,
+    "stagger": 4.0,
+    "lod1Step": 6,
+    "lod2Step": 100,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 7,
+      "profile": [
+       [
+        0.4,
+        0.0,
+        "#6b5a40"
+       ],
+       [
+        0.4,
+        6.4,
+        "#6b5a40"
+       ],
+       [
+        0.5,
+        6.4,
+        "#4f7f38"
+       ],
+       [
+        1.8,
+        8.16
+       ],
+       [
+        3.4,
+        8.48
+       ],
+       [
+        4.4,
+        7.36
+       ],
+       [
+        4.0,
+        6.08
+       ],
+       [
+        2.2,
+        6.4
+       ],
+       [
+        0.2,
+        6.64
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     -34,
+     0.5
+    ],
+    "end": [
+     34,
+     -14,
+     0.5
+    ],
+    "count": 6,
+    "lod1Step": 3,
+    "lod2Step": 12,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "clipped",
+      "height": 4,
+      "count": 1,
+      "colour": "#4f7f36"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -30,
+    0.5
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     0,
+     0
+    ],
+    "end": [
+     44,
+     0,
+     0
+    ],
+    "count": 15,
+    "lod1Step": 3,
+    "of": {
+     "type": "market-open/hedge",
+     "params": {
+      "length": 6,
+      "height": 1.6,
+      "depth": 1.6,
+      "colour": "#4f7d3b"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    18,
+    0.5
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     0,
+     0
+    ],
+    "end": [
+     44,
+     0,
+     0
+    ],
+    "count": 10,
+    "lod1Step": 3,
+    "of": {
+     "type": "market-open/hedge",
+     "params": {
+      "length": 6,
+      "height": 1.6,
+      "depth": 1.6,
+      "colour": "#4f7d3b"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -6,
+    8,
+    0.8
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.4
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 22.4,
+     "radiusY": 12.4,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "closed": true,
+    "colour": "#3f8fb0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.08,
+    "points": [
+     [
+      24,
+      -2,
+      1.6
+     ],
+     [
+      46,
+      -2,
+      1.6
+     ]
+    ],
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    8,
+    0.5
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     24,
+     0,
+     0
+    ],
+    "end": [
+     46,
+     0,
+     0
+    ],
+    "count": 6,
+    "lod1Step": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 1.8,
+      "colour": "#f1ede2"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    30,
+    0.5
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 4,
+    "spread": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   125,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "palm crowns are simple revolved caps (not feathery fronds); pavilion crenellations and railing small; lake shape approximate; real grove is much denser"
+ }
+}

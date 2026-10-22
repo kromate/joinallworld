@@ -1,0 +1,723 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-airport-dushanbe-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dushanbe_international_airport_2026.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Zinhor Nasri",
+   "view": "side",
+   "file": "/tmp/places-evidence/dushanbe/airport1.jpg",
+   "used": "apron-side elevation of the terminal: sand-beige stone two-storey block with a tall projecting colonnade, arched windows, small grey domes on the end pavilions, white welcome board on the roof, lattice control tower behind to the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dushanbe_airport_162_(25856607900).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Juris Paiders",
+   "view": "front",
+   "file": "/tmp/places-evidence/dushanbe/airport2.jpg",
+   "used": "setting only: dark glazed older block with a small hip-roofed cab, conifers, concrete apron; not used for the terminal massing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/994109575",
+   "used": "overall size (117 x 60 m, 3 levels)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     56,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b48c5a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-w",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    -34,
+    -3
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a98354",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 5,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-e",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    34,
+    -3
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a98354",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 5,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-block",
+   "footprint": {
+    "rect": [
+     50,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8f6d45",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "count": 14,
+    "height": 10.5,
+    "radius": 0.8,
+    "kind": "round",
+    "beamHeight": 1.4,
+    "roofDepth": 3.5,
+    "colour": "#d8bf92",
+    "roofColour": "#b48c5a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 54,
+    "rise": 0.9,
+    "run": 2.6,
+    "count": 4,
+    "colour": "#cdbba3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -34,
+    -3,
+    12
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#6f7b82",
+    "profile": [
+     [
+      3.22,
+      0.0,
+      "#a98354"
+     ],
+     [
+      3.22,
+      1.449
+     ],
+     [
+      3.22,
+      1.449,
+      "#7f8f9a"
+     ],
+     [
+      3.119,
+      1.851
+     ],
+     [
+      2.835,
+      2.254
+     ],
+     [
+      2.362,
+      2.576
+     ],
+     [
+      1.701,
+      2.898
+     ],
+     [
+      0.851,
+      3.099
+     ],
+     [
+      0.0,
+      3.18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    34,
+    -3,
+    12
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#6f7b82",
+    "profile": [
+     [
+      3.22,
+      0.0,
+      "#a98354"
+     ],
+     [
+      3.22,
+      1.449
+     ],
+     [
+      3.22,
+      1.449,
+      "#7f8f9a"
+     ],
+     [
+      3.119,
+      1.851
+     ],
+     [
+      2.835,
+      2.254
+     ],
+     [
+      2.362,
+      2.576
+     ],
+     [
+      1.701,
+      2.898
+     ],
+     [
+      0.851,
+      3.099
+     ],
+     [
+      0.0,
+      3.18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -12,
+    12
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 0.4,
+    "colour": "#f2f4f0",
+    "frameColour": "#5b5750",
+    "posts": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    44,
+    30,
+    0
+   ],
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "colour": "#7b7f82",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 5.6
+     },
+     {
+      "z": 14,
+      "circle": 2.4
+     },
+     {
+      "z": 29,
+      "circle": 4
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    44,
+    30,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 0.01,
+    "count": 6,
+    "startDeg": 0,
+    "endDeg": 300,
+    "facing": "outward",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.28,
+      "colour": "#7b7f82",
+      "points": [
+       [
+        5.0,
+        0,
+        0
+       ],
+       [
+        2.6,
+        0,
+        14
+       ],
+       [
+        4.2,
+        0,
+        29
+       ]
+      ],
+      "curve": true
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    44,
+    30,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 0.01,
+    "count": 6,
+    "startDeg": 22.5,
+    "endDeg": 330,
+    "facing": "outward",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.22,
+      "colour": "#8a8e90",
+      "points": [
+       [
+        5.0,
+        0,
+        0
+       ],
+       [
+        3.0,
+        0,
+        8
+       ],
+       [
+        2.6,
+        0,
+        14
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    44,
+    30,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 0.01,
+    "count": 6,
+    "startDeg": -22.5,
+    "endDeg": 270,
+    "facing": "outward",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "radius": 0.22,
+      "colour": "#8a8e90",
+      "points": [
+       [
+        2.6,
+        0,
+        14
+       ],
+       [
+        3.2,
+        0,
+        21
+       ],
+       [
+        4.2,
+        0,
+        29
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    44,
+    30,
+    4
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "closed": true,
+    "colour": "#7b7f82",
+    "arc": {
+     "plane": "xy",
+     "centre": [
+      0,
+      0
+     ],
+     "radius": 4.1,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    44,
+    30,
+    10
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "closed": true,
+    "colour": "#7b7f82",
+    "arc": {
+     "plane": "xy",
+     "centre": [
+      0,
+      0
+     ],
+     "radius": 3.0,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    44,
+    30,
+    14
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "closed": true,
+    "colour": "#7b7f82",
+    "arc": {
+     "plane": "xy",
+     "centre": [
+      0,
+      0
+     ],
+     "radius": 2.6,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    44,
+    30,
+    20
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "closed": true,
+    "colour": "#7b7f82",
+    "arc": {
+     "plane": "xy",
+     "centre": [
+      0,
+      0
+     ],
+     "radius": 3.1,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    44,
+    30,
+    26
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "closed": true,
+    "colour": "#7b7f82",
+    "arc": {
+     "plane": "xy",
+     "centre": [
+      0,
+      0
+     ],
+     "radius": 3.8,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    44,
+    30,
+    29
+   ],
+   "params": {
+    "colour": "#3f5a63",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 4.0,
+      "colour": "#bfc3c3"
+     },
+     {
+      "z": 0.8,
+      "circle": 5.6,
+      "colour": "#bfc3c3"
+     },
+     {
+      "z": 1.4,
+      "circle": 6.2,
+      "colour": "#a9adae"
+     },
+     {
+      "z": 2.0,
+      "circle": 6.2,
+      "colour": "#3f5a63"
+     },
+     {
+      "z": 5.2,
+      "circle": 6.2,
+      "colour": "#3f5a63"
+     },
+     {
+      "z": 5.8,
+      "circle": 6.2,
+      "colour": "#bfc3c3"
+     },
+     {
+      "z": 6.5,
+      "circle": 6.4,
+      "colour": "#7b7f82"
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     75,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     82,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower moved nearer behind-right as a hourglass lattice with wide glazed cab; full-width paired colonnade, ochre-brown stone, smaller grey domes, small roof sign, flag removed. Ornate stone carving, tilted welcome board, arched bays behind columns, aircraft and apron markings not modelled."
+ }
+}

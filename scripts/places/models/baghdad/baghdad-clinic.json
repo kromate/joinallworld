@@ -1,0 +1,166 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/860005941",
+   "used": "real 71 x 37 m rotated outline (name match); no photo of the building found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd2bc",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#b7ad98",
+    "bay": 6.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ab97",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant",
+   "at": [
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     8
+    ],
+    "z0": 17,
+    "height": 3.2,
+    "colour": "#c8bea8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ambulance-canopy",
+   "at": [
+    9,
+    -27
+   ],
+   "rotDeg": 21.5,
+   "params": {
+    "rect": [
+     14,
+     7
+    ],
+    "z0": 4.2,
+    "height": 0.5,
+    "colour": "#efece4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-post-a",
+   "at": [
+    3,
+    -29.5
+   ],
+   "rotDeg": 21.5,
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#b7ad98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-post-b",
+   "at": [
+    15,
+    -24.5
+   ],
+   "rotDeg": 21.5,
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#b7ad98"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -50
+   ],
+   "rotDeg": 21.5,
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#c9c0a8",
+    "pillarEvery": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -52
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this hospital found; massing from the real outline, finish and storeys are typical for the city"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-clinic"
+}

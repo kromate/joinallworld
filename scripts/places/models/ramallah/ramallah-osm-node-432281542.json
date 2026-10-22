@@ -1,0 +1,204 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-node-432281542",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1490431993",
+   "used": "nearest building at 2.4 m, 6-point outline 37x16 m, bearing 100 deg: teaching block plan"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Ramallah",
+   "used": "stone-clad educational buildings, 1990s; four storeys, flat roof, roof tanks, flagpoles, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "fit": 42
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d4b4",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 3.6,
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#a69a86"
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b6",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-porch",
+   "footprint": {
+    "rect": [
+     7,
+     3.4
+    ]
+   },
+   "at": [
+    -2,
+    -10.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efe7d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a69a86",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "signboard",
+   "footprint": {
+    "rect": [
+     6,
+     0.6
+    ]
+   },
+   "at": [
+    -2,
+    -12.4
+   ],
+   "z0": 4.8,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#1f4e79",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f4e79"
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "block",
+   "at": [
+    -10,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "block",
+   "at": [
+    -6.5,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "block",
+   "at": [
+    -3,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1f4e79",
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   85,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo: real outline and 4 storeys; window rhythm, porch and tanks are typical details."
+ }
+}

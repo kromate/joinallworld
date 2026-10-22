@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-osm-way-994902555",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/261280737",
+   "used": "real Bellevue Medical Center outline (98 x 71 m, stepped and notched plan, name match); no exterior photo found on Commons (only interior images)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dbd1b6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.8,
+    "bay": 8,
+    "glassColour": "#6f8590",
+    "bands": "#efe9d9",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-bay",
+   "at": [
+    -2,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     3
+    ],
+    "height": 18,
+    "colour": "#7d8f9a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#5f7682",
+    "storeys": 3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -39,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 8,
+    "height": 4.8,
+    "columns": 4,
+    "colour": "#efe9d9"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -2,
+    -33,
+    5.4
+   ],
+   "params": {
+    "size": 2.2
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    30,
+    20,
+    24.8
+   ],
+   "params": {
+    "radius": 6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -24,
+    -38,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -44,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 5,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 4,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo: stone facing, glazed entrance bay and bay width are typed from the brief; plan outline is the real OSM footprint"
+ }
+}

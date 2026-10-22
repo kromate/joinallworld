@@ -1,0 +1,259 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Drom_HaSharon_regional_council_offices01.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Rickjpelleg",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/council.jpg",
+   "used": "peach render walls, terracotta-red hipped roofs, projecting gabled-hip entrance bay with a row of windows and balcony rails, lawn with stepped stairs and railings, flagpoles with flags, trees, rows of small punched windows. Note: photo shows the venue as named (Drom HaSharon Regional Council, OSM way/494477045), which sits in the Tel Aviv district brief; kept as photo evidence."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/494477045",
+   "used": "real footprint (50 m x 47 m, name match, amenity townhall): an L/T plan with a long wing toward the front"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.97,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     16.5,
+     33
+    ]
+   },
+   "at": [
+    -11.6,
+    -12
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ebcba0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4543a",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     43,
+     15.5
+    ]
+   },
+   "at": [
+    8.5,
+    11.2
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ebcba0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4543a",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     9,
+     10.5
+    ]
+   },
+   "at": [
+    1,
+    -1.5
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ebcba0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 2.4,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4543a",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    -11.6,
+    -31
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efd3a6",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a94a33",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -11.5,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.35,
+    "run": 1.5,
+    "count": 3,
+    "colour": "#e4dfd3"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -26,
+    -31,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#f4f6fa",
+    "count": 3,
+    "spacing": 2.6,
+    "colours": [
+     "#f4f6fa",
+     "#f4f6fa",
+     "#2f6aa3"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18.5,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "kind": "fence",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -4.5,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "kind": "fence",
+    "colour": "#1c1c1c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     -34
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     -36
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -24
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Entrance bay is now a projecting two-storey gabled bay but has no balcony rail or glazed ground floor; hillside slope is flat with only 3 steps and short black railings; wing/main plan from OSM rectangles so ridge lines differ."
+ }
+}

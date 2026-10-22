@@ -1,0 +1,804 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-way-217728797",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_Textile_Academy_(Thimphu)a.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Christopher J. Fynn",
+   "view": "front",
+   "file": "/tmp/places-evidence/thimphu/217728797_1.jpg",
+   "used": "three white blocks of different heights stepping down to the right, tall left block with two storeys of painted-timber balcony windows, big hipped roofs with yellow-edged brown eaves, black pillars with pagoda caps and a white post fence in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_Textile_Academy_(Thimphu)b.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Christopher J. Fynn",
+   "view": "front",
+   "file": "/tmp/places-evidence/thimphu/217728797_0.jpg",
+   "used": "glazed ground floor, glass-and-timber bays, roof overhang proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/217728797",
+   "used": "overall extent about 41 x 37 m (blocks hand-placed from the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 8,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     14,
+     15
+    ]
+   },
+   "at": [
+    -14,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f5ef",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a3828",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 4.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-wing",
+   "footprint": {
+    "rect": [
+     17,
+     12
+    ]
+   },
+   "at": [
+    2,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f5ef",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "plinth": 0.3,
+    "glassColour": "#4a6068",
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a3828",
+    "material": "metal-sheet",
+    "rise": 0.9,
+    "overhang": 4.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    16,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f5ef",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "right": "none",
+     "left": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5a3828",
+    "material": "metal-sheet",
+    "rise": 1.1,
+    "overhang": 4.0
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fringe-left",
+   "at": [
+    -14,
+    2,
+    11.8
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -10.752,
+      -10.799999999999999,
+      0
+     ],
+     [
+      10.752,
+      -10.799999999999999,
+      0
+     ],
+     [
+      10.752,
+      10.799999999999999,
+      0
+     ],
+     [
+      -10.752,
+      10.799999999999999,
+      0
+     ]
+    ],
+    "closed": true,
+    "colour": "#e0b030"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fringe-wing",
+   "at": [
+    2,
+    5,
+    7.1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -12.0,
+      -9.75,
+      0
+     ],
+     [
+      12.0,
+      -9.75,
+      0
+     ],
+     [
+      12.0,
+      9.75,
+      0
+     ],
+     [
+      -12.0,
+      9.75,
+      0
+     ]
+    ],
+    "closed": true,
+    "colour": "#e0b030"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fringe-right",
+   "at": [
+    16,
+    4,
+    9.1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -9.360000000000001,
+      -10.319999999999999,
+      0
+     ],
+     [
+      9.360000000000001,
+      -10.319999999999999,
+      0
+     ],
+     [
+      9.360000000000001,
+      10.319999999999999,
+      0
+     ],
+     [
+      -9.360000000000001,
+      10.319999999999999,
+      0
+     ]
+    ],
+    "closed": true,
+    "colour": "#e0b030"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.2,
+    3.1
+   ],
+   "params": {
+    "rect": [
+     10.6,
+     1.3
+    ],
+    "height": 0.45,
+    "colour": "#4a2418"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.4,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#34424b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.9,
+    3.9
+   ],
+   "params": {
+    "rect": [
+     10.4,
+     0.18
+    ],
+    "height": 0.7,
+    "colour": "#6a3524"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.9,
+    5.800000000000001
+   ],
+   "params": {
+    "rect": [
+     10.6,
+     0.5
+    ],
+    "height": 0.4,
+    "colour": "#d9a93a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -18.5,
+     -5.75,
+     3.6
+    ],
+    "end": [
+     -9.5,
+     -5.75,
+     3.6
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.3,
+        0.3
+       ],
+       "height": 2.2,
+       "colour": "#5a2a1e"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.2,
+    6.1
+   ],
+   "params": {
+    "rect": [
+     10.6,
+     1.3
+    ],
+    "height": 0.45,
+    "colour": "#4a2418"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.4,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#34424b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.9,
+    6.8999999999999995
+   ],
+   "params": {
+    "rect": [
+     10.4,
+     0.18
+    ],
+    "height": 0.7,
+    "colour": "#6a3524"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.9,
+    8.8
+   ],
+   "params": {
+    "rect": [
+     10.6,
+     0.5
+    ],
+    "height": 0.4,
+    "colour": "#d9a93a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -18.5,
+     -5.75,
+     6.6
+    ],
+    "end": [
+     -9.5,
+     -5.75,
+     6.6
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.3,
+        0.3
+       ],
+       "height": 2.2,
+       "colour": "#5a2a1e"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.6,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.4
+    ],
+    "height": 2.8,
+    "colour": "#5a4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -5.5,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     10.5,
+     0.4
+    ],
+    "height": 2.6,
+    "colour": "#6b3f28"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -3.6,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.0
+    ],
+    "height": 0.4,
+    "colour": "#4a2418"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -3.4,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.4
+    ],
+    "height": 2.2,
+    "colour": "#34424b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -3.8,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.2
+    ],
+    "height": 0.6,
+    "colour": "#6a3524"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -3.6,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "height": 0.4,
+    "colour": "#d9a93a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "gate-pillars",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -2,
+     -9
+    ],
+    "end": [
+     22,
+     -9
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        2.6,
+        2.6
+       ],
+       "height": 0.6,
+       "colour": "#f2efe6"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.6
+      ],
+      "params": {
+       "rect": [
+        2.2,
+        2.2
+       ],
+       "height": 0.9,
+       "colour": "#f7f5ef"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       1.5
+      ],
+      "params": {
+       "rect": [
+        1.7,
+        1.7
+       ],
+       "height": 3.0,
+       "colour": "#1a1a1a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       4.5
+      ],
+      "params": {
+       "rect": [
+        2.3,
+        2.3
+       ],
+       "height": 0.5,
+       "colour": "#4a2418"
+      }
+     },
+     {
+      "type": "pavilion",
+      "at": [
+       0,
+       0,
+       5.0
+      ],
+      "params": {
+       "width": 5.0,
+       "depth": 5.0,
+       "height": 0.2,
+       "roof": "hip",
+       "rise": 1.4,
+       "posts": 0,
+       "colour": "#6a3a30",
+       "cap_colour": "#7a3f33"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "boundary",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -14
+     ],
+     [
+      28,
+      -14
+     ]
+    ],
+    "height": 1.0,
+    "thickness": 0.22,
+    "kind": "railing",
+    "pillarEvery": 2.5,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     13.5,
+     -3.2,
+     6.6
+    ],
+    "end": [
+     18.5,
+     -3.2,
+     6.6
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.3,
+        0.3
+       ],
+       "height": 1.8,
+       "colour": "#6a3524"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     18
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "timber balcony ornament still flat coloured bands; gold fringe is a floating rectangular ring slightly above the eaves; centre-wing glazing is a plain ribbon; plan hand-placed, not OSM outline"
+ }
+}

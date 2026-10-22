@@ -1,0 +1,531 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KhEC.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Khwopa Engineering College, Nepal",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kathmandu/khec.jpg",
+   "used": "red-brick four-storey blocks with hipped tan-brown tile roofs and flat roofs, lawn courtyard with hedges, tree-lined paths, dense town behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1152220224",
+   "used": "main block footprint (48 x 44 m, nearest match 16 m, polygon agrees with the large block)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 32,
+  "fovDeg": 55,
+  "aspect": 1.87,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ground",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     96,
+     96
+    ],
+    "height": 0.2,
+    "colour": "#b7b1a2",
+    "windows": "none",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    8,
+    -32,
+    0.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     40,
+     34
+    ],
+    "height": 0.15,
+    "colour": "#4f9a34",
+    "windows": "none",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-n",
+   "at": [
+    8,
+    -15.6,
+    0.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     38,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#2f6a2a",
+    "windows": "none",
+    "material": "painted-render"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hedge-s",
+   "at": [
+    8,
+    -48.4,
+    0.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     38,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#2f6a2a",
+    "windows": "none",
+    "material": "painted-render"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "path-w",
+   "at": [
+    -14,
+    -32,
+    0.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     3,
+     40
+    ],
+    "height": 0.08,
+    "colour": "#c7b58f",
+    "windows": "none",
+    "material": "painted-render"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "path-s",
+   "at": [
+    6,
+    -52,
+    0.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     44,
+     3
+    ],
+    "height": 0.08,
+    "colour": "#c7b58f",
+    "windows": "none",
+    "material": "painted-render"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9573f",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 6.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a88358",
+    "pitch": 32,
+    "overhang": 2.2,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     16,
+     46
+    ]
+   },
+   "at": [
+    -18,
+    -39
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9573f",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "front": "plain"
+    },
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a88358",
+    "pitch": 32,
+    "overhang": 2.2,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-flat-wing",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    37,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a45240",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 5.0,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "floors"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b3a4",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     9,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -10.2
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9bfa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b3a4",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps",
+   "footprint": {
+    "rect": [
+     9,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    -13.6
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b6ad9c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b6ad9c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-rail",
+   "footprint": {
+    "rect": [
+     21,
+     15
+    ]
+   },
+   "at": [
+    37,
+    0
+   ],
+   "z0": 14,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a7a68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a68"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    8,
+    -32,
+    0.35
+   ],
+   "params": {
+    "radius": 2.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "count": 5,
+    "spread": 2,
+    "line": 28
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -19,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 4,
+    "line": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 6,
+    "count": 3,
+    "spread": 2,
+    "line": 16
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "town-a",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    26
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b86a50",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "bay": 3.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9488",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "town-b",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    2,
+    30
+   ],
+   "height": 15,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9b9a5",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "bay": 3.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9488",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "town-c",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    34,
+    28
+   ],
+   "height": 11,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a85a44",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "bay": 3.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9488",
+    "parapet": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-community-workshop",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Now an L of two 4-storey hip-roofed blocks plus a flat-roof terrace wing, entrance porch with steps, courtyard lawn with hedges, paths, conifers and low town blocks behind; windows sparse (budget), roofs plain concrete-textured not tile, no dormer gables, grass plate sits on a paved pad, no tree-lined path rows."
+ }
+}

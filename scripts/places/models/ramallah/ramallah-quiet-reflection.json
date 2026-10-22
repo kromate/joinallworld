@@ -1,0 +1,727 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Church_of_St_Cleophas.jpg",
+   "licence": "Public domain",
+   "author": "Library of Congress",
+   "view": "front",
+   "file": "/tmp/places-evidence/ramallah/ramallah-quiet-reflection-0.jpg",
+   "used": "neo-Romanesque gabled facade with blind arcading under the gable, round-arched window, arched portal with its own small gable and stepped approach, lower aisles with sloped roofs and round-arched windows, ashlar stone"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Qubeibe_Franciscan01_2012-03-17.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "KlausFoehl",
+   "view": "street",
+   "file": "/tmp/places-evidence/ramallah/ramallah-quiet-reflection-1.jpg",
+   "used": "adjoining three-storey convent block in warm limestone, iron balconies, rubble boundary wall with iron railing, roof parapet railing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Qubeibe_Franciscan02_2012-03-17.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "KlausFoehl",
+   "view": "side",
+   "file": "/tmp/places-evidence/ramallah/ramallah-quiet-reflection-2.jpg",
+   "used": "long plain convent flank, flat roofs, boundary wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1177037502",
+   "used": "church about 36 by 20 m, convent and wing beside it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 0.88,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#8d7d6c",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#776a5b"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 46,
+    "colour": "#6e6458",
+    "material": "slate",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-w",
+   "footprint": {
+    "rect": [
+     4.2,
+     28
+    ]
+   },
+   "at": [
+    -8.6,
+    -1
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#8d7d6c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "bay": 5,
+    "plinth": 0.5,
+    "faces": {
+     "front": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "high": "right",
+    "rise": 2.2,
+    "colour": "#7a6f62",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-e",
+   "footprint": {
+    "rect": [
+     4.2,
+     28
+    ]
+   },
+   "at": [
+    8.6,
+    -1
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#8d7d6c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "bay": 5,
+    "plinth": 0.5,
+    "faces": {
+     "front": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "high": "left",
+    "rise": 2.2,
+    "colour": "#7a6f62",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#938371",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 25,
+    "colour": "#6e6458"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "convent",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    30,
+    20
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#a8977e",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.09,
+    "bay": 3.6,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bba883",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.6,
+    "thickness": 0.5,
+    "colour": "#9a8c78",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -19,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 4,
+    "count": 1,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -19.6,
+    0
+   ],
+   "params": {
+    "width": 7.5,
+    "rise": 0.2,
+    "run": 0.55,
+    "count": 5,
+    "colour": "#b3a58e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-block",
+   "at": [
+    0,
+    -16.4,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.4,
+      0
+     ],
+     [
+      3.4,
+      0
+     ],
+     [
+      3.4,
+      1.5
+     ],
+     [
+      -3.4,
+      1.5
+     ]
+    ],
+    "height": 7.4,
+    "colour": "#85766a",
+    "plinth": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-gable",
+   "at": [
+    0,
+    -16.4,
+    7.4
+   ],
+   "params": {
+    "points": [
+     [
+      -3.4,
+      0
+     ],
+     [
+      3.4,
+      0
+     ],
+     [
+      3.4,
+      1.5
+     ],
+     [
+      -3.4,
+      1.5
+     ]
+    ],
+    "height": 2.4,
+    "colour": "#7a6c60",
+    "topScale": [
+     0.04,
+     1.0
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "portal-arch",
+   "at": [
+    0,
+    -16.5,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.7,
+       0.4
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       2.7,
+       0.4
+      ]
+     },
+     {
+      "z": 3.875,
+      "rect": [
+       2.338,
+       0.4
+      ]
+     },
+     {
+      "z": 4.369,
+      "rect": [
+       1.35,
+       0.4
+      ]
+     },
+     {
+      "z": 4.537,
+      "rect": [
+       0.376,
+       0.4
+      ]
+     }
+    ],
+    "colour": "#241c15"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-window",
+   "at": [
+    0,
+    -15.3,
+    11.0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.3,
+       0.3
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       1.3,
+       0.3
+      ]
+     },
+     {
+      "z": 3.725,
+      "rect": [
+       1.126,
+       0.3
+      ]
+     },
+     {
+      "z": 3.963,
+      "rect": [
+       0.65,
+       0.3
+      ]
+     },
+     {
+      "z": 4.044,
+      "rect": [
+       0.181,
+       0.3
+      ]
+     }
+    ],
+    "colour": "#1c1814"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aisle-win-w",
+   "at": [
+    -8.6,
+    -14.8,
+    2.2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       0.3
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       1.0,
+       0.3
+      ]
+     },
+     {
+      "z": 2.05,
+      "rect": [
+       0.866,
+       0.3
+      ]
+     },
+     {
+      "z": 2.233,
+      "rect": [
+       0.5,
+       0.3
+      ]
+     },
+     {
+      "z": 2.295,
+      "rect": [
+       0.139,
+       0.3
+      ]
+     }
+    ],
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "aisle-win-e",
+   "at": [
+    8.6,
+    -14.8,
+    2.2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       0.3
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       1.0,
+       0.3
+      ]
+     },
+     {
+      "z": 2.05,
+      "rect": [
+       0.866,
+       0.3
+      ]
+     },
+     {
+      "z": 2.233,
+      "rect": [
+       0.5,
+       0.3
+      ]
+     },
+     {
+      "z": 2.295,
+      "rect": [
+       0.139,
+       0.3
+      ]
+     }
+    ],
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    -15.1,
+    24.5309470396387
+   ],
+   "params": {
+    "points": [
+     [
+      -0.18,
+      0
+     ],
+     [
+      0.18,
+      0
+     ],
+     [
+      0.18,
+      0.35
+     ],
+     [
+      -0.18,
+      0.35
+     ]
+    ],
+    "height": 2.4,
+    "colour": "#6f6355"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    -15.1,
+    26.0309470396387
+   ],
+   "params": {
+    "points": [
+     [
+      -0.7,
+      0
+     ],
+     [
+      0.7,
+      0
+     ],
+     [
+      0.7,
+      0.35
+     ],
+     [
+      -0.7,
+      0.35
+     ]
+    ],
+    "height": 0.36,
+    "colour": "#6f6355"
+   }
+  },
+  {
+   "type": "array",
+   "id": "corbel-l",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.56,
+         0.25
+        ]
+       },
+       {
+        "z": 0.3,
+        "rect": [
+         0.56,
+         0.25
+        ]
+       },
+       {
+        "z": 0.461,
+        "rect": [
+         0.459,
+         0.25
+        ]
+       },
+       {
+        "z": 0.563,
+        "rect": [
+         0.192,
+         0.25
+        ]
+       }
+      ],
+      "colour": "#5f5348"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -5.2,
+     -15.3,
+     18.05
+    ],
+    "end": [
+     -0.8,
+     -15.3,
+     22.6
+    ]
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "corbel-r",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.56,
+         0.25
+        ]
+       },
+       {
+        "z": 0.3,
+        "rect": [
+         0.56,
+         0.25
+        ]
+       },
+       {
+        "z": 0.461,
+        "rect": [
+         0.459,
+         0.25
+        ]
+       },
+       {
+        "z": 0.563,
+        "rect": [
+         0.192,
+         0.25
+        ]
+       }
+      ],
+      "colour": "#5f5348"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     0.8,
+     -15.3,
+     22.6
+    ],
+    "end": [
+     5.2,
+     -15.3,
+     18.05
+    ]
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round-arched portal/windows, steep 46deg gable on a taller nave, darker ashlar and stone cross now match; corbel arcading only a few tiny arches, aisles low and mostly hidden, convent plain but no iron balconies, no portal columns/stepped surround, flat grey ground."
+ }
+}

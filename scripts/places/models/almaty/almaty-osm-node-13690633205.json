@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-osm-node-13690633205",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5.5,
+    "height": 3.2,
+    "roof": "gable",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#8a7358",
+    "cap_colour": "#6f5a43",
+    "floor_colour": "#a79d8d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.9
+    ],
+    "height": 0.8,
+    "colour": "#6f5a43"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -13,
+    0.0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -1.5
+     ],
+     [
+      9,
+      -1.0
+     ],
+     [
+      10,
+      1.5
+     ],
+     [
+      -8,
+      1.2
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#a79d8d"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#6f5a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "count": 14,
+    "spread": 50,
+    "colour": "#2f5a3a"
+   },
+   "at": [
+    -20,
+    12,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence; shelter is a typed guess."
+ }
+}

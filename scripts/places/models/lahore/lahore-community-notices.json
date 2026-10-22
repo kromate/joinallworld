@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1530891047",
+   "used": "real curved outline of the PCB headquarters (about 102 x 22 m), height 20 m"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gaddafi_stadium_farrah_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Farrah Zakir",
+   "view": "street",
+   "file": "/tmp/places-evidence/lahore/pcb1.jpg",
+   "used": "adjacent Gaddafi Stadium / PCB brick entrance front only for brick colour, slit tower, gold-yellow scalloped roof caps; not a photo of the HQ block itself"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hq",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#80432f",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#d7d0c1",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69e",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower",
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 24,
+    "colour": "#7a3c2a",
+    "windows": "none"
+   },
+   "at": [
+    -30,
+    -14,
+    0
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 5,
+    "height": 4,
+    "colour": "#6f8795",
+    "edgeColour": "#d7d0c1",
+    "columns": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Photo shows the adjacent stadium brick front, not the HQ block; HQ glazing and exact facade unseen; ribbon windows and bands are typed from the brief; no stadium stands beside it."
+ }
+}

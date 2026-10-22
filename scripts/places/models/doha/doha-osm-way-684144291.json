@@ -1,0 +1,112 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-way-684144291",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/9491598",
+   "used": "real courtyard campus outline 155 x 148 m, height 20 m (4 storeys)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Education City courtyard block, sand and terracotta tones, bold square openings; Commons only has interior shots (atrium with copper soffit), no exterior photo, so exterior colours are from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b48a",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "windowShape": "rect",
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 10,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d6b48a",
+       "#b8643f"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8b48a",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "height": 0.1,
+    "colour": "#ece3cf"
+   },
+   "lod": [
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -80
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -70
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only interior photos exist: exterior colours from brief, windows omitted for budget, floor banding only"
+ }
+}

@@ -1,0 +1,724 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-way-762309552",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_14257_Raanana_Park_Amphitheater.JPG",
+   "licence": "CC BY 2.5",
+   "author": "PikiWiki Israel",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/762309552_3.jpg",
+   "used": "amphitheatre: fan of white folded-plate roof leaves on a white tubular steel arch, low white containers either side, red-brown paved stage, dark grey seat rows on a grassed slope, ochre wall, palms and floodlight poles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/762309552",
+   "used": "amphitheatre corner only, modelled at scene scale (park is 1027 x 317 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     76,
+     56
+    ],
+    "height": 0.12,
+    "colour": "#6c9a47",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     70,
+     22
+    ],
+    "height": 0.06,
+    "colour": "#a8715f",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     30,
+     16
+    ],
+    "height": 0.3,
+    "colour": "#b85a45",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     24,
+     8
+    ],
+    "end": [
+     -24,
+     8
+    ],
+    "rows": 14,
+    "rise": 0.55,
+    "run": 1.0,
+    "firstHeight": 0.3,
+    "under": "solid",
+    "slab": 0.3,
+    "seatColour": "#2f3638",
+    "concreteColour": "#6c9a47",
+    "underColour": "#6c9a47",
+    "blocks": 4
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -11.9,
+    -1,
+    4.0
+   ],
+   "params": {
+    "colour": "#ecebe5",
+    "topColour": "#f6f5f0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       13
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": -12.0,
+      "cy": -1.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1,
+    4.0
+   ],
+   "params": {
+    "radius": 0.14,
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      -17.3,
+      -3,
+      2.475
+     ],
+     [
+      -14,
+      -1,
+      5.385164807134504
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -8.5,
+    -1,
+    4.0
+   ],
+   "params": {
+    "colour": "#ecebe5",
+    "topColour": "#f6f5f0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       13
+      ]
+     },
+     {
+      "z": 6.994900398094202,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": -8.571428571428571,
+      "cy": -1.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1,
+    4.0
+   ],
+   "params": {
+    "radius": 0.14,
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      -12.357142857142858,
+      -3,
+      3.1477051791423913
+     ],
+     [
+      -14,
+      -1,
+      5.385164807134504
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -5.1,
+    -1,
+    4.0
+   ],
+   "params": {
+    "colour": "#ecebe5",
+    "topColour": "#f6f5f0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       13
+      ]
+     },
+     {
+      "z": 8.372052588872073,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": -5.142857142857142,
+      "cy": -1.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1,
+    4.0
+   ],
+   "params": {
+    "radius": 0.14,
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      -7.414285714285714,
+      -3,
+      3.767423664992433
+     ],
+     [
+      -10.114285714285714,
+      -1,
+      11.077058476409517
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -1.7,
+    -1,
+    4.0
+   ],
+   "params": {
+    "colour": "#ecebe5",
+    "topColour": "#f6f5f0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       13
+      ]
+     },
+     {
+      "z": 9.564392984242549,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": -1.7142857142857142,
+      "cy": -1.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1,
+    4.0
+   ],
+   "params": {
+    "radius": 0.14,
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      -2.4714285714285715,
+      -3,
+      4.303976842909147
+     ],
+     [
+      -3.371428571428571,
+      -1,
+      14.616205711050837
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.7,
+    -1,
+    4.0
+   ],
+   "params": {
+    "colour": "#ecebe5",
+    "topColour": "#f6f5f0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       13
+      ]
+     },
+     {
+      "z": 9.564392984242549,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": 1.7142857142857142,
+      "cy": -1.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1,
+    4.0
+   ],
+   "params": {
+    "radius": 0.14,
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      2.4714285714285715,
+      -3,
+      4.303976842909147
+     ],
+     [
+      3.371428571428571,
+      -1,
+      14.616205711050837
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    5.1,
+    -1,
+    4.0
+   ],
+   "params": {
+    "colour": "#ecebe5",
+    "topColour": "#f6f5f0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       13
+      ]
+     },
+     {
+      "z": 8.372052588872073,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": 5.142857142857142,
+      "cy": -1.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1,
+    4.0
+   ],
+   "params": {
+    "radius": 0.14,
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      7.414285714285714,
+      -3,
+      3.767423664992433
+     ],
+     [
+      10.114285714285714,
+      -1,
+      11.077058476409517
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8.5,
+    -1,
+    4.0
+   ],
+   "params": {
+    "colour": "#ecebe5",
+    "topColour": "#f6f5f0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       13
+      ]
+     },
+     {
+      "z": 6.994900398094202,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": 8.571428571428571,
+      "cy": -1.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1,
+    4.0
+   ],
+   "params": {
+    "radius": 0.14,
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      12.357142857142858,
+      -3,
+      3.1477051791423913
+     ],
+     [
+      14,
+      -1,
+      5.385164807134504
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    11.9,
+    -1,
+    4.0
+   ],
+   "params": {
+    "colour": "#ecebe5",
+    "topColour": "#f6f5f0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       13
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       2.4,
+       3.0
+      ],
+      "cx": 12.0,
+      "cy": -1.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1,
+    4.0
+   ],
+   "params": {
+    "radius": 0.14,
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      17.3,
+      -3,
+      2.475
+     ],
+     [
+      14,
+      -1,
+      5.385164807134504
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -1,
+    4.0
+   ],
+   "params": {
+    "radius": 0.45,
+    "arc": {
+     "plane": "xz",
+     "radius": 15,
+     "startDeg": 10,
+     "endDeg": 170
+    },
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -16,
+     -2,
+     0
+    ],
+    "end": [
+     16,
+     -2,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "height": 5.5,
+      "colour": "#f1f0ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "container-west",
+   "footprint": {
+    "rect": [
+     12,
+     5.5
+    ]
+   },
+   "at": [
+    -27,
+    -2
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f0efe9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6df",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "container-east",
+   "footprint": {
+    "rect": [
+     12,
+     5.5
+    ]
+   },
+   "at": [
+    27,
+    -2
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#ecebe4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d3",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-wall",
+   "footprint": {
+    "rect": [
+     26,
+     1.2
+    ]
+   },
+   "at": [
+    2,
+    -11
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b88f62",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b88f62"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "count": 1,
+    "spacing": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    33,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15,
+    "count": 1,
+    "spread": 1,
+    "line": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -33,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 6,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   76,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fan now 8 splayed plates on a white arch with a few braces, but plates are plain slabs rather than folded triangles, seat bank is hidden behind them, foreground is bare and the roof is shaped more upright than the real half-open fan."
+ }
+}

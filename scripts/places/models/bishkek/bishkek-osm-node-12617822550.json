@@ -1,0 +1,173 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-osm-node-12617822550",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "node-only OSM entry, no outline or photo: open sports field about 100 x 70 m on the western edge, low fence, floodlights, small pavilion, a few trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 25,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 92,
+    "width": 58,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.2,
+    "kind": "wall",
+    "points": [
+     [
+      -52,
+      -35
+     ],
+     [
+      52,
+      -35
+     ],
+     [
+      52,
+      35
+     ],
+     [
+      -52,
+      35
+     ],
+     [
+      -52,
+      -35
+     ]
+    ],
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    33,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -41
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d0bd",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8286",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -58,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -42,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no evidence beyond the brief; typical sports field"
+ }
+}

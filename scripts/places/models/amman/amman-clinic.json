@@ -1,0 +1,497 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arab_Medical_Center_-_Amman,_Jordan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Amcfacts",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/amman/amc1.jpg",
+   "used": "stepped massing: wide 3-storey podium with flat roofs and plant, 8-storey slab tower with recessed balcony grid in cream limestone and grey bands, sign band at the top, colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arab_Medical_Center_(AMC).jpg",
+   "licence": "CC0",
+   "author": "smoaket",
+   "view": "back",
+   "used": "rear elevation: long plain cream podium with ribbon of small windows, tower set back"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/276753156",
+   "used": "approximate scale only; podium redrawn as rectangles matching the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 22,
+  "fovDeg": 48,
+  "aspect": 1.45,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     56,
+     40
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e9dcba",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "glassColour": "#6a7078",
+    "bands": "#d6c7a2",
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 10,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dcc0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    -24
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e9dcba",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#3a3a3a",
+    "bands": "#d6c7a2",
+    "plinth": 0.4,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dcc0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     42,
+     22
+    ]
+   },
+   "at": [
+    2,
+    8
+   ],
+   "z0": 10,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6d8b6",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "glassColour": "#2a2a2a",
+    "bands": "#bdb298",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc3a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    2,
+    8
+   ],
+   "z0": 14,
+   "height": 21,
+   "storeys": 7,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e8dcbc",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#7a8088",
+    "bands": "#e2d4b0",
+    "plinth": 0,
+    "bay": 9,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ],
+     "colour": "#e8dcbc",
+     "railColour": "#e0d2ae",
+     "railKind": "solid",
+     "depth": 0.9,
+     "width": 5,
+     "every": 1,
+     "slab": 0.2,
+     "continuous": false
+    },
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dcc0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     45,
+     22.5
+    ]
+   },
+   "at": [
+    2,
+    8
+   ],
+   "z0": 35,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efe6cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dfc4",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    10
+   ],
+   "z0": 10,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfc3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb5a3"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    34,
+    -26,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "profile": [
+     [
+      0,
+      0,
+      "#e8e2cf"
+     ],
+     [
+      8,
+      0,
+      "#e8e2cf"
+     ],
+     [
+      8,
+      7,
+      "#f0ead8"
+     ],
+     [
+      8.4,
+      7,
+      "#d8d0bb"
+     ],
+     [
+      8.4,
+      7.5,
+      "#d8d0bb"
+     ],
+     [
+      0,
+      7.5,
+      "#d8d0bb"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#2e6b3e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 2.8,
+    "colour": "#e8e2d2",
+    "posts": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nb-w",
+   "footprint": {
+    "rect": [
+     18,
+     22
+    ]
+   },
+   "at": [
+    -48,
+    20
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e4d7b6",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "glassColour": "#4a4438",
+    "bands": "#cdbf9c",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e4d7b6",
+      "#d6c8a4"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4c6a4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nb-e",
+   "footprint": {
+    "rect": [
+     18,
+     20
+    ]
+   },
+   "at": [
+    50,
+    16
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e4d7b6",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "glassColour": "#4a4438",
+    "bands": "#cdbf9c",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e4d7b6",
+      "#d6c8a4"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4c6a4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nb-b",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    56
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e4d7b6",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "glassColour": "#4a4438",
+    "bands": "#cdbf9c",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e4d7b6",
+      "#d6c8a4"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4c6a4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    -26,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     11,
+     8
+    ],
+    "height": 0.5,
+    "colour": "#2f3d52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -20,
+    6
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "height": 0.6,
+    "colour": "#e6dcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -17.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 6,
+    "colour": "#d6c7a2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -34
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower widened to 7 storeys with cream balcony bands and light sign band, neighbours cut to 3 storeys; podium still simplified, canopy minimal, solar drum plain"
+ }
+}

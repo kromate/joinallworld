@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/6191699",
+   "used": "real irregular footprint (about 88 x 82 m, nearest-building match 0.6 m from the Wikidata point), 2 storeys assumed from brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dec8",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "bay": 6,
+    "glassColour": "#7a8f9b",
+    "bands": "#f1efe8",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.6,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#cfc8b6"
+   },
+   "note": "entrance steps, position approximate"
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.8,
+    "bottom": 0.4,
+    "colour": "#f1efe8",
+    "frameColour": "#7a8f9b"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#d8d3c4"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -60,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     55,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     60
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists for this institute; massing is the real OSM outline with assumed 2 storeys, flat roof and cream render; wings, entrance and signage positions are guesses."
+ }
+}

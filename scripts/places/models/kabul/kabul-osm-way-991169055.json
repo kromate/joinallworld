@@ -1,0 +1,442 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-osm-way-991169055",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kabul_City.jpg",
+   "licence": "CC BY 2.5",
+   "author": "PRTkand (assumed)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kabul/poly.jpg",
+   "used": "Soviet-era campus-style blocks: long parallel four-to-five-storey flat-roofed slabs, ribbon windows, pale cream and green-grey walls, a tall chimney stack, a lower red-brown block in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/991169055",
+   "used": "campus is 738 x 488 m, too large to model; only a representative cluster of the teaching blocks is composed, sized from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.66,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab-a",
+   "footprint": {
+    "rect": [
+     96,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    -24
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8dcae",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.5,
+    "bands": "#a9b49a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 20
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f877a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab-a-deck1",
+   "at": [
+    -4,
+    -31.9,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     90,
+     1.4
+    ],
+    "height": 0.8,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab-a-deck3",
+   "at": [
+    -4,
+    -31.9,
+    9.3
+   ],
+   "params": {
+    "rect": [
+     90,
+     1.4
+    ],
+    "height": 0.8,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "slab-b",
+   "footprint": {
+    "rect": [
+     92,
+     14
+    ]
+   },
+   "at": [
+    2,
+    -4
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d4b0",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.5,
+    "bands": "#a9b49a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 20
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f877a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab-b-deck1",
+   "at": [
+    2,
+    -11.9,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     86,
+     1.4
+    ],
+    "height": 0.8,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab-b-deck3",
+   "at": [
+    2,
+    -11.9,
+    9.3
+   ],
+   "params": {
+    "rect": [
+     86,
+     1.4
+    ],
+    "height": 0.8,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "slab-c",
+   "footprint": {
+    "rect": [
+     86,
+     14
+    ]
+   },
+   "at": [
+    -4,
+    16
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2d3a0",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.5,
+    "bands": "#a9b49a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 24
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f877a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab-c-deck1",
+   "at": [
+    -4,
+    8.1,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     80,
+     1.4
+    ],
+    "height": 0.8,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab-c-deck3",
+   "at": [
+    -4,
+    8.1,
+    9.3
+   ],
+   "params": {
+    "rect": [
+     80,
+     1.4
+    ],
+    "height": 0.8,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "slab-d",
+   "footprint": {
+    "rect": [
+     92,
+     14
+    ]
+   },
+   "at": [
+    2,
+    36
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd2b4",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.5,
+    "bands": "#a9b49a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 24
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f877a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab-d-deck1",
+   "at": [
+    2,
+    28.1,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     86,
+     1.4
+    ],
+    "height": 0.8,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab-d-deck3",
+   "at": [
+    2,
+    28.1,
+    9.3
+   ],
+   "params": {
+    "rect": [
+     86,
+     1.4
+    ],
+    "height": 0.8,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     72,
+     14
+    ]
+   },
+   "at": [
+    -14,
+    -52
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0685a",
+    "windows": "rect",
+    "windowRatio": 0.45,
+    "plinth": 0.5,
+    "bands": "#7a4238",
+    "faces": {
+     "front": "rect",
+     "left": "plain",
+     "right": "rect",
+     "back": "plain"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f877a",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "chimney",
+   "at": [
+    -44,
+    -46,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#a0614a",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.1,
+      0
+     ],
+     [
+      0.8,
+      20
+     ],
+     [
+      1.0,
+      20.5
+     ],
+     [
+      0,
+      20.5
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   130,
+   130
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -64
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -60
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "representative cluster only; 4 parallel slabs but orientation vs photo approximate; no true balcony galleries beyond ledges; haze not matched"
+ }
+}

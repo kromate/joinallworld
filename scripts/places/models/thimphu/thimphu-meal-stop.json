@@ -1,0 +1,590 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Menchuna_Restaurant,_Bhutan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bernard Gagnon",
+   "file": "/tmp/places-evidence/thimphu/menchuna.jpg",
+   "view": "front",
+   "used": "long stone ground floor with deep green eave, set-back timber upper floor, blank blue sign board, prayer flags, white chorten with red band and tiered roof at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1210285257",
+   "used": "overall size only (outline is a rounded lot blob, not the building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-range",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#aca696",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#6b2f1f",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3a6b50",
+    "material": "metal-sheet",
+    "rise": 0.9,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-floor",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    -5,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a4a2f",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "faces": {
+     "back": "none"
+    },
+    "bands": "#7a2e22"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f8f72",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -4.6,
+    0.2
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#4a2a1a",
+    "frameColour": "#6b2f1f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5,
+    -4.6,
+    0.2
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#4a2a1a",
+    "frameColour": "#6b2f1f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3,
+    -4.9,
+    3.35
+   ],
+   "params": {
+    "width": 28,
+    "height": 0.5,
+    "bottom": 0,
+    "colour": "#6b2f1f",
+    "frameColour": "#e8c34a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -3.15,
+    6.2
+   ],
+   "params": {
+    "width": 6.5,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#2a5f9e",
+    "frameColour": "#e8e4d8",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -17,
+    -3.3,
+    7.2
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     17,
+     0,
+     0.3
+    ],
+    "of": {
+     "type": "core/sign-board",
+     "params": {
+      "width": 1.6,
+      "height": 0.6,
+      "bottom": 0,
+      "colour": "#d9a93a",
+      "frameColour": "#3f8f72",
+      "posts": false
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-plinth-a",
+   "footprint": {
+    "rect": [
+     9.2,
+     9.2
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4c8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-plinth-b",
+   "footprint": {
+    "rect": [
+     8.0,
+     8.0
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d8",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-base",
+   "footprint": {
+    "rect": [
+     6.2,
+     6.2
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 1.0,
+   "height": 11.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f0e8",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-red-band",
+   "footprint": {
+    "rect": [
+     6.4,
+     6.4
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 5.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5332a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5332a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-fascia-low",
+   "footprint": {
+    "rect": [
+     6.6,
+     6.6
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 3.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c34a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8c34a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-fascia-high",
+   "footprint": {
+    "rect": [
+     6.6,
+     6.6
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 8.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c34a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8c34a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-corbel-a",
+   "footprint": {
+    "rect": [
+     6.8,
+     6.8
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 12.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e8",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#b5332a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f0e8",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-corbel-b",
+   "footprint": {
+    "rect": [
+     7.6,
+     7.6
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 12.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a3220",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#d9a93a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3220",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-corbel-c",
+   "footprint": {
+    "rect": [
+     8.6,
+     8.6
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 13.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e8",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#b5332a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f0e8",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-corbel-d",
+   "footprint": {
+    "rect": [
+     9.6,
+     9.6
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 13.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b2f1f",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#d9a93a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452d",
+    "material": "metal-sheet",
+    "rise": 0.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-lantern",
+   "footprint": {
+    "rect": [
+     3.8,
+     3.8
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 14.0,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a3a22",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#d9a93a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452d",
+    "material": "metal-sheet",
+    "rise": 1.0,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chorten-finial",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    17,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 16.8,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a93a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9a93a",
+    "material": "membrane"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "critic fixes applied (pale stone wall, thin eave, taller corbelled chorten, two door boards); no carved timber detail or stone texture; chorten fascia painting simplified, drum a little narrow; bus, dogs, prayer flags omitted; rectangles not OSM blob"
+ }
+}

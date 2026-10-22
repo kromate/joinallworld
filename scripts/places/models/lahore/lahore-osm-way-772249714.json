@@ -1,0 +1,181 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-way-772249714",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/772249714",
+   "used": "real college outline (about 169 x 139 m, auto-fitted), building:levels 5, white roof"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lahore.json#lahore-osm-way-772249714",
+   "used": "5 storeys, white roof, cream render, ribbon windows, glass entrance, flags, signage board, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "college",
+   "footprint": {
+    "osm": true,
+    "fit": 105
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#8a6a4a",
+    "glassColour": "#7f98a3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eeeeee",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-atrium",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    -17,
+    -44
+   ],
+   "rotDeg": -47,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0bd",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bands": "#8a6a4a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e0d6",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -25,
+    -52,
+    0
+   ],
+   "rotDeg": -47,
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 2.5,
+    "colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -20,
+    -49,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#2f6b3f"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -23,
+    -51,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#b6323a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -32,
+    -54,
+    0
+   ],
+   "rotDeg": -47,
+   "params": {
+    "width": 18,
+    "depth": 10,
+    "density": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -75,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real outline and 5 levels only, glass entrance, flags, sign and car park placement guessed"
+ }
+}

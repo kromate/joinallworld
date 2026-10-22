@@ -1,0 +1,325 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/87318804",
+   "used": "compound scale and bearing only (494 x 180 m); the outline is the whole site, so the main ward block and two annexes are modelled"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q1527602",
+   "used": "identity: Al Sabeen Maternal Hospital"
+  }
+ ],
+ "camera": {
+  "yawDeg": 16,
+  "pitchDeg": 12,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     64,
+     20
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e2d9c2",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#f2eee4",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 0.5,
+    "bay": 4.5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-w",
+   "footprint": {
+    "rect": [
+     22,
+     30
+    ]
+   },
+   "at": [
+    -43,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d6ccb0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#f2eee4",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 0.5,
+    "bay": 4.5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49a",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-e",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    41,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e1cf",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#f2eee4",
+    "plinth": 0.6,
+    "cornice": true,
+    "parapet": 0.5,
+    "bay": 4.5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    26,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 23.5,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb5a3",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    -43,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 4.3,
+    "columns": 2,
+    "colour": "#f2eee4",
+    "edge_colour": "#2e7a5a"
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 4.5,
+    "columns": 2,
+    "colour": "#f2eee4",
+    "edge_colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "ward",
+   "at": [
+    -18,
+    5
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "colour": "#2d5f8a"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "ward",
+   "at": [
+    -14,
+    5
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "colour": "#2d5f8a"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "ward",
+   "at": [
+    16,
+    6
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "colour": "#2d5f8a"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "ward",
+   "at": [
+    20,
+    6
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "colour": "#2d5f8a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.6,
+    "bottom": 1.8,
+    "colour": "#e8e4d8",
+    "frameColour": "#8d867a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 2.2,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#cfc4aa"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 4,
+    "spread": 5,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: block count, colours and tanks are typed from city style; real compound is ~494 m long."
+ }
+}

@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-node-13932020101",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: tiny roadside metal kiosk 4x3 m with shade awning and blank sign; no photo or outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "margin": 0.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "box",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7f8a8f",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "bands": "#a0583a",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6864",
+    "material": "metal-sheet",
+    "rise": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    0,
+    -1.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.6,
+    "depth": 1.5,
+    "drop": 0.4,
+    "height": 2.4,
+    "colours": [
+     "#a0583a",
+     "#e4dcc8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    0,
+    -1.6,
+    2.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3,
+    "height": 0.6,
+    "bottom": 0,
+    "colour": "#e4dcc8",
+    "frameColour": "#a0583a",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hatch-counter",
+   "at": [
+    0,
+    -1.55,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.5
+    ],
+    "height": 0.12,
+    "colour": "#a0583a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crate-a",
+   "at": [
+    -2.8,
+    -1.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 0.6,
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crate-b",
+   "at": [
+    -2.8,
+    -1.2,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.45
+    ],
+    "height": 0.5,
+    "colour": "#a0583a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stool",
+   "at": [
+    2.6,
+    -1.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.45
+    ],
+    "height": 0.45,
+    "colour": "#e4dcc8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   20,
+   16
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; kiosk typed"
+ }
+}

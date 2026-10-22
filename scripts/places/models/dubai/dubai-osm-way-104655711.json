@@ -1,0 +1,166 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/104655711",
+   "used": "real outline: a curved, indented mall block (291 x 232 m, 5 levels) on the Palm trunk, fitted to the scene"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "limestone and glass cladding, flat roof, central atrium (the Commons photo of 'Nakheel Mall' shows the Riyadh Al Nakheel Mall, a different building, so it was not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 26,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e5d9c0",
+    "windows": "curtain",
+    "windowRatio": 0.2,
+    "bay": 20,
+    "faces": {
+     "back": "plain"
+    },
+    "glassColour": "#9bb2c2",
+    "bands": "#c9b48a",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c6",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    0,
+    26
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 34,
+    "depth": 16,
+    "rise": 4,
+    "folds": 5,
+    "thickness": 0.5,
+    "colour": "#9bb2c2",
+    "edgeColour": "#c9b48a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -60,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 9,
+    "height": 6,
+    "colour": "#c9b48a",
+    "columns": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.4,
+    "colour": "#e5d9c0",
+    "frameColour": "#9bb2c2"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 2,
+    "spacing": 6,
+    "colour": "#e5d9c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -64
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -64
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -64
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -64
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-way-104655711",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this mall (Commons image is a Riyadh mall): OSM outline (simplified), typed facade, atrium roof guessed."
+ }
+}

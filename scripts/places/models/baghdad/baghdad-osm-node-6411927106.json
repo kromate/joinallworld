@@ -1,0 +1,337 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-osm-node-6411927106",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/684397885",
+   "used": "real 106 x 68 m building=ruins outline (nearest match, 5 m): mound footprint"
+  },
+  {
+   "kind": "text",
+   "used": "eroded mud-brick tell, low wall lines and boundary fence from the brief; Commons has only museum objects from Ishchali, no site photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "mound",
+   "params": {
+    "colour": "#d1bf94",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -53.3,
+        29.0
+       ],
+       [
+        47.4,
+        37.9
+       ],
+       [
+        56.4,
+        -26.9
+       ],
+       [
+        -49.3,
+        -38.8
+       ]
+      ]
+     },
+     {
+      "z": 1.8,
+      "poly": [
+       [
+        -47.97,
+        26.1
+       ],
+       [
+        42.66,
+        34.11
+       ],
+       [
+        50.76,
+        -24.21
+       ],
+       [
+        -44.37,
+        -34.92
+       ]
+      ]
+     },
+     {
+      "z": 4.0,
+      "poly": [
+       [
+        -36.24,
+        19.72
+       ],
+       [
+        32.23,
+        25.77
+       ],
+       [
+        38.35,
+        -18.29
+       ],
+       [
+        -33.52,
+        -26.38
+       ]
+      ],
+      "cx": 4,
+      "cy": 2
+     },
+     {
+      "z": 5.6,
+      "poly": [
+       [
+        -22.39,
+        12.18
+       ],
+       [
+        19.91,
+        15.92
+       ],
+       [
+        23.69,
+        -11.3
+       ],
+       [
+        -20.71,
+        -16.3
+       ]
+      ],
+      "cx": 6,
+      "cy": 3
+     },
+     {
+      "z": 6.0,
+      "poly": [
+       [
+        -10.66,
+        5.8
+       ],
+       [
+        9.48,
+        7.58
+       ],
+       [
+        11.28,
+        -5.38
+       ],
+       [
+        -9.86,
+        -7.76
+       ]
+      ],
+      "cx": 6,
+      "cy": 3
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-0",
+   "at": [
+    -30,
+    -8,
+    2.5
+   ],
+   "rotDeg": -4,
+   "params": {
+    "rect": [
+     26,
+     4
+    ],
+    "height": 1.8,
+    "colour": "#b4a073",
+    "topColour": "#c7b688",
+    "topScale": [
+     0.9,
+     0.7
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-1",
+   "at": [
+    -26,
+    12,
+    2.8
+   ],
+   "rotDeg": 7,
+   "params": {
+    "rect": [
+     18,
+     2.2
+    ],
+    "height": 2.2,
+    "colour": "#b4a073",
+    "topColour": "#c7b688",
+    "topScale": [
+     0.9,
+     0.7
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-2",
+   "at": [
+    4,
+    -14,
+    3.1
+   ],
+   "rotDeg": 3,
+   "params": {
+    "rect": [
+     2,
+     20
+    ],
+    "height": 1.8,
+    "colour": "#b4a073",
+    "topColour": "#c7b688",
+    "topScale": [
+     0.9,
+     0.7
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-3",
+   "at": [
+    22,
+    -16,
+    3.4
+   ],
+   "rotDeg": -6,
+   "params": {
+    "rect": [
+     24,
+     2
+    ],
+    "height": 1.6,
+    "colour": "#b4a073",
+    "topColour": "#c7b688",
+    "topScale": [
+     0.9,
+     0.7
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-4",
+   "at": [
+    -8,
+    22,
+    3.7
+   ],
+   "rotDeg": 2,
+   "params": {
+    "rect": [
+     22,
+     1.8
+    ],
+    "height": 1.5,
+    "colour": "#b4a073",
+    "topColour": "#c7b688",
+    "topScale": [
+     0.9,
+     0.7
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-5",
+   "at": [
+    30,
+    10,
+    4.0
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     2.2,
+     16
+    ],
+    "height": 1.3,
+    "colour": "#b4a073",
+    "topColour": "#c7b688",
+    "topScale": [
+     0.9,
+     0.7
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -59.696000000000005,
+      32.480000000000004
+     ],
+     [
+      53.088,
+      42.448
+     ],
+     [
+      63.168000000000006,
+      -30.128
+     ],
+     [
+      -55.216,
+      -43.456
+     ],
+     [
+      -59.696000000000005,
+      32.480000000000004
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.25,
+    "kind": "railing",
+    "colour": "#6f6a60"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the tell; mound profile, wall remnants and fence are plausible, not surveyed."
+ }
+}

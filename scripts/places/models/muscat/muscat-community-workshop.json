@@ -1,0 +1,248 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Todd_Young_and_Angus_King_meet_with_the_U.S._Ambassador_to_Oman_and_the_Omani_Ministry_of_Commerce_and_Industry.jpg",
+   "licence": "Public domain",
+   "author": "Office of Senator Todd Young",
+   "view": "interior",
+   "used": "only the pierced dark geometric lattice screen of the atrium glazing and cream stone floor (interior, so no massing)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/550202124",
+   "used": "the real 3-level footprint, scaled to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "halls",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 16,
+    "rotDeg": 0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d9c6a0",
+    "windows": "none",
+    "plinth": 0.6,
+    "bands": "#f1ead8",
+    "cornice": true,
+    "glassColour": "#9fb3be",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9c6a0",
+       "#cdb88e"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc5b0",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -22,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 6,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -40,
+    -80,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "auditorium",
+   "at": [
+    8,
+    8,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      14.0,
+      0.0
+     ],
+     [
+      12.93,
+      3.83
+     ],
+     [
+      9.9,
+      7.07
+     ],
+     [
+      5.36,
+      9.24
+     ],
+     [
+      0.0,
+      10.0
+     ],
+     [
+      -5.36,
+      9.24
+     ],
+     [
+      -9.9,
+      7.07
+     ],
+     [
+      -12.93,
+      3.83
+     ],
+     [
+      -14.0,
+      0.0
+     ],
+     [
+      -12.93,
+      -3.83
+     ],
+     [
+      -9.9,
+      -7.07
+     ],
+     [
+      -5.36,
+      -9.24
+     ],
+     [
+      -0.0,
+      -10.0
+     ],
+     [
+      5.36,
+      -9.24
+     ],
+     [
+      9.9,
+      -7.07
+     ],
+     [
+      12.93,
+      -3.83
+     ]
+    ],
+    "height": 27,
+    "topScale": 1.0,
+    "colour": "#d4c19a",
+    "windows": "none",
+    "plinth": 0.5
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "rotDeg": 21,
+   "params": {
+    "width": 26,
+    "height": 20,
+    "depth": 2,
+    "archWidth": 13,
+    "springHeight": 11,
+    "pointed": true,
+    "colour": "#e6d8b4"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "rotDeg": 21,
+   "params": {
+    "width": 26,
+    "depth": 7,
+    "height": 6,
+    "form": "flat",
+    "colour": "#e6d8b4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -65
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -65
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -85
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No exterior photo exists on Commons (only an interior lattice screen); real outline fitted, auditorium drum, pointed-arch entry and flags placed from the brief, not from a view; halls not individually distinguished"
+ }
+}

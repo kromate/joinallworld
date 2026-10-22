@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-way-1089171473",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1089171473",
+   "used": "real building outline 29 x 27 m (six-sided irregular plan)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafeteria",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c9a0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#3f7d5c",
+    "plinth": 0.5,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29c92",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "awning-a",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "rotDeg": 55,
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 3.2,
+    "form": "flat",
+    "colour": "#3f7d5c"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "awning-b",
+   "at": [
+    12,
+    -4,
+    0
+   ],
+   "rotDeg": 55,
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 3.2,
+    "form": "flat",
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 3.6,
+    "colour": "#3f7d5c",
+    "frameColour": "#f4efe2"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -16,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#d8d4cc",
+    "count": 3,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 5,
+    "line": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; look (cream render, green trim, awnings) from the brief only"
+ }
+}

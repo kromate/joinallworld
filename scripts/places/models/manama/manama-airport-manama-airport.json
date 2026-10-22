@@ -1,0 +1,499 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-airport-manama-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahrain_International_Airport_(New_Terminal).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Shibu Parambil Varghese",
+   "view": "front",
+   "file": "/tmp/places-evidence/manama/airport.jpg",
+   "used": "landside forecourt: tan panel-clad block left, dark glazed atrium under a swept grey wedge canopy on slim white columns, curved ramp deck with railing right"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q637639",
+   "used": "identity; no usable OSM outline (match none)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tan-block",
+   "footprint": {
+    "rect": [
+     40,
+     34
+    ]
+   },
+   "at": [
+    -48,
+    6
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#b79c85",
+    "windows": "ribbon",
+    "windowRatio": 0.08,
+    "bands": "#8f7a66",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-link",
+   "footprint": {
+    "rect": [
+     5,
+     24
+    ]
+   },
+   "at": [
+    -27,
+    6
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1d3a40",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c8c8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     38,
+     26
+    ]
+   },
+   "at": [
+    2,
+    6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#17383d",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal-body",
+   "footprint": {
+    "rect": [
+     70,
+     34
+    ]
+   },
+   "at": [
+    2,
+    36
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd1cd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d7d9d8"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "swept-canopy",
+   "params": {
+    "sections": [
+     {
+      "z": 14,
+      "rect": [
+       70,
+       30
+      ],
+      "cx": 4,
+      "cy": -5,
+      "colour": "#6f7274"
+     },
+     {
+      "z": 27,
+      "rect": [
+       56,
+       24
+      ],
+      "cx": 14,
+      "cy": 5,
+      "colour": "#b4b8b9"
+     }
+    ],
+    "colour": "#8c8f90",
+    "topColour": "#cfd2d3",
+    "material": "metal-cladding",
+    "capBottom": true,
+    "smooth": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "col0",
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 14.2,
+    "colour": "#eceeee"
+   },
+   "at": [
+    -14,
+    -19,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col1",
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 14.2,
+    "colour": "#eceeee"
+   },
+   "at": [
+    -2,
+    -19,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col2",
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 14.2,
+    "colour": "#eceeee"
+   },
+   "at": [
+    10,
+    -19,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col3",
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 14.2,
+    "colour": "#eceeee"
+   },
+   "at": [
+    20,
+    -19,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "col4",
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 14.2,
+    "colour": "#eceeee"
+   },
+   "at": [
+    29,
+    -19,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "light-poles",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "z0": 0,
+      "height": 10,
+      "colour": "#3a3d40"
+     }
+    },
+    "start": [
+     -30,
+     -26,
+     0
+    ],
+    "end": [
+     26,
+     -26,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -48,
+    -11.5,
+    6
+   ],
+   "params": {
+    "width": 30,
+    "height": 8,
+    "bottom": 8,
+    "colour": "#d9d2c0",
+    "frameColour": "#b8b0a0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp-deck",
+   "params": {
+    "section": {
+     "rect": [
+      9,
+      4.5
+     ]
+    },
+    "colour": "#cfcfcc",
+    "points": [
+     [
+      32.45576740963376,
+      -9.209445330007913,
+      9
+     ],
+     [
+      33.80922137642275,
+      -14.26060429977006,
+      9
+     ],
+     [
+      36.01923788646684,
+      -19.000000000000004,
+      9
+     ],
+     [
+      39.018666706430665,
+      -23.283628290596177,
+      9
+     ],
+     [
+      42.716371709403816,
+      -26.981333293569335,
+      9
+     ],
+     [
+      46.999999999999986,
+      -29.980762113533153,
+      9
+     ],
+     [
+      51.73939570022994,
+      -32.19077862357725,
+      9
+     ],
+     [
+      56.79055466999209,
+      -33.54423259036624,
+      9
+     ],
+     [
+      61.99999999999999,
+      -34.0,
+      9
+     ]
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp-rail",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      1.4
+     ]
+    },
+    "colour": "#9a9d9f",
+    "points": [
+     [
+      28.655767409633757,
+      -6.209445330007913,
+      12
+     ],
+     [
+      30.009221376422747,
+      -11.26060429977006,
+      12
+     ],
+     [
+      32.21923788646684,
+      -16.000000000000004,
+      12
+     ],
+     [
+      35.21866670643067,
+      -20.283628290596177,
+      12
+     ],
+     [
+      38.91637170940382,
+      -23.981333293569335,
+      12
+     ],
+     [
+      43.19999999999999,
+      -26.980762113533153,
+      12
+     ],
+     [
+      47.939395700229944,
+      -29.190778623577252,
+      12
+     ],
+     [
+      52.99055466999209,
+      -30.544232590366242,
+      12
+     ],
+     [
+      58.199999999999996,
+      -31.0,
+      12
+     ]
+    ],
+    "curve": true
+   }
+  },
+  {
+   "type": "array",
+   "id": "ramp-piers",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "z0": 0,
+      "height": 8,
+      "colour": "#d8d8d5",
+      "radius": 1.6,
+      "n": 10
+     }
+    },
+    "start": [
+     36,
+     -14,
+     0
+    ],
+    "end": [
+     60,
+     -31,
+     0
+    ],
+    "count": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 26,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "canopy is a loft wedge with corrugated look; atrium facets, light poles, planting and foreground gravel/shrubs omitted; billboard still reads blue"
+ }
+}

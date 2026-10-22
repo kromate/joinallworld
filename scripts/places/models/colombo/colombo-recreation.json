@@ -1,0 +1,222 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/594531505",
+   "used": "park outline about 83 x 58 m beside the Weras Ganga"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Weras_Ganga_Park",
+   "used": "riverside park; lawn, shelter, kiosk and railed water edge are typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 28,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "fit": 97
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7da05a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7da05a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "stadium/path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -36,
+      4
+     ],
+     [
+      -10,
+      14
+     ],
+     [
+      20,
+      8
+     ],
+     [
+      52,
+      16
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "stadium/path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -30
+     ],
+     [
+      6,
+      -12
+     ],
+     [
+      10,
+      10
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    8,
+    12,
+    0.3
+   ],
+   "rotDeg": 52,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 6,
+    "colour": "#d9d2c0",
+    "cap_colour": "#a2452a"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -22,
+    14,
+    0.3
+   ],
+   "rotDeg": 52,
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#b9b4a6"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    4,
+    -17,
+    0.3
+   ],
+   "rotDeg": 50,
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "kind": "rail",
+    "pillarEvery": 2.5,
+    "colour": "#b9b4a6"
+   }
+  },
+  {
+   "type": "stadium/park-bench",
+   "at": [
+    -6,
+    3,
+    0.3
+   ],
+   "rotDeg": 52,
+   "params": {
+    "count": 3,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    8,
+    0.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "line": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    6,
+    0.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "line": 18
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    6,
+    0.3
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 5,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: park outline with typed lawn, paths, pavilion, kiosk and railed edge"
+ }
+}

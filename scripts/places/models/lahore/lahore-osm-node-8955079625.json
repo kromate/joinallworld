@@ -1,0 +1,238 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-node-8955079625",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Krishna_Mandir,_Lahore",
+   "used": "Hindu temple in Nagara style, renovated 2005-06; no exterior photo or OSM outline exists, so this is a modest 20 x 15 m shikhara temple from the brief (whitewash, saffron and brick-red accents)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     24,
+     19
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc6b2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sanctum",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 1.2,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1e8d5",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true,
+    "bands": "#c9753b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dac3",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "shikhara",
+   "at": [
+    0,
+    3,
+    8.2
+   ],
+   "params": {
+    "width": 7.4,
+    "height": 11,
+    "base_height": 2,
+    "layers": 18,
+    "colour": "#eadfc8",
+    "amalaka": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mandapa",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 1.2,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1e8d5",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "arched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "cornice": true,
+    "bands": "#a24f3a"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#e6dac3",
+    "rise": 3.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 1.2,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#d8d0bd"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1e8d5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    17,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1e8d5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1e8d5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    17,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1e8d5"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     8
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the exterior and no OSM outline; shape, size and colours are assumed from the brief (Nagara shikhara over a sanctum, pyramidal porch, whitewash). Real layout unknown."
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/966788748",
+   "used": "real 16 x 11.4 m footprint (rotated quad); containing match, no photo of the building exists (Commons photos near the site show only valley views, not the building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "polygon": [
+     [
+      -6.5,
+      7.4
+     ],
+     [
+      4.8,
+      8.6
+     ],
+     [
+      6.5,
+      -7.4
+     ],
+     [
+      -4.8,
+      -8.6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#a8452d",
+    "cornice": true,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b4a3a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.3,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.9,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#b9b4a6"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    9,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#e8a317",
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.1,
+    "thickness": 0.3,
+    "colour": "#d8d2c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-community-notices",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "footprint only: no photo of this small office, style typed from Bhutanese rural rule"
+ }
+}

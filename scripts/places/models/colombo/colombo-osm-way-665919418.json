@@ -1,0 +1,444 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-osm-way-665919418",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_clouds_roll_in.jpg",
+   "licence": "CC BY 2.0",
+   "author": "James Harris",
+   "view": "interior",
+   "file": "/tmp/places-evidence/colombo/prem4.jpg",
+   "used": "low two-tier bowl, truss-roofed pavilions on both sides, mid-height boxy media/commentary block with a flat roof, dark scoreboard at the right end, tall floodlight pylons with large round lamp heads, wide green outfield"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Block_C,_D_of_RPS_Colombo.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Sachintha Wijayatunga",
+   "view": "interior",
+   "file": "/tmp/places-evidence/colombo/prem3.jpg",
+   "used": "two-tier stand with a long flat steel truss roof on slender columns, grey-beige concrete, scoreboard in the lower tier"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/665919418",
+   "used": "oval about 221 x 213 m, scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      42.0,
+      0.0
+     ],
+     [
+      38.8,
+      15.31
+     ],
+     [
+      29.7,
+      28.28
+     ],
+     [
+      16.07,
+      36.96
+     ],
+     [
+      0.0,
+      40.0
+     ],
+     [
+      -16.07,
+      36.96
+     ],
+     [
+      -29.7,
+      28.28
+     ],
+     [
+      -38.8,
+      15.31
+     ],
+     [
+      -42.0,
+      0.0
+     ],
+     [
+      -38.8,
+      -15.31
+     ],
+     [
+      -29.7,
+      -28.28
+     ],
+     [
+      -16.07,
+      -36.96
+     ],
+     [
+      -0.0,
+      -40.0
+     ],
+     [
+      16.07,
+      -36.96
+     ],
+     [
+      29.7,
+      -28.28
+     ],
+     [
+      38.8,
+      -15.31
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#74a24d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 48,
+    "radiusY": 46,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 6,
+    "tiers": [
+     {
+      "rows": 6,
+      "rise": 0.5,
+      "run": 0.9
+     },
+     {
+      "rows": 6,
+      "rise": 0.55,
+      "run": 0.9,
+      "gap": 2,
+      "lift": 1
+     }
+    ],
+    "firstHeight": 0.5,
+    "facetDeg": 28,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 8,
+    "seatColours": [
+     "#b8b3a2",
+     "#a8aca0",
+     "#b0b0a3",
+     "#9fa89a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#b3ae9e",
+    "underColour": "#8a8578"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "media-box",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    53
+   ],
+   "z0": 8.8,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbfa4",
+    "windows": "rect",
+    "windowRatio": 0.5,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9ea2",
+    "material": "membrane",
+    "parapet": 0.3,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    46,
+    0,
+    2
+   ],
+   "params": {
+    "width": 16,
+    "height": 8,
+    "post_height": 10,
+    "facing": "west",
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 54,
+    "startDeg": 45,
+    "endDeg": 315,
+    "count": 4,
+    "facing": "outward",
+    "lod1Step": 2,
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 46,
+      "head_width": 14,
+      "colour": "#c3c7ca"
+     }
+    }
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    49,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 74,
+    "depth": 12,
+    "height": 8.5,
+    "thickness": 0.25,
+    "columns": 14,
+    "colour": "#aeb2b5",
+    "edgeColour": "#8d9195"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -33,
+     49,
+     8.5
+    ],
+    "end": [
+     33,
+     49,
+     8.5
+    ],
+    "count": 16,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       11
+      ],
+      "height": 0.5,
+      "colour": "#7d8186"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -49,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 74,
+    "depth": 12,
+    "height": 8.5,
+    "thickness": 0.25,
+    "columns": 14,
+    "colour": "#aeb2b5",
+    "edgeColour": "#8d9195"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -33,
+     -49,
+     8.5
+    ],
+    "end": [
+     33,
+     -49,
+     8.5
+    ],
+    "count": 16,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       11
+      ],
+      "height": 0.5,
+      "colour": "#7d8186"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     7,
+     22
+    ],
+    "height": 0.05,
+    "colour": "#d2c79a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 41,
+    "radiusY": 38.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 48,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       5
+      ],
+      "height": 0.9,
+      "colour": "#3e7a4e"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -18
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -25
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -62
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   135,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "R4 applied: lower two-tier bowl without plinth, thin pale trusses/roof slabs on slender columns (no real lattice), masts closer with wider heads, scoreboard at end, green hoarding ring, pale pitch strip. Floodlight heads still rectangular; media block plain; seats muted."
+ }
+}

@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/way/944931978",
+   "used": "only an unnamed 13 x 9 m building 45 m away matched (quality nearest), so not used as the outline; no photo found; modelled as a roundabout plaza with a kiosk per the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 35,
+  "fovDeg": 60,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "roundabout",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 24,
+    "road_width": 8,
+    "island_colour": "#8e8a6a",
+    "trees": 5,
+    "kerb": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9bfa8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "overhang": 0.4,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#e2dccb",
+    "posts": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.6,
+    "thickness": 0.4,
+    "colour": "#c9bfa8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; roundabout and kiosk are typical, the real square layout is unknown."
+ }
+}

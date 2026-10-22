@@ -1,0 +1,221 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-node-6785101974",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1265637402",
+   "used": "real skewed 46 x 23 m outline of the Hilton Doha The Pearl block that contains the restaurant point, 38 levels, height tag 150 m (scene cap 138 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: glass curtain tower with setback tiers, roof terrace, helipad and car park; no photo of this tower was found (the only nearby street photo shows a school bus)"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the tower: podium, setbacks and crown are typed from the brief; height is capped at 138 m instead of 150 m and the restaurant itself is not visible."
+ },
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 0.7,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 1.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e8dcc3",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b89a6a",
+      "height": 0.4
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c2b4",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 12,
+   "height": 100,
+   "storeys": 12,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb4c4",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#7f98aa",
+    "plinth": 0,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "ribbon"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#9fb4c4",
+       "#8fa6b6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a6a0",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true,
+    "scale": 0.82
+   },
+   "z0": 112,
+   "height": 24,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b8c8d4",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#8aa2b4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a6a0",
+    "material": "concrete",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    136
+   ],
+   "params": {
+    "radius": 8,
+    "n": 16,
+    "height": 0.4,
+    "colour": "#5d6064",
+    "topColour": "#6a6e72"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    136.45
+   ],
+   "params": {
+    "radius": 5.6,
+    "n": 16,
+    "height": 0.1,
+    "colour": "#e8e8e0",
+    "topColour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "car",
+   "lod": [
+    0
+   ],
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4,
+    "yaw": 90,
+    "colour": "#d0d3d6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -12
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ }
+}

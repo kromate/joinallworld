@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-node-9655730217",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/9655730217",
+   "used": "point only (no polygon); brief describes a bare grey-brown crag above a gravel trail with a few poplars"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "id": "crag",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 26,
+    "height": 12,
+    "seed": 7,
+    "stairs": false,
+    "rock_colour": "#9c8a72",
+    "boulders": 14
+   }
+  },
+  {
+   "type": "rock-hill",
+   "id": "crag-b",
+   "at": [
+    -24,
+    10,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 16,
+    "height": 8,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#7d6d58",
+    "boulders": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "rect": [
+     64,
+     3.2
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#b7a98f",
+    "topColour": "#b7a98f"
+   }
+  },
+  {
+   "type": "steps",
+   "id": "trail-steps",
+   "at": [
+    18,
+    -2,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.0,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#6b4a30"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "poplar1",
+   "at": [
+    -28,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "id": "poplar2",
+   "at": [
+    -23,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "id": "poplar3",
+   "at": [
+    27,
+    -11,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "trailboard",
+   "at": [
+    -8,
+    -11,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; natural crag approximated with generic rock hills, trail and poplars from the brief"
+ }
+}

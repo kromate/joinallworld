@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Siachen_Glacier",
+   "used": "cold, snowy glacier base setting; olive prefab typed from city style"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5d6650",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#8f969b"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7568",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -2,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#e9eef2",
+    "frameColour": "#5d6650"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flagpole",
+   "at": [
+    8,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift",
+   "at": [
+    -2,
+    4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     13,
+     2.5
+    ],
+    "height": 1.2,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "typed game-venue hut; no photo or footprint"
+ }
+}

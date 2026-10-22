@@ -1,0 +1,109 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/976943348",
+   "used": "9.2 x 5.3 m building outline containing the venue point; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk-shell",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9a93a",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#a8452d",
+    "plinth": 0.25
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7f8a92",
+    "material": "metal-sheet",
+    "rise": 1.0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.4,
+    "drop": 0.4,
+    "height": 2.5,
+    "colours": [
+     "#a8452d",
+     "#f1ede4"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2.9,
+    2.5
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 0.7,
+    "bottom": 0,
+    "colour": "#f1ede4",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     9,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; massing from OSM outline/brief, details typical of Bhutanese roadside buildings (no painted timber ornament)"
+ }
+}

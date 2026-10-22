@@ -1,0 +1,512 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-osm-way-440202473",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/440202473",
+   "used": "campus is a rotated 480 x 252 m rectangle of 2016 buildings; far over the per-place size clamp, so a representative core (entrance hall, two long teaching blocks, rear block) is composed at reduced extent, not the raw outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the campus exists in the evidence (the listed photo shows railway tracks); white marble with blue glazing, U layout and central domed hall are typed from the brief. Real campus is about 480 m wide, compressed here."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-w",
+   "footprint": {
+    "rect": [
+     20,
+     64
+    ]
+   },
+   "at": [
+    -38,
+    10
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#6f8fa8",
+    "plinth": 0.6,
+    "bay": 12,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-e",
+   "footprint": {
+    "rect": [
+     20,
+     64
+    ]
+   },
+   "at": [
+    38,
+    10
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#6f8fa8",
+    "plinth": 0.6,
+    "bay": 12,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-n",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#6f8fa8",
+    "plinth": 0.6,
+    "bay": 12,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-link-w",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -17,
+    -20
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#6f8fa8",
+    "plinth": 0.6,
+    "bay": 12,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-link-e",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    17,
+    -20
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#6f8fa8",
+    "plinth": 0.6,
+    "bay": 12,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 20,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "glassColour": "#6f8fa8",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -14,
+    20
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#f4f2ec",
+    "profile": [
+     [
+      10.5,
+      0,
+      "#f4f2ec"
+     ],
+     [
+      10.5,
+      3
+     ],
+     [
+      11.2,
+      3.1,
+      "#c9c4b8"
+     ],
+     [
+      11.2,
+      3.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -14,
+    23.8
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#cfd6dc",
+    "profile": [
+     [
+      10.4,
+      0
+     ],
+     [
+      9.6,
+      3.5
+     ],
+     [
+      7.8,
+      6.5
+     ],
+     [
+      5,
+      8.6
+     ],
+     [
+      2.2,
+      9.7
+     ],
+     [
+      0,
+      10
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -14,
+    23.8
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#cfd6dc",
+    "profile": [
+     [
+      10.4,
+      0
+     ],
+     [
+      5,
+      8.6
+     ],
+     [
+      0,
+      10
+     ]
+    ]
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -14,
+    33.7
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c9a227",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.3,
+      1.5
+     ],
+     [
+      0.1,
+      5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    0,
+    -27.5
+   ],
+   "params": {
+    "rect": [
+     18,
+     4
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#d9d3c4",
+    "topColour": "#d9d3c4"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 9,
+      "colour": "#b8bcc0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -36
+    ],
+    "end": [
+     14,
+     -36
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "col",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 0,
+      "height": 8,
+      "colour": "#e6e1d4",
+      "topColour": "#e6e1d4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -9,
+     -26
+    ],
+    "end": [
+     9,
+     -26
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#cfcac0",
+    "profile": [
+     [
+      5,
+      0,
+      "#cfcac0"
+     ],
+     [
+      5,
+      0.7
+     ],
+     [
+      4.6,
+      0.7,
+      "#6fa8c4"
+     ],
+     [
+      4.6,
+      0.5
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ }
+}

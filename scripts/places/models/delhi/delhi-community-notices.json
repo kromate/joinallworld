@@ -1,0 +1,25 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "delhi", "venueId": "delhi-community-notices", "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/1443349199", "used": "real outline (65.5 x 16.5 m, named Sashastra Seema Bal, name-quality match) kept at its true orientation. No photo of the building exists on Commons or the evidence list (only ceremony photos of people), so form is a typical four-storey CPWD government block: cream render, red-brick accent plinth and stair core, ribbon windows, central porch, flagpoles, gate and boundary wall."}
+ ],
+ "parts": [
+  {"type": "mass", "id": "block", "footprint": {"osm": true, "scale": 1.0}, "at": [0, 0], "z0": 0, "height": 15, "storeys": 4,
+   "wall": {"material": "painted-render", "colour": "#e3d3b0", "windows": "ribbon", "windowRatio": 0.3, "plinth": 1.0, "bay": 4.5,
+            "bands": "#a8553a", "faces": {"back": "none"},
+            "pattern": [{"type": "bands", "colour": "#cdbb94", "height": 0.35, "proud": 0.12, "at": 0.95}]},
+   "roof": {"form": "flat", "colour": "#a9a59d", "material": "concrete", "parapet": 0.6}},
+  {"type": "mass", "id": "stair-core", "footprint": {"rect": [6, 7]}, "at": [0, 0], "z0": 15, "height": 3, "storeys": 1,
+   "wall": {"material": "red-brick", "colour": "#a8553a", "windows": "none"},
+   "roof": {"form": "flat", "colour": "#a9a59d"}},
+  {"type": "core/canopy", "at": [-12, -12, 0], "params": {"form": "flat", "width": 8, "depth": 6, "height": 3.8, "columns": 4, "colour": "#d9d2c0"}, "rotDeg": 0},
+  {"type": "core/sign-board", "at": [-28, -16, 0], "params": {"width": 5, "height": 1.6, "bottom": 1.2, "colour": "#2f5d46", "frameColour": "#b8bcc0", "posts": true}},
+  {"type": "flag", "at": [-6, -18, 0], "params": {"height": 11, "colour": "#e8742a", "count": 2, "spacing": 3}},
+  {"type": "core/gate", "at": [-30, -22, 0], "params": {"width": 7, "height": 3.2, "pillar": 1.0, "leaf": "bars", "colour": "#cfc6b0"}},
+  {"type": "core/fence-wall", "at": [0, -22, 0], "params": {"length": 76, "height": 2.4, "kind": "wall", "pillarEvery": 5, "colour": "#cbbfa5"}},
+  {"type": "car", "at": [10, -17, 0], "params": {"count": 4, "spacing": 3.2}}
+ ],
+ "site": {"ground": "asphalt", "forecourt": "parking", "forecourtDepth": 12, "extent": [90, 60],
+  "trees": [{"kind": "broadleaf", "at": [-42, -14], "height": 9}, {"kind": "broadleaf", "at": [38, -14], "height": 10}, {"kind": "broadleaf", "at": [0, 18], "height": 9}]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "No photo of this building: facade detail, porch position and stair core are typical, only the outline and size are measured."}
+}

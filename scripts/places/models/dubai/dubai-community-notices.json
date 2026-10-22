@@ -1,0 +1,157 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1115201459",
+   "used": "real 68 x 58 m outline (rotated parallelogram)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: federal ministry, stone and glass front, flags, steps, colonnade, 5 storeys"
+  }
+ ],
+ "camera": {
+  "yawDeg": -44,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d6bb",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#5f7f96",
+    "bands": "#f1ede4",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ada0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -17,
+    -22,
+    0
+   ],
+   "rotDeg": -43.7,
+   "params": {
+    "length": 22,
+    "count": 7,
+    "height": 8,
+    "radius": 0.4,
+    "roofDepth": 3,
+    "colour": "#f1ede4",
+    "roofColour": "#d8ccb2"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -19,
+    -20,
+    0
+   ],
+   "rotDeg": -43.7,
+   "params": {
+    "width": 16,
+    "rise": 1.0,
+    "run": 2,
+    "count": 4,
+    "colour": "#d9d2c2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -26,
+    0
+   ],
+   "rotDeg": -43.7,
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1,
+    "colour": "#f0ece2",
+    "frameColour": "#8b8478"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -29,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car-park",
+   "at": [
+    34,
+    -30,
+    0
+   ],
+   "rotDeg": -43.7,
+   "params": {
+    "width": 30,
+    "depth": 12,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 24,
+    "line": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; facade design (colonnade, colours) typed from Gulf government norms; only the outline and size are real."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-community-notices"
+}

@@ -1,0 +1,254 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-way-120230549",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/120230549",
+   "used": "compound extent about 210 x 203 m (site only; the building itself is typed from the brief)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     72,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4c8ae",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 18,
+    "bands": "#9a958c",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29c92",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -30,
+    -24
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4c8ae",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 18,
+    "bands": "#9a958c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29c92",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    30,
+    -24
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4c8ae",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 18,
+    "bands": "#9a958c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29c92",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9db",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29c92",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "ambulance-bay",
+   "at": [
+    22,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#efe9db"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 4,
+    "colour": "#f4f1ea",
+    "frameColour": "#9a958c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "tanks",
+   "params": {
+    "of": {
+     "type": "core/water-tank",
+     "params": {
+      "kind": "elevated",
+      "radius": 1.5,
+      "tankHeight": 2.2,
+      "legHeight": 1.2,
+      "legs": 3,
+      "colour": "#e9e7df"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     0,
+     28.7
+    ],
+    "end": [
+     26,
+     0,
+     28.7
+    ],
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -28,
+    -52,
+    0
+   ],
+   "params": {
+    "colour": "#c8c4bb",
+    "count": 4,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 7,
+    "spread": 6,
+    "line": 80
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the hospital found (listed Commons image is Bab al-Yemen, a different building); H plan reduced to slab plus two wings"
+ }
+}

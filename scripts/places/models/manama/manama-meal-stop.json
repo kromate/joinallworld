@@ -1,0 +1,177 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/341665845",
+   "used": "real outline of a commercial building (containing match, no tags); the name gives no lighthouse so none is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "glassColour": "#5d8fa0",
+    "plinth": 0.4,
+    "bands": "#b9ae96"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a7",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "terrace-shade",
+   "at": [
+    -10,
+    -52,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 10,
+    "height": 3.4,
+    "columns": 6,
+    "colour": "#b9ae96",
+    "edgeColour": "#efe6d0"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "colours": [
+     "#5d8fa0",
+     "#efe6d0"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -30,
+    -60,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 8,
+    "radius": 1.6,
+    "colours": [
+     "#efe6d0",
+     "#5d8fa0"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 8,
+    "radius": 1.6,
+    "colours": [
+     "#efe6d0",
+     "#5d8fa0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -25,
+    -43.4,
+    3.2
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#5d8fa0",
+    "posts": false
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    50,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 24,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     45
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-meal-stop",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Untagged commercial building; terrace, awning and umbrellas are plausible not observed; no lighthouse modelled."
+ }
+}

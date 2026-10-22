@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-osm-way-166614282",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/166614282",
+   "used": "real outline, a narrow rectangle about 32 x 67 m with the long axis north-south, matching a covered souq lane"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/damascus.json",
+   "used": "typed Damascus souq: stone arcaded shop fronts under a barrel-vaulted metal-sheet cover; the only photo found nearby shows a house courtyard, not this souq, so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the souq itself: vault, arcaded flanks and gate portals are typical Damascus souq forms, not confirmed here"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "polygon": [
+     [
+      -16.5,
+      -33.1
+     ],
+     [
+      -15.3,
+      33.7
+     ],
+     [
+      16.5,
+      33.1
+     ],
+     [
+      15.3,
+      -33.7
+     ]
+    ]
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdb98e",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 4.2,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 4.2,
+      "opening": 0.6,
+      "height": 0.7,
+      "depth": 0.8,
+      "pierColour": "#b8a578",
+      "faces": [
+       "left",
+       "right"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#8c8576"
+      ],
+      "height": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "axis": "y",
+    "rise": 3.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south-gate",
+   "footprint": {
+    "rect": [
+     11,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -34.5
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9c9a3",
+    "windows": "none",
+    "windowRatio": 0,
+    "cornice": true,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 11,
+      "opening": 0.62,
+      "height": 0.82,
+      "depth": 1.0,
+      "pierColour": "#d9c9a3",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a69d86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-gate",
+   "footprint": {
+    "rect": [
+     11,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    34.8
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9c9a3",
+    "windows": "none",
+    "windowRatio": 0,
+    "cornice": true,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 11,
+      "opening": 0.62,
+      "height": 0.82,
+      "depth": 1.0,
+      "pierColour": "#d9c9a3",
+      "faces": [
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a69d86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -22,
+     8.2
+    ],
+    "end": [
+     0,
+     22,
+     8.2
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       2.2
+      ],
+      "height": 1.4,
+      "topScale": 0.5,
+      "colour": "#b8bcc0"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   100
+  ]
+ }
+}

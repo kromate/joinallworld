@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-osm-node-11865797560",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "epic reciter statue on a granite plinth in a small paved square; the OSM match (way/52704052) is a residential block 59 m away and is not used; nearby Commons street photos show other buildings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "square",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b4aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b4aa"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "height": 7,
+    "width": 4.4,
+    "steps": 3,
+    "figure": "stand",
+    "figure_colour": "#5a4a38"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    8,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.5,
+    "thickness": 0.4,
+    "colour": "#8a8680"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the monument; figure and plinth proportions are typed"
+ }
+}

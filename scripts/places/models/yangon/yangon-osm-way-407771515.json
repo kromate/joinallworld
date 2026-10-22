@@ -1,0 +1,726 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Lim_Chin_Tsong_Palace,_Yangon.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ninjastrikers",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/yangon/lim1.jpg",
+   "used": "massing: two-storey cream hall with green hip roof and lower eaves, five-tier octagonal tower behind with green pagoda cap; colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chin_Tsong_Palace_(Fine_Art_School)_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "panoramio contributor",
+   "view": "front",
+   "used": "classical columned portico with balcony above, green-white trim on tower, curved Chinese eaves"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/407771515",
+   "used": "real footprint, 61 x 46 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 45,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower is now five cream octagonal tiers with green balcony ledges and pagoda cap rising about 3x the hall, but lacks the ornate Chinese facade, window balconies and curved eaves; hall roof is still a single low hip over the OSM outline (no dormer pavilion detail); trees are lowpoly but flank the building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "osm": true,
+    "fit": 62
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e2cf98",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.22,
+    "plinth": 0.9,
+    "bands": "#6a8f5a",
+    "cornice": true,
+    "bay": 13
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f8a6a",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    2,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 7
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 1.0,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#d8cba0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    -26
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8c486",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f7a58",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -8,
+    -6,
+    11.5
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    14,
+    -6,
+    11.5
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -20,
+    -6,
+    11.5
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "loft",
+   "id": "cypress-0",
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#1f4a33",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3
+     },
+     {
+      "z": 2,
+      "circle": 2.0
+     },
+     {
+      "z": 10.799999999999999,
+      "circle": 2.2
+     },
+     {
+      "z": 18,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cypress-1",
+   "at": [
+    33,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#1f4a33",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3
+     },
+     {
+      "z": 2,
+      "circle": 2.0
+     },
+     {
+      "z": 12.0,
+      "circle": 2.2
+     },
+     {
+      "z": 20,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cypress-2",
+   "at": [
+    36,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#1f4a33",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3
+     },
+     {
+      "z": 2,
+      "circle": 2.0
+     },
+     {
+      "z": 11.4,
+      "circle": 2.2
+     },
+     {
+      "z": 19,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cypress-3",
+   "at": [
+    39,
+    -10,
+    0
+   ],
+   "params": {
+    "colour": "#1f4a33",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3
+     },
+     {
+      "z": 2,
+      "circle": 2.0
+     },
+     {
+      "z": 12.6,
+      "circle": 2.2
+     },
+     {
+      "z": 21,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "cypress-4",
+   "at": [
+    42,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#1f4a33",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.3
+     },
+     {
+      "z": 2,
+      "circle": 2.0
+     },
+     {
+      "z": 10.799999999999999,
+      "circle": 2.2
+     },
+     {
+      "z": 18,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tier-0",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 11,
+    "z0": 10.0,
+    "height": 6.0,
+    "colour": "#eadfb5",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "storeys": 1,
+    "trimColour": "#2f7a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-0",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 12.2,
+    "z0": 15.9,
+    "height": 0.5,
+    "colour": "#2f7a58"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tier-1",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 10,
+    "z0": 16.0,
+    "height": 5.6,
+    "colour": "#eadfb5",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "storeys": 1,
+    "trimColour": "#2f7a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-1",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 11.2,
+    "z0": 21.5,
+    "height": 0.5,
+    "colour": "#2f7a58"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tier-2",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 9,
+    "z0": 21.6,
+    "height": 5.2,
+    "colour": "#eadfb5",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "storeys": 1,
+    "trimColour": "#2f7a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-2",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 10.2,
+    "z0": 26.7,
+    "height": 0.5,
+    "colour": "#2f7a58"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tier-3",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 8,
+    "z0": 26.8,
+    "height": 4.8,
+    "colour": "#eadfb5",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "storeys": 1,
+    "trimColour": "#2f7a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-3",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 9.2,
+    "z0": 31.5,
+    "height": 0.5,
+    "colour": "#2f7a58"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tier-4",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 7,
+    "z0": 31.6,
+    "height": 4.4,
+    "colour": "#eadfb5",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "storeys": 1,
+    "trimColour": "#2f7a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-4",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 8.2,
+    "z0": 35.9,
+    "height": 0.5,
+    "colour": "#2f7a58"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "at": [
+    0,
+    6,
+    36.5
+   ],
+   "params": {
+    "n": 8,
+    "radius": 7.2,
+    "z0": 0,
+    "height": 7.5,
+    "topScale": 0.1,
+    "colour": "#2f7a58"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    6,
+    44.0
+   ],
+   "params": {
+    "height": 3,
+    "baseWidth": 0.6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -48,
+    0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "count": 2,
+    "min_height": 13,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -46,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "count": 2,
+    "min_height": 13,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    14,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "count": 2,
+    "min_height": 13,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    46,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "count": 2,
+    "min_height": 13,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    48,
+    10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "count": 2,
+    "min_height": 13,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "count": 2,
+    "min_height": 13,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "count": 2,
+    "min_height": 13,
+    "max_height": 20
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "count": 2,
+    "min_height": 13,
+    "max_height": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "extent": [
+   100,
+   90
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -10
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -26
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -24
+    ],
+    "height": 18
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-osm-way-407771515"
+}

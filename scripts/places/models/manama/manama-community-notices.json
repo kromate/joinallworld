@@ -1,0 +1,274 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/204798538",
+   "used": "nearest untagged building, about 48 x 34 m; used only for overall size, outline is not trusted"
+  },
+  {
+   "kind": "text",
+   "ref": "brief manama-community-notices",
+   "used": "stately cream five-storey government block, colonnaded entrance, flags, fence wall; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     48,
+     30
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cd",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#b9a77c",
+    "faces": {
+     "left": "punched",
+     "right": "punched"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    },
+    "windowShape": "rect",
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3aa",
+    "parapet": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     18,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8cba6",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 1.0,
+    "cornice": true,
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3aa",
+    "parapet": 0.9,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 3.5,
+    "colours": [
+     "#ce1126",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    18,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#8f8a80",
+    "frameColour": "#b9a77c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -31,
+    4
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc3",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#b9a77c",
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3aa",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    31,
+    4
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc3",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#b9a77c",
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3aa",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-room",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    8,
+    6
+   ],
+   "height": 3.5,
+   "z0": 24,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8ad",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building found; massing and colours typed from the brief (government block, colonnade, flags); outline not the real OSM polygon (nearest match only)"
+ }
+}

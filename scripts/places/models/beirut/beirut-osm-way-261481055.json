@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-osm-way-261481055",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AUST_Section_Fran%C3%A7aise.JPG",
+   "licence": "Public domain",
+   "author": "Arz Phoenicien",
+   "view": "detail",
+   "file": "/tmp/places-evidence/beirut/aust1.jpg",
+   "used": "wall finish only: sand-beige rendered walls, deep square window reveals with pale surrounds, stepped parapets, a dark blank sign board band; one close-up of a single wing, so it is not a whole-building comparison"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/261481055",
+   "used": "real campus outline (109.5 x 103 m), name-matched"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 7
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3bf98",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 16.0,
+    "plinth": 0.5,
+    "trimColour": "#c4ad82",
+    "bands": "#c4ad82"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true,
+    "scale": 0.55,
+    "simplify": 7
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 21,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccba6",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "trimColour": "#c4ad82"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -43,
+    12
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#4a4f57"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -43,
+    20
+   ],
+   "params": {
+    "n": 24,
+    "radius": 2.4,
+    "height": 0.5,
+    "colour": "#8a9fb8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -60,
+     -50
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     45,
+     -52
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no whole-building photo exists: footprint and wall finish only; heights and window layout typed"
+ }
+}

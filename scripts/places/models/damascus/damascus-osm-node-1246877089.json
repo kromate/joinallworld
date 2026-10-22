@@ -1,0 +1,474 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-osm-node-1246877089",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Damascus_Opera_House.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bernard Gagnon",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/damascus/opera1.jpg",
+   "used": "buff limestone massing: tall square fly tower, lower stage hall to the left, long low front block with arched balcony, curved low wing right, Umayyad Square sculpture in front right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1110634325",
+   "used": "overall extent only (189 x 115 m); masses composed by eye from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.45,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fly-tower",
+   "footprint": {
+    "rect": [
+     42,
+     40
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 46,
+   "storeys": 8,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8cdb4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#cbc0a6"
+      ],
+      "height": 0.8,
+      "at": 0.97,
+      "proud": 0.1,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c0aa",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stage-hall",
+   "footprint": {
+    "rect": [
+     38,
+     36
+    ]
+   },
+   "at": [
+    -35,
+    2
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8cdb4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c0aa",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    -6,
+    -24
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#efe6cf",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 6,
+      "opening": 0.5,
+      "height": 0.55,
+      "depth": 0.6,
+      "pierColour": "#d8cdb4",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfb6a0",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    -49,
+    -16
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8cdb4",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c0aa",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    44,
+    -14
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e4dac2",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa59a",
+    "parapet": 0.3
+   },
+   "rotDeg": -20
+  },
+  {
+   "type": "prism",
+   "id": "balcony",
+   "params": {
+    "rect": [
+     14,
+     3
+    ],
+    "z0": 5.5,
+    "height": 0.5,
+    "colour": "#bfb6a0",
+    "topColour": "#bfb6a0"
+   },
+   "at": [
+    4,
+    -33.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaza-disc",
+   "params": {
+    "rect": [
+     22,
+     22
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#d8d0bc",
+    "topColour": "#ddd5c2"
+   },
+   "at": [
+    34,
+    -44
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "monument",
+   "at": [
+    34,
+    -44,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.5,
+       4.5
+      ],
+      "colour": "#c9c0aa"
+     },
+     {
+      "z": 1.5,
+      "rect": [
+       4,
+       4
+      ],
+      "colour": "#c9c0aa"
+     },
+     {
+      "z": 2,
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "colour": "#6a6e74"
+     },
+     {
+      "z": 12,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "colour": "#6a6e74"
+     },
+     {
+      "z": 24,
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "colour": "#6a6e74"
+     },
+     {
+      "z": 35,
+      "rect": [
+       0.08,
+       0.08
+      ],
+      "colour": "#6a6e74"
+     }
+    ],
+    "curve": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-step",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    -2,
+    -21
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#efe6cf",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfb6a0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "east-canopy",
+   "at": [
+    40,
+    -20,
+    6
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      0.6
+     ]
+    },
+    "arc": {
+     "steps": 12,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 22,
+     "startDeg": 200,
+     "endDeg": 340,
+     "plane": "xy"
+    },
+    "colour": "#a8a59c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    8,
+    28
+   ],
+   "height": 52,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b2a2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a294"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -75,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -72,
+     25
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     46
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     72,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -48
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -46
+    ]
+   }
+  ],
+  "extent": [
+   104,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Monument is a slim steel needle without the mosaic flare at its base; entrance loggia and curved east wing simplified; hillside is flat grass with scattered trees; mass span slightly over 120 m clamp."
+ }
+}

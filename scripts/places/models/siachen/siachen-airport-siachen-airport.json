@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-airport-siachen-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Siachen_Glacier",
+   "used": "saddle of wind-packed snow and rock, flags, small radio mast, no buildings (brief)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 15,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "snow-ridge",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -8
+     ],
+     [
+      -12,
+      -14
+     ],
+     [
+      10,
+      -12
+     ],
+     [
+      28,
+      -6
+     ],
+     [
+      30,
+      6
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      -8,
+      12
+     ],
+     [
+      -28,
+      6
+     ]
+    ],
+    "height": 3.2,
+    "topScale": 0.55,
+    "topOffset": [
+     2,
+     1
+    ],
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock-spur",
+   "at": [
+    -18,
+    12,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      -4
+     ],
+     [
+      2,
+      -6
+     ],
+     [
+      9,
+      0
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      -6,
+      6
+     ]
+    ],
+    "height": 6,
+    "topScale": 0.35,
+    "topOffset": [
+     1,
+     1
+    ],
+    "colour": "#8f969b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock-spur-2",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5,
+      -3
+     ],
+     [
+      4,
+      -4
+     ],
+     [
+      6,
+      3
+     ],
+     [
+      -2,
+      6
+     ]
+    ],
+    "height": 4,
+    "topScale": 0.4,
+    "colour": "#7d848a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "cairn",
+   "at": [
+    4,
+    -4,
+    3
+   ],
+   "params": {
+    "colour": "#9aa1a6",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -1.3,
+        -1
+       ],
+       [
+        1.2,
+        -1.3
+       ],
+       [
+        1.4,
+        1
+       ],
+       [
+        -1,
+        1.3
+       ]
+      ]
+     },
+     {
+      "z": 1.4,
+      "poly": [
+       [
+        -0.9,
+        -0.7
+       ],
+       [
+        0.8,
+        -0.9
+       ],
+       [
+        0.9,
+        0.7
+       ],
+       [
+        -0.7,
+        0.8
+       ]
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       0.7,
+       0.7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "flags",
+   "at": [
+    -8,
+    -6,
+    3
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     18,
+     3,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 6,
+      "colour": "#c8362f",
+      "colours": [
+       "#c8362f",
+       "#f4f4f1"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "radio-mast",
+   "id": "mast",
+   "at": [
+    14,
+    4,
+    3
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c9ced2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo, no OSM: saddle shape, flags, mast and cairn typed from the brief; rock spurs are generic"
+ }
+}

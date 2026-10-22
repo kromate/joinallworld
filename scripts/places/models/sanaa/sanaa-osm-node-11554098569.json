@@ -1,0 +1,478 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-node-11554098569",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: terraced plots, dry-stone walls, watchtower-style pump house, rest hut, shade trees; no OSM outline and no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 28,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace-0",
+   "footprint": {
+    "rect": [
+     72,
+     11
+    ]
+   },
+   "at": [
+    0,
+    -24.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d867a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f45",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-1",
+   "footprint": {
+    "rect": [
+     68,
+     11
+    ]
+   },
+   "at": [
+    0,
+    -10.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a8f7c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d9a4a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-2",
+   "footprint": {
+    "rect": [
+     64,
+     11
+    ]
+   },
+   "at": [
+    0,
+    4.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d867a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9b52",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-3",
+   "footprint": {
+    "rect": [
+     60,
+     11
+    ]
+   },
+   "at": [
+    0,
+    18.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.7000000000000002,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7f786c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa35c",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "array",
+   "id": "crops-0",
+   "at": [
+    0,
+    -24,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       8.5
+      ],
+      "height": 0.5,
+      "colour": "#4f7a3a",
+      "topColour": "#4f7a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28,
+     0
+    ],
+    "end": [
+     28,
+     0
+    ],
+    "count": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "crops-1",
+   "at": [
+    0,
+    -10,
+    0.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       8.5
+      ],
+      "height": 0.5,
+      "colour": "#4f7a3a",
+      "topColour": "#4f7a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     0
+    ],
+    "end": [
+     26,
+     0
+    ],
+    "count": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "crops-2",
+   "at": [
+    0,
+    4,
+    1.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       8.5
+      ],
+      "height": 0.5,
+      "colour": "#4f7a3a",
+      "topColour": "#4f7a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24,
+     0
+    ],
+    "end": [
+     24,
+     0
+    ],
+    "count": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "crops-3",
+   "at": [
+    0,
+    18,
+    1.7000000000000002
+   ],
+   "rotDeg": 0,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       8.5
+      ],
+      "height": 0.5,
+      "colour": "#4f7a3a",
+      "topColour": "#4f7a3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -22,
+     0
+    ],
+    "end": [
+     22,
+     0
+    ],
+    "count": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-front",
+   "at": [
+    -22,
+    -31.5,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 44,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#8d867a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-side",
+   "at": [
+    -36,
+    -14,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#6b6864"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-side2",
+   "at": [
+    36,
+    -14,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-top",
+   "at": [
+    10,
+    34,
+    2.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#8d867a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pump-tower",
+   "at": [
+    26,
+    24,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 6.5,
+    "topScale": 0.8,
+    "colour": "#b9a98a",
+    "windows": "rect",
+    "windowRatio": 0.12,
+    "storeys": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pump-cap",
+   "at": [
+    26,
+    24,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     3.8
+    ],
+    "height": 0.5,
+    "colour": "#6b6864"
+   }
+  },
+  {
+   "type": "water-tank",
+   "id": "tank",
+   "at": [
+    -26,
+    22,
+    2.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 1.3,
+    "height": 2,
+    "legs": 1.5,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "rest-hut",
+   "at": [
+    -4,
+    26,
+    2.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4.5,
+    "depth": 3.5,
+    "height": 2.6,
+    "roof": "hip",
+    "rise": 1.0,
+    "posts": 4,
+    "colour": "#b9a98a",
+    "cap_colour": "#8d867a"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree-a",
+   "at": [
+    -34,
+    30,
+    2.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree-b",
+   "at": [
+    34,
+    -30,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree-c",
+   "at": [
+    14,
+    30,
+    2.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or outline; layout typed"
+ }
+}

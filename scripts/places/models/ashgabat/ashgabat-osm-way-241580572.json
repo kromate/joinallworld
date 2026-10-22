@@ -1,0 +1,173 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-osm-way-241580572",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/241580572",
+   "used": "campus extent (about 511 x 466 m, 22 ha, near-rectangular outline): modelled as a representative ring of linked blocks at about a quarter scale"
+  },
+  {
+   "kind": "text",
+   "used": "white marble 5-storey linked blocks around a courtyard with a glazed entrance hall and dome typed from the brief (2012 university)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: the campus is really many separate buildings; the ring plan, entrance hall and blue dome are typed from the brief (the dome is a guess), real block layout unknown"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ring",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     112,
+     100
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 24,
+   "storeys": 5,
+   "wall": {
+    "material": "marble",
+    "colour": "#f1eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 20,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#d9d4c6",
+    "plinth": 1.0,
+    "cornice": true,
+    "glassColour": "#5f84a0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "material": "membrane",
+    "parapet": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -52
+   ],
+   "height": 30,
+   "storeys": 3,
+   "wall": {
+    "material": "marble",
+    "colour": "#f6f3ec",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "glassColour": "#4f7a98",
+    "plinth": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e1d4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    -52,
+    30
+   ],
+   "params": {
+    "radius": 8,
+    "height": 6,
+    "profile": "hemi",
+    "drum": 2,
+    "colour": "#7fa7c0",
+    "drumColour": "#f1eee6",
+    "finial": 2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -24,
+    -66,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43",
+    "count": 4,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    -68,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "tiers": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -60
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ }
+}

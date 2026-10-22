@@ -1,0 +1,231 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/706056301",
+   "used": "campus polygon 228 x 46 m, bearing 177 degrees (long axis north-south): used for orientation and overall extent only, a 100 m block is modelled; no photo of the building found (Commons News535.jpg is a press-conference interior)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     100,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d8bd",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#a9967a",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -10,
+    -13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe3",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "glassColour": "#7f98a8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9967a",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-pavilion",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 15.9,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9967a",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2,
+    "bottom": 1.5,
+    "colour": "#2f5d8a",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    18,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1,
+    "colours": [
+     "#1b1b1b",
+     "#b3262b",
+     "#1b6b3a"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.4,
+    "thickness": 0.35,
+    "colour": "#cfc4aa",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.4,
+    "colour": "#d9d9d6"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    45,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; a 100 m portion of the 228 m campus polygon modelled; colours and storeys assumed."
+ }
+}

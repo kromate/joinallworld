@@ -1,0 +1,794 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dhaka",
+ "venueId": "dhaka-osm-way-499441489",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mugda_Medical_College_(MuMC)-3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mujahidul Islam (MuMC)",
+   "view": "front",
+   "file": "/tmp/places-evidence/dhaka/499441489_2.jpg",
+   "used": "twelve-storey cream tower with recessed window cells, orange-brown curved corner stack, curved glazed entrance podium with fascia and blank sign band"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mugda_Medical_College_(MuMC).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mujahidul Islam (MuMC)",
+   "view": "side",
+   "file": "/tmp/places-evidence/dhaka/499441489_1.jpg",
+   "used": "stepped cream massing, projecting window boxes, round white column at the podium, orange stack"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/499441489",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    -1,
+    0
+   ],
+   "height": 42,
+   "storeys": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d3a0",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 8,
+    "plinth": 0.5,
+    "frameColour": "#8a5a30"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-top",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d3a0",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 8,
+    "plinth": 0.5,
+    "frameColour": "#8a5a30"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968a",
+    "parapet": 0.8
+   },
+   "z0": 42
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     20,
+     18
+    ]
+   },
+   "at": [
+    -27,
+    2
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d3a0",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "bay": 8,
+    "plinth": 0.5,
+    "frameColour": "#8a5a30",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d9c08a",
+      "height": 0.4,
+      "at": 0.0
+     }
+    ],
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      18.0,
+      0.0
+     ],
+     [
+      17.39,
+      2.07
+     ],
+     [
+      15.59,
+      4.0
+     ],
+     [
+      12.73,
+      5.66
+     ],
+     [
+      9.0,
+      6.93
+     ],
+     [
+      4.66,
+      7.73
+     ],
+     [
+      0.0,
+      8.0
+     ],
+     [
+      -4.66,
+      7.73
+     ],
+     [
+      -9.0,
+      6.93
+     ],
+     [
+      -12.73,
+      5.66
+     ],
+     [
+      -15.59,
+      4.0
+     ],
+     [
+      -17.39,
+      2.07
+     ],
+     [
+      -18.0,
+      0.0
+     ],
+     [
+      -17.39,
+      -2.07
+     ],
+     [
+      -15.59,
+      -4.0
+     ],
+     [
+      -12.73,
+      -5.66
+     ],
+     [
+      -9.0,
+      -6.93
+     ],
+     [
+      -4.66,
+      -7.73
+     ],
+     [
+      -0.0,
+      -8.0
+     ],
+     [
+      4.66,
+      -7.73
+     ],
+     [
+      9.0,
+      -6.93
+     ],
+     [
+      12.73,
+      -5.66
+     ],
+     [
+      15.59,
+      -4.0
+     ],
+     [
+      17.39,
+      -2.07
+     ]
+    ],
+    "height": 6.4,
+    "colour": "#5fa0b4",
+    "glassColour": "#6fb0c4",
+    "windows": "none",
+    "windowRatio": 0.8,
+    "topColour": "#e4e6e4",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -19,
+    6.4
+   ],
+   "params": {
+    "points": [
+     [
+      18.900000000000002,
+      0.0
+     ],
+     [
+      18.259500000000003,
+      2.277
+     ],
+     [
+      16.369500000000002,
+      4.4
+     ],
+     [
+      13.3665,
+      6.226000000000001
+     ],
+     [
+      9.450000000000001,
+      7.623
+     ],
+     [
+      4.893000000000001,
+      8.503000000000002
+     ],
+     [
+      0.0,
+      8.8
+     ],
+     [
+      -4.893000000000001,
+      8.503000000000002
+     ],
+     [
+      -9.450000000000001,
+      7.623
+     ],
+     [
+      -13.3665,
+      6.226000000000001
+     ],
+     [
+      -16.369500000000002,
+      4.4
+     ],
+     [
+      -18.259500000000003,
+      2.277
+     ],
+     [
+      -18.900000000000002,
+      0.0
+     ],
+     [
+      -18.259500000000003,
+      -2.277
+     ],
+     [
+      -16.369500000000002,
+      -4.4
+     ],
+     [
+      -13.3665,
+      -6.226000000000001
+     ],
+     [
+      -9.450000000000001,
+      -7.623
+     ],
+     [
+      -4.893000000000001,
+      -8.503000000000002
+     ],
+     [
+      -0.0,
+      -8.8
+     ],
+     [
+      4.893000000000001,
+      -8.503000000000002
+     ],
+     [
+      9.450000000000001,
+      -7.623
+     ],
+     [
+      13.3665,
+      -6.226000000000001
+     ],
+     [
+      16.369500000000002,
+      -4.4
+     ],
+     [
+      18.259500000000003,
+      -2.277
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#e8e8e2",
+    "topColour": "#e8e8e2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10.35,
+    7.6
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#f4f1ea",
+    "frameColour": "#f2efe6",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "column",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    8,
+    -26
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    26,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "vans": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stack",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      14.0,
+      -10.0
+     ],
+     [
+      16.59,
+      -9.66
+     ],
+     [
+      19.0,
+      -8.66
+     ],
+     [
+      21.07,
+      -7.07
+     ],
+     [
+      22.66,
+      -5.0
+     ],
+     [
+      23.66,
+      -2.59
+     ],
+     [
+      24.0,
+      0.0
+     ],
+     [
+      23.66,
+      2.59
+     ],
+     [
+      22.66,
+      5.0
+     ],
+     [
+      21.07,
+      7.07
+     ],
+     [
+      19.0,
+      8.66
+     ],
+     [
+      16.59,
+      9.66
+     ],
+     [
+      14.0,
+      10.0
+     ]
+    ],
+    "height": 42,
+    "colour": "#c98a50",
+    "windows": "none",
+    "topColour": "#9a968a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mull0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -18.2,
+    -19.0
+   ],
+   "z0": 0.9,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe6ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe6ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mull2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -16.4,
+    -22.56
+   ],
+   "z0": 0.9,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe6ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe6ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mull4",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -11.35,
+    -25.41
+   ],
+   "z0": 0.9,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe6ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe6ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mull6",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4.05,
+    -26.99
+   ],
+   "z0": 0.9,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe6ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe6ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mull8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    4.05,
+    -26.99
+   ],
+   "z0": 0.9,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe6ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe6ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mull10",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    11.35,
+    -25.41
+   ],
+   "z0": 0.9,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe6ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe6ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mull12",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    16.4,
+    -22.56
+   ],
+   "z0": 0.9,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe6ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe6ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mull14",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    18.2,
+    -19.0
+   ],
+   "z0": 0.9,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe6ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe6ea"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -48
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -54
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -44
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -40
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -38
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -40
+    ],
+    "height": 12
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -30,
+     -50
+    ],
+    "yawDeg": 0,
+    "colour": "#d8d8d4"
+   },
+   {
+    "at": [
+     -23,
+     -56
+    ],
+    "yawDeg": 90,
+    "colour": "#7a1f1f"
+   },
+   {
+    "at": [
+     -16,
+     -50
+    ],
+    "yawDeg": 0,
+    "colour": "#2f3f5f"
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ],
+  "forecourt": "garden"
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Cream twelve-storey tower with brown-framed windows, D-shaped orange-brown stack, blue-green glazed podium drum with white fascia and white sign board; stack is a smooth prism (no curved bays), no window boxes or louvred stripes, tower not stepped back."
+ }
+}

@@ -1,0 +1,1575 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-osm-node-13416585667",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Seyed_Ruhollah_Khomeini%27s_tomb_in_2023.jpeg",
+   "licence": "CC BY 4.0",
+   "author": "khamenei.ir",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tehran/kz3.jpg",
+   "used": "golden ovoid dome on a pale ornamented drum, four golden minarets with two balconies each and spiked caps, four ribbed pointed-gable roofs round the dome, cream marble hall with pointed arcading, blue-domed lower portico front-left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:IrKhomeiniMausoleum.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ziegler175",
+   "view": "street",
+   "file": "/tmp/places-evidence/tehran/kz1.jpg",
+   "used": "dome and minaret proportions, desert setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/684420472",
+   "used": "identity only: the tagged 306 x 145 m outline is a zig-zag precinct boundary so the hall was composed from the photo instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 20,
+  "fovDeg": 34,
+  "aspect": 1.5
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gables are now steep pointed roofs on the four axes but plain (no ribs or arcaded fronts, no extra corner gables or ribbed barrel vaults); hall arcade windows are small; minarets are simplified drums without lantern detail and a single repeated profile; portico is deck on columns, forecourt and side wings missing."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     112,
+     68
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#e6dcc0",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "bay": 12,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    },
+    "plinth": 0.8,
+    "cornice": false,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ],
+      "colour": "#b9c4c8",
+      "height": 1.0,
+      "at": 0.62,
+      "proud": 0.1
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ],
+      "colour": "#cbb98a",
+      "height": 0.8,
+      "at": 0.93
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cf",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     74,
+     1.4
+    ]
+   },
+   "at": [
+    -18,
+    -34.8
+   ],
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#ece4cf",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd8cc",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -56.6,
+     0
+    ],
+    "end": [
+     18,
+     -56.6,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.0,
+       2.0
+      ],
+      "height": 7.6,
+      "colour": "#f0e9d6",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -36,
+    -45,
+    9.0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#3f78c8",
+    "profile": [
+     [
+      11.5,
+      0.0,
+      "#e4dcc6"
+     ],
+     [
+      11.5,
+      1.08
+     ],
+     [
+      12,
+      1.08,
+      "#3f78c8"
+     ],
+     [
+      11.6,
+      1.37
+     ],
+     [
+      10,
+      1.94
+     ],
+     [
+      7.5,
+      2.45
+     ],
+     [
+      4,
+      2.77
+     ],
+     [
+      0,
+      2.88
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sanctuary",
+   "params": {
+    "rect": [
+     52,
+     52
+    ],
+    "z0": 17,
+    "height": 9,
+    "colour": "#e3d9bd",
+    "windows": "none",
+    "topColour": "#d9d6cf"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    26
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e6dcc0",
+    "profile": [
+     [
+      16.6,
+      0,
+      "#e1d6b8"
+     ],
+     [
+      16.6,
+      1.8
+     ],
+     [
+      17.2,
+      1.8,
+      "#cbbd98"
+     ],
+     [
+      17.2,
+      3
+     ],
+     [
+      15.4,
+      3,
+      "#e6dcc0"
+     ],
+     [
+      15.4,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    36
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d4a537",
+    "topColour": "#e2b84a",
+    "profile": [
+     [
+      15.2,
+      0,
+      "#d4a537"
+     ],
+     [
+      16.4,
+      2.5
+     ],
+     [
+      16.2,
+      6
+     ],
+     [
+      14.6,
+      11
+     ],
+     [
+      11.8,
+      16
+     ],
+     [
+      8,
+      20.5
+     ],
+     [
+      4.2,
+      24
+     ],
+     [
+      1.6,
+      26.2
+     ],
+     [
+      0.5,
+      27.5
+     ],
+     [
+      0.5,
+      29
+     ],
+     [
+      0.15,
+      31
+     ],
+     [
+      0.15,
+      35
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    36
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      15.2,
+      0
+     ],
+     [
+      16.2,
+      6
+     ],
+     [
+      11.8,
+      16
+     ],
+     [
+      4.2,
+      24
+     ],
+     [
+      0,
+      28
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    -18,
+    -45
+   ],
+   "params": {
+    "rect": [
+     76,
+     24
+    ],
+    "z0": 7.6,
+    "height": 1.4,
+    "colour": "#e6dfcb",
+    "topColour": "#e6dfcb",
+    "windows": "none"
+   },
+   "lod": "#ddd8cc"
+  },
+  {
+   "type": "prism",
+   "id": "deck-edge",
+   "at": [
+    -18,
+    -56.4
+   ],
+   "params": {
+    "rect": [
+     76,
+     1.0
+    ],
+    "z0": 7.0,
+    "height": 0.6,
+    "colour": "#cbbd98",
+    "topColour": "#cbbd98",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     -48,
+     0
+    ],
+    "end": [
+     18,
+     -48,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "height": 7.6,
+      "colour": "#f0e9d6",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gb-ns-1",
+   "footprint": {
+    "rect": [
+     18,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -21
+   ],
+   "z0": 17,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#e8dfc4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gr-ns-1",
+   "at": [
+    0,
+    -21
+   ],
+   "params": {
+    "rect": [
+     18,
+     26
+    ],
+    "z0": 22,
+    "height": 16,
+    "topScale": [
+     0.04,
+     1
+    ],
+    "colour": "#dcd7c8",
+    "topColour": "#d4d0c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gb-ns1",
+   "footprint": {
+    "rect": [
+     18,
+     26
+    ]
+   },
+   "at": [
+    0,
+    21
+   ],
+   "z0": 17,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#e8dfc4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gr-ns1",
+   "at": [
+    0,
+    21
+   ],
+   "params": {
+    "rect": [
+     18,
+     26
+    ],
+    "z0": 22,
+    "height": 16,
+    "topScale": [
+     0.04,
+     1
+    ],
+    "colour": "#dcd7c8",
+    "topColour": "#d4d0c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gb-ew-1",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    -44,
+    0
+   ],
+   "z0": 17,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#e8dfc4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gr-ew-1",
+   "at": [
+    -44,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     16
+    ],
+    "z0": 22,
+    "height": 13,
+    "topScale": [
+     1,
+     0.04
+    ],
+    "colour": "#dcd7c8",
+    "topColour": "#d4d0c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gb-ew1",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    44,
+    0
+   ],
+   "z0": 17,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#e8dfc4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gr-ew1",
+   "at": [
+    44,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     16
+    ],
+    "z0": 22,
+    "height": 13,
+    "topScale": [
+     1,
+     0.04
+    ],
+    "colour": "#dcd7c8",
+    "topColour": "#d4d0c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rib-ns-1-1",
+   "lod": [
+    0
+   ],
+   "at": [
+    -2.6,
+    -30
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     8
+    ],
+    "z0": 23.8,
+    "height": 7.0,
+    "topScale": [
+     0.3,
+     1
+    ],
+    "colour": "#c4bfae",
+    "topColour": "#c4bfae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rib-ns-11",
+   "lod": [
+    0
+   ],
+   "at": [
+    2.6,
+    -30
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     8
+    ],
+    "z0": 23.8,
+    "height": 7.0,
+    "topScale": [
+     0.3,
+     1
+    ],
+    "colour": "#c4bfae",
+    "topColour": "#c4bfae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rib-ns1-1",
+   "lod": [
+    0
+   ],
+   "at": [
+    -2.6,
+    30
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     8
+    ],
+    "z0": 23.8,
+    "height": 7.0,
+    "topScale": [
+     0.3,
+     1
+    ],
+    "colour": "#c4bfae",
+    "topColour": "#c4bfae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rib-ns11",
+   "lod": [
+    0
+   ],
+   "at": [
+    2.6,
+    30
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     8
+    ],
+    "z0": 23.8,
+    "height": 7.0,
+    "topScale": [
+     0.3,
+     1
+    ],
+    "colour": "#c4bfae",
+    "topColour": "#c4bfae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -53,
+    -30,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.08,
+      0.0,
+      "#e6dcc0"
+     ],
+     [
+      4.08,
+      8.64
+     ],
+     [
+      2.76,
+      8.64,
+      "#d4a537"
+     ],
+     [
+      2.76,
+      34.56
+     ],
+     [
+      5.04,
+      34.56,
+      "#cfae52"
+     ],
+     [
+      5.28,
+      36.0
+     ],
+     [
+      5.28,
+      40.32,
+      "#e0c36a"
+     ],
+     [
+      3.6,
+      41.04,
+      "#d4a537"
+     ],
+     [
+      2.4,
+      42.12
+     ],
+     [
+      2.4,
+      54.72
+     ],
+     [
+      3.12,
+      54.72,
+      "#cfae52"
+     ],
+     [
+      3.12,
+      55.8
+     ],
+     [
+      1.92,
+      56.16
+     ],
+     [
+      1.56,
+      60.48
+     ],
+     [
+      0.84,
+      63.36
+     ],
+     [
+      0.25,
+      64.8
+     ],
+     [
+      0.15,
+      66.24
+     ],
+     [
+      0.15,
+      68.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    -53,
+    -30,
+    0
+   ],
+   "params": {
+    "segments": 5,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.08,
+      0.0,
+      "#e6dcc0"
+     ],
+     [
+      4.08,
+      8.64
+     ],
+     [
+      2.76,
+      8.64,
+      "#d4a537"
+     ],
+     [
+      2.76,
+      34.56
+     ],
+     [
+      5.28,
+      34.56,
+      "#cfae52"
+     ],
+     [
+      5.28,
+      40.32
+     ],
+     [
+      2.4,
+      42.12
+     ],
+     [
+      2.4,
+      54.72
+     ],
+     [
+      1.56,
+      60.48
+     ],
+     [
+      0.15,
+      68.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -53,
+    -30,
+    0
+   ],
+   "params": {
+    "segments": 3,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.56,
+      0.0
+     ],
+     [
+      3.24,
+      8.64
+     ],
+     [
+      3.24,
+      37.44
+     ],
+     [
+      2.88,
+      41.76
+     ],
+     [
+      2.88,
+      50.4
+     ],
+     [
+      1.08,
+      61.92
+     ],
+     [
+      0,
+      66.24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -53,
+    30,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.08,
+      0.0,
+      "#e6dcc0"
+     ],
+     [
+      4.08,
+      8.64
+     ],
+     [
+      2.76,
+      8.64,
+      "#d4a537"
+     ],
+     [
+      2.76,
+      34.56
+     ],
+     [
+      5.04,
+      34.56,
+      "#cfae52"
+     ],
+     [
+      5.28,
+      36.0
+     ],
+     [
+      5.28,
+      40.32,
+      "#e0c36a"
+     ],
+     [
+      3.6,
+      41.04,
+      "#d4a537"
+     ],
+     [
+      2.4,
+      42.12
+     ],
+     [
+      2.4,
+      54.72
+     ],
+     [
+      3.12,
+      54.72,
+      "#cfae52"
+     ],
+     [
+      3.12,
+      55.8
+     ],
+     [
+      1.92,
+      56.16
+     ],
+     [
+      1.56,
+      60.48
+     ],
+     [
+      0.84,
+      63.36
+     ],
+     [
+      0.25,
+      64.8
+     ],
+     [
+      0.15,
+      66.24
+     ],
+     [
+      0.15,
+      68.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    -53,
+    30,
+    0
+   ],
+   "params": {
+    "segments": 5,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.08,
+      0.0,
+      "#e6dcc0"
+     ],
+     [
+      4.08,
+      8.64
+     ],
+     [
+      2.76,
+      8.64,
+      "#d4a537"
+     ],
+     [
+      2.76,
+      34.56
+     ],
+     [
+      5.28,
+      34.56,
+      "#cfae52"
+     ],
+     [
+      5.28,
+      40.32
+     ],
+     [
+      2.4,
+      42.12
+     ],
+     [
+      2.4,
+      54.72
+     ],
+     [
+      1.56,
+      60.48
+     ],
+     [
+      0.15,
+      68.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -53,
+    30,
+    0
+   ],
+   "params": {
+    "segments": 3,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.56,
+      0.0
+     ],
+     [
+      3.24,
+      8.64
+     ],
+     [
+      3.24,
+      37.44
+     ],
+     [
+      2.88,
+      41.76
+     ],
+     [
+      2.88,
+      50.4
+     ],
+     [
+      1.08,
+      61.92
+     ],
+     [
+      0,
+      66.24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    53,
+    -30,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.08,
+      0.0,
+      "#e6dcc0"
+     ],
+     [
+      4.08,
+      8.64
+     ],
+     [
+      2.76,
+      8.64,
+      "#d4a537"
+     ],
+     [
+      2.76,
+      34.56
+     ],
+     [
+      5.04,
+      34.56,
+      "#cfae52"
+     ],
+     [
+      5.28,
+      36.0
+     ],
+     [
+      5.28,
+      40.32,
+      "#e0c36a"
+     ],
+     [
+      3.6,
+      41.04,
+      "#d4a537"
+     ],
+     [
+      2.4,
+      42.12
+     ],
+     [
+      2.4,
+      54.72
+     ],
+     [
+      3.12,
+      54.72,
+      "#cfae52"
+     ],
+     [
+      3.12,
+      55.8
+     ],
+     [
+      1.92,
+      56.16
+     ],
+     [
+      1.56,
+      60.48
+     ],
+     [
+      0.84,
+      63.36
+     ],
+     [
+      0.25,
+      64.8
+     ],
+     [
+      0.15,
+      66.24
+     ],
+     [
+      0.15,
+      68.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    53,
+    -30,
+    0
+   ],
+   "params": {
+    "segments": 5,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.08,
+      0.0,
+      "#e6dcc0"
+     ],
+     [
+      4.08,
+      8.64
+     ],
+     [
+      2.76,
+      8.64,
+      "#d4a537"
+     ],
+     [
+      2.76,
+      34.56
+     ],
+     [
+      5.28,
+      34.56,
+      "#cfae52"
+     ],
+     [
+      5.28,
+      40.32
+     ],
+     [
+      2.4,
+      42.12
+     ],
+     [
+      2.4,
+      54.72
+     ],
+     [
+      1.56,
+      60.48
+     ],
+     [
+      0.15,
+      68.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    53,
+    -30,
+    0
+   ],
+   "params": {
+    "segments": 3,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.56,
+      0.0
+     ],
+     [
+      3.24,
+      8.64
+     ],
+     [
+      3.24,
+      37.44
+     ],
+     [
+      2.88,
+      41.76
+     ],
+     [
+      2.88,
+      50.4
+     ],
+     [
+      1.08,
+      61.92
+     ],
+     [
+      0,
+      66.24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    53,
+    30,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.08,
+      0.0,
+      "#e6dcc0"
+     ],
+     [
+      4.08,
+      8.64
+     ],
+     [
+      2.76,
+      8.64,
+      "#d4a537"
+     ],
+     [
+      2.76,
+      34.56
+     ],
+     [
+      5.04,
+      34.56,
+      "#cfae52"
+     ],
+     [
+      5.28,
+      36.0
+     ],
+     [
+      5.28,
+      40.32,
+      "#e0c36a"
+     ],
+     [
+      3.6,
+      41.04,
+      "#d4a537"
+     ],
+     [
+      2.4,
+      42.12
+     ],
+     [
+      2.4,
+      54.72
+     ],
+     [
+      3.12,
+      54.72,
+      "#cfae52"
+     ],
+     [
+      3.12,
+      55.8
+     ],
+     [
+      1.92,
+      56.16
+     ],
+     [
+      1.56,
+      60.48
+     ],
+     [
+      0.84,
+      63.36
+     ],
+     [
+      0.25,
+      64.8
+     ],
+     [
+      0.15,
+      66.24
+     ],
+     [
+      0.15,
+      68.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    53,
+    30,
+    0
+   ],
+   "params": {
+    "segments": 5,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.08,
+      0.0,
+      "#e6dcc0"
+     ],
+     [
+      4.08,
+      8.64
+     ],
+     [
+      2.76,
+      8.64,
+      "#d4a537"
+     ],
+     [
+      2.76,
+      34.56
+     ],
+     [
+      5.28,
+      34.56,
+      "#cfae52"
+     ],
+     [
+      5.28,
+      40.32
+     ],
+     [
+      2.4,
+      42.12
+     ],
+     [
+      2.4,
+      54.72
+     ],
+     [
+      1.56,
+      60.48
+     ],
+     [
+      0.15,
+      68.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    53,
+    30,
+    0
+   ],
+   "params": {
+    "segments": 3,
+    "colour": "#d4a537",
+    "profile": [
+     [
+      4.56,
+      0.0
+     ],
+     [
+      3.24,
+      8.64
+     ],
+     [
+      3.24,
+      37.44
+     ],
+     [
+      2.88,
+      41.76
+     ],
+     [
+      2.88,
+      50.4
+     ],
+     [
+      1.08,
+      61.92
+     ],
+     [
+      0,
+      66.24
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ }
+}

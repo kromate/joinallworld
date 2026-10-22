@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-osm-node-11758597705",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "node-only OSM viewpoint with no outline or photo: railed concrete terrace on a cliff lip above a gorge, conifers, gravel pull-in"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 28,
+    "height": 14,
+    "stairs": false,
+    "boulders": 8,
+    "rock_colour": "#9a8f7c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "polygon": [
+     [
+      -22,
+      -8
+     ],
+     [
+      22,
+      -8
+     ],
+     [
+      26,
+      6
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      -14,
+      14
+     ],
+     [
+      -26,
+      6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -18,
+    14,
+    0.5
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.1,
+    "colour": "#5a5f64"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -26,
+    6,
+    0.5
+   ],
+   "rotDeg": -55,
+   "params": {
+    "length": 9,
+    "height": 1.1,
+    "colour": "#5a5f64"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    18,
+    14,
+    0.5
+   ],
+   "rotDeg": -35,
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "colour": "#5a5f64"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "gravel",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    -22
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8f86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f86"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo or outline: typed terrace, railing, rock backdrop and conifers"
+ }
+}

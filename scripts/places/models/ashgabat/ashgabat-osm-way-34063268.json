@@ -1,0 +1,346 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-osm-way-34063268",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/34063268",
+   "used": "pentagon outline of the park, 359 x 217 m, scaled to 118 m for the scene clamp"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lenin_Statue_(5730564615).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "detail",
+   "file": "/tmp/places-evidence/ashgabat/park1.jpg",
+   "used": "central monument only: a dark bronze standing figure on a brick-red plinth faced with carpet-pattern tile panels and two arched openings, reached by wide dark steps; not a view of the whole park, so no comparison render"
+  },
+  {
+   "kind": "text",
+   "used": "brief: laid out 1890, tree-lined paths, marble-edged beds, fountains, pavilions, gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -63.1,
+      -31.9
+     ],
+     [
+      2.3,
+      -60.2
+     ],
+     [
+      55.3,
+      15.5
+     ],
+     [
+      49.4,
+      34.5
+     ],
+     [
+      3.0,
+      65.6
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#6f9a52",
+    "topColour": "#6f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-main",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "rotDeg": 35,
+   "params": {
+    "rect": [
+     92,
+     4
+    ],
+    "height": 0.12,
+    "colour": "#e6e1d4",
+    "topColour": "#e6e1d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-cross",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "rotDeg": -55,
+   "params": {
+    "rect": [
+     66,
+     3.4
+    ],
+    "height": 0.12,
+    "colour": "#e6e1d4",
+    "topColour": "#e6e1d4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "radius": 10,
+    "n": 24,
+    "height": 0.18,
+    "colour": "#f4f2ec",
+    "topColour": "#ece8dc"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "id": "monument",
+   "at": [
+    0,
+    0,
+    0.43
+   ],
+   "params": {
+    "height": 8,
+    "width": 5.5,
+    "steps": 3,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#4a4038",
+    "figure_ratio": 0.3
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "id": "fountain-a",
+   "at": [
+    -19.7,
+    -13.8,
+    0.25
+   ],
+   "params": {
+    "radius": 4.2
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "id": "fountain-b",
+   "at": [
+    19.7,
+    13.8,
+    0.25
+   ],
+   "params": {
+    "radius": 4.2
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "pavilion-a",
+   "at": [
+    -14.9,
+    21.3,
+    0.25
+   ],
+   "rotDeg": 35,
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.6,
+    "colour": "#f1eee6",
+    "cap_colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "pavilion-b",
+   "at": [
+    13.8,
+    -19.7,
+    0.25
+   ],
+   "rotDeg": 35,
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.6,
+    "colour": "#f1eee6",
+    "cap_colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "gate",
+   "at": [
+    -44,
+    -48,
+    0.25
+   ],
+   "rotDeg": 35,
+   "params": {
+    "width": 9,
+    "height": 4.5,
+    "pillar": 1.4,
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    -22.9,
+    32.8,
+    0.25
+   ],
+   "rotDeg": 35,
+   "params": {
+    "width": 6,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#e6e1d4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -39.3,
+     -27.5
+    ],
+    "end": [
+     -24.6,
+     -17.2
+    ],
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 9
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 99
+   },
+   "id": "avenue-12"
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     24.6,
+     17.2
+    ],
+    "end": [
+     39.3,
+     27.5
+    ],
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 9
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 99
+   },
+   "id": "avenue-13"
+  },
+  {
+   "type": "tree-grove",
+   "id": "grove-w",
+   "at": [
+    -30,
+    12,
+    0.25
+   ],
+   "params": {
+    "width": 28,
+    "depth": 20,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "grove-e",
+   "at": [
+    28,
+    -14,
+    0.25
+   ],
+   "params": {
+    "width": 28,
+    "depth": 20,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "grove-n",
+   "at": [
+    -8,
+    36,
+    0.25
+   ],
+   "params": {
+    "width": 26,
+    "depth": 16,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   125,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the whole park exists in the evidence; layout of paths, fountains, pavilions and trees is typical of the city's marble parks and anchored only on the real outline and the central monument photo; the monument tile pattern and bronze figure are generic parts"
+ }
+}

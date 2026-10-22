@@ -1,0 +1,1566 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-osm-node-11597386428",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%A7%D9%84%D8%B9%D8%AA%D8%A8%D8%A9_%D8%A7%D9%84%D9%83%D8%A7%D8%B8%D9%85%D9%8A%D8%A9_%D9%85%D9%86_%D8%A7%D9%84%D8%AC%D9%881.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor (see page)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/baghdad/shrine3.jpg",
+   "used": "gold dome and drum profile, sand-coloured tiled minaret shafts with gold balconies and onion tops, blue-tiled clock tower with teal dome, flat sand roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Imam_Al-Kathim_%26_Imam_Al-Jawad%27s_Shrine,_Entrance.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor (see page)",
+   "view": "front",
+   "file": "/tmp/places-evidence/baghdad/shrine2.jpg",
+   "used": "blue-tile iwan portal with pointed arch, wooden door, teal edging, buff brick walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1058585283",
+   "used": "shrine core outline (54 x 49 m, height 15)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 18,
+  "fovDeg": 42,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shrine",
+   "footprint": {
+    "osm": true
+   },
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cdb27c",
+    "windows": "pointed-arch",
+    "windowShape": "pointed",
+    "windowRatio": 0.09,
+    "glassColour": "#2d3f5e",
+    "plinth": 1.2,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#2a5f8c",
+      "height": 0.9,
+      "at": 12.5
+     },
+     {
+      "type": "bands",
+      "colour": "#d9a92a",
+      "height": 0.7,
+      "at": 13.6
+     },
+     {
+      "type": "bands",
+      "colour": "#2a5f8c",
+      "height": 0.8,
+      "at": 3.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b184",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -9.6,
+    -8.5,
+    15
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#d9a92a",
+    "material": "metal-sheet",
+    "profile": [
+     [
+      7.8,
+      0,
+      "#cdb27c"
+     ],
+     [
+      7.8,
+      3.5
+     ],
+     [
+      8.2,
+      3.7,
+      "#d9a92a"
+     ],
+     [
+      8.2,
+      4.2
+     ],
+     [
+      7.8,
+      4.4,
+      "#d9a92a"
+     ],
+     [
+      8.6,
+      6.0
+     ],
+     [
+      8.4,
+      8.5
+     ],
+     [
+      7.2,
+      11.0
+     ],
+     [
+      5.0,
+      13.0
+     ],
+     [
+      2.5,
+      14.6
+     ],
+     [
+      0.8,
+      15.5
+     ],
+     [
+      0.6,
+      16.4
+     ],
+     [
+      0.3,
+      17.8
+     ],
+     [
+      1.0,
+      18.1
+     ],
+     [
+      0.25,
+      19.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -9.6,
+    -8.5,
+    15
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d9a92a",
+    "profile": [
+     [
+      7.8,
+      0
+     ],
+     [
+      8.6,
+      6
+     ],
+     [
+      2.5,
+      14.6
+     ],
+     [
+      0.2,
+      19.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9.6,
+    -8.5,
+    15
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d9a92a",
+    "material": "metal-sheet",
+    "profile": [
+     [
+      2.73,
+      0.0,
+      [
+       "#d8c79c"
+      ]
+     ],
+     [
+      2.73,
+      2.73
+     ],
+     [
+      3.15,
+      2.814,
+      [
+       "#d9a92a"
+      ]
+     ],
+     [
+      3.15,
+      3.066
+     ],
+     [
+      2.73,
+      3.15
+     ],
+     [
+      3.108,
+      3.99
+     ],
+     [
+      3.36,
+      5.25
+     ],
+     [
+      3.192,
+      6.51
+     ],
+     [
+      2.688,
+      7.77
+     ],
+     [
+      1.806,
+      8.82
+     ],
+     [
+      0.882,
+      9.66
+     ],
+     [
+      0.294,
+      10.29
+     ],
+     [
+      0.294,
+      10.542
+     ],
+     [
+      0.147,
+      11.13
+     ],
+     [
+      0.504,
+      11.298
+     ],
+     [
+      0.118,
+      11.97
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    9.6,
+    -8.5,
+    15
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d9a92a",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      3.3,
+      5
+     ],
+     [
+      1.0,
+      9
+     ],
+     [
+      0.1,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -19.5,
+    -25.2,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d8c79c",
+    "material": "painted-render",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#cdb27c"
+     ],
+     [
+      2.6,
+      12,
+      "#cdb27c"
+     ],
+     [
+      2.7,
+      12.5,
+      "#2a8f84"
+     ],
+     [
+      2.7,
+      13,
+      "#1c2f6a"
+     ],
+     [
+      2.6,
+      13.3,
+      "#cdb27c"
+     ],
+     [
+      2.4,
+      22,
+      "#d9a92a"
+     ],
+     [
+      3.6,
+      22.5,
+      "#d9a92a"
+     ],
+     [
+      3.6,
+      24,
+      "#d9a92a"
+     ],
+     [
+      2.4,
+      24.2,
+      "#d9a92a"
+     ],
+     [
+      2.1,
+      29,
+      "#d9a92a"
+     ],
+     [
+      2.9,
+      29.2,
+      "#d9a92a"
+     ],
+     [
+      2.9,
+      30.2,
+      "#d9a92a"
+     ],
+     [
+      2.2,
+      30.5,
+      "#d9a92a"
+     ],
+     [
+      1.6,
+      32,
+      "#d9a92a"
+     ],
+     [
+      0.7,
+      33.8,
+      "#d9a92a"
+     ],
+     [
+      0.15,
+      35.2,
+      "#d9a92a"
+     ],
+     [
+      0.15,
+      37.5,
+      "#d9a92a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -19.5,
+    -25.2,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d8c79c",
+    "material": "painted-render",
+    "profile": [
+     [
+      2.8,
+      0
+     ],
+     [
+      2.4,
+      22
+     ],
+     [
+      2.1,
+      30
+     ],
+     [
+      0.15,
+      37
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20.2,
+    -25.2,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d8c79c",
+    "material": "painted-render",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#cdb27c"
+     ],
+     [
+      2.6,
+      12,
+      "#cdb27c"
+     ],
+     [
+      2.7,
+      12.5,
+      "#2a8f84"
+     ],
+     [
+      2.7,
+      13,
+      "#1c2f6a"
+     ],
+     [
+      2.6,
+      13.3,
+      "#cdb27c"
+     ],
+     [
+      2.4,
+      22,
+      "#d9a92a"
+     ],
+     [
+      3.6,
+      22.5,
+      "#d9a92a"
+     ],
+     [
+      3.6,
+      24,
+      "#d9a92a"
+     ],
+     [
+      2.4,
+      24.2,
+      "#d9a92a"
+     ],
+     [
+      2.1,
+      29,
+      "#d9a92a"
+     ],
+     [
+      2.9,
+      29.2,
+      "#d9a92a"
+     ],
+     [
+      2.9,
+      30.2,
+      "#d9a92a"
+     ],
+     [
+      2.2,
+      30.5,
+      "#d9a92a"
+     ],
+     [
+      1.6,
+      32,
+      "#d9a92a"
+     ],
+     [
+      0.7,
+      33.8,
+      "#d9a92a"
+     ],
+     [
+      0.15,
+      35.2,
+      "#d9a92a"
+     ],
+     [
+      0.15,
+      37.5,
+      "#d9a92a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    20.2,
+    -25.2,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d8c79c",
+    "material": "painted-render",
+    "profile": [
+     [
+      2.8,
+      0
+     ],
+     [
+      2.4,
+      22
+     ],
+     [
+      2.1,
+      30
+     ],
+     [
+      0.15,
+      37
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20.2,
+    8.6,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d8c79c",
+    "material": "painted-render",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#cdb27c"
+     ],
+     [
+      2.6,
+      12,
+      "#cdb27c"
+     ],
+     [
+      2.7,
+      12.5,
+      "#2a8f84"
+     ],
+     [
+      2.7,
+      13,
+      "#1c2f6a"
+     ],
+     [
+      2.6,
+      13.3,
+      "#cdb27c"
+     ],
+     [
+      2.4,
+      22,
+      "#d9a92a"
+     ],
+     [
+      3.6,
+      22.5,
+      "#d9a92a"
+     ],
+     [
+      3.6,
+      24,
+      "#d9a92a"
+     ],
+     [
+      2.4,
+      24.2,
+      "#d9a92a"
+     ],
+     [
+      2.1,
+      29,
+      "#d9a92a"
+     ],
+     [
+      2.9,
+      29.2,
+      "#d9a92a"
+     ],
+     [
+      2.9,
+      30.2,
+      "#d9a92a"
+     ],
+     [
+      2.2,
+      30.5,
+      "#d9a92a"
+     ],
+     [
+      1.6,
+      32,
+      "#d9a92a"
+     ],
+     [
+      0.7,
+      33.8,
+      "#d9a92a"
+     ],
+     [
+      0.15,
+      35.2,
+      "#d9a92a"
+     ],
+     [
+      0.15,
+      37.5,
+      "#d9a92a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    20.2,
+    8.6,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d8c79c",
+    "material": "painted-render",
+    "profile": [
+     [
+      2.8,
+      0
+     ],
+     [
+      2.4,
+      22
+     ],
+     [
+      2.1,
+      30
+     ],
+     [
+      0.15,
+      37
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -19.5,
+    8.6,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d8c79c",
+    "material": "painted-render",
+    "profile": [
+     [
+      2.8,
+      0,
+      "#cdb27c"
+     ],
+     [
+      2.6,
+      12,
+      "#cdb27c"
+     ],
+     [
+      2.7,
+      12.5,
+      "#2a8f84"
+     ],
+     [
+      2.7,
+      13,
+      "#1c2f6a"
+     ],
+     [
+      2.6,
+      13.3,
+      "#cdb27c"
+     ],
+     [
+      2.4,
+      22,
+      "#d9a92a"
+     ],
+     [
+      3.6,
+      22.5,
+      "#d9a92a"
+     ],
+     [
+      3.6,
+      24,
+      "#d9a92a"
+     ],
+     [
+      2.4,
+      24.2,
+      "#d9a92a"
+     ],
+     [
+      2.1,
+      29,
+      "#d9a92a"
+     ],
+     [
+      2.9,
+      29.2,
+      "#d9a92a"
+     ],
+     [
+      2.9,
+      30.2,
+      "#d9a92a"
+     ],
+     [
+      2.2,
+      30.5,
+      "#d9a92a"
+     ],
+     [
+      1.6,
+      32,
+      "#d9a92a"
+     ],
+     [
+      0.7,
+      33.8,
+      "#d9a92a"
+     ],
+     [
+      0.15,
+      35.2,
+      "#d9a92a"
+     ],
+     [
+      0.15,
+      37.5,
+      "#d9a92a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -19.5,
+    8.6,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d8c79c",
+    "material": "painted-render",
+    "profile": [
+     [
+      2.8,
+      0
+     ],
+     [
+      2.4,
+      22
+     ],
+     [
+      2.1,
+      30
+     ],
+     [
+      0.15,
+      37
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "iwan",
+   "params": {
+    "rect": [
+     17,
+     2.6
+    ],
+    "z0": 0,
+    "height": 22,
+    "colour": "#1c2f6a",
+    "topColour": "#162556",
+    "material": "painted-render"
+   },
+   "at": [
+    0,
+    -26.7,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "iwan-border",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -28.1,
+    0
+   ],
+   "params": {
+    "colour": "#d9a92a",
+    "material": "metal-sheet",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       7.2,
+       0.3
+      ]
+     },
+     {
+      "z": 9.6,
+      "rect": [
+       7.2,
+       0.3
+      ]
+     },
+     {
+      "z": 12.6,
+      "rect": [
+       5.6,
+       0.3
+      ]
+     },
+     {
+      "z": 16.2,
+      "rect": [
+       3.2,
+       0.3
+      ]
+     },
+     {
+      "z": 18.72,
+      "rect": [
+       1.2,
+       0.3
+      ]
+     },
+     {
+      "z": 19.68,
+      "rect": [
+       0.2,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "iwan-recess",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -28.3,
+    0
+   ],
+   "params": {
+    "colour": "#0f1c45",
+    "material": "painted-render",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       6.2,
+       0.3
+      ]
+     },
+     {
+      "z": 9.6,
+      "rect": [
+       6.2,
+       0.3
+      ]
+     },
+     {
+      "z": 12.6,
+      "rect": [
+       4.7,
+       0.3
+      ]
+     },
+     {
+      "z": 16.2,
+      "rect": [
+       2.4,
+       0.3
+      ]
+     },
+     {
+      "z": 18.12,
+      "rect": [
+       0.8,
+       0.3
+      ]
+     },
+     {
+      "z": 18.84,
+      "rect": [
+       0.1,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "iwan-door",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.4
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#5a3624",
+    "topColour": "#5a3624"
+   },
+   "at": [
+    0,
+    -28.55,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "iwan-band",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     17.4,
+     0.5
+    ],
+    "z0": 20.6,
+    "height": 1.0,
+    "colour": "#d9a92a",
+    "topColour": "#d9a92a"
+   },
+   "at": [
+    0,
+    -28.0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "iwan-band2",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     17.4,
+     0.5
+    ],
+    "z0": 1.0,
+    "height": 0.8,
+    "colour": "#2a8f84",
+    "topColour": "#2a8f84"
+   },
+   "at": [
+    0,
+    -28.0,
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "clock-tower",
+   "at": [
+    -30,
+    -27,
+    0
+   ],
+   "params": {
+    "colour": "#1c2f6a",
+    "material": "painted-render",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 36,
+      "rect": [
+       6.6,
+       6.6
+      ]
+     },
+     {
+      "z": 36.01,
+      "rect": [
+       8.2,
+       8.2
+      ],
+      "colour": "#d8c79c"
+     },
+     {
+      "z": 37.4,
+      "rect": [
+       8.2,
+       8.2
+      ],
+      "colour": "#d8c79c"
+     },
+     {
+      "z": 37.41,
+      "rect": [
+       6,
+       6
+      ],
+      "colour": "#1c2f6a"
+     },
+     {
+      "z": 41,
+      "rect": [
+       6,
+       6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "clock-dome",
+   "at": [
+    -30,
+    -27,
+    41
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#2a8f84",
+    "material": "painted-render",
+    "profile": [
+     [
+      3.1,
+      0
+     ],
+     [
+      3.0,
+      1.2
+     ],
+     [
+      2.3,
+      2.8
+     ],
+     [
+      1.3,
+      4.2
+     ],
+     [
+      0.3,
+      5.0
+     ],
+     [
+      0.1,
+      5.8
+     ],
+     [
+      0.1,
+      7.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-band",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     7.2
+    ],
+    "z0": 16,
+    "height": 0.8,
+    "colour": "#d9a92a",
+    "topColour": "#1c2f6a"
+   },
+   "at": [
+    -30,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.3
+    ],
+    "z0": 29.5,
+    "height": 3.0,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "at": [
+    -30,
+    -30.15,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clockface0",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.4
+    ],
+    "z0": 30.0,
+    "height": 2.0,
+    "colour": "#2a2a30",
+    "topColour": "#2a2a30"
+   },
+   "at": [
+    -30,
+    -30.15,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.3
+    ],
+    "z0": 29.5,
+    "height": 3.0,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "at": [
+    -30,
+    -23.85,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clockface1",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.4
+    ],
+    "z0": 30.0,
+    "height": 2.0,
+    "colour": "#2a2a30",
+    "topColour": "#2a2a30"
+   },
+   "at": [
+    -30,
+    -23.85,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock2",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3.0
+    ],
+    "z0": 29.5,
+    "height": 3.0,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "at": [
+    -33.15,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clockface2",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     2.0
+    ],
+    "z0": 30.0,
+    "height": 2.0,
+    "colour": "#2a2a30",
+    "topColour": "#2a2a30"
+   },
+   "at": [
+    -33.15,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock3",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3.0
+    ],
+    "z0": 29.5,
+    "height": 3.0,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "at": [
+    -26.85,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clockface3",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     2.0
+    ],
+    "z0": 30.0,
+    "height": 2.0,
+    "colour": "#2a2a30",
+    "topColour": "#2a2a30"
+   },
+   "at": [
+    -26.85,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "forecourt-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.8
+    ],
+    "height": 3.2,
+    "colour": "#d6c69c"
+   },
+   "at": [
+    0,
+    -34,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "iwan-trim-l",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "height": 21,
+    "colour": "#d9a92a",
+    "topColour": "#d9a92a"
+   },
+   "at": [
+    -8.9,
+    -28.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "iwan-trim-r",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.5
+    ],
+    "height": 21,
+    "colour": "#d9a92a",
+    "topColour": "#d9a92a"
+   },
+   "at": [
+    8.9,
+    -28.1,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -28.5,
+     0.5
+    ],
+    "end": [
+     -11,
+     -28.5,
+     0.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       0.5
+      ],
+      "height": 3.4,
+      "colour": "#7a6a50",
+      "topColour": "#7a6a50"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     11,
+     -28.5,
+     0.5
+    ],
+    "end": [
+     24,
+     -28.5,
+     0.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       0.5
+      ],
+      "height": 3.4,
+      "colour": "#7a6a50",
+      "topColour": "#7a6a50"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -33.2,
+     -30.3,
+     37.4
+    ],
+    "end": [
+     -26.8,
+     -30.3,
+     37.4
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 0.9,
+      "colour": "#efe6cf"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes round: stout two-tone minarets with gold upper shafts and drums, lower wider gold dome, sand walls, gold iwan trim, riwaq blocks, tall clock tower with terrace. Still missing: tiled ornament, ribbed muqarnas balconies, true arcade cuts, dome position approximate."
+ }
+}

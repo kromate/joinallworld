@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-osm-way-467108001",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MSIT_College,_Janakpuri,_New_Delhi.jpg",
+   "licence": "CC BY 4.0",
+   "author": "VartamanVarta",
+   "view": "front",
+   "file": "/tmp/places-evidence/delhi/467108001_0.jpg",
+   "used": "six-storey exposed red-brick academic block: two long wings split by a recessed entrance core with stacked balconies, arched windows on the top storeys of the west wing, taller eight-storey block at the east end, lawn with trees in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/467108001",
+   "used": "campus extent only (about 250 x 145 m); the outline is the whole campus, not the building, so it is not used as a footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing-low",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -18.9,
+    0
+   ],
+   "height": 16.4,
+   "storeys": 5,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5775f",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "bay": 4.0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "cornice": false,
+    "glassColour": "#4a5460"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f86",
+    "material": "concrete",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing-high",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -18.9,
+    0
+   ],
+   "height": 6.6,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5775f",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "windowShape": "arched",
+    "bay": 4.0,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "cornice": true,
+    "glassColour": "#3d4c5a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f86",
+    "material": "concrete",
+    "parapet": 0.5
+   },
+   "z0": 16.4
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     23.5,
+     14
+    ]
+   },
+   "at": [
+    10,
+    -1.5
+   ],
+   "height": 23,
+   "storeys": 7,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5775f",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "bay": 4.4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "cornice": false,
+    "glassColour": "#3d4c5a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f86",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-core",
+   "footprint": {
+    "rect": [
+     7.4,
+     9
+    ]
+   },
+   "at": [
+    -4.3,
+    4.5
+   ],
+   "height": 23,
+   "storeys": 7,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#8e5b49",
+    "windows": "none",
+    "pattern": {
+     "type": "balconies",
+     "colour": "#5f5a55"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f86",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     14,
+     13
+    ]
+   },
+   "at": [
+    27,
+    5
+   ],
+   "height": 34,
+   "storeys": 10,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5775f",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "windowShape": "rect",
+    "bay": 5,
+    "plinth": 0.6,
+    "cornice": false,
+    "glassColour": "#3d4c5a",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f86",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     10
+    ],
+    "height": 18,
+    "colour": "#b27860",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4.3,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b9b2a6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 1,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 8,
+    "line": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "entrance bay recessed only ~1.5 m with plain balcony slabs; no air-conditioner boxes or pilaster strips; floor bands and cornices removed to fit the triangle budget; tower sits flush"
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-osm-way-611735160",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/9099585",
+   "used": "stadium outline and size (about 207 x 162 m, long axis rotated 22 degrees); modelled as a scaled oval bowl because the scene clamps at 118 m"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eden_Gardens.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Chippu Abraham",
+   "view": "aerial",
+   "used": "NOT USED: the evidence list entry shows Eden Gardens (Kolkata), a different stadium"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 112,
+    "depth": 88,
+    "height": 11,
+    "roof": "none",
+    "wall": "plain",
+    "seat_colour": "#b9b2a2",
+    "seat_colour2": "#8c8576",
+    "main_height": 13,
+    "far_height": 9,
+    "end_height": 8,
+    "track": true,
+    "ground": true,
+    "floodlights": false
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    38,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#c0b9a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no usable photo of this stadium; stands, rake and floodlight positions are typical, not observed"
+ }
+}

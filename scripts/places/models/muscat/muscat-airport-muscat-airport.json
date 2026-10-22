@@ -1,0 +1,369 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-airport-muscat-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:New_terminal_at_muscat_int_airport.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Max221B",
+   "view": "back",
+   "file": "/tmp/places-evidence/muscat/airport5.jpg",
+   "used": "long low pale wing with ribbon glazing and flat roof, control tower at the left end, row of broad arched-roof halls separated by blank pale blocks, low annex at the right end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Muscat_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Andrea Tabanelli",
+   "view": "aerial",
+   "used": "sand/desert setting, terminal beside the runway (not otherwise used)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/269351181",
+   "used": "overall scale only: terminal compressed under the 120 m clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     62.4,
+     16
+    ]
+   },
+   "at": [
+    -35.88,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2d8c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#6b7f8c",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ae",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault1",
+   "footprint": {
+    "rect": [
+     10.92,
+     26
+    ]
+   },
+   "at": [
+    6.24,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d6cc",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "glassColour": "#3f5663",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#b9bec0",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block1",
+   "footprint": {
+    "rect": [
+     2.34,
+     22
+    ]
+   },
+   "at": [
+    12.87,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ece6d4",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ae",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault2",
+   "footprint": {
+    "rect": [
+     10.92,
+     26
+    ]
+   },
+   "at": [
+    19.5,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d6cc",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "glassColour": "#3f5663",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#b9bec0",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block2",
+   "footprint": {
+    "rect": [
+     2.34,
+     22
+    ]
+   },
+   "at": [
+    26.13,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ece6d4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault3",
+   "footprint": {
+    "rect": [
+     10.92,
+     26
+    ]
+   },
+   "at": [
+    32.76,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d6cc",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "glassColour": "#3f5663",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#b9bec0",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     9.36,
+     16
+    ]
+   },
+   "at": [
+    42.9,
+    0
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2d8c0",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "glassColour": "#6b7f8c",
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6ae",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -68.64,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#d8d3c8",
+    "topColour": "#c9c4b8",
+    "sections": [
+     {
+      "z": 0.0,
+      "circle": 3.58
+     },
+     {
+      "z": 4.3,
+      "circle": 2.53
+     },
+     {
+      "z": 21.6,
+      "circle": 1.87
+     },
+     {
+      "z": 29.5,
+      "circle": 1.65
+     },
+     {
+      "z": 30.25,
+      "circle": 3.19
+     },
+     {
+      "z": 33.85,
+      "poly": [
+       [
+        -3.3,
+        -1.38
+       ],
+       [
+        -1.38,
+        -3.3
+       ],
+       [
+        1.38,
+        -3.3
+       ],
+       [
+        3.3,
+        -1.38
+       ],
+       [
+        3.3,
+        1.38
+       ],
+       [
+        1.38,
+        3.3
+       ],
+       [
+        -1.38,
+        3.3
+       ],
+       [
+        -3.3,
+        1.38
+       ]
+      ],
+      "colour": "#5f7482"
+     },
+     {
+      "z": 34.9,
+      "circle": 3.41
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Terminal compressed to fit the 120 m clamp (wing about 1.6x the vaulted section, real ratio 4-5x); vault end frames and tower faceted cab simplified; no apron markings"
+ }
+}

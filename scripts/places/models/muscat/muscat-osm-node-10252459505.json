@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-osm-node-10252459505",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1104022213",
+   "used": "context only: the kiosk sits inside A Pier (3-level terminal), so the model is the kiosk bay on a concourse floor, not the whole pier"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this kiosk found; island kiosk sized from the brief (12 x 9 m) with a glazed counter front, brown fascia and a blank sign board; interior not modelled"
+ },
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "concourse-bay",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     18
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#d9d6cd",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.4,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bcc6c4",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.9,
+    "trimColour": "#5a4636",
+    "bands": "#5a4636"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c6bf",
+    "material": "membrane",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -4.7
+   ],
+   "params": {
+    "rect": [
+     12.6,
+     0.5
+    ],
+    "z0": 3.4,
+    "height": 1.4,
+    "colour": "#5a4636",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.0,
+    "bottom": 4.9,
+    "colour": "#f3f1ec",
+    "frameColour": "#5a4636",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "counter",
+   "at": [
+    -2,
+    -5.6
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.2
+    ],
+    "z0": 0.4,
+    "height": 1.1,
+    "colour": "#7a5a40",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pillar-l",
+   "at": [
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0.4,
+    "height": 9,
+    "colour": "#e5e2da",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pillar-r",
+   "at": [
+    11,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0.4,
+    "height": 9,
+    "colour": "#e5e2da",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   40,
+   30
+  ]
+ }
+}

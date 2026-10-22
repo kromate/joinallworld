@@ -1,0 +1,190 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-osm-way-1287507333",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1287507333",
+   "used": "real outline of the hospital block (136 x 100 m, 13,340 m2, name-matched, Wikidata Q28716215, built 1973)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -49
+   },
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#d4cbb5",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a89f8a"
+      ],
+      "height": 0.5,
+      "at": 0.0,
+      "floors": "all"
+     }
+    ],
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a391",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-tower",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 20,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ece6d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a391",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift-core",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    10,
+    6
+   ],
+   "z0": 30,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a89f8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8979"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 9,
+    "height": 5,
+    "columns": 4,
+    "colour": "#ece6d6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -50,
+    -62,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.2,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#cfc6b0"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "cars": [
+   {
+    "at": [
+     -20,
+     -52
+    ]
+   },
+   {
+    "at": [
+     -14,
+     -52
+    ]
+   },
+   {
+    "at": [
+     -8,
+     -52
+    ]
+   }
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -56
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -56
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: massing is the real outline at 5 storeys with a typical 1970s ribbon-window facade; the ward tower, entrance canopy and fence are assumed, not observed."
+ }
+}

@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-way-291684963",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gulshan-e-Iqbal_Park,_Lahore.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Adnanrail",
+   "view": "street",
+   "file": "/tmp/places-evidence/lahore/park.jpg",
+   "used": "wide dry-grass lawn, river-cobble lined channel along the near edge, clipped round shrub clump at right, line of tall broadleaf trees along the far edge, tall lamp post at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/291684963",
+   "used": "park extent (about 714 x 463 m, 25 ha); only a 150 x 110 m section is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lahore.json#lahore-osm-way-291684963",
+   "used": "artificial lake, pavilions, kiosks, gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 16,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    70,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 10,
+    "shape": "rect",
+    "colour": "#6f8f86",
+    "bank": true
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -52,
+    22,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.4,
+    "kind": "hip",
+    "floor": true,
+    "roof_colour": "#b8ad90"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -44,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#c9c0a2"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -48,
+    10,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 30
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "width": 118,
+    "depth": 5,
+    "count": 30,
+    "kind": "broadleaf",
+    "min_height": 15,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cobble-wall-far",
+   "footprint": {
+    "rect": [
+     118,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -42
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8374",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8374"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cobble-wall-near",
+   "footprint": {
+    "rect": [
+     118,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -50
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d776a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d776a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     34,
+     -26,
+     0
+    ],
+    "end": [
+     46,
+     -24,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0,
+        "#3f5a2c"
+       ],
+       [
+        1.6,
+        0.2,
+        "#3f5a2c"
+       ],
+       [
+        2.2,
+        1.2,
+        "#3a5428"
+       ],
+       [
+        1.8,
+        2.2,
+        "#35502a"
+       ],
+       [
+        0.8,
+        2.8,
+        "#35502a"
+       ],
+       [
+        0,
+        3.0,
+        "#35502a"
+       ]
+      ],
+      "segments": 12
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only a 118 m section of a 25 ha park; ground is sand-tinted (no straw-grass colour control) rather than dry grass; cobble channel is two low cobble-grey walls not a true sunken channel; trees are generic low-poly broadleaf, shrubs 4 domes not a 6 m clump"
+ }
+}

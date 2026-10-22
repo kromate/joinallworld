@@ -1,0 +1,179 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/255985190",
+   "used": "real H-shaped outline 90 x 82 m, 11 levels, ~44 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists on Commons or Wikipedia; facade (white marble with blue glazing bands), entrance canopy, ambulance bay and helipad are typed from the brief, not seen."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 44,
+   "storeys": 11,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#6f8fa8",
+    "bay": 10,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9c4b8",
+      "height": 0.5,
+      "floors": "all",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "helipad",
+   "on": "hospital",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 7
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 4,
+    "vans": 2
+   }
+  },
+  {
+   "type": "canopy",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    -48,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 8,
+    "height": 5,
+    "columns": 4,
+    "colour": "#e6e1d4"
+   }
+  },
+  {
+   "type": "flag",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    30,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "car-park",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -40,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -45,
+     -62
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     45,
+     -62
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ }
+}

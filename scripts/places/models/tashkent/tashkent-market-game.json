@@ -1,0 +1,562 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chorsu_Bazaar_in_Tashkent.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Adam Harangozo",
+   "view": "front",
+   "file": "/tmp/places-evidence/tashkent/cb2.jpg",
+   "used": "shallow turquoise tiled dome with blue ornament band, ring of cream pointed buttress arches over dark glazed drum, white skylight cap, stone plinth, steps and ramp at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chorsu_Market_general_view.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Theklan",
+   "view": "interior",
+   "used": "single round hall with a central column and ribbed dome with central oculus"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/174498975",
+   "used": "marketplace area only; the matched building outline (205 m2) is a small stall so the hall is composed as a round dome"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "hall",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#1f9c92",
+    "profile": [
+     [
+      27,
+      0,
+      "#8d7560"
+     ],
+     [
+      27,
+      1.4
+     ],
+     [
+      27,
+      8.2,
+      "#2c5659"
+     ],
+     [
+      26.01,
+      9.35,
+      "#24418a"
+     ],
+     [
+      24.84,
+      10.63,
+      "#24418a"
+     ],
+     [
+      23.46,
+      11.92,
+      "#2fb0a2"
+     ],
+     [
+      21.83,
+      13.2,
+      "#1f9c92"
+     ],
+     [
+      19.88,
+      14.48,
+      "#1f9c92"
+     ],
+     [
+      17.53,
+      15.77,
+      "#2fb0a2"
+     ],
+     [
+      14.56,
+      17.05,
+      "#1f9c92"
+     ],
+     [
+      10.47,
+      18.34,
+      "#1f9c92"
+     ],
+     [
+      0.55,
+      19.62,
+      "#2fb0a2"
+     ],
+     [
+      3.6,
+      19.62,
+      "#e8e8e2"
+     ],
+     [
+      3.6,
+      20.3
+     ],
+     [
+      0.5,
+      20.3
+     ]
+    ],
+    "arcade": {
+     "from": 1.6,
+     "to": 8.0,
+     "count": 32,
+     "width": 2.6,
+     "height": 5.0,
+     "sill": 1.6,
+     "shape": "pointed",
+     "depth": 0.5,
+     "innerColour": "#10282c",
+     "pierColour": "#d8d2c0"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hall-lo",
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#1f9c92",
+    "profile": [
+     [
+      27,
+      0,
+      "#2c5659"
+     ],
+     [
+      27,
+      8
+     ],
+     [
+      14.85,
+      17.5,
+      "#1f9c92"
+     ],
+     [
+      3,
+      19.424
+     ],
+     [
+      0.5,
+      20.104
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "params": {
+    "n": 28,
+    "radius": 29.5,
+    "height": 1.4,
+    "colour": "#9a8a72"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 12,
+    "radius": 36,
+    "radiusY": 36,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "market-open/awning",
+      "params": {
+       "width": 4.5,
+       "depth": 2.4,
+       "colours": [
+        "#d8493a",
+        "#e8b030",
+        "#3a8a5a",
+        "#e9e3d3"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 10,
+    "radius": 43,
+    "lod1Step": 2,
+    "lod2Step": 10,
+    "of": [
+     {
+      "type": "umbrella-cluster",
+      "params": {
+       "count": 3,
+       "spread": 3,
+       "colours": [
+        "#d8493a",
+        "#e8b030",
+        "#3a7bbf"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    -24,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "rise": 0.8,
+    "run": 1.8,
+    "count": 4,
+    "colour": "#b7b2a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -34,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 22
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 12,
+    "radius": 0,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "lod1Step": 3,
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         0.35,
+         0.35
+        ]
+       },
+       "colour": "#f1e8d0",
+       "points": [
+        [
+         26.21,
+         0,
+         9.52
+        ],
+        [
+         25.04,
+         0,
+         10.8
+        ],
+        [
+         23.66,
+         0,
+         12.09
+        ],
+        [
+         22.03,
+         0,
+         13.37
+        ],
+        [
+         20.08,
+         0,
+         14.65
+        ],
+        [
+         17.73,
+         0,
+         15.94
+        ],
+        [
+         14.76,
+         0,
+         17.22
+        ],
+        [
+         10.67,
+         0,
+         18.51
+        ],
+        [
+         3.8,
+         0,
+         19.79
+        ]
+       ],
+       "curve": true,
+       "caps": true
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp",
+   "at": [
+    -26,
+    -31,
+    0
+   ],
+   "rotDeg": 0,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -3
+     ],
+     [
+      4,
+      -3
+     ],
+     [
+      4,
+      3
+     ],
+     [
+      -4,
+      3
+     ]
+    ],
+    "height": 0.9,
+    "topScale": [
+     1,
+     0.4
+    ],
+    "colour": "#6e6e6a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kiosk",
+   "at": [
+    9,
+    -33,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     8,
+     5
+    ],
+    "height": 3.2,
+    "colour": "#c9d6d8",
+    "windows": "curtain",
+    "glassColour": "#3f6f80",
+    "windowRatio": 0.7
+   }
+  },
+  {
+   "type": "array",
+   "id": "arch-ribs",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 12,
+    "radius": 27,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "lod1Step": 3,
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         0.7,
+         0.9
+        ]
+       },
+       "colour": "#e6dfca",
+       "curve": true,
+       "caps": true,
+       "points": [
+        [
+         0.8,
+         4.4,
+         1.4
+        ],
+        [
+         0.8,
+         4.2,
+         4.6
+        ],
+        [
+         0.8,
+         2.6,
+         7.0
+        ],
+        [
+         0.8,
+         0,
+         8.6
+        ]
+       ]
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         0.7,
+         0.9
+        ]
+       },
+       "colour": "#e6dfca",
+       "curve": true,
+       "caps": true,
+       "points": [
+        [
+         0.8,
+         -4.4,
+         1.4
+        ],
+        [
+         0.8,
+         -4.2,
+         4.6
+        ],
+        [
+         0.8,
+         -2.6,
+         7.0
+        ],
+        [
+         0.8,
+         0,
+         8.6
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-drum-cap",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "n": 40,
+    "radius": 27.8,
+    "height": 0.5,
+    "colour": "#d8d0bb"
+   },
+   "at": [
+    0,
+    0,
+    8.2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -40
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -41
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Dome tile ornament is flat colour bands (cream ribs, dark-blue base band); arch ribs are free-standing thin sweeps rather than broad buttress arches and the drum glazing has no mullions; ramp/kiosk simplified; real hall is larger."
+ }
+}

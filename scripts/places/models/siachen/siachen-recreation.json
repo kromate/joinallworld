@@ -1,0 +1,271 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/siachen.json#siachen-recreation",
+   "used": "flattened snow field 40 x 30 m with rope-fenced volleyball court and net, corner flags, small warming shelter, snow wall; typed placeholder, no photo, no OSM"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "court-pad",
+   "at": [
+    -5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     9
+    ],
+    "height": 0.06,
+    "colour": "#dfe6ec"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "court-rope",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0,
+    "height": 1.0,
+    "thickness": 0.06,
+    "colour": "#d98e3a",
+    "points": [
+     [
+      -14,
+      -4.5
+     ],
+     [
+      4,
+      -4.5
+     ],
+     [
+      4,
+      4.5
+     ],
+     [
+      -14,
+      4.5
+     ],
+     [
+      -14,
+      -4.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "net",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0,
+    "height": 2.2,
+    "thickness": 0.05,
+    "colour": "#2e3033",
+    "points": [
+     [
+      -5,
+      -4.5
+     ],
+     [
+      -5,
+      4.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-a",
+   "at": [
+    -5,
+    -4.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 2.4,
+    "colour": "#5d6650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-b",
+   "at": [
+    -5,
+    4.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 2.4,
+    "colour": "#5d6650"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "warming-shelter",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    12,
+    6
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "material": "timber",
+    "colour": "#7a5a3e",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e9eef2",
+    "material": "corrugated",
+    "rise": 0.7,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelter-drift",
+   "at": [
+    12,
+    9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     2
+    ],
+    "height": 1.1,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "corner-flags",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14.5,
+     -5,
+     0
+    ],
+    "end": [
+     4.5,
+     -5,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 4,
+      "colours": [
+       "#d98e3a",
+       "#c8362f",
+       "#e9eef2"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "snow-wall",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     1.6
+    ],
+    "height": 1.3,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "bench-line",
+   "at": [
+    10,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 1,
+    "colour": "#8a6a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   52,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or OSM outline exists (game-venue placeholder); composed from the brief only, checked in the standard render"
+ }
+}

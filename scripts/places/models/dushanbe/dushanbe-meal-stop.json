@@ -1,0 +1,189 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/269442943",
+   "used": "real irregular outline, 29.6 x 21.7 m (548 m2), building=yes, unnamed"
+  },
+  {
+   "kind": "text",
+   "used": "brief: roadside Tajik restaurant, two storeys, covered terrace, painted render, flat roof; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dcc0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#8a5a3a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a76",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "terrace-roof",
+   "at": [
+    -2,
+    -17,
+    0
+   ],
+   "rotDeg": -10,
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 3.4,
+    "form": "flat",
+    "colour": "#8a5a3a",
+    "columns": 5
+   }
+  },
+  {
+   "type": "pergola",
+   "id": "terrace-timber",
+   "at": [
+    -2,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "height": 3.2,
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "terrace-tables",
+   "at": [
+    -2,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 7,
+    "colours": [
+     "#f4eee0",
+     "#8a5a3a"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    10,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 5.2,
+    "colour": "#f4eee0",
+    "frameColour": "#8a5a3a",
+    "posts": false
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    2,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree1",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree2",
+   "at": [
+    24,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree3",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; storey count, terrace shape and parking are inferred from the brief, only the outline is real"
+ }
+}

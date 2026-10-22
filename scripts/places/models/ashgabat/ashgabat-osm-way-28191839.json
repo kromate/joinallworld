@@ -1,0 +1,384 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-osm-way-28191839",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A%C5%A1kabat_Gulistan_(2).JPG",
+   "licence": "GFDL",
+   "author": "Ljuba brank (Slovenian Wikipedia)",
+   "view": "interior",
+   "file": "/tmp/places-evidence/ashgabat/bazaar3.jpg",
+   "used": "white concrete umbrella columns with flared heads carrying a coffered ribbed slab roof, long raised white stall counters, grey-cream two-storey stall block with external stairs and balustrades along the edge of the hall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stans08-049_(3134058643).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Dave Proffer",
+   "view": "interior",
+   "file": "/tmp/places-evidence/ashgabat/bazaar4.jpg",
+   "used": "fan-ribbed column heads, white abstract sculpture at the hall corner, stall-block fascia"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28191839",
+   "used": "plain rectangle 126 x 47 m (building=roof), drawn axis-aligned and scaled to 118 x 44 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stalls-back",
+   "footprint": {
+    "rect": [
+     114,
+     9
+    ]
+   },
+   "at": [
+    0,
+    16.5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdc6b2",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon"
+    },
+    "glassColour": "#4a4a46"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dfcc",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab",
+   "params": {
+    "rect": [
+     126,
+     52
+    ],
+    "z0": 13.4,
+    "height": 2.6,
+    "colour": "#f4ecd8",
+    "topColour": "#e6dcc6"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "roof-ribs",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 118,
+    "depth": 46,
+    "rise": -2.4,
+    "folds": 22,
+    "thickness": 0.35,
+    "z": 13.4,
+    "colour": "#f4ecd8",
+    "edgeColour": "#f4ecd8"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "roof-ribs2",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 46,
+    "depth": 118,
+    "rise": -2.4,
+    "folds": 9,
+    "thickness": 0.35,
+    "z": 13.4,
+    "colour": "#f4ecd8",
+    "edgeColour": "#f4ecd8"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "params": {
+    "rect": [
+     127,
+     53
+    ],
+    "z0": 16,
+    "height": 1.2,
+    "colour": "#fbf5e6",
+    "topColour": "#fbf5e6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "umbrella-columns",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 15,
+    "rows": 5,
+    "dx": 8,
+    "dy": 8,
+    "centred": true,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 6,
+      "colour": "#f4ecd8",
+      "profile": [
+       [
+        1.0,
+        0
+       ],
+       [
+        1.0,
+        10.2
+       ],
+       [
+        1.6,
+        11
+       ],
+       [
+        3.2,
+        12.2
+       ],
+       [
+        4.3,
+        13.4
+       ],
+       [
+        4.3,
+        14.4
+       ]
+      ]
+     }
+    },
+    "lod1Step": 4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "col-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#f1eee7",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      13
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "sculpture",
+   "at": [
+    -44,
+    -13,
+    0
+   ],
+   "params": {
+    "colour": "#f6f4ee",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.2,
+       1.6
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       1.4,
+       2.2
+      ],
+      "cx": 0.6
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       2.4,
+       1.4
+      ],
+      "cx": -0.6
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       0.8,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "stall-counters",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 3,
+    "dx": 54,
+    "dy": 9,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       46,
+       2.0
+      ],
+      "height": 1.3,
+      "colour": "#f6f0e0",
+      "topColour": "#fbf9f4"
+     }
+    }
+   },
+   "at": [
+    0,
+    -3
+   ]
+  },
+  {
+   "type": "core/steps",
+   "id": "stairs",
+   "at": [
+    -30,
+    11,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.8,
+    "run": 1.2,
+    "count": 9,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "sign",
+   "at": [
+    20,
+    -18.5,
+    9
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#b23a35",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "id": "balustrade",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 1,
+    "start": [
+     0,
+     11.8
+    ],
+    "end": [
+     0,
+     11.8
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       56,
+       0.4
+      ],
+      "z0": 0.0,
+      "height": 1.1,
+      "colour": "#fbf9f4",
+      "topColour": "#fbf9f4"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    9
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 5,
+  "extent": [
+   130,
+   64
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "photos are interiors only so exterior is structural; coffering is a fold pattern and column heads are simple flares without joining ribs; open long sides but only the back stall block is built; end blocks removed; stairs and counters small"
+ }
+}

@@ -1,0 +1,524 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-way-294635033",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ayalon_Mall_(3).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Avi1111 dr. avishai teicher",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/ay5.jpg",
+   "used": "long grey metal-clad upper box over a cream glazed ground floor, rounded left corner, large red panel blocks on the front, shallow sloping roof, surface car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ayalon_Mall_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Avi1111 dr. avishai teicher",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/ay4.jpg",
+   "used": "flat roof with rooftop plant, red blocks at corners, tree-lined car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/294635033",
+   "used": "about 254 x 90 m, 2 levels, skillion roof; modelled as the central 118 m (scene clamp), full 90 m depth"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 44,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     118,
+     90
+    ]
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e3d6b8",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "glassColour": "#4d5a63",
+    "plinth": 0.2,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "loft",
+   "id": "upper-left",
+   "params": {
+    "sections": [
+     {
+      "z": 3.6,
+      "poly": [
+       [
+        -59.0,
+        -28.0
+       ],
+       [
+        -58.13,
+        -32.5
+       ],
+       [
+        -55.63,
+        -36.34
+       ],
+       [
+        -51.88,
+        -38.96
+       ],
+       [
+        -47.42,
+        -39.99
+       ],
+       [
+        12,
+        -40
+       ],
+       [
+        12,
+        40
+       ],
+       [
+        -47.0,
+        40.0
+       ],
+       [
+        -51.5,
+        39.13
+       ],
+       [
+        -55.34,
+        36.63
+       ],
+       [
+        -57.96,
+        32.88
+       ],
+       [
+        -58.99,
+        28.42
+       ]
+      ]
+     },
+     {
+      "z": 14.5,
+      "poly": [
+       [
+        -59.0,
+        -28.0
+       ],
+       [
+        -58.13,
+        -32.5
+       ],
+       [
+        -55.63,
+        -36.34
+       ],
+       [
+        -51.88,
+        -38.96
+       ],
+       [
+        -47.42,
+        -39.99
+       ],
+       [
+        12,
+        -40
+       ],
+       [
+        12,
+        40
+       ],
+       [
+        -47.0,
+        40.0
+       ],
+       [
+        -51.5,
+        39.13
+       ],
+       [
+        -55.34,
+        36.63
+       ],
+       [
+        -57.96,
+        32.88
+       ],
+       [
+        -58.99,
+        28.42
+       ]
+      ]
+     }
+    ],
+    "colour": "#6f757b",
+    "topColour": "#8c9096"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "upper-right",
+   "params": {
+    "sections": [
+     {
+      "z": 3.6,
+      "poly": [
+       [
+        12.0,
+        -39.99
+       ],
+       [
+        12.0,
+        -39.99
+       ],
+       [
+        12.0,
+        -40.0
+       ],
+       [
+        12.01,
+        -40.0
+       ],
+       [
+        12.01,
+        -40.0
+       ],
+       [
+        59,
+        -40
+       ],
+       [
+        59,
+        40
+       ],
+       [
+        12.01,
+        40.0
+       ],
+       [
+        12.01,
+        40.0
+       ],
+       [
+        12.0,
+        40.0
+       ],
+       [
+        12.0,
+        39.99
+       ],
+       [
+        12.0,
+        39.99
+       ]
+      ]
+     },
+     {
+      "z": 11.5,
+      "poly": [
+       [
+        12.0,
+        -39.99
+       ],
+       [
+        12.0,
+        -39.99
+       ],
+       [
+        12.0,
+        -40.0
+       ],
+       [
+        12.01,
+        -40.0
+       ],
+       [
+        12.01,
+        -40.0
+       ],
+       [
+        59,
+        -40
+       ],
+       [
+        59,
+        40
+       ],
+       [
+        12.01,
+        40.0
+       ],
+       [
+        12.01,
+        40.0
+       ],
+       [
+        12.0,
+        40.0
+       ],
+       [
+        12.0,
+        39.99
+       ],
+       [
+        12.0,
+        39.99
+       ]
+      ]
+     }
+    ],
+    "colour": "#767b80",
+    "topColour": "#8c9096"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band0",
+   "at": [
+    -23,
+    -40.6
+   ],
+   "params": {
+    "rect": [
+     60,
+     0.5
+    ],
+    "z0": 7.5,
+    "height": 1.6,
+    "colour": "#b9bcbc",
+    "topColour": "#b9bcbc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band1",
+   "at": [
+    -23,
+    -40.6
+   ],
+   "params": {
+    "rect": [
+     60,
+     0.5
+    ],
+    "z0": 11,
+    "height": 1.6,
+    "colour": "#b9bcbc",
+    "topColour": "#b9bcbc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band2",
+   "at": [
+    36,
+    -40.6
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.5
+    ],
+    "z0": 7,
+    "height": 1.4,
+    "colour": "#b9bcbc",
+    "topColour": "#b9bcbc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "overhang",
+   "at": [
+    0,
+    -43
+   ],
+   "params": {
+    "rect": [
+     118,
+     6
+    ],
+    "z0": 3.6,
+    "height": 0.5,
+    "colour": "#d9ccb2",
+    "topColour": "#d9ccb2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red1",
+   "at": [
+    10,
+    -41.5
+   ],
+   "params": {
+    "rect": [
+     34,
+     2
+    ],
+    "z0": 3.6,
+    "height": 12.5,
+    "colour": "#c43a2e",
+    "topColour": "#c43a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red2",
+   "at": [
+    -40,
+    -41.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     2
+    ],
+    "z0": 3.6,
+    "height": 13,
+    "colour": "#c43a2e",
+    "topColour": "#c43a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red3",
+   "at": [
+    54,
+    -30
+   ],
+   "params": {
+    "rect": [
+     8,
+     10
+    ],
+    "z0": 3.6,
+    "height": 9.5,
+    "colour": "#c43a2e",
+    "topColour": "#c43a2e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#7a8590",
+    "frameColour": "#555555",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 118,
+    "depth": 24,
+    "density": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 8,
+      "colour": "#4f7a3a"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -52,
+     -50,
+     0
+    ],
+    "end": [
+     52,
+     -50,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 13
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -50,
+     -70,
+     0
+    ],
+    "end": [
+     50,
+     -70,
+     0
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only central 118 m of 254 m modelled; render viewed from further back than the photo; cars are generic boxes, no sign lettering; roof step simplified to two heights"
+ }
+}

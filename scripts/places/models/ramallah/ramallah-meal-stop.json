@@ -1,0 +1,180 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1525489914",
+   "used": "real outline, 16 x 10 m building containing the venue point"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 13,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "polygon": [
+     [
+      -9.1,
+      2.5
+     ],
+     [
+      6.1,
+      7.1
+     ],
+     [
+      9.1,
+      -2.5
+     ],
+     [
+      -6.1,
+      -7.1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d4b4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bands": "#8c6a4a",
+    "plinth": 0.5,
+    "parapet": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b6",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "rotDeg": 17,
+   "params": {
+    "width": 11,
+    "depth": 2.2,
+    "colours": [
+     "#8c6a4a",
+     "#efe7d6"
+    ]
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -4,
+    -12,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    4,
+    -13,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 0.9,
+    "bottom": 3.2,
+    "colour": "#8c6a4a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    3,
+    2,
+    4.5
+   ],
+   "params": {
+    "kind": "cylinder",
+    "radius": 0.9,
+    "tankHeight": 1.4,
+    "legHeight": 0.3,
+    "colour": "#2c3a46"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 9,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -6
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     -8
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   50,
+   38
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this cafe (only a distant panorama); outline real, arched windows and awning from the brief, not observed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-meal-stop"
+}

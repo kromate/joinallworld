@@ -1,0 +1,96 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1089226873",
+   "used": "block outline (21 x 17 m, 2.3 m from the venue point)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "glassColour": "#4f7690",
+    "plinth": 0.5,
+    "bands": "#f6f3ea",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29c92",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -7,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 2.6,
+    "colour": "#4f7690",
+    "frameColour": "#f6f3ea",
+    "posts": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d8d2c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-node-4858907323",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "outline only; facade colours and ribbon glazing typed from the brief, not seen"
+ }
+}

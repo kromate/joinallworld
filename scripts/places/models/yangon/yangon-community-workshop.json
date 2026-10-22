@@ -1,0 +1,471 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_Scho_21.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kwantonge",
+   "view": "front",
+   "file": "/tmp/places-evidence/yangon/yie.jpg",
+   "used": "three-storey whitewashed colonial-era block with dark brown hip roof, gabled projecting bay, paired narrow windows, gateway piers, low sign wall and green railing fence, tall trees (file is captioned Yangon Institute of Economics, Hledan campus, matching the brief's venue name)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 12.2,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#d9d6cc",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "plinth": 0.5,
+    "bay": 3.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#43332c",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 1.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    32,
+    4
+   ],
+   "z0": 0,
+   "height": 12.2,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#d9d6cc",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "plinth": 0.5,
+    "bay": 3.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#43332c",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 1.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-bay",
+   "footprint": {
+    "rect": [
+     5.5,
+     10
+    ]
+   },
+   "at": [
+    -19,
+    -4
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#d9d6cc",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bay": 2.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#43332c",
+    "material": "clay-tile",
+    "pitch": 50,
+    "overhang": 1.0
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "gate-sign-wall",
+   "footprint": {
+    "rect": [
+     16,
+     0.9
+    ]
+   },
+   "at": [
+    -8,
+    -17
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e9e6dc",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0ddd3",
+    "overhang": 0.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -16.6,
+    0.5
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.4,
+    "bottom": 0.3,
+    "colour": "#3e3c33",
+    "frameColour": "#e0ddd3",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    8,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#e6e3da",
+    "leafColour": "#2f5a3a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    13,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#2f5a3a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#2f5a3a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#d6d2c6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 3.4,
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -17,
+    -17,
+    3.4
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#f0ede4"
+     ],
+     [
+      0.8,
+      0.2,
+      "#f0ede4"
+     ],
+     [
+      0,
+      1.2,
+      "#f0ede4"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 3.4,
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -17,
+    3.4
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#f0ede4"
+     ],
+     [
+      0.8,
+      0.2,
+      "#f0ede4"
+     ],
+     [
+      0,
+      1.2,
+      "#f0ede4"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 3.4,
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    -17,
+    3.4
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#f0ede4"
+     ],
+     [
+      0.8,
+      0.2,
+      "#f0ede4"
+     ],
+     [
+      0,
+      1.2,
+      "#f0ede4"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 3.4,
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    26,
+    -17,
+    3.4
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#f0ede4"
+     ],
+     [
+      0.8,
+      0.2,
+      "#f0ede4"
+     ],
+     [
+      0,
+      1.2,
+      "#f0ede4"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17,
+    "count": 1,
+    "spread": 0.3,
+    "colour": "#2f5a2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 4,
+    "spread": 9,
+    "colour": "#24441f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19,
+    "count": 3,
+    "spread": 10,
+    "colour": "#24441f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Venue is the Yangon Institute of Economics and the photo is captioned as its Hledan campus block (the game point is on a different campus, so the exact building is unconfirmed). Windows are still evenly punched rather than paired tall bays; cypress is a generic cone, tree canopy is blobby, gate leaves and sign panel simplified."
+ }
+}

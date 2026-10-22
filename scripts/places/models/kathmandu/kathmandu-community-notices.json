@@ -1,0 +1,108 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/201027611",
+   "used": "real outline (40.9 x 9.8 m, building=government, 3 levels, flat concrete roof); colours from brief; nearby Commons photos show a temple statue, not this office"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d7be",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#9a8f78",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    8,
+    2,
+    11
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.5,
+    "tankHeight": 2,
+    "legHeight": 1.2,
+    "legs": 4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#c4122f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#cfc6b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-community-notices",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo: OSM outline, levels and roof from tags; facade colours and details are typical of Kathmandu government blocks."
+ }
+}

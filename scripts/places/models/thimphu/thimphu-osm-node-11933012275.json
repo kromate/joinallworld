@@ -1,0 +1,126 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-node-11933012275",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/425536532",
+   "used": "13.6 x 11.4 m building outline containing the venue point; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ede4",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "bands": "#a8452d",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b4a3a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    0,
+    -6.2,
+    3.7
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.3,
+    "railing_colour": "#a8452d"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.5,
+    -6.3,
+    2.6
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.8,
+    "bottom": 0,
+    "colour": "#d9a93a",
+    "posts": false
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    8.5,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "depth": 2.6,
+    "height": 2.9,
+    "roof": "shed",
+    "unit_width": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     11,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; massing from OSM outline/brief, details typical of Bhutanese roadside buildings (no painted timber ornament)"
+ }
+}

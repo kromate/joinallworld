@@ -1,0 +1,711 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-osm-way-257738467",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Television_Tower_(2)_(46100646161).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Hans Birger Nilsen",
+   "view": "street",
+   "file": "/tmp/places-evidence/ashgabat/tower1.jpg",
+   "used": "white slender shaft, white collar, blue eight-pointed star pod about two thirds up, thin white upper shaft with ring and mast"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Towards_the_TV_tower_(46194530681).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Hans Birger Nilsen",
+   "view": "aerial",
+   "used": "overall slenderness against the skyline"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/257738467",
+   "used": "base footprint about 31 m, height tag 211 m; whole model scaled by 0.66 to fit the 140 m scene limit; hill mound added"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 15,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1,
+  "shiftY": 0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "base",
+   "params": {
+    "radius": 10.23,
+    "n": 12,
+    "z0": 0,
+    "height": 3.3,
+    "colour": "#eeece6",
+    "topColour": "#d8d5cc"
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "shaft",
+   "params": {
+    "colour": "#f2f0ea",
+    "sections": [
+     {
+      "z": 3.3,
+      "circle": 4.6
+     },
+     {
+      "z": 8,
+      "circle": 4.0
+     },
+     {
+      "z": 50,
+      "circle": 3.4
+     },
+     {
+      "z": 78,
+      "circle": 2.9
+     },
+     {
+      "z": 90,
+      "circle": 2.9
+     }
+    ]
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "collar",
+   "params": {
+    "colour": "#f6f4ee",
+    "sections": [
+     {
+      "z": 76,
+      "circle": 2.7
+     },
+     {
+      "z": 79,
+      "circle": 5.0
+     },
+     {
+      "z": 83,
+      "circle": 5.0
+     }
+    ]
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rim-low",
+   "params": {
+    "points": [
+     [
+      0.0,
+      9.25
+     ],
+     [
+      2.2,
+      5.31
+     ],
+     [
+      6.54,
+      6.54
+     ],
+     [
+      5.31,
+      2.2
+     ],
+     [
+      9.25,
+      0.0
+     ],
+     [
+      5.31,
+      -2.2
+     ],
+     [
+      6.54,
+      -6.54
+     ],
+     [
+      2.2,
+      -5.31
+     ],
+     [
+      0.0,
+      -9.25
+     ],
+     [
+      -2.2,
+      -5.31
+     ],
+     [
+      -6.54,
+      -6.54
+     ],
+     [
+      -5.31,
+      -2.2
+     ],
+     [
+      -9.25,
+      -0.0
+     ],
+     [
+      -5.31,
+      2.2
+     ],
+     [
+      -6.54,
+      6.54
+     ],
+     [
+      -2.2,
+      5.31
+     ]
+    ],
+    "z0": 82,
+    "height": 0.9,
+    "colour": "#f6f4ee",
+    "topColour": "#f6f4ee",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "star",
+   "params": {
+    "points": [
+     [
+      0.0,
+      9.5
+     ],
+     [
+      2.2,
+      5.31
+     ],
+     [
+      6.71,
+      6.71
+     ],
+     [
+      5.31,
+      2.2
+     ],
+     [
+      9.5,
+      0.0
+     ],
+     [
+      5.31,
+      -2.2
+     ],
+     [
+      6.71,
+      -6.71
+     ],
+     [
+      2.2,
+      -5.31
+     ],
+     [
+      0.0,
+      -9.5
+     ],
+     [
+      -2.2,
+      -5.31
+     ],
+     [
+      -6.71,
+      -6.71
+     ],
+     [
+      -5.31,
+      -2.2
+     ],
+     [
+      -9.5,
+      -0.0
+     ],
+     [
+      -5.31,
+      2.2
+     ],
+     [
+      -6.71,
+      6.71
+     ],
+     [
+      -2.2,
+      5.31
+     ]
+    ],
+    "z0": 82.9,
+    "height": 9,
+    "colour": "#2f7bd0",
+    "topColour": "#f2f0ea",
+    "trimColour": "#f2f0ea",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "star-rot",
+   "params": {
+    "points": [
+     [
+      3.64,
+      8.77
+     ],
+     [
+      4.06,
+      4.06
+     ],
+     [
+      8.77,
+      3.64
+     ],
+     [
+      5.75,
+      0.0
+     ],
+     [
+      8.77,
+      -3.64
+     ],
+     [
+      4.06,
+      -4.06
+     ],
+     [
+      3.64,
+      -8.77
+     ],
+     [
+      0.0,
+      -5.75
+     ],
+     [
+      -3.64,
+      -8.77
+     ],
+     [
+      -4.06,
+      -4.06
+     ],
+     [
+      -8.77,
+      -3.64
+     ],
+     [
+      -5.75,
+      -0.0
+     ],
+     [
+      -8.77,
+      3.64
+     ],
+     [
+      -4.06,
+      4.06
+     ],
+     [
+      -3.64,
+      8.77
+     ],
+     [
+      -0.0,
+      5.75
+     ]
+    ],
+    "z0": 82.9,
+    "height": 9,
+    "colour": "#2f7bd0",
+    "topColour": "#f2f0ea",
+    "trimColour": "#f2f0ea",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rim-high",
+   "params": {
+    "points": [
+     [
+      0.0,
+      9.25
+     ],
+     [
+      2.2,
+      5.31
+     ],
+     [
+      6.54,
+      6.54
+     ],
+     [
+      5.31,
+      2.2
+     ],
+     [
+      9.25,
+      0.0
+     ],
+     [
+      5.31,
+      -2.2
+     ],
+     [
+      6.54,
+      -6.54
+     ],
+     [
+      2.2,
+      -5.31
+     ],
+     [
+      0.0,
+      -9.25
+     ],
+     [
+      -2.2,
+      -5.31
+     ],
+     [
+      -6.54,
+      -6.54
+     ],
+     [
+      -5.31,
+      -2.2
+     ],
+     [
+      -9.25,
+      -0.0
+     ],
+     [
+      -5.31,
+      2.2
+     ],
+     [
+      -6.54,
+      6.54
+     ],
+     [
+      -2.2,
+      5.31
+     ]
+    ],
+    "z0": 91.9,
+    "height": 0.9,
+    "colour": "#f6f4ee",
+    "topColour": "#f6f4ee",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "upper",
+   "params": {
+    "colour": "#f2f0ea",
+    "sections": [
+     {
+      "z": 92.8,
+      "circle": 3.0
+     },
+     {
+      "z": 96,
+      "circle": 2.0
+     },
+     {
+      "z": 116,
+      "circle": 1.6
+     }
+    ]
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pod",
+   "params": {
+    "colour": "#f6f4ee",
+    "sections": [
+     {
+      "z": 108,
+      "circle": 1.6
+     },
+     {
+      "z": 111,
+      "circle": 2.8
+     },
+     {
+      "z": 114,
+      "circle": 2.8
+     },
+     {
+      "z": 116.2,
+      "circle": 1.6
+     }
+    ]
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "mast",
+   "params": {
+    "colour": "#e8e6e0",
+    "sections": [
+     {
+      "z": 116.16,
+      "circle": 0.8
+     },
+     {
+      "z": 121,
+      "circle": 0.45
+     },
+     {
+      "z": 125,
+      "circle": 0.2
+     }
+    ]
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "hill",
+   "at": [
+    0,
+    0,
+    -0.2
+   ],
+   "params": {
+    "colour": "#a8814f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       78,
+       42
+      ]
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       60,
+       32
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       42,
+       22
+      ]
+     },
+     {
+      "z": 12.8,
+      "ellipse": [
+       24,
+       15
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ring-wall",
+   "params": {
+    "radius": 15,
+    "n": 20,
+    "z0": 11.6,
+    "height": 0.9,
+    "colour": "#d9d3c0",
+    "topColour": "#e6e2d6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "params": {
+    "radius": 13,
+    "n": 16,
+    "z0": 12.3,
+    "height": 0.4,
+    "colour": "#e6e2d6",
+    "topColour": "#e6e2d6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "lod2",
+   "lod": [
+    2
+   ],
+   "params": {
+    "colour": "#f2f0ea",
+    "segments": 8,
+    "profile": [
+     [
+      4.62,
+      0
+     ],
+     [
+      2.9,
+      13.2
+     ],
+     [
+      2.9,
+      78
+     ],
+     [
+      6,
+      85
+     ],
+     [
+      2.4,
+      92
+     ],
+     [
+      2.0,
+      116
+     ],
+     [
+      0.2,
+      139.26
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0,
+    12.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp",
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 9,
+    "colour": "#9a9a96"
+   },
+   "at": [
+    22,
+    -12,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-arm",
+   "params": {
+    "rect": [
+     3,
+     0.4
+    ],
+    "z0": 9,
+    "height": 0.4,
+    "colour": "#9a9a96"
+   },
+   "at": [
+    20.7,
+    -12,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "model scaled 0.66 and ridge only ~13 m high (real hill about twice the tower height) because of the 140 m scene limit; no gullies texture; star is a double-rotated 16-point star; lamp is a plain pole and arm, no road or curb"
+ }
+}

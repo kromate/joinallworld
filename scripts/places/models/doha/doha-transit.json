@@ -1,0 +1,206 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/684494011",
+   "used": "real outline, 173 x 34 m building=transportation opened 2019-11-21; fitted to the 118 m scene clamp keeping its aspect"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "sand metal cladding, glazed entrance, flat membrane roof, bus bays, blank signage board (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 40.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9c7a3",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c2b4",
+    "material": "membrane",
+    "overhang": 2.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-hall",
+   "at": [
+    0,
+    -14
+   ],
+   "params": {
+    "rect": [
+     18,
+     5
+    ],
+    "z0": 0,
+    "height": 7.5,
+    "colour": "#8aa0b0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "storeys": 2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 6,
+    "height": 5.5,
+    "colour": "#e8dcc3",
+    "columns": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.5,
+    "bottom": 3,
+    "colour": "#8a2f3d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-pod-1",
+   "at": [
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "z0": 10,
+    "height": 3,
+    "colour": "#e8dcc3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-pod-2",
+   "at": [
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "z0": 10,
+    "height": 3,
+    "colour": "#e8dcc3"
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -25,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 13,
+    "colour": "#e8e8e6",
+    "stripe": "#8a2f3d",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 5,
+    "spread": 5,
+    "line": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 5,
+    "spread": 5,
+    "line": -12
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; station design is typed from the brief on the real outline, roof form and facade bays are guesses"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   110
+  ]
+ }
+}

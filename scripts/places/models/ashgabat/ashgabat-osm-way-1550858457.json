@@ -1,0 +1,107 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-osm-way-1550858457",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1550858457",
+   "used": "real outline (about 315 x 236 m, fitted to the 118 m scene clamp), 4 storeys about 22 m from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "white marble neoclassical-style state academy (2008), portico and flags typed from the Ashgabat civic convention"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: only the real outline, height and marble colour are known; the central colonnaded portico and wings are not placed because the front direction of the fitted outline is unknown, no courtyard"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "academy",
+   "footprint": {
+    "osm": true,
+    "simplify": 4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "marble",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "windowShape": "rect",
+    "bands": "#d9d4c6",
+    "plinth": 1.2,
+    "bay": 12,
+    "cornice": true,
+    "glassColour": "#6f8fa3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "material": "membrane",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43",
+    "count": 5,
+    "spacing": 15
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "tiers": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -60
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ }
+}

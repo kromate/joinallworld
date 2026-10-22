@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/478033092",
+   "used": "nearest building only (42 m away, 48 x 21 m); not trusted as the terminal outline, so the model is typed from the brief: low concrete terminal, long flat bay canopies, elevated highway above"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    14
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9bb",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#8a8f86",
+    "bay": 5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39d8d",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    22,
+    6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8f86",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39d8d",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "viaduct-deck",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     14
+    ],
+    "z0": 9,
+    "height": 1.6,
+    "colour": "#b4afa3"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -45,
+     38
+    ],
+    "end": [
+     45,
+     38
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       2.4
+      ],
+      "height": 9,
+      "colour": "#a8a398"
+     }
+    }
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 6,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    6,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 6,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 6,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "coach",
+    "density": 0.8,
+    "coach_share": 0.6,
+    "colours": [
+     "#f1f1ee",
+     "#d4d0c4",
+     "#c9b27a"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -8,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "mixed",
+    "density": 0.6,
+    "coach_share": 0.2
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "width": 2.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and no reliable outline: layout, bay count and the elevated highway are typed from the brief; a typical Beirut intercity bus terminal"
+ }
+}

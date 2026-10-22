@@ -1,0 +1,808 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-way-119616744",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:King_Fahd_International_Stadium_2020s.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Meshari Alawfi",
+   "view": "front",
+   "file": "/tmp/places-evidence/riyadh/stad1.jpg",
+   "used": "white tensile tent roof: pointed masts with thin spires, concave membrane sweeping between them, arched gate opening, sand-beige perimeter wall with red railings, palms, paved forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:KingFahdInternationalStadium.jpg",
+   "licence": "CC BY 2.0",
+   "author": "alobayd",
+   "view": "interior",
+   "file": "/tmp/places-evidence/riyadh/stad2.jpg",
+   "used": "two seating tiers, pale membrane roof on slanted ribs and inclined struts, blue seats, red track"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1643398",
+   "used": "overall size only (246 x 233 m round bowl): modelled as a round bowl scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d9cdb0",
+    "profile": [
+     [
+      40,
+      0
+     ],
+     [
+      40,
+      13
+     ],
+     [
+      41.5,
+      14
+     ],
+     [
+      41.5,
+      15.5
+     ],
+     [
+      36,
+      15.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#3f6fb0",
+    "profile": [
+     [
+      22,
+      0.5
+     ],
+     [
+      26,
+      3
+     ],
+     [
+      28,
+      3
+     ],
+     [
+      28,
+      5.5
+     ],
+     [
+      32,
+      8
+     ],
+     [
+      34,
+      8
+     ],
+     [
+      34,
+      11
+     ],
+     [
+      38,
+      13.4
+     ],
+     [
+      38,
+      12
+     ],
+     [
+      24,
+      0.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#6f9a58",
+    "profile": [
+     [
+      0,
+      0.15
+     ],
+     [
+      21,
+      0.15
+     ],
+     [
+      21,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d9c39a",
+    "profile": [
+     [
+      56.3,
+      0
+     ],
+     [
+      56.3,
+      3.4
+     ]
+    ],
+    "openTop": true
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#c0302a",
+    "profile": [
+     [
+      56.4,
+      3.4
+     ],
+     [
+      56.4,
+      4.6
+     ]
+    ],
+    "openTop": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 46,
+    "startDeg": -103,
+    "endDeg": 231,
+    "count": 14,
+    "facing": "outward",
+    "lod2Step": 14,
+    "lod1Step": 4,
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "curve": true,
+       "colour": "#f4f2ea",
+       "steps": 3,
+       "round": 14,
+       "sections": [
+        {
+         "z": 3,
+         "circle": 16
+        },
+        {
+         "z": 10,
+         "circle": 8
+        },
+        {
+         "z": 17,
+         "circle": 3.6
+        },
+        {
+         "z": 23,
+         "circle": 1.5
+        },
+        {
+         "z": 28,
+         "circle": 0.7
+        }
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "segments": 8,
+       "colour": "#d0d4d6",
+       "profile": [
+        [
+         0.4,
+         27.5
+        ],
+        [
+         0.25,
+         30
+        ],
+        [
+         0.06,
+         34
+        ]
+       ]
+      },
+      "lod": [
+       0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f1efe6",
+    "profile": [
+     [
+      26,
+      24
+     ],
+     [
+      34,
+      21
+     ],
+     [
+      42,
+      19
+     ],
+     [
+      50,
+      17.5
+     ],
+     [
+      55,
+      15.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#e8e5da",
+    "profile": [
+     [
+      26,
+      24
+     ],
+     [
+      26.5,
+      25
+     ],
+     [
+      33,
+      22
+     ],
+     [
+      34,
+      21
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -17,
+    -62,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#f4f2ea",
+    "steps": 3,
+    "round": 8,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.2
+     },
+     {
+      "z": 9,
+      "circle": 1.5
+     },
+     {
+      "z": 10.5,
+      "circle": 12
+     },
+     {
+      "z": 14,
+      "circle": 8
+     },
+     {
+      "z": 19,
+      "circle": 4.5
+     },
+     {
+      "z": 25,
+      "circle": 1.8
+     },
+     {
+      "z": 30,
+      "circle": 0.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -17,
+    -62,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d0d4d6",
+    "profile": [
+     [
+      0.4,
+      29.5
+     ],
+     [
+      0.25,
+      32
+     ],
+     [
+      0.06,
+      36
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    17,
+    -62,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#f4f2ea",
+    "steps": 3,
+    "round": 8,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.2
+     },
+     {
+      "z": 9,
+      "circle": 1.5
+     },
+     {
+      "z": 10.5,
+      "circle": 12
+     },
+     {
+      "z": 14,
+      "circle": 8
+     },
+     {
+      "z": 19,
+      "circle": 4.5
+     },
+     {
+      "z": 25,
+      "circle": 1.8
+     },
+     {
+      "z": 30,
+      "circle": 0.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    -62,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d0d4d6",
+    "profile": [
+     [
+      0.4,
+      29.5
+     ],
+     [
+      0.25,
+      32
+     ],
+     [
+      0.06,
+      36
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 62,
+    "startDeg": 20,
+    "endDeg": 340,
+    "count": 2,
+    "facing": "outward",
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 30,
+      "head_width": 4
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -17,
+      0,
+      10.5
+     ],
+     [
+      -9,
+      0,
+      14.5
+     ],
+     [
+      0,
+      0,
+      15.5
+     ],
+     [
+      9,
+      0,
+      14.5
+     ],
+     [
+      17,
+      0,
+      10.5
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "section": {
+     "rect": [
+      13,
+      1.4
+     ]
+    },
+    "colour": "#f4f2ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 6,
+    "colour": "#d0d4d6",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -62,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#f1efe6",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 6,
+    "colour": "#d0d4d6",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -62,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#f1efe6",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 6,
+    "colour": "#d0d4d6",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -62,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#f1efe6",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 6,
+    "colour": "#d0d4d6",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -62,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "height": 0.3,
+    "colour": "#f1efe6",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -75
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -70
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -75
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -70
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -45
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Masts are wide concave tent peaks but gate masts still read as mushroom skirts on thin posts; membrane between masts is a thin arch band, not a swept sheet; no radiating ribs under roof; gate shelters simple; palms generic"
+ }
+}

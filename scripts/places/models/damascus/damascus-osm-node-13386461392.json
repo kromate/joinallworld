@@ -1,0 +1,313 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-osm-node-13386461392",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "small stone tomb shrine with a small dome over the grave chamber, inside a walled graveyard with a gate, cypress trees"
+  },
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:Damascus_Bab_al-Saghir_graveyard_2920.jpg (CC BY-SA, Dosseman; not this tomb)",
+   "used": "setting only (not this tomb): rows of white upright grave markers, ochre walls, low pink domes behind"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tomb",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdb98e",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8c8576"
+      ],
+      "height": 0.5,
+      "at": 0.92,
+      "proud": 0.1,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    2,
+    5.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#d9cdb0",
+    "profile": [
+     [
+      3.2,
+      0,
+      "#cdb98e"
+     ],
+     [
+      3.2,
+      1.6
+     ],
+     [
+      3.4,
+      1.7,
+      "#d9cdb0"
+     ],
+     [
+      3.1,
+      2.7
+     ],
+     [
+      2.2,
+      3.7
+     ],
+     [
+      1.0,
+      4.3
+     ],
+     [
+      0.15,
+      4.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome2",
+   "at": [
+    0,
+    2,
+    5.2
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d9cdb0",
+    "profile": [
+     [
+      3.2,
+      0
+     ],
+     [
+      3.2,
+      1.6
+     ],
+     [
+      0.15,
+      4.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "yard-w",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.0,
+    "thickness": 0.5,
+    "colour": "#bfb08a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "yard-back",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.0,
+    "thickness": 0.5,
+    "colour": "#bfb08a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "yard-l",
+   "at": [
+    -17,
+    1,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 2.0,
+    "thickness": 0.5,
+    "colour": "#bfb08a",
+    "points": [
+     [
+      0,
+      -15
+     ],
+     [
+      0,
+      15
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "yard-r",
+   "at": [
+    17,
+    1,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 2.0,
+    "thickness": 0.5,
+    "colour": "#bfb08a",
+    "points": [
+     [
+      0,
+      -15
+     ],
+     [
+      0,
+      15
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "gate",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 2.6,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#cdb98e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 3,
+    "dx": 2.0,
+    "dy": 2.2,
+    "centred": true,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.5,
+        0.2
+       ],
+       "height": 1.1,
+       "colour": "#e2dccd",
+       "topColour": "#e2dccd"
+      },
+      "at": [
+       0,
+       0
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -12,
+     10
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     12,
+     12
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     13,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Typed composition: tomb size, dome and graveyard wall are guesses; no photo of this tomb found."
+ }
+}

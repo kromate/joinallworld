@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Siachen_Base_Camp",
+   "used": "medical unit at base camp; insulated prefab hut, red accents"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e9eef2",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#b5412f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f969b",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "snow-bank",
+   "at": [
+    0,
+    5.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     19,
+     3
+    ],
+    "height": 1.8,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "id": "cross",
+   "at": [
+    -4,
+    -4.05,
+    2.2
+   ],
+   "params": {
+    "size": 1.8
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "bay",
+   "at": [
+    11,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "solar-panels",
+   "id": "solar",
+   "at": [
+    4,
+    0,
+    4.4
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 4,
+    "tilt": 25
+   }
+  },
+  {
+   "type": "solar-panels",
+   "id": "solar2",
+   "at": [
+    -4,
+    0,
+    4.4
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "tilt": 25
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of a real building; hut, red-cross plate, ambulance bay and solar panels typed from brief"
+ }
+}

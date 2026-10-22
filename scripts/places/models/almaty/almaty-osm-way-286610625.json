@@ -1,0 +1,539 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-osm-way-286610625",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%83%D1%8D%D1%81.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "RSAanton",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/almaty/aues1.jpg",
+   "used": "yard seen from a high floor: low two-storey grey-brown block with ribbon windows and a silver hip roof, white sports hall with long low gable roof and amber glazing, artificial football pitch in the yard, five-storey slab at left, white ten-storey block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/286610625",
+   "used": "identity and campus extent only (about 264 x 178 m); massing is composed from the photo and scaled down"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    24
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a7d70",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "bay": 5,
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "glassColour": "#ffc850"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4cacf",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    33,
+    24
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f2f2",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 4.5,
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "glassColour": "#ffb830"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f2f4f4",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     52,
+     13
+    ]
+   },
+   "at": [
+    -46,
+    6
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 5,
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "glassColour": "#7a858a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7a80",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -14,
+    76
+   ],
+   "height": 30,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f6f2",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bay": 5,
+    "plinth": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "ribbon"
+    },
+    "glassColour": "#e6d28a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f92",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    16,
+    -4,
+    0.03
+   ],
+   "params": {
+    "length": 62,
+    "width": 36,
+    "stripes": 2,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.04
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -30
+     ],
+     [
+      -28,
+      0
+     ],
+     [
+      -26,
+      14
+     ]
+    ],
+    "width": 4,
+    "colour": "#4a4a4c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    16,
+    -4,
+    0.07
+   ],
+   "params": {
+    "points": [
+     [
+      -31,
+      -18
+     ],
+     [
+      31,
+      -18
+     ],
+     [
+      31,
+      18
+     ],
+     [
+      -31,
+      18
+     ],
+     [
+      -31,
+      -18
+     ]
+    ],
+    "width": 0.25,
+    "colour": "#e8ece8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    16,
+    -4,
+    0.07
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.02
+     ]
+    },
+    "points": [
+     [
+      5.5,
+      0
+     ],
+     [
+      4.9,
+      2.7
+     ],
+     [
+      3.0,
+      4.6
+     ],
+     [
+      0,
+      5.5
+     ],
+     [
+      -3.0,
+      4.6
+     ],
+     [
+      -4.9,
+      2.7
+     ],
+     [
+      -5.5,
+      0
+     ],
+     [
+      -4.9,
+      -2.7
+     ],
+     [
+      -3.0,
+      -4.6
+     ],
+     [
+      0,
+      -5.5
+     ],
+     [
+      3.0,
+      -4.6
+     ],
+     [
+      4.9,
+      -2.7
+     ],
+     [
+      5.5,
+      0
+     ]
+    ],
+    "colour": "#e8ece8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -15,
+      -23
+     ],
+     [
+      47,
+      -23
+     ],
+     [
+      47,
+      15
+     ],
+     [
+      -15,
+      15
+     ],
+     [
+      -15,
+      -23
+     ]
+    ],
+    "height": 3,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#3a5a3a",
+    "pillarEvery": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -15,
+    -23,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    47,
+    -23,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    47,
+    15,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -15,
+    15,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "glaze",
+   "footprint": {
+    "rect": [
+     34,
+     0.6
+    ]
+   },
+   "at": [
+    -6,
+    16.6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7a99a0",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "front": "curtain",
+     "back": "curtain",
+     "left": "curtain",
+     "right": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7d70"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    16.9,
+    1.2
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.6,
+        0.2
+       ],
+       "height": 4,
+       "colour": "#ffb830"
+      }
+     }
+    ],
+    "start": [
+     -1,
+     0,
+     0
+    ],
+    "end": [
+     31,
+     0,
+     0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 4,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -4
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     14
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Single courtyard photo; amber glow is bright glazing colour not emissive; pitch has centre circle and goals but no penalty arcs; rear and right sides unknown."
+ }
+}

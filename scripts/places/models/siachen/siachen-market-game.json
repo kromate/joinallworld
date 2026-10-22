@@ -1,0 +1,444 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/siachen.json#siachen-market-game",
+   "used": "row of six small timber stalls with orange and olive tarp roofs, store shed, snow drifts; brief marks it a typed placeholder (no real market on the glacier), no photo, no OSM"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stall1",
+   "footprint": {
+    "rect": [
+     3.8,
+     2.6
+    ]
+   },
+   "at": [
+    -12.5,
+    2
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "timber",
+    "colour": "#8a6a45",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d98e3a",
+    "material": "membrane",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift1",
+   "at": [
+    -13.7,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.2
+    ],
+    "height": 0.7,
+    "topScale": 0.4,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall2",
+   "footprint": {
+    "rect": [
+     3.8,
+     2.6
+    ]
+   },
+   "at": [
+    -7.5,
+    2.6
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "timber",
+    "colour": "#8a6a45",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5d6650",
+    "material": "membrane",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift2",
+   "at": [
+    -6.3,
+    0.8999999999999999,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.2
+    ],
+    "height": 0.7,
+    "topScale": 0.4,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall3",
+   "footprint": {
+    "rect": [
+     3.8,
+     2.6
+    ]
+   },
+   "at": [
+    -2.5,
+    2
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "timber",
+    "colour": "#8a6a45",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d98e3a",
+    "material": "membrane",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift3",
+   "at": [
+    -3.7,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.2
+    ],
+    "height": 0.7,
+    "topScale": 0.4,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall4",
+   "footprint": {
+    "rect": [
+     3.8,
+     2.6
+    ]
+   },
+   "at": [
+    2.5,
+    2.6
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "timber",
+    "colour": "#8a6a45",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5d6650",
+    "material": "membrane",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift4",
+   "at": [
+    3.7,
+    0.8999999999999999,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.2
+    ],
+    "height": 0.7,
+    "topScale": 0.4,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall5",
+   "footprint": {
+    "rect": [
+     3.8,
+     2.6
+    ]
+   },
+   "at": [
+    7.5,
+    2
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "timber",
+    "colour": "#8a6a45",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d98e3a",
+    "material": "membrane",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift5",
+   "at": [
+    6.3,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.2
+    ],
+    "height": 0.7,
+    "topScale": 0.4,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall6",
+   "footprint": {
+    "rect": [
+     3.8,
+     2.6
+    ]
+   },
+   "at": [
+    12.5,
+    2.6
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "timber",
+    "colour": "#8a6a45",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5d6650",
+    "material": "membrane",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift6",
+   "at": [
+    13.7,
+    0.8999999999999999,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.2
+    ],
+    "height": 0.7,
+    "topScale": 0.4,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store-shed",
+   "footprint": {
+    "rect": [
+     8,
+     3.5
+    ]
+   },
+   "at": [
+    -9,
+    9
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "timber",
+    "colour": "#5d6650",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d98e3a",
+    "material": "membrane",
+    "rise": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "berm-back",
+   "at": [
+    0,
+    12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     3.5
+    ],
+    "height": 1.5,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "array",
+   "id": "goods-crates",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12.5,
+     -1.1,
+     0
+    ],
+    "end": [
+     12.5,
+     -1.1,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.8
+      ],
+      "height": 0.7,
+      "colour": "#b98d55"
+     }
+    }
+   }
+  },
+  {
+   "type": "flag",
+   "id": "pole",
+   "at": [
+    14,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#d98e3a",
+    "colours": [
+     "#d98e3a",
+     "#e9eef2"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamp",
+   "at": [
+    -14.5,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   44,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or OSM outline exists (game-venue placeholder); composed from the brief only, checked in the standard render"
+ }
+}

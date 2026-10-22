@@ -1,0 +1,337 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Salfit_Hospital_07.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ameen (\u0623\u0645\u064a\u0646)",
+   "view": "front",
+   "file": "/tmp/places-evidence/ramallah/clinic1.jpg",
+   "used": "two-storey ashlar-coursed cream limestone, flat roof with parapet, projecting end bays, blue-framed windows with stone surrounds, central entrance under a flat canopy on two stone piers carrying a blank dark grey signboard, rooftop tank and mast"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Salfit_Hospital_09.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ameen Rammal",
+   "view": "street",
+   "used": "checked the pink-cream render of the low annexes at night (no extra geometry)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/624996989",
+   "used": "hospital outline (name match, 2 levels), 77 x 72 m zig-zag plan"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "rect": [
+     38,
+     15
+    ]
+   },
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dccfb2",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 8,
+    "plinth": 0.5,
+    "glassColour": "#2f4f8f",
+    "bands": "#bfae86"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "parapet": 0.8,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-bay-0",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     3.5
+    ],
+    "height": 11.4,
+    "colour": "#dccfb2",
+    "windows": "punched",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-bay-1",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     3.5
+    ],
+    "height": 11.4,
+    "colour": "#dccfb2",
+    "windows": "punched",
+    "windowRatio": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-slab",
+   "at": [
+    0,
+    -9.5,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     9,
+     5
+    ],
+    "height": 0.8,
+    "colour": "#d6c8a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-0",
+   "at": [
+    -3.8,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 4.4,
+    "colour": "#d6c8a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-1",
+   "at": [
+    3.8,
+    -11.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 4.4,
+    "colour": "#d6c8a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    0,
+    -11.9,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#4f5357"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-glass",
+   "at": [
+    0,
+    -7.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 3.6,
+    "colour": "#2f4f8f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "window-surround-l",
+   "at": [
+    -7,
+    -7.15,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "window-surround-r",
+   "at": [
+    7,
+    -7.15,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    8,
+    3,
+    9.6
+   ],
+   "params": {
+    "radius": 1.2,
+    "height": 1.8,
+    "colour": "#3a4a5e"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    12,
+    2,
+    9.6
+   ],
+   "params": {
+    "radius": 1.2,
+    "height": 1.8,
+    "colour": "#3a4a5e"
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    -10,
+    3,
+    9.6
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 4
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -22
+   ],
+   "params": {
+    "width": 28,
+    "depth": 9,
+    "density": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    -3,
+    2,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 6,
+    "colour": "#bfbfbf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-stack",
+   "at": [
+    -3,
+    3,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 2.4,
+    "colour": "#dccfb2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "compact two-storey block with taller projecting end bays, big blue-framed windows and deep canopy on piers now match; sign is a blank board, no door detail or wheelchair/annex; windows 2-3 per bay approximated"
+ }
+}

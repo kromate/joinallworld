@@ -1,0 +1,641 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-node-3272826588",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barjeel_Art_Foundation_front_view.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Cmclean74",
+   "view": "front",
+   "file": "/tmp/places-evidence/dubai/barjeel.jpg",
+   "used": "Maraya Art Centre, Al Qasba, the building that houses the Barjeel Art Foundation (Commons description): three-part sand-coloured frontage, taller 4-storey centre with paired arched windows, pilaster bays and crenellated parapet, lower 3-storey wings, three large ground-floor arches with open loggias at the ends, red-granite forecourt plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/146378019",
+   "used": "overall scale only (183 x 26 m row, Al Qasba B); a 104 m frontage is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     46,
+     27
+    ]
+   },
+   "at": [
+    0,
+    -3.5
+   ],
+   "height": 32,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#cdb99a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "bay": 2.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 15.3,
+      "opening": 0.8,
+      "height": 0.92,
+      "depth": 1.4,
+      "faces": [
+       "front"
+      ],
+      "storeys": 1
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#f1e8d2"
+      ],
+      "height": 0.7,
+      "floors": "upper"
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b896",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    -41,
+    1
+   ],
+   "height": 22.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cdb99a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "bay": 2.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 12,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 1.4,
+      "faces": [
+       "front"
+      ],
+      "storeys": 1
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#f1e8d2"
+      ],
+      "height": 0.7,
+      "floors": "upper"
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b896",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    41,
+    1
+   ],
+   "height": 22.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#cdb99a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "bay": 2.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 12,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 1.4,
+      "faces": [
+       "front"
+      ],
+      "storeys": 1
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#f1e8d2"
+      ],
+      "height": 0.7,
+      "floors": "upper"
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b896",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17.1,
+    12
+   ],
+   "params": {
+    "rect": [
+     19,
+     0.2
+    ],
+    "height": 18,
+    "colour": "#e6e6e2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.25,
+    -17.3,
+    15
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     0.12
+    ],
+    "height": 12,
+    "colour": "#b5322e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.25,
+    -17.3,
+    23
+   ],
+   "params": {
+    "rect": [
+     14.5,
+     0.12
+    ],
+    "height": 4,
+    "colour": "#2f7d4b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.25,
+    -17.3,
+    15
+   ],
+   "params": {
+    "rect": [
+     14.5,
+     0.12
+    ],
+    "height": 4,
+    "colour": "#2b2b2b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15,
+    -17.2,
+    12
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "height": 18,
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15,
+    -17.2,
+    12
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "height": 18,
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -22,
+    -15.2,
+    32
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.8,
+       0.6
+      ],
+      "height": 1.2,
+      "colour": "#e2d4b6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     44,
+     0,
+     0
+    ],
+    "count": 45
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -58.5,
+    -8.8,
+    22.5
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.8,
+       0.6
+      ],
+      "height": 1.1,
+      "colour": "#d8c9b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     35,
+     0,
+     0
+    ],
+    "count": 36
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    23.5,
+    -8.8,
+    22.5
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.8,
+       0.6
+      ],
+      "height": 1.1,
+      "colour": "#d8c9b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     35,
+     0,
+     0
+    ],
+    "count": 36
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -23,
+    -15.3,
+    8
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.3,
+       0.9
+      ],
+      "height": 22,
+      "colour": "#f4ecda"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     46,
+     0,
+     0
+    ],
+    "count": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -21.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     38,
+     8
+    ],
+    "height": 1.3,
+    "colour": "#8a3a32"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -41,
+    -9.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.0
+    ],
+    "height": 0.1,
+    "colour": "#cdb99a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -57,
+    -9.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.9
+    ],
+    "height": 22.5,
+    "colour": "#f4ecda"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -25,
+    -9.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.9
+    ],
+    "height": 22.5,
+    "colour": "#f4ecda"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    25,
+    -9.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.9
+    ],
+    "height": 22.5,
+    "colour": "#f4ecda"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    57,
+    -9.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.9
+    ],
+    "height": 22.5,
+    "colour": "#f4ecda"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     1.2
+    ],
+    "height": 0.5,
+    "colour": "#7a3029"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "windows are small single arched lights at 2.9 m bay, not paired Moorish arches; ground arches still dark glazed, no banded voussoirs or rosettes; centre block projected 3 m; crenellations now small merlons; granite plinth raised"
+ }
+}

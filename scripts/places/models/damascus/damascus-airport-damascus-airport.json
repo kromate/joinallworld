@@ -1,0 +1,369 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-airport-damascus-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Damascus-int-airport2007.JPG",
+   "licence": "Public domain",
+   "author": "unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/damascus/air2.jpg",
+   "used": "landside elevation: long low two-storey concourse with a zig-zag folded canopy edge and lattice-screen wall, taller white central block with a signage band, round control tower at the right, palms and lamp posts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Damascus_International_Airport.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Bangin",
+   "view": "back",
+   "file": "/tmp/places-evidence/damascus/air3.jpg",
+   "used": "airside: arched pointed-window bays between slim piers, long fascia band, taller white block behind, blue jet bridges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/156614604",
+   "used": "overall scale only (281 m long, clamped: about 118 m modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "concourse",
+   "footprint": {
+    "rect": [
+     120,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a968a",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "windowShape": "pointed",
+    "bay": 5.0,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#a9a498",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.6,
+       1.4
+      ],
+      "colours": [
+       "#d8d2c0",
+       "#bdb5a0",
+       "#e6e1d2"
+      ],
+      "slits": {
+       "fraction": 0.55,
+       "colour": "#2c3033"
+      },
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "material": "concrete",
+    "overhang": 1.5,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     62,
+     12
+    ]
+   },
+   "at": [
+    -14,
+    6
+   ],
+   "z0": 7.5,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#eeebe2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c7c0",
+    "overhang": 0.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-block",
+   "footprint": {
+    "rect": [
+     40,
+     0.8
+    ]
+   },
+   "at": [
+    -14,
+    -0.3
+   ],
+   "z0": 13.6,
+   "height": 2.4,
+   "wall": {
+    "material": "render",
+    "colour": "#b88f6a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c7c0",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-pier",
+   "footprint": {
+    "rect": [
+     110,
+     20
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e2ddcd",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6f7b82"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "overhang": 1.0,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 120,
+    "depth": 7,
+    "height": 4.3,
+    "thickness": 1.2,
+    "columns": 0,
+    "colour": "#c9c3b4",
+    "edgeColour": "#2e2e2e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -3.5,
+        0
+       ],
+       [
+        3.5,
+        0
+       ],
+       [
+        0,
+        -6.5
+       ]
+      ],
+      "z0": 4.6,
+      "height": 1.3,
+      "colour": "#4d4a46",
+      "topColour": "#4a4744"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -58,
+     -14.5
+    ],
+    "end": [
+     58,
+     -14.5
+    ],
+    "count": 17
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -8.3,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "height": 1.6,
+    "bottom": 4.2,
+    "colour": "#b99a62",
+    "frameColour": "#8c7a52",
+    "posts": false
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "round",
+    "colour": "#ece8de",
+    "cabColour": "#8a959a",
+    "bandColour": "#d8d2c2",
+    "shaftRadius": 2.4,
+    "cabRadius": 3.2
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -60,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 5,
+    "spacing": 30
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -45,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#e8c13a",
+    "count": 4,
+    "spacing": 18,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -15,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Concourse clamped to 118 m of 281 m; canopy teeth are triangular fins; lattice wall is a slit-panel approximation; tower generic round shape; jet bridges removed per critic."
+ }
+}

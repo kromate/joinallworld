@@ -1,0 +1,402 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/siachen.json#siachen-transit",
+   "used": "helicopter landing pad with painted ring, small waiting shelter, two tracked snow vehicles, windsock pole, fuel drums (Siachen Base Camp has helipads; helicopters supply posts); typed placeholder, no photo, no OSM"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "helipad",
+   "id": "pad",
+   "at": [
+    -6,
+    2,
+    0
+   ],
+   "params": {
+    "radius": 7.5,
+    "colour": "#8c9096",
+    "markColour": "#e9eef2",
+    "ringColour": "#d98e3a",
+    "ground": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "waiting-shelter",
+   "footprint": {
+    "rect": [
+     9,
+     4
+    ]
+   },
+   "at": [
+    10,
+    5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "material": "metal-cladding",
+    "colour": "#5d6650",
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#d98e3a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7568",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelter-drift",
+   "at": [
+    10,
+    8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     2
+    ],
+    "height": 1.2,
+    "topScale": 0.5,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tracked-1-hull",
+   "footprint": {
+    "rect": [
+     6.2,
+     2.8
+    ]
+   },
+   "at": [
+    8,
+    -5.5
+   ],
+   "z0": 0.45,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "metal-cladding",
+    "colour": "#5d6650",
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7568",
+    "material": "corrugated",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tracked-1-cab",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.2
+    ]
+   },
+   "at": [
+    6.6,
+    -5.5
+   ],
+   "z0": 1.95,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "metal-cladding",
+    "colour": "#d98e3a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7568",
+    "material": "metal-sheet",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tracked-1-track-a",
+   "footprint": {
+    "rect": [
+     6.4,
+     0.7
+    ]
+   },
+   "at": [
+    8,
+    -7.05
+   ],
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "metal-cladding",
+    "colour": "#2e3033"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e3033",
+    "material": "metal-sheet",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tracked-1-track-b",
+   "footprint": {
+    "rect": [
+     6.4,
+     0.7
+    ]
+   },
+   "at": [
+    8,
+    -3.95
+   ],
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "metal-cladding",
+    "colour": "#2e3033"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e3033",
+    "material": "metal-sheet",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tracked-2-hull",
+   "footprint": {
+    "rect": [
+     6.2,
+     2.8
+    ]
+   },
+   "at": [
+    8,
+    -10
+   ],
+   "z0": 0.45,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "metal-cladding",
+    "colour": "#5d6650",
+    "plinth": 0.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7568",
+    "material": "corrugated",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tracked-2-cab",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.2
+    ]
+   },
+   "at": [
+    6.6,
+    -10
+   ],
+   "z0": 1.95,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "metal-cladding",
+    "colour": "#d98e3a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7568",
+    "material": "metal-sheet",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tracked-2-track-a",
+   "footprint": {
+    "rect": [
+     6.4,
+     0.7
+    ]
+   },
+   "at": [
+    8,
+    -11.55
+   ],
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "metal-cladding",
+    "colour": "#2e3033"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e3033",
+    "material": "metal-sheet",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tracked-2-track-b",
+   "footprint": {
+    "rect": [
+     6.4,
+     0.7
+    ]
+   },
+   "at": [
+    8,
+    -8.45
+   ],
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "windows": "none",
+    "windowRatio": 0,
+    "material": "metal-cladding",
+    "colour": "#2e3033"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e3033",
+    "material": "metal-sheet",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "flag",
+   "id": "windsock-pole",
+   "at": [
+    1.5,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 5.5,
+    "colour": "#d98e3a",
+    "colours": [
+     "#d98e3a",
+     "#e9eef2"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "fuel-drums",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     15,
+     0,
+     0
+    ],
+    "end": [
+     15,
+     2.4,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.45,
+      "n": 10,
+      "height": 1.0,
+      "colour": "#b5412f"
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamp",
+   "at": [
+    3,
+    5,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or OSM outline exists (game-venue placeholder); composed from the brief only, checked in the standard render"
+ }
+}

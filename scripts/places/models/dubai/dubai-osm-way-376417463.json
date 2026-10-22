@@ -1,0 +1,481 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Sharjah_-_College_of_Medicine_Parking_Lot..jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Noura Boush",
+   "view": "street",
+   "file": "/tmp/places-evidence/dubai/shj1.jpg",
+   "used": "campus setting: pinkish interlocking paver plaza, date palms in rows, black twin-lantern lamp posts, curb with yellow-black stripe, white blocks in background"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Sharjah_-_College_of_Medicine_Campus_Walk.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Noura Boush",
+   "view": "street",
+   "file": "/tmp/places-evidence/dubai/shj2.jpg",
+   "used": "curving paver walkways, lawn, round shrub beds, lamp posts, bench, small shade shelter"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Sharjah_-_Medical_%26_Health_Sciences_Campus_View.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Noura Boush",
+   "view": "front",
+   "file": "/tmp/places-evidence/dubai/shj3.jpg",
+   "used": "academic block: pink-cream stone, three storeys, teal-framed square windows in paired bays, arched ground-floor arcade, stepped plaza, pool, trees and benches"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/204709047",
+   "used": "nearest building outline (10.6 m, tags building=yes only): a bent 79 x 61 m block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 7,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Block is the nearest OSM outline (bent, 3 storeys) with teal-framed bays and ground arcade but not the photographed block's paired bays and prominent entrance arch; pool is an ellipse with rim, no rock border; paths are straight-ish strips not smooth curves; acacia crowns are stock umbrellas."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dcb9a2",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.22,
+    "bay": 5.2,
+    "bands": "#f0e2d0",
+    "plinth": 0.6,
+    "groundKind": "arcade",
+    "glassColour": "#3f8f93",
+    "trimColour": "#2f8a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c6",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -44,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "width": 2.6,
+    "height": 3.2,
+    "colour": "#e5d9c0",
+    "roofColour": "#d8d2c6"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 70,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -44,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      10.2,
+      0.0
+     ],
+     [
+      9.7,
+      1.76
+     ],
+     [
+      8.25,
+      3.35
+     ],
+     [
+      6.0,
+      4.61
+     ],
+     [
+      3.15,
+      5.42
+     ],
+     [
+      0.0,
+      5.7
+     ],
+     [
+      -3.15,
+      5.42
+     ],
+     [
+      -6.0,
+      4.61
+     ],
+     [
+      -8.25,
+      3.35
+     ],
+     [
+      -9.7,
+      1.76
+     ],
+     [
+      -10.2,
+      0.0
+     ],
+     [
+      -9.7,
+      -1.76
+     ],
+     [
+      -8.25,
+      -3.35
+     ],
+     [
+      -6.0,
+      -4.61
+     ],
+     [
+      -3.15,
+      -5.42
+     ],
+     [
+      -0.0,
+      -5.7
+     ],
+     [
+      3.15,
+      -5.42
+     ],
+     [
+      6.0,
+      -4.61
+     ],
+     [
+      8.25,
+      -3.35
+     ],
+     [
+      9.7,
+      -1.76
+     ]
+    ],
+    "height": 0.35,
+    "colour": "#a89c8a",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -44,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      9.0,
+      0.0
+     ],
+     [
+      8.56,
+      1.56
+     ],
+     [
+      7.28,
+      2.77
+     ],
+     [
+      5.29,
+      3.47
+     ],
+     [
+      2.78,
+      3.76
+     ],
+     [
+      0.0,
+      3.82
+     ],
+     [
+      -2.78,
+      3.76
+     ],
+     [
+      -5.29,
+      3.47
+     ],
+     [
+      -7.28,
+      2.77
+     ],
+     [
+      -8.56,
+      1.56
+     ],
+     [
+      -9.0,
+      0.0
+     ],
+     [
+      -8.56,
+      -1.56
+     ],
+     [
+      -7.28,
+      -2.77
+     ],
+     [
+      -5.29,
+      -3.47
+     ],
+     [
+      -2.78,
+      -3.76
+     ],
+     [
+      -0.0,
+      -3.82
+     ],
+     [
+      2.78,
+      -3.76
+     ],
+     [
+      5.29,
+      -3.47
+     ],
+     [
+      7.28,
+      -2.77
+     ],
+     [
+      8.56,
+      -1.56
+     ]
+    ],
+    "height": 0.4,
+    "colour": "#2f5a66"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -34
+     ],
+     [
+      -4,
+      -44
+     ],
+     [
+      10,
+      -52
+     ],
+     [
+      14,
+      -62
+     ],
+     [
+      4,
+      -78
+     ]
+    ],
+    "width": 3,
+    "colour": "#c9988c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -56
+     ],
+     [
+      -26,
+      -62
+     ],
+     [
+      -40,
+      -60
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#c9988c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "count": 4,
+    "colour": "#e8d6c0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 10,
+    "count": 3,
+    "spread": 8,
+    "colour": "#5f8a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -58,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 11,
+    "count": 3,
+    "spread": 9,
+    "colour": "#5f8a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -82,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 12,
+    "count": 2,
+    "spread": 6,
+    "colour": "#5f8a3a"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    2,
+    -56,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    30,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 2.8,
+    "colour": "#e5d9c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-way-376417463"
+}

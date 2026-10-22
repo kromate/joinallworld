@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1083747727",
+   "used": "real park outline 137 x 106 m as the lawn plate"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "lawns, pine trees, paved paths, prayer-flag line, small pavilion; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      -30
+     ],
+     [
+      -20,
+      -20
+     ],
+     [
+      10,
+      -12
+     ],
+     [
+      55,
+      -5
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      28
+     ],
+     [
+      -10,
+      10
+     ],
+     [
+      10,
+      -12
+     ],
+     [
+      40,
+      40
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -45,
+    -40,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "count": 10,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    50,
+    -5,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "count": 9,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    30,
+    0.5
+   ],
+   "params": {
+    "width": 40,
+    "depth": 15,
+    "count": 8,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    35,
+    0.5
+   ],
+   "params": {
+    "width": 35,
+    "depth": 14,
+    "count": 7,
+    "kind": "conifer",
+    "min_height": 7,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    10,
+    5,
+    0.5
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.6,
+    "kind": "hip",
+    "roof_colour": "#8b4a3a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -5,
+    -10,
+    0.5
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#e8e3d4",
+    "count": 6,
+    "spacing": 2.5,
+    "colours": [
+     "#2f6bbd",
+     "#f4f1ea",
+     "#c43a2e",
+     "#2d8a4a",
+     "#e5b82e"
+    ]
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -14,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    22,
+    -8,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    10,
+    -1,
+    0.5
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#8f8b82"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; path layout, tree positions, pavilion and flag line are plausible placements only"
+ }
+}

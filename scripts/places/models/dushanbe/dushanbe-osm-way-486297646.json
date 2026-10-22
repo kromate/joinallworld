@@ -1,0 +1,330 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-way-486297646",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Donishgohi_davlatii_omuzgorii_Tojikiston_ba_nomi_K_Juraev.JPG",
+   "licence": "Public domain",
+   "author": "Foteh Rahimov",
+   "view": "front",
+   "file": "/tmp/places-evidence/dushanbe/d15_univ.jpg",
+   "used": "light blue stucco, ten white flat pilasters over three storeys, nine window bays in two rows plus a ground row, raised central attic with blank board, fluted wings, two dark red doors, flat roof with parapet"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/528398314",
+   "used": "matched OSM outline is only a 29x13 m annex; not used for massing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 36,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "photo shows two window rows over a taller ground storey and pilaster capitals; render has three equal rows and plain pilasters; no hedges, flags or lettering"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a2d3ea",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "bay": 4.4,
+    "plinth": 1.0,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    -25.5,
+    -0.5
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#9ec6df",
+    "windows": "none",
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.25,
+      "spacing": 1.25,
+      "colour": "#e4eef2",
+      "margin": 0.4,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     11,
+     14
+    ]
+   },
+   "at": [
+    25.5,
+    -0.5
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#9ec6df",
+    "windows": "none",
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.25,
+      "spacing": 1.25,
+      "colour": "#e4eef2",
+      "margin": 0.4,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic",
+   "params": {
+    "rect": [
+     30,
+     16.2
+    ],
+    "z0": 17,
+    "height": 2.6,
+    "colour": "#a2d3ea",
+    "topColour": "#d8d8d2"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     41.4,
+     17.2
+    ],
+    "z0": 16.5,
+    "height": 0.6,
+    "colour": "#f1f0ea",
+    "topColour": "#f1f0ea"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "pilasters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.7,
+       1.2
+      ],
+      "z0": 1.0,
+      "height": 15.6,
+      "colour": "#f1f0ea",
+      "topColour": "#f1f0ea"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -19.8,
+     -8.6
+    ],
+    "end": [
+     19.8,
+     -8.6
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-l",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.5
+    ],
+    "z0": 0.9,
+    "height": 3.3,
+    "colour": "#6b2a24"
+   },
+   "at": [
+    -2.2,
+    -8.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-r",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.5
+    ],
+    "z0": 0.9,
+    "height": 3.3,
+    "colour": "#6b2a24"
+   },
+   "at": [
+    2.6,
+    -8.5
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia-board",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.3
+    ],
+    "z0": 17.8,
+    "height": 1.3,
+    "colour": "#e9eef0"
+   },
+   "at": [
+    0,
+    -8.3
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -17,
+     -17
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     19,
+     -16
+    ],
+    "height": 7.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     -24
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ }
+}

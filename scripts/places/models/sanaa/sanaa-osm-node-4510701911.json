@@ -1,0 +1,382 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-node-4510701911",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sana%27_military_museum_00.JPG",
+   "licence": "Public domain",
+   "author": "Email4mobile",
+   "view": "front",
+   "file": "/tmp/places-evidence/sanaa/mil00.jpg",
+   "used": "two-storey pale stone front with dark basalt bands, arched windows with dark surrounds, projecting central entrance bay with three arches and a raised attic, flagpoles, low ornamental railing, cannon in the yard"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sana%27_military_museum_01.JPG",
+   "licence": "Public domain",
+   "author": "Email4mobile",
+   "view": "side",
+   "file": "/tmp/places-evidence/sanaa/mil01.jpg",
+   "used": "yard display of aircraft and guns behind a green geometric railing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.98
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     58,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#d2c8ad",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "bay": 4.2,
+    "plinth": 0.9,
+    "bands": "#3f3f3d",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#efe9d8",
+    "glassColour": "#2a2d30",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#3f3f3d"
+      ],
+      "height": 0.8,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     17,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -2.5
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc4a6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.6,
+    "bay": 3.4,
+    "plinth": 0.9,
+    "bands": "#5a5a58",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#efe9d8",
+    "glassColour": "#2a2d30",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#3f3f3d"
+      ],
+      "height": 0.9,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     13,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f3f3d",
+    "windows": "arched",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.2,
+      "depth": 1.6,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "plinth": 0.3,
+    "glassColour": "#0d0d0d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a48",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "thickness": 0.2,
+    "kind": "rail",
+    "colour": "#2f4a3c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    22,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "thickness": 0.2,
+    "kind": "rail",
+    "colour": "#2f4a3c"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    18,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "height": 21,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc4a6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "bay": 3,
+    "bands": "#5a5a58",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#5a5a58",
+    "glassColour": "#2a2d30"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4a48",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin--1",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -28.4,
+    -9.6
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f3f3d",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f3f3d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-1",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    28.4,
+    -9.6
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f3f3d",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f3f3d"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "spacing": 0.8,
+    "colours": [
+     "#c8362f",
+     "#f1f1ee",
+     "#1b1b1b"
+    ]
+   },
+   "on": "attic"
+  },
+  {
+   "type": "flag",
+   "at": [
+    -5.5,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1,
+    "spacing": 0.8,
+    "colours": [
+     "#c8362f",
+     "#f1f1ee",
+     "#1b1b1b"
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    5.5,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1,
+    "spacing": 0.8,
+    "colours": [
+     "#c8362f",
+     "#f1f1ee",
+     "#1b1b1b"
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "window grilles/mullions and basalt arch surrounds only approximated as pale trim; loggia arches have no inner arch mouldings; attic centred per critic but photo shows it offset; side canopies and cannons/railing only approximate"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   60
+  ]
+ }
+}

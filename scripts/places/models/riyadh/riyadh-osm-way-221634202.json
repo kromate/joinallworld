@@ -1,0 +1,389 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-way-221634202",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/riyadh.json",
+   "used": "cream 3-4 storey blocks, glazed central entrance, palms, paved forecourt; the only Commons photo (File:Al_Yamamah_University_Main_Campus.JPG) is an interior of men in a reception room and was rejected; no exterior photo found"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/221634202",
+   "used": "campus extent only (592 x 263 m landuse outline, not a building); the entrance group is a modest typical composition"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.335,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     52,
+     18
+    ]
+   },
+   "at": [
+    -40,
+    2
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3bd9d",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#4f6a78"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4ac8b",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    -9,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdb695",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4ac8b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass",
+   "at": [
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -17.0,
+      -12.0
+     ],
+     [
+      -13.6,
+      -13.08
+     ],
+     [
+      -10.2,
+      -13.92
+     ],
+     [
+      -6.8,
+      -14.52
+     ],
+     [
+      -3.4,
+      -14.88
+     ],
+     [
+      0.0,
+      -15.0
+     ],
+     [
+      3.4,
+      -14.88
+     ],
+     [
+      6.8,
+      -14.52
+     ],
+     [
+      10.2,
+      -13.92
+     ],
+     [
+      13.6,
+      -13.08
+     ],
+     [
+      17.0,
+      -12.0
+     ],
+     [
+      17,
+      12
+     ],
+     [
+      -17,
+      12
+     ]
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#4d7388",
+    "glassColour": "#4d7388",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "storeys": 4,
+    "trimColour": "#d3bd9d",
+    "topColour": "#c4ac8b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-frame-l",
+   "at": [
+    9.4,
+    -15.4
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.6
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#d6bf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-frame-r",
+   "at": [
+    23,
+    -15.4
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.6
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#d6bf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-lintel",
+   "at": [
+    16.2,
+    -15.4
+   ],
+   "params": {
+    "rect": [
+     15,
+     1.6
+    ],
+    "z0": 11,
+    "height": 2.2,
+    "colour": "#d6bf9f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    40,
+    4
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d0b896",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "left": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4ac8b",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     0,
+     0
+    ],
+    "end": [
+     40,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 0.9,
+      "colour": "#d8c9aa"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 2,
+    "spread": 6,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -54,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6,
+    "line": 8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     0,
+     0
+    ],
+    "end": [
+     60,
+     0,
+     0
+    ],
+    "count": 14,
+    "lod1Step": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 0.9,
+      "colour": "#d8c9aa"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "lawn-left",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    -20
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no valid exterior photo found: only the interior meeting-room image exists on Commons for this file, so the building is a text-level composition from the brief (curved mirror-glass entrance, ribbon-glazed wing, plain right block); proportions and colours unverified"
+ }
+}

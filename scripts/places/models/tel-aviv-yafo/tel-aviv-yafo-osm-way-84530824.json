@@ -1,0 +1,210 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-way-84530824",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/260349454",
+   "used": "the library/institutional block outline (36.5 x 20 m), name match"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beit_Berl_by_Dov_Feigin.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dov Feigin",
+   "view": "detail",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/84530824_0.jpg",
+   "used": "campus entrance only (not the library): grey rough-cast curved wall with a pale relief of three figures, grass island, boulders, pine, cypress and palm trees; used for the gate wall and planting, not the building"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Beit_Berl_College",
+   "used": "college in an institutional building from 1989; no photo of the library block found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true,
+    "fit": 38.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e1dac8",
+    "glassColour": "#7c97a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#a39a88",
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a5",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 1.5,
+    "count": 5,
+    "colour": "#cfc9ba"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    10,
+    0,
+    12
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 1.5,
+    "legs": 4,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-wall",
+   "footprint": {
+    "polygon": [
+     [
+      -9,
+      0
+     ],
+     [
+      9,
+      0
+     ],
+     [
+      9,
+      0.9
+     ],
+     [
+      -9,
+      0.9
+     ]
+    ]
+   },
+   "at": [
+    -26,
+    -22
+   ],
+   "rotDeg": 8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9aa08f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa08f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -23,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "n": 16,
+    "height": 0.08,
+    "colour": "#5f9a45",
+    "top": true
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 3,
+    "spread": 5,
+    "line": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only the real outline and brief are available for the library block (the one photo shows the campus gate wall), so facade, roof furniture and glazing are typical for a 1980s three-storey render block."
+ }
+}

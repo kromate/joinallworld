@@ -1,0 +1,207 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-node-8312911961",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: low grassy tel (about 100 x 80 m, 3 m high) with scattered ruin stones; Wikidata gives only the label. The only Commons photo is the Tel Yitzhak reservoir, a different feature, and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "mound",
+   "params": {
+    "colour": "#8fa062",
+    "topColour": "#a3a56a",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       50.0,
+       40.0
+      ]
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       46.5,
+       37.2
+      ]
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       39.0,
+       31.200000000000003
+      ]
+     },
+     {
+      "z": 3.2,
+      "ellipse": [
+       27.500000000000004,
+       22.0
+      ]
+     },
+     {
+      "z": 3.6,
+      "ellipse": [
+       19.0,
+       15.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rampart",
+   "params": {
+    "colour": "#9d9484",
+    "sections": [
+     {
+      "z": 2.9,
+      "ellipse": [
+       39.0,
+       30.0
+      ]
+     },
+     {
+      "z": 3.7,
+      "ellipse": [
+       36.0,
+       27.5
+      ]
+     },
+     {
+      "z": 3.7,
+      "ellipse": [
+       31.0,
+       23.0
+      ]
+     },
+     {
+      "z": 2.9,
+      "ellipse": [
+       33.0,
+       25.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -22,
+    -18,
+    2.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 9,
+    "height": 1.1,
+    "thickness": 0.7,
+    "colour": "#b8a98a"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    10,
+    -26,
+    2.7
+   ],
+   "rotDeg": 37,
+   "params": {
+    "length": 7,
+    "height": 1.1,
+    "thickness": 0.7,
+    "colour": "#b8a98a"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    30,
+    5,
+    2.8000000000000003
+   ],
+   "rotDeg": 74,
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "thickness": 0.7,
+    "colour": "#b8a98a"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -8,
+    22,
+    2.9000000000000004
+   ],
+   "rotDeg": 21,
+   "params": {
+    "length": 8,
+    "height": 1.1,
+    "thickness": 0.7,
+    "colour": "#b8a98a"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    18,
+    24,
+    3.0
+   ],
+   "rotDeg": 58,
+   "params": {
+    "length": 6.5,
+    "height": 1.1,
+    "thickness": 0.7,
+    "colour": "#b8a98a"
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "at": [
+    -35,
+    6,
+    3.1
+   ],
+   "rotDeg": 5,
+   "params": {
+    "length": 7,
+    "height": 1.1,
+    "thickness": 0.7,
+    "colour": "#b8a98a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the tel itself (only a reservoir photo, rejected); mound, rampart ring and scattered rubble walls are typical, text-only"
+ }
+}

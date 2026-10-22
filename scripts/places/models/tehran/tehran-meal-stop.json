@@ -1,0 +1,1535 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Golerezaeie.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hootandolati",
+   "view": "front",
+   "file": "/tmp/places-evidence/tehran/gole.jpg",
+   "used": "narrow shopfront in a street row: dark brown carved timber lower panels and door, coloured-glass transom, red panels, wide blank brown sign board above, pale brick piers, dark stone plinth at left, roller-shutter neighbour at right, paved pavement"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1143170558",
+   "used": "containing building (36 x 11 m); the cafe is one narrow unit of the row so only the 11 m depth is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Unit is now a narrow brick-pier shopfront between adjacent neighbours with panel grid, coloured-glass lattice, lattice door, sign board and stone threshold; upper floors, neighbours and pavement are plain stand-ins, flat-colour studs, no pipes or wiring, unit width approximate."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left",
+   "footprint": {
+    "rect": [
+     4.4,
+     11
+    ]
+   },
+   "at": [
+    -4.4,
+    0
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a89c88",
+    "windows": "rect",
+    "plinth": 0.5,
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     4.4,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9a88c",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right",
+   "footprint": {
+    "rect": [
+     5.6,
+     11
+    ]
+   },
+   "at": [
+    5.0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d5d3cc",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-dark",
+   "at": [
+    -4.9,
+    -5.7
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "colour": "#2a2a2a",
+    "topColour": "#2a2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "left-door",
+   "at": [
+    -5.3,
+    -5.7
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.4
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#6b6e72",
+    "topColour": "#6b6e72",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-left",
+   "at": [
+    -2.1,
+    -5.75
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.5
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#c28b52",
+    "topColour": "#c28b52",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-right",
+   "at": [
+    2.1,
+    -5.75
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.5
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#c28b52",
+    "topColour": "#c28b52",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wood-lower",
+   "at": [
+    -0.7,
+    -5.75
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "colour": "#7b3d1b",
+    "topColour": "#7b3d1b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wood-door-lower",
+   "at": [
+    1.3,
+    -5.75
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.35
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#7b3d1b",
+    "topColour": "#7b3d1b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pdiv0",
+   "at": [
+    -1.75,
+    -5.93
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.1
+    ],
+    "z0": 0.1,
+    "height": 1.3,
+    "colour": "#5a2a12",
+    "topColour": "#5a2a12",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pdiv1",
+   "at": [
+    -1.33,
+    -5.93
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.1
+    ],
+    "z0": 0.1,
+    "height": 1.3,
+    "colour": "#5a2a12",
+    "topColour": "#5a2a12",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pdiv2",
+   "at": [
+    -0.91,
+    -5.93
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.1
+    ],
+    "z0": 0.1,
+    "height": 1.3,
+    "colour": "#5a2a12",
+    "topColour": "#5a2a12",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pdiv3",
+   "at": [
+    -0.49,
+    -5.93
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.1
+    ],
+    "z0": 0.1,
+    "height": 1.3,
+    "colour": "#5a2a12",
+    "topColour": "#5a2a12",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pdiv4",
+   "at": [
+    -0.07,
+    -5.93
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.1
+    ],
+    "z0": 0.1,
+    "height": 1.3,
+    "colour": "#5a2a12",
+    "topColour": "#5a2a12",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pdiv5",
+   "at": [
+    0.35,
+    -5.93
+   ],
+   "params": {
+    "rect": [
+     0.07,
+     0.1
+    ],
+    "z0": 0.1,
+    "height": 1.3,
+    "colour": "#5a2a12",
+    "topColour": "#5a2a12",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stud0",
+   "at": [
+    -1.54,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.08
+    ],
+    "z0": 0.7,
+    "height": 0.12,
+    "colour": "#2a1608",
+    "topColour": "#2a1608",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stud1",
+   "at": [
+    -1.12,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.08
+    ],
+    "z0": 0.7,
+    "height": 0.12,
+    "colour": "#2a1608",
+    "topColour": "#2a1608",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stud2",
+   "at": [
+    -0.7,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.08
+    ],
+    "z0": 0.7,
+    "height": 0.12,
+    "colour": "#2a1608",
+    "topColour": "#2a1608",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stud3",
+   "at": [
+    -0.28,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.08
+    ],
+    "z0": 0.7,
+    "height": 0.12,
+    "colour": "#2a1608",
+    "topColour": "#2a1608",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stud4",
+   "at": [
+    0.14,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.08
+    ],
+    "z0": 0.7,
+    "height": 0.12,
+    "colour": "#2a1608",
+    "topColour": "#2a1608",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "red-band",
+   "at": [
+    -0.7,
+    -5.75
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.25
+    ],
+    "z0": 1.5,
+    "height": 0.95,
+    "colour": "#8f2a2a",
+    "topColour": "#8f2a2a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pic1",
+   "at": [
+    -1.4,
+    -5.91
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 1.65,
+    "height": 0.65,
+    "colour": "#d9c9a0",
+    "topColour": "#d9c9a0",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pic2",
+   "at": [
+    -0.7,
+    -5.91
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 1.65,
+    "height": 0.65,
+    "colour": "#c9b080",
+    "topColour": "#c9b080",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pic3",
+   "at": [
+    0.0,
+    -5.91
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.08
+    ],
+    "z0": 1.65,
+    "height": 0.65,
+    "colour": "#4a3a30",
+    "topColour": "#4a3a30",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail",
+   "at": [
+    -0.7,
+    -5.8
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.4
+    ],
+    "z0": 2.45,
+    "height": 0.12,
+    "colour": "#5a2a12",
+    "topColour": "#5a2a12",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-back",
+   "at": [
+    -0.7,
+    -5.7
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.2
+    ],
+    "z0": 2.55,
+    "height": 0.95,
+    "colour": "#3a2a20",
+    "topColour": "#3a2a20",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gl00",
+   "at": [
+    -1.75,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 2.62,
+    "height": 0.34,
+    "colour": "#3b7a4f",
+    "topColour": "#3b7a4f",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl01",
+   "at": [
+    -1.33,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 2.62,
+    "height": 0.34,
+    "colour": "#2f5f9c",
+    "topColour": "#2f5f9c",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl02",
+   "at": [
+    -0.91,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 2.62,
+    "height": 0.34,
+    "colour": "#c9902f",
+    "topColour": "#c9902f",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl03",
+   "at": [
+    -0.49,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 2.62,
+    "height": 0.34,
+    "colour": "#9c3a3a",
+    "topColour": "#9c3a3a",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl04",
+   "at": [
+    -0.07,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 2.62,
+    "height": 0.34,
+    "colour": "#3b7a4f",
+    "topColour": "#3b7a4f",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl05",
+   "at": [
+    0.35,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 2.62,
+    "height": 0.34,
+    "colour": "#2f5f9c",
+    "topColour": "#2f5f9c",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl10",
+   "at": [
+    -1.75,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 3.04,
+    "height": 0.34,
+    "colour": "#a83a3a",
+    "topColour": "#a83a3a",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl11",
+   "at": [
+    -1.33,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 3.04,
+    "height": 0.34,
+    "colour": "#c9902f",
+    "topColour": "#c9902f",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl12",
+   "at": [
+    -0.91,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 3.04,
+    "height": 0.34,
+    "colour": "#3b7a4f",
+    "topColour": "#3b7a4f",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl13",
+   "at": [
+    -0.49,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 3.04,
+    "height": 0.34,
+    "colour": "#2f5f9c",
+    "topColour": "#2f5f9c",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl14",
+   "at": [
+    -0.07,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 3.04,
+    "height": 0.34,
+    "colour": "#c9902f",
+    "topColour": "#c9902f",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gl15",
+   "at": [
+    0.35,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     0.32,
+     0.06
+    ],
+    "z0": 3.04,
+    "height": 0.34,
+    "colour": "#9c3a3a",
+    "topColour": "#9c3a3a",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "glass-flat",
+   "at": [
+    -0.7,
+    -5.87
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.05
+    ],
+    "z0": 2.6,
+    "height": 0.8,
+    "colour": "#6a5a8a",
+    "topColour": "#6a5a8a",
+    "windows": "none"
+   },
+   "lod": [
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-frame",
+   "at": [
+    1.3,
+    -5.75
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.35
+    ],
+    "z0": 1.3,
+    "height": 1.9,
+    "colour": "#7b3d1b",
+    "topColour": "#7b3d1b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dg00",
+   "at": [
+    1.0,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.05
+    ],
+    "z0": 1.5,
+    "height": 0.36,
+    "colour": "#5d6a64",
+    "topColour": "#5d6a64",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dg01",
+   "at": [
+    1.55,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.05
+    ],
+    "z0": 1.5,
+    "height": 0.36,
+    "colour": "#5d6a64",
+    "topColour": "#5d6a64",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dg10",
+   "at": [
+    1.0,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.05
+    ],
+    "z0": 1.95,
+    "height": 0.36,
+    "colour": "#5d6a64",
+    "topColour": "#5d6a64",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dg11",
+   "at": [
+    1.55,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.05
+    ],
+    "z0": 1.95,
+    "height": 0.36,
+    "colour": "#5d6a64",
+    "topColour": "#5d6a64",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dg20",
+   "at": [
+    1.0,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.05
+    ],
+    "z0": 2.4,
+    "height": 0.36,
+    "colour": "#5d6a64",
+    "topColour": "#5d6a64",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dg21",
+   "at": [
+    1.55,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.05
+    ],
+    "z0": 2.4,
+    "height": 0.36,
+    "colour": "#5d6a64",
+    "topColour": "#5d6a64",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dg30",
+   "at": [
+    1.0,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.05
+    ],
+    "z0": 2.85,
+    "height": 0.36,
+    "colour": "#5d6a64",
+    "topColour": "#5d6a64",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dg31",
+   "at": [
+    1.55,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.05
+    ],
+    "z0": 2.85,
+    "height": 0.36,
+    "colour": "#5d6a64",
+    "topColour": "#5d6a64",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "transom",
+   "at": [
+    1.3,
+    -5.75
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.3
+    ],
+    "z0": 3.2,
+    "height": 0.35,
+    "colour": "#7b3d1b",
+    "topColour": "#7b3d1b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    0,
+    -5.8
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 1.6,
+    "colour": "#5b3425",
+    "topColour": "#5b3425",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-text",
+   "at": [
+    0,
+    -6.07
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.05
+    ],
+    "z0": 4.1,
+    "height": 0.25,
+    "colour": "#d9c9a0",
+    "topColour": "#d9c9a0",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shutter-box",
+   "at": [
+    0,
+    -5.7
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.4
+    ],
+    "z0": 5.0,
+    "height": 0.35,
+    "colour": "#d8d6d0",
+    "topColour": "#d8d6d0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shutter",
+   "at": [
+    5.0,
+    -5.65
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     0.3
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#dcdad4",
+    "topColour": "#dcdad4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rib0",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 0.35,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib1",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 0.75,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib2",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 1.15,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib3",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 1.5500000000000003,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib4",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 1.9500000000000002,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib5",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 2.35,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib6",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 2.7500000000000004,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib7",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 3.1500000000000004,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib8",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 3.5500000000000003,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib9",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 3.95,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib10",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 4.35,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rib11",
+   "at": [
+    5.0,
+    -5.85
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     0.05
+    ],
+    "z0": 4.75,
+    "height": 0.1,
+    "colour": "#bdbab2",
+    "topColour": "#bdbab2",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pavement",
+   "at": [
+    0,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     16,
+     2.8
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#9a968e",
+    "topColour": "#9a968e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slabs",
+   "at": [
+    0.5,
+    -7.8
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.06
+    ],
+    "z0": 0.1,
+    "height": 0.02,
+    "colour": "#7f7b74",
+    "topColour": "#7f7b74",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step",
+   "at": [
+    0,
+    -6.15
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.22,
+    "colour": "#74706a",
+    "topColour": "#74706a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    -1.0,
+    -6.45
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#7f7b74",
+    "topColour": "#7f7b74",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   26,
+   20
+  ]
+ }
+}

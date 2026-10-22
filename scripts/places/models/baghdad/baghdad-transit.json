@@ -1,0 +1,288 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/82809426",
+   "used": "bus_station polygon 385 x 254 m, a whole garage over the scene clamp: expressed as a wide asphalt apron with bay rows and canopies, scaled down"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large asphalt apron with rows of bus bays under long flat canopies and a low rendered two-storey terminal. Nearby Commons photos show other buildings (a mosque and a building under construction), so they were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 24,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     78,
+     16
+    ]
+   },
+   "at": [
+    0,
+    42
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d1c8b2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.8,
+    "bands": "#e6dfd0",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39d8d",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    31,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.5,
+    "colour": "#c4bdad"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     0
+    ],
+    "end": [
+     32,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "open-shelter",
+      "params": {
+       "length": 24,
+       "depth": 10,
+       "height": 4.6,
+       "form": "shed",
+       "support": "steel",
+       "colour": "#b8b3a4",
+       "accent": "#e6dfd0"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     0
+    ],
+    "end": [
+     32,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "open-shelter",
+      "params": {
+       "length": 24,
+       "depth": 10,
+       "height": 4.6,
+       "form": "shed",
+       "support": "steel",
+       "colour": "#b8b3a4",
+       "accent": "#e6dfd0"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    5,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "kind": "coach",
+    "density": 0.8,
+    "coach_share": 1.0
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "kind": "mixed",
+    "density": 0.7
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "kind": "mixed",
+    "density": 0.55
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -36,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "bottom": 3,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    26,
+    28,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    46,
+    9
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.2,
+    "bottom": 0.2,
+    "colour": "#b4553d",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -58,
+     20
+    ],
+    "end": [
+     58,
+     20
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "palm",
+       "height": 9
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -50,
+    34,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this garage: terminal, canopies and bays are typed from the brief; the real apron is far larger"
+ }
+}

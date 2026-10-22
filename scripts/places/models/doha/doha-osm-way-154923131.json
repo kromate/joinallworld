@@ -1,0 +1,397 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-way-154923131",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2081778",
+   "used": "stadium outline (198 x 179 m, built 1974) fixes the oval bowl, the west notch is ignored; ring size scaled to the 120 m scene limit"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:World_Cup_Qualifiers.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Tsutomu Takasu",
+   "view": "interior",
+   "used": "interior only, not compared: a continuous roof ring with a folded-plate white fascia, floodlights on the roof edge, white seating, red-maroon band along the stand front, grass pitch"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      40.0,
+      0.0
+     ],
+     [
+      38.64,
+      8.54
+     ],
+     [
+      34.64,
+      16.5
+     ],
+     [
+      28.28,
+      23.33
+     ],
+     [
+      20.0,
+      28.58
+     ],
+     [
+      10.35,
+      31.88
+     ],
+     [
+      0.0,
+      33.0
+     ],
+     [
+      -10.35,
+      31.88
+     ],
+     [
+      -20.0,
+      28.58
+     ],
+     [
+      -28.28,
+      23.33
+     ],
+     [
+      -34.64,
+      16.5
+     ],
+     [
+      -38.64,
+      8.54
+     ],
+     [
+      -40.0,
+      0.0
+     ],
+     [
+      -38.64,
+      -8.54
+     ],
+     [
+      -34.64,
+      -16.5
+     ],
+     [
+      -28.28,
+      -23.33
+     ],
+     [
+      -20.0,
+      -28.58
+     ],
+     [
+      -10.35,
+      -31.88
+     ],
+     [
+      -0.0,
+      -33.0
+     ],
+     [
+      10.35,
+      -31.88
+     ],
+     [
+      20.0,
+      -28.58
+     ],
+     [
+      28.28,
+      -23.33
+     ],
+     [
+      34.64,
+      -16.5
+     ],
+     [
+      38.64,
+      -8.54
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "points": [
+     [
+      33.0,
+      0.0
+     ],
+     [
+      31.88,
+      6.21
+     ],
+     [
+      28.58,
+      12.0
+     ],
+     [
+      23.33,
+      16.97
+     ],
+     [
+      16.5,
+      20.78
+     ],
+     [
+      8.54,
+      23.18
+     ],
+     [
+      0.0,
+      24.0
+     ],
+     [
+      -8.54,
+      23.18
+     ],
+     [
+      -16.5,
+      20.78
+     ],
+     [
+      -23.33,
+      16.97
+     ],
+     [
+      -28.58,
+      12.0
+     ],
+     [
+      -31.88,
+      6.21
+     ],
+     [
+      -33.0,
+      0.0
+     ],
+     [
+      -31.88,
+      -6.21
+     ],
+     [
+      -28.58,
+      -12.0
+     ],
+     [
+      -23.33,
+      -16.97
+     ],
+     [
+      -16.5,
+      -20.78
+     ],
+     [
+      -8.54,
+      -23.18
+     ],
+     [
+      -0.0,
+      -24.0
+     ],
+     [
+      8.54,
+      -23.18
+     ],
+     [
+      16.5,
+      -20.78
+     ],
+     [
+      23.33,
+      -16.97
+     ],
+     [
+      28.58,
+      -12.0
+     ],
+     [
+      31.88,
+      -6.21
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 34,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 12,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3.0,
+    "facetDeg": 20,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#e8ebee",
+     "#1d4e9b"
+    ],
+    "blocks": 3,
+    "concreteColour": "#b8b8b4",
+    "underColour": "#a9a9a4",
+    "canopy": {
+     "height": 3.2,
+     "depth": 13.5,
+     "thickness": 1.1,
+     "slopeDeg": 3,
+     "colour": "#e6e8ea",
+     "edgeColour": "#d9dcdf",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    -27,
+    13
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    -27,
+    13
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    -30,
+    27,
+    13
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    30,
+    27,
+    13
+   ],
+   "params": {
+    "height": 14,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 4,
+    "spacing": 9,
+    "colours": [
+     "#8a1538",
+     "#ffffff"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -48
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo; ring height, roof depth and seat colours typed from the brief and one interior photo; the stadium outline's west notch and the actual stand heights are not modelled"
+ }
+}

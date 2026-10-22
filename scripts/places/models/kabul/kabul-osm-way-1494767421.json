@@ -1,0 +1,498 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-osm-way-1494767421",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ghazi_Stadium_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "panoramio contributor (Wikimedia Commons)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kabul/ghazi2.jpg",
+   "used": "low oval bowl with tan track and green pitch, higher far-side stand with red roof, barrel-vault hall with red base, unfinished concrete hall with red roof, blue court"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ghazi_Stadium_in_2011.jpg",
+   "licence": "Public domain",
+   "author": "U.S. Federal Gov.",
+   "view": "side",
+   "used": "floodlight lattice masts, concrete gallery frame behind the far terrace, red track"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8888172",
+   "used": "bowl proportions (201 x 138 m oval), modelled at reduced scale for the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 58,
+    "lane_width": 4.2,
+    "colour": "#c4a078"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 35,
+    "startDeg": 15,
+    "endDeg": 165,
+    "rows": 8,
+    "rise": 0.42,
+    "run": 0.85,
+    "seatColours": [
+     "#c9a9a0",
+     "#d9d2c0",
+     "#b8534a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#c4bcab",
+    "under": "solid",
+    "facetDeg": 20,
+    "canopy": {
+     "height": 8,
+     "depth": 9,
+     "colour": "#b24c44",
+     "slopeDeg": 4,
+     "supports": 8
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 35,
+    "startDeg": 165,
+    "endDeg": 375,
+    "rows": 3,
+    "rise": 0.45,
+    "run": 0.85,
+    "seatColours": [
+     "#d6cfbd",
+     "#c9bfae",
+     "#c9a9a0"
+    ],
+    "blocks": 8,
+    "concreteColour": "#c4bcab",
+    "under": "solid",
+    "facetDeg": 30
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "barrel-hall-a",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -38,
+    -46
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f3a3a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#e2d3ae",
+    "material": "corrugated",
+    "rise": 3.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barrel-hall-b",
+   "footprint": {
+    "rect": [
+     42,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    -46
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f3a3a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#e2d3ae",
+    "material": "corrugated",
+    "rise": 4.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frame-hall",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    44,
+    -34
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#6b665a",
+    "windows": "punched",
+    "windowRatio": 0.6,
+    "plinth": 0,
+    "bay": 6.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a3a2c",
+    "parapet": 0.15,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       26
+      ],
+      "height": 1.4,
+      "colour": "#6e3326",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     26,
+     -34,
+     11.2
+    ],
+    "end": [
+     62,
+     -34,
+     11.2
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       40,
+       0.4
+      ],
+      "height": 0.9,
+      "colour": "#6e3326",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     44,
+     -45,
+     11.2
+    ],
+    "end": [
+     44,
+     -23,
+     11.2
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "params": {
+    "rect": [
+     40,
+     26
+    ],
+    "height": 1.2,
+    "colour": "#6a3a2c",
+    "windows": "none"
+   },
+   "at": [
+    44,
+    -34,
+    11.2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -48,
+    -30
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3d7fb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d6fb0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    44,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    44,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    48,
+    8
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "post_height": 2.0,
+    "facing": "south"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 35,
+    "startDeg": 15,
+    "endDeg": 165,
+    "rows": 2,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColours": [
+     "#c9a9a0",
+     "#d9d2c0",
+     "#b8534a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#c4bcab",
+    "under": "solid",
+    "facetDeg": 90,
+    "canopy": {
+     "height": 8,
+     "depth": 9,
+     "colour": "#b24c44",
+     "slopeDeg": 4,
+     "supports": 2
+    }
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 35,
+    "startDeg": 165,
+    "endDeg": 375,
+    "rows": 3,
+    "rise": 0.45,
+    "run": 0.85,
+    "seatColours": [
+     "#d6cfbd",
+     "#c9bfae",
+     "#c9a9a0"
+    ],
+    "blocks": 8,
+    "concreteColour": "#c4bcab",
+    "under": "solid",
+    "facetDeg": 90
+   },
+   "lod": [
+    1,
+    2
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "concrete hall is open-bayed dark frame with rust roof grid but not a collapsed truss; barrel halls are cream with dark red base as a connected pair; ground now dusty laterite but no scrub patches or track strip; scaled to about 0.55 of real size"
+ },
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     -52
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ }
+}

@@ -1,0 +1,408 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1089200534",
+   "used": "real 208 x 130 m campus outline (bearing 2): boundary wall follows it; the teaching blocks are placed inside it"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q1834882",
+   "used": "identity: private university founded 2006"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.08,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -69.6,
+      8.9
+     ],
+     [
+      -64.3,
+      -23.1
+     ],
+     [
+      -53.3,
+      -40.5
+     ],
+     [
+      -54.2,
+      -59.4
+     ],
+     [
+      -54.1,
+      -88.8
+     ],
+     [
+      -39.6,
+      -87.4
+     ],
+     [
+      -13.5,
+      -95.8
+     ],
+     [
+      4.5,
+      -48.1
+     ],
+     [
+      55.8,
+      -85.4
+     ],
+     [
+      57.4,
+      -82.2
+     ],
+     [
+      54.4,
+      -67.3
+     ],
+     [
+      52.4,
+      -54.7
+     ],
+     [
+      42.3,
+      -35.2
+     ],
+     [
+      36.8,
+      -5.7
+     ],
+     [
+      42,
+      15.2
+     ],
+     [
+      51.4,
+      29.6
+     ],
+     [
+      58.8,
+      50
+     ],
+     [
+      63.5,
+      82.7
+     ],
+     [
+      48.5,
+      90.4
+     ],
+     [
+      17.2,
+      111.2
+     ],
+     [
+      14.4,
+      107.8
+     ],
+     [
+      18.6,
+      103.3
+     ],
+     [
+      18.7,
+      97.9
+     ],
+     [
+      16.1,
+      93.1
+     ],
+     [
+      -2.1,
+      81.1
+     ],
+     [
+      0.2,
+      70.3
+     ],
+     [
+      -0.8,
+      63.9
+     ],
+     [
+      -4.7,
+      59.7
+     ],
+     [
+      -21.4,
+      46.9
+     ],
+     [
+      -43.1,
+      28.4
+     ],
+     [
+      -69.6,
+      8.9
+     ]
+    ],
+    "height": 2.4,
+    "kind": "wall",
+    "pillarEvery": 0,
+    "colour": "#d9d1bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "kind": "L",
+    "size": [
+     60,
+     32
+    ]
+   },
+   "at": [
+    -2,
+    -60
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#ece4d2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#5f7d92",
+    "bay": 6,
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 0.5,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    -2,
+    -77
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7d92",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "back": "none",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#f6f3ea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c7bf",
+    "parapet": 0.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    22,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dec9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#d5ccb6",
+    "bay": 6,
+    "plinth": 0.4,
+    "cornice": true,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd2ba",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "parapet": 0.4,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    16,
+    -90,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 2,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    30,
+    -80,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -74,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 4,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 4,
+    "line": 24
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "block-a",
+   "at": [
+    10,
+    8
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "colour": "#274f73"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "block-a",
+   "at": [
+    14,
+    8
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.8,
+    "legHeight": 0.8,
+    "colour": "#274f73"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Campus outline real; blocks placed freely inside, library and block positions guessed; only part of the campus modelled."
+ }
+}

@@ -1,0 +1,355 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dubai_Maktoum_Bin_Rashid_Al_Maktoum_Stadium_2.jpg",
+   "licence": "CC BY 3.0",
+   "author": "\u0412\u0430\u043b\u0435\u0440\u0438\u0439 \u0414\u0435\u0434",
+   "view": "interior",
+   "file": "/tmp/places-evidence/dubai/mak1.jpg",
+   "used": "a single low open bowl of raked white seats with green seat blocks, brick-red athletics track, grass pitch, one small dark-roofed covered stand at one end, tall slim green-grey floodlight masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dubai_Maktoum_Bin_Rashid_Al_Maktoum_Stadium.jpg",
+   "licence": "CC BY 3.0",
+   "author": "\u0412\u0430\u043b\u0435\u0440\u0438\u0439 \u0414\u0435\u0434",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/dubai/mak2.jpg",
+   "used": "oval plan, long axis along the road, white stand ring with a green band, red track, grey-roofed block along one long side, low pale annexes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/201292184",
+   "used": "oval bowl 114 x 200 m with a small annex on the west side"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 38,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "id": "bowl",
+   "params": {
+    "centre": [
+     7,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 72,
+    "startDeg": 125,
+    "endDeg": 415,
+    "rows": 12,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "facetDeg": 10,
+    "under": "solid",
+    "backWall": 0.8,
+    "seatColour": "#e9e9e4",
+    "seatColours": [
+     "#e9e9e4",
+     "#e9e9e4",
+     "#e9e9e4",
+     "#e9e9e4",
+     "#1f6f4a"
+    ],
+    "blocks": 14,
+    "concreteColour": "#e3e1d8",
+    "underColour": "#d9d6cc"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "covered",
+   "params": {
+    "centre": [
+     7,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 72,
+    "startDeg": 75,
+    "endDeg": 105,
+    "rows": 14,
+    "rise": 0.55,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "facetDeg": 10,
+    "under": "solid",
+    "backWall": 1.0,
+    "seatColour": "#e9e9e4",
+    "seatColours": [
+     "#e9e9e4",
+     "#e9e9e4",
+     "#e9e9e4",
+     "#1f6f4a"
+    ],
+    "blocks": 8,
+    "concreteColour": "#e3e1d8",
+    "canopy": {
+     "height": 7,
+     "depth": 9,
+     "colour": "#454a50",
+     "slopeDeg": 6,
+     "supports": 4
+    }
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    7,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 126,
+    "width": 66,
+    "lane_width": 8,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 48,
+    "head_width": 3.5,
+    "colour": "#5f8f7a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    66,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 48,
+    "head_width": 3.5,
+    "colour": "#5f8f7a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    72,
+    0
+   ],
+   "params": {
+    "height": 48,
+    "head_width": 3.5,
+    "colour": "#5f8f7a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    66,
+    72,
+    0
+   ],
+   "params": {
+    "height": 48,
+    "head_width": 3.5,
+    "colour": "#5f8f7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     26,
+     44
+    ]
+   },
+   "at": [
+    -62,
+    -14
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4d8",
+    "windows": "none",
+    "bands": "#1f6f4a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#454a50",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    7,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "post_height": 2,
+    "facing": "north",
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "track-fence",
+   "params": {
+    "points": [
+     [
+      47.0,
+      0.0
+     ],
+     [
+      44.6,
+      23.9
+     ],
+     [
+      37.6,
+      45.0
+     ],
+     [
+      27.0,
+      60.6
+     ],
+     [
+      13.9,
+      68.9
+     ],
+     [
+      0.1,
+      68.9
+     ],
+     [
+      -13.0,
+      60.6
+     ],
+     [
+      -23.6,
+      45.0
+     ],
+     [
+      -30.6,
+      23.9
+     ],
+     [
+      -33.0,
+      0.0
+     ],
+     [
+      -30.6,
+      -23.9
+     ],
+     [
+      -23.6,
+      -45.0
+     ],
+     [
+      -13.0,
+      -60.6
+     ],
+     [
+      0.1,
+      -68.9
+     ],
+     [
+      13.9,
+      -68.9
+     ],
+     [
+      27.0,
+      -60.6
+     ],
+     [
+      37.6,
+      -45.0
+     ],
+     [
+      44.6,
+      -23.9
+     ],
+     [
+      47.0,
+      0.0
+     ]
+    ],
+    "height": 1.2,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#4d5a55"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -84
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -86
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -86
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -84
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-way-201292184",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Green seat blocks still read as large end segments rather than a thin band; no teal rim trim; no Carrefour block; compared mostly with an interior photo plus the aerial."
+ }
+}

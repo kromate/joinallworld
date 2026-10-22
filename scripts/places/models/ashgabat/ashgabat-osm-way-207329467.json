@@ -1,0 +1,343 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-osm-way-207329467",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/207329467",
+   "used": "park outline (about 818 x 301 m, 22 ha) scaled by 0.14 to fit the scene clamp, long axis kept north-south"
+  },
+  {
+   "kind": "text",
+   "used": "brief: climatic-zone plantings, greenhouses, gazebos, sculptures, paths and irrigated lawns (founded 1929)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: the garden is a scaled outline with typical glasshouses, gazebos and plantings; real path layout, zone beds and sculptures unknown"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30.4,
+      -40.3
+     ],
+     [
+      10.2,
+      -66.4
+     ],
+     [
+      12.5,
+      -15.2
+     ],
+     [
+      15.2,
+      23.8
+     ],
+     [
+      17.1,
+      48.0
+     ],
+     [
+      -24.8,
+      50.1
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#7fae5a",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     104
+    ],
+    "height": 0.1,
+    "colour": "#e3dccb"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    6,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     34,
+     2.6
+    ],
+    "height": 0.1,
+    "colour": "#e3dccb"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0.25
+   ],
+   "params": {
+    "rect": [
+     22,
+     2.4
+    ],
+    "height": 0.1,
+    "colour": "#e3dccb"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    6,
+    0.3
+   ],
+   "params": {
+    "radius": 5.5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glasshouse",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -3,
+    40
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bcd3da",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "plinth": 0.5,
+    "glassColour": "#9dbdc8"
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#c4dce2",
+    "rise": 3.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glasshouse-small",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    -12,
+    -14
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bcd3da",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "plinth": 0.4,
+    "glassColour": "#9dbdc8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c4dce2",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    14,
+    22,
+    0.25
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "colour": "#f3f0e8",
+    "cap_colour": "#c9a64a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -14,
+    22,
+    0.25
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "colour": "#f3f0e8",
+    "cap_colour": "#c9a64a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    12,
+    -18,
+    0.25
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "colour": "#f3f0e8",
+    "cap_colour": "#c9a64a"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    8,
+    6,
+    0.25
+   ],
+   "params": {
+    "height": 5,
+    "steps": 2
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    -8,
+    -6,
+    0.25
+   ],
+   "params": {
+    "height": 5,
+    "steps": 2
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "pillar": 1.2,
+    "colour": "#f3f0e8"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 14,
+    "count": 9,
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -12,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 12,
+    "count": 7,
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    12,
+    52,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 14,
+    "count": 9,
+    "min_height": 6,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 24,
+    "count": 9,
+    "min_height": 5,
+    "max_height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   140
+  ]
+ }
+}

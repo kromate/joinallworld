@@ -1,0 +1,1075 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bischkek_II_Bahnhof,_Nov._2013.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Cosal",
+   "view": "front",
+   "file": "/tmp/places-evidence/bishkek/st2.jpg",
+   "used": "sage-green stucco walls with pink-brown panels between arched first-floor windows, cream pilasters and cornice, taller central entrance block with large arched window, projecting porch with flanking stairs, end pavilions, asphalt forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bishkek_03-2016_img19_Bishkek-2_railway_station.jpg",
+   "licence": "FAL",
+   "author": "A.Savin",
+   "view": "aerial",
+   "used": "platform side: green canopy shelters, green carriages, tall lattice floodlight mast"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37079635",
+   "used": "extent 87.6 x 21 m, 2 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     28,
+     13
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 9.0,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8fa48f",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "cornice": 0.6,
+    "bands": "#e8e1cf",
+    "bay": 4.5,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "arched",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8fa48f",
+       "#98ab98"
+      ]
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.8,
+      "depth": 0.25,
+      "spacing": 4.5,
+      "colour": "#a98277",
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d9296",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    20,
+    -0.5
+   ],
+   "height": 12.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8fa48f",
+    "windows": "arched",
+    "windowRatio": 0.26,
+    "plinth": 0.8,
+    "cornice": 0.6,
+    "bands": "#e8e1cf",
+    "bay": 5.2,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8fa48f",
+       "#98ab98"
+      ]
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.8,
+      "depth": 0.25,
+      "spacing": 4.5,
+      "colour": "#a98277",
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#85898d",
+    "pitch": 16,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-e",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    48,
+    -1
+   ],
+   "height": 14.0,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8fa48f",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "cornice": 0.6,
+    "bands": "#e8e1cf",
+    "bay": 4.5,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8fa48f",
+       "#98ab98"
+      ]
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.8,
+      "depth": 0.25,
+      "spacing": 4.5,
+      "colour": "#a98277",
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d9296",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 17.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8fa48f",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.8,
+    "cornice": 0.6,
+    "bands": "#e8e1cf",
+    "bay": 6,
+    "faces": {
+     "front": "plain",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#8fa48f",
+       "#98ab98"
+      ]
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.8,
+      "depth": 0.25,
+      "spacing": 4.5,
+      "colour": "#a98277",
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8e92",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-window",
+   "footprint": {
+    "rect": [
+     6.2,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -9.3
+   ],
+   "z0": 4.5,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f9fb2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e1cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     9,
+     4.5
+    ]
+   },
+   "at": [
+    -6,
+    -10.5
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9cdb5",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 0.8,
+      "spacing": 8,
+      "width": 1.1,
+      "colour": "#e8e1cf",
+      "backColour": "#a89888"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e1cf",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -14.2
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.45,
+    "run": 0.8,
+    "count": 6,
+    "colour": "#a9a59b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balustrade-1",
+   "at": [
+    -11.2,
+    -15.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     4.8
+    ],
+    "height": 1.4,
+    "colour": "#d9d2bf",
+    "topColour": "#d9d2bf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balustrade1",
+   "at": [
+    -0.7999999999999998,
+    -15.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     4.8
+    ],
+    "height": 1.4,
+    "colour": "#d9d2bf",
+    "topColour": "#d9d2bf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "z0": 17.6,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a3b19b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7f8488",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag-mast",
+   "at": [
+    -6,
+    0,
+    20.4
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 6,
+    "colour": "#b8bcc0",
+    "topColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flag",
+   "at": [
+    -5.4,
+    0,
+    25.4
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.05
+    ],
+    "height": 0.8,
+    "colour": "#c8372d",
+    "topColour": "#c8372d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    18,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     26,
+     5
+    ],
+    "height": 0.25,
+    "colour": "#3f7a58",
+    "topColour": "#3f7a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    24,
+    18,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     24,
+     5
+    ],
+    "height": 0.25,
+    "colour": "#3f7a58",
+    "topColour": "#3f7a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "floodmast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    56,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 22,
+    "colour": "#8a8f92",
+    "topColour": "#8a8f92"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    8,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     6
+    ],
+    "height": 0.9,
+    "colour": "#b4b0a6",
+    "topColour": "#b4b0a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8,
+    24,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     2.4
+    ],
+    "height": 0.15,
+    "colour": "#5a554e",
+    "topColour": "#5a554e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cbody0",
+   "footprint": {
+    "rect": [
+     4.3,
+     1.8
+    ]
+   },
+   "at": [
+    -12.0,
+    -22
+   ],
+   "z0": 0.3,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aeb4b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb4b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ccab0",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.7
+    ]
+   },
+   "at": [
+    -12.0,
+    -22
+   ],
+   "z0": 1.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f4650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4650"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cbody1",
+   "footprint": {
+    "rect": [
+     4.3,
+     1.8
+    ]
+   },
+   "at": [
+    -6.8,
+    -22
+   ],
+   "z0": 0.3,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2d3236",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d3236"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ccab1",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.7
+    ]
+   },
+   "at": [
+    -6.8,
+    -22
+   ],
+   "z0": 1.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f4650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4650"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cbody2",
+   "footprint": {
+    "rect": [
+     4.3,
+     1.8
+    ]
+   },
+   "at": [
+    -1.5999999999999996,
+    -22
+   ],
+   "z0": 0.3,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7f80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f7f80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ccab2",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.7
+    ]
+   },
+   "at": [
+    -1.5999999999999996,
+    -22
+   ],
+   "z0": 1.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f4650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4650"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cbody3",
+   "footprint": {
+    "rect": [
+     4.3,
+     1.8
+    ]
+   },
+   "at": [
+    3.6000000000000014,
+    -22
+   ],
+   "z0": 0.3,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9ccd0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ccab3",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.7
+    ]
+   },
+   "at": [
+    3.6000000000000014,
+    -22
+   ],
+   "z0": 1.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f4650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4650"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cbody4",
+   "footprint": {
+    "rect": [
+     4.3,
+     1.8
+    ]
+   },
+   "at": [
+    8.8,
+    -22
+   ],
+   "z0": 0.3,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4a5258",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5258"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ccab4",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.7
+    ]
+   },
+   "at": [
+    8.8,
+    -22
+   ],
+   "z0": 1.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f4650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4650"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cbody5",
+   "footprint": {
+    "rect": [
+     4.3,
+     1.8
+    ]
+   },
+   "at": [
+    14.0,
+    -22
+   ],
+   "z0": 0.3,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3d8d8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3d8d8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ccab5",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.7
+    ]
+   },
+   "at": [
+    14.0,
+    -22
+   ],
+   "z0": 1.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f4650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4650"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cbody6",
+   "footprint": {
+    "rect": [
+     4.3,
+     1.8
+    ]
+   },
+   "at": [
+    19.200000000000003,
+    -22
+   ],
+   "z0": 0.3,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f979c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f979c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ccab6",
+   "footprint": {
+    "rect": [
+     2.4,
+     1.7
+    ]
+   },
+   "at": [
+    19.200000000000003,
+    -22
+   ],
+   "z0": 1.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f4650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice-c1",
+   "at": [
+    -6,
+    -1,
+    17.6
+   ],
+   "params": {
+    "rect": [
+     19.2,
+     17.4
+    ],
+    "height": 0.5,
+    "colour": "#e8e1cf",
+    "topColour": "#e8e1cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice-c2",
+   "at": [
+    -6,
+    -1,
+    18.1
+   ],
+   "params": {
+    "rect": [
+     18.4,
+     16.6
+    ],
+    "height": 0.4,
+    "colour": "#d9cdb5",
+    "topColour": "#d9cdb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flank-l",
+   "at": [
+    -13.6,
+    -14.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     5.4
+    ],
+    "height": 1.8,
+    "colour": "#d9cdb5",
+    "topColour": "#d9cdb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flank-r",
+   "at": [
+    1.6,
+    -14.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     5.4
+    ],
+    "height": 1.8,
+    "colour": "#d9cdb5",
+    "topColour": "#d9cdb5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-l",
+   "at": [
+    -13.6,
+    -14.2,
+    1.8
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     5.4
+    ],
+    "height": 0.8,
+    "colour": "#e8e1cf",
+    "topColour": "#e8e1cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-r",
+   "at": [
+    1.6,
+    -14.2,
+    1.8
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     5.4
+    ],
+    "height": 0.8,
+    "colour": "#e8e1cf",
+    "topColour": "#e8e1cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "asphalt",
+   "at": [
+    8,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     40
+    ],
+    "height": 0.05,
+    "colour": "#5c5d5e",
+    "topColour": "#5c5d5e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   140,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     66,
+     -14
+    ],
+    "height": 12
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Sage walls with pink-brown pilasters, taller wider centre block with big arch window, dark asphalt added; still missing diagonal stair flights, cracked asphalt texture, pink-brown plinth storey, rooftop chimneys and pitched side wing roofs."
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/514454750",
+   "used": "containing building outline near Battaramulla (about 43 x 25 m, 943 m2, bent plan); no photo or description found, so the two-storey hip-roofed render restaurant, terracotta tile and forecourt parking come from the brief and typical Sri Lankan roadside restaurants"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#8a3b2e",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d3a28",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    2,
+    -14
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "pilotis"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d3a28",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 2.6,
+    "colour": "#8a3b2e",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    14,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or description; massing is the real OSM outline with a typical two-storey tiled-roof restaurant treatment"
+ }
+}

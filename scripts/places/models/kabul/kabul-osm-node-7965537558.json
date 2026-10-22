@@ -1,0 +1,125 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/928775781",
+   "used": "16.8 x 12.4 m footprint, containing match"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kabul.json#kabul-osm-node-7965537558",
+   "used": "two-storey kebab restaurant, flat roof, first-floor family terrace, punched windows (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccfb2",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#8f7a5a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "width": 10,
+    "depth": 1.6,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#8f7a5a",
+     "#efe9db"
+    ],
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "width": 6,
+    "height": 1.2,
+    "bottom": 3.9,
+    "colour": "#8f7a5a",
+    "frameColour": "#efe9db",
+    "posts": false
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    -3,
+    -6.5,
+    4
+   ],
+   "rotDeg": -14,
+   "params": {
+    "width": 6,
+    "depth": 1.4,
+    "railing_colour": "#4a4a46"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   45,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; terrace and awning typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-osm-node-7965537558"
+}

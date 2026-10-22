@@ -1,0 +1,472 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dubai_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rabbacm",
+   "view": "front",
+   "file": "/tmp/places-evidence/dubai/hosp.jpg",
+   "used": "sand-pink ward slabs with vertical window strips and a crown of deep louvred balcony bays, stepped second slab behind, low glazed podium with fin screens and arcade, date palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/98642909",
+   "used": "podium outline (124 x 118 m, 2 levels)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 7,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b89a74",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 6,
+    "glassColour": "#7d6a4a",
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "colour": "#cdb08c"
+     },
+     {
+      "type": "fins",
+      "spacing": 6.0,
+      "depth": 0.5,
+      "width": 0.3,
+      "colour": "#bfa27c",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-a",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    -30,
+    -10
+   ],
+   "height": 32,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b48c",
+    "windows": "rect",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 4,
+      "depth": 2,
+      "width": 1.4,
+      "colour": "#b98f63",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "windowRatio": 0.32,
+    "glassColour": "#5c5046",
+    "bay": 4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08c"
+   },
+   "z0": 10
+  },
+  {
+   "type": "mass",
+   "id": "tower-crown",
+   "footprint": {
+    "rect": [
+     44,
+     22.4
+    ]
+   },
+   "at": [
+    -30,
+    -10
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2b088",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 2.2,
+      "depth": 0.9,
+      "width": 0.5,
+      "colour": "#bd946a",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08c",
+    "overhang": 0.8
+   },
+   "z0": 42
+  },
+  {
+   "type": "mass",
+   "id": "tower-b",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    18,
+    18
+   ],
+   "height": 40,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3ae85",
+    "windows": "rect",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 4,
+      "depth": 2,
+      "width": 1.4,
+      "colour": "#b98f63",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "windowRatio": 0.32,
+    "glassColour": "#5c5046",
+    "bay": 4,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08c"
+   },
+   "rotDeg": 8,
+   "z0": 10
+  },
+  {
+   "type": "mass",
+   "id": "a-step",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    -30,
+    -9
+   ],
+   "z0": 52.5,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2b088",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 2.2,
+      "depth": 0.9,
+      "width": 0.5,
+      "colour": "#bd946a",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "b-crown",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    18,
+    18
+   ],
+   "rotDeg": 8,
+   "z0": 50,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2b088",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 2.2,
+      "depth": 0.9,
+      "width": 0.5,
+      "colour": "#bd946a",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08c",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "b-step",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    22,
+    20
+   ],
+   "rotDeg": 8,
+   "z0": 59,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4a47c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08c"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 7,
+    "height": 4.5,
+    "form": "flat",
+    "colour": "#a8896a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -55,
+     0
+    ],
+    "end": [
+     2,
+     -55,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 4.5,
+      "colour": "#d8d0c0",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "count": 3,
+    "spread": 12
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "count": 2,
+    "spread": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -54,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#5d7f46",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      0
+     ],
+     [
+      12,
+      0.4
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0,
+      0.9
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   116,
+   116
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ward slabs now have full-height fins at 4 m, sand crown with vertical louvre fins; podium roof is still a large flat slab from the OSM triangle outline, window strips are faint, no roundabout lawn or ornate lamps, palms generic."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-clinic"
+}

@@ -1,0 +1,677 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-osm-way-325125766",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Toshkent_teleminorasi.jpg",
+   "licence": "CC BY 4.0",
+   "author": "ShNajimova",
+   "view": "side",
+   "file": "/tmp/places-evidence/tashkent/tower1.jpg",
+   "used": "three splayed pale legs joining a neck, ribbed grey lower pod at about 97 m, slim truss shaft, smaller upper pod near 215 m, thin mast to 375 m (silhouette photo, proportions measured from it); whole tower scaled to 37 percent so it fits the 140 m height limit; revision: slim legs, grey ribbed pods without white cap, dark lattice shaft, lattice mast and antenna"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/325125766",
+   "used": "identity only; outline includes surrounding structures so the base is modelled as three legs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 22,
+  "aspect": 0.864,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "leg0",
+   "rotDeg": 0,
+   "params": {
+    "colour": "#bdbab3",
+    "topColour": "#bdbab3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.0,
+       1.8
+      ],
+      "cy": -17
+     },
+     {
+      "z": 18,
+      "rect": [
+       1.7,
+       1.6
+      ],
+      "cy": -9
+     },
+     {
+      "z": 36,
+      "rect": [
+       1.5,
+       1.4
+      ],
+      "cy": -1.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg1",
+   "rotDeg": 120,
+   "params": {
+    "colour": "#bdbab3",
+    "topColour": "#bdbab3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.0,
+       1.8
+      ],
+      "cy": -17
+     },
+     {
+      "z": 18,
+      "rect": [
+       1.7,
+       1.6
+      ],
+      "cy": -9
+     },
+     {
+      "z": 36,
+      "rect": [
+       1.5,
+       1.4
+      ],
+      "cy": -1.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg2",
+   "rotDeg": 240,
+   "params": {
+    "colour": "#bdbab3",
+    "topColour": "#bdbab3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.0,
+       1.8
+      ],
+      "cy": -17
+     },
+     {
+      "z": 18,
+      "rect": [
+       1.7,
+       1.6
+      ],
+      "cy": -9
+     },
+     {
+      "z": 36,
+      "rect": [
+       1.5,
+       1.4
+      ],
+      "cy": -1.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "neck",
+   "params": {
+    "colour": "#e3e1dc",
+    "sections": [
+     {
+      "z": 30,
+      "circle": 2.6
+     },
+     {
+      "z": 36,
+      "circle": 3.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lower-pod",
+   "params": {
+    "segments": 20,
+    "colour": "#a9a7a0",
+    "profile": [
+     [
+      2.6,
+      34,
+      "#7d8186"
+     ],
+     [
+      5.2,
+      35.2
+     ],
+     [
+      5.6,
+      36.5,
+      "#7d8186"
+     ],
+     [
+      5.7,
+      37.5,
+      "#55595e"
+     ],
+     [
+      5.7,
+      41,
+      "#55595e"
+     ],
+     [
+      5.6,
+      42,
+      "#7d8186"
+     ],
+     [
+      5.2,
+      43.2
+     ],
+     [
+      2.0,
+      44.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 5.8,
+    "count": 20,
+    "facing": "outward",
+    "startDeg": 0,
+    "endDeg": 360,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.35,
+        0.5
+       ],
+       "z0": 38,
+       "height": 4,
+       "colour": "#8a8f94"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#55595e",
+    "sections": [
+     {
+      "z": 46,
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "cx": -2.4000000000000004,
+      "cy": -2.4000000000000004
+     },
+     {
+      "z": 80,
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "cx": -1.7999999999999998,
+      "cy": -1.7999999999999998
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#55595e",
+    "sections": [
+     {
+      "z": 46,
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "cx": -2.4000000000000004,
+      "cy": 2.4000000000000004
+     },
+     {
+      "z": 80,
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "cx": -1.7999999999999998,
+      "cy": 1.7999999999999998
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#55595e",
+    "sections": [
+     {
+      "z": 46,
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "cx": 2.4000000000000004,
+      "cy": -2.4000000000000004
+     },
+     {
+      "z": 80,
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "cx": 1.7999999999999998,
+      "cy": -1.7999999999999998
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#55595e",
+    "sections": [
+     {
+      "z": 46,
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "cx": 2.4000000000000004,
+      "cy": 2.4000000000000004
+     },
+     {
+      "z": 80,
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "cx": 1.7999999999999998,
+      "cy": 1.7999999999999998
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     46
+    ],
+    "end": [
+     0,
+     0,
+     78
+    ],
+    "count": 10,
+    "vary": {},
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        4.4,
+        0.4
+       ],
+       "z0": 0,
+       "height": 0.3,
+       "colour": "#55595e"
+      }
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        4.4
+       ],
+       "z0": 0,
+       "height": 0.3,
+       "colour": "#55595e"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "core",
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "colour": "#55595e",
+    "sections": [
+     {
+      "z": 46,
+      "rect": [
+       4,
+       4
+      ]
+     },
+     {
+      "z": 80,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "upper-pod",
+   "params": {
+    "segments": 20,
+    "colour": "#a9a7a0",
+    "profile": [
+     [
+      1.2,
+      77,
+      "#7d8186"
+     ],
+     [
+      3.8,
+      78.2
+     ],
+     [
+      4.3,
+      79.5,
+      "#7d8186"
+     ],
+     [
+      4.4,
+      80.5,
+      "#55595e"
+     ],
+     [
+      4.4,
+      84.5,
+      "#55595e"
+     ],
+     [
+      4.3,
+      85.5,
+      "#7d8186"
+     ],
+     [
+      3.8,
+      86.7
+     ],
+     [
+      1.0,
+      88
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast",
+   "params": {
+    "colour": "#9a9ea2",
+    "sections": [
+     {
+      "z": 88,
+      "circle": 0.6
+     },
+     {
+      "z": 110,
+      "circle": 0.4
+     },
+     {
+      "z": 140,
+      "circle": 0.12
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 2.4,
+    "n": 10,
+    "z0": 100,
+    "height": 0.5,
+    "colour": "#8e9296",
+    "topColour": "#8e9296"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 2.0,
+    "n": 10,
+    "z0": 112,
+    "height": 0.5,
+    "colour": "#8e9296",
+    "topColour": "#8e9296"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 10,
+    "z0": 125,
+    "height": 0.5,
+    "colour": "#8e9296",
+    "topColour": "#8e9296"
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#9a9ea2",
+    "sections": [
+     {
+      "z": 88,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": -1.0,
+      "cy": -1.0
+     },
+     {
+      "z": 112,
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "cx": -0.4,
+      "cy": -0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#9a9ea2",
+    "sections": [
+     {
+      "z": 88,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": -1.0,
+      "cy": 1.0
+     },
+     {
+      "z": 112,
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "cx": -0.4,
+      "cy": 0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#9a9ea2",
+    "sections": [
+     {
+      "z": 88,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": 1.0,
+      "cy": -1.0
+     },
+     {
+      "z": 112,
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "cx": 0.4,
+      "cy": -0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#9a9ea2",
+    "sections": [
+     {
+      "z": 88,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": 1.0,
+      "cy": 1.0
+     },
+     {
+      "z": 112,
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "cx": 0.4,
+      "cy": 0.4
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -16
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -14
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Slim legs, grey pods without white cap, darker lattice shaft and lattice mast applied; shaft still reads as a ladder, no pod ribbing detail, scaled to 37 percent."
+ }
+}

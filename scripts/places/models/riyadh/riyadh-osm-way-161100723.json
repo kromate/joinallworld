@@ -1,0 +1,566 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-way-161100723",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Granada_Centre.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Sulaiman Al-Kuraishan",
+   "view": "front",
+   "file": "/tmp/places-evidence/riyadh/granada.jpg",
+   "used": "two-stepped curved metal canopy roofs with exposed trusses, tall glazed screen with tan mullions and square piers, low pinkish-tan podium with ground-floor arcade, palms, flagpoles, empty forecourt car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/161100723",
+   "used": "overall size only (490 x 324 m retail block); modelled as a 118 m slice of the front hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 62,
+  "aspect": 1.339,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     118,
+     56
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b98672",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb89a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-left",
+   "footprint": {
+    "rect": [
+     58,
+     34
+    ]
+   },
+   "at": [
+    -30,
+    -2
+   ],
+   "z0": 6.5,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a6d8cc",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-right",
+   "footprint": {
+    "rect": [
+     58,
+     34
+    ]
+   },
+   "at": [
+    30,
+    -2
+   ],
+   "z0": 6.5,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a6d8cc",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a60"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -19.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -57,
+     0,
+     6.5
+    ],
+    "end": [
+     57,
+     0,
+     6.5
+    ],
+    "count": 30,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.5
+      ],
+      "height": 11,
+      "colour": "#c9a77f"
+     }
+    },
+    "lod1Step": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       2
+      ],
+      "z0": 0,
+      "height": 19,
+      "colour": "#d6bf9f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      30,
+      3.4
+     ]
+    },
+    "points": [
+     [
+      -60.0,
+      1.0,
+      11.8
+     ],
+     [
+      -49.33,
+      -2.33,
+      15.41
+     ],
+     [
+      -38.67,
+      -4.33,
+      17.58
+     ],
+     [
+      -28.0,
+      -5.0,
+      18.3
+     ],
+     [
+      -17.33,
+      -4.33,
+      17.58
+     ],
+     [
+      -6.67,
+      -2.33,
+      15.41
+     ],
+     [
+      4.0,
+      1.0,
+      11.8
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#9c8a6c",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      30,
+      3.4
+     ]
+    },
+    "points": [
+     [
+      -4.0,
+      1.0,
+      17.3
+     ],
+     [
+      6.67,
+      -2.33,
+      20.91
+     ],
+     [
+      17.33,
+      -4.33,
+      23.08
+     ],
+     [
+      28.0,
+      -5.0,
+      23.8
+     ],
+     [
+      38.67,
+      -4.33,
+      23.08
+     ],
+     [
+      49.33,
+      -2.33,
+      20.91
+     ],
+     [
+      60.0,
+      1.0,
+      17.3
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#9c8a6c",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -56,
+     0,
+     0
+    ],
+    "end": [
+     56,
+     0,
+     0
+    ],
+    "count": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       16
+      ],
+      "z0": 15.2,
+      "height": 1.2,
+      "colour": "#7a5f45"
+     }
+    },
+    "lod1Step": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -20,
+    -29,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -6,
+    -29,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    6,
+    -29,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -28,
+    0,
+    20
+   ],
+   "params": {
+    "baseWidth": 0.6,
+    "height": 6,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -27,
+    3.2
+   ],
+   "params": {
+    "width": 16,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#d2b99a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -33,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5,
+    "line": 28
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    -33,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5,
+    "line": 18
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     0,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.1,
+        0,
+        "#4a6e3a"
+       ],
+       [
+        1.2,
+        0.8,
+        "#4a6e3a"
+       ],
+       [
+        1.4,
+        1.6,
+        "#4a6e3a"
+       ],
+       [
+        1.0,
+        2.5,
+        "#4a6e3a"
+       ],
+       [
+        0.1,
+        2.9,
+        "#4a6e3a"
+       ]
+      ]
+     }
+    },
+    "lod1Step": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pylon",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "z0": 0,
+   "height": 24,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6bf9f",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -17,
+    14
+   ],
+   "params": {
+    "width": 5,
+    "height": 6,
+    "bottom": 0,
+    "colour": "#b98672",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 24,
+  "extent": [
+   135,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "glass still renders darker than the real teal; truss members under canopies minimal; pylon bay small; no lettering by design"
+ }
+}

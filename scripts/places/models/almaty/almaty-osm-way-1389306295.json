@@ -1,0 +1,367 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-osm-way-1389306295",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1389306295",
+   "used": "identity and scale only: the mapped outline is a 19 ha compound (517 x 496 m), too large and irregular to model; no exterior photo of the central building was found (Commons images are portraits, badge and parade shots)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     84,
+     38
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfae",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 7,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 9,
+    "columns": 6,
+    "pediment": false,
+    "steps": 5,
+    "colour": "#f1efe6",
+    "roofColour": "#8a7f72"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "z0": 9,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "none",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7f72",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drill-hall",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    50
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4b0a2",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    32,
+    52
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc6a8",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 5.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 40,
+    "border": 1.5,
+    "colour": "#b8b4a8",
+    "border_colour": "#8a7f72"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "steps": 3,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#6a583b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -56
+     ],
+     [
+      -8,
+      -56
+     ]
+    ],
+    "height": 3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "pillarEvery": 0,
+    "colour": "#b9b095"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      8,
+      -56
+     ],
+     [
+      58,
+      -56
+     ],
+     [
+      58,
+      66
+     ],
+     [
+      -58,
+      66
+     ],
+     [
+      -58,
+      -56
+     ]
+    ],
+    "height": 3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "pillarEvery": 0,
+    "colour": "#b9b095"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 5.5,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 20,
+    "colours": [
+     "#00afca",
+     "#fec50c",
+     "#00afca"
+    ]
+   }
+  },
+  {
+   "type": "gate-lodge",
+   "at": [
+    -16,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4.5
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "count": 3,
+    "kind": "broadleaf",
+    "gap": 24,
+    "height_min": 9,
+    "height_max": 12
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the real central building; a typical Soviet U-shaped four-storey academy block with entrance portico, gate, perimeter wall and parade plaza is assumed from the brief. Real compound is 19 ha and is not reproduced. Main block roof simplified to flat with parapet for the triangle budget."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     25
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ }
+}

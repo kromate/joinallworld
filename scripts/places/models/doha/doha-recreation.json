@@ -1,0 +1,815 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Al_Bidda_Park.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rama",
+   "view": "street",
+   "file": "/tmp/places-evidence/doha/bidda1.jpg",
+   "used": "lake edge with a white arched gazebo on a small island, a lit date palm, white railings round the water, white pergola on the right shore, lamp posts and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12719187",
+   "used": "park extent only (about 2 km x 0.7 km); a 130 m lakeside corner is modelled because the scene clamp is 118 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    20,
+    0.2
+   ],
+   "params": {
+    "width": 84,
+    "depth": 64,
+    "shape": "rect",
+    "colour": "#0a1b2a",
+    "bank": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "island",
+   "at": [
+    -4,
+    48
+   ],
+   "params": {
+    "rect": [
+     26,
+     10
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#8c8573"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "island-top",
+   "at": [
+    -4,
+    48
+   ],
+   "params": {
+    "rect": [
+     24,
+     8
+    ],
+    "z0": 0.7,
+    "height": 0.3,
+    "colour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "z0": 1.0,
+      "height": 4.4,
+      "colour": "#eeece6"
+     }
+    },
+    "mode": "arc",
+    "count": 8,
+    "centre": [
+     -4,
+     46
+    ],
+    "radius": 5.2,
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.6
+     ]
+    },
+    "closed": true,
+    "colour": "#eeece6",
+    "arc": {
+     "centre": [
+      -4,
+      46,
+      5.4
+     ],
+     "radius": 5.4,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.3,
+        0.4
+       ]
+      },
+      "colour": "#eeece6",
+      "arc": {
+       "centre": [
+        0,
+        0,
+        3.6
+       ],
+       "radius": 2.0,
+       "startDeg": 0,
+       "endDeg": 180,
+       "plane": "xz"
+      }
+     }
+    },
+    "mode": "arc",
+    "count": 8,
+    "centre": [
+     -4,
+     46
+    ],
+    "radius": 5.2,
+    "facing": "outward",
+    "lod1Step": 3,
+    "lod2Step": 99
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gazebo-roof",
+   "at": [
+    -4,
+    46
+   ],
+   "params": {
+    "n": 8,
+    "radius": 6.2,
+    "z0": 5.7,
+    "height": 0.9,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gazebo-cornice",
+   "at": [
+    -4,
+    46
+   ],
+   "params": {
+    "n": 8,
+    "radius": 5.6,
+    "z0": 5.2,
+    "height": 0.5,
+    "colour": "#dcd8cc"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    52,
+    0.45
+   ],
+   "params": {
+    "length": 84,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#eeece6",
+    "pillarEvery": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -42,
+    20,
+    0.45
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 64,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#eeece6",
+    "pillarEvery": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    42,
+    20,
+    0.45
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 64,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#eeece6",
+    "pillarEvery": 3
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    30,
+    48
+   ],
+   "params": {
+    "rect": [
+     32,
+     4
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0.5,
+      "height": 3.4,
+      "colour": "#eeece6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     15,
+     46.5
+    ],
+    "end": [
+     45,
+     46.5
+    ],
+    "count": 11,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0.5,
+      "height": 3.4,
+      "colour": "#eeece6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     15,
+     49.5
+    ],
+    "end": [
+     45,
+     49.5
+    ],
+    "count": 11,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "prism",
+   "id": "beam",
+   "at": [
+    30,
+    48
+   ],
+   "params": {
+    "rect": [
+     32,
+     4.4
+    ],
+    "z0": 3.9,
+    "height": 0.4,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    -30,
+    48
+   ],
+   "params": {
+    "rect": [
+     32,
+     4
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0.5,
+      "height": 3.4,
+      "colour": "#eeece6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -45,
+     46.5
+    ],
+    "end": [
+     -15,
+     46.5
+    ],
+    "count": 11,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0.5,
+      "height": 3.4,
+      "colour": "#eeece6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -45,
+     49.5
+    ],
+    "end": [
+     -15,
+     49.5
+    ],
+    "count": 11,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "prism",
+   "id": "beam",
+   "at": [
+    -30,
+    48
+   ],
+   "params": {
+    "rect": [
+     32,
+     4.4
+    ],
+    "z0": 3.9,
+    "height": 0.4,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    54,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 5,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    58,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 4,
+    "line": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 5,
+    "spread": 4,
+    "line": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 4,
+    "line": 10
+   }
+  },
+  {
+   "type": "prism",
+   "id": "palm-trunk",
+   "at": [
+    3,
+    44
+   ],
+   "params": {
+    "n": 10,
+    "radius": 1.2,
+    "z0": 0.7,
+    "height": 17.5,
+    "colour": "#f0c45c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "palm-trunk-core",
+   "at": [
+    3,
+    44
+   ],
+   "params": {
+    "n": 10,
+    "radius": 0.95,
+    "z0": 0.7,
+    "height": 17.5,
+    "colour": "#7a5a30"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "palm-crown-core",
+   "at": [
+    3,
+    44,
+    17.3
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#14301a",
+    "profile": [
+     [
+      0,
+      -1.2
+     ],
+     [
+      5,
+      -1.8
+     ],
+     [
+      9,
+      0
+     ],
+     [
+      8.5,
+      2.5
+     ],
+     [
+      4.5,
+      5
+     ],
+     [
+      0,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.7,
+        0.2
+       ]
+      },
+      "colour": "#1d4524",
+      "points": [
+       [
+        0.5,
+        0,
+        19
+       ],
+       [
+        5,
+        0,
+        23.5
+       ],
+       [
+        10,
+        0,
+        22.5
+       ],
+       [
+        13.5,
+        0,
+        18
+       ]
+      ],
+      "curve": true
+     }
+    },
+    "mode": "arc",
+    "count": 26,
+    "centre": [
+     3,
+     44
+    ],
+    "radius": 0.01,
+    "facing": "outward",
+    "lod1Step": 3,
+    "lod2Step": 13
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.6,
+        0.2
+       ]
+      },
+      "colour": "#2a5a2c",
+      "points": [
+       [
+        0.5,
+        0,
+        18.5
+       ],
+       [
+        4,
+        0,
+        20.5
+       ],
+       [
+        8,
+        0,
+        19
+       ],
+       [
+        11,
+        0,
+        14.5
+       ]
+      ],
+      "curve": true
+     }
+    },
+    "mode": "arc",
+    "count": 20,
+    "centre": [
+     4,
+     44
+    ],
+    "radius": 0.01,
+    "facing": "outward",
+    "lod1Step": 3,
+    "lod2Step": 13
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-post",
+   "at": [
+    -46,
+    50
+   ],
+   "params": {
+    "n": 6,
+    "radius": 0.25,
+    "z0": 0,
+    "height": 13,
+    "colour": "#3a3d42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head",
+   "at": [
+    -46,
+    50
+   ],
+   "params": {
+    "n": 8,
+    "radius": 1.0,
+    "z0": 13,
+    "height": 1.1,
+    "colour": "#ffe9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-post",
+   "at": [
+    46,
+    50
+   ],
+   "params": {
+    "n": 6,
+    "radius": 0.25,
+    "z0": 0,
+    "height": 13,
+    "colour": "#3a3d42"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head",
+   "at": [
+    46,
+    50
+   ],
+   "params": {
+    "n": 8,
+    "radius": 1.0,
+    "z0": 13,
+    "height": 1.1,
+    "colour": "#ffe9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-post",
+   "at": [
+    -14,
+    51
+   ],
+   "params": {
+    "n": 6,
+    "radius": 0.15,
+    "z0": 0.45,
+    "height": 4.2,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head",
+   "at": [
+    -14,
+    51
+   ],
+   "params": {
+    "n": 8,
+    "radius": 0.55,
+    "z0": 4.6,
+    "height": 0.6,
+    "colour": "#ffe9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-post",
+   "at": [
+    10,
+    51
+   ],
+   "params": {
+    "n": 6,
+    "radius": 0.15,
+    "z0": 0.45,
+    "height": 4.2,
+    "colour": "#eeece6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head",
+   "at": [
+    10,
+    51
+   ],
+   "params": {
+    "n": 8,
+    "radius": 0.55,
+    "z0": 4.6,
+    "height": 0.6,
+    "colour": "#ffe9a0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no emissive lighting or reflections (warm light colours only); gazebo arches plain half-rings not lattice; pergolas boxy; palm crown stylised; far shore is straight rect lake not curved"
+ }
+}

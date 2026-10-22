@@ -1,0 +1,227 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-osm-way-200734506",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/200734506",
+   "used": "campus is ~908 x 244 m; only the core cluster of blocks is modelled, no exterior photo was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "main-L",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -10
+     ],
+     [
+      30,
+      -10
+     ],
+     [
+      30,
+      6
+     ],
+     [
+      -6,
+      6
+     ],
+     [
+      -6,
+      26
+     ],
+     [
+      -30,
+      26
+     ]
+    ],
+    "height": 22,
+    "colour": "#e6dcc6",
+    "material": "limestone",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "storeys": 5,
+    "bay": 4.2,
+    "plinth": 0.5,
+    "glassColour": "#7e98a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    34,
+    -14
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#f0ebe0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "glassColour": "#7e98a6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    28,
+    22
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6dcc6",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "bay": 4.2,
+    "glassColour": "#7e98a6",
+    "faces": {
+     "front": "curtain",
+     "left": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass",
+   "at": [
+    -12,
+    -11,
+    0
+   ],
+   "params": {
+    "z0": 0,
+    "height": 22,
+    "colour": "#7e98a6",
+    "rect": [
+     12,
+     1.2
+    ],
+    "material": "glass-curtain"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.9,
+    "run": 1.5,
+    "count": 4,
+    "colour": "#dcd2bc"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    4,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 1.0,
+    "colour": "#6c7d86",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 7,
+    "count": 6,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no exterior photo (only a graduation-day interior); block shapes typed from brief, cream limestone convention assumed"
+ }
+}

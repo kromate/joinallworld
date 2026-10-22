@@ -1,0 +1,212 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-osm-way-61402688",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/61402688",
+   "used": "the western 118 m of the mall outline (curved west end and long south front); height 8 m, 2 levels"
+  },
+  {
+   "kind": "text",
+   "used": "hotel-apartment block joined at the west end (Wikipedia: Seef Mall linked to Fraser Suites)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "polygon": [
+     [
+      -59.1,
+      37.8
+     ],
+     [
+      -51.6,
+      11.1
+     ],
+     [
+      -32.3,
+      -23.7
+     ],
+     [
+      -2.9,
+      -53.6
+     ],
+     [
+      32.4,
+      -58.7
+     ],
+     [
+      59,
+      -58.6
+     ],
+     [
+      59,
+      58
+     ],
+     [
+      -59.1,
+      58
+     ]
+    ]
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc7",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "faces": {
+     "front": "plain"
+    },
+    "bands": "#b9ad90",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5ac",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-atrium",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    8,
+    -40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8d9d",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b5",
+    "parapet": 0.3,
+    "overhang": 2.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-block",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    -38,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 8,
+   "height": 40,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd3bb",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#b9ad90",
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5ac",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 6,
+    "height": 4.5,
+    "columns": 8,
+    "colour": "#d9d2bf"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 5,
+    "bottom": 9,
+    "colour": "#6f8d9d",
+    "frameColour": "#b9ad90"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 5,
+    "bottom": 9,
+    "colour": "#b9ad90",
+    "frameColour": "#6f8d9d"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    20,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#b9ad90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Only the Wikipedia photo (a different mall in South Africa) was offered, so none used; the mall is 484 m long and only its west end is shown; facade finishes and hotel height are typed."
+ }
+}

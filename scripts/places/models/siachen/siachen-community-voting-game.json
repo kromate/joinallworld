@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Siachen_Glacier",
+   "used": "tent shelters typical of the glacier region; barrel-roof tent hall (typed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tent",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e3dfd0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#e3dfd0",
+    "material": "membrane",
+    "rise": 2.2,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     3.5,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -5.2
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d8d4c3",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e3dfd0",
+    "material": "membrane",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "prism",
+   "id": "snow-cut",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.2
+    ],
+    "height": 0.15,
+    "colour": "#5d6650"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift",
+   "at": [
+    0,
+    5.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     21,
+     3
+    ],
+    "height": 2,
+    "topScale": 0.4,
+    "colour": "#e9eef2"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flagpole",
+   "at": [
+    12,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#c8362f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   56,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "typed tent hall; barrel roof is a hard-edged shell, no guy ropes"
+ }
+}

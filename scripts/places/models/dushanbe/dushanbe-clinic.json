@@ -1,0 +1,184 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief dushanbe-clinic",
+   "used": "Soviet-era maternity hospital, about four storeys, pale stucco, central entrance porch, hip roof; no photo or OSM building found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     45,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3d6b4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#f2eee2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f7b6c",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    -26,
+    6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3d6b4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#f2eee2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f7b6c",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 6.5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f2eee2",
+    "roofColour": "#b9ab88"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#e3d6b4",
+    "roofColour": "#b9ab88",
+    "vans": 1,
+    "marking": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "bars",
+    "pillarEvery": 5,
+    "colour": "#8c8c88"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "line": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or building outline exists for this maternity hospital; massing, storey count and colours are the typical Soviet-period hospital block described in the brief."
+ }
+}

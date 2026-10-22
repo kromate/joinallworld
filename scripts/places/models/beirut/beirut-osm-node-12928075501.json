@@ -1,0 +1,228 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief beirut-osm-node-12928075501",
+   "used": "hillside public garden with pavilion, gate, fountain; the nearby OSM building (12.6 m away) is not the garden so it is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    2,
+    4
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dac593",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe7d3"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    10,
+    8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#dac593",
+    "cap_colour": "#b5523a"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -8,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "rimColour": "#efe7d3"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "colour": "#dac593",
+    "board_colour": "#bba982",
+    "arch": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 15,
+    "height": 1.4,
+    "thickness": 0.5,
+    "colour": "#bba982"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    7,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 15,
+    "height": 1.4,
+    "thickness": 0.5,
+    "colour": "#bba982"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "thickness": 0.6,
+    "colour": "#bba982"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 3,
+    "spacing": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     12
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -18,
+     18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     26,
+     16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     22,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -8
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-osm-node-12928075501",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or building evidence; garden layout typed from brief"
+ }
+}

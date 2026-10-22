@@ -1,0 +1,648 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-relation-13435489",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sidna_Ali_Mosque_Aerial_View.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Amos Meron",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/sidna1.jpg",
+   "used": "walled courtyard ringed by sandstone wings, pale green domes on corner rooms, red tile roofs on the far wing, grey flat roofs, slender minaret in the courtyard, palms on the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sidna-Ali-Mosque-04.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Bukvoed",
+   "view": "side",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/sidna2.jpg",
+   "used": "coursed kurkar block walls with small rectangular windows high up, plain high outer wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13435489",
+   "used": "overall extent about 56 x 53 m; wings placed around it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 35,
+  "fovDeg": 32,
+  "aspect": 1.52,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     54,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b68e",
+    "windows": "punched",
+    "windowRatio": 0.015,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3aa",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    -22.5,
+    -9
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b68e",
+    "windows": "punched",
+    "windowRatio": 0.015,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3aa",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left2",
+   "footprint": {
+    "rect": [
+     9,
+     18
+    ]
+   },
+   "at": [
+    -22.5,
+    11
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b68e",
+    "windows": "punched",
+    "windowRatio": 0.015,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3aa",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "inner",
+   "footprint": {
+    "rect": [
+     22,
+     7
+    ]
+   },
+   "at": [
+    6,
+    6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b68e",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a37",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "room1",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -14,
+    -20
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b68e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3aa",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "room2",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    24,
+    -18
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b68e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3aa",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "room3",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    14,
+    20
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b68e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3aa",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right",
+   "footprint": {
+    "rect": [
+     9,
+     40
+    ]
+   },
+   "at": [
+    22.5,
+    2
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b68e",
+    "windows": "punched",
+    "windowRatio": 0.015,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3aa",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back",
+   "footprint": {
+    "rect": [
+     54,
+     9
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c9b68e",
+    "windows": "punched",
+    "windowRatio": 0.015,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a37",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court",
+   "params": {
+    "rect": [
+     36,
+     31
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#dfd2b4",
+    "topColour": "#dfd2b4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "greenroof",
+   "params": {
+    "rect": [
+     16,
+     9
+    ],
+    "z0": 9.05,
+    "height": 0.15,
+    "colour": "#3fae6a",
+    "topColour": "#3fae6a"
+   },
+   "at": [
+    12,
+    -20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "annex",
+   "params": {
+    "rect": [
+     12,
+     10
+    ],
+    "z0": 0,
+    "height": 5,
+    "colour": "#cdb98f",
+    "topColour": "#9aa3aa"
+   },
+   "at": [
+    -30,
+    -24
+   ]
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -9,
+    -13.5,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "radius": 1.1,
+    "balconies": 1,
+    "style": "pencil",
+    "colour": "#c9b68e",
+    "capColour": "#4fbf7a"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -9,
+    -13.5,
+    25.6
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.4,
+    "profile": "hemi",
+    "colour": "#4fbf7a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 5,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -22.5,
+    13,
+    10.5
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3,
+    "profile": "hemi",
+    "colour": "#4fbf7a",
+    "drum": 0.5,
+    "drumColour": "#c9b68e"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    22.5,
+    -17,
+    6.5
+   ],
+   "params": {
+    "radius": 3.6,
+    "height": 2.6,
+    "profile": "hemi",
+    "colour": "#4fbf7a",
+    "drum": 0.5,
+    "drumColour": "#c9b68e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -14,
+    -20,
+    11.5
+   ],
+   "params": {
+    "radius": 2.3,
+    "height": 1.8,
+    "profile": "hemi",
+    "colour": "#4fbf7a",
+    "drum": 0.5,
+    "drumColour": "#c9b68e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    24,
+    -18,
+    9.5
+   ],
+   "params": {
+    "radius": 2.8,
+    "height": 2.2,
+    "profile": "hemi",
+    "colour": "#4fbf7a",
+    "drum": 0.5,
+    "drumColour": "#c9b68e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    14,
+    20,
+    12
+   ],
+   "params": {
+    "radius": 2.3,
+    "height": 1.8,
+    "profile": "hemi",
+    "colour": "#4fbf7a",
+    "drum": 0.5,
+    "drumColour": "#c9b68e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -22.5,
+    -14,
+    7.5
+   ],
+   "params": {
+    "radius": 2.8,
+    "height": 2,
+    "profile": "hemi",
+    "colour": "#4fbf7a",
+    "drum": 0.5,
+    "drumColour": "#c9b68e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant0",
+   "at": [
+    -20,
+    -2
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.6
+    ],
+    "z0": 7.5,
+    "height": 1.2,
+    "colour": "#8a9097",
+    "topColour": "#8a9097"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant1",
+   "at": [
+    -5,
+    19
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.6
+    ],
+    "z0": 9.5,
+    "height": 1.2,
+    "colour": "#8a9097",
+    "topColour": "#8a9097"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant2",
+   "at": [
+    3,
+    -21
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.6
+    ],
+    "z0": 7.5,
+    "height": 1.2,
+    "colour": "#8a9097",
+    "topColour": "#8a9097"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant3",
+   "at": [
+    22,
+    8
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.6
+    ],
+    "z0": 6.5,
+    "height": 1.2,
+    "colour": "#8a9097",
+    "topColour": "#8a9097"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "outer annex and exact wing outline simplified; palms and rooftop clutter approximate; window rows still slightly regular"
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "schema":"allworld-place-model","version":2,"city":"doha","venueId":"doha-community-notices","verified":"footprint",
+ "evidence":[
+  {"kind":"osm","ref":"way/490598248","used":"real 29.5 x 20.6 m stepped outline (name match, building=government)"},
+  {"kind":"text","ref":"https://www.wikidata.org/wiki/Q5369723","used":"Embassy of India, Doha: two-storey walled chancery with flagpole; no exterior photo of this building was found (the Commons images show other embassies, e.g. Berlin, and were not used)"}
+ ],
+ "parts":[
+  {"type":"mass","id":"chancery","footprint":{"osm":true},"at":[0,0],"height":9,"storeys":2,
+   "wall":{"material":"painted-render","colour":"#e6d8b8","windows":"punched","windowRatio":0.2,"glassColour":"#5f7482","faces":{"front":"punched","back":"punched"},"bands":"#cdb88c","plinth":0.5,"cornice":true},
+   "roof":{"form":"flat","colour":"#c9c3b2","material":"membrane","parapet":0.9}},
+  {"type":"mass","id":"entrance-bay","footprint":{"rect":[9,3]},"at":[-3.5,-16.5],"height":5.5,"storeys":1,
+   "wall":{"material":"painted-render","colour":"#d6c299","windows":"none","plinth":0.3},"roof":{"form":"flat","colour":"#c9c3b2","parapet":0.4,"overhang":0.8}},
+  {"type":"mass","id":"guard-house","footprint":{"rect":[3.5,3]},"at":[12,-26],"height":3,"storeys":1,
+   "wall":{"material":"painted-render","colour":"#e6d8b8","windows":"punched","windowRatio":0.2},"roof":{"form":"flat","colour":"#c9c3b2","overhang":0.3}},
+  {"type":"fence-wall","at":[0,-29,0],"params":{"length":40,"height":2.8,"thickness":0.4,"kind":"wall","pillarEvery":5,"colour":"#eee3c8"}},
+  {"type":"core/gate","at":[-6,-29,0],"params":{"width":6,"height":3.2,"pillar":0.8,"leaf":"bars","colour":"#e2d4b0","leafColour":"#2d3033"}},
+  {"type":"core/sign-board","at":[5,-29.4,0],"params":{"width":3.2,"height":1.1,"bottom":1.2,"colour":"#f3efe4","frameColour":"#8a7a58","posts":true}},
+  {"type":"flag","at":[8,-20,0],"params":{"height":11,"colours":["#ff9933","#ffffff","#138808"]}},
+  {"type":"core/tree","at":[-14,-22,0],"params":{"kind":"palm","height":7,"count":3,"spread":3,"line":14}},
+  {"type":"car","at":[18,-34,0],"params":{"colour":"#2d3033","count":2,"spacing":6}}
+ ],
+ "site":{"ground":"paving","forecourt":"road","extent":[56,64]},
+ "review":{"rounds":1,"match":"rough","gaps":"no photo of this building: massing from the real OSM outline, render and colours typical of Doha chancery buildings; flag colours only"}
+}

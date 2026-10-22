@@ -1,0 +1,323 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-way-41819706",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:East_Jerusalem_by_Mujaddara_-_panoramio_(3434).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mujaddara",
+   "view": "detail",
+   "file": "/tmp/places-evidence/ramallah/p4_0.jpg",
+   "used": "colours and stand rear only (interior crowd view, not comparable with an exterior render): cream coursed stone rear wall with punched windows and green steel posts, green-painted raked terraces"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/41819706",
+   "used": "orientation (bearing 9 deg) and size: about 77 x 113 m plot, pitch long axis along the longer side"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": -7.9,
+   "params": {
+    "rect": [
+     62,
+     100
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#4f8a45",
+    "topColour": "#559548"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": -7.9,
+   "params": {
+    "rect": [
+     74,
+     112
+    ],
+    "z0": -0.05,
+    "height": 0.12,
+    "colour": "#b9b2a3",
+    "topColour": "#b9b2a3"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": -7.9,
+   "params": {
+    "start": [
+     33,
+     -52
+    ],
+    "end": [
+     33,
+     52
+    ],
+    "rows": 18,
+    "rise": 0.5,
+    "run": 0.8,
+    "seatColour": "#2f6b4f",
+    "seatColours": [
+     "#2f6b4f",
+     "#c8362f",
+     "#e8e2d0"
+    ],
+    "blocks": 5,
+    "concreteColour": "#cfc8b8",
+    "under": "solid",
+    "canopy": {
+     "height": 5,
+     "depth": 11,
+     "colour": "#8a8f94",
+     "slopeDeg": 3,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "west-terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": -7.9,
+   "params": {
+    "start": [
+     -33,
+     52
+    ],
+    "end": [
+     -33,
+     -52
+    ],
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.8,
+    "seatColour": "#2f6b4f",
+    "seatColours": [
+     "#2f6b4f",
+     "#c8362f"
+    ],
+    "blocks": 3,
+    "concreteColour": "#cfc8b8",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "south-terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": -7.9,
+   "params": {
+    "start": [
+     -31,
+     -54
+    ],
+    "end": [
+     31,
+     -54
+    ],
+    "rows": 7,
+    "rise": 0.5,
+    "run": 0.8,
+    "seatColour": "#2f6b4f",
+    "blocks": 2,
+    "concreteColour": "#cfc8b8",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "north-terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": -7.9,
+   "params": {
+    "start": [
+     31,
+     54
+    ],
+    "end": [
+     -31,
+     54
+    ],
+    "rows": 7,
+    "rise": 0.5,
+    "run": 0.8,
+    "seatColour": "#2f6b4f",
+    "blocks": 2,
+    "concreteColour": "#cfc8b8",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     4,
+     104
+    ]
+   },
+   "at": [
+    46.75,
+    -6.49
+   ],
+   "rotDeg": -7.9,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8cbab",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 7,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.9,
+      "depth": 0.4,
+      "spacing": 8,
+      "colour": "#3b7a5a",
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "mast0",
+   "at": [
+    -36.31,
+    -43.42,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "mast1",
+   "at": [
+    23.12,
+    -51.67,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "mast2",
+   "at": [
+    -23.12,
+    51.67,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "mast3",
+   "at": [
+    36.31,
+    43.42,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -55,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -55,
+     10
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No exterior photo to compare (only an interior crowd view); stand count, depth, canopy extent and rear-wall height are estimates from the brief (12,500 seats, one covered stand); no scoreboard or flags."
+ }
+}

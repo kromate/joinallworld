@@ -1,0 +1,196 @@
+{
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "rock",
+   "params": {
+    "points": [
+     [
+      -12,
+      -8
+     ],
+     [
+      -4,
+      -12
+     ],
+     [
+      8,
+      -11
+     ],
+     [
+      13,
+      -3
+     ],
+     [
+      11,
+      8
+     ],
+     [
+      2,
+      12
+     ],
+     [
+      -9,
+      10
+     ],
+     [
+      -13,
+      2
+     ]
+    ],
+    "height": 2.2,
+    "topScale": 0.82,
+    "colour": "#8d867a",
+    "topColour": "#b9a98a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "points": [
+     [
+      -9,
+      -6
+     ],
+     [
+      3,
+      -8.5
+     ],
+     [
+      9,
+      -3
+     ],
+     [
+      8,
+      6
+     ],
+     [
+      0,
+      8.5
+     ],
+     [
+      -8,
+      6
+     ]
+    ],
+    "z0": 2.2,
+    "height": 0.5,
+    "colour": "#b9a98a",
+    "topColour": "#c9bb9d"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -1,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 2.2,
+    "run": 0.9,
+    "count": 6,
+    "colour": "#b9a98a"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "railing",
+   "at": [
+    -8,
+    -6,
+    2.7
+   ],
+   "params": {
+    "length": 11,
+    "height": 1.1,
+    "colour": "#4f5a5f"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    3,
+    -8.2,
+    2.7
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.1,
+    "colour": "#4f5a5f"
+   },
+   "rotDeg": 30
+  },
+  {
+   "type": "railing",
+   "at": [
+    -8,
+    6,
+    2.7
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.1,
+    "colour": "#4f5a5f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    2,
+    2,
+    2.7
+   ],
+   "params": {
+    "width": 6.5,
+    "depth": 6.5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.2,
+    "posts": 4,
+    "colour": "#e4dcc8",
+    "cap_colour": "#8d867a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-node-4190366692",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "name only; generic hilltop platform, pavilion and rails, real layout unknown"
+ }
+}

@@ -1,0 +1,215 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1167183107",
+   "used": "only a nearest-building match 40 m away, so not used as the footprint; size (about 12 x 9 m, one level) taken as the plinth extent"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small hilltop memorial, low concrete and stone plinth with plaque and flagpole; Commons photo found nearby shows an unrelated airport sculpture and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth-lower",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5b0a5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-upper",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 0.5,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9c2b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c2b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stele",
+   "footprint": {
+    "rect": [
+     4.5,
+     1.0
+    ]
+   },
+   "at": [
+    0,
+    2.5
+   ],
+   "z0": 1.4,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9c2b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaque",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    1.75
+   ],
+   "z0": 2.0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3f3f3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f3f3c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#b5b0a5"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -5.5,
+    -1,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#c9ced2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -9,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#b0aaa0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or reliable footprint; plinth, stele, plaque, flagpole inferred from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-node-2467107746"
+}

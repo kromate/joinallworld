@@ -1,0 +1,182 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yangon",
+ "venueId": "yangon-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/518749755",
+   "used": "nearest building (15 x 11 m) is 42 m from the venue point and too small and uncertain for a town hall, so only the order of size was used; no photo found; form from the brief (two-storey rendered hall, central porch, flagpole, notice board)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd6c2",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "plinth": 0.6,
+    "bay": 3.0,
+    "bands": "#a8a08a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f6b73",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-block",
+   "footprint": {
+    "rect": [
+     7,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -7.4
+   ],
+   "z0": 0,
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0e8",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6b73",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2,
+    "height": 4.2,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f2f0e8",
+    "roofColour": "#5f6b73"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -9,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    9,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 2.4,
+    "bottom": 0.8,
+    "colour": "#f2f0e8",
+    "frameColour": "#7a7867",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -15,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.6,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#c9c3ae"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   56,
+   44
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and no reliable OSM outline: generic two-storey township hall from the brief; real facade and porch unknown."
+ }
+}

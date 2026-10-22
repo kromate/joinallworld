@@ -1,0 +1,610 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahai_Lotus_Temple.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "V N Gupta",
+   "view": "front",
+   "file": "/tmp/places-evidence/delhi/lotus1.jpg",
+   "used": "three rings of white marble petals converging to a crown, low entrance leaves with dark porches, red-brown podium walls, mown lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/44827278",
+   "used": "outline about 69 x 68 m"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Three tiers now overlap into one bud with 9 dark pointed porches; petals are less pointed and outer leaves less upswept than the photo; podium is a ring with entrance steps rather than long ramp walls; lawn is a flat disc not a mowed mound."
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 36,
+    "colour": "#5f8a45",
+    "profile": [
+     [
+      48,
+      0
+     ],
+     [
+      44,
+      0.5
+     ],
+     [
+      38,
+      1.6
+     ],
+     [
+      0,
+      2.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "count": 9,
+    "centre": [
+     0,
+     0,
+     1.0
+    ],
+    "radius": 11,
+    "startDeg": -90,
+    "endDeg": 230,
+    "facing": "outward",
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0.0,
+        "rect": [
+         11.0,
+         6.0
+        ],
+        "cy": 0.0,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 4.57,
+        "rect": [
+         13.87,
+         5.7
+        ],
+        "cy": 0.12,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 9.14,
+        "rect": [
+         16.04,
+         5.4
+        ],
+        "cy": 0.49,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 13.71,
+        "rect": [
+         16.98,
+         5.1
+        ],
+        "cy": 1.1,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 18.29,
+        "rect": [
+         15.48,
+         4.8
+        ],
+        "cy": 1.96,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 22.86,
+        "rect": [
+         11.74,
+         4.5
+        ],
+        "cy": 3.06,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 27.43,
+        "rect": [
+         6.49,
+         4.2
+        ],
+        "cy": 4.41,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 32.0,
+        "rect": [
+         0.5,
+         3.9
+        ],
+        "cy": 6.0,
+        "colour": "#f7f5ef"
+       }
+      ],
+      "curve": true,
+      "steps": 3,
+      "capTop": true,
+      "colour": "#f7f5ef"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "count": 9,
+    "centre": [
+     0,
+     0,
+     1.0
+    ],
+    "radius": 20,
+    "startDeg": -70,
+    "endDeg": 250,
+    "facing": "outward",
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0.0,
+        "rect": [
+         14.0,
+         7.0
+        ],
+        "cy": 0.0,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 3.57,
+        "rect": [
+         17.83,
+         6.65
+        ],
+        "cy": 0.16,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 7.14,
+        "rect": [
+         20.72,
+         6.3
+        ],
+        "cy": 0.65,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 10.71,
+        "rect": [
+         21.98,
+         5.95
+        ],
+        "cy": 1.47,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 14.29,
+        "rect": [
+         20.04,
+         5.6
+        ],
+        "cy": 2.61,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 17.86,
+        "rect": [
+         15.19,
+         5.25
+        ],
+        "cy": 4.08,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 21.43,
+        "rect": [
+         8.4,
+         4.9
+        ],
+        "cy": 5.88,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 25.0,
+        "rect": [
+         0.5,
+         4.55
+        ],
+        "cy": 8.0,
+        "colour": "#f7f5ef"
+       }
+      ],
+      "curve": true,
+      "steps": 3,
+      "capTop": true,
+      "colour": "#f7f5ef"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "count": 9,
+    "centre": [
+     0,
+     0,
+     1.0
+    ],
+    "radius": 28,
+    "startDeg": -90,
+    "endDeg": 230,
+    "facing": "outward",
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0.0,
+        "rect": [
+         18.0,
+         10.0
+        ],
+        "cy": 0.0,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 1.71,
+        "rect": [
+         20.87,
+         9.5
+        ],
+        "cy": 0.06,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 3.43,
+        "rect": [
+         23.04,
+         9.0
+        ],
+        "cy": 0.24,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 5.14,
+        "rect": [
+         23.98,
+         8.5
+        ],
+        "cy": 0.55,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 6.86,
+        "rect": [
+         21.86,
+         8.0
+        ],
+        "cy": 0.98,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 8.57,
+        "rect": [
+         16.57,
+         7.5
+        ],
+        "cy": 1.53,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 10.29,
+        "rect": [
+         9.17,
+         7.0
+        ],
+        "cy": 2.2,
+        "colour": "#f7f5ef"
+       },
+       {
+        "z": 12.0,
+        "rect": [
+         0.5,
+         6.5
+        ],
+        "cy": 3.0,
+        "colour": "#f7f5ef"
+       }
+      ],
+      "curve": true,
+      "steps": 3,
+      "capTop": true,
+      "colour": "#f7f5ef"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 10,
+    "colour": "#dcd8cf",
+    "profile": [
+     [
+      1.6,
+      31
+     ],
+     [
+      1.1,
+      33
+     ],
+     [
+      0.2,
+      34.2
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 36,
+    "colour": "#9a5a44",
+    "profile": [
+     [
+      47,
+      0
+     ],
+     [
+      47,
+      1.6
+     ],
+     [
+      45,
+      1.9
+     ],
+     [
+      45,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 36,
+    "colour": "#e9e4d8",
+    "profile": [
+     [
+      47.2,
+      1.6
+     ],
+     [
+      47.2,
+      1.9
+     ],
+     [
+      45,
+      1.9
+     ],
+     [
+      45,
+      1.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     44,
+     3
+    ],
+    "height": 2.4,
+    "colour": "#8a4a38"
+   },
+   "at": [
+    0,
+    -47,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     22,
+     3
+    ],
+    "height": 3.6,
+    "colour": "#9a5a44"
+   },
+   "at": [
+    0,
+    -49.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     44,
+     1.2
+    ],
+    "height": 0.3,
+    "colour": "#e9e4d8"
+   },
+   "at": [
+    0,
+    -47,
+    2.4
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "count": 9,
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 33.5,
+    "startDeg": -90,
+    "endDeg": 230,
+    "facing": "outward",
+    "of": {
+     "type": "loft",
+     "lod": [
+      0,
+      1
+     ],
+     "params": {
+      "sections": [
+       {
+        "z": 1.2,
+        "rect": [
+         9,
+         1.2
+        ],
+        "colour": "#241f1c"
+       },
+       {
+        "z": 4.0,
+        "rect": [
+         7.6,
+         1.2
+        ],
+        "colour": "#241f1c"
+       },
+       {
+        "z": 6.2,
+        "rect": [
+         4.4,
+         1.2
+        ],
+        "colour": "#241f1c"
+       },
+       {
+        "z": 8.0,
+        "rect": [
+         1.2,
+         1.2
+        ],
+        "colour": "#241f1c"
+       },
+       {
+        "z": 8.6,
+        "rect": [
+         0.3,
+         1.2
+        ],
+        "colour": "#241f1c"
+       }
+      ],
+      "capTop": true,
+      "colour": "#241f1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "count": 9,
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 42.5,
+    "startDeg": -70,
+    "endDeg": 250,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "lod": [
+      0,
+      1
+     ],
+     "params": {
+      "height": 0.12,
+      "colour": "#7fb0c8",
+      "points": [
+       [
+        -4,
+        -1.6
+       ],
+       [
+        4,
+        -1.6
+       ],
+       [
+        4,
+        1.6
+       ],
+       [
+        -4,
+        1.6
+       ]
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   130
+  ]
+ }
+}

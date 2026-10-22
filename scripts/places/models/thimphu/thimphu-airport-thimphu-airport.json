@@ -1,0 +1,525 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paro_Airport.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Douglas J. McLaughlin",
+   "view": "aerial",
+   "used": "white two-storey terminal blocks with brown timber trim bands, green hipped metal roofs in two tiers, long low left wing, taller separate block on right, round white control tower far left, green-roofed hall behind, car park in front, runway and river setting",
+   "file": "/tmp/places-evidence/thimphu/paro1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paro_International_Airport-2025_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nabin K. Sapkota",
+   "view": "aerial",
+   "used": "downloaded and checked for roof colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1153904263",
+   "used": "overall length (about 270 m terminal strip); a 230 m span is modelled by hand because the outline is a long staggered strip"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     64,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7a4a32",
+    "cornice": true,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#438349",
+    "material": "metal-sheet",
+    "rise": 3.0,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    44,
+    -1
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7a4a32",
+    "cornice": true,
+    "bay": 4.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f9455",
+    "material": "metal-sheet",
+    "rise": 2.8,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vip-block",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    74,
+    4
+   ],
+   "rotDeg": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7a4a32",
+    "cornice": true,
+    "bay": 4.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f9455",
+    "material": "metal-sheet",
+    "rise": 3,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cargo-hall",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    -60,
+    36
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4d6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "bands": "#6a8a5a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b9a5f",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "control-tower",
+   "id": "atc",
+   "at": [
+    -44,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "round",
+    "colour": "#f4f2ee",
+    "cabColour": "#6d8da0",
+    "bandColour": "#c9372c",
+    "shaftRadius": 2.2,
+    "cabRadius": 3.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -13,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 7,
+    "height": 4,
+    "colour": "#e9e5dc",
+    "edgeColour": "#7a4a32",
+    "columns": 6
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 3.6,
+    "colour": "#8c4a34",
+    "frameColour": "#d9b25a",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#e8a317",
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -30,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    10,
+    22
+   ],
+   "params": {
+    "rect": [
+     150,
+     24
+    ],
+    "height": 0.12,
+    "colour": "#9a9c9e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "runway",
+   "at": [
+    10,
+    50
+   ],
+   "params": {
+    "rect": [
+     150,
+     24
+    ],
+    "height": 0.1,
+    "colour": "#505254"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rw-line",
+   "at": [
+    10,
+    50
+   ],
+   "params": {
+    "rect": [
+     130,
+     0.8
+    ],
+    "height": 0.12,
+    "colour": "#e8e8e0",
+    "z0": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass-strip",
+   "at": [
+    10,
+    36
+   ],
+   "params": {
+    "rect": [
+     150,
+     10
+    ],
+    "height": 0.06,
+    "colour": "#7da05a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "river",
+   "at": [
+    10,
+    -58
+   ],
+   "params": {
+    "rect": [
+     150,
+     16
+    ],
+    "height": 0.08,
+    "colour": "#6f9aa0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gravel",
+   "at": [
+    10,
+    -48
+   ],
+   "params": {
+    "rect": [
+     150,
+     5
+    ],
+    "height": 0.1,
+    "colour": "#b9b19c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill-back",
+   "at": [
+    10,
+    82
+   ],
+   "params": {
+    "rect": [
+     150,
+     20
+    ],
+    "height": 16,
+    "colour": "#3f6a3c",
+    "topScale": [
+     0.6,
+     0.4
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -68.5,
+     -42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62.9,
+     -41.3
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -54.0,
+     -42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35.7,
+     -42
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -28.4,
+     -42
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20.5,
+     -41.1
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -4.3,
+     -42
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     4.0,
+     -42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10.2,
+     -42
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     27.9,
+     -41.0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     35.9,
+     -40.6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     42.6,
+     -41.6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60.5,
+     -42
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     65.5,
+     -42
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -61,
+     -36.45653496462039
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -13,
+     -35.65970357037855
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     11,
+     -35.6629928281192
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     35,
+     -34.3831929166089
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-airport-thimphu-airport",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "terminal is one continuous strip with runway, apron, river, gravel and tree belt as in the photo; hills are a plain green slab, no braided river bend, roofs simplified to two hips"
+ }
+}

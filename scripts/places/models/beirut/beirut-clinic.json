@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/802992023",
+   "used": "real outline of Hospital Bhannes (59 x 41 m, name match): stepped, jagged multi-wing plan"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chapelle_du_Sanatorium_de_Bhannes.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Paul-Marc Heudre",
+   "view": "detail",
+   "file": "/tmp/places-evidence/beirut/clinic1.jpg",
+   "used": "the sanatorium chapel bell tower (not the hospital block): pale cut-stone shaft, arched belfry and clock stages, steep pointed spire with cross, cedar and oak trees around"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d8c594",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 5.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5523a",
+    "material": "clay-tile",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "id": "chapel-tower",
+   "at": [
+    -34,
+    4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 22,
+    "cap": "spire",
+    "cap_height": 9,
+    "colour": "#e6dcc3",
+    "cap_colour": "#d9d3c5"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "chapel-nave",
+   "at": [
+    -34,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     17
+    ],
+    "height": 9,
+    "colour": "#e6dcc3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    16,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -4,
+    -24,
+    9
+   ],
+   "params": {
+    "size": 2.6,
+    "facing": "front"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    26,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -42,
+     -8
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -26,
+     22
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     30,
+     30
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -46,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo of the hospital block itself (the only image is the sanatorium chapel tower); cladding and roof tile are typed from Mount Lebanon style, roof flat tiled instead of hipped because the outline is irregular; chapel position beside the block is a guess"
+ }
+}

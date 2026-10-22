@@ -1,0 +1,344 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-osm-node-4085389965",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u0417\u043e\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439_\u043c\u0443\u0437\u0435\u0439_\u0411\u0438\u043e\u043b\u043e\u0433\u043e-\u043f\u043e\u0447\u0432\u0435\u043d\u043d\u043e\u0433\u043e_\u0438\u043d\u0441\u0442\u0438\u0442\u0443\u0442\u0430_\u041d\u0410\u041d_\u041a\u0438\u0440\u0433\u0438\u0437\u0438\u0438.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vano111ru",
+   "view": "front",
+   "file": "/tmp/places-evidence/bishkek/zoo1.jpg",
+   "used": "white rendered 4-storey block, round glazed stair tower with vertical mullions at the entrance, dark stone plinth, small projecting window frames, long left wing with ribbon windows, low near-flat roof with deep eaves, gravel forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/486385367",
+   "used": "containing institute complex 178 x 93 m; not used as outline, the museum is the street-side block only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 4,
+  "fovDeg": 62
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     30,
+     17
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8de",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 5,
+    "faces": {
+     "left": "plain",
+     "right": "punched",
+     "back": "plain"
+    },
+    "plinth": 0.2,
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a7e80",
+    "material": "metal-sheet",
+    "pitch": 7,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     48,
+     17
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 3.0,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a7e80",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     7.2,
+     7.2
+    ]
+   },
+   "at": [
+    8,
+    -8.5
+   ],
+   "height": 25,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ede4",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 2.4,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-base",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    8,
+    -10
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#3f4244",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c6",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    8,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.3,
+    "bottom": 2.4,
+    "colour": "#3f7a52",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    8,
+    -10.2
+   ],
+   "z0": 4.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d4c6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -11.65,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 3.2,
+    "bottom": 0.1,
+    "colour": "#4a3020",
+    "frameColour": "#2a1c12",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -6,
+    -19,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     10
+    ],
+    "height": 0.06,
+    "colour": "#7c7a74"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8,
+    -11.9,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.4
+    ],
+    "height": 3.8,
+    "colour": "#1f1f22"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8,
+    -8.5,
+    20.9
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     8.4
+    ],
+    "height": 0.5,
+    "colour": "#e4dfd0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 20,
+    "centre": [
+     8,
+     -8.5
+    ],
+    "radius": 3.8,
+    "startDeg": 0,
+    "endDeg": 360,
+    "facing": "outward",
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.3
+      ],
+      "height": 18,
+      "z0": 5,
+      "colour": "#7f95a0"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -14
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -4
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower glazing strips are flat stripes not recessed mullions; windows lack projecting frames; ground is paving not cracked asphalt/gravel; no downpipes or roof-edge detail"
+ }
+}

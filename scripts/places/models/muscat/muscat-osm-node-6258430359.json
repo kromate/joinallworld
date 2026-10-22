@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-osm-node-6258430359",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/muscat.json",
+   "used": "brief: tiny single-storey cream roadside kiosk 10x6 m with striped awning; nearest OSM building is a mosque so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "fit": "building",
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "bands": "#c8b08a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete",
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "awning",
+   "footprint": {
+    "rect": [
+     10.4,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -4.1
+   ],
+   "z0": 2.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8553d",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e0d0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -3,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 2.9,
+    "colour": "#f4efe4",
+    "frameColour": "#c8b08a",
+    "posts": false
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    12,
+    -8,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     3
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     6
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence for this placeholder venue; typical roadside kiosk. Awning is one flat colour, not striped."
+ }
+}

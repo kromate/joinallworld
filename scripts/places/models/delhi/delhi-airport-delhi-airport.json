@@ -1,0 +1,721 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-airport-delhi-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Delhi_airport_terminal_3_(cropped).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ravi Dwivedi",
+   "view": "front",
+   "file": "/tmp/places-evidence/delhi/airport1.jpg",
+   "used": "departures frontage: grey metal-clad lower storey with white panel base, long dark glass upper wall, deep white cladded roof band tapering to a point over the forecourt, white pylons and braced steel truss canopy, blue band sign (left blank)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Control_tower_at_Indira_Gandhi_International_Airport,_New_Delhi.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Quintin Soloviev",
+   "view": "detail",
+   "file": "/tmp/places-evidence/delhi/tower.jpg",
+   "used": "control tower: slim cream shaft with diamond pattern, flared green-glazed cab in two tiers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Indira_Gandhi_International_Airport_-_October_2018.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rehman Abubakr",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/delhi/airport2.jpg",
+   "used": "long low pier with grey roof and jet bridges, airliners on the apron"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1429256812",
+   "used": "overall scale only (OSM way is named Terminal 1, so the outline is not used; T3 is far larger than the 118 m scene clamp, so a ~110 m stretch of the departures frontage is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 30,
+  "aspect": 1.667,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lower",
+   "footprint": {
+    "rect": [
+     112,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9aeb2",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bay": 8,
+    "plinth": 1.4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#9da3a6",
+      "height": 0.1,
+      "proud": 0.12,
+      "at": 0.5,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#f1f2f2",
+      "height": 1.2,
+      "proud": 0.1,
+      "at": 0.1,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a3"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -30,
+    14,
+    6
+   ],
+   "params": {
+    "length": 16,
+    "colour": "#c9cdd0"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -6,
+    14,
+    6
+   ],
+   "params": {
+    "length": 16,
+    "colour": "#c9cdd0"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -40,
+    45,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "scale": 1.0,
+    "colour": "#eef1f2",
+    "tailColour": "#d13a2c"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 5,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-wall",
+   "footprint": {
+    "rect": [
+     76,
+     22
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "z0": 8.5,
+   "height": 12.0,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5a6670",
+    "windows": "ribbon",
+    "windowRatio": 0.92,
+    "glassColour": "#26323f",
+    "bay": 6,
+    "pattern": [],
+    "faces": {
+     "back": "none",
+     "left": "plain",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e6e7"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      -13
+     ],
+     [
+      12,
+      -13
+     ],
+     [
+      50,
+      -6
+     ],
+     [
+      12,
+      10
+     ],
+     [
+      -55,
+      10
+     ]
+    ],
+    "z0": 20.5,
+    "height": 3.0,
+    "topScale": 1.0,
+    "colour": "#f0f1f2",
+    "topColour": "#dfe2e3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      17,
+      -17,
+      0
+     ],
+     [
+      22,
+      -17,
+      10.25
+     ]
+    ],
+    "width": 0.9,
+    "height": 0.9,
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      27,
+      -17,
+      0
+     ],
+     [
+      22,
+      -17,
+      10.25
+     ]
+    ],
+    "width": 0.9,
+    "height": 0.9,
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      22,
+      -17,
+      10.25
+     ],
+     [
+      22,
+      -14,
+      20.5
+     ]
+    ],
+    "width": 1.1,
+    "height": 1.1,
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      41,
+      -17,
+      0
+     ],
+     [
+      46,
+      -17,
+      6.5
+     ]
+    ],
+    "width": 0.9,
+    "height": 0.9,
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      51,
+      -17,
+      0
+     ],
+     [
+      46,
+      -17,
+      6.5
+     ]
+    ],
+    "width": 0.9,
+    "height": 0.9,
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      46,
+      -17,
+      6.5
+     ],
+     [
+      46,
+      -14,
+      13
+     ]
+    ],
+    "width": 1.1,
+    "height": 1.1,
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    30,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 62,
+    "depth": 16,
+    "height": 8,
+    "thickness": 0.9,
+    "columns": 0,
+    "colour": "#cfd3d5",
+    "edgeColour": "#e3e6e8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      18,
+      -31,
+      7.6
+     ],
+     [
+      26,
+      -31,
+      5.0
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      18,
+      -31,
+      5.0
+     ],
+     [
+      26,
+      -31,
+      7.6
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      26,
+      -31,
+      7.6
+     ],
+     [
+      34,
+      -31,
+      5.0
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      26,
+      -31,
+      5.0
+     ],
+     [
+      34,
+      -31,
+      7.6
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      34,
+      -31,
+      7.6
+     ],
+     [
+      42,
+      -31,
+      5.0
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      34,
+      -31,
+      5.0
+     ],
+     [
+      42,
+      -31,
+      7.6
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      42,
+      -31,
+      7.6
+     ],
+     [
+      50,
+      -31,
+      5.0
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      42,
+      -31,
+      5.0
+     ],
+     [
+      50,
+      -31,
+      7.6
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      50,
+      -31,
+      7.6
+     ],
+     [
+      58,
+      -31,
+      5.0
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      50,
+      -31,
+      5.0
+     ],
+     [
+      58,
+      -31,
+      7.6
+     ]
+    ],
+    "width": 0.4,
+    "height": 0.4,
+    "colour": "#e2e5e7"
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    -60,
+    28,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "style": "round",
+    "colour": "#e4d6b4",
+    "shaftRadius": 2.6,
+    "cabRadius": 6.5,
+    "cabColour": "#4f8a78",
+    "bandColour": "#d8c8a0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    64,
+    -31,
+    5.0
+   ],
+   "params": {
+    "width": 22,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#3a62b8",
+    "frameColour": "#4a70c6",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 18,
+  "extent": [
+   150,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -24
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -27
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -26
+    ],
+    "height": 8
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Dark curtain wall, tapered roof, wider canopy done; truss simplified, only ~110 m of T3 frontage, tower shortened and set behind."
+ }
+}

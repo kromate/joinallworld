@@ -1,0 +1,79 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/9086175",
+   "used": "stadium outline: elongated oval about 140 x 205 m with its long axis north-south"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%AA%D8%B7%D9%88%D9%8A%D8%B1_%D8%A7%D9%84%D9%85%D9%84%D8%B9%D8%A82.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fuad1987",
+   "view": "interior",
+   "used": "colours only: tan rough-cut stone cladding on the main stand, blue steel roof trusses with pale cladding, blue and red seats"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%AA%D8%B7%D9%88%D9%8A%D8%B1_%D8%A7%D9%84%D9%85%D9%84%D8%B9%D8%A83.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fuad1987",
+   "view": "interior",
+   "used": "crenellated tan parapet on the far stand, low open bowl, floodlight mast"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "id": "bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 112,
+    "depth": 160,
+    "height": 18,
+    "tiers": 2,
+    "arc_start": 0,
+    "arc_end": 360,
+    "roof": "canopy",
+    "roof_style": "shed",
+    "wall": "ribs",
+    "seat_colour": "#2e5aa8",
+    "seat_colour2": "#c4452f",
+    "roof_material": "metal-sheet",
+    "exponent": 2.6,
+    "floodlights": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": 0,
+  "forecourt": "parking",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-osm-way-98868798",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Footprint-only: no exterior photo; stand layout, seat colours and stone cladding typed from interior photos; bowl is a full oval, the real stadium may have open ends; bowl scaled to fit the 170 m export limit (real outline ~140 x 205 m); bowl scaled to fit the 170 m export limit (real outline ~140 x 205 m)"
+ }
+}

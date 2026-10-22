@@ -1,0 +1,289 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ashgabat.json",
+   "used": "no photo or outline found; the brief types it as a dry Kopetdag-foothill settlement edge: low earth mound with sparse mud-brick wall remnants, an earth track, a low fence wall and a sign board in earth colours (#c8b48c, #a89a78, #d9d2bf)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#c4ad82",
+    "profile": [
+     [
+      26,
+      0
+     ],
+     [
+      24,
+      1.4
+     ],
+     [
+      17,
+      2.8
+     ],
+     [
+      9,
+      3.6
+     ],
+     [
+      0,
+      3.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#b9a47a",
+    "profile": [
+     [
+      11,
+      0
+     ],
+     [
+      9,
+      1.2
+     ],
+     [
+      4,
+      1.9
+     ],
+     [
+      0,
+      2.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    8,
+    3.3
+   ],
+   "rotDeg": 15,
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 1.1,
+    "colour": "#b49a6e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    12,
+    3.3
+   ],
+   "rotDeg": -20,
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 1.1,
+    "colour": "#b49a6e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    2,
+    3.3
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     7,
+     3.5
+    ],
+    "height": 1.1,
+    "colour": "#b49a6e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    34,
+    18
+   ],
+   "rotDeg": 8,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d3c4a2",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a78",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -1.6
+     ],
+     [
+      50,
+      -2.6
+     ],
+     [
+      50,
+      1.4
+     ],
+     [
+      -50,
+      2.4
+     ]
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#bba98a"
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -45,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.4,
+    "thickness": 0.3,
+    "merlons": false,
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      40,
+      3
+     ],
+     [
+      90,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#d9d2bf",
+    "frameColour": "#8a7a5a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     6
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     18
+    ],
+    "height": 4.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -8
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     30
+    ],
+    "height": 4.5
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-osm-node-3680900775",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; typed foothill settlement edge from the brief text only."
+ }
+}

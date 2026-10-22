@@ -1,0 +1,389 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-way-331075149",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/330943271",
+   "used": "multi-storey car park 272 x 51 m beside the hospital (the only OSM match); its long rectangle sets the car-park block, which is shortened to 96 m for the scene clamp"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/riyadh.json",
+   "used": "beige 5-storey H-plan wings with blue glass, glass atrium, ambulance bay, rooftop helipad"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "glassColour": "#6c8ba0",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "bay": 14,
+    "plinth": 0.5,
+    "bands": "#c9ae86",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     18,
+     56
+    ]
+   },
+   "at": [
+    -29,
+    2
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc6",
+    "glassColour": "#6c8ba0",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "bay": 14,
+    "plinth": 0.5,
+    "bands": "#c9ae86",
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     18,
+     56
+    ]
+   },
+   "at": [
+    29,
+    2
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "glassColour": "#6c8ba0",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "bay": 14,
+    "plinth": 0.5,
+    "bands": "#c9ae86",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f9fb4",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.5,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 6,
+    "height": 5,
+    "form": "flat",
+    "colour": "#ece6d8",
+    "edgeColour": "#6c8ba0",
+    "columns": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic-block",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -3,
+    34
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc6",
+    "glassColour": "#6c8ba0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 14,
+    "plinth": 0.5,
+    "bands": "#c9ae86"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carpark",
+   "footprint": {
+    "rect": [
+     96,
+     15
+    ]
+   },
+   "at": [
+    -2,
+    -54
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3ccbc",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d3ccbc",
+       "#a59d8d"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7aa"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp-tower",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    -54,
+    -54
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c5bdac",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": "front"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb7aa"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    48,
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 13,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#ece6d8",
+    "roofColour": "#6c8ba0",
+    "vans": 2,
+    "marking": true
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    29,
+    24,
+    22.9
+   ],
+   "params": {
+    "radius": 7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#d8d0bd"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "cars": [
+   {
+    "colour": "#e8e8e8",
+    "at": [
+     -26,
+     -38
+    ]
+   },
+   {
+    "colour": "#2b2f33",
+    "at": [
+     24,
+     -38
+    ]
+   },
+   {
+    "colour": "#9aa0a6",
+    "at": [
+     32,
+     -38
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   125
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; hospital building itself not in OSM, wings and atrium are typical for the city and the brief"
+ }
+}

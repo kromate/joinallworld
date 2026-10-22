@@ -1,0 +1,461 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-way-161612193",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Princess_Nora_bint_Abdul_Rahman_University,_Riyadh.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wasabi Noob",
+   "view": "front",
+   "file": "/tmp/places-evidence/riyadh/nora.jpg",
+   "used": "sandstone stepped hall with punched brown windows, ribbed grey-blue dome on an arcaded drum with gold finial, front pergola with crenellated parapet and square piers, long low wing with small arched windows behind it"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/161612193",
+   "used": "context only: OSM match is the College of Science outline (containing), not the photographed hall, so the real outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 2.49,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     46,
+     34
+    ]
+   },
+   "at": [
+    8,
+    12
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8b98f",
+    "windows": "punched",
+    "windowRatio": 0.13,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#c8a57b",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-upper",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    8,
+    12
+   ],
+   "z0": 10,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dcbf96",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    8,
+    12,
+    15
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      15,
+      0,
+      "#d9bd94"
+     ],
+     [
+      15,
+      6.0
+     ],
+     [
+      15.8,
+      6.1,
+      "#e0c9a3"
+     ],
+     [
+      15.8,
+      6.7
+     ],
+     [
+      15,
+      6.8,
+      "#8d98a3"
+     ],
+     [
+      14.4,
+      8.2
+     ],
+     [
+      12.8,
+      9.8
+     ],
+     [
+      9.8,
+      11.0
+     ],
+     [
+      5.5,
+      11.8
+     ],
+     [
+      1.2,
+      12.2
+     ],
+     [
+      0.5,
+      12.8,
+      "#c9a24a"
+     ],
+     [
+      0.1,
+      15.5
+     ]
+    ],
+    "colour": "#8d98a3",
+    "arcade": {
+     "from": 0.4,
+     "to": 5.8,
+     "count": 44,
+     "width": 0.9,
+     "height": 3.8,
+     "sill": 0.5,
+     "shape": "arch",
+     "depth": 0.35,
+     "innerColour": "#4a3a2c"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -40,
+    6
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9bc94",
+    "windows": "arched",
+    "windowRatio": 0.03,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    42,
+    8
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4b48a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb08a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pergola-beam",
+   "at": [
+    -5,
+    -14
+   ],
+   "params": {
+    "rect": [
+     100,
+     3.6
+    ],
+    "z0": 5.2,
+    "height": 1.4,
+    "colour": "#dcc29b"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 0.6,
+    "run": 1.5,
+    "count": 3,
+    "colour": "#cdb08a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "clipped",
+    "height": 6,
+    "count": 1,
+    "colour": "#5f7f3f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -14,
+     0
+    ],
+    "end": [
+     42,
+     -14,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       2.4
+      ],
+      "z0": 0,
+      "height": 5.2,
+      "colour": "#d6b98f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -14,
+     6.6
+    ],
+    "end": [
+     42,
+     -14,
+     6.6
+    ],
+    "count": 34,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.2
+      ],
+      "z0": 0,
+      "height": 0.9,
+      "colour": "#dcc29b"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    8,
+    12,
+    21.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "count": 14,
+    "radius": 0.01,
+    "facing": "outward",
+    "lod1Step": 4,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.4,
+        0.35
+       ]
+      },
+      "arc": {
+       "centre": [
+        0,
+        0,
+        0
+       ],
+       "radius": 14.8,
+       "radiusY": 6.5,
+       "startDeg": 0,
+       "endDeg": 180,
+       "plane": "xz"
+      },
+      "colour": "#7d8893"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -14,
+     5.2
+    ],
+    "end": [
+     44,
+     -14,
+     5.2
+    ],
+    "count": 24,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       6
+      ],
+      "z0": 0,
+      "height": 0.7,
+      "colour": "#cfae84"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   140,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "dome renders bluer than real grey and ribs are plain bars; pergola reads as stout piers; fountain and rear campus omitted"
+ }
+}

@@ -1,0 +1,405 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "thimphu",
+ "venueId": "thimphu-osm-way-187025042",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Museum,_Paro,_Bhutan_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "see Commons page",
+   "view": "side",
+   "file": "/tmp/places-evidence/thimphu/187025042_1.jpg",
+   "used": "round whitewashed rubble tower with a rust-red band under a deep brown eave, a smaller upper drum with its own red band and eave, gold-roofed cap with pinnacle, small windows high up, timber bridge and gate at the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_museum_of_bhutan,_paro.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Emily Davidow",
+   "view": "front",
+   "file": "/tmp/places-evidence/thimphu/187025042_0.jpg",
+   "used": "white stone wall, red-ochre upper wall and painted timber window and entrance frame colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/187025042",
+   "used": "round plan about 40 x 36 m, matched by name"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#efe9de",
+    "profile": [
+     [
+      19.5,
+      0,
+      "#efe9de"
+     ],
+     [
+      19.36,
+      1.6,
+      "#d9d1bf"
+     ],
+     [
+      19.22,
+      3.2,
+      "#efe9de"
+     ],
+     [
+      19.08,
+      4.8,
+      "#d9d1bf"
+     ],
+     [
+      18.94,
+      6.4,
+      "#efe9de"
+     ],
+     [
+      18.8,
+      8.0,
+      "#d9d1bf"
+     ],
+     [
+      18.8,
+      8.0,
+      "#b0452c"
+     ],
+     [
+      18.5,
+      15.6,
+      "#b0452c"
+     ],
+     [
+      18.5,
+      15.6,
+      "#6b4a35"
+     ],
+     [
+      20.8,
+      15.9,
+      "#5b4030"
+     ],
+     [
+      20.9,
+      16.5,
+      "#5b4030"
+     ],
+     [
+      11.0,
+      17.0,
+      "#5b4030"
+     ],
+     [
+      9.0,
+      17.0,
+      "#b0452c"
+     ],
+     [
+      8.8,
+      19.2,
+      "#b0452c"
+     ],
+     [
+      8.8,
+      19.2,
+      "#efe9de"
+     ],
+     [
+      8.7,
+      22.0,
+      "#efe9de"
+     ],
+     [
+      8.7,
+      22.0,
+      "#6b4a35"
+     ],
+     [
+      11.0,
+      22.4,
+      "#5b4030"
+     ],
+     [
+      11.1,
+      22.9,
+      "#5b4030"
+     ],
+     [
+      4.0,
+      23.6,
+      "#5b4030"
+     ],
+     [
+      3.2,
+      23.6,
+      "#6b4a35"
+     ],
+     [
+      3.2,
+      25.2,
+      "#6b4a35"
+     ],
+     [
+      4.4,
+      25.2,
+      "#c9a23a"
+     ],
+     [
+      4.2,
+      25.7,
+      "#c9a23a"
+     ],
+     [
+      0,
+      26.3,
+      "#d4af37"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pinnacle",
+   "at": [
+    0,
+    0,
+    26.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d4af37",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.7,
+      1.0
+     ],
+     [
+      0.9,
+      1.4
+     ],
+     [
+      0.5,
+      2.2
+     ],
+     [
+      0,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "small-gate-posts",
+   "at": [
+    -27,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 4.0,
+    "colour": "#e8e2d4"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "gate-roof",
+   "at": [
+    -27,
+    -14,
+    4.0
+   ],
+   "params": {
+    "width": 4.4,
+    "depth": 4.4,
+    "height": 0.1,
+    "roof": "hip",
+    "rise": 1.1,
+    "posts": 0,
+    "colour": "#6b4a35",
+    "cap_colour": "#6e6a60"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "bridge",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -18.5,
+      -6,
+      9
+     ],
+     [
+      -26,
+      -10,
+      9
+     ]
+    ],
+    "colour": "#7a4a32"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "forecourt-rail",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -24
+     ],
+     [
+      -12,
+      -28
+     ],
+     [
+      18,
+      -28
+     ],
+     [
+      34,
+      -20
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.25,
+    "kind": "railing",
+    "colour": "#3b3b3b"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -19,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#e8a317"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "red-windows",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 18.7,
+    "startDeg": -165,
+    "endDeg": -15,
+    "count": 11,
+    "facing": "outward",
+    "dz": 10.0,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.8,
+        0.8
+       ],
+       "height": 3.0,
+       "colour": "#4a2218"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -34,
+     -4
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     32,
+     8
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "rubble is only alternating light courses, windows are plain dark boxes and sit low across the white/red join, no timber bridge railing detail, vegetation low-poly"
+ }
+}

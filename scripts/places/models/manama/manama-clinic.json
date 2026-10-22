@@ -1,0 +1,293 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:IHB_Ambulance.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Theihb",
+   "view": "side",
+   "file": "/tmp/places-evidence/manama/ihb.jpg",
+   "used": "cream render walls, 3-storey block with a low brown-edged pitched roof, ribbon windows under deep eaves, tall vertical pilasters on the left wing, curved covered emergency drive-through canopy in beige, paved drive, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/350373165",
+   "used": "overall hospital size only; real 300 m plan too large for the scene clamp, an entrance wing is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 5,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pilaster-wing",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    -34,
+    6
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dab6",
+    "windows": "punched",
+    "windowRatio": 0.03,
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "spacing": 1.2,
+     "depth": 1.2,
+     "colour": "#efe5c6"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a44",
+    "overhang": 1.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    8,
+    4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d5ae",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#d4c496"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 7,
+    "colour": "#7a5a44",
+    "overhang": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    44,
+    -2
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9ddb9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a44",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     50,
+     22
+    ]
+   },
+   "at": [
+    10,
+    28
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1d3ac",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a7",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    2,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 28,
+    "depth": 9,
+    "height": 4.2,
+    "rise": 2.4,
+    "columns": 6,
+    "colour": "#d8c9a2",
+    "edgeColour": "#c7b58a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    30,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 6,
+    "colour": "#e2d6a8",
+    "edgeColour": "#d2c496"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -26,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.6,
+    "bottom": 1.6,
+    "colour": "#f4f4f2",
+    "frameColour": "#c44a2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     56,
+     -22
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -12,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "entrance wing only; no ambulance; foreground acacia/palms simplified and thin; glazing still blue-tinted; pilaster wing reads bluish"
+ }
+}

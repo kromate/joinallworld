@@ -1,0 +1,574 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-way-611956194",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shrine_of_Bibi_Pak_Daman_Front_View..jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mubashirtaqi147",
+   "view": "front",
+   "file": "/tmp/places-evidence/lahore/bibi.jpg",
+   "used": "blue and white Multani tile front, turquoise open three-arch verandah, two tile-faced chhatris with blue domes on the corners, teal flat tin canopy at right, brick paved courtyard, low brick wall with arched niches behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/611956194",
+   "used": "complex size (about 55 x 41 m) for the courtyard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "courtyard",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4694a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4694a"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    12.5,
+    -0.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 5,
+    "depth": 3,
+    "height": 3.4,
+    "form": "gable",
+    "support": "steel",
+    "colour": "#2a8c86",
+    "accent": "#2a8c86",
+    "roof_colour": "#2f8f8a"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    0,
+    16
+   ],
+   "params": {
+    "length": 34,
+    "height": 3.4,
+    "thickness": 0.7,
+    "crenel": true,
+    "pitch": 1.6,
+    "colour": "#a9754f"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    -17,
+    4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 24,
+    "height": 3.4,
+    "thickness": 0.7,
+    "crenel": true,
+    "pitch": 1.6,
+    "colour": "#a9754f"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    17,
+    4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 24,
+    "height": 3.4,
+    "thickness": 0.7,
+    "crenel": true,
+    "pitch": 1.6,
+    "colour": "#a9754f"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    13,
+    5,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#d9772c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrine",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.8,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#1d4a9c",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "colour": "#e8e4d6"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f8f8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frieze",
+   "footprint": {
+    "rect": [
+     18.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    1.0
+   ],
+   "rotDeg": 0,
+   "z0": 7.0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#e8e4d6",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#1d4a9c"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cornice",
+   "footprint": {
+    "rect": [
+     18.6,
+     8.6
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 8.8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a64a8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a64a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recess",
+   "footprint": {
+    "rect": [
+     14.4,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    1.1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#12282a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#12282a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verandah-roof",
+   "footprint": {
+    "rect": [
+     16,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    -0.9
+   ],
+   "rotDeg": 0,
+   "z0": 5.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a8c86",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     14.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -2.6
+   ],
+   "rotDeg": 0,
+   "z0": 4.4,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a8c86",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col0",
+   "footprint": {
+    "rect": [
+     0.55,
+     0.55
+    ]
+   },
+   "at": [
+    -7,
+    -2.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a8c86",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col1",
+   "footprint": {
+    "rect": [
+     0.55,
+     0.55
+    ]
+   },
+   "at": [
+    -2.4,
+    -2.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a8c86",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col2",
+   "footprint": {
+    "rect": [
+     0.55,
+     0.55
+    ]
+   },
+   "at": [
+    2.4,
+    -2.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a8c86",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col3",
+   "footprint": {
+    "rect": [
+     0.55,
+     0.55
+    ]
+   },
+   "at": [
+    7,
+    -2.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a8c86",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier0",
+   "footprint": {
+    "rect": [
+     2.8,
+     2.8
+    ]
+   },
+   "at": [
+    -8.6,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 9.3,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#1d4a9c",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "colour": "#e8e4d6"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d6"
+   }
+  },
+  {
+   "type": "chhatri",
+   "at": [
+    -8.6,
+    1.5,
+    10.1
+   ],
+   "params": {
+    "radius": 1.4,
+    "height": 3.6,
+    "profile": "onion",
+    "colour": "#e8e4d6",
+    "cap_colour": "#3a8fd0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier1",
+   "footprint": {
+    "rect": [
+     2.8,
+     2.8
+    ]
+   },
+   "at": [
+    8.6,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 9.3,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#1d4a9c",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "colour": "#e8e4d6"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d6"
+   }
+  },
+  {
+   "type": "chhatri",
+   "at": [
+    8.6,
+    1.5,
+    10.1
+   ],
+   "params": {
+    "radius": 1.4,
+    "height": 3.6,
+    "profile": "onion",
+    "colour": "#e8e4d6",
+    "cap_colour": "#3a8fd0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   44,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tile is blue with white bands, no floral/geometric pattern; verandah arches are flat-lintel bays not pointed arches; chhatri kiosks simplified; side canopy and courtyard wall niches simplified"
+ }
+}

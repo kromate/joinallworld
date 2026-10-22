@@ -1,0 +1,1317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-relation-908271",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sana%27a3.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Scastellsf",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/sanaa/mosque1.jpg",
+   "used": "two slender square-section minarets with white lime upper stages and small white caps, the small white ablaq-banded Ottoman treasury dome in the courtyard, flat low roofs, brown brick walls with white lime bands and arched windows in the old city, rooftop water tanks"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/908271",
+   "used": "overall extent 77 x 66 m and rotation (courtyard floor slab uses the outline; wings are rotated rectangles on its edges)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 22,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "court-floor",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#bfae8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae8e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "qibla-hall",
+   "footprint": {
+    "rect": [
+     77.3,
+     18.9
+    ]
+   },
+   "at": [
+    -21.09,
+    -10.15
+   ],
+   "rotDeg": -64.3,
+   "z0": 0.5,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a4a3c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.09,
+    "bay": 11,
+    "bands": "#f1ead9",
+    "plinth": 0.9,
+    "trimColour": "#f1ead9"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c9ac",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-wing",
+   "footprint": {
+    "rect": [
+     77.3,
+     9
+    ]
+   },
+   "at": [
+    25.55,
+    12.29
+   ],
+   "rotDeg": -64.3,
+   "z0": 0.5,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a4a3c",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.09,
+    "bay": 9,
+    "bands": "#f1ead9",
+    "plinth": 0.9,
+    "trimColour": "#f1ead9"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c9ac",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     9,
+     37.85
+    ]
+   },
+   "at": [
+    19.22,
+    -28.65
+   ],
+   "rotDeg": -64.3,
+   "z0": 0.5,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a4a3c",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.09,
+    "bay": 9,
+    "bands": "#f1ead9",
+    "plinth": 0.9,
+    "trimColour": "#f1ead9"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4ac",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     9,
+     37.85
+    ]
+   },
+   "at": [
+    -10.39,
+    32.9
+   ],
+   "rotDeg": -64.3,
+   "z0": 0.5,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a4a3c",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.09,
+    "bay": 9,
+    "bands": "#f1ead9",
+    "plinth": 0.9,
+    "trimColour": "#f1ead9"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4ac",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "loft",
+   "id": "min-east-shaft",
+   "at": [
+    2.33,
+    -38.28,
+    0.5
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "colour": "#7a4f3c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 21.0,
+      "rect": [
+       2.6,
+       2.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "min-east-upper",
+   "at": [
+    2.33,
+    -38.28,
+    21.5
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "colour": "#f1ead9",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.7,
+       2.7
+      ]
+     },
+     {
+      "z": 0.3,
+      "rect": [
+       3.8,
+       3.8
+      ]
+     },
+     {
+      "z": 0.9,
+      "rect": [
+       3.8,
+       3.8
+      ]
+     },
+     {
+      "z": 1.1,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       2.1,
+       2.1
+      ]
+     },
+     {
+      "z": 5.7,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     },
+     {
+      "z": 6.1,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     },
+     {
+      "z": 6.3,
+      "rect": [
+       1.9,
+       1.9
+      ]
+     },
+     {
+      "z": 9.0,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "min-east-cap",
+   "at": [
+    2.33,
+    -38.28,
+    30.5
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f8f4ea",
+    "profile": [
+     [
+      1.3,
+      0
+     ],
+     [
+      1.3,
+      0.3
+     ],
+     [
+      1.5,
+      0.9
+     ],
+     [
+      1.3,
+      1.7
+     ],
+     [
+      0.8,
+      2.3
+     ],
+     [
+      0,
+      2.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "min-east-spike",
+   "at": [
+    2.33,
+    -38.28,
+    33.1
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#b9b4a8",
+    "profile": [
+     [
+      0.07,
+      0
+     ],
+     [
+      0.07,
+      2.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "min-west-shaft",
+   "at": [
+    -28.46,
+    25.7,
+    0.5
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "colour": "#7a4f3c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 19.5,
+      "rect": [
+       2.6,
+       2.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "min-west-upper",
+   "at": [
+    -28.46,
+    25.7,
+    20.0
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "colour": "#f1ead9",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.7,
+       2.7
+      ]
+     },
+     {
+      "z": 0.3,
+      "rect": [
+       3.8,
+       3.8
+      ]
+     },
+     {
+      "z": 0.9,
+      "rect": [
+       3.8,
+       3.8
+      ]
+     },
+     {
+      "z": 1.1,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       2.1,
+       2.1
+      ]
+     },
+     {
+      "z": 5.7,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     },
+     {
+      "z": 6.1,
+      "rect": [
+       2.8,
+       2.8
+      ]
+     },
+     {
+      "z": 6.3,
+      "rect": [
+       1.9,
+       1.9
+      ]
+     },
+     {
+      "z": 9.0,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "min-west-cap",
+   "at": [
+    -28.46,
+    25.7,
+    29.0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f8f4ea",
+    "profile": [
+     [
+      1.3,
+      0
+     ],
+     [
+      1.3,
+      0.3
+     ],
+     [
+      1.5,
+      0.9
+     ],
+     [
+      1.3,
+      1.7
+     ],
+     [
+      0.8,
+      2.3
+     ],
+     [
+      0,
+      2.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "min-west-spike",
+   "at": [
+    -28.46,
+    25.7,
+    31.6
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#b9b4a8",
+    "profile": [
+     [
+      0.07,
+      0
+     ],
+     [
+      0.07,
+      2.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "treasury-base",
+   "at": [
+    1.94,
+    9.81
+   ],
+   "rotDeg": -19.299999999999997,
+   "params": {
+    "radius": 3.2,
+    "n": 4,
+    "z0": 0.5,
+    "height": 2.2,
+    "colour": "#7a5443",
+    "topColour": "#7a5443"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "treasury-band",
+   "at": [
+    1.94,
+    9.81
+   ],
+   "rotDeg": -19.299999999999997,
+   "params": {
+    "radius": 3.45,
+    "n": 4,
+    "z0": 2.7,
+    "height": 0.5,
+    "colour": "#f1ead9"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "treasury-dome",
+   "at": [
+    1.94,
+    9.81,
+    3.7
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f2eee4",
+    "profile": [
+     [
+      3.3,
+      0,
+      "#f2eee4"
+     ],
+     [
+      3.7,
+      0.4,
+      "#7a5443"
+     ],
+     [
+      3.7,
+      0.9,
+      "#f2eee4"
+     ],
+     [
+      3.2,
+      2.2,
+      "#e9dcc4"
+     ],
+     [
+      2.2,
+      3.2,
+      "#f2eee4"
+     ],
+     [
+      1.0,
+      3.8,
+      "#f2eee4"
+     ],
+     [
+      0,
+      4.0,
+      "#f2eee4"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "treasury-finial",
+   "at": [
+    1.94,
+    9.81,
+    7.7
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#c9a74a",
+    "profile": [
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      1.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "tank0",
+   "lod": [
+    0
+   ],
+   "at": [
+    -22,
+    12,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank1",
+   "lod": [
+    0
+   ],
+   "at": [
+    -8,
+    22,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank2",
+   "lod": [
+    0
+   ],
+   "at": [
+    10,
+    25,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank3",
+   "lod": [
+    0
+   ],
+   "at": [
+    28,
+    5,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank4",
+   "lod": [
+    0
+   ],
+   "at": [
+    14,
+    -20,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank5",
+   "lod": [
+    0
+   ],
+   "at": [
+    -24,
+    -6,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "qibla-hall-dentil-a",
+   "at": [
+    -21.09,
+    -10.15
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.25
+      ],
+      "height": 0.6,
+      "colour": "#f1ead9"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -37.65,
+     9.569999999999999,
+     8.5
+    ],
+    "end": [
+     37.65,
+     9.569999999999999,
+     8.5
+    ],
+    "count": 19,
+    "lod1Step": 2,
+    "lod2Step": 47
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "qibla-hall-dentil-b",
+   "at": [
+    -21.09,
+    -10.15
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.25
+      ],
+      "height": 0.6,
+      "colour": "#f1ead9"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -37.65,
+     -9.569999999999999,
+     8.5
+    ],
+    "end": [
+     37.65,
+     -9.569999999999999,
+     8.5
+    ],
+    "count": 19,
+    "lod1Step": 2,
+    "lod2Step": 47
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "north-wing-dentil-a",
+   "at": [
+    25.55,
+    12.29
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.25
+      ],
+      "height": 0.6,
+      "colour": "#f1ead9"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -37.65,
+     4.62,
+     6.0
+    ],
+    "end": [
+     37.65,
+     4.62,
+     6.0
+    ],
+    "count": 19,
+    "lod1Step": 2,
+    "lod2Step": 47
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "east-wing-dentil-a",
+   "at": [
+    19.22,
+    -28.65
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.5
+      ],
+      "height": 0.6,
+      "colour": "#f1ead9"
+     }
+    },
+    "mode": "line",
+    "start": [
+     4.62,
+     -17,
+     6.0
+    ],
+    "end": [
+     4.62,
+     17,
+     6.0
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 22
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "west-wing-dentil-a",
+   "at": [
+    -10.39,
+    32.9
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.5
+      ],
+      "height": 0.6,
+      "colour": "#f1ead9"
+     }
+    },
+    "mode": "line",
+    "start": [
+     4.62,
+     -17,
+     6.0
+    ],
+    "end": [
+     4.62,
+     17,
+     6.0
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 22
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "north-wing-merlon-a",
+   "at": [
+    25.55,
+    12.29
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 0.6,
+      "colour": "#7a5443",
+      "topColour": "#f1ead9"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -37,
+     3.9,
+     7.0
+    ],
+    "end": [
+     37,
+     3.9,
+     7.0
+    ],
+    "count": 24,
+    "lod2Step": 38
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "north-wing-merlon-b",
+   "at": [
+    25.55,
+    12.29
+   ],
+   "rotDeg": -64.3,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "height": 0.6,
+      "colour": "#7a5443",
+      "topColour": "#f1ead9"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -37,
+     -3.9,
+     7.0
+    ],
+    "end": [
+     37,
+     -3.9,
+     7.0
+    ],
+    "count": 24,
+    "lod2Step": 38
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "tank6",
+   "lod": [
+    0
+   ],
+   "at": [
+    -15,
+    -14,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank7",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -8,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank8",
+   "lod": [
+    0
+   ],
+   "at": [
+    20,
+    12,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank9",
+   "lod": [
+    0
+   ],
+   "at": [
+    -30,
+    8,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank10",
+   "lod": [
+    0
+   ],
+   "at": [
+    6,
+    16,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank11",
+   "lod": [
+    0
+   ],
+   "at": [
+    22,
+    -12,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank12",
+   "lod": [
+    0
+   ],
+   "at": [
+    -4,
+    30,
+    7.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#e8e6df",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.7
+     ],
+     [
+      0,
+      1.8
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   100,
+   95
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a neighbouring-rooftop view so only minarets, treasury dome, flat roofs and brick tone are comparable; lime dentil friezes, brick/lime minarets with lantern stage and ablaq treasury dome added, but window fanlights are plain arched cuts, wing parapets dropped for triangle budget, minaret heights unsourced, roof renders greyish"
+ }
+}

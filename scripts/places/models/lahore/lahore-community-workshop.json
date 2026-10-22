@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/726040761",
+   "used": "real stepped outline of University College Lahore building (76 x 29 m, bearing 113)"
+  },
+  {
+   "kind": "text",
+   "url": "brief",
+   "used": "three-storey brick-and-render academic block with arched verandas; no photo found on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b05a40",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.2,
+      "opening": 0.65,
+      "storeys": 1,
+      "depth": 0.7,
+      "colour": "#e2d5b6",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#e2d5b6",
+      "height": 0.3,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 11
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     9,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d5b6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 4,
+    "height": 4,
+    "colour": "#e2d5b6",
+    "edgeColour": "#8e8a82",
+    "columns": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-tank",
+   "at": [
+    18,
+    6,
+    13
+   ],
+   "params": {
+    "radius": 1.8,
+    "n": 12,
+    "height": 2.2,
+    "colour": "#8e8a82"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-head",
+   "at": [
+    -22,
+    2,
+    13
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 3,
+    "colour": "#c7b898"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -25
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     15
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; outline is real OSM but verandas, brick tone and storey heights are typed from the brief."
+ }
+}

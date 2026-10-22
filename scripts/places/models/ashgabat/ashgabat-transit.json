@@ -1,0 +1,346 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ashgabat",
+ "venueId": "ashgabat-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1265723166",
+   "used": "real station outline 110 x 21 m with rounded ends (bearing about 124 deg)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gleisanlagen_Bahnhof_Aschgabat_2015.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bohndorf Film-Team",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/ashgabat/station.jpg",
+   "used": "track side only: blue and white livery, ballast and platform; the building is not in the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo of the station building was found; white marble, grey bands, central dome with spire, columned entrance and blue canopies are from the brief, and which long side is the front is assumed."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "glassColour": "#6f8fa8",
+    "plinth": 1.0,
+    "cornice": true,
+    "bay": 5,
+    "bands": "#6e7075"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6fb0",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#f4f2ec",
+    "profile": [
+     [
+      7,
+      0,
+      "#f4f2ec"
+     ],
+     [
+      7,
+      3.5
+     ],
+     [
+      7.8,
+      3.6,
+      "#6e7075"
+     ],
+     [
+      7.8,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    16.2
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#cfd8e0",
+    "profile": [
+     [
+      7,
+      0
+     ],
+     [
+      6.5,
+      2.6
+     ],
+     [
+      5.2,
+      4.7
+     ],
+     [
+      3.2,
+      6.2
+     ],
+     [
+      1.4,
+      7
+     ],
+     [
+      0,
+      7.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    16.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#cfd8e0",
+    "profile": [
+     [
+      7,
+      0
+     ],
+     [
+      3.2,
+      6.2
+     ],
+     [
+      0,
+      7.2
+     ]
+    ]
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    23.3
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9a227",
+    "profile": [
+     [
+      1.0,
+      0
+     ],
+     [
+      0.7,
+      1.5
+     ],
+     [
+      0.45,
+      6
+     ],
+     [
+      0.12,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    6,
+    4
+   ],
+   "rotDeg": -31,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e6e1d4",
+    "rise": 2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "col",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 0,
+      "height": 9,
+      "colour": "#e6e1d4",
+      "topColour": "#e6e1d4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3,
+     -3
+    ],
+    "end": [
+     15,
+     7
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    6,
+    12
+   ],
+   "rotDeg": -31,
+   "params": {
+    "rect": [
+     26,
+     3
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#cfcac0",
+    "topColour": "#cfcac0"
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "rotDeg": -31,
+   "params": {
+    "width": 36,
+    "depth": 9,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    10,
+    -48,
+    0
+   ],
+   "rotDeg": -31,
+   "params": {
+    "width": 36,
+    "depth": 9,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "rail-track",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -42,
+    0
+   ],
+   "rotDeg": -31,
+   "params": {
+    "length": 70,
+    "tracks": 3,
+    "spacing": 5.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     28
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ }
+}

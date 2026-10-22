@@ -1,0 +1,3033 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-node-405093878",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:World_war_2_memorial,_victory_park_(2)_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Zack Knowles",
+   "view": "front",
+   "file": "/tmp/places-evidence/dushanbe/vp2.jpg",
+   "used": "memorial wall layout: long ribbed black stone walls, white stone stele panels, taller central black panel on a pink granite base, wide stair between lawn terraces, paved plaza, pines behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:World_war_2_memorial,_victory_park_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Zack Knowles",
+   "view": "detail",
+   "file": "/tmp/places-evidence/dushanbe/vp1.jpg",
+   "used": "central panel: black stone with raised blank lettering, pink granite base band, dark plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/171373568",
+   "used": "park extent (108 x 80 m); modelled as a memorial front in the plaza, not the full polygon"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza-slab",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     18
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#8f8f8c",
+    "material": "paving"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-left",
+   "at": [
+    -25.5,
+    -6.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     23,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#cfcdc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "kerb-right",
+   "at": [
+    21,
+    -6.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#cfcdc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    17,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     22
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#b9b6ae",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stepc0",
+   "at": [
+    0,
+    5.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr0",
+   "at": [
+    36,
+    5.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc1",
+   "at": [
+    0,
+    5.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr1",
+   "at": [
+    36,
+    5.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc2",
+   "at": [
+    0,
+    4.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr2",
+   "at": [
+    36,
+    4.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc3",
+   "at": [
+    0,
+    4.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr3",
+   "at": [
+    36,
+    4.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc4",
+   "at": [
+    0,
+    3.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr4",
+   "at": [
+    36,
+    3.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc5",
+   "at": [
+    0,
+    3.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr5",
+   "at": [
+    36,
+    3.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc6",
+   "at": [
+    0,
+    2.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr6",
+   "at": [
+    36,
+    2.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc7",
+   "at": [
+    0,
+    2.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr7",
+   "at": [
+    36,
+    2.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc8",
+   "at": [
+    0,
+    1.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr8",
+   "at": [
+    36,
+    1.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc9",
+   "at": [
+    0,
+    1.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr9",
+   "at": [
+    36,
+    1.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc10",
+   "at": [
+    0,
+    0.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr10",
+   "at": [
+    36,
+    0.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepc11",
+   "at": [
+    0,
+    0.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stepr11",
+   "at": [
+    36,
+    0.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flame-plinth",
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     2.5
+    ],
+    "z0": 2.4,
+    "height": 0.4,
+    "colour": "#3a3a3c"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "lawn-left",
+   "at": [
+    -25.5,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8a8a5a",
+    "material": "grass",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       23,
+       12
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       23,
+       0.5
+      ],
+      "cy": 5.75
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "lawn-right",
+   "at": [
+    21,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8a8a5a",
+    "material": "grass",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       14,
+       12
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       14,
+       0.5
+      ],
+      "cy": 5.75
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-left",
+   "at": [
+    -27.5,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     29,
+     2
+    ],
+    "z0": 2.4,
+    "height": 5.6,
+    "colour": "#26282b",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 0.4,
+      "depth": 0.1,
+      "width": 0.2,
+      "colour": "#1d1f22",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-right",
+   "at": [
+    27.5,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     29,
+     2
+    ],
+    "z0": 2.4,
+    "height": 5.6,
+    "colour": "#26282b",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 0.4,
+      "depth": 0.1,
+      "width": 0.2,
+      "colour": "#1d1f22",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "return-1",
+   "at": [
+    42.5,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3
+    ],
+    "z0": 2.4,
+    "height": 5.5,
+    "colour": "#2a2c2f",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 0.4,
+      "depth": 0.1,
+      "width": 0.2,
+      "colour": "#1d1f22",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "return-2",
+   "at": [
+    45.5,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3.5
+    ],
+    "z0": 2.4,
+    "height": 5.5,
+    "colour": "#2a2c2f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "block-left",
+   "at": [
+    -8.6,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     3
+    ],
+    "z0": 2.4,
+    "height": 5.4,
+    "colour": "#2c2e31",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 0.4,
+      "depth": 0.1,
+      "width": 0.2,
+      "colour": "#1d1f22",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-right",
+   "at": [
+    8.6,
+    20,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     3
+    ],
+    "z0": 2.4,
+    "height": 5.4,
+    "colour": "#2c2e31",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 0.4,
+      "depth": 0.1,
+      "width": 0.2,
+      "colour": "#1d1f22",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "central-panel",
+   "at": [
+    0,
+    19.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.6,
+     2.4
+    ],
+    "z0": 3.7,
+    "height": 3.2,
+    "colour": "#34363a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pink-base",
+   "at": [
+    0,
+    19.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.8,
+     2.6
+    ],
+    "z0": 2.4,
+    "height": 1.3,
+    "colour": "#c08072",
+    "material": "stone-ashlar"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "letters-1",
+   "at": [
+    0,
+    17.92,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.1
+    ],
+    "z0": 5.6,
+    "height": 0.6,
+    "colour": "#c9c9cc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "letters-2",
+   "at": [
+    0,
+    17.92,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     0.1
+    ],
+    "z0": 4.5,
+    "height": 0.6,
+    "colour": "#c9c9cc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stele-left",
+   "at": [
+    -12.3,
+    18.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.6
+    ],
+    "z0": 3.2,
+    "height": 3.5,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stele-right",
+   "at": [
+    12.3,
+    18.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.6
+    ],
+    "z0": 3.2,
+    "height": 3.5,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "text-left",
+   "at": [
+    -12.3,
+    18.35,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.08
+    ],
+    "z0": 3.6,
+    "height": 2.7,
+    "colour": "#bdb9ae"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "text-right",
+   "at": [
+    12.3,
+    18.35,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.08
+    ],
+    "z0": 3.6,
+    "height": 2.7,
+    "colour": "#bdb9ae"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "retain-left",
+   "at": [
+    -14,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -0.2,
+      -6
+     ],
+     [
+      0.2,
+      -6
+     ],
+     [
+      0.2,
+      6
+     ],
+     [
+      -0.2,
+      6
+     ]
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "topScale": 1,
+    "colour": "#cfcdc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "retain-right",
+   "at": [
+    14,
+    0.0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -0.2,
+      -6
+     ],
+     [
+      0.2,
+      -6
+     ],
+     [
+      0.2,
+      6
+     ],
+     [
+      -0.2,
+      6
+     ]
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#cfcdc6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "num0",
+   "at": [
+    -35.5,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 1.85,
+    "height": 0.3,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "num1",
+   "at": [
+    -33.2,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 1.85,
+    "height": 0.3,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "num2",
+   "at": [
+    -30.9,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 1.85,
+    "height": 0.3,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "num3",
+   "at": [
+    -28.6,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 1.85,
+    "height": 0.3,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "num4",
+   "at": [
+    -26.3,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.5
+    ],
+    "z0": 1.85,
+    "height": 0.3,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "num5",
+   "at": [
+    -24.0,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 1.85,
+    "height": 0.3,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "num6",
+   "at": [
+    -21.7,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 1.85,
+    "height": 0.3,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "num7",
+   "at": [
+    -19.4,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 1.85,
+    "height": 0.3,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "num8",
+   "at": [
+    -17.1,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 1.85,
+    "height": 0.3,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-r-lod1",
+   "at": [
+    36,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     6
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#e2dfd8"
+   },
+   "lod": [
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "numerals-strip",
+   "at": [
+    -25.5,
+    -5.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     23,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.45,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk1",
+   "at": [
+    -41.8,
+    26.84,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.33,
+      "circle": 3.59
+     },
+     {
+      "z": 10.66,
+      "circle": 2.51
+     },
+     {
+      "z": 15.1,
+      "circle": 1.26
+     },
+     {
+      "z": 17.77,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk2",
+   "at": [
+    -37.6,
+    26.89,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.23,
+      "circle": 3.37
+     },
+     {
+      "z": 8.47,
+      "circle": 2.36
+     },
+     {
+      "z": 12.0,
+      "circle": 1.18
+     },
+     {
+      "z": 14.12,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk3",
+   "at": [
+    -33.4,
+    25.23,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.98,
+      "circle": 3.72
+     },
+     {
+      "z": 9.96,
+      "circle": 2.6
+     },
+     {
+      "z": 14.11,
+      "circle": 1.3
+     },
+     {
+      "z": 16.6,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk4",
+   "at": [
+    -29.2,
+    26.09,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.76,
+      "circle": 3.2
+     },
+     {
+      "z": 9.53,
+      "circle": 2.24
+     },
+     {
+      "z": 13.49,
+      "circle": 1.12
+     },
+     {
+      "z": 15.88,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk5",
+   "at": [
+    -25.0,
+    25.43,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.89,
+      "circle": 3.01
+     },
+     {
+      "z": 9.78,
+      "circle": 2.11
+     },
+     {
+      "z": 13.85,
+      "circle": 1.05
+     },
+     {
+      "z": 16.3,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk6",
+   "at": [
+    -20.8,
+    26.53,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.54,
+      "circle": 3.73
+     },
+     {
+      "z": 9.07,
+      "circle": 2.61
+     },
+     {
+      "z": 12.85,
+      "circle": 1.31
+     },
+     {
+      "z": 15.12,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk7",
+   "at": [
+    -16.6,
+    25.28,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.39,
+      "circle": 3.64
+     },
+     {
+      "z": 8.78,
+      "circle": 2.55
+     },
+     {
+      "z": 12.44,
+      "circle": 1.27
+     },
+     {
+      "z": 14.64,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk8",
+   "at": [
+    -12.4,
+    25.0,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.94,
+      "circle": 3.1
+     },
+     {
+      "z": 9.88,
+      "circle": 2.17
+     },
+     {
+      "z": 14.0,
+      "circle": 1.09
+     },
+     {
+      "z": 16.47,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk9",
+   "at": [
+    -8.2,
+    25.43,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.25,
+      "circle": 3.17
+     },
+     {
+      "z": 10.49,
+      "circle": 2.22
+     },
+     {
+      "z": 14.86,
+      "circle": 1.11
+     },
+     {
+      "z": 17.49,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk10",
+   "at": [
+    -4.0,
+    25.58,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.38,
+      "circle": 3.7
+     },
+     {
+      "z": 10.76,
+      "circle": 2.59
+     },
+     {
+      "z": 15.24,
+      "circle": 1.29
+     },
+     {
+      "z": 17.93,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk11",
+   "at": [
+    0.2,
+    26.36,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.35,
+      "circle": 3.43
+     },
+     {
+      "z": 10.71,
+      "circle": 2.4
+     },
+     {
+      "z": 15.17,
+      "circle": 1.2
+     },
+     {
+      "z": 17.85,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk12",
+   "at": [
+    4.4,
+    26.38,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.45,
+      "circle": 3.75
+     },
+     {
+      "z": 8.89,
+      "circle": 2.63
+     },
+     {
+      "z": 12.6,
+      "circle": 1.31
+     },
+     {
+      "z": 14.82,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk13",
+   "at": [
+    8.6,
+    25.6,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.36,
+      "circle": 3.71
+     },
+     {
+      "z": 10.72,
+      "circle": 2.6
+     },
+     {
+      "z": 15.19,
+      "circle": 1.3
+     },
+     {
+      "z": 17.87,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk14",
+   "at": [
+    12.8,
+    25.29,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.63,
+      "circle": 3.13
+     },
+     {
+      "z": 9.27,
+      "circle": 2.19
+     },
+     {
+      "z": 13.13,
+      "circle": 1.1
+     },
+     {
+      "z": 15.44,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk15",
+   "at": [
+    17.0,
+    26.21,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.28,
+      "circle": 3.24
+     },
+     {
+      "z": 8.56,
+      "circle": 2.27
+     },
+     {
+      "z": 12.12,
+      "circle": 1.13
+     },
+     {
+      "z": 14.26,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk16",
+   "at": [
+    21.2,
+    25.68,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.2,
+      "circle": 3.54
+     },
+     {
+      "z": 8.41,
+      "circle": 2.48
+     },
+     {
+      "z": 11.91,
+      "circle": 1.24
+     },
+     {
+      "z": 14.01,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk17",
+   "at": [
+    25.4,
+    25.96,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.57,
+      "circle": 3.65
+     },
+     {
+      "z": 9.14,
+      "circle": 2.56
+     },
+     {
+      "z": 12.95,
+      "circle": 1.28
+     },
+     {
+      "z": 15.24,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk18",
+   "at": [
+    29.6,
+    26.41,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.58,
+      "circle": 3.38
+     },
+     {
+      "z": 9.16,
+      "circle": 2.37
+     },
+     {
+      "z": 12.97,
+      "circle": 1.18
+     },
+     {
+      "z": 15.26,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk19",
+   "at": [
+    33.8,
+    25.05,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.27,
+      "circle": 3.78
+     },
+     {
+      "z": 8.54,
+      "circle": 2.65
+     },
+     {
+      "z": 12.09,
+      "circle": 1.32
+     },
+     {
+      "z": 14.23,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk20",
+   "at": [
+    38.0,
+    25.04,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.1,
+      "circle": 3.68
+     },
+     {
+      "z": 10.2,
+      "circle": 2.57
+     },
+     {
+      "z": 14.45,
+      "circle": 1.29
+     },
+     {
+      "z": 17.0,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk21",
+   "at": [
+    42.2,
+    26.16,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.15,
+      "circle": 3.29
+     },
+     {
+      "z": 10.29,
+      "circle": 2.31
+     },
+     {
+      "z": 14.58,
+      "circle": 1.15
+     },
+     {
+      "z": 17.15,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk23",
+   "at": [
+    -39.8,
+    31.01,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.95,
+      "circle": 3.16
+     },
+     {
+      "z": 11.89,
+      "circle": 2.21
+     },
+     {
+      "z": 16.85,
+      "circle": 1.11
+     },
+     {
+      "z": 19.82,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk24",
+   "at": [
+    -35.6,
+    30.19,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.92,
+      "circle": 3.75
+     },
+     {
+      "z": 11.83,
+      "circle": 2.63
+     },
+     {
+      "z": 16.76,
+      "circle": 1.31
+     },
+     {
+      "z": 19.72,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk25",
+   "at": [
+    -31.4,
+    31.05,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.23,
+      "circle": 3.42
+     },
+     {
+      "z": 10.45,
+      "circle": 2.39
+     },
+     {
+      "z": 14.81,
+      "circle": 1.2
+     },
+     {
+      "z": 17.42,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk26",
+   "at": [
+    -27.2,
+    31.09,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.93,
+      "circle": 3.6
+     },
+     {
+      "z": 9.86,
+      "circle": 2.52
+     },
+     {
+      "z": 13.97,
+      "circle": 1.26
+     },
+     {
+      "z": 16.43,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk27",
+   "at": [
+    -23.0,
+    31.39,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.83,
+      "circle": 3.03
+     },
+     {
+      "z": 11.66,
+      "circle": 2.12
+     },
+     {
+      "z": 16.52,
+      "circle": 1.06
+     },
+     {
+      "z": 19.44,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk28",
+   "at": [
+    -18.8,
+    30.72,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.91,
+      "circle": 3.27
+     },
+     {
+      "z": 9.82,
+      "circle": 2.29
+     },
+     {
+      "z": 13.91,
+      "circle": 1.15
+     },
+     {
+      "z": 16.36,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk29",
+   "at": [
+    -14.6,
+    31.35,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.9,
+      "circle": 3.27
+     },
+     {
+      "z": 11.8,
+      "circle": 2.29
+     },
+     {
+      "z": 16.72,
+      "circle": 1.15
+     },
+     {
+      "z": 19.67,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk30",
+   "at": [
+    -10.4,
+    30.13,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.45,
+      "circle": 3.25
+     },
+     {
+      "z": 10.91,
+      "circle": 2.27
+     },
+     {
+      "z": 15.45,
+      "circle": 1.14
+     },
+     {
+      "z": 18.18,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk31",
+   "at": [
+    -6.2,
+    29.8,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.01,
+      "circle": 3.06
+     },
+     {
+      "z": 10.03,
+      "circle": 2.14
+     },
+     {
+      "z": 14.2,
+      "circle": 1.07
+     },
+     {
+      "z": 16.71,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk32",
+   "at": [
+    -2.0,
+    29.82,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.63,
+      "circle": 3.8
+     },
+     {
+      "z": 11.25,
+      "circle": 2.66
+     },
+     {
+      "z": 15.94,
+      "circle": 1.33
+     },
+     {
+      "z": 18.76,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk33",
+   "at": [
+    2.2,
+    30.57,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.86,
+      "circle": 3.79
+     },
+     {
+      "z": 9.72,
+      "circle": 2.65
+     },
+     {
+      "z": 13.77,
+      "circle": 1.33
+     },
+     {
+      "z": 16.19,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk34",
+   "at": [
+    6.4,
+    30.69,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.29,
+      "circle": 3.19
+     },
+     {
+      "z": 10.57,
+      "circle": 2.23
+     },
+     {
+      "z": 14.98,
+      "circle": 1.12
+     },
+     {
+      "z": 17.62,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk35",
+   "at": [
+    10.6,
+    30.34,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.79,
+      "circle": 3.36
+     },
+     {
+      "z": 11.58,
+      "circle": 2.36
+     },
+     {
+      "z": 16.41,
+      "circle": 1.18
+     },
+     {
+      "z": 19.31,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk36",
+   "at": [
+    14.8,
+    29.57,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.87,
+      "circle": 3.73
+     },
+     {
+      "z": 9.73,
+      "circle": 2.61
+     },
+     {
+      "z": 13.79,
+      "circle": 1.31
+     },
+     {
+      "z": 16.22,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk37",
+   "at": [
+    19.0,
+    29.76,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.39,
+      "circle": 3.67
+     },
+     {
+      "z": 10.78,
+      "circle": 2.57
+     },
+     {
+      "z": 15.28,
+      "circle": 1.28
+     },
+     {
+      "z": 17.97,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk38",
+   "at": [
+    23.2,
+    30.76,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.68,
+      "circle": 3.76
+     },
+     {
+      "z": 11.36,
+      "circle": 2.63
+     },
+     {
+      "z": 16.09,
+      "circle": 1.32
+     },
+     {
+      "z": 18.93,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk39",
+   "at": [
+    27.4,
+    30.37,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.75,
+      "circle": 3.09
+     },
+     {
+      "z": 11.49,
+      "circle": 2.16
+     },
+     {
+      "z": 16.28,
+      "circle": 1.08
+     },
+     {
+      "z": 19.15,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk40",
+   "at": [
+    31.6,
+    30.09,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 4.98,
+      "circle": 3.68
+     },
+     {
+      "z": 9.96,
+      "circle": 2.57
+     },
+     {
+      "z": 14.11,
+      "circle": 1.29
+     },
+     {
+      "z": 16.6,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk41",
+   "at": [
+    35.8,
+    31.2,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.34,
+      "circle": 3.8
+     },
+     {
+      "z": 10.69,
+      "circle": 2.66
+     },
+     {
+      "z": 15.14,
+      "circle": 1.33
+     },
+     {
+      "z": 17.81,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk42",
+   "at": [
+    40.0,
+    30.48,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.97,
+      "circle": 3.36
+     },
+     {
+      "z": 11.94,
+      "circle": 2.35
+     },
+     {
+      "z": 16.92,
+      "circle": 1.18
+     },
+     {
+      "z": 19.9,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "pinebk43",
+   "at": [
+    44.2,
+    30.08,
+    0
+   ],
+   "params": {
+    "colour": "#3f5a3a",
+    "round": 8,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 5.68,
+      "circle": 3.38
+     },
+     {
+      "z": 11.35,
+      "circle": 2.37
+     },
+     {
+      "z": 16.08,
+      "circle": 1.18
+     },
+     {
+      "z": 18.92,
+      "circle": 0.15
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   60
+  ],
+  "trees": 0
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "critic fixes applied (walls 5.6 m and near full width, continuous 14-20 m pine backdrop, proud white steles, dry lawns, numerals strip); render camera higher than photo, stair treads plain, numerals blocks not glyphs, pines low-poly cones"
+ }
+}

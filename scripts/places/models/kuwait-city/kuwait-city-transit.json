@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small bus terminal, canopied bays beside a low render terminal building, blank signage board; Hassawi is a district with no OSM building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    -12,
+    6
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5dac1",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    8,
+    6
+   ],
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7d8f99",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9387",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 7,
+    "height": 4.2,
+    "roof_colour": "#9aa6ad",
+    "wall_colour": "#9a9387"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "kind": "coach",
+    "density": 0.7,
+    "colours": [
+     "#f1f1ee",
+     "#e8e0cf"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -24,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "colour": "#7d8f99"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spacing": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -32,
+     14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence at all; typical Kuwaiti bus hub guess; checked render for massing/budget only (no photo to compare)"
+ }
+}

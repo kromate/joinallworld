@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sanaa",
+ "venueId": "sanaa-osm-way-827493201",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/827493201",
+   "used": "real irregular campus building outline (about 94 x 76 m), name match to Queen Arwa University"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q7270228",
+   "used": "private university founded 1996; brief: four storeys, render walls, blue glass bands, curved glazed corner"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.2
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d2",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "glassColour": "#5e8197",
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": {
+     "colour": "#5e8197",
+     "height": 0.9
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a958c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-corner",
+   "at": [
+    28,
+    5
+   ],
+   "params": {
+    "radius": 7,
+    "n": 14,
+    "z0": 0,
+    "height": 16,
+    "colour": "#5e8197",
+    "windows": "curtain",
+    "glassColour": "#4f7a94",
+    "topColour": "#9a958c"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entry-canopy",
+   "at": [
+    28,
+    -4,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 5,
+    "height": 4.2,
+    "columns": 2,
+    "colour": "#d9d3c6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -70,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 2.2,
+    "pillarEvery": 6,
+    "colour": "#d8cfba"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; footprint outline is real but facade, glazed corner position and storey count come from the brief only."
+ }
+}

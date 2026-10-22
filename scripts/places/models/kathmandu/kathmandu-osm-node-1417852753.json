@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-osm-node-1417852753",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/230307374",
+   "used": "matched building=hospital outline (18 x 9 m); nearby Commons photos show other Panauti buildings, not this clinic, so storeys, red sign board and ambulance bay come from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee6d6",
+    "glassColour": "#52657a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#b43a2f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.8,
+    "bottom": 3.2,
+    "colour": "#b43a2f",
+    "frameColour": "#f6f3ec",
+    "posts": true
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -4,
+    2,
+    8
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 0.9,
+    "tankHeight": 1.4,
+    "legHeight": 0.8,
+    "legs": 4,
+    "colour": "#2d3a3f"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -6,
+    5.2
+   ],
+   "params": {
+    "size": 2.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -6
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     8
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this clinic exists; form, colours and signage are typed from the brief; frontage side relative to the OSM rotation is a guess."
+ }
+}

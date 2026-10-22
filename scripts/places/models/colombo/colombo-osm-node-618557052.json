@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-osm-node-618557052",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q20047300",
+   "used": "Western Hospital, private hospital in Colombo (inception 1984); the matched OSM building is a 61 m2 outbuilding so it is not used; no photo found, so a modest three-storey ribbon-windowed block with ambulance bay and entrance canopy is typed from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4f7f9a",
+    "plinth": 0.4,
+    "bands": "#4f7f9a",
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wing",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    -7
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4cc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#4f7f9a",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    17,
+    3
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    9,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 2,
+    "vans": 1,
+    "colour": "#eceae2",
+    "roofColour": "#4f7f9a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -17,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 2.2,
+    "colour": "#4f7f9a",
+    "frameColour": "#b8bcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM match is a 61 m2 outbuilding so a typical small private hospital block is assumed (text only)"
+ }
+}

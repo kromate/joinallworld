@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-osm-relation-13338453",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/13338453",
+   "used": "real building outline (135 x 106 m, 35-vertex multi-wing plan) as the main hospital block; no photo of this building exists in the evidence, so storeys, white render with blue-grey glazing bands, flat roof and plant come from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "scale": 0.75,
+    "simplify": 4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe8",
+    "windows": "ribbon",
+    "windowRatio": 0.26,
+    "plinth": 0.4,
+    "bay": 7.5,
+    "bands": "#6f8fa8",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 19,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6d0c2",
+    "windows": "none",
+    "windowRatio": 0.26,
+    "plinth": 0.4,
+    "bay": 7.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a398"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    22,
+    -47
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8fa8",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe8",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -20,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    22,
+    -54,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 7,
+    "height": 5.2,
+    "columns": 4,
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    0,
+    -64,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -62
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -58
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: outline only; storey count, glazing bands, canopy and plant volume are typed from the brief"
+ }
+}

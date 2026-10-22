@@ -1,0 +1,337 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-osm-node-13128408649",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: walled farm estate, olive trees, low stone farmhouse, tanks (Arabic-named OSM node, no outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "farmhouse",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -18,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8c9a8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d867a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b9b2a3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d867a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    16,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3,
+    "roof": "hip",
+    "rise": 1.2,
+    "colour": "#d8c9a8",
+    "cap_colour": "#8d867a"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 3.5,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    2,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 3.5,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -55,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 2.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#cfc09e",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      110,
+      0
+     ],
+     [
+      110,
+      76
+     ],
+     [
+      0,
+      76
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.8,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#cfc09e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     14
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     26
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     38
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -27,
+     14
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -27,
+     26
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -27,
+     38
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     14
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     26
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     38
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     14
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     26
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     38
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     27,
+     14
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     27,
+     26
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     27,
+     38
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     14
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     26
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     38
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Nothing found on the farm; layout, wall and olive rows typed from brief."
+ }
+}

@@ -1,0 +1,416 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Antonine.jpg",
+   "licence": "see Commons page",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/beirut/uni3.jpg",
+   "used": "long five-storey cream-render block with terracotta brick spandrel bands between ribbon-window rows, taller brick stair/lab tower at right, concrete canopy sweep, stepped terraces, blank name board on the top storey"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uantonine.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Christianfares",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/beirut/uni1.jpg",
+   "used": "cream render towers with punched windows and brick-red balcony strips, orange tile-roofed pavilion, fountain plaza with red paved curves, hillside setting with palms and pines"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1257223554",
+   "used": "campus extent only (279 x 268 m); one representative block modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     70,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e2dac6",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b4694c"
+      ],
+      "height": 0.9
+     }
+    ],
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-wing",
+   "footprint": {
+    "rect": [
+     13,
+     16
+    ]
+   },
+   "at": [
+    43,
+    7
+   ],
+   "height": 31,
+   "storeys": 7,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9684b",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lower-wing",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    -48,
+    3
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e2d0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "setback",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "z0": 21,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2dac6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "board",
+   "at": [
+    -14,
+    -7.8,
+    15
+   ],
+   "params": {
+    "rect": [
+     20,
+     0.5
+    ],
+    "height": 3.2,
+    "colour": "#e3dccb",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "id": "canopy-sweep",
+   "params": {
+    "section": {
+     "rect": [
+      8,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      -46,
+      -6,
+      6.5
+     ],
+     [
+      -34,
+      -9,
+      9.5
+     ],
+     [
+      -18,
+      -14,
+      12.5
+     ],
+     [
+      -2,
+      -21,
+      12.0
+     ],
+     [
+      8,
+      -26,
+      9.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#55595e"
+   }
+  },
+  {
+   "type": "core/stand",
+   "id": "terrace-steps",
+   "at": [
+    22,
+    -9,
+    0
+   ],
+   "params": {
+    "start": [
+     40,
+     0
+    ],
+    "end": [
+     0,
+     0
+    ],
+    "rows": 16,
+    "rise": 0.45,
+    "run": 0.8,
+    "concreteColour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "mosque-domed/fountain",
+   "at": [
+    -22,
+    -26,
+    0
+   ],
+   "params": {
+    "radius": 3.5
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "width": 34,
+    "infield": false,
+    "pitch": false,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "setback-left",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "z0": 21,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e2dac6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c3b4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -40,
+    -9
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9684b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4b36",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "blue-infield",
+   "at": [
+    0,
+    -36,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     62,
+     20
+    ],
+    "height": 0.05,
+    "colour": "#3f7fb5",
+    "material": "plain-render"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -12
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     30,
+     -14
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Thinner terracotta bands, 31 m brick stair/lab tower, 16-row terrace under the block, larger curved canopy arch and a wider red-brown track with blue infield; track lane markings and curve are simplified. Evidence is Antonine University campus, a stand-in building, so the model is generic institutional and not a literal workshop."
+ }
+}

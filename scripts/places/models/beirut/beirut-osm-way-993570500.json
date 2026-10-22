@@ -1,0 +1,586 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-osm-way-993570500",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rafik_Hariri_University_Hospital_fused.jpg",
+   "licence": "CC0",
+   "author": "Elie plus",
+   "view": "street",
+   "file": "/tmp/places-evidence/beirut/hariri.jpg",
+   "used": "inner yard panorama: tan limestone-faced blocks with recessed ribbon windows and vertical grey-stone stair/service shafts, a long round-arched ground arcade on the central block, grey concrete wing at right with stone-framed slit windows, flat roofs, covered footbridge with white balustrade, car park with palms in the yard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/642515498",
+   "used": "real hospital outline (143 x 101 m, notched H-like plan)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d3c4a0",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "plinth": 0.8,
+    "bands": "#b9ab88",
+    "glassColour": "#4b5a60",
+    "pattern": [],
+    "bay": 36,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier-w",
+   "at": [
+    -45,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     40
+    ],
+    "z0": 15,
+    "height": 6,
+    "colour": "#d3c39c",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "storeys": 2,
+    "glassColour": "#4b5a60",
+    "windowShape": "rect"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier-c",
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     36
+    ],
+    "z0": 15,
+    "height": 12,
+    "colour": "#d3c39c",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "storeys": 2,
+    "glassColour": "#4b5a60",
+    "windowShape": "rect"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier-e",
+   "at": [
+    50,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     40
+    ],
+    "z0": 15,
+    "height": 6,
+    "colour": "#d3c39c",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "storeys": 2,
+    "glassColour": "#4b5a60",
+    "windowShape": "rect"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-e",
+   "at": [
+    48,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     26
+    ],
+    "z0": 21,
+    "height": 6,
+    "colour": "#d3c39c",
+    "windows": "none",
+    "windowRatio": 0.5,
+    "storeys": 2,
+    "glassColour": "#4b5a60",
+    "windowShape": "rect"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-shaft-l",
+   "at": [
+    34,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     3
+    ],
+    "height": 29,
+    "colour": "#8f918e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-shaft-r",
+   "at": [
+    62,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     3
+    ],
+    "height": 29,
+    "colour": "#8f918e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grey-slab",
+   "at": [
+    56,
+    -72,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     16
+    ],
+    "height": 9,
+    "colour": "#a2a5a3",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "windowShape": "rect",
+    "glassColour": "#5a6266"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge",
+   "at": [
+    -42,
+    -66,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     44,
+     3.4
+    ],
+    "height": 0.6,
+    "colour": "#e0dccc",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -56,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 9,
+    "height": 5,
+    "columns": 4,
+    "colour": "#e6e0d0"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -62,
+    4
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -45,
+    25,
+    15.8
+   ],
+   "params": {
+    "radius": 6.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -30,
+    -88,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 9,
+    "rows": 3,
+    "dx": 3.1,
+    "dy": 6.3,
+    "lod1Step": 30,
+    "lod2Step": 40,
+    "of": {
+     "type": "car",
+     "params": {
+      "count": 1,
+      "yaw": 90
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -78,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 9,
+    "spread": 70
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shaft-c",
+   "at": [
+    -18,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 28,
+    "colour": "#7f8280",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shaft-w",
+   "at": [
+    -60,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 22,
+    "colour": "#7f8280",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shaft-e2",
+   "at": [
+    30,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 22,
+    "colour": "#7f8280",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -30,
+    -84,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     70,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 7
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bridge-roof",
+   "at": [
+    -42,
+    -66,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     44,
+     3.2
+    ],
+    "height": 0.4,
+    "colour": "#cfc9b8",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "arcade-bays",
+   "id": "ground-arcade",
+   "at": [
+    -8,
+    -47,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "depth": 2.4,
+    "springHeight": 3.2,
+    "topHeight": 4.8,
+    "bayWidth": 3.5,
+    "pierWidth": 0.8,
+    "shape": "round",
+    "colour": "#d8c8a0",
+    "roofColour": "#cdbf98"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balustrade",
+   "id": "bal-a",
+   "at": [
+    -64,
+    -67.4,
+    5
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.1,
+    "postEvery": 2.4,
+    "colour": "#f1eee4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balustrade",
+   "id": "bal-b",
+   "at": [
+    -64,
+    -64.6,
+    5
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.1,
+    "postEvery": 2.4,
+    "colour": "#f1eee4"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fshaft-1",
+   "at": [
+    -40,
+    -45.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 16,
+    "colour": "#8f918e",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fshaft-4",
+   "at": [
+    36,
+    -45.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     2
+    ],
+    "height": 16,
+    "colour": "#8f918e",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slit2",
+   "at": [
+    56,
+    -80.1,
+    2
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.2
+    ],
+    "height": 1.2,
+    "colour": "#5d6564",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slit5",
+   "at": [
+    56,
+    -80.1,
+    5
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.2
+    ],
+    "height": 1.2,
+    "colour": "#5d6564",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "ground arcade, ribbon-window blocks, balustraded footbridge and denser car park added but triangle budget keeps the car park and arcade modest; arcade barely reads from the model camera"
+ }
+}

@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-osm-node-6064724358",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/836404246",
+   "used": "irregular 16-point outline, 42 x 38 m, containing the venue"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d0bd",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a8f86"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69c",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#6fa05a",
+    "edgeColour": "#8a8f86",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 6.5,
+    "colour": "#6fa05a",
+    "frameColour": "#8a8f86",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -14,
+    -34,
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -8,
+    -34,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 5,
+    "line": 0.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; real 16-point OSM outline with typed ribbon-glazed two-storey hall, green canopy and car park."
+ }
+}

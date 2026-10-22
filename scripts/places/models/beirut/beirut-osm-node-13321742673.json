@@ -1,0 +1,168 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief beirut-osm-node-13321742673",
+   "used": "modest memorial typed: plinth, plaque wall, flags; no imagery or text invented; nearest OSM building is 19 m away so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb6a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d0c2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaque-wall",
+   "footprint": {
+    "rect": [
+     8,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "z0": 0.6,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a847a",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d0c2",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaque-blank",
+   "footprint": {
+    "rect": [
+     3.6,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    0.9
+   ],
+   "z0": 1.4,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d0c2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d0c2"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 2.0,
+    "thickness": 0.4,
+    "colour": "#a8a196"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -5.5,
+    -2.2,
+    0.6
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#bdb6a8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    5.5,
+    -2.2,
+    0.6
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#bdb6a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -13,
+     4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "beirut",
+ "venueId": "beirut-osm-node-13321742673",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence of the memorial; minimal blank plinth, plaque wall and flags"
+ }
+}

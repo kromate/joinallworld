@@ -1,0 +1,661 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-osm-way-600451203",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%A8%DB%8C%D9%85%D8%A7%D8%B1%D8%B3%D8%AA%D8%A7%D9%86_%D9%81%D8%B1%D9%87%DB%8C%D8%AE%D8%AA%DA%AF%D8%A7%D9%86.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Maasmaali",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/tehran/farh1.jpg",
+   "used": "nine-storey cream ward tower with ribbon-grid windows, long two-storey podium with red-brick base and cream upper band, teal curved glazed roof over the entrance hall, red-brick end block, two white tapering pylons, front car park and road"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/600451203",
+   "used": "campus is 273 m x 227 m, too large for the scene clamp; the main block is modelled at true building scale instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": -26,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 1.2,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium-west",
+   "footprint": {
+    "rect": [
+     50,
+     26
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 3.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-east",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    18,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "bay": 8,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 3.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     54,
+     26
+    ]
+   },
+   "at": [
+    18,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 29,
+   "storeys": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bay": 4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "west-brick-end",
+   "params": {
+    "rect": [
+     10,
+     26
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#a9523b"
+   },
+   "at": [
+    -52,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roof-void",
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "z0": 9,
+    "height": 0.5,
+    "colour": "#8c8678"
+   },
+   "at": [
+    -30,
+    -2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "params": {
+    "points": [
+     [
+      18.0,
+      0.0
+     ],
+     [
+      17.39,
+      3.62
+     ],
+     [
+      15.59,
+      7.0
+     ],
+     [
+      12.73,
+      9.9
+     ],
+     [
+      9.0,
+      12.12
+     ],
+     [
+      4.66,
+      13.52
+     ],
+     [
+      0.0,
+      14.0
+     ],
+     [
+      -4.66,
+      13.52
+     ],
+     [
+      -9.0,
+      12.12
+     ],
+     [
+      -12.73,
+      9.9
+     ],
+     [
+      -15.59,
+      7.0
+     ],
+     [
+      -17.39,
+      3.62
+     ],
+     [
+      -18.0,
+      0.0
+     ],
+     [
+      -17.39,
+      -3.62
+     ],
+     [
+      -15.59,
+      -7.0
+     ],
+     [
+      -12.73,
+      -9.9
+     ],
+     [
+      -9.0,
+      -12.12
+     ],
+     [
+      -4.66,
+      -13.52
+     ],
+     [
+      -0.0,
+      -14.0
+     ],
+     [
+      4.66,
+      -13.52
+     ],
+     [
+      9.0,
+      -12.12
+     ],
+     [
+      12.73,
+      -9.9
+     ],
+     [
+      15.59,
+      -7.0
+     ],
+     [
+      17.39,
+      -3.62
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#d2cab8"
+   },
+   "at": [
+    52,
+    -28
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-core",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    16,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 35,
+   "storeys": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e1d3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-barrel",
+   "footprint": {
+    "rect": [
+     44,
+     9
+    ]
+   },
+   "at": [
+    -6,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f8f8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 4,
+    "colour": "#2f9a98",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-block",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    46,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9523b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c9a8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-porch",
+   "footprint": {
+    "rect": [
+     20,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9523b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2c0",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lightwell",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a8f98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "rise": 2,
+    "colour": "#3c8f9a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 5,
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -42,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4.2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    40,
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 2.0,
+      "colour": "#f6f4ee"
+     },
+     {
+      "z": 8.8,
+      "circle": 1.0
+     },
+     {
+      "z": 22,
+      "circle": 0.3
+     }
+    ],
+    "colour": "#f6f4ee",
+    "curve": true
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    52,
+    -22,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 2.0,
+      "colour": "#f6f4ee"
+     },
+     {
+      "z": 8.8,
+      "circle": 1.0
+     },
+     {
+      "z": 22,
+      "circle": 0.3
+     }
+    ],
+    "colour": "#f6f4ee",
+    "curve": true
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    66,
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 1.6,
+      "colour": "#f6f4ee"
+     },
+     {
+      "z": 5.6000000000000005,
+      "circle": 0.8
+     },
+     {
+      "z": 14,
+      "circle": 0.3
+     }
+    ],
+    "colour": "#f6f4ee",
+    "curve": true
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "brick-ground",
+   "params": {
+    "rect": [
+     84,
+     1.2
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#a9523b"
+   },
+   "at": [
+    -6,
+    -13.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "brick-ground-w",
+   "params": {
+    "rect": [
+     1.2,
+     26
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#a9523b"
+   },
+   "at": [
+    -47.4,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "brick-canopy",
+   "params": {
+    "rect": [
+     28,
+     6
+    ],
+    "z0": 6.2,
+    "height": 0.5,
+    "colour": "#d9d2c0"
+   },
+   "at": [
+    46,
+    -6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "params": {
+    "rect": [
+     116,
+     9
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#4a4a4c"
+   },
+   "at": [
+    0,
+    -50
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "road-line",
+   "params": {
+    "rect": [
+     116,
+     0.4
+    ],
+    "z0": 0.1,
+    "height": 0.05,
+    "colour": "#d8b840"
+   },
+   "at": [
+    0,
+    -50
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4.2
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "teal barrel vault reads taller and more prominent than the photo roof vault; sunken roof void and construction-site forecourt detail not modelled; plaza and pylons simplified"
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "extent": [
+   118,
+   90
+  ]
+ }
+}

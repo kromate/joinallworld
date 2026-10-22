@@ -1,0 +1,222 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/263470895",
+   "used": "real irregular outline (name match), 7 levels, 2011"
+  },
+  {
+   "kind": "text",
+   "used": "cream limestone cladding and glass atrium frontage from the brief; no exterior photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "scale": 0.68,
+    "simplify": 4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 34,
+   "storeys": 7,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d8bf",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bands": "#cfc4a8",
+    "plinth": 0.6,
+    "cornice": true,
+    "bay": 20,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     17.7,
+     8
+    ]
+   },
+   "at": [
+    -22.4,
+    -47.6
+   ],
+   "rotDeg": -18,
+   "z0": 0,
+   "height": 34,
+   "storeys": 7,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8c9a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bands": "#f0ebe0",
+    "plinth": 0.3,
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     29.9,
+     5
+    ]
+   },
+   "at": [
+    -22.4,
+    -51.7
+   ],
+   "rotDeg": -18,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#f0ebe0",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc7b4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5.4,
+    -58.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 3,
+    "colour": "#e8e2d2",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -35.4,
+    -53.7,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 3,
+    "colour": "#d8d0bc",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -42.2,
+    -49.0,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#2e6b3e"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -39.4,
+    -51.7,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#b03a2e"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -3,
+    -64,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -47.6,
+     -57.800000000000004
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     27.200000000000003,
+     -61.2
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "No exterior photo of Taj Mall found (Commons has none); real OSM outline, 7 levels and cream limestone from the brief; atrium position and window rhythm typed, wall windows thinned to fit the 20k budget."
+ }
+}

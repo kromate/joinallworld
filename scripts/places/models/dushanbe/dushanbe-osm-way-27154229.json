@@ -1,0 +1,159 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-way-27154229",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/27464127",
+   "used": "hospital building outline 32.4 x 11.6 m (name match), rotated to align the long axis"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 75.4
+   },
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d9c0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "bands": "#b3a98f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f7b6c",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "bay",
+   "at": [
+    -8,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 4.5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#f2eee2",
+    "roofColour": "#6f7b6c",
+    "vans": 1,
+    "marking": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-sign",
+   "at": [
+    6,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.2
+    ],
+    "z0": 3.0,
+    "height": 1.0,
+    "colour": "#f2eee2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#b3a98f"
+   }
+  },
+  {
+   "type": "array",
+   "id": "garden-trees",
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -14,
+     0
+    ],
+    "end": [
+     22,
+     -14,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 8
+     }
+    }
+   }
+  },
+  {
+   "type": "tree",
+   "id": "back-tree",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real OSM outline plus Soviet-era two-storey ward typical of Dushanbe (pale render, grey-green metal gable roof)"
+ }
+}

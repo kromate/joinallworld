@@ -1,0 +1,144 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/463067663",
+   "used": "real 88 x 81 m irregular outline (name match, courthouse, wikidata Q12239043); no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9ceb4",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#efe9dc",
+    "bay": 18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0a690",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-core",
+   "at": [
+    0,
+    10
+   ],
+   "params": {
+    "rect": [
+     20,
+     14
+    ],
+    "z0": 15,
+    "height": 3,
+    "colour": "#bfb399"
+   }
+  },
+  {
+   "type": "core/portico",
+   "id": "entrance-portico",
+   "at": [
+    -8,
+    -44,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 9,
+    "columns": 6,
+    "pediment": false,
+    "steps": 4,
+    "colour": "#efe9dc",
+    "roofColour": "#d9ceb4"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    4,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 5,
+    "colour": "#b32d2e"
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "gate",
+   "at": [
+    -8,
+    -58,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building (nearby Commons images show other places); real outline, portico, flags and roof core are typical civic guesses"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-community-notices"
+}

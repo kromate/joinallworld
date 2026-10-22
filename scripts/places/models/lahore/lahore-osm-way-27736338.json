@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-way-27736338",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stadium_f.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jawad ahmed ch.",
+   "view": "front",
+   "file": "/tmp/places-evidence/lahore/ps1.jpg",
+   "used": "long two-storey red-brick entrance block, ground-floor arcade of pointed arches filled with teal panels, upper brick floor with small windows, cream end bays, set-back teal curved roof shell, palms and lawn in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2289110",
+   "used": "stadium bowl proportions (about 212 x 153 m); pitch and bowl sized to it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 2.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     92,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -50
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5563f",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 4.6,
+    "plinth": 0.5,
+    "pattern": {
+     "type": "arcade",
+     "shape": "pointed",
+     "bay": 8,
+     "opening": 0.85,
+     "height": 1.0,
+     "recess": 1.5,
+     "colour": "#2f9a8a",
+     "pierColour": "#e8dcc0",
+     "faces": [
+      "front"
+     ]
+    },
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -47,
+    15
+   ],
+   "params": {
+    "form": "curved",
+    "width": 92,
+    "depth": 13,
+    "height": 0.6,
+    "rise": 2.0,
+    "thickness": 0.5,
+    "colour": "#2f9a8a",
+    "edgeColour": "#1f6f62"
+   }
+  },
+  {
+   "type": "array",
+   "id": "scallops",
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -46,
+     15
+    ],
+    "end": [
+     44,
+     -46,
+     15
+    ],
+    "count": 23,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": {
+     "type": "core/canopy",
+     "params": {
+      "form": "curved",
+      "width": 4.2,
+      "depth": 13,
+      "height": 0.6,
+      "rise": 2.2,
+      "thickness": 0.4,
+      "colour": "#2f9a8a",
+      "edgeColour": "#1f5f4a",
+      "axis": "y"
+     }
+    }
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "width": 40,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     -36
+    ],
+    "radius": 34,
+    "radiusY": 50,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 18,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 4,
+    "facetDeg": 16,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#2f9a8a",
+    "concreteColour": "#cfc9bb",
+    "underColour": "#8f8b82"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    40,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    40,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "array",
+   "id": "palms",
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     -62,
+     0
+    ],
+    "end": [
+     36,
+     -62,
+     0
+    ],
+    "count": 4,
+    "lod2Step": 4,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 15
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Front block recoloured brick with teal pointed arcade and scalloped teal shell array added; arcade openings still read partly glazed; tiered stand rising behind the facade not achieved (an attempt hid the facade and was removed, final spec not re-rendered); upper-floor brick screens omitted."
+ }
+}

@@ -1,0 +1,520 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kazmastadium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ahmadalshami (en.wikipedia)",
+   "view": "interior",
+   "file": "/tmp/places-evidence/kuwait-city/kazma.jpg",
+   "used": "interior only: long side stand with a flat ribbed cantilever roof on a white upper band, blue lower fascia band, dark crowd tiers, lattice floodlight mast at the corner; not an exterior view so no side-by-side match"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/616859990",
+   "used": "overall size (213 x 157 m, about 21,500 seats) scaled to the 120 m scene clamp as a full bowl"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      42.0,
+      0.0
+     ],
+     [
+      40.57,
+      6.73
+     ],
+     [
+      36.37,
+      13.0
+     ],
+     [
+      29.7,
+      18.38
+     ],
+     [
+      21.0,
+      22.52
+     ],
+     [
+      10.87,
+      25.11
+     ],
+     [
+      0.0,
+      26.0
+     ],
+     [
+      -10.87,
+      25.11
+     ],
+     [
+      -21.0,
+      22.52
+     ],
+     [
+      -29.7,
+      18.38
+     ],
+     [
+      -36.37,
+      13.0
+     ],
+     [
+      -40.57,
+      6.73
+     ],
+     [
+      -42.0,
+      0.0
+     ],
+     [
+      -40.57,
+      -6.73
+     ],
+     [
+      -36.37,
+      -13.0
+     ],
+     [
+      -29.7,
+      -18.38
+     ],
+     [
+      -21.0,
+      -22.52
+     ],
+     [
+      -10.87,
+      -25.11
+     ],
+     [
+      -0.0,
+      -26.0
+     ],
+     [
+      10.87,
+      -25.11
+     ],
+     [
+      21.0,
+      -22.52
+     ],
+     [
+      29.7,
+      -18.38
+     ],
+     [
+      36.37,
+      -13.0
+     ],
+     [
+      40.57,
+      -6.73
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#a8523f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      36.0,
+      0.0
+     ],
+     [
+      34.77,
+      5.18
+     ],
+     [
+      31.18,
+      10.0
+     ],
+     [
+      25.46,
+      14.14
+     ],
+     [
+      18.0,
+      17.32
+     ],
+     [
+      9.32,
+      19.32
+     ],
+     [
+      0.0,
+      20.0
+     ],
+     [
+      -9.32,
+      19.32
+     ],
+     [
+      -18.0,
+      17.32
+     ],
+     [
+      -25.46,
+      14.14
+     ],
+     [
+      -31.18,
+      10.0
+     ],
+     [
+      -34.77,
+      5.18
+     ],
+     [
+      -36.0,
+      0.0
+     ],
+     [
+      -34.77,
+      -5.18
+     ],
+     [
+      -31.18,
+      -10.0
+     ],
+     [
+      -25.46,
+      -14.14
+     ],
+     [
+      -18.0,
+      -17.32
+     ],
+     [
+      -9.32,
+      -19.32
+     ],
+     [
+      -0.0,
+      -20.0
+     ],
+     [
+      9.32,
+      -19.32
+     ],
+     [
+      18.0,
+      -17.32
+     ],
+     [
+      25.46,
+      -14.14
+     ],
+     [
+      31.18,
+      -10.0
+     ],
+     [
+      34.77,
+      -5.18
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#5a8f3f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 26,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 16,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 12,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2d5fa0",
+     "#e4e2da"
+    ],
+    "blocks": 3,
+    "concreteColour": "#e2ded2",
+    "underColour": "#b9b6ad",
+    "canopy": {
+     "height": 5.0,
+     "depth": 14,
+     "thickness": 1.4,
+     "slopeDeg": 2,
+     "colour": "#e6e3da",
+     "edgeColour": "#f2f0ea",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 26,
+    "startDeg": 25,
+    "endDeg": 155,
+    "rows": 16,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 12,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2d5fa0",
+     "#e4e2da"
+    ],
+    "blocks": 3,
+    "concreteColour": "#e2ded2",
+    "underColour": "#b9b6ad",
+    "canopy": {
+     "height": 5.0,
+     "depth": 14,
+     "thickness": 1.4,
+     "slopeDeg": 2,
+     "colour": "#e6e3da",
+     "edgeColour": "#f2f0ea",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 26,
+    "startDeg": -25,
+    "endDeg": 25,
+    "rows": 12,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 12,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2d5fa0",
+     "#e4e2da"
+    ],
+    "blocks": 3,
+    "concreteColour": "#e2ded2",
+    "underColour": "#b9b6ad"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 26,
+    "startDeg": 155,
+    "endDeg": 205,
+    "rows": 12,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 12,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2d5fa0",
+     "#e4e2da"
+    ],
+    "blocks": 3,
+    "concreteColour": "#e2ded2",
+    "underColour": "#b9b6ad"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    48,
+    0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 5,
+    "post_height": 3,
+    "facing": "west",
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -24,
+    -60,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 16,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -64,
+     -46
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     64,
+     -46
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kuwait-city",
+ "venueId": "kuwait-city-osm-way-616859990",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only an interior photo exists (used for roofed long stand and blue trim); oval bowl scaled from 213x157 m, real outline's lobes not reproduced, exterior wall plain."
+ }
+}

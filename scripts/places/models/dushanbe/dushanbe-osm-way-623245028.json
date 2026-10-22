@@ -1,0 +1,393 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-way-623245028",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/623245028",
+   "used": "real outline of the amenity=marketplace polygon (285 x 264 m, 59,434 m2, six-sided), scaled to the 118 m scene limit; no photo of the bazaar was found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a6a8a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a6a8a4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "covered-hall",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    20
+   ],
+   "z0": 0.5,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9bec2",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "sawtooth",
+    "colour": "#6f8591",
+    "material": "corrugated",
+    "teeth": 5
+   }
+  },
+  {
+   "type": "array",
+   "id": "stall-rows",
+   "params": {
+    "mode": "grid",
+    "cols": 3,
+    "rows": 3,
+    "dx": 21,
+    "dy": 13,
+    "lod1Step": 2,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       14,
+       5.5
+      ]
+     },
+     "height": 3.4,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#c9c3b4",
+      "windows": "none",
+      "faces": {
+       "front": "none"
+      }
+     },
+     "roof": {
+      "form": "shed",
+      "colour": "#6f8591",
+      "material": "corrugated",
+      "overhang": 0.5,
+      "rise": 0.9
+     }
+    }
+   },
+   "at": [
+    -8,
+    -16,
+    0.5
+   ]
+  },
+  {
+   "type": "array",
+   "id": "stall-rows-b",
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 3,
+    "dx": 21,
+    "dy": 13,
+    "lod1Step": 2,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       14,
+       5.5
+      ]
+     },
+     "height": 3.4,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#c9c3b4",
+      "windows": "none",
+      "faces": {
+       "front": "none"
+      }
+     },
+     "roof": {
+      "form": "shed",
+      "colour": "#a8573f",
+      "material": "corrugated",
+      "overhang": 0.5,
+      "rise": 0.9
+     }
+    }
+   },
+   "at": [
+    38,
+    -12,
+    0.5
+   ]
+  },
+  {
+   "type": "array",
+   "id": "containers",
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -4,
+     0.5
+    ],
+    "end": [
+     -48,
+     26,
+     0.5
+    ],
+    "count": 5,
+    "lod1Step": 2,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       3,
+       12
+      ]
+     },
+     "height": 2.8,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#a8573f",
+      "windows": "none",
+      "faces": {
+       "front": "none"
+      }
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#8c4634",
+      "material": "corrugated",
+      "overhang": 0.5
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "containers-b",
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     -4,
+     0.5
+    ],
+    "end": [
+     -42,
+     26,
+     0.5
+    ],
+    "count": 5,
+    "lod1Step": 2,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       3,
+       12
+      ]
+     },
+     "height": 2.8,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#5d7c8f",
+      "windows": "none",
+      "faces": {
+       "front": "none"
+      }
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#4a6677",
+      "material": "corrugated",
+      "overhang": 0.5
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "awnings",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -30,
+     0.5
+    ],
+    "end": [
+     26,
+     -30,
+     0.5
+    ],
+    "count": 8,
+    "of": {
+     "type": "awning",
+     "params": {
+      "width": 5,
+      "depth": 2.2,
+      "colours": [
+       "#d9534f",
+       "#f0ad4e",
+       "#5bc0de"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -40,
+    0.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 3.2,
+    "bottom": 4.5,
+    "colour": "#b5342a",
+    "frameColour": "#9a9d9f"
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbrellas",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 2,
+    "dx": 6,
+    "dy": 6,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.1,
+        0
+       ],
+       [
+        0.1,
+        2.2
+       ],
+       [
+        1.7,
+        2.5
+       ],
+       [
+        0.2,
+        2.9
+       ]
+      ],
+      "colour": "#e2a63b"
+     }
+    }
+   },
+   "at": [
+    -5,
+    -38,
+    0.5
+   ]
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    52,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "colour": "#5f8a3a"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "colour": "#6f9a3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the bazaar exists in the sources: stall rows, containers, hall and gate are plausible typology (metal-roofed stalls, container shops, awnings) placed on the real marketplace outline; actual stall layout, building heights and entrances are unknown."
+ }
+}

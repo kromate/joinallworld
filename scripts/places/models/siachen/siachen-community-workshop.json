@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "siachen",
+ "venueId": "siachen-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Siachen_Glacier",
+   "used": "fuel pipelines and logistics on the glacier; workshop shed typed from city style"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f969b",
+    "windows": "louvre",
+    "windowRatio": 0.08,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#d98e3a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7568",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lean-to",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    16,
+    0
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9d2d9",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7568",
+    "material": "corrugated",
+    "pitch": 10
+   }
+  },
+  {
+   "type": "chimney",
+   "id": "stovepipe",
+   "at": [
+    -6,
+    2,
+    5
+   ],
+   "params": {
+    "height": 4.5,
+    "radius": 0.3,
+    "material": "metal",
+    "colour": "#2e3033"
+   }
+  },
+  {
+   "type": "array",
+   "id": "drums",
+   "at": [
+    -9,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 2,
+    "dx": 1.1,
+    "dy": 1.1,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 12,
+      "colour": "#d98e3a",
+      "profile": [
+       [
+        0.45,
+        0
+       ],
+       [
+        0.45,
+        0.9
+       ],
+       [
+        0.4,
+        0.95
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "pipe-rack",
+   "id": "pipes",
+   "at": [
+    0,
+    9,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.2,
+    "levels": 1,
+    "width": 1,
+    "pipes": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drift",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     2
+    ],
+    "height": 0.9,
+    "topScale": 0.4,
+    "colour": "#e9eef2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   64,
+   44
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "typed shed; fuel drums and stovepipe simple, no photo"
+ }
+}

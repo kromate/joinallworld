@@ -1,0 +1,386 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Doha_Catholic_Church.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Trinity",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/doha/church2.jpg",
+   "used": "16-sided pyramidal grey metal roof, square lantern tower on the apex, sand limestone colonnade ring of piers under a garland-relief frieze, tall entrance block on the right with recessed door and curved steps, low annex wing, paved plaza"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Church_of_Our_Lady_of_the_Rosary,_Doha,_Qatar.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user",
+   "view": "front",
+   "file": "/tmp/places-evidence/doha/church1.jpg",
+   "used": "roof pitch and lantern proportion, ochre sand render colour, crenellated parish buildings around"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/239713638",
+   "used": "overall compound size and the round hall plus rectangular wing arrangement (hall modelled as a 16-gon of 28 m radius)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 18,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "hall-wall",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 16,
+    "radius": 23.5,
+    "z0": 0,
+    "height": 7.4,
+    "colour": "#d6bf8e",
+    "windows": "none",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frieze",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 16,
+    "radius": 27.0,
+    "z0": 5.6,
+    "height": 1.8,
+    "colour": "#d6bf8e",
+    "windows": "none",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       2.4
+      ],
+      "z0": 0,
+      "height": 7.4,
+      "colour": "#e0cda3",
+      "material": "plain-render"
+     }
+    },
+    "mode": "arc",
+    "count": 32,
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 26.4,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 16
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 16,
+    "radius": 28.2,
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#cdbb95",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "roof",
+   "params": {
+    "colour": "#6a6c6b",
+    "smooth": false,
+    "round": 16,
+    "capTop": true,
+    "sections": [
+     {
+      "z": 7.4,
+      "circle": 28.6
+     },
+     {
+      "z": 17.0,
+      "circle": 2.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "z0": 16.4,
+    "height": 10.5,
+    "colour": "#d6bf8e",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "windowShape": "rect",
+    "storeys": 1,
+    "topScale": 1.0,
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-slot",
+   "at": [
+    0,
+    -1.85
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.3
+    ],
+    "z0": 19.5,
+    "height": 5.5,
+    "colour": "#3a3328"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-cap",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "z0": 26.9,
+    "height": 0.6,
+    "colour": "#cdbb95",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    26,
+    -12
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#d6bf8e",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbb95",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-recess",
+   "at": [
+    26,
+    -16.7
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.6
+    ],
+    "z0": 0,
+    "height": 8.0,
+    "colour": "#8a7048",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-frame",
+   "at": [
+    26,
+    -16.5
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.5
+    ],
+    "z0": 0,
+    "height": 9.0,
+    "colour": "#c6ae7e",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    42,
+    -10
+   ],
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d6bf8e",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "windowShape": "rect",
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbb95",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    52,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step0",
+   "at": [
+    26,
+    -19
+   ],
+   "params": {
+    "n": 16,
+    "radius": 9,
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#cfc1a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    26,
+    -19
+   ],
+   "params": {
+    "n": 16,
+    "radius": 7.8,
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#cfc1a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    26,
+    -19
+   ],
+   "params": {
+    "n": 16,
+    "radius": 6.6,
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#cfc1a2"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "hedge",
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      1.2
+     ]
+    },
+    "colour": "#3f6a35",
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0.6
+     ],
+     "radius": 30.2,
+     "startDeg": 120,
+     "endDeg": 240
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof still slightly blue-grey; piers plain without garland relief; hedge is an arc strip not hugging the colonnade corner; lantern slot simplified"
+ }
+}

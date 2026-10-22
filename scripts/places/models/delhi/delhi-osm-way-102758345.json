@@ -1,0 +1,827 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "delhi",
+ "venueId": "delhi-osm-way-102758345",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ghiyasuddin_Tughlaq%27_Tomb.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/delhi/tomb1.jpg",
+   "used": "red sandstone square tomb with white marble inlay bands and arched door, white marble dome with finial, small domed tomb beside it, crenellated battered enclosure wall in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:View_of_Tughlaq_Tomb_from_Tughlaqabad.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/delhi/tomb2.jpg",
+   "used": "enclosure proportion: long crenellated wall with round corner bastion, tomb set back from the wall, small dome at the right end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/102758345",
+   "used": "overall size only (96 x 63 m); the outline is an irregular trace so a pentagonal enclosure of that size was composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 3,
+  "fovDeg": 24
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "id": "enclosure-wall",
+   "params": {
+    "section": {
+     "poly": [
+      [
+       -1.2,
+       6.2
+      ],
+      [
+       1.2,
+       6.2
+      ],
+      [
+       3.8,
+       0
+      ],
+      [
+       -3.8,
+       0
+      ]
+     ]
+    },
+    "closed": true,
+    "colour": "#9a7864",
+    "points": [
+     [
+      -44,
+      -28,
+      0
+     ],
+     [
+      30,
+      -34,
+      0
+     ],
+     [
+      46,
+      6,
+      0
+     ],
+     [
+      0,
+      34,
+      0
+     ],
+     [
+      -46,
+      12,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tomb",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "colour": "#8f4a34",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       27,
+       27
+      ]
+     },
+     {
+      "z": 17.5,
+      "rect": [
+       24,
+       24
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    12,
+    19.9
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#e6e0d0",
+    "profile": [
+     [
+      8.6,
+      0.0,
+      "#e6e0d0"
+     ],
+     [
+      8.7,
+      1.2
+     ],
+     [
+      8.2,
+      3.36
+     ],
+     [
+      7.0,
+      5.64
+     ],
+     [
+      5.0,
+      7.56
+     ],
+     [
+      2.6,
+      8.88
+     ],
+     [
+      0.8,
+      9.48
+     ],
+     [
+      0,
+      9.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-tomb",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -17,
+    6
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#9a6a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d0"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "side-dome",
+   "at": [
+    -17,
+    6,
+    4
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#ebe6d8",
+    "profile": [
+     [
+      3.1,
+      0
+     ],
+     [
+      3.2,
+      0.8
+     ],
+     [
+      2.8,
+      2.0
+     ],
+     [
+      1.8,
+      3.0
+     ],
+     [
+      0.7,
+      3.5
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "bastion",
+   "params": {
+    "segments": 16,
+    "colour": "#9a7864",
+    "profile": [
+     [
+      4.2,
+      0
+     ],
+     [
+      3.4,
+      7
+     ],
+     [
+      3.8,
+      7.6
+     ],
+     [
+      0,
+      7.6
+     ]
+    ]
+   },
+   "at": [
+    46,
+    6,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-recess",
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "z0": 0.6,
+    "height": 11,
+    "colour": "#ece4cf"
+   },
+   "at": [
+    0,
+    -1.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-head",
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "z0": 11.6,
+    "height": 0.5,
+    "colour": "#ece4cf"
+   },
+   "at": [
+    0,
+    -1.3
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lattice",
+   "params": {
+    "rect": [
+     3.4,
+     0.7
+    ],
+    "z0": 3.5,
+    "height": 6,
+    "colour": "#5a3a2a"
+   },
+   "at": [
+    0,
+    -1.4
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "panel-l",
+   "params": {
+    "rect": [
+     3,
+     0.4
+    ],
+    "z0": 5,
+    "height": 6,
+    "colour": "#ece4cf"
+   },
+   "at": [
+    -9.5,
+    -1.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "panel-r",
+   "params": {
+    "rect": [
+     3,
+     0.4
+    ],
+    "z0": 5,
+    "height": 6,
+    "colour": "#ece4cf"
+   },
+   "at": [
+    9.5,
+    -1.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "params": {
+    "rect": [
+     28,
+     28
+    ],
+    "z0": 17.2,
+    "height": 0.7,
+    "colour": "#ece4cf"
+   },
+   "at": [
+    0,
+    12
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "params": {
+    "segments": 28,
+    "colour": "#e6e0d0",
+    "profile": [
+     [
+      8.8,
+      0,
+      "#e6e0d0"
+     ],
+     [
+      8.8,
+      2.2
+     ],
+     [
+      0,
+      2.2
+     ]
+    ]
+   },
+   "at": [
+    0,
+    12,
+    17.7
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "merlons-0",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 6,
+      "height": 1.0,
+      "colour": "#9a7864"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     -28
+    ],
+    "end": [
+     30,
+     -34
+    ],
+    "count": 30,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "id": "merlons-1",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 6,
+      "height": 1.0,
+      "colour": "#9a7864"
+     }
+    },
+    "mode": "line",
+    "start": [
+     30,
+     -34
+    ],
+    "end": [
+     46,
+     6
+    ],
+    "count": 17,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "id": "merlons-2",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 6,
+      "height": 1.0,
+      "colour": "#9a7864"
+     }
+    },
+    "mode": "line",
+    "start": [
+     46,
+     6
+    ],
+    "end": [
+     0,
+     34
+    ],
+    "count": 22,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "id": "merlons-3",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 6,
+      "height": 1.0,
+      "colour": "#9a7864"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     34
+    ],
+    "end": [
+     -46,
+     12
+    ],
+    "count": 21,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "id": "merlons-4",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 6,
+      "height": 1.0,
+      "colour": "#9a7864"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     12
+    ],
+    "end": [
+     -44,
+     -28
+    ],
+    "count": 16,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "neck",
+   "at": [
+    0,
+    12,
+    29.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#3a2418",
+    "profile": [
+     [
+      1.1,
+      0
+     ],
+     [
+      0.7,
+      0.5
+     ],
+     [
+      1.2,
+      1.1
+     ],
+     [
+      0.8,
+      1.6
+     ],
+     [
+      1.4,
+      2.4
+     ],
+     [
+      1.6,
+      3.2
+     ],
+     [
+      1.2,
+      4.0
+     ],
+     [
+      0.6,
+      4.6
+     ],
+     [
+      0.3,
+      5.0
+     ],
+     [
+      0,
+      5.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band-0",
+   "params": {
+    "rect": [
+     25.4,
+     0.3
+    ],
+    "z0": 9,
+    "height": 0.5,
+    "colour": "#ece4cf"
+   },
+   "at": [
+    0,
+    -1.4
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "band-1",
+   "params": {
+    "rect": [
+     25.4,
+     0.3
+    ],
+    "z0": 14.5,
+    "height": 0.5,
+    "colour": "#ece4cf"
+   },
+   "at": [
+    0,
+    -1.4
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "band-2",
+   "params": {
+    "rect": [
+     25.8,
+     0.3
+    ],
+    "z0": 4.5,
+    "height": 0.5,
+    "colour": "#ece4cf"
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     40
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -15,
+     45
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     0,
+     46
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     15,
+     44
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     30,
+     40
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     45,
+     28
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     52,
+     10
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -52,
+     20
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -50,
+     -5
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -35,
+     -40
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     20,
+     -42
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     55,
+     -15
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     44
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "tomb enlarged and battered, taller dome on drum, dusty ground and scrub applied; right-hand wall run still renders dark (winding reversal made it worse, reverted); inlay detail simplified"
+ }
+}

@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-osm-node-13391032813",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small coffee shop, glazed front and awning; no outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 16,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dcc6",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "bands": "#5c534a",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-fascia",
+   "footprint": {
+    "rect": [
+     12.4,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -4.8
+   ],
+   "rotDeg": 0,
+   "z0": 3.4,
+   "height": 1,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5c534a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c534a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.8,
+    "drop": 0.4,
+    "height": 2.6,
+    "colours": [
+     "#5c534a",
+     "#e6dcc6"
+    ]
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    7,
+    -8,
+    0
+   ],
+   "params": {
+    "radius": 1.3,
+    "height": 2.2,
+    "colour": "#5c534a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -8
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No information on the real shop; generic glazed corner coffee kiosk in brown and cream."
+ }
+}

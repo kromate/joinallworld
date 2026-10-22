@@ -1,0 +1,509 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Damascus-Hejaz_station.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Heretiq",
+   "view": "front",
+   "file": "/tmp/places-evidence/damascus/hejaz.jpg",
+   "used": "two-storey stone facade, slightly advanced end pavilions, central three-arch loggia with balcony above, clock crest and tiled roof behind, pointed/arched upper windows, locomotive on right, taxi forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28843859",
+   "used": "overall size 51 x 15 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     56,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8c9ac",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "windowShape": "pointed",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.4,
+    "pattern": [
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a090",
+    "parapet": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     19,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dfceb0",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "windowShape": "pointed",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bay": 3.2,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a090",
+    "parapet": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-l",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    -0.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4c3a4",
+    "windows": "punched",
+    "windowRatio": 0.36,
+    "windowShape": "pointed",
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 3.0,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9585",
+    "parapet": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-r",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    24,
+    -0.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d4c3a4",
+    "windows": "punched",
+    "windowRatio": 0.36,
+    "windowShape": "pointed",
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 3.0,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9585",
+    "parapet": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tile-l",
+   "at": [
+    -5,
+    2,
+    13
+   ],
+   "params": {
+    "rect": [
+     7,
+     8
+    ],
+    "height": 2.6,
+    "topScale": 0.3,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tile-r",
+   "at": [
+    5,
+    2,
+    13
+   ],
+   "params": {
+    "rect": [
+     7,
+     8
+    ],
+    "height": 2.6,
+    "topScale": 0.3,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-crest",
+   "at": [
+    0,
+    -8.5,
+    15.5
+   ],
+   "params": {
+    "rect": [
+     10,
+     2
+    ],
+    "height": 4.5,
+    "topScale": 0.45,
+    "colour": "#b9ab8a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "clock",
+   "at": [
+    0,
+    -10.2,
+    17.3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#d8d0b8"
+     ],
+     [
+      2.3,
+      0,
+      "#d8d0b8"
+     ],
+     [
+      2.3,
+      0.4,
+      "#2f3a3d"
+     ],
+     [
+      0,
+      0.4,
+      "#2f3a3d"
+     ]
+    ],
+    "colour": "#d8d0b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 13,
+    "rise": 0.9,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#bdb5a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     22
+    ],
+    "height": 0.05,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -14,
+    -18,
+    0.05
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     28,
+     -3,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        4.6,
+        1.9
+       ],
+       "height": 0.9,
+       "colour": "#e5b72c"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       -0.2,
+       0,
+       0.9
+      ],
+      "params": {
+       "rect": [
+        2.4,
+        1.7
+       ],
+       "height": 0.7,
+       "colour": "#d9d4c8"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony",
+   "at": [
+    0,
+    -11.1,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     15,
+     2.0
+    ],
+    "height": 0.4,
+    "colour": "#b9ab8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balustrade",
+   "at": [
+    0,
+    -11.95,
+    6.4
+   ],
+   "params": {
+    "rect": [
+     15,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -10.7,
+    0.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.5,
+     0,
+     0
+    ],
+    "end": [
+     6.5,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 10,
+       "colour": "#c9bb9a",
+       "profile": [
+        [
+         0.5,
+         0
+        ],
+        [
+         0.35,
+         0.3
+        ],
+        [
+         0.3,
+         5.8
+        ],
+        [
+         0.5,
+         6.1
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -14
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -31,
+     -10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -16
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pointed upper windows, loggia, balcony and clock crest present; ornate carved cornice, horseshoe arches and the locomotive are not modelled; light paved plaza with simple box taxis; centre crest is a stepped prism"
+ }
+}

@@ -1,0 +1,370 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SkiDubai.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Fr\u00e9d\u00e9ric VINEE",
+   "view": "street",
+   "file": "/tmp/places-evidence/dubai/moe3.jpg",
+   "used": "exterior: the silver sloped Ski Dubai shell rising to one end with a rounded cylindrical head, set behind the pale low mall block; tan/pink walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mall_of_the_Emirates.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "SR Sajid Rauf",
+   "view": "interior",
+   "file": "/tmp/places-evidence/dubai/moe2.jpg",
+   "used": "cream and ochre Arabic-Mediterranean wall colours, green-tinted glazed barrel vault over the central atrium"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1136937509",
+   "used": "real outline (722 x 389 m, 4 levels) fitted to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 20
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ead9b0",
+    "windows": "none",
+    "bay": 20,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#c9a56a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cdb2",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    -70,
+    -8
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4cfa4",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "bay": 16,
+    "bands": "#c9a56a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a56a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "loft",
+   "id": "turret0",
+   "params": {
+    "colour": "#e4cfa4",
+    "topColour": "#c9d3d6",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 20,
+      "circle": 3,
+      "cx": -92,
+      "cy": -16
+     },
+     {
+      "z": 25,
+      "circle": 3,
+      "cx": -92,
+      "cy": -16
+     },
+     {
+      "z": 27,
+      "circle": 3.4,
+      "cx": -92,
+      "cy": -16
+     },
+     {
+      "z": 30,
+      "circle": 0.6,
+      "cx": -92,
+      "cy": -16
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "turret1",
+   "params": {
+    "colour": "#e4cfa4",
+    "topColour": "#c9d3d6",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 20,
+      "circle": 3,
+      "cx": -92,
+      "cy": 0
+     },
+     {
+      "z": 25,
+      "circle": 3,
+      "cx": -92,
+      "cy": 0
+     },
+     {
+      "z": 27,
+      "circle": 3.4,
+      "cx": -92,
+      "cy": 0
+     },
+     {
+      "z": 30,
+      "circle": 0.6,
+      "cx": -92,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "turret2",
+   "params": {
+    "colour": "#e4cfa4",
+    "topColour": "#c9d3d6",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 20,
+      "circle": 3,
+      "cx": -48,
+      "cy": -16
+     },
+     {
+      "z": 25,
+      "circle": 3,
+      "cx": -48,
+      "cy": -16
+     },
+     {
+      "z": 27,
+      "circle": 3.4,
+      "cx": -48,
+      "cy": -16
+     },
+     {
+      "z": 30,
+      "circle": 0.6,
+      "cx": -48,
+      "cy": -16
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "turret3",
+   "params": {
+    "colour": "#e4cfa4",
+    "topColour": "#c9d3d6",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 20,
+      "circle": 3,
+      "cx": -48,
+      "cy": 0
+     },
+     {
+      "z": 25,
+      "circle": 3,
+      "cx": -48,
+      "cy": 0
+     },
+     {
+      "z": 27,
+      "circle": 3.4,
+      "cx": -48,
+      "cy": 0
+     },
+     {
+      "z": 30,
+      "circle": 0.6,
+      "cx": -48,
+      "cy": 0
+     }
+    ]
+   }
+  },
+  {
+   "type": "surface",
+   "id": "vault",
+   "at": [
+    -6,
+    -4,
+    16
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 90,
+    "depth": 10,
+    "rise": 3,
+    "thickness": 0.4,
+    "colour": "#a9d3bd",
+    "edgeColour": "#7fa090"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 8,
+    "height": 5,
+    "colour": "#c8a574",
+    "columns": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "ski-slope",
+   "params": {
+    "section": {
+     "circle": 6
+    },
+    "points": [
+     [
+      -30,
+      40,
+      12
+     ],
+     [
+      60,
+      40,
+      22
+     ],
+     [
+      120,
+      40,
+      32
+     ]
+    ],
+    "n": 24,
+    "colour": "#c4cace"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ski-head",
+   "params": {
+    "section": {
+     "circle": 8
+    },
+    "points": [
+     [
+      120,
+      40,
+      32
+     ],
+     [
+      130,
+      40,
+      34
+     ]
+    ],
+    "n": 16,
+    "colour": "#dfe3e6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -56,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -42
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -42
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-osm-way-175115425",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Long pale mall now dominates with hotel reduced to a corner block and a thin inclined silver Ski Dubai tube; mall walls still plain, vault only a short strip, slope shorter than real."
+ }
+}

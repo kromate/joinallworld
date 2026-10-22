@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-osm-node-13691030944",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1513478890",
+   "used": "nearest 11x7 m building 71 m away: NOT used (the kurgan is an earth mound)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#7d9a5a",
+    "profile": [
+     [
+      15,
+      0,
+      "#8a8070"
+     ],
+     [
+      15,
+      0.6
+     ],
+     [
+      14.2,
+      0.9,
+      "#7d9a5a"
+     ],
+     [
+      10,
+      3
+     ],
+     [
+      5,
+      4.5
+     ],
+     [
+      0,
+      5.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.6
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 15.4,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "closed": true,
+    "colour": "#a89a78"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 1.4,
+    "count": 3,
+    "colour": "#a89a78"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#6f5a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence; mound size is a typed guess."
+ }
+}

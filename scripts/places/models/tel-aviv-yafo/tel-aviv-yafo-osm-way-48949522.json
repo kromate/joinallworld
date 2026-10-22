@@ -1,0 +1,347 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-osm-way-48949522",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Shamir_Medical_Center",
+   "used": "former British Army hospital site founded 1918, large 800-bed campus; present blocks not described, so the H-plan white-render mid-rise is typical, not copied"
+  },
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Assaf_HaRofe_Comercial_Center.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ranbar",
+   "view": "street",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/48949522_1.jpg",
+   "used": "neighbouring commercial centre only (dark ribbon-glazed bar, white stair towers, not the hospital): informed the pale cream render and the dark glazed ribbon look; the hospital blocks are not shown"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/48949522",
+   "used": "campus 827 x 475 m, too large and irregular to use as one building: not used as footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-ward",
+   "footprint": {
+    "rect": [
+     18,
+     36
+    ]
+   },
+   "at": [
+    -42,
+    0
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e1d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a5",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-ward",
+   "footprint": {
+    "rect": [
+     18,
+     36
+    ]
+   },
+   "at": [
+    42,
+    0
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e1d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a5",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     66,
+     14
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd6c6",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "plinth": 0.5,
+    "bay": 10,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a5",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     100,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#cfc9ba",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "bay": 10,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82",
+    "parapet": 0.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-clinic",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e1dccd",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 10,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a5",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -22,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#e6e1d4",
+    "roofColour": "#b5b0a5",
+    "vans": 2,
+    "marking": true
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    -38,
+    -36,
+    0
+   ],
+   "params": {
+    "heading": 90
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -29,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 3.2,
+    "colour": "#c8362f",
+    "frameColour": "#f1f1ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    42,
+    -2,
+    24.5
+   ],
+   "params": {
+    "radius": 7,
+    "n": 24,
+    "height": 0.4,
+    "colour": "#9a9690"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    42,
+    -2,
+    25.0
+   ],
+   "params": {
+    "radius": 5.5,
+    "n": 24,
+    "height": 0.1,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -42,
+    6,
+    24.5
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 3,
+    "legs": 4,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    30,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 12,
+    "density": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 4,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "No photo of the hospital blocks exists in the evidence (the only exterior shows the neighbouring commercial centre), so the H-plan white-render mid-rise, helipad, tank and red sign board are typical, not verified."
+ }
+}

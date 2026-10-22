@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kathmandu",
+ "venueId": "kathmandu-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/955850903",
+   "used": "nearest OSM building (9 m away, 254 m2 stepped plan) used for the main block; no photo found, so the pitched corrugated roof, timber verandah and render colours come from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dac0",
+    "glassColour": "#4a4038",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#8a5a3a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8502f",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -8.6,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "floors": 2,
+    "storeyHeight": 3.6,
+    "proud": 1.4,
+    "rail": true,
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.6,
+    "colour": "#6b4a32",
+    "frameColour": "#8a5a3a",
+    "posts": true
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -20
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "density": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 4,
+    "spread": 10,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     8
+    ],
+    "height": 16
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -20,
+     0
+    ],
+    "height": 14
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     18,
+     12
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; the verandah and roof pitch are typed from the brief; the OSM nearest-building match is 9 m away so the outline may be a neighbouring structure."
+ }
+}

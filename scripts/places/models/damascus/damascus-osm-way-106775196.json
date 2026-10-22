@@ -1,0 +1,274 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/106775196",
+   "used": "hospital compound about 388 x 379 m, start 1943: shows a spreading pavilion campus, so only the main frontage group is modelled (compound outline is not a building)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q60575998",
+   "used": "1943 chest and general hospital; French-Mandate pavilion type assumed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 16,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "bay": 6,
+    "faces": {
+     "back": "none"
+    },
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#efeae0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85a3c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-west",
+   "footprint": {
+    "rect": [
+     14,
+     44
+    ]
+   },
+   "at": [
+    -30,
+    12
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "bay": 6,
+    "faces": {
+     "back": "none"
+    },
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#efeae0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85a3c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     14,
+     44
+    ]
+   },
+   "at": [
+    30,
+    12
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "bay": 6,
+    "faces": {
+     "back": "none"
+    },
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#efeae0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85a3c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-rear",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "bay": 6,
+    "faces": {
+     "back": "none"
+    },
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#efeae0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85a3c",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -21.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 7,
+    "depth": 0.6,
+    "archWidth": 4.4,
+    "springHeight": 3.2,
+    "colour": "#efeae0"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -21.5
+   ],
+   "z0": 13.6,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8362f"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or building outline; U-plan pavilion group, tile hips and pale stone are assumed from the era. Compound is far larger."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     6
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-osm-way-106775196"
+}

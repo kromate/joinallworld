@@ -1,0 +1,138 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/313796138",
+   "used": "real stepped outline 95 x 42 m (building=university, named Block 3 Eton Institute)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: mid-rise modern university block, glass and render, flags, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e4dac4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#6f8fa8",
+    "bands": "#b7bbbd",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ada0",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -27
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8fa8",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7bbbd",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1,
+    "colour": "#2f4f7a",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    30,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 12,
+    "density": 0.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 5,
+    "spread": 30,
+    "line": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this block; height and glazing are typed guesses; the real outline is used."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dubai",
+ "venueId": "dubai-community-workshop"
+}

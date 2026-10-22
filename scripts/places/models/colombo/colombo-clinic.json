@@ -1,0 +1,275 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:North_Colombo_teaching_hospital_and_the_evening_sky.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/colombo/hospital.jpg",
+   "used": "distant view of a taller white ward block of about five storeys with a darker pitched roof, small stair/lift tower and projecting balcony bays on the left end; blue-roofed sheds in the foreground"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8206337",
+   "used": "zig-zag two-storey ward pavilion outline and levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 2,
+  "fovDeg": 22,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 12,
+    "plinth": 0.5,
+    "bands": "#f0ede4",
+    "glassColour": "#4f7f9a",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a584c",
+    "parapet": 0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     30,
+     15
+    ]
+   },
+   "at": [
+    -26,
+    10
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#faf8f2",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 7,
+    "glassColour": "#4f7f9a",
+    "bands": "#f4f1e8",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "left"
+      ],
+      "depth": 1.4,
+      "width": 2.5,
+      "every": 3,
+      "slab": 0.3,
+      "railKind": "solid",
+      "colour": "#d8d2c4",
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3b33",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 1,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    35,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 1,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    55,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower now dominant 5 storeys with overhanging hip roof; wing roof stays flat (hip does not fit the irregular OSM outline); tower balconies small; wing lacks darker hipped roof and tree screen is sparse."
+ }
+}

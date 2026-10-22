@@ -1,0 +1,530 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tashkent",
+ "venueId": "tashkent-osm-way-143446111",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kox_Ota_2023.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Azizxon Muzaffarov",
+   "view": "side",
+   "file": "/tmp/places-evidence/tashkent/kox-ota-2023.jpg",
+   "used": "buff yellow brick walls with cream pilaster bands, carved cream cornice and drum, green scaled dome on a stepped drum with gold finial, smaller green dome on the rear wing, tall arched windows in groups, no minarets seen, low entrance canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/143446111",
+   "used": "stepped outline and size (about 38 x 35 m), 3 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#d9bc78",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.15,
+      "spacing": 6.5,
+      "colour": "#eadfc2",
+      "margin": 0.0
+     }
+    ],
+    "windowShape": "pointed",
+    "bay": 3.0,
+    "glassColour": "#3f7a68"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c9a6",
+    "parapet": 2.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     26.8,
+     22.8
+    ],
+    "z0": 12.8,
+    "height": 1.2,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    -17,
+    5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#d9bc78",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "windowShape": "pointed",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c9a6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -9,
+    -14
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#eadfc4",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c9a6",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    3,
+    1,
+    14.0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#efe6cf",
+    "profile": [
+     [
+      8.4,
+      0
+     ],
+     [
+      8.4,
+      0.8
+     ],
+     [
+      7.9,
+      1.2
+     ],
+     [
+      7.9,
+      2.4
+     ],
+     [
+      8.3,
+      2.4
+     ],
+     [
+      8.3,
+      3.0
+     ],
+     [
+      8.0,
+      3.4
+     ],
+     [
+      8.0,
+      5.0
+     ],
+     [
+      8.5,
+      5.0
+     ],
+     [
+      8.5,
+      5.8
+     ],
+     [
+      7.0,
+      6.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    3,
+    1,
+    20.1
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#2f7d52",
+    "topColour": "#2f7d52",
+    "profile": [
+     [
+      7.0,
+      0
+     ],
+     [
+      8.0,
+      1.2
+     ],
+     [
+      8.3,
+      3.0
+     ],
+     [
+      7.6,
+      5.0
+     ],
+     [
+      6.0,
+      7.0
+     ],
+     [
+      3.8,
+      8.6
+     ],
+     [
+      1.8,
+      9.6
+     ],
+     [
+      0.6,
+      10.4
+     ],
+     [
+      0,
+      11.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "at": [
+    3,
+    1,
+    31.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d6a73a",
+    "profile": [
+     [
+      0.2,
+      0
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.2,
+      1.6
+     ],
+     [
+      0.3,
+      3.0
+     ],
+     [
+      0.1,
+      5.0
+     ],
+     [
+      0,
+      6.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "dome-low",
+   "at": [
+    3,
+    -7.5,
+    14.0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#2f7d52",
+    "profile": [
+     [
+      4.2,
+      0
+     ],
+     [
+      4.2,
+      1.6
+     ],
+     [
+      4.6,
+      1.6
+     ],
+     [
+      4.6,
+      2.2
+     ],
+     [
+      4.4,
+      2.4
+     ],
+     [
+      4.3,
+      3.5
+     ],
+     [
+      3.8,
+      5.0
+     ],
+     [
+      2.6,
+      6.3
+     ],
+     [
+      1.2,
+      7.2
+     ],
+     [
+      0,
+      7.6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "dome-rear",
+   "at": [
+    -17,
+    5,
+    9.6
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#2f7d52",
+    "profile": [
+     [
+      3.2,
+      0
+     ],
+     [
+      3.3,
+      0.6
+     ],
+     [
+      3.0,
+      1.6
+     ],
+     [
+      2.2,
+      2.5
+     ],
+     [
+      1,
+      3.0
+     ],
+     [
+      0,
+      3.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial-rear",
+   "at": [
+    -17,
+    5,
+    12.8
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d6a73a",
+    "profile": [
+     [
+      0.12,
+      0
+     ],
+     [
+      0.3,
+      0.5
+     ],
+     [
+      0.1,
+      1.0
+     ],
+     [
+      0,
+      2.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch",
+   "params": {
+    "rect": [
+     7,
+     4
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "at": [
+    -7,
+    -13
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "porch-rail",
+   "params": {
+    "rect": [
+     7.4,
+     4.4
+    ],
+    "z0": 3.2,
+    "height": 0.9,
+    "colour": "#efe6cf",
+    "topColour": "#efe6cf"
+   },
+   "at": [
+    -7,
+    -13
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair",
+   "params": {
+    "rect": [
+     3,
+     2.5
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#d8d0bc",
+    "topColour": "#d8d0bc"
+   },
+   "at": [
+    -1.5,
+    -15.5
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     -22
+    ],
+    "height": 7
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -9,
+     -20
+    ],
+    "height": 6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     8,
+     -18
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "stepped OSM facade and stepped cornice around the drum not reproduced; no scale pattern or carved relief on domes and cornice; drum lacks arched openings; windows are a low band, not tall paired arches; porch is a simple block"
+ }
+}

@@ -1,0 +1,1087 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hazuri_Bagh_(01).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bilalmahmood1992",
+   "view": "front",
+   "file": "/tmp/places-evidence/lahore/hb0.jpg",
+   "used": "baradari from the south down the canal: cream marble, three arched openings in the front bay, flat roof with cusped parapet and raised centre, brick-edged canal and paths, clipped round bushes, lawns"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hazuri_Bagh_View.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rohaan Bhatti",
+   "view": "side",
+   "file": "/tmp/places-evidence/lahore/hb1.jpg",
+   "used": "proportion of the pavilion to the plinth and the fort-side backdrop"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/475247487",
+   "used": "21 x 20 m footprint size of the baradari with its plinth (axis-aligned here to match the photo view)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 11,
+  "fovDeg": 30,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "params": {
+    "width": 70,
+    "depth": 70,
+    "colour": "#5f9444"
+   },
+   "at": [
+    0,
+    0,
+    0.0
+   ],
+   "id": "lawn"
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     22,
+     17
+    ],
+    "z0": 0.6,
+    "height": 0.9,
+    "colour": "#e0d9c6",
+    "topColour": "#d6cdb8"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "id": "plinth"
+  },
+  {
+   "type": "mass",
+   "id": "baradari",
+   "footprint": {
+    "rect": [
+     19,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.3,
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "marble",
+    "colour": "#e4dccb",
+    "trimColour": "#cfc6b2",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.7,
+    "cornice": true,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d1bd",
+    "parapet": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     11,
+     3
+    ],
+    "z0": 8.9,
+    "height": 1.8,
+    "colour": "#e4dccb"
+   },
+   "at": [
+    0,
+    -4.5
+   ],
+   "id": "raised-centre"
+  },
+  {
+   "type": "reflecting-pool",
+   "params": {
+    "width": 2.6,
+    "depth": 44,
+    "colour": "#6fa8c4",
+    "edgeColour": "#b0553a"
+   },
+   "at": [
+    0,
+    -31,
+    0
+   ],
+   "id": "canal"
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -10
+     ],
+     [
+      0,
+      -46
+     ]
+    ],
+    "width": 6.5,
+    "colour": "#b06a52"
+   },
+   "at": [
+    0,
+    0,
+    0.03
+   ],
+   "id": "axis-path"
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -34,
+      -26
+     ],
+     [
+      34,
+      -26
+     ]
+    ],
+    "width": 3.6,
+    "colour": "#b06a52"
+   },
+   "at": [
+    0,
+    0,
+    0.03
+   ],
+   "id": "cross-path"
+  },
+  {
+   "type": "stair",
+   "params": {
+    "width": 8,
+    "height": 1.3,
+    "run": 3.5,
+    "colour": "#e0d9c6",
+    "rails": false
+   },
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "id": "front-steps"
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 1,
+    "dx": 14,
+    "dy": 0,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#3d6a34",
+      "profile": [
+       [
+        0.01,
+        0
+       ],
+       [
+        2.4,
+        1.0
+       ],
+       [
+        2.6,
+        2.8
+       ],
+       [
+        1.8,
+        4.2
+       ],
+       [
+        0.01,
+        4.8
+       ]
+      ],
+      "material": "painted-render"
+     }
+    }
+   },
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "id": "big-bushes"
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 16,
+    "colour": "#2f5a2c",
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      1.6,
+      0.6400000000000001
+     ],
+     [
+      1.6800000000000002,
+      1.7600000000000002
+     ],
+     [
+      1.1199999999999999,
+      2.8800000000000003
+     ],
+     [
+      0.01,
+      3.2
+     ]
+    ],
+    "material": "painted-render"
+   },
+   "at": [
+    -12,
+    -18,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 16,
+    "colour": "#2f5a2c",
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      1.6,
+      0.6400000000000001
+     ],
+     [
+      1.6800000000000002,
+      1.7600000000000002
+     ],
+     [
+      1.1199999999999999,
+      2.8800000000000003
+     ],
+     [
+      0.01,
+      3.2
+     ]
+    ],
+    "material": "painted-render"
+   },
+   "at": [
+    12,
+    -18,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 16,
+    "colour": "#2f5a2c",
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      1.4,
+      0.5599999999999999
+     ],
+     [
+      1.47,
+      1.54
+     ],
+     [
+      0.9799999999999999,
+      2.52
+     ],
+     [
+      0.01,
+      2.8
+     ]
+    ],
+    "material": "painted-render"
+   },
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 16,
+    "colour": "#2f5a2c",
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      1.4,
+      0.5599999999999999
+     ],
+     [
+      1.47,
+      1.54
+     ],
+     [
+      0.9799999999999999,
+      2.52
+     ],
+     [
+      0.01,
+      2.8
+     ]
+    ],
+    "material": "painted-render"
+   },
+   "at": [
+    20,
+    -34,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 16,
+    "colour": "#2f5a2c",
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      1.4,
+      0.5599999999999999
+     ],
+     [
+      1.47,
+      1.54
+     ],
+     [
+      0.9799999999999999,
+      2.52
+     ],
+     [
+      0.01,
+      2.8
+     ]
+    ],
+    "material": "painted-render"
+   },
+   "at": [
+    -9,
+    -38,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 16,
+    "colour": "#2f5a2c",
+    "profile": [
+     [
+      0.01,
+      0
+     ],
+     [
+      1.4,
+      0.5599999999999999
+     ],
+     [
+      1.47,
+      1.54
+     ],
+     [
+      0.9799999999999999,
+      2.52
+     ],
+     [
+      0.01,
+      2.8
+     ]
+    ],
+    "material": "painted-render"
+   },
+   "at": [
+    9,
+    -38,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "at": [
+    -28,
+    -4,
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "at": [
+    27,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "at": [
+    -26,
+    14,
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "at": [
+    24,
+    15,
+    0
+   ]
+  },
+  {
+   "type": "tree",
+   "params": {
+    "kind": "palm",
+    "height": 12
+   },
+   "at": [
+    30,
+    6,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth-step",
+   "params": {
+    "rect": [
+     27,
+     22
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#e8e1cf",
+    "topColour": "#dcd4c0"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "arch-gateway",
+   "id": "front-arches",
+   "params": {
+    "width": 12.6,
+    "depth": 1.6,
+    "height": 5.4,
+    "openings": 3,
+    "kind": "round",
+    "pier": "#e4dccb"
+   },
+   "at": [
+    0,
+    -7.6,
+    1.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-panel--1",
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "z0": 2.0,
+    "height": 4.6,
+    "colour": "#3b3834"
+   },
+   "at": [
+    -7.359999999999999,
+    -6.6
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "lamp--1",
+   "params": {
+    "segments": 10,
+    "colour": "#2a9aa0",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.12,
+      0.8
+     ],
+     [
+      0.45,
+      1.0
+     ],
+     [
+      0.5,
+      1.3
+     ],
+     [
+      0.3,
+      1.7
+     ],
+     [
+      0.05,
+      1.9
+     ]
+    ]
+   },
+   "at": [
+    -1.7,
+    -22,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "lamp2--1",
+   "params": {
+    "segments": 10,
+    "colour": "#2a9aa0",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.12,
+      0.8
+     ],
+     [
+      0.45,
+      1.0
+     ],
+     [
+      0.5,
+      1.3
+     ],
+     [
+      0.3,
+      1.7
+     ],
+     [
+      0.05,
+      1.9
+     ]
+    ]
+   },
+   "at": [
+    -1.7,
+    -34,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-panel-1",
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "z0": 2.0,
+    "height": 4.6,
+    "colour": "#3b3834"
+   },
+   "at": [
+    7.359999999999999,
+    -6.6
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "lamp-1",
+   "params": {
+    "segments": 10,
+    "colour": "#2a9aa0",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.12,
+      0.8
+     ],
+     [
+      0.45,
+      1.0
+     ],
+     [
+      0.5,
+      1.3
+     ],
+     [
+      0.3,
+      1.7
+     ],
+     [
+      0.05,
+      1.9
+     ]
+    ]
+   },
+   "at": [
+    1.7,
+    -22,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "lamp2-1",
+   "params": {
+    "segments": 10,
+    "colour": "#2a9aa0",
+    "profile": [
+     [
+      0.1,
+      0
+     ],
+     [
+      0.12,
+      0.8
+     ],
+     [
+      0.45,
+      1.0
+     ],
+     [
+      0.5,
+      1.3
+     ],
+     [
+      0.3,
+      1.7
+     ],
+     [
+      0.05,
+      1.9
+     ]
+    ]
+   },
+   "at": [
+    1.7,
+    -34,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fort-wall",
+   "params": {
+    "rect": [
+     80,
+     3
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#c99a6c",
+    "topColour": "#b98f68",
+    "material": "painted-render"
+   },
+   "at": [
+    0,
+    32
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "samadhi-dome",
+   "params": {
+    "segments": 16,
+    "colour": "#ece6d6",
+    "profile": [
+     [
+      2.9700000000000006,
+      0.0
+     ],
+     [
+      2.9700000000000006,
+      2.0999999999999996
+     ],
+     [
+      3.5100000000000002,
+      3.6399999999999997
+     ],
+     [
+      2.7,
+      5.319999999999999
+     ],
+     [
+      1.215,
+      6.72
+     ],
+     [
+      0.2025,
+      7.839999999999999
+     ],
+     [
+      0.0675,
+      9.239999999999998
+     ]
+    ],
+    "material": "painted-render"
+   },
+   "at": [
+    -14,
+    30,
+    7
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "roof-cresting",
+   "params": {
+    "mode": "line",
+    "start": [
+     -9,
+     -6.5,
+     8.9
+    ],
+    "end": [
+     9,
+     -6.5,
+     8.9
+    ],
+    "count": 19,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.6
+      ],
+      "height": 0.9,
+      "colour": "#e4dccb"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "centre-cresting",
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     -4.5,
+     10.7
+    ],
+    "end": [
+     5,
+     -4.5,
+     10.7
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.6
+      ],
+      "height": 0.9,
+      "colour": "#e4dccb"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "fort-crenels",
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     32,
+     7
+    ],
+    "end": [
+     38,
+     32,
+     7
+    ],
+    "count": 39,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       2.6
+      ],
+      "height": 1.1,
+      "colour": "#b98f68"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "brick-canal-edge",
+   "params": {
+    "rect": [
+     4.4,
+     44
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#b0553a"
+   },
+   "at": [
+    0,
+    -31
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "relief-band",
+   "params": {
+    "rect": [
+     19.4,
+     13.4
+    ],
+    "z0": 6.6,
+    "height": 0.7,
+    "colour": "#cdbf9f"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "samadhi-kiosk-l",
+   "params": {
+    "segments": 10,
+    "colour": "#ece6d6",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.4
+     ],
+     [
+      0.9,
+      1.5
+     ],
+     [
+      0.7,
+      2.4
+     ],
+     [
+      0.05,
+      3.0
+     ]
+    ]
+   },
+   "at": [
+    -20,
+    30,
+    7
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "samadhi-kiosk-r",
+   "params": {
+    "segments": 10,
+    "colour": "#ece6d6",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.4
+     ],
+     [
+      0.9,
+      1.5
+     ],
+     [
+      0.7,
+      2.4
+     ],
+     [
+      0.05,
+      3.0
+     ]
+    ]
+   },
+   "at": [
+    -8,
+    30,
+    7
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Taller arches, cusped-style cresting, raised centre, relief band, wider brick-edged canal, crenellated fort wall with taller Samadhi dome and kiosks; the three arch openings still read low and offset in the render, canal is short in view, no ribbed dome detail."
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   70,
+   80
+  ]
+ }
+}

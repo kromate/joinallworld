@@ -1,0 +1,744 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-osm-way-1067538666",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A_building_at_the_filming_location_of_Qazali.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rye-96",
+   "view": "side",
+   "file": "/tmp/places-evidence/tehran/g2.jpg",
+   "used": "main set building: warm brick two-storey facade, open pointed-arch arcade with slim columns on the left wing, tall recessed pointed arches in the centre bay, balustraded parapet with ball finials, small clock gable on top"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ghazali_Cinema_Town_8.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "GTVM92",
+   "view": "street",
+   "file": "/tmp/places-evidence/tehran/p3.jpg",
+   "used": "street scene (context only): stone houses and lamps; not modelled"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1067538666",
+   "used": "site area ~600 x 540 m: only the main arcaded brick hall was modelled, not the full outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 6,
+  "fovDeg": 48,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftX": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-hall",
+   "footprint": {
+    "rect": [
+     62,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a5603f",
+    "glassColour": "#2f2a28",
+    "windows": "none",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7058",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     16,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a5603f",
+    "glassColour": "#2f2a28",
+    "windows": "none",
+    "windowShape": "pointed",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 8,
+      "depth": 1.8,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7058",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-bay--1",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    -21,
+    -8.5
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a5603f",
+    "glassColour": "#2f2a28",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7058",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-bay-1",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    21,
+    -8.5
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a5603f",
+    "glassColour": "#2f2a28",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7058",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "clock-gable",
+   "at": [
+    0,
+    -9.5,
+    19
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -1.5
+     ],
+     [
+      4,
+      -1.5
+     ],
+     [
+      4,
+      1.5
+     ],
+     [
+      -4,
+      1.5
+     ]
+    ],
+    "height": 3,
+    "colour": "#d8c79a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -9.6,
+    30
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#e8e0cc"
+     ],
+     [
+      1.4,
+      0,
+      "#e8e0cc"
+     ],
+     [
+      1.4,
+      0.4,
+      "#e8e0cc"
+     ],
+     [
+      0,
+      0.4,
+      "#e8e0cc"
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -7.6,
+    13
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.1,
+    "thickness": 0.3,
+    "kind": "bars",
+    "pillarEvery": 2.5,
+    "colour": "#e3d9c0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -7.6,
+    14.1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -29,
+     0
+    ],
+    "end": [
+     29,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0,
+        "#e3d9c0"
+       ],
+       [
+        0.4,
+        0,
+        "#e3d9c0"
+       ],
+       [
+        0.5,
+        0.5,
+        "#e3d9c0"
+       ],
+       [
+        0.3,
+        0.9,
+        "#e3d9c0"
+       ],
+       [
+        0,
+        1,
+        "#e3d9c0"
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    48,
+    2
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a5603f",
+    "glassColour": "#2f2a28",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 6,
+      "depth": 1.2,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7058",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -24,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -46,
+    -10,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     0
+    ],
+    "end": [
+     14,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "profile": [
+        [
+         0,
+         0,
+         "#d8c79a"
+        ],
+        [
+         0.45,
+         0,
+         "#d8c79a"
+        ],
+        [
+         0.35,
+         4.199999999999999,
+         "#d8c79a"
+        ],
+        [
+         0,
+         4.199999999999999,
+         "#d8c79a"
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "arcade-wall-0",
+   "footprint": {
+    "rect": [
+     32,
+     1
+    ]
+   },
+   "at": [
+    -46,
+    -6
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8c79a",
+    "glassColour": "#4a3a30",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 4.5,
+      "depth": 0.6,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c79a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -46,
+    -10,
+    6.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     0
+    ],
+    "end": [
+     14,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "profile": [
+        [
+         0,
+         0,
+         "#d8c79a"
+        ],
+        [
+         0.45,
+         0,
+         "#d8c79a"
+        ],
+        [
+         0.35,
+         3.5,
+         "#d8c79a"
+        ],
+        [
+         0,
+         3.5,
+         "#d8c79a"
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "arcade-wall-1",
+   "footprint": {
+    "rect": [
+     32,
+     1
+    ]
+   },
+   "at": [
+    -46,
+    -6
+   ],
+   "z0": 6.2,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8c79a",
+    "glassColour": "#4a3a30",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 4.5,
+      "depth": 0.6,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c79a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-slab",
+   "footprint": {
+    "rect": [
+     32,
+     6
+    ]
+   },
+   "at": [
+    -46,
+    -8
+   ],
+   "z0": 5.8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8c79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c79a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-roof",
+   "footprint": {
+    "rect": [
+     32,
+     8
+    ]
+   },
+   "at": [
+    -46,
+    -7
+   ],
+   "z0": 11.2,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a5603f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c79a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-band",
+   "footprint": {
+    "rect": [
+     62.4,
+     20.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8c79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5603f"
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "core/prism",
+   "id": "slate-pyr",
+   "at": [
+    0,
+    -9.5,
+    22
+   ],
+   "params": {
+    "points": [
+     [
+      -4.2,
+      -1.8
+     ],
+     [
+      4.2,
+      -1.8
+     ],
+     [
+      4.2,
+      1.8
+     ],
+     [
+      -4.2,
+      1.8
+     ]
+    ],
+    "height": 8,
+    "topScale": [
+     0.04,
+     0.04
+    ],
+    "colour": "#3b3f45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 24,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -26
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Open two-storey arcade now present but with squat columns and grey-blue back wall; centre bay arches shallow, clock gable is a plain slate pyramid; balustrade/finials only at LOD0 posts; brick still slightly orange; no cobble texture"
+ }
+}

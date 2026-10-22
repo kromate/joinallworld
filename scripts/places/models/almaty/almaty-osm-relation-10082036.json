@@ -1,0 +1,856 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-osm-relation-10082036",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ice_Palace_%22Almaty_Arena%22.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "\u041c\u0430\u0440\u0430\u0442\u0414",
+   "view": "front",
+   "file": "/tmp/places-evidence/almaty/arena1.jpg",
+   "used": "two glazed volumes: low wide oval main arena and a taller ellipsoidal glass hall to the left; deep blue reflective glazing with gold swoosh bands; outdoor escalator-stair at the entrance; lawns, young trees, lamp posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10082036",
+   "used": "site context only (main hall is now a lofted oval, 100 x 76 m); the OSM outline is not used directly"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    12,
+    8,
+    0
+   ],
+   "params": {
+    "material": "glass-curtain",
+    "colour": "#4a86b0",
+    "topColour": "#6fa0c8",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       50,
+       38
+      ],
+      "colour": "#2f6a94"
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       50.5,
+       38.5
+      ],
+      "colour": "#3a76a0"
+     },
+     {
+      "z": 11.5,
+      "ellipse": [
+       50,
+       38
+      ],
+      "colour": "#4a86b0"
+     },
+     {
+      "z": 12.5,
+      "ellipse": [
+       48.5,
+       37
+      ],
+      "colour": "#5a94bc"
+     },
+     {
+      "z": 13.5,
+      "ellipse": [
+       38,
+       29
+      ],
+      "colour": "#6fa0c8"
+     },
+     {
+      "z": 14.2,
+      "ellipse": [
+       20,
+       15
+      ],
+      "colour": "#7aa9cc"
+     },
+     {
+      "z": 14.5,
+      "ellipse": [
+       5,
+       4
+      ],
+      "colour": "#82b0d0"
+     }
+    ],
+    "curve": true,
+    "steps": 5,
+    "round": 20
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -38,
+    -34,
+    0
+   ],
+   "params": {
+    "material": "glass-curtain",
+    "colour": "#3a6f9a",
+    "topColour": "#6fa0c8",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       24,
+       30
+      ],
+      "colour": "#2f6a94"
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       27,
+       34
+      ],
+      "colour": "#3a76a0"
+     },
+     {
+      "z": 15,
+      "ellipse": [
+       26,
+       33
+      ],
+      "colour": "#4a86b0"
+     },
+     {
+      "z": 20,
+      "ellipse": [
+       23,
+       29
+      ],
+      "colour": "#5a94bc"
+     },
+     {
+      "z": 23,
+      "ellipse": [
+       15,
+       19
+      ],
+      "colour": "#6fa0c8"
+     },
+     {
+      "z": 24.5,
+      "ellipse": [
+       6,
+       8
+      ],
+      "colour": "#82b0d0"
+     }
+    ],
+    "curve": true,
+    "steps": 5,
+    "round": 20
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -36.02,
+      -5.37,
+      2.4
+     ],
+     [
+      -29.41,
+      -15.27,
+      3.6
+     ],
+     [
+      -19.41,
+      -23.42,
+      4.8
+     ],
+     [
+      -6.59,
+      -28.63,
+      6.0
+     ],
+     [
+      7.56,
+      -30.85,
+      7.2
+     ],
+     [
+      21.89,
+      -29.96,
+      8.4
+     ],
+     [
+      34.57,
+      -24.97,
+      9.6
+     ],
+     [
+      44.03,
+      -17.3,
+      10.8
+     ],
+     [
+      48.55,
+      -7.9,
+      12.0
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#d6ac3c",
+    "up": [
+     0,
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -29.61,
+      -14.25,
+      8.0
+     ],
+     [
+      -19.75,
+      -22.2,
+      8.3
+     ],
+     [
+      -7.38,
+      -27.71,
+      8.6
+     ],
+     [
+      6.51,
+      -30.19,
+      8.9
+     ],
+     [
+      20.64,
+      -29.31,
+      9.2
+     ],
+     [
+      33.72,
+      -25.5,
+      9.5
+     ],
+     [
+      44.74,
+      -19.14,
+      9.8
+     ],
+     [
+      52.88,
+      -10.82,
+      10.1
+     ],
+     [
+      57.56,
+      -1.25,
+      10.4
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#d6ac3c",
+    "up": [
+     0,
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -34.45,
+      1.79,
+      10.4
+     ],
+     [
+      -31.27,
+      -4.73,
+      10.75
+     ],
+     [
+      -26.52,
+      -10.53,
+      11.1
+     ],
+     [
+      -20.45,
+      -15.42,
+      11.45
+     ],
+     [
+      -12.89,
+      -18.79,
+      11.8
+     ],
+     [
+      -4.63,
+      -20.49,
+      12.15
+     ],
+     [
+      3.52,
+      -20.85,
+      12.5
+     ],
+     [
+      11.19,
+      -19.97,
+      12.85
+     ],
+     [
+      18.08,
+      -18.0,
+      13.2
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#d6ac3c",
+    "up": [
+     0,
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -62.33,
+      -48.2,
+      6.0
+     ],
+     [
+      -59.23,
+      -55.83,
+      7.62
+     ],
+     [
+      -54.23,
+      -61.78,
+      9.25
+     ],
+     [
+      -48.15,
+      -65.78,
+      10.88
+     ],
+     [
+      -41.53,
+      -67.75,
+      12.5
+     ],
+     [
+      -34.79,
+      -67.59,
+      14.12
+     ],
+     [
+      -28.35,
+      -65.34,
+      15.75
+     ],
+     [
+      -23.31,
+      -60.01,
+      17.38
+     ],
+     [
+      -19.92,
+      -53.35,
+      19.0
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#d6ac3c",
+    "up": [
+     0,
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -59.99,
+      -53.42,
+      14.0
+     ],
+     [
+      -55.18,
+      -59.83,
+      15.0
+     ],
+     [
+      -49.24,
+      -64.45,
+      16.0
+     ],
+     [
+      -42.45,
+      -65.94,
+      17.0
+     ],
+     [
+      -35.86,
+      -65.15,
+      18.0
+     ],
+     [
+      -29.93,
+      -62.28,
+      19.0
+     ],
+     [
+      -25.04,
+      -57.7,
+      20.0
+     ],
+     [
+      -21.45,
+      -51.85,
+      21.0
+     ],
+     [
+      -19.33,
+      -45.24,
+      22.0
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#d6ac3c",
+    "up": [
+     0,
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    30,
+    -36,
+    0
+   ],
+   "rotDeg": -70,
+   "params": {
+    "width": 5,
+    "height": 11,
+    "run": 40,
+    "colour": "#aeb8c0",
+    "rails": true
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -40,
+    6.5
+   ],
+   "params": {
+    "form": "curved",
+    "width": 22,
+    "depth": 6,
+    "height": 0,
+    "rise": 2.2,
+    "thickness": 0.5,
+    "colour": "#b8c4cc"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -70,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -29.78,
+      -14.37,
+      3.5
+     ],
+     [
+      -21.21,
+      -21.6,
+      4.0
+     ],
+     [
+      -10.56,
+      -26.98,
+      4.5
+     ],
+     [
+      1.51,
+      -30.17,
+      5.0
+     ],
+     [
+      14.22,
+      -30.96,
+      5.5
+     ],
+     [
+      26.8,
+      -29.32,
+      6.0
+     ],
+     [
+      38.46,
+      -25.34,
+      6.5
+     ],
+     [
+      48.45,
+      -19.27,
+      7.0
+     ],
+     [
+      56.17,
+      -11.5,
+      7.5
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#d6ac3c",
+    "up": [
+     0,
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -35.92,
+      -5.34,
+      7.5
+     ],
+     [
+      -29.78,
+      -14.37,
+      7.88
+     ],
+     [
+      -20.78,
+      -21.88,
+      8.25
+     ],
+     [
+      -9.55,
+      -27.35,
+      8.62
+     ],
+     [
+      3.14,
+      -30.41,
+      9.0
+     ],
+     [
+      16.44,
+      -30.85,
+      9.38
+     ],
+     [
+      29.44,
+      -28.65,
+      9.75
+     ],
+     [
+      41.25,
+      -23.95,
+      10.12
+     ],
+     [
+      51.07,
+      -17.07,
+      10.5
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#d6ac3c",
+    "up": [
+     0,
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -13.5,
+      -25.77,
+      1.8
+     ],
+     [
+      -3.87,
+      -29.06,
+      1.98
+     ],
+     [
+      6.45,
+      -30.77,
+      2.15
+     ],
+     [
+      17.0,
+      -30.81,
+      2.33
+     ],
+     [
+      27.34,
+      -29.19,
+      2.5
+     ],
+     [
+      37.02,
+      -25.99,
+      2.68
+     ],
+     [
+      45.63,
+      -21.32,
+      2.85
+     ],
+     [
+      52.8,
+      -15.4,
+      3.03
+     ],
+     [
+      58.22,
+      -8.48,
+      3.2
+     ]
+    ],
+    "curve": true,
+    "steps": 4,
+    "colour": "#d6ac3c",
+    "up": [
+     0,
+     0,
+     1
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4,
+    -46,
+    7.5
+   ],
+   "params": {
+    "width": 20,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#f0d27a",
+    "frameColour": "#1c3f66",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -30,
+     -84
+    ],
+    "height": 6
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -75
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -50
+    ],
+    "height": 8
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     75,
+     0
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hall still a smooth blob without mullion texture; gold ribbons thin but sparse; stair/plaza small; no sign band reading."
+ }
+}

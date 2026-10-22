@@ -1,0 +1,168 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/485941188",
+   "used": "real outline (name match), 6 levels, 30 m height, Wikidata Q24211432"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 30,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#6d8c9c",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "params": {
+    "rect": [
+     22,
+     6
+    ],
+    "z0": 0,
+    "height": 14,
+    "colour": "#6d8c9c",
+    "topColour": "#9fb4bd",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#6d8c9c"
+   },
+   "at": [
+    -10,
+    -51
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plant",
+   "params": {
+    "rect": [
+     22,
+     16
+    ],
+    "z0": 30,
+    "height": 3.5,
+    "colour": "#b4a88d",
+    "topColour": "#b0aca4"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -55.5,
+    9
+   ],
+   "params": {
+    "width": 14,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#b4a88d",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -49.5,
+    22
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#6d8c9c",
+    "posts": false
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    45,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 40,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -55
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     -58
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-market-game",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this mall found; facade colours and entrance are brief guesses on the real outline."
+ }
+}

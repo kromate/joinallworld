@@ -1,0 +1,336 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Reuben%27s_Tomb_in_Palmachim_(Nabi_Rubin).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dan Palraz",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/nr_tomb.jpg",
+   "used": "long honey-brown stone cross-vaulted hall with three tall pointed arches open to the front, low whitewashed rubble rooms at left half buried in sand, white hemispherical cupola on a square drum, sand all round"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Nabi_Rubin",
+   "used": "Mamluk maqam 1436-37, cross-vaulted room, courtyard compound"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "vaulted-hall",
+   "footprint": {
+    "rect": [
+     21,
+     9
+    ]
+   },
+   "at": [
+    7,
+    3
+   ],
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9c8560",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "pointed",
+      "bay": 7,
+      "opening": 0.82,
+      "height": 0.9,
+      "depth": 2.4
+     }
+    ],
+    "glassColour": "#120e0a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7d52",
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-rooms",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    -9,
+    -2
+   ],
+   "z0": 0,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e0d6ba",
+    "windows": "none",
+    "windowRatio": 0.08,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd5be",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    -8.5,
+    0,
+    2.5
+   ],
+   "params": {
+    "profile": [
+     [
+      3.1,
+      0,
+      "#e4dcc4"
+     ],
+     [
+      3.1,
+      1.3,
+      "#e4dcc4"
+     ],
+     [
+      2.9,
+      1.5,
+      "#e8e2d0"
+     ]
+    ],
+    "segments": 20
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cupola",
+   "at": [
+    -8.5,
+    0,
+    3.9
+   ],
+   "params": {
+    "profile": [
+     [
+      2.9,
+      0,
+      "#eeeadc"
+     ],
+     [
+      2.85,
+      0.4,
+      "#eeeadc"
+     ],
+     [
+      2.5,
+      1.4,
+      "#eeeadc"
+     ],
+     [
+      1.7,
+      2.2,
+      "#eeeadc"
+     ],
+     [
+      0.7,
+      2.7,
+      "#eeeadc"
+     ],
+     [
+      0,
+      2.8,
+      "#eeeadc"
+     ]
+    ],
+    "segments": 24
+   }
+  },
+  {
+   "type": "prism",
+   "id": "east-wall",
+   "at": [
+    18.6,
+    3
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     9
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#a58a60",
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "buttress",
+   "at": [
+    17.3,
+    -2.2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "topScale": 0.7,
+    "colour": "#9c8560",
+    "slot": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sand-front",
+   "at": [
+    -1,
+    -6.5
+   ],
+   "params": {
+    "rect": [
+     22,
+     5
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "topScale": 0.35,
+    "colour": "#e3cf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sand-left",
+   "at": [
+    -12,
+    -4.5
+   ],
+   "params": {
+    "rect": [
+     11,
+     7
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "topScale": 0.4,
+    "colour": "#e3cf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sand-back",
+   "at": [
+    -9,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     10,
+     4
+    ],
+    "z0": 0,
+    "height": 1.9,
+    "topScale": 0.4,
+    "colour": "#e3cf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sand-hall",
+   "at": [
+    6,
+    -2.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     2.5
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "topScale": 0.4,
+    "colour": "#e3cf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-low1",
+   "at": [
+    -12,
+    -6.6
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "z0": 0.1,
+    "height": 1.2,
+    "colour": "#1c1610"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-low2",
+   "at": [
+    -6,
+    -6.6
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.5
+    ],
+    "z0": 0.1,
+    "height": 1.0,
+    "colour": "#1c1610"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Arches now open dark pointed vaults but no cross-vault ribs inside; stone coursing is regular not ruined; low rooms are a plain box buried by sand mounds, no vaulted rubble; no scrub."
+ }
+}

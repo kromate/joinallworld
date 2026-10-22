@@ -1,0 +1,733 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "muscat",
+ "venueId": "muscat-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_State_Council_(47954035406).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Eduard Marmet",
+   "view": "front",
+   "file": "/tmp/places-evidence/muscat/council1.jpg",
+   "used": "white render stepped crenellated blocks, pointed arched openings, square clock tower with small gold dome, taller window-gridded east wing, terraced lawn with palms against the mountain"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-tall",
+   "footprint": {
+    "rect": [
+     40,
+     20
+    ]
+   },
+   "at": [
+    -28,
+    6
+   ],
+   "z0": 0,
+   "rotDeg": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cc",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "bay": 13,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e2dccb",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-step",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    6,
+    4
+   ],
+   "z0": 0,
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cc",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "bay": 13,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e2dccb",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-front",
+   "footprint": {
+    "rect": [
+     52,
+     7
+    ]
+   },
+   "at": [
+    -14,
+    -9
+   ],
+   "z0": 0,
+   "rotDeg": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cc",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "windowShape": "arched",
+    "bay": 9,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e2dccb",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 7,
+      "storeys": 1,
+      "colour": "#cfc7b0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    18,
+    6,
+    34
+   ],
+   "params": {
+    "radius": 2.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "lantern": 0.5,
+    "finial": 1.2,
+    "colour": "#e8d9a8",
+    "drumColour": "#ece8dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    40,
+    6
+   ],
+   "z0": 0,
+   "rotDeg": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8b8",
+    "windows": "rect",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "bay": 10,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e2dccb",
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d8d1bd",
+      "height": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e-low",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    58,
+    -4
+   ],
+   "z0": 0,
+   "rotDeg": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cc",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "bay": 12,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e2dccb"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 0.9,
+    "thickness": 0.4,
+    "pillarEvery": 6,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "hospital/clock-tower-square",
+   "at": [
+    18,
+    6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 34,
+    "cap": "flat",
+    "clockRadius": 2.4,
+    "clock": true,
+    "belfry": false,
+    "colour": "#efe4cc",
+    "trimColour": "#d8cdb2",
+    "capColour": "#e8dcc0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-base",
+   "footprint": {
+    "rect": [
+     36,
+     6
+    ]
+   },
+   "at": [
+    40,
+    -6
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -28,
+    -4,
+    12
+   ],
+   "params": {
+    "length": 40,
+    "height": 0.6,
+    "thickness": 0.8,
+    "merlon_height": 1.2,
+    "merlon_width": 0.9,
+    "pitch": 2.2,
+    "colour": "#efe4cc",
+    "trim": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    6,
+    -3,
+    8
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.6,
+    "thickness": 0.8,
+    "merlon_height": 1.2,
+    "merlon_width": 0.9,
+    "pitch": 2.2,
+    "colour": "#efe4cc",
+    "trim": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -14,
+    -12.5,
+    5
+   ],
+   "params": {
+    "length": 52,
+    "height": 0.6,
+    "thickness": 0.8,
+    "merlon_height": 1.2,
+    "merlon_width": 0.9,
+    "pitch": 2.2,
+    "colour": "#efe4cc",
+    "trim": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -28,
+    19
+   ],
+   "z0": 0,
+   "rotDeg": 0,
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cc",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "bay": 10,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -26,
+    28
+   ],
+   "z0": 0,
+   "rotDeg": 0,
+   "height": 24,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cc",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "bay": 10,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier-mid",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    6,
+    15
+   ],
+   "z0": 0,
+   "rotDeg": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4cc",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "bay": 10,
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8dcc0",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -28,
+    13,
+    18
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.6,
+    "thickness": 0.8,
+    "merlon_height": 1.2,
+    "merlon_width": 0.9,
+    "pitch": 2.2,
+    "colour": "#efe4cc",
+    "trim": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -26,
+    24,
+    24
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.6,
+    "thickness": 0.8,
+    "merlon_height": 1.2,
+    "merlon_width": 0.9,
+    "pitch": 2.2,
+    "colour": "#efe4cc",
+    "trim": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    6,
+    11,
+    14
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.6,
+    "thickness": 0.8,
+    "merlon_height": 1.2,
+    "merlon_width": 0.9,
+    "pitch": 2.2,
+    "colour": "#efe4cc",
+    "trim": "#e8dcc0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    36,
+    0
+   ],
+   "params": {
+    "n": 4,
+    "radius": 22,
+    "height": 22,
+    "topScale": 0.45,
+    "topOffset": [
+     -2,
+     0
+    ],
+    "colour": "#86644c",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    36,
+    0
+   ],
+   "params": {
+    "n": 4,
+    "radius": 22,
+    "height": 30,
+    "topScale": 0.45,
+    "topOffset": [
+     2,
+     0
+    ],
+    "colour": "#6e5040",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "n": 4,
+    "radius": 22,
+    "height": 26,
+    "topScale": 0.45,
+    "topOffset": [
+     -2,
+     0
+    ],
+    "colour": "#86644c",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    36,
+    0
+   ],
+   "params": {
+    "n": 4,
+    "radius": 22,
+    "height": 34,
+    "topScale": 0.45,
+    "topOffset": [
+     2,
+     0
+    ],
+    "colour": "#6e5040",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    36,
+    0
+   ],
+   "params": {
+    "n": 4,
+    "radius": 22,
+    "height": 24,
+    "topScale": 0.45,
+    "topOffset": [
+     -2,
+     0
+    ],
+    "colour": "#86644c",
+    "windows": "none"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     6,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     54,
+     -28
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -40,
+     -16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     -16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     -16
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     34,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mountain is wide flat-topped blocks, not a jagged ridge; tiers are plain setbacks with parapet merlons; cypress rows approximated; ground reads grey-green; LOD1 4358 tris slightly over 4000 and span 124 m over 120 m clamp"
+ }
+}

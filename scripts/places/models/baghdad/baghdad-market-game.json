@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1252989658",
+   "used": "real 151 x 130 m irregular retail outline (fitted to scene), building=retail"
+  },
+  {
+   "kind": "text",
+   "used": "3 storeys, render and glazed ribbon, signage boards and canopy from the brief (no photo of the mall found: Commons has none)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5
+   },
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e3dccb",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "glassColour": "#5f7f93",
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b8b0a0",
+      "height": 0.8,
+      "at": 5.2
+     },
+     {
+      "type": "bands",
+      "colour": "#b8b0a0",
+      "height": 0.8,
+      "at": 10.4
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a196",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -62,
+    2.5
+   ],
+   "params": {
+    "width": 22,
+    "height": 5,
+    "bottom": 9,
+    "colour": "#7a8fa0",
+    "frameColour": "#c9c3b4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -20,
+    2.5
+   ],
+   "params": {
+    "width": 16,
+    "height": 4,
+    "bottom": 10,
+    "colour": "#7a8fa0",
+    "frameColour": "#c9c3b4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    10,
+    -48,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 9,
+    "height": 5.5,
+    "thickness": 0.5,
+    "columns": 4,
+    "colour": "#bdb6a6",
+    "edgeColour": "#8f8a7e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium-glass",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    0,
+    16
+   ],
+   "params": {
+    "rect": [
+     26,
+     26
+    ],
+    "height": 4,
+    "topScale": 0.7,
+    "colour": "#7fa3b5",
+    "topColour": "#9bb9c8"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -84,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "palm",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of Mansour Mall exists in Commons or Wikidata, so the shape is the real OSM outline only; storeys, finish, entrances and signage are typed from the brief, not seen."
+ }
+}

@@ -1,0 +1,263 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-osm-node-6593897285",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/amman.json",
+   "used": "named road node tagged as viewpoint: wide divided highway, central median with lamp posts, roadside planting, railings, signs, bus bays; no photo or outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bus-shelter",
+   "footprint": {
+    "rect": [
+     6,
+     2.4
+    ]
+   },
+   "at": [
+    30,
+    -20.5
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9a96",
+    "windows": "none",
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "carriageway-near",
+   "at": [
+    0,
+    -8.5
+   ],
+   "params": {
+    "rect": [
+     120,
+     11
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#4a4a48",
+    "topColour": "#4a4a48"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "carriageway-far",
+   "at": [
+    0,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     120,
+     11
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#4a4a48",
+    "topColour": "#4a4a48"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "median",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     120,
+     4.2
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#c9b48a",
+    "topColour": "#b5a07a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "verge-near",
+   "at": [
+    0,
+    -16.5
+   ],
+   "params": {
+    "rect": [
+     120,
+     4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#c9b48a",
+    "topColour": "#c9b48a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "verge-far",
+   "at": [
+    0,
+    16.5
+   ],
+   "params": {
+    "rect": [
+     120,
+     4
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#c9b48a",
+    "topColour": "#c9b48a"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 9,
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "start": [
+     -54,
+     0,
+     0
+    ],
+    "end": [
+     54,
+     0,
+     0
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18.6,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "rail",
+    "pillarEvery": 3,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "bus-bay",
+   "at": [
+    30,
+    -18
+   ],
+   "params": {
+    "rect": [
+     14,
+     3.2
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#7d7d79",
+    "topColour": "#7d7d79"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 2.2,
+    "bottom": 4,
+    "colour": "#2f6b4f",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    44,
+    14,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 2.2,
+    "bottom": 4,
+    "colour": "#2f6b4f",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    19
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 6,
+    "spread": 80,
+    "line": 1.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   140,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo and no building: a generic divided-highway cross-section sized from the brief."
+ }
+}

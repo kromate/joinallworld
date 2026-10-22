@@ -1,0 +1,381 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/175197568",
+   "used": "west entrance end of the mall outline (real notched west edge), height 25 m, 2008, building=mall; shown as a 108 x 82 m portion of the 415 x 257 m block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahrain_City_Centre_Car_park_Way.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "abcdz2000 (Flickr)",
+   "view": "street",
+   "file": "/tmp/places-evidence/manama/ccb1s.jpg",
+   "used": "multi-storey car park: blue-painted frame with open deck fronts and thin steel railings, pale concrete parapet and slab edges, curved grey concrete access ramps on round piers; not the mall facade"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "polygon": [
+     [
+      -54.2,
+      -7.4
+     ],
+     [
+      -49.7,
+      -10.2
+     ],
+     [
+      -46.4,
+      -15.8
+     ],
+     [
+      -46.3,
+      -42.5
+     ],
+     [
+      54.3,
+      -41.5
+     ],
+     [
+      54.3,
+      40.0
+     ],
+     [
+      -54.2,
+      40.0
+     ]
+    ]
+   },
+   "height": 25,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d7b8",
+    "glassColour": "#7794a4",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#b5a88c",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3aa",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    8,
+    -50
+   ],
+   "height": 19,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb0bf",
+    "glassColour": "#7794a4",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "bands": "#b5a88c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    8,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 38,
+    "depth": 7,
+    "height": 5.5,
+    "form": "flat",
+    "colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 3,
+    "bottom": 16,
+    "colour": "#b5a88c",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-roof",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -12,
+    10
+   ],
+   "z0": 25,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c3beb2",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeaaa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-roof2",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    28,
+    -10
+   ],
+   "z0": 25,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c3beb2",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeaaa0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -36,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 4,
+    "colour": "#c8102e"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -70,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carpark",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    0,
+    48
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6bb8",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#2f6bb8",
+       "#1c1f24"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#c9c5bb"
+     }
+    ],
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp",
+   "params": {
+    "colour": "#a9a59c",
+    "points": [
+     [
+      -50,
+      30,
+      1
+     ],
+     [
+      -44,
+      38,
+      5
+     ],
+     [
+      -34,
+      46,
+      10
+     ]
+    ],
+    "section": {
+     "rect": [
+      7,
+      1.2
+     ]
+    },
+    "curve": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp2",
+   "params": {
+    "colour": "#a9a59c",
+    "points": [
+     [
+      50,
+      30,
+      1
+     ],
+     [
+      44,
+      38,
+      5
+     ],
+     [
+      34,
+      46,
+      10
+     ]
+    ],
+    "section": {
+     "rect": [
+      7,
+      1.2
+     ]
+    },
+    "curve": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -35,
+     -72
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -74
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -74
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     -72
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "manama",
+ "venueId": "manama-osm-way-175197568",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Mall outline is only a 108x82 m portion of the 415x257 m block; facade, atrium, entrance and hotel block are typical guesses (no exterior photo found); only the blue multi-storey car park with curved ramps comes from a real photo and its position behind the mall is assumed."
+ }
+}

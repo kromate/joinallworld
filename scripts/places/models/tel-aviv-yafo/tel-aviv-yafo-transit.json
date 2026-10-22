@@ -1,0 +1,582 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Generic Israel Railways station: long low shed, platform canopy, red double-deck EMU. The Kfar Chabad photo shows a different station and is NOT claimed as a match."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/947001506",
+   "used": "station building about 47 x 6 m (nearest match, outline irregular so a plain rectangle is used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 2.4
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     60,
+     12
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     40,
+     6.3
+    ]
+   },
+   "at": [
+    -22,
+    1
+   ],
+   "z0": 1.0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c5ba",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#cfdde3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3f45",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "id": "canopy-east",
+   "at": [
+    -1,
+    -2,
+    1.0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 3,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ballast",
+   "at": [
+    0,
+    -9.5
+   ],
+   "params": {
+    "rect": [
+     80,
+     10
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "rail-track",
+   "id": "tracks",
+   "at": [
+    0,
+    -9.5,
+    0.25
+   ],
+   "params": {
+    "length": 76,
+    "tracks": 2,
+    "spacing": 4.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "train-body",
+   "at": [
+    16,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     26,
+     2.8
+    ],
+    "z0": 0.6,
+    "height": 4.6,
+    "colour": "#b3262c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "train-stripe",
+   "at": [
+    16,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     26,
+     2.9
+    ],
+    "z0": 1.7,
+    "height": 0.35,
+    "colour": "#f1efe9"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "train-windows",
+   "at": [
+    16,
+    -8.82
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.08
+    ],
+    "z0": 3.5,
+    "height": 0.8,
+    "colour": "#3b4650"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "train-nose",
+   "at": [
+    31.4,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     2.6
+    ],
+    "z0": 0.6,
+    "height": 4.4,
+    "topScale": [
+     0.35,
+     0.8
+    ],
+    "colour": "#b3262c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "train-roof",
+   "at": [
+    16,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     26,
+     2.5
+    ],
+    "z0": 5.2,
+    "height": 0.25,
+    "colour": "#8d1f24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cat-masts",
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -12.2,
+     0.25
+    ],
+    "end": [
+     34,
+     -12.2,
+     0.25
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.14,
+      "n": 6,
+      "height": 7.5,
+      "colour": "#7d838a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cat-wire",
+   "at": [
+    4,
+    -12.2
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.06
+    ],
+    "z0": 6.6,
+    "height": 0.08,
+    "colour": "#2f3236"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cat-wire2",
+   "at": [
+    4,
+    -7.4
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.06
+    ],
+    "z0": 6.2,
+    "height": 0.08,
+    "colour": "#2f3236"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -3.2,
+     1.0
+    ],
+    "end": [
+     26,
+     -3.2,
+     1.0
+    ],
+    "count": 5,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "track-fence",
+   "at": [
+    -38,
+    -15.5,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "height": 1.8,
+    "thickness": 0.1,
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "embankment",
+   "at": [
+    0,
+    -22
+   ],
+   "params": {
+    "rect": [
+     90,
+     12
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "topScale": [
+     1,
+     0.5
+    ],
+    "colour": "#6f9a45"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "weeds0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -20,
+    -17.5,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 0.6,
+    "depth": 1.2,
+    "colour": "#7a9a4a"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "weeds1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -5,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 0.6,
+    "depth": 1.2,
+    "colour": "#7a9a4a"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "weeds2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12,
+    -17.2,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 0.6,
+    "depth": 1.2,
+    "colour": "#7a9a4a"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "weeds3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    28,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 0.6,
+    "depth": 1.2,
+    "colour": "#7a9a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "train-windows-low",
+   "at": [
+    16,
+    -8.82
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.08
+    ],
+    "z0": 2.2,
+    "height": 0.8,
+    "colour": "#3b4650"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-long",
+   "at": [
+    -8,
+    -1.5
+   ],
+   "params": {
+    "rect": [
+     44,
+     3.2
+    ],
+    "z0": 4.3,
+    "height": 0.25,
+    "colour": "#3a3d42"
+   }
+  },
+  {
+   "type": "array",
+   "id": "canopy-posts",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -29,
+     -2.8,
+     1.0
+    ],
+    "end": [
+     13,
+     -2.8,
+     1.0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.1,
+      "n": 6,
+      "height": 3.4,
+      "colour": "#555a60"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "shed-mullions",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -41,
+     -2.2,
+     1.0
+    ],
+    "end": [
+     -3,
+     -2.2,
+     1.0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "height": 3.6,
+      "colour": "#3a3d42"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "carpark",
+   "at": [
+    -5,
+    20
+   ],
+   "params": {
+    "rect": [
+     50,
+     12
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#7c7c7a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "parked-cars",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -25,
+     19,
+     0.05
+    ],
+    "end": [
+     18,
+     19,
+     0.05
+    ],
+    "count": 9,
+    "of": {
+     "type": "car",
+     "params": {
+      "yaw": 90
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Generic station only: evidence photo is a different station (Kfar Chabad), so no match is claimed; train is a box with a tapered nose; shed mullions and fence are schematic."
+ }
+}

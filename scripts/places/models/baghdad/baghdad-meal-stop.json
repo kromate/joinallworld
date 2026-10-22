@@ -1,0 +1,2171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "baghdad",
+ "venueId": "baghdad-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shahbander_cafe_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mustafa Waad Saeed",
+   "view": "front",
+   "file": "/tmp/places-evidence/baghdad/cafe1.jpg",
+   "used": "corner massing, buff brick ground floor with arched latticed windows, projecting upper verandah on rust-brown timber posts, flat roof with teal railing; round2 critic fixes: heavier overhanging slab, fewer thicker posts, buff upper wall, arched ground windows; critic3: thicker slab, brackets, warmer plaster, transom/arch, bigger sign"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/928718264",
+   "used": "footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "polygon": [
+     [
+      -12.7,
+      -2.7
+     ],
+     [
+      1.4,
+      13.7
+     ],
+     [
+      13.3,
+      2.2
+     ],
+     [
+      -0.3,
+      -11.6
+     ],
+     [
+      -0.93,
+      -11.86
+     ],
+     [
+      -1.59,
+      -12.04
+     ],
+     [
+      -2.27,
+      -12.12
+     ],
+     [
+      -2.95,
+      -12.11
+     ],
+     [
+      -3.63,
+      -12.02
+     ],
+     [
+      -4.29,
+      -11.83
+     ],
+     [
+      -4.92,
+      -11.55
+     ],
+     [
+      -5.5,
+      -11.2
+     ]
+    ]
+   },
+   "height": 4.7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#cfae72",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.34,
+    "glassColour": "#6b4a36",
+    "plinth": 0.35,
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b27f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "veranda-floor",
+   "params": {
+    "points": [
+     [
+      -13.62,
+      -2.63
+     ],
+     [
+      1.6,
+      15.09
+     ],
+     [
+      14.46,
+      2.67
+     ],
+     [
+      -0.23,
+      -12.24
+     ],
+     [
+      -0.91,
+      -12.52
+     ],
+     [
+      -1.63,
+      -12.71
+     ],
+     [
+      -2.36,
+      -12.8
+     ],
+     [
+      -3.1,
+      -12.79
+     ],
+     [
+      -3.83,
+      -12.69
+     ],
+     [
+      -4.54,
+      -12.49
+     ],
+     [
+      -5.22,
+      -12.19
+     ],
+     [
+      -5.85,
+      -11.81
+     ]
+    ],
+    "z0": 4.3,
+    "height": 1.3,
+    "colour": "#b89c68",
+    "topColour": "#b09868"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "polygon": [
+     [
+      -11.08,
+      -2.83
+     ],
+     [
+      1.04,
+      11.28
+     ],
+     [
+      11.28,
+      1.39
+     ],
+     [
+      -0.42,
+      -10.48
+     ],
+     [
+      -0.96,
+      -10.7
+     ],
+     [
+      -1.53,
+      -10.85
+     ],
+     [
+      -2.11,
+      -10.93
+     ],
+     [
+      -2.7,
+      -10.92
+     ],
+     [
+      -3.28,
+      -10.84
+     ],
+     [
+      -3.85,
+      -10.68
+     ],
+     [
+      -4.39,
+      -10.44
+     ],
+     [
+      -4.89,
+      -10.14
+     ]
+    ]
+   },
+   "z0": 5.25,
+   "height": 4.3,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d2b27a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#4a3a2a",
+    "plinth": 0,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b27f",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "veranda-roof",
+   "params": {
+    "points": [
+     [
+      -13.86,
+      -2.61
+     ],
+     [
+      1.66,
+      15.43
+     ],
+     [
+      14.75,
+      2.78
+     ],
+     [
+      -0.21,
+      -12.4
+     ],
+     [
+      -0.91,
+      -12.69
+     ],
+     [
+      -1.63,
+      -12.88
+     ],
+     [
+      -2.38,
+      -12.97
+     ],
+     [
+      -3.14,
+      -12.96
+     ],
+     [
+      -3.88,
+      -12.86
+     ],
+     [
+      -4.61,
+      -12.65
+     ],
+     [
+      -5.3,
+      -12.35
+     ],
+     [
+      -5.94,
+      -11.96
+     ]
+    ],
+    "z0": 9.55,
+    "height": 0.5,
+    "colour": "#9c8458",
+    "topColour": "#a88c5c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.7,
+    -12.3,
+    4.0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.8,
+    "bottom": 0,
+    "colour": "#2f7a55",
+    "frameColour": "#f2ece0",
+    "posts": false
+   },
+   "rotDeg": -8
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -13.35,
+     -2.76,
+     4.95
+    ],
+    "end": [
+     1.55,
+     14.79,
+     4.95
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -13.35,
+      -2.76,
+      9.0
+     ],
+     [
+      1.55,
+      14.79,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -13.35,
+      -2.76,
+      5.95
+     ],
+     [
+      1.55,
+      14.79,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     1.55,
+     14.79,
+     4.95
+    ],
+    "end": [
+     14.21,
+     2.51,
+     4.95
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      1.55,
+      14.79,
+      9.0
+     ],
+     [
+      14.21,
+      2.51,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      1.55,
+      14.79,
+      5.95
+     ],
+     [
+      14.21,
+      2.51,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     14.21,
+     2.51,
+     4.95
+    ],
+    "end": [
+     -0.35,
+     -11.97,
+     4.95
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      14.21,
+      2.51,
+      9.0
+     ],
+     [
+      -0.35,
+      -11.97,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      14.21,
+      2.51,
+      5.95
+     ],
+     [
+      -0.35,
+      -11.97,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -0.35,
+     -11.97,
+     4.95
+    ],
+    "end": [
+     -0.99,
+     -12.23,
+     4.95
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -0.35,
+      -11.97,
+      9.0
+     ],
+     [
+      -0.99,
+      -12.23,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -0.35,
+      -11.97,
+      5.95
+     ],
+     [
+      -0.99,
+      -12.23,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -0.99,
+     -12.23,
+     4.95
+    ],
+    "end": [
+     -1.66,
+     -12.41,
+     4.95
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -0.99,
+      -12.23,
+      9.0
+     ],
+     [
+      -1.66,
+      -12.41,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -0.99,
+      -12.23,
+      5.95
+     ],
+     [
+      -1.66,
+      -12.41,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -1.66,
+     -12.41,
+     4.95
+    ],
+    "end": [
+     -2.34,
+     -12.5,
+     4.95
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.66,
+      -12.41,
+      9.0
+     ],
+     [
+      -2.34,
+      -12.5,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.66,
+      -12.41,
+      5.95
+     ],
+     [
+      -2.34,
+      -12.5,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.34,
+     -12.5,
+     4.95
+    ],
+    "end": [
+     -3.04,
+     -12.5,
+     4.95
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2.34,
+      -12.5,
+      9.0
+     ],
+     [
+      -3.04,
+      -12.5,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2.34,
+      -12.5,
+      5.95
+     ],
+     [
+      -3.04,
+      -12.5,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.04,
+     -12.5,
+     4.95
+    ],
+    "end": [
+     -3.72,
+     -12.41,
+     4.95
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.04,
+      -12.5,
+      9.0
+     ],
+     [
+      -3.72,
+      -12.41,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.04,
+      -12.5,
+      5.95
+     ],
+     [
+      -3.72,
+      -12.41,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.72,
+     -12.41,
+     4.95
+    ],
+    "end": [
+     -4.39,
+     -12.23,
+     4.95
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.72,
+      -12.41,
+      9.0
+     ],
+     [
+      -4.39,
+      -12.23,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.72,
+      -12.41,
+      5.95
+     ],
+     [
+      -4.39,
+      -12.23,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.39,
+     -12.23,
+     4.95
+    ],
+    "end": [
+     -5.04,
+     -11.95,
+     4.95
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.39,
+      -12.23,
+      9.0
+     ],
+     [
+      -5.04,
+      -11.95,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.39,
+      -12.23,
+      5.95
+     ],
+     [
+      -5.04,
+      -11.95,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.04,
+     -11.95,
+     4.95
+    ],
+    "end": [
+     -5.64,
+     -11.6,
+     4.95
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5.04,
+      -11.95,
+      9.0
+     ],
+     [
+      -5.64,
+      -11.6,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5.04,
+      -11.95,
+      5.95
+     ],
+     [
+      -5.64,
+      -11.6,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.64,
+     -11.6,
+     4.95
+    ],
+    "end": [
+     -13.35,
+     -2.76,
+     4.95
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 4.6,
+      "colour": "#6a3a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5.64,
+      -11.6,
+      9.0
+     ],
+     [
+      -13.35,
+      -2.76,
+      9.0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.18,
+      0.3
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5.64,
+      -11.6,
+      5.95
+     ],
+     [
+      -13.35,
+      -2.76,
+      5.95
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.06,
+      0.06
+     ]
+    },
+    "colour": "#6a3a28"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    5.25
+   ],
+   "params": {
+    "points": [
+     [
+      -13.35,
+      -2.76
+     ],
+     [
+      1.55,
+      14.79
+     ],
+     [
+      14.21,
+      2.51
+     ],
+     [
+      -0.35,
+      -11.97
+     ],
+     [
+      -0.99,
+      -12.23
+     ],
+     [
+      -1.66,
+      -12.41
+     ],
+     [
+      -2.34,
+      -12.5
+     ],
+     [
+      -3.04,
+      -12.5
+     ],
+     [
+      -3.72,
+      -12.41
+     ],
+     [
+      -4.39,
+      -12.23
+     ],
+     [
+      -5.04,
+      -11.95
+     ],
+     [
+      -5.64,
+      -11.6
+     ],
+     [
+      -13.35,
+      -2.76
+     ]
+    ],
+    "height": 1.0,
+    "thickness": 0.05,
+    "kind": "railing",
+    "colour": "#7a4a35"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    10.05
+   ],
+   "params": {
+    "points": [
+     [
+      -14.03,
+      -2.44
+     ],
+     [
+      1.67,
+      15.53
+     ],
+     [
+      14.84,
+      2.92
+     ],
+     [
+      -0.04,
+      -12.65
+     ],
+     [
+      -0.79,
+      -12.95
+     ],
+     [
+      -1.58,
+      -13.16
+     ],
+     [
+      -2.38,
+      -13.25
+     ],
+     [
+      -3.19,
+      -13.23
+     ],
+     [
+      -3.99,
+      -13.11
+     ],
+     [
+      -4.76,
+      -12.88
+     ],
+     [
+      -5.49,
+      -12.55
+     ],
+     [
+      -6.17,
+      -12.13
+     ],
+     [
+      -14.03,
+      -2.44
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.05,
+    "kind": "railing",
+    "colour": "#6fb0a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-bay",
+   "params": {
+    "rect": [
+     2.6,
+     0.35
+    ],
+    "height": 3.1,
+    "colour": "#6a3a28",
+    "topColour": "#5a2f20"
+   },
+   "at": [
+    -2.9,
+    -12.0,
+    0.0
+   ],
+   "rotDeg": -8
+  },
+  {
+   "type": "prism",
+   "id": "door-surround",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.3
+    ],
+    "height": 3.7,
+    "colour": "#b49462",
+    "topColour": "#b49462"
+   },
+   "at": [
+    -2.9,
+    -11.9,
+    0.0
+   ],
+   "rotDeg": -8
+  },
+  {
+   "type": "prism",
+   "id": "shutter0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.15
+    ],
+    "height": 2.6,
+    "colour": "#2f9a8c",
+    "topColour": "#2f9a8c"
+   },
+   "at": [
+    -11.0,
+    -4.92,
+    0.0
+   ],
+   "rotDeg": -50
+  },
+  {
+   "type": "prism",
+   "id": "shutter1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.15
+    ],
+    "height": 2.6,
+    "colour": "#2f9a8c",
+    "topColour": "#2f9a8c"
+   },
+   "at": [
+    -9.2,
+    -7.05,
+    0.0
+   ],
+   "rotDeg": -50
+  },
+  {
+   "type": "revolve",
+   "at": [
+    4.4,
+    -9.7,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d6606c",
+    "profile": [
+     [
+      0.05,
+      0,
+      "#444444"
+     ],
+     [
+      0.05,
+      2.2
+     ],
+     [
+      1.4,
+      2.1,
+      "#d6606c"
+     ],
+     [
+      0.1,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    7.9,
+    -6.2,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d6606c",
+    "profile": [
+     [
+      0.05,
+      0,
+      "#444444"
+     ],
+     [
+      0.05,
+      2.2
+     ],
+     [
+      1.4,
+      2.1,
+      "#d6606c"
+     ],
+     [
+      0.1,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     1.8,
+     -13.6,
+     0
+    ],
+    "end": [
+     -2,
+     -14.5,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#2f6a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -13.35,
+     -2.76,
+     4.35
+    ],
+    "end": [
+     1.55,
+     14.79,
+     4.35
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     1.55,
+     14.79,
+     4.35
+    ],
+    "end": [
+     14.21,
+     2.51,
+     4.35
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     14.21,
+     2.51,
+     4.35
+    ],
+    "end": [
+     -0.35,
+     -11.97,
+     4.35
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -0.35,
+     -11.97,
+     4.35
+    ],
+    "end": [
+     -0.99,
+     -12.23,
+     4.35
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -0.99,
+     -12.23,
+     4.35
+    ],
+    "end": [
+     -1.66,
+     -12.41,
+     4.35
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -1.66,
+     -12.41,
+     4.35
+    ],
+    "end": [
+     -2.34,
+     -12.5,
+     4.35
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2.34,
+     -12.5,
+     4.35
+    ],
+    "end": [
+     -3.04,
+     -12.5,
+     4.35
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.04,
+     -12.5,
+     4.35
+    ],
+    "end": [
+     -3.72,
+     -12.41,
+     4.35
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.72,
+     -12.41,
+     4.35
+    ],
+    "end": [
+     -4.39,
+     -12.23,
+     4.35
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.39,
+     -12.23,
+     4.35
+    ],
+    "end": [
+     -5.04,
+     -11.95,
+     4.35
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.04,
+     -11.95,
+     4.35
+    ],
+    "end": [
+     -5.64,
+     -11.6,
+     4.35
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.64,
+     -11.6,
+     4.35
+    ],
+    "end": [
+     -13.35,
+     -2.76,
+     4.35
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.26,
+       0.26
+      ],
+      "height": 0.5,
+      "colour": "#6a3a28"
+     },
+     "at": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-transom",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#8a6a40",
+    "topColour": "#8a6a40"
+   },
+   "at": [
+    -2.9,
+    -12.05,
+    3.3
+   ],
+   "rotDeg": -8
+  },
+  {
+   "type": "prism",
+   "id": "door-arch-top",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "height": 0.4,
+    "colour": "#5a3a28",
+    "topColour": "#5a3a28"
+   },
+   "at": [
+    -2.9,
+    -12.1,
+    4.2
+   ],
+   "rotDeg": -8
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes round: thicker slab, ground brackets, warmer stucco upper wall, transom, larger sign. Still missing: curved soffit and splayed post brackets, diagonal lattice rail, recessed arched entrance; upper wall reads grey from lighting."
+ }
+}

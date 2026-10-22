@@ -1,0 +1,437 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-osm-way-49130695",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA._%D0%94%D0%BE%D0%BC-%D0%BC%D1%83%D0%B7%D0%B5%D0%B9_%D0%9C._%D0%92._%D0%A4%D1%80%D1%83%D0%BD%D0%B7%D0%B5.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DNikon",
+   "view": "front",
+   "file": "/tmp/places-evidence/bishkek/frunze1.jpg",
+   "used": "grey-beige textured concrete upper storey overhanging a glazed ground floor, square red-brown granite piers, white-framed glazing, flat roof, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/49130695",
+   "used": "footprint 51 x 16 m, start_date 1967"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "osm": true
+   },
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a39b8d",
+    "windows": "punched",
+    "windowRatio": 0.03,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front",
+       "right"
+      ],
+      "inset": 3.6,
+      "spacing": 12,
+      "width": 1.0,
+      "kind": "square",
+      "colour": "#8a4638",
+      "backColour": "#e4eeee"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "right"
+      ],
+      "width": 0.1,
+      "depth": 0.06,
+      "spacing": 2.4,
+      "colour": "#7f786c",
+      "skipGround": true
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "height": 0.12,
+      "colour": "#7f786c",
+      "at": 0.5,
+      "floors": "upper"
+     }
+    ],
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a766e",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "letters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.45
+      ],
+      "height": 1.4,
+      "colour": "#3b3a38",
+      "topColour": "#3b3a38"
+     }
+    },
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -16,
+     -8.2,
+     8.0
+    ],
+    "end": [
+     6,
+     -8.2,
+     8.0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "id": "door-board",
+   "at": [
+    14,
+    -8.45,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.2,
+    "bottom": 0.2,
+    "colour": "#e8eef0",
+    "frameColour": "#f4f4f2",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "id": "mullions",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.14,
+       0.22
+      ],
+      "height": 5.2,
+      "colour": "#f4f4f2",
+      "topColour": "#f4f4f2"
+     }
+    },
+    "mode": "line",
+    "count": 42,
+    "start": [
+     -24.6,
+     -4.5,
+     0.1
+    ],
+    "end": [
+     24.6,
+     -4.5,
+     0.1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "transom",
+   "at": [
+    0,
+    -4.5,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     51,
+     0.18
+    ],
+    "height": 0.14,
+    "colour": "#f4f4f2",
+    "topColour": "#f4f4f2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rw0",
+   "at": [
+    -18,
+    -8.25,
+    7.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#4d5457",
+    "topColour": "#4d5457"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rw1",
+   "at": [
+    -9,
+    -8.25,
+    7.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#4d5457",
+    "topColour": "#4d5457"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rw2",
+   "at": [
+    3,
+    -8.25,
+    7.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#4d5457",
+    "topColour": "#4d5457"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rw3",
+   "at": [
+    12,
+    -8.25,
+    7.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#4d5457",
+    "topColour": "#4d5457"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rw4",
+   "at": [
+    21,
+    -8.25,
+    7.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#4d5457",
+    "topColour": "#4d5457"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-corner",
+   "at": [
+    23.5,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.8
+    ],
+    "height": 5.4,
+    "colour": "#8a4638",
+    "topColour": "#8a4638"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-mid",
+   "at": [
+    -4.5,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 5.4,
+    "colour": "#86443a",
+    "topColour": "#86443a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-left",
+   "at": [
+    -23,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 5.4,
+    "colour": "#86443a",
+    "topColour": "#86443a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "rect": [
+     51,
+     3.6
+    ],
+    "height": 0.25,
+    "colour": "#c9c4bc",
+    "topColour": "#c9c4bc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soffit",
+   "at": [
+    1,
+    -9.0,
+    5.4
+   ],
+   "params": {
+    "rect": [
+     49,
+     2.4
+    ],
+    "height": 0.3,
+    "colour": "#cfcac2",
+    "topColour": "#cfcac2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "recess-doors",
+   "at": [
+    10,
+    -4.45,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.3
+    ],
+    "height": 3.4,
+    "colour": "#f4f4f2",
+    "topColour": "#f4f4f2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   70,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Taller grey upper storey over glazed ground floor with big corner pier, soffit, step and letter blocks added; glass still reads blue not pale, camera sits further back than photo, small recessed windows and corner pier dominance only partial."
+ }
+}

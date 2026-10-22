@@ -1,0 +1,380 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Afghan_parliament_building_2015.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Weaveravel",
+   "view": "front",
+   "file": "/tmp/places-evidence/kabul/parl.jpg",
+   "used": "white walls, copper-brown low dome on the main block, tall dark vertical window bays, two tall white square towers at the end, lower left wing with dark flat roof and colonnade, clear lawn setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5307575",
+   "used": "overall size only (156 x 116 m complex); outline is a rotated multi-wing pinwheel, not modelled literally"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.6
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dome-block",
+   "footprint": {
+    "rect": [
+     44,
+     40
+    ]
+   },
+   "at": [
+    20,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeadf",
+    "windows": "pointed",
+    "windowRatio": 0.9,
+    "glassColour": "#2a2326",
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 7.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a3a2c",
+    "overhang": 3,
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     40,
+     30
+    ]
+   },
+   "at": [
+    -26,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "pointed",
+    "windowRatio": 0.7,
+    "glassColour": "#2a2326",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.8,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e2522",
+    "overhang": 6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-wing",
+   "footprint": {
+    "rect": [
+     10,
+     24
+    ]
+   },
+   "at": [
+    -51,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "pointed",
+    "windowRatio": 0.7,
+    "glassColour": "#2a2326",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e2522",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 11,
+    "columns": 10,
+    "colour": "#f1ede2"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    20,
+    2,
+    19.8
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#b8693f",
+    "profile": [
+     [
+      12,
+      0,
+      "#5a3a2c"
+     ],
+     [
+      12,
+      1.4
+     ],
+     [
+      13.2,
+      1.4,
+      "#6a4630"
+     ],
+     [
+      13.2,
+      2.6
+     ],
+     [
+      11.5,
+      3.2,
+      "#b8693f"
+     ],
+     [
+      8.5,
+      5.6
+     ],
+     [
+      4.5,
+      7.2
+     ],
+     [
+      0,
+      7.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 6,
+    "colours": [
+     "#1b1b1b",
+     "#b3262b",
+     "#1b6b3a"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -52,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-a",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    49,
+    -19.5
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a3a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-b",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    58.5,
+    -19
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a3a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-a",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    49,
+    -14
+   ],
+   "z0": 0,
+   "height": 27,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#5a3a2c",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-b",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    58.5,
+    -14
+   ],
+   "z0": 0,
+   "height": 23,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#5a3a2c",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -10,
+     -48
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     48,
+     -48
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dome now has brown cornice ring and wider copper cap, towers taller with pyramid caps; arched bays are still small on the dome block (real ones are tall recessed 10 m arches), towers lack vertical slits, porch is a plain colonnade without recessed arcade; OSM pinwheel outline not used."
+ }
+}

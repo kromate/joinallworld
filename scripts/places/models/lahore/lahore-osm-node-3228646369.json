@@ -1,0 +1,181 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lahore",
+ "venueId": "lahore-osm-node-3228646369",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/974338433",
+   "used": "real outline of Fauji Foundation Hospital Main Building (name match, 33 points, 86x66 m, about 4 storeys assumed from brief)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16.8,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe4d3",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#a9a59d",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bay": 4.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a59d",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-entrance",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    4,
+    -34
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6a8a9a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    4,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "columns": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    4,
+    -37.2,
+    10.8
+   ],
+   "params": {
+    "size": 3
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -24,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "vans": 2
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    20,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 12,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this hospital found; real outline used with typical Fauji Foundation treatment (cream render, ribbon windows, glazed entrance bay). Entrance position, height and storeys are assumed."
+ }
+}

@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ramallah",
+ "venueId": "ramallah-osm-node-432267397",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1503430632",
+   "used": "containing OSM outline (18x9 m, bearing 72 deg): entrance range beside the al-Uzair mosque"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lazarus_Saturday_procession,_Bethany,_2019_(08).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bahnfrend",
+   "view": "street",
+   "file": "/tmp/places-evidence/ramallah/m10_0.jpg",
+   "used": "street at the tomb: tall cream limestone range with recessed arched barred windows and a crenellated parapet on the left, rubble masonry retaining block with railing, church dome and bell tower behind, green doors"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "range",
+   "footprint": {
+    "osm": true,
+    "fit": 30
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8bf94",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 4.2,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbb98",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rubble-block",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    2,
+    14
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a47f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89874",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -3,
+    13.6,
+    6.5
+   ],
+   "params": {
+    "length": 9,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#2b3a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "church-body",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    3,
+    28
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6d8b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9cdb0"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    3,
+    28,
+    7
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#e6d8b8"
+     ],
+     [
+      3.2,
+      0,
+      "#e6d8b8"
+     ],
+     [
+      3.2,
+      0.8,
+      "#d8d8d8"
+     ],
+     [
+      2.6,
+      1.8,
+      "#cfd6da"
+     ],
+     [
+      1.4,
+      2.6,
+      "#cfd6da"
+     ],
+     [
+      0,
+      3,
+      "#cfd6da"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    -4,
+    29
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dccaa4",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#cfc4aa",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -5.5,
+    -7.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.5,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#bfab85"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     16,
+     16
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Street view only: cream range, arched windows, rubble block, domed church and bell tower from the photo; crenellated parapet, railing and green doors not modelled, church group position approximate."
+ }
+}

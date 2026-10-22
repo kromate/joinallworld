@@ -1,0 +1,205 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damascus",
+ "venueId": "damascus-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1194503849",
+   "used": "retail building outline, name match (Damasquino Mall), about 72 x 69 m"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "four storeys, limestone and glass front, atrium, car park; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 40,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9c9a3",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "plinth": 0.8,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9c9a3",
+       "#cfbf98"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#efeae0"
+      ],
+      "height": 0.7,
+      "at": 0.98,
+      "proud": 0.15,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a39a",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "params": {
+    "rect": [
+     16,
+     5
+    ],
+    "z0": 0,
+    "height": 16,
+    "colour": "#4a6a7c",
+    "glassColour": "#4a6a7c",
+    "topColour": "#efeae0",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "at": [
+    -8,
+    -44
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board-a",
+   "at": [
+    -8,
+    -47,
+    16.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#efeae0",
+    "frameColour": "#7a7468",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board-b",
+   "at": [
+    26,
+    10,
+    20.2
+   ],
+   "params": {
+    "width": 18,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#4a6a7c",
+    "frameColour": "#efeae0",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "cars": [
+   {
+    "at": [
+     -30,
+     -52
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     -23,
+     -47
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     -16,
+     -52
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     -9,
+     -47
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     -2,
+     -52
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     5,
+     -47
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     12,
+     -52
+    ],
+    "yaw": 90
+   },
+   {
+    "at": [
+     19,
+     -47
+    ],
+    "yaw": 90
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real OSM outline but materials, storeys and the atrium are typed; no photo to confirm cladding, glass proportion or signage."
+ }
+}

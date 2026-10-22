@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "riyadh",
+ "venueId": "riyadh-osm-way-1193082860",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1193092335",
+   "used": "real irregular hospital outline (name match, 128 x 78 m), hospital tags, Wikidata 1978"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 23,
+   "storeys": 6,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8c8a6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#eadcc0",
+    "plinth": 1.0,
+    "cornice": true,
+    "bay": 12,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "height": 3.5,
+   "z0": 23,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c2b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    -40
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e0d2b0",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy-fascia",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 8,
+    "height": 5,
+    "columns": 4,
+    "round": false,
+    "colour": "#eadcc0",
+    "roofColour": "#8fa3ae"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    45,
+    -42,
+    0
+   ],
+   "params": {
+    "radius": 7,
+    "ground": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     4
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#7a7e82",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -55
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; real outline extruded as a single 6-storey block (no courtyards or separate wings), facade colours and annex/helipad placement are typical not observed"
+ }
+}

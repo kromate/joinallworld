@@ -1,0 +1,90 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bishkek",
+ "venueId": "bishkek-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/159207658",
+   "used": "real 12-point outline, about 70 x 37 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dbd2bd",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#9b5a45",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6f4f",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#c8262e",
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real OSM outline, finish and roof typed"
+ }
+}

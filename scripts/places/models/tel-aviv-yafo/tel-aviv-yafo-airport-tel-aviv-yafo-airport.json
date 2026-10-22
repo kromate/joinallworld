@@ -1,0 +1,434 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tel-aviv-yafo",
+ "venueId": "tel-aviv-yafo-airport-tel-aviv-yafo-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Israel_Ben_Gurion_Airport_terminal_3_closeup.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Djampa",
+   "view": "front",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/airport3.jpg",
+   "used": "landside elevation: white inverted-dish rotunda over a dark glazed drum, sand-stone colonnade block at left, long grey metal-panel block with a green-glass band, square stone-clad control tower with a cab at right, flagpoles and palms in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Israel_Ben_Gurion_Airport_terminal_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Djampa",
+   "view": "street",
+   "file": "/tmp/places-evidence/tel-aviv-yafo/airport7.jpg",
+   "used": "stone-clad end tower on a grey panelled wall, saucer and tower in the distance, surface car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/95030829",
+   "used": "overall scale only (terminal polygon 371 m x 162 m); a 100 m portion of the landside front is modelled because the scene clamp is 118 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-wing",
+   "footprint": {
+    "rect": [
+     30,
+     32
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdb78e",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "glassColour": "#2b3640"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grey-hall",
+   "footprint": {
+    "rect": [
+     48,
+     32
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aeb4b8",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "ribbon",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfc3c4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grey-east",
+   "footprint": {
+    "rect": [
+     24,
+     30
+    ]
+   },
+   "at": [
+    42,
+    1
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a7adb1",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfc3c4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-end",
+   "footprint": {
+    "rect": [
+     8,
+     16
+    ]
+   },
+   "at": [
+    -52,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c7b284",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-band",
+   "footprint": {
+    "rect": [
+     22,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "z0": 4,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f8a78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9388"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "saucer-drum",
+   "at": [
+    -15,
+    2,
+    15
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      23,
+      0,
+      "#2e3a44"
+     ],
+     [
+      23,
+      3.2,
+      "#2e3a44"
+     ],
+     [
+      0,
+      3.2,
+      "#2e3a44"
+     ]
+    ],
+    "segments": 28,
+    "colour": "#2e3a44"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "saucer",
+   "at": [
+    -15,
+    2,
+    18
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#e9e6dc"
+     ],
+     [
+      22,
+      0,
+      "#e9e6dc"
+     ],
+     [
+      30,
+      1.6,
+      "#f3f1ea"
+     ],
+     [
+      30.6,
+      2.6,
+      "#f3f1ea"
+     ],
+     [
+      24,
+      4.6,
+      "#f1efe8"
+     ],
+     [
+      12,
+      5.8,
+      "#eeece4"
+     ],
+     [
+      0,
+      6.2,
+      "#eeece4"
+     ]
+    ],
+    "segments": 32,
+    "colour": "#f0eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "at": [
+    34,
+    6,
+    11
+   ],
+   "params": {
+    "rect": [
+     12,
+     12
+    ],
+    "height": 22,
+    "colour": "#bdb7a8",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "storeys": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-gallery",
+   "at": [
+    34,
+    6,
+    33
+   ],
+   "params": {
+    "rect": [
+     14.5,
+     14.5
+    ],
+    "height": 1.2,
+    "colour": "#9a9a98"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cab",
+   "at": [
+    34,
+    6,
+    34.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "height": 4.0,
+    "colour": "#46586a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "topScale": 1.08
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-roof",
+   "at": [
+    34,
+    6,
+    38.2
+   ],
+   "params": {
+    "rect": [
+     14.6,
+     14.6
+    ],
+    "height": 1.0,
+    "colour": "#d9772c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -3,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#f4f6fa",
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#f4f6fa",
+     "#f4f6fa",
+     "#f4f6fa"
+    ]
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -33,
+    -19,
+    6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 5,
+    "height": 0,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#b3a27f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     4,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -26
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -27
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Saucer is a smooth dish without radial ribs and the stone wing glazing reads too dark; no sloped planting or car park; tower cab lacks antennas; only a 100 m slice of the 370 m terminal."
+ }
+}

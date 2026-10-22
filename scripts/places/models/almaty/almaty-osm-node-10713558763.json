@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "almaty",
+ "venueId": "almaty-osm-node-10713558763",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 15,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "outcrop",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -9
+     ],
+     [
+      -4,
+      -11
+     ],
+     [
+      6,
+      -9
+     ],
+     [
+      12,
+      -3
+     ],
+     [
+      11,
+      6
+     ],
+     [
+      3,
+      10
+     ],
+     [
+      -6,
+      9
+     ],
+     [
+      -12,
+      3
+     ]
+    ],
+    "height": 6,
+    "topScale": 0.55,
+    "topOffset": [
+     1,
+     2
+    ],
+    "colour": "#a79d8d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5,
+      -4
+     ],
+     [
+      4,
+      -5
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      -6,
+      3
+     ]
+    ],
+    "height": 8.5,
+    "topScale": 0.4,
+    "colour": "#7a7064"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2.2,
+      -0.4
+     ],
+     [
+      2.2,
+      -0.4
+     ],
+     [
+      2.2,
+      2.4
+     ],
+     [
+      0,
+      3.3
+     ],
+     [
+      -2.2,
+      2.4
+     ]
+    ],
+    "height": 2.8,
+    "topScale": 0.9,
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#6f5a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 9,
+    "spread": 30,
+    "line": 0,
+    "colour": "#2f5a3a"
+   },
+   "at": [
+    -14,
+    10,
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence; typed limestone outcrop with dark mouth."
+ }
+}

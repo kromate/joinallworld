@@ -1,0 +1,767 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "doha",
+ "venueId": "doha-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mall_of_Qatar_front_entrance_and_parking_lot.png",
+   "licence": "CC BY 3.0",
+   "author": "Mall of Qatar (Commons upload)",
+   "view": "street",
+   "file": "/tmp/places-evidence/doha/mallfront.png",
+   "used": "angular pale entrance canopy with glazed slot, lit coloured facade panels, curved sandy-brown rendered volume behind, tall tensioned sail shades over the car park, palms, setted road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mall_of_Qatar_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "view": "interior",
+   "file": "/tmp/places-evidence/doha/mall2.jpg",
+   "author": "Preacher lad",
+   "used": "central atrium with glazed roof lights on steel grids and warm timber-clad balconies (informs skylights and the glass dome)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/463697424",
+   "used": "real outline (470 x 289 m) fitted to the scene; height tag absent, 3 storeys from the Wikipedia article"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mall uses the real stepped outline (scaled), not a smoothly curved plan; sail shades are hypar sheets on slim masts without cables; entrance canopy is folded plates, glazed slot and coloured panels are plain flat-colour (no emissive glow); only one street-level photo."
+ },
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#b98f63",
+    "windows": "none",
+    "plinth": 0,
+    "cornice": false,
+    "parapet": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a67b52",
+      "height": 0.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8875f",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    15.0,
+    -75.6,
+    7.8
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 25.2,
+    "depth": 13.2,
+    "rise": 6,
+    "folds": 4,
+    "thickness": 0.7,
+    "colour": "#e6e0d2",
+    "edgeColour": "#cfc6b2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.0,
+    -72.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     17.0,
+     1.2
+    ],
+    "height": 7.2,
+    "colour": "#5d7f94",
+    "topColour": "#8fb0c4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.0,
+    -75.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 7.8,
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.0,
+    -75.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 7.8,
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28.8,
+    -69.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     8.0
+    ],
+    "height": 13.2,
+    "colour": "#e0457b",
+    "topColour": "#f07aa3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28.8,
+    -64.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     8.0
+    ],
+    "height": 13.2,
+    "colour": "#3aa860",
+    "topColour": "#6fd08c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28.8,
+    -58.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     8.0
+    ],
+    "height": 13.2,
+    "colour": "#d33a3a",
+    "topColour": "#e86a6a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.4,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 7.8,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.6,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 5.4,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.6,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 6.6,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.4,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "surface",
+   "at": [
+    -9.0,
+    -85.5,
+    4.8
+   ],
+   "params": {
+    "kind": "hypar",
+    "width": 10.2,
+    "depth": 10.2,
+    "rise": 3.5,
+    "thickness": 0.12,
+    "colour": "#f1ede2",
+    "edgeColour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.4,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 7.8,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.4,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 5.4,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.4,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 6.6,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.4,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "surface",
+   "at": [
+    0.0,
+    -85.5,
+    4.8
+   ],
+   "params": {
+    "kind": "hypar",
+    "width": 10.2,
+    "depth": 10.2,
+    "rise": 3.5,
+    "thickness": 0.12,
+    "colour": "#e4dfd0",
+    "edgeColour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.6,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 7.8,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.4,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 5.4,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.4,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 6.6,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.6,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "surface",
+   "at": [
+    9.0,
+    -85.5,
+    4.8
+   ],
+   "params": {
+    "kind": "hypar",
+    "width": 10.2,
+    "depth": 10.2,
+    "rise": 3.5,
+    "thickness": 0.12,
+    "colour": "#f1ede2",
+    "edgeColour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.6,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 7.8,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.4,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 5.4,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.4,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 6.6,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.6,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "surface",
+   "at": [
+    18.0,
+    -85.5,
+    4.8
+   ],
+   "params": {
+    "kind": "hypar",
+    "width": 10.2,
+    "depth": 10.2,
+    "rise": 3.5,
+    "thickness": 0.12,
+    "colour": "#e4dfd0",
+    "edgeColour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    24.6,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 7.8,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    29.4,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 5.4,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    29.4,
+    -87.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 6.6,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    24.6,
+    -83.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#c9ced2"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "lod": [
+    0
+   ],
+   "at": [
+    -12.0,
+    -90.0,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "spacing": 9,
+    "yaw": 90,
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "flag",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3.0,
+    -78.6,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 14,
+    "colours": [
+     "#8a1538",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "lod": [
+    0
+   ],
+   "at": [
+    -15.0,
+    -78.6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 8,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6.0,
+     -78.6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0.0,
+     -78.6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8.4,
+     -78.6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     21.0,
+     -78.6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30.0,
+     -78.6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ }
+}

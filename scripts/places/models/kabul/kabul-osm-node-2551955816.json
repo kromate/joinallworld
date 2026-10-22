@@ -1,0 +1,240 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Afghanistan,_minaret_of_Chakari_in_K%C4%81bul_province_-_UWM_10,926.jpg",
+   "licence": "Public domain",
+   "author": "Frederick Gardner Clapp (c.1930s)",
+   "view": "front",
+   "file": "/tmp/places-evidence/kabul/chakri_clapp.jpg",
+   "used": "real photograph of the standing pillar: square rubble plinth with spilled stones, dark rubble-masonry shaft tapering slightly, collar ring at 16 m, drum, narrow neck, bulging cushion, second neck, bowl crowned with rubble; proportions scaled from the 2 standing figures"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Minar-i_Chakri_in_1836,_Kabul.jpg",
+   "licence": "Public domain",
+   "author": "Charles Masson (etching, 1836)",
+   "view": "front",
+   "file": "/tmp/places-evidence/kabul/chakri1836.jpg",
+   "used": "cross-check of head profile and masonry texture"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Minar-i_Chakri",
+   "used": "28.5 m Kushan pillar collapsed March 1998; modelled as before the collapse; no OSM building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 0.57,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     12,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6d6455",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a705e",
+    "material": "concrete",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    3.2
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#4a4038"
+     ],
+     [
+      3.15,
+      0,
+      "#4a4038"
+     ],
+     [
+      3.0,
+      8,
+      "#4a4038"
+     ],
+     [
+      2.85,
+      15.6,
+      "#4a4038"
+     ],
+     [
+      3.5,
+      15.8,
+      "#5a5046"
+     ],
+     [
+      3.5,
+      16.4,
+      "#5a5046"
+     ],
+     [
+      3.0,
+      16.6,
+      "#4a4038"
+     ],
+     [
+      3.0,
+      20.6,
+      "#4a4038"
+     ],
+     [
+      2.7,
+      20.9,
+      "#5a5046"
+     ],
+     [
+      2.1,
+      21.4,
+      "#5a5046"
+     ],
+     [
+      2.2,
+      21.8,
+      "#4a4038"
+     ],
+     [
+      2.8,
+      22.3,
+      "#5a5046"
+     ],
+     [
+      2.9,
+      23.5,
+      "#5a5046"
+     ],
+     [
+      2.4,
+      24.9,
+      "#4a4038"
+     ],
+     [
+      1.9,
+      25.2,
+      "#4a4038"
+     ],
+     [
+      2.5,
+      25.6,
+      "#5a5046"
+     ],
+     [
+      2.6,
+      27.4,
+      "#5a5046"
+     ],
+     [
+      2.3,
+      28.2,
+      "#5a5046"
+     ],
+     [
+      0,
+      28.5,
+      "#5a5046"
+     ]
+    ],
+    "segments": 20,
+    "smooth": false,
+    "material": "brick"
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    6.5,
+    -5.5,
+    0.4
+   ],
+   "params": {
+    "width": 5,
+    "depth": 3.5,
+    "count": 10,
+    "colour": "#6d6455"
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    -5,
+    5.5,
+    0.4
+   ],
+   "params": {
+    "width": 4,
+    "depth": 3,
+    "count": 6,
+    "colour": "#7a705e"
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    0,
+    0,
+    28.4
+   ],
+   "params": {
+    "width": 3,
+    "depth": 3,
+    "count": 5,
+    "colour": "#5a5046"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   26,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Head drums slightly stubbier and cleaner than the weathered original; shaft masonry is a generic brick texture; plinth is a clean square, original was collapsed on one side; hill backdrop omitted."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kabul",
+ "venueId": "kabul-osm-node-2551955816"
+}

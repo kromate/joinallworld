@@ -1,0 +1,1183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dushanbe",
+ "venueId": "dushanbe-osm-way-42488771",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hissar_Fortress,_Dushanbe,_Tajikistan_(43770454371).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr (Hissar Fortress, Dushanbe series)",
+   "view": "front",
+   "file": "/tmp/places-evidence/dushanbe/d15_hissar_43770454371.jpg",
+   "used": "gate tower with pointed arch flanked by two flat-topped round brick towers, blind-arcade brick wall between, white dome of the madrasa behind, crenellated rampart, brick colour"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hissar_Fortress,_Dushanbe,_Tajikistan_(28834280357).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr (Hissar Fortress, Dushanbe series)",
+   "view": "side",
+   "used": "warm yellow-brown kiln brick colour, crenellated parapets, stone-paved ground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/42488771",
+   "used": "fortress area is 442 x 332 m; only the gate complex (about 70 m) is modelled at true scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 34,
+  "aspect": 2.2
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate, towers and niches now true pointed arches with crenellated tops and a longer arcade wall; park is sparse (no benches, few trees, grass not paved), gazebo roof not shingled, madrasa on right still a simple block, only the gate complex modelled not the 440 m rampart"
+ },
+ "parts": [
+  {
+   "type": "fort-gatehouse",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8.5,
+    "depth": 6,
+    "height": 13,
+    "kind": "pointed",
+    "batter": 0.1,
+    "pinnacles": 0,
+    "relief": true,
+    "crenellated": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3.15
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     0.5
+    ],
+    "z0": 0,
+    "height": 13.6,
+    "colour": "#a47a50",
+    "topColour": "#a47a50"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3.5
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     0.4
+    ],
+    "z0": 0.0,
+    "height": 10.2,
+    "colour": "#b58b5c",
+    "topColour": "#b58b5c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -3.8
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.2,
+       0.4
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       4.2,
+       0.4
+      ]
+     },
+     {
+      "z": 7.2,
+      "rect": [
+       3.4,
+       0.4
+      ]
+     },
+     {
+      "z": 8.8,
+      "rect": [
+       2.0,
+       0.4
+      ]
+     },
+     {
+      "z": 10.4,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     }
+    ],
+    "colour": "#2c1b0e",
+    "capTop": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "arcade-wall-l",
+   "footprint": {
+    "rect": [
+     14,
+     4.5
+    ]
+   },
+   "at": [
+    -11.5,
+    1.8
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a7149",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#97714a",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -16.7,
+     -0.6
+    ],
+    "end": [
+     -6.3,
+     -0.6
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "sections": [
+        {
+         "z": 0.8,
+         "rect": [
+          2.0,
+          0.3
+         ]
+        },
+        {
+         "z": 2.75,
+         "rect": [
+          2.0,
+          0.3
+         ]
+        },
+        {
+         "z": 3.5,
+         "rect": [
+          1.6,
+          0.3
+         ]
+        },
+        {
+         "z": 4.25,
+         "rect": [
+          1.0,
+          0.3
+         ]
+        },
+        {
+         "z": 5.0,
+         "rect": [
+          0.24,
+          0.3
+         ]
+        }
+       ],
+       "colour": "#2c1b0e",
+       "capTop": true
+      },
+      "at": [
+       0,
+       0
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "arcade-wall-r",
+   "footprint": {
+    "rect": [
+     14,
+     4.5
+    ]
+   },
+   "at": [
+    11.5,
+    1.8
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a7149",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#97714a",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     6.3,
+     -0.6
+    ],
+    "end": [
+     16.7,
+     -0.6
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "sections": [
+        {
+         "z": 0.8,
+         "rect": [
+          2.0,
+          0.3
+         ]
+        },
+        {
+         "z": 2.75,
+         "rect": [
+          2.0,
+          0.3
+         ]
+        },
+        {
+         "z": 3.5,
+         "rect": [
+          1.6,
+          0.3
+         ]
+        },
+        {
+         "z": 4.25,
+         "rect": [
+          1.0,
+          0.3
+         ]
+        },
+        {
+         "z": 5.0,
+         "rect": [
+          0.24,
+          0.3
+         ]
+        }
+       ],
+       "colour": "#2c1b0e",
+       "capTop": true
+      },
+      "at": [
+       0,
+       0
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "tower-l",
+   "at": [
+    -20,
+    2.5,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#b58b5c",
+    "profile": [
+     [
+      3.0,
+      0
+     ],
+     [
+      2.8,
+      9.4
+     ],
+     [
+      3.5,
+      9.5
+     ],
+     [
+      3.5,
+      10.6
+     ],
+     [
+      3.2,
+      10.7
+     ],
+     [
+      3.2,
+      11.0
+     ],
+     [
+      0,
+      11.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-r",
+   "at": [
+    20,
+    2.5,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#b58b5c",
+    "profile": [
+     [
+      3.0,
+      0
+     ],
+     [
+      2.8,
+      9.4
+     ],
+     [
+      3.5,
+      9.5
+     ],
+     [
+      3.5,
+      10.6
+     ],
+     [
+      3.2,
+      10.7
+     ],
+     [
+      3.2,
+      11.0
+     ],
+     [
+      0,
+      11.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dome-drum",
+   "footprint": {
+    "rect": [
+     8.5,
+     8.5
+    ]
+   },
+   "at": [
+    7,
+    10
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a47a50",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#97714a",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    7,
+    10,
+    7.3
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#eceee8",
+    "profile": [
+     [
+      3.9000000000000004,
+      0.0
+     ],
+     [
+      4.16,
+      0.78
+     ],
+     [
+      3.6399999999999997,
+      2.08
+     ],
+     [
+      2.4699999999999998,
+      3.12
+     ],
+     [
+      1.1700000000000002,
+      3.6399999999999997
+     ],
+     [
+      0.0,
+      3.77
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "madrasa-portal",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    44,
+    4
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a5a40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#97714a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    -0.3
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.6
+    ],
+    "z0": 0,
+    "height": 12.5,
+    "colour": "#8a6644",
+    "topColour": "#8a6644"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    -0.7
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.4
+    ],
+    "z0": 0.5,
+    "height": 7.5,
+    "colour": "#2a190d",
+    "topColour": "#2a190d"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    -0.7
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.4
+    ],
+    "z0": 8,
+    "height": 1.6,
+    "colour": "#2a190d",
+    "topColour": "#2a190d"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    -0.7
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.4
+    ],
+    "z0": 9.6,
+    "height": 1.1,
+    "colour": "#2a190d",
+    "topColour": "#2a190d"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    37,
+    -0.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 0.7,
+    "height": 3.6,
+    "colour": "#2c1b0e",
+    "topColour": "#2c1b0e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    37,
+    -0.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 5.2,
+    "height": 3.6,
+    "colour": "#2c1b0e",
+    "topColour": "#2c1b0e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    -0.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 0.7,
+    "height": 3.6,
+    "colour": "#2c1b0e",
+    "topColour": "#2c1b0e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    -0.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 5.2,
+    "height": 3.6,
+    "colour": "#2c1b0e",
+    "topColour": "#2c1b0e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    -0.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 0.7,
+    "height": 3.6,
+    "colour": "#2c1b0e",
+    "topColour": "#2c1b0e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    -0.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 5.2,
+    "height": 3.6,
+    "colour": "#2c1b0e",
+    "topColour": "#2c1b0e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    51,
+    -0.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 0.7,
+    "height": 3.6,
+    "colour": "#2c1b0e",
+    "topColour": "#2c1b0e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    51,
+    -0.15
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.3
+    ],
+    "z0": 5.2,
+    "height": 3.6,
+    "colour": "#2c1b0e",
+    "topColour": "#2c1b0e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -24,
+    1.5,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 30,
+    "height": 2.4,
+    "thickness": 1.0,
+    "ruin": 0.5
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    27,
+    1.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.4,
+    "thickness": 1.0,
+    "ruin": 0.5
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    30,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 7,
+    "height": 4.0,
+    "kind": "hip"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -20,
+     2.5
+    ],
+    "radius": 3.3,
+    "startDeg": 0,
+    "endDeg": 330,
+    "count": 12,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.9
+      ],
+      "z0": 11.0,
+      "height": 0.7,
+      "colour": "#b58b5c",
+      "topColour": "#b58b5c"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     20,
+     2.5
+    ],
+    "radius": 3.3,
+    "startDeg": 0,
+    "endDeg": 330,
+    "count": 12,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.9
+      ],
+      "z0": 11.0,
+      "height": 0.7,
+      "colour": "#b58b5c",
+      "topColour": "#b58b5c"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "arcade-wall-far--1",
+   "footprint": {
+    "rect": [
+     30,
+     4.5
+    ]
+   },
+   "at": [
+    -38,
+    1.8
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a7149",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#97714a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -24.5,
+     -0.6
+    ],
+    "end": [
+     -51.5,
+     -0.6
+    ],
+    "count": 10,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "sections": [
+        {
+         "z": 0.5,
+         "rect": [
+          1.6,
+          0.3
+         ]
+        },
+        {
+         "z": 2.6,
+         "rect": [
+          1.6,
+          0.3
+         ]
+        },
+        {
+         "z": 3.4,
+         "rect": [
+          1.0,
+          0.3
+         ]
+        },
+        {
+         "z": 4.1,
+         "rect": [
+          0.15,
+          0.3
+         ]
+        }
+       ],
+       "colour": "#2c1b0e",
+       "capTop": true
+      },
+      "at": [
+       0,
+       0
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "arcade-wall-far-1",
+   "footprint": {
+    "rect": [
+     30,
+     4.5
+    ]
+   },
+   "at": [
+    38,
+    1.8
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a7149",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#97714a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     24.5,
+     -0.6
+    ],
+    "end": [
+     51.5,
+     -0.6
+    ],
+    "count": 10,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "sections": [
+        {
+         "z": 0.5,
+         "rect": [
+          1.6,
+          0.3
+         ]
+        },
+        {
+         "z": 2.6,
+         "rect": [
+          1.6,
+          0.3
+         ]
+        },
+        {
+         "z": 3.4,
+         "rect": [
+          1.0,
+          0.3
+         ]
+        },
+        {
+         "z": 4.1,
+         "rect": [
+          0.15,
+          0.3
+         ]
+        }
+       ],
+       "colour": "#2c1b0e",
+       "capTop": true
+      },
+      "at": [
+       0,
+       0
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -30,
+      -8
+     ],
+     [
+      0,
+      -14
+     ],
+     [
+      34,
+      -20
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -4
+     ],
+     [
+      8,
+      -16
+     ],
+     [
+      10,
+      -40
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     -20
+    ],
+    "end": [
+     -40,
+     -24
+    ],
+    "count": 3,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 7,
+      "count": 1
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     48,
+     -34
+    ],
+    "end": [
+     62,
+     -38
+    ],
+    "count": 3,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 7,
+      "count": 1
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -40
+    ],
+    "end": [
+     -20,
+     -46
+    ],
+    "count": 3,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 7,
+      "count": 1
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   110
+  ]
+ }
+}

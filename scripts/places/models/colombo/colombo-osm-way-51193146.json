@@ -1,0 +1,505 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "colombo",
+ "venueId": "colombo-osm-way-51193146",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sugatadasa_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vishmika dilshan",
+   "view": "interior",
+   "file": "/tmp/places-evidence/colombo/suga1.jpg",
+   "used": "low single-tier concrete stands with a dark-green fascia band running round the top, red running track, plain green pitch, a tall lattice floodlight mast with a lamp platform, a small boxy scoreboard tower with a blank face above the stand line, palms and broadleaf trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9080868",
+   "used": "oval bowl about 211 x 155 m, scaled to the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 20,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      54.0,
+      0.0
+     ],
+     [
+      46.77,
+      20.0
+     ],
+     [
+      27.0,
+      34.64
+     ],
+     [
+      0.0,
+      40.0
+     ],
+     [
+      -27.0,
+      34.64
+     ],
+     [
+      -46.77,
+      20.0
+     ],
+     [
+      -54.0,
+      0.0
+     ],
+     [
+      -46.77,
+      -20.0
+     ],
+     [
+      -27.0,
+      -34.64
+     ],
+     [
+      -0.0,
+      -40.0
+     ],
+     [
+      27.0,
+      -34.64
+     ],
+     [
+      46.77,
+      -20.0
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      38.0,
+      13.0
+     ],
+     [
+      37.56,
+      15.78
+     ],
+     [
+      36.28,
+      18.29
+     ],
+     [
+      34.29,
+      20.28
+     ],
+     [
+      31.78,
+      21.56
+     ],
+     [
+      29.0,
+      22.0
+     ],
+     [
+      -29.0,
+      22.0
+     ],
+     [
+      -31.78,
+      21.56
+     ],
+     [
+      -34.29,
+      20.28
+     ],
+     [
+      -36.28,
+      18.29
+     ],
+     [
+      -37.56,
+      15.78
+     ],
+     [
+      -38.0,
+      13.0
+     ],
+     [
+      -38.0,
+      -13.0
+     ],
+     [
+      -37.56,
+      -15.78
+     ],
+     [
+      -36.28,
+      -18.29
+     ],
+     [
+      -34.29,
+      -20.28
+     ],
+     [
+      -31.78,
+      -21.56
+     ],
+     [
+      -29.0,
+      -22.0
+     ],
+     [
+      29.0,
+      -22.0
+     ],
+     [
+      31.78,
+      -21.56
+     ],
+     [
+      34.29,
+      -20.28
+     ],
+     [
+      36.28,
+      -18.29
+     ],
+     [
+      37.56,
+      -15.78
+     ],
+     [
+      38.0,
+      -13.0
+     ]
+    ],
+    "z0": 0.15,
+    "height": 0.1,
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 43,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 8,
+    "rise": 0.65,
+    "run": 0.9,
+    "firstHeight": 0.5,
+    "facetDeg": 36,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.4,
+    "bay": 7,
+    "seatColours": [
+     "#a9aaa3",
+     "#9fa09a",
+     "#a9aaa3",
+     "#2f8a4a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#a9aaa3",
+    "underColour": "#8f8a80",
+    "canopy": {
+     "height": 0.2,
+     "depth": 1.2,
+     "thickness": 1.2,
+     "slopeDeg": 0,
+     "colour": "#1f4f35",
+     "edgeColour": "#1f4f35",
+     "overhangBack": 0.0
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 64,
+    "radiusY": 48,
+    "startDeg": 45,
+    "endDeg": 315,
+    "count": 4,
+    "facing": "outward",
+    "of": {
+     "type": "floodlight-mast",
+     "params": {
+      "height": 32,
+      "head_width": 11,
+      "colour": "#b9bec2"
+     }
+    },
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.4,
+    "run": 0.9,
+    "count": 6,
+    "colour": "#b9b5ab"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard-tower",
+   "footprint": {
+    "rect": [
+     7,
+     3.5
+    ]
+   },
+   "at": [
+    -26,
+    50
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c5ba",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    48.1,
+    7
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     0.3
+    ],
+    "height": 6,
+    "colour": "#25282b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     70.0,
+     0.0
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     65.8,
+     19.2
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     53.6,
+     36.0
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     35.0,
+     48.5
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12.2,
+     55.1
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12.2,
+     55.1
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35.0,
+     48.5
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -53.6,
+     36.0
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -65.8,
+     19.2
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70.0,
+     0.0
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -65.8,
+     -19.2
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -53.6,
+     -36.0
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35.0,
+     -48.5
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12.2,
+     -55.1
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12.2,
+     -55.1
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     35.0,
+     -48.5
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     53.6,
+     -36.0
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     65.8,
+     -19.2
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   155,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Interior reference photo; stand now one tier ~5.5 m grey concrete with dark-green fascia, rounded-rect pitch in brick track, 4 masts with lamp platforms, boxy scoreboard tower, dense tree ring. Masts are not true lattice; no lane lines; covered main stand not modelled."
+ }
+}

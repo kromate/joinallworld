@@ -1,0 +1,523 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tehran",
+ "venueId": "tehran-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iran_INI_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mahdijiba",
+   "view": "street",
+   "file": "/tmp/places-evidence/tehran/tehran-clinic-0.jpg",
+   "used": "terraced green-glass spheroid dome over a low brown stone-faced ward block with a setback upper floor, tan multi-storey wing at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iran_INI_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mahdijiba",
+   "view": "side",
+   "file": "/tmp/places-evidence/tehran/tehran-clinic-1.jpg",
+   "used": "dome ring terraces, tan stepped wards beside it, hillside setting"
+  },
+  {
+   "kind": "text",
+   "used": "OSM campus outline (367 x 278 m) used for identity only, not as a footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 2.05,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     96,
+     30
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#6e5a47",
+    "glassColour": "#2e2f30",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a625a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-setback",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    2,
+    -2
+   ],
+   "z0": 7,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a08a72",
+    "glassColour": "#3c4a52",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -68,
+    -4
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9a77c",
+    "glassColour": "#a98a62",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "glass-dome",
+   "at": [
+    2,
+    10,
+    11
+   ],
+   "params": {
+    "segments": 24,
+    "profile": [
+     [
+      17,
+      0,
+      "#d8b24a"
+     ],
+     [
+      17.5,
+      4,
+      "#e0b84e"
+     ],
+     [
+      17.6,
+      4.1,
+      "#2e3f3c"
+     ],
+     [
+      18.5,
+      4.199999999999999,
+      "#6f9a86"
+     ],
+     [
+      18.7,
+      7.0,
+      "#86a898"
+     ],
+     [
+      18.7,
+      7.1,
+      "#2e3f3c"
+     ],
+     [
+      20,
+      7.199999999999999,
+      "#6f9a86"
+     ],
+     [
+      20.2,
+      10.0,
+      "#86a898"
+     ],
+     [
+      20.2,
+      10.1,
+      "#2e3f3c"
+     ],
+     [
+      21,
+      10.2,
+      "#6f9a86"
+     ],
+     [
+      21.2,
+      13.0,
+      "#86a898"
+     ],
+     [
+      21.2,
+      13.1,
+      "#2e3f3c"
+     ],
+     [
+      21,
+      13.2,
+      "#6f9a86"
+     ],
+     [
+      21.2,
+      16.0,
+      "#86a898"
+     ],
+     [
+      21.2,
+      16.1,
+      "#2e3f3c"
+     ],
+     [
+      20,
+      16.200000000000003,
+      "#6f9a86"
+     ],
+     [
+      20.2,
+      19.0,
+      "#86a898"
+     ],
+     [
+      20.2,
+      19.1,
+      "#2e3f3c"
+     ],
+     [
+      18,
+      19.200000000000003,
+      "#6f9a86"
+     ],
+     [
+      18.2,
+      22.0,
+      "#86a898"
+     ],
+     [
+      18.2,
+      22.1,
+      "#2e3f3c"
+     ],
+     [
+      15,
+      22.200000000000003,
+      "#6f9a86"
+     ],
+     [
+      15.2,
+      25.0,
+      "#86a898"
+     ],
+     [
+      15.2,
+      25.1,
+      "#2e3f3c"
+     ],
+     [
+      11,
+      27.1,
+      "#6f9a86"
+     ],
+     [
+      5,
+      28.700000000000003,
+      "#86a898"
+     ],
+     [
+      0,
+      29.1,
+      "#86a898"
+     ]
+    ],
+    "colour": "#6f9a86",
+    "topColour": "#7fa896"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2,
+    10,
+    11
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      19,
+      0
+     ],
+     [
+      21,
+      12
+     ],
+     [
+      12,
+      22
+     ],
+     [
+      0,
+      28
+     ]
+    ],
+    "colour": "#6f9a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drive",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     14
+    ],
+    "height": 0.1,
+    "colour": "#6f6e6a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#d8d3c8",
+    "roofColour": "#8a8580",
+    "vans": 1
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 4,
+    "spread": 5,
+    "line": 30
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "hoarding",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#3f9fc8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "hoarding-white",
+   "at": [
+    0,
+    -34.2,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.0,
+    "thickness": 0.35,
+    "colour": "#e8ecef"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -32,
+    -21,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     64,
+     0,
+     0
+    ],
+    "count": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 13,
+      "colour": "#7a6a50",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    24,
+    10,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "height": 52,
+      "colour": "#d49a2a",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      1.2
+     ]
+    },
+    "points": [
+     [
+      14,
+      10,
+      53
+     ],
+     [
+      58,
+      10,
+      53
+     ]
+    ],
+    "colour": "#d49a2a"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "dome is 7 stepped glass rings on a gold drum, a little squatter than the photo; scaffolding grid and crane simplified; west wing is a plain tan block with ribbon windows rather than a window grid; hoarding and street edges approximate"
+ }
+}

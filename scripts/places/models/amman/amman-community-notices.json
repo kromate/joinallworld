@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "amman",
+ "venueId": "amman-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/amman.json",
+   "used": "no photo or OSM outline found for the Zarqa Municipality headquarters; four-storey cream limestone municipal office with flags, covered entrance and steps typed from the brief and the Jordanian civic-building convention (stone cladding, flat roofs, flagpoles)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     55,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d8c9a8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 4.2,
+    "bands": "#c4b793",
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    -17
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d6b8",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#c4b793"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "rise": 1.0,
+    "run": 1.4,
+    "count": 5,
+    "colour": "#e6dfcf"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#2f5f4a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#9b2c2c",
+    "count": 3,
+    "spacing": 2.8,
+    "colours": [
+     "#9b2c2c",
+     "#1f1f1f",
+     "#2b6b3f"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 3,
+    "spread": 5,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10,
+    "count": 3,
+    "spread": 5,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the Zarqa Municipality building exists in Commons; massing typed from the brief (55x28 m, four storeys, cream limestone, flags, covered entrance)"
+ }
+}

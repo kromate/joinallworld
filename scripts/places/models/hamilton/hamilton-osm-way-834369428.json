@@ -1,0 +1,321 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-way-834369428",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:OLD_DEVONSHIRE_CHURCH,_DEVONSHIRE_PARISH,_BERMUDA.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jerrye & Roy Klotz, MD",
+   "view": "side",
+   "file": "/tmp/places-evidence/hamilton/devon.jpg",
+   "used": "low whitewashed walls, steep white stepped-slate gable roofs meeting at a crossing, dark brown shutters, arched gable door, white graveyard tombs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/834369428",
+   "used": "cruciform plan: two arms 20x7 and 22x7 m crossing at about 90 degrees"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "arm-a",
+   "footprint": {
+    "rect": [
+     20.4,
+     7.2
+    ]
+   },
+   "at": [
+    -1.4,
+    2.2
+   ],
+   "rotDeg": 25.8,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1e8",
+    "windows": "rect",
+    "windowRatio": 0.09,
+    "bay": 3.4,
+    "plinth": 0.2,
+    "trimColour": "#4a2c22"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ecebe4",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arm-b",
+   "footprint": {
+    "rect": [
+     22.3,
+     7.2
+    ]
+   },
+   "at": [
+    0.85,
+    -0.75
+   ],
+   "rotDeg": -64.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1e8",
+    "windows": "rect",
+    "windowRatio": 0.09,
+    "bay": 3.4,
+    "plinth": 0.2,
+    "trimColour": "#4a2c22"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ecebe4",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#eeece4",
+    "points": [
+     [
+      -26,
+      -24
+     ],
+     [
+      26,
+      -24
+     ],
+     [
+      26,
+      24
+     ],
+     [
+      -26,
+      24
+     ],
+     [
+      -26,
+      -24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     1.0,
+     2.2
+    ],
+    "height": 0.5,
+    "colour": "#f2f0ea",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     2.4
+    ],
+    "height": 0.5,
+    "colour": "#f2f0ea",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "rect": [
+     1.0,
+     2.2
+    ],
+    "height": 0.5,
+    "colour": "#f2f0ea",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.6
+    ],
+    "height": 0.6,
+    "colour": "#f2f0ea",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    8,
+    0
+   ],
+   "rotDeg": 80,
+   "params": {
+    "rect": [
+     1.0,
+     2.2
+    ],
+    "height": 0.5,
+    "colour": "#f2f0ea",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13,
+    14,
+    0
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     1.0,
+     2.2
+    ],
+    "height": 0.5,
+    "colour": "#f2f0ea",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.8
+    ],
+    "height": 0.45,
+    "colour": "#f2f0ea",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     2.2
+    ],
+    "height": 0.5,
+    "colour": "#f2f0ea",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the side photo (roof pitch, shutters, tombs) but never rendered: no render server alive; arm orientation and camera yaw unchecked"
+ }
+}

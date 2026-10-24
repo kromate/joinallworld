@@ -1,0 +1,328 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-node-1228341374",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moonhole.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Amilcar Fierro",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingstown/moonhole.jpg",
+   "used": "basalt cliff with a tall rock arch, stone houses beneath and inside the arch, small tent-roofed gazebo, green crown of scrub on top, brown-red lower strata"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q6907802",
+   "used": "identity"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingstown.json",
+   "used": "brief description"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pier-left",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -23,
+      -4
+     ],
+     [
+      -1.5,
+      -3
+     ],
+     [
+      -1,
+      7
+     ],
+     [
+      -23,
+      10
+     ]
+    ],
+    "height": 24,
+    "topScale": 0.8,
+    "colour": "#6f5446"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-right",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5.5,
+      -3
+     ],
+     [
+      24,
+      -5
+     ],
+     [
+      24,
+      9
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    "height": 22,
+    "topScale": 0.8,
+    "colour": "#7d5a48"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -23,
+      -2
+     ],
+     [
+      24,
+      -3
+     ],
+     [
+      24,
+      9
+     ],
+     [
+      -23,
+      9
+     ]
+    ],
+    "z0": 14,
+    "height": 11,
+    "topScale": 0.85,
+    "colour": "#6a5144"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-strata",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -9
+     ],
+     [
+      -3,
+      -8
+     ],
+     [
+      -3,
+      0
+     ],
+     [
+      -26,
+      2
+     ]
+    ],
+    "height": 4.5,
+    "colour": "#8a4a38",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "foreshore-boulders",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -8
+     ],
+     [
+      18,
+      -8
+     ],
+     [
+      18,
+      -3
+     ],
+     [
+      -2,
+      -3
+     ]
+    ],
+    "height": 1.6,
+    "colour": "#4a4440",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lower-house",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -1.5,
+    -3.5
+   ],
+   "z0": 0.6,
+   "height": 5.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a7e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b5a48",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -3.5,
+    -3.5,
+    5.8
+   ],
+   "params": {
+    "width": 3,
+    "depth": 3,
+    "height": 2.4,
+    "roof": "hip",
+    "rise": 2.2,
+    "colour": "#6b4f36",
+    "cap_colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cave-house",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    5,
+    3
+   ],
+   "z0": 2.5,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4f36",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a6a55",
+    "material": "corrugated",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    24
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     3
+    ],
+    "end": [
+     20,
+     3
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "tree",
+      "params": {
+       "kind": "broadleaf",
+       "height": 6
+      }
+     }
+    ],
+    "vary": {}
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -8,
+    -1,
+    5.8
+   ],
+   "params": {
+    "radius": 0.9,
+    "tankHeight": 1.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   70,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue backlogged (no heartbeat), no comparison done; cliff is stacked prisms, arch is a rectangular opening, scrub crown is sparse trees"
+ }
+}

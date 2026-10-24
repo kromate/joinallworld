@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-node-3939176179",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:View_of_Bay_from_Cetti_Bay_overlook_Guam_(12693256195).jpg",
+   "used": "setting only: steep green grassy hills falling to a small bay, palms in foreground; the shelter itself is not visible, so not compared (CC BY 2.0, Flickr via Commons)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1057020316",
+   "used": "size of the nearest structure (6.2 x 3.4 m, nearest only, 73 m away, not a reliable match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     6.2,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c0",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5b2a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b2a6",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -10.2,
+    0.3
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "railing",
+    "colour": "#8a6a48"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -7,
+    -6,
+    0.3
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "railing",
+    "colour": "#8a6a48",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      8
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -2
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "shelter not visible in any photo; never rendered: queue down"
+ }
+}

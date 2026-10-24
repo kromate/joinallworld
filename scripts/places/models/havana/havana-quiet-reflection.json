@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iglesia_de_San_Francisco_de_As%C3%ADs_.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Brian Snelson",
+   "view": "side",
+   "file": "/tmp/places-evidence/havana/basilica2.jpg",
+   "used": "long weathered grey-cream limestone nave wall with a small arched door and blind arch at the left, balustraded parapet, row of five low masonry domed vault bumps above, tall four-stage square bell tower at the right end with arched belfry openings and a cross finial, statue in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_de_San_Francisco,_Havana,_Cuba.jpg",
+   "licence": "Public domain",
+   "author": "Ministerio de Obras Publica",
+   "view": "front",
+   "used": "checked tower proportion against the plaza facade"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38575195",
+   "used": "footprint of church plus convent block (48 x 30 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b1a994",
+    "windows": "none",
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#c3bca6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39d8b",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    15.2
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0,
+        0,
+        "#a6a08f"
+       ],
+       [
+        4.6,
+        0
+       ],
+       [
+        4.5,
+        0.9
+       ],
+       [
+        3.9,
+        2.1
+       ],
+       [
+        2.6,
+        3.0
+       ],
+       [
+        0,
+        3.5
+       ]
+      ],
+      "segments": 16,
+      "colour": "#a6a08f",
+      "bottomCap": true
+     }
+    },
+    "mode": "line",
+    "start": [
+     -15,
+     -3
+    ],
+    "end": [
+     11,
+     -3
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    20,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 41,
+    "cap": "pyramid",
+    "cap_height": 3,
+    "belfry": true,
+    "colour": "#a9a28e",
+    "cap_colour": "#8f897a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     4.6,
+     1.4
+    ]
+   },
+   "at": [
+    -16,
+    -12.2
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c0b8a1",
+    "windows": "none",
+    "plinth": 0.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5ad98",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "pending render"
+ }
+}

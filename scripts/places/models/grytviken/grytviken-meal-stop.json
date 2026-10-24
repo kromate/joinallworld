@@ -1,0 +1,111 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "grytviken",
+ "venueId": "grytviken-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/517499837",
+   "used": "Nybrakka, the brief's visual model: 28 x 12 m outline, 3 levels; nearest match 30 m from the venue point"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/grytviken.json#grytviken-meal-stop",
+   "used": "red timber quarters, hip roof, chimney, signboard; no photo of Nybrakka found among the evidence"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nybrakka",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 3,
+   "wall": {
+    "material": "timber",
+    "colour": "#8d3b2a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "trimColour": "#ece9e1",
+    "bands": "#ece9e1"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f6a63",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    0,
+    0,
+    8.5
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.4,
+    "colour": "#7a4a36"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -9,
+    1.6
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.8,
+    "bottom": 0,
+    "colour": "#ece9e1",
+    "posts": true
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "width": 2,
+    "height": 0.6,
+    "run": 1.5,
+    "colour": "#7a6a5a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered; Nybrakka outline only, no photo; window and door layout generic"
+ }
+}

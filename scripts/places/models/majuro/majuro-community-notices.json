@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/259723394",
+   "used": "real 22.6 x 16 m outline"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Majuro",
+   "used": "brief facts (size, storeys, roof, colours typed from Majuro style)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e2a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#9dbfd0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3b6e91",
+    "material": "corrugated",
+    "overhang": 0.9,
+    "rise": 1.6
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 3.2,
+    "colour": "#e9e5d6"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -9,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#9dbfd0",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: shared render queue had no live workers (heartbeats stale since 20:17), so massing, colours and canopy placement are unverified; no exterior photo of this building exists."
+ }
+}

@@ -1,0 +1,277 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q16256657",
+   "used": "Catholic University Redemptoris Mater, founded 1992; typed as cream blocks with clay roofs round a courtyard and a small chapel"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/962247462",
+   "used": "campus polygon 325 x 154 m is a whole campus, not a building: used for scale only, one block group composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-back",
+   "footprint": {
+    "rect": [
+     64,
+     14
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e7c9",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#a84e32",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 22,
+    "colour": "#a84e32",
+    "material": "clay-tile",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-west",
+   "footprint": {
+    "rect": [
+     14,
+     42
+    ]
+   },
+   "at": [
+    -25,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e7c9",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#a84e32",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 22,
+    "colour": "#a84e32",
+    "material": "clay-tile",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     14,
+     42
+    ]
+   },
+   "at": [
+    25,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e7c9",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#a84e32",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 22,
+    "colour": "#a84e32",
+    "material": "clay-tile",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "arcade",
+   "at": [
+    0,
+    13.5,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 4.2,
+    "thickness": 3,
+    "bays": 8,
+    "shape": "round",
+    "colour": "#f2e7c9",
+    "trim": "#a84e32"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6efe0",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 30,
+    "colour": "#a84e32",
+    "material": "clay-tile",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "bell-tower",
+   "at": [
+    -8,
+    -33,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#f2e7c9",
+    "roofColour": "#a84e32"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 4,
+    "colours": [
+     "#f4f4f0",
+     "#e8c84a"
+    ]
+   }
+  },
+  {
+   "type": "courtyard-garden",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 18,
+    "fountainRadius": 0,
+    "trees": 4,
+    "paths": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue down). Text only: exterior typed."
+ }
+}

@@ -1,0 +1,158 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/6441817",
+   "used": "real campus outline (about 187x132 m, auto-fitted); no free photo found on Commons"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three to five storey pastel blocks, white roofs, glazed entrance, helipad"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#a9c9dc",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    20,
+    30
+   ],
+   "z0": 14,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    -75
+   ],
+   "rotDeg": -35,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c9dc",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc",
+    "overhang": 2
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -44,
+    -84,
+    0
+   ],
+   "rotDeg": -35,
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "columns": 3
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    60,
+    55,
+    14
+   ],
+   "params": {
+    "radius": 6.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     80,
+     -20
+    ]
+   }
+  ],
+  "cars": 14,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-way-326975395"
+}

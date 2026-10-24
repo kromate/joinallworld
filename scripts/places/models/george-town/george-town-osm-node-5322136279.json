@@ -1,0 +1,207 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-osm-node-5322136279",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/george-town.json#george-town-osm-node-5322136279",
+   "used": "grassy community field beside the airport with a covered pavilion, perimeter fence, four floodlights and a car park. The nearby OSM polygon (158 x 55 m, 50 m away) is the airport, not the park, so it is not used. No photo found."
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "width": 52,
+    "stripes": 6,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "fence",
+    "height": 2.2,
+    "points": [
+     [
+      -48,
+      -32
+     ],
+     [
+      48,
+      -32
+     ],
+     [
+      48,
+      32
+     ],
+     [
+      -48,
+      32
+     ],
+     [
+      -48,
+      -32
+     ]
+    ],
+    "colour": "#6f7b80"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 6,
+    "height": 3.8,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#efe6cf",
+    "accent": "#2f6b5a",
+    "roof_colour": "#6f7b80"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -42,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    42,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -42,
+    27,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    42,
+    27,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -54,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    54,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    42,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or reliable footprint; field size, shelter and floodlights are typed from the brief."
+ }
+}

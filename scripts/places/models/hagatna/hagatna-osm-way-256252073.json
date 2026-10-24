@@ -1,0 +1,190 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/256252073",
+   "used": "real 120x69 m stepped outline, 3 levels"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Interesting_Building_(49255617337).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Daniel Ramirez",
+   "view": "street",
+   "file": "/tmp/places-evidence/hagatna/p15_tumon.jpg",
+   "used": "NOT used for form (small pink building 191 m away, a different building); only the Tumon strip feel: strong trim colours, balustraded parapet, palms"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.2
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3c7a1",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e3c7a1",
+       "#f4f1ea",
+       "#e3c7a1"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#2f6b7a",
+      "height": 0.9,
+      "at": 0.0,
+      "floors": "upper"
+     },
+     {
+      "type": "balconies",
+      "depth": 1.4,
+      "every": 4,
+      "colour": "#f4f1ea",
+      "railColour": "#2f6b7a",
+      "floors": "upper",
+      "continuous": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bbbc",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "at": [
+    14,
+    10,
+    15
+   ],
+   "rotDeg": 24,
+   "params": {
+    "rect": [
+     22,
+     14
+    ],
+    "height": 4,
+    "topScale": 0.7,
+    "colour": "#7fb4c0",
+    "topColour": "#9fc6cf"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign1",
+   "at": [
+    2,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.5,
+    "bottom": 4,
+    "colour": "#2f6b7a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign2",
+   "at": [
+    30,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "bottom": 4,
+    "colour": "#2f6b7a"
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "id": "awn",
+   "at": [
+    -22,
+    -48,
+    0
+   ],
+   "rotDeg": -60,
+   "params": {
+    "width": 12,
+    "depth": 2,
+    "colours": [
+     "#2f6b7a",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -40,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 30
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "id": "cars",
+   "at": [
+    58,
+    -10,
+    0
+   ],
+   "rotDeg": 24,
+   "params": {
+    "width": 30,
+    "depth": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not render-checked: shared render queue had no live server (stale heartbeat, ~75 jobs waiting); spec validated only"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-way-256252073"
+}

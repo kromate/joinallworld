@@ -1,0 +1,239 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Easter_Bunny_stops_by_Christmas_Island_Airport.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Paul McFarlane",
+   "view": "front",
+   "used": "flat-roofed single-storey frontage: white blank signboard wall at left, dark glazed arrivals frontage with black mullions, wall-mounted AC units, gravel-aggregate apron, grass verge (logo omitted)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Christmas_Island_Airport_at_Dusk.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Paullymac",
+   "view": "aerial",
+   "used": "terminal is a long low lit strip with a few mast lights beyond a wide apron, tree line behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/316024700",
+   "used": "terminal footprint, 84 x 27 m, name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "margin": 0.4,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e8e2",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain"
+    },
+    "plinth": 0.3,
+    "bands": "#1f2226"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9e",
+    "material": "membrane",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-wall",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    -18,
+    -13.75
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f1",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f1"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    45,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ac-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -10.5,
+    -13.9
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e8ea",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ac-2",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -13.9
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e8ea",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grass-verge",
+   "footprint": {
+    "rect": [
+     60,
+     6
+    ]
+   },
+   "at": [
+    -10,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": -0.42,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f8a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8a3a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    20,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-airport-flying-fish-cove-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes applied (sand/gravel ground, grass verge, sign wall flush with front, AC units, canopy/tower/flags/cars removed, plain grey roof, mast lights) but NOT re-rendered: no render server running (306 jobs queued); match not re-confirmed visually."
+ }
+}

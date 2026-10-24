@@ -1,0 +1,597 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-osm-node-1550931122",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:To_Hell_and_back_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "wil.jones",
+   "view": "front",
+   "used": "Hell post office: white single-storey block, low hipped grey-brown shingle roof with deep eaves, front porch on square posts with white fretwork railings edged in red, blank sign board over the door, car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rocks_of_Hell,_Cayman_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "wil.jones",
+   "view": "side",
+   "used": "jagged black ironshore field about 1.5-2 m high, green scrub edge, small dark figure standing among the rocks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/141688701",
+   "used": "nearby gift shop 'Devil's Hangout' (nearest match, 39 m): size and bearing used for the red shop block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "post-office",
+   "footprint": {
+    "rect": [
+     10.5,
+     7
+    ]
+   },
+   "at": [
+    -0.25,
+    0
+   ],
+   "z0": 0.3,
+   "height": 2.65,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "trimColour": "#b3262b",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a7a68",
+    "material": "timber-shingle",
+    "rise": 1.3,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-porch-slab",
+   "footprint": {
+    "rect": [
+     10.5,
+     2.6
+    ]
+   },
+   "at": [
+    -0.25,
+    -4.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e1d3",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3262b",
+    "material": "concrete",
+    "overhang": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "z0": 0.5,
+   "height": 2.65,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1e8",
+    "material": "concrete",
+    "overhang": 0
+   },
+   "at": [
+    -5.1,
+    -5.6
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "post1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "z0": 0.5,
+   "height": 2.65,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1e8",
+    "material": "concrete",
+    "overhang": 0
+   },
+   "at": [
+    -1.7,
+    -5.6
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "post2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "z0": 0.5,
+   "height": 2.65,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1e8",
+    "material": "concrete",
+    "overhang": 0
+   },
+   "at": [
+    1.7,
+    -5.6
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "post3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "z0": 0.5,
+   "height": 2.65,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1e8",
+    "material": "concrete",
+    "overhang": 0
+   },
+   "at": [
+    4.6,
+    -5.6
+   ]
+  },
+  {
+   "type": "railing",
+   "at": [
+    -5,
+    -5.6,
+    0.5
+   ],
+   "params": {
+    "length": 4.3,
+    "height": 0.95,
+    "colour": "#f7f5ee"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    1.0,
+    -5.6,
+    0.5
+   ],
+   "params": {
+    "length": 3.6,
+    "height": 0.95,
+    "colour": "#f7f5ee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -0.3,
+    -5.9
+   ],
+   "z0": 2.2,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f5ee",
+    "windows": "none",
+    "windowRatio": 0,
+    "trimColour": "#222222"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#222222",
+    "material": "concrete",
+    "overhang": 0.02
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gift-shop",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    13,
+    5
+   ],
+   "rotDeg": 40,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b3262b",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a1d20",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -16,
+    4,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 1.6,
+    "seed": 7,
+    "stairs": false,
+    "rock_colour": "#26262a",
+    "boulders": 18
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -16,
+    4,
+    1.4
+   ],
+   "params": {
+    "height": 2.6,
+    "pose": "stand",
+    "colour": "#1f1f22"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "density": 0.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    -0.25,
+    -3.0,
+    3.15
+   ],
+   "params": {
+    "length": 10.5,
+    "depth": 2.8,
+    "eaveHeight": 3.0,
+    "attachHeight": 3.6,
+    "post": "square",
+    "postEvery": 3.4,
+    "railHeight": 0.0,
+    "colour": "#f4f1e8",
+    "roofColour": "#8a7a68"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fretwork0",
+   "footprint": {
+    "rect": [
+     3.4,
+     0.5
+    ]
+   },
+   "at": [
+    -3.4,
+    -5.6
+   ],
+   "z0": 0.5,
+   "height": 0.95,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fbfaf5",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#fbfaf5",
+      "#e9e6dc"
+     ],
+     "slits": 0.3,
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3262b",
+    "material": "concrete",
+    "overhang": 0.03
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fretwork1",
+   "footprint": {
+    "rect": [
+     2.9,
+     0.5
+    ]
+   },
+   "at": [
+    3.15,
+    -5.6
+   ],
+   "z0": 0.5,
+   "height": 0.95,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fbfaf5",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#fbfaf5",
+      "#e9e6dc"
+     ],
+     "slits": 0.3,
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3262b",
+    "material": "concrete",
+    "overhang": 0.03
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pobox-bank",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    -3.6,
+    -3.5
+   ],
+   "z0": 1.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9d9f",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#9a9d9f",
+      "#6f7274"
+     ],
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7274",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     1.1,
+     0.5
+    ]
+   },
+   "at": [
+    -0.3,
+    -3.5
+   ],
+   "z0": 0.5,
+   "height": 2.1,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a3a2c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3a2c",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "win",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    3.2,
+    -3.5
+   ],
+   "z0": 1.2,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3d4f5a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1e8",
+    "material": "concrete",
+    "overhang": 0.05
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   30,
+   22
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Critic fixes applied (hip-roofed main block, lean-to porch roof, fretwork panels, PO box bank, door/window, smaller rock field, no water/platform) but render not seen: queue had no server heartbeat (320 jobs waiting). Needs a re-render and visual check."
+ }
+}

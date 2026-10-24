@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/401118281",
+   "used": "real outline 50 x 23 m (nearest building=commercial, 8.7 m from the venue point; no photo found for this untitled building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6b8aa0",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.5,
+    "groundKind": "shopfront",
+    "groundHeight": 4.2,
+    "pattern": [
+     {
+      "kind": "bands",
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-core",
+   "at": [
+    10,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     5
+    ],
+    "height": 24,
+    "colour": "#d8d2c4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#d8d2c4",
+    "frameColour": "#6b8aa0"
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -25,
+    4.2
+   ],
+   "params": {
+    "length": 20,
+    "floors": 3,
+    "storeyHeight": 3.6,
+    "proud": 0.9,
+    "colour": "#e4e0d6"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: queue workers stalled. No photo; glass-curtain office typed from the brief."
+ }
+}

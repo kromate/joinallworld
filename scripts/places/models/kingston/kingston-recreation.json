@@ -1,0 +1,521 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Heroes_Park.jpg",
+   "licence": "CC0",
+   "author": "Jamaica1962",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingston/heroes1.jpg",
+   "used": "Jamaica War Memorial: white stepped base, octagonal pedestal with wreath and blank panels, tall square shaft with Latin cross, paving of tan flagstones, black railing, two bare flagpoles, palms and tree line, cream slab at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monument_to_Sir_Alexander_Bustamante.jpg",
+   "licence": "CC0",
+   "author": "Jamaica1962",
+   "view": "detail",
+   "file": "/tmp/places-evidence/kingston/heroes2.jpg",
+   "used": "pale arch of the Bustamante monument"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28048272",
+   "used": "park is about 692 x 377 m; the model shows the central monument cluster on the lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "paving",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 15,
+    "n": 36,
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#a58f74",
+    "topColour": "#a58f74"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "z0": 0.15,
+    "height": 0.9,
+    "colour": "#f3f2ec",
+    "topColour": "#f3f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     5.6
+    ],
+    "z0": 1.05,
+    "height": 0.85,
+    "colour": "#f3f2ec",
+    "topColour": "#f3f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-low",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 3.1,
+    "n": 8,
+    "z0": 1.9,
+    "height": 1.7,
+    "colour": "#f3f2ec",
+    "topColour": "#f3f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 2.7,
+    "n": 8,
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#ecebe4",
+    "topColour": "#f3f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 6.8,
+    "height": 6.1,
+    "colour": "#f3f2ec",
+    "topColour": "#f3f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-arm",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.1
+    ],
+    "z0": 11.1,
+    "height": 1.0,
+    "colour": "#f3f2ec",
+    "topColour": "#f3f2ec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inscription-board",
+   "at": [
+    0,
+    -2.75
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.1
+    ],
+    "z0": 4.2,
+    "height": 1.8,
+    "colour": "#cbc7ba",
+    "topColour": "#cbc7ba"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "wreath",
+   "at": [
+    0,
+    -2.9,
+    3.0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.18
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.9,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "colour": "#e4e2d8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flagpole-9",
+   "at": [
+    -9,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#b8bcc0",
+    "topColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flagpole9",
+   "at": [
+    9,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#b8bcc0",
+    "topColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "railing",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.1,
+    "thickness": 0.08,
+    "pillarEvery": 3,
+    "colour": "#1e2022"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-monument",
+   "at": [
+    34,
+    22,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      1.4
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 6,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#d9d3c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cream-slab",
+   "at": [
+    26,
+    34
+   ],
+   "rotDeg": -15,
+   "params": {
+    "rect": [
+     7,
+     1.2
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#e9d9b4",
+    "topColour": "#e9d9b4"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "id": "hero-a",
+   "at": [
+    -30,
+    18,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "steps": 3
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "id": "hero-b",
+   "at": [
+    -42,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "steps": 3
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path-a",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -64,
+      -50
+     ],
+     [
+      -14,
+      -12
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path-b",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      14,
+      12
+     ],
+     [
+      60,
+      48
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path-c",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -64,
+      40
+     ],
+     [
+      -14,
+      12
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path-d",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      14,
+      -12
+     ],
+     [
+      60,
+      -48
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "grove-w",
+   "at": [
+    -48,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 70,
+    "count": 9,
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "grove-e",
+   "at": [
+    52,
+    0,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 80,
+    "count": 9,
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-2210",
+   "at": [
+    -22,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm2018",
+   "at": [
+    20,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-18-14",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm21-12",
+   "at": [
+    21,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the cenotaph photo but never rendered or compared (render queue down): monument proportions estimated, other heroes monuments and layout are typed guesses; park is 692 m so only the central cluster is modelled."
+ }
+}

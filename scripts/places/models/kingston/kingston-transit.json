@@ -1,0 +1,287 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Spanish_Town_Railway_Station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Michael McFarlane",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingston/rail1.jpg",
+   "used": "long single-storey platform front, dark-blue lower wall band and pale teal upper wall, red-orange corrugated roof, blue timber posts with black cast-iron brackets, blank sign board, yellow platform edge, grass-grown track"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Spanish_Town_Railway_Station_from_the_north.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Michael McFarlane",
+   "view": "side",
+   "file": "/tmp/places-evidence/kingston/rail2.jpg",
+   "used": "blind arched panels on the track-side wall, two tracks, brackets under the eaves, steps to platform"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/353900429",
+   "used": "57.5 x 13.2 m footprint and bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 50,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     57.5,
+     8
+    ]
+   },
+   "at": [
+    0,
+    2.5
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fd3c4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 4.8,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 1.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4562f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue-band",
+   "at": [
+    0,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     57.8,
+     8.2
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#1f5fbf",
+    "topColour": "#1f5fbf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     60,
+     5.5
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#8f9094",
+    "topColour": "#8f9094"
+   },
+   "at": [
+    0,
+    -4.25
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "platform-edge",
+   "params": {
+    "rect": [
+     60,
+     0.5
+    ],
+    "z0": 0.8,
+    "height": 0.2,
+    "colour": "#e3b83c",
+    "topColour": "#e3b83c"
+   },
+   "at": [
+    0,
+    -6.75
+   ]
+  },
+  {
+   "type": "canopy",
+   "id": "veranda-roof",
+   "at": [
+    0,
+    -4.1,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 58,
+    "depth": 4.6,
+    "height": 3.7,
+    "thickness": 0.25,
+    "colour": "#c4562f",
+    "edgeColour": "#c4562f",
+    "columns": 0
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts",
+   "params": {
+    "mode": "line",
+    "count": 11,
+    "start": [
+     -26,
+     -5.6,
+     0
+    ],
+    "end": [
+     26,
+     -5.6,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "z0": 0.9,
+      "height": 2.8,
+      "colour": "#2a74d6",
+      "topColour": "#2a74d6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "brackets",
+   "params": {
+    "mode": "line",
+    "count": 11,
+    "start": [
+     -26,
+     -4.3,
+     0
+    ],
+    "end": [
+     26,
+     -4.3,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.12,
+       1.6
+      ],
+      "z0": 2.7,
+      "height": 0.8,
+      "colour": "#1b1b1d",
+      "topColour": "#1b1b1d"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -5.7,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#f1efe1",
+    "frameColour": "#a7a39a",
+    "posts": false
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 2,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    14,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.9,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#b9b6ae"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     15
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from two photos of this station but never rendered or compared (render queue down): roof is one hip plus a flat veranda slab rather than the continuous slope, arched blind panels approximated by mass windows, colours are the current blue/teal paint not the brief brick."
+ }
+}

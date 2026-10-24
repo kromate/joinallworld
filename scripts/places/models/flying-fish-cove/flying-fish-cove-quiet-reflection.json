@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/661594160",
+   "used": "real 8.4 x 6.2 m plan and orientation (name match Goddess of Mercy Temple, building=temple, taoist)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Poon_Saan",
+   "used": "Poon Saan shrines painted yellow, 1970s; red-trimmed tiled swept roof from the brief; no photo of this temple found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     8.4,
+     6.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 33,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2b93b",
+    "windows": "none",
+    "plinth": 0.35,
+    "bands": "#b3261e",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3261e",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    0,
+    3.4
+   ],
+   "rotDeg": 33,
+   "params": {
+    "width": 9.6,
+    "depth": 7.4,
+    "rise": 2.3,
+    "overhang": 1.2,
+    "upturn": 0.7,
+    "colour": "#b3261e",
+    "trim": "#e2b93b",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    1.7,
+    -2.6,
+    0
+   ],
+   "rotDeg": 33,
+   "params": {
+    "width": 3.2,
+    "rise": 0.17,
+    "run": 0.32,
+    "count": 3,
+    "colour": "#d9d2bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "incense-burner",
+   "at": [
+    4.4,
+    -6.8
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 1.1,
+    "topScale": 0.7,
+    "colour": "#b3261e",
+    "topColour": "#8a2a1a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    0.6,
+    0
+   ],
+   "rotDeg": 33,
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#e2b93b"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    7,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   36,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; colours and roof form follow the Poon Saan shrine pattern, door and altar details omitted"
+ }
+}

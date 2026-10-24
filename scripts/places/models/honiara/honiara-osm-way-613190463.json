@@ -1,0 +1,473 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:13._Film_still_from_Lawson_Tama_stadium_(45886258781).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Ramsi Exhibitions",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/honiara/lt2.jpg",
+   "used": "one long low stand with flat grey roof and dark red fascia along the far side, small pitched-roof pavilion, grass oval, grass banks right and left, light masts, blue tent, carpark behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lawson_Tama_Stadium.jpg",
+   "licence": "CC BY 3.0",
+   "author": "David Jones",
+   "view": "street",
+   "file": "/tmp/places-evidence/honiara/lt1.jpg",
+   "used": "tree-covered hillside behind the ground, slim light masts, chain-link fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/613190463",
+   "used": "stand outline 92x17 m: used as the size and bearing of the stand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -62,
+      -45
+     ],
+     [
+      62,
+      -45
+     ],
+     [
+      62,
+      40
+     ],
+     [
+      -62,
+      40
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#6f9a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -33
+     ],
+     [
+      50,
+      -33
+     ],
+     [
+      50,
+      28
+     ],
+     [
+      -50,
+      28
+     ]
+    ],
+    "height": 0.06,
+    "colour": "#5e9b3a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     46,
+     32
+    ],
+    "end": [
+     -46,
+     32
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.9,
+    "firstHeight": 0.8,
+    "seatColour": "#b0402f",
+    "seatColours": [
+     "#b0402f",
+     "#9a9a96",
+     "#c9c4b4"
+    ],
+    "blocks": 4,
+    "backWall": 1.6,
+    "under": "solid",
+    "concreteColour": "#b4b0a4",
+    "canopy": {
+     "height": 6.2,
+     "depth": 9,
+     "colour": "#d9d6d0",
+     "slopeDeg": 3,
+     "supports": 10
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stand-front-wall",
+   "footprint": {
+    "rect": [
+     92,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    29.2
+   ],
+   "z0": 0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    -12,
+    27.5
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a34",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-w",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -66,
+    -8
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9da0a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c8f90",
+    "material": "corrugated",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tent",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    -60,
+    -14
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3b6fb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3b6fb0",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    58,
+    5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -34
+     ],
+     [
+      16,
+      -30
+     ],
+     [
+      22,
+      10
+     ],
+     [
+      14,
+      38
+     ],
+     [
+      -6,
+      36
+     ]
+    ],
+    "height": 6,
+    "topScale": 0.45,
+    "topOffset": [
+     -4,
+     0
+    ],
+    "colour": "#6b9a40",
+    "topColour": "#6b9a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    -6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -40
+     ],
+     [
+      6,
+      -34
+     ],
+     [
+      6,
+      40
+     ],
+     [
+      -14,
+      36
+     ]
+    ],
+    "height": 4,
+    "topScale": [
+     0.4,
+     1
+    ],
+    "topOffset": [
+     -2,
+     0
+    ],
+    "colour": "#6b9a40",
+    "topColour": "#6b9a40"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -52,
+    0,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#9aa0a0"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    52,
+    0,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#9aa0a0"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#9aa0a0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    -37,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    -37,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    54,
+    10,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -54,
+    12,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -62
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -60
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -66
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     22
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-way-613190463",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the aerial photo (one long covered stand, small pitched pavilion, grass banks, masts) but never rendered or compared: render queue was down. Stand placement and bank shapes unchecked."
+ }
+}

@@ -1,0 +1,125 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/3626556",
+   "used": "the real campus outline (stepped, long ward ranges) fitted to the scene, two storeys, red hip roof from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: painted-concrete wards, covered walkways, corrugated red roof, water tank, ambulance bay; no usable photo of the hospital found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfcd",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#6f9a77",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    20,
+    -20,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 3
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    -8,
+    -44,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 3,
+    "height": 3,
+    "columns": 10,
+    "colour": "#d8d4c4",
+    "edgeColour": "#a8473a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -46
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -48
+    ]
+   }
+  ],
+  "cars": 4,
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: queue down. Real outline fitted, details from brief only."
+ }
+}

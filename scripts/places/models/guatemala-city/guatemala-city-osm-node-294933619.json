@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-node-294933619",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "no geometry or photo anywhere: typed from the city style, a 40 x 20 m two-storey painted-block health unit"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     40,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#7f9aa8",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-wing",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -8,
+    -13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7f9aa8",
+    "windows": "curtain",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    14,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#e8e4dc",
+    "columns": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -17.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 3.2,
+    "colour": "#ffffff",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "cars": 4,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered; typed from text"
+ }
+}

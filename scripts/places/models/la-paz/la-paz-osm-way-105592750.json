@@ -1,0 +1,405 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Rafael_Mendoza_Castellon_(noche).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ladysmen",
+   "view": "side",
+   "file": "/tmp/places-evidence/la-paz/stad1.jpg",
+   "used": "single-tier open raked concrete stands in beige-grey, tall steel lattice floodlight towers with big lamp banks at the corners, low perimeter wall, grass pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/6762597",
+   "used": "oval bowl of about 160 x 135 m (name-quality match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief/es.wikipedia: main stand facade painted gold and black, four floodlight towers, 14,000 seats"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      61.0,
+      0.0
+     ],
+     [
+      60.07,
+      8.34
+     ],
+     [
+      57.32,
+      16.42
+     ],
+     [
+      52.83,
+      24.0
+     ],
+     [
+      46.73,
+      30.85
+     ],
+     [
+      39.21,
+      36.77
+     ],
+     [
+      30.5,
+      41.57
+     ],
+     [
+      20.86,
+      45.11
+     ],
+     [
+      10.59,
+      47.27
+     ],
+     [
+      0.0,
+      48.0
+     ],
+     [
+      -10.59,
+      47.27
+     ],
+     [
+      -20.86,
+      45.11
+     ],
+     [
+      -30.5,
+      41.57
+     ],
+     [
+      -39.21,
+      36.77
+     ],
+     [
+      -46.73,
+      30.85
+     ],
+     [
+      -52.83,
+      24.0
+     ],
+     [
+      -57.32,
+      16.42
+     ],
+     [
+      -60.07,
+      8.34
+     ],
+     [
+      -61.0,
+      0.0
+     ],
+     [
+      -60.07,
+      -8.34
+     ],
+     [
+      -57.32,
+      -16.42
+     ],
+     [
+      -52.83,
+      -24.0
+     ],
+     [
+      -46.73,
+      -30.85
+     ],
+     [
+      -39.21,
+      -36.77
+     ],
+     [
+      -30.5,
+      -41.57
+     ],
+     [
+      -20.86,
+      -45.11
+     ],
+     [
+      -10.59,
+      -47.27
+     ],
+     [
+      -0.0,
+      -48.0
+     ],
+     [
+      10.59,
+      -47.27
+     ],
+     [
+      20.86,
+      -45.11
+     ],
+     [
+      30.5,
+      -41.57
+     ],
+     [
+      39.21,
+      -36.77
+     ],
+     [
+      46.73,
+      -30.85
+     ],
+     [
+      52.83,
+      -24.0
+     ],
+     [
+      57.32,
+      -16.42
+     ],
+     [
+      60.07,
+      -8.34
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#5e9a45"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 67,
+    "radiusY": 54,
+    "facetDeg": 9,
+    "seatColour": "#a69a82",
+    "concreteColour": "#b8b1a0",
+    "bay": 6,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 22,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "underColour": "#e6b422",
+    "seatColours": [
+     "#1a1a1a",
+     "#e6b422"
+    ],
+    "blocks": 4,
+    "backWall": 0.5
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 67,
+    "radiusY": 54,
+    "facetDeg": 9,
+    "seatColour": "#a69a82",
+    "concreteColour": "#b8b1a0",
+    "bay": 6,
+    "startDeg": 335,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.85,
+    "under": "open",
+    "stepped": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 67,
+    "radiusY": 54,
+    "facetDeg": 9,
+    "seatColour": "#a69a82",
+    "concreteColour": "#b8b1a0",
+    "bay": 6,
+    "startDeg": 0,
+    "endDeg": 205,
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.85,
+    "under": "open",
+    "stepped": true
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 6,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72,
+    58,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 6,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 6,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72,
+    58,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 6,
+    "colour": "#9aa0a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -70.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.6
+    ],
+    "z0": 9.5,
+    "height": 2.4,
+    "colour": "#1a1a1a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -55,
+    -80,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.4,
+    "kind": "wall",
+    "colour": "#8c8070"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.4,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#b8b1a0"
+   }
+  },
+  {
+   "type": "statue-on-plinth",
+   "at": [
+    -62,
+    -78,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-way-105592750",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from one night photo and brief but never rendered or compared (render queue dead). Stand arc conventions and gold facade untested; tiger statue is a generic statue."
+ }
+}

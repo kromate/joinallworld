@@ -1,0 +1,205 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-osm-node-5639324914",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Barths_Gustavia_Maison_du_Brigantin_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "William Ellison",
+   "view": "front",
+   "used": "two-storey proportions, stone ground floor with open shuttered doors, pale clapboard upper floor, white shingle gable end, dark grey hip roof, cobbled street",
+   "file": "/tmp/places-evidence/gustavia/5639324914_1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/362256025",
+   "used": "overall size only (24 x 21 m zigzag outline, too irregular to trust); modelled main range"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-stone",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8573",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8573"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-clapboard",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c3cfd8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    },
+    "bay": 2.6,
+    "bands": "#f4f1ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4c4f54",
+    "material": "slate",
+    "pitch": 22,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shingle-wing",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    -11,
+    0
+   ],
+   "z0": 3.0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4c4f54",
+    "material": "slate",
+    "pitch": 22,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yard-wall-low",
+   "footprint": {
+    "rect": [
+     6,
+     0.7
+    ]
+   },
+   "at": [
+    -11,
+    -4
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7668",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7668"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -4.3,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -1,
+    -4.2,
+    2.4
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered: shared render queue had no live worker (stale heartbeats); composed from photos by eye, no side-by-side comparison done"
+ }
+}

@@ -1,0 +1,183 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/way/550007564",
+   "used": "unnamed nearest building ~84 x 58 m; U court inferred, outline not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2dfb4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b3a",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "pitch": 22
+   },
+   "at": [
+    0,
+    10
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     12,
+     34
+    ]
+   },
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2dfb4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b3a",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "pitch": 22
+   },
+   "at": [
+    -16,
+    -9
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     12,
+     34
+    ]
+   },
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2dfb4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b3a",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "pitch": 22
+   },
+   "at": [
+    16,
+    -9
+   ]
+  },
+  {
+   "type": "arcade",
+   "at": [
+    0,
+    3.5,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 4.2,
+    "thickness": 2.4,
+    "shape": "round",
+    "colour": "#f3f0e6",
+    "trim": "#c9534a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    24,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3,
+    "colour": "#c9c3b4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and unnamed building; U court of three storeys inferred from the brief, not the OSM outline"
+ }
+}

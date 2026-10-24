@@ -1,0 +1,242 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/437330220",
+   "used": "campus outline 250 x 228 m, name match: used to place blocks along the south-east and north-east edges around a central yard"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universidad_Privada_San_Juan_Bautista_-_UPSJB.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ana Claudia Lucas Pedrera",
+   "view": "street",
+   "file": "/tmp/places-evidence/lima/sjb_uni.jpg",
+   "used": "entrance lawn, low boundary wall, blank sign block, row of tall cypresses, broadleaf tree and a white dome roof glimpsed behind; no academic block is visible"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 10,
+  "fovDeg": 60,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     60,
+     18
+    ]
+   },
+   "at": [
+    -28,
+    32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d5c3a3",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#4f6f8a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     18,
+     60
+    ]
+   },
+   "at": [
+    40,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d5c3a3",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#4f6f8a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    -20,
+    -40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d9c4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#4f6f8a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    22,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f6f8a",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -52,
+    -8,
+    0
+   ],
+   "params": {
+    "radius": 16,
+    "profile": "hemisphere",
+    "colour": "#f0ebdd",
+    "drum": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.4,
+    "bottom": 0.5,
+    "colour": "#3a3a3c",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#d91023",
+     "#f2f2f2",
+     "#d91023"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -62
+   ],
+   "params": {
+    "kind": "cypress",
+    "height": 14,
+    "count": 8,
+    "spread": 4,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 4,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 20,
+  "cars": 8,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-osm-way-437330220",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Gate photo shows no academic block; blocks are typed placements inside the real campus outline; not rendered (queue down)."
+ }
+}

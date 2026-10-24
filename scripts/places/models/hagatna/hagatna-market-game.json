@@ -1,0 +1,374 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Micronesia_Mall1.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/hagatna/mall1.jpg",
+   "used": "white painted fascia with diagonal bracing pattern and sawtooth parapet over a dark deep soffit, two blue columns, white lower walls, dark glazed shopfront, steps up to the entrance, low wall and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/32524264",
+   "used": "real outline of the mall (305 x 234 m, auto-fitted)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Micronesia_Mall",
+   "used": "two levels, seven-level parking garage, opened 1988"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ece7da",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 1.0,
+    "bands": "#8f9aa0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bbbc",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     40,
+     2.2
+    ]
+   },
+   "at": [
+    -12,
+    -41.5
+   ],
+   "rotDeg": 19,
+   "z0": 5.5,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f1e8",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front"
+     ],
+     "colour": "#cfd3d4"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eceae2",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit",
+   "footprint": {
+    "rect": [
+     40,
+     7
+    ]
+   },
+   "at": [
+    -8,
+    -39
+   ],
+   "rotDeg": 19,
+   "z0": 5.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3b3d42",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3d42"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazing",
+   "footprint": {
+    "rect": [
+     34,
+     1
+    ]
+   },
+   "at": [
+    -9,
+    -35.5
+   ],
+   "rotDeg": 19,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c3138",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c3138"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col-l",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -28,
+    -46
+   ],
+   "rotDeg": 19,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2b55a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b55a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col-r",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    7,
+    -33.5
+   ],
+   "rotDeg": 19,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2b55a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b55a8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -44.5,
+    0
+   ],
+   "rotDeg": 19,
+   "params": {
+    "width": 22,
+    "rise": 1.2,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#bdb9ad"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "garage",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    62,
+    72
+   ],
+   "rotDeg": 10,
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c5b8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colour": "#a6a399"
+     }
+    ],
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9e9f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "anchor-sign",
+   "footprint": {
+    "rect": [
+     1,
+     14
+    ]
+   },
+   "at": [
+    26,
+    -34
+   ],
+   "rotDeg": 19,
+   "z0": 8,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a9505a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9505a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -48.5,
+    7.2
+   ],
+   "rotDeg": 19,
+   "params": {
+    "width": 20,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#1d8a8c",
+    "frameColour": "#f4f1e8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -36,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -52,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 4,
+    "spread": 8,
+    "line": 20
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -56,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -54
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -52
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-market-game",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the entrance photo and real outline but never rendered: render queue was dead (no heartbeat) during the session; massing, fascia/column placement on the scaled OSM edge, and garage position unchecked"
+ }
+}

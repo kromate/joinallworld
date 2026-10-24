@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cove",
+ "venueId": "cove-airport-cove-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Setting only, from NOAA photo https://commons.wikimedia.org/wiki/File:Station_Number_044_-_Heard_Island_and_McDonald_Islands.jpg (public domain): no building visible; setting only (no building visible): black rounded volcanic pebble shore, blue-grey light, orange survey tripod hints at the orange field-hut colour"
+  },
+  {
+   "kind": "text",
+   "used": "Brief: 12 x 8 m orange field hut beside a bare gravel helicopter pad at Atlas Cove; OSM only gives a 29,000 m2 station site outline, unusable as a building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "helipad",
+   "at": [
+    -2,
+    14,
+    0
+   ],
+   "params": {
+    "radius": 9,
+    "colour": "#5d5f60",
+    "markColour": "#e8ecee",
+    "ringColour": "#e8ecee",
+    "ground": "sand"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b5472f",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "bands": "#e8ecee"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7478",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "pitch": 8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "rise": 0.4,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#7b8084"
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    10,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "radius": 0.12,
+    "banded": false,
+    "colour": "#7b8084"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -7,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#e8ecee",
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum-a",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    8,
+    -6
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7b8084",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum-b",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    9,
+    -6.4
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b5472f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5472f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum-c",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    7.2,
+    -6.5
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7b8084",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [],
+  "forecourt": "none",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists (only a shoreline photo); composed from brief"
+ }
+}

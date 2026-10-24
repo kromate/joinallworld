@@ -1,0 +1,131 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-way-385029457",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1303212834",
+   "used": "approximate size only: unnamed 8 x 7 m building 22 m away (nearest match, not trusted for shape)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     8,
+     6.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a6a4a",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7d57",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.6,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#8d8478"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.5,
+    "bottom": 1.0,
+    "colour": "#d9d2c0",
+    "frameColour": "#7a6a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 4,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 3,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue down). No evidence at all; modest timber shelter by typical form."
+ }
+}

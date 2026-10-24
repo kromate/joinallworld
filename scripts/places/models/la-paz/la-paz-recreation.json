@@ -1,0 +1,412 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_de_la_Laguna_de_Cota_Cota.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Alhen",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/la-paz/lag1.jpg",
+   "used": "elongated pond between lawns, dark boat shelter and landing, pedal boats in yellow/green/white, round dark fountain basin at right, benches and path foreground, willows and poplars, playground in the distance"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Laguna_de_Cota_Cota.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Antonee Lens",
+   "view": "street",
+   "file": "/tmp/places-evidence/la-paz/lag2.jpg",
+   "used": "green-brown water colour, open boat landing with flat roof on posts, ring of poplars and willows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/46177387",
+   "used": "park extent (300 x 100 m); a central 100 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    -2,
+    10
+   ],
+   "params": {
+    "width": 74,
+    "depth": 26,
+    "shape": "oval",
+    "colour": "#6d8f6a",
+    "bank": true
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -26,
+    24.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16,
+    "width": 4,
+    "height": 0.7,
+    "rails": true,
+    "piles": true,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "boat-shelter",
+   "params": {
+    "rect": [
+     15,
+     5
+    ],
+    "z0": 2.9,
+    "height": 0.25,
+    "colour": "#3d3f44"
+   },
+   "at": [
+    -26,
+    26
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -26,
+    24,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     0,
+     0
+    ],
+    "end": [
+     6,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "z0": 0.6,
+      "height": 2.4,
+      "colour": "#b5533b"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "boat",
+   "params": {
+    "rect": [
+     3.2,
+     1.6
+    ],
+    "z0": 0.1,
+    "height": 0.9,
+    "colour": "#f2c94c",
+    "topScale": 0.8
+   },
+   "at": [
+    -14,
+    20
+   ],
+   "rotDeg": 10
+  },
+  {
+   "type": "prism",
+   "id": "boat",
+   "params": {
+    "rect": [
+     3.2,
+     1.6
+    ],
+    "z0": 0.1,
+    "height": 0.9,
+    "colour": "#4fb3a5",
+    "topScale": 0.8
+   },
+   "at": [
+    -20,
+    19
+   ],
+   "rotDeg": -15
+  },
+  {
+   "type": "prism",
+   "id": "boat",
+   "params": {
+    "rect": [
+     3.2,
+     1.6
+    ],
+    "z0": 0.1,
+    "height": 0.9,
+    "colour": "#f4f1e6",
+    "topScale": 0.8
+   },
+   "at": [
+    -9,
+    17
+   ],
+   "rotDeg": 5
+  },
+  {
+   "type": "prism",
+   "id": "boat",
+   "params": {
+    "rect": [
+     3.2,
+     1.6
+    ],
+    "z0": 0.1,
+    "height": 0.9,
+    "colour": "#f2c94c",
+    "topScale": 0.8
+   },
+   "at": [
+    10,
+    6
+   ],
+   "rotDeg": 30
+  },
+  {
+   "type": "prism",
+   "id": "boat",
+   "params": {
+    "rect": [
+     3.2,
+     1.6
+    ],
+    "z0": 0.1,
+    "height": 0.9,
+    "colour": "#7bc27a",
+    "topScale": 0.8
+   },
+   "at": [
+    -34,
+    18
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    34,
+    26
+   ],
+   "params": {
+    "radius": 3.6,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fountain-pad",
+   "params": {
+    "radius": 5.2,
+    "n": 16,
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#7a7068"
+   },
+   "at": [
+    34,
+    26
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     14,
+     -3,
+     0
+    ],
+    "end": [
+     44,
+     -3,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "park-bench",
+     "params": {
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "params": {
+    "points": [
+     [
+      8,
+      -8
+     ],
+     [
+      60,
+      -8
+     ],
+     [
+      60,
+      -2
+     ],
+     [
+      8,
+      -2
+     ]
+    ],
+    "z0": 0.4,
+    "height": 0.1,
+    "colour": "#b88a62"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "play",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -48,
+    48
+   ],
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9533d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7fcf"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     -2,
+     12
+    ],
+    "radius": 46,
+    "radiusY": 24,
+    "count": 16,
+    "startDeg": 10,
+    "endDeg": 350,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 11
+     }
+    }
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    12
+   ],
+   "params": {
+    "kind": "willow",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    -16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    46
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from two photos but never rendered or compared (render queue dead); pond shape, boat shelter and fountain placement unchecked; waterfalls omitted."
+ }
+}

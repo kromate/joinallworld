@@ -1,0 +1,510 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_de_Buses_entrada_principal.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lila azulacea",
+   "view": "front",
+   "file": "/tmp/places-evidence/la-paz/bus2.jpg",
+   "used": "yellow-cream stucco, big gabled central pavilion with arched iron-and-glass window and scroll frieze, lower two-storey wing with arched windows and white pilasters, blank coloured sign blocks in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_de_Buses_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Cesar Rodrigo Fabiani Bautista",
+   "view": "street",
+   "file": "/tmp/places-evidence/la-paz/bus1.jpg",
+   "used": "second gabled pavilion, dark metal roof behind, sloped street frontage"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/908628402",
+   "used": "overall length (206 m) and depth; a central 130 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -47,
+    -1.5
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8d08a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "arched",
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f4efe2"
+      ],
+      "height": 0.5,
+      "at": 0.5,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-a",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8d08a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "arched",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f4efe2"
+      ],
+      "height": 0.6,
+      "at": 0.5,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4c4f52",
+    "material": "metal-sheet",
+    "rise": 6.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-a-glass",
+   "params": {
+    "rect": [
+     15,
+     0.6
+    ],
+    "z0": 3.2,
+    "height": 11,
+    "colour": "#6b7a72",
+    "topScale": [
+     0.1,
+     1
+    ]
+   },
+   "at": [
+    -12,
+    -8.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-a-frame",
+   "params": {
+    "rect": [
+     19,
+     0.5
+    ],
+    "z0": 2.6,
+    "height": 13,
+    "colour": "#f4efe2",
+    "topScale": [
+     0.1,
+     1
+    ]
+   },
+   "at": [
+    -12,
+    -8.15
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-a-sign",
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "z0": 16.6,
+    "height": 2.2,
+    "colour": "#7bc3d9"
+   },
+   "at": [
+    -12,
+    -8.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    16,
+    -1.5
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f0dc9c",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "arched",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-b",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    44,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8d08a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "arched",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f4efe2"
+      ],
+      "height": 0.6,
+      "at": 0.5,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4c4f52",
+    "material": "metal-sheet",
+    "rise": 6.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-b-glass",
+   "params": {
+    "rect": [
+     15,
+     0.6
+    ],
+    "z0": 3.2,
+    "height": 11,
+    "colour": "#6b7a72",
+    "topScale": [
+     0.1,
+     1
+    ]
+   },
+   "at": [
+    44,
+    -8.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-b-frame",
+   "params": {
+    "rect": [
+     19,
+     0.5
+    ],
+    "z0": 2.6,
+    "height": 13,
+    "colour": "#f4efe2",
+    "topScale": [
+     0.1,
+     1
+    ]
+   },
+   "at": [
+    44,
+    -8.15
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gable-b-sign",
+   "params": {
+    "rect": [
+     11,
+     0.5
+    ],
+    "z0": 16.6,
+    "height": 2.2,
+    "colour": "#7bc3d9"
+   },
+   "at": [
+    44,
+    -8.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     36,
+     13
+    ]
+   },
+   "at": [
+    80,
+    -1.5
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8d08a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "arched",
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f4efe2"
+      ],
+      "height": 0.5,
+      "at": 0.5,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     118,
+     26
+    ]
+   },
+   "at": [
+    16,
+    22
+   ],
+   "height": 17,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#9aa0a3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7377",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    0,
+    52
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 8,
+    "yaw": 0,
+    "colour": "#f1f1ee",
+    "stripe": "#2a6fb0"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    20,
+    60
+   ],
+   "params": {
+    "length": 100,
+    "kind": "coach",
+    "density": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -14,
+     0
+    ],
+    "end": [
+     -12,
+     -14,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       6,
+       0.4
+      ]
+     },
+     "height": 4.4,
+     "wall": {
+      "material": "stucco",
+      "colour": "#d94f8e",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#d94f8e"
+     },
+     "storeys": 1
+    }
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -14
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from two photos but never rendered or compared (render queue dead); pavilion spacing and gable proportions unchecked; only a 130 m portion of the 206 m building."
+ }
+}

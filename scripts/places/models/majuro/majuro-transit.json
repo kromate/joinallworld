@@ -1,0 +1,449 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/583827575",
+   "used": "16 x 10 m outline and 151 degree bearing for the roof slab, posts and back wall (nearest match, 6.4 m)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Majuro",
+   "used": "brief: open bus shelter, bench, low blue corrugated roof; two geo-tagged Commons photos nearby show a basketball court and fenced mural, not the shelter, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9.41,
+      4.93
+     ],
+     [
+      0.78,
+      10.64
+     ],
+     [
+      9.41,
+      -4.93
+     ],
+     [
+      -0.78,
+      -10.64
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#9c9a92",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8.74,
+      4.58
+     ],
+     [
+      0.73,
+      9.88
+     ],
+     [
+      8.74,
+      -4.58
+     ],
+     [
+      -0.73,
+      -9.88
+     ]
+    ],
+    "z0": 3.1,
+    "height": 0.3,
+    "colour": "#3b6e91",
+    "topColour": "#3b6e91",
+    "material": "corrugated",
+    "bottom": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8.82,
+      4.62
+     ],
+     [
+      0.73,
+      9.97
+     ],
+     [
+      8.82,
+      -4.62
+     ],
+     [
+      -0.73,
+      -9.97
+     ]
+    ],
+    "z0": 2.9,
+    "height": 0.2,
+    "colour": "#e9e5d6",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-f0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -1.25,
+      -8.53
+     ],
+     [
+      -1.01,
+      -8.53
+     ],
+     [
+      -1.01,
+      -8.29
+     ],
+     [
+      -1.25,
+      -8.29
+     ]
+    ],
+    "z0": 0.15,
+    "height": 2.8,
+    "colour": "#3a4a58",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-f1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.49,
+      -4.48
+     ],
+     [
+      -3.25,
+      -4.48
+     ],
+     [
+      -3.25,
+      -4.24
+     ],
+     [
+      -3.49,
+      -4.24
+     ]
+    ],
+    "z0": 0.15,
+    "height": 2.8,
+    "colour": "#3a4a58",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-f2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5.58,
+      -0.71
+     ],
+     [
+      -5.34,
+      -0.71
+     ],
+     [
+      -5.34,
+      -0.47
+     ],
+     [
+      -5.58,
+      -0.47
+     ]
+    ],
+    "z0": 0.15,
+    "height": 2.8,
+    "colour": "#3a4a58",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-f3",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -7.82,
+      3.34
+     ],
+     [
+      -7.58,
+      3.34
+     ],
+     [
+      -7.58,
+      3.58
+     ],
+     [
+      -7.82,
+      3.58
+     ]
+    ],
+    "z0": 0.15,
+    "height": 2.8,
+    "colour": "#3a4a58",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "back-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      7.98,
+      -4.18
+     ],
+     [
+      0.66,
+      9.03
+     ],
+     [
+      0.44,
+      8.91
+     ],
+     [
+      7.76,
+      -4.3
+     ]
+    ],
+    "z0": 0.15,
+    "height": 2.7,
+    "colour": "#b9b6ab",
+    "material": "smooth-concrete",
+    "topColour": "#b9b6ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "back-band",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      7.98,
+      -4.18
+     ],
+     [
+      0.66,
+      9.03
+     ],
+     [
+      0.42,
+      8.9
+     ],
+     [
+      7.74,
+      -4.31
+     ]
+    ],
+    "z0": 1.9,
+    "height": 0.6,
+    "colour": "#3b6e91",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      6.41,
+      -3.69
+     ],
+     [
+      0.25,
+      7.43
+     ],
+     [
+      -0.27,
+      7.14
+     ],
+     [
+      5.89,
+      -3.98
+     ]
+    ],
+    "z0": 0.15,
+    "height": 0.45,
+    "colour": "#8a7a63",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench-b",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      6.24,
+      -3.79
+     ],
+     [
+      0.08,
+      7.33
+     ],
+     [
+      -0.01,
+      7.29
+     ],
+     [
+      6.15,
+      -3.83
+     ]
+    ],
+    "z0": 0.6,
+    "height": 0.55,
+    "colour": "#8a7a63",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6.82,
+    -3.82,
+    0
+   ],
+   "rotDeg": 119.0,
+   "params": {
+    "width": 2.4,
+    "height": 0.9,
+    "bottom": 2.3,
+    "colour": "#3b6e91",
+    "frameColour": "#e9e5d6",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9.5,
+    6.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9.8,
+    -7.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: render queue had no live workers. No photo of this shelter exists (nearby Commons photos show a basketball court)."
+ }
+}

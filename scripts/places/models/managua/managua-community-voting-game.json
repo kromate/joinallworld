@@ -1,0 +1,258 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/38704541",
+   "used": "the real plaza outline (name match) as the paved deck"
+  },
+  {
+   "kind": "text",
+   "ref": "https://es.wikipedia.org/wiki/Plaza_de_la_Fe_Juan_Pablo_II",
+   "used": "monument to John Paul II at centre, fountains, planters, lit walkways, lake views; inaugurated 2000"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza-deck",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3cdbd",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-terrace",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    4,
+    2
+   ],
+   "z0": 0.5,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9c3b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dcca"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    4,
+    2,
+    1.2
+   ],
+   "params": {
+    "height": 14,
+    "width": 6,
+    "steps": 3,
+    "shape": "tier",
+    "figure": "stand",
+    "figure_colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -26,
+    -22,
+    0.5
+   ],
+   "params": {
+    "radius": 5
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    26,
+    -24,
+    0.5
+   ],
+   "params": {
+    "radius": 5
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -4,
+    -34,
+    0.5
+   ],
+   "params": {
+    "radius": 4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -10,
+     0.5
+    ],
+    "end": [
+     40,
+     -10,
+     0.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       7,
+       2.2
+      ],
+      "height": 0.8,
+      "colour": "#7a9a5a",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     16,
+     0.5
+    ],
+    "end": [
+     40,
+     16,
+     0.5
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       7,
+       2.2
+      ],
+      "height": 0.8,
+      "colour": "#7a9a5a",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -30,
+    0.5
+   ],
+   "params": {
+    "height": 7,
+    "count": 7,
+    "spacing": 13
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -2,
+    0.5
+   ],
+   "params": {
+    "height": 12,
+    "count": 2,
+    "spacing": 24,
+    "colours": [
+     "#2a6fb5",
+     "#f4f4f0"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    24,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -14,
+    0.5
+   ],
+   "params": {
+    "width": 20,
+    "rise": 1.2,
+    "run": 2.2,
+    "count": 4,
+    "colour": "#e2dccb"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue down). Monument form and fountain layout approximate; no photo of the plaza found."
+ }
+}

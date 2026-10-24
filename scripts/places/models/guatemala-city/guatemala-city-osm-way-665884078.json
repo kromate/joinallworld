@@ -1,0 +1,376 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-way-665884078",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cementos_Progreso_Panor%C3%A1mica.jpg",
+   "licence": "CC0",
+   "author": "Pablomartin991",
+   "view": "interior",
+   "file": "/tmp/places-evidence/guatemala-city/estadio3.jpg",
+   "used": "open raked concrete terraces with stone retaining wall at pitch level, a small roofed press/main stand with a thin flat canopy, red-brown running track around the green pitch, tall floodlight masts with signboards, tree-covered hillside behind. Interior view: not comparable to an exterior render"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Cementos_Progreso_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Oscarin200",
+   "view": "interior",
+   "file": "/tmp/places-evidence/guatemala-city/estadio2.jpg",
+   "used": "stone-faced wall below the terraces, stairways cutting the stands into blocks, flat canopy over the west stand"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/665884078",
+   "used": "oval bowl outline 225 x 150 m (name match), scaled to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bowl-outline",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8ac",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -36,
+      0
+     ],
+     [
+      -34,
+      12
+     ],
+     [
+      -26,
+      19
+     ],
+     [
+      -12,
+      22.5
+     ],
+     [
+      12,
+      22.5
+     ],
+     [
+      26,
+      19
+     ],
+     [
+      34,
+      12
+     ],
+     [
+      36,
+      0
+     ],
+     [
+      34,
+      -12
+     ],
+     [
+      26,
+      -19
+     ],
+     [
+      12,
+      -22.5
+     ],
+     [
+      -12,
+      -22.5
+     ],
+     [
+      -26,
+      -19
+     ],
+     [
+      -34,
+      -12
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#a4553d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     60,
+     36
+    ],
+    "height": 0.1,
+    "colour": "#4d8a46"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-ring",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 28,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 14,
+    "rise": 0.6,
+    "run": 0.85,
+    "firstHeight": 1.6,
+    "facetDeg": 12,
+    "under": "open",
+    "seatColour": "#a8a498",
+    "concreteColour": "#c7c2b5",
+    "underColour": "#9c9788",
+    "blocks": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -39,
+      0
+     ],
+     [
+      -37,
+      13
+     ],
+     [
+      -28,
+      21
+     ],
+     [
+      -12,
+      24.5
+     ],
+     [
+      12,
+      24.5
+     ],
+     [
+      28,
+      21
+     ],
+     [
+      37,
+      13
+     ],
+     [
+      39,
+      0
+     ],
+     [
+      37,
+      -13
+     ],
+     [
+      28,
+      -21
+     ],
+     [
+      12,
+      -24.5
+     ],
+     [
+      -12,
+      -24.5
+     ],
+     [
+      -28,
+      -21
+     ],
+     [
+      -37,
+      -13
+     ]
+    ],
+    "height": 1.6,
+    "colour": "#9d9684"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "canopy",
+   "id": "main-stand-roof",
+   "at": [
+    0,
+    29,
+    8.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 48,
+    "depth": 7,
+    "height": 0,
+    "thickness": 0.4,
+    "columns": 6,
+    "colour": "#8f959a",
+    "edgeColour": "#7c8388"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "press-box",
+   "at": [
+    0,
+    31,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     4
+    ],
+    "height": 2.6,
+    "colour": "#d7d4cb"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 52,
+    "radiusY": 38,
+    "startDeg": 45,
+    "endDeg": 315,
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.2,
+        1.2
+       ],
+       "height": 26,
+       "colour": "#a8aaae"
+      }
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        6,
+        0.8
+       ],
+       "z0": 22,
+       "height": 3.6,
+       "colour": "#e6dfc6"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: queue workers stalled. Only interior photos exist; stand sizes and ring proportions unchecked."
+ }
+}

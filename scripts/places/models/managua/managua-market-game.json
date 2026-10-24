@@ -1,0 +1,280 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/113063248",
+   "used": "overall site size only (157 x 142 m marketplace, scaled to a 96 x 46 m hall plus aisles); no exterior photo found on Commons or Wikidata"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "single gable zinc hall, open sides, stalls and awnings, painted ochre/cream, 1980s"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "depth": 46,
+    "height": 5.2,
+    "roof": "gable",
+    "roof_rise": 3.2,
+    "roof_colour": "#8c8f91",
+    "wall_colour": "#d9a05b",
+    "post_pitch": 5,
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "depth": 12,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_rise": 1.4,
+    "roof_colour": "#9a9c9d",
+    "wall_colour": "#d9a05b",
+    "post_pitch": 5,
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "depth": 12,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_rise": 1.4,
+    "roof_colour": "#9a9c9d",
+    "wall_colour": "#d9a05b",
+    "post_pitch": 5,
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -62,
+    0,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 40,
+    "height": 3.6,
+    "roof": "gable",
+    "roof_rise": 1.6,
+    "roof_colour": "#7f8284",
+    "wall_colour": "#d9a05b",
+    "post_pitch": 5,
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -40,
+    -41,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#d9a05b",
+     "#c4684a",
+     "#f2e7c9",
+     "#4c7a54"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -40,
+    -46,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#f2e7c9",
+     "#3b6e91",
+     "#d9a05b"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -18,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "colours": [
+     "#c4684a",
+     "#f2e7c9"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "colours": [
+     "#3b6e91",
+     "#f2e7c9"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    22,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "colours": [
+     "#d9a05b",
+     "#f2e7c9"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    42,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "colours": [
+     "#4c7a54",
+     "#f2e7c9"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "bottom": 3,
+    "colour": "#c4684a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -66,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    70,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    68,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -70,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   156,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "hall layout typed from brief; render queue server was down so no render check"
+ }
+}

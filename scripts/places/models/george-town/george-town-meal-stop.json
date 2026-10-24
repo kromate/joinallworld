@@ -1,0 +1,223 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "(photo H. Michael Miley, CC BY-SA, not this building) setting only: white sand, casuarinas, coconut palms, white painted timber deck railing, turquoise water; no restaurant building visible",
+   "ref": "https://commons.wikimedia.org/wiki/File:Rum_Point,_Grand_Cayman,_Cayman_Islands_-beach_volleyball-12Jan2011.jpg"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/george-town.json#george-town-meal-stop",
+   "used": "open timber beach bar with hipped shingle roof, deck, jetty, umbrellas; OSM name match is the neighbouring Retreat hotel so footprint not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "platform",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "height": 0.7,
+    "tiers": 1,
+    "colour": "#b59a73"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar-core",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "z0": 0.7,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8bc8a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.1,
+    "trimColour": "#f2efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a6a4a",
+    "material": "timber-shingle",
+    "rise": 2.2,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -6,
+    -1.5,
+    0.7
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 8,
+    "colour": "#f2efe6",
+    "cap_colour": "#8a6a4a",
+    "floor_colour": "#b59a73"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -8,
+    -6,
+    0.7
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5,
+    -1.5,
+    0.7
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2.2,
+    "drop": 0.6,
+    "height": 2.9,
+    "colours": [
+     "#2f8f9a",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 3,
+    "width": 2.4,
+    "colour": "#2f8f9a"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    2,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#2f8f9a",
+     "#f2efe6",
+     "#d8bc8a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "jetty",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "width": 2.0,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the bar building was found (the photos show the beach and palms only); massing, roof and deck are typed from the brief. No comparison render was possible."
+ }
+}

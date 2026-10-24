@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "funafuti",
+ "venueId": "funafuti-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: placeholder grassy and coral-sand field with a small open shelter, kiosk, flags; OSM building at the pin is a shop, so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 6,
+    "colour": "#b8a27a",
+    "cap_colour": "#7a838a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#3f7a5a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#3f7a5a",
+     "#cfc8b4",
+     "#b8b3a6"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.1,
+    "thickness": 0.05,
+    "kind": "chain",
+    "colour": "#7a838a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     2
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     18
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "text only: open field, shelter, kiosk, flags typed from the brief; no photo or real outline"
+ }
+}

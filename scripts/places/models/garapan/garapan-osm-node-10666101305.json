@@ -1,0 +1,221 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Commons ForbiddenIsland2.jpg (setting only, no structure visible): scrub-covered cliff above the flat-topped sea stack; used for ground and vegetation colours"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q27728278",
+   "used": "location of the lookout (a point, no OSM building)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pad",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -3.5
+     ],
+     [
+      5,
+      -4
+     ],
+     [
+      7,
+      0
+     ],
+     [
+      5.5,
+      4
+     ],
+     [
+      -2,
+      4.5
+     ],
+     [
+      -6.5,
+      1
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#cfcabb",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cliff-slope",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -16,
+      -8
+     ],
+     [
+      14,
+      -10
+     ],
+     [
+      18,
+      4
+     ],
+     [
+      4,
+      12
+     ],
+     [
+      -14,
+      8
+     ]
+    ],
+    "height": 4,
+    "topScale": 0.6,
+    "colour": "#8a8a55",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3,
+      -2
+     ],
+     [
+      2,
+      -3
+     ],
+     [
+      4,
+      1
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      -3,
+      2
+     ]
+    ],
+    "height": 2.2,
+    "topScale": 0.6,
+    "colour": "#6b655a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -1,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.3,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -6,
+    3.5,
+    0.3
+   ],
+   "rotDeg": -14,
+   "params": {
+    "length": 9,
+    "height": 1.1,
+    "colour": "#7a8087"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    3,
+    3.8,
+    0.3
+   ],
+   "rotDeg": -52,
+   "params": {
+    "length": 5,
+    "height": 1.1,
+    "colour": "#7a8087"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.5,
+    -2.5,
+    0.3
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 1.2,
+    "bottom": 0.9,
+    "colour": "#8c7f6a",
+    "frameColour": "#4a4a46"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -8
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -8
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-osm-node-10666101305",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No structure photographed; modest cliff-edge pad, rail, steps and slope typed from the brief; verified text."
+ }
+}

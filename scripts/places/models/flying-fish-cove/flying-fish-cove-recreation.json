@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/747451092",
+   "used": "real park strip outline (273 x 50 m, bearing 61 deg), clipped to its central 100 m run"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Flying_Fish_Cove",
+   "used": "Drumsite hill park; terrace, shelter, steps, fence wall and broadleaf shade trees typed from the brief; no photo of the park found (two nearby Commons images show a locomotive and a scenic shot)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park-lawn",
+   "footprint": {
+    "polygon": [
+     [
+      -50,
+      -73
+     ],
+     [
+      41,
+      -22.8
+     ],
+     [
+      50,
+      -16.7
+     ],
+     [
+      50,
+      37.8
+     ],
+     [
+      -50,
+      -17.1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fae6a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#86a862",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "params": {
+    "points": [
+     [
+      -40,
+      -25
+     ],
+     [
+      40,
+      16
+     ],
+     [
+      40,
+      30
+     ],
+     [
+      -40,
+      -10
+     ]
+    ],
+    "z0": 0.5,
+    "height": 0.7,
+    "colour": "#cfc9b0",
+    "topColour": "#7da060"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    8,
+    1.2
+   ],
+   "rotDeg": 28,
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.5,
+    "colour": "#cfc9b0",
+    "cap_colour": "#8a9094"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -15,
+    -26,
+    0
+   ],
+   "rotDeg": 28,
+   "params": {
+    "width": 3.0,
+    "rise": 0.29,
+    "run": 0.35,
+    "count": 4,
+    "colour": "#cfc9b0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    22,
+    -3,
+    0
+   ],
+   "rotDeg": 28,
+   "params": {
+    "width": 3.0,
+    "rise": 0.29,
+    "run": 0.35,
+    "count": 4,
+    "colour": "#cfc9b0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -50,
+    -18.5,
+    0
+   ],
+   "rotDeg": 28.7,
+   "params": {
+    "length": 104,
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#cfc9b0"
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    -5,
+    22
+   ],
+   "params": {
+    "width": 70,
+    "depth": 18,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    -28,
+    -34
+   ],
+   "params": {
+    "width": 36,
+    "depth": 14,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "stadium/path-strip",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -38,
+      -18
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      38,
+      22
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#cbc6bb"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; strip clipped to 100 m of 273 m, contents typed, terrace position approximate"
+ }
+}

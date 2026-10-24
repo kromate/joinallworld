@@ -1,0 +1,392 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-osm-way-215619747",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_George%27s_Georgetown_Exterior.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Roundtheworld",
+   "view": "front",
+   "file": "/tmp/places-evidence/georgetown/sg3.jpg",
+   "used": "white clapboard timber walls on a dark grey stone plinth, tall steep nave gable with rose window and pointed lancets, low aisles with doors, a row of small side gables, grey metal roofs, slender broach spire over the crossing, wide front steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_George_Cathedral_in_Georgetown,_Guyana.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Ian Mackenzie",
+   "view": "front",
+   "used": "roof pitch and side gable rhythm"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/215619747",
+   "used": "overall extent about 54 x 34 m (outline is rotated and irregular so a hand plan was used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     32,
+     42
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3d434a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     20,
+     40
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "z0": 1.6,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "pointed-arch",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "pointed-arch",
+     "left": "pointed-arch",
+     "right": "pointed-arch",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#dedacf"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 30,
+    "colour": "#9a9486",
+    "material": "corrugated",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     6,
+     38
+    ]
+   },
+   "at": [
+    -13,
+    4
+   ],
+   "z0": 1.6,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "pointed-arch",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "pointed-arch",
+     "left": "pointed-arch",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#dedacf"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "rise": 3,
+    "colour": "#9a9486",
+    "overhang": 0.3,
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     6,
+     38
+    ]
+   },
+   "at": [
+    13,
+    4
+   ],
+   "z0": 1.6,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "none",
+    "faces": {
+     "front": "pointed-arch",
+     "right": "plain",
+     "left": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#dedacf"
+     }
+    ],
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "rise": 3,
+    "colour": "#9a9486",
+    "overhang": 0.3,
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     17.5,
+     -4
+    ],
+    "end": [
+     17.5,
+     20
+    ],
+    "of": {
+     "type": "mass",
+     "id": "bay",
+     "footprint": {
+      "rect": [
+       6.5,
+       4.4
+      ]
+     },
+     "z0": 1.6,
+     "height": 7,
+     "storeys": 1,
+     "wall": {
+      "material": "timber",
+      "colour": "#f4f2ec",
+      "windows": "pointed-arch",
+      "windowRatio": 0.45,
+      "windowShape": "pointed",
+      "faces": {
+       "front": "pointed-arch",
+       "back": "pointed-arch",
+       "right": "pointed-arch",
+       "left": "plain"
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 48,
+      "colour": "#9a9486",
+      "overhang": 0.2,
+      "axis": "x",
+      "material": "corrugated"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "z0": 15,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#efece4",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#c9c5b8",
+      "faces": [
+       "front",
+       "left",
+       "right",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat"
+   }
+  },
+  {
+   "type": "spire",
+   "id": "spire",
+   "at": [
+    0,
+    -4,
+    23
+   ],
+   "params": {
+    "baseWidth": 6.5,
+    "height": 17,
+    "colour": "#8a8d92",
+    "finial": true,
+    "sides": 4,
+    "shaftHeight": 0
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.27,
+    "run": 0.7,
+    "count": 6,
+    "colour": "#e8e6e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp-l",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -9.5,
+    -18.5
+   ],
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3d434a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "rise": 0.3,
+    "colour": "#3d434a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp-r",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    9.5,
+    -18.5
+   ],
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3d434a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "rise": 0.3,
+    "colour": "#3d434a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   90,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -26
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "critic fixes applied (grey slender spire moved to front crossing, lower grey roofs, clapboard bands, dark plinth ramps) but re-render pending: render server was not running so the new cmp could not be inspected"
+ }
+}

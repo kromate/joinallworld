@@ -1,0 +1,392 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-osm-way-146163203",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/146163203",
+   "used": "real park outline (11 vertices, ~92 x 72 m) as lawn and low boundary wall"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/The_Castle_(Saint_Helena)",
+   "used": "white Castle buildings alongside the gardens; palms, formal beds typed from the island style"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -38.2,
+      -13.9
+     ],
+     [
+      -16.9,
+      -3.6
+     ],
+     [
+      -37,
+      19.3
+     ],
+     [
+      7.7,
+      60.1
+     ],
+     [
+      15.8,
+      38.8
+     ],
+     [
+      22.6,
+      24.7
+     ],
+     [
+      24,
+      20.2
+     ],
+     [
+      42.2,
+      -16.9
+     ],
+     [
+      24.6,
+      -24.4
+     ],
+     [
+      28.9,
+      -31
+     ],
+     [
+      -16.3,
+      -50.7
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#6f9a4f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -38.2,
+      -13.9
+     ],
+     [
+      -16.9,
+      -3.6
+     ],
+     [
+      -37,
+      19.3
+     ],
+     [
+      7.7,
+      60.1
+     ],
+     [
+      15.8,
+      38.8
+     ],
+     [
+      22.6,
+      24.7
+     ],
+     [
+      24,
+      20.2
+     ],
+     [
+      42.2,
+      -16.9
+     ],
+     [
+      24.6,
+      -24.4
+     ],
+     [
+      28.9,
+      -31
+     ],
+     [
+      -16.3,
+      -50.7
+     ],
+     [
+      -38.2,
+      -13.9
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.35,
+    "kind": "wall",
+    "colour": "#8f8a7c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -12
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      8,
+      45
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -10,
+      -40
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      30,
+      -14
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    8,
+    22,
+    0.3
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "width": 6,
+    "depth": 5,
+    "colours": [
+     "#c24a5a",
+     "#e0b43c",
+     "#e8e4dc"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -14,
+    -20,
+    0.3
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 5,
+    "depth": 4,
+    "colours": [
+     "#d7627b",
+     "#e0b43c",
+     "#9a5fb0"
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -20,
+    -3,
+    0.25
+   ],
+   "params": {
+    "width": 3,
+    "count": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    22,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f8a7c",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "castle-range",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    46,
+    18
+   ],
+   "rotDeg": 70,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f3ea",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#bdb7a7"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f8a7c",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -12
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -4
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     2,
+     30
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     48
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -20
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; not rendered (queue server down), awning/sign rotation and polygon placement unchecked"
+ }
+}

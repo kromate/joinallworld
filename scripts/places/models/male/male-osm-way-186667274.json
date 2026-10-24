@@ -1,0 +1,430 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-osm-way-186667274",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Galolhu_Dhandu.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "ZZ47",
+   "view": "street",
+   "file": "/tmp/places-evidence/male/m15_stadium.jpg",
+   "used": "floodlit grass pitch seen from the touchline, far stand under one long low roof with a dark stepped seating bank, floodlights, apartment blocks behind, tiny stand roofs at both ends"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/186667274",
+   "used": "stadium plot about 121 x 150 m, long axis about north-south (pitch placed inside, rotated 8 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 150,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     66,
+     104
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#5d9a3e",
+    "topColour": "#69a846"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     148
+    ],
+    "z0": -0.05,
+    "height": 0.08,
+    "colour": "#8c8c88",
+    "topColour": "#8c8c88"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     40,
+     -52
+    ],
+    "end": [
+     40,
+     52
+    ],
+    "rows": 14,
+    "seatColour": "#2f4f78",
+    "seatColours": [
+     "#2f4f78",
+     "#8a2f3a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d9d6cc",
+    "backWall": 1.0,
+    "under": "open",
+    "canopy": {
+     "height": 11,
+     "depth": 9,
+     "colour": "#5b7fa3",
+     "slopeDeg": 3,
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -40,
+     52
+    ],
+    "end": [
+     -40,
+     -52
+    ],
+    "rows": 10,
+    "seatColour": "#2f4f78",
+    "seatColours": [
+     "#2f4f78",
+     "#8a2f3a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d9d6cc",
+    "backWall": 1.0,
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -60
+    ],
+    "end": [
+     34,
+     -60
+    ],
+    "rows": 6,
+    "seatColour": "#2f4f78",
+    "seatColours": [
+     "#2f4f78",
+     "#8a2f3a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d9d6cc",
+    "backWall": 1.0,
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     34,
+     60
+    ],
+    "end": [
+     -34,
+     60
+    ],
+    "rows": 6,
+    "seatColour": "#2f4f78",
+    "seatColours": [
+     "#2f4f78",
+     "#8a2f3a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d9d6cc",
+    "backWall": 1.0,
+    "under": "open"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fence",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -54
+     ],
+     [
+      34,
+      -54
+     ],
+     [
+      34,
+      54
+     ],
+     [
+      -34,
+      54
+     ]
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#6b6e72",
+    "topColour": "#6b6e72"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    -48,
+    -66
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 30,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    48,
+    -66
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 30,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    -48,
+    66
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 30,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    48,
+    66
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 0,
+    "height": 30,
+    "colour": "#9a9da0",
+    "topColour": "#9a9da0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "head",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -48,
+    -66
+   ],
+   "params": {
+    "rect": [
+     6,
+     2
+    ],
+    "z0": 30,
+    "height": 3,
+    "colour": "#e8e8e0",
+    "topColour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "head",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    48,
+    -66
+   ],
+   "params": {
+    "rect": [
+     6,
+     2
+    ],
+    "z0": 30,
+    "height": 3,
+    "colour": "#e8e8e0",
+    "topColour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "head",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -48,
+    66
+   ],
+   "params": {
+    "rect": [
+     6,
+     2
+    ],
+    "z0": 30,
+    "height": 3,
+    "colour": "#e8e8e0",
+    "topColour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "head",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    48,
+    66
+   ],
+   "params": {
+    "rect": [
+     6,
+     2
+    ],
+    "z0": 30,
+    "height": 3,
+    "colour": "#e8e8e0",
+    "topColour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard",
+   "at": [
+    -8,
+    66
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.8
+    ],
+    "z0": 9,
+    "height": 5,
+    "colour": "#2a2d33",
+    "topColour": "#2a2d33"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     0
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered: queue down; stand layout and canopy side unchecked"
+ }
+}

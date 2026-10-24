@@ -1,0 +1,259 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/182703352",
+   "used": "only a nearest-building match (26 m away, building=yes); size taken as a hint for the 24 x 17 m shed, shape not copied"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/hamilton.json",
+   "used": "low pastel waiting shed and ticket hut on a stone quay with a dock; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     24
+    ],
+    "height": 0.5,
+    "colour": "#c9c2b0",
+    "topColour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3e2a6",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "bay": 3.0,
+    "plinth": 0.3,
+    "trimColour": "#f4f1e8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f3f1ea",
+    "material": "slate",
+    "rise": 1.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hut",
+   "footprint": {
+    "rect": [
+     5,
+     4.5
+    ]
+   },
+   "at": [
+    10,
+    3
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9c9dc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f3f1ea",
+    "material": "slate",
+    "rise": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -4,
+    1.8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#f4f1e8",
+     "#a9c9dc"
+    ]
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16,
+    "width": 4,
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4,
+    0.5,
+    3.8
+   ],
+   "params": {}
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.2,
+      "rect": [
+       5,
+       18
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       6.4,
+       22
+      ]
+     }
+    ],
+    "colour": "#f2f3f2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -14,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     12
+    ],
+    "height": 2.8,
+    "colour": "#f2f3f2",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -14,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     4,
+     7
+    ],
+    "height": 2.2,
+    "colour": "#f2f3f2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    2,
+    16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "forecourtDepth": 30,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo, nearest-building match only; modest typical ferry shed; never rendered (no render server alive)"
+ }
+}

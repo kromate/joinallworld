@@ -1,0 +1,235 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Trinity_Moravian_Church,_2002.jpg",
+   "licence": "CC BY-SA 2.0 uk",
+   "author": "Fred Linyard",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingston/4913756065_0.jpg",
+   "used": "curved arched front gable with white edge band, pale grey-green render, square louvred bell tower with red-brown pyramid roof, curved entrance canopy, teal cross, iron fence on low wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/878240841",
+   "used": "size only (about 26 x 15 m); containing match, outline too irregular to extrude"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.55,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     15,
+     25
+    ]
+   },
+   "at": [
+    2,
+    6
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9cbc0",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "left": "punched",
+     "right": "punched"
+    },
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#e9e6dc",
+    "material": "concrete",
+    "rise": 2.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.4,
+     4.4
+    ]
+   },
+   "at": [
+    -6.3,
+    -4
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b9b0",
+    "windows": "louvre",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "louvre",
+     "left": "louvre",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#8e3c36",
+    "material": "clay-tile",
+    "rise": 3.2,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    2.5,
+    -7.2,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 7,
+    "depth": 3.6,
+    "height": 3.4,
+    "thickness": 0.3,
+    "columns": 2,
+    "rise": 0.7,
+    "colour": "#e9e6dc",
+    "edgeColour": "#9a5a52"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-v",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2.5,
+    -6.55
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e2"
+   },
+   "z0": 5.4
+  },
+  {
+   "type": "mass",
+   "id": "cross-h",
+   "footprint": {
+    "rect": [
+     2,
+     0.5
+    ]
+   },
+   "at": [
+    2.5,
+    -6.55
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e2"
+   },
+   "z0": 7.8
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    2,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 0.8,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#a7a79c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    2,
+    -11,
+    0.8
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.2,
+    "thickness": 0.06,
+    "kind": "fence",
+    "pillarEvery": 3,
+    "colour": "#26282a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5,
+    "colour": "#4c7d3b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not render-checked (render queue had no running workers); tower, curved gable and canopy placement unverified against the photo"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-node-4913756065"
+}

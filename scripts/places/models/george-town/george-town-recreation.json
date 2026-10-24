@@ -1,0 +1,150 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1134311986",
+   "used": "165 x 57 m park outline as the bank ground; pond sits inside it"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found; mangrove pond, timber boardwalk and bird hide typed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 26,
+    "shape": "oval",
+    "colour": "#5a7f6a",
+    "bank": true
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -30,
+    10,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "width": 1.8,
+    "height": 0.6,
+    "rails": true,
+    "piles": true,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -30,
+    26,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 2.8,
+    "roof": "hip",
+    "rise": 1.2,
+    "posts": 4,
+    "colour": "#8a6a4a",
+    "cap_colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -42,
+    14,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#3f6e4a",
+    "frameColour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    5,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#9a8a68"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 30,
+    "spread": 50,
+    "colour": "#3f6e4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 14,
+    "spread": 40,
+    "colour": "#3f6e4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; pond, hide and boardwalk are typical wetland elements, not measured"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-recreation"
+}

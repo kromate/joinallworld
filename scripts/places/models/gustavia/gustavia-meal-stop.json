@@ -1,0 +1,159 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/363590642",
+   "used": "named restaurant outline (31x19 m), grey roof colour tag; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e9dcc0",
+    "windows": "louvre",
+    "windowRatio": 0.45,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b7f82",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8,
+     -14,
+     0
+    ],
+    "end": [
+     8,
+     -14,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "colour": "#f4f0e6",
+       "profile": [
+        [
+         0.07,
+         0,
+         "#7b6a58"
+        ],
+        [
+         0.07,
+         2.3
+        ],
+        [
+         1.6,
+         2.4,
+         "#f4f0e6"
+        ],
+        [
+         0.0,
+         3.1
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    -13
+   ],
+   "rotDeg": 51,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7b6a58",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a66"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; real outline with typed open-terrace pavilion, grey hip roof and umbrellas"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-meal-stop"
+}

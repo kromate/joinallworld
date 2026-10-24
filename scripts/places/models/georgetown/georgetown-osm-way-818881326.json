@@ -1,0 +1,231 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-osm-way-818881326",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "OSM polygon is the 41 ha campus, not a building; main teaching block typed as a two-storey hipped block with farm sheds behind, from the brief (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     60,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#5f7f66",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c8f8f",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8f8f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    -45,
+    22
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8f8f",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "farm-shed1",
+   "at": [
+    42,
+    26,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 9,
+    "height": 4,
+    "roof": "gable",
+    "roof_colour": "#8c8f8f",
+    "wall_colour": "#c9c3b6",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "farm-shed2",
+   "at": [
+    42,
+    40,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 9,
+    "height": 4,
+    "roof": "gable",
+    "roof_colour": "#8c8f8f",
+    "wall_colour": "#c9c3b6",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "water-tank",
+   "id": "tank",
+   "at": [
+    -34,
+    8,
+    0
+   ],
+   "params": {
+    "radius": 2,
+    "height": 3,
+    "legs": 6,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "sign",
+   "at": [
+    18,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "kind": "fence",
+    "colour": "#5f7f66"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "p1",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "id": "p2",
+   "at": [
+    32,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or real building outline; block sizes and colours typed from brief"
+ }
+}

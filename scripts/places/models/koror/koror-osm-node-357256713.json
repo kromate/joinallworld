@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-node-357256713",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: mangrove ponds, timber boardwalk, shed-roofed ticket hut; no OSM building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-hut",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -12,
+    -6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a48",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d9296",
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#587a5c",
+    "frameColour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.4,
+    "pillarEvery": 4,
+    "colour": "#8a6a48"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      -2,
+      0.9
+     ],
+     [
+      -2,
+      2,
+      0.9
+     ],
+     [
+      5,
+      4,
+      0.9
+     ],
+     [
+      12,
+      9,
+      0.9
+     ]
+    ],
+    "section": {
+     "rect": [
+      2,
+      0.2
+     ]
+    },
+    "colour": "#8a6a48"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; boardwalk and hut typed from brief"
+ }
+}

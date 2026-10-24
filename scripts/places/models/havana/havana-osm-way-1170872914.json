@@ -1,0 +1,490 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-osm-way-1170872914",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Pedro_Marrero.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "NYC2TLV",
+   "view": "front",
+   "file": "/tmp/places-evidence/havana/marrero1.jpg",
+   "used": "entrance block: two storeys, pale blue-grey painted concrete, ground floor open on brown-red piers, upper floor of five bays of perforated breeze-block screens, flat roof with a small plant box, orange-yellow blank sign tiles, big shade trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1170872914",
+   "used": "overall size and orientation of the bowl (about 240 x 200 m site, modelled as a scaled low oval bowl)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      44.0,
+      26.0
+     ],
+     [
+      43.33,
+      31.56
+     ],
+     [
+      41.35,
+      36.94
+     ],
+     [
+      38.11,
+      42.0
+     ],
+     [
+      33.71,
+      46.57
+     ],
+     [
+      28.28,
+      50.51
+     ],
+     [
+      22.0,
+      53.71
+     ],
+     [
+      15.05,
+      56.07
+     ],
+     [
+      7.64,
+      57.51
+     ],
+     [
+      0.0,
+      58.0
+     ],
+     [
+      -7.64,
+      57.51
+     ],
+     [
+      -15.05,
+      56.07
+     ],
+     [
+      -22.0,
+      53.71
+     ],
+     [
+      -28.28,
+      50.51
+     ],
+     [
+      -33.71,
+      46.57
+     ],
+     [
+      -38.11,
+      42.0
+     ],
+     [
+      -41.35,
+      36.94
+     ],
+     [
+      -43.33,
+      31.56
+     ],
+     [
+      -44.0,
+      26.0
+     ],
+     [
+      -43.33,
+      20.44
+     ],
+     [
+      -41.35,
+      15.06
+     ],
+     [
+      -38.11,
+      10.0
+     ],
+     [
+      -33.71,
+      5.43
+     ],
+     [
+      -28.28,
+      1.49
+     ],
+     [
+      -22.0,
+      -1.71
+     ],
+     [
+      -15.05,
+      -4.07
+     ],
+     [
+      -7.64,
+      -5.51
+     ],
+     [
+      -0.0,
+      -6.0
+     ],
+     [
+      7.64,
+      -5.51
+     ],
+     [
+      15.05,
+      -4.07
+     ],
+     [
+      22.0,
+      -1.71
+     ],
+     [
+      28.28,
+      1.49
+     ],
+     [
+      33.71,
+      5.43
+     ],
+     [
+      38.11,
+      10.0
+     ],
+     [
+      41.35,
+      15.06
+     ],
+     [
+      43.33,
+      20.44
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#7aa35a",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     26
+    ],
+    "radius": 62,
+    "radiusY": 50,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 13,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 2.2,
+    "facetDeg": 12,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#8c8c86",
+    "concreteColour": "#b4b0a4",
+    "underColour": "#a29e92",
+    "backWall": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     64,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -27
+   ],
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#aab7bd",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 1.2,
+      "spacing": 9,
+      "width": 1.6,
+      "colour": "#9b5d4b",
+      "backColour": "#3a2f2a",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       2.4
+      ],
+      "colours": [
+       "#8c6d5a",
+       "#a07f69"
+      ],
+      "gap": 0.35,
+      "proud": 0.02,
+      "floors": [
+       1
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa4a8",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-box",
+   "footprint": {
+    "rect": [
+     15,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    -26
+   ],
+   "z0": 9.2,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9c3c6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aab2b4",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -32.3,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 1.4,
+    "bottom": 7.6,
+    "colour": "#e3a52c",
+    "frameColour": "#c98d1f",
+    "posts": false
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    66,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    66,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    72,
+    12
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "post_height": 1.5,
+    "facing": "south",
+    "colour": "#3a3d41"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    36,
+    -39,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -46,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     72,
+     30
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered (render queue down); breeze-block panel scale and bowl size unchecked"
+ }
+}

@@ -1,0 +1,334 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-osm-way-331472906",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/National_Schools_of_Art",
+   "used": "Porro/Garatti/Gottardi 1961-65: locally made brick and terracotta, Catalan-vaulted roofs, irregular organic plan, curving colonnaded paths, domes, lush planting; no photo found on Commons, so composition is from the brief only"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/222712484",
+   "used": "not used: OSM feature at the pin is a swimming pool, unreliable for the campus outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "studio-a",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    -14,
+    -4
+   ],
+   "rotDeg": -8,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5532f",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bay": 3.6,
+    "windowShape": "arched",
+    "bands": "#8a6a4a"
+   },
+   "roof": {
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "form": "barrel",
+    "rise": 2.6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "studio-b",
+   "footprint": {
+    "rect": [
+     11,
+     26
+    ]
+   },
+   "at": [
+    12,
+    10
+   ],
+   "rotDeg": 14,
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5532f",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bay": 3.6,
+    "windowShape": "arched",
+    "bands": "#8a6a4a"
+   },
+   "roof": {
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "form": "barrel",
+    "rise": 2.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "studio-c",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    -8,
+    22
+   ],
+   "rotDeg": -20,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5532f",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bay": 3.6,
+    "windowShape": "arched",
+    "bands": "#8a6a4a"
+   },
+   "roof": {
+    "colour": "#a8553a",
+    "material": "clay-tile",
+    "form": "barrel",
+    "rise": 2.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "vault-range",
+   "at": [
+    -22,
+    12,
+    0
+   ],
+   "rotDeg": 70,
+   "params": {
+    "length": 22,
+    "span": 5.2,
+    "rise": 2.2,
+    "count": 4,
+    "height": 4.2,
+    "lantern_domes": false,
+    "wall": true,
+    "wall_colour": "#c4673b",
+    "roof_colour": "#a8553a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-1",
+   "at": [
+    26,
+    -14
+   ],
+   "params": {
+    "z0": 0,
+    "height": 4.5,
+    "radius": 5.6,
+    "n": 20,
+    "colour": "#b5532f"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    26,
+    -14,
+    4.5
+   ],
+   "params": {
+    "radius": 5.8,
+    "height": 4.8,
+    "profile": "hemi",
+    "lantern": 0.8,
+    "finial": 1.0,
+    "colour": "#a8553a",
+    "drum": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-2",
+   "at": [
+    34,
+    -6
+   ],
+   "params": {
+    "z0": 0,
+    "height": 3.8,
+    "radius": 4.2,
+    "n": 18,
+    "colour": "#b5532f"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    34,
+    -6,
+    3.8
+   ],
+   "params": {
+    "radius": 4.4,
+    "height": 3.8,
+    "profile": "hemi",
+    "lantern": 0.6,
+    "finial": 0.8,
+    "colour": "#a8553a",
+    "drum": 0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     4,
+     -6,
+     0
+    ],
+    "radius": 22,
+    "radiusY": 16,
+    "startDeg": 205,
+    "endDeg": 320,
+    "count": 16,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.42,
+      "n": 8,
+      "height": 3.2,
+      "colour": "#c4673b"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    3.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.9,
+      0.45
+     ]
+    },
+    "arc": {
+     "centre": [
+      4,
+      -6,
+      0
+     ],
+     "radius": 22,
+     "radiusY": 16,
+     "startDeg": 205,
+     "endDeg": 320,
+     "plane": "xy"
+    },
+    "colour": "#a8553a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 4,
+    "spread": 8,
+    "colour": "#3f7a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 9,
+    "colour": "#3f7a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 4,
+    "spread": 9,
+    "colour": "#4f8a3f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered (render queue down): no photo found; composition from brief text only, vault/dome placement unchecked"
+ }
+}

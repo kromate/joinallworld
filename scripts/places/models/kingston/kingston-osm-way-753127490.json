@@ -1,0 +1,273 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-way-753127490",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/753127490",
+   "used": "garden outline (about 203 x 202 m, name-quality match); model is the terraces and house at the centre, clamped to the 120 m scene"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Special:Search?search=Cinchona+Botanical+Gardens",
+   "used": "garden founded 1868 at about 1,500 m in the Blue Mountains: terraced lawns, tree ferns, pines, timber house (brief, low confidence)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "terrace-low",
+   "at": [
+    0,
+    -20
+   ],
+   "params": {
+    "rect": [
+     110,
+     50
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#5c7b4e",
+    "topColour": "#5c7b4e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-mid",
+   "at": [
+    0,
+    8
+   ],
+   "params": {
+    "rect": [
+     90,
+     34
+    ],
+    "z0": 0.8,
+    "height": 0.9,
+    "colour": "#68885a",
+    "topColour": "#68885a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-high",
+   "at": [
+    0,
+    34
+   ],
+   "params": {
+    "rect": [
+     70,
+     26
+    ],
+    "z0": 1.7,
+    "height": 0.9,
+    "colour": "#5c7b4e",
+    "topColour": "#5c7b4e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "z0": 2.6,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e6e1d0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8402f",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "veranda",
+   "id": "house-veranda",
+   "at": [
+    0,
+    30.2,
+    2.6
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.4,
+    "height": 3.0,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps-low",
+   "at": [
+    0,
+    -3,
+    0.8
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 1,
+    "colour": "#b5aa94"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps-high",
+   "at": [
+    0,
+    21,
+    1.7
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 1,
+    "colour": "#b5aa94"
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "gate",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.6,
+    "pillar": 0.8,
+    "colour": "#b5aa94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-front",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.2,
+    "thickness": 0.25,
+    "pillarEvery": 4,
+    "colour": "#b5aa94"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "pavilion",
+   "at": [
+    34,
+    6,
+    1.7
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#e6e1d0",
+    "cap_colour": "#a8402f"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "pines-w",
+   "at": [
+    -48,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 80,
+    "count": 12,
+    "kind": "conifer",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "pines-e",
+   "at": [
+    50,
+    16,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 70,
+    "count": 10,
+    "kind": "conifer",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "ferns",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 14,
+    "count": 8,
+    "kind": "palm",
+    "min_height": 3,
+    "max_height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Only NOAA aerial hurricane images exist for this site (unusable for ground-view comparison); terraces, house and planting follow the brief, not a photo. Not yet rendered: the render queue was down."
+ }
+}

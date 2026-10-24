@@ -1,0 +1,226 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Havana_-_Central_Railway_Station_2.jpg",
+   "licence": "Public domain",
+   "author": "Edicion Jordi, Havana",
+   "view": "front",
+   "file": "/tmp/places-evidence/havana/station1.jpg",
+   "used": "four-storey pale stone block with two square belfry towers, central clock gable, dark hipped roofs with deep eaves, ground-floor arcade with awning, balustraded string courses, forecourt fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23872644",
+   "used": "size 78 x 27 m, 4 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 12,
+  "fovDeg": 48,
+  "aspect": 1.25,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     76,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfc3a2",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "bay": 3.4,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#e6dfc8",
+    "groundKind": "arched",
+    "groundHeight": 5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d5b57",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-gable",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    -9
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d6cbab",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d0b6",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porte-cochere",
+   "footprint": {
+    "rect": [
+     60,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -15.5
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#bdb391",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a4a47",
+    "material": "slate",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    -22,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 7.5,
+    "height": 31,
+    "cap": "hip",
+    "capRise": 4,
+    "clock": false,
+    "belfry": true,
+    "colour": "#cdc1a0",
+    "trimColour": "#e6dfc8",
+    "capColour": "#4a4a47"
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    11,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 7.5,
+    "height": 33,
+    "cap": "hip",
+    "capRise": 4,
+    "clock": false,
+    "belfry": true,
+    "colour": "#cdc1a0",
+    "trimColour": "#e6dfc8",
+    "capColour": "#4a4a47"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "railing",
+    "pillarEvery": 5,
+    "colour": "#9a968a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -13.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.2,
+    "bottom": 5.4,
+    "colour": "#d9d0b6",
+    "frameColour": "#bdb391",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Never rendered (render queue workers dead since 20:17); proportions, canopy side and tower placement unchecked."
+ }
+}

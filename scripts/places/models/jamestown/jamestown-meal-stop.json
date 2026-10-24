@@ -1,0 +1,259 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Consulate_Hotel_in_Jamestown_Saint_Helena.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kevstan",
+   "view": "front",
+   "file": "/tmp/places-evidence/jamestown/jt-hotel.jpg",
+   "used": "cream painted ground and first floors, pink recessed top storey, black cast-iron posts carrying a first-floor veranda with iron balustrade and a rusty corrugated lean-to roof, dark sash windows, stone steps and stone plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/552579254",
+   "used": "footprint size 26 x 9 m, name match (Hotel St Helena)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.68,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#f4f0e6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a86a52",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     26.4,
+     9.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a847a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a847a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top",
+   "footprint": {
+    "rect": [
+     15,
+     8
+    ]
+   },
+   "at": [
+    -1,
+    0.3
+   ],
+   "z0": 8.1,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c1b4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#f4f0e6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5705a",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -5.0,
+    4.3
+   ],
+   "params": {
+    "rect": [
+     19,
+     2.2
+    ],
+    "height": 0.3,
+    "colour": "#25282b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -4.8,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     19.6,
+     2.6
+    ],
+    "height": 0.2,
+    "colour": "#a65f45",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -10.5,
+    -6.1,
+    4.55
+   ],
+   "params": {
+    "length": 19,
+    "height": 1.0,
+    "colour": "#25282b"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -10.4,
+     -5.9,
+     0.5
+    ],
+    "end": [
+     8.4,
+     -5.9,
+     0.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 7.0,
+      "colour": "#25282b",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -1,
+    -6.6,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -4.55,
+    3.6
+   ],
+   "params": {}
+  },
+  {
+   "type": "railing",
+   "at": [
+    -4,
+    -7.6,
+    0.5
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.9,
+    "colour": "#25282b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": 0,
+  "extent": [
+   50,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from photos but never rendered or compared: render queue servers were down for the whole session (queued, never run); upgrade verified to photo after a comparison round"
+ }
+}

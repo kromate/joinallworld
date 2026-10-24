@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-airport-jamestown-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_Helena_Airport_terminal_building.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kevstan",
+   "view": "front",
+   "file": "/tmp/places-evidence/jamestown/air1.jpg",
+   "used": "airside elevation: tall dark-glazed central hall, two lower sand-coloured wings with ribbon glazing and long flat soffit canopies, thin flat roofs, clerestory blocks behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint_Helena_Airport_control_tower.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kevstan",
+   "view": "side",
+   "used": "dark local-stone plinth walls, sand render above, projecting flat canopy on slim piers, separate tower with round cab behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Helena_Airport_Terminal_(16331626258).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (Commons)",
+   "view": "side",
+   "used": "control tower: pale shaft block with a wider glazed round cab and white banded rim"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/166589669",
+   "used": "overall size 76 x 37 m (outline itself is a slightly skewed rectangle, modelled as straight wings)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     27,
+     20
+    ]
+   },
+   "at": [
+    -24.5,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c1ae",
+    "windows": "none",
+    "faces": {
+     "front": "ribbon"
+    },
+    "windowRatio": 0.5,
+    "glassColour": "#2c3a46",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b3a2",
+    "material": "metal-sheet",
+    "overhang": 2.6,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     27,
+     20
+    ]
+   },
+   "at": [
+    24.5,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c1ae",
+    "windows": "none",
+    "faces": {
+     "front": "ribbon"
+    },
+    "windowRatio": 0.5,
+    "glassColour": "#2c3a46",
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b3a2",
+    "material": "metal-sheet",
+    "overhang": 2.6,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-upper",
+   "footprint": {
+    "rect": [
+     27,
+     12
+    ]
+   },
+   "at": [
+    -24.5,
+    12
+   ],
+   "z0": 5.6,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6d1c3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#2c3a46"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb1b0",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-upper",
+   "footprint": {
+    "rect": [
+     27,
+     12
+    ]
+   },
+   "at": [
+    24.5,
+    12
+   ],
+   "z0": 5.6,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6d1c3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#2c3a46"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb1b0",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     24
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f3b4a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#2a3947",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#c9c6bc",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b8b9",
+    "material": "metal-sheet",
+    "overhang": 2.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 4,
+    "height": 4.6,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#a9a99f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    30,
+    22
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfd0cb",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a7a8",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    30,
+    22,
+    9
+   ],
+   "params": {
+    "height": 11,
+    "style": "round",
+    "colour": "#d3d4d0",
+    "shaftRadius": 2.4,
+    "cabRadius": 4.2,
+    "cabColour": "#33444f",
+    "bandColour": "#eceeea"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -34,
+    -14,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but NOT yet compared: render queue servers were down (no heartbeat since 20:18), job queued; massing, glazing and colours unchecked"
+ }
+}

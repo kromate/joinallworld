@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-way-258156539",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_Justo_Rufino_Barrios_y_Museo_del_Ferrocarril.jpg",
+   "licence": "CC BY-SA 2.5",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/guatemala-city/rail2.jpg",
+   "used": "long red-brick station front with ochre band and arched windows, low-pitched rust-red corrugated roof, taller red gable wing with green trim on the left, big stepped plaza with equestrian monument plinth in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Guatemala_City_Railway_Museum.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nils Oberg",
+   "view": "detail",
+   "file": "/tmp/places-evidence/guatemala-city/rail1.jpg",
+   "used": "deep concrete platform canopy with brackets, red brick wall with arched barred windows, roof sign letters on a roof-top band (modelled as blank board)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/258156539",
+   "used": "206 x 96 m extent: station frontage length and track yard behind"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     88,
+     13
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a63f2f",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "bands": "#d9a441",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8523a",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-wing",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    -48,
+    -3
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b13d2e",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bands": "#d9a441"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d4a3a",
+    "material": "corrugated",
+    "rise": 3.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    8,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 84,
+    "depth": 4.5,
+    "height": 4.4,
+    "form": "shed",
+    "colour": "#3f6b4a",
+    "thickness": 0.8,
+    "rise": 0.5,
+    "columns": 12
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -6.8,
+    8.3
+   ],
+   "params": {
+    "width": 40,
+    "height": 1.6,
+    "colour": "#f0efe8"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    -6,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "width": 30,
+    "steps": 5,
+    "shape": "tier",
+    "figure": "raised",
+    "figure_colour": "#5f7567"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    8,
+    20,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "tracks": 3,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "train",
+   "at": [
+    -8,
+    20,
+    0.4
+   ],
+   "params": {
+    "carriages": 3,
+    "colour": "#7a8a7d",
+    "loco_colour": "#2b2d2f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    22,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza-paving",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     34
+    ],
+    "height": 0.15,
+    "colour": "#9a6a55",
+    "topColour": "#9a6a55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "Render server down; critic fixes (low rust-red roof, 30 m stepped plinth with bronze horseman, red gable wing, green platform canopy, reddish plaza) applied but unrendered. Sign letters left as blank board."
+ }
+}

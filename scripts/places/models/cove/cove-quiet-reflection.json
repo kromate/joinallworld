@@ -1,0 +1,125 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cove",
+ "venueId": "cove-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/946458969",
+   "used": "size only (14.3 x 6.1 m, 88 m2); nearest match 68 m away so placement is not used"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/cove.json#",
+   "used": "plain low dark chapel-like hut facing the cove"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     14.3,
+     6.1
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a4d52",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b9bec2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f4347",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "pitch": 30
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -3.05,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "low-wall",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.5,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#5b5e62"
+   }
+  },
+  {
+   "type": "rubble",
+   "id": "scatter",
+   "at": [
+    8,
+    6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "count": 8,
+    "colour": "#3a3a3d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists (only a shoreline photo); composed from brief and the OSM tank outline"
+ }
+}

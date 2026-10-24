@@ -1,0 +1,200 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1499311646",
+   "used": "5x5 m structure size only (nearest building, may not be the venue)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "polygon": [
+     [
+      -3.4,
+      1.3
+     ],
+     [
+      1.7,
+      3.3
+     ],
+     [
+      3.4,
+      -1.3
+     ],
+     [
+      -1.7,
+      -3.3
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a59d8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0be"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.4
+    ]
+   },
+   "at": [
+    -4.5,
+    -4
+   ],
+   "rotDeg": 69,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a59d8f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -3.4,
+      1.3,
+      2.2
+     ],
+     [
+      1.7,
+      3.3,
+      2.2
+     ],
+     [
+      3.4,
+      -1.3,
+      2.2
+     ]
+    ],
+    "colour": "#6e6a62"
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "points": [
+        [
+         -0.06,
+         -0.06
+        ],
+        [
+         0.06,
+         -0.06
+        ],
+        [
+         0.06,
+         0.06
+        ],
+        [
+         -0.06,
+         0.06
+        ]
+       ],
+       "height": 1.0,
+       "colour": "#8f8a80"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -3.4,
+     1.3
+    ],
+    "end": [
+     3.4,
+     -1.3
+    ],
+    "count": 5
+   },
+   "at": [
+    0,
+    0,
+    1.2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     -7
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-osm-node-3104286317",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; small stone lookout platform with railing and steps typed from the brief"
+ }
+}

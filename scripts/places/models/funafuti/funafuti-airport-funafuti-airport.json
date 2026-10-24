@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "funafuti",
+ "venueId": "funafuti-airport-funafuti-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Funafuti_International_Airport_terminal_building.jpg",
+   "licence": "CC BY 2.0",
+   "author": "lirneasia",
+   "view": "front",
+   "file": "/tmp/places-evidence/funafuti/air1.jpg",
+   "used": "low single-storey hall, steep blue hipped metal roof with a smaller cross hip at right, central dormer vent, cream pier walls, teal lower walls, green doors, louvred windows, blank fascia board"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maneapa_and_airport_in_Funafuti_atoll,_Tuvalu.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rafael Avila Coya",
+   "view": "street",
+   "file": "/tmp/places-evidence/funafuti/gov1.jpg",
+   "used": "terminal wings stepping back, darker blue roofs behind, yellow maneapa roof beside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1213208124",
+   "used": "overall size 50 x 24 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f86a8",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "bands": "#3f86a8",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "colour": "#e9e6da",
+     "spacing": 4.0
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f80b4",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "dormer",
+   "id": "ridge-dormer",
+   "at": [
+    -6,
+    -2,
+    7.2
+   ],
+   "params": {
+    "width": 1.2,
+    "depth": 1.2,
+    "height": 1.4,
+    "colour": "#b9bec2",
+    "roof_colour": "#c9cdd0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    19,
+    -2.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f86a8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f80b4",
+    "material": "metal-sheet",
+    "pitch": 36,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     44,
+     10
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9bec2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2b3f66",
+    "material": "metal-sheet",
+    "pitch": 15,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -6,
+    -8.6,
+    3.3
+   ],
+   "params": {
+    "width": 22,
+    "height": 0.9,
+    "bottom": 3.3,
+    "colour": "#f2f2ee",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "critic fixes applied (teal lower wall, ribbon glazing, ridge dormer, long white fascia, cross-hip forward, bare forecourt) but NOT re-rendered: no render server running; cross-hip blue gable and green frames unverified"
+ }
+}

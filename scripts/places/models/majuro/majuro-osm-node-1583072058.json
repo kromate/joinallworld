@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-osm-node-1583072058",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/259725409",
+   "used": "irregular campus block outline 51 x 33 m, containing the venue"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Majuro",
+   "used": "brief facts (size, storeys, roof, colours typed from Majuro style); no exterior photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "fit": 52
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd8dc",
+    "windows": "louvre",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#9dbfd0"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#aab0b3",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 3,
+    "height": 3.2,
+    "columns": 10,
+    "colour": "#aab0b3",
+    "edgeColour": "#9dbfd0"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 2.5,
+    "colours": [
+     "#9dbfd0",
+     "#e9e5d6",
+     "#9dbfd0"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -32,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: shared queue had no live heartbeat and ~278 jobs backlog, so massing/colours/footprint scale unverified; no exterior photo exists."
+ }
+}

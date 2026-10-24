@@ -1,0 +1,286 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-osm-node-358021658",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: grass park in Susupe/Chalan Kanoa with covered stage pavilion, bandstand, kiosk, paved court, two flags, low wall; no photo found. The only OSM building nearby is 74 m away so its outline is not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "court",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#bdb9ac",
+    "height": 0.12,
+    "rect": [
+     40,
+     18
+    ],
+    "material": "paving"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stage",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "colour": "#e5dfcf",
+    "height": 0.9,
+    "rect": [
+     16,
+     9
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavilion-back",
+   "at": [
+    -14,
+    10.2,
+    0.9
+   ],
+   "params": {
+    "colour": "#e5dfcf",
+    "height": 5,
+    "rect": [
+     16,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavilion-roof",
+   "at": [
+    -14,
+    6,
+    6
+   ],
+   "params": {
+    "colour": "#7c858c",
+    "height": 0.5,
+    "rect": [
+     19,
+     12
+    ],
+    "material": "metal-roof",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "id": "pavilion-posts",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.45
+      ],
+      "height": 5,
+      "colour": "#2f6b5a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -21,
+     1.8
+    ],
+    "end": [
+     -7,
+     1.8
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bandstand",
+   "at": [
+    14,
+    6,
+    0
+   ],
+   "params": {
+    "colour": "#e5dfcf",
+    "height": 0.8,
+    "radius": 3.8,
+    "n": 10
+   }
+  },
+  {
+   "type": "prism",
+   "id": "band-roof",
+   "at": [
+    14,
+    6,
+    4.2
+   ],
+   "params": {
+    "colour": "#2f6b5a",
+    "height": 0.35,
+    "radius": 4.2,
+    "n": 10,
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "band-posts",
+   "at": [
+    0,
+    0,
+    0.8
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 3.4,
+      "colour": "#e5dfcf"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     14,
+     6
+    ],
+    "radius": 3,
+    "count": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    22,
+    -6
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5dfcf",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f6b5a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3,
+    "colour": "#e5dfcf"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "wall",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 0.8,
+    "thickness": 0.3,
+    "colour": "#bdb9ac"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; typed from brief"
+ }
+}

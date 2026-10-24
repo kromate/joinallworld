@@ -1,0 +1,158 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/834197246",
+   "used": "real 40x25 m footprint (converted arrowroot factory)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: stone-and-render walls, white stepped roof, glazed extension; no free photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "factory",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6dcc0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "bands": "#f4f1e8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f3f1ea",
+    "material": "slate",
+    "rise": 2.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-extension",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -14
+   ],
+   "rotDeg": 30,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c9dc",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efece4",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -24,
+    0
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 5,
+    "rise": 0.9,
+    "run": 2,
+    "count": 4,
+    "colour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "colours": [
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#b9b2a0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     16
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-way-834197246"
+}

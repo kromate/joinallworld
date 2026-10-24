@@ -1,0 +1,298 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-osm-way-35798100",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Longwood_House_le_12_janvier_2008.jpg",
+   "licence": "CC0",
+   "author": "Michel Dancoisne-Martineau",
+   "view": "front",
+   "file": "/tmp/places-evidence/jamestown/longwood.jpg",
+   "used": "low single-storey ranges: grey front block with terracotta hip roof and green shutters, teal timber veranda at the left end, pink-cream range with grey slate gables and chimneys, teal garden fence, flower beds"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/35798100",
+   "used": "overall size 26 x 24 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 5,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     15,
+     9
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9aeb0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#e9e6dc",
+    "plinth": 0.3,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5705a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-room",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -12.5,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4f8b8f",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5705a",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pink-range",
+   "footprint": {
+    "rect": [
+     13,
+     7
+    ]
+   },
+   "at": [
+    11,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecd0c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#f3efe6",
+    "plinth": 0.3,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7377",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    20.5,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecd0c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#f3efe6",
+    "plinth": 0.3,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4d5154",
+    "material": "slate",
+    "pitch": 32,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    17.5,
+    4,
+    6.5
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1,
+    "colour": "#e6d8cf"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -4,
+    2,
+    6.5
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 2,
+    "pots": 1,
+    "colour": "#ccb7a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.0,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#2f7f8a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -12,
+     -12,
+     0
+    ],
+    "end": [
+     22,
+     -12,
+     0
+    ],
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 5,
+      "height": 0.9,
+      "depth": 1.0,
+      "colour": "#8a2f3f"
+     }
+    }
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -7,
+    -7,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -3
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but NOT compared: render queue had no live server (heartbeats stale since 20:17, nothing running); resubmit with --photo and set verified to photo if it matches"
+ }
+}

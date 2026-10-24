@@ -1,0 +1,128 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/183494311",
+   "used": "real 93 x 17 m outline and bearing (nearest match 6.5 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Smithery_Ln,_Bermuda_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jeff Bellinger",
+   "view": "street",
+   "file": "/tmp/places-evidence/hamilton/clock1.jpg",
+   "used": "colour and texture only (weathered grey-cream limestone ashlar, corner pilasters, deep stone cornice, small deep-set windows); it shows a neighbouring Dockyard stone block, not confirmed as the Clocktower Building"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Royal_Naval_Dockyard,_Bermuda",
+   "used": "two-storey limestone store, central clock tower, grey hip roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 64,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b9b4a2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "bay": 4.2,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#8f8a80"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c9296",
+    "material": "slate",
+    "rise": 2.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    4,
+    -2.5,
+    0
+   ],
+   "rotDeg": 63.7,
+   "params": {
+    "width": 5.6,
+    "height": 23,
+    "cap": "hip",
+    "cap_rise": 5,
+    "clock": true,
+    "wall_colour": "#b9b4a2",
+    "trim_colour": "#e6e2d6",
+    "roof_colour": "#6f767a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT RENDERED OR COMPARED: render queue servers were down (no heartbeat, 100+ jobs waiting); proportions, colours and part placement unchecked"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-market-game"
+}

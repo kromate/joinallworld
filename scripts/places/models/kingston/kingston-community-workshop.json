@@ -1,0 +1,178 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/375253490",
+   "used": "real 31 x 19 m footprint, name-matched"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/National_Library_of_Jamaica",
+   "used": "12 East Street, downtown Kingston; institution from 1979; building undescribed so a modest 3-storey concrete library block is typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e1d1",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.4,
+    "faces": {
+     "back": "ribbon"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a9b0a6",
+      "height": 0.5,
+      "at": 0.9,
+      "floors": "all"
+     },
+     {
+      "type": "louvres",
+      "colour": "#a9b0a6",
+      "backColour": "#3d4642",
+      "pitch": 0.3,
+      "band": 0.5,
+      "floors": [
+       2
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b8b8",
+    "material": "membrane",
+    "parapet": 0.7,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 3.5,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#c9c5b5",
+    "edgeColour": "#a9b0a6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.0,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#1b7a43",
+    "count": 2,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.1,
+    "kind": "wall",
+    "colour": "#cfcab8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -9
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: render queue down. Nearby geo photos show other buildings and were not used; facade colours, louvres and porch are typed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-community-workshop"
+}

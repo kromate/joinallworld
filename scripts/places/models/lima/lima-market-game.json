@@ -1,0 +1,294 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Real_Plaza_Sede_Pro_San_Mart\u00edn_de_Porres.png",
+   "licence": "CC BY-SA 4.0",
+   "author": "IMSoria",
+   "view": "street",
+   "file": "/tmp/places-evidence/lima/rpp.jpg",
+   "used": "orange terracotta-panel main block with flat roof and dark eave line, taller dark-brown vertically clad cinema tower at the entrance, lower grey-green stucco entrance block with glazed shopfront, tall blue-red-orange pylon sign, purple entrance gantry, parking apron and street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/405585328",
+   "used": "footprint (168 x 65 m, irregular, 6,800 m2, building=yes)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.64
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "terracotta",
+    "colour": "#c7603f",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#c7603f",
+       "#bd5738",
+       "#d0694a"
+      ],
+      "slits": 0.0,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#8a3f2b"
+      ],
+      "height": 0.5,
+      "at": 0.96,
+      "proud": 0.15,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cinema-tower",
+   "at": [
+    -5,
+    -26
+   ],
+   "params": {
+    "height": 21,
+    "colour": "#5d4a3d",
+    "rect": [
+     22,
+     10
+    ],
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-block",
+   "at": [
+    -32,
+    -30
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#aeb0a0",
+    "rect": [
+     30,
+     12
+    ],
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "curtain"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-gantry",
+   "at": [
+    34,
+    -40
+   ],
+   "params": {
+    "height": 0.9,
+    "colour": "#5b3f8a",
+    "rect": [
+     24,
+     1.2
+    ],
+    "z0": 5.4
+   }
+  },
+  {
+   "type": "array",
+   "id": "gantry-posts",
+   "at": [
+    34,
+    -40,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -11,
+     0
+    ],
+    "end": [
+     11,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 6.3,
+      "colour": "#6b6f73"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "pylon-top",
+   "at": [
+    -62,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.2,
+    "bottom": 14,
+    "colour": "#2c4fa3",
+    "frameColour": "#bfc3c8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "pylon-mid",
+   "at": [
+    -62,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.2,
+    "bottom": 10.5,
+    "colour": "#c63a4f",
+    "frameColour": "#bfc3c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "pylon-low",
+   "at": [
+    -62,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.2,
+    "bottom": 7,
+    "colour": "#d9622f",
+    "frameColour": "#bfc3c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "pylon-base",
+   "at": [
+    -62,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.2,
+    "bottom": 3.5,
+    "colour": "#2a3f8f",
+    "frameColour": "#bfc3c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -75,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -20,
+    -50,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 4,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    28,
+    -52,
+    0
+   ],
+   "params": {
+    "colour": "#6e2d2d",
+    "count": 3,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT render-compared: the shared render queue had no live worker (heartbeats stale ~2h, 240+ jobs backlog), so massing/colours come from viewing the photo only; needs 1-3 compare rounds"
+ }
+}

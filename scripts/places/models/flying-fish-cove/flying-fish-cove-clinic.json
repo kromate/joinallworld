@@ -1,0 +1,174 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/5881577",
+   "used": "real multi-wing hospital outline (96 x 50 m, ~3000 m2, 4.1 m from venue); no photo found, form and colours from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bands": "#5f8fa3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9094",
+    "material": "metal-sheet",
+    "parapet": 0.35,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#5f8fa3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7c8286",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#e8e8e4",
+    "edgeColour": "#5f8fa3"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -20,
+    -19.5,
+    3
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -5,
+    -36,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No photo; real OSM wing outline with flat roofs (hip over irregular outline filled the bounding box), ward block position and colours assumed."
+ }
+}

@@ -1,0 +1,460 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Havana_Airport_Terminal_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tacorontey",
+   "view": "front",
+   "file": "/tmp/places-evidence/havana/apt1.jpg",
+   "used": "two-level kerbside frontage: deep cream departures deck over a dark colonnaded drop-off with terracotta-orange columns, cream and red-striped upper level behind a red railing, two huge angular folded beige-grey roof wedges with a lower dark ridge between them, red lettered board (left blank), round ribbed ducts at the ends, green street lamps, yellow cabs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/145645162",
+   "used": "Terminal 3, 3 levels, grey building, white roof; full outline is a long angled plan, only the central frontage seen in the photo is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.44
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     118,
+     46
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e1d2b0",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "colour": "#b8573b",
+      "faces": [
+       "front"
+      ],
+      "spacing": 9,
+      "width": 2.2,
+      "height": 0.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c9a7",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     114,
+     38
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 7,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9b8",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "cornice": true,
+    "bands": "#c2432d",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#2d3a40"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4a8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-band",
+   "params": {
+    "rect": [
+     118.5,
+     0.6
+    ],
+    "z0": 9.4,
+    "height": 0.7,
+    "colour": "#c2432d",
+    "topColour": "#c2432d"
+   },
+   "at": [
+    0,
+    -15.7,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail",
+   "params": {
+    "rect": [
+     118,
+     0.5
+    ],
+    "z0": 7,
+    "height": 1.2,
+    "colour": "#c2432d",
+    "topColour": "#c2432d"
+   },
+   "at": [
+    0,
+    -22.7,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roof-w",
+   "at": [
+    -31,
+    -2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "points": [
+     [
+      -17,
+      -14
+     ],
+     [
+      17,
+      -14
+     ],
+     [
+      19,
+      14
+     ],
+     [
+      -19,
+      14
+     ]
+    ],
+    "z0": 15,
+    "height": 19,
+    "topScale": [
+     0.35,
+     0.1
+    ],
+    "topOffset": [
+     0,
+     -4
+    ],
+    "colour": "#b9a98f",
+    "topColour": "#a89c88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-e",
+   "at": [
+    31,
+    -2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "points": [
+     [
+      -17,
+      -14
+     ],
+     [
+      17,
+      -14
+     ],
+     [
+      19,
+      14
+     ],
+     [
+      -19,
+      14
+     ]
+    ],
+    "z0": 15,
+    "height": 19,
+    "topScale": [
+     0.35,
+     0.1
+    ],
+    "topOffset": [
+     0,
+     -4
+    ],
+    "colour": "#b9a98f",
+    "topColour": "#a89c88"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-mid",
+   "params": {
+    "points": [
+     [
+      -24,
+      -10
+     ],
+     [
+      24,
+      -10
+     ],
+     [
+      24,
+      18
+     ],
+     [
+      -24,
+      18
+     ]
+    ],
+    "z0": 15,
+    "height": 9,
+    "topScale": [
+     0.7,
+     0.6
+    ],
+    "colour": "#7f776b",
+    "topColour": "#8a8174"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "duct-w",
+   "at": [
+    -55,
+    -22,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#c9bfa8",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      17
+     ],
+     [
+      2.9,
+      17.2
+     ],
+     [
+      2.9,
+      18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "duct-e",
+   "at": [
+    40,
+    -22,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#c9bfa8",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.6,
+      17
+     ],
+     [
+      2.9,
+      17.2
+     ],
+     [
+      2.9,
+      18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    2,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "height": 4.5,
+    "bottom": 29,
+    "colour": "#c2432d",
+    "frameColour": "#7d4a3c",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "id": "atc",
+   "at": [
+    70,
+    40,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "style": "round"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns-front",
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -20,
+     0
+    ],
+    "end": [
+     52,
+     -20,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "lod": [
+      0,
+      1
+     ],
+     "params": {
+      "radius": 1.1,
+      "n": 8,
+      "z0": 0,
+      "height": 7,
+      "colour": "#b8573b",
+      "topColour": "#b8573b"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -38,
+     0
+    ],
+    "end": [
+     50,
+     -38,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "car",
+   "id": "cabs",
+   "at": [
+    -12,
+    -33,
+    0
+   ],
+   "params": {
+    "colour": "#e8c53a",
+    "count": 3,
+    "spacing": 8,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "spread": 6,
+    "line": 110
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: render queue down. Composed from the front photo; roof wedges and canopy depth unchecked; only the central 118 m of the long terminal is modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-airport-havana-airport"
+}

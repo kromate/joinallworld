@@ -1,0 +1,532 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Two_lovers_point_(80103943).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Dorothy from USA",
+   "view": "side",
+   "file": "/tmp/places-evidence/hagatna/tlp5.jpg",
+   "used": "sheer white-grey limestone cliff face with green forested top, flat headland crown, observation tower on the left edge, small white chapel/restaurant on the right of the crown"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TwoLoversPoint.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "AndreasFahrrad",
+   "view": "detail",
+   "file": "/tmp/places-evidence/hagatna/tlp1.jpg",
+   "used": "viewing platform: bronze-coloured steel rail frame with mesh infill, terracotta paving, pentagonal corner"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Two_Lovers_Point",
+   "used": "cliff 113 m above Tumon Bay, viewing platforms, gift shop, wedding chapel, restaurant"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "margin": 0.08,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "cliff",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "curve": false,
+    "colour": "#d6d0be",
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        -56.0,
+        -34.0
+       ],
+       [
+        -22.400000000000002,
+        -40.0
+       ],
+       [
+        16.8,
+        -37.0
+       ],
+       [
+        56.0,
+        -31.0
+       ],
+       [
+        52.0,
+        33.0
+       ],
+       [
+        0,
+        37.0
+       ],
+       [
+        -53.0,
+        31.0
+       ]
+      ],
+      "colour": "#cfc9b6"
+     },
+     {
+      "z": 28,
+      "poly": [
+       [
+        -53.0,
+        -31.0
+       ],
+       [
+        -21.200000000000003,
+        -35.0
+       ],
+       [
+        15.899999999999999,
+        -34.0
+       ],
+       [
+        53.0,
+        -28.0
+       ],
+       [
+        49.0,
+        30.0
+       ],
+       [
+        0,
+        34.0
+       ],
+       [
+        -50.0,
+        28.0
+       ]
+      ],
+      "colour": "#e2ddcc"
+     },
+     {
+      "z": 55,
+      "poly": [
+       [
+        -50.0,
+        -29.0
+       ],
+       [
+        -20.0,
+        -37.0
+       ],
+       [
+        15.0,
+        -32.0
+       ],
+       [
+        50.0,
+        -26.0
+       ],
+       [
+        46.0,
+        28.0
+       ],
+       [
+        0,
+        32.0
+       ],
+       [
+        -47.0,
+        26.0
+       ]
+      ],
+      "colour": "#cfcab9"
+     },
+     {
+      "z": 82,
+      "poly": [
+       [
+        -49.0,
+        -28.0
+       ],
+       [
+        -19.6,
+        -32.0
+       ],
+       [
+        14.7,
+        -31.0
+       ],
+       [
+        49.0,
+        -25.0
+       ],
+       [
+        45.0,
+        27.0
+       ],
+       [
+        0,
+        31.0
+       ],
+       [
+        -46.0,
+        25.0
+       ]
+      ],
+      "colour": "#e0dbca"
+     },
+     {
+      "z": 100,
+      "poly": [
+       [
+        -48.0,
+        -27.0
+       ],
+       [
+        -19.200000000000003,
+        -33.0
+       ],
+       [
+        14.399999999999999,
+        -30.0
+       ],
+       [
+        48.0,
+        -24.0
+       ],
+       [
+        44.0,
+        26.0
+       ],
+       [
+        0,
+        30.0
+       ],
+       [
+        -45.0,
+        24.0
+       ]
+      ],
+      "colour": "#a9b08f"
+     },
+     {
+      "z": 112,
+      "poly": [
+       [
+        -46.0,
+        -26.0
+       ],
+       [
+        -18.400000000000002,
+        -32.0
+       ],
+       [
+        13.799999999999999,
+        -29.0
+       ],
+       [
+        46.0,
+        -23.0
+       ],
+       [
+        42.0,
+        25.0
+       ],
+       [
+        0,
+        29.0
+       ],
+       [
+        -43.0,
+        23.0
+       ]
+      ],
+      "colour": "#5f8148"
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crown",
+   "footprint": {
+    "rect": [
+     80,
+     46
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 112,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5f8148",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8148"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "polygon": [
+     [
+      -7,
+      -5
+     ],
+     [
+      7,
+      -5
+     ],
+     [
+      8,
+      3
+     ],
+     [
+      0,
+      8
+     ],
+     [
+      -8,
+      3
+     ]
+    ]
+   },
+   "at": [
+    -36,
+    -20
+   ],
+   "z0": 113,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0735a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0735a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -36,
+    -20,
+    113.5
+   ],
+   "params": {
+    "kind": "wall",
+    "length": 14,
+    "height": 1.2,
+    "thickness": 0.15,
+    "colour": "#a8774f",
+    "points": [
+     [
+      -7,
+      -5
+     ],
+     [
+      7,
+      -5
+     ],
+     [
+      8,
+      3
+     ],
+     [
+      0,
+      8
+     ],
+     [
+      -8,
+      3
+     ],
+     [
+      -7,
+      -5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -38,
+    -12
+   ],
+   "z0": 113,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9cdb0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bfa4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    22,
+    -6
+   ],
+   "rotDeg": 4,
+   "z0": 113,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f0efe8",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    2,
+    -2
+   ],
+   "z0": 113,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ece5d3",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9553f",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gift-shop",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -14,
+    4
+   ],
+   "z0": 113,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e0d7c2",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a45a45",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    10,
+    113
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 6,
+    "spread": 12,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    12,
+    113
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 5,
+    "spread": 10,
+    "line": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-node-2133106594",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from sea-view photo (cliff, tower, chapel) but never rendered: render queue was dead; cliff loft proportions and crown buildings unchecked"
+ }
+}

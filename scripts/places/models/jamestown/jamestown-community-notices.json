@@ -1,0 +1,286 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_the_Castle_government_complex_in_Jamestown.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kevstan",
+   "view": "front",
+   "file": "/tmp/places-evidence/jamestown/castle2.jpg",
+   "used": "street front: rough white-rendered fort wall with a white arched gateway on the right, a taller white block behind with round porthole windows and a hipped grey roof, tall white chimney, flagmast on the left, steep cliff behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Castle_(40117179425).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Luke McKernan",
+   "view": "detail",
+   "used": "gateway: rendered pier-and-lintel arch with a blank crest board above, two small black cannon on white plinths, white rough render"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jamestown_Castle.jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley from Nanaimo, Canada",
+   "view": "side",
+   "used": "courtyard side: two-storey grey cobbled-stone walls, white-framed sash windows, white porch on a column with steps, white plinth course"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/254448018",
+   "used": "overall extent 78 m long, three levels; modelled as the street front plus the long block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 52,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fort-wall",
+   "footprint": {
+    "rect": [
+     56,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e9e7e2",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2dc",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     50,
+     12
+    ]
+   },
+   "at": [
+    -3,
+    4
+   ],
+   "z0": 0,
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efede8",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "bands": "#ddd9cf"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7c8387",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    3
+   ],
+   "z0": 9.2,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efea",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7c8387",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    26,
+    14
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#7c746a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 1.0,
+    "trimColour": "#f1efea",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7c8387",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    10,
+    -8.1,
+    0
+   ],
+   "params": {
+    "width": 8.6,
+    "height": 7.4,
+    "depth": 1.8,
+    "archWidth": 4.2,
+    "springHeight": 2.6,
+    "colour": "#f4f2ee"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    5.5,
+    -10.5,
+    0
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 270,
+    "scale": 0.7
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    14.6,
+    -10.5,
+    0
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 270,
+    "scale": 0.7
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -9,
+    2,
+    16
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 5.5,
+    "pots": 0,
+    "colour": "#f1efea"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -27,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#1f3d7a",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -19,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 9,
+    "colour": "#3f6a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    23,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 10,
+    "colour": "#4a7338"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but NOT yet compared: render queue servers were down (no heartbeat since 20:18), job queued; massing, glazing and colours unchecked"
+ }
+}

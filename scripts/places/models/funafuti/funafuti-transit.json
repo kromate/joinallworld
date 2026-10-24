@@ -1,0 +1,232 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "funafuti",
+ "venueId": "funafuti-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/546982683",
+   "used": "8.1 x 7.6 m rotated outline of the shelter (nearest match, 1.5 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open bus shelter, shed corrugated roof, green metal posts, concrete platform, blank board, palms on sand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "slab",
+   "params": {
+    "points": [
+     [
+      -5.1,
+      -2.2
+     ],
+     [
+      -1.8,
+      5.3
+     ],
+     [
+      5.1,
+      2.2
+     ],
+     [
+      1.8,
+      -5.3
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#b8b3a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "params": {
+    "points": [
+     [
+      -5.1,
+      -2.2
+     ],
+     [
+      -1.8,
+      5.3
+     ],
+     [
+      5.1,
+      2.2
+     ],
+     [
+      1.8,
+      -5.3
+     ]
+    ],
+    "z0": 3.0,
+    "height": 0.3,
+    "colour": "#7a838a",
+    "material": "corrugated",
+    "topColour": "#7a838a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post0",
+   "at": [
+    -5.1,
+    -2.2
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0.25,
+    "height": 2.75,
+    "colour": "#3f7a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post1",
+   "at": [
+    -1.8,
+    5.3
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0.25,
+    "height": 2.75,
+    "colour": "#3f7a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post2",
+   "at": [
+    5.1,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0.25,
+    "height": 2.75,
+    "colour": "#3f7a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post3",
+   "at": [
+    1.8,
+    -5.3
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0.25,
+    "height": 2.75,
+    "colour": "#3f7a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "back-wall",
+   "at": [
+    1.5270555235676895,
+    3.4763493911667926
+   ],
+   "rotDeg": -24.19320898728877,
+   "params": {
+    "rect": [
+     7.264390259630977,
+     0.2
+    ],
+    "z0": 0.25,
+    "height": 2.7,
+    "colour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "at": [
+    1.2401850785589648,
+    2.837831303889309
+   ],
+   "rotDeg": -24.19320898728877,
+   "params": {
+    "rect": [
+     5.064390259630977,
+     0.5
+    ],
+    "z0": 0.25,
+    "height": 0.45,
+    "colour": "#3f7a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    -1.65,
+    -3.75
+   ],
+   "rotDeg": 155.80679101271124,
+   "params": {
+    "rect": [
+     3.0,
+     0.12
+    ],
+    "z0": 3.3,
+    "height": 0.7,
+    "colour": "#3f7a5a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     13,
+     -7
+    ]
+   }
+  ],
+  "extent": [
+   45,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this stop; shelter typed from brief on the OSM outline."
+ }
+}

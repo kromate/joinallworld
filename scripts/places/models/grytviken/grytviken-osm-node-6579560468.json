@@ -1,0 +1,179 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "grytviken",
+ "venueId": "grytviken-osm-node-6579560468",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2024_Frank_Wild_-_Grab_-_by_2eight_-_ZSC0471.jpg",
+   "licence": "CC BY-SA 3.0 de",
+   "author": "Stefan Brending (2eight)",
+   "view": "detail",
+   "used": "grave is a flat dark granite plaque with a raised edge laid in the ground, not an upright stone; lettering omitted"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:South_Georgia_Ernest_Shackleton_grave_in_Grytviken.jpg",
+   "licence": "Public domain",
+   "author": "Wofratz",
+   "view": "front",
+   "used": "white fence plot and granite kerb beside Shackleton's grave"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 40,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.6
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#3f4448"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque-face",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.78,
+     0.48
+    ],
+    "z0": 0.1,
+    "height": 0.02,
+    "colour": "#5d6368"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "edge-f",
+   "at": [
+    0,
+    -0.325
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#8d8f90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "edge-b",
+   "at": [
+    0,
+    0.325
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.05
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#8d8f90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "edge-l",
+   "at": [
+    -0.475,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.05,
+     0.6
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#8d8f90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "edge-r",
+   "at": [
+    0.475,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.05,
+     0.6
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#8d8f90"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    1.2,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.2,
+    "thickness": 0.12,
+    "kind": "railing",
+    "pillarEvery": 2.0,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    3,
+    0.2,
+    0
+   ],
+   "params": {
+    "length": 2.0,
+    "height": 1.2,
+    "thickness": 0.12,
+    "kind": "railing",
+    "pillarEvery": 2.0,
+    "colour": "#f4f4f0"
+   },
+   "rotDeg": 90
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   14,
+   10
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "not rendered: render server was down; flat plaque and kerb composed by eye; lettering omitted"
+ }
+}

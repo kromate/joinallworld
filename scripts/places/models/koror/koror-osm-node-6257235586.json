@@ -1,0 +1,110 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-node-6257235586",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/550664298",
+   "used": "22 x 13 m outline (nearest, 18 m), rotated to the coast road; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c4b6",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#8a6a48"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "corrugated",
+    "rise": 1.5,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.0,
+    "thickness": 0.3,
+    "colour": "#ece8dc"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; not rendered (queue down). Outline from nearest OSM building."
+ }
+}

@@ -1,0 +1,350 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/320407571",
+   "used": "footprint of the chapel (about 17 x 6 m, 109 m2) and its orientation (long axis about -28 deg); nothing else about the building is documented"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     6.2,
+     15
+    ]
+   },
+   "at": [
+    -0.5,
+    -1.5
+   ],
+   "rotDeg": 62.0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0ebdd",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "bay": 3.5,
+    "plinth": 0.5,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 30,
+    "colour": "#a65a3c",
+    "material": "clay-tile",
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     6.6,
+     1.0
+    ]
+   },
+   "at": [
+    6.21,
+    -5.07
+   ],
+   "rotDeg": 62.0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0ebdd",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4dccb",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     4.0,
+     2.4
+    ]
+   },
+   "at": [
+    -8.01,
+    2.49
+   ],
+   "rotDeg": 62.0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f0ebdd",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 28,
+    "colour": "#a65a3c",
+    "material": "clay-tile",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    6.7,
+    -5.33,
+    0.5
+   ],
+   "rotDeg": 62.0,
+   "params": {
+    "width": 1.8,
+    "height": 3.0,
+    "arch": true,
+    "colour": "#7b4a2a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    7.62,
+    -5.82,
+    0
+   ],
+   "rotDeg": 62.0,
+   "params": {
+    "width": 3.0,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#d8d0bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-gable",
+   "at": [
+    6.21,
+    -5.07,
+    5.4
+   ],
+   "rotDeg": 62.0,
+   "params": {
+    "points": [
+     [
+      -1.1,
+      -0.35
+     ],
+     [
+      1.1,
+      -0.35
+     ],
+     [
+      1.1,
+      0.35
+     ],
+     [
+      -1.1,
+      0.35
+     ]
+    ],
+    "height": 1.3,
+    "colour": "#f0ebdd",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-gable-top",
+   "at": [
+    6.21,
+    -5.07,
+    6.7
+   ],
+   "rotDeg": 62.0,
+   "params": {
+    "points": [
+     [
+      -0.8,
+      -0.3
+     ],
+     [
+      0.8,
+      -0.3
+     ],
+     [
+      0,
+      0.3
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#f0ebdd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-opening",
+   "at": [
+    6.48,
+    -5.21,
+    5.6
+   ],
+   "rotDeg": 62.0,
+   "params": {
+    "points": [
+     [
+      -0.35,
+      0
+     ],
+     [
+      0.35,
+      0
+     ],
+     [
+      0.35,
+      0.7
+     ],
+     [
+      0,
+      0.95
+     ],
+     [
+      -0.35,
+      0.7
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#3b3028"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    6.21,
+    -5.07,
+    7.5
+   ],
+   "rotDeg": 62.0,
+   "params": {
+    "points": [
+     [
+      -0.06,
+      -0.06
+     ],
+     [
+      0.06,
+      -0.06
+     ],
+     [
+      0.06,
+      0.06
+     ],
+     [
+      -0.06,
+      0.06
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#7b4a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    6.21,
+    -5.07,
+    7.95
+   ],
+   "rotDeg": 62.0,
+   "params": {
+    "points": [
+     [
+      -0.3,
+      -0.06
+     ],
+     [
+      0.3,
+      -0.06
+     ],
+     [
+      0.3,
+      0.06
+     ],
+     [
+      -0.3,
+      0.06
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#7b4a2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     6
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -8
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -9
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this chapel exists in Commons or Wikidata (disambiguation entry only); massing follows the 17 x 6 m OSM outline with a typical Lima whitewashed nave, tile gable, bell gable and small apse. Not yet rendered: the render queue had no live worker."
+ }
+}

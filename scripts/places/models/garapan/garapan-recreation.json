@@ -1,0 +1,214 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saipan_Botanical_Garden.jpg",
+   "licence": "Public domain",
+   "author": "U.S. Department of the Interior, Office of Insular Affairs",
+   "view": "detail",
+   "used": "only fruit and flower display on a white-tiled veranda with timber posts; no building exterior, so used for palette (tile white, foliage greens, tropical plantings) and not compared"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/461385907",
+   "used": "park polygon 388 x 195 m: far too large to model whole; a representative entrance zone is composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      0,
+      -8
+     ],
+     [
+      8,
+      8
+     ],
+     [
+      22,
+      22
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.6,
+    "colour": "#d9d2bd",
+    "board_colour": "#2f6b5a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#2f6b5a",
+    "frameColour": "#d9d2bd"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    26,
+    24,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.4,
+    "kind": "hip",
+    "roof_colour": "#7c858c"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    -6,
+    2,
+    0
+   ],
+   "params": {
+    "radius": 3.5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "depth": 2.6,
+    "height": 2.7,
+    "colour": "#d9d2bd",
+    "roof_colour": "#7c858c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    22,
+    14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4,
+    "rise": 0.8,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    4,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    18,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 22,
+    "count": 12,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "count": 8,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    36,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 18,
+    "count": 10,
+    "kind": "palm"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only a veranda detail photo; park is 388 m wide so only an entrance zone is composed, layout invented."
+ }
+}

@@ -1,0 +1,309 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Trial_Division_Building_of_the_Supreme_Court,_the_Republic_of_Palau.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Doricono",
+   "view": "street",
+   "file": "/tmp/places-evidence/koror/court.jpg",
+   "used": "art-deco white stucco block with stepped fin tower above the entrance, deep flat porch canopy on square pillars with blank fascia sign, lower flat-roofed wing with small dark punched windows and an entry stair at the far end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/251931095",
+   "used": "containing building only: size order (about 20 x 13 m); the real court is larger with annexes"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     16,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e4dc",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f92",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     28,
+     10
+    ]
+   },
+   "at": [
+    22,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e4dc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f92",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-back",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    4,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e4dc",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f92",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin",
+   "footprint": {
+    "rect": [
+     9,
+     2.6
+    ]
+   },
+   "at": [
+    -4,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 10,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcbc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcbc0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-step",
+   "footprint": {
+    "rect": [
+     4.5,
+     2.6
+    ]
+   },
+   "at": [
+    -4,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bdb9ac",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb9ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dedbd1",
+    "windows": "none",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcbc0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "height": 4.2,
+      "colour": "#b6b2a6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -16.5,
+     -4.6,
+     0
+    ],
+    "end": [
+     -7.5,
+     -4.6,
+     0
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.5,
+    "bottom": 3.0,
+    "colour": "#f2efe6",
+    "frameColour": "#d9d6cc",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    42,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#bdb9ac"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-community-voting-game",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "photo-composed but never rendered or compared (queue down); art-deco fin detail, corner view yaw unchecked"
+ }
+}

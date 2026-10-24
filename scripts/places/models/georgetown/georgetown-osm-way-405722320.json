@@ -1,0 +1,574 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-osm-way-405722320",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mapillary_(300240118399819,_Z3qfxnCJpGZQdYaxCIOuOw)_(kaartcam)_2016-08-12_15H58M16S000.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "kaartcam",
+   "view": "street",
+   "file": "/tmp/places-evidence/georgetown/405722320_0.jpg",
+   "used": "cream painted walls, tall pointed-arch windows glazed in blue, round corner bay with small arched windows and balcony rail, round plaques, red-brick minaret shaft on an unfinished red steel frame, brick-clad boundary wall with red railings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mapillary_(838466400079414,_Z3qfxnCJpGZQdYaxCIOuOw)_(kaartcam)_2016-08-12_15H58M12S000.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "kaartcam",
+   "view": "street",
+   "file": "/tmp/places-evidence/georgetown/405722320_3.jpg",
+   "used": "crenellated low side wing with a row of small arched windows, brick minaret seen from the side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/405722320",
+   "used": "main footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 19,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3eedd",
+    "glassColour": "#2a4ca8",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.55,
+    "plinth": 0.5,
+    "bay": 3.6,
+    "pattern": {
+     "type": "bands",
+     "colour": "#e4dcc6"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd6c4",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "round-bay",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f1ebd8",
+    "profile": [
+     [
+      3.6,
+      0,
+      "#f1ebd8"
+     ],
+     [
+      3.6,
+      9.5,
+      "#f1ebd8"
+     ],
+     [
+      3.9,
+      9.8,
+      "#e4dcc6"
+     ],
+     [
+      3.9,
+      10.7,
+      "#e4dcc6"
+     ],
+     [
+      3.7,
+      10.7,
+      "#cfc8b4"
+     ]
+    ],
+    "arcade": {
+     "count": 8,
+     "width": 0.9,
+     "height": 2.0,
+     "sill": 2.6,
+     "shape": "arched",
+     "depth": 0.3
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "id": "minaret-shaft",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#a4553b",
+    "sections": [
+     {
+      "z": 10,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 27.5,
+      "rect": [
+       1.9,
+       1.9
+      ]
+     },
+     {
+      "z": 28.3,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 29.0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 29.1,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 33,
+      "rect": [
+       1.7,
+       1.7
+      ]
+     },
+     {
+      "z": 33.6,
+      "rect": [
+       2.4,
+       2.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg-1.6-1.6",
+   "at": [
+    -15.6,
+    -13.6,
+    0
+   ],
+   "params": {
+    "colour": "#8b3a2a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.45,
+       0.45
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg-1.61.6",
+   "at": [
+    -15.6,
+    -10.4,
+    0
+   ],
+   "params": {
+    "colour": "#8b3a2a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.45,
+       0.45
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg1.6-1.6",
+   "at": [
+    -12.4,
+    -13.6,
+    0
+   ],
+   "params": {
+    "colour": "#8b3a2a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.45,
+       0.45
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg1.61.6",
+   "at": [
+    -12.4,
+    -10.4,
+    0
+   ],
+   "params": {
+    "colour": "#8b3a2a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.45,
+       0.45
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.35,
+       0.35
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "boundary-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#b4694a",
+    "top": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "railing",
+   "lod": [
+    0
+   ],
+   "at": [
+    -8,
+    -27,
+    1.2
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.3,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#7a2f27"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brace-a",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    -13.6,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.22
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#8b3a2a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brace-b",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    -10.4,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.22
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#8b3a2a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brace-c",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    -13.6,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.22
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#8b3a2a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brace-d",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    -10.4,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.22
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#8b3a2a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-front-a",
+   "at": [
+    3,
+    -14.5,
+    18.5
+   ],
+   "rotDeg": 21,
+   "params": {
+    "rect": [
+     9,
+     2.6
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#f3eedd",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-front-b",
+   "at": [
+    3,
+    -14.5,
+    24
+   ],
+   "rotDeg": 21,
+   "params": {
+    "rect": [
+     5,
+     2.4
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#ede6d2",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-front-c",
+   "at": [
+    15,
+    -9.5,
+    18.5
+   ],
+   "rotDeg": 21,
+   "params": {
+    "rect": [
+     7,
+     2.6
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#f3eedd",
+    "top": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wing",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    -12,
+    12
+   ],
+   "rotDeg": 21,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead6",
+    "glassColour": "#27449a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "bay": 1.6,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd6c4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8,
+     -26
+    ],
+    "end": [
+     26,
+     -26
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "z0": 0,
+       "height": 1.5,
+       "colour": "#b4694a"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "critic fixes applied to the spec but no re-render was possible: render queue servers were down (no heartbeat, 341 jobs waiting), so the result is unseen"
+ }
+}

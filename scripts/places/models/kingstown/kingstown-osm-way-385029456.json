@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-way-385029456",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/385029456",
+   "used": "the 226 x 225 m headland park outline, laid as a low grass base"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ms._Romanov_McDowall,_Administrative_Secretary_of_the_St_Vincent_and_the_Grenadines_National_Olympic_Committee_holds_the_Queen%27s_Baton_2010_Delhi_outside_the_Black_Point_Tunnel_a_historic_site_in_St_Vincent_and_the.jpg",
+   "licence": "GODL-India",
+   "author": "Ministry of Youth Affairs and Sports, India",
+   "view": "detail",
+   "used": "setting only (not compared: the tunnel itself is not in frame): dark volcanic rocks on the windward shore, steep scrub slope, plain timber viewing rail, palms"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6a7b4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a7b4a"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "colour": "#4a4741",
+    "topColour": "#5d6a3c",
+    "curve": true,
+    "steps": 4,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       48,
+       34
+      ]
+     },
+     {
+      "z": 10,
+      "rect": [
+       38,
+       26
+      ],
+      "cx": 0,
+      "cy": 2
+     },
+     {
+      "z": 20,
+      "rect": [
+       26,
+       18
+      ],
+      "cx": 0,
+      "cy": 4
+     },
+     {
+      "z": 27,
+      "rect": [
+       12,
+       9
+      ],
+      "cx": 1,
+      "cy": 5
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     13,
+     3
+    ]
+   },
+   "at": [
+    0,
+    2.6
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#57534b",
+    "windows": "arched",
+    "windowRatio": 0.55,
+    "bay": 13,
+    "trimColour": "#8d8478",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4741"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -2.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 2.0,
+    "count": 4,
+    "colour": "#8d8478"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue down). Portal is a modest arched stone face in a loft mound; no photo of the tunnel exists on Commons, only a coast setting shot."
+ }
+}

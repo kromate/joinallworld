@@ -1,0 +1,302 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-node-9530641571",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/526212748",
+   "used": "13.4 x 9.6 m building outline at bearing 37 deg, containing the venue node"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open-sided fish shed, concrete tables, corrugated roof, blue accent, waterfront"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "roof",
+   "footprint": {
+    "rect": [
+     13.4,
+     10.2
+    ]
+   },
+   "rotDeg": 52.3,
+   "z0": 2.8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4f7f9e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "corrugated",
+    "rise": 1.7,
+    "overhang": 0.7,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post0",
+   "at": [
+    -7.9,
+    -2.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.9,
+    "colour": "#d9d3c0",
+    "topColour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post1",
+   "at": [
+    0.3,
+    8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.9,
+    "colour": "#d9d3c0",
+    "topColour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post2",
+   "at": [
+    7.9,
+    2.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.9,
+    "colour": "#d9d3c0",
+    "topColour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post3",
+   "at": [
+    -0.3,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.9,
+    "colour": "#d9d3c0",
+    "topColour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post4",
+   "at": [
+    -3.8,
+    2.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.9,
+    "colour": "#d9d3c0",
+    "topColour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post5",
+   "at": [
+    4.1,
+    -2.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.9,
+    "colour": "#d9d3c0",
+    "topColour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "table0",
+   "at": [
+    2.531915305495968,
+    -1.9568865285946602,
+    0
+   ],
+   "rotDeg": 52.3,
+   "params": {
+    "rect": [
+     8.5,
+     0.9
+    ],
+    "height": 0.95,
+    "colour": "#d9d3c0",
+    "topColour": "#c8c4b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "table1",
+   "at": [
+    0.8703458862642391,
+    -0.6726797442044145,
+    0
+   ],
+   "rotDeg": 52.3,
+   "params": {
+    "rect": [
+     8.5,
+     0.9
+    ],
+    "height": 0.95,
+    "colour": "#d9d3c0",
+    "topColour": "#c8c4b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "table2",
+   "at": [
+    -0.8703458862642391,
+    0.6726797442044145,
+    0
+   ],
+   "rotDeg": 52.3,
+   "params": {
+    "rect": [
+     8.5,
+     0.9
+    ],
+    "height": 0.95,
+    "colour": "#d9d3c0",
+    "topColour": "#c8c4b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "table3",
+   "at": [
+    -2.531915305495968,
+    1.9568865285946602,
+    0
+   ],
+   "rotDeg": 52.3,
+   "params": {
+    "rect": [
+     8.5,
+     0.9
+    ],
+    "height": 0.95,
+    "colour": "#d9d3c0",
+    "topColour": "#c8c4b6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 52.3,
+   "params": {
+    "rect": [
+     15,
+     11.5
+    ],
+    "height": 0.12,
+    "colour": "#8d9296",
+    "topColour": "#9a9ea1"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.5,
+    -9.5,
+    1.6
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.9,
+    "bottom": 1.6,
+    "colour": "#4f7f9e",
+    "frameColour": "#d9d3c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "water",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     13,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; open shed typed from brief on the real outline, tables and posts positions assumed"
+ }
+}

@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-osm-way-1419495076",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1419495076",
+   "used": "14 x 6.4 m monument outline (bearing 85 deg) used as the paved plaza; start_date 1958-02-18; wikidata Q5484785 (Leonor Perez Cabrera, mother of Jose Marti)"
+  },
+  {
+   "kind": "text",
+   "ref": "Wikimedia Commons Perez Cabrera 01.jpg (CC BY 3.0, Koppchen) shows a bronze bust on a grey stone block plinth, but with a 2006 Canary Islands association plaque, so it is a different monument and was NOT used as a match; only the generic form (bust on a square stone plinth among palms) informs the model",
+   "used": "form of a bust on a plinth, not compared"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -7.3,
+      2.5
+     ],
+     [
+      6.7,
+      3.8
+     ],
+     [
+      7.3,
+      -2.5
+     ],
+     [
+      -6.7,
+      -3.8
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#bdb7a7",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5.2,
+      1.6
+     ],
+     [
+      4.9,
+      2.7
+     ],
+     [
+      5.3,
+      -1.7
+     ],
+     [
+      -4.8,
+      -2.7
+     ]
+    ],
+    "z0": 0.25,
+    "height": 0.2,
+    "colour": "#d0cabb",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.45
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.2
+    ],
+    "height": 0.5,
+    "colour": "#a8a396"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.95
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     1.3
+    ],
+    "height": 1.9,
+    "colour": "#8e8a80"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    2.85
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "height": 0.25,
+    "colour": "#bdb7a7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -0.68,
+    1.7
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.06
+    ],
+    "height": 0.55,
+    "colour": "#5f7a74"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    0,
+    3.1
+   ],
+   "params": {
+    "height": 2.3,
+    "pose": "lady",
+    "colour": "#4a4a42"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 0.7,
+    "thickness": 0.35,
+    "colour": "#b4af9f",
+    "points": [
+     [
+      -7.0,
+      2.6
+     ],
+     [
+      6.9,
+      3.9
+     ],
+     [
+      7.4,
+      -2.6
+     ],
+     [
+      -6.8,
+      -3.9
+     ],
+     [
+      -7.0,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.12,
+    "run": 0.4,
+    "count": 2,
+    "colour": "#bdb7a7"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -4.2,
+    3.0,
+    0.25
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    3.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9.5,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -5.5,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    6.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   36,
+   28
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this monument; modest plinth-and-bust guess on the real 14x6 m outline; not rendered (queue down)"
+ }
+}

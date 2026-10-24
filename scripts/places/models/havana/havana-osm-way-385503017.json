@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-osm-way-385503017",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/23876210",
+   "used": "real stepped diagonal outline (two offset wings joined at the middle, ~60 x 19 m), name match INSTEC"
+  },
+  {
+   "kind": "text",
+   "used": "brief: four-storey flat-roofed painted concrete institute block, ribbon windows, 1960s-80s; the two nearby Commons street photos show other buildings and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.3
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfae",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.6,
+    "bands": "#a9a69c",
+    "cornice": false,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d8cfae",
+       "#e4ddc2"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 15,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f89"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#efece0",
+    "frameColour": "#a9a69c"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     24
+    ]
+   }
+  ],
+  "cars": 6,
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "pending render"
+ }
+}

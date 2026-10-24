@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cockburn-town",
+ "venueId": "cockburn-town-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief cockburn-town-transit",
+   "used": "placeholder game venue: modest roadside bus and taxi stop, concrete back wall, shed roof of grey metal sheet, two bays, blank sign board, palms; Grand Turk has no public transport"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/522050997",
+   "used": "not used: nearest-quality match only (13.7 m away), so just the 20 x 12 m scale of the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     14,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    4.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d2c0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#7fb0c8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9498",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     3.2,
+     3
+    ]
+   },
+   "at": [
+    -5.2,
+    2.2
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d2c0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c9498",
+    "material": "metal-sheet",
+    "rise": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "id": "shed-roof",
+   "at": [
+    1.5,
+    0.5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6.5,
+    "height": 3.2,
+    "thickness": 0.25,
+    "colour": "#8c9498"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1.5,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.2,
+    "bottom": 2.6,
+    "colour": "#7fb0c8",
+    "frameColour": "#ffffff",
+    "posts": true
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    8.5,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -8,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -11,
+     3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     11,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists (placeholder venue, island has no public transit); modest shelter from brief only, no benches or bus bodies."
+ }
+}

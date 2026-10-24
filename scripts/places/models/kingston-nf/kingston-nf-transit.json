@@ -1,0 +1,116 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston-nf",
+ "venueId": "kingston-nf-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+   "used": "game venue placeholder: small roadside timber bus shelter with a pitched corrugated iron roof; island vernacular, no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 3.2,
+    "height": 2.8,
+    "form": "gable",
+    "support": "timber",
+    "colour": "#9a8061",
+    "accent": "#6a4a32",
+    "roof_colour": "#7c8185",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    0,
+    0.6,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7.5,
+    -2.5,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 0.9,
+    "bottom": 1.6,
+    "colour": "#e8e2cc",
+    "frameColour": "#6a7b5a"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "colour": "#e8e2cc",
+    "stripe": "#6a7b5a",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 1,
+    "spread": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   50,
+   36
+  ]
+ }
+}

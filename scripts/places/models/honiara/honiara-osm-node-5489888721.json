@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-node-5489888721",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: low grassy rise by the shore with a small memorial marker among palms (WWII headland east of the airport); no photo and no OSM outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 16,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    0,
+    0.02
+   ],
+   "params": {
+    "width": 70,
+    "depth": 56,
+    "colour": "#4f87a0",
+    "bank": false
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "colour": "#6b8a4f",
+    "topColour": "#6b8a4f",
+    "curve": true,
+    "sections": [
+     {
+      "z": -0.4,
+      "ellipse": [
+       26,
+       15
+      ],
+      "cx": 0
+     },
+     {
+      "z": 0.3,
+      "ellipse": [
+       23,
+       13
+      ],
+      "cx": 0.5
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       16,
+       9
+      ],
+      "cx": 1
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       7,
+       4.5
+      ],
+      "cx": 1.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "colour": "#a89a82",
+    "curve": true,
+    "sections": [
+     {
+      "z": -0.3,
+      "ellipse": [
+       26,
+       6
+      ]
+     },
+     {
+      "z": 0.25,
+      "ellipse": [
+       22,
+       4.6
+      ]
+     },
+     {
+      "z": 0.45,
+      "ellipse": [
+       20,
+       3.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "marker-plinth",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    2,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 2.3,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a89a",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a89a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    6,
+    2.9
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 1.8,
+    "colour": "#d8d4c6",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -1,
+    0.3
+   ],
+   "params": {
+    "width": 2.6,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#a8a89a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -2,
+    3,
+    2.3
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.6,
+    "kind": "fence",
+    "colour": "#8c8f90"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "extent": [
+   70,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue server was down, so no render or comparison was run; composed from the brief only; unchecked massing and colours"
+ }
+}

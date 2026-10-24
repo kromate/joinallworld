@@ -1,0 +1,177 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/745628692",
+   "used": "containing building is 58x45 m (too large for a cafe); only the site extent and setting were taken, cafe block sized from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bands": "#8fb3b0",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    16,
+    -1
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f0e6",
+    "windows": "louvre",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 3,
+    "height": 3,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#8fb3b0",
+     "#f4f0e6"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#8fb3b0"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    16,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 8,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; outline did not fit a cafe so the block is sized from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-node-12097880001"
+}

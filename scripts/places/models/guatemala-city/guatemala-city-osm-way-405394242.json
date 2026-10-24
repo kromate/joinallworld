@@ -1,0 +1,356 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AtrioIglesiaSantoDomingo2015.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nerdoguate",
+   "view": "street",
+   "file": "/tmp/places-evidence/guatemala-city/p1_0.jpg",
+   "used": "two-storey ochre facade with paired white engaged columns, white cornices and arched belfry openings, dark timber door, stepped side wings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/405394242",
+   "used": "overall size 88 x 48 m (nave plus transept), name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     52
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c48a",
+    "windows": "none",
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a4553a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     60,
+     24
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c48a",
+    "windows": "none",
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a4553a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse-wing",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b97a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f80",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     30,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -33
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c48a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#f3eee2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3eee2",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -17,
+    -32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 32,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c48a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#f3eee2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9b08a",
+    "pitch": 30,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    17,
+    -32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 32,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2c48a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#f3eee2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c9b08a",
+    "pitch": 30,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "crossing-dome",
+   "at": [
+    0,
+    6,
+    17
+   ],
+   "params": {
+    "radius": 8,
+    "height": 9,
+    "profile": "hemi",
+    "drum": 6,
+    "drumRadius": 8.4,
+    "lantern": 3,
+    "finial": 2,
+    "colour": "#d6c9a8",
+    "drumColour": "#e2c48a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 1.2,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#cfc7b6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -36.2,
+     2
+    ],
+    "end": [
+     10,
+     -36.2,
+     2
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.55,
+      "n": 10,
+      "height": 10,
+      "colour": "#f3eee2",
+      "material": "plain-render"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     4.5,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "z0": 1.2,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#4a3020",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3020"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -52
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -52
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-way-405394242",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not compared to the photo: the shared render queue had no live worker (heartbeats stale since 20:17, jobs queued but never ran). Composed from photos and OSM extents only; triangle counts unmeasured."
+ }
+}

@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ruins_of_Nan%27yo_Shrine_Ishidoro.JPG",
+   "licence": "Public domain",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/koror/shrine.jpg",
+   "used": "stacked dark basalt step blocks under the surviving stone lantern, low black lava-stone dry wall, palms and dense broadleaf surround, mown grass"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/872063843",
+   "used": "12.7 x 7.4 m footprint (nearest match, 11 m) as the terrace size"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Nan%27y%C5%8D_Shrine",
+   "used": "steps to upper platform, stone lanterns, 1993 miniature replica shrine"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     11,
+     6
+    ],
+    "height": 1.6,
+    "colour": "#4d4c49",
+    "topColour": "#8a877e"
+   },
+   "at": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -1.2,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#55534e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrine-replica",
+   "footprint": {
+    "rect": [
+     3.2,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    3.2
+   ],
+   "z0": 1.6,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a7650",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b5f55",
+    "material": "timber-shingle",
+    "pitch": 32,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-plinth",
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 0.6,
+    "colour": "#4d4c49",
+    "topColour": "#6a685f"
+   },
+   "at": [
+    -6.5,
+    -2.5,
+    0
+   ]
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    -6.5,
+    -2.5,
+    0.6
+   ],
+   "params": {
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-plinth2",
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 0.6,
+    "colour": "#4d4c49",
+    "topColour": "#6a685f"
+   },
+   "at": [
+    6.5,
+    -2.5,
+    0
+   ]
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    6.5,
+    -2.5,
+    0.6
+   ],
+   "params": {
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -5
+     ],
+     [
+      -9,
+      6.5
+     ],
+     [
+      9,
+      6.5
+     ],
+     [
+      9,
+      -5
+     ]
+    ],
+    "height": 0.8,
+    "thickness": 0.8,
+    "kind": "wall",
+    "colour": "#2f2f2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but never rendered or compared (render queue server down); stone steps/lantern/replica proportions and replica roof unchecked"
+ }
+}

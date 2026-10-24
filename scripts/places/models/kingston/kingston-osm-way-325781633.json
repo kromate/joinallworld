@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-way-325781633",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/837704559",
+   "used": "building outline (57 x 44 m, name match, ward block with rear wings)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief kingston-osm-way-325781633",
+   "used": "four storeys, painted render in cream with sage green accent, ribbon windows, ambulance bay"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e3cf",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#8fa89c",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e9e3cf",
+       "#e0dac4"
+      ]
+     },
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#8fa89c"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b3b3",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "ambulance-bay",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 7,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#ffffff",
+    "edgeColour": "#8fa89c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#ffffff",
+    "frameColour": "#c23b32",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 2.4,
+    "count": 3,
+    "colour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 4,
+    "line": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -32
+    ]
+   }
+  ],
+  "cars": 6,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no render check: shared render queue had no live heartbeat (workers stalled since 20:17); no photo of this place found, composed from OSM outline and brief facts"
+ }
+}

@@ -1,0 +1,336 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1178068090",
+   "used": "overall footprint 66 x 51 m: central block with two lower wings, Wikidata Q29878034, built 2006"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Flag_at_Melekeok,_Palau.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user",
+   "view": "street",
+   "file": "/tmp/places-evidence/koror/capitol.jpg",
+   "used": "setting only: open lawn with a row of tall flagpoles and palms on the Melekeok hill; the building itself is not visible so verified stays footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "brief koror-community-notices",
+   "used": "white neoclassical copy of the US Capitol: central dome, portico with colonnade, flanking wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     28,
+     48
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     22,
+     27
+    ]
+   },
+   "at": [
+    -22,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    22,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 5,
+    "height": 9,
+    "columns": 6,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#ffffff",
+    "roofColour": "#e2dfd6"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    12.9
+   ],
+   "params": {
+    "profile": [
+     [
+      10.5,
+      0,
+      "#f1eee6"
+     ],
+     [
+      10.5,
+      2.4,
+      "#f1eee6"
+     ],
+     [
+      11.2,
+      2.6,
+      "#ffffff"
+     ],
+     [
+      9.2,
+      3.0,
+      "#ffffff"
+     ],
+     [
+      8.2,
+      4.6,
+      "#f4f1e9"
+     ],
+     [
+      8.4,
+      9.0,
+      "#f4f1e9"
+     ],
+     [
+      9.2,
+      9.4,
+      "#ffffff"
+     ],
+     [
+      7.6,
+      9.8,
+      "#ffffff"
+     ],
+     [
+      7.2,
+      10.0,
+      "#e6e3da"
+     ],
+     [
+      5.8,
+      12.2,
+      "#e6e3da"
+     ],
+     [
+      3.6,
+      15.0,
+      "#e0ddd3"
+     ],
+     [
+      1.4,
+      17.6,
+      "#e0ddd3"
+     ],
+     [
+      0.6,
+      18.2,
+      "#e0ddd3"
+     ],
+     [
+      0.0,
+      18.6,
+      "#e0ddd3"
+     ]
+    ],
+    "segments": 28
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    0,
+    31.4
+   ],
+   "params": {
+    "baseWidth": 0.8,
+    "height": 5,
+    "colour": "#d6d3c8"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/steps",
+     "params": {
+      "width": 30,
+      "rise": 0.9,
+      "run": 2.2,
+      "count": 4,
+      "colour": "#dcd8cc"
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     -34,
+     0
+    ],
+    "end": [
+     0,
+     -34,
+     0
+    ],
+    "count": 1
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "market-open/flagpole",
+     "params": {
+      "height": 10,
+      "colour": "#c9ccd0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -42,
+     0
+    ],
+    "end": [
+     30,
+     -42,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-community-notices",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "footprint-only, no photo of the building; dome/portico proportions from knowledge of the US Capitol copy; never rendered (queue down)"
+ }
+}

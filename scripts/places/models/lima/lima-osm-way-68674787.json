@@ -1,0 +1,254 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_Plaza_Lima.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jorge Royal Plaza",
+   "view": "front",
+   "file": "/tmp/places-evidence/lima/royal.jpg",
+   "used": "tall front block of yellow vertical louvres over a dark ground-floor opening, deep violet-blue sign band at the top (blank), blue, salmon and green boxy blocks stepping away to the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/458784113",
+   "used": "containing building: 71 x 19 m retail, 1 level: overall footprint scale and rotation"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "louvre-block",
+   "footprint": {
+    "rect": [
+     30,
+     19
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d6c43a",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "colour": "#d6c43a",
+     "spacing": 1.1,
+     "width": 0.45,
+     "depth": 0.5,
+     "skipGround": true
+    },
+    "bands": "#2a2a30"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5fa8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     30,
+     19
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 19,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a3f8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3f8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-opening",
+   "footprint": {
+    "rect": [
+     24,
+     2
+    ]
+   },
+   "at": [
+    -22,
+    -9.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c2c30",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867c",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-box",
+   "footprint": {
+    "rect": [
+     24,
+     19
+    ]
+   },
+   "at": [
+    5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#1f3fb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f3fb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "salmon-box",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    24,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f0987a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0987a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-box",
+   "footprint": {
+    "rect": [
+     10,
+     17
+    ]
+   },
+   "at": [
+    36,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8cc04a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8cc04a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    18,
+    -14
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -10,
+    -18
+   ],
+   "params": {
+    "colour": "#202020",
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-osm-way-68674787",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the front photo (yellow louvres, blue/salmon/green boxes) but not rendered or compared: queue down. Height from photo, not OSM 11 m."
+ }
+}

@@ -1,0 +1,169 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/375098025",
+   "used": "real 62 x 44 m quadrilateral footprint, 2 levels"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/National_Gallery_of_Jamaica",
+   "used": "Roy West Building on the Kingston waterfront, moved 1982; modern concrete gallery block with glazed entrance lobby. Commons photos are interiors only and the P18 image is tagged to a different city, so none were used for the exterior."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "fit": 70
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3ddd0",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9c2b4"
+     }
+    ],
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b8b8",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -3,
+    -34
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7e97a3",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd0cc",
+    "parapet": 0.3,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3,
+    -39.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 5,
+    "colour": "#d6d0c2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#7e97a3",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    6,
+    -40,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    9,
+    -40,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 6,
+    "colour": "#4c7d3b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no exterior photo; inferred from text and OSM outline; not render-checked"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-node-4956331011"
+}

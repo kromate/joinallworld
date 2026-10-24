@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/289204122",
+   "used": "rejected: nearest building is the 1949 Guam Congress Building, not the stop"
+  },
+  {
+   "kind": "text",
+   "used": "brief: roadside bus stop with small metal shelter, bench and signage board, teal/grey/cream palette, palms, asphalt"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bay-slab",
+   "footprint": {
+    "rect": [
+     13,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9c9e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "back-panel",
+   "at": [
+    0,
+    1.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.2,
+     0.12
+    ],
+    "z0": 0.5,
+    "height": 2.5,
+    "colour": "#4d7a86",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-panel-l",
+   "at": [
+    -3.54,
+    0.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.9
+    ],
+    "z0": 0.5,
+    "height": 2.5,
+    "colour": "#4d7a86",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "end-panel-r",
+   "at": [
+    3.54,
+    0.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.9
+    ],
+    "z0": 0.5,
+    "height": 2.5,
+    "colour": "#4d7a86",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    0,
+    0.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     7.8,
+     2.6
+    ],
+    "z0": 3.0,
+    "height": 0.16,
+    "colour": "#8f9498",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-fl",
+   "at": [
+    -3.7,
+    -1.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "z0": 0.5,
+    "height": 2.5,
+    "colour": "#b5b8ba",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-fr",
+   "at": [
+    3.7,
+    -1.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.12
+    ],
+    "z0": 0.5,
+    "height": 2.5,
+    "colour": "#b5b8ba",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "at": [
+    0,
+    0.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.5
+    ],
+    "z0": 0.95,
+    "height": 0.06,
+    "colour": "#e8dfc9",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench-leg-l",
+   "at": [
+    -1.4,
+    0.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.4
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#6b6e70",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench-leg-r",
+   "at": [
+    1.4,
+    0.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     0.4
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#6b6e70",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stop-pole",
+   "at": [
+    5.2,
+    -1.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "z0": 0.5,
+    "height": 2.8,
+    "colour": "#b5b8ba",
+    "material": "metal-cladding"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5.2,
+    -1.6,
+    0.5
+   ],
+   "params": {
+    "width": 0.7,
+    "height": 0.5,
+    "bottom": 2.4,
+    "colour": "#4d7a86",
+    "frameColour": "#b5b8ba",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    2.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     3
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this placeholder stop; generic Guam-style shelter from brief"
+ }
+}

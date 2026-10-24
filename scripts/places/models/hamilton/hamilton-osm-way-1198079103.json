@@ -1,0 +1,133 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/423965691",
+   "used": "containing retail block, 5 levels, 44.7 x 43 m footprint"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hamilton,_Bermuda_-_Front_Street_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "panoramio contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/hamilton/mall_front.jpg",
+   "used": "neighbouring Front Street buildings only, NOT this mall: pastel render colours (peach, pale blue, cream), white balustrade balconies, green awnings, white stepped roofs; style reference"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall-block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3d8c0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 3.4,
+    "bands": "#f4f1e8",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8dc",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#2f6b4f",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    8,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#2f6b4f",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -23.4,
+    4.4
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#a9c9dc",
+    "frameColour": "#f4f1e8",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -28
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Queue render not available (render servers dead, heartbeat stale ~55 min) so never compared side by side; no photo of the mall; pastel Bermuda style from neighbouring street photo, ground arcade and balconies not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-way-1198079103"
+}

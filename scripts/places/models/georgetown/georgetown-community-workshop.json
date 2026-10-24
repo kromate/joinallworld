@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/403155534",
+   "used": "Faculty of Natural Sciences Chemistry and Biology building outline (67 x 10.7 m, bearing 107)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_UG.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Loriski",
+   "view": "street",
+   "used": "setting only (flat grass campus, green railings, palm-free open lawns); the teaching block itself is not visible"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "fit": 80
+   },
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.5,
+    "bands": "#7f8f98",
+    "bay": 3.6,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "colour": "#f0ede6"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-core",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     3
+    ],
+    "height": 10,
+    "colour": "#7f8f98",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -20,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.5,
+    "colour": "#2f5e3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "kind": "fence",
+    "colour": "#3d5c4a"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Only the outline is measured; facade, colours, balcony bands and stair core are typed from the campus style, not seen. The photo shows the campus gate, not this block."
+ }
+}

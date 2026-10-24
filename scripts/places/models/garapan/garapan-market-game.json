@@ -1,0 +1,158 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/810905538",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "slab",
+   "params": {
+    "points": [
+     [
+      -9.8,
+      -13
+     ],
+     [
+      9.3,
+      -13.5
+     ],
+     [
+      9.9,
+      13
+     ],
+     [
+      -9.3,
+      13.5
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#bdb9ac",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "hall",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 25,
+    "depth": 18,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_colour": "#2f6b5a",
+    "wall_colour": "#e7e0cf",
+    "post_pitch": 5.0,
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -5,
+    -2,
+    0.25
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 4,
+    "pitch": 3.0,
+    "colours": [
+     "#e7e0cf",
+     "#2f6b5a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    5,
+    -2,
+    0.25
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 4,
+    "pitch": 3.0,
+    "colours": [
+     "#e7e0cf",
+     "#2f6b5a"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.0,
+    "colour": "#2f6b5a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM outline and market type only; roof, open sides and stall layout assumed."
+ }
+}

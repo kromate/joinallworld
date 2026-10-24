@@ -1,0 +1,309 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-osm-way-576678606",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Providence_Stadium_outside.jpg",
+   "licence": "CC BY 2.5",
+   "author": "FrWaters (assumed)",
+   "view": "front",
+   "file": "/tmp/places-evidence/georgetown/576678606_0.jpg",
+   "used": "two curved open stands with pale-green steel columns and green arched roofs, white concrete stair towers, central blue-and-white pavilion block with a dark-green hipped roof, red-brown seats, red laterite ground, tall light mast"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Providence_Stadium,_CPL_2018.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DizzyNN",
+   "view": "interior",
+   "used": "cream-yellow pavilion blocks with pitched roofs, floodlight masts over the stands"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/576678606",
+   "used": "overall size (about 290 x 240 m including the plaza); modelled as a reduced-scale bowl because of the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.8,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     52,
+     44
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#6f9a48",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "id": "west-stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 36,
+    "startDeg": 120,
+    "endDeg": 240,
+    "rows": 16,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 10,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#a8483a",
+    "concreteColour": "#e9ebe6",
+    "underColour": "#d9dcd6",
+    "canopy": {
+     "height": 3.6,
+     "depth": 16,
+     "thickness": 0.6,
+     "slopeDeg": 2,
+     "colour": "#2f7d62",
+     "edgeColour": "#79b896",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "east-stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 36,
+    "startDeg": -60,
+    "endDeg": 60,
+    "rows": 16,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 10,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#a8483a",
+    "concreteColour": "#e9ebe6",
+    "underColour": "#d9dcd6",
+    "canopy": {
+     "height": 3.6,
+     "depth": 16,
+     "thickness": 0.6,
+     "slopeDeg": 2,
+     "colour": "#2f7d62",
+     "edgeColour": "#79b896",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -44
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9fd6",
+    "glassColour": "#33506b",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#f1f1ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#1f6b55",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-ground",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -50
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ea",
+    "glassColour": "#33506b",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#1f6b55",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 50,
+    "startDeg": 125,
+    "endDeg": 235,
+    "count": 7,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.4,
+        1.4
+       ],
+       "z0": 0,
+       "height": 14,
+       "colour": "#b5d9bf"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 50,
+    "startDeg": -55,
+    "endDeg": 55,
+    "count": 7,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.4,
+        1.4
+       ],
+       "z0": 0,
+       "height": 14,
+       "colour": "#b5d9bf"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 54,
+    "startDeg": 40,
+    "endDeg": 320,
+    "count": 6,
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "lamp",
+      "params": {
+       "height": 30
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "never rendered or compared: the render queue had no live workers; composition from photos only (stand arcs, canopies, pavilion and arc angles untested)"
+ }
+}

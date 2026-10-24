@@ -1,0 +1,563 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Garapan_Kristo_Rai_Church.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/garapan/kristo.jpg",
+   "used": "white modernist facade: low three-arch podium arcade, flared central bell tower with cross, flanking white blocks, parking forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1111959454",
+   "used": "parish compound (111 x 85 m) context only; the church itself is modelled from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium-arcade",
+   "footprint": {
+    "rect": [
+     42,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f3ef",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 13.5,
+      "opening": 0.86,
+      "height": 0.84,
+      "depth": 4,
+      "faces": [
+       "front"
+      ],
+      "colour": "#bdbab2"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f3ef",
+    "material": "concrete",
+    "overhang": 1.3,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "left-block",
+   "at": [
+    -12.5,
+    -1.5
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#f3f3ef",
+    "z0": 5,
+    "windows": "none",
+    "rect": [
+     9,
+     9
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "right-block",
+   "at": [
+    12.5,
+    -1.5
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#dcdcd5",
+    "z0": 5,
+    "windows": "none",
+    "rect": [
+     9,
+     9
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f3ef",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f3ef",
+    "material": "concrete",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -3.2,
+    5
+   ],
+   "params": {
+    "height": 2.8,
+    "colour": "#2b2e30",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     3,
+     0.4
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "shrubs",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -17,
+     0,
+     0
+    ],
+    "end": [
+     17,
+     0,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "id": "s",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "height": 0.9,
+      "colour": "#4c7a3a",
+      "z0": 0,
+      "windows": "none",
+      "rect": [
+       2.4,
+       1.6
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -33,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower-l",
+   "at": [
+    0,
+    -2,
+    5
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#f6f6f2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.5,
+       3.6
+      ],
+      "cx": -3.4
+     },
+     {
+      "z": 4,
+      "rect": [
+       3.6,
+       3.2
+      ],
+      "cx": -2.4
+     },
+     {
+      "z": 8,
+      "rect": [
+       1.8,
+       2.8
+      ],
+      "cx": -1.7
+     },
+     {
+      "z": 13,
+      "rect": [
+       1.2,
+       2.6
+      ],
+      "cx": -1.4
+     },
+     {
+      "z": 22,
+      "rect": [
+       1.2,
+       2.6
+      ],
+      "cx": -1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower-r",
+   "at": [
+    0,
+    -2,
+    5
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#f6f6f2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.5,
+       3.6
+      ],
+      "cx": 3.4
+     },
+     {
+      "z": 4,
+      "rect": [
+       3.6,
+       3.2
+      ],
+      "cx": 2.4
+     },
+     {
+      "z": 8,
+      "rect": [
+       1.8,
+       2.8
+      ],
+      "cx": 1.7
+     },
+     {
+      "z": 13,
+      "rect": [
+       1.2,
+       2.6
+      ],
+      "cx": 1.4
+     },
+     {
+      "z": 22,
+      "rect": [
+       1.2,
+       2.6
+      ],
+      "cx": 1.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-post",
+   "at": [
+    0,
+    -2,
+    13
+   ],
+   "params": {
+    "height": 24,
+    "colour": "#e9e9e5",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     0.3,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-bar",
+   "at": [
+    0,
+    -2,
+    32
+   ],
+   "params": {
+    "height": 0.3,
+    "colour": "#e9e9e5",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     2.6,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "bell",
+   "at": [
+    0,
+    -2,
+    18.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0.6,
+      0
+     ],
+     [
+      0.45,
+      0.8
+     ],
+     [
+      0.15,
+      1.1
+     ]
+    ],
+    "colour": "#8a7a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit-l0",
+   "at": [
+    -15.5,
+    -6.1
+   ],
+   "params": {
+    "height": 1.4,
+    "colour": "#2b2e30",
+    "z0": 6.4,
+    "windows": "none",
+    "rect": [
+     0.35,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit-l1",
+   "at": [
+    -12.5,
+    -6.1
+   ],
+   "params": {
+    "height": 1.4,
+    "colour": "#2b2e30",
+    "z0": 6.4,
+    "windows": "none",
+    "rect": [
+     0.35,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit-l2",
+   "at": [
+    -9.5,
+    -6.1
+   ],
+   "params": {
+    "height": 1.4,
+    "colour": "#2b2e30",
+    "z0": 6.4,
+    "windows": "none",
+    "rect": [
+     0.35,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit-r0",
+   "at": [
+    9.5,
+    -6.1
+   ],
+   "params": {
+    "height": 1.4,
+    "colour": "#2b2e30",
+    "z0": 6.4,
+    "windows": "none",
+    "rect": [
+     0.35,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit-r1",
+   "at": [
+    12.5,
+    -6.1
+   ],
+   "params": {
+    "height": 1.4,
+    "colour": "#2b2e30",
+    "z0": 6.4,
+    "windows": "none",
+    "rect": [
+     0.35,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit-r2",
+   "at": [
+    15.5,
+    -6.1
+   ],
+   "params": {
+    "height": 1.4,
+    "colour": "#2b2e30",
+    "z0": 6.4,
+    "windows": "none",
+    "rect": [
+     0.35,
+     0.3
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   95,
+   75
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-osm-way-1111959454",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes applied (open pale arches, twin-pylon tower with cross, flat slit-window flanks) but NOT yet render-checked: queue had no running server. Shrubs and parking generic."
+ }
+}

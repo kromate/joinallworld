@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/424119495",
+   "used": "real outline: 27 x 19 m nave block with a rounded apse bulge on the front side"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/hamilton.json",
+   "used": "1957-58 plain white modern nave, low-pitch roof, bell cross; no photo found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 3.6,
+    "plinth": 0.35,
+    "trimColour": "#8f9498"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#dcd8cc",
+    "material": "concrete",
+    "pitch": 16,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 11,
+    "colour": "#f0ede4",
+    "topColour": "#e0dcd0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -9.5,
+    11
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 2.6,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -9.5,
+    12.3
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.35
+    ],
+    "height": 0.35,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    1,
+    -15.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.0,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; outline only, roof/bell cross typed; never rendered (no render server alive)"
+ }
+}

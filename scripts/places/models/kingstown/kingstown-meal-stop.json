@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Brief only: black volcanic sand cove, palms, open roofed pavilion and small concession building. Nearest OSM building (13x10 m) is only nearest-quality so used for the concession size, not outline"
+  },
+  {
+   "kind": "text",
+   "used": "No photo of this building found; nearby Commons photos are of Bequia, a different island."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "concession",
+   "footprint": {
+    "rect": [
+     13.6,
+     9.7
+    ]
+   },
+   "at": [
+    14,
+    6
+   ],
+   "rotDeg": 8,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9402f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#c9a26b",
+    "cap_colour": "#a9402f",
+    "floor_colour": "#6b6258"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 8,
+    "colours": [
+     "#2a6f97",
+     "#ffffff",
+     "#c9a26b"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -28,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -4,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ }
+}

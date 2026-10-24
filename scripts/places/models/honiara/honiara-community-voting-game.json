@@ -1,0 +1,187 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Honiara_City_Council_buildings_and_Central_Magistrates_Court_precinct.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Phenss",
+   "view": "street",
+   "file": "/tmp/places-evidence/honiara/council1.jpg",
+   "used": "precinct panorama: two-storey office buildings in blue-teal and green paint with red-brown corrugated roofs, white window frames, small hip-roofed green pavilion, minibuses on gravel forecourt. Building identity inside the panorama is approximate. UNCONFIRMED that this precinct panorama shows the venue; colours and forms are indicative only."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/723910078",
+   "used": "the 44 x 26 m rotated outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9fb0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#5e8f5c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5a4a",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.9,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "depth": 2.6,
+    "height": 3.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    36,
+    -12
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5e8f5c",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "pyramid",
+    "colour": "#f0f0ec",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#f4f4f0",
+    "count": 3,
+    "spacing": 3.6,
+    "kind": "minibus"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "height": 3.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     26
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: queue down. Colours from the precinct panorama; which building is the council is uncertain."
+ }
+}

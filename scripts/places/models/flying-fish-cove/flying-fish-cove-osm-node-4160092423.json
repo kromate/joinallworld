@@ -1,0 +1,159 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/4160092423",
+   "used": "location only; no building outline"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/flying-fish-cove.json",
+   "used": "brief facts; no photo found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "office-tower/rail-track",
+   "at": [
+    -20,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 44,
+    "tracks": 2,
+    "spacing": 3.2,
+    "gauge": 0.76
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    12,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b5a45",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a4a38",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "loading-shed",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a0a39a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a4a38",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 5,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 5,
+    "spread": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     25,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-osm-node-4160092423",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo, no outline; rail and sheds are typical from the brief"
+ }
+}

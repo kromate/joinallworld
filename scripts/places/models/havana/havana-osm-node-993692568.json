@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-osm-node-993692568",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/427697144",
+   "used": "real 14x12 m footprint, 4 building levels"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Guarida_Building_(3208146670).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr uploader (Commons category La Guarida, Havana)",
+   "view": "interior",
+   "used": "colours only: faded ochre/cream render, grey-green dado, worn marble. Interiors and courtyard only: no street exterior photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 17.5,
+   "storeys": 4,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d6c7a2",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#b9ae92",
+    "groundKind": "arcade",
+    "groundHeight": 5.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -7,
+    5.2
+   ],
+   "params": {
+    "length": 10,
+    "floors": 3,
+    "storeyHeight": 4.1,
+    "proud": 1.1,
+    "rail": true,
+    "railHeight": 1.0,
+    "colour": "#a39a84"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -7.05,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 4.6,
+    "depth": 0.5,
+    "archWidth": 3.0,
+    "springHeight": 3.3,
+    "pointed": false,
+    "colour": "#7c6a52"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "osm",
+   "at": [
+    2,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.3,
+    "tankHeight": 2.2,
+    "legHeight": 2.4,
+    "legs": 4,
+    "colour": "#8a8f92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-neighbour",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -13,
+    0
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c8b58c",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f89",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-neighbour",
+   "footprint": {
+    "rect": [
+     11,
+     12
+    ]
+   },
+   "at": [
+    12.5,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b9c3b0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f89",
+    "parapet": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

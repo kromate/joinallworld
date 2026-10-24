@@ -1,0 +1,255 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FAT_Boeing_757_Palau_Airport_Spijkers.jpg",
+   "licence": "GFDL",
+   "author": "Paul Spijkers",
+   "view": "back",
+   "file": "/tmp/places-evidence/koror/airport.jpg",
+   "used": "tall red-roofed A-frame hall with glazed gable, lower red hip-roofed wings, tan walls, pale-blue roofed annex to the left, control hut right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1339316389",
+   "used": "overall size only (about 80 x 74 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 172,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     26
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b9a0",
+    "windows": "none",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e2b2b",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -25,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcbfa4",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8e2b2b",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    27,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcbfa4",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8e2b2b",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -52,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6dc",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8fb7c9",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-gable",
+   "footprint": {
+    "rect": [
+     10,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    15.2
+   ],
+   "rotDeg": 0,
+   "z0": 6,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a3a46",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a3a46"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 38,
+    "depth": 6,
+    "height": 4.2,
+    "colour": "#c9c5b8",
+    "columns": 6
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    40,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "style": "round",
+    "colour": "#e4e0d4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 4.5,
+    "colour": "#7a2020"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-airport-koror-airport",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "photo-composed but never rendered or compared (render queue had no live server); roof pitch, hall orientation of the glazed gable and annex colours unchecked"
+ }
+}

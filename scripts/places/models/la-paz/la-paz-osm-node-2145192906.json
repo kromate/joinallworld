@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-node-2145192906",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/936997772",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "brief la-paz-osm-node-2145192906",
+   "used": "column on stepped base with flags and low fence wall; the memorial shape is not documented"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "field-plinth",
+   "footprint": {
+    "rect": [
+     26,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a9a08c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.25,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "height": 18,
+    "base_width": 5,
+    "style": "square",
+    "steps": 3
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -12
+     ],
+     [
+      12,
+      -12
+     ],
+     [
+      12,
+      12
+     ],
+     [
+      -12,
+      12
+     ],
+     [
+      -12,
+      -12
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.3,
+    "colour": "#8e8f8a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -10,
+    0.5
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 9,
+    "colours": [
+     "#d52b1e",
+     "#f9e300",
+     "#007934"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Only the battlefield outline (348 x 156 m site) exists; the memorial itself is modelled at plausible scale from the brief."
+ }
+}

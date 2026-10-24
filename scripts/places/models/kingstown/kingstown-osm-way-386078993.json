@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-way-386078993",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/386078993",
+   "used": "real six-sided outline (27 x 26 m), name match"
+  },
+  {
+   "kind": "text",
+   "used": "two storeys, hip red roof and rendered walls from the brief (no photo of the building found; the nearby Botanical Garden photos are a different place)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "fit": 30
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#ffffff",
+    "pattern": {
+     "type": "louvres",
+     "faces": [
+      "right"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9402f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 1.4,
+    "count": 3,
+    "colour": "#b8b2a4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#2a6f97",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.5,
+    "colours": [
+     "#2a6f97",
+     "#f2c94c"
+    ]
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -14,
+    -28,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "colour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue down). No photo of the building; look typed from brief."
+ }
+}

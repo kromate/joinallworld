@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "grytviken",
+ "venueId": "grytviken-airport-grytviken-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/grytviken.json",
+   "used": "brief: red corrugated shed beside marked pad; nearest OSM building is the Engineers Workshop (21 m away, different building) so only its size 27x20 m is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d3b2a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "bands": "#7a4a36"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2e",
+    "material": "corrugated",
+    "overhang": 0.6,
+    "rise": 3.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lean-to",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    10,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7a4a36",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.2,
+    "colour": "#6b3a30",
+    "material": "corrugated",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad",
+   "at": [
+    -4,
+    -24
+   ],
+   "params": {
+    "rect": [
+     18,
+     18
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#7d8183"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pad-mark",
+   "at": [
+    -4,
+    -24
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "z0": 0.25,
+    "height": 0.05,
+    "colour": "#ece9e1"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -16,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#ece9e1",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or reliable outline of the helipad exists; shed sized from the Engineers Workshop, pad is a plain grey square with a pale marking"
+ }
+}

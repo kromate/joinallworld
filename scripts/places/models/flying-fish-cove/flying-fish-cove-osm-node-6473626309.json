@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-osm-node-6473626309",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Brief only (clifftop lookout, small corrugated shelter, cliff-edge barrier); no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ledge",
+   "at": [
+    0,
+    3
+   ],
+   "params": {
+    "rect": [
+     14,
+     10
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#c9c2ac",
+    "topColour": "#c9c2ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "z0": 1.0,
+    "height": 0.2,
+    "colour": "#9a7a54",
+    "topColour": "#9a7a54"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    3,
+    1.2
+   ],
+   "params": {
+    "width": 4.5,
+    "depth": 3.2,
+    "height": 2.6,
+    "roof": "gable",
+    "rise": 0.9,
+    "posts": 4,
+    "colour": "#9a7a54",
+    "cap_colour": "#6a6f73"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    -0.4,
+    1.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 7,
+    "height": 1.1,
+    "colour": "#9a7a54"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -3.5,
+    2,
+    1.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5,
+    "height": 1.1,
+    "colour": "#9a7a54"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    3.5,
+    2,
+    1.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 5,
+    "height": 1.1,
+    "colour": "#9a7a54"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    8.5,
+    1.0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c9c2ac"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     -4
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "text only; shelter and cliff barrier typed from brief"
+ }
+}

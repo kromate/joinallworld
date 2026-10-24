@@ -1,0 +1,812 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grand_Turk_Lighthouse_-_51342317219.jpg",
+   "licence": "see Commons page",
+   "author": "see Commons page",
+   "view": "side",
+   "file": "/tmp/places-evidence/cockburn-town/lh1.jpg",
+   "used": "green-roofed open picnic shelter on timber posts on a concrete slab, white tower behind, white keeper cottage, wind-bent casuarina trees, pale sandy-limestone ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Historic_Lighthouse_Park_on_Grand_Turk.jpg",
+   "licence": "see Commons page",
+   "author": "see Commons page",
+   "view": "front",
+   "used": "white post-and-rail fencing, grass patches"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/410381414",
+   "used": "park outline 64 x 58 m (name match) as the ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e2d6b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2d6b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "keeper-house",
+   "footprint": {
+    "rect": [
+     5.5,
+     3.6
+    ]
+   },
+   "at": [
+    10,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f0e6",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a4a",
+    "rise": 1.3,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney",
+   "footprint": {
+    "rect": [
+     1.3,
+     1.3
+    ]
+   },
+   "at": [
+    12.2,
+    2.0
+   ],
+   "z0": 2.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f0e6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -28,
+    -30,
+    0.2
+   ],
+   "params": {
+    "length": 56,
+    "height": 1.2,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -28,
+    30,
+    0.2
+   ],
+   "params": {
+    "length": 56,
+    "height": 1.2,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -6,
+      -30
+     ],
+     [
+      -6,
+      0
+     ],
+     [
+      -6,
+      5
+     ],
+     [
+      14,
+      -5
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#f0ebe0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    3.6,
+    0.2
+   ],
+   "params": {
+    "width": 1.6,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    -6,
+    8,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#d9c58a",
+    "profile": [
+     [
+      1.9,
+      0,
+      "#e0d2a0"
+     ],
+     [
+      1.9,
+      0.8
+     ],
+     [
+      1.8,
+      1.0,
+      "#d9c58a"
+     ],
+     [
+      1.7,
+      4
+     ],
+     [
+      1.55,
+      9,
+      "#d4bf80"
+     ],
+     [
+      1.35,
+      12.5,
+      "#c9a95e"
+     ],
+     [
+      1.2,
+      15.4,
+      "#d9c58a"
+     ],
+     [
+      1.2,
+      15.8
+     ],
+     [
+      1.9,
+      16.0,
+      "#c9a95e"
+     ],
+     [
+      1.9,
+      16.25,
+      "#8a5a30"
+     ],
+     [
+      1.2,
+      16.3,
+      "#e6dcc0"
+     ],
+     [
+      1.2,
+      16.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -6,
+    8,
+    16.25
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 1.85,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 16,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.08,
+       0.08
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": 0,
+     "height": 1.0,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#c8b890",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#c8b890"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "gallery-rail",
+   "at": [
+    -6,
+    8,
+    17.2
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#f2efe4",
+    "openTop": true,
+    "profile": [
+     [
+      1.9,
+      0
+     ],
+     [
+      1.9,
+      0.08
+     ],
+     [
+      1.82,
+      0.08
+     ],
+     [
+      1.82,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern",
+   "at": [
+    -6,
+    8,
+    16.3
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#a9bcb0",
+    "profile": [
+     [
+      1.1,
+      0,
+      "#a9bcb0"
+     ],
+     [
+      1.1,
+      2.2
+     ],
+     [
+      1.3,
+      2.3,
+      "#f4f1e6"
+     ],
+     [
+      1.0,
+      2.7
+     ],
+     [
+      0.5,
+      3.2
+     ],
+     [
+      0.1,
+      3.5
+     ],
+     [
+      0.06,
+      4.3,
+      "#2f3235"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -6,
+    8,
+    16.4
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 1.1,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 8,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.07,
+       0.07
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": 0,
+     "height": 2.2,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#f4f1e6",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f4f1e6"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slit0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    6.351
+   ],
+   "z0": 5,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a4a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slit1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    6.448
+   ],
+   "z0": 8.5,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a4a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slit2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    6.545
+   ],
+   "z0": 12,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#3a4a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    14,
+    -8
+   ],
+   "z0": -0.25,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#eeeae0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eeeae0"
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "picnic-shelter",
+   "at": [
+    14,
+    -8,
+    0.25
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "gable",
+    "rise": 2.4,
+    "posts": 10,
+    "colour": "#8a6a45",
+    "cap_colour": "#2f7a4f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-wall",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.5
+    ]
+   },
+   "at": [
+    19,
+    -8
+   ],
+   "z0": 0.25,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7a4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f7a4f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    14,
+    -8,
+    0.25
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3,
+     0
+    ],
+    "end": [
+     3,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "table-set",
+     "params": {
+      "chairs": 0
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grass4",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    -18
+   ],
+   "z0": -0.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f8f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grass5",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    20,
+    12
+   ],
+   "z0": -0.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f8f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grass6",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -24,
+    6
+   ],
+   "z0": -0.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f8f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grass7",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    2,
+    -22
+   ],
+   "z0": -0.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f8f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    12,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "colour": "#46692f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    8,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#46692f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    14,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "colour": "#46692f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    6,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#46692f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -24,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#46692f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -6,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "colour": "#46692f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   80,
+   76
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cockburn-town",
+ "venueId": "cockburn-town-recreation",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "critic fixes applied (large green-roofed pavilion on slab with green gable wall and tables, sandy ground with grass patches, broadleaf trees instead of conifers, slimmer tower) but NOT re-rendered: render servers were down; job queued, cmp unseen"
+ }
+}

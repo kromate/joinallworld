@@ -1,0 +1,25 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "jamestown", "venueId": "jamestown-osm-way-754718688",
+ "verified": "photo",
+ "evidence": [
+  {"kind": "photo", "url": "https://commons.wikimedia.org/wiki/File:Church_218_Baptist_St_Helena_Sandy_Bay_Baptist_Chapel.jpg", "licence": "CC BY-SA 3.0", "author": "Peter Neaum", "view": "front", "file": "/tmp/places-evidence/jamestown/chapel.jpg", "used": "rough grey-tan stone walls, steep gable end with pointed window and arched red door, four lancets on the long side, red corrugated roof, gable-end pinnacles, drystone wall and gate piers with timber gate"},
+  {"kind": "osm", "ref": "way/754718688", "used": "size and orientation (12.7 x 5.4 m, gable end toward the lane)"}
+ ],
+ "camera": {"yawDeg": 38, "pitchDeg": 8, "fovDeg": 34, "aspect": 1.49},
+ "parts": [
+  {"type": "mass", "id": "nave", "footprint": {"rect": [5.4, 12.7]}, "at": [0, 0], "height": 3.4, "storeys": 1,
+   "wall": {"material": "stone", "colour": "#9d8f78", "windows": "pointed-arch", "windowRatio": 0.1, "bay": 2.6, "plinth": 0.3,
+            "faces": {"front": "pointed-arch", "back": "none", "left": "none", "right": "pointed-arch"}},
+   "roof": {"form": "gable", "colour": "#a8505a", "material": "corrugated", "pitch": 38, "overhang": 0.25}},
+  {"type": "mass", "id": "porch", "footprint": {"rect": [2.6, 1.6]}, "at": [0, -7.1], "height": 2.6, "storeys": 1,
+   "wall": {"material": "stone", "colour": "#9d8f78", "windows": "none", "plinth": 0.2},
+   "roof": {"form": "gable", "colour": "#a8505a", "material": "corrugated", "pitch": 35, "overhang": 0.15}},
+  {"type": "prism", "id": "pinnacle-l", "at": [-2.55, -6.2, 3.3], "params": {"rect": [0.5, 0.5], "height": 1.5, "topScale": 0.5, "colour": "#8d8068"}},
+  {"type": "prism", "id": "pinnacle-r", "at": [2.55, -6.2, 3.3], "params": {"rect": [0.5, 0.5], "height": 1.5, "topScale": 0.5, "colour": "#8d8068"}},
+  {"type": "gate-piers", "at": [0, -13], "params": {"width": 3.2, "height": 1.9}},
+  {"type": "fence-wall", "at": [-9, -13], "params": {"length": 7, "height": 1.2, "thickness": 0.5, "colour": "#8d8068"}},
+  {"type": "fence-wall", "at": [6, -13], "params": {"length": 7, "height": 1.2, "thickness": 0.5, "colour": "#8d8068"}}
+ ],
+ "site": {"ground": "laterite", "forecourt": "none", "extent": [40, 40], "trees": [{"kind": "broadleaf", "at": [6, 3], "height": 4}, {"kind": "broadleaf", "at": [-6, 6], "height": 3}]},
+ "review": {"rounds": 0, "match": "rough", "gaps": ""}
+}

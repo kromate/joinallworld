@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1037933653",
+   "used": "real outline of the mosque (21.8 x 16.9 m), white building colour"
+  },
+  {
+   "kind": "text",
+   "used": "Wikipedia: traditional Maldivian architecture, 16th c., next to Thakurufaanu mausoleum; hip roof inferred; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "osm": true,
+    "fit": 22
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#a8a9a4"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0b4b6",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -17,
+      -17
+     ],
+     [
+      -8,
+      22
+     ],
+     [
+      16,
+      15
+     ],
+     [
+      10,
+      -22
+     ],
+     [
+      -17,
+      -17
+     ]
+    ],
+    "height": 1.6,
+    "thickness": 0.35,
+    "kind": "wall",
+    "colour": "#e8dcc2"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -2,
+    -19.5,
+    0
+   ],
+   "rotDeg": 13,
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: shared render queue servers were dead (stale heartbeat, 300 jobs waiting) so no check round ran"
+ }
+}

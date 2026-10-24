@@ -1,0 +1,168 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/217613994",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: pastel strip mall, arched shop fronts, small entrance tower, parking (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2d9a8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#f3f0e6",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b3a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    -2,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 14,
+    "cap": "hip",
+    "cap_rise": 4,
+    "clock": false,
+    "wall_colour": "#3f9aa5",
+    "roof_colour": "#a64b3a",
+    "trim_colour": "#f3f0e6"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.8,
+    "colours": [
+     "#3f9aa5",
+     "#f3f0e6"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 2.5,
+    "colour": "#3f9aa5",
+    "frameColour": "#f3f0e6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -25
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -10,
+     -30
+    ],
+    "colour": "#b3262b"
+   },
+   {
+    "at": [
+     0,
+     -30
+    ],
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     10,
+     -30
+    ],
+    "colour": "#2f4a6b"
+   },
+   {
+    "at": [
+     20,
+     -30
+    ],
+    "colour": "#222222"
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-osm-way-217613994",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: OSM outline with generic arched pastel strip; tower and shop fronts are guesses"
+ }
+}

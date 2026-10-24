@@ -1,0 +1,111 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston-nf",
+ "venueId": "kingston-nf-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/681850439",
+   "used": "footprint of the tiny corner park (name match, 10 x 6 m)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+   "used": "tiny roadside corner with a seat and small shelter under pines per the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 24,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 2
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#86a064",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#86a064",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "rotDeg": 133,
+   "params": {
+    "width": 3.2,
+    "depth": 2.6,
+    "height": 2.6,
+    "kind": "hip",
+    "roof_colour": "#7c8185"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -2.5,
+    -2,
+    0.5
+   ],
+   "rotDeg": 133,
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3.5,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    3.5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 1,
+    "spread": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

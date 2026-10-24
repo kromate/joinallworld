@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-way-850584945",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_Fort_Charlotte,_Kingstown,_St._Vincent.jpg",
+   "licence": "CC BY 3.0",
+   "author": "giggel",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingstown/fortch-gate.jpg",
+   "used": "battered dark brown-grey rubble stone ramparts with light mortar, low arched gate tunnel with green leaves, concrete coping, bright blue hexagonal lookout with louvred hoods above the wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Vincent,_Karibik_-_Kingstown_-_Looking_north_from_Fort_Charlotte_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "giggel",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kingstown/fortch-hill.jpg",
+   "used": "fort as a low sloped stone mass on the hilltop with cross and blue lookout"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/850584945",
+   "used": "48 x 21 m barracks outline inside the fort"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "battlement-wall",
+   "id": "rampart-n",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "thickness": 3.2,
+    "batter": 0.25,
+    "merlons": false,
+    "points": [
+     [
+      -46,
+      -26
+     ],
+     [
+      -40,
+      -27
+     ],
+     [
+      44,
+      -26
+     ],
+     [
+      52,
+      -6
+     ],
+     [
+      48,
+      22
+     ],
+     [
+      10,
+      34
+     ],
+     [
+      -34,
+      34
+     ],
+     [
+      -48,
+      16
+     ],
+     [
+      -46,
+      -26
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8478",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 4,
+    "bands": "#e8dcc0",
+    "cornice": false,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9402f",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-bastion",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -8,
+    -27
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5f5348",
+    "windows": "none",
+    "faces": {
+     "front": "arched"
+    },
+    "groundKind": "arched",
+    "groundHeight": 3.6,
+    "windowRatio": 0.28,
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.4,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    -8,
+    -27,
+    8.5
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 4.5,
+    "sides": 6,
+    "round": true,
+    "cap": "hip",
+    "capRise": 1.4,
+    "colour": "#2fb3ea",
+    "capColour": "#2fb3ea",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    20,
+    -8,
+    7
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -20,
+    -24,
+    6.8
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    10,
+    -24,
+    6.8
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -38,
+    5,
+    6.8
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 4,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    36,
+    0,
+    6.8
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 4,
+    "yaw": 180
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    56,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "outline of the ramparts is estimated from the 1763-1806 plan description; only the barracks outline is surveyed"
+ }
+}

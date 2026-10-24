@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1038227609",
+   "used": "real marina/jetty outline (143 x 49 m, Male Airport Jetty)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: concrete quay with covered waiting sheds, blue metal roofs, blank sign board, moored dhonis; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "quay",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a9a4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bab5"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "id": "shelter-a",
+   "at": [
+    -38,
+    17,
+    1.0
+   ],
+   "rotDeg": -19.5,
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 4.2,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#5b7fa3",
+    "accent": "#f3f1ea"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "id": "shelter-b",
+   "at": [
+    -4,
+    5,
+    1.0
+   ],
+   "rotDeg": -19.5,
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 4.2,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#5b7fa3",
+    "accent": "#f3f1ea"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "id": "shelter-c",
+   "at": [
+    32,
+    -8,
+    1.0
+   ],
+   "rotDeg": -19.5,
+   "params": {
+    "length": 24,
+    "depth": 7,
+    "height": 4.2,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#5b7fa3",
+    "accent": "#f3f1ea"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "flat-canopy-1",
+   "at": [
+    -20,
+    10,
+    4.5
+   ],
+   "rotDeg": -19.5,
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 5,
+    "height": 3.2,
+    "columns": 2,
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "flat-canopy-2",
+   "at": [
+    14,
+    -2,
+    4.5
+   ],
+   "rotDeg": -19.5,
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 5,
+    "height": 3.2,
+    "columns": 2,
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -62,
+    14,
+    1.0
+   ],
+   "rotDeg": -19.5,
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "bottom": 2.2,
+    "colour": "#5b7fa3"
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    -40,
+    34,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 3.8,
+    "colour": "#f3f1ea",
+    "yaw": 70
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    -8,
+    22,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "width": 3.6,
+    "colour": "#5b7fa3",
+    "yaw": 70
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    30,
+    10,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 3.8,
+    "colour": "#f3f1ea",
+    "yaw": 70
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    60,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "width": 3.4,
+    "colour": "#2f5f8a",
+    "yaw": 70
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    5,
+    1
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: shared render queue servers were dead (stale heartbeat, 300 jobs waiting) so no check round ran"
+ }
+}

@@ -1,0 +1,464 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-airport-lima-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeropuerto_gorge_chavez.png",
+   "licence": "CC0",
+   "author": "Tramandosi",
+   "view": "front",
+   "file": "/tmp/places-evidence/lima/air1.png",
+   "used": "landside front: deep dark roof fascia over a long blue-green glazed upper storey, lower grey concrete deck with two dark glass entrance pavilions and a central recessed entry, balustraded ramps, blue-grey paved forecourt, planters"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeropuerto_Jorge_Chavez_2025b.jpg",
+   "licence": "CC0",
+   "author": "Entorpeditt",
+   "view": "interior",
+   "used": "context only: steel-truss ceiling, concrete round columns"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/lima.json",
+   "used": "2025 terminal, control tower April 2023, jet bridges, scale (portion of 320 m modelled because of scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.57,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     112,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b8b2",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a9a5",
+    "material": "membrane",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     112,
+     26
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 8.5,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f5f7e",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d6166",
+    "material": "metal-sheet",
+    "overhang": 3.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     116,
+     30
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 17.0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#45494d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3e42",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-recess",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 8.0,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a8f94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-l",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    -21
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b3238",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2e2de",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-r",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    30,
+    -21
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b3238",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2e2de",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp-wall-l",
+   "at": [
+    -9,
+    -28
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     22
+    ],
+    "height": 1.8,
+    "colour": "#e4e4e0",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp-wall-r",
+   "at": [
+    9,
+    -28
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     22
+    ],
+    "height": 1.8,
+    "colour": "#e4e4e0",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "paving-field",
+   "at": [
+    0,
+    -42
+   ],
+   "params": {
+    "rect": [
+     90,
+     50
+    ],
+    "height": 0.04,
+    "colour": "#8e9aa6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "paving-stripe",
+   "at": [
+    0,
+    -42
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     50
+    ],
+    "height": 0.06,
+    "colour": "#d6b277"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-l",
+   "at": [
+    -38,
+    -34
+   ],
+   "params": {
+    "rect": [
+     14,
+     3
+    ],
+    "height": 0.9,
+    "colour": "#e6e6e2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-r",
+   "at": [
+    40,
+    -34
+   ],
+   "params": {
+    "rect": [
+     14,
+     3
+    ],
+    "height": 0.9,
+    "colour": "#e6e6e2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-l",
+   "at": [
+    -38,
+    -34
+   ],
+   "params": {
+    "rect": [
+     12.6,
+     2.2
+    ],
+    "height": 0.6,
+    "colour": "#6d5a74",
+    "z0": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant-r",
+   "at": [
+    40,
+    -34
+   ],
+   "params": {
+    "rect": [
+     12.6,
+     2.2
+    ],
+    "height": 0.6,
+    "colour": "#6d5a74",
+    "z0": 0.9
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10.6,
+    15.5
+   ],
+   "params": {
+    "width": 72,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#aab4be",
+    "frameColour": "#6f7a85",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    -48,
+    46,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "round",
+    "colour": "#d6d6d2",
+    "cabColour": "#5d7f93"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    -35,
+    17,
+    6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    0,
+    17,
+    6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/jet-bridge",
+   "at": [
+    35,
+    17,
+    6
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -32
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -36
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dark roof slab, low dark glass band, taller pavilions, chunky ramp walls, blue-grey paving with warm stripe now match; lettering omitted, tower shrunk and moved back, planters/signs simplified."
+ }
+}

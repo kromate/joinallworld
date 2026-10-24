@@ -1,0 +1,149 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522276953",
+   "used": "9.8x9 m outline, height 3.4 m, red roof (nearest building, 8.5 m away); no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 16,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e9a27a",
+    "windows": "louvre",
+    "windowRatio": 0.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    -1,
+    -8
+   ],
+   "rotDeg": 72,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b58a5e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c49a6c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -9,
+    0.5
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     0,
+     0
+    ],
+    "end": [
+     4,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "colour": "#f4f0e6",
+       "profile": [
+        [
+         0.06,
+         0,
+         "#8a8a8a"
+        ],
+        [
+         0.06,
+         2.0
+        ],
+        [
+         1.4,
+         2.1,
+         "#f4f0e6"
+        ],
+        [
+         0.0,
+         2.7
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   45,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; outline and red roof real, deck, umbrellas and wall colour typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-osm-node-3687052434"
+}

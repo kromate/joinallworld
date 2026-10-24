@@ -1,0 +1,117 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/116704222",
+   "used": "irregular 886 m2 outline, 38.8 x 38.4 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b79b5a",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    2,
+    2
+   ],
+   "z0": 3.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "louvre",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b79b5a",
+    "material": "thatch",
+    "pitch": 45,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-osm-way-116704222"
+}

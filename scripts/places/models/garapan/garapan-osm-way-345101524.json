@@ -1,0 +1,919 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saipan_Mount_Carmel_Cathedral.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/garapan/carmel.jpg",
+   "used": "neo-gothic facade: olive-grey stucco with white trim, taller central block with pointed windows and clock pediment, three pointed porch arches, low side aisles with round windows, corner pilasters"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/345101524",
+   "used": "overall plan 63 x 22 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     13,
+     56
+    ]
+   },
+   "at": [
+    -17.5,
+    -3
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a9ab8f",
+    "windows": "round",
+    "windowRatio": 0.3,
+    "windowShape": "round",
+    "bay": 4.2,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe3",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope-l",
+   "at": [
+    -17.5,
+    -30.6
+   ],
+   "params": {
+    "height": 1.6,
+    "colour": "#ecebe3",
+    "z0": 7.5,
+    "windows": "none",
+    "rect": [
+     13,
+     0.8
+    ],
+    "topScale": [
+     1,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rose-l0",
+   "at": [
+    -13.9,
+    -31.15
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#f0efe8",
+    "z0": 2.6,
+    "windows": "none",
+    "rect": [
+     1.5,
+     0.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rosed-l0",
+   "at": [
+    -13.9,
+    -31.3
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#2e3030",
+    "z0": 2.8,
+    "windows": "none",
+    "rect": [
+     0.9,
+     0.12
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rose-l1",
+   "at": [
+    -17.5,
+    -31.15
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#f0efe8",
+    "z0": 2.6,
+    "windows": "none",
+    "rect": [
+     1.5,
+     0.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rosed-l1",
+   "at": [
+    -17.5,
+    -31.3
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#2e3030",
+    "z0": 2.8,
+    "windows": "none",
+    "rect": [
+     0.9,
+     0.12
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rose-l2",
+   "at": [
+    -21.1,
+    -31.15
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#f0efe8",
+    "z0": 2.6,
+    "windows": "none",
+    "rect": [
+     1.5,
+     0.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rosed-l2",
+   "at": [
+    -21.1,
+    -31.3
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#2e3030",
+    "z0": 2.8,
+    "windows": "none",
+    "rect": [
+     0.9,
+     0.12
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "scallop-l",
+   "at": [
+    -23.3,
+    -31,
+    8.0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     11.6,
+     0,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "id": "c",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "height": 0.5,
+      "colour": "#ecebe3",
+      "z0": 0,
+      "windows": "none",
+      "rect": [
+       0.5,
+       0.4
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     13,
+     56
+    ]
+   },
+   "at": [
+    17.5,
+    -3
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a9ab8f",
+    "windows": "round",
+    "windowRatio": 0.3,
+    "windowShape": "round",
+    "bay": 4.2,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe3",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slope-r",
+   "at": [
+    17.5,
+    -30.6
+   ],
+   "params": {
+    "height": 1.6,
+    "colour": "#ecebe3",
+    "z0": 7.5,
+    "windows": "none",
+    "rect": [
+     13,
+     0.8
+    ],
+    "topScale": [
+     1,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rose-r0",
+   "at": [
+    13.9,
+    -31.15
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#f0efe8",
+    "z0": 2.6,
+    "windows": "none",
+    "rect": [
+     1.5,
+     0.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rosed-r0",
+   "at": [
+    13.9,
+    -31.3
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#2e3030",
+    "z0": 2.8,
+    "windows": "none",
+    "rect": [
+     0.9,
+     0.12
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rose-r1",
+   "at": [
+    17.5,
+    -31.15
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#f0efe8",
+    "z0": 2.6,
+    "windows": "none",
+    "rect": [
+     1.5,
+     0.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rosed-r1",
+   "at": [
+    17.5,
+    -31.3
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#2e3030",
+    "z0": 2.8,
+    "windows": "none",
+    "rect": [
+     0.9,
+     0.12
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rose-r2",
+   "at": [
+    21.1,
+    -31.15
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#f0efe8",
+    "z0": 2.6,
+    "windows": "none",
+    "rect": [
+     1.5,
+     0.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rosed-r2",
+   "at": [
+    21.1,
+    -31.3
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#2e3030",
+    "z0": 2.8,
+    "windows": "none",
+    "rect": [
+     0.9,
+     0.12
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "scallop-r",
+   "at": [
+    11.7,
+    -31,
+    8.0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     11.6,
+     0,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "id": "c",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "height": 0.5,
+      "colour": "#ecebe3",
+      "z0": 0,
+      "windows": "none",
+      "rect": [
+       0.5,
+       0.4
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     22,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -27.5
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a9ab8f",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "bay": 3.6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "front": "none"
+    },
+    "bands": "#ecebe3",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe3",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     19,
+     50
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#a9ab8f",
+    "windows": "pointed-arch",
+    "windowRatio": 0.12,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     17,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -31.9
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ecebe3",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 5.4,
+      "opening": 0.8,
+      "height": 0.92,
+      "depth": 1.4,
+      "faces": [
+       "front"
+      ],
+      "colour": "#2e2a24"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe3",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper-trim",
+   "at": [
+    0,
+    -31.1
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#ecebe3",
+    "z0": 11.0,
+    "windows": "none",
+    "rect": [
+     19,
+     0.4
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "upper-win",
+   "at": [
+    0,
+    -31.1,
+    6.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.4,
+     0,
+     0
+    ],
+    "end": [
+     6.4,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "id": "w",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "height": 3.2,
+      "colour": "#2e3338",
+      "z0": 0,
+      "windows": "none",
+      "rect": [
+       1.5,
+       0.25
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "upper-win-trim",
+   "at": [
+    0,
+    -31.0,
+    6.0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.4,
+     0,
+     0
+    ],
+    "end": [
+     6.4,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "id": "w",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "height": 3.7,
+      "colour": "#ecebe3",
+      "z0": 0,
+      "windows": "none",
+      "rect": [
+       1.9,
+       0.2
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balustrade",
+   "at": [
+    0,
+    -31.2
+   ],
+   "params": {
+    "height": 0.8,
+    "colour": "#ecebe3",
+    "z0": 5.4,
+    "windows": "none",
+    "rect": [
+     11,
+     0.25
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier-ledge",
+   "at": [
+    0,
+    -31.2
+   ],
+   "params": {
+    "height": 0.35,
+    "colour": "#ecebe3",
+    "z0": 5.0,
+    "windows": "none",
+    "rect": [
+     19,
+     0.6
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment",
+   "at": [
+    0,
+    -27.5
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#a9ab8f",
+    "z0": 11.0,
+    "windows": "none",
+    "rect": [
+     11,
+     6.5
+    ],
+    "topScale": [
+     0.2,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment-trim",
+   "at": [
+    0,
+    -30.8
+   ],
+   "params": {
+    "height": 0.4,
+    "colour": "#ecebe3",
+    "z0": 11.0,
+    "windows": "none",
+    "rect": [
+     11.2,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock",
+   "at": [
+    0,
+    -30.9
+   ],
+   "params": {
+    "height": 1.9,
+    "colour": "#cfe0e6",
+    "z0": 11.3,
+    "windows": "none",
+    "rect": [
+     1.9,
+     0.25
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statue",
+   "at": [
+    0,
+    -27.5
+   ],
+   "params": {
+    "height": 2,
+    "colour": "#d9d4cb",
+    "z0": 13.6,
+    "windows": "none",
+    "rect": [
+     0.8,
+     0.8
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-fl",
+   "at": [
+    -9.8,
+    -30.6
+   ],
+   "params": {
+    "height": 12.8,
+    "colour": "#ecebe3",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-fr",
+   "at": [
+    9.8,
+    -30.6
+   ],
+   "params": {
+    "height": 12.8,
+    "colour": "#ecebe3",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-wl",
+   "at": [
+    -24,
+    -30.6
+   ],
+   "params": {
+    "height": 8.4,
+    "colour": "#ecebe3",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "corner-wr",
+   "at": [
+    24,
+    -30.6
+   ],
+   "params": {
+    "height": 8.4,
+    "colour": "#ecebe3",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     1.3,
+     1.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "marble-rail",
+   "at": [
+    16,
+    -39
+   ],
+   "params": {
+    "height": 1.0,
+    "colour": "#efeeea",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     10,
+     1.2
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -32,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   70,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-osm-way-345101524",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes applied (wide low massing, 3 pointed porch arches, upper window tier, pediment, rosettes, scallop trim, railing) but NOT render-checked: no render server. Side-aisle parapets are stepped flat, not truly sloped; clock is a square."
+ }
+}

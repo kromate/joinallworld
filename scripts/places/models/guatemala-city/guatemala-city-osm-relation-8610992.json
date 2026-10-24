@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-relation-8610992",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1265253450",
+   "used": "real 48 x 21 m outline, bearing 107 deg; name match distance 0"
+  },
+  {
+   "kind": "text",
+   "ref": "brief + wikidata Q7894344",
+   "used": "private university in Fraijanes, 3 storeys, pale render with blue glazing (modern campus guess, no building photo found: Commons geo photos are of the nearby zoo/airport)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efebe2",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#9aa4ab"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 9,
+    "pitch": 2.2,
+    "depth": 0.5,
+    "colour": "#4f7fa6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -12
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f7fa6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    34,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 14,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -36,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Render queue server was down; not rendered. No building photo exists; footprint-only massing, colours typed."
+ }
+}

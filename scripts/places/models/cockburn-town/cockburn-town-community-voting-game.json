@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cockburn-town",
+ "venueId": "cockburn-town-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/410132777",
+   "used": "real angular plan 46 x 34 m, 2 levels (point contained); the Friendship 7 photo in the evidence file shows the airport entrance monument, not this building, so it is not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chambers",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#6f9fb5",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9aa0a3",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "id": "portico",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 5.5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#ffffff",
+    "roofColour": "#6f9fb5"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    -8,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#1c3f94",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    -10,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    24,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo of the building; roof is one hip fitted to a bounding rect of an angular plan; portico position guessed."
+ }
+}

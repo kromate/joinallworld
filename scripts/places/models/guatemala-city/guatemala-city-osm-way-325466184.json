@@ -1,0 +1,310 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kaminaljuyu_11.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Simon Burchell",
+   "view": "detail",
+   "file": "/tmp/places-evidence/guatemala-city/p0_0.jpg",
+   "used": "adobe stepped platforms in a trench under an open timber-framed sloping roof, brown earth colour, wood plank walkway"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kaminaljuyu_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Simon Burchell",
+   "view": "detail",
+   "file": "/tmp/places-evidence/guatemala-city/p0_1.jpg",
+   "used": "plastered pale-buff platform edge with a raised lip, earthen colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/325466184",
+   "used": "9 x 5 m museum hut position and bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "mound-big",
+   "params": {
+    "points": [
+     [
+      -26,
+      -14
+     ],
+     [
+      20,
+      -16
+     ],
+     [
+      26,
+      8
+     ],
+     [
+      4,
+      18
+     ],
+     [
+      -24,
+      12
+     ]
+    ],
+    "height": 6.5,
+    "topScale": 0.55,
+    "topOffset": [
+     2,
+     0
+    ],
+    "colour": "#a58a64",
+    "topColour": "#6f8a4a",
+    "material": "mud-render"
+   },
+   "at": [
+    18,
+    10,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mound-low",
+   "params": {
+    "points": [
+     [
+      -12,
+      -8
+     ],
+     [
+      12,
+      -9
+     ],
+     [
+      14,
+      7
+     ],
+     [
+      -10,
+      9
+     ]
+    ],
+    "height": 3.4,
+    "topScale": 0.6,
+    "colour": "#9c8260",
+    "topColour": "#6f8a4a",
+    "material": "mud-render"
+   },
+   "at": [
+    -30,
+    16,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace-1",
+   "params": {
+    "rect": [
+     34,
+     22
+    ],
+    "height": 1.6,
+    "colour": "#b8996a",
+    "topColour": "#c9b58a",
+    "material": "mud-render"
+   },
+   "at": [
+    -12,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace-2",
+   "params": {
+    "rect": [
+     26,
+     16
+    ],
+    "height": 3.2,
+    "colour": "#b08f63",
+    "topColour": "#c9b58a",
+    "material": "mud-render"
+   },
+   "at": [
+    -12,
+    -8,
+    1.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace-3",
+   "params": {
+    "rect": [
+     18,
+     10
+    ],
+    "height": 4.6,
+    "colour": "#a98a60",
+    "topColour": "#c9b58a",
+    "material": "mud-render"
+   },
+   "at": [
+    -12,
+    -8,
+    4.8
+   ]
+  },
+  {
+   "type": "core/canopy",
+   "id": "shelter",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 42,
+    "depth": 30,
+    "height": 8,
+    "thickness": 0.3,
+    "columns": 8,
+    "colour": "#6f6a5c",
+    "edgeColour": "#4a3b2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "polygon": [
+     [
+      -3.7,
+      3.9
+     ],
+     [
+      -1.6,
+      -5.1
+     ],
+     [
+      3.7,
+      -3.9
+     ],
+     [
+      1.6,
+      5.1
+     ]
+    ]
+   },
+   "at": [
+    22,
+    -24
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cdb4",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a8a52",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      -38
+     ],
+     [
+      48,
+      -38
+     ],
+     [
+      48,
+      34
+     ],
+     [
+      -48,
+      34
+     ],
+     [
+      -48,
+      -38
+     ]
+    ],
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#6a6f66"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     28
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     26
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 9
+   }
+  ],
+  "forecourt": "none",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-way-325466184",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not compared to the photo: the shared render queue had no live worker (heartbeats stale since 20:17, jobs queued but never ran). Composed from photos and OSM extents only; triangle counts unmeasured."
+ }
+}

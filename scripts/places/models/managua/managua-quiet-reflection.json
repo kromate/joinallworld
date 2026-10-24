@@ -1,0 +1,146 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/745373172",
+   "used": "22.1 x 17.9 m church outline, bearing 108 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q139437864",
+   "used": "Catholic church, Managua; Commons photo of a same-named church is in Cadiz, Spain, rejected"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -18,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "glassColour": "#8fb8c9",
+    "bands": "#b8b8b2",
+    "plinth": 0.5,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8f91",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     8,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "rotDeg": -18,
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mosque-domed/bellcote",
+   "id": "bell-frame",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "rotDeg": -18,
+   "params": {}
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "rotDeg": -18,
+   "params": {
+    "width": 6,
+    "rise": 0.7,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b8b8b2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-quiet-reflection"
+}

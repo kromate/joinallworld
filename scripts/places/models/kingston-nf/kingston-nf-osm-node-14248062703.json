@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston-nf",
+ "venueId": "kingston-nf-osm-node-14248062703",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Norfolk_Island_jail1.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Steve Daggar",
+   "view": "aerial",
+   "file": "kavha-jail1.jpg",
+   "used": "KAVHA Georgian house massing: two-storey ochre-rendered block, grey slate hip roof, tall chimneys, lower flanking wings, rubble boundary wall, pines, flat lawn; building in photo is not individually identified as the OSM 20 x 11 m building"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/334835505",
+   "used": "20 x 11 m footprint of nearest building (33 m from the point)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 32,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#efcf96",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bay": 2.7,
+    "bands": "#f4ead0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d838c",
+    "material": "slate",
+    "pitch": 26,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -18,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#efcf96",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bay": 2.7,
+    "bands": "#f4ead0",
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d838c",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    19,
+    1
+   ],
+   "rotDeg": 3,
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#efcf96",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bay": 2.7,
+    "bands": "#f4ead0",
+    "cornice": true,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d838c",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annexe",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    30,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#efcf96",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bay": 2.7,
+    "bands": "#f4ead0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d838c",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      62,
+      2
+     ],
+     [
+      62,
+      40
+     ],
+     [
+      0,
+      40
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.8,
+    "kind": "wall",
+    "colour": "#9d9382"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -3,
+    0,
+    8
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.4,
+    "pots": 2,
+    "colour": "#d8b98a"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    4,
+    0,
+    8
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.4,
+    "pots": 2,
+    "colour": "#d8b98a"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    24,
+    1,
+    5.4
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1,
+    "colour": "#d8b98a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -0.5,
+    -6.2,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.6,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#bdb5a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -4
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    12
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -12
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 21
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    30
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT rendered or compared: render queue servers were down (stale heartbeats, no Blender) so massing, roof fit on the OSM outline and colours are unchecked; job is queued"
+ }
+}

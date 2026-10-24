@@ -1,0 +1,181 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston-nf",
+ "venueId": "kingston-nf-osm-node-6385448042",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/652512351",
+   "used": "real irregular outline (containing match, 356 m2)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingston-nf.json#kingston-nf-osm-node-6385448042",
+   "used": "single-storey cafe, pitched grey iron roof, deck, umbrellas; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d6c9a6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bands": "#7d5a45"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7c8185",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.8,
+    "eaveHeight": 2.8,
+    "attachHeight": 3.4,
+    "colour": "#ffffff",
+    "roofColour": "#7c8185"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#7d5a45",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3.5,
+    "colours": [
+     "#f1ede0",
+     "#7d5a45",
+     "#d6c9a6"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "density": 0.3
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0.01
+   ],
+   "params": {
+    "width": 80,
+    "depth": 70,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cockburn-town",
+ "venueId": "cockburn-town-osm-node-5662570237",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522097580",
+   "used": "real footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/cockburn-town.json#cockburn-town-osm-node-5662570237",
+   "used": "open-sided beach bar and grill with a long deck"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9c9a0",
+    "windows": "none",
+    "bands": "#3f8fa8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a64b36",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 26,
+    "width": 3,
+    "height": 0.6,
+    "rails": true,
+    "piles": false,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 4.5,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#3f8fa8",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 2.6,
+    "colour": "#3f8fa8",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only the OSM outline is real; open-sided bar, deck and umbrellas are typed. Nearby Governor's Beach photos do not show the building."
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-way-375141828",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/375141828",
+   "used": "outline (23 x 20 m, name match, Wikidata Q7459956)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Shaare_Shalom_Synagogue",
+   "used": "rebuilt 1912 in concrete block, neoclassical rendered facade, large sanctuary (no photo found: facade colours typed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "sanctuary",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ead8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#8c7a5c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c9296",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.6,
+    "height": 7,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#ffffff",
+    "roofColour": "#8c9296"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#f0ead8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 4,
+    "line": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no render check: shared render queue had no live heartbeat (workers stalled since 20:17); no photo of this place found, composed from OSM outline and brief facts"
+ }
+}

@@ -1,0 +1,603 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._David%27s_Battery_(or_the_Examination_Battery),_St._David%27s,_Bermuda_in_2011.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Sean Pol O Creachmhaoil",
+   "view": "front",
+   "file": "/tmp/places-evidence/hamilton/bat_front.jpg",
+   "used": "pale weathered concrete gun platform with a 6 inch gun in a black shield, grass slope behind, sea horizon"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BL_6_inch_rifle,_with_two_BL_9.2_inch_rifles_beyond,_at_St._David%27s_Battery,_Bermuda,_2011.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/hamilton/bat_guns.jpg",
+   "used": "round concrete gun pits with black pivot-mounted guns, grassy glacis, pale green barracks hut with white roof at right, chain-link fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/181381778",
+   "used": "battery strip outline (168 x 58 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -70,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "battery-ground",
+   "params": {
+    "points": [
+     [
+      -28.2,
+      -40.8
+     ],
+     [
+      -27.4,
+      -49
+     ],
+     [
+      -18.8,
+      -57.7
+     ],
+     [
+      -5.4,
+      -63.9
+     ],
+     [
+      8.7,
+      -65.5
+     ],
+     [
+      12.3,
+      -54.9
+     ],
+     [
+      20.9,
+      -49.8
+     ],
+     [
+      20.5,
+      -40.7
+     ],
+     [
+      18.6,
+      -33.7
+     ],
+     [
+      9.9,
+      -30.9
+     ],
+     [
+      12.7,
+      -12
+     ],
+     [
+      20.1,
+      -12.4
+     ],
+     [
+      25.3,
+      -11.6
+     ],
+     [
+      31.2,
+      -6.9
+     ],
+     [
+      32.7,
+      2.9
+     ],
+     [
+      30,
+      8.4
+     ],
+     [
+      24.5,
+      12
+     ],
+     [
+      17.4,
+      12.4
+     ],
+     [
+      17.4,
+      20.6
+     ],
+     [
+      13.1,
+      25.7
+     ],
+     [
+      8.4,
+      33.2
+     ],
+     [
+      1.3,
+      38.3
+     ],
+     [
+      -4.7,
+      63.6
+     ],
+     [
+      -1,
+      66
+     ],
+     [
+      -0.4,
+      71.8
+     ],
+     [
+      -3.6,
+      74.7
+     ],
+     [
+      -9.3,
+      76
+     ],
+     [
+      -12.3,
+      91.1
+     ],
+     [
+      -9,
+      94.4
+     ],
+     [
+      -7.2,
+      97.9
+     ],
+     [
+      -9.3,
+      102.1
+     ],
+     [
+      -14.5,
+      104.4
+     ],
+     [
+      -18.1,
+      103.1
+     ],
+     [
+      -20.3,
+      100.6
+     ],
+     [
+      -14.3,
+      46.6
+     ],
+     [
+      -9.4,
+      10.4
+     ],
+     [
+      -5.3,
+      -9.4
+     ],
+     [
+      -5.7,
+      -16.3
+     ],
+     [
+      -8.1,
+      -22.3
+     ],
+     [
+      -12,
+      -27.7
+     ],
+     [
+      -16.9,
+      -32.3
+     ],
+     [
+      -22.3,
+      -35.9
+     ]
+    ],
+    "height": 0.8,
+    "colour": "#b6b1a3",
+    "topColour": "#aaa597"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glacis",
+   "params": {
+    "points": [
+     [
+      -34,
+      -60
+     ],
+     [
+      -8,
+      -72
+     ],
+     [
+      26,
+      -52
+     ],
+     [
+      36,
+      -10
+     ],
+     [
+      30,
+      30
+     ],
+     [
+      -2,
+      40
+     ],
+     [
+      -22,
+      -6
+     ]
+    ],
+    "height": 2.2,
+    "topScale": 0.7,
+    "colour": "#6d9a4f",
+    "topColour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pit1",
+   "at": [
+    2,
+    -36,
+    0.8
+   ],
+   "params": {
+    "profile": [
+     [
+      2.8,
+      0
+     ],
+     [
+      4.8,
+      0.1,
+      "#bdb8aa"
+     ],
+     [
+      5.199999999999999,
+      1.1,
+      "#bdb8aa"
+     ],
+     [
+      4.199999999999999,
+      1.1,
+      "#8a8678"
+     ],
+     [
+      2.8,
+      -0.2,
+      "#6f6b5f"
+     ]
+    ],
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pit2",
+   "at": [
+    8,
+    -6,
+    0.8
+   ],
+   "params": {
+    "profile": [
+     [
+      2.8,
+      0
+     ],
+     [
+      4.8,
+      0.1,
+      "#bdb8aa"
+     ],
+     [
+      5.199999999999999,
+      1.1,
+      "#bdb8aa"
+     ],
+     [
+      4.199999999999999,
+      1.1,
+      "#8a8678"
+     ],
+     [
+      2.8,
+      -0.2,
+      "#6f6b5f"
+     ]
+    ],
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pit3",
+   "at": [
+    -1,
+    26,
+    0.8
+   ],
+   "params": {
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      4.2,
+      0.1,
+      "#bdb8aa"
+     ],
+     [
+      4.6,
+      1.1,
+      "#bdb8aa"
+     ],
+     [
+      3.6,
+      1.1,
+      "#8a8678"
+     ],
+     [
+      2.2,
+      -0.2,
+      "#6f6b5f"
+     ]
+    ],
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pit4",
+   "at": [
+    -3,
+    60,
+    0.8
+   ],
+   "params": {
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      4.2,
+      0.1,
+      "#bdb8aa"
+     ],
+     [
+      4.6,
+      1.1,
+      "#bdb8aa"
+     ],
+     [
+      3.6,
+      1.1,
+      "#8a8678"
+     ],
+     [
+      2.2,
+      -0.2,
+      "#6f6b5f"
+     ]
+    ],
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    2,
+    -36,
+    2.2
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 120,
+    "scale": 1.5
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    8,
+    -6,
+    2.2
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 120,
+    "scale": 1.5
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -1,
+    26,
+    2.0
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 120,
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -3,
+    60,
+    2.0
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 120,
+    "scale": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -26,
+    40
+   ],
+   "rotDeg": 3,
+   "z0": 0.8,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8d1bf",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 3.2,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ecebe6",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "magazine-block",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    14,
+    20
+   ],
+   "z0": 0.8,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a598",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    24,
+    -14,
+    0.8
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 2.6,
+    "rise": 1.4,
+    "run": 2.0,
+    "count": 6,
+    "colour": "#b6b1a3"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -40,
+    0.8
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#9aa0a5"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    48,
+    0.8
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#c8c2b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     55
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     70
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Queue render not available (render servers dead, heartbeat stale ~55 min) so never compared side by side; gun pits, barracks and glacis placed by eye from two photos on the OSM strip; positions along the strip approximate."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-way-181381778"
+}

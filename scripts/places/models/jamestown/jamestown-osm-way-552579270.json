@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-osm-way-552579270",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/552579270",
+   "used": "real 12 x 11 m rotated rectangle footprint, restaurant tag"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "polygon": [
+     [
+      -8,
+      -1.2
+     ],
+     [
+      0.1,
+      -8.1
+     ],
+     [
+      8,
+      1.1
+     ],
+     [
+      0,
+      8.1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d3a8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "trimColour": "#f6f3ea",
+    "plinth": 0.3,
+    "bay": 3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3.95,
+    -4.65,
+    0
+   ],
+   "rotDeg": -40.6,
+   "params": {
+    "width": 9,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#2f6b4f",
+     "#f6f3ea"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -7.5,
+    -8.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "radius": 1.3,
+    "height": 2.3,
+    "colours": [
+     "#d9a84a",
+     "#f6f3ea",
+     "#2f6b4f"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -5.6,
+    -6.4,
+    2.8
+   ],
+   "rotDeg": -40.6,
+   "params": {
+    "width": 4,
+    "height": 0.8,
+    "bottom": 2.9,
+    "colour": "#2f6b4f",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": 0,
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; look typed from Jamestown small buildings in the brief; not rendered (queue server down), awning/sign rotation and polygon placement unchecked"
+ }
+}

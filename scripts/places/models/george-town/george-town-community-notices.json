@@ -1,0 +1,121 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/361825308",
+   "used": "real 28 x 20 m outline tagged Department of Motor Vehicles"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#2f6f8f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c3b8",
+    "material": "membrane",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 3.5,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#2f6f8f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    12,
+    -15,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3,
+    "colour": "#b8c4c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-community-notices",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; DMV footprint only; facade, canopy and colours typical Cayman civic, unverified"
+ }
+}

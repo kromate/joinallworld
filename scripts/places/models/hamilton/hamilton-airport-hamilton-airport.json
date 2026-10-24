@@ -1,0 +1,337 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-airport-hamilton-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:LF_Wade_International_Airport_-_Bermuda_(52277553756).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "formulanone",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/hamilton/bda-wade.jpg",
+   "used": "new terminal from the airside: long low pale-grey roof with a taller second roof plane and a skylight strip, teal glazed upper band, cream stone podium with a round porthole window at the left end, jet bridges on the apron side, low white outbuildings and a smaller white annex at the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/260532344",
+   "used": "264 x 92 m: modelled at about 0.45 scale so the whole terminal fits the 118 m scene clamp, long axis kept"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     112,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d9cfa8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4cdb4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    -62,
+    -26
+   ],
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e6e8e6",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6dadc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    64,
+    -28
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1f0ea",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f4f3ee",
+    "rise": 1.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -62,
+    -48,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.45
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-band",
+   "footprint": {
+    "rect": [
+     106,
+     28
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "z0": 3.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f8e9a",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#4a8794",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd6da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-landside",
+   "footprint": {
+    "rect": [
+     112,
+     18
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 6.6,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9dee0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#cfd5d9",
+    "material": "metal-sheet",
+    "rise": 2.4,
+    "overhang": 4.0,
+    "high": "back"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-airside",
+   "footprint": {
+    "rect": [
+     112,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 6.6,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9dee0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d3d9dc",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 4.0,
+    "high": "back"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skylight",
+   "footprint": {
+    "rect": [
+     20,
+     4
+    ]
+   },
+   "at": [
+    16,
+    10
+   ],
+   "z0": 10.2,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fc0cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2e7ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porthole-drum",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -50,
+    -13.5
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a8794",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd6da"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -44,
+    -17,
+    4.5
+   ],
+   "rotDeg": -108,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -34,
+    -17,
+    4.5
+   ],
+   "rotDeg": -108,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -24,
+    -17,
+    4.5
+   ],
+   "rotDeg": -108,
+   "params": {
+    "length": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     26
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered or compared: render queue dead. Composed from the aerial photo; camera yaw/pitch, roof plane heights and jet-bridge orientation unchecked"
+ }
+}

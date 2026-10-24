@@ -1,0 +1,345 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universidad_Mayor_de_San_Andr%C3%A9s_Bolivia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Parallelepiped09",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/la-paz/umsa2.jpg",
+   "used": "Monoblock massing: tall ochre-orange 14-storey Art Deco tower behind a low stone-coloured front hall with flat metal roofs, red-roofed 3-storey wings either side, a pink tall block back right and a grey block back left, grey plinth, forecourt steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fachada_Universidad_Mayor_de_San_Andres.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Santos Win",
+   "view": "front",
+   "file": "/tmp/places-evidence/la-paz/umsa1.jpg",
+   "used": "entrance bay: dark granite piers between five glazed bays, five bronze-framed doors, stepped dark base, sandstone walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/524674413",
+   "used": "identity only: the OSM outline is the whole 167 x 136 m campus, not the Monoblock, so it is not extruded"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-hall",
+   "footprint": {
+    "rect": [
+     84,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c08f",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 1.2,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     27,
+     21
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 0,
+   "height": 53,
+   "storeys": 14,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6a53a",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 0,
+    "faces": {
+     "front": "punched"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8a050",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -31,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b36a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b9504a",
+    "material": "clay-tile",
+    "overhang": 0.4,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     46,
+     13
+    ]
+   },
+   "at": [
+    36,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b36a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b9504a",
+    "material": "clay-tile",
+    "overhang": 0.4,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-left",
+   "footprint": {
+    "rect": [
+     32,
+     20
+    ]
+   },
+   "at": [
+    -38,
+    26
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b3ada0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-right",
+   "footprint": {
+    "rect": [
+     42,
+     17
+    ]
+   },
+   "at": [
+    38,
+    24
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b8a3",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    78,
+    -10
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8a8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8553c",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "rise": 0.7,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#7e7a72"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -32.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     42,
+     0.8
+    ],
+    "height": 11,
+    "colour": "#3a3e44",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -40
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -40
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -40
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     -40
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-node-5273668603",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from two photos but never rendered or compared (render queue dead). Entrance bay detail and mural not modelled."
+ }
+}

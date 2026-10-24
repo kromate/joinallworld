@@ -1,0 +1,112 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/345025136",
+   "used": "real 27x18 m footprint (bent shed outline rotated 46 deg), tagged marketplace"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 38,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.4
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8dfc9",
+    "windows": "louvre",
+    "windowRatio": 0.45,
+    "plinth": 0.5,
+    "faces": {
+     "front": "louvre"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a0a3a5",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 3.4,
+    "colour": "#4d7a86"
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "id": "stalls",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 5,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#4d7a86",
+     "#e8dfc9",
+     "#c9783f"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -24,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 3,
+    "spread": 26
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not render-checked: shared render queue had no live server (stale heartbeat, ~75 jobs waiting); spec validated only"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-way-345025136"
+}

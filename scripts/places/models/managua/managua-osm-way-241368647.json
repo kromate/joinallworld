@@ -1,0 +1,235 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/241368647",
+   "used": "campus plot outline (170 x 86 m) scaled 0.81; its long axis sets the block orientation"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q17042706",
+   "used": "private university founded 2003; three-storey ribbon-window block typed from the brief (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 48,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "polygon": [
+     [
+      -44.5,
+      -56.2
+     ],
+     [
+      7.1,
+      -59.4
+     ],
+     [
+      54.2,
+      51.4
+     ],
+     [
+      -15.4,
+      58.6
+     ],
+     [
+      -19.5,
+      6.2
+     ],
+     [
+      -39.8,
+      8.2
+     ]
+    ]
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block",
+   "at": [
+    -4,
+    2,
+    0.5
+   ],
+   "rotDeg": 67,
+   "params": {
+    "points": [
+     [
+      -34,
+      -8
+     ],
+     [
+      34,
+      -8
+     ],
+     [
+      34,
+      22
+     ],
+     [
+      22,
+      22
+     ],
+     [
+      22,
+      8
+     ],
+     [
+      -34,
+      8
+     ]
+    ],
+    "height": 11,
+    "storeys": 3,
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "colour": "#efe5c8",
+    "trimColour": "#5b7fa3",
+    "glassColour": "#5b7fa3",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#efe5c8",
+      "#e3d6b2"
+     ]
+    }
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -26,
+    0.5
+   ],
+   "rotDeg": 67,
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#5b7fa3",
+    "edgeColour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    22,
+    -34,
+    3.2
+   ],
+   "rotDeg": 67,
+   "params": {
+    "width": 8,
+    "height": 1.8,
+    "colour": "#5b7fa3"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    18,
+    -38,
+    0.5
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    34,
+    -16,
+    0.5
+   ],
+   "rotDeg": 67,
+   "params": {
+    "count": 8,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    -30,
+    0.5
+   ],
+   "params": {
+    "width": 16,
+    "depth": 14,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    36,
+    0.5
+   ],
+   "params": {
+    "width": 16,
+    "depth": 14,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (render queue had no live worker). No photo found; real plot outline and brief only. Block shape, colours and canopy typed from Managua style."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-way-241368647"
+}

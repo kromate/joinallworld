@@ -1,0 +1,436 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-way-606591976",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Statue_of_Chef_Quipuha_\u30ad\u30d7\u30cf\u306e\u50cf_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "hasano_jp",
+   "view": "front",
+   "file": "/tmp/places-evidence/hagatna/quip0.jpg",
+   "used": "bronze standing statue on stepped concrete plinth, white low curved walls, red-leaved hedge, steps, lamp post, big flame trees, kerb"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/606591976",
+   "used": "park outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 44,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f9498",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f9a45"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mound",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#6aa84f",
+    "profile": [
+     [
+      14,
+      0
+     ],
+     [
+      13,
+      0.4
+     ],
+     [
+      11,
+      0.7
+     ],
+     [
+      0,
+      0.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 14.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 22,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "id": "w",
+     "params": {
+      "rect": [
+       4.2,
+       0.6
+      ],
+      "height": 1.1,
+      "colour": "#f2f0ea"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.15
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 12.6,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 18,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "id": "hedge",
+     "params": {
+      "rect": [
+       3.2,
+       1.2
+      ],
+      "height": 0.7,
+      "colour": "#7a2e3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    0,
+    -4,
+    1.15
+   ],
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "height": 0.35,
+    "colour": "#6b6b6b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    0,
+    -3,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 0.35,
+    "colour": "#6b6b6b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-l",
+   "at": [
+    -8,
+    -1,
+    1.15
+   ],
+   "params": {
+    "rect": [
+     8,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-r",
+   "at": [
+    8,
+    -1,
+    1.15
+   ],
+   "params": {
+    "rect": [
+     8,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0,
+    1.85
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 1.6,
+    "colour": "#c9c4b6",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "loft",
+   "id": "statue",
+   "at": [
+    0,
+    0,
+    3.45
+   ],
+   "params": {
+    "colour": "#4a4540",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.5,
+       0.3
+      ]
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.45,
+       0.3
+      ]
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       0.5,
+       0.32
+      ]
+     },
+     {
+      "z": 2.3,
+      "ellipse": [
+       0.55,
+       0.3
+      ]
+     },
+     {
+      "z": 2.8,
+      "ellipse": [
+       0.35,
+       0.3
+      ]
+     },
+     {
+      "z": 3.0,
+      "circle": 0.25
+     },
+     {
+      "z": 3.4,
+      "circle": 0.27
+     },
+     {
+      "z": 3.7,
+      "circle": 0.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "lamp",
+   "at": [
+    10,
+    -9,
+    1.15
+   ],
+   "params": {
+    "section": {
+     "circle": 0.07
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      5
+     ]
+    ],
+    "colour": "#2b3a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamphead",
+   "at": [
+    10,
+    -9,
+    6.15
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 1.0,
+    "colour": "#e8e8e8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -2,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    12,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    8,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    10,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    12,
+    0.25
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    27,
+    -8,
+    0.25
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -8,
+    0.25
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the photo but never rendered or compared: the render queue servers were down (no heartbeat). Needs a check round."
+ }
+}

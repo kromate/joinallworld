@@ -1,0 +1,606 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:09423_-_Havanna_Capitol_E_facade.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Virtual-Pano",
+   "view": "front",
+   "file": "/tmp/places-evidence/havana/cap2.jpg",
+   "used": "symmetrical plan: two long wings with tall rectangular windows and a flat cornice, central block with name band and 10-column Ionic portico, wide granite stair with statues, double-drum dome with colonnade and ribbed shell with lantern"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parliament_building_of_Cuba_Havanna_El_Capitolio.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Marc-Lautenbacher",
+   "view": "side",
+   "file": "/tmp/places-evidence/havana/cap1.jpg",
+   "used": "warm cream limestone colour, grey ribbed dome shell, peristyle drum, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12639209",
+   "used": "overall extent 206 x 78 m, height 30 m, 5 levels (footprint outline not used: it includes the rotunda ring)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 58,
+  "aspect": 2.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     66,
+     88
+    ]
+   },
+   "at": [
+    -70,
+    0
+   ],
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e4dcc6",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "windowShape": "rect",
+    "plinth": 4,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bands": "#d3cab4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc7b2",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     66,
+     88
+    ]
+   },
+   "at": [
+    70,
+    0
+   ],
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e4dcc6",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "windowShape": "rect",
+    "plinth": 4,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bands": "#d3cab4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc7b2",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     76,
+     92
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 24,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#efe9d8",
+    "windows": "none",
+    "plinth": 4,
+    "cornice": true,
+    "bands": "#d3cab4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d0be",
+    "parapet": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic",
+   "params": {
+    "rect": [
+     44,
+     22
+    ],
+    "z0": 24,
+    "height": 5,
+    "colour": "#efe9d8",
+    "topColour": "#d6d0be"
+   },
+   "at": [
+    0,
+    -34,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "attic-back",
+   "params": {
+    "rect": [
+     50,
+     56
+    ],
+    "z0": 24,
+    "height": 4,
+    "colour": "#efe9d8",
+    "topColour": "#d6d0be"
+   },
+   "at": [
+    0,
+    2,
+    0
+   ]
+  },
+  {
+   "type": "core/portico",
+   "id": "portico",
+   "at": [
+    0,
+    -50,
+    4.6
+   ],
+   "params": {
+    "width": 38,
+    "depth": 9,
+    "height": 19,
+    "columns": 10,
+    "pediment": false,
+    "steps": 0,
+    "colour": "#f1ecde",
+    "roofColour": "#e2dccb"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "stair",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "rise": 0.3,
+    "run": 0.62,
+    "count": 16,
+    "colour": "#bdb8a8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cheeks",
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -52,
+     0
+    ],
+    "end": [
+     20,
+     -52,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6,
+       16
+      ],
+      "z0": 0,
+      "height": 5,
+      "colour": "#bdb8a8",
+      "topColour": "#c9c4b4"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "id": "loggia-w",
+   "at": [
+    -70,
+    -46,
+    4
+   ],
+   "params": {
+    "length": 50,
+    "count": 12,
+    "height": 14,
+    "radius": 0.6,
+    "kind": "round",
+    "beamHeight": 1.2,
+    "colour": "#f1ecde",
+    "roofColour": "#e2dccb"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "id": "loggia-e",
+   "at": [
+    70,
+    -46,
+    4
+   ],
+   "params": {
+    "length": 50,
+    "count": 12,
+    "height": 14,
+    "radius": 0.6,
+    "kind": "round",
+    "beamHeight": 1.2,
+    "colour": "#f1ecde",
+    "roofColour": "#e2dccb"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    0,
+    0,
+    29
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#efe9d8",
+    "profile": [
+     [
+      20,
+      0,
+      "#d3cab4"
+     ],
+     [
+      20,
+      2
+     ],
+     [
+      19,
+      2,
+      "#efe9d8"
+     ],
+     [
+      19,
+      13
+     ],
+     [
+      20.4,
+      13.2,
+      "#d3cab4"
+     ],
+     [
+      20.4,
+      14.5
+     ],
+     [
+      17,
+      14.8,
+      "#efe9d8"
+     ],
+     [
+      17,
+      16
+     ]
+    ],
+    "arcade": {
+     "from": 4,
+     "to": 11,
+     "count": 16,
+     "width": 1.8,
+     "height": 5.6,
+     "sill": 0.5,
+     "shape": "round",
+     "depth": 0.5,
+     "innerColour": "#5a5448"
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "peristyle",
+   "at": [
+    0,
+    0,
+    45
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 14.3,
+    "count": 24,
+    "startDeg": 0,
+    "endDeg": 360,
+    "of": {
+     "type": "prism",
+     "lod": [
+      0,
+      1
+     ],
+     "params": {
+      "radius": 0.75,
+      "n": 8,
+      "z0": 0,
+      "height": 9,
+      "colour": "#f1ecde",
+      "topColour": "#e2dccb"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    0,
+    45
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#b5b3a2",
+    "profile": [
+     [
+      15.8,
+      0,
+      "#e2dccb"
+     ],
+     [
+      15.8,
+      1
+     ],
+     [
+      14.8,
+      1.2
+     ],
+     [
+      14.8,
+      9.2,
+      "#e9e4d6"
+     ],
+     [
+      15.5,
+      9.4
+     ],
+     [
+      15.5,
+      10.2,
+      "#d3cab4"
+     ],
+     [
+      13.6,
+      10.6,
+      "#b9b7a5"
+     ],
+     [
+      13,
+      13
+     ],
+     [
+      11.5,
+      18
+     ],
+     [
+      9.2,
+      23
+     ],
+     [
+      6.5,
+      27.5
+     ],
+     [
+      3.6,
+      30.8
+     ],
+     [
+      2.4,
+      32.2,
+      "#e2dccb"
+     ],
+     [
+      2.4,
+      36
+     ],
+     [
+      3,
+      36.2
+     ],
+     [
+      2.8,
+      38
+     ],
+     [
+      1.2,
+      41
+     ],
+     [
+      0.3,
+      46
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "statues",
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -66,
+     0
+    ],
+    "end": [
+     18,
+     -66,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#5d4a3a",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         4,
+         4
+        ],
+        "colour": "#cfc7b2"
+       },
+       {
+        "z": 2.2,
+        "rect": [
+         4,
+         4
+        ]
+       },
+       {
+        "z": 2.4,
+        "rect": [
+         2.4,
+         2
+        ]
+       },
+       {
+        "z": 6,
+        "ellipse": [
+         1.1,
+         0.9
+        ],
+        "colour": "#5d4a3a"
+       },
+       {
+        "z": 8.2,
+        "circle": 0.6
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamps",
+   "at": [
+    0,
+    -78,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 6,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flags",
+   "at": [
+    -45,
+    -70,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 2,
+    "spacing": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -95,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -95,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     100,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     100,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: shared render queue was down (no worker heartbeat, 93 jobs waiting). Composed from two photos and OSM extents but never compared; dome, portico and wing proportions unchecked."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-community-notices"
+}

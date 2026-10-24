@@ -1,0 +1,626 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Catedral_Metropolitana_de_La_Paz.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Elemaki",
+   "view": "front",
+   "file": "/tmp/places-evidence/la-paz/cat1.jpg",
+   "used": "two square lateral towers with open arched belfries and dark ribbed domes, central pedimented bay with columns, tall nave roof, central dome behind, warm limestone colour, three green doors"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Catedral_de_Nuestra_Se%C3%B1ora_de_La_Paz_-_Fachada.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Miguel Soliz",
+   "view": "side",
+   "file": "/tmp/places-evidence/la-paz/cat2.jpg",
+   "used": "column rhythm of the side elevation, arched windows between pilasters, tower proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/125225477",
+   "used": "overall size 75.6 x 41.2 m, 5 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     25,
+     52
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 20,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cbbb95",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e8f8a",
+    "material": "concrete",
+    "rise": 5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisles",
+   "footprint": {
+    "rect": [
+     41,
+     48
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c8b890",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.8,
+    "cornice": true,
+    "windowShape": "arched",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     41,
+     6
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 21.5,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdbd97",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "cornice": true,
+    "windowShape": "arched",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#bfae86"
+      ],
+      "height": 0.7,
+      "at": 0.5,
+      "proud": 0.25,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tl-base",
+   "footprint": {
+    "rect": [
+     9.5,
+     9.5
+    ]
+   },
+   "at": [
+    -15.5,
+    0
+   ],
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdbd97",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.8,
+    "cornice": true,
+    "windowShape": "arched",
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#bfae86"
+      ],
+      "height": 0.6,
+      "at": 0.5,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tl-belfry",
+   "params": {
+    "rect": [
+     8.6,
+     8.6
+    ],
+    "z0": 22,
+    "height": 9.5,
+    "colour": "#d3c4a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "at": [
+    -15.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tl-cornice",
+   "params": {
+    "rect": [
+     9.6,
+     9.6
+    ],
+    "z0": 31.5,
+    "height": 0.8,
+    "colour": "#bfae86"
+   },
+   "at": [
+    -15.5,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -15.5,
+    0,
+    32.3
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#5e6268",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      3.6,
+      0.8
+     ],
+     [
+      3.2,
+      2.2
+     ],
+     [
+      2.2,
+      3.6
+     ],
+     [
+      1.0,
+      4.5
+     ],
+     [
+      0.3,
+      4.8
+     ],
+     [
+      0.3,
+      6.4
+     ],
+     [
+      0,
+      6.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tr-base",
+   "footprint": {
+    "rect": [
+     9.5,
+     9.5
+    ]
+   },
+   "at": [
+    15.5,
+    0
+   ],
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cdbd97",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.8,
+    "cornice": true,
+    "windowShape": "arched",
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#bfae86"
+      ],
+      "height": 0.6,
+      "at": 0.5,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tr-belfry",
+   "params": {
+    "rect": [
+     8.6,
+     8.6
+    ],
+    "z0": 22,
+    "height": 9.5,
+    "colour": "#d3c4a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "at": [
+    15.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tr-cornice",
+   "params": {
+    "rect": [
+     9.6,
+     9.6
+    ],
+    "z0": 31.5,
+    "height": 0.8,
+    "colour": "#bfae86"
+   },
+   "at": [
+    15.5,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    15.5,
+    0,
+    32.3
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#5e6268",
+    "profile": [
+     [
+      3.6,
+      0
+     ],
+     [
+      3.6,
+      0.8
+     ],
+     [
+      3.2,
+      2.2
+     ],
+     [
+      2.2,
+      3.6
+     ],
+     [
+      1.0,
+      4.5
+     ],
+     [
+      0.3,
+      4.8
+     ],
+     [
+      0.3,
+      6.4
+     ],
+     [
+      0,
+      6.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pediment-gable",
+   "params": {
+    "rect": [
+     19,
+     3
+    ],
+    "z0": 21.5,
+    "height": 3.6,
+    "topScale": [
+     1,
+     0.05
+    ],
+    "colour": "#d4c6a2"
+   },
+   "at": [
+    0,
+    -0.2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -3.6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -8,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "z0": 0,
+      "height": 10.5,
+      "colour": "#d6c9a6",
+      "round": true
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-beam",
+   "params": {
+    "rect": [
+     19,
+     3.4
+    ],
+    "z0": 10.5,
+    "height": 1.2,
+    "colour": "#bfae86"
+   },
+   "at": [
+    0,
+    -3.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-c",
+   "params": {
+    "rect": [
+     3.2,
+     1
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#3f5a4a"
+   },
+   "at": [
+    0,
+    -0.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-l",
+   "params": {
+    "rect": [
+     3.2,
+     1
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#3f5a4a"
+   },
+   "at": [
+    -15.5,
+    -4.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-r",
+   "params": {
+    "rect": [
+     3.2,
+     1
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#3f5a4a"
+   },
+   "at": [
+    15.5,
+    -4.9
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    30,
+    20
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#5e6268",
+    "profile": [
+     [
+      7,
+      0,
+      "#cbbb95"
+     ],
+     [
+      7,
+      3.5
+     ],
+     [
+      7.3,
+      3.5,
+      "#cbbb95"
+     ],
+     [
+      7.3,
+      4.2
+     ],
+     [
+      6.8,
+      4.2,
+      "#5e6268"
+     ],
+     [
+      5.8,
+      7
+     ],
+     [
+      3.8,
+      9.5
+     ],
+     [
+      1.6,
+      10.8
+     ],
+     [
+      0.5,
+      11.2
+     ],
+     [
+      0.5,
+      12.8
+     ],
+     [
+      0,
+      13
+     ]
+    ]
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from two photos but never rendered or compared (render queue workers dead); tower/dome proportions and portico column placement unchecked."
+ }
+}

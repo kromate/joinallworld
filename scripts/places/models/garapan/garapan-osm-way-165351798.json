@@ -1,0 +1,811 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:No._1_Atomic_Bomb_loading_pit,_North_Field_(Tinian),_27_August_2008.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mztourist",
+   "view": "detail",
+   "file": "/tmp/places-evidence/garapan/pit.jpg",
+   "used": "glass-and-steel hip-roofed shelter over the loading pit, concrete kerb, white marble plaque pillar, grey weathered paving, scrub and palms behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B-29s_Landing_on_Tinian_1944.jpg",
+   "licence": "Public domain",
+   "author": "United States Navy",
+   "view": "aerial",
+   "used": "historic context only: bare coral airstrip construction"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q11326323",
+   "used": "identity: WWII airfield on Tinian, no usable OSM outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 20,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "slab",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "height": 0.2,
+    "colour": "#9a978f",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     18,
+     13
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "runway",
+   "at": [
+    0,
+    7.2
+   ],
+   "params": {
+    "height": 0.12,
+    "colour": "#8e8b82",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     18,
+     1.6
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "height": 0.3,
+    "colour": "#d2cfc4",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     11.4,
+     7.4
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pit-floor",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#6a5d4c",
+    "z0": 0.0,
+    "windows": "none",
+    "rect": [
+     9.4,
+     5.4
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pit-wall-n",
+   "at": [
+    0,
+    2.6
+   ],
+   "params": {
+    "height": 1.0,
+    "colour": "#8a7a64",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     9.4,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pit-wall-s",
+   "at": [
+    0,
+    -2.6
+   ],
+   "params": {
+    "height": 1.0,
+    "colour": "#8a7a64",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     9.4,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pit-wall-e",
+   "at": [
+    4.5,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "colour": "#8a7a64",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     0.5,
+     5.4
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pit-wall-w",
+   "at": [
+    -4.5,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "colour": "#8a7a64",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     0.5,
+     5.4
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "glass",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "colour": "#b7cfd2",
+    "material": "glass",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       5
+      ]
+     },
+     {
+      "z": 2.9,
+      "rect": [
+       4.6,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "eave0",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      -4.5,
+      -2.5,
+      0.3
+     ],
+     [
+      4.5,
+      -2.5,
+      0.3
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "hip0",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      -4.5,
+      -2.5,
+      0.3
+     ],
+     [
+      -2.3,
+      -0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "eave1",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      4.5,
+      -2.5,
+      0.3
+     ],
+     [
+      4.5,
+      2.5,
+      0.3
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "hip1",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      4.5,
+      -2.5,
+      0.3
+     ],
+     [
+      2.3,
+      -0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "eave2",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      4.5,
+      2.5,
+      0.3
+     ],
+     [
+      -4.5,
+      2.5,
+      0.3
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "hip2",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      4.5,
+      2.5,
+      0.3
+     ],
+     [
+      2.3,
+      0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "eave3",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      -4.5,
+      2.5,
+      0.3
+     ],
+     [
+      -4.5,
+      -2.5,
+      0.3
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "hip3",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      -4.5,
+      2.5,
+      0.3
+     ],
+     [
+      -2.3,
+      0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ridge",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      -2.3,
+      0,
+      3.2
+     ],
+     [
+      2.3,
+      0,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "raf-3.4-1",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      -3.4,
+      -2.5,
+      0.3
+     ],
+     [
+      -1.7,
+      -0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "raf-3.41",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      -3.4,
+      2.5,
+      0.3
+     ],
+     [
+      -1.7,
+      0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "raf-1.2-1",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      -1.2,
+      -2.5,
+      0.3
+     ],
+     [
+      -0.6,
+      -0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "raf-1.21",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      -1.2,
+      2.5,
+      0.3
+     ],
+     [
+      -0.6,
+      0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "raf1.2-1",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      1.2,
+      -2.5,
+      0.3
+     ],
+     [
+      0.6,
+      -0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "raf1.21",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      1.2,
+      2.5,
+      0.3
+     ],
+     [
+      0.6,
+      0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "raf3.4-1",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      3.4,
+      -2.5,
+      0.3
+     ],
+     [
+      1.7,
+      -0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "raf3.41",
+   "params": {
+    "section": {
+     "rect": [
+      0.09,
+      0.09
+     ]
+    },
+    "points": [
+     [
+      3.4,
+      2.5,
+      0.3
+     ],
+     [
+      1.7,
+      0.25,
+      3.2
+     ]
+    ],
+    "colour": "#b9bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    6.4,
+    -3.4
+   ],
+   "params": {
+    "height": 1.2,
+    "colour": "#e8e7e2",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     0.6,
+     0.6
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque-top",
+   "at": [
+    6.4,
+    -3.4
+   ],
+   "params": {
+    "height": 0.15,
+    "colour": "#d8d7d2",
+    "z0": 1.2,
+    "windows": "none",
+    "rect": [
+     0.62,
+     0.62
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass-a",
+   "at": [
+    -5,
+    -4.6
+   ],
+   "params": {
+    "height": 0.08,
+    "colour": "#6f9a4f",
+    "z0": 0.2,
+    "windows": "none",
+    "rect": [
+     5,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass-b",
+   "at": [
+    2,
+    -5.6
+   ],
+   "params": {
+    "height": 0.08,
+    "colour": "#6f9a4f",
+    "z0": 0.2,
+    "windows": "none",
+    "rect": [
+     6,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grass-c",
+   "at": [
+    10.5,
+    1
+   ],
+   "params": {
+    "height": 0.08,
+    "colour": "#6f9a4f",
+    "z0": 0.2,
+    "windows": "none",
+    "rect": [
+     0.3,
+     5
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 4,
+    "max_height": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 2,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 2,
+    "max_height": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    11,
+    -6.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   34,
+   28
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-osm-way-165351798",
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Shelter rebuilt (glass hip roof, steel ribs, dark pit, marble pillar, compact close camera) but NOT render-checked: no render server. Runway and scrub typed from general knowledge."
+ }
+}

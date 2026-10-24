@@ -1,0 +1,19 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "georgetown", "venueId": "georgetown-osm-way-408614791",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/408614791", "used": "real outline: an irregular 26 x 21 m plan with a main block and a stepped rear wing"}
+ ],
+ "camera": {"yawDeg": 25, "pitchDeg": 18, "fovDeg": 45},
+ "parts": [
+  {"type": "mass", "id": "restaurant", "footprint": {"osm": true, "simplify": 0.5}, "height": 8, "storeys": 2,
+   "wall": {"material": "painted-render", "colour": "#efe6d0", "glassColour": "#4d5a5c", "windows": "punched", "windowRatio": 0.25, "plinth": 0.4, "bay": 4,
+            "pattern": {"type": "bands", "colour": "#b6392c"}},
+   "roof": {"form": "shed", "colour": "#8c8f8f", "material": "corrugated", "pitch": 8, "overhang": 0.6}},
+  {"type": "canopy", "at": [-2, -12, 0], "params": {"form": "flat", "width": 14, "depth": 2.4, "height": 3.2, "thickness": 0.25, "columns": 3, "colour": "#b6392c", "edgeColour": "#8f2a20"}},
+  {"type": "prism", "id": "sign-board", "at": [-2, -10.4, 4.2], "params": {"rect": [7, 0.3], "z0": 0, "height": 1.6, "colour": "#b6392c", "top": true}},
+  {"type": "array", "at": [0, 0, 0], "params": {"mode": "line", "start": [-14, -20], "end": [8, -20], "count": 3, "of": [{"type": "car", "params": {"colour": "#c9c9c9"}}]}}
+ ],
+ "site": {"ground": "asphalt", "forecourt": "road", "forecourtDepth": 10, "trees": [{"kind": "palm", "at": [-24, 12]}, {"kind": "palm", "at": [22, -14]}], "extent": [80, 70]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "no photo exists; plan from OSM, facade, colours and signage are typical for a Georgetown concrete shophouse restaurant"}
+}

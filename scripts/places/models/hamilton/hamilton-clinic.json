@@ -1,0 +1,100 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2355231",
+   "used": "real 227 x 125 m multi-wing outline of the Mid-Atlantic Wellness Institute (simplified, scaled to the 118 m scene clamp)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/hamilton.json",
+   "used": "two-storey pastel wings with white stepped roofs, courtyards (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 1.2
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e3b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.0,
+    "plinth": 0.3,
+    "cornice": true,
+    "bands": "#f4f1e8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f4f2ea",
+    "material": "concrete",
+    "rise": 1.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 4,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 4,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; real outline only, wing heights/colours typed from Bermudian vernacular; scaled to about 0.5 so the campus fits the scene"
+ }
+}

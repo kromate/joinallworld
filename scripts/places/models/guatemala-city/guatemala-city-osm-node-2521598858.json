@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-node-2521598858",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/11018247",
+   "used": "134 x 101 m ground outline: overall size and orientation of pitch and stand"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "single covered stand, four floodlights, perimeter wall"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "rect": [
+     100,
+     64
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f8a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -35,
+     40
+    ],
+    "end": [
+     35,
+     40
+    ],
+    "rows": 10,
+    "seatColour": "#2f6aa0",
+    "concreteColour": "#c0bab0",
+    "firstHeight": 1.2,
+    "backWall": 0.0,
+    "flip": true
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    46,
+    0
+   ],
+   "params": {
+    "width": 72,
+    "depth": 9,
+    "height": 9,
+    "form": "flat",
+    "colour": "#6b6f73",
+    "columns": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.4,
+    "kind": "wall",
+    "colour": "#c0bab0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered; stand orientation (flip) and canopy placement unchecked"
+ }
+}

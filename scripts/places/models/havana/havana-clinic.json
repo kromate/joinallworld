@@ -1,0 +1,268 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/38804278",
+   "used": "campus site only (118,435 m2, 413 x 406 m, hospital amenity, Wikidata Q17514597, founded 1943): used for scale and setting, not as a building outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-h",
+   "footprint": {
+    "kind": "H",
+    "size": [
+     90,
+     40
+    ]
+   },
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 1.0,
+    "bands": "#b9b3a6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-w",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -72,
+    6
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd2b8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b9b3a6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-e",
+   "footprint": {
+    "rect": [
+     28,
+     18
+    ]
+   },
+   "at": [
+    66,
+    10
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "id": "link-w",
+   "at": [
+    -52,
+    6,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#b9b3a6",
+    "roofColour": "#8e8e88"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "params": {
+    "rect": [
+     16,
+     5
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#d6ccb2",
+    "topColour": "#9a9a94"
+   },
+   "at": [
+    0,
+    -22.5,
+    0
+   ]
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "bay",
+   "at": [
+    -26,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "id": "tank-a",
+   "on": "ward-h",
+   "at": [
+    -22,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3,
+    "legHeight": 3.2,
+    "legs": 4,
+    "colour": "#b5b5ae"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "id": "tank-b",
+   "on": "ward-h",
+   "at": [
+    22,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3,
+    "legHeight": 3.2,
+    "legs": 4,
+    "colour": "#b5b5ae"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "cross",
+   "on": "ward-h",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 0.2,
+    "colour": "#c8362f",
+    "frameColour": "#e6e2d8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    12,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#2f4f9d"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    34,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 6,
+    "spread": 6,
+    "line": 110
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this hospital found; H ward block, annexes and tanks follow the brief's typical mid-century Cuban institutional block, only the campus extent and 1943 date are known"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-clinic"
+}

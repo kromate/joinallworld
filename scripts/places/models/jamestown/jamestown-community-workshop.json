@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/557203445",
+   "used": "approximate size only (17.5 x 11.4 m, nearest building, not name-matched)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 48,
+  "aspect": 1.33,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "townhouse",
+   "footprint": {
+    "rect": [
+     17.5,
+     11.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dca4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "rect",
+    "plinth": 0.7,
+    "trimColour": "#f4f1e8",
+    "bands": "#f1ecd6",
+    "faces": {
+     "left": "punched",
+     "right": "none",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f6a62",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-annex",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    11.5,
+    -1.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6f675e",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.3,
+    "trimColour": "#f4f1e8"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f6a62",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3,
+    -5.8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.6,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#4f6f8a",
+     "#e9e6dc"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    3.5,
+    -5.9,
+    2.2
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.9,
+    "bottom": 2.2,
+    "colour": "#5a7f6a",
+    "frameColour": "#f1ecd6",
+    "posts": false
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    4,
+    1,
+    9
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1,
+    "colour": "#a8a294"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "notes": "No photo of this building exists; Jamestown Main Street house style (cream render, grey stone, corrugated hip roof) taken from street photos, size from the nearest OSM building.",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but NOT yet compared: render queue servers were down (no heartbeat since 20:18), job queued; massing, glazing and colours unchecked"
+ }
+}

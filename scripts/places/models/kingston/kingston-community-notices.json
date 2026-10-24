@@ -1,0 +1,300 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hibbert_House_02.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dan Livesay",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingston/hibbert1.jpg",
+   "used": "two storeys, open lattice-screened ground floor behind white columns, cream upper storey with two projecting pedimented bays, window awnings, grey hipped roof, cream low brick wall with iron railings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/375256353",
+   "used": "24.6 x 19.5 m footprint and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.34
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     24.6,
+     19.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 2,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfa9",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b0",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lattice",
+   "footprint": {
+    "rect": [
+     22,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.2
+   ],
+   "rotDeg": 2,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9b98c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b98c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     24.6,
+     19.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 2,
+   "z0": 3.6,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2bb",
+    "windows": "rect",
+    "windowRatio": 0.22,
+    "bay": 2.8,
+    "cornice": true,
+    "faces": {
+     "back": "rect"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c9296",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-left",
+   "footprint": {
+    "rect": [
+     8,
+     2.2
+    ]
+   },
+   "at": [
+    -8.5,
+    -10.4
+   ],
+   "rotDeg": 2,
+   "z0": 3.6,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2bb",
+    "windows": "rect",
+    "windowRatio": 0.25,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9d2bb",
+    "pitch": 24,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-right",
+   "footprint": {
+    "rect": [
+     8,
+     2.2
+    ]
+   },
+   "at": [
+    8.5,
+    -10.4
+   ],
+   "rotDeg": 2,
+   "z0": 3.6,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2bb",
+    "windows": "rect",
+    "windowRatio": 0.25,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9d2bb",
+    "pitch": 24,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.45
+      ],
+      "height": 3.6,
+      "colour": "#f2efe6",
+      "topColour": "#f2efe6"
+     }
+    },
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -10.5,
+     -10.6,
+     0
+    ],
+    "end": [
+     10.5,
+     -10.6,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "awning",
+     "params": {}
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -9,
+     -10.7,
+     5.4
+    ],
+    "end": [
+     9,
+     -10.7,
+     5.4
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.9,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#e6dfc4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -14,
+    -15.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#7a8288"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   52,
+   46
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-community-notices",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: render queue down, no comparison done; gabled bays, lattice ground floor and awnings unchecked against the photo."
+ }
+}

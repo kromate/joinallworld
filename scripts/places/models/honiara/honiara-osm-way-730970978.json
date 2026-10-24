@@ -1,0 +1,309 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/730970978",
+   "used": "campus extent only (272 x 231 m grounds, name match; the polygon is the whole campus, not a building); no photo of the buildings found, so one wing group is modelled as a typical U of two-storey cream blocks around a quad"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     14,
+     48
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#f4f0e6",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "overhang": 0.9,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     48
+    ]
+   },
+   "at": [
+    33,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#f4f0e6",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "overhang": 0.9,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-wing",
+   "footprint": {
+    "rect": [
+     52,
+     14
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#f4f0e6",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "overhang": 0.9,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -27
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f0e6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8473a",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -19,
+     -20,
+     0
+    ],
+    "end": [
+     19,
+     -20,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "covered-walkway",
+      "params": {
+       "length": 14,
+       "width": 2.6,
+       "height": 3,
+       "colour": "#f4f0e6",
+       "roofColour": "#8c8f90"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -25,
+    -5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 28,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#f4f0e6",
+    "roofColour": "#8c8f90"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    25,
+    -5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 28,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#f4f0e6",
+    "roofColour": "#8c8f90"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 1,
+    "colours": [
+     "#2a5fa8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#a8473a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "colour": "#4f8a3f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT rendered: shared render queue had no live server (stale heartbeat since 20:17); never compared to the photo. No building photo; typical U of cream blocks, layout invented."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-way-730970978"
+}

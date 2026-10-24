@@ -1,0 +1,525 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grey_churh.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wiko adonayo",
+   "view": "front",
+   "file": "/tmp/places-evidence/georgetown/qr-cath1.jpg",
+   "used": "grey painted concrete walls, tall gabled west front with a big white arch recess and cross, stepped buttress piers with pale ledges, lower aisles under green metal roofs with white-shuttered arched windows, tall pale lancet windows in the clerestory"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/222811604",
+   "used": "church footprint 66 x 39 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -50,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a2a5a3",
+    "windows": "punched",
+    "plinth": 0.6,
+    "bands": "#c9cac6",
+    "pattern": {
+     "type": "fins",
+     "width": 1.2,
+     "depth": 0.5,
+     "spacing": 6,
+     "colour": "#b4b6b2",
+     "margin": 2
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d7a66",
+    "material": "metal-sheet",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nave",
+   "at": [
+    -2,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     46,
+     15
+    ],
+    "z0": 7,
+    "height": 11,
+    "colour": "#9fa2a0",
+    "topColour": "#8b8e8d",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.7,
+    "bay": 4,
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-1",
+   "at": [
+    -28,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     15,
+     18
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#a2a5a3",
+    "topColour": "#8b8e8d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-2",
+   "at": [
+    -28,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     14,
+     15
+    ],
+    "z0": 10,
+    "height": 4,
+    "colour": "#a2a5a3",
+    "topColour": "#8b8e8d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-3",
+   "at": [
+    -28,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     13,
+     11
+    ],
+    "z0": 14,
+    "height": 3,
+    "colour": "#a2a5a3",
+    "topColour": "#8b8e8d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-4",
+   "at": [
+    -28,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     12,
+     7
+    ],
+    "z0": 17,
+    "height": 1.5,
+    "colour": "#a2a5a3",
+    "topColour": "#8b8e8d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-1",
+   "at": [
+    -28,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     15.6,
+     18.6
+    ],
+    "z0": 9.6,
+    "height": 0.4,
+    "colour": "#c9cac6",
+    "topColour": "#c9cac6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-2",
+   "at": [
+    -28,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     14.6,
+     15.6
+    ],
+    "z0": 13.6,
+    "height": 0.4,
+    "colour": "#c9cac6",
+    "topColour": "#c9cac6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-3",
+   "at": [
+    -28,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     13.6,
+     11.6
+    ],
+    "z0": 16.6,
+    "height": 0.4,
+    "colour": "#c9cac6",
+    "topColour": "#c9cac6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-1",
+   "at": [
+    -35.2,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     0.6,
+     7
+    ],
+    "z0": 1.5,
+    "height": 6,
+    "colour": "#f2f0ea",
+    "topColour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-2",
+   "at": [
+    -35.2,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     0.6,
+     5.2
+    ],
+    "z0": 7.5,
+    "height": 4,
+    "colour": "#f2f0ea",
+    "topColour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-3",
+   "at": [
+    -35.2,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     0.6,
+     3.4
+    ],
+    "z0": 11.5,
+    "height": 3,
+    "colour": "#f2f0ea",
+    "topColour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-4",
+   "at": [
+    -35.2,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     0.6,
+     1.6
+    ],
+    "z0": 14.5,
+    "height": 2,
+    "colour": "#f2f0ea",
+    "topColour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    -35.6,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     0.3,
+     0.5
+    ],
+    "z0": 6,
+    "height": 7,
+    "colour": "#8b8e8d",
+    "topColour": "#8b8e8d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    -35.6,
+    3,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     0.3,
+     2.2
+    ],
+    "z0": 10.5,
+    "height": 0.5,
+    "colour": "#8b8e8d",
+    "topColour": "#8b8e8d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-0-0",
+   "at": [
+    -33.31843303587586,
+    -7.910741040044175,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     2.4,
+     1.8
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#a2a5a3",
+    "topColour": "#b4b6b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-0-1",
+   "at": [
+    -33.31843303587586,
+    -7.910741040044175,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     2.0,
+     1.4
+    ],
+    "z0": 8,
+    "height": 5,
+    "colour": "#a2a5a3",
+    "topColour": "#b4b6b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-0-2",
+   "at": [
+    -33.31843303587586,
+    -7.910741040044175,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     1.6,
+     1.0
+    ],
+    "z0": 13,
+    "height": 3,
+    "colour": "#a2a5a3",
+    "topColour": "#b4b6b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-1-0",
+   "at": [
+    -37.81818029402968,
+    10.136759468689359,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     2.4,
+     1.8
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#a2a5a3",
+    "topColour": "#b4b6b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-1-1",
+   "at": [
+    -37.81818029402968,
+    10.136759468689359,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     2.0,
+     1.4
+    ],
+    "z0": 8,
+    "height": 5,
+    "colour": "#a2a5a3",
+    "topColour": "#b4b6b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-1-2",
+   "at": [
+    -37.81818029402968,
+    10.136759468689359,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "rect": [
+     1.6,
+     1.0
+    ],
+    "z0": 13,
+    "height": 3,
+    "colour": "#a2a5a3",
+    "topColour": "#b4b6b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "at": [
+    10,
+    3
+   ],
+   "rotDeg": 14,
+   "footprint": {
+    "rect": [
+     10,
+     28
+    ]
+   },
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a2a5a3",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.5,
+    "bay": 4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d7a66",
+    "material": "metal-sheet"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -38
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "critic fixes applied (stepped gable front, white pointed arch panel, buttress piers, green gabled aisle roof, transept gable replaces dome) but NOT visually re-checked: render queue had no server heartbeat; shuttered aisle windows and white porch arcade still missing"
+ }
+}

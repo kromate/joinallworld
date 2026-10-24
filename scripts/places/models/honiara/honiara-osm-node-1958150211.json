@@ -1,0 +1,451 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-node-1958150211",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/730970964",
+   "used": "Kukum Campus site polygon (about 394 x 209 m, containing match only, no building outlines); site extent and block orientation only"
+  },
+  {
+   "kind": "text",
+   "used": "brief: several parallel two-storey painted-concrete teaching blocks with louvred verandas around lawns, cream walls, green trim, grey-blue corrugated hip roofs; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "rect": [
+     116,
+     100
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.46,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a4a",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bands": "#6f9a77",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#efe6cf",
+       "#f4f0e6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b78",
+    "pitch": 18,
+    "overhang": 1.2,
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -34.0,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "depth": 2.4,
+    "height": 3.4,
+    "balustrade": true,
+    "steps": false,
+    "roof_colour": "#4f6b78",
+    "wall_colour": "#f4f0e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     58,
+     16
+    ]
+   },
+   "at": [
+    -6,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bands": "#6f9a77",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#efe6cf",
+       "#f4f0e6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b78",
+    "pitch": 18,
+    "overhang": 1.2,
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -6,
+    -6.0,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "depth": 2.4,
+    "height": 3.4,
+    "balustrade": true,
+    "steps": false,
+    "roof_colour": "#4f6b78",
+    "wall_colour": "#f4f0e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     62,
+     16
+    ]
+   },
+   "at": [
+    6,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bands": "#6f9a77",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#efe6cf",
+       "#f4f0e6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b78",
+    "pitch": 18,
+    "overhang": 1.2,
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    6,
+    22.0,
+    0
+   ],
+   "params": {
+    "length": 54,
+    "depth": 2.4,
+    "height": 3.4,
+    "balustrade": true,
+    "steps": false,
+    "roof_colour": "#4f6b78",
+    "wall_colour": "#f4f0e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-west",
+   "footprint": {
+    "rect": [
+     5,
+     28
+    ]
+   },
+   "at": [
+    -38,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f6b78",
+    "rise": 0.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#6f9a77",
+    "frameColour": "#f4f0e6",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 2.5,
+    "colours": [
+     "#2e6fb5",
+     "#d8b83a",
+     "#3f8a4a"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.6,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#f4f0e6"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -46
+     ],
+     [
+      0,
+      -26
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      30
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    45,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    44,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   130,
+   115
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue server was down, so no render or comparison was run; composed from the brief only; unchecked massing and colours"
+ }
+}

@@ -1,0 +1,278 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-osm-way-1286299984",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_de_Saint-Jean_(St._Barth's).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "David Stanley",
+   "view": "aerial",
+   "used": "one covered stand with red hipped roofs across the far side, tall floodlight masts, green fence, small white scoreboard block (too small to compare numerically)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1286299984",
+   "used": "fence line follows the real outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    -4,
+    -2,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "width": 70,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 3.0,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#3f5f4a",
+    "points": [
+     [
+      -56.7,
+      -46.2
+     ],
+     [
+      -55.1,
+      -50.7
+     ],
+     [
+      -51,
+      -54.3
+     ],
+     [
+      -21.6,
+      -58.9
+     ],
+     [
+      40.7,
+      -69.9
+     ],
+     [
+      56,
+      48
+     ],
+     [
+      53.4,
+      53.6
+     ],
+     [
+      48.7,
+      56.8
+     ],
+     [
+      43.3,
+      58.3
+     ],
+     [
+      -25.4,
+      67.1
+     ],
+     [
+      -28.6,
+      66.8
+     ],
+     [
+      -30.7,
+      63.8
+     ],
+     [
+      -31.2,
+      60.7
+     ],
+     [
+      -41.6,
+      62.1
+     ],
+     [
+      -42.5,
+      55.5
+     ],
+     [
+      -42.4,
+      53.5
+     ],
+     [
+      -43.6,
+      41.7
+     ],
+     [
+      -46.6,
+      20.3
+     ],
+     [
+      -49.9,
+      20.7
+     ],
+     [
+      -54.7,
+      -16
+     ],
+     [
+      -53.3,
+      -20.6
+     ],
+     [
+      -56.7,
+      -46.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "covered-stand",
+   "footprint": {
+    "rect": [
+     44,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    48
+   ],
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c4b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8452f",
+    "material": "metal-sheet",
+    "rise": 3,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -26,
+     41
+    ],
+    "end": [
+     18,
+     41
+    ],
+    "flip": true,
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "seatColours": [
+     "#9a3f2c",
+     "#b4553d"
+    ],
+    "concreteColour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    40,
+    -52,
+    0
+   ],
+   "params": {
+    "facing": "north"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    48,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    36,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    50,
+    36,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered: shared render queue had no live worker (stale heartbeats); composed from photos by eye, no side-by-side comparison done"
+ }
+}

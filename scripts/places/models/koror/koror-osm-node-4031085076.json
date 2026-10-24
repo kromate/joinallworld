@@ -1,0 +1,281 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-node-4031085076",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Airai_Bai.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ananari",
+   "view": "front",
+   "file": "/tmp/places-evidence/koror/airai-bai.jpg",
+   "used": "huge steep thatched gable roof nearly to the platform, yellow and black painted wall boards, white painted gable end, raised timber floor on a dry-laid stone platform, brown thatch colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/977975204",
+   "used": "outline 20.6 x 5.2 m, long axis east-west"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 8,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "rect": [
+     23.5,
+     7.5
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#6f6a60"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "floor",
+   "params": {
+    "rect": [
+     21,
+     6
+    ],
+    "z0": 0.8,
+    "height": 0.7,
+    "colour": "#8a5a4a"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wall-boards",
+   "footprint": {
+    "rect": [
+     19.5,
+     4.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e0b520",
+    "windows": "none",
+    "bands": "#1b1b1b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1b1b1b"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "thatch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#7a6a55",
+    "topColour": "#5e5042",
+    "capBottom": false,
+    "sections": [
+     {
+      "z": 2.0,
+      "rect": [
+       23.2,
+       9.6
+      ]
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       22.4,
+       8.0
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       21.6,
+       4.6
+      ]
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       21,
+       2.2
+      ]
+     },
+     {
+      "z": 12.2,
+      "rect": [
+       20.6,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-board-e",
+   "at": [
+    11.3,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f0ebe0",
+    "sections": [
+     {
+      "z": 1.6,
+      "rect": [
+       0.3,
+       5.2
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       0.3,
+       4.2
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       0.3,
+       2.2
+      ]
+     },
+     {
+      "z": 11.5,
+      "rect": [
+       0.3,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gable-board-w",
+   "at": [
+    -11.3,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f0ebe0",
+    "sections": [
+     {
+      "z": 1.6,
+      "rect": [
+       0.3,
+       5.2
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       0.3,
+       4.2
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       0.3,
+       2.2
+      ]
+     },
+     {
+      "z": 11.5,
+      "rect": [
+       0.3,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: render queue had no server heartbeat (203 jobs waiting). Roof lofted as a symmetric A-frame; camera yaw guessed; no painted gable detail or carved posts."
+ }
+}

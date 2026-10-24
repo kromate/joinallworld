@@ -1,0 +1,98 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "grytviken",
+ "venueId": "grytviken-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/grytviken.json",
+   "used": "brief: small red timber-and-iron noticeboard hut in settlement style; no OSM building matched"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d3b2a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "bands": "#ece9e1"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2e",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 1.7
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#ece9e1",
+    "posts": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step",
+   "at": [
+    3,
+    -4
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#7a4a36"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "placeholder; no real building or photo; flag omitted"
+ }
+}

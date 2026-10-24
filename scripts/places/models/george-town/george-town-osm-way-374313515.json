@@ -1,0 +1,125 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/374313515",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small roadside jerk shack, tin gable roof, smoker stack, veranda, bright painted walls (no photo found; colours assumed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e0b84a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "bands": "#1f7a4a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f7b80",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 2.4,
+    "height": 2.8,
+    "roof": "lean-to",
+    "wall_colour": "#e0b84a",
+    "roof_colour": "#6f7b80",
+    "trim_colour": "#b3262b"
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    5,
+    3,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "radius": 0.4,
+    "material": "metal",
+    "colour": "#4a4a4a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#b3262b",
+    "frameColour": "#1f7a4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-osm-way-374313515",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: OSM outline, colours and smoker stack assumed from name/type"
+ }
+}

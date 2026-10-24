@@ -1,0 +1,109 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1121110201",
+   "used": "26 x 14 m footprint, fast_food"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "single-storey painted-block shop, flat roof, sign board"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "rotDeg": 29
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2b95c",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 0.3,
+    "bands": "#a8574a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 4.2,
+    "colour": "#a8574a",
+    "posts": false
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -7.3,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 1.8,
+    "colours": [
+     "#a8574a",
+     "#ffffff"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered; OSM rotDeg alignment and sign placement unchecked"
+ }
+}

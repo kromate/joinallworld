@@ -1,0 +1,224 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-osm-node-3993102171",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alele_Museum_Aussenansicht.JPG",
+   "licence": "Copyrighted free use",
+   "author": "Kachelus (de.wikipedia)",
+   "view": "side",
+   "file": "/tmp/places-evidence/majuro/alele-s.jpg",
+   "used": "raised building: open pillared ground floor, cream lap-sided upper storey, shallow roof with brown fascia, external stair, thatched sign shelter"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/259721863",
+   "used": "footprint 30 x 18.7 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 6,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "upper-floor",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.2,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9cfa6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bands": "#c9bf94",
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d8a80",
+    "material": "metal-sheet",
+    "overhang": 1.0,
+    "rise": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-core",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 48,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e0b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ab",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -13,
+     -10,
+     0
+    ],
+    "end": [
+     3,
+     -14,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "mass",
+      "footprint": {
+       "rect": [
+        0.5,
+        0.5
+       ]
+      },
+      "height": 3.2,
+      "storeys": 1,
+      "wall": {
+       "material": "concrete",
+       "colour": "#e9e5d6",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#b9b6ab",
+       "material": "concrete"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair",
+   "footprint": {
+    "rect": [
+     1.4,
+     5
+    ]
+   },
+   "at": [
+    -16,
+    -9
+   ],
+   "rotDeg": 48,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ab",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ab",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-shelter",
+   "footprint": {
+    "rect": [
+     4.5,
+     1.8
+    ]
+   },
+   "at": [
+    14,
+    -18
+   ],
+   "rotDeg": 48,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e9e5d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a79a78",
+    "material": "thatch",
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -25,
+     18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not compared: render queue workers were dead (no heartbeat since 20:17), job left queued; composed from the Commons exterior photo but never rendered against it"
+ }
+}

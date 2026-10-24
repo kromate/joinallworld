@@ -1,0 +1,267 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Concierto_en_el_Estadio_de_Amatitl\u00e1n_-_Departamento_de_Guatemala_3.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Josu\u00e9 Goge",
+   "view": "side",
+   "file": "/tmp/places-evidence/guatemala-city/p3_0.jpg",
+   "used": "long single-tier grandstand along the touchline with a corrugated sloping roof on slim steel posts, chain-link fence, open grass pitch, ground floodlights"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Concierto_en_el_Estadio_de_Amatitl\u00e1n_-_Departamento_de_Guatemala_2.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Josu\u00e9 Goge",
+   "view": "detail",
+   "file": "/tmp/places-evidence/guatemala-city/p3_1.jpg",
+   "used": "raked concrete terrace under timber purlins with corrugated metal sheets, yellow painted back wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/53417985",
+   "used": "oval ground extent 199 x 119 m (model scaled to the 118 m scene limit), bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 65,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     88,
+     56
+    ],
+    "height": 0.12,
+    "colour": "#4f8a3f",
+    "material": "grass"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "params": {
+    "rect": [
+     100,
+     66
+    ],
+    "height": 0.06,
+    "colour": "#b9855f"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -36
+    ],
+    "end": [
+     34,
+     -36
+    ],
+    "rows": 14,
+    "rise": 0.42,
+    "run": 0.8,
+    "seatColour": "#b9b4a8",
+    "backWall": 1.6,
+    "under": "closed",
+    "concreteColour": "#c9c1b0",
+    "underColour": "#d8c76a",
+    "canopy": {
+     "height": 8.5,
+     "depth": 13,
+     "colour": "#7c7f82",
+     "slopeDeg": 8,
+     "supports": 9
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -31
+     ],
+     [
+      52,
+      -31
+     ],
+     [
+      52,
+      31
+     ],
+     [
+      -52,
+      31
+     ],
+     [
+      -52,
+      -31
+     ]
+    ],
+    "height": 2.2,
+    "kind": "fence",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    34,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    34,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -56,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.6,
+    "facing": "east"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    44,
+    -46
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c76a",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7c7f82",
+    "material": "corrugated",
+    "pitch": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -46
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     40
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-way-53417985",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not compared to the photo: the shared render queue had no live worker (heartbeats stale since 20:17, jobs queued but never ran). Composed from photos and OSM extents only; triangle counts unmeasured."
+ }
+}

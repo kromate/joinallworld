@@ -1,0 +1,209 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/915488862",
+   "used": "scale only (22.6 x 7.4 m); nearest building 43 m away, may not be the venue, so not used as outline"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/hamilton.json",
+   "used": "pastel single-storey cottage restaurant, white stepped roof, front terrace, awning, bay window (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cottage",
+   "footprint": {
+    "rect": [
+     23,
+     7.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3e2a6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#f4f1e8",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f3f1ea",
+    "material": "slate",
+    "rise": 1.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     19,
+     5.4
+    ],
+    "z0": 4.3,
+    "height": 0.55,
+    "topScale": 0.9,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     15,
+     4.0
+    ],
+    "z0": 4.8,
+    "height": 0.5,
+    "topScale": 0.9,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "bay-window",
+   "at": [
+    -6,
+    -3.75,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "depth": 0.9,
+    "height": 2.6,
+    "storeys": 1,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    4,
+    -3.75,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.2,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#a9c9dc",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    4,
+    -5.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     3.2
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#d9d2c4"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    7,
+    1,
+    4.2
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 2.2,
+    "pots": 1,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT RENDERED OR COMPARED: render queue servers were down (no heartbeat, 100+ jobs waiting); proportions, colours and part placement unchecked"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-meal-stop"
+}

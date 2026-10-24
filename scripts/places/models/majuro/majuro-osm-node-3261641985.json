@@ -1,0 +1,110 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-osm-node-3261641985",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/257177153",
+   "used": "35 x 20 m footprint"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Majuro",
+   "used": "brief facts (typed from Majuro style; no exterior photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e2a8",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a33a2c",
+    "material": "corrugated",
+    "overhang": 1.0,
+    "rise": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     16,
+     3.4
+    ]
+   },
+   "at": [
+    -1,
+    -14.2
+   ],
+   "rotDeg": 66,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e9e5d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a33a2c",
+    "material": "corrugated",
+    "overhang": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not compared: render queue workers were dead (no heartbeat since 20:17), job left queued"
+ }
+}

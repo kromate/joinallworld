@@ -1,0 +1,183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-node-5484802021",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1302286786",
+   "used": "real 6.4x5.6 m hut outline, nearest match 4 m"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingstown.json",
+   "used": "brief description"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; bamboo clumps are generic stand-ins, hut cladding and roof typed from brief"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "trail-hut",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a6a4a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "groundKind": "plain"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f757a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "height": 0.5,
+    "run": 1.5
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -3,
+    -4.4,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.0,
+    "colour": "#7a6a4a"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    5,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 2.4,
+    "width": 1.2,
+    "colour": "#7a6a4a"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 5,
+    "rows": 2,
+    "dx": 2.2,
+    "dy": 2.4,
+    "centre": [
+     -10,
+     6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 7,
+      "height": 10,
+      "topScale": 0.5,
+      "colour": "#6e9a3f"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 2,
+    "dx": 2.4,
+    "dy": 2.2,
+    "centre": [
+     11,
+     6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.5,
+      "n": 7,
+      "height": 9,
+      "topScale": 0.5,
+      "colour": "#7aa84a"
+     }
+    }
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   44,
+   36
+  ]
+ }
+}

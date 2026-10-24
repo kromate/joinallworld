@@ -1,0 +1,178 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alameda_Fiis.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jcaceres93",
+   "view": "front",
+   "file": "/tmp/places-evidence/lima/uni2.jpg",
+   "used": "UNI faculty block: long three-storey brick-red concrete frame with cream slab edges, ribbon of dark windows, open ground-floor bays, lawn court with sail canopies and conifers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ipecalya.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jcaceres93",
+   "view": "detail",
+   "used": "pink-cream render, flat overhanging slab, brick spandrels, barred windows (ground-floor treatment)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1500957325",
+   "used": "real irregular footprint of the building tagged as the university"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#8c3a2f",
+    "glassColour": "#3a2b2a",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#e3d3b1",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3d3b1",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 0.1,
+    "colour": "#7a9a45"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -34,
+    -42,
+    3.2
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 0.3,
+    "form": "flat",
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -16,
+    -42,
+    3.2
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 0.3,
+    "form": "flat",
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 11,
+    "count": 5,
+    "spread": 6,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 3,
+    "spread": 6,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Render queue had no live worker (heartbeats stale since 20:17), so no render or photo comparison was possible; composed from the photo by eye plus the OSM outline. Stand orientation, colours and proportions are unchecked. Re-run submit.ts with the recorded photo and promote verified to photo if it matches."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-osm-relation-12280616"
+}

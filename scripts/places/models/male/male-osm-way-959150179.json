@@ -1,0 +1,449 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-osm-way-959150179",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:King_Salman_Mosque_2.jpg",
+   "licence": "CC BY 4.0",
+   "author": "LittleT889",
+   "view": "front",
+   "file": "/tmp/places-evidence/male/kingsalman2.jpg",
+   "used": "round white marble drum with a ribbon of windows, wide blue saucer roof with deep overhang and triangular dormers, zigzag blue crown, tall tapering beige-clad minarets around the plaza, wide stepped approach with steel handrails, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/959150179",
+   "used": "round 54 m footprint of the main hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 70,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "osm": true,
+    "fit": 54
+   },
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#e4e4df",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bands": "#d3b98e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b79a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "saucer",
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      0,
+      0,
+      "#2a5fa8"
+     ],
+     [
+      29.5,
+      0,
+      "#2a5fa8"
+     ],
+     [
+      30.5,
+      1.2,
+      "#2a5fa8"
+     ],
+     [
+      29,
+      2.2,
+      "#2f7fcb"
+     ],
+     [
+      22,
+      5,
+      "#2f8fd8"
+     ],
+     [
+      14,
+      7.2,
+      "#2f8fd8"
+     ],
+     [
+      12,
+      9.2,
+      "#3b96e0"
+     ],
+     [
+      0,
+      9.2,
+      "#3b96e0"
+     ]
+    ],
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "array",
+   "id": "crown",
+   "at": [
+    0,
+    0,
+    19.5
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -1.6,
+        0
+       ],
+       [
+        1.6,
+        0
+       ],
+       [
+        0,
+        3.4
+       ]
+      ],
+      "height": 0.8,
+      "colour": "#2f7fcb"
+     }
+    },
+    "mode": "arc",
+    "count": 24,
+    "radius": 11,
+    "facing": "outward"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "minaret1",
+   "at": [
+    -23.5,
+    32.4,
+    0
+   ],
+   "params": {
+    "colour": "#d9cfba",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 18,
+      "rect": [
+       5.6,
+       5.6
+      ]
+     },
+     {
+      "z": 45,
+      "rect": [
+       3.2,
+       3.2
+      ],
+      "colour": "#cdbf9f"
+     },
+     {
+      "z": 62,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 68,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "minaret2",
+   "at": [
+    -38.0,
+    -12.4,
+    0
+   ],
+   "params": {
+    "colour": "#d9cfba",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 18,
+      "rect": [
+       5.6,
+       5.6
+      ]
+     },
+     {
+      "z": 45,
+      "rect": [
+       3.2,
+       3.2
+      ],
+      "colour": "#cdbf9f"
+     },
+     {
+      "z": 62,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 68,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "minaret3",
+   "at": [
+    -0.0,
+    -40.0,
+    0
+   ],
+   "params": {
+    "colour": "#d9cfba",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 18,
+      "rect": [
+       5.6,
+       5.6
+      ]
+     },
+     {
+      "z": 45,
+      "rect": [
+       3.2,
+       3.2
+      ],
+      "colour": "#cdbf9f"
+     },
+     {
+      "z": 62,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 68,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "minaret4",
+   "at": [
+    38.0,
+    -12.4,
+    0
+   ],
+   "params": {
+    "colour": "#d9cfba",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 18,
+      "rect": [
+       5.6,
+       5.6
+      ]
+     },
+     {
+      "z": 45,
+      "rect": [
+       3.2,
+       3.2
+      ],
+      "colour": "#cdbf9f"
+     },
+     {
+      "z": 62,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 68,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "minaret5",
+   "at": [
+    23.5,
+    32.4,
+    0
+   ],
+   "params": {
+    "colour": "#d9cfba",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 18,
+      "rect": [
+       5.6,
+       5.6
+      ]
+     },
+     {
+      "z": 45,
+      "rect": [
+       3.2,
+       3.2
+      ],
+      "colour": "#cdbf9f"
+     },
+     {
+      "z": 62,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 68,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -42,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: shared render queue servers were dead (stale heartbeat, 300 jobs waiting) so no check round ran; composed from the Commons photo by eye (marble drum, blue saucer roof, tapering minarets) but not compared"
+ }
+}

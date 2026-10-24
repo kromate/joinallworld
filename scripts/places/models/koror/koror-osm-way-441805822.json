@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-way-441805822",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/441805822",
+   "used": "exact 43 x 38 m outline (name match), orientation"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/koror.json",
+   "used": "windowless painted supermarket box, red accent band and blank signage, deep parking forecourt, palms; no photo of this store found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "box",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "bands": "#b5382a",
+    "plinth": 0.5,
+    "faces": {
+     "front": "curtain"
+    },
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "overhang": 0.6,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-bay",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    -4,
+    -20.2
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b8c6c9",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5382a",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 4,
+    "height": 3.8,
+    "colour": "#b5382a",
+    "edgeColour": "#e8e2d0",
+    "columns": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -19.6,
+    5
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.4,
+    "bottom": 0.0,
+    "colour": "#b5382a",
+    "frameColour": "#e8e2d0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 6,
+    "bottom": 2.5,
+    "colour": "#b5382a",
+    "frameColour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 24,
+    "density": 0.55
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    18,
+    -27,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -52
+     ],
+     [
+      26,
+      -52
+     ]
+    ],
+    "height": 0.9,
+    "kind": "railing",
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this store; never rendered (queue down): colours, entry glazing, sign layout typed from the brief"
+ }
+}

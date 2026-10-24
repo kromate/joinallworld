@@ -1,0 +1,285 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-node-1787488316",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q139628149",
+   "used": "only a Wikidata entry (monument, no OSM geometry, no photo found); typed as a stela memorial on stepped plinth with a flame bowl and flagpole, within a low fenced plaza"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.0,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 30,
+    "border": 1.2,
+    "colour": "#cbc6bb",
+    "border_colour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "height": 0.5,
+    "colour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.62
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "height": 0.5,
+    "colour": "#bdbdb7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.12
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "height": 0.6,
+    "colour": "#c4c4be"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    1.7
+   ],
+   "params": {
+    "colour": "#b8b8b2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       2.0
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       2.8,
+       1.7
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       2.0,
+       1.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.05,
+    6.0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.25
+    ],
+    "height": 4.5,
+    "colour": "#c4684a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -5.2,
+    1.7
+   ],
+   "params": {
+    "colour": "#6a5a4a",
+    "profile": [
+     [
+      0.3,
+      0,
+      "#6a5a4a"
+     ],
+     [
+      0.4,
+      1.0,
+      "#6a5a4a"
+     ],
+     [
+      1.1,
+      1.5,
+      "#8a8378"
+     ],
+     [
+      1.3,
+      2.0,
+      "#8a8378"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -5.2,
+    3.7
+   ],
+   "params": {
+    "colour": "#e8892a",
+    "profile": [
+     [
+      0.01,
+      0,
+      "#e8892a"
+     ],
+     [
+      0.5,
+      0.3,
+      "#e8892a"
+     ],
+     [
+      0.15,
+      1.0,
+      "#f2c14a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    10,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#b6323a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 0.8,
+    "kind": "wall",
+    "points": [
+     [
+      -16,
+      -14
+     ],
+     [
+      16,
+      -14
+     ],
+     [
+      16,
+      14
+     ],
+     [
+      -16,
+      14
+     ],
+     [
+      -16,
+      -14
+     ]
+    ],
+    "colour": "#c4684a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "monument form is a guess from the brief; no photo; render not checked (queue down)"
+ }
+}

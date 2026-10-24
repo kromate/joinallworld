@@ -1,0 +1,247 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1370454204",
+   "used": "campus extent only (triangular 357x137 m site boundary, Wikidata Q110442979); not a building outline, so buildings are composed from the brief"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/honiara.json",
+   "used": "long two-storey teaching block with louvres and corrugated roof, two workshop sheds, flag, water tank, boundary wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 16,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "rect": [
+     72,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9a0",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bands": "#6f9a77",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b7a6a",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     72,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f0e6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b7a6a",
+    "material": "corrugated",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-1",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -20,
+    34
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9b59f",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b7a6a",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-2",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    16,
+    38
+   ],
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c2ae",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b7a6a",
+    "material": "corrugated",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -44,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1f5fa8"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    40,
+    12,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.8,
+    "legs": 5,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 2,
+    "thickness": 0.25,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#e9e3d2"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 2,
+    "colour": "#6f9a77",
+    "frameColour": "#f4f0e6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -16
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     62
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or building outline found; a typical trade-campus block and sheds sized from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-way-1370454204"
+}

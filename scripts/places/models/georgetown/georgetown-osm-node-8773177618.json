@@ -1,0 +1,98 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-osm-node-8773177618",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/856054841",
+   "used": "real 15 x 9 m outline, 7.8 m from the viewpoint node"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+   "used": "city style: simple concrete roadside shelter"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcae",
+    "windows": "rect",
+    "windowRatio": 0.15,
+    "bay": 3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c8f8f",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "kind": "fence",
+    "colour": "#a9c4b5"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Venue is an unnamed viewpoint; outline of nearest building, rest typed. No photo."
+ }
+}

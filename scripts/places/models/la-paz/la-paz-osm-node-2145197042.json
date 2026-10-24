@@ -1,0 +1,113 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-node-2145197042",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief la-paz-osm-node-2145197042",
+   "used": "small stone pillar on stepped plinth with broadleaf trees; nothing else findable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39b88",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8f8a"
+   }
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "height": 7,
+    "base_width": 1.8,
+    "style": "square",
+    "steps": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence; modest plinth marker."
+ }
+}

@@ -1,0 +1,208 @@
+{
+ "venueId": "guatemala-city-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rectoria_USAC.jpg",
+   "licence": "Public domain",
+   "author": "Wikimedia Commons user",
+   "view": "front",
+   "file": "/tmp/places-evidence/guatemala-city/usac1.jpg",
+   "used": "three-level raw-concrete block: open ground storey, two glazed ribbon floors between raked V piers, sloping solid end wall, flat roof with small plant boxes, large setted plaza with shallow pool"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/44813033",
+   "used": "campus context only (2 km wide); one representative block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "floors",
+   "footprint": {
+    "rect": [
+     56,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bdb8ac",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#a9a498",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa597",
+    "parapet": 0.5,
+    "overhang": 1.0
+   },
+   "z0": 4.2
+  },
+  {
+   "type": "array",
+   "id": "raked-piers",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.4,
+         2.2
+        ]
+       },
+       {
+        "z": 4.2,
+        "rect": [
+         2.4,
+         2.2
+        ]
+       },
+       {
+        "z": 12.5,
+        "rect": [
+         3.2,
+         2.2
+        ]
+       }
+      ],
+      "colour": "#b9b4a8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27,
+     -10
+    ],
+    "end": [
+     27,
+     -10
+    ],
+    "count": 10,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-slab",
+   "footprint": {
+    "rect": [
+     12,
+     20
+    ]
+   },
+   "at": [
+    34,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b1ac9f",
+    "windows": "none",
+    "bands": "#a09b8e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a497"
+   },
+   "z0": 4.2
+  },
+  {
+   "type": "mass",
+   "id": "roof-box",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    2
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b4afa3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a497"
+   },
+   "z0": 12.6
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 4,
+    "colour": "#7a8d8c",
+    "bank": true
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 3,
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but NOT rendered or compared: render queue servers were down (no heartbeat, no Blender process) for the whole session; re-run submit and compare"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city"
+}

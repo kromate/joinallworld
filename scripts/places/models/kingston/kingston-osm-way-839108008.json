@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-way-839108008",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/839108008",
+   "used": "real outline of the clubhouse (name-quality match, about 28 x 24 m, 550 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 15,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e8d0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "bands": "#7b5a3c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8402f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "terrace",
+   "at": [
+    -2,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 6,
+    "colour": "#7b5a3c",
+    "cap_colour": "#a8402f",
+    "floor_colour": "#b9ae98"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    -9,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.6,
+    "colours": [
+     "#7b5a3c",
+     "#f1e8d0"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "car-park",
+   "at": [
+    -4,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 32,
+    "depth": 12,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "trees-n",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "count": 10,
+    "min_height": 7,
+    "max_height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "tree-w",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "tree-e",
+   "at": [
+    30,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found anywhere (Commons empty for this venue); style, hip tile roof, cream render and covered terrace come from the brief's typed guess. Not yet rendered: the render queue was down."
+ }
+}

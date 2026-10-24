@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-node-1958123256",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: plainer one-storey linked ward wings with deep verandas under a red corrugated hip roof; same hospital campus as the main block (relation/3626556) but no photo of the rear wing"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     8,
+     18
+    ]
+   },
+   "at": [
+    -27,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cc",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#6f9a77",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     8,
+     18
+    ]
+   },
+   "at": [
+    27,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cc",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#6f9a77",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-link",
+   "footprint": {
+    "rect": [
+     46,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cc",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#6f9a77",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "depth": 2.4,
+    "height": 2.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -27,
+    -9.8,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "depth": 2.2,
+    "height": 2.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    27,
+    -9.8,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "depth": 2.2,
+    "height": 2.8
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -38,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 1.5,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "kind": "wall"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: queue down. Typical ward block from brief text, no photo."
+ }
+}

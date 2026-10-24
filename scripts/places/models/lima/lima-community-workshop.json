@@ -1,0 +1,577 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Campus-untels.jpg",
+   "licence": "CC0",
+   "author": "Alonsodanilo",
+   "view": "street",
+   "file": "/tmp/places-evidence/lima/untels2.jpg",
+   "used": "three-storey white blocks around a paved courtyard, blue fascia bands and blue columns, open access galleries with dark railings, small roof volumes, lawns, lamp posts, flagpoles, round-canopy trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Frontis-UNTELS.jpg",
+   "licence": "CC0",
+   "author": "Alonsodanilo",
+   "view": "front",
+   "file": "/tmp/places-evidence/lima/untels1.jpg",
+   "used": "entrance pavilion: low white block with blue deep fascia board (blank here), yellow-edged stair, black railings, flagpole"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/126861408",
+   "used": "campus extent (158 x 149 m); the U of blocks is scaled down to fit the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 8,
+  "fovDeg": 52,
+  "aspect": 1.47,
+  "margin": 0.0,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-back",
+   "footprint": {
+    "rect": [
+     96,
+     13
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "height": 11.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 3.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#2169c9",
+      "height": 0.9,
+      "proud": 0.4,
+      "at": 0.97
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "depth": 2.2,
+      "colour": "#2a2d33",
+      "continuous": true,
+      "railKind": "solid",
+      "floors": "upper",
+      "rail": 1.0,
+      "railColour": "#2a2d33"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.6,
+      "depth": 0.6,
+      "spacing": 6.4,
+      "colour": "#2169c9"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c7c4bc",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     13,
+     56
+    ]
+   },
+   "at": [
+    -41,
+    2
+   ],
+   "height": 11.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 3.2,
+    "faces": {
+     "left": "plain",
+     "front": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "right"
+      ],
+      "colour": "#2169c9",
+      "height": 0.9,
+      "proud": 0.4,
+      "at": 0.97
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "right"
+      ],
+      "depth": 2.2,
+      "colour": "#2a2d33",
+      "continuous": true,
+      "railKind": "solid",
+      "floors": "upper",
+      "rail": 1.0,
+      "railColour": "#2a2d33"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "right"
+      ],
+      "width": 0.6,
+      "depth": 0.6,
+      "spacing": 6.4,
+      "colour": "#2169c9"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c7c4bc",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     13,
+     56
+    ]
+   },
+   "at": [
+    41,
+    2
+   ],
+   "height": 11.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 3.2,
+    "faces": {
+     "right": "plain",
+     "front": "plain",
+     "back": "plain",
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "left"
+      ],
+      "colour": "#2169c9",
+      "height": 0.9,
+      "proud": 0.4,
+      "at": 0.97
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "left"
+      ],
+      "depth": 2.2,
+      "colour": "#2a2d33",
+      "continuous": true,
+      "railKind": "solid",
+      "floors": "upper",
+      "rail": 1.0,
+      "railColour": "#2a2d33"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "left"
+      ],
+      "width": 0.6,
+      "depth": 0.6,
+      "spacing": 6.4,
+      "colour": "#2169c9"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c7c4bc",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-box-a",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -14,
+    31
+   ],
+   "z0": 11.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeee8",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b5ad"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-box-b",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    26,
+    31
+   ],
+   "z0": 11.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeee8",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b5ad"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-w",
+   "at": [
+    -18,
+    4
+   ],
+   "params": {
+    "rect": [
+     30,
+     26
+    ],
+    "height": 0.12,
+    "colour": "#5da83c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn-e",
+   "at": [
+    20,
+    4
+   ],
+   "params": {
+    "rect": [
+     30,
+     26
+    ],
+    "height": 0.12,
+    "colour": "#5da83c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    -30,
+    -36
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e2",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -41.2,
+    3.2
+   ],
+   "params": {
+    "width": 21,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#1f63c4",
+    "frameColour": "#1f63c4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -30,
+    -43,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.35,
+    "run": 0.7,
+    "count": 5,
+    "colour": "#9e9e98"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -18,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1,
+    "colours": [
+     "#d91023"
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -10,
+    8,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spacing": 4,
+    "colours": [
+     "#d91023",
+     "#f2f2f2"
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "on": "block-back",
+   "at": [
+    30,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 1.4,
+    "tankHeight": 1.6,
+    "legHeight": 1.5,
+    "legs": 1,
+    "colour": "#3a4d6d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-diag-a",
+   "at": [
+    -8,
+    -8
+   ],
+   "rotDeg": 35,
+   "params": {
+    "rect": [
+     2.2,
+     50
+    ],
+    "height": 0.06,
+    "colour": "#d8d6cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-diag-b",
+   "at": [
+    8,
+    -8
+   ],
+   "rotDeg": -35,
+   "params": {
+    "rect": [
+     2.2,
+     50
+    ],
+    "height": 0.06,
+    "colour": "#d8d6cf"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Open galleries with railings, 0.9 m blue bands and chunky columns and paths added; courtyard fills more of frame; trees, benches and flag detail simplified, paving apron still wide."
+ }
+}

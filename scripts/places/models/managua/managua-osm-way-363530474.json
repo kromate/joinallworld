@@ -1,0 +1,438 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/363530474",
+   "used": "hospital site outline (370 x 240 m) as paved site, scaled 0.33; wings placed inside it"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q86684705",
+   "used": "new military teaching hospital: cream and glass multi-storey wards, canopy, helipad (typed from the brief, no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 26,
+  "fovDeg": 48,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "site",
+   "footprint": {
+    "polygon": [
+     [
+      -67.4,
+      -2.8
+     ],
+     [
+      -65.7,
+      -8.3
+     ],
+     [
+      -51.3,
+      -32.4
+     ],
+     [
+      -45.8,
+      -43.5
+     ],
+     [
+      -36.9,
+      -39.0
+     ],
+     [
+      -32.4,
+      -39.1
+     ],
+     [
+      -24.9,
+      -43.7
+     ],
+     [
+      -8.6,
+      -45.9
+     ],
+     [
+      1.5,
+      -47.8
+     ],
+     [
+      5.6,
+      -15.7
+     ],
+     [
+      14.4,
+      -17.2
+     ],
+     [
+      14.1,
+      -19.6
+     ],
+     [
+      11.5,
+      -19.3
+     ],
+     [
+      10.1,
+      -25.0
+     ],
+     [
+      14.6,
+      -25.9
+     ],
+     [
+      15.5,
+      -22.0
+     ],
+     [
+      31.3,
+      -25.5
+     ],
+     [
+      32.8,
+      -19.8
+     ],
+     [
+      41.4,
+      -20.1
+     ],
+     [
+      41.4,
+      -16.2
+     ],
+     [
+      50.6,
+      34.0
+     ],
+     [
+      19.0,
+      52.1
+     ],
+     [
+      6.5,
+      54.2
+     ],
+     [
+      4.6,
+      39.4
+     ],
+     [
+      -1.3,
+      32.5
+     ],
+     [
+      -17.4,
+      27.8
+     ],
+     [
+      -24.4,
+      26.8
+     ],
+     [
+      -27.9,
+      8.6
+     ],
+     [
+      -23.5,
+      7.8
+     ],
+     [
+      -27.3,
+      -8.9
+     ],
+     [
+      -28.8,
+      -9.1
+     ]
+    ]
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    -10,
+    -12
+   ],
+   "rotDeg": -18,
+   "z0": 0.5,
+   "height": 11,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6cb",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#b9b5aa",
+    "cornice": true,
+    "parapet": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    10,
+    24
+   ],
+   "rotDeg": -18,
+   "z0": 0.5,
+   "height": 11,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6cb",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#b9b5aa",
+    "cornice": true,
+    "parapet": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 72,
+   "z0": 0.5,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5b7fa3",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bands": "#f0e6cb"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-c",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -36,
+    -2
+   ],
+   "rotDeg": -62,
+   "z0": 0.5,
+   "height": 8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6cb",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#b9b5aa",
+    "cornice": true,
+    "parapet": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy-fascia",
+   "at": [
+    -16,
+    -28,
+    0.5
+   ],
+   "rotDeg": -18,
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.4,
+    "columns": 4,
+    "round": false,
+    "colour": "#f0e6cb",
+    "roofColour": "#c9c5bb"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    8,
+    -22,
+    0.5
+   ],
+   "rotDeg": -18,
+   "params": {
+    "width": 11,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -10,
+    -31.5,
+    6
+   ],
+   "rotDeg": -18,
+   "params": {
+    "size": 2.2
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    34,
+    -6,
+    0.5
+   ],
+   "params": {
+    "radius": 6.5
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -20,
+    -40,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12,
+    "density": 0.8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    28,
+    34,
+    0.5
+   ],
+   "params": {
+    "width": 20,
+    "depth": 12,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -40,
+    -30,
+    0.5
+   ],
+   "params": {
+    "length": 40,
+    "count": 5,
+    "kind": "broadleaf",
+    "height_min": 6,
+    "height_max": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (render queue had no live worker). No photo found; outline and brief only. Wings are placed by judgement and drawn at about half real height because the 370 m site is scaled 0.33."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-way-363530474"
+}

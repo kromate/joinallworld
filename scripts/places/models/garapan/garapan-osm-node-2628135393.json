@@ -1,0 +1,275 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-osm-node-2628135393",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SUICIDE_CLIFF.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jerrye & Roy Klotz MD (User:KLOTZ)",
+   "view": "detail",
+   "file": "/tmp/places-evidence/garapan/cliff.jpg",
+   "used": "dark, green-mantled limestone cliff dropping steeply to the sea; not a view of the plaza so it is not compared"
+  },
+  {
+   "kind": "text",
+   "used": "brief: paved cliff-top plaza with Japanese memorial pillars, a memorial figure, railing, steps; no OSM outline for this pin"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -14
+     ],
+     [
+      24,
+      -16
+     ],
+     [
+      30,
+      2
+     ],
+     [
+      22,
+      16
+     ],
+     [
+      -20,
+      18
+     ],
+     [
+      -30,
+      4
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#d6d1c2",
+    "material": "paving"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cliff-mass",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -8
+     ],
+     [
+      34,
+      -8
+     ],
+     [
+      40,
+      14
+     ],
+     [
+      22,
+      24
+     ],
+     [
+      -6,
+      28
+     ],
+     [
+      -30,
+      20
+     ],
+     [
+      -38,
+      6
+     ]
+    ],
+    "height": 14,
+    "colour": "#5f6a58",
+    "topScale": 0.92,
+    "topColour": "#4f6a45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "memorial-1",
+   "at": [
+    -8,
+    6,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 6.5,
+    "colour": "#a0a09a",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-1",
+   "at": [
+    -8,
+    6,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 0.7,
+    "colour": "#8c7f6a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "memorial-2",
+   "at": [
+    8,
+    6.5,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 5.2,
+    "colour": "#a0a09a",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base-2",
+   "at": [
+    8,
+    6.5,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.8
+    ],
+    "height": 0.6,
+    "colour": "#8c7f6a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "figure-plinth",
+   "at": [
+    0,
+    10,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "height": 1.8,
+    "colour": "#8c7f6a"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "id": "figure",
+   "at": [
+    0,
+    10,
+    2.1
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#a0a09a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "railing",
+   "at": [
+    -24,
+    14.5,
+    0.3
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "rail",
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.15,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#bdb9ac"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the plaza; the cliff photo is a view down from the edge so it was not compared; memorial count, plaza shape and figure typed from text"
+ }
+}

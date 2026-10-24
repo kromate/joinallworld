@@ -1,0 +1,309 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-way-1159666361",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paseo_Stadium.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "back",
+   "file": "/tmp/places-evidence/hagatna/paseo0.jpg",
+   "used": "street-side back of the grandstand: tall royal-blue concrete press-box block over a white lower storey, flat blue canopy beams reaching out left and right, glazed press box with rooftop net frame, white concession block with blue posts, chain-link fence, tall floodlight poles"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paseo_Baseball_Stadium_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "hasano_jp",
+   "view": "street",
+   "file": "/tmp/places-evidence/hagatna/paseo1.jpg",
+   "used": "whole stand from the car park: long second-storey blue deck to the right with rail, backstop netting, floodlights, low cream buildings beside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1159666361",
+   "used": "plan of the stand and walls (name match); extruded as the low concrete base and the grandstand body"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4e1d8",
+    "windows": "none",
+    "groundKind": "none",
+    "bands": "#1f4f9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d4f9c",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     34,
+     7
+    ]
+   },
+   "at": [
+    38,
+    -20.5
+   ],
+   "z0": 4.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#1d4f9c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d4f9c",
+    "material": "concrete",
+    "overhang": 0.8,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-block",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -19
+   ],
+   "z0": 4.2,
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#1b4a96",
+    "windows": "rect",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#efeee9"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1b4a96",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-glass",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    -6,
+    -22
+   ],
+   "z0": 12.4,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db8c8",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1b4a96",
+    "material": "concrete",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -22,
+    7.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 4,
+    "height": 0.2,
+    "thickness": 0.6,
+    "colour": "#1d4f9c",
+    "edgeColour": "#1d4f9c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concession",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -22,
+    -27
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#eceae2",
+    "windows": "none",
+    "bands": "#1f4f9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d4f9c",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    46,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    12,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -33,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.4,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    30,
+    30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "post_height": 3,
+    "facing": "south",
+    "colour": "#1d4f9c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -36
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "real OSM outline plus photo-based composition, never rendered or compared: render queue servers were down; OSM stand orientation vs the photo view unchecked"
+ }
+}

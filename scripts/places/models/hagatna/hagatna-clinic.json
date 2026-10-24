@@ -1,0 +1,396 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Guam_Memorial_Hospital.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/hagatna/hospital.jpg",
+   "used": "cream stucco, stepped 3-storey front with open balcony rails, upper set-back floor, round stair tower beside a pale entrance canopy with small pyramid roof, taller tower block behind, rooftop plant"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/585214438",
+   "used": "overall campus size (234x226 m multi-wing); only the front bed block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     78,
+     18
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6c4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c6",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-set-back",
+   "footprint": {
+    "rect": [
+     54,
+     14
+    ]
+   },
+   "at": [
+    -14,
+    5
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6c4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c6",
+    "material": "membrane",
+    "parapet": 0.9
+   },
+   "z0": 10.5
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     54,
+     20
+    ]
+   },
+   "at": [
+    56,
+    6
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6c4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c6",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-upper",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    58,
+    6
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6c4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c6",
+    "material": "membrane",
+    "parapet": 0.9
+   },
+   "z0": 10.5
+  },
+  {
+   "type": "mass",
+   "id": "rear-tower",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    30,
+    18
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6c4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c6",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     50,
+     22
+    ]
+   },
+   "at": [
+    -12,
+    28
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6c4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c6",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    14,
+    -9
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dfc0",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c6",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-tower",
+   "at": [
+    14,
+    2,
+    0
+   ],
+   "params": {
+    "radius": 5.2,
+    "n": 20,
+    "height": 21,
+    "colour": "#f1ead0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "storeys": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-roof",
+   "at": [
+    7,
+    -13,
+    5.5
+   ],
+   "params": {
+    "radius": 3.2,
+    "n": 4,
+    "height": 2.2,
+    "topScale": 0.15,
+    "colour": "#f3efe6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-slab",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    -13
+   ],
+   "z0": 5,
+   "height": 0.7,
+   "wall": {
+    "material": "render",
+    "colour": "#f1e9d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e3d2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rooftop-plant",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    41,
+    22
+   ],
+   "z0": 22,
+   "height": 3.5,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e2c8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabb"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -28
+    ]
+   }
+  ],
+  "cars": 6,
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from photo but NOT yet rendered or compared: render queue was down; only campus size from OSM"
+ }
+}

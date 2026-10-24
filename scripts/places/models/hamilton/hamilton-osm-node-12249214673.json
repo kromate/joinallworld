@@ -1,0 +1,500 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gibbs_Hill_Lighthouse.jpg",
+   "licence": "CC BY 2.0",
+   "author": "dbking",
+   "view": "front",
+   "file": "/tmp/places-evidence/hamilton/gibbs1.jpg",
+   "used": "white tapering tower with pale flared gallery collar and rail, glazed lantern with dome and rod, scattered tiny square openings, two-storey white keeper's house with green shutters, white stepped roofs, steps and hedge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1323719927",
+   "used": "park outline only as scale of the setting"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Gibbs_Hill_Lighthouse",
+   "used": "36 m cast-iron tower, balcony and lantern room"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": -10,
+  "fovDeg": 62,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    8,
+    8,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      4.5,
+      0,
+      "#f4f4f0"
+     ],
+     [
+      4.5,
+      1.2,
+      "#f4f4f0"
+     ],
+     [
+      4.0,
+      6
+     ],
+     [
+      3.6,
+      14
+     ],
+     [
+      3.2,
+      22
+     ],
+     [
+      2.85,
+      27.5
+     ],
+     [
+      2.7,
+      28.5
+     ],
+     [
+      3.9,
+      29.4,
+      "#efe8d6"
+     ],
+     [
+      3.9,
+      29.9,
+      "#efe8d6"
+     ],
+     [
+      0,
+      29.9
+     ]
+    ],
+    "segments": 24,
+    "colour": "#f4f4f0",
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gallery-rail",
+   "at": [
+    8,
+    8,
+    30.9
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "closed": true,
+    "curve": true,
+    "steps": 16,
+    "points": [
+     [
+      3.8,
+      0.0,
+      0
+     ],
+     [
+      3.6705181398984594,
+      0.9835123713895788,
+      0
+     ],
+     [
+      3.290896534380867,
+      1.8999999999999997,
+      0
+     ],
+     [
+      2.6870057685088806,
+      2.68700576850888,
+      0
+     ],
+     [
+      1.9000000000000004,
+      3.2908965343808667,
+      0
+     ],
+     [
+      0.9835123713895788,
+      3.6705181398984594,
+      0
+     ],
+     [
+      2.326828918379971e-16,
+      3.8,
+      0
+     ],
+     [
+      -0.9835123713895784,
+      3.6705181398984594,
+      0
+     ],
+     [
+      -1.8999999999999992,
+      3.290896534380867,
+      0
+     ],
+     [
+      -2.68700576850888,
+      2.6870057685088806,
+      0
+     ],
+     [
+      -3.290896534380867,
+      1.8999999999999997,
+      0
+     ],
+     [
+      -3.670518139898459,
+      0.9835123713895798,
+      0
+     ],
+     [
+      -3.8,
+      4.653657836759942e-16,
+      0
+     ],
+     [
+      -3.6705181398984594,
+      -0.9835123713895789,
+      0
+     ],
+     [
+      -3.290896534380867,
+      -1.899999999999999,
+      0
+     ],
+     [
+      -2.687005768508882,
+      -2.687005768508879,
+      0
+     ],
+     [
+      -1.9000000000000017,
+      -3.290896534380866,
+      0
+     ],
+     [
+      -0.9835123713895784,
+      -3.6705181398984594,
+      0
+     ],
+     [
+      -6.980486755139912e-16,
+      -3.8,
+      0
+     ],
+     [
+      0.983512371389577,
+      -3.67051813989846,
+      0
+     ],
+     [
+      1.9000000000000004,
+      -3.2908965343808667,
+      0
+     ],
+     [
+      2.6870057685088797,
+      -2.687005768508881,
+      0
+     ],
+     [
+      3.290896534380866,
+      -1.9000000000000017,
+      0
+     ],
+     [
+      3.6705181398984585,
+      -0.9835123713895819,
+      0
+     ]
+    ],
+    "colour": "#d6dadb"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern",
+   "at": [
+    8,
+    8,
+    29.9
+   ],
+   "params": {
+    "profile": [
+     [
+      2.0,
+      0,
+      "#9fb4b8"
+     ],
+     [
+      2.0,
+      2.6,
+      "#9fb4b8"
+     ],
+     [
+      2.3,
+      2.8,
+      "#e8e8e4"
+     ],
+     [
+      1.2,
+      3.4,
+      "#c7ccce"
+     ],
+     [
+      0.0,
+      4.3,
+      "#c7ccce"
+     ]
+    ],
+    "segments": 16,
+    "colour": "#9fb4b8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rod",
+   "at": [
+    8,
+    8,
+    34.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      1.6
+     ],
+     [
+      0.3,
+      0,
+      2.3
+     ]
+    ],
+    "colour": "#8a9094"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "keepers-house",
+   "footprint": {
+    "rect": [
+     13,
+     7.5
+    ]
+   },
+   "at": [
+    -12,
+    -1
+   ],
+   "rotDeg": -15,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f4ef",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 3.4,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f6f4ee",
+    "material": "slate",
+    "rise": 1.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -12,
+    -1,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.55,
+       0.18
+      ],
+      "z0": 3.7,
+      "height": 1.7,
+      "colour": "#1f3d2e"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.6,
+     -3.9
+    ],
+    "end": [
+     4.6,
+     -3.9
+    ],
+    "count": 4,
+    "lod1Step": 9
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -15.5,
+    1.5,
+    6.8
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.0,
+    "pots": 0,
+    "colour": "#f5f4ef"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5,
+    "rise": 1.8,
+    "run": 0.5,
+    "count": 7,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -9
+     ],
+     [
+      16,
+      -9
+     ],
+     [
+      16,
+      -8.2
+     ],
+     [
+      -30,
+      -8.2
+     ]
+    ],
+    "height": 1.4,
+    "colour": "#e8e2d6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 2.2,
+      "count": 3,
+      "spread": 1.2,
+      "colour": "#3f6b36"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -28,
+     -6
+    ],
+    "end": [
+     14,
+     -6
+    ],
+    "count": 5,
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT RENDERED OR COMPARED: render queue servers were down (no heartbeat, 100+ jobs waiting); proportions, colours and part placement unchecked"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-node-12249214673"
+}

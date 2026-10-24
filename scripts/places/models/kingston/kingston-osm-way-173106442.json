@@ -1,0 +1,389 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Emancipation_Park-Statues-1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Gwyneth Davidson",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingston/173106442_0.jpg",
+   "used": "Redemption Song: two dark bronze figures rising from a round pool inside a low granite dome basin; long low curved stone wall with blank lettering behind; red-brown paved plaza; palms and shrubs; jets of a fountain at the right; hills behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/173106442",
+   "used": "real park outline (190 x 165 m) as the lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -104.3,
+      32.5
+     ],
+     [
+      14.3,
+      84.3
+     ],
+     [
+      27.2,
+      84.5
+     ],
+     [
+      39,
+      82.9
+     ],
+     [
+      79.1,
+      65.9
+     ],
+     [
+      88.9,
+      58.1
+     ],
+     [
+      94.1,
+      47.1
+     ],
+     [
+      93,
+      39
+     ],
+     [
+      65.2,
+      -77
+     ],
+     [
+      62.6,
+      -82.1
+     ],
+     [
+      59.4,
+      -85.4
+     ],
+     [
+      49,
+      -88.8
+     ],
+     [
+      37.6,
+      -85.5
+     ],
+     [
+      -88.8,
+      -53.4
+     ],
+     [
+      -101.5,
+      3.7
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#5f9448",
+    "topColour": "#5f9448",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -4,
+    -38,
+    0.2
+   ],
+   "params": {
+    "width": 60,
+    "depth": 34,
+    "border": 1.6,
+    "colour": "#a9695a",
+    "border_colour": "#8a8578"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -4,
+    -38,
+    0.2
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0.0,
+      "#6e6a63"
+     ],
+     [
+      8.5,
+      0.0,
+      "#6e6a63"
+     ],
+     [
+      8.5,
+      1.0,
+      "#7b776e"
+     ],
+     [
+      6.5,
+      1.5,
+      "#7b776e"
+     ],
+     [
+      5.4,
+      1.4,
+      "#4f7f94"
+     ],
+     [
+      0,
+      1.4,
+      "#4f7f94"
+     ]
+    ],
+    "segments": 28,
+    "colour": "#6e6a63"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -5.4,
+    -38,
+    1.4
+   ],
+   "params": {
+    "height": 4.2,
+    "pose": "stand",
+    "colour": "#2c2926"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -2.6,
+    -38,
+    1.4
+   ],
+   "params": {
+    "height": 4.0,
+    "pose": "stand",
+    "colour": "#2c2926"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -4,
+    -23,
+    0.2
+   ],
+   "params": {
+    "length": 58,
+    "height": 1.4,
+    "thickness": 0.9,
+    "kind": "wall",
+    "colour": "#7f8576"
+   }
+  },
+  {
+   "type": "reflecting-pool",
+   "at": [
+    10,
+    20,
+    0.2
+   ],
+   "params": {
+    "width": 24,
+    "depth": 70,
+    "colour": "#5f95a8",
+    "edgeColour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -20
+     ],
+     [
+      -30,
+      50
+     ],
+     [
+      -60,
+      60
+     ]
+    ],
+    "width": 5,
+    "colour": "#b07a68"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      40,
+      -60
+     ],
+     [
+      44,
+      10
+     ],
+     [
+      60,
+      50
+     ]
+    ],
+    "width": 5,
+    "colour": "#b07a68"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 6,
+    "spread": 4,
+    "line": 70,
+    "colour": "#4a8a45"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    56,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 5,
+    "spread": 4,
+    "line": 60,
+    "colour": "#4a8a45"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -70,
+    10,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 40,
+    "count": 14,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    50,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 60,
+    "count": 14,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    75,
+    30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "kind": "hip",
+    "roof_colour": "#8e5d4a"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -12,
+    -20,
+    0.2
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -20,
+    0.2
+   ],
+   "params": {
+    "height": 5,
+    "count": 8,
+    "spacing": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not render-checked (queue down); park scale vs statue basin and wall layout approximate"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-way-173106442"
+}

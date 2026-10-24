@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-way-354944904",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/844148718",
+   "used": "School of Education outline (35 x 31 m, bearing 40 deg, point-in-polygon match)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief kingston-osm-way-354944904",
+   "used": "white rendered two-storey block, louvred ground-floor arcade, red clay tile hip roof (typed guess, no photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "education",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee2",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#a9a28f",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "colour": "#a9a28f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8402f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    5,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 2.4,
+    "count": 3,
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#f2c200"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 4,
+    "spread": 4,
+    "line": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no render check: shared render queue had no live heartbeat (workers stalled since 20:17); no photo of this place found, composed from OSM outline and brief facts"
+ }
+}

@@ -1,0 +1,123 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cockburn-town",
+ "venueId": "cockburn-town-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/411579602",
+   "used": "real 14.7 x 9.8 m outline, building:levels=2 (nearest match, 2.9 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Cockburn_Town",
+   "used": "Bermudian-Caribbean style with upper veranda, from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc0",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "cornice": true,
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b36",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "verandah-arcade",
+   "id": "veranda",
+   "at": [
+    0,
+    -7.3,
+    3.4
+   ],
+   "rotDeg": -8,
+   "params": {
+    "length": 9,
+    "depth": 1.8,
+    "height": 3,
+    "kind": "square",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -8.4,
+    0
+   ],
+   "rotDeg": -8,
+   "params": {
+    "width": 3,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#d9d4c4"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    5,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1,
+    "colours": [
+     "#1c3f94"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 5,
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; outline real, veranda, hip roof and colours typed from the Bermudian street style."
+ }
+}

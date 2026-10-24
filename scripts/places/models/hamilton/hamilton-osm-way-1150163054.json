@@ -1,0 +1,301 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1150163054",
+   "used": "stadium outline 226 x 138 m (name match); pitch, track and stand layout placed inside it from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "field-ground",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -90.9,
+      60.5
+     ],
+     [
+      -45.3,
+      -90.9
+     ],
+     [
+      84.7,
+      -100.1
+     ],
+     [
+      67.7,
+      -53.1
+     ],
+     [
+      72.9,
+      -51.7
+     ],
+     [
+      72,
+      -46.1
+     ],
+     [
+      80.1,
+      -44.9
+     ],
+     [
+      71.6,
+      -3.9
+     ],
+     [
+      53.4,
+      59
+     ],
+     [
+      37.2,
+      99.5
+     ],
+     [
+      29.6,
+      96.4
+     ],
+     [
+      5.8,
+      103.3
+     ],
+     [
+      -6.1,
+      105.4
+     ],
+     [
+      -14.3,
+      105.2
+     ],
+     [
+      -21.6,
+      103.8
+     ],
+     [
+      -28.4,
+      101.7
+     ],
+     [
+      -35.5,
+      98.4
+     ],
+     [
+      -41.1,
+      94.5
+     ],
+     [
+      -46.2,
+      90.2
+     ],
+     [
+      -54.1,
+      82.4
+     ],
+     [
+      -67.5,
+      67.7
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#5f9244",
+    "topColour": "#6aa04c"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0.5,
+    -7.1,
+    0.25
+   ],
+   "rotDeg": 106,
+   "params": {
+    "length": 139.68693664960554,
+    "width": 85.84146752272447,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     62.5,
+     -22.6
+    ],
+    "end": [
+     44.9,
+     39.0
+    ],
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "seatColour": "#4d7a86",
+    "concreteColour": "#d9d3c0",
+    "canopy": {
+     "height": 5.8,
+     "depth": 7,
+     "thickness": 0.3,
+     "colour": "#8f9498"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "far-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -59.4,
+     0.7
+    ],
+    "end": [
+     -46.1,
+     -45.4
+    ],
+    "rows": 7,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "seatColour": "#4d7a86",
+    "concreteColour": "#d9d3c0",
+    "canopy": {
+     "height": 5.0,
+     "depth": 6,
+     "thickness": 0.3,
+     "colour": "#8f9498"
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    67.0,
+    -58.3,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    29.8,
+    71.7,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -28.8,
+    -85.8,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -66.1,
+    44.2,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -21.9,
+    70.9,
+    0
+   ],
+   "rotDeg": 196,
+   "params": {
+    "width": 9,
+    "height": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    87.8,
+    -80.5,
+    0
+   ],
+   "rotDeg": 106,
+   "params": {
+    "length": 189.253269009143,
+    "height": 1.8,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#9aa0a5"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     44.8,
+     -111.5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50.5,
+     95.5
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Queue render not available (render servers dead, heartbeat stale ~55 min) so never compared side by side; no photo of this field exists; stands, track and masts typed from the brief inside the OSM outline."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-way-1150163054"
+}

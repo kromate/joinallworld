@@ -1,0 +1,210 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/271265001",
+   "used": "real 90.6 x 25.9 m townhall outline (name match, stepped plan at 113 degrees)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vista_aerea_sjm.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dubansito99",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/lima/sjm.jpg",
+   "used": "district context only (not the town hall): pale painted multi-storey neighbours, flat roofs with rooftop tanks, paved plaza with lawn and trees, hills behind; no photo of the hall itself was found"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/lima.json",
+   "used": "three-storey district town hall, balcony over the entrance, flag forecourt; colours from the typical Lima municipal palette"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfa8",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.6,
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9806a",
+      "height": 0.6,
+      "proud": 0.12,
+      "at": 0.96,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-stair",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -20,
+    4
+   ],
+   "z0": 13,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d998f",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    14,
+    3,
+    13
+   ],
+   "params": {
+    "radius": 1.2,
+    "tankHeight": 1.6,
+    "legHeight": 1.2,
+    "legs": 1,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#d91023",
+     "#f2f2f2",
+     "#d91023"
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.25,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b8b2a2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.0,
+    "bottom": 1.5,
+    "colour": "#9b4a3a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 8,
+    "line": 1.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 2,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "trees": [],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photo shows the plaza from the air, not the hall; the hall is the real OSM outline with typed facade colours."
+ }
+}

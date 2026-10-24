@@ -1,0 +1,573 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-way-1262950847",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Landivar_Campus_Central.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MaCleDo",
+   "view": "front",
+   "file": "/tmp/places-evidence/guatemala-city/url1.jpg",
+   "used": "raw board-marked concrete teaching blocks: deep projecting floor slabs, dark open ground storey, glazed bands with yellow spandrels, sloped solar-glazed roof strip on the left block, taller pale block with blank slanted gable wall on the right, lawn, flower beds, two flagpoles, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Edificios_URL.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/guatemala-city/url2.jpg",
+   "used": "stepped concrete floors with yellow spandrel bands and brick stair towers, lawn and trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1262950847",
+   "used": "campus is 957 x 290 m: only one representative block is modelled, not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.778,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     48,
+     13
+    ]
+   },
+   "at": [
+    -26,
+    12
+   ],
+   "z0": 3.5,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a6a39b",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bands": "#d9b52b",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "solar-strip",
+   "at": [
+    -34,
+    10,
+    14
+   ],
+   "params": {
+    "rect": [
+     34,
+     6
+    ],
+    "height": 2.8,
+    "topScale": [
+     1,
+     0.3
+    ],
+    "topOffset": [
+     0,
+     2.0
+    ],
+    "colour": "#34414c",
+    "topColour": "#2b3943"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     18,
+     13
+    ]
+   },
+   "at": [
+    38,
+    12
+   ],
+   "z0": 3.5,
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c2bfb6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#d9d3c4"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b9b6ad",
+    "rise": 5,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -26,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 0.9,
+    "colour": "#2f6b2e"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "colour": "#c93a35"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    4,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 6,
+    "colours": [
+     "#5aa0d8",
+     "#e8c63a"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    34,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 5.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-dark-left",
+   "footprint": {
+    "rect": [
+     44,
+     10
+    ]
+   },
+   "at": [
+    -26,
+    12
+   ],
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2c2c2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2c2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-dark-right",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    38,
+    12
+   ],
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2c2c2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2c2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-deck",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    12,
+    8
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b0ada5",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#d9b52b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-l0",
+   "footprint": {
+    "rect": [
+     50,
+     2.0
+    ]
+   },
+   "at": [
+    -26,
+    5.2
+   ],
+   "z0": 3.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d9a92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-l1",
+   "footprint": {
+    "rect": [
+     50,
+     2.0
+    ]
+   },
+   "at": [
+    -26,
+    5.2
+   ],
+   "z0": 7,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d9a92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-l2",
+   "footprint": {
+    "rect": [
+     50,
+     2.0
+    ]
+   },
+   "at": [
+    -26,
+    5.2
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d9a92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-r0",
+   "footprint": {
+    "rect": [
+     19.6,
+     2.0
+    ]
+   },
+   "at": [
+    38,
+    5.2
+   ],
+   "z0": 3.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d9a92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-r1",
+   "footprint": {
+    "rect": [
+     19.6,
+     2.0
+    ]
+   },
+   "at": [
+    38,
+    5.2
+   ],
+   "z0": 7,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d9a92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-r2",
+   "footprint": {
+    "rect": [
+     19.6,
+     2.0
+    ]
+   },
+   "at": [
+    38,
+    5.2
+   ],
+   "z0": 10.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d9a92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-r3",
+   "footprint": {
+    "rect": [
+     19.6,
+     2.0
+    ]
+   },
+   "at": [
+    38,
+    5.2
+   ],
+   "z0": 14,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9d9a92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-0",
+   "footprint": {
+    "rect": [
+     3.5,
+     4
+    ]
+   },
+   "at": [
+    -52.5,
+    12
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a4503a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-1",
+   "footprint": {
+    "rect": [
+     3.5,
+     4
+    ]
+   },
+   "at": [
+    -0.5,
+    12
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a4503a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-2",
+   "footprint": {
+    "rect": [
+     3.5,
+     4
+    ]
+   },
+   "at": [
+    48,
+    12
+   ],
+   "z0": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a4503a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3a2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Render server down; critic fixes (dark pilotis ground storey, deep storey slabs, brick stair towers, full-width shed on blank-ended right block, sloped solar roof) applied to spec but unrendered. Yellow spandrels via bands only."
+ }
+}

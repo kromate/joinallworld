@@ -1,0 +1,121 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/388861099",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5d0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#8a3b2e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4.7,
+    -7.6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 3.5,
+    "height": 3.2,
+    "thickness": 0.5,
+    "columns": 2,
+    "colour": "#5a3a30",
+    "edgeColour": "#8a3b2e"
+   },
+   "rotDeg": -31.6
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    3,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.0,
+    "colour": "#8a3b2e"
+   },
+   "rotDeg": -31.6
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 8
+   },
+   "rotDeg": -31.6
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-meal-stop",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the building; OSM containing outline and brief only; awning, windows and colours assumed."
+ }
+}

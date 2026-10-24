@@ -1,0 +1,144 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-node-4451006141",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/832287647",
+   "used": "real 1163 m2 zig-zag outline (contains the point; likely merged adjoining buildings)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingstown.json",
+   "used": "brief description"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; render colours, hip roof and terrace/umbrellas typed from brief; outline probably spans neighbours"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e3b8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#2a6f97",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9402f",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 2.5,
+    "colours": [
+     "#2a6f97",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8,
+    -28,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 9,
+    "colours": [
+     "#2a6f97",
+     "#f2e3b8"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -35,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 12,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -12,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 4,
+    "width": 2.4,
+    "colour": "#2a6f97"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     0
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ }
+}

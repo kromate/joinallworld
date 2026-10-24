@@ -1,0 +1,285 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/387270362",
+   "used": "real outline of the roofed structure at the pin (42 x 34 m, building=roof): modelled as a flat roof slab on posts"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 15,
+  "fovDeg": 40,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "roofed-slab",
+   "params": {
+    "points": [
+     [
+      -26.6,
+      12.5
+     ],
+     [
+      -26.5,
+      7.1
+     ],
+     [
+      -6.2,
+      7.4
+     ],
+     [
+      -5.7,
+      -21.6
+     ],
+     [
+      -0.9,
+      -21.5
+     ],
+     [
+      -1.1,
+      -10.8
+     ],
+     [
+      15.9,
+      -10.5
+     ],
+     [
+      15.6,
+      8.9
+     ],
+     [
+      -2.5,
+      8.6
+     ],
+     [
+      -2.6,
+      12.8
+     ]
+    ],
+    "z0": 3.6,
+    "height": 0.5,
+    "colour": "#8c8f86",
+    "topColour": "#9a9a94"
+   },
+   "at": [
+    0,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "academy",
+   "footprint": {
+    "rect": [
+     60,
+     25
+    ]
+   },
+   "at": [
+    -4,
+    32
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfae",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.8,
+    "bands": "#8c8f86",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "entry",
+   "at": [
+    -4,
+    17,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#b4b1a6"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "id": "walk",
+   "at": [
+    -4,
+    10,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#8c8f86",
+    "roofColour": "#9a9a94"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#2f4f9d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#c9c3ae"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 10,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -4,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 6,
+    "line": 50
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-0",
+   "at": [
+    -6.2,
+    1.4000000000000004,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 6,
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#8c8f86",
+    "topColour": "#8c8f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-1",
+   "at": [
+    -5.7,
+    -27.6,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 6,
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#8c8f86",
+    "topColour": "#8c8f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-2",
+   "at": [
+    15.9,
+    -16.5,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 6,
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#8c8f86",
+    "topColour": "#8c8f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-3",
+   "at": [
+    15.6,
+    2.9000000000000004,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "n": 6,
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#8c8f86",
+    "topColour": "#8c8f86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; the 2-storey academy block behind the roofed structure comes from the brief (60 x 25 m painted concrete, ribbon windows), only the roof outline is real"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-community-workshop"
+}

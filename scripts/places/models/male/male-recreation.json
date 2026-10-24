@@ -1,0 +1,317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/436805451",
+   "used": "real park outline (95 x 93 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: promenade park, lawn, paths, palms, two pavilions, railings, kiosk; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park-ground",
+   "footprint": {
+    "osm": true,
+    "fit": 100
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6d9a4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -28
+     ],
+     [
+      0,
+      -6
+     ],
+     [
+      48,
+      30
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#d4cfc2"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -28,
+      50
+     ],
+     [
+      -5,
+      10
+     ],
+     [
+      0,
+      -6
+     ],
+     [
+      20,
+      -48
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#d4cfc2"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -28
+     ],
+     [
+      -12,
+      -44
+     ],
+     [
+      22,
+      -55
+     ]
+    ],
+    "width": 4,
+    "colour": "#c9c6bb"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -22,
+    22,
+    0.5
+   ],
+   "rotDeg": 16,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#b0b4b6"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    24,
+    -22,
+    0.5
+   ],
+   "rotDeg": 16,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.2,
+    "kind": "hip",
+    "roof_colour": "#b0b4b6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    10,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#f3f1ea"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.1,
+    "colour": "#9ea3a8"
+   },
+   "rotDeg": -72
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8,
+    -20,
+    0.5
+   ],
+   "rotDeg": 16,
+   "params": {
+    "count": 5,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    28,
+    6,
+    0.5
+   ],
+   "rotDeg": 16,
+   "params": {
+    "count": 4,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -35,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    35,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    45,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    15,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "extent": [
+   140,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: shared render queue servers were dead (stale heartbeat, 300 jobs waiting) so no check round ran"
+ }
+}

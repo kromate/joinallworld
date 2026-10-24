@@ -1,0 +1,404 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-airport-managua-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sandino_International_Airport.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Verde562",
+   "view": "street",
+   "file": "/tmp/places-evidence/managua/airport1.jpg",
+   "used": "landside kerb: long glazed hall behind a sloped truss-edged white canopy on slanted columns, white end block with dark grey rounded roof band and ribbon windows, small glazed kerb box, palms and kerb colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CesarAugustoSandino_Internacional.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dontacos",
+   "view": "front",
+   "used": "older terminal wing: pale breeze-block screen wall (not modelled in detail)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/297201940",
+   "used": "terminal size 242 x 54 m; a 118 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 55,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     84,
+     26
+    ]
+   },
+   "at": [
+    -17,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb7b9",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8dad8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     30,
+     36
+    ]
+   },
+   "at": [
+    44,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceeea",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c8084",
+    "parapet": 1.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rounded-fascia",
+   "footprint": {
+    "rect": [
+     32,
+     3
+    ]
+   },
+   "at": [
+    44,
+    -14.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#80858a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#80858a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb-box",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    46,
+    -22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a8c9c9",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f2f0",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-slab",
+   "footprint": {
+    "rect": [
+     92,
+     13
+    ]
+   },
+   "at": [
+    -19,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 8.8,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dfe2e3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8ebec",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "truss-edge",
+   "footprint": {
+    "rect": [
+     92,
+     0.9
+    ]
+   },
+   "at": [
+    -19,
+    -18.4
+   ],
+   "rotDeg": 0,
+   "z0": 9.6,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c6cbd0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c6cbd0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     -17,
+     0
+    ],
+    "end": [
+     24,
+     -17,
+     0
+    ],
+    "count": 15,
+    "lod2Step": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       1.4
+      ],
+      "height": 9,
+      "colour": "#d6d9da",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -48,
+    26,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "round",
+    "colour": "#e6e6e0",
+    "cabColour": "#6f9aa6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 2.2,
+    "colour": "#2f6b9a"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -52,
+    23,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -38,
+    23,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -24,
+    23,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -10,
+    23,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    4,
+    23,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    18,
+    23,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    32,
+    23,
+    5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from a street photo but never rendered or compared: render queue had no live worker (stale heartbeats since 20:17). Canopy columns are upright not slanted, truss edge is a plain bar, older breeze-block wing absent."
+ }
+}

@@ -1,0 +1,168 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q6465575",
+   "used": "private university founded 1992; Commons photos named Universidad Americana depict the Paraguayan university and were rejected"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/527270730",
+   "used": "outline is only 11 x 8 m so size taken from the brief (45 x 25 m, four storeys); modest and typical for Managua"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     45,
+     25
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede3",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "glassColour": "#5b7fa3",
+    "bands": "#b8b8b2",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb",
+    "material": "membrane",
+    "parapet": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -18,
+    -16.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15.6,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b8b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entry-canopy",
+   "at": [
+    6,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 5.5,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#d6d2c8",
+    "edgeColour": "#5b7fa3"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    22,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.5,
+    "colours": [
+     "#2b5da8",
+     "#f2f2f2"
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    6,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#b8b8b2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "cars": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-way-70193885"
+}

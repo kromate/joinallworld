@@ -1,0 +1,227 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/255735229",
+   "used": "park 447 x 368 m, 118,452 m2; lawns with a 120 m central portion modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q134862210",
+   "used": "urban park created 1983; lawns, tree-lined paths, monument, pavilions from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -20
+     ],
+     [
+      30,
+      -20
+     ],
+     [
+      30,
+      8
+     ],
+     [
+      -30,
+      8
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#cfc9b6"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    -8,
+    0.15
+   ],
+   "params": {
+    "radius": 6,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    -35,
+    10,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "hip",
+    "colour": "#d9d3c0",
+    "cap_colour": "#a84e32"
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    38,
+    18,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "hip",
+    "colour": "#d9d3c0",
+    "cap_colour": "#a84e32"
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    0,
+    10,
+    0.15
+   ],
+   "params": {
+    "height": 6,
+    "plinth_height": 2.4,
+    "colour": "#8a8780",
+    "figure_colour": "#5a4a3a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 9,
+      "spread": 6
+     }
+    },
+    "mode": "line",
+    "start": [
+     -52,
+     25,
+     0
+    ],
+    "end": [
+     52,
+     25,
+     0
+    ],
+    "count": 9
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 8,
+      "spread": 5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -52,
+     -30,
+     0
+    ],
+    "end": [
+     52,
+     -30,
+     0
+    ],
+    "count": 9
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -18,
+    -18,
+    0.15
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    -18,
+    0.15
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -26,
+    -4,
+    0.15
+   ],
+   "params": {
+    "height": 5,
+    "count": 5,
+    "spacing": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; only a 120 m portion of a 447 m park, layout of paths and monuments typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-relation-20576117"
+}

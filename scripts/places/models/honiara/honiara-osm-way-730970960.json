@@ -1,0 +1,150 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/730970960",
+   "used": "real 65x18 m outline of the named building, bearing and size"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/honiara.json",
+   "used": "low steel-framed shed, corrugated cladding, flat entrance canopy, blank signage, asphalt forecourt"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c2ae",
+    "windows": "none",
+    "plinth": 0.9,
+    "bands": "#4f6b78"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8f90",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#4f6b78",
+    "edgeColour": "#e9e3d2"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "bottom": 4,
+    "colour": "#4f6b78",
+    "frameColour": "#e9e3d2",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    20,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 2.5,
+    "colour": "#e9e3d2",
+    "frameColour": "#4f6b78"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -26,
+     0
+    ],
+    "end": [
+     26,
+     -26,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#cfd2d4"
+     }
+    },
+    "lod2Step": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; outline from OSM, cladding and roof typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-way-730970960"
+}

@@ -1,0 +1,688 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cockburn-town",
+ "venueId": "cockburn-town-airport-cockburn-town-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grand_Turk,_Replica_of_Friendship_7_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Banja-Frans Mulder",
+   "view": "front",
+   "file": "/tmp/places-evidence/cockburn-town/f7.jpg",
+   "used": "entrance forecourt: replica Friendship 7 capsule tilted ~25 deg on struts above a white plinth with sign wall, grey-green shrubs, white stone ring, picket fence, palms, utility poles, dry grass"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Caribbean_winter_2008_2009_2_998.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rickyrab",
+   "view": "street",
+   "used": "white curved entrance sign wall with the capsule above it, white picket fence, lamp pole (sign lettering omitted)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/191802506",
+   "used": "terminal footprint (65 x 50 m, name match); terminal elevations are not in any photo found, so wall and roof colours come from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 6,
+  "fovDeg": 30,
+  "aspect": 1.78,
+  "margin": 0.03,
+  "fit": "all",
+  "shiftX": 0,
+  "shiftY": 0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#4a8aa6",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdbf",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    10,
+    -44
+   ],
+   "params": {
+    "rect": [
+     36,
+     14
+    ],
+    "z0": 0,
+    "height": 0.03,
+    "colour": "#a39a58",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "entrance-canopy",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 7,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#ffffff",
+    "edgeColour": "#4a8aa6"
+   }
+  },
+  {
+   "type": "array",
+   "id": "fence-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "z0": 0,
+      "height": 1.0,
+      "colour": "#ffffff",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -46
+    ],
+    "end": [
+     4,
+     -46
+    ],
+    "count": 34,
+    "lod1Step": 3,
+    "lod2Step": 17
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "id": "fence-rail",
+   "at": [
+    0,
+    0,
+    0.7
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -46,
+      0
+     ],
+     [
+      4,
+      -46,
+      0
+     ]
+    ],
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    -12,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3.5,
+    "colours": [
+     "#1c3f94",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-wall",
+   "at": [
+    24,
+    -42
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      0
+     ],
+     [
+      -4,
+      0.1
+     ],
+     [
+      2,
+      0.7
+     ],
+     [
+      8,
+      0.8
+     ],
+     [
+      14,
+      0.4
+     ],
+     [
+      14,
+      1.0
+     ],
+     [
+      8,
+      1.4
+     ],
+     [
+      2,
+      1.3
+     ],
+     [
+      -4,
+      0.6
+     ],
+     [
+      -9,
+      0.5
+     ]
+    ],
+    "z0": 0,
+    "height": 1.5,
+    "topScale": 1.0,
+    "colour": "#f4f2ec",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "id": "pole",
+   "at": [
+    -33,
+    -40,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    10,
+    -42
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     2.4
+    ],
+    "z0": 0,
+    "height": 2.5,
+    "colour": "#f4f2ec",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strut-a",
+   "at": [
+    8.6,
+    -42
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "z0": 2.5,
+    "height": 3.2,
+    "colour": "#2a2a2c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "strut-b",
+   "at": [
+    11.8,
+    -42
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "z0": 2.5,
+    "height": 2.6,
+    "colour": "#2a2a2c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "id": "capsule",
+   "at": [
+    10,
+    -42,
+    5.6
+   ],
+   "params": {
+    "section": {
+     "circle": 1.6
+    },
+    "points": [
+     [
+      -2.8,
+      0,
+      1.5
+     ],
+     [
+      0,
+      0,
+      0.25
+     ],
+     [
+      2.6,
+      0,
+      -1.0
+     ]
+    ],
+    "curve": false,
+    "taper": [
+     0.2,
+     1.1
+    ],
+    "colour": "#232326",
+    "caps": true
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "id": "capsule-band",
+   "at": [
+    10,
+    -42,
+    5.6
+   ],
+   "params": {
+    "section": {
+     "circle": 0.66
+    },
+    "points": [
+     [
+      -2.25,
+      0,
+      1.27
+     ],
+     [
+      -1.65,
+      0,
+      1.0
+     ]
+    ],
+    "colour": "#f2f2ee",
+    "caps": true
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "id": "capsule-panel",
+   "at": [
+    10,
+    -43.1,
+    5.6
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0.3,
+      0,
+      0.2
+     ],
+     [
+      1.1,
+      0,
+      -0.15
+     ]
+    ],
+    "colour": "#e8e8ea",
+    "caps": true
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm-left",
+   "at": [
+    5,
+    -42.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm-right",
+   "at": [
+    14.5,
+    -41,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "shrub-l",
+   "at": [
+    7.0,
+    -44.2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#7d8a78"
+     ],
+     [
+      1.2,
+      0.3
+     ],
+     [
+      1.6,
+      0.8
+     ],
+     [
+      1.3,
+      1.3
+     ],
+     [
+      0.6,
+      1.6
+     ],
+     [
+      0,
+      1.7
+     ]
+    ],
+    "segments": 10,
+    "colour": "#7d8a78"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "shrub-l2",
+   "at": [
+    8.6,
+    -44.6,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#889580"
+     ],
+     [
+      1.0,
+      0.3
+     ],
+     [
+      1.3,
+      0.8
+     ],
+     [
+      1.0,
+      1.2
+     ],
+     [
+      0,
+      1.5
+     ]
+    ],
+    "segments": 10,
+    "colour": "#889580"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "shrub-r",
+   "at": [
+    13.0,
+    -44.2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#7d8a78"
+     ],
+     [
+      1.3,
+      0.3
+     ],
+     [
+      1.7,
+      0.9
+     ],
+     [
+      1.4,
+      1.5
+     ],
+     [
+      0.6,
+      1.8
+     ],
+     [
+      0,
+      1.9
+     ]
+    ],
+    "segments": 10,
+    "colour": "#7d8a78"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "shrub-far",
+   "at": [
+    19,
+    -41,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#6f8a58"
+     ],
+     [
+      1.2,
+      0.3
+     ],
+     [
+      1.6,
+      0.8
+     ],
+     [
+      1.0,
+      1.2
+     ],
+     [
+      0,
+      1.4
+     ]
+    ],
+    "segments": 8,
+    "colour": "#6f8a58"
+   }
+  },
+  {
+   "type": "array",
+   "id": "base-stones",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.28,
+       0.22
+      ],
+      "z0": 0,
+      "height": 0.14,
+      "colour": "#f0efe8",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     6.6,
+     -45.4
+    ],
+    "end": [
+     13.6,
+     -45.4
+    ],
+    "count": 18,
+    "lod1Step": 3,
+    "lod2Step": 18
+   }
+  },
+  {
+   "type": "array",
+   "id": "utility-poles",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "z0": 0,
+      "height": 8,
+      "colour": "#6b5a48",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4,
+     -34
+    ],
+    "end": [
+     40,
+     -33
+    ],
+    "count": 4,
+    "lod2Step": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Critic fixes applied (taller plinth, larger tilted capsule with band, shrubs, stone ring, lawn, poles, palms by capsule, camera margin 0.03) but the re-render was not seen: no render server was running (job queued). Camera fit all still includes the 65 m terminal so the monument stays small; terminal elevations unseen."
+ }
+}

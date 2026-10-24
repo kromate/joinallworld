@@ -1,0 +1,329 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-way-105617730",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bilbioteca_Central_UCB.jpg",
+   "licence": "see file page (Commons)",
+   "author": "see file page",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/la-paz/ucb3.jpg",
+   "used": "central library: red brick upper block with small square windows over a white louvred open-slab base, set-back pale roof box; brick and white render palette"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/105617730",
+   "used": "campus outline 136 x 114 m as ground plate; blocks arranged inside it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.1,
+  "shiftX": 0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8aa",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aab39b",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library-base",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    -4
+   ],
+   "z0": 0.5,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d4c6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "louvres"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c2",
+    "overhang": 0.3,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library-brick",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    -3,
+    -2
+   ],
+   "z0": 9.5,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4623f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b4",
+    "overhang": 0.3,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-box",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    2,
+    2
+   ],
+   "z0": 18.5,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d4c6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c2",
+    "overhang": 0.3,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-north",
+   "footprint": {
+    "rect": [
+     60,
+     14
+    ]
+   },
+   "at": [
+    0,
+    42
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4623f",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8286",
+    "overhang": 0.3,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     14,
+     44
+    ]
+   },
+   "at": [
+    50,
+    20
+   ],
+   "z0": 0.5,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7dcc5",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8286",
+    "overhang": 0.3,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     12,
+     36
+    ]
+   },
+   "at": [
+    -52,
+    18
+   ],
+   "z0": 0.5,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4623f",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8286",
+    "overhang": 0.3,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aula",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    28,
+    -32
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7dcc5",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d6a52",
+    "rise": 2.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -52,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.6,
+    "colour": "#e7dcc5",
+    "frameColour": "#7d8286"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    12,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 30,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -40,
+    0.5
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Library block from the photo, other wings typed; NOT render-checked: the render queue servers A and B exited at 20:19 and nothing was processed afterwards (253 jobs waiting); photo comparison still to do"
+ }
+}

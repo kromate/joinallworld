@@ -1,0 +1,159 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingston.json#kingston-osm-node-12539925828",
+   "used": "open-sided beach bar and restaurant shack, zinc shed roof, timber, sand setting; OSM polygon (210 x 93 m, building=hut) is an area not the building so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar-back",
+   "footprint": {
+    "rect": [
+     18,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a26b",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#2d6e8e"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8387",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "hospital/lean-to-veranda",
+   "at": [
+    -9,
+    -0.5,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "depth": 5.5,
+    "eaveHeight": 2.7,
+    "attachHeight": 3.6,
+    "post": "round",
+    "postEvery": 3.0,
+    "railHeight": 1.0,
+    "colour": "#c9a26b",
+    "roofColour": "#7d8387"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.1,
+    "bottom": 3.0,
+    "colour": "#2d6e8e",
+    "frameColour": "#f3ecd9",
+    "posts": false
+   }
+  },
+  {
+   "type": "hospital/umbrella-group",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 8,
+    "colours": [
+     "#2d6e8e",
+     "#f3ecd9",
+     "#c9a26b"
+    ]
+   }
+  },
+  {
+   "type": "market-open/table-set",
+   "at": [
+    5,
+    -8,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; modelled as a modest open timber shack typical of the east coast"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-node-12539925828"
+}

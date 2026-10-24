@@ -1,0 +1,713 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fort_Gustave_Lighthouse_(33678598618).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/gustavia/fort1.jpg",
+   "used": "white tapering round lighthouse tower with two small square windows, wide red lantern gallery, mast, red door at base, scrub around"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fort_Gustave_over_Gustavia,_St._Barths_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "panoramio contributor",
+   "view": "aerial",
+   "used": "low grey stone rampart line on the green hilltop above the harbour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1300042388",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": -8,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rampart-front",
+   "footprint": {
+    "rect": [
+     18,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a7d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9487",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rampart-left",
+   "footprint": {
+    "rect": [
+     1.6,
+     10
+    ]
+   },
+   "at": [
+    -14,
+    -4
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a7d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9487"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rampart-right",
+   "footprint": {
+    "rect": [
+     1.6,
+     8
+    ]
+   },
+   "at": [
+    14,
+    -6
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9b9487",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b9487"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "weather-station",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    -9,
+    0
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e6df",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d4",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower",
+   "at": [
+    8,
+    5,
+    0
+   ],
+   "params": {
+    "colour": "#f4f4f1",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 2.0
+     },
+     {
+      "z": 9.5,
+      "circle": 1.45
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern",
+   "at": [
+    8,
+    5,
+    9.5
+   ],
+   "params": {
+    "profile": [
+     [
+      1.45,
+      0,
+      "#c42b2b"
+     ],
+     [
+      2.1,
+      0.5,
+      "#c42b2b"
+     ],
+     [
+      2.1,
+      1.3,
+      "#c42b2b"
+     ],
+     [
+      2.1,
+      1.45,
+      "#7a1c1c"
+     ],
+     [
+      0.25,
+      1.5,
+      "#c42b2b"
+     ],
+     [
+      0.25,
+      1.8,
+      "#c42b2b"
+     ],
+     [
+      0,
+      1.8,
+      "#c42b2b"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mast",
+   "params": {
+    "section": {
+     "circle": 0.06
+    },
+    "points": [
+     [
+      8,
+      5,
+      12
+     ],
+     [
+      8,
+      5,
+      15.5
+     ]
+    ],
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "scrub-0",
+   "at": [
+    5,
+    3,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0,
+      "#5f7a3a"
+     ],
+     [
+      1.1,
+      0.3,
+      "#5f7a3a"
+     ],
+     [
+      1.3,
+      0.7,
+      "#5f7a3a"
+     ],
+     [
+      0.8,
+      1.1,
+      "#5f7a3a"
+     ],
+     [
+      0,
+      1.25,
+      "#5f7a3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "scrub-1",
+   "at": [
+    11,
+    3,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0,
+      "#6d8442"
+     ],
+     [
+      1.1,
+      0.3,
+      "#6d8442"
+     ],
+     [
+      1.3,
+      0.7,
+      "#6d8442"
+     ],
+     [
+      0.8,
+      1.1,
+      "#6d8442"
+     ],
+     [
+      0,
+      1.25,
+      "#6d8442"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "scrub-2",
+   "at": [
+    4.5,
+    7,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0,
+      "#55703a"
+     ],
+     [
+      1.1,
+      0.3,
+      "#55703a"
+     ],
+     [
+      1.3,
+      0.7,
+      "#55703a"
+     ],
+     [
+      0.8,
+      1.1,
+      "#55703a"
+     ],
+     [
+      0,
+      1.25,
+      "#55703a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "scrub-3",
+   "at": [
+    11.5,
+    7.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0,
+      "#5f7a3a"
+     ],
+     [
+      1.1,
+      0.3,
+      "#5f7a3a"
+     ],
+     [
+      1.3,
+      0.7,
+      "#5f7a3a"
+     ],
+     [
+      0.8,
+      1.1,
+      "#5f7a3a"
+     ],
+     [
+      0,
+      1.25,
+      "#5f7a3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "scrub-4",
+   "at": [
+    8,
+    9,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0,
+      "#6d8442"
+     ],
+     [
+      1.1,
+      0.3,
+      "#6d8442"
+     ],
+     [
+      1.3,
+      0.7,
+      "#6d8442"
+     ],
+     [
+      0.8,
+      1.1,
+      "#6d8442"
+     ],
+     [
+      0,
+      1.25,
+      "#6d8442"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "scrub-5",
+   "at": [
+    13,
+    5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0,
+      "#55703a"
+     ],
+     [
+      1.1,
+      0.3,
+      "#55703a"
+     ],
+     [
+      1.3,
+      0.7,
+      "#55703a"
+     ],
+     [
+      0.8,
+      1.1,
+      "#55703a"
+     ],
+     [
+      0,
+      1.25,
+      "#55703a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "scrub-6",
+   "at": [
+    3,
+    5.5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      0,
+      "#5f7a3a"
+     ],
+     [
+      1.1,
+      0.3,
+      "#5f7a3a"
+     ],
+     [
+      1.3,
+      0.7,
+      "#5f7a3a"
+     ],
+     [
+      0.8,
+      1.1,
+      "#5f7a3a"
+     ],
+     [
+      0,
+      1.25,
+      "#5f7a3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "mound",
+   "at": [
+    8,
+    5,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      4.5,
+      0,
+      "#6b7d45"
+     ],
+     [
+      3.2,
+      0.35,
+      "#6b7d45"
+     ],
+     [
+      2.0,
+      0.5,
+      "#6b7d45"
+     ],
+     [
+      0,
+      0.5,
+      "#6b7d45"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "door",
+   "at": [
+    8,
+    3.05,
+    0
+   ],
+   "params": {
+    "colour": "#c42b2b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     {
+      "z": 1.7,
+      "rect": [
+       0.9,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "win-a",
+   "at": [
+    8,
+    3.3,
+    5.0
+   ],
+   "params": {
+    "colour": "#22262b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.3
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       0.35,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "win-b",
+   "at": [
+    8,
+    3.45,
+    7.0
+   ],
+   "params": {
+    "colour": "#22262b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.35,
+       0.3
+      ]
+     },
+     {
+      "z": 0.35,
+      "rect": [
+       0.35,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bracket-0",
+   "at": [
+    5.9,
+    5,
+    9.8
+   ],
+   "params": {
+    "colour": "#c42b2b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     },
+     {
+      "z": 0.3,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bracket-1",
+   "at": [
+    10.1,
+    5,
+    9.8
+   ],
+   "params": {
+    "colour": "#c42b2b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     },
+     {
+      "z": 0.3,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bracket-2",
+   "at": [
+    8,
+    7.1,
+    9.8
+   ],
+   "params": {
+    "colour": "#c42b2b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     },
+     {
+      "z": 0.3,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-osm-node-3663052503",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "critic fixes applied (short wide lantern, windows, flush door, scrub, lower ramparts) but re-render not seen: render server was down, job queued"
+ }
+}

@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "funafuti",
+ "venueId": "funafuti-osm-way-136840917",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tuvalu_Mosque_(2016).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Michael Coghlan",
+   "view": "front",
+   "file": "/tmp/places-evidence/funafuti/mosque.jpg",
+   "used": "yellow-painted single-storey hall, green hipped corrugated roof, green-posted front veranda with a lower blue-green roof, small green dome with finial on the ridge above the door, two green pencil minarets with bulb at the roof ends, chain-link fence, grass yard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/136840917",
+   "used": "footprint 17 x 11 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     16.8,
+     11.1
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3be52",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 3.4,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#2a3a4a",
+    "plinth": 0.3,
+    "trimColour": "#3b6b4a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5e9f6c",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.25
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "veranda",
+   "at": [
+    0,
+    -6.6,
+    0
+   ],
+   "params": {
+    "form": "lean-to",
+    "width": 16.8,
+    "depth": 2.2,
+    "height": 2.7,
+    "thickness": 0.1,
+    "columns": 0,
+    "colour": "#5f9fbf",
+    "edgeColour": "#5f9fbf",
+    "rise": 0.35
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -0.3,
+    -2.6,
+    4.1
+   ],
+   "params": {
+    "radius": 1.5,
+    "height": 1.7,
+    "profile": "onion",
+    "drum": 0.2,
+    "finial": 0.9,
+    "colour": "#2f5f40"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -6.0,
+    -1.5,
+    3.3
+   ],
+   "params": {
+    "height": 1.6,
+    "radius": 0.2,
+    "balconies": 1,
+    "style": "pencil",
+    "colour": "#3f6b4a",
+    "capColour": "#3f6b4a"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    6.0,
+    -1.5,
+    3.3
+   ],
+   "params": {
+    "height": 3.0,
+    "radius": 0.2,
+    "balconies": 1,
+    "style": "pencil",
+    "colour": "#3f6b4a",
+    "capColour": "#3f6b4a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -7.9,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 1,
+    "colour": "#8f9088"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -6.0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 10.5,
+    "height": 1.5,
+    "thickness": 0.06,
+    "kind": "chain",
+    "colour": "#2f8f9f",
+    "pillarEvery": 3.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    6.0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 10.5,
+    "height": 1.5,
+    "thickness": 0.06,
+    "kind": "chain",
+    "colour": "#2f8f9f",
+    "pillarEvery": 3.5
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "id": "posts",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "length": 15.6,
+    "count": 6,
+    "height": 2.7,
+    "radius": 0.08,
+    "colour": "#2f5f40"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "door",
+   "at": [
+    0,
+    -5.62,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.12
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#a8733a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "sign",
+   "at": [
+    0,
+    -5.66,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.08
+    ],
+    "z0": 2.3,
+    "height": 0.7,
+    "colour": "#e8dcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -13,
+     4
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     6
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   48,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "critic fixes applied (roof rise 1.6, lean-to veranda, thin minarets, onion dome, posts, split chain fence with gate gap, door, sign) but not re-rendered: render queue had no server (308 jobs waiting); unverified visually"
+ }
+}

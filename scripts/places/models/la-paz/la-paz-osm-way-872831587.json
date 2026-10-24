@@ -1,0 +1,366 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-way-872831587",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/872831587",
+   "used": "campus outline (584 x 249 m, amenity=university): ground layer and the scatter of teaching sheds inside it. No photo of this campus found on Commons; sheds, brick colours and corrugated roofs follow the brief (Altiplano agricultural campus)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-west",
+   "footprint": {
+    "rect": [
+     48,
+     13
+    ]
+   },
+   "at": [
+    -62,
+    30
+   ],
+   "rotDeg": -20,
+   "height": 6.5,
+   "z0": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4623f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-east",
+   "footprint": {
+    "rect": [
+     48,
+     13
+    ]
+   },
+   "at": [
+    -40,
+    -2
+   ],
+   "rotDeg": -20,
+   "height": 6.5,
+   "z0": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4623f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-link",
+   "footprint": {
+    "rect": [
+     12,
+     48
+    ]
+   },
+   "at": [
+    -52,
+    14
+   ],
+   "rotDeg": -20,
+   "height": 6.5,
+   "z0": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c06d48",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-a",
+   "footprint": {
+    "rect": [
+     70,
+     12
+    ]
+   },
+   "at": [
+    8,
+    24
+   ],
+   "rotDeg": -20,
+   "height": 5.2,
+   "z0": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4623f",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-b",
+   "footprint": {
+    "rect": [
+     64,
+     12
+    ]
+   },
+   "at": [
+    14,
+    -8
+   ],
+   "rotDeg": -20,
+   "height": 5.2,
+   "z0": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a95a3a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-c",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    56,
+    -30
+   ],
+   "rotDeg": -20,
+   "height": 5.2,
+   "z0": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4623f",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barn-1",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -10,
+    -36
+   ],
+   "rotDeg": -20,
+   "height": 6,
+   "z0": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9b79a",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "plinth": 0.5,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6c7276",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barn-2",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    58,
+    12
+   ],
+   "rotDeg": -20,
+   "height": 5.6,
+   "z0": 0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9b79a",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "plinth": 0.5,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6c7276",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    30,
+    -34
+   ],
+   "params": {
+    "radius": 3,
+    "height": 4.5,
+    "legs": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -70,
+    -20
+   ],
+   "rotDeg": -20,
+   "params": {
+    "length": 120,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "fence",
+    "pillarEvery": 6,
+    "colour": "#b4623f"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    52
+   ],
+   "params": {
+    "width": 70,
+    "depth": 26,
+    "count": 9,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    60
+   ],
+   "params": {
+    "width": 50,
+    "depth": 26,
+    "count": 7,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -30,
+    -62
+   ],
+   "rotDeg": -20,
+   "params": {
+    "length": 30,
+    "kind": "van",
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; only the OSM campus extent and brief used; building positions inside the 584 m campus are schematic and only a ~150 m portion is modelled; never rendered."
+ }
+}

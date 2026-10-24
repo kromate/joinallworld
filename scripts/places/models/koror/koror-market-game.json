@@ -1,0 +1,306 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:WCTC_Shopping_Center.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/koror/wctc1.jpg",
+   "used": "massing: white rendered stepped box on dark open ground floor, four A-frame triangular dormers with brown trim, orange-brown tiled slab band, recessed pale green top storey with deep white eaves, stone pier columns"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:WCTC_Shopping_Center_in_Koror_City,_Palau_in_August_2026.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Doricono",
+   "view": "side",
+   "file": "/tmp/places-evidence/koror/wctc2.jpg",
+   "used": "stone-clad entrance pier, dormer detail, columns on the top floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/515653366",
+   "used": "footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "upper-box",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0663a",
+    "material": "clay-tile",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-band",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "terracotta",
+    "colour": "#c98b4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c98b4c",
+    "material": "clay-tile",
+    "overhang": 0.5
+   },
+   "z0": 6.2
+  },
+  {
+   "type": "mass",
+   "id": "top-storey",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9c9a8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9d2b8",
+    "overhang": 1.2,
+    "parapet": 0.3
+   },
+   "z0": 8.2
+  },
+  {
+   "type": "mass",
+   "id": "a-dormer-0",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -31
+   ],
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9ddc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0663a",
+    "material": "clay-tile",
+    "pitch": 55,
+    "overhang": 0.3
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "a-dormer-1",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -2,
+    -31
+   ],
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9ddc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0663a",
+    "material": "clay-tile",
+    "pitch": 55,
+    "overhang": 0.3
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "a-dormer-2",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    8,
+    -31
+   ],
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9ddc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0663a",
+    "material": "clay-tile",
+    "pitch": 55,
+    "overhang": 0.3
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "a-dormer-3",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    16,
+    -31
+   ],
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9ddc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0663a",
+    "material": "clay-tile",
+    "pitch": 55,
+    "overhang": 0.3
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -37,
+    3.2
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.2,
+    "bottom": 3.2,
+    "colour": "#4f7f9e",
+    "frameColour": "#ece6d6"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -8,
+    -44,
+    0
+   ],
+   "params": {
+    "colour": "#8fd08a",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "pending"
+ }
+}

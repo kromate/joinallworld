@@ -1,0 +1,192 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q138880232",
+   "used": "church building, point only; 18 x 35 m, whitewashed colonial parish church with one bell tower and pedimented front from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     29
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e7c9",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "bay": 5,
+    "plinth": 0.6,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a84e32",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     18,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e7c9",
+    "windows": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0.6,
+    "bands": "#c4684a",
+    "faces": {
+     "front": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dcc0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "market-open/pediment",
+   "at": [
+    0,
+    -15.1,
+    11
+   ],
+   "params": {
+    "width": 12,
+    "rise": 2.4,
+    "depth": 0.7,
+    "colour": "#f2e7c9"
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    -5.5,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 17,
+    "cap": "hip",
+    "cap_height": 3,
+    "colour": "#f2e7c9",
+    "cap_colour": "#a84e32"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    19.5
+   ],
+   "height": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece0c2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a84e32",
+    "material": "clay-tile",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b8b8b2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -21
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   60,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; massing from brief (18 x 35 m, one tower, pediment), details typed from city style"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-node-4001705843"
+}

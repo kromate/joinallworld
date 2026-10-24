@@ -1,0 +1,218 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/550203456",
+   "used": "building=retail, 21 x 17 m footprint 7 m from the pin (nearest match): slab outline and roof extent"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/george-town.json#george-town-market-game",
+   "used": "open pitched metal-roof produce shed on posts with stalls, blank board and car park (no photo of this market found; Camana Bay photos 11 m away show other buildings)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c6c0b0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c6c0b0",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    0.5,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 19,
+    "depth": 14,
+    "height": 4.4,
+    "form": "gable",
+    "support": "steel",
+    "colour": "#f0e4c4",
+    "accent": "#2f6b5a",
+    "roof_colour": "#3d6e5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store-room",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -5,
+    8
+   ],
+   "z0": 0.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f0e4c4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3d6e5c",
+    "material": "metal-sheet",
+    "rise": 0.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -2,
+    0.5
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 2.8,
+    "kind": "table",
+    "colours": [
+     "#2f6b5a",
+     "#e8d8a8",
+     "#c6542b"
+    ],
+    "goods_colours": [
+     "#d9a021",
+     "#4f8a3f",
+     "#c43a2f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    3.5,
+    0.5
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 2.8,
+    "kind": "table",
+    "colours": [
+     "#2f6b5a",
+     "#e8d8a8",
+     "#c6542b"
+    ],
+    "goods_colours": [
+     "#4f8a3f",
+     "#d9a021",
+     "#c43a2f"
+    ]
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -9,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 3.5,
+    "width": 3.2,
+    "colour": "#2f6b5a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 9,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -13,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this market exists in evidence; footprint is the nearest OSM retail building (not name-matched). Shed form, stalls and colours are typed from the brief."
+ }
+}

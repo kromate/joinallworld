@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-node-357256793",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/koror.json",
+   "used": "mangrove bay reserve with a small timber viewing pavilion, timber pier and covered walkway; only photo nearby is a bird, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "pier-boardwalk",
+   "id": "boardwalk",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "width": 2.2,
+    "height": 0.9,
+    "rails": true,
+    "piles": true,
+    "colour": "#8a6a48"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#8a6a48"
+   },
+   "at": [
+    -3,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -3,
+    -8
+   ],
+   "z0": 0.5,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a48",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy-walkway",
+   "id": "walk",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 3,
+    "spans": 4,
+    "tower": false,
+    "rails": true
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    18,
+    14,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 16,
+    "count": 10,
+    "kind": "mangrove",
+    "min_height": 4,
+    "max_height": 7
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -18,
+    14,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 12,
+    "count": 7,
+    "kind": "mangrove",
+    "min_height": 4,
+    "max_height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; not rendered (queue down). Generic mangrove bay with pavilion and boardwalk."
+ }
+}

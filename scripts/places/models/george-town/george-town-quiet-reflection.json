@@ -1,0 +1,146 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/370952623",
+   "used": "real fan-shaped outline (58 x 32 m) with the nave wing and the long side wing"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found in Commons or Wikipedia; pale concrete walls, pitched metal roof, freestanding bell frame from the brief (Wikipedia: built 1981-82)",
+   "source": "https://en.wikipedia.org/wiki/St._Ignatius_Church,_George_Town"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bay": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a64b3a",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    5,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f1ece0",
+    "roofColour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    18,
+    -12,
+    0
+   ],
+   "params": {
+    "baseWidth": 1.6,
+    "height": 11,
+    "shaftHeight": 8,
+    "sides": 4,
+    "colour": "#c9c3b4",
+    "finial": true
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#2f6f8f"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    8,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 12,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; roof form over the irregular fan outline and bell frame shape are assumed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-quiet-reflection"
+}

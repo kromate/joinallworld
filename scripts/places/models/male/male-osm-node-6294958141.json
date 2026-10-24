@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-osm-node-6294958141",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/415931704",
+   "used": "building outline 23.7 x 19 m (containing match; Wikidata Q28458080 college 3 m away)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mp_Ahmed_Haitham_Ibu2023_Campaign_16.jpg",
+   "licence": "Public domain",
+   "author": "Maldives Democratic Party",
+   "view": "street",
+   "file": "/tmp/places-evidence/male/av2.jpg",
+   "used": "style context only, 116 m away, not this building: pale blue and white painted render, breeze-block screens, rooftop air-conditioning units"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 14,
+   "storeys": 4,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "ribbon"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#5b7fa3",
+      "height": 0.6,
+      "at": 0.0,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.9,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "roof-terrace",
+   "on": "block",
+   "at": [
+    3,
+    2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "tables": 2,
+    "pergola": true,
+    "glass": true,
+    "bar": false
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "block",
+   "at": [
+    -5,
+    -4,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "block",
+   "at": [
+    -5,
+    2,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.4,
+    "bottom": 3.2,
+    "colour": "#5b7fa3",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -12
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of Avid College itself; 23.7 x 19 m OSM outline, four storeys and ribbon windows typed; pale-blue Male render style seen in neighbouring buildings"
+ }
+}

@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centro_Cultural_Miguel_%C3%81ngel_Asturias.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Ministerio de Cultura y Deportes Guatemala",
+   "view": "front",
+   "file": "/tmp/places-evidence/guatemala-city/asturias2.jpg",
+   "used": "low pale grey-white concrete mass with a big shallow domed shell roof behind, a ring of angular folded white canopies and stepped flaps over the entrance front, curved sculpted walls with rounded dark windows, wide stairs and a paved plaza with low curved planters"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Teatro_al_Aire_Libre_Centro_Cultural_Miguel_Angel_Asturias_Guatemala.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tian2992",
+   "view": "detail",
+   "file": "/tmp/places-evidence/guatemala-city/asturias.jpg",
+   "used": "open-air theatre with curved concrete tiers around a round stage, the old fort's weathered stone wall and a round turret behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/608486878",
+   "used": "real irregular outline of the complex (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 7,
+  "fovDeg": 58,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "complex",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cfcfca",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d3",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "surface",
+   "id": "gran-sala-shell",
+   "at": [
+    -2,
+    2,
+    0
+   ],
+   "params": {
+    "width": 58,
+    "depth": 44,
+    "z": 9,
+    "thickness": 0.8,
+    "kind": "dome-cap",
+    "rise": 9,
+    "colour": "#dcdcd8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "folded-flaps",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -34
+    ],
+    "end": [
+     26,
+     -48
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "surface",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "width": 11,
+       "depth": 8,
+       "z": 6.4,
+       "thickness": 0.5,
+       "kind": "folded",
+       "folds": 2,
+       "rise": 2.4,
+       "colour": "#e7e7e2"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "upper-flaps",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -24
+    ],
+    "end": [
+     28,
+     -32
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "surface",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "width": 9,
+       "depth": 6,
+       "z": 10.2,
+       "thickness": 0.45,
+       "kind": "folded",
+       "folds": 2,
+       "rise": 2,
+       "colour": "#dcdcd6"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-lobby",
+   "at": [
+    -4,
+    -44,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     6
+    ],
+    "height": 4.2,
+    "colour": "#2c3138",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -4,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "rise": 0.35,
+    "run": 1.2,
+    "count": 5,
+    "colour": "#b7b4ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret",
+   "at": [
+    26,
+    24,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "n": 14,
+    "height": 15,
+    "colour": "#a39d8f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret-cap",
+   "at": [
+    26,
+    24,
+    15
+   ],
+   "params": {
+    "radius": 5.2,
+    "n": 14,
+    "height": 2.4,
+    "topScale": 0.7,
+    "colour": "#6f6a5e"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "open-air-theatre",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -26,
+     54
+    ],
+    "radius": 12,
+    "startDeg": 20,
+    "endDeg": 160,
+    "rows": 8,
+    "rise": 0.4,
+    "run": 0.9,
+    "firstHeight": 0.3,
+    "facetDeg": 12,
+    "seatColour": "#d6d4cd",
+    "concreteColour": "#d0cec7"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stage-disc",
+   "at": [
+    -26,
+    54,
+    0
+   ],
+   "params": {
+    "radius": 9.5,
+    "n": 20,
+    "height": 0.5,
+    "colour": "#b9806b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    34,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.2,
+    "colour": "#d6d6d1"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    50,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: queue workers stalled. Folded canopy placement vs OSM outline orientation, shell size and amphitheatre position unchecked."
+ }
+}

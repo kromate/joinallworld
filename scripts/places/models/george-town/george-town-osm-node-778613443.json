@@ -1,0 +1,362 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cayman_Islands_National_Museum.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Coolcaesar",
+   "view": "front",
+   "file": "/tmp/places-evidence/george-town/museum1.jpg",
+   "used": "two-storey white clapboard block, bright red hipped metal roof with small gabled dormer, double-height open veranda with white railings and stair, lower right wing, white picket fence, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cayman_Islands_National_Museum_-_George_Town,_Grand_Cayman.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lhb1239",
+   "view": "street",
+   "used": "roof hip shape, black shutters, ground floor open on posts"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "pattern": []
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8402f",
+    "material": "metal-sheet",
+    "rise": 2.6,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     15,
+     10
+    ]
+   },
+   "at": [
+    12.5,
+    3
+   ],
+   "height": 6.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fbfbf8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "pattern": [],
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8402f",
+    "material": "metal-sheet",
+    "rise": 3.4,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -6,
+    -7.1,
+    0
+   ],
+   "params": {
+    "length": 21,
+    "count": 8,
+    "height": 4.4,
+    "radius": 0.13,
+    "kind": "square",
+    "beamHeight": 0.35,
+    "colour": "#ffffff",
+    "roofColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -6,
+    -7.1,
+    4.4
+   ],
+   "params": {
+    "length": 21,
+    "count": 8,
+    "height": 4.2,
+    "radius": 0.13,
+    "kind": "square",
+    "beamHeight": 0.35,
+    "colour": "#ffffff",
+    "roofColour": "#ffffff"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -6,
+    -7.1,
+    4.7
+   ],
+   "params": {
+    "length": 21,
+    "height": 1.0,
+    "postEvery": 0.35,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    12.5,
+    -3.9,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "count": 5,
+    "height": 3.2,
+    "radius": 0.13,
+    "kind": "square",
+    "beamHeight": 0.35,
+    "colour": "#ffffff",
+    "roofColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    12.5,
+    -3.9,
+    3.2
+   ],
+   "params": {
+    "length": 14,
+    "count": 5,
+    "height": 3.2,
+    "radius": 0.13,
+    "kind": "square",
+    "beamHeight": 0.35,
+    "colour": "#ffffff",
+    "roofColour": "#ffffff"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    12.5,
+    -3.9,
+    3.5
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "postEvery": 0.35,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -6,
+    -4.6,
+    9.4
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 3.0,
+    "height": 2.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 4.4,
+    "run": 3.2,
+    "count": 14,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "palisade",
+    "pillarEvery": 0,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 0.35,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#3a3a3c"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -6,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.8,
+    "pillar": 0.5,
+    "leaf": "bars",
+    "colour": "#ffffff",
+    "leafColour": "#ffffff"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.5,
+    "colours": [
+     "#c8102e",
+     "#1c2b6b"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 0.8,
+    "colour": "#f7f5ef",
+    "frameColour": "#2f5a52",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -1,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5,
+    "colour": "#3f7a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-osm-node-778613443",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Critic fixes applied (open posted double veranda, balusters, dormer, white render, picket fence with piers, lower wing set back) but NOT re-rendered: no render worker was running; no shutters; part placements unverified visually"
+ }
+}

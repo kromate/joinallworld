@@ -1,0 +1,114 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cove",
+ "venueId": "cove-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Setting only, from NOAA photo https://commons.wikimedia.org/wiki/File:Station_Number_044_-_Heard_Island_and_McDonald_Islands.jpg (public domain): no building visible; setting only (no building visible): black rounded volcanic pebble shore, blue-grey light, orange survey tripod hints at the orange field-hut colour"
+  },
+  {
+   "kind": "text",
+   "used": "Brief: 7 x 5 m dark-rust timber hut with a noticeboard and flagpole; no OSM building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a4a2e",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "bands": "#b9bec2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7478",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "pitch": 20,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -1.5,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "rise": 0.3,
+    "run": 0.45,
+    "count": 2,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.2,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 0.9,
+    "colour": "#e8ecee",
+    "frameColour": "#5a3320",
+    "posts": 2
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#e8ecee",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [],
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists (only a shoreline photo); composed from brief"
+ }
+}

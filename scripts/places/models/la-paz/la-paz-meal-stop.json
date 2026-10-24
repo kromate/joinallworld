@@ -1,0 +1,189 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief la-paz-meal-stop",
+   "used": "two-storey Zona Sur stucco villa-restaurant with arched portico; no photo or outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "polygon": [
+     [
+      -9,
+      -6
+     ],
+     [
+      9,
+      -6
+     ],
+     [
+      9,
+      6
+     ],
+     [
+      -9,
+      6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e7dcc5",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#f4efe2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3c",
+    "material": "clay-tile",
+    "rise": 2.6,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -5,
+    9.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ddd0b6",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3c",
+    "material": "clay-tile",
+    "rise": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "arcade",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "height": 3.8,
+    "thickness": 2.6,
+    "bays": 4,
+    "shape": "round",
+    "roof": true,
+    "colour": "#efe7d3",
+    "trim": "#ffffff"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    7,
+    -7.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 1.4,
+    "colours": [
+     "#a65a3c",
+     "#e7dcc5"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "pitch": 3,
+    "kind": "umbrella",
+    "colours": [
+     "#f1f1ee",
+     "#a65a3c"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or OSM outline exists; modest typical Zona Sur villa from the brief."
+ }
+}

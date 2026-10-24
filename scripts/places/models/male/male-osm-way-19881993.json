@@ -1,0 +1,354 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-osm-way-19881993",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maldives_-_Kurumba_Island.jpg",
+   "licence": "Public domain",
+   "author": "PalawanOz",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/male/m15_kurumba.jpg",
+   "used": "oval island ringed by white sand and turquoise lagoon, dense palm canopy, red-brown tile roofs of lodge and villas clustered south of centre, jetty with boats at the south-west end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/701327476",
+   "used": "main lodge footprint 37.7 x 13.9 m (the island polygon is 131,000 m2, too large for the scene limit, so only a central part of the island is built at true scale)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 32,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "lagoon",
+   "at": [
+    0,
+    0,
+    -0.4
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       95,
+       66
+      ],
+      "colour": "#6fcfd0"
+     },
+     {
+      "z": 0.3,
+      "ellipse": [
+       95,
+       66
+      ],
+      "colour": "#6fcfd0"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "sand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       74,
+       50
+      ],
+      "colour": "#efe6cc"
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       72,
+       48
+      ],
+      "colour": "#efe6cc"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "canopy",
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0.4
+   ],
+   "params": {
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       68,
+       45
+      ],
+      "colour": "#3f6e34"
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       63,
+       41
+      ],
+      "colour": "#4a7d3a"
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       48,
+       30
+      ],
+      "colour": "#3f6e34"
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       30,
+       18
+      ],
+      "colour": "#4f8240"
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    2,
+    -2
+   ],
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bands": "#8a5a36"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "villaA",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    -22,
+    -6
+   ],
+   "rotDeg": -12,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eee6d3",
+    "windows": "louvre",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9b5538",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "villaB",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    22,
+    4
+   ],
+   "rotDeg": 8,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "louvre",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b79b5a",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    10
+   ],
+   "rotDeg": 4,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e8e0cc",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a32",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "villaC",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    10,
+    -14
+   ],
+   "rotDeg": -6,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "louvre",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d4630",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "id": "jetty",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "length": 22,
+    "width": 3
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "id": "jetty2",
+   "at": [
+    -33,
+    -30,
+    0
+   ],
+   "rotDeg": -60,
+   "params": {
+    "length": 10,
+    "width": 2
+   }
+  },
+  {
+   "type": "array",
+   "id": "palms",
+   "params": {
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 24,
+    "radiusY": 16,
+    "count": 9,
+    "startDeg": 0,
+    "endDeg": 320
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered: queue down; island built as a scaled central part only"
+ }
+}

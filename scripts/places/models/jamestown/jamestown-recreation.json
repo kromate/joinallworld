@@ -1,0 +1,41 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "jamestown", "venueId": "jamestown-recreation",
+ "verified": "photo",
+ "evidence": [
+  {"kind": "photo", "url": "https://commons.wikimedia.org/wiki/File:Briars_Pavilion_(16477116332).jpg", "licence": "CC BY 2.0", "author": "David Stanley", "view": "front", "file": "/tmp/places-evidence/jamestown/briars1.jpg", "used": "single-storey pavilion with a dark grey double hipped roof (small raised upper hip), pink-cream walls with cream door and tall sash windows, green timber veranda posts and balustrade wrapping the front and side wings, low rendered plinth, brick path and lawn"},
+  {"kind": "photo", "url": "https://commons.wikimedia.org/wiki/File:Briars_pavilion_(40164448305).jpg", "licence": "CC BY-SA 2.0", "author": "Luke McKernan", "view": "side", "used": "cream walls, grey-blue steel roof with green dormer, brick chimney and green shutters of the rear wing; steep mountain behind"}
+ ,{"kind": "osm", "ref": "way/455727922", "used": "garden extent (park about 44 x 43 m)"}
+ ],
+ "camera": {"yawDeg": 0, "pitchDeg": 2, "fovDeg": 36, "aspect": 1.33},
+ "parts": [
+  {"type": "mass", "id": "pavilion", "footprint": {"rect": [9, 7]}, "at": [0, 0], "z0": 0.6, "height": 3.2, "storeys": 1,
+   "wall": {"material": "painted-render", "colour": "#d9b8a4", "windows": "punched", "windowRatio": 0.22, "bay": 3.4, "plinth": 0.1, "trimColour": "#efe6d2",
+            "faces": {"front": "punched", "back": "none", "left": "punched", "right": "punched"}},
+   "roof": {"form": "hip", "colour": "#4a4e4c", "material": "slate", "pitch": 14, "overhang": 2.2}},
+  {"type": "mass", "id": "upper-hip", "footprint": {"rect": [5.5, 4]}, "at": [0, 0], "z0": 4.2, "height": 0.8, "storeys": 1,
+   "wall": {"material": "painted-render", "colour": "#2f3a2d", "windows": "none"},
+   "roof": {"form": "hip", "colour": "#4a4e4c", "material": "slate", "pitch": 18, "overhang": 0.5}},
+  {"type": "mass", "id": "side-wing", "footprint": {"rect": [6, 6]}, "at": [8.5, 1.5], "z0": 0.6, "height": 2.8, "storeys": 1,
+   "wall": {"material": "painted-render", "colour": "#e3d6aa", "windows": "punched", "windowRatio": 0.2, "plinth": 0.1,
+            "faces": {"front": "punched", "back": "none", "left": "none", "right": "punched"}},
+   "roof": {"form": "hip", "colour": "#4a4e4c", "material": "slate", "pitch": 16, "overhang": 1.5}},
+  {"type": "mass", "id": "plinth-base", "footprint": {"rect": [20, 11]}, "at": [3.5, 0], "height": 0.6, "storeys": 1,
+   "wall": {"material": "painted-render", "colour": "#cbb7a8", "windows": "none"}, "roof": {"form": "flat", "colour": "#cbb7a8"}},
+  {"type": "array", "params": {"mode": "line", "count": 6, "start": [-4.8, -4.4, 0.6], "end": [4.8, -4.4, 0.6],
+    "of": {"type": "prism", "params": {"rect": [0.16, 0.16], "height": 3.2, "colour": "#1f7a4d"}}}},
+  {"type": "array", "params": {"mode": "line", "count": 5, "start": [-4.8, -4.4, 0.6], "end": [4.8, -4.4, 0.6],
+    "of": {"type": "prism", "params": {"rect": [1.8, 0.06], "z0": 0, "height": 0.9, "colour": "#1f7a4d"}}}},
+  {"type": "array", "params": {"mode": "line", "count": 4, "start": [-4.8, -4.4, 0.6], "end": [-4.8, 3.0, 0.6],
+    "of": {"type": "prism", "params": {"rect": [0.16, 0.16], "height": 3.2, "colour": "#1f7a4d"}}}},
+  {"type": "array", "params": {"mode": "line", "count": 4, "start": [5.2, -4.4, 0.6], "end": [11.5, -4.4, 0.6],
+    "of": {"type": "prism", "params": {"rect": [0.16, 0.16], "height": 2.8, "colour": "#1f7a4d"}}}},
+  {"type": "steps", "at": [0, -6], "params": {"width": 2.4, "rise": 0.6, "run": 1.2, "count": 2, "colour": "#a8998a"}},
+  {"type": "tudor-chimney", "at": [10.5, 3.5], "params": {"height": 4.8, "flues": 1, "width": 0.9, "depth": 0.9, "colour": "#a07a5c"}},
+  {"type": "fence-wall", "at": [-16, -17], "params": {"length": 40, "height": 0.9, "thickness": 0.5, "colour": "#9a9084"}},
+  {"type": "tree", "at": [-14, -8], "params": {"kind": "broadleaf", "height": 10}},
+  {"type": "tree", "at": [-10, 8], "params": {"kind": "broadleaf", "height": 9}},
+  {"type": "tree", "at": [14, 10], "params": {"kind": "broadleaf", "height": 11}}
+ ],
+ "site": {"ground": "grass", "forecourt": "none", "extent": [60, 55]},
+ "review": {"rounds": 0, "match": "rough", "gaps": ""}
+}

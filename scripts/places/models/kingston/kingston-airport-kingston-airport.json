@@ -1,0 +1,369 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Norman_Manley_International_Airport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wolmadrian at English Wikipedia",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kingston/airport1.jpg",
+   "used": "long low two-level terminal along the landside edge, narrow white multi-gate pier projecting onto the apron at the east end, low white-roofed sheds, flat apron with parked jets, bay behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/49187177",
+   "used": "overall extent only (360 m irregular polygon is beyond the scene clamp): a ~120 m portion is modelled by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 38,
+  "fovDeg": 55,
+  "aspect": 1.56,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     100,
+     20
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3e5e2",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain"
+    },
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbc",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "departures",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    34,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8fa6",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ccca",
+    "parapet": 0.4,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     9,
+     56
+    ]
+   },
+   "at": [
+    28,
+    -28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe3e3",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "bands": "#b9bcbc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8eaea",
+    "parapet": 0.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-head",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    28,
+    -58
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe3e3",
+    "windows": "curtain",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8eaea",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    34,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 9,
+    "height": 5.2,
+    "columns": 6,
+    "colour": "#d4d7d6",
+    "edgeColour": "#6f8fa6"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "rotDeg": 90,
+     "params": {
+      "length": 9,
+      "colour": "#c9ced1"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     23.5,
+     -22,
+     3.2
+    ],
+    "end": [
+     23.5,
+     -52,
+     3.2
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "rotDeg": -90,
+     "params": {
+      "length": 9,
+      "colour": "#c9ced1"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     32.5,
+     -22,
+     3.2
+    ],
+    "end": [
+     32.5,
+     -52,
+     3.2
+    ]
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -34,
+    22,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "round",
+    "colour": "#e8e8e4",
+    "cabColour": "#4f7a8f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar-east",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    -48,
+    -20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d7dad9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e6e8e8",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -8,
+    38,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 16
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -20,
+    -40,
+    0
+   ],
+   "rotDeg": 15,
+   "params": {
+    "scale": 0.9,
+    "colour": "#eceff1",
+    "tailColour": "#d98a1f"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    62,
+    -38,
+    0
+   ],
+   "rotDeg": -75,
+   "params": {
+    "scale": 0.9,
+    "colour": "#eceff1",
+    "tailColour": "#2f6b9a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    34,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2,
+    "bottom": 5.4,
+    "colour": "#2f6b9a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    0,
+    11.5
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     42
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-airport-kingston-airport",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: shared render queue was not running (workers dead since 20:18), so no comparison done; pier, gate bridges, sheds and aircraft are placed by eye from a small aerial photo."
+ }
+}

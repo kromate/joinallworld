@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-way-436679168",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/436679168",
+   "used": "37.4 x 18.9 m rectangular outline, bearing 55 deg, tagged church / Roman Catholic"
+  },
+  {
+   "kind": "text",
+   "used": "brief: plain gabled hall church, white walls, red corrugated roof, punched windows, no exterior description found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     18.9,
+     37.4
+    ]
+   },
+   "rotDeg": -55.3,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "arched",
+     "right": "arched"
+    },
+    "plinth": 0.5,
+    "bay": 4.2,
+    "bands": "#6f95a8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a3c",
+    "material": "corrugated",
+    "rise": 4.2,
+    "overhang": 0.9,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    -16.85,
+    -11.67
+   ],
+   "rotDeg": -55.3,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a3c",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -19.07,
+    -13.21,
+    0
+   ],
+   "rotDeg": -55.3,
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -13.69,
+    -17.99,
+    1.0
+   ],
+   "rotDeg": -55.3,
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 1.0,
+    "colour": "#6f95a8",
+    "frameColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bellcote",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -14.39,
+    -9.96
+   ],
+   "z0": 9.2,
+   "rotDeg": -55.3,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#9a4a3c",
+    "rise": 1.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; outline real, facade, door end, porch and bellcote typed from brief"
+ }
+}

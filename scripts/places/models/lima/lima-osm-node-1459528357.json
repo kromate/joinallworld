@@ -1,0 +1,477 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-osm-node-1459528357",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SantoCristoLima20110002.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Miguel Angel Chong",
+   "view": "front",
+   "file": "/tmp/places-evidence/lima/cristo.jpg",
+   "used": "yellow ochre stucco facade with red cornices and four red engaged columns on black stone plinths, central round-arched door, arched niche above, stepped belfry gable with open bell arch, balustrade, ball finials and cross, lower yellow side wall behind iron railing, street trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/443663696",
+   "used": "church size 29 x 17 m, 2 levels, 14 m (nave depth and width)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 2,
+  "fovDeg": 36,
+  "aspect": 1.62
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     14,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -1.2
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6b83c",
+    "windows": "none",
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#a93a2c"
+      ],
+      "height": 0.7,
+      "at": 0.97,
+      "proud": 0.35,
+      "floors": "all"
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#a93a2c"
+      ],
+      "height": 0.55,
+      "at": 0.62,
+      "proud": 0.3,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9a92f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     22
+    ]
+   },
+   "at": [
+    0.5,
+    13
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dfbd5c",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a8a6c",
+    "pitch": 14,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    11.5,
+    8
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e2bd48",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d2a93a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-black",
+   "at": [
+    0,
+    -1.4
+   ],
+   "params": {
+    "height": 1.0,
+    "colour": "#2b2926",
+    "rect": [
+     15.4,
+     2.8
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -2.45
+   ],
+   "params": {
+    "height": 4.6,
+    "colour": "#241d1a",
+    "rect": [
+     2.6,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-arch",
+   "at": [
+    0,
+    -2.45
+   ],
+   "params": {
+    "height": 0.6,
+    "colour": "#241d1a",
+    "rect": [
+     2.6,
+     0.3
+    ],
+    "z0": 4.6,
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-recess",
+   "at": [
+    0,
+    -2.5
+   ],
+   "params": {
+    "height": 5.6,
+    "colour": "#d9a92f",
+    "rect": [
+     5.6,
+     0.2
+    ],
+    "z0": 0.6,
+    "topScale": [
+     0.8,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "niche",
+   "at": [
+    0,
+    -2.55
+   ],
+   "params": {
+    "height": 1.7,
+    "colour": "#e9e4d8",
+    "rect": [
+     1.2,
+     0.2
+    ],
+    "z0": 5.4
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "at": [
+    0,
+    -2.8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -5.6,
+     0
+    ],
+    "end": [
+     5.6,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#a93a2c",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        0.5,
+        8.4
+       ],
+       [
+        0.62,
+        8.5
+       ],
+       [
+        0.62,
+        8.9
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    0,
+    -0.4
+   ],
+   "params": {
+    "height": 4.6,
+    "colour": "#e6b83c",
+    "rect": [
+     3.6,
+     1.6
+    ],
+    "z0": 10.5,
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-opening",
+   "at": [
+    0,
+    -1.25
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#2b2420",
+    "rect": [
+     1.2,
+     0.2
+    ],
+    "z0": 11.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-cap",
+   "at": [
+    0,
+    -0.4
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#a93a2c",
+    "rect": [
+     4.2,
+     2.0
+    ],
+    "z0": 15.1,
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    -0.4
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#4a4038",
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "z0": 15.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    -0.4
+   ],
+   "params": {
+    "height": 0.18,
+    "colour": "#4a4038",
+    "rect": [
+     0.9,
+     0.18
+    ],
+    "z0": 16.8
+   }
+  },
+  {
+   "type": "array",
+   "id": "finials",
+   "at": [
+    0,
+    -0.9,
+    10.5
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -6.4,
+     0
+    ],
+    "end": [
+     6.4,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#d4c9a8",
+      "profile": [
+       [
+        0.25,
+        0
+       ],
+       [
+        0.3,
+        0.3
+       ],
+       [
+        0.2,
+        0.6
+       ],
+       [
+        0,
+        0.7
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "railing",
+   "at": [
+    11.5,
+    -1.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -4.5,
+     0
+    ],
+    "end": [
+     4.5,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "height": 1.5,
+      "colour": "#2b2926"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#3a3835"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT render-compared: the shared render queue had no live worker (heartbeats stale ~2h, 240+ jobs backlog), so massing/colours come from viewing the photo only; needs 1-3 compare rounds"
+ }
+}

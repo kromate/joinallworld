@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-node-11690643469",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/957220330",
+   "used": "real L-shaped outline 13x11 m, nearest match 9 m"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingstown.json",
+   "used": "brief description"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; hip roof, grey render and window rhythm typed from brief; mast/solar position assumed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfd2cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#a9402f",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    9,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "radius": 0.2
+   }
+  },
+  {
+   "type": "core/solar-panels",
+   "at": [
+    -3,
+    -11,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 4,
+    "tilt": 20
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -14
+     ],
+     [
+      14,
+      -14
+     ],
+     [
+      14,
+      10
+     ],
+     [
+      -12,
+      10
+     ],
+     [
+      -12,
+      -14
+     ]
+    ],
+    "height": 1.2,
+    "colour": "#bdbdb5"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#ffffff",
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

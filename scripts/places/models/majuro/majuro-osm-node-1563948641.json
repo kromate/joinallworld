@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-osm-node-1563948641",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/142930374",
+   "used": "hotel footprint 22.9 x 16.1 m, containing the venue"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Majuro",
+   "used": "brief facts (size, storeys, roof, colours typed from Majuro style); no exterior photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 15,
+  "fovDeg": 52
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "osm": true,
+    "fit": 24
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e2a8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#8a5a36",
+    "cornice": true,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a33a2c",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 3,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#8a5a36",
+    "edgeColour": "#e9e5d6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 2.5,
+    "colour": "#e9e5d6",
+    "frameColour": "#8a5a36"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#cfd8dc",
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   75,
+   65
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: shared queue had no live heartbeat and ~278 jobs backlog, so massing/colours/footprint scale unverified; no exterior photo exists."
+ }
+}

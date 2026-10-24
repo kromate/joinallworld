@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/584045978",
+   "used": "footprint of the retail store (shared with Jay's restaurant); nearest match"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Majuro",
+   "used": "brief facts (size, storeys, roof, colours typed from Majuro style); no exterior photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "osm": true,
+    "fit": 21
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ab",
+    "windows": "none",
+    "bands": "#f0e2a8",
+    "plinth": 0.4,
+    "parapet": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 19,
+    "depth": 3.2,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#f0e2a8",
+    "edgeColour": "#e9e5d6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 3.4,
+    "colour": "#f0e2a8",
+    "frameColour": "#8a5a36",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: shared queue had no live heartbeat and ~278 jobs backlog, so massing/colours/footprint scale unverified; no exterior photo exists."
+ }
+}

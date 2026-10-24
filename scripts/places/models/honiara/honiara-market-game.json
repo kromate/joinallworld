@@ -1,0 +1,159 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/281733741",
+   "used": "name-matched Panatina Plaza outline (92x62 m, 7-vertex irregular), used as the footprint; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#c98a6b",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f90",
+    "material": "metal-sheet",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 2.4,
+    "colours": [
+     "#c98a6b",
+     "#f4f0e6"
+    ],
+    "height": 3.2
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    22,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 3.9,
+    "colour": "#c98a6b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -38,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 3,
+    "colour": "#c98a6b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.5,
+    "bottom": 3,
+    "colour": "#efe6cf"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real outline only, shopfront rhythm, awnings and colours typed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-market-game"
+}

@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-node-9049179001",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: octagonal dressed stone about 2.1 m x 0.6 m, once a stream bridge, beside a village stream in Melekeok; the nearby 14.8 x 8.4 OSM shelter is ignored"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 20,
+  "fovDeg": 40,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "monolith",
+   "at": [
+    0,
+    0,
+    0.35
+   ],
+   "rotDeg": -12,
+   "params": {
+    "points": [
+     [
+      -1.05,
+      -0.15
+     ],
+     [
+      -0.85,
+      -0.3
+     ],
+     [
+      0.85,
+      -0.3
+     ],
+     [
+      1.05,
+      -0.15
+     ],
+     [
+      1.05,
+      0.15
+     ],
+     [
+      0.85,
+      0.3
+     ],
+     [
+      -0.85,
+      0.3
+     ],
+     [
+      -1.05,
+      0.15
+     ]
+    ],
+    "height": 0.6,
+    "topScale": 0.86,
+    "colour": "#7d7a72",
+    "topColour": "#a8a59b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rest-a",
+   "at": [
+    -0.7,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.7
+    ],
+    "height": 0.35,
+    "colour": "#5f5c55",
+    "topColour": "#6e6b63"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rest-b",
+   "at": [
+    0.7,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.7
+    ],
+    "height": 0.35,
+    "colour": "#5f5c55",
+    "topColour": "#6e6b63"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stream",
+   "at": [
+    0,
+    3.2,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "rect": [
+     18,
+     1.8
+    ],
+    "height": 0.05,
+    "colour": "#4f7f9e",
+    "topColour": "#5b8fae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bank-stones",
+   "at": [
+    -3,
+    2.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.6
+    ],
+    "height": 0.3,
+    "colour": "#5f5c55"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.5,
+    -2.5,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 0.6,
+    "bottom": 0.5,
+    "colour": "#7d7a72",
+    "frameColour": "#5f5c55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -7,
+     -3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     6,
+     -5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     5
+    ]
+   }
+  ],
+  "extent": [
+   26,
+   20
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo anywhere; stone size from the brief, plan octagon only, tilt and surface wear not modelled"
+ }
+}

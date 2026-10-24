@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/404447804",
+   "used": "nearby shelter building 22 x 12 m (match quality nearest)"
+  },
+  {
+   "kind": "text",
+   "used": "open minibus lot with bays, small metal-roofed shelter, kiosks. Commons photos near the place show ferry boats at the stelling, not the bus park, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c3b6",
+    "windows": "none",
+    "bands": "#3b6ea5"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c8f8f",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "id": "row1",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "van",
+    "density": 0.9,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "id": "row2",
+   "at": [
+    -2,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "van",
+    "density": 0.8,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "id": "canopy",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "k1",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3b6ea5"
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "k2",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c9c3b6"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "sign",
+   "at": [
+    28,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "id": "t1",
+   "at": [
+    34,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the bus park; shelter outline only nearest OSM match, lot layout typed"
+ }
+}

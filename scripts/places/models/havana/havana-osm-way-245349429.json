@@ -1,0 +1,566 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-osm-way-245349429",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Havana_-_Fraternity_Square_and_Bolivar_Avenue.jpg",
+   "licence": "Public domain",
+   "author": "Curt Teich / postcard publisher",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/havana/245349429-3.jpg",
+   "used": "long wedge park block with a kerb, lawn dense with royal palms and flower beds, paths, road ring round it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Havana_-_Fraternity_Park.jpg",
+   "licence": "Public domain",
+   "author": "postcard publisher",
+   "view": "street",
+   "used": "tiered white marble fountain with statue, lamp posts, tall royal palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/245349429",
+   "used": "real park outline (about 104 x 53 m), park wedge"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 1.58
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -31.3,
+      37.4
+     ],
+     [
+      -31,
+      34
+     ],
+     [
+      -16.7,
+      -50.4
+     ],
+     [
+      -16.2,
+      -51.8
+     ],
+     [
+      -15.2,
+      -52.9
+     ],
+     [
+      -13.9,
+      -53.7
+     ],
+     [
+      -12.5,
+      -54
+     ],
+     [
+      23.3,
+      -51.7
+     ],
+     [
+      25.1,
+      -51.1
+     ],
+     [
+      26.6,
+      -50
+     ],
+     [
+      27.6,
+      -48.6
+     ],
+     [
+      28.1,
+      -46.9
+     ],
+     [
+      28.1,
+      -45.1
+     ],
+     [
+      20.9,
+      47.8
+     ],
+     [
+      20.2,
+      49.5
+     ],
+     [
+      19,
+      51
+     ],
+     [
+      17.6,
+      51.9
+     ],
+     [
+      15.9,
+      52.4
+     ],
+     [
+      -19.2,
+      48.7
+     ],
+     [
+      -23.2,
+      48
+     ],
+     [
+      -25.7,
+      46.7
+     ],
+     [
+      -27.9,
+      44.9
+     ],
+     [
+      -29.6,
+      42.7
+     ],
+     [
+      -30.7,
+      40.1
+     ]
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#bdb7a7",
+    "topColour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -29.2,
+      34.9
+     ],
+     [
+      -28.9,
+      31.7
+     ],
+     [
+      -15.6,
+      -46.8
+     ],
+     [
+      -15.2,
+      -48.1
+     ],
+     [
+      -14.3,
+      -49.1
+     ],
+     [
+      -13.0,
+      -49.8
+     ],
+     [
+      -11.7,
+      -50.1
+     ],
+     [
+      21.6,
+      -48.0
+     ],
+     [
+      23.2,
+      -47.4
+     ],
+     [
+      24.6,
+      -46.4
+     ],
+     [
+      25.5,
+      -45.1
+     ],
+     [
+      26.0,
+      -43.5
+     ],
+     [
+      26.0,
+      -41.8
+     ],
+     [
+      19.3,
+      44.6
+     ],
+     [
+      18.7,
+      46.1
+     ],
+     [
+      17.6,
+      47.5
+     ],
+     [
+      16.2,
+      48.4
+     ],
+     [
+      14.7,
+      48.8
+     ],
+     [
+      -18.0,
+      45.4
+     ],
+     [
+      -21.7,
+      44.8
+     ],
+     [
+      -24.0,
+      43.5
+     ],
+     [
+      -26.1,
+      41.9
+     ],
+     [
+      -27.6,
+      39.8
+     ],
+     [
+      -28.7,
+      37.4
+     ]
+    ],
+    "z0": 0.3,
+    "height": 0.12,
+    "colour": "#5f8f45",
+    "topColour": "#6a9a4c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.43
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -48
+     ],
+     [
+      22,
+      44
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.43
+   ],
+   "params": {
+    "points": [
+     [
+      22,
+      -46
+     ],
+     [
+      -27,
+      42
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -1,
+    -1,
+    0.42
+   ],
+   "params": {
+    "width": 22,
+    "depth": 22,
+    "border": 1.2,
+    "colour": "#d9d4c6",
+    "border_colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    -1,
+    -1,
+    0.5
+   ],
+   "params": {
+    "radius": 6.5,
+    "tiers": 3
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    -1,
+    -1,
+    2.2
+   ],
+   "params": {
+    "height": 3.6,
+    "plinthHeight": 2.2,
+    "colour": "#e8e4da",
+    "plinthColour": "#e8e4da"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    22,
+    0.4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 28,
+    "spread": 1,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -46
+    ],
+    "end": [
+     -4,
+     40
+    ],
+    "count": 9,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 17,
+      "colour": "#5a8f3f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     20,
+     -44
+    ],
+    "end": [
+     14,
+     44
+    ],
+    "count": 9,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 17,
+      "colour": "#5a8f3f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -48
+    ],
+    "end": [
+     8,
+     -48
+    ],
+    "count": 4,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 15,
+      "colour": "#5a8f3f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     44
+    ],
+    "end": [
+     12,
+     48
+    ],
+    "count": 6,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 15,
+      "colour": "#5a8f3f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     -40
+    ],
+    "end": [
+     -8,
+     34
+    ],
+    "count": 6,
+    "of": {
+     "type": "lamp-post",
+     "params": {
+      "height": 5
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     24,
+     -40
+    ],
+    "end": [
+     17,
+     40
+    ],
+    "count": 6,
+    "of": {
+     "type": "lamp-post",
+     "params": {
+      "height": 5
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -30
+    ],
+    "end": [
+     -6,
+     30
+    ],
+    "count": 3,
+    "of": {
+     "type": "statue-on-plinth",
+     "params": {
+      "height": 2.4,
+      "colour": "#6a583b",
+      "plinth": 1.1
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered (render queue down): palm density, fountain size and path layout unchecked against the postcard"
+ }
+}

@@ -1,0 +1,289 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-way-436679166",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belau_National_Museum.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/koror/museum1.jpg",
+   "used": "two-volume massing: low cream entrance block with red-edged flat roof and blank sign band, taller upper volume with mono-pitch red metal roof and tall slit windows, cream render, red roof colour"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belau_National_Museum_main_entrance.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Doricono",
+   "view": "side",
+   "file": "/tmp/places-evidence/koror/museum3.jpg",
+   "used": "side wall, hipped red-roofed open pavilion beside the block, paved yard, grass"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BNM_Bai_1.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/koror/museum2.jpg",
+   "used": "bai: steep A-frame gable, white painted gable face, yellow stilted base on a stone platform"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/436679166",
+   "used": "main building outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#9b3a35"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b3a35",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     15,
+     22
+    ]
+   },
+   "at": [
+    4,
+    -2
+   ],
+   "z0": 4.6,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a23b36",
+    "material": "corrugated",
+    "rise": 3.2,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1,
+    -29.4,
+    2.0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.1,
+    "bottom": 2.0,
+    "colour": "#efe8d4",
+    "frameColour": "#9b3a35"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    22,
+    -8
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee6d2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f3a33",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bai-platform",
+   "params": {
+    "rect": [
+     11,
+     16
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#5d5a50",
+    "topColour": "#6b6a5e"
+   },
+   "at": [
+    -30,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bai-base",
+   "footprint": {
+    "rect": [
+     7,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -6
+   ],
+   "z0": 1.3,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3b72c",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#3b2f26"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b2f26"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bai-body",
+   "footprint": {
+    "rect": [
+     7.6,
+     12.6
+    ]
+   },
+   "at": [
+    -30,
+    -6
+   ],
+   "z0": 4.3,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#6e5a3e",
+    "material": "thatch",
+    "rise": 5.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -8,
+    -33,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 0.5,
+    "pillarEvery": 7,
+    "colour": "#bdb6a2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "render queue was not running so the comparison could not be viewed; massing and colours set from photos, upper volume position and bai placement assumed"
+ }
+}

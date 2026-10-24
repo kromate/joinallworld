@@ -1,0 +1,325 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cove",
+ "venueId": "cove-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/cove.json#",
+   "used": "rough landing point: beached landing craft, bulldozer, small shelter, two tanks; Wikipedia Heard Island lists the landing-craft wreck and bulldozer at Atlas Cove"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    -6,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6a6f73",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b5472f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#52575b",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "pitch": 10
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "lee-canopy",
+   "at": [
+    -6,
+    0.3,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 5,
+    "depth": 2,
+    "height": 2.4,
+    "colour": "#52575b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "craft-hull",
+   "footprint": {
+    "rect": [
+     10,
+     3.4
+    ]
+   },
+   "at": [
+    7,
+    -4
+   ],
+   "rotDeg": -12,
+   "z0": 0,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6a6f73",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#b5472f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#52575b",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "craft-ramp",
+   "footprint": {
+    "rect": [
+     0.6,
+     3.2
+    ]
+   },
+   "at": [
+    12.3,
+    -3.2
+   ],
+   "rotDeg": -12,
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#52575b",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#52575b",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dozer-body",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.2
+    ]
+   },
+   "at": [
+    -2,
+    -6
+   ],
+   "rotDeg": 8,
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b5472f",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2e",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dozer-cab",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.6
+    ]
+   },
+   "at": [
+    -2.6,
+    -6.1
+   ],
+   "rotDeg": 8,
+   "z0": 1.4,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b5472f",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2e",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "landing-ramp",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.1,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#2e2e31"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank1",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#7a5a40"
+     ],
+     [
+      1.1,
+      0,
+      "#7a5a40"
+     ],
+     [
+      1.1,
+      1.8,
+      "#7a5a40"
+     ],
+     [
+      0.9900000000000001,
+      1.95,
+      "#5d5f60"
+     ],
+     [
+      0,
+      2.0,
+      "#5d5f60"
+     ]
+    ],
+    "segments": 14,
+    "colour": "#7a5a40"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank2",
+   "at": [
+    -9.5,
+    9,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#6a6f73"
+     ],
+     [
+      1.1,
+      0,
+      "#6a6f73"
+     ],
+     [
+      1.1,
+      1.8,
+      "#6a6f73"
+     ],
+     [
+      0.9900000000000001,
+      1.95,
+      "#5d5f60"
+     ],
+     [
+      0,
+      2.0,
+      "#5d5f60"
+     ]
+    ],
+    "segments": 14,
+    "colour": "#6a6f73"
+   }
+  },
+  {
+   "type": "rubble",
+   "id": "shore",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 8,
+    "count": 24,
+    "colour": "#3a3a3d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists (only a shoreline photo); composed from brief"
+ }
+}

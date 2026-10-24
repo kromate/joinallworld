@@ -1,0 +1,323 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-airport-male-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hulele-airport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jolle (assumed)",
+   "view": "front",
+   "file": "/tmp/places-evidence/male/airport1.jpg",
+   "used": "arrivals frontage of the Hulhule terminal: low blue-clad hall behind a long flat-roofed colonnade of blue posts, a gabled blue-edged arrivals canopy at the left, blue corrugated roof, pale walls, small control tower behind, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1098451966",
+   "used": "overall size only (520 x 90 m terminal): a 110 m central portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     70,
+     34
+    ]
+   },
+   "at": [
+    -10,
+    12
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f78b8",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "none",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f6fb0",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-concourse",
+   "footprint": {
+    "rect": [
+     100,
+     14
+    ]
+   },
+   "at": [
+    5,
+    -4
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2d3a4a",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9dcde",
+    "material": "metal-sheet",
+    "overhang": 4.5,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-annex",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    -52,
+    6
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9e6ea",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa4ab",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    60,
+    14
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa7c4",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b4b6",
+    "material": "metal-sheet",
+    "overhang": 1.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arrivals-canopy-roof",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -34,
+    -9
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8eef0",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e8ea",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -38,
+     -11.5
+    ],
+    "end": [
+     46,
+     -11.5
+    ],
+    "of": {
+     "type": "mass",
+     "id": "post",
+     "footprint": {
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 5.2,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#1f4fa8",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#1f4fa8"
+     }
+    }
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    32,
+    28,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "round",
+    "colour": "#d8d6d0",
+    "cabColour": "#c8663a",
+    "bandColour": "#b7442b"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -20,
+    30,
+    3
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    5,
+    30,
+    3
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -16.5,
+    4.4
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.0,
+    "colour": "#1f4fa8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -30
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    62,
+    -26
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 26,
+  "trees": [],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not compared: render queue down; photo shows the old arrivals frontage, the 2025 terminal is not modelled"
+ }
+}

@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/615284201",
+   "used": "checked only: the 113 x 70 m outline is the whole resort complex, not the restaurant; one wing is modelled from the brief and Maldives resort style"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "deck",
+   "params": {
+    "points": [
+     [
+      -17,
+      -12
+     ],
+     [
+      17,
+      -12
+     ],
+     [
+      17,
+      12
+     ],
+     [
+      -17,
+      12
+     ]
+    ],
+    "height": 0.6,
+    "colour": "#8a5a36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -2,
+    2
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.2,
+    "faces": {
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b79b5a",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    13,
+    5
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b79b5a",
+    "material": "thatch",
+    "pitch": 35,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    -8,
+    -12,
+    0.6
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "roof": "pyramid",
+    "bar": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1,
+    "bottom": 1,
+    "colour": "#8a5a36",
+    "posts": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8,
+    -9,
+    0.6
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "colours": [
+     "#f3f1ea"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     2
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -21,
+     -14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the restaurant; modelled as a thatched wing on a resort island from the brief, not the whole OSM complex"
+ }
+}

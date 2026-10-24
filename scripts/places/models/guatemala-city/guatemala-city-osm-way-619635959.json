@@ -1,0 +1,257 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centra_Sur_zona_12_de_Villa_Nueva.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Andy9696down",
+   "view": "street",
+   "file": "/tmp/places-evidence/guatemala-city/p4_0.jpg",
+   "used": "white painted retail wall with large blank blue and orange sign boards on the roofline, lime-green articulated Transmetro buses in the apron"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CentraSur2019.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Manuel C. Aguirre",
+   "view": "detail",
+   "file": "/tmp/places-evidence/guatemala-city/p4_1.jpg",
+   "used": "Transmetro station: long barrel-vault roof on steel columns with blue steel railings and ramps beside the mall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/619635959",
+   "used": "retail building 210 x 107 m, name match; modelled as an 118 m scene-limited block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     112,
+     50
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8de",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#e2b95c",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "anchor-wing",
+   "footprint": {
+    "rect": [
+     30,
+     30
+    ]
+   },
+   "at": [
+    42,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc6",
+    "windows": "none",
+    "bands": "#a8574a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -13.5,
+    8
+   ],
+   "params": {
+    "width": 22,
+    "height": 4.2,
+    "bottom": 2.2,
+    "colour": "#1f5fa8",
+    "frameColour": "#d8d8d8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -13.5,
+    6.2
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 0.5,
+    "colour": "#e0a43c",
+    "frameColour": "#d8d8d8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -13.5,
+    6.2
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.4,
+    "bottom": 0.5,
+    "colour": "#5b4fa0",
+    "frameColour": "#d8d8d8",
+    "posts": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 2.2,
+    "height": 3.4,
+    "colours": [
+     "#e2b95c",
+     "#a8574a"
+    ]
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "depth": 10,
+    "height": 5.2,
+    "form": "curved",
+    "support": "steel",
+    "colour": "#b9bcbc",
+    "accent": "#1f5fa8"
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    -18,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "depth": 6,
+    "height": 0.9
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -18,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "kind": "coach",
+    "density": 0.8,
+    "colours": [
+     "#8bd13a",
+     "#7dc72f"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    34,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 16,
+    "density": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -56,
+     -18
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-way-619635959",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not compared to the photo: the shared render queue had no live worker (heartbeats stale since 20:17, jobs queued but never ran). Composed from photos and OSM extents only; triangle counts unmeasured."
+ }
+}

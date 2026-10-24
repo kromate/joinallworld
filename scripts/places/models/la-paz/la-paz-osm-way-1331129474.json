@@ -1,0 +1,436 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-way-1331129474",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BMA001.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Anem (Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/la-paz/bma.jpg",
+   "used": "cream-white render Art Deco facade, central tower in stepped stages with slit windows and a statue niche, pointed-arch central portal with brown panelled doors, lower side aisles with doors, cross finial, grey plinth"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1331129474",
+   "used": "size of the nave (about 44 x 14 m); outline is a rotated polygon so only its dimensions are used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13,
+     34
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.8,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b8478",
+    "material": "slate",
+    "rise": 4.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     9.4,
+     5
+    ]
+   },
+   "at": [
+    0,
+    2.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16.6,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c1",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-left",
+   "footprint": {
+    "rect": [
+     5,
+     8
+    ]
+   },
+   "at": [
+    -7,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c1",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-right",
+   "footprint": {
+    "rect": [
+     5,
+     8
+    ]
+   },
+   "at": [
+    7,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c1",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-2",
+   "footprint": {
+    "rect": [
+     6.4,
+     4.4
+    ]
+   },
+   "at": [
+    0,
+    2.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c1",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-3",
+   "footprint": {
+    "rect": [
+     5.0,
+     3.8
+    ]
+   },
+   "at": [
+    0,
+    2.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26.2,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d3c1",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-4",
+   "footprint": {
+    "rect": [
+     3.0,
+     3.0
+    ]
+   },
+   "at": [
+    0,
+    2.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 29.2,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e6e0cf",
+    "rise": 1.6,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    2.8,
+    30.9
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -0.05,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.5
+    ],
+    "height": 4.6,
+    "colour": "#6b4a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7,
+    -0.05,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#6b4a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    -0.05,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#6b4a40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -0.05,
+    17
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.5
+    ],
+    "height": 2.4,
+    "colour": "#5a463e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -0.05,
+    23.2
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.4
+    ],
+    "height": 2.4,
+    "colour": "#5a463e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.2,
+    -0.05,
+    26
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.4
+    ],
+    "height": 2.4,
+    "colour": "#5a463e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.2,
+    -0.05,
+    26
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.4
+    ],
+    "height": 2.4,
+    "colour": "#5a463e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.1,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#b9b4a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     -8
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   60,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the front photo (stepped tower, pointed portal, aisles); NOT render-checked: the render queue servers A and B exited at 20:19 and nothing was processed afterwards (253 jobs waiting); photo comparison still to do"
+ }
+}

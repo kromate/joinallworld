@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/361630547",
+   "used": "real staggered-wing 49x32 m footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey white render, red roof, flags, steps; Wikidata image is Fort Oscar so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bands": "#8f8a80"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "metal-sheet",
+    "overhang": 0.7,
+    "rise": 3
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.2,
+    "run": 0.4,
+    "count": 5
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -18,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found (Wikidata image is Fort Oscar); render unchecked."
+ }
+}

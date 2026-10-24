@@ -1,0 +1,310 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universidad_del_Valle_de_Guatemala.JPG",
+   "licence": "Public domain",
+   "author": "Lestrada",
+   "view": "street",
+   "file": "/tmp/places-evidence/guatemala-city/p2_0.jpg",
+   "used": "red-orange brick walls, low brick perimeter wall and gate pier, white banner board on the upper storey, white concrete columns, pine trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Edificios_UVG.JPG",
+   "licence": "Public domain",
+   "author": "Lestrada",
+   "view": "street",
+   "file": "/tmp/places-evidence/guatemala-city/p2_2.jpg",
+   "used": "stepped three-storey brick blocks with recessed balconies, orange doors, white concrete columns, flat roofs, pines around"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/48203145",
+   "used": "campus extent 107 x 99 m and block orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    -14,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5553c",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#d9d3c4",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     14,
+     32
+    ]
+   },
+   "at": [
+    22,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5553c",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#d9d3c4",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -12,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5553c",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#d9d3c4",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-stair",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -37,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5553c",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bands": "#d9d3c4",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "banner",
+   "params": {
+    "rect": [
+     24,
+     0.4
+    ],
+    "height": 3.2,
+    "colour": "#f4f4ee"
+   },
+   "at": [
+    -14,
+    -21.2,
+    10.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "banner-stripe",
+   "params": {
+    "rect": [
+     2.4,
+     0.5
+    ],
+    "height": 3.2,
+    "colour": "#8dbb3c"
+   },
+   "at": [
+    -2.5,
+    -21.3,
+    10.5
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     -22.4,
+     0
+    ],
+    "end": [
+     4,
+     -22.4,
+     0
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 3.6,
+      "colour": "#e8e4da"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.3,
+    "thickness": 0.35,
+    "colour": "#a8573d"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 6,
+    "spread": 10,
+    "line": 50,
+    "colour": "#2f5a2c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 4,
+    "spread": 8,
+    "line": 30,
+    "colour": "#2f5a2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -50,
+     10
+    ],
+    "height": 17
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     48,
+     -12
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-way-48203145",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not compared to the photo: the shared render queue had no live worker (heartbeats stale since 20:17, jobs queued but never ran). Composed from photos and OSM extents only; triangle counts unmeasured."
+ }
+}

@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-osm-node-2698631329",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/573272135",
+   "used": "33 x 25 m footprint near the courts"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Majuro",
+   "used": "brief facts (typed from Majuro style; no exterior photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shopfront",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfd8dc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#a33a2c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -14,
+    0
+   ],
+   "rotDeg": 43,
+   "params": {
+    "width": 14,
+    "depth": 2.4,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#a33a2c",
+     "#e9e5d6"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2,
+     -20,
+     0
+    ],
+    "end": [
+     10,
+     -26,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "bar-pavilion",
+      "params": {
+       "radius": 1.4,
+       "height": 2.4,
+       "thatch": false
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not compared: render queue workers were dead (no heartbeat since 20:17), job left queued"
+ }
+}

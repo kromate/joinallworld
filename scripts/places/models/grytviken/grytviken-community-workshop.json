@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "grytviken",
+ "venueId": "grytviken-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/533042735",
+   "used": "12.8 m round outline 28 m away, only used as size reference (nearest quality); not used as a tight outline"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/grytviken.json",
+   "used": "two-storey rust-red corrugated shop, chimney, shed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d3b2a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "bands": "#5c5148"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b3a30",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     6,
+     9
+    ]
+   },
+   "at": [
+    9.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5c5148",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "high": "left",
+    "rise": 1.2,
+    "colour": "#6b3a30",
+    "material": "corrugated",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    -4,
+    3,
+    8
+   ],
+   "params": {
+    "height": 5,
+    "radius": 0.5,
+    "material": "metal",
+    "colour": "#5c5148"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step",
+   "at": [
+    0,
+    -7.3
+   ],
+   "params": {
+    "rect": [
+     3,
+     1.4
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#5c5148"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   45,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "placeholder; no photo; footprint is brief size, not the outline"
+ }
+}

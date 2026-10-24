@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/435817262",
+   "used": "whole Old Havana block outline (73x44 m, irregular); the restaurant is one townhouse of it, so the block is modelled as a run of 2-storey colonial houses"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q111121814",
+   "used": "El Cuarto de Tula, Old Havana; no exterior photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9b24c",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#efe9dc",
+    "groundKind": "arcade",
+    "groundHeight": 4.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5623f",
+    "material": "clay-tile",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -6,
+    -20.5,
+    4.6
+   ],
+   "params": {
+    "length": 22,
+    "floors": 1,
+    "storeyHeight": 5.2,
+    "proud": 1.0,
+    "rail": true,
+    "railHeight": 1.0,
+    "colour": "#3f4a46"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -14,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#7fa59a",
+     "#efe9dc"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#7fa59a",
+     "#efe9dc"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -21.5,
+    3.6
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "bottom": 3.6,
+    "colour": "#7fa59a",
+    "frameColour": "#efe9dc",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": 0,
+  "extent": [
+   100,
+   70
+  ]
+ }
+}

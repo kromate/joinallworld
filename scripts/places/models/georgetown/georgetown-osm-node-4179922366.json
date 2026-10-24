@@ -1,0 +1,105 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-osm-node-4179922366",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/417431852",
+   "used": "real irregular 40 x 27 m outline"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+   "used": "city style: painted concrete, red zinc roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "rect",
+    "windowRatio": 0.25,
+    "bay": 3.5,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a4a3a",
+    "material": "metal-sheet",
+    "overhang": 1.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "colour": "#9a4a3a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    8,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 9,
+    "density": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     15
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "The only nearby photo shows the airport arrivals hall, not this restaurant; outline is real, everything else typed."
+ }
+}

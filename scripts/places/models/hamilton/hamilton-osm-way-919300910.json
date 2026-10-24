@@ -1,0 +1,378 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-way-919300910",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BIOS.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Twardman",
+   "view": "front",
+   "file": "/tmp/places-evidence/hamilton/bios.jpg",
+   "used": "white hip-roofed lab blocks stepping up the slope, aqua-glazed three-storey block, boathouse at the dock, white research vessel moored at the left, pines and palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/919300910",
+   "used": "campus extent about 154 x 147 m, waterfront on one side"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.39,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-lab",
+   "footprint": {
+    "polygon": [
+     [
+      -20,
+      -8
+     ],
+     [
+      20,
+      -8
+     ],
+     [
+      20,
+      8
+     ],
+     [
+      6,
+      8
+     ],
+     [
+      6,
+      14
+     ],
+     [
+      -10,
+      14
+     ],
+     [
+      -10,
+      8
+     ],
+     [
+      -20,
+      8
+     ]
+    ]
+   },
+   "at": [
+    18,
+    22
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5ef",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 3.0,
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#e4e2d8",
+    "glassColour": "#6fb4c2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f4f3ee",
+    "material": "slate",
+    "rise": 2.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    52,
+    12
+   ],
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5ef",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.0,
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#e4e2d8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f4f3ee",
+    "material": "slate",
+    "rise": 2.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -28,
+    28
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5ef",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.0,
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#e4e2d8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#efeee8",
+    "material": "slate",
+    "rise": 2.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    48
+   ],
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5ef",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.0,
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#e4e2d8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f4f3ee",
+    "material": "slate",
+    "rise": 2.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "boathouse",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5ef",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 3.0,
+    "plinth": 0.3,
+    "cornice": true,
+    "trimColour": "#e4e2d8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f4f3ee",
+    "pitch": 30,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -4,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "width": 3.5,
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.2,
+      "rect": [
+       6.5,
+       26
+      ]
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       8.2,
+       32
+      ]
+     }
+    ],
+    "colour": "#f2f3f2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -28,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     13
+    ],
+    "height": 3.2,
+    "colour": "#f2f3f2",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -28,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     5,
+     8
+    ],
+    "height": 2.4,
+    "colour": "#f2f3f2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "pine",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    70,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 4,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "forecourtDepth": 50,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the water-side photo but never rendered: no render server alive; building positions are typed from the photo, vessel is a loft stand-in"
+ }
+}

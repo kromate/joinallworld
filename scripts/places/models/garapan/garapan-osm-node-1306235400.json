@@ -1,0 +1,1049 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saipan,_Commonwealth_of_the_Northern_Mariana_Islands_-_panoramio_(7).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "rambler.panoramio",
+   "view": "street",
+   "used": "northeast-coast clifftop path: cracked pale concrete walk, short concrete stair, dark green painted tubular railing with square posts along the cliff edge and stair, grassy slope rising on the right (the photo is 205 m from the point, so the identification is by setting, not certain)",
+   "file": "/tmp/places-evidence/garapan/bi1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saipan,_Commonwealth_of_the_Northern_Mariana_Islands_-_panoramio_(8).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "rambler.panoramio",
+   "view": "detail",
+   "used": "setting only: scrubby plateau above a cliff, white limestone sea stack beyond",
+   "file": "/tmp/places-evidence/garapan/bi2.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/637559359",
+   "used": "unreliable 5 x 2 m kiosk-size outline 24 m away: not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "sea",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -90,
+      -95
+     ],
+     [
+      90,
+      -95
+     ],
+     [
+      90,
+      -12
+     ],
+     [
+      -90,
+      -12
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#1c5a9a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shelf",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -14
+     ],
+     [
+      50,
+      -14
+     ],
+     [
+      50,
+      0
+     ],
+     [
+      -50,
+      0
+     ]
+    ],
+    "height": 3.5,
+    "colour": "#6b6a3c",
+    "material": "grass",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "land",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -42,
+      -9
+     ],
+     [
+      14,
+      -9
+     ],
+     [
+      14,
+      34
+     ],
+     [
+      -42,
+      34
+     ]
+    ],
+    "height": 8,
+    "colour": "#7b8050",
+    "material": "grass",
+    "topScale": 0.88
+   }
+  },
+  {
+   "type": "prism",
+   "id": "land-east",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      14,
+      -6
+     ],
+     [
+      44,
+      -6
+     ],
+     [
+      44,
+      34
+     ],
+     [
+      14,
+      34
+     ]
+    ],
+    "height": 3,
+    "colour": "#7b8050",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "walk",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "points": [
+     [
+      -24,
+      -2.6
+     ],
+     [
+      14,
+      -2.6
+     ],
+     [
+      14,
+      3.4
+     ],
+     [
+      -24,
+      3.4
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#d4cfc0",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "walk-east",
+   "at": [
+    0,
+    0,
+    3
+   ],
+   "params": {
+    "points": [
+     [
+      14,
+      -1
+     ],
+     [
+      44,
+      -1
+     ],
+     [
+      44,
+      3
+     ],
+     [
+      14,
+      3
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#d4cfc0",
+    "material": "smooth-concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stack",
+   "at": [
+    -6,
+    -40,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      -6
+     ],
+     [
+      0,
+      -8
+     ],
+     [
+      5,
+      -3
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      -6,
+      3
+     ]
+    ],
+    "height": 9,
+    "colour": "#d2cbb8",
+    "material": "rock",
+    "topScale": 0.55
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    24,
+    0.4,
+    3
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 2.4,
+    "rise": 0.5,
+    "run": 1.0,
+    "count": 10,
+    "colour": "#d4cfc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      -24,
+      -2.6,
+      8.649999999999999
+     ],
+     [
+      14,
+      -2.6,
+      8.649999999999999
+     ]
+    ],
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      -24,
+      -2.6,
+      9.149999999999999
+     ],
+     [
+      14,
+      -2.6,
+      9.149999999999999
+     ]
+    ],
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24.0,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22.1,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20.2,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18.3,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16.4,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14.5,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.6,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.700000000000001,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.799999999999999,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.899999999999999,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.0,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.099999999999998,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.1999999999999993,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.6999999999999993,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.599999999999998,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.5,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.400000000000002,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.299999999999997,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.200000000000003,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.100000000000001,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14.0,
+    -2.6,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      14,
+      -1.4,
+      8.649999999999999
+     ],
+     [
+      24,
+      -1.4,
+      3.6500000000000004
+     ]
+    ],
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      14,
+      -1.4,
+      9.149999999999999
+     ],
+     [
+      24,
+      -1.4,
+      4.15
+     ]
+    ],
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14.0,
+    -1.4,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.666666666666666,
+    -1.4,
+    7.366666666666666
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17.333333333333332,
+    -1.4,
+    6.533333333333333
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    19.0,
+    -1.4,
+    5.699999999999999
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.666666666666664,
+    -1.4,
+    4.866666666666667
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22.333333333333336,
+    -1.4,
+    4.033333333333333
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24.0,
+    -1.4,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      14,
+      2.2,
+      8.649999999999999
+     ],
+     [
+      24,
+      2.2,
+      3.6500000000000004
+     ]
+    ],
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      14,
+      2.2,
+      9.149999999999999
+     ],
+     [
+      24,
+      2.2,
+      4.15
+     ]
+    ],
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14.0,
+    2.2,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.666666666666666,
+    2.2,
+    7.366666666666666
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17.333333333333332,
+    2.2,
+    6.533333333333333
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    19.0,
+    2.2,
+    5.699999999999999
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.666666666666664,
+    2.2,
+    4.866666666666667
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22.333333333333336,
+    2.2,
+    4.033333333333333
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24.0,
+    2.2,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "height": 1.1,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     14,
+     8
+    ],
+    "end": [
+     8,
+     22,
+     8
+    ],
+    "count": 6,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "shrub",
+      "height": 2.2,
+      "colour": "#7b8050"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2,
+    4.2,
+    8.2
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.0,
+    "bottom": 0.9,
+    "colour": "#8c7f6a",
+    "frameColour": "#4a4a46"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-osm-node-1306235400",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Rebuilt per critic (cliff, sea, stack, chunky green rails, 10-step stair) but NOT rendered: no render server running. Reference photos are of a coastal path ~205 m away, setting only, so verified downgraded to text."
+ }
+}

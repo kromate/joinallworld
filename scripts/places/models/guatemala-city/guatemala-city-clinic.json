@@ -1,0 +1,224 @@
+{
+ "venueId": "guatemala-city-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Nacional_de_Villa_Nueva_-_Guatemala.jpg",
+   "licence": "Public domain",
+   "author": "Gobierno de Guatemala",
+   "view": "front",
+   "file": "/tmp/places-evidence/guatemala-city/clinic1.jpg",
+   "used": "three-storey reflective glass curtain wall with grey frame, light-blue solid tower on the left, flat roof, grass lawn and trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/794187333",
+   "used": "overall size 134 x 97 m; the OSM outline is irregular so a composed arrangement of wings of that extent is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 62,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-block",
+   "footprint": {
+    "rect": [
+     58,
+     22
+    ]
+   },
+   "at": [
+    -6,
+    -4
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4b5a5c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#8c9496",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-tower",
+   "footprint": {
+    "rect": [
+     8,
+     3
+    ]
+   },
+   "at": [
+    -39,
+    -14.5
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3b9fe0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b9fe0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    38,
+    -4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfd8e2",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#3b9fe0",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9496",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    0,
+    32
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe3e6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -39,
+    -16.2,
+    10
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 4,
+    "colour": "#2a3f8f"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 3,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but NOT rendered or compared: render queue servers were down (no heartbeat, no Blender process) for the whole session; re-run submit and compare"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city"
+}

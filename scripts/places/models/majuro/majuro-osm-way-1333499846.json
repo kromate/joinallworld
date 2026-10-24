@@ -1,0 +1,261 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1333499846",
+   "used": "plot outline (189 x 133 m, name-quality match), rotated to its long axis and scaled 0.62 to the scene limit; the track oval and the single covered main stand along the long side are typed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 28,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -68.37,
+      -37.74
+     ],
+     [
+      -61.53,
+      31.81
+     ],
+     [
+      -13.22,
+      39.12
+     ],
+     [
+      10.26,
+      36.87
+     ],
+     [
+      50.51,
+      26.28
+     ],
+     [
+      52.09,
+      -4.17
+     ],
+     [
+      48.54,
+      -49.06
+     ],
+     [
+      -18.28,
+      -43.11
+     ]
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#7f9a63"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "length": 98.8,
+    "width": 68.8,
+    "lane_width": 7,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -26.98509964374286
+    ],
+    "end": [
+     34,
+     -26.98509964374286
+    ],
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 2.2,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#3b6e91",
+    "concreteColour": "#b9b6ab",
+    "underColour": "#a7a49a",
+    "canopy": {
+     "height": 5,
+     "depth": 10,
+     "thickness": 0.5,
+     "slopeDeg": -6,
+     "colour": "#3b6e91",
+     "edgeColour": "#e9e5d6",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -47.91950319350105,
+    -35.207577021790534,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -47.91950319350105,
+    35.207577021790534,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    47.91950319350105,
+    -35.207577021790534,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    47.91950319350105,
+    35.207577021790534,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.8,
+    "kind": "fence",
+    "points": [
+     [
+      -68.36554841164812,
+      -37.7361169305958
+     ],
+     [
+      -61.528922756207045,
+      31.810831914392114
+     ],
+     [
+      -13.220426858078316,
+      39.119530024211706
+     ],
+     [
+      10.25840167396703,
+      36.870979655015276
+     ],
+     [
+      50.51050971864999,
+      26.277759466650966
+     ],
+     [
+      52.08641651467505,
+      -4.173515938005599
+     ],
+     [
+      48.53600546612492,
+      -49.06381753407792
+     ],
+     [
+      -18.27643534748353,
+      -43.10565065759077
+     ],
+     [
+      -68.36554841164812,
+      -37.7361169305958
+     ]
+    ],
+    "colour": "#8d8f8c"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -45
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     -45
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -72,
+     50
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-osm-way-1333499846",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked (render queue down); no exterior photo exists. Stand position, track size and floodlights are typed; only the plot outline is real."
+ }
+}

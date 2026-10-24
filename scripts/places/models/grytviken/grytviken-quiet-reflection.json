@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "grytviken",
+ "venueId": "grytviken-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:South_Georgia_-_Grytviken_-_Norwegian_Lutheran_Church_in_2009_(16093953722).jpg",
+   "licence": "CC BY 2.0",
+   "author": "nomis-simo",
+   "view": "front",
+   "file": "/tmp/places-evidence/grytviken/church.jpg",
+   "used": "white board-and-batten walls on red brick plinth, grey-green standing-seam roofs, square entrance tower with louvre and tall steeple, gabled porch with lean-to roof, lower narrower chancel behind, gold crosses"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/533041734",
+   "used": "overall size 17.4 x 14.8 m only; the mapped outline is irregular so the plan is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     8.4,
+     11
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "plinth": 0.9,
+    "windowRatio": 0.16,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "none",
+     "left": "punched",
+     "right": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f5a55",
+    "material": "metal-sheet",
+    "rise": 3.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     6,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    7.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "plinth": 0.9,
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f5a55",
+    "material": "metal-sheet",
+    "rise": 2.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4.2,
+     2.8
+    ]
+   },
+   "at": [
+    0,
+    -7.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "plinth": 0.9,
+    "windowShape": "pointed",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f5a55",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -4.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "plinth": 0.9,
+    "windowShape": "pointed",
+    "windowRatio": 0.06,
+    "faces": {
+     "front": "punched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": {
+     "type": "louvres",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f5a55",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    -4.5,
+    10.0
+   ],
+   "params": {
+    "baseWidth": 3.5,
+    "height": 7,
+    "sides": 4,
+    "colour": "#4f5a55",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2.4,
+    -8.9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.9,
+    "run": 0.35,
+    "count": 3,
+    "colour": "#9a4a3a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -8.85,
+    2.4
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 0.5,
+    "bottom": 0,
+    "colour": "#f3f1ea",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Critic fixes applied (tower moved to front gable, gabled porch with arched opening, grey-green metal-sheet roofs, brick plinth, pointed windows, louvre front on tower) but still not rendered: no render server heartbeat, 332 jobs queued. Gold crosses, green door and round porthole not modelled; roof is metal-sheet not true standing seam; camera yaw unverified."
+ }
+}

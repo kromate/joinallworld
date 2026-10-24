@@ -1,0 +1,164 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-osm-node-6340499785",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "(photo Anang M, CC BY 3.0, not this building) Cayman beach character only (pale sand, calm shallow turquoise water, casuarina and palm edge); it is a different beach, so it is not a match photo",
+   "ref": "https://commons.wikimedia.org/wiki/File:The_Paseo,_Cayman_Islands_-_panoramio.jpg"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/george-town.json#george-town-osm-node-6340499785",
+   "used": "natural beach with a short timber walkway, a few umbrellas and a blank sign board; no OSM building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "width": 1.8,
+    "height": 0.5,
+    "rails": false,
+    "piles": true,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 5,
+    "umbrellas": true,
+    "loungers": false,
+    "colours": [
+     "#1f9aa8",
+     "#f1e7c9",
+     "#d6c9a3"
+    ]
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 2.6,
+    "width": 1.8,
+    "colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of Starfish Point itself and no building; beach layout, walkway and umbrellas are typed from the brief."
+ }
+}

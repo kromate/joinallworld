@@ -1,0 +1,172 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-osm-node-5639324916",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Barths_Gustavia_Clocher_Suedois_2.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "William Ellison",
+   "view": "front",
+   "used": "battered stone tower shaft narrowing upward, green clapboard belfry stage with white corner trim, clock face on one side, white-and-green door at base, pyramidal cap",
+   "file": "/tmp/places-evidence/gustavia/5639324916_0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/363204391",
+   "used": "footprint size (4.6 x 4 m diamond)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "stone-base",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8c867a",
+    "material": "stone-blocks",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.0,
+       5.0
+      ]
+     },
+     {
+      "z": 7.0,
+      "rect": [
+       3.7,
+       3.7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "timber-stage",
+   "at": [
+    0,
+    0,
+    7.0
+   ],
+   "params": {
+    "colour": "#2f6b5c",
+    "material": "timber-boards",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.9,
+       3.9
+      ]
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "roof",
+   "at": [
+    0,
+    0,
+    10.6
+   ],
+   "params": {
+    "colour": "#2f4f46",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       0.3,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-face",
+   "at": [
+    0,
+    -1.9,
+    8.8
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.15
+    ],
+    "height": 1.5,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -0.9,
+    -2.35,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.15
+    ],
+    "height": 2.0,
+    "colour": "#e6e8e3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered: shared render queue had no live worker (stale heartbeats); composed from photos by eye, no side-by-side comparison done"
+ }
+}

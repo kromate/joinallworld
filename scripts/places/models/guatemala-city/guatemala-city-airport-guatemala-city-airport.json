@@ -1,0 +1,309 @@
+{
+ "venueId": "guatemala-city-airport-guatemala-city-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Aurora_International_Airport.jpg",
+   "licence": "Public domain",
+   "author": "Tristanh",
+   "view": "front",
+   "file": "/tmp/places-evidence/guatemala-city/airport1.jpg",
+   "used": "landside facade: two-level glazed block with gold-framed bands and railing, huge folded roof of inverted blue/white pyramids on dark blue piers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeropuerto_Internacional_La_Aurora_-_Ciudad_de_Guatemala,_Guatemala.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MHernandezp05",
+   "view": "back",
+   "used": "long low airside block with teal glazing, jet bridges, grey roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/17228070",
+   "used": "overall length (562 m); a 118 m portion modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal-low",
+   "footprint": {
+    "rect": [
+     104,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c3a46",
+    "windows": "ribbon",
+    "windowRatio": 0.75,
+    "bands": "#d9a928",
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-blue",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -48,
+    -14
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f55a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "array",
+   "id": "roof-pyramids",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 15,
+        "rect": [
+         15,
+         32
+        ]
+       },
+       {
+        "z": 9.5,
+        "rect": [
+         1.2,
+         1.2
+        ]
+       }
+      ],
+      "colour": "#2c52a6",
+      "capTop": true
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     0
+    ],
+    "end": [
+     46,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 1,
+    "lod2Step": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     108,
+     34
+    ],
+    "z0": 15,
+    "height": 0.7,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.2,
+         2.4
+        ]
+       },
+       {
+        "z": 9.5,
+        "rect": [
+         0.8,
+         1.6
+        ]
+       }
+      ],
+      "colour": "#1f2f4a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -45,
+     -12.5
+    ],
+    "end": [
+     45,
+     -12.5
+    ],
+    "count": 8,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "airside",
+   "footprint": {
+    "rect": [
+     118,
+     30
+    ]
+   },
+   "at": [
+    0,
+    50
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f6f7d",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9094",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "jet-bridges",
+   "rotDeg": 0,
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 16,
+      "colour": "#c9ced1"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -45,
+     76
+    ],
+    "end": [
+     45,
+     76
+    ],
+    "count": 5,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -50,
+    95,
+    0
+   ],
+   "params": {
+    "height": 44,
+    "style": "round",
+    "colour": "#d8d6cf"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -24
+    ]
+   }
+  ],
+  "cars": 3,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but NOT rendered or compared: render queue servers were down (no heartbeat, no Blender process) for the whole session; re-run submit and compare"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city"
+}

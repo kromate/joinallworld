@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-node-6203091886",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/hagatna.json",
+   "used": "Coco Palm Garden Beach: beachfront restaurant and cabanas under palms on Guam's north-eastern coast; no OSM building and no photo found, so a modest open-sided thatched restaurant hall with a seaward deck, two cabanas and umbrellas typical of Guam beach restaurants"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e0c9a0",
+    "windows": "louvre",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a6a48",
+    "material": "thatch",
+    "pitch": 30,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    14.5,
+    2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b6a58",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     24,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a98b62",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98b62",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -18,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 2.8,
+    "roof": "hip",
+    "rise": 2,
+    "posts": 4,
+    "colour": "#e0c9a0",
+    "cap_colour": "#8a6a48"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -27,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 2.8,
+    "roof": "hip",
+    "rise": 2,
+    "posts": 4,
+    "colour": "#e0c9a0",
+    "cap_colour": "#8a6a48"
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    8,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4.5,
+    "umbrellas": true,
+    "loungers": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     2
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     4,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "typed beach restaurant, never rendered: queue down"
+ }
+}

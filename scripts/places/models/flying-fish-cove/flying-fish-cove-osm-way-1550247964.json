@@ -1,0 +1,203 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-osm-way-1550247964",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1550247964",
+   "used": "real five-sided park polygon (88 x 82 m, name match)"
+  },
+  {
+   "kind": "text",
+   "used": "contents typed from Poon Saan style: open red-roofed Chinese shelter, yellow and red gate, small shrine statue, lawn, palms"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn-outline",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6d9a4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    5,
+    0.55
+   ],
+   "params": {
+    "width": 70,
+    "depth": 40,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    8,
+    8,
+    0.6
+   ],
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#b3261e",
+    "cap_colour": "#b3261e"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    8,
+    8,
+    4.0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 8,
+    "rise": 2.2,
+    "overhang": 1,
+    "upturn": 0.6,
+    "colour": "#b3261e",
+    "trim": "#e2b93b"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -4,
+    -26,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.6,
+    "colour": "#b3261e",
+    "board_colour": "#e2b93b",
+    "arch": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -28,
+    0.5
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#dbd1b0"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    -20,
+    12,
+    0.5
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#e2b93b",
+    "plinthColour": "#dbd1b0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -26
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      8,
+      6
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#dbd1b0"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    -4,
+    0.5
+   ],
+   "params": {
+    "width": 70,
+    "depth": 50,
+    "count": 10,
+    "kind": "palm",
+    "min_height": 7,
+    "max_height": 11,
+    "keep_out": [
+     [
+      -6,
+      -4,
+      14,
+      16
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "real outline only; park contents (shelter, gate, statue, palms) typed from Poon Saan style, no photo"
+ }
+}

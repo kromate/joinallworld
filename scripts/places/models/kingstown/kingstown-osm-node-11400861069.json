@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-node-11400861069",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/471889085",
+   "used": "25 x 14 m outline, containing the point"
+  },
+  {
+   "kind": "text",
+   "used": "No photo of this building found; nearby Commons photos are of Bequia, a different island. Brief: prefabricated single-storey medical block, canopy entrance, pale cladding with blue accents"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#eef0ee",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#3f86a8",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a3",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4.5,
+    "height": 3.2,
+    "colour": "#3f86a8"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    6,
+    -9,
+    2.4
+   ],
+   "params": {
+    "size": 1.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -9,
+    3.2
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "density": 0.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   60
+  ]
+ }
+}

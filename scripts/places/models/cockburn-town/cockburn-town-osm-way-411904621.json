@@ -1,0 +1,131 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/411904621",
+   "used": "park outline (name match, 1,734 m2) as the lawn; the one nearby photo shows a church, not this park, so was not used. Shelter, kiosk and low wall follow the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#9db37a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9db37a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    8,
+    -4,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4.5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.4,
+    "posts": 4,
+    "colour": "#f3efe4",
+    "cap_colour": "#7fb0c8"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -14,
+    6,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -12,
+    0.2
+   ],
+   "params": {
+    "length": 38,
+    "height": 0.9,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#cfc7ae"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    12,
+    0.2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 4,
+    "spread": 18,
+    "colour": "#6f8f5a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    8,
+    0.2
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the park; real outline only, contents typical of a small community park"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cockburn-town",
+ "venueId": "cockburn-town-osm-way-411904621"
+}

@@ -1,0 +1,141 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/62088563",
+   "used": "37 x 17 m outline, bearing 76 deg, sets the shed length and depth"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found; open-sided gabled market shed in Cayman green and cream with umbrella stalls, from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 14,
+    "height": 4.6,
+    "roof": "gable",
+    "cladding": "open",
+    "goods": "produce",
+    "roof_colour": "#3d6e5c",
+    "wall_colour": "#f0e6c8",
+    "trim_colour": "#c6c0b0"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#d9503f",
+     "#f2c14e",
+     "#3d6e5c",
+     "#f0e6c8"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    16,
+    -13,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 3,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#f2c14e",
+     "#3d6e5c"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 12,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#3d6e5c",
+    "frameColour": "#f0e6c8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; open-sided structure typed from the brief and OSM outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-osm-way-62088563"
+}

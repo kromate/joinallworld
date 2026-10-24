@@ -1,0 +1,222 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-osm-way-299256337",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/299256337",
+   "used": "campus extent only (668 x 401 m, not a building); a single representative teaching block is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "brief kingston-osm-way-299256337",
+   "used": "mid-rise concrete block, louvres, shaded walkways, 1960s-2000s modernist"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     70,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0d9c8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e0d9c8",
+       "#d3cbb6"
+      ]
+     },
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#b66a45"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb1b1",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -25,
+    -14
+   ],
+   "rotDeg": 0,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b66a45",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb1b1",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-wing",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    52,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bands": "#b66a45"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb1b1",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "walkway",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 8,
+    "colour": "#b9b6ac",
+    "edgeColour": "#b66a45"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    10,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.8,
+    "run": 2.4,
+    "count": 4,
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#2f4f6b",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 4,
+    "line": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no render check: shared render queue had no live heartbeat (workers stalled since 20:17); no photo of this place found, composed from OSM outline and brief facts"
+ }
+}

@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-way-114037395",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/114037395",
+   "used": "real site outline (311 x 217 m, name match), fitted to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "site",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b8ad",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9b39a",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "length": 100,
+    "width": 58,
+    "lane_width": 5,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -48,
+     -40
+    ],
+    "end": [
+     48,
+     -40
+    ],
+    "rows": 14,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 2.2,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#4f6f8a",
+     "#c4c1b6"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c4c1b6",
+    "underColour": "#a9a69c",
+    "canopy": {
+     "height": 2.2,
+     "depth": 9,
+     "thickness": 0.5,
+     "slopeDeg": 4,
+     "colour": "#8e8f8a",
+     "edgeColour": "#c4c1b6"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     48,
+     40
+    ],
+    "end": [
+     -48,
+     40
+    ],
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.5,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#c4c1b6",
+     "#4f6f8a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#c4c1b6",
+    "underColour": "#a9a69c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 90,
+    "height": 2.0,
+    "kind": "fence",
+    "colour": "#6f7378",
+    "points": [
+     [
+      -62,
+      -50
+     ],
+     [
+      62,
+      -50
+     ],
+     [
+      62,
+      50
+     ],
+     [
+      -62,
+      50
+     ],
+     [
+      -62,
+      -50
+     ]
+    ]
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    48,
+    0.5
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -46,
+    0.5
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -46,
+    0.5
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    46,
+    0.5
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    46,
+    0.5
+   ],
+   "params": {
+    "height": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Footprint plus brief facts only; NOT render-checked: the render queue servers A and B exited at 20:19 and nothing was processed afterwards (253 jobs waiting); photo comparison still to do"
+ }
+}

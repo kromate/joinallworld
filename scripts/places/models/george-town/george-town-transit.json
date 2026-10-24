@@ -1,0 +1,271 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Tender_Shuttle_Ferry_Caribe_Express_(50769140032).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Thank You (23 Millions+) views",
+   "view": "street",
+   "file": "/tmp/places-evidence/george-town/tender.jpg",
+   "used": "context only: white two-deck tender with dark rubber fenders and open upper rail deck, cruise ship at anchor; the terminal itself is not in frame"
+  },
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Two_Cruise_Ships.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Thank You (23 Millions+) views",
+   "view": "street",
+   "file": "/tmp/places-evidence/george-town/ships.jpg",
+   "used": "context only: low whitewashed concrete harbour wall, yellow bollards, ships anchored offshore; no terminal visible"
+  },
+  {
+   "kind": "text",
+   "ref": "brief george-town-transit",
+   "used": "40 x 14 m single-storey stucco pavilion, teal glazing, terracotta hip roof, tender dock pier, canopy, 3 flags, 3 awnings, blank sign board; no OSM outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2ead6",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "glassColour": "#2f8f9a",
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "trimColour": "#d4cdb6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b3a",
+    "material": "metal-sheet",
+    "rise": 2.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-wing",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -26,
+    3
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d4cdb6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b3a",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -12,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#2f8f9a",
+     "#f2ead6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#2f8f9a",
+     "#f2ead6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    12,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#2f8f9a",
+     "#f2ead6"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -7.3,
+    4.6
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#2f8f9a",
+    "posts": false
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    -58,
+    0.0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 52,
+    "width": 5,
+    "height": 0.9,
+    "rails": true,
+    "piles": true,
+    "colour": "#b9b3a2"
+   }
+  },
+  {
+   "type": "platform",
+   "at": [
+    0,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "height": 0.9,
+    "tiers": 1,
+    "colour": "#b9b3a2"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -16,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 5,
+    "colours": [
+     "#1c3c7a",
+     "#f2ead6",
+     "#b3262e"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "forecourtDepth": 50,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the terminal exists on Commons (only ships and tenders), so shape is typed from the brief; pier/dock layout and awning count are plausible, not verified."
+ }
+}

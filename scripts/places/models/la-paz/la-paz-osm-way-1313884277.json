@@ -1,0 +1,190 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-way-1313884277",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Municipal_El_Alto_Tribunas.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons user (see file page)",
+   "view": "interior",
+   "file": "/tmp/places-evidence/la-paz/elalto.jpg",
+   "used": "two-tier concrete stands in pale grey with blue and white seat bands, a continuous thin curved metal roof with a blue edge band and rhythmic ribs, central tunnel opening, synthetic pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/18016395",
+   "used": "oval bowl 178 x 135 m (bearing 26 deg), roof:shape curved, metal roof, 2 levels; scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.2,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     92
+    ],
+    "height": 0.1,
+    "colour": "#5e9a45",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 56,
+    "radiusY": 43,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 20,
+    "rise": 0.6,
+    "run": 0.8,
+    "firstHeight": 3,
+    "facetDeg": 10,
+    "under": "open",
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#6d7f93",
+    "seatColours": [
+     "#6d7f93",
+     "#c9ccd0"
+    ],
+    "concreteColour": "#bdbab0",
+    "underColour": "#a9a69c",
+    "canopy": {
+     "height": 3.5,
+     "depth": 14,
+     "thickness": 1.2,
+     "slopeDeg": -6,
+     "colour": "#c8ccd0",
+     "edgeColour": "#2f5fa8",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 47,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 24,
+    "facing": "outward",
+    "lod2Step": 3,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.4,
+        1.4
+       ],
+       "height": 13,
+       "colour": "#bdbab0"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    45,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    45,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   125
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the interior stand photo and OSM roof tags; NOT render-checked: the render queue servers A and B exited at 20:19 and nothing was processed afterwards (253 jobs waiting); photo comparison still to do"
+ }
+}

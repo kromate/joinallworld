@@ -1,0 +1,255 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-osm-way-550478777",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plantation_House_(16431883766).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr uploader (see Commons file page)",
+   "view": "front",
+   "file": "/tmp/places-evidence/jamestown/plantation.jpg",
+   "used": "two-storey pale whitewashed Georgian block with dark quoins and string courses, five-bay sash windows with buff shutters, low hip roof of grey-mauve slate, glazed entrance porch off-centre, lower right wing with chimney, lawn in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/550478777",
+   "used": "overall size 35 x 34 m (outline polygon is irregular, composed from the photo instead)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     24,
+     11
+    ]
+   },
+   "at": [
+    -2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe9e3",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "trimColour": "#2b2e33",
+    "bands": "#2b2e33",
+    "plinth": 0.4,
+    "bay": 3.3,
+    "cornice": false
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7e7c8f",
+    "material": "slate",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    15,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe9e3",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "punched"
+    },
+    "trimColour": "#2b2e33",
+    "bands": "#2b2e33",
+    "plinth": 0.4,
+    "bay": 3.3,
+    "cornice": false
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7e7c8f",
+    "material": "slate",
+    "pitch": 14,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4.2,
+     2.6
+    ]
+   },
+   "at": [
+    -9,
+    -6.7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f3ef",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "trimColour": "#2b2e33"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e9ece8",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    17,
+    -1,
+    9.5
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 2.2,
+    "pots": 0,
+    "colour": "#e4ebe6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 0.8,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -8,
+    0,
+    8.4
+   ],
+   "params": {}
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -12,
+     -8.3,
+     0
+    ],
+    "end": [
+     18,
+     -8.3,
+     0
+    ],
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 3.5,
+      "height": 0.7,
+      "depth": 0.8,
+      "colour": "#4f7d3b"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     18
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     20
+    ],
+    "height": 24
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -16,
+     14
+    ],
+    "height": 20
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but NOT compared: render queue had no live server (heartbeats stale since 20:17, nothing running); resubmit with --photo and set verified to photo if it matches"
+ }
+}

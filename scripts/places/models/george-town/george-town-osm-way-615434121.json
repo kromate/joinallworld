@@ -1,0 +1,234 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:West_Bay,_Cayman_Islands_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "rh43",
+   "file": "/tmp/places-evidence/george-town/beach2.jpg",
+   "view": "street",
+   "used": "pale coral sand, turquoise shallows at left, green shade shelters and low tarp tents on the sand edge, sea-grape and casuarina tree line behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:West_Bay,_Cayman_Islands_-_panoramio_(3).jpg",
+   "licence": "CC BY 3.0",
+   "author": "Anang M",
+   "view": "street",
+   "used": "long open crescent, green-roofed picnic shelters under palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/615434121",
+   "used": "park footprint as the sand slab"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 190,
+    "depth": 22,
+    "colour": "#3fbac0",
+    "bank": false
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -60,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 24,
+    "spacing": 5,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#f4f1e6",
+     "#2f8f9a",
+     "#d9503f",
+     "#3f8f58"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "toilet-block",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    70,
+    6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b3a",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -40,
+    6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 3,
+    "height": 2.4,
+    "roof": "hip",
+    "rise": 0.9,
+    "posts": 4,
+    "colour": "#3f8f58",
+    "cap_colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -5,
+    8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 3,
+    "height": 2.4,
+    "roof": "hip",
+    "rise": 0.9,
+    "posts": 4,
+    "colour": "#3f8f58",
+    "cap_colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    78,
+    2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.2,
+    "colour": "#2f8f9a",
+    "frameColour": "#c9bda0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 34,
+    "spread": 150,
+    "line": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 14,
+    "spread": 150
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    30,
+    7,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 3,
+    "height": 2.4,
+    "roof": "hip",
+    "rise": 0.9,
+    "posts": 4,
+    "colour": "#3f8f58",
+    "cap_colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    55,
+    7,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 3,
+    "height": 2.4,
+    "roof": "hip",
+    "rise": 0.9,
+    "posts": 4,
+    "colour": "#3f8f58",
+    "cap_colour": "#2f7a4a"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "critic fixes applied (beach strip site, shoreline water, dense tree line, more shelters) but NOT re-rendered: render server down; people, tents and sloping shoreline not modelled"
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   160,
+   56
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-osm-way-615434121"
+}

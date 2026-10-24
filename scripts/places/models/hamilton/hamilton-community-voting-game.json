@@ -1,0 +1,787 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._George%27s_town_hall.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user reivax",
+   "view": "front",
+   "file": "/tmp/places-evidence/hamilton/th2.jpg",
+   "used": "two-storey block under a low white stepped hip roof, central gabled pavilion with round window and arms plaque, white pilasters and trim, salmon-pink walls, twin balustraded stairs rising to the first floor, dark shutters"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saint's_George's_Town_Hall_20260421.jpg",
+   "licence": "CC0",
+   "author": "Shallowell",
+   "view": "street",
+   "file": "/tmp/places-evidence/hamilton/th1.jpg",
+   "used": "side elevation: stair wing, pilaster rhythm, white hip roof (the walls are repainted orange there; the pink of the front photo is used)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/181329188",
+   "used": "size only (22 x 12 m); the traced outline is noisy, a clean rectangle is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.67,
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c99a88",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "cornice": true,
+    "trimColour": "#f4f1ea"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f1f0ea",
+    "material": "slate",
+    "rise": 2.0,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster-l",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.6
+    ]
+   },
+   "at": [
+    -3.7,
+    -7.3
+   ],
+   "height": 7.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster-r",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.6
+    ]
+   },
+   "at": [
+    3.7,
+    -7.3
+   ],
+   "height": 7.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-l",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.7
+    ]
+   },
+   "at": [
+    -10.8,
+    -5.3
+   ],
+   "height": 7.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-r",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.7
+    ]
+   },
+   "at": [
+    10.8,
+    -5.3
+   ],
+   "height": 7.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     7.2,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -6.0
+   ],
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c99a88",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#f4f1ea"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f1f0ea",
+    "rise": 2.4,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-trim",
+   "footprint": {
+    "rect": [
+     7.8,
+     0.3
+    ]
+   },
+   "at": [
+    0,
+    -6.8
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   },
+   "z0": 7.4
+  },
+  {
+   "type": "mass",
+   "id": "door-surround",
+   "footprint": {
+    "rect": [
+     3.0,
+     0.4
+    ]
+   },
+   "at": [
+    0,
+    -6.9
+   ],
+   "height": 3.3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     3.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -6.9
+   ],
+   "height": 0.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   },
+   "z0": 3.3
+  },
+  {
+   "type": "mass",
+   "id": "town-hall-sign",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.2
+    ]
+   },
+   "at": [
+    0,
+    -6.8
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f5a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5a3a"
+   },
+   "z0": 4.4
+  },
+  {
+   "type": "mass",
+   "id": "arms-plaque",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.2
+    ]
+   },
+   "at": [
+    0,
+    -6.8
+   ],
+   "height": 2.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   },
+   "z0": 4.8
+  },
+  {
+   "type": "mass",
+   "id": "arms-panel",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.25
+    ]
+   },
+   "at": [
+    0,
+    -6.85
+   ],
+   "height": 2.1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8483c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8483c"
+   },
+   "z0": 5.05
+  },
+  {
+   "type": "mass",
+   "id": "round-window",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     1.1,
+     1.1
+    ]
+   },
+   "at": [
+    0,
+    -6.8
+   ],
+   "height": 0.2,
+   "z0": 8.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f5a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f5a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet-band-l",
+   "footprint": {
+    "rect": [
+     10.2,
+     0.5
+    ]
+   },
+   "at": [
+    -5.5,
+    -5.7
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "shutter-l0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.12
+    ]
+   },
+   "at": [
+    -8.2,
+    -5.55
+   ],
+   "height": 1.9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#27322c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#27322c"
+   },
+   "z0": 4.2
+  },
+  {
+   "type": "mass",
+   "id": "shutter-l1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.12
+    ]
+   },
+   "at": [
+    -10.0,
+    -5.55
+   ],
+   "height": 1.9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#27322c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#27322c"
+   },
+   "z0": 4.2
+  },
+  {
+   "type": "array",
+   "id": "stair-l",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     0,
+     0
+    ],
+    "end": [
+     -4.8,
+     0,
+     0
+    ],
+    "count": 8,
+    "vary": {
+     "height": [
+      0.5,
+      3.6
+     ]
+    },
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       2.0
+      ],
+      "height": 0.5,
+      "colour": "#c99a88",
+      "z0": 0,
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "balustrade-l",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     0,
+     0
+    ],
+    "end": [
+     -4.8,
+     0,
+     0
+    ],
+    "count": 10,
+    "vary": {
+     "z0": [
+      0.6,
+      3.6
+     ]
+    },
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.18,
+       0.18
+      ],
+      "height": 0.9,
+      "colour": "#f4f1ea",
+      "z0": 0.5,
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lattice-l",
+   "footprint": {
+    "rect": [
+     5.4,
+     0.15
+    ]
+   },
+   "at": [
+    -8.0,
+    -8.4
+   ],
+   "height": 1.1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8b08c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b08c"
+   },
+   "z0": 0.2
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14.0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet-band-r",
+   "footprint": {
+    "rect": [
+     10.2,
+     0.5
+    ]
+   },
+   "at": [
+    5.5,
+    -5.7
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "shutter-r0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.12
+    ]
+   },
+   "at": [
+    8.2,
+    -5.55
+   ],
+   "height": 1.9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#27322c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#27322c"
+   },
+   "z0": 4.2
+  },
+  {
+   "type": "mass",
+   "id": "shutter-r1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.12
+    ]
+   },
+   "at": [
+    10.0,
+    -5.55
+   ],
+   "height": 1.9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#27322c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#27322c"
+   },
+   "z0": 4.2
+  },
+  {
+   "type": "array",
+   "id": "stair-r",
+   "at": [
+    0,
+    -7.6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     11,
+     0,
+     0
+    ],
+    "end": [
+     4.8,
+     0,
+     0
+    ],
+    "count": 8,
+    "vary": {
+     "height": [
+      0.5,
+      3.6
+     ]
+    },
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       2.0
+      ],
+      "height": 0.5,
+      "colour": "#c99a88",
+      "z0": 0,
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "balustrade-r",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     11,
+     0,
+     0
+    ],
+    "end": [
+     4.8,
+     0,
+     0
+    ],
+    "count": 10,
+    "vary": {
+     "z0": [
+      0.6,
+      3.6
+     ]
+    },
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.18,
+       0.18
+      ],
+      "height": 0.9,
+      "colour": "#f4f1ea",
+      "z0": 0.5,
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lattice-r",
+   "footprint": {
+    "rect": [
+     5.4,
+     0.15
+    ]
+   },
+   "at": [
+    8.0,
+    -8.4
+   ],
+   "height": 1.1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8b08c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b08c"
+   },
+   "z0": 0.2
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14.0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered or compared: render queue workers were dead (stale heartbeats since 20:17, no Blender running). Composed from the front photo; stair orientation, gable axis and pilaster placement unchecked"
+ }
+}

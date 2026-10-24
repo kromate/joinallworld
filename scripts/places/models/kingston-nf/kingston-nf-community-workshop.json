@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston-nf",
+ "venueId": "kingston-nf-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/345690796",
+   "used": "20 x 9 m footprint of the library hall, bearing 138 deg"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e8e1c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bay": 2.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7c8185",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.4,
+    "run": 0.35,
+    "count": 3,
+    "colour": "#b9b29a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.9,
+    "bottom": 0.8,
+    "colour": "#5f7f8a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not yet compared: render queue had no running server (stale heartbeats, jobs stuck). No photo found; footprint/text composition only."
+ }
+}

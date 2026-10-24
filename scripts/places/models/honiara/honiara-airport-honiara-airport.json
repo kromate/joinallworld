@@ -1,0 +1,271 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-airport-honiara-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Honiara_Airport.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jenny Scott",
+   "view": "front",
+   "file": "/tmp/places-evidence/honiara/airport1.jpg",
+   "used": "airside elevation: long low terminal, tall central pitched gable pavilion with dark glazed gable, flanking low gable wings, pale cream-yellow metal roofs, grey-tan walls, separate arched hangar at right, palm backdrop"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Honiara_Airport_departures.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jenny Scott",
+   "view": "detail",
+   "used": "interior only: glazed lobby and dark timber ceiling confirm a glazed central hall; nothing else used"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/136866059",
+   "used": "overall size 91 x 33 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     32,
+     26
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a7a392",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#d8cd96",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     36,
+     26
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a7a392",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#d8cd96",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     33
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f8a78",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain",
+     "front": "curtain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#e2d9a4",
+    "material": "metal-sheet",
+    "pitch": 42,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -17.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 4.5,
+    "height": 3.6,
+    "columns": 8,
+    "colour": "#c9c2a0",
+    "edgeColour": "#8a8873"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    44,
+    10,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "style": "round",
+    "colour": "#d8d4c4",
+    "cabColour": "#4a5a5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    84,
+    -30
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f3c52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 6,
+    "colour": "#f0f0ec",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     54,
+     26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     64,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: queue down. Central gable, wing roofs, hangar placed from the photo; control tower position and glazing unverified."
+ }
+}

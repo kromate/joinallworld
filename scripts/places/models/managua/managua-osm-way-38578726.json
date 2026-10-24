@@ -1,0 +1,386 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hotel_Inter-Continental_Metrocentro.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "unknown",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/managua/metro3.jpg",
+   "used": "cream three-level blocks, white barrel-vaulted roofs, cinema block, blue-banded maroon-roofed anchor store in front, terracotta turrets, tan hotel tower with terracotta hip roof, flat parking decks"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Metrocentro_Managua.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Vrysxy",
+   "view": "interior",
+   "file": "/tmp/places-evidence/managua/metro1.jpg",
+   "used": "cream colour, round columns, white balustrades (interior; colour only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38578726",
+   "used": "mall outline scaled 0.52 to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.25,
+  "fit": "all",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "polygon": [
+     [
+      -48.3,
+      33.6
+     ],
+     [
+      -27.7,
+      -29.4
+     ],
+     [
+      -24.9,
+      -28.5
+     ],
+     [
+      -17.4,
+      -51.0
+     ],
+     [
+      -11.1,
+      -48.9
+     ],
+     [
+      -11.8,
+      -60.5
+     ],
+     [
+      -2.9,
+      -57.9
+     ],
+     [
+      -1.5,
+      -62.3
+     ],
+     [
+      30.2,
+      -52.3
+     ],
+     [
+      17.5,
+      -12.2
+     ],
+     [
+      50.9,
+      -1.2
+     ],
+     [
+      51.3,
+      20.4
+     ],
+     [
+      33.2,
+      14.7
+     ],
+     [
+      28.4,
+      30.7
+     ],
+     [
+      20.4,
+      55.7
+     ]
+    ]
+   },
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#d8c9a6",
+    "cornice": true,
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "vault-range",
+   "at": [
+    -6,
+    18,
+    13
+   ],
+   "rotDeg": -72,
+   "params": {
+    "length": 50,
+    "span": 7,
+    "rise": 2.2,
+    "count": 3,
+    "height": 0.5,
+    "lantern_domes": false,
+    "wall": false,
+    "roof_colour": "#f1f2ef",
+    "wall_colour": "#f1f2ef"
+   }
+  },
+  {
+   "type": "vault-range",
+   "at": [
+    30,
+    -4,
+    13
+   ],
+   "rotDeg": -72,
+   "params": {
+    "length": 34,
+    "span": 7,
+    "rise": 2.2,
+    "count": 3,
+    "height": 0.5,
+    "lantern_domes": false,
+    "wall": false,
+    "roof_colour": "#f1f2ef",
+    "wall_colour": "#f1f2ef"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cinema",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    -36
+   ],
+   "rotDeg": -72,
+   "z0": 13,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bb",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -46,
+    18
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 13,
+    "height": 2.2,
+    "colour": "#b32e2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carrion",
+   "footprint": {
+    "rect": [
+     36,
+     17
+    ]
+   },
+   "at": [
+    18,
+    -82
+   ],
+   "rotDeg": -72,
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f63a8",
+    "windows": "none",
+    "windowRatio": 0,
+    "cornice": true,
+    "bands": "#e8e4d8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a3b39",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -62,
+    70
+   ],
+   "rotDeg": -72,
+   "z0": 0,
+   "height": 46,
+   "storeys": 13,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc29b",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#e6d4b4",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0613a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    -62,
+    15
+   ],
+   "rotDeg": -72,
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3cfc2",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#b9b5aa"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9b98",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "turret-conical",
+   "at": [
+    48,
+    18,
+    13
+   ],
+   "params": {
+    "radius": 2.2,
+    "height": 6,
+    "coneHeight": 3,
+    "colour": "#d9b289",
+    "capColour": "#b0613a"
+   }
+  },
+  {
+   "type": "turret-conical",
+   "at": [
+    -30,
+    -62,
+    13
+   ],
+   "params": {
+    "radius": 2.2,
+    "height": 6,
+    "coneHeight": 3,
+    "colour": "#d9b289",
+    "capColour": "#b0613a"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    2,
+    -100,
+    0
+   ],
+   "rotDeg": -72,
+   "params": {
+    "length": 70,
+    "count": 8,
+    "kind": "palm",
+    "height_min": 7,
+    "height_max": 10
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -62,
+    0
+   ],
+   "rotDeg": -72,
+   "params": {
+    "count": 8,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered or compared: the shared render queue had no live worker (heartbeats 3 h stale, 294 jobs waiting). Photos were viewed and the massing follows them, but part placement is unchecked."
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-way-38578726"
+}

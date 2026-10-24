@@ -1,0 +1,328 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-osm-node-7431985094",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:El_Frutal_Villa_Nueva_4.jpg",
+   "licence": "CC BY 4.0",
+   "author": "MHernandezp05",
+   "view": "street",
+   "file": "/tmp/places-evidence/guatemala-city/frutal1.jpg",
+   "used": "long low steel-framed shed: dark blue lower walls, green-framed glazed clerestory band, grey metal canopy along the front, white pylon sign, car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:El_Frutal_Zona_5_Villa_Nueva_-_52173146271.jpg",
+   "licence": "CC BY 4.0",
+   "author": "MHernandezp05",
+   "view": "aerial",
+   "used": "setting: wooded hillside behind, big car park beside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/794592957",
+   "used": "long footprint (170 m) and 2 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9dcd8",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7bcbc",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90,
+    "scale": 0.88
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8fb8a8",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9afaf",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 4.5,
+    "height": 4.2,
+    "form": "shed",
+    "rise": 1.0,
+    "colour": "#9da3a3",
+    "columns": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-red",
+   "at": [
+    34,
+    -47,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.2
+    ],
+    "height": 16,
+    "colour": "#c4271f",
+    "topColour": "#c4271f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    34,
+    -48,
+    11
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 4,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-frutal",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     1.0
+    ],
+    "height": 12,
+    "colour": "#f2f4f0",
+    "topColour": "#4f9a47"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "frutal-green-head",
+   "at": [
+    -30,
+    -46,
+    8
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     1.1
+    ],
+    "height": 4,
+    "colour": "#3f8f3f",
+    "topColour": "#3f8f3f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -39,
+     0
+    ],
+    "end": [
+     48,
+     -39,
+     0
+    ],
+    "count": 17,
+    "lod1Step": 2,
+    "lod2Step": 99,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 4.2,
+      "colour": "#3f8f3f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "pizza-pad",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    56,
+    -54
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3b2a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 22,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    -72,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    -74,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    45,
+    -72,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     70
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Render server down (no heartbeat); critic fixes applied to spec but not rendered/compared. Blue left-end wall not modelled (end position unknown)."
+ }
+}

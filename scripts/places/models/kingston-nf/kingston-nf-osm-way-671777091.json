@@ -1,0 +1,219 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston-nf",
+ "venueId": "kingston-nf-osm-way-671777091",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/671777091",
+   "used": "name-quality outline 35.5 x 13.5 m, bearing 137, historic=ruins"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q38154617",
+   "used": "Arched Building, Longridge: roofless 19th-century stone ruin with open arches; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9a8f78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a6a"
+   }
+  },
+  {
+   "type": "arcade",
+   "params": {
+    "length": 34,
+    "height": 5.4,
+    "thickness": 1.1,
+    "bays": 8,
+    "shape": "round",
+    "recess": 0.5,
+    "roof": false,
+    "parapet": false,
+    "colour": "#c9bc9a",
+    "trim": "#e8e2cc"
+   },
+   "at": [
+    -15.98,
+    8.34,
+    0
+   ],
+   "rotDeg": -47
+  },
+  {
+   "type": "arcade",
+   "params": {
+    "length": 34,
+    "height": 4.2,
+    "thickness": 1.0,
+    "bays": 8,
+    "shape": "round",
+    "recess": 0.5,
+    "roof": false,
+    "parapet": false,
+    "colour": "#b9ab88",
+    "trim": "#e8e2cc"
+   },
+   "at": [
+    -7.21,
+    16.53,
+    0
+   ],
+   "rotDeg": -47
+  },
+  {
+   "type": "ruin-wall",
+   "params": {
+    "length": 13,
+    "height": 3.6,
+    "thickness": 0.9,
+    "colour": "#9a8f78",
+    "gaps": 0.15
+   },
+   "at": [
+    -16.35,
+    8.0,
+    0
+   ],
+   "rotDeg": 43
+  },
+  {
+   "type": "ruin-wall",
+   "params": {
+    "length": 13,
+    "height": 2.4,
+    "thickness": 0.9,
+    "colour": "#9a8f78",
+    "gaps": 0.3
+   },
+   "at": [
+    6.84,
+    -16.87,
+    0
+   ],
+   "rotDeg": 43
+  },
+  {
+   "type": "ruin-wall",
+   "params": {
+    "length": 6,
+    "height": 1.4,
+    "thickness": 0.8,
+    "colour": "#8f8670",
+    "gaps": 0.3
+   },
+   "at": [
+    -2.73,
+    2.93,
+    0
+   ],
+   "rotDeg": -47
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "rotDeg": -47,
+   "params": {
+    "length": 30,
+    "height": 1.0,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#7b6347"
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0.01
+   ],
+   "params": {
+    "width": 70,
+    "depth": 55,
+    "colour": "#6a7b5a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   55
+  ]
+ }
+}

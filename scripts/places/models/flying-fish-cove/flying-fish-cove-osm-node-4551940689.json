@@ -1,0 +1,341 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-osm-node-4551940689",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tai_Jin_House_(25095468230).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley from Nanaimo, Canada",
+   "view": "front",
+   "file": "/tmp/places-evidence/flying-fish-cove/taijin.jpg",
+   "used": "two-storey white house, dark hip roof with green fascia, upper balcony with white balustrade over open-columned portico on the left, ground-floor stone plinth wall, service wing behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/444609897",
+   "used": "overall size only (20.6 x 15.6 m); outline is a rotated diamond so composed as rectangles"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.9,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "punched"
+    },
+    "plinth": 0.3,
+    "bands": "#6f9a85"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4d57",
+    "material": "slate",
+    "pitch": 27,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-wing",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    10.5,
+    6.5
+   ],
+   "z0": 0.9,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4d57",
+    "material": "slate",
+    "pitch": 27,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-floor",
+   "at": [
+    -7.5,
+    -8
+   ],
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#d8d2c2",
+    "topColour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "col",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 0.9,
+      "height": 4.6,
+      "colour": "#f1ece0",
+      "topColour": "#f1ece0"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -10.8,
+     -10.4,
+     0
+    ],
+    "end": [
+     -4.2,
+     -10.4,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "col",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 0.9,
+      "height": 4.6,
+      "colour": "#f1ece0",
+      "topColour": "#f1ece0"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -10.8,
+     -6,
+     0
+    ],
+    "end": [
+     -4.2,
+     -6,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-roof",
+   "at": [
+    -7.5,
+    -8
+   ],
+   "params": {
+    "rect": [
+     9,
+     6.8
+    ],
+    "z0": 5.1,
+    "height": 1.3,
+    "colour": "#4a4d57",
+    "topColour": "#4a4d57",
+    "topScale": 0.4
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -7.5,
+    -11.2,
+    5.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 8.6,
+    "height": 1.0,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -11.8,
+    -8,
+    5.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 6.4,
+    "height": 1.0,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    3,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 5.5,
+    "run": 6.5,
+    "colour": "#d8d2c2",
+    "rails": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -6.8,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.0,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8a7f70"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "bal",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.08,
+       0.08
+      ],
+      "z0": 5.5,
+      "height": 1.0,
+      "colour": "#ffffff",
+      "topColour": "#ffffff"
+     }
+    },
+    "mode": "line",
+    "count": 22,
+    "start": [
+     -11.8,
+     -11.2,
+     0
+    ],
+    "end": [
+     -3.2,
+     -11.2,
+     0
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -6
+    ],
+    "height": 6
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     16
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "critic fixes applied (steeper roof, hip portico roof, slim posts, outside stair, balusters, stone wall hugging front) but NOT re-rendered: render server was down; no hillside backdrop"
+ }
+}

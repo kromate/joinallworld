@@ -1,0 +1,144 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1167614779",
+   "used": "real building outline (105.6 x 67 m, 4292 m2, multi-wing clinic complex), matched at 1.9 m from the place node"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/way/1167614779",
+   "used": "low clinic block; the only nearby photo is a rugby field and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceee8",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.4,
+    "bands": "#4d7a86",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bbbc",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    -8,
+    -62,
+    0
+   ],
+   "rotDeg": -18,
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 3.8,
+    "colour": "#4d7a86"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -40,
+    0
+   ],
+   "rotDeg": -18,
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.4,
+    "bottom": 1.6,
+    "colour": "#4d7a86",
+    "frameColour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -60,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 6,
+    "line": 40
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -78,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 25,
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; only the outline, level count and colours are plan-level guesses"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-node-358672212"
+}

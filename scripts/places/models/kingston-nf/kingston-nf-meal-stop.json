@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston-nf",
+ "venueId": "kingston-nf-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/656357024",
+   "used": "real Seaview Hotel and Cottages outline (35 x 21 m, name match); 2-storey hip-roofed block with verandah; cottages scattered on the grounds (area way/681851011)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingston-nf.json#kingston-nf-meal-stop",
+   "used": "rendered walls, hip corrugated roof, verandah, teal trim colours; no photo of this building found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hotel",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e4c4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bay": 3.4,
+    "bands": "#4c7a8c",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f3b2b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 18,
+    "depth": 2.6,
+    "eaveHeight": 3.2,
+    "attachHeight": 3.6,
+    "colour": "#ffffff",
+    "roofColour": "#4c7a8c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.8,
+    "bottom": 1.2,
+    "colour": "#4c7a8c",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 8,
+    "density": 0.4
+   }
+  },
+  {
+   "type": "chalet",
+   "id": "cottage0",
+   "at": [
+    -36,
+    22,
+    0
+   ],
+   "rotDeg": 15,
+   "params": {
+    "width": 6,
+    "depth": 7,
+    "height": 3.2,
+    "wall_colour": "#f1e4c4",
+    "roof_colour": "#8f3b2b"
+   }
+  },
+  {
+   "type": "chalet",
+   "id": "cottage1",
+   "at": [
+    -24,
+    32,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 6,
+    "depth": 7,
+    "height": 3.2,
+    "wall_colour": "#f1e4c4",
+    "roof_colour": "#8f3b2b"
+   }
+  },
+  {
+   "type": "chalet",
+   "id": "cottage2",
+   "at": [
+    14,
+    26,
+    0
+   ],
+   "rotDeg": 5,
+   "params": {
+    "width": 6,
+    "depth": 7,
+    "height": 3.2,
+    "wall_colour": "#f1e4c4",
+    "roof_colour": "#8f3b2b"
+   }
+  },
+  {
+   "type": "chalet",
+   "id": "cottage3",
+   "at": [
+    30,
+    12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 6,
+    "depth": 7,
+    "height": 3.2,
+    "wall_colour": "#f1e4c4",
+    "roof_colour": "#8f3b2b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -8
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -10
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    32
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -20
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT rendered or compared: render queue servers were down (stale heartbeats, no Blender) so massing, roof fit on the OSM outline and colours are unchecked; job is queued"
+ }
+}

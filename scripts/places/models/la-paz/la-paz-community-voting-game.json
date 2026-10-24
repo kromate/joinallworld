@@ -1,0 +1,279 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MUSEO_A.P.C..jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "NELSON RAMIRO AYALA",
+   "view": "front",
+   "file": "/tmp/places-evidence/la-paz/museum1.jpg",
+   "used": "hot-pink render lower block with grey concrete cornices, brick storey between grey piers, flared grey concrete drum soffit, pink cylindrical top with strip window; roof is not pyramidal"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/933644087",
+   "used": "hexagonal plan 9.8 x 8.1 m, 4 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": -10,
+  "fovDeg": 60,
+  "aspect": 0.667,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lower",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.8,
+      0.2
+     ],
+     [
+      -2.5,
+      4.1
+     ],
+     [
+      2.8,
+      3.9
+     ],
+     [
+      4.9,
+      -0.2
+     ],
+     [
+      2.1,
+      -4.2
+     ],
+     [
+      -2.6,
+      -4
+     ]
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#d63a73",
+    "material": "painted-render",
+    "topColour": "#8d9189",
+    "windows": "none",
+    "trimColour": "#9a9d95"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -5.2,
+      0.2
+     ],
+     [
+      -2.7,
+      4.5
+     ],
+     [
+      3.1,
+      4.3
+     ],
+     [
+      5.3,
+      -0.2
+     ],
+     [
+      2.3,
+      -4.6
+     ],
+     [
+      -2.8,
+      -4.4
+     ]
+    ],
+    "z0": 6.6,
+    "height": 0.5,
+    "colour": "#9a9d95"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brick-storey",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4.2,
+      0.2
+     ],
+     [
+      -2.2,
+      3.6
+     ],
+     [
+      2.5,
+      3.4
+     ],
+     [
+      4.3,
+      -0.2
+     ],
+     [
+      1.9,
+      -3.7
+     ],
+     [
+      -2.3,
+      -3.5
+     ]
+    ],
+    "z0": 7.1,
+    "height": 3.4,
+    "colour": "#b4523a",
+    "material": "brick",
+    "windows": "none",
+    "topColour": "#9a9d95"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "flare",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a8a69e",
+    "sections": [
+     {
+      "z": 10.5,
+      "circle": 4.6
+     },
+     {
+      "z": 11.4,
+      "circle": 6.0
+     },
+     {
+      "z": 12.6,
+      "circle": 7.2
+     },
+     {
+      "z": 13.0,
+      "circle": 7.2
+     }
+    ],
+    "capBottom": true
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    0,
+    0,
+    13.0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#d6336c",
+    "material": "painted-render",
+    "topColour": "#a8a69e",
+    "profile": [
+     [
+      6.6,
+      0,
+      "#d6336c"
+     ],
+     [
+      6.6,
+      3.8
+     ],
+     [
+      6.9,
+      3.9,
+      "#a8a69e"
+     ],
+     [
+      6.9,
+      4.2
+     ],
+     [
+      0,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -4.8,
+    3.6
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#d63a73",
+    "frameColour": "#c8c4b8",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-block",
+   "at": [
+    -9,
+    1,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     8
+    ],
+    "z0": 0,
+    "height": 4.5,
+    "colour": "#9c4a35",
+    "material": "brick",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not compared: render queue had no live workers (heartbeats stale, no server process), so no render/photo check ran. Composed from the photo; re-render and compare, then set verified to photo."
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "funafuti",
+ "venueId": "funafuti-osm-node-13987101601",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/136819949",
+   "used": "real outline ~18 x 12 m, bearing 16 deg"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7e3d2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.2,
+    "plinth": 0.3,
+    "trimColour": "#3f8f7a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f7a5a",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 2.2,
+    "height": 2.7,
+    "columns": 3,
+    "colour": "#3f8f7a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9.5,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.1,
+    "bottom": 1.2,
+    "colour": "#3f8f7a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 1,
+    "colour": "#b8b3a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     12
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this office exists; OSM outline plus brief colours; awning and sign position guessed"
+ }
+}

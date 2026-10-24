@@ -1,0 +1,146 @@
+{
+ "venueId": "guatemala-city-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/124806757",
+   "used": "Centro Comercial Metronorte outline, 2 levels (RENAP office is inside)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b0",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bands": "#b5463a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -34,
+    9
+   ],
+   "params": {
+    "width": 18,
+    "height": 3,
+    "colour": "#b5463a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    85,
+    -26,
+    9
+   ],
+   "params": {
+    "width": 14,
+    "height": 3,
+    "colour": "#e8d9b0"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "colours": [
+     "#b5463a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 90,
+    "depth": 28,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -70,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#4997d0",
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -80,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 6,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 6,
+  "cars": 6,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the mall found; outline and 2 levels from OSM, colours typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city"
+}

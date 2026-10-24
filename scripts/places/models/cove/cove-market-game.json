@@ -1,0 +1,266 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cove",
+ "venueId": "cove-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/946458975",
+   "used": "size only (10.3 x 5.3 m, 54 m2); nearest match 54 m away so placement is not used"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/cove.json#",
+   "used": "lean-to stores shed with crates and drums, ANARE-era remains (Wikipedia: Heard Island)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     10.3,
+     5.3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a40",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b5472f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7478",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "pitch": 10
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "drop": 0.4,
+    "height": 2.5,
+    "colours": [
+     "#b5472f",
+     "#d6d9db"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -3,
+     -5.2,
+     0
+    ],
+    "end": [
+     2,
+     -5.4,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 0.8,
+      "colour": "#8a6a45",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum1",
+   "at": [
+    5.6,
+    -3.4,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#b5472f"
+     ],
+     [
+      0.35,
+      0,
+      "#b5472f"
+     ],
+     [
+      0.35,
+      0.9,
+      "#b5472f"
+     ],
+     [
+      0.315,
+      1.05,
+      "#5d5f60"
+     ],
+     [
+      0,
+      1.1,
+      "#5d5f60"
+     ]
+    ],
+    "segments": 14,
+    "colour": "#b5472f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum2",
+   "at": [
+    6.4,
+    -3.0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#6a6f73"
+     ],
+     [
+      0.35,
+      0,
+      "#6a6f73"
+     ],
+     [
+      0.35,
+      0.9,
+      "#6a6f73"
+     ],
+     [
+      0.315,
+      1.05,
+      "#5d5f60"
+     ],
+     [
+      0,
+      1.1,
+      "#5d5f60"
+     ]
+    ],
+    "segments": 14,
+    "colour": "#6a6f73"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum3",
+   "at": [
+    6.1,
+    -4.0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#b5472f"
+     ],
+     [
+      0.35,
+      0,
+      "#b5472f"
+     ],
+     [
+      0.35,
+      0.9,
+      "#b5472f"
+     ],
+     [
+      0.315,
+      1.05,
+      "#5d5f60"
+     ],
+     [
+      0,
+      1.1,
+      "#5d5f60"
+     ]
+    ],
+    "segments": 14,
+    "colour": "#b5472f"
+   }
+  },
+  {
+   "type": "rubble",
+   "id": "scatter",
+   "at": [
+    -6,
+    3,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "count": 8,
+    "colour": "#3a3a3d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists (only a shoreline photo); composed from brief and the OSM tank outline"
+ }
+}

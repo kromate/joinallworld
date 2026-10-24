@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "majuro",
+ "venueId": "majuro-osm-node-9956412121",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/293563116",
+   "used": "25 x 16 m outline, name match"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Majuro",
+   "used": "brief facts (typed from Majuro style; no exterior photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9dbfd0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#e9e5d6"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3b6e91",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "rise": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "covered-deck",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    -12
+   ],
+   "rotDeg": 58,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a5a36",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a36",
+    "material": "timber-shingle"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3,
+    -10,
+    0.5
+   ],
+   "rotDeg": 58,
+   "params": {
+    "width": 12,
+    "depth": 4,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#3b6e91",
+     "#e9e5d6"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not compared: render queue workers were dead (no heartbeat since 20:17), job left queued"
+ }
+}

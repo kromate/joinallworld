@@ -1,0 +1,211 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/747647223",
+   "used": "nearest building (16 x 7 m, distance 18 m, nearest quality): shelter footprint"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lungga_market_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Joshua Fang",
+   "view": "street",
+   "file": "/tmp/places-evidence/honiara/lunga0.jpg",
+   "used": "local look only (not this shelter): bare timber posts, patched corrugated lean-to roof, red-brown earth; no photo of the bus stop itself"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pad",
+   "footprint": {
+    "osm": true,
+    "scale": 1.4
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b0a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b0a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter-roof",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 2.4,
+   "height": 0.5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c8f90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c8f90",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "high": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -7,
+     -3.2,
+     0
+    ],
+    "end": [
+     7,
+     -2.8,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.22,
+        0.22
+       ],
+       "height": 2.6,
+       "colour": "#7a5a3a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     15,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    3.4
+   ],
+   "height": 2.2,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    0,
+    2.2,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.2,
+    "bottom": 1.6,
+    "colour": "#6b7a6a"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#d8d4c6",
+    "stripe": "#2f6b4f",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    5,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#e8e4d6",
+    "stripe": "#c8362f",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "colour": "#4f8a3f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT rendered: shared render queue had no live server (stale heartbeat since 20:17); never compared to the photo. No photo of the stop; typical open shelter on the nearest OSM footprint."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-transit"
+}

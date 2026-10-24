@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-node-738952422",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:JEFF%27S_PIERATES_COVE_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Takemori Kiyoshi (panoramio)",
+   "view": "front",
+   "file": "/tmp/places-evidence/hagatna/jeff0.jpg",
+   "used": "blue steel-trussed open canopy over a low blue clapboard building, silver corrugated roof, picnic-table apron, chain-link fence to the right, blue slab"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jeff%27s_Pirates_Cove_%E3%82%B8%E3%82%A7%E3%83%95%E3%82%BA%E3%83%BB%E3%83%91%E3%82%A4%E3%83%AC%E3%83%BC%E3%83%84%E3%82%B3%E3%83%BC%E3%83%96_-_panoramio_-_hasano_jp.jpg",
+   "licence": "CC BY 3.0",
+   "author": "hasano_jp",
+   "view": "detail",
+   "used": "wall colour (dark blue-grey boards), white fascia, sash windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/345094657",
+   "used": "overall extent (49 x 38 m, tagged house); only the restaurant range and side shed are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kitchen-range",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3f6377",
+    "windows": "rect",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#e9e6dc"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d8dcde",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gift-shed",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -17,
+    10
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#44687a",
+    "windows": "rect",
+    "windowRatio": 0.15,
+    "trimColour": "#e9e6dc"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d8dcde",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store-right",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    22,
+    14
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#3f7f8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#cfd3d5",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 14,
+    "height": 4.4,
+    "roof": "hip",
+    "rise": 2.4,
+    "posts": 8,
+    "colour": "#1f67a6",
+    "cap_colour": "#c9cfd2",
+    "floor_colour": "#4f7f93"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       0.8
+      ],
+      "height": 0.75,
+      "colour": "#2f78b5"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -10,
+     -10
+    ],
+    "end": [
+     10,
+     -10
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    16,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.2,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#aab0b3"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#222222"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -2
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but never rendered or compared: render queue servers were down"
+ }
+}

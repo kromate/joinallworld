@@ -1,0 +1,505 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-airport-hagatna-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GuamAntonioWonPatAirport.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Patrick Bolduan",
+   "view": "front",
+   "file": "/tmp/places-evidence/hagatna/airport.jpg",
+   "used": "peach-cream concrete, central glazed hall with mullioned curtain wall between two heavy piers, huge swept roof with curved soffit and notched parapet, lower wings left and right, pink elevated entrance canopy on piers over a grassed embankment"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q1136355",
+   "used": "identity; no OSM footprint matched"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     52,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f6f78",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2cdb4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "swept-roof",
+   "at": [
+    0,
+    4,
+    15
+   ],
+   "params": {
+    "colour": "#e6d2b8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       92,
+       48
+      ],
+      "cy": 0
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       92,
+       48
+      ],
+      "cy": 0
+     },
+     {
+      "z": 7,
+      "rect": [
+       86,
+       36
+      ],
+      "cy": 4
+     }
+    ],
+    "capBottom": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     9,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    -12
+   ],
+   "height": 22,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4cdb3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2cdb4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     9,
+     12
+    ]
+   },
+   "at": [
+    30,
+    -12
+   ],
+   "height": 22,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4cdb3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2cdb4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-mid",
+   "footprint": {
+    "rect": [
+     6,
+     10
+    ]
+   },
+   "at": [
+    -9,
+    -12
+   ],
+   "height": 18,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4cdb3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2cdb4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    -70,
+    2
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6d2b8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "right": "plain",
+     "left": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2cdb4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    70,
+    2
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6d2b8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "right": "plain",
+     "left": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2cdb4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "embankment",
+   "footprint": {
+    "rect": [
+     116,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 3.5,
+   "wall": {
+    "material": "render",
+    "colour": "#5f8f3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8f3c",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-canopy",
+   "footprint": {
+    "rect": [
+     116,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "z0": 7,
+   "height": 1.6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b8a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b4a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-pier-0",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -52,
+    -36
+   ],
+   "height": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b8a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b4a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-pier-1",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -35,
+    -36
+   ],
+   "height": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b8a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b4a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-pier-2",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -18,
+    -36
+   ],
+   "height": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b8a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b4a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-pier-3",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "height": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b8a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b4a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-pier-4",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    18,
+    -36
+   ],
+   "height": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b8a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b4a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-pier-5",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    35,
+    -36
+   ],
+   "height": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b8a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b4a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-pier-6",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    52,
+    -36
+   ],
+   "height": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0b8a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b4a2"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -50,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#ffffff",
+     "#2a4f9b",
+     "#c62d2d"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -50
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from photo but NOT yet rendered or compared: render queue servers were down (stale heartbeats since 20:17), so verified is held at text until a comparison runs"
+ }
+}

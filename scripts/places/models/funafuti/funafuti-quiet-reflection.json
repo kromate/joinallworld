@@ -1,0 +1,133 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "funafuti",
+ "venueId": "funafuti-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/133496185",
+   "used": "real outline ~24 x 17 m, bearing 69 deg"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ede2",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 3.6,
+    "plinth": 0.4,
+    "trimColour": "#3f6fa8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8473a",
+    "material": "corrugated",
+    "rise": 3.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.6,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#c6c1b2"
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "depth": 2.6,
+    "height": 8.0,
+    "cap": "hip",
+    "capRise": 1.4,
+    "windows": "none",
+    "colour": "#f0ede2",
+    "capColour": "#a8473a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#c6c1b2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   64,
+   52
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; bell tower and entrance orientation guessed relative to the rotated OSM outline"
+ }
+}

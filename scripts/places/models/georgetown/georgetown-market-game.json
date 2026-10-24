@@ -1,0 +1,736 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Starboek_Market_(23132264799).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Dan Sloan",
+   "view": "front",
+   "file": "/tmp/places-evidence/georgetown/stab2.jpg",
+   "used": "front elevation: long low dark-red eave roof, cream-and-red-brown framed gable bays above, small cupola turrets, central clock tower with hip cap"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stabroek_Market,_Georgetown.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Loriski",
+   "view": "side",
+   "file": "/tmp/places-evidence/georgetown/stab1.jpg",
+   "used": "side wall: rust-red corrugated cladding, louvred clerestory band, stall sheds round the base"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/108178345",
+   "used": "overall size (85 x 82 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-hall",
+   "footprint": {
+    "rect": [
+     82,
+     78
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3f30",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2c",
+    "material": "metal-sheet",
+    "pitch": 3,
+    "overhang": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     66,
+     60
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7a3224",
+    "windows": "rect",
+    "windowRatio": 0.4,
+    "bay": 2,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2c",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-0",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    -32.5,
+    -33
+   ],
+   "z0": 5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7a3224",
+    "windows": "rect",
+    "windowRatio": 0.5,
+    "bay": 2,
+    "faces": {
+     "front": "rect"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2c",
+    "material": "metal-sheet",
+    "pitch": 31,
+    "overhang": 0.4
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "gable-1",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    -19.5,
+    -33
+   ],
+   "z0": 5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9b79a",
+    "windows": "rect",
+    "windowRatio": 0.5,
+    "bay": 2,
+    "faces": {
+     "front": "rect"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2c",
+    "material": "metal-sheet",
+    "pitch": 31,
+    "overhang": 0.4
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "gable-2",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    -6.5,
+    -33
+   ],
+   "z0": 5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7a3224",
+    "windows": "rect",
+    "windowRatio": 0.5,
+    "bay": 2,
+    "faces": {
+     "front": "rect"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2c",
+    "material": "metal-sheet",
+    "pitch": 31,
+    "overhang": 0.4
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "gable-3",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    6.5,
+    -33
+   ],
+   "z0": 5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9b79a",
+    "windows": "rect",
+    "windowRatio": 0.5,
+    "bay": 2,
+    "faces": {
+     "front": "rect"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2c",
+    "material": "metal-sheet",
+    "pitch": 31,
+    "overhang": 0.4
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "gable-4",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    19.5,
+    -33
+   ],
+   "z0": 5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7a3224",
+    "windows": "rect",
+    "windowRatio": 0.5,
+    "bay": 2,
+    "faces": {
+     "front": "rect"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2c",
+    "material": "metal-sheet",
+    "pitch": 31,
+    "overhang": 0.4
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "gable-5",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    32.5,
+    -33
+   ],
+   "z0": 5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9b79a",
+    "windows": "rect",
+    "windowRatio": 0.5,
+    "bay": 2,
+    "faces": {
+     "front": "rect"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2c",
+    "material": "metal-sheet",
+    "pitch": 31,
+    "overhang": 0.4
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    0,
+    -39,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 27,
+    "cap": "hip",
+    "cap_rise": 6,
+    "clock": true,
+    "wall_colour": "#7a3224",
+    "trim_colour": "#6a2a1e",
+    "accent_colour": "#efe6d0",
+    "roof_colour": "#8a3b2c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tower",
+   "id": "cupola-0",
+   "at": [
+    -39,
+    -33,
+    10
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "cap": "hip",
+    "capRise": 1.5,
+    "colour": "#7a3224",
+    "capColour": "#5a2a22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tower",
+   "id": "cupola-1",
+   "at": [
+    -20,
+    -33,
+    10
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "cap": "hip",
+    "capRise": 1.5,
+    "colour": "#7a3224",
+    "capColour": "#5a2a22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tower",
+   "id": "cupola-2",
+   "at": [
+    20,
+    -33,
+    10
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "cap": "hip",
+    "capRise": 1.5,
+    "colour": "#7a3224",
+    "capColour": "#5a2a22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tower",
+   "id": "cupola-3",
+   "at": [
+    39,
+    -33,
+    10
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "cap": "hip",
+    "capRise": 1.5,
+    "colour": "#7a3224",
+    "capColour": "#5a2a22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tower",
+   "id": "cupola-4",
+   "at": [
+    -39,
+    33,
+    10
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "cap": "hip",
+    "capRise": 1.5,
+    "colour": "#7a3224",
+    "capColour": "#5a2a22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tower",
+   "id": "cupola-5",
+   "at": [
+    39,
+    33,
+    10
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "cap": "hip",
+    "capRise": 1.5,
+    "colour": "#7a3224",
+    "capColour": "#5a2a22"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -34,
+    -46,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.4,
+    "colour": "#d94f4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -22,
+    -50,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.4,
+    "colour": "#f2c230"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -9,
+    -45,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.4,
+    "colour": "#3b7dd8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    8,
+    -49,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.4,
+    "colour": "#2e9e5b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    20,
+    -46,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.4,
+    "colour": "#f08a24"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    27,
+    -52,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.4,
+    "colour": "#ffffff"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    36,
+    -47,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.4,
+    "colour": "#8a4fd0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -41,
+    -52,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.4,
+    "colour": "#d94f4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "bus-0",
+   "footprint": {
+    "rect": [
+     5.5,
+     2
+    ]
+   },
+   "at": [
+    -26,
+    -55
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f5fa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5fa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bus-1",
+   "footprint": {
+    "rect": [
+     5.5,
+     2
+    ]
+   },
+   "at": [
+    -2,
+    -54
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f1f1f1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f1f1"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bus-2",
+   "footprint": {
+    "rect": [
+     5.5,
+     2
+    ]
+   },
+   "at": [
+    14,
+    -56
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f1f1f1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f1f1"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bus-3",
+   "footprint": {
+    "rect": [
+     5.5,
+     2
+    ]
+   },
+   "at": [
+    31,
+    -57
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a8a5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a8a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -39,
+    0
+   ],
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "height": 27,
+    "colour": "#7a3224"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -39,
+    27
+   ],
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "height": 6,
+    "topScale": 0.05,
+    "colour": "#8a3b2c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Critic fixes applied (dark red-brown clock tower 11 m with cream face, six contiguous low gables, shallow clerestory band, cupolas, irregular umbrellas and minibuses) but NOT visually checked: render queue had no server (326 jobs waiting). Gable infill and lattice framing are approximated."
+ }
+}

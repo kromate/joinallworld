@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-node-14225260759",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/18289469",
+   "used": "athletics track 178 x 94 m (the only geometry; stands modelled around it as typed in the brief) (scaled x0.62 to fit the 160 m scene clamp)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q1355066",
+   "used": "football and athletics stadium; covered main stand, 4 light masts, blue/cream concrete terraces from brief colours; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "params": {
+    "length": 109.12,
+    "width": 58.28,
+    "infield": true,
+    "pitch": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 57.04,
+    "radiusY": 32.24,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.77,
+    "firstHeight": 1.8,
+    "facetDeg": 10,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#3b6e91",
+    "concreteColour": "#b8b8b2",
+    "underColour": "#a5a59f",
+    "canopy": {
+     "height": 3.42,
+     "depth": 9.92,
+     "thickness": 0.4,
+     "slopeDeg": 4,
+     "colour": "#8c8f91",
+     "edgeColour": "#b8b8b2"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 57.04,
+    "radiusY": 32.24,
+    "startDeg": 25,
+    "endDeg": 155,
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.77,
+    "firstHeight": 0.9,
+    "facetDeg": 10,
+    "under": "open",
+    "slab": 0.5,
+    "seatColour": "#3b6e91",
+    "concreteColour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 57.04,
+    "radiusY": 32.24,
+    "startDeg": 160,
+    "endDeg": 200,
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.77,
+    "firstHeight": 0.9,
+    "facetDeg": 10,
+    "under": "open",
+    "slab": 0.5,
+    "seatColour": "#f2e7c9",
+    "concreteColour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 57.04,
+    "radiusY": 32.24,
+    "startDeg": -20,
+    "endDeg": 20,
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.77,
+    "firstHeight": 0.9,
+    "facetDeg": 10,
+    "under": "open",
+    "slab": 0.5,
+    "seatColour": "#f2e7c9",
+    "concreteColour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -43.4,
+    -38.44,
+    0.0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.1
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    43.4,
+    -38.44,
+    0.0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.1
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -43.4,
+    38.44,
+    0.0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.1
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    43.4,
+    38.44,
+    0.0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 3.1
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0.0,
+    35.96,
+    3.72
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "params": {
+    "height": 1.36,
+    "kind": "wall",
+    "points": [
+     [
+      -66.96,
+      -47.12
+     ],
+     [
+      66.96,
+      -47.12
+     ],
+     [
+      66.96,
+      47.12
+     ],
+     [
+      -66.96,
+      47.12
+     ],
+     [
+      -66.96,
+      -47.12
+     ]
+    ],
+    "colour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0.0,
+    -55.8,
+    0.0
+   ],
+   "params": {
+    "width": 68.2,
+    "depth": 4.96,
+    "count": 8
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0.0,
+    -52.08,
+    0.0
+   ],
+   "params": {
+    "width": 37.2,
+    "depth": 8.68,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   156,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "stands typed around real track size, scaled x0.62; no photo; render not checked (queue down)"
+ }
+}

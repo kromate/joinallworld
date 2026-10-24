@@ -1,0 +1,174 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2992015",
+   "used": "72.8 x 36.3 m hall outline, bearing 104 deg"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q135152125",
+   "used": "multi-sports venue, inception 1974; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     72.8,
+     36.3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -13.75,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b8b2",
+    "windows": "none",
+    "bands": "#3b6e91",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#8c8f91",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-block",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -21
+   ],
+   "rotDeg": -13.75,
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e7cc",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bands": "#3b6e91",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    -1,
+    -27,
+    0
+   ],
+   "rotDeg": -13.75,
+   "params": {
+    "width": 10,
+    "rise": 0.7,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "board",
+   "at": [
+    -1,
+    -18,
+    6
+   ],
+   "rotDeg": -13.75,
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#3b6e91",
+    "posts": false
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "id": "mast-w",
+   "at": [
+    -48,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "id": "mast-e",
+   "at": [
+    48,
+    28,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "cars": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-recreation"
+}

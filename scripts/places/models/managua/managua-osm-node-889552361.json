@@ -1,0 +1,115 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1557417669",
+   "used": "church compound outline 46.9 x 38.6 m (containing match), irregular nave and annexes"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q138880258",
+   "used": "church building; flat facade, small central tower, tile roof from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e7c9",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "plinth": 0.5,
+    "bands": "#c4684a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a84e32",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 18,
+    "cap": "hip",
+    "cap_height": 3,
+    "colour": "#f2e7c9",
+    "cap_colour": "#a84e32"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.7,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b8b8b2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -27
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     27,
+     -26
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; tower position and roof layout over the real outline are guesses; tower may not sit on the outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-node-889552361"
+}

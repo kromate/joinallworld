@@ -1,0 +1,234 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CC_Caminos_del_Inca_vista_Avenida.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AlejandroFC",
+   "view": "street",
+   "file": "/tmp/places-evidence/lima/caminos.jpg",
+   "used": "long beige low wing with red band over glazed shopfront and ribbon windows, taller beige tower block at right with red base band and ribbon glazing, boundary trees and avenue"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/437053684",
+   "used": "not used: this OSM way is only the BCP bank pad inside the complex"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     70,
+     34
+    ]
+   },
+   "at": [
+    -18,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4c7a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#b8321f",
+    "plinth": 0.3,
+    "parapet": 1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront",
+   "footprint": {
+    "rect": [
+     70,
+     3
+    ]
+   },
+   "at": [
+    -18,
+    -18.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5c7480",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#b8321f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8321f",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     26,
+     34
+    ]
+   },
+   "at": [
+    41,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d0bd98",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#b8321f",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -20,
+    9
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.2,
+    "bottom": 0,
+    "colour": "#e8e3d6",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -19.5,
+    4.6
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#f2d23c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -27
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "line": 26
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -27
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 6,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -24
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -5,
+    -30
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "cars": 6,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-osm-way-401854468",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from a street photo but never rendered or compared: render queue had no live workers. OSM way is only the bank pad, so mall size is estimated."
+ }
+}

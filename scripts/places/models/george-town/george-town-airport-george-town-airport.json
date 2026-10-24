@@ -1,0 +1,685 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-airport-george-town-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Walk_to_Rental_Cars_at_Grand_Cayman.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Coolcaesar",
+   "view": "front",
+   "file": "/tmp/places-evidence/george-town/airport4.jpg",
+   "used": "departures front: tall pointed-arch glazed gable with white diagonal fins and a white curved metal roof sweeping over it, white stucco side piers, flat white canopy on the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/62184823",
+   "used": "terminal footprint, 220 x 82 m skewed outline, 2 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae2",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d6d1",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "id": "arch-shell",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#f1f2f0",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       49.01,
+       21.6
+      ]
+     },
+     {
+      "z": 11.31,
+      "rect": [
+       44.29,
+       20.4
+      ]
+     },
+     {
+      "z": 18.85,
+      "rect": [
+       37.7,
+       19.2
+      ]
+     },
+     {
+      "z": 24.51,
+      "rect": [
+       28.28,
+       18.0
+      ]
+     },
+     {
+      "z": 29.21,
+      "rect": [
+       16.96,
+       16.8
+      ]
+     },
+     {
+      "z": 32.99,
+      "rect": [
+       5.65,
+       15.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "arch-glass",
+   "at": [
+    0,
+    -18.0,
+    0
+   ],
+   "params": {
+    "colour": "#4d7690",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       42.22,
+       1.2
+      ]
+     },
+     {
+      "z": 11.31,
+      "rect": [
+       38.0,
+       1.2
+      ]
+     },
+     {
+      "z": 18.85,
+      "rect": [
+       31.67,
+       1.2
+      ]
+     },
+     {
+      "z": 24.51,
+      "rect": [
+       23.22,
+       1.2
+      ]
+     },
+     {
+      "z": 29.21,
+      "rect": [
+       12.67,
+       1.2
+      ]
+     },
+     {
+      "z": 31.29,
+      "rect": [
+       4.22,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mullion-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -16.89,
+      -18.7,
+      0
+     ],
+     [
+      -15.28,
+      -18.7,
+      7.59
+     ],
+     [
+      -13.48,
+      -18.7,
+      15.18
+     ],
+     [
+      -10.02,
+      -18.7,
+      22.76
+     ],
+     [
+      -3.12,
+      -18.7,
+      30.35
+     ]
+    ],
+    "curve": true,
+    "section": {
+     "rect": [
+      0.5,
+      0.6
+     ]
+    },
+    "colour": "#f5f6f4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mullion-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -8.44,
+      -18.7,
+      0
+     ],
+     [
+      -7.64,
+      -18.7,
+      7.59
+     ],
+     [
+      -6.74,
+      -18.7,
+      15.18
+     ],
+     [
+      -5.01,
+      -18.7,
+      22.76
+     ],
+     [
+      -1.56,
+      -18.7,
+      30.35
+     ]
+    ],
+    "curve": true,
+    "section": {
+     "rect": [
+      0.5,
+      0.6
+     ]
+    },
+    "colour": "#f5f6f4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mullion-2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0.0,
+      -18.7,
+      0
+     ],
+     [
+      0.0,
+      -18.7,
+      7.59
+     ],
+     [
+      0.0,
+      -18.7,
+      15.18
+     ],
+     [
+      0.0,
+      -18.7,
+      22.76
+     ],
+     [
+      0.0,
+      -18.7,
+      30.35
+     ]
+    ],
+    "curve": true,
+    "section": {
+     "rect": [
+      0.5,
+      0.6
+     ]
+    },
+    "colour": "#f5f6f4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mullion-3",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      8.44,
+      -18.7,
+      0
+     ],
+     [
+      7.64,
+      -18.7,
+      7.59
+     ],
+     [
+      6.74,
+      -18.7,
+      15.18
+     ],
+     [
+      5.01,
+      -18.7,
+      22.76
+     ],
+     [
+      1.56,
+      -18.7,
+      30.35
+     ]
+    ],
+    "curve": true,
+    "section": {
+     "rect": [
+      0.5,
+      0.6
+     ]
+    },
+    "colour": "#f5f6f4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mullion-4",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      16.89,
+      -18.7,
+      0
+     ],
+     [
+      15.28,
+      -18.7,
+      7.59
+     ],
+     [
+      13.48,
+      -18.7,
+      15.18
+     ],
+     [
+      10.02,
+      -18.7,
+      22.76
+     ],
+     [
+      3.12,
+      -18.7,
+      30.35
+     ]
+    ],
+    "curve": true,
+    "section": {
+     "rect": [
+      0.5,
+      0.6
+     ]
+    },
+    "colour": "#f5f6f4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "transom-0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -19.99,
+      -18.7,
+      6
+     ],
+     [
+      19.99,
+      -18.7,
+      6
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "colour": "#eef0ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "transom-1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -18.71,
+      -18.7,
+      12
+     ],
+     [
+      18.71,
+      -18.7,
+      12
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "colour": "#eef0ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "transom-2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -16.19,
+      -18.7,
+      18
+     ],
+     [
+      16.19,
+      -18.7,
+      18
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "colour": "#eef0ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "transom-3",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -11.99,
+      -18.7,
+      24
+     ],
+     [
+      11.99,
+      -18.7,
+      24
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.35,
+      0.35
+     ]
+    },
+    "colour": "#eef0ee"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-edge",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "arc": {
+     "plane": "xz",
+     "start": [
+      -23.6432,
+      -18.9,
+      0
+     ],
+     "end": [
+      23.6432,
+      -18.9,
+      0
+     ],
+     "bulge": 34.419000000000004
+    },
+    "section": {
+     "rect": [
+      1.2,
+      0.9
+     ]
+    },
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "dep-canopy",
+   "at": [
+    10,
+    -27,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 90,
+    "depth": 8,
+    "height": 4.5,
+    "columns": 12,
+    "colour": "#f0f0ee",
+    "edgeColour": "#d9dbd9"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -50,
+    8,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "round",
+    "colour": "#dcdad2",
+    "cabColour": "#4a6a80"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    52,
+    28,
+    4
+   ],
+   "rotDeg": 70,
+   "params": {
+    "length": 16,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    66,
+    38,
+    4
+   ],
+   "rotDeg": 70,
+   "params": {
+    "length": 16,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#012169",
+     "#012169",
+     "#e8e8e2"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    14,
+    -23,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2,
+    "colour": "#9fb6c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -38
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -36
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "critic fixes applied (arch ~1.3x, glass fills arch, raked mullions and transoms, thick roof edge, punched wings, 90 m canopy) but re-render not seen: queue had no server and 319 jobs waiting; photo is close-up of gable only"
+ }
+}

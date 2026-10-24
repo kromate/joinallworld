@@ -1,0 +1,272 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston-nf",
+ "venueId": "kingston-nf-airport-kingston-nf-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Norfolk_terminal.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rwiseman97",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingston-nf/terminal.jpg",
+   "used": "glazed gable hall with deep eaves canopy, low white hipped roofs on pale green and cream walls, flagpoles, low fence, Norfolk pines"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/183936161",
+   "used": "overall size (about 69 x 37 m) only; outline too ragged to extrude"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9c7b4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8eaea",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    12
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc9",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8eaea",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-hall",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    14,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d8bd",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "curtain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#dfe3e5",
+    "material": "corrugated",
+    "pitch": 38,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-gable",
+   "footprint": {
+    "rect": [
+     16,
+     1.2
+    ]
+   },
+   "at": [
+    14,
+    -9.4
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f4a5c",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dfe3e5"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 4.5,
+    "height": 3.4,
+    "thickness": 0.3,
+    "columns": 6,
+    "colour": "#e6e8e8"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -24,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 3,
+    "height": 3.0,
+    "thickness": 0.25,
+    "columns": 8,
+    "colour": "#e6e8e8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#2a4d9b"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.2,
+    "bottom": 4.6,
+    "colour": "#e8e6dc",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 22,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 24,
+    "count": 4,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not yet compared: render queue had no running server (stale heartbeats, jobs stuck). Composed from photo by eye; re-verify with the cmp image, then set verified to photo."
+ }
+}

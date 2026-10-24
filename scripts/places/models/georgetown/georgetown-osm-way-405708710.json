@@ -1,0 +1,366 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-osm-way-405708710",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Castellani_House.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Caribiana",
+   "view": "front",
+   "file": "/tmp/places-evidence/georgetown/405708710_0.jpg",
+   "used": "white horizontal-board timber walls, central tower with rooftop lookout, deep flat eaves, sash windows in pairs, green-metal porch roof over dark timber doors, open pilotis at the right ground floor, green lean-to roofs on the right wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/405708710",
+   "used": "overall size 32 x 19 m (the footprint is a rotated rectangle, modelled square-on)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     11,
+     16
+    ]
+   },
+   "at": [
+    -10.5,
+    1.5
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efdc",
+    "glassColour": "#aab8bd",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 0.4,
+    "bay": 3.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efdc",
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    8.5,
+    1
+   ],
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efdc",
+    "glassColour": "#aab8bd",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 0.4,
+    "bay": 3.0,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "punched"
+    },
+    "pattern": {
+     "type": "pilotis"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efebde",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.5,
+     8
+    ]
+   },
+   "at": [
+    -3,
+    -2
+   ],
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efdc",
+    "glassColour": "#aab8bd",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 0.4,
+    "bay": 3.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f5f1e4",
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lookout",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    -3,
+    -1.5
+   ],
+   "z0": 14.9,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#f0ecde",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d6",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -1,
+    -8.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6,
+    "depth": 3.4,
+    "height": 3.2,
+    "thickness": 0.3,
+    "columns": 2,
+    "colour": "#2f5a46",
+    "edgeColour": "#eeeadc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doors",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -1,
+    -7.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.7,
+    "colour": "#6b3d24",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "right-leanto",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     2.4
+    ],
+    "z0": 5.0,
+    "height": 0.4,
+    "colour": "#2f5a46",
+    "top": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     8,
+     -9.4
+    ],
+    "end": [
+     16,
+     -9.4
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.7,
+        0.7
+       ],
+       "z0": 0,
+       "height": 3.6,
+       "colour": "#eeeae0"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "lookout-rail",
+   "lod": [
+    0
+   ],
+   "at": [
+    -5,
+    -3.5,
+    16.9
+   ],
+   "params": {
+    "length": 4,
+    "height": 0.9,
+    "thickness": 0.06,
+    "kind": "railing",
+    "colour": "#e8e4d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eave-0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     9.5
+    ],
+    "z0": 5.0,
+    "height": 0.25,
+    "colour": "#f0ebd8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eave-1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     9.5
+    ],
+    "z0": 9.6,
+    "height": 0.25,
+    "colour": "#f0ebd8",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eave-2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -10.5,
+    1.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     13,
+     18
+    ],
+    "z0": 8.4,
+    "height": 0.25,
+    "colour": "#f0ebd8",
+    "top": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "critic fixes applied (narrow tower, eave bands, lookout rail, green porch, pilotis, plain-render walls) but not re-rendered: render queue servers down; board texture is plain render because timber slot is vertical"
+ }
+}

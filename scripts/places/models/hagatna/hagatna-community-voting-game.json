@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/504322436",
+   "used": "not used for massing: the polygon is the whole park/townhall area (134x100 m), not a hall"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#a9c7bd",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -11.5
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5b8ba",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#ffffff",
+     "#2a4f9b"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    24,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered: queue down; hall size and form are a typical guess"
+ }
+}

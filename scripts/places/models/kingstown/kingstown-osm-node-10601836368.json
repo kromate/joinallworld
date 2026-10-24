@@ -1,0 +1,103 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-node-10601836368",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Brief only: scrub-covered grassy hill viewpoint on the south coast with a lookout post; no building at the OSM point"
+  },
+  {
+   "kind": "text",
+   "used": "No photo of this building found; nearby Commons photos are of Bequia, a different island."
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 38,
+    "height": 9,
+    "seed": 5,
+    "stairs": false,
+    "rock_colour": "#8d8478",
+    "boulders": 6
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    2,
+    0,
+    9
+   ],
+   "params": {
+    "width": 3.6,
+    "depth": 3.6,
+    "height": 2.6,
+    "roof": "hip",
+    "rise": 1.0,
+    "posts": 4,
+    "colour": "#8d8478",
+    "cap_colour": "#6f757a",
+    "floor_colour": "#8d8478"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    6,
+    -1,
+    9
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#e8e2cc"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 24,
+    "count": 9,
+    "min_height": 3,
+    "max_height": 6,
+    "keep_out": [
+     [
+      -4,
+      -4,
+      8,
+      8
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

@@ -1,0 +1,267 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Market_building_in_Jamestown_Saint_Helena.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kevstan",
+   "view": "street",
+   "file": "/tmp/places-evidence/jamestown/jt-market.jpg",
+   "used": "single-storey open arcaded hall, pale render with grey pilasters, low hipped pale metal roof with raised light monitor, grey square clock tower with white cupola at the front corner"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/557203453",
+   "used": "overall size only (about 20 x 15 m, nearest building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.6,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc9",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "arched",
+     "left": "arched",
+     "right": "plain",
+     "back": "plain"
+    },
+    "trimColour": "#8e949a",
+    "cornice": true,
+    "bands": "#8e949a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d8dcdd",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     20.8,
+     13.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "monitor",
+   "footprint": {
+    "rect": [
+     11,
+     4
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "z0": 5.6,
+   "height": 1.1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8e949a",
+    "windows": "ribbon",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e2e5e6",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.6,
+    -7.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 5.2,
+    "colour": "#e9e5da",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.6,
+    -7.4,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 2.8,
+    "colour": "#8e949a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.6,
+    -8.75,
+    6.0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.15
+    ],
+    "height": 1.5,
+    "colour": "#f2f2ee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10.6,
+    -7.4,
+    8.0
+   ],
+   "params": {
+    "profile": [
+     [
+      1.1,
+      0,
+      "#e9e5da"
+     ],
+     [
+      1.0,
+      0.3
+     ],
+     [
+      0.8,
+      0.9
+     ],
+     [
+      0.3,
+      1.3
+     ],
+     [
+      0,
+      1.5
+     ]
+    ],
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -9.5,
+    0.0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    7,
+    -9.5,
+    0.0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    11.5,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 5,
+    "depth": 1.4,
+    "colours": [
+     "#8e949a",
+     "#e8dfc9"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from photos but never rendered or compared: render queue servers were down for the whole session (queued, never run); upgrade verified to photo after a comparison round"
+ }
+}

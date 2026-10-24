@@ -1,0 +1,542 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-node-4959354922",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vilu_War_Museum,_Guadalcanal,_Solomon_Islands.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Torben Venning Hansen (Commons)",
+   "view": "side",
+   "file": "/tmp/places-evidence/honiara/vilu1.jpg",
+   "used": "WWII aircraft wreck mounted on posts on bare earth and grass, under tall broadleaf trees; silver-grey crumpled metal"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vilu_War_Museum_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Torben Venning Hansen (Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/honiara/vilu2.jpg",
+   "used": "entrance building: grey concrete-block walls, brown corrugated roofs, raised cream corrugated gable over a through-gate, blank blue sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.37,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "rect": [
+     64,
+     44
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.46,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a4a",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-west",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -6.5,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a9a1",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4a34",
+    "rise": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-east",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    6.5,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a9a1",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4a34",
+    "rise": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-gable",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9c58a",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a3a2c",
+    "rise": 1.8,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.5,
+    -18.6,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.15
+    ],
+    "height": 1.6,
+    "colour": "#3f78a8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    4,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     7,
+     2.0
+    ],
+    "height": 1.0,
+    "colour": "#a9aca4",
+    "topScale": [
+     0.9,
+     0.4
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    0.8,
+    1.0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.2,
+      0
+     ],
+     [
+      3.2,
+      0
+     ],
+     [
+      2.2,
+      3.4
+     ],
+     [
+      -2.2,
+      3.4
+     ]
+    ],
+    "height": 0.35,
+    "colour": "#b6b9b0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    7.2,
+    1.0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.2,
+      0
+     ],
+     [
+      3.2,
+      0
+     ],
+     [
+      2.2,
+      -3.4
+     ],
+     [
+      -2.2,
+      -3.4
+     ]
+    ],
+    "height": 0.35,
+    "colour": "#b6b9b0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.7,
+    "points": [
+     [
+      0.8,
+      4,
+      2.0
+     ],
+     [
+      3,
+      4,
+      2.2
+     ],
+     [
+      6,
+      4,
+      2.5
+     ]
+    ],
+    "colour": "#a8aaa2",
+    "n": 10
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.4,
+    4,
+    1.7
+   ],
+   "params": {
+    "rect": [
+     0.12,
+     1.4
+    ],
+    "height": 0.12,
+    "colour": "#a8aaa2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.0,
+    4,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.1
+    ],
+    "height": 2.0,
+    "colour": "#b1b4ab",
+    "topScale": [
+     0.4,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#6b5a46"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 2.0,
+    "colour": "#6b5a46"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    5.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 2.0,
+    "colour": "#6b5a46"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    2.2,
+    0
+   ],
+   "params": {
+    "radius": 0.8,
+    "n": 8,
+    "height": 1.0,
+    "colour": "#8a7a66"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -18,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.4,
+    "yaw": 300
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.4,
+    "yaw": 240
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.4,
+    "kind": "fence",
+    "colour": "#8a8a82"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "width": 56,
+    "depth": 14,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue server was down (no heartbeat, 118 jobs waiting), so no comparison was run; composed from two Vilu photos (aircraft wreck on posts, block-wall entrance) but unchecked; wreck is a prism approximation, signboard blank"
+ }
+}

@@ -1,0 +1,113 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/3387273",
+   "used": "real multi-wing outline (246 x 88 m, 3 levels) fitted to 118 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "simplify": 3
+   },
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#4f87a8",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -8,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    30,
+    28,
+    13
+   ],
+   "params": {
+    "radius": 6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "colour": "#4f87a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -58
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -58
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo anywhere; real OSM outline plus brief facts; facade, canopies and wings typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-clinic"
+}

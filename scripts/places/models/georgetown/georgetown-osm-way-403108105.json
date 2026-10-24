@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-osm-way-403108105",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Umana_yana.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Anaayanjain",
+   "view": "front",
+   "file": "/tmp/places-evidence/georgetown/umana2.jpg",
+   "used": "smooth tall cone of grey-brown palm thatch reaching almost to a low red-brown slatted timber wall, small apex tuft, thatched porch hood over a dark entrance, white kerb base, grey tarmac apron and lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Umana_Yana_by_Khirsah1.jpg",
+   "licence": "Public domain",
+   "author": "Stacey Dos Santos",
+   "view": "front",
+   "used": "entrance porch proportions and wall slats"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/403108105",
+   "used": "round plan about 26 m across"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "base",
+   "params": {
+    "segments": 28,
+    "colour": "#e4e1d8",
+    "profile": [
+     [
+      13.2,
+      0
+     ],
+     [
+      13.2,
+      0.35
+     ],
+     [
+      0,
+      0.35
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "wall",
+   "params": {
+    "segments": 28,
+    "colour": "#6a2f22",
+    "profile": [
+     [
+      12.6,
+      0.35
+     ],
+     [
+      12.6,
+      2.9
+     ],
+     [
+      0,
+      2.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "thatch",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    2.7
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#a39578",
+    "topColour": "#a39578",
+    "profile": [
+     [
+      14.0,
+      0,
+      "#8a7a60"
+     ],
+     [
+      14.0,
+      0.25
+     ],
+     [
+      13.6,
+      0.5
+     ],
+     [
+      7.0,
+      7.3
+     ],
+     [
+      3.5,
+      11.0
+     ],
+     [
+      0.7,
+      14.2
+     ],
+     [
+      0.5,
+      14.5
+     ],
+     [
+      0,
+      14.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "thatch-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    2.7
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#a39578",
+    "profile": [
+     [
+      14.0,
+      0
+     ],
+     [
+      0.5,
+      14.5
+     ],
+     [
+      0,
+      14.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "params": {
+    "rect": [
+     4.2,
+     0.6
+    ],
+    "z0": 0.35,
+    "height": 2.5,
+    "colour": "#241812",
+    "topColour": "#241812"
+   },
+   "at": [
+    0,
+    -12.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "hood",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "z0": 2.9,
+    "height": 1.2,
+    "topScale": 0.7,
+    "colour": "#a39578",
+    "topColour": "#a39578",
+    "points": [
+     [
+      -3.3,
+      0
+     ],
+     [
+      3.3,
+      0
+     ],
+     [
+      2.6,
+      2.8
+     ],
+     [
+      -2.6,
+      2.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -15.6
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   60
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     8
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "thatch texture is board-like not palm leaf; slat wall is a plain tint; flagpole and sign omitted; porch hood is a simple tapered block"
+ }
+}

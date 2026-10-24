@@ -1,0 +1,311 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-airport-la-paz-airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:El_Alto_International_Airport,_New_Terminal.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Russland345",
+   "view": "front",
+   "file": "/tmp/places-evidence/la-paz/airport1.jpg",
+   "used": "landside frontage: long glazed hall with steel-truss glazing and blue columns, sweeping silver roof edge, white sign block over red entrance, lower glazed east wing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeropuerto_Internacional_de_El_Alto_jdb01.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jduranboger",
+   "view": "side",
+   "file": "/tmp/places-evidence/la-paz/airport2.jpg",
+   "used": "older cream render annex with dark glazing, control tower behind"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     72,
+     34
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb8c8",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9c0c6",
+    "material": "metal-sheet",
+    "overhang": 5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base-band",
+   "footprint": {
+    "rect": [
+     72,
+     4
+    ]
+   },
+   "at": [
+    -24,
+    -17.5
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#aab4c2",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aab4c2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-block",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    12,
+    -14
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e2d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    12,
+    -17
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d3221b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0201a",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     34,
+     30
+    ]
+   },
+   "at": [
+    41,
+    -2
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb8c8",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9c0c6",
+    "material": "metal-sheet",
+    "overhang": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     16,
+     18
+    ]
+   },
+   "at": [
+    66,
+    -4
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d6cc",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -14
+    ],
+    "end": [
+     -6,
+     -14
+    ],
+    "count": 4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 12,
+      "colour": "#8fa7bd",
+      "profile": [
+       [
+        0,
+        0
+       ],
+       [
+        1.1,
+        0
+       ],
+       [
+        1.1,
+        13
+       ],
+       [
+        0,
+        13
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -30,
+    16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -10,
+    26,
+    2
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    12,
+    -21.5,
+    7
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#f0f0f0",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [],
+  "extent": [
+   160,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not compared: render queue had no live workers (heartbeats stale, no server process), so no render/photo check ran. Composed from the photo; re-render and compare, then set verified to photo."
+ }
+}

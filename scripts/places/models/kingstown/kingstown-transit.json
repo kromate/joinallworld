@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/384773738",
+   "used": "ferry terminal tag and 22 x 19 m size; match is nearest (45 m) so the outline is not used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: one-storey painted terminal, covered waiting area, pier, bus bays, harbour front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0e8",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "bands": "#2a6f97",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9402f",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 5,
+    "colour": "#2a6f97",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 3.6,
+    "colour": "#2a6f97",
+    "posts": false
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 44,
+    "width": 6,
+    "shelter": true
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "kind": "mixed",
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    13,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "water",
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the real terminal; typical harbour ferry building by the brief"
+ }
+}

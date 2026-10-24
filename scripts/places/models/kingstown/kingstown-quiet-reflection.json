@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Vincent,_Karibik_-_St._Mary%27s_R.C._School_%5E_St._Mary%27s_R.C._Cathedral_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "giggel",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingstown/assump-front.jpg",
+   "used": "near-black volcanic stone, square crenellated west tower with red pyramid cap and cross, lower battlemented body with arched windows, second taller pinnacled tower to the right, graveyard fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Mary%27s_R.C._Cathedral_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Edgar El",
+   "view": "side",
+   "file": "/tmp/places-evidence/kingstown/assump-3.jpg",
+   "used": "second tower: open belfry arches, four corner pinnacles, stepped crenellated stair turrets"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/386076226",
+   "used": "overall size about 28 x 27 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.477,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a4643",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 4.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#5a5551",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4643",
+    "material": "concrete",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     12,
+     11
+    ]
+   },
+   "at": [
+    -22,
+    2
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a4643",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "bay": 4,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4643",
+    "material": "concrete",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-a",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -2
+   ],
+   "height": 25,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#46423f",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "cornice": true,
+    "bands": "#5a5551",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3b2f",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-b",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    11,
+    5
+   ],
+   "height": 22,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#46423f",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.14,
+    "bay": 7,
+    "cornice": true,
+    "bands": "#5a5551"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#46423f",
+    "material": "concrete",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    8.6,
+    2.6,
+    22
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 4.5,
+    "sides": 4,
+    "colour": "#3f3c3a",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    13.4,
+    2.6,
+    22
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 4.5,
+    "sides": 4,
+    "colour": "#3f3c3a",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    8.6,
+    7.4,
+    22
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 4.5,
+    "sides": 4,
+    "colour": "#3f3c3a",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    13.4,
+    7.4,
+    22
+   ],
+   "params": {
+    "baseWidth": 0.9,
+    "height": 4.5,
+    "sides": 4,
+    "colour": "#3f3c3a",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.4,
+    "kind": "rail",
+    "colour": "#f3efe2",
+    "pillarEvery": 2.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "stair turrets, rose window and the stepped parapets are simplified; plan is regularised"
+ }
+}

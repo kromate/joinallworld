@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-osm-way-364607503",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/364607503",
+   "used": "real 5.9 x 3.8 m footprint, restaurant tag; deck, umbrellas and colours from the brief (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 15,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shack",
+   "footprint": {
+    "polygon": [
+     [
+      -3.5,
+      -0.2
+     ],
+     [
+      1.2,
+      3.3
+     ],
+     [
+      3.5,
+      0.2
+     ],
+     [
+      -1.2,
+      -3.2
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8b98a",
+    "windows": "louvre",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b7f82",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    -5
+   ],
+   "params": {
+    "rect": [
+     8,
+     4
+    ],
+    "height": 0.4,
+    "colour": "#a98a62",
+    "z0": 0,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "awning",
+   "at": [
+    0,
+    -3.8
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.6
+    ],
+    "height": 0.15,
+    "colour": "#4f8f9a",
+    "z0": 2.7,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "umbrella",
+   "id": "umb1",
+   "at": [
+    -2.5,
+    -6,
+    0.4
+   ],
+   "params": {
+    "colour": "#4f8f9a",
+    "radius": 1.4
+   }
+  },
+  {
+   "type": "umbrella",
+   "id": "umb2",
+   "at": [
+    0.2,
+    -6.6,
+    0.4
+   ],
+   "params": {
+    "colour": "#f4f0e6",
+    "radius": 1.4
+   }
+  },
+  {
+   "type": "umbrella",
+   "id": "umb3",
+   "at": [
+    2.8,
+    -6,
+    0.4
+   ],
+   "params": {
+    "colour": "#4f8f9a",
+    "radius": 1.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "table1",
+   "at": [
+    -2.5,
+    -6
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 0.9,
+    "colour": "#8c6d4a",
+    "z0": 0.4,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "table2",
+   "at": [
+    0.2,
+    -6.6
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 0.9,
+    "colour": "#8c6d4a",
+    "z0": 0.4,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "table3",
+   "at": [
+    2.8,
+    -6
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 0.9,
+    "colour": "#8c6d4a",
+    "z0": 0.4,
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -7,
+     3
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     2
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT RENDERED (queue down): shack and deck typed from brief; no photo"
+ }
+}

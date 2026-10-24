@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/637985908",
+   "used": "nearest unnamed building 27.9 x 14.1 m (20 m away); used loosely for size and bearing of the shelter bay, not as identity"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/garapan.json#garapan-transit",
+   "used": "placeholder stop: covered shed-roof shelter, two bus bays, platform canopy, blank signboard; no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 6,
+    "height": 0.35,
+    "colour": "#b9b4aa"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     26,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    6.5
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4cfc0",
+    "windows": "none",
+    "bands": "#2f6b5a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a4"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    2.2,
+    0.35
+   ],
+   "params": {
+    "length": 24,
+    "depth": 6.2,
+    "height": 3.6,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#7c858c",
+    "accent": "#2f6b5a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -15,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.2,
+    "bottom": 2.6,
+    "colour": "#2f6b5a",
+    "frameColour": "#a8a8a4"
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -6,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "stripe": "#2f6b5a",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#d4cfc0",
+    "stripe": "#2f6b5a",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    13,
+    -4.5,
+    0
+   ],
+   "params": {
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Placeholder venue, no photo; generic shelter and two bays."
+ }
+}

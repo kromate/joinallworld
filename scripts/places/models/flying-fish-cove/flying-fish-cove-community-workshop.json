@@ -1,0 +1,83 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1120072267",
+   "used": "nearest building, 5.8 x 5.4 m, 31 m2, bearing 111; no photo, aluminium-clad shed typical of Silver City"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9bec2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "bands": "#4f7f6b"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a9094",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -3.3,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   24,
+   22
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-community-workshop",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; nearest OSM 5.8x5.4 m shed, cladding assumed."
+ }
+}

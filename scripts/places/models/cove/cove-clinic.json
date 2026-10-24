@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cove",
+ "venueId": "cove-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Setting only, from NOAA photo https://commons.wikimedia.org/wiki/File:Station_Number_044_-_Heard_Island_and_McDonald_Islands.jpg (public domain): no building visible; setting only (no building visible): black rounded volcanic pebble shore, blue-grey light, orange survey tripod hints at the orange field-hut colour"
+  },
+  {
+   "kind": "text",
+   "used": "Brief: 6 x 4.5 m orange timber-and-metal first-aid hut, gable roof; no OSM building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     6,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9503a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "bands": "#e8ecee",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7478",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "pitch": 24,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "rise": 0.3,
+    "run": 0.45,
+    "count": 2,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.5,
+    -3.6,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 0.9,
+    "bottom": 1.0,
+    "colour": "#ffffff",
+    "frameColour": "#c9503a",
+    "posts": 2
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    1.5,
+    1,
+    3
+   ],
+   "params": {
+    "height": 1.2,
+    "radius": 0.15,
+    "colour": "#52575b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [],
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists (only a shoreline photo); composed from brief"
+ }
+}

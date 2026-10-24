@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/153106623",
+   "used": "Travellers' Market outline 39.5 x 29.8 m (name match)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D0%BD%D0%B0%D0%BD%D1%8B_%D0%BE%D0%BF%D1%82%D0%BE%D0%BC_-_panoramio.jpg",
+   "licence": "Commons panoramio (see page)",
+   "author": "panoramio contributor",
+   "view": "street",
+   "used": "stall detail only, 70 m away: blue-grey corrugated metal stall walls, blue tarpaulin awnings, grey interlocking paving blocks, low render wall; no facade of the market block itself"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc2",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 1.2,
+      "spacing": 5,
+      "width": 0.7,
+      "colour": "#c9c3b2",
+      "backColour": "#7d8f99",
+      "faces": [
+       "front",
+       "back"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#c9dfe7",
+      "height": 0.5,
+      "at": 0.9,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "colours": [
+     "#3f6fb5",
+     "#c9dfe7",
+     "#d9663a"
+    ]
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "hall",
+   "at": [
+    -8,
+    4,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "hall",
+   "at": [
+    -5,
+    4,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7
+   }
+  },
+  {
+   "type": "water-tank",
+   "on": "hall",
+   "at": [
+    9,
+    -3,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 6.8,
+    "colour": "#2f6b8a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the market block exists; massing from the named OSM outline, stall colours from a nearby street photo; interior stalls not visible"
+ }
+}

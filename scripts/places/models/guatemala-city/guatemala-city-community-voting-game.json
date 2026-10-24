@@ -1,0 +1,209 @@
+{
+ "venueId": "guatemala-city-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Portal_del_Comercio.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Fernando Reyes Palencia",
+   "view": "side",
+   "file": "/tmp/places-evidence/guatemala-city/portal1.jpg",
+   "used": "south arcade: pale travertine paired columns on tall plinths with scroll capitals, entablature, balustraded parapet, setted paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:15._Zona_1_parquecentral.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Ingrid Alicia Gordillo Caceres",
+   "view": "street",
+   "used": "tiered stone fountain, tall flagpole with blue-white flag, shade trees, a grey modernist block behind the plaza"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     100,
+     11
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#cfc7b6",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c1b0",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -48,
+    26.8,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "count": 33,
+    "height": 8.6,
+    "radius": 0.55,
+    "beamHeight": 1.2,
+    "roofDepth": 2.4,
+    "colour": "#d5cdbc",
+    "roofColour": "#c9c1b0"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -50,
+    32.5,
+    10.2
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.1,
+    "postEvery": 2.4,
+    "colour": "#d9d2c2"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "radius": 7,
+    "waterColour": "#7fb2c9",
+    "rimColour": "#cfcac0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "colour": "#4997d0",
+    "count": 1
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -48,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 22,
+    "count": 9,
+    "kind": "broadleaf",
+    "keep_out": []
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    48,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 22,
+    "count": 9,
+    "kind": "broadleaf",
+    "keep_out": []
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    14,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 6,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    -12,
+    -46
+   ],
+   "height": 42,
+   "storeys": 12,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc8b8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": "#8fa6b4",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a8a0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but NOT rendered or compared: render queue servers were down (no heartbeat, no Blender process) for the whole session; re-run submit and compare"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city"
+}

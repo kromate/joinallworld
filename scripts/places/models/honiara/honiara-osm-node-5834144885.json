@@ -1,0 +1,480 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-node-5834144885",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: black-sand beach with a rusted WWII transport wreck standing out of the shallows (Bonegi wrecks, NW Guadalcanal, identified from the pin only); no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.07
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "beach",
+   "footprint": {
+    "rect": [
+     72,
+     14
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": -0.46,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2f2e2c",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f2e2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beach-front",
+   "footprint": {
+    "rect": [
+     72,
+     6
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": -0.48,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3835",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3835"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -12,
+    0.02
+   ],
+   "params": {
+    "width": 80,
+    "depth": 38,
+    "colour": "#2f7f8f",
+    "bank": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -14,
+    -1.5
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -4.5
+     ],
+     [
+      18,
+      -4.5
+     ],
+     [
+      27,
+      0
+     ],
+     [
+      18,
+      4.5
+     ],
+     [
+      -26,
+      4.5
+     ]
+    ],
+    "height": 7,
+    "colour": "#7a4c34",
+    "topScale": [
+     0.96,
+     0.92
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -14,
+    3.5
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      -3.8
+     ],
+     [
+      16,
+      -3.8
+     ],
+     [
+      23,
+      0
+     ],
+     [
+      16,
+      3.8
+     ],
+     [
+      -22,
+      3.8
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#5a3a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -14,
+    4
+   ],
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "height": 5,
+    "colour": "#8a5a3c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "storeys": 2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -14,
+    9
+   ],
+   "params": {
+    "rect": [
+     5,
+     4.4
+    ],
+    "height": 2.4,
+    "colour": "#6b4630"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -14,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     3,
+     5.4
+    ],
+    "height": 3.4,
+    "colour": "#7a4c34",
+    "topScale": [
+     0.6,
+     0.9
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      16,
+      -14,
+      4
+     ],
+     [
+      15.5,
+      -14,
+      12
+     ]
+    ],
+    "colour": "#5a3a2a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.22,
+    "points": [
+     [
+      -2,
+      -14,
+      4
+     ],
+     [
+      -3,
+      -14,
+      10
+     ]
+    ],
+    "colour": "#5a3a2a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "points": [
+     [
+      15.5,
+      -14,
+      12
+     ],
+     [
+      -3,
+      -14,
+      10
+     ]
+    ],
+    "sag": 0.6,
+    "colour": "#3a3a38"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    32,
+    -14,
+    -0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -3,
+      -1.5
+     ],
+     [
+      3,
+      -2
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      -2,
+      2.5
+     ]
+    ],
+    "height": 1.6,
+    "colour": "#6b4f3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 1.1,
+    "kind": "fence",
+    "colour": "#6b4f3a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    20,
+    6,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#8c8f90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -20,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9a77c",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b4f3a",
+    "rise": 1.0,
+    "overhang": 0.5,
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    19,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    19,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue server was down, so no render or comparison was run; composed from the brief only; unchecked massing and colours"
+ }
+}

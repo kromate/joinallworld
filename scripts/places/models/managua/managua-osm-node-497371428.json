@@ -1,0 +1,201 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Managua",
+   "used": "bust of Jose Marti on tall squared plinth in a small paved plaza; OSM nearest building is a car wash 72 m away and was not used; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "height": 0.35,
+    "colour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     4.6
+    ],
+    "z0": 0.35,
+    "height": 0.3,
+    "colour": "#cfc9b6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "z0": 0.65,
+    "height": 0.6,
+    "colour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 1.25,
+    "height": 2.6,
+    "colour": "#d9d3c0",
+    "topScale": 0.92
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "z0": 3.85,
+    "height": 0.25,
+    "colour": "#c9c3b0"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    4.1
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.1,
+       0.6
+      ]
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       0.5,
+       0.275
+      ]
+     },
+     {
+      "z": 0.8,
+      "circle": 0.18
+     },
+     {
+      "z": 1.25,
+      "ellipse": [
+       0.23,
+       0.25
+      ]
+     },
+     {
+      "z": 1.4,
+      "circle": 0.12
+     }
+    ],
+    "colour": "#5a4a3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    4.2,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.6,
+    "thickness": 0.3,
+    "colour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -4,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     3
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     4
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   26,
+   22
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; plinth proportion and bust pose typed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-node-497371428"
+}

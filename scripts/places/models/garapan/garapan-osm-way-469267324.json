@@ -1,0 +1,1061 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_Sugar_King_Park.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/garapan/sugar.jpg",
+   "used": "entrance torii: round white pillars on square bases, pink-red nuki and kasagi beams, stepped round concrete landing, lawn and mature trees behind, green chain-link fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nanmeido.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/garapan/nanmeido.jpg",
+   "used": "Nanmeido: timber hexagonal hall on a concrete platform, wide swept eaves, dark finial, wooden doors"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/469267324",
+   "used": "park extent (339 x 91 m); a 120 m portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    4
+   ],
+   "params": {
+    "height": 0.1,
+    "colour": "#6f9a4f",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     56,
+     40
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    -10
+   ],
+   "params": {
+    "height": 0.14,
+    "colour": "#b5b0a2",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     56,
+     2.4
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mound",
+   "at": [
+    0,
+    9,
+    0.05
+   ],
+   "params": {
+    "colour": "#6fa050",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       13,
+       7
+      ]
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       8,
+       4
+      ]
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       3,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "torii-base1",
+   "at": [
+    -3.1,
+    0
+   ],
+   "params": {
+    "height": 0.7,
+    "colour": "#ecebe6",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     1.7,
+     1.7
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "torii-p1",
+   "at": [
+    -3.1,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "colour": "#ecebe6",
+    "z0": 0.7,
+    "windows": "none",
+    "radius": 0.52,
+    "n": 14,
+    "topScale": 0.86
+   }
+  },
+  {
+   "type": "prism",
+   "id": "torii-base2",
+   "at": [
+    3.1,
+    0
+   ],
+   "params": {
+    "height": 0.7,
+    "colour": "#ecebe6",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     1.7,
+     1.7
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "torii-p2",
+   "at": [
+    3.1,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "colour": "#ecebe6",
+    "z0": 0.7,
+    "windows": "none",
+    "radius": 0.52,
+    "n": 14,
+    "topScale": 0.86
+   }
+  },
+  {
+   "type": "prism",
+   "id": "torii-nuki",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#e07a80",
+    "z0": 4.8,
+    "windows": "none",
+    "rect": [
+     8.2,
+     0.55
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "torii-strut",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.25,
+    "colour": "#e07a80",
+    "z0": 5.3,
+    "windows": "none",
+    "rect": [
+     0.6,
+     0.5
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "torii-kasagi",
+   "params": {
+    "section": {
+     "rect": [
+      0.75,
+      0.7
+     ]
+    },
+    "colour": "#e07a80",
+    "points": [
+     [
+      -5.0,
+      0,
+      7.65
+     ],
+     [
+      -4.0,
+      0,
+      7.28
+     ],
+     [
+      -2,
+      0,
+      7.15
+     ],
+     [
+      2,
+      0,
+      7.15
+     ],
+     [
+      4.0,
+      0,
+      7.28
+     ],
+     [
+      5.0,
+      0,
+      7.65
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier0",
+   "at": [
+    0,
+    -5.0
+   ],
+   "params": {
+    "height": 0.2,
+    "colour": "#a39f95",
+    "z0": 0,
+    "windows": "none",
+    "radius": 6.4,
+    "n": 24
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier1",
+   "at": [
+    0,
+    -5.0
+   ],
+   "params": {
+    "height": 0.2,
+    "colour": "#b0ada3",
+    "z0": 0.2,
+    "windows": "none",
+    "radius": 5.3,
+    "n": 24
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier2",
+   "at": [
+    0,
+    -5.0
+   ],
+   "params": {
+    "height": 0.2,
+    "colour": "#bdbab0",
+    "z0": 0.4,
+    "windows": "none",
+    "radius": 4.2,
+    "n": 24
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-post-l",
+   "at": [
+    -5.2,
+    -2.8
+   ],
+   "params": {
+    "height": 1.6,
+    "colour": "#ecebe6",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     0.7,
+     0.7
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-head-l",
+   "at": [
+    -5.2,
+    -2.8
+   ],
+   "params": {
+    "height": 0.55,
+    "colour": "#2b2a28",
+    "z0": 1.6,
+    "windows": "none",
+    "rect": [
+     0.55,
+     0.55
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-post-r",
+   "at": [
+    5.2,
+    -2.8
+   ],
+   "params": {
+    "height": 1.6,
+    "colour": "#ecebe6",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     0.7,
+     0.7
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lantern-head-r",
+   "at": [
+    5.2,
+    -2.8
+   ],
+   "params": {
+    "height": 0.55,
+    "colour": "#2b2a28",
+    "z0": 1.6,
+    "windows": "none",
+    "rect": [
+     0.55,
+     0.55
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -26,
+    -3,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.6,
+    "thickness": 0.05,
+    "kind": "rail",
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nanmeido-plat",
+   "at": [
+    -15,
+    13
+   ],
+   "params": {
+    "height": 0.5,
+    "colour": "#cfd0cb",
+    "z0": 0,
+    "windows": "none",
+    "points": [
+     [
+      3.2,
+      0.0
+     ],
+     [
+      1.6,
+      2.771
+     ],
+     [
+      -1.6,
+      2.771
+     ],
+     [
+      -3.2,
+      0.0
+     ],
+     [
+      -1.6,
+      -2.771
+     ],
+     [
+      1.6,
+      -2.771
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nanmeido-walls",
+   "at": [
+    -15,
+    13
+   ],
+   "params": {
+    "height": 2.2,
+    "colour": "#8b6b4a",
+    "z0": 0.5,
+    "windows": "none",
+    "points": [
+     [
+      2.3,
+      0.0
+     ],
+     [
+      1.15,
+      1.992
+     ],
+     [
+      -1.15,
+      1.992
+     ],
+     [
+      -2.3,
+      0.0
+     ],
+     [
+      -1.15,
+      -1.992
+     ],
+     [
+      1.15,
+      -1.992
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "nanmeido-roof",
+   "at": [
+    -15,
+    13,
+    2.7
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#7a5a3c",
+    "sections": [
+     {
+      "z": -0.2,
+      "poly": [
+       [
+        4.4,
+        0.0
+       ],
+       [
+        2.2,
+        3.811
+       ],
+       [
+        -2.2,
+        3.811
+       ],
+       [
+        -4.4,
+        0.0
+       ],
+       [
+        -2.2,
+        -3.811
+       ],
+       [
+        2.2,
+        -3.811
+       ]
+      ]
+     },
+     {
+      "z": 0.3,
+      "poly": [
+       [
+        4.0,
+        0.0
+       ],
+       [
+        2.0,
+        3.464
+       ],
+       [
+        -2.0,
+        3.464
+       ],
+       [
+        -4.0,
+        0.0
+       ],
+       [
+        -2.0,
+        -3.464
+       ],
+       [
+        2.0,
+        -3.464
+       ]
+      ]
+     },
+     {
+      "z": 1.0,
+      "poly": [
+       [
+        2.8,
+        0.0
+       ],
+       [
+        1.4,
+        2.425
+       ],
+       [
+        -1.4,
+        2.425
+       ],
+       [
+        -2.8,
+        0.0
+       ],
+       [
+        -1.4,
+        -2.425
+       ],
+       [
+        1.4,
+        -2.425
+       ]
+      ]
+     },
+     {
+      "z": 1.9,
+      "poly": [
+       [
+        1.2,
+        0.0
+       ],
+       [
+        0.6,
+        1.039
+       ],
+       [
+        -0.6,
+        1.039
+       ],
+       [
+        -1.2,
+        0.0
+       ],
+       [
+        -0.6,
+        -1.039
+       ],
+       [
+        0.6,
+        -1.039
+       ]
+      ]
+     },
+     {
+      "z": 2.5,
+      "poly": [
+       [
+        0.4,
+        0.0
+       ],
+       [
+        0.2,
+        0.346
+       ],
+       [
+        -0.2,
+        0.346
+       ],
+       [
+        -0.4,
+        0.0
+       ],
+       [
+        -0.2,
+        -0.346
+       ],
+       [
+        0.2,
+        -0.346
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "nanmeido-finial",
+   "at": [
+    -15,
+    13
+   ],
+   "params": {
+    "height": 0.6,
+    "colour": "#2b2a28",
+    "z0": 5.1,
+    "windows": "none",
+    "radius": 0.25,
+    "n": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall-plat",
+   "at": [
+    15,
+    13
+   ],
+   "params": {
+    "height": 0.4,
+    "colour": "#cfd0cb",
+    "z0": 0,
+    "windows": "none",
+    "points": [
+     [
+      2.8,
+      0.0
+     ],
+     [
+      1.4,
+      2.425
+     ],
+     [
+      -1.4,
+      2.425
+     ],
+     [
+      -2.8,
+      0.0
+     ],
+     [
+      -1.4,
+      -2.425
+     ],
+     [
+      1.4,
+      -2.425
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall-walls",
+   "at": [
+    15,
+    13
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#d9d2bd",
+    "z0": 0.4,
+    "windows": "none",
+    "points": [
+     [
+      2.0,
+      0.0
+     ],
+     [
+      1.0,
+      1.732
+     ],
+     [
+      -1.0,
+      1.732
+     ],
+     [
+      -2.0,
+      0.0
+     ],
+     [
+      -1.0,
+      -1.732
+     ],
+     [
+      1.0,
+      -1.732
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hall-roof",
+   "at": [
+    15,
+    13,
+    2.4
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#7c858c",
+    "sections": [
+     {
+      "z": -0.2,
+      "poly": [
+       [
+        3.8,
+        0.0
+       ],
+       [
+        1.9,
+        3.291
+       ],
+       [
+        -1.9,
+        3.291
+       ],
+       [
+        -3.8,
+        0.0
+       ],
+       [
+        -1.9,
+        -3.291
+       ],
+       [
+        1.9,
+        -3.291
+       ]
+      ]
+     },
+     {
+      "z": 0.3,
+      "poly": [
+       [
+        3.5,
+        0.0
+       ],
+       [
+        1.75,
+        3.031
+       ],
+       [
+        -1.75,
+        3.031
+       ],
+       [
+        -3.5,
+        0.0
+       ],
+       [
+        -1.75,
+        -3.031
+       ],
+       [
+        1.75,
+        -3.031
+       ]
+      ]
+     },
+     {
+      "z": 1.0,
+      "poly": [
+       [
+        2.4,
+        0.0
+       ],
+       [
+        1.2,
+        2.078
+       ],
+       [
+        -1.2,
+        2.078
+       ],
+       [
+        -2.4,
+        0.0
+       ],
+       [
+        -1.2,
+        -2.078
+       ],
+       [
+        1.2,
+        -2.078
+       ]
+      ]
+     },
+     {
+      "z": 1.7,
+      "poly": [
+       [
+        1.0,
+        0.0
+       ],
+       [
+        0.5,
+        0.866
+       ],
+       [
+        -0.5,
+        0.866
+       ],
+       [
+        -1.0,
+        0.0
+       ],
+       [
+        -0.5,
+        -0.866
+       ],
+       [
+        0.5,
+        -0.866
+       ]
+      ]
+     },
+     {
+      "z": 2.2,
+      "poly": [
+       [
+        0.3,
+        0.0
+       ],
+       [
+        0.15,
+        0.26
+       ],
+       [
+        -0.15,
+        0.26
+       ],
+       [
+        -0.3,
+        0.0
+       ],
+       [
+        -0.15,
+        -0.26
+       ],
+       [
+        0.15,
+        -0.26
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "komainu-l",
+   "at": [
+    -1.6,
+    -9
+   ],
+   "params": {
+    "height": 0.9,
+    "colour": "#9a9a96",
+    "z0": 0.4,
+    "windows": "none",
+    "rect": [
+     0.5,
+     0.7
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "komainu-l-base",
+   "at": [
+    -1.6,
+    -9
+   ],
+   "params": {
+    "height": 0.4,
+    "colour": "#b0aea6",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     0.8,
+     1.0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "komainu-r",
+   "at": [
+    1.6,
+    -9
+   ],
+   "params": {
+    "height": 0.9,
+    "colour": "#9a9a96",
+    "z0": 0.4,
+    "windows": "none",
+    "rect": [
+     0.5,
+     0.7
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "komainu-r-base",
+   "at": [
+    1.6,
+    -9
+   ],
+   "params": {
+    "height": 0.4,
+    "colour": "#b0aea6",
+    "z0": 0,
+    "windows": "none",
+    "rect": [
+     0.8,
+     1.0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    17,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 6,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   44
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-osm-way-469267324",
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Torii rebuilt as hero (round tapered columns, nuki, upturned kasagi, strut, 3-tier landing, lanterns, mound, trees, green fence) with close camera, but NOT render-checked: no render server. Nanmeido and hall are stand-ins; locomotive, statue and shrine dropped."
+ }
+}

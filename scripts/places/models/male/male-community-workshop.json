@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Villa_College_(Q25110403).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Syced",
+   "view": "street",
+   "file": "/tmp/places-evidence/male/villa1.jpg",
+   "used": "teal-painted ground storey with five tall arched bays each holding small arched windows, moulded cornice over it, cream-white upper floors with tall paired windows, brick gate piers with a blue blank board, side lane with cobbles, taller than 3 storeys"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A_picture_of_a_main_gate_of_Villa_College%27s_main_campus,_QI_Campus.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "see Commons",
+   "view": "front",
+   "file": "/tmp/places-evidence/male/villa2.jpg",
+   "used": "grey-white entrance wall with fluted pilasters and a big triple-ring arched gateway with a metal gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1317793001",
+   "used": "college building outline (31.8 x 30.3 m, 3 levels tagged); photo suggests more storeys so 5 are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead9",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "plinth": 0,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "right": "punched",
+     "left": "punched",
+     "back": "punched"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front",
+       "right"
+      ],
+      "colour": "#6fb5ad",
+      "count": 5,
+      "shape": "arched"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -4,
+    2,
+    17
+   ],
+   "params": {
+    "radius": 1.2,
+    "tankHeight": 1.8,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    2,
+    4,
+    17
+   ],
+   "params": {
+    "radius": 1.2,
+    "tankHeight": 1.8,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-l",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -20,
+    -22
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5623f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-r",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -14,
+    -22
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5623f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2c4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 2.2,
+    "bottom": 0.5,
+    "colour": "#1f4fa8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not compared: render queue down; arcade count and exact storey count unconfirmed"
+ }
+}

@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/903540915",
+   "used": "17.5x9.6 m single-storey outline, the nearest building 6 m from the station (not confirmed as the venue); no photos found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c0",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a0a3a5",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dish",
+   "at": [
+    18,
+    -4,
+    0
+   ],
+   "params": {
+    "colour": "#e4e4e0",
+    "profile": [
+     [
+      0,
+      0,
+      "#c9c9c4"
+     ],
+     [
+      0.8,
+      0,
+      "#c9c9c4"
+     ],
+     [
+      0.8,
+      3.2,
+      "#c9c9c4"
+     ],
+     [
+      0.5,
+      3.4,
+      "#c9c9c4"
+     ],
+     [
+      0.5,
+      4.2,
+      "#c9c9c4"
+     ],
+     [
+      3.4,
+      5.6,
+      "#e8e8e4"
+     ],
+     [
+      3.0,
+      5.2,
+      "#e8e8e4"
+     ],
+     [
+      0,
+      4.6,
+      "#e8e8e4"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dish-pad",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    18,
+    -4
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5b2a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b2a6"
+   }
+  },
+  {
+   "type": "tower",
+   "id": "mast",
+   "at": [
+    -4,
+    9,
+    4.2
+   ],
+   "params": {
+    "height": 14
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "fence",
+    "height": 2,
+    "points": [
+     [
+      -14,
+      -12
+     ],
+     [
+      28,
+      -12
+     ],
+     [
+      28,
+      13
+     ],
+     [
+      -14,
+      13
+     ],
+     [
+      -14,
+      -12
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered: queue down; nearest-building outline only; dish, mast, fence invented"
+ }
+}

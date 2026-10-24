@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-osm-node-13908472202",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jacob%27s_Ladder_viewed_from_the_bottom_Jamestown_Saint_Helena.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kevstan",
+   "view": "front",
+   "file": "/tmp/places-evidence/jamestown/jt-ladder.jpg",
+   "used": "one straight narrow stair between two dark stone parapet walls climbing a bare dark volcanic cliff, old cannon at the foot, flanking white and yellow render buildings, metal gable roof"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Jacob%27s_Ladder_(Saint_Helena)",
+   "used": "39-41 degree slope, 699 steps, only the lower part modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "margin": 0.08,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      46,
+      2
+     ]
+    },
+    "points": [
+     [
+      0,
+      4,
+      -1
+     ],
+     [
+      0,
+      80,
+      70
+     ]
+    ],
+    "colour": "#3b302b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0,
+      2.5,
+      0
+     ],
+     [
+      0,
+      76,
+      62.5
+     ]
+    ],
+    "colour": "#4a4a48"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -1.6,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      0,
+      2.5,
+      0.3
+     ],
+     [
+      0,
+      76,
+      63
+     ]
+    ],
+    "colour": "#6e6a61"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    1.6,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      0,
+      2.5,
+      0.3
+     ],
+     [
+      0,
+      76,
+      63
+     ]
+    ],
+    "colour": "#6e6a61"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 60,
+    "start": [
+     0,
+     2.6,
+     0.1
+    ],
+    "end": [
+     0,
+     76,
+     62.5
+    ],
+    "lod1Step": 4,
+    "lod2Step": 30,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.0,
+       0.5
+      ],
+      "height": 0.3,
+      "colour": "#5a5f63",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-house",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    -9,
+    6
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e9e6dc",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "none",
+     "back": "none"
+    },
+    "glassColour": "#233a30"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa0a4",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-house",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    9,
+    8
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8c47a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b8bdc0",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    1.8,
+    -1.5,
+    0
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -3.5,
+    -1,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   60,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from photos but never rendered or compared: render queue servers were down for the whole session (queued, never run); upgrade verified to photo after a comparison round"
+ }
+}

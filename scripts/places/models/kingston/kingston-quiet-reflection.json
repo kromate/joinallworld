@@ -1,0 +1,240 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/296160942",
+   "used": "real cathedral outline (about 45 x 35 m, name-quality match)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Holy_Trinity_Cathedral_(Kingston)",
+   "used": "Neo-Byzantine, 1908-1911, architect Raymond F. Almirall: warm buff plaster, large central dome, arched portal, twin towers (brief, medium confidence)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cd96",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 4.2,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#f3efe2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a699",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/dome",
+   "id": "dome",
+   "at": [
+    1,
+    0,
+    13.6
+   ],
+   "params": {
+    "radius": 8.5,
+    "height": 8,
+    "profile": "hemi",
+    "drum": 4.5,
+    "drumRadius": 8.8,
+    "lantern": 1.6,
+    "finial": 1.2,
+    "colour": "#a7a699",
+    "drumColour": "#e3cd96"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-l",
+   "at": [
+    -13.5,
+    -14
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "z0": 0,
+    "height": 21,
+    "colour": "#e3cd96",
+    "topColour": "#e3cd96",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "storeys": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-l-cap",
+   "at": [
+    -13.5,
+    -14
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     4.8
+    ],
+    "z0": 21,
+    "height": 5,
+    "topScale": 0.08,
+    "colour": "#a7a699",
+    "topColour": "#a7a699"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-r",
+   "at": [
+    8.5,
+    -13.5
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "z0": 0,
+    "height": 21,
+    "colour": "#e3cd96",
+    "topColour": "#e3cd96",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "storeys": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-r-cap",
+   "at": [
+    8.5,
+    -13.5
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     4.8
+    ],
+    "z0": 21,
+    "height": 5,
+    "topScale": 0.08,
+    "colour": "#a7a699",
+    "topColour": "#a7a699"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "portal",
+   "at": [
+    -3,
+    -18.3,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 8,
+    "depth": 0.8,
+    "archWidth": 5,
+    "springHeight": 4.2,
+    "colour": "#f3efe2"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    -3,
+    -19.4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 1.0,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-a",
+   "at": [
+    -24,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-b",
+   "at": [
+    18,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm-c",
+   "at": [
+    26,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No free photo found (Commons has none; National Library of Jamaica images are rights-restricted); dome, twin towers and buff colour are from the brief, not a photo. Not yet rendered: the shared render queue was down."
+ }
+}

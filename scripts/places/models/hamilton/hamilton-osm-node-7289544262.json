@@ -1,0 +1,189 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/183304896",
+   "used": "real named outline, 46.8 x 31.8 m, staggered wings"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/hamilton.json",
+   "used": "two-storey Bermudian resort clubhouse, pastel pink walls, white stepped roofs, shaded veranda (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2c6c6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#f4f1e8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f4f2ea",
+    "material": "slate",
+    "rise": 2.2,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-step-a",
+   "at": [
+    -4,
+    -2,
+    0
+   ],
+   "rotDeg": 50,
+   "params": {
+    "rect": [
+     22,
+     9
+    ],
+    "z0": 9.8,
+    "height": 0.7,
+    "topScale": 0.88,
+    "colour": "#f7f5ef"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-step-b",
+   "at": [
+    -4,
+    -2,
+    0
+   ],
+   "rotDeg": 50,
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "z0": 10.5,
+    "height": 0.6,
+    "topScale": 0.85,
+    "colour": "#f7f5ef"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    2,
+    2,
+    9.3
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 2.4,
+    "pots": 0,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "verandah-arcade",
+   "at": [
+    -3,
+    -20,
+    0
+   ],
+   "rotDeg": -40,
+   "params": {
+    "length": 22,
+    "depth": 3,
+    "height": 3.4,
+    "count": 8,
+    "kind": "square",
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    -3,
+    -20,
+    0
+   ],
+   "rotDeg": -40,
+   "params": {
+    "rect": [
+     24,
+     5
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#d8cfc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "NOT RENDERED OR COMPARED: render queue servers were down (no heartbeat, 100+ jobs waiting); proportions, colours and part placement unchecked"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-node-7289544262"
+}

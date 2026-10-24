@@ -1,0 +1,106 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/17990513",
+   "used": "real hospital outline (name match) 81x80 m"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingstown.json",
+   "used": "brief description; no photo found on Commons or Wikipedia"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; render, roof colour and wing heights typed from brief; louvre windows assumed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#6a9bb0",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9402f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    10,
+    -40,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 6,
+    "height": 3.8,
+    "thickness": 0.3,
+    "columns": 2,
+    "colour": "#ffffff",
+    "edgeColour": "#6a9bb0"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -15,
+    -50,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f2",
+    "count": 3,
+    "spacing": 3.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -45
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ }
+}

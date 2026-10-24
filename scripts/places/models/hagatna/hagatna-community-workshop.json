@@ -1,0 +1,103 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/289489423",
+   "used": "real L-shaped outline 32x31 m containing the library; 3 storeys (1960, +1968, +1979) from Wikipedia; nearby photos showed other buildings and were not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8dfc9",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#c9c4b8",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a0a3a5",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    22,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered: queue down; facade finish assumed"
+ }
+}

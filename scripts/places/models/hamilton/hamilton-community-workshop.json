@@ -1,0 +1,240 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/912385468",
+   "used": "campus boundary (442 x 120 m strip, bearing 148): blocks are laid along its axis within it"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Bermuda_College",
+   "used": "26-acre campus in Paget Parish; multiple two-storey white teaching blocks around lawns (no photo of the campus found; the Wikipedia image is a lighthouse and was not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 40,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-A",
+   "footprint": {
+    "rect": [
+     38.4,
+     9.6
+    ]
+   },
+   "at": [
+    -36.1,
+    47.9
+   ],
+   "rotDeg": -53,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "glassColour": "#a9c9dc",
+    "plinth": 0.3,
+    "bands": "#8f9498",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8e4d8",
+    "material": "concrete",
+    "rise": 1.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-B",
+   "footprint": {
+    "rect": [
+     27.6,
+     9.6
+    ]
+   },
+   "at": [
+    -9.2,
+    30.6
+   ],
+   "rotDeg": -53,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "glassColour": "#a9c9dc",
+    "plinth": 0.3,
+    "bands": "#8f9498",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8e4d8",
+    "material": "concrete",
+    "rise": 1.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-C",
+   "footprint": {
+    "rect": [
+     42.0,
+     10.8
+    ]
+   },
+   "at": [
+    -7.2,
+    -5.4
+   ],
+   "rotDeg": -53,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "glassColour": "#a9c9dc",
+    "plinth": 0.3,
+    "bands": "#8f9498",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8e4d8",
+    "material": "concrete",
+    "rise": 1.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-D",
+   "footprint": {
+    "rect": [
+     28.8,
+     9.0
+    ]
+   },
+   "at": [
+    25.9,
+    -19.4
+   ],
+   "rotDeg": -53,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "glassColour": "#a9c9dc",
+    "plinth": 0.3,
+    "bands": "#8f9498",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8e4d8",
+    "material": "concrete",
+    "rise": 1.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-E",
+   "footprint": {
+    "rect": [
+     33.6,
+     9.6
+    ]
+   },
+   "at": [
+    29.9,
+    -51.4
+   ],
+   "rotDeg": -53,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "glassColour": "#a9c9dc",
+    "plinth": 0.3,
+    "bands": "#8f9498",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e8e4d8",
+    "material": "concrete",
+    "rise": 1.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -54.1,
+    46.9,
+    0
+   ],
+   "rotDeg": -53,
+   "params": {
+    "width": 4.5,
+    "height": 1.8,
+    "bottom": 0.8,
+    "colour": "#a9c9dc",
+    "frameColour": "#8f9498"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 8,
+    "spread": 70
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "block positions and sizes are plausible, not traced; no photo of the real buildings found"
+ }
+}

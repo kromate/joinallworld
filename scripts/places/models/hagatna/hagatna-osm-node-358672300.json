@@ -1,0 +1,276 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-node-358672300",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._Anthony_Catholic_Church_(Guam).JPG",
+   "licence": "Public domain",
+   "author": "uploader (Commons, 2010)",
+   "view": "side",
+   "file": "/tmp/places-evidence/hagatna/anthony.jpg",
+   "used": "stepped gable front with round window, tall white bell tower on the left, low arched arcade wings with orange arches and cream render, grey-green nave wall, orange trim"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/254981808",
+   "used": "overall size 48 x 26 m (containing match); the nave and two wings are placed inside it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9bcb2",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": false
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9742e",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -12.2
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9aea6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e9e3d3",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-left",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -16,
+    -4
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2cf",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "count": 3,
+     "width": 3.2,
+     "height": 3.6,
+     "sill": 0,
+     "shape": "round",
+     "depth": 1.5
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9742e",
+    "material": "membrane",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     18,
+     20
+    ]
+   },
+   "at": [
+    17,
+    3
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcc",
+    "windows": "none",
+    "faces": {
+     "front": "arched"
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "bay": 5.5,
+    "trimColour": "#d9772f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9742e",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     32,
+     8
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f9498",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -8.5,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "depth": 2.6,
+    "height": 11.5,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#f1eee6",
+    "capColour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11,
+    11.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 0.3,
+    "colour": "#f1eee6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -13
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -9
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from the photo but never rendered or compared: render queue servers were down"
+ }
+}

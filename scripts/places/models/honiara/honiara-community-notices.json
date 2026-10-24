@@ -1,0 +1,272 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SI_Houses_of_Parliament.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dan Hetherington",
+   "view": "front",
+   "file": "/tmp/places-evidence/honiara/parl1.jpg",
+   "used": "wide low cream cone roof, short ribbed grey-green cylindrical crown, glazed dark ground-floor ring under a deep eave, lower dark thatch-like pitched entrance roof at front right, grey concrete office block at right, hillside setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/55093093",
+   "used": "overall extent: circular body roughly 45 m with a rectangular block on the east"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 38,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#d6d2bf",
+    "profile": [
+     [
+      19.5,
+      0,
+      "#3a4a48"
+     ],
+     [
+      19.5,
+      5.0,
+      "#3a4a48"
+     ],
+     [
+      19.5,
+      5.4,
+      "#8a8c7e"
+     ],
+     [
+      21.5,
+      5.4,
+      "#cfcab6"
+     ],
+     [
+      21.5,
+      5.9,
+      "#d6d2bf"
+     ],
+     [
+      6.0,
+      10.6,
+      "#d8d0b4"
+     ],
+     [
+      6.0,
+      10.9,
+      "#7f8f86"
+     ],
+     [
+      6.0,
+      13.9,
+      "#6f8078"
+     ],
+     [
+      0.1,
+      13.9,
+      "#6f8078"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#d6d2bf",
+    "profile": [
+     [
+      19.5,
+      0
+     ],
+     [
+      21.5,
+      5.9
+     ],
+     [
+      6.0,
+      10.6
+     ],
+     [
+      6.0,
+      13.9
+     ],
+     [
+      0.1,
+      13.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    9,
+    -21
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5a5444",
+    "windows": "none",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "colour": "#6b5a42",
+    "material": "thatch",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     18,
+     22
+    ]
+   },
+   "at": [
+    34,
+    -4
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a9a0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a92",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -28,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   95
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not render-checked: queue down. Cone, crown and entrance thatch from photo; the seven crown elements and the office block are approximate."
+ }
+}

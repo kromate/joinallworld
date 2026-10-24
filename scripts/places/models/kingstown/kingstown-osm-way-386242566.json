@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-way-386242566",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/386242566",
+   "used": "real outline 34 x 13 m, name match, near-rectangular"
+  },
+  {
+   "kind": "text",
+   "used": "one-storey rendered clinic, red zinc gable roof, ambulance canopy and car park from the brief (no photo found)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "fit": 34
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.5,
+    "plinth": 0.3,
+    "bands": "#6a9bb0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9402f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    10,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 6,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#ffffff",
+    "edgeColour": "#6a9bb0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#ffffff",
+    "frameColour": "#c0392b"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -10,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3,
+    "colour": "#d9dde0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue down). No photo of the building; look typed from brief."
+ }
+}

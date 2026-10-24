@@ -1,0 +1,364 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "honiara",
+ "venueId": "honiara-osm-node-5591435621",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: long dark volcanic-sand shore fringed by coconut palms facing the sea, small memorial marker; no photo of the site found (Commons only has 1942 landing photographs)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "sand",
+   "footprint": {
+    "rect": [
+     84,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": -0.46,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4d4a44",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d4a44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-beach",
+   "footprint": {
+    "rect": [
+     84,
+     12
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": -0.5,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7a705e",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a705e"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -23,
+    0.02
+   ],
+   "params": {
+    "width": 96,
+    "depth": 28,
+    "colour": "#4f87a0",
+    "bank": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "memorial-plinth",
+   "footprint": {
+    "rect": [
+     3,
+     2
+    ]
+   },
+   "at": [
+    10,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a89a",
+    "windows": "none",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a89a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    6,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.5
+    ],
+    "height": 1.9,
+    "colour": "#d8d4c6",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    18,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#a8a89a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10,
+    3.2,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 0.5,
+    "kind": "fence",
+    "colour": "#8c8f90"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.35,
+    "points": [
+     [
+      -30,
+      -3,
+      0.1
+     ],
+     [
+      -12,
+      -4,
+      0.15
+     ]
+    ],
+    "colour": "#6b4f3a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      -4,
+      -5,
+      0.1
+     ],
+     [
+      6,
+      -3,
+      0.12
+     ]
+    ],
+    "colour": "#6b4f3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 86,
+    "depth": 10,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "render queue server was down, so no render or comparison was run; composed from the brief only; unchecked massing and colours"
+ }
+}

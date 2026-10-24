@@ -1,0 +1,79 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/898103723",
+   "used": "13x9 m block outline (containing match)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingstown.json",
+   "used": "brief description; no photo found on Commons or Wikipedia"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; yellow walls and red roof typed from brief"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9c46a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9402f",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -9
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

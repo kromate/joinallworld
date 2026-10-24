@@ -1,0 +1,325 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-osm-way-437135029",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/437135029",
+   "used": "park outline about 45 x 29 m in Hulhumale; no photo of the park exists on Commons or Wikidata, so the tower is a plausible tall timber climbing frame with rope-net rings (not documented), young palms, paths, small pavilion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -21,
+      -6.8
+     ],
+     [
+      20.2,
+      -18.8
+     ],
+     [
+      22.1,
+      -17.4
+     ],
+     [
+      22.8,
+      -15.2
+     ],
+     [
+      23,
+      -13.2
+     ],
+     [
+      22.6,
+      -11.7
+     ],
+     [
+      5.5,
+      15.5
+     ],
+     [
+      -13.1,
+      20.6
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#7bb35a",
+    "topColour": "#7bb35a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -19,
+      -5
+     ],
+     [
+      19,
+      -16
+     ],
+     [
+      19.6,
+      -14.4
+     ],
+     [
+      -18,
+      -1.5
+     ]
+    ],
+    "z0": 0.2,
+    "height": 0.06,
+    "colour": "#bdb8ab",
+    "topColour": "#c9c4b7"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path2",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -9
+     ],
+     [
+      1.8,
+      -9
+     ],
+     [
+      1,
+      12
+     ],
+     [
+      -1,
+      12
+     ]
+    ],
+    "z0": 0.2,
+    "height": 0.06,
+    "colour": "#bdb8ab",
+    "topColour": "#c9c4b7"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower",
+   "at": [
+    10,
+    -4,
+    0.2
+   ],
+   "params": {
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 3.2,
+      "colour": "#7a5a3a"
+     },
+     {
+      "z": 3,
+      "circle": 2.4,
+      "colour": "#8a6a43"
+     },
+     {
+      "z": 6,
+      "circle": 1.9,
+      "colour": "#8a6a43"
+     },
+     {
+      "z": 8,
+      "circle": 1.4,
+      "colour": "#4f8a3f"
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "netring",
+   "at": [
+    10,
+    -4,
+    3.4
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      3.4,
+      0,
+      "#c9a77c"
+     ],
+     [
+      3.4,
+      0.2,
+      "#c9a77c"
+     ],
+     [
+      2.4,
+      0.2,
+      "#c9a77c"
+     ],
+     [
+      2.4,
+      0,
+      "#c9a77c"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "netring2",
+   "at": [
+    10,
+    -4,
+    6.0
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      2.7,
+      0,
+      "#c9a77c"
+     ],
+     [
+      2.7,
+      0.2,
+      "#c9a77c"
+     ],
+     [
+      1.9,
+      0.2,
+      "#c9a77c"
+     ],
+     [
+      1.9,
+      0,
+      "#c9a77c"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -9,
+    10
+   ],
+   "rotDeg": -15,
+   "z0": 0.2,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e2d6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a9a4",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail",
+   "at": [
+    -5,
+    18,
+    0.2
+   ],
+   "rotDeg": -15,
+   "params": {}
+  },
+  {
+   "type": "array",
+   "id": "young",
+   "params": {
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "palm",
+      "height": 5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -16,
+     4
+    ],
+    "end": [
+     18,
+     -9
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t1",
+   "at": [
+    -8,
+    -1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; tower invented from the park name"
+ }
+}

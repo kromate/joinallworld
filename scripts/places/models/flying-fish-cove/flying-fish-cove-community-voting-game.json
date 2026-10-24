@@ -1,0 +1,109 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/355324981",
+   "used": "building 9.5 m away, 16.9 x 14.5 m, 211 m2, L-ish plan; no photo, louvred veranda hall from Settlement colonial style"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cd",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#7a9c6c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b36",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "market-open/veranda",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 2.4,
+    "height": 2.9,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "flying-fish-cove",
+ "venueId": "flying-fish-cove-community-voting-game",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; nearest OSM L-plan, hip roof and veranda assumed."
+ }
+}

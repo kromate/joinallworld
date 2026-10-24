@@ -1,0 +1,347 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-airport-garapan-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Saipan_International_Airport_Terminal_Building1.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/garapan/ap2.jpg",
+   "used": "terminal front: central hall under a tall swept (concave-flared) red-orange metal hip roof, low cream walls with dark glazing, flat-roofed side wings, white flat canopy on a row of column piers to the right, three flagpoles at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_Saipan_International_Airport.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "street",
+   "used": "entrance sign on stone-faced plinth between two planters, flame trees and lawn in the setting (blank board only)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     26,
+     26
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2cf",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "glassColour": "#1c2024",
+    "plinth": 0.9,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b2aa",
+    "material": "concrete",
+    "parapet": 0.35,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-base",
+   "footprint": {
+    "rect": [
+     32,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfca",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "glassColour": "#1c2024",
+    "plinth": 1.0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aea6",
+    "material": "concrete",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    5.2
+   ],
+   "params": {
+    "colour": "#c0553a",
+    "curve": true,
+    "steps": 5,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       38,
+       32
+      ]
+     },
+     {
+      "z": 1.4,
+      "rect": [
+       29,
+       23
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       23.5,
+       17.5
+      ]
+     },
+     {
+      "z": 5.6,
+      "rect": [
+       22,
+       16
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       22,
+       16
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    24,
+    0
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2cf",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "glassColour": "#1c2024",
+    "plinth": 0.9,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b2aa",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    22,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 8,
+    "height": 5.5,
+    "thickness": 1.4,
+    "columns": 9,
+    "colour": "#f1efe8",
+    "edgeColour": "#f7f6f1",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 3,
+    "spacing": 3.2,
+    "colours": [
+     "#b22234",
+     "#2a5fa8",
+     "#e8b52c"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    26,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.5,
+    "run": 2,
+    "count": 1,
+    "colour": "#b8b5ab"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-plinth",
+   "footprint": {
+    "rect": [
+     7,
+     1.6
+    ]
+   },
+   "at": [
+    -30,
+    -27
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d8676",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a09a8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base-band",
+   "footprint": {
+    "rect": [
+     32.4,
+     26.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a4c4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4c4e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -26
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     44,
+     -24
+    ],
+    "yawDeg": 0,
+    "colour": "#9aa3a8"
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 4,
+  "match": "fair",
+  "gaps": "critic fixes applied (lower wider roof, chunky canopy moved to east wing, tall flagpoles near entrance, dark base band, stone sign plinth) but NOT re-rendered: no render server running; job queued"
+ }
+}

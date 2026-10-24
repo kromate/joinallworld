@@ -1,0 +1,211 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cove",
+ "venueId": "cove-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/cove.json#",
+   "used": "black pebble shore, ruined recreation hut walls, two rusted tanks; Wikipedia Heard Island: ruins of the recreation hut remain at Atlas Cove"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "ruin-wall",
+   "id": "hut-front",
+   "at": [
+    -9,
+    0,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.6,
+    "thickness": 0.5,
+    "colour": "#6b5a46",
+    "gaps": 0.25
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "id": "hut-back",
+   "at": [
+    -9,
+    7,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.9,
+    "thickness": 0.5,
+    "colour": "#6b5a46",
+    "gaps": 0.3
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "id": "hut-side",
+   "at": [
+    -9,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 7,
+    "height": 1.4,
+    "thickness": 0.5,
+    "colour": "#6b5a46",
+    "gaps": 0.2
+   }
+  },
+  {
+   "type": "ruin-wall",
+   "id": "hut-side2",
+   "at": [
+    5,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 7,
+    "height": 1.7,
+    "thickness": 0.5,
+    "colour": "#7a5a40",
+    "gaps": 0.2
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank1",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#8a4b2f"
+     ],
+     [
+      1.4,
+      0,
+      "#8a4b2f"
+     ],
+     [
+      1.4,
+      2.2,
+      "#8a4b2f"
+     ],
+     [
+      1.26,
+      2.35,
+      "#5d5f60"
+     ],
+     [
+      0,
+      2.4000000000000004,
+      "#5d5f60"
+     ]
+    ],
+    "segments": 14,
+    "colour": "#8a4b2f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tank2",
+   "at": [
+    20,
+    2,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#7a5a40"
+     ],
+     [
+      1.4,
+      0,
+      "#7a5a40"
+     ],
+     [
+      1.4,
+      2.2,
+      "#7a5a40"
+     ],
+     [
+      1.26,
+      2.35,
+      "#5d5f60"
+     ],
+     [
+      0,
+      2.4000000000000004,
+      "#5d5f60"
+     ]
+    ],
+    "segments": 14,
+    "colour": "#7a5a40"
+   }
+  },
+  {
+   "type": "rubble",
+   "id": "shore1",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 10,
+    "count": 30,
+    "colour": "#3a3a3d"
+   }
+  },
+  {
+   "type": "rubble",
+   "id": "shore2",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 8,
+    "count": 16,
+    "colour": "#2e2e31"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists (only a shoreline photo); composed from brief"
+ }
+}

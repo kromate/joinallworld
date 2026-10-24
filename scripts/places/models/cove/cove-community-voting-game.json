@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cove",
+ "venueId": "cove-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Setting only, from NOAA photo https://commons.wikimedia.org/wiki/File:Station_Number_044_-_Heard_Island_and_McDonald_Islands.jpg (public domain): no building visible; setting only (no building visible): black rounded volcanic pebble shore, blue-grey light, orange survey tripod hints at the orange field-hut colour"
+  },
+  {
+   "kind": "text",
+   "used": "Brief: 9 x 6 m open-fronted meeting hut with long bench and porch canopy, grey cladding with rust trim, shed roof; OSM polygon is the whole station site so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "polygon": [
+     [
+      -4.5,
+      0
+     ],
+     [
+      4.5,
+      0
+     ],
+     [
+      4.5,
+      6
+     ],
+     [
+      -4.5,
+      6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7b8084",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "bands": "#b5472f",
+    "faces": {
+     "front": "none",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#52575b",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -2.2,
+    2.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9.6,
+    "depth": 2.4,
+    "height": 0.0,
+    "thickness": 0.2,
+    "columns": 3,
+    "colour": "#52575b",
+    "edgeColour": "#b5472f"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "count": 1,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.5,
+    -2.5,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "height": 1.1,
+    "bottom": 1.0,
+    "colour": "#e8ecee",
+    "frameColour": "#b5472f",
+    "posts": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [],
+  "forecourt": "none",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists (only a shoreline photo); composed from brief"
+ }
+}

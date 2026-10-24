@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "funafuti",
+ "venueId": "funafuti-osm-node-13987101501",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/136829812",
+   "used": "14 x 11 m outline of the shelter beside the memorial point (nearest 3.3 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small plinth with plaque, coral-stone border, open roofed shelter; Wikipedia confirms 1896 Royal Society boreholes"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "z0": 3.0,
+    "height": 0.3,
+    "colour": "#7a838a",
+    "topColour": "#8d969c",
+    "points": [
+     [
+      -5.5,
+      6.9
+     ],
+     [
+      5.3,
+      7.1
+     ],
+     [
+      5.5,
+      -6.9
+     ],
+     [
+      -5.3,
+      -7.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post0",
+   "at": [
+    -5.225,
+    6.555,
+    0
+   ],
+   "params": {
+    "height": 3.0,
+    "colour": "#b8b3a6",
+    "rect": [
+     0.3,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post1",
+   "at": [
+    5.034999999999999,
+    6.744999999999999,
+    0
+   ],
+   "params": {
+    "height": 3.0,
+    "colour": "#b8b3a6",
+    "rect": [
+     0.3,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post2",
+   "at": [
+    5.225,
+    -6.555,
+    0
+   ],
+   "params": {
+    "height": 3.0,
+    "colour": "#b8b3a6",
+    "rect": [
+     0.3,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post3",
+   "at": [
+    -5.034999999999999,
+    -6.744999999999999,
+    0
+   ],
+   "params": {
+    "height": 3.0,
+    "colour": "#b8b3a6",
+    "rect": [
+     0.3,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 1.0,
+    "colour": "#b8b3a6",
+    "topColour": "#d9d4c4",
+    "rect": [
+     5,
+     3
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -1.6,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 0.8,
+    "bottom": 0.6,
+    "colour": "#6f6a60",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3.5,
+    0
+   ],
+   "params": {
+    "width": 2.5,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#b8b3a6"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 0.5,
+    "thickness": 0.4,
+    "colour": "#6f6a60"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     7
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -9
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the memorial; shelter outline from OSM, plinth and plaque typed. Rendered once; no comparison photo exists for this place."
+ }
+}

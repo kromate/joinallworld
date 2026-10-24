@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "grytviken",
+ "venueId": "grytviken-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/grytviken.json#grytviken-market-game",
+   "used": "game venue, no real building: a long low rusty corrugated-iron whaling-station shed (18 x 10 m gable) with four plank stalls in front and a blank board. The church photos attached to the venue show a different building and were not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d3b2a",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#ece9e1"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b3a30",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.5,
+     -7.5
+    ],
+    "end": [
+     6.5,
+     -7.5
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       1.8
+      ],
+      "z0": 0,
+      "height": 1.0,
+      "colour": "#7a4a36"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.5,
+     -6.8
+    ],
+    "end": [
+     6.5,
+     -6.8
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       0.12
+      ],
+      "z0": 1.9,
+      "height": 0.12,
+      "colour": "#ece9e1"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5.2,
+    2.2
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#ece9e1",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered; placeholder game venue with no photo"
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/369192329",
+   "used": "real L-shaped 35 x 21 m library outline, amenity=library"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1dcae",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#2f7f8f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a64b3a",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    -2,
+    -9.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "steps",
+   "at": [
+    -2,
+    -11,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -13,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3,
+    "colour": "#b8c4c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-community-workshop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real L outline of the library, pitched metal roof and porch from the brief"
+ }
+}

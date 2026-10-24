@@ -1,0 +1,738 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "guatemala-city",
+ "venueId": "guatemala-city-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tikal_Futura_(55100251726).jpg",
+   "licence": "CC BY 4.0",
+   "author": "amslerPIX",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/guatemala-city/tf2.jpg",
+   "used": "stepped cream tower with perforated square windows, dark green glass tower behind, cream perforated podium blocks to the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tikal_Futura_(55099373202).jpg",
+   "licence": "CC BY 4.0",
+   "author": "amslerPIX",
+   "view": "aerial",
+   "used": "same ensemble, overall proportions and colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grand_Tikal_Futura_Hotel_-_50805138293.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Rene Hernandez",
+   "view": "street",
+   "used": "white blocky hotel mass with green glass slot and parking deck to the side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/49531925",
+   "used": "overall size only: the 190 m outline is clamped, so the main towers are modelled from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "step0",
+   "footprint": {
+    "rect": [
+     22,
+     24
+    ]
+   },
+   "at": [
+    -19.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step1",
+   "footprint": {
+    "rect": [
+     20,
+     24
+    ]
+   },
+   "at": [
+    -20.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 14.0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step2",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    -21.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 21.2,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step3",
+   "footprint": {
+    "rect": [
+     16,
+     24
+    ]
+   },
+   "at": [
+    -22.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 28.4,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step4",
+   "footprint": {
+    "rect": [
+     14,
+     24
+    ]
+   },
+   "at": [
+    -23.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 35.6,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step5",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    -24.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 42.8,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step6",
+   "footprint": {
+    "rect": [
+     10,
+     24
+    ]
+   },
+   "at": [
+    -25.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 50.0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step7",
+   "footprint": {
+    "rect": [
+     8,
+     24
+    ]
+   },
+   "at": [
+    -26.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 57.2,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step8",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    -27.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 64.4,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step9",
+   "footprint": {
+    "rect": [
+     4,
+     24
+    ]
+   },
+   "at": [
+    -28.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 71.6,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step10",
+   "footprint": {
+    "rect": [
+     2,
+     24
+    ]
+   },
+   "at": [
+    -29.0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 78.8,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0,
+    "faces": {
+     "left": "punched",
+     "front": "punched",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-tower",
+   "footprint": {
+    "rect": [
+     10,
+     18
+    ]
+   },
+   "at": [
+    -4,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 84,
+   "storeys": 22,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f3a3c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7a78",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-accent",
+   "footprint": {
+    "rect": [
+     2,
+     18
+    ]
+   },
+   "at": [
+    2,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 84,
+   "storeys": 22,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f9a6c",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7a78"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-link",
+   "footprint": {
+    "rect": [
+     4,
+     16
+    ]
+   },
+   "at": [
+    -1,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 40,
+   "storeys": 10,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f7a5c",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7a78"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slot",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.6
+    ]
+   },
+   "at": [
+    -18.4,
+    -12.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#1f3a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#333333"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-a",
+   "footprint": {
+    "rect": [
+     30,
+     24
+    ]
+   },
+   "at": [
+    22,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 32,
+   "storeys": 9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3dcc4",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-b",
+   "footprint": {
+    "rect": [
+     24,
+     24
+    ]
+   },
+   "at": [
+    50,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 36,
+   "storeys": 10,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e1cc",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-glass",
+   "footprint": {
+    "rect": [
+     4,
+     22
+    ]
+   },
+   "at": [
+    36.5,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 34,
+   "storeys": 9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f7a5c",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7a78"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     56,
+     30
+    ]
+   },
+   "at": [
+    10,
+    -32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a6e66",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e625a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -47.2,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 2.5,
+    "bottom": 8.5,
+    "colour": "#1fa39a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -47.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 4,
+    "colour": "#b8332c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "critic fixes applied (11 fine steps, slim dark tower with green accent, glazed link, perforated podiums, darker mall with teal/red signs) but still not rendered: shared render queue workers are down, so no cmp image was checked"
+ }
+}

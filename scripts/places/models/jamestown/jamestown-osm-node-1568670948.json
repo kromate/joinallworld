@@ -1,0 +1,417 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jamestown",
+ "venueId": "jamestown-osm-node-1568670948",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:High_Knoll_Fort_(16253357747).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "street",
+   "file": "/tmp/places-evidence/jamestown/jt-fort1.jpg",
+   "used": "large squat round tower with crenellated parapet and small slit windows at the west end of a long straight curtain wall with lower bastion blocks, dark grey stone, on a bare ridge crest"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gate_of_High_Knoll_Fort.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kevstan",
+   "view": "front",
+   "file": "/tmp/places-evidence/jamestown/jt-fort2.jpg",
+   "used": "gatehouse: rough dark volcanic stone with paler dressed quoins, round arch with voussoirs and dark timber door, parapet with square loopholes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1279039219",
+   "used": "approx size only (about 32 m, nearest building, 64 m from pin)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "battlement-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "thickness": 2.2,
+    "merlons": true,
+    "points": [
+     [
+      -20,
+      -16
+     ],
+     [
+      20,
+      -16
+     ],
+     [
+      20,
+      16
+     ],
+     [
+      -20,
+      16
+     ],
+     [
+      -20,
+      -16
+     ]
+    ],
+    "batter": 0.2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      10.5,
+      0,
+      "#6f6a60"
+     ],
+     [
+      10,
+      6
+     ],
+     [
+      10.4,
+      9.5
+     ],
+     [
+      10.4,
+      10.2,
+      "#5c584f"
+     ],
+     [
+      9.4,
+      10.2
+     ],
+     [
+      9.4,
+      9.6
+     ],
+     [
+      0,
+      9.6
+     ]
+    ],
+    "colour": "#6f6a60",
+    "segments": 28
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -8,
+    6,
+    6.5
+   ],
+   "params": {
+    "mode": "circle",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 10.2,
+    "count": 14,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       0.6
+      ],
+      "height": 0.9,
+      "colour": "#5c584f",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    6,
+    9.6
+   ],
+   "params": {
+    "profile": [
+     [
+      9.4,
+      0,
+      "#7a756b"
+     ],
+     [
+      9.4,
+      0.2
+     ],
+     [
+      0,
+      0.2
+     ]
+    ],
+    "colour": "#7a756b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -18,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -4
+     ],
+     [
+      4,
+      -4
+     ],
+     [
+      5,
+      3
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      -5,
+      3
+     ]
+    ],
+    "height": 7.5,
+    "colour": "#6c675d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -18,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -4
+     ],
+     [
+      4,
+      -4
+     ],
+     [
+      5,
+      3
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      -5,
+      3
+     ]
+    ],
+    "height": 7.5,
+    "colour": "#6c675d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    18,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -4
+     ],
+     [
+      4,
+      -4
+     ],
+     [
+      5,
+      3
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      -5,
+      3
+     ]
+    ],
+    "height": 7.5,
+    "colour": "#6c675d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    18,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -4
+     ],
+     [
+      4,
+      -4
+     ],
+     [
+      5,
+      3
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      -5,
+      3
+     ]
+    ],
+    "height": 7.5,
+    "colour": "#6c675d",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     11,
+     4
+    ]
+   },
+   "at": [
+    8,
+    -16.5
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6b665c",
+    "windows": "none",
+    "trimColour": "#a8a090",
+    "bands": "#5c584f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c584f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    8,
+    -18.6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 8,
+    "depth": 0.6,
+    "archWidth": 4.4,
+    "springHeight": 3.2,
+    "colour": "#a8a090"
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    -14,
+    -13.5,
+    6.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 9,
+    "yaw": 270
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barrack",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    10,
+    8
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7a7468",
+    "windows": "punched",
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5c584f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "composed from photos but never rendered or compared: render queue servers were down for the whole session (queued, never run); upgrade verified to photo after a comparison round"
+ }
+}

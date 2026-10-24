@@ -1,0 +1,239 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DFS_Galleria_Saipan_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "kajikawa",
+   "view": "front",
+   "used": "warm beige/tan stucco block, big round-ended drop-off canopy with round columns, row of tall royal palms in a continuous yellow raised planter, plain solid walls, flat roof",
+   "file": "/tmp/places-evidence/garapan/dfs1.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/251327169",
+   "used": "overall scale only (231 m long bent outline); a 100 m straight portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     70,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9a0",
+    "windows": "none",
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#c4b48a",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b0ac",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    52,
+    3
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9a0",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0b0ac",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy-fascia",
+   "id": "drop-off",
+   "at": [
+    -22,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 14,
+    "height": 5.2,
+    "thickness": 0.9,
+    "columns": 6,
+    "round": true,
+    "colour": "#cbb99a",
+    "roofColour": "#b8a583"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -16.3,
+    6.4
+   ],
+   "params": {
+    "width": 22,
+    "height": 3.2,
+    "bottom": 0.0,
+    "colour": "#c9534a",
+    "frameColour": "#8a3a34",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     1.0
+    ],
+    "height": 0.6,
+    "colour": "#e3b21c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-soil",
+   "at": [
+    -14,
+    -34,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     68.6,
+     0.6
+    ],
+    "height": 0.1,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     -34,
+     0.6
+    ],
+    "end": [
+     16,
+     -34,
+     0.6
+    ],
+    "count": 9,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 14
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-stripe",
+   "at": [
+    -14,
+    -34.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.12
+    ],
+    "height": 0.62,
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -12,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-osm-node-1306225992",
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "Critic fixes applied (tan render, round drop-off canopy, plain east wing, DFS-style blank sign band, raised planter with royal palms) but NOT rendered: no render server running. Only a straight 100 m of the 231 m bent outline is modelled."
+ }
+}

@@ -1,0 +1,126 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/372247875",
+   "used": "real hospital outline, 2 levels (scaled to fit 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 20
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe8d6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#4f8aa8",
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a64b3a",
+    "material": "metal-sheet",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "columns": 3
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    8,
+    -33,
+    5
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -48,
+    34,
+    0
+   ],
+   "params": {
+    "radius": 6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 3,
+    "height": 3.2,
+    "columns": 6,
+    "colour": "#4f8aa8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -44
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "george-town",
+ "venueId": "george-town-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real outline heavily simplified (simplify 20) to fit triangle budget so wings are blunted; roof flat red instead of hips; courtyards not modelled separately"
+ }
+}

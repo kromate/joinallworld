@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "georgetown",
+ "venueId": "georgetown-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1465710614",
+   "used": "pitch outline 154 x 91 m, long axis bearing 16 deg"
+  },
+  {
+   "kind": "text",
+   "used": "grass field, small timber/corrugated shelter, two floodlights"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "id": "pitch",
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 74.5,
+   "params": {
+    "length": 100,
+    "width": 62,
+    "stripes": 4,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "shelter",
+   "at": [
+    -52,
+    -22
+   ],
+   "rotDeg": 74.5,
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.2,
+    "cap_colour": "#8c8f8f"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "fl1",
+   "at": [
+    -30,
+    -60
+   ],
+   "params": {
+    "height": 16
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "fl2",
+   "at": [
+    30,
+    60
+   ],
+   "params": {
+    "height": 16
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -60,
+    -35,
+    0
+   ],
+   "rotDeg": 74.5,
+   "params": {
+    "length": 30,
+    "height": 1.2,
+    "kind": "fence",
+    "colour": "#9a8f78"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "p1",
+   "at": [
+    70,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "id": "p2",
+   "at": [
+    -66,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+  160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; pitch markings and shelter position assumed, outer field larger than marked pitch"
+ }
+}

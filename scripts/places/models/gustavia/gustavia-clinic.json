@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/8767053",
+   "used": "real irregular 65x34 m footprint, 2 levels"
+  },
+  {
+   "kind": "text",
+   "used": "white render, red roof, island vernacular; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bands": "#c9675a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "metal-sheet",
+    "overhang": 0.7,
+    "rise": 2.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    6,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#f1eee6",
+    "edgeColour": "#c9675a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "density": 0.7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; render queue not running so unchecked. Outline real, appearance typed."
+ }
+}

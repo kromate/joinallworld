@@ -1,0 +1,250 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Havana",
+   "used": "no photo or reliable outline (OSM 25x10 dormitory at the pin is unrelated): a typical Cuban agropecuario with open-sided metal-roofed stall rows, concrete counters, perimeter wall, blank painted board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     52,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c2ae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bda9"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "shed-a",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 48,
+    "depth": 8,
+    "height": 3.6,
+    "thickness": 0.2,
+    "columns": 9,
+    "colour": "#8c8f90",
+    "edgeColour": "#7e8a8c",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "shed-b",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 48,
+    "depth": 8,
+    "height": 3.6,
+    "thickness": 0.2,
+    "columns": 9,
+    "colour": "#8c8f90",
+    "edgeColour": "#7e8a8c",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "counter",
+     "footprint": {
+      "rect": [
+       3.2,
+       1.1
+      ]
+     },
+     "z0": 0.5,
+     "height": 0.9,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#e9e3d2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#d9d2bd"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -21,
+     -5
+    ],
+    "end": [
+     21,
+     -5
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "counter",
+     "footprint": {
+      "rect": [
+       3.2,
+       1.1
+      ]
+     },
+     "z0": 0.5,
+     "height": 0.9,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#e9e3d2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#d9d2bd"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -21,
+     6
+    ],
+    "end": [
+     21,
+     6
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 2,
+    "drop": 0.4,
+    "height": 2.6,
+    "colours": [
+     "#d9b24c",
+     "#efe9dc"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 2,
+    "drop": 0.4,
+    "height": 2.6,
+    "colours": [
+     "#7fa59a",
+     "#efe9dc"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    12.5,
+    0
+   ],
+   "params": {
+    "length": 52
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 2.4,
+    "colour": "#7e8a8c",
+    "frameColour": "#c9c2ae",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ }
+}

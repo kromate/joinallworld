@@ -1,0 +1,346 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Belau_National_Hospital.JPG",
+   "licence": "Public domain",
+   "author": "Abasaa",
+   "view": "front",
+   "file": "/tmp/places-evidence/koror/hosp.jpg",
+   "used": "low cream-tan wings with brown hip and gable roofs, steel-framed carports with tilted solar canopies on tapered posts, big oval blue sign board, lawn and kerb"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/515651236",
+   "used": "overall extent and wing arrangement (about 150 x 145 m, multi-wing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfae",
+    "windows": "ribbon",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a58a6c",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 2.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    -38,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfae",
+    "windows": "ribbon",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a58a6c",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    36,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfae",
+    "windows": "ribbon",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a58a6c",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     16,
+     46
+    ]
+   },
+   "at": [
+    -52,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfae",
+    "windows": "ribbon",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a58a6c",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    52,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfae",
+    "windows": "ribbon",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a58a6c",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     44,
+     18
+    ]
+   },
+   "at": [
+    0,
+    50
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cfae",
+    "windows": "ribbon",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a58a6c",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 8,
+    "height": 4.2,
+    "colour": "#d4c4a4",
+    "columns": 4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/canopy",
+     "params": {
+      "form": "flat",
+      "width": 9,
+      "depth": 5,
+      "height": 3.3,
+      "colour": "#6e757a",
+      "columns": 2
+     }
+    },
+    "mode": "line",
+    "start": [
+     -62,
+     -28,
+     0
+    ],
+    "end": [
+     62,
+     -28,
+     0
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.6,
+    "bottom": 0.6,
+    "colour": "#3bb3cf",
+    "frameColour": "#e8f4f6"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    32,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    22,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-clinic",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "photo-composed but never rendered or compared (render queue down); carport count/position, wing layout vs OSM outline unchecked"
+ }
+}

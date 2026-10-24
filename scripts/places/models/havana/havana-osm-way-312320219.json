@@ -1,0 +1,415 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-osm-way-312320219",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gran_Sinagoga_Bet_Shalom.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "NYC2TLV",
+   "view": "front",
+   "file": "/tmp/places-evidence/havana/312320219-0.jpg",
+   "used": "cream flat facade with dark star motif, two tall blue-grey leaning legs joined by a concrete frame at top, dark entrance canopy with relief doors, broad steps with pink marble cheek walls, 5-storey glazed annex on the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/312320219",
+   "used": "size of the hall (about 44.5 x 19.5 m, rotated 49 deg in the world)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     19.5,
+     44.5
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece5d8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     8.5,
+     34
+    ]
+   },
+   "at": [
+    -14,
+    7
+   ],
+   "z0": 0,
+   "height": 17.5,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2c4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.6,
+    "faces": {
+     "front": "ribbon"
+    },
+    "bands": "#b4b4b0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    1,
+    -11.6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 15,
+    "depth": 3,
+    "height": 4.8,
+    "thickness": 0.7,
+    "colour": "#4a4d50",
+    "edgeColour": "#3a3c3e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doors",
+   "at": [
+    1.5,
+    -10.1
+   ],
+   "params": {
+    "z0": 0,
+    "height": 4.4,
+    "rect": [
+     10,
+     0.5
+    ],
+    "colour": "#bdb9b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-leaf",
+   "at": [
+    7.2,
+    -10.2
+   ],
+   "params": {
+    "z0": 0,
+    "height": 4.4,
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "colour": "#6a4a38"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-l",
+   "at": [
+    -5.5,
+    -10.2
+   ],
+   "params": {
+    "z0": 0,
+    "height": 5,
+    "rect": [
+     5,
+     0.3
+    ],
+    "colour": "#46606e"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -10.2,
+    0
+   ],
+   "params": {
+    "colour": "#8fa7c4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.7,
+       1.3
+      ],
+      "cx": -9.2
+     },
+     {
+      "z": 21,
+      "rect": [
+       1.7,
+       1.3
+      ],
+      "cx": -3.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -10.2,
+    0
+   ],
+   "params": {
+    "colour": "#8fa7c4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.7,
+       1.3
+      ],
+      "cx": 9.2
+     },
+     {
+      "z": 21,
+      "rect": [
+       1.7,
+       1.3
+      ],
+      "cx": 3.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "top-beam",
+   "at": [
+    0,
+    -10.2
+   ],
+   "params": {
+    "z0": 20.6,
+    "height": 1.2,
+    "rect": [
+     16,
+     1.2
+    ],
+    "colour": "#a9b0b5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-beam-l",
+   "at": [
+    -3.8,
+    -7.2
+   ],
+   "params": {
+    "z0": 20.6,
+    "height": 1.2,
+    "rect": [
+     1.2,
+     6
+    ],
+    "colour": "#a9b0b5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-beam-r",
+   "at": [
+    3.8,
+    -7.2
+   ],
+   "params": {
+    "z0": 20.6,
+    "height": 1.2,
+    "rect": [
+     1.2,
+     6
+    ],
+    "colour": "#a9b0b5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    0,
+    -10.4
+   ],
+   "params": {
+    "z0": 6.3,
+    "height": 0.9,
+    "rect": [
+     19,
+     1
+    ],
+    "colour": "#a9b0b5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "star-a",
+   "at": [
+    0,
+    -10.4
+   ],
+   "params": {
+    "z0": 10.0,
+    "height": 0.3,
+    "points": [
+     [
+      -1.4,
+      -0.8
+     ],
+     [
+      1.4,
+      -0.8
+     ],
+     [
+      0,
+      1.6
+     ]
+    ],
+    "colour": "#4b5560"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "star-b",
+   "at": [
+    0,
+    -10.4
+   ],
+   "params": {
+    "z0": 10.4,
+    "height": 0.3,
+    "points": [
+     [
+      -1.4,
+      0.8
+     ],
+     [
+      1.4,
+      0.8
+     ],
+     [
+      0,
+      -1.6
+     ]
+    ],
+    "colour": "#4b5560"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    1.5,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 6,
+    "colour": "#b58f78"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cheek-l",
+   "at": [
+    -5.5,
+    -13
+   ],
+   "params": {
+    "z0": 0,
+    "height": 2.4,
+    "rect": [
+     2.5,
+     5
+    ],
+    "colour": "#b58f78"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cheek-r",
+   "at": [
+    8,
+    -13
+   ],
+   "params": {
+    "z0": 0,
+    "height": 1.8,
+    "rect": [
+     2.5,
+     5
+    ],
+    "colour": "#b58f78"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5,
+    "colour": "#4f8a3f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   70,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered (render queue down): leg lean, beam frame, relief doors and star size unchecked against the photo"
+ }
+}

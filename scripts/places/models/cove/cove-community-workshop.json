@@ -1,0 +1,234 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cove",
+ "venueId": "cove-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Setting only, from NOAA photo https://commons.wikimedia.org/wiki/File:Station_Number_044_-_Heard_Island_and_McDonald_Islands.jpg (public domain): no building visible; setting only (no building visible): black rounded volcanic pebble shore, blue-grey light, orange survey tripod hints at the orange field-hut colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/946458972",
+   "used": "round 7.4 x 7.3 m building 37 m away: the water-tank shelter outline, used as the dome hut footprint"
+  },
+  {
+   "kind": "text",
+   "used": "Brief: converted water-tank shelter with lean-to, stove flue, fuel drums, bulldozer and generator beside it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tank-hut",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8c9094",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.2,
+    "bands": "#b5472f"
+   },
+   "roof": {
+    "form": "dome",
+    "colour": "#6a6f73",
+    "material": "corrugated",
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lean-to",
+   "footprint": {
+    "rect": [
+     4.5,
+     3
+    ]
+   },
+   "at": [
+    6.5,
+    -1
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b5472f",
+    "windows": "none",
+    "plinth": 0.1
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6a6f73",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    -1.2,
+    0.8,
+    3.6
+   ],
+   "params": {
+    "height": 1.8,
+    "radius": 0.14,
+    "colour": "#3d4144"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum-a",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    -6.5,
+    -3
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b5472f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5472f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum-b",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.6
+    ]
+   },
+   "at": [
+    -7.4,
+    -3.4
+   ],
+   "height": 0.9,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7b8084",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "generator",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.9
+    ]
+   },
+   "at": [
+    -5,
+    -6
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d6d9db",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9094"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dozer-body",
+   "footprint": {
+    "rect": [
+     3.2,
+     2
+    ]
+   },
+   "at": [
+    9,
+    -8
+   ],
+   "height": 1.4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9a21b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9a21b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dozer-cab",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.6
+    ]
+   },
+   "at": [
+    9.2,
+    -8
+   ],
+   "z0": 1.4,
+   "height": 1.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c28f12",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a710d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [],
+  "forecourt": "none",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no building photo exists (only a shoreline photo); composed from brief and the OSM tank outline"
+ }
+}

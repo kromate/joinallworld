@@ -1,0 +1,266 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-node-4694400714",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/572807868",
+   "used": "real 558 m2 park outline (containing match)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kingstown.json",
+   "used": "brief description"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; gazebo position, steps and walls typed from brief"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -18.9,
+      -12.9
+     ],
+     [
+      -11.9,
+      -0.7
+     ],
+     [
+      -11.6,
+      4.1
+     ],
+     [
+      -10.9,
+      8.7
+     ],
+     [
+      -6.1,
+      11.3
+     ],
+     [
+      -3.1,
+      10.3
+     ],
+     [
+      2.7,
+      12.4
+     ],
+     [
+      5.6,
+      11.1
+     ],
+     [
+      12.9,
+      10.4
+     ],
+     [
+      14.8,
+      4
+     ],
+     [
+      15.9,
+      1.7
+     ],
+     [
+      15.2,
+      -0.6
+     ],
+     [
+      16.2,
+      -7.3
+     ],
+     [
+      11.7,
+      -9.8
+     ],
+     [
+      7.4,
+      -6.5
+     ],
+     [
+      3.6,
+      -4.9
+     ],
+     [
+      0.2,
+      -5.4
+     ],
+     [
+      -7.8,
+      -12.9
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#4a8b57"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -9,
+      -4
+     ],
+     [
+      8,
+      -4
+     ],
+     [
+      8,
+      6
+     ],
+     [
+      -9,
+      6
+     ]
+    ],
+    "z0": 0.3,
+    "height": 0.35,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -1,
+    1,
+    0.65
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 6,
+    "colour": "#cfc9b8",
+    "cap_colour": "#a9402f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -16,
+      -3
+     ],
+     [
+      -12,
+      -9
+     ],
+     [
+      -4,
+      -13
+     ],
+     [
+      8,
+      -8
+     ],
+     [
+      14,
+      -9
+     ]
+    ],
+    "height": 1.0,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    -4.2,
+    0.65
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "colour": "#3a3d41"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    10,
+    -5,
+    0.3
+   ],
+   "params": {
+    "width": 2.5,
+    "height": 1.2,
+    "run": 3
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    6,
+    0.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    8,
+    0.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    3,
+    10,
+    0.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   56,
+   44
+  ]
+ }
+}

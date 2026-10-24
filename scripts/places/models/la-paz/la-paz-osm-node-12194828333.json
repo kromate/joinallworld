@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-osm-node-12194828333",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief la-paz-osm-node-12194828333",
+   "used": "single-storey brick comedor, corrugated gable roof, awning; no photo or outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4623f",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 0.3,
+    "bands": "#e7dcc5"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    9,
+    2
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a85a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#e7dcc5",
+     "#b5382a"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#d9d5c8",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or outline; typical Altiplano roadside brick comedor."
+ }
+}

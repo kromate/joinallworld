@@ -1,0 +1,374 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Spannish_town_st_catherine_parish_consil.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "le zaps",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingston/spanish1.jpg",
+   "used": "the colonial parish council building that ringed the square: brick arched ground arcade, cream upper floor with green-shuttered windows and balustrade, central pedimented portico, red zinc hipped roof, brick end pavilions, royal palms in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/374570627",
+   "used": "51 x 41 m paved park extent, used for scale of the square"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 2.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "council",
+   "footprint": {
+    "rect": [
+     56,
+     12
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6cf",
+    "windows": "rect",
+    "windowRatio": 0.28,
+    "bay": 3.4,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.0,
+      "opening": 0.62,
+      "height": 0.86,
+      "depth": 0.6,
+      "storeys": 1,
+      "faces": [
+       "front"
+      ],
+      "colour": "#b5593f",
+      "pierColour": "#a8523a"
+     },
+     {
+      "type": "balconies",
+      "depth": 2.2,
+      "rail": 1.0,
+      "every": 3.0,
+      "width": 1.0,
+      "railKind": "solid",
+      "colour": "#e8e6cf",
+      "railColour": "#f2efe6",
+      "floors": "upper",
+      "continuous": true,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4543d",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-left",
+   "footprint": {
+    "rect": [
+     6,
+     13
+    ]
+   },
+   "at": [
+    -30,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8523a",
+    "windows": "rect",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4543d",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-right",
+   "footprint": {
+    "rect": [
+     6,
+     13
+    ]
+   },
+   "at": [
+    30,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8523a",
+    "windows": "rect",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4543d",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    0,
+    15.2
+   ],
+   "rotDeg": 0,
+   "z0": 4.4,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#ede8d0",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 4.2,
+      "colour": "#f4f0e2",
+      "topColour": "#f4f0e2"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -4,
+     14,
+     4.4
+    ],
+    "end": [
+     4,
+     14,
+     4.4
+    ]
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "colour": "#5a5a52",
+    "plinthColour": "#bdb6a6"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 5,
+      "height": 0.7,
+      "colour": "#4f7d3b"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -24,
+     8,
+     0
+    ],
+    "end": [
+     24,
+     8,
+     0
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.9,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    12,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    15,
+    9.2
+   ],
+   "params": {
+    "height": 5,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston",
+ "venueId": "kingston-community-voting-game",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered: render queue down, no comparison done; council building from a street photo, square layout and statue are typed."
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "la-paz",
+ "venueId": "la-paz-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mercado_Lanza.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/la-paz/lanza3.jpg",
+   "used": "finished market from the plaza: white/cream horizontal storey slabs, dark glazed ribbon bands, flat roofs, stepped plaza with a flag mast in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mercado_Lanza_noche.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yurizzama",
+   "view": "street",
+   "file": "/tmp/places-evidence/la-paz/lanza2.jpg",
+   "used": "wide stone steps and cobbled plaza in front, low lit pale market block beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/194362248",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4e2da",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e9e7df",
+       "#3b4248"
+      ]
+     }
+    ],
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "rise": 0.35,
+    "run": 0.9,
+    "count": 8,
+    "colour": "#a9a69c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colours": [
+     "#b5382a",
+     "#e0b82f",
+     "#3b7a3c"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    -56,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 4,
+    "kind": "umbrella",
+    "colours": [
+     "#f1f1ee",
+     "#d9d5c8"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "trees": [],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Render queue had no heartbeat (221 jobs waiting), so no side-by-side comparison was done; massing from the real OSM outline, colours and band rhythm from the finished-building photo, unverified in render. Height of 15 m and storey count are estimates."
+ }
+}

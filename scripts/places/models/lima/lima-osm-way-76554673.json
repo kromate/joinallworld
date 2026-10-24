@@ -1,0 +1,354 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_Ram%C3%B3n_Castilla_1970.jpg",
+   "licence": "Public domain",
+   "author": "Unknown",
+   "view": "street",
+   "file": "/tmp/places-evidence/lima/ramon_castilla.jpg",
+   "used": "large paved plaza with square slabs, tall stepped stone pedestal carrying a relief group and an equestrian statue, broad flight of steps, ornate lamp posts, low clipped hedges and rectangular sunken pools on the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/76554673",
+   "used": "oval outline 100 x 75 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c4b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabd",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps-low",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    28,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#bdb8ab",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps-mid",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    28,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#bdb8ab",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    30,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#aea99c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aea99c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pedestal",
+   "footprint": {
+    "rect": [
+     7,
+     4.5
+    ]
+   },
+   "at": [
+    30,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#bab5a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bab5a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap",
+   "footprint": {
+    "rect": [
+     8,
+     5.5
+    ]
+   },
+   "at": [
+    30,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a39e90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39e90"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    28,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "rise": 0.25,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "market-open/statue-on-plinth",
+   "at": [
+    30,
+    7,
+    12.7
+   ],
+   "params": {
+    "height": 5.5,
+    "colour": "#4a443c",
+    "plinth": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-block",
+   "footprint": {
+    "rect": [
+     3.5,
+     1.5
+    ]
+   },
+   "at": [
+    30,
+    4.3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a7e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a7e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pool-a",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    -33,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d867c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d867c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pool-b",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    -20,
+    -22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8d867c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d867c"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -12
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -26
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 4,
+    "line": 70
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -38,
+    -33
+   ],
+   "params": {
+    "length": 70,
+    "height": 0.8,
+    "thickness": 0.6,
+    "colour": "#4f7a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-osm-way-76554673",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from a 1970 photo (pedestal, steps, lamps, pools) but not rendered or compared: queue down; oval taken from OSM."
+ }
+}

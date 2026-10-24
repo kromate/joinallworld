@@ -1,0 +1,262 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/163144026",
+   "used": "64.8 x 10.8 m single-storey outline, bearing 84 deg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universidad_Nacional_Casimiro_Sotelo_Montenegro.jpg",
+   "licence": "CC0",
+   "author": "Josuecruz03",
+   "view": "front",
+   "file": "/tmp/places-evidence/managua/uncsm.jpg",
+   "used": "campus entrance gate only (not the classroom range): pale grey precast-panel end blocks, long flat fascia band over the gate, ramp and steps; applied to the gate portal, not compared with the range"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "range",
+   "footprint": {
+    "rect": [
+     64.8,
+     10.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 5.75,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece2c6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "glassColour": "#8fb8c9",
+    "bands": "#b8b8b2",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c8f91",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "walkway",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "rotDeg": 5.75,
+   "params": {
+    "form": "flat",
+    "width": 62,
+    "depth": 3.2,
+    "height": 3.4,
+    "columns": 14,
+    "colour": "#b8b8b2",
+    "edgeColour": "#8fb8c9"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-w",
+   "footprint": {
+    "rect": [
+     6,
+     7
+    ]
+   },
+   "at": [
+    -46,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4c7c5",
+    "windows": "none",
+    "bands": "#b3b6b4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3b6b4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-e",
+   "footprint": {
+    "rect": [
+     6,
+     7
+    ]
+   },
+   "at": [
+    -24,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4c7c5",
+    "windows": "none",
+    "bands": "#b3b6b4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3b6b4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-fascia",
+   "footprint": {
+    "rect": [
+     28,
+     4
+    ]
+   },
+   "at": [
+    -35,
+    -30
+   ],
+   "rotDeg": 0,
+   "z0": 6.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9cbe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cbe6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-core",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -35,
+    -29
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a7b0b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "gate-steps",
+   "at": [
+    -46,
+    -37,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 6,
+    "colour": "#a9aaa6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#2b5da8",
+     "#f2f2f2"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-way-38578925"
+}

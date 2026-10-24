@@ -1,0 +1,1190 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-osm-way-808110260",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Las_ruinas_del_Fronton_2013-04-04_06-58.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Atlasincarnate",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/lima/prison1.jpg",
+   "used": "roofless pale-grey concrete cell compartments with low broken walls on stepped terraces, long panelled retaining walls climbing the sandy slope, rubble and leaning beams, rocky shore and sea on the left, bare tan hillside behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/808110260",
+   "used": "historic=ruins; the real 346 x 145 m outline is too long for the scene clamp, so the modelled ~118 m portion is composed from the photo, not traced"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab-low",
+   "footprint": {
+    "rect": [
+     70,
+     26
+    ]
+   },
+   "at": [
+    -5,
+    -14
+   ],
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3c7ad",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8ccb2",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-mid",
+   "footprint": {
+    "rect": [
+     48,
+     22
+    ]
+   },
+   "at": [
+    8,
+    10
+   ],
+   "z0": 0.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9ad94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbfa5",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-high",
+   "footprint": {
+    "rect": [
+     44,
+     18
+    ]
+   },
+   "at": [
+    18,
+    29
+   ],
+   "z0": 2.2,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0a48b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4b89e",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-spine",
+   "footprint": {
+    "rect": [
+     32,
+     0.7
+    ]
+   },
+   "at": [
+    8,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4ab9a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-spine2",
+   "footprint": {
+    "rect": [
+     32,
+     0.7
+    ]
+   },
+   "at": [
+    8,
+    17
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4ab9a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-end-r",
+   "footprint": {
+    "rect": [
+     0.7,
+     7.7
+    ]
+   },
+   "at": [
+    24,
+    13.5
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4ab9a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-end-l",
+   "footprint": {
+    "rect": [
+     0.7,
+     7.7
+    ]
+   },
+   "at": [
+    -8,
+    13.5
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4ab9a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-div0",
+   "footprint": {
+    "rect": [
+     0.5,
+     6.5
+    ]
+   },
+   "at": [
+    -6,
+    13.5
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39b8c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-div1",
+   "footprint": {
+    "rect": [
+     0.5,
+     6.5
+    ]
+   },
+   "at": [
+    -1,
+    13.5
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39b8c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-div2",
+   "footprint": {
+    "rect": [
+     0.5,
+     6.5
+    ]
+   },
+   "at": [
+    4,
+    13.5
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39b8c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-div3",
+   "footprint": {
+    "rect": [
+     0.5,
+     6.5
+    ]
+   },
+   "at": [
+    9,
+    13.5
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39b8c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-div4",
+   "footprint": {
+    "rect": [
+     0.5,
+     6.5
+    ]
+   },
+   "at": [
+    14,
+    13.5
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39b8c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cell-div5",
+   "footprint": {
+    "rect": [
+     0.5,
+     6.5
+    ]
+   },
+   "at": [
+    19,
+    13.5
+   ],
+   "rotDeg": 0,
+   "z0": 2.2,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39b8c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-wall0",
+   "footprint": {
+    "rect": [
+     26,
+     0.7
+    ]
+   },
+   "at": [
+    26.0,
+    14
+   ],
+   "rotDeg": -8,
+   "z0": 0.6,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb5a4",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#bdb5a4",
+       "#aaa293"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a191",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-wall1",
+   "footprint": {
+    "rect": [
+     26,
+     0.7
+    ]
+   },
+   "at": [
+    29.5,
+    21
+   ],
+   "rotDeg": -8,
+   "z0": 2.0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb5a4",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#bdb5a4",
+       "#aaa293"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a191",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-wall2",
+   "footprint": {
+    "rect": [
+     26,
+     0.7
+    ]
+   },
+   "at": [
+    33.0,
+    28
+   ],
+   "rotDeg": -8,
+   "z0": 3.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb5a4",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#bdb5a4",
+       "#aaa293"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a191",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-wall3",
+   "footprint": {
+    "rect": [
+     26,
+     0.7
+    ]
+   },
+   "at": [
+    36.5,
+    35
+   ],
+   "rotDeg": -8,
+   "z0": 4.799999999999999,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb5a4",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#bdb5a4",
+       "#aaa293"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a191",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sea-wall",
+   "footprint": {
+    "rect": [
+     52,
+     0.8
+    ]
+   },
+   "at": [
+    -6,
+    -27
+   ],
+   "rotDeg": 0,
+   "z0": 0.0,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cbc2ac",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sea-wall-r",
+   "footprint": {
+    "rect": [
+     0.8,
+     10
+    ]
+   },
+   "at": [
+    -34,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cbc2ac",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "room-n",
+   "footprint": {
+    "rect": [
+     10,
+     0.6
+    ]
+   },
+   "at": [
+    -30,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4ab9a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "room-e",
+   "footprint": {
+    "rect": [
+     0.6,
+     8
+    ]
+   },
+   "at": [
+    -25,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4ab9a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "room-s",
+   "footprint": {
+    "rect": [
+     10,
+     0.6
+    ]
+   },
+   "at": [
+    -30,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4ab9a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39b8c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble0",
+   "at": [
+    31.464475427273463,
+    -8.814899917270804,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -3.055660281255371,
+      -1.8333961687532225
+     ],
+     [
+      0.6111320562510743,
+      -2.444528225004297
+     ],
+     [
+      3.055660281255371,
+      -0.6111320562510743
+     ],
+     [
+      1.8333961687532225,
+      2.1389621968787598
+     ],
+     [
+      -1.5278301406276855,
+      2.444528225004297
+     ]
+    ],
+    "height": 0.9770770406275984,
+    "colour": "#d0c4aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble1",
+   "at": [
+    24.775649330058172,
+    -21.607304430639267,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -1.6367067352084885,
+      -0.9820240411250931
+     ],
+     [
+      0.3273413470416977,
+      -1.3093653881667908
+     ],
+     [
+      1.6367067352084885,
+      -0.3273413470416977
+     ],
+     [
+      0.9820240411250931,
+      1.145694714645942
+     ],
+     [
+      -0.8183533676042443,
+      1.3093653881667908
+     ]
+    ],
+    "height": 0.9335239890719125,
+    "colour": "#c4b8a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble2",
+   "at": [
+    10.580860952907265,
+    -1.783038421084207,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -3.344044464976672,
+      -2.0064266789860032
+     ],
+     [
+      0.6688088929953344,
+      -2.6752355719813377
+     ],
+     [
+      3.344044464976672,
+      -0.6688088929953344
+     ],
+     [
+      2.0064266789860032,
+      2.3408311254836702
+     ],
+     [
+      -1.672022232488336,
+      2.6752355719813377
+     ]
+    ],
+    "height": 0.7642634130318071,
+    "colour": "#d0c4aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble3",
+   "at": [
+    13.781410346528595,
+    1.0781532380525327,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -2.5240031773910254,
+      -1.5144019064346153
+     ],
+     [
+      0.5048006354782051,
+      -2.0192025419128203
+     ],
+     [
+      2.5240031773910254,
+      -0.5048006354782051
+     ],
+     [
+      1.5144019064346153,
+      1.7668022241737176
+     ],
+     [
+      -1.2620015886955127,
+      2.0192025419128203
+     ]
+    ],
+    "height": 0.42340863217413577,
+    "colour": "#d0c4aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble4",
+   "at": [
+    21.193123545999676,
+    6.270575633386407,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -2.926927227449233,
+      -1.7561563364695396
+     ],
+     [
+      0.5853854454898466,
+      -2.3415417819593864
+     ],
+     [
+      2.926927227449233,
+      -0.5853854454898466
+     ],
+     [
+      1.7561563364695396,
+      2.048849059214463
+     ],
+     [
+      -1.4634636137246164,
+      2.3415417819593864
+     ]
+    ],
+    "height": 0.7981736654697397,
+    "colour": "#d0c4aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble5",
+   "at": [
+    -20.251205895732017,
+    7.863668562556853,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -2.6469525961718894,
+      -1.5881715577031337
+     ],
+     [
+      0.5293905192343779,
+      -2.1175620769375114
+     ],
+     [
+      2.6469525961718894,
+      -0.5293905192343779
+     ],
+     [
+      1.5881715577031337,
+      1.8528668173203224
+     ],
+     [
+      -1.3234762980859447,
+      2.1175620769375114
+     ]
+    ],
+    "height": 0.9499494272447023,
+    "colour": "#c4b8a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble6",
+   "at": [
+    25.961923795911147,
+    8.078421421326752,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -1.8119564914954565,
+      -1.0871738948972738
+     ],
+     [
+      0.36239129829909134,
+      -1.4495651931963653
+     ],
+     [
+      1.8119564914954565,
+      -0.36239129829909134
+     ],
+     [
+      1.0871738948972738,
+      1.2683695440468195
+     ],
+     [
+      -0.9059782457477282,
+      1.4495651931963653
+     ]
+    ],
+    "height": 0.6711743089055953,
+    "colour": "#d0c4aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble7",
+   "at": [
+    33.77595115757811,
+    0.5372078094810391,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -1.8327312694930809,
+      -1.0996387616958485
+     ],
+     [
+      0.36654625389861617,
+      -1.4661850155944647
+     ],
+     [
+      1.8327312694930809,
+      -0.36654625389861617
+     ],
+     [
+      1.0996387616958485,
+      1.2829118886451565
+     ],
+     [
+      -0.9163656347465404,
+      1.4661850155944647
+     ]
+    ],
+    "height": 0.6287543303436083,
+    "colour": "#c4b8a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rubble8",
+   "at": [
+    11.339470370973821,
+    -17.295534374103656,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -2.579416879374792,
+      -1.547650127624875
+     ],
+     [
+      0.5158833758749584,
+      -2.0635335034998334
+     ],
+     [
+      2.579416879374792,
+      -0.5158833758749584
+     ],
+     [
+      1.547650127624875,
+      1.805591815562354
+     ],
+     [
+      -1.289708439687396,
+      2.0635335034998334
+     ]
+    ],
+    "height": 0.6967237655597303,
+    "colour": "#c4b8a0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "beam1",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -34,
+      -10,
+      0.4
+     ],
+     [
+      -28,
+      -6,
+      2.4
+     ]
+    ],
+    "colour": "#cfc7b4"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "beam2",
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -32,
+      -16,
+      0.4
+     ],
+     [
+      -24,
+      -12,
+      2.6
+     ]
+    ],
+    "colour": "#cfc7b4"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    34,
+    32,
+    4.2
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 2.8,
+    "legHeight": 3.5,
+    "legs": 4,
+    "colour": "#b9b1a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sea",
+   "at": [
+    -95,
+    0,
+    -0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -70
+     ],
+     [
+      45,
+      -70
+     ],
+     [
+      45,
+      70
+     ],
+     [
+      -50,
+      70
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#2d6f86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shore",
+   "at": [
+    -52,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -60
+     ],
+     [
+      6,
+      -60
+     ],
+     [
+      10,
+      -10
+     ],
+     [
+      4,
+      25
+     ],
+     [
+      8,
+      60
+     ],
+     [
+      -4,
+      60
+     ]
+    ],
+    "height": 0.7,
+    "colour": "#6e6a5e"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    20,
+    70,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 60,
+    "height": 34,
+    "stairs": false,
+    "rock_colour": "#b9955f",
+    "boulders": 4,
+    "seed": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue down): ruins composed from one aerial photo; real 346 x 145 m outline not traced (scene clamp 118 m); cell layout, terrace heights and hillside are approximations."
+ }
+}

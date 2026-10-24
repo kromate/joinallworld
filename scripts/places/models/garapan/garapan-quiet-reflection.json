@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "garapan",
+ "venueId": "garapan-quiet-reflection",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/garapan.json#garapan-quiet-reflection",
+   "used": "Hachiman shrine: no photo found, OSM match only nearest (36 m) so not used; typical small Shinto shrine: timber haiden with gable roof, torii, stone lanterns, stepped approach, low fence, broadleaf trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 1.0,
+    "run": 1.4,
+    "count": 5,
+    "colour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 10,
+    "height": 0.9,
+    "tiers": 1,
+    "colour": "#bdb6a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "haiden",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -0.5
+   ],
+   "z0": 0.9,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b3865a",
+    "windows": "none",
+    "plinth": 0.2,
+    "bands": "#c8392b",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4a48",
+    "material": "timber-shingle",
+    "pitch": 28,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "honden",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    4.2
+   ],
+   "z0": 0.9,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a97b50",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4b4a48",
+    "material": "timber-shingle",
+    "pitch": 28,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "torii",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5.4,
+    "height": 4.6,
+    "colour": "#c8392b"
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    -3.2,
+    -11,
+    0
+   ],
+   "params": {
+    "scale": 1.2
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    3.2,
+    -11,
+    0
+   ],
+   "params": {
+    "scale": 1.2
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    -3.2,
+    -16,
+    0
+   ],
+   "params": {
+    "scale": 1.2
+   }
+  },
+  {
+   "type": "stone-lantern",
+   "at": [
+    3.2,
+    -16,
+    0
+   ],
+   "params": {
+    "scale": 1.2
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.0,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#d9d4c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and OSM match only nearest; typical Shinto layout, real shrine proportions unknown; roof not curved."
+ }
+}

@@ -1,0 +1,435 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "koror",
+ "venueId": "koror-osm-way-35783457",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/35783457",
+   "used": "180 x 78 m athletics oval outline (name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: capacity 4,000, one covered main stand, four floodlights, scoreboard, perimeter wall, grass pitch in track"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "track",
+   "params": {
+    "points": [
+     [
+      -91.1,
+      2
+     ],
+     [
+      -90.7,
+      13.9
+     ],
+     [
+      -86.9,
+      23.4
+     ],
+     [
+      -82.4,
+      29.6
+     ],
+     [
+      -76.2,
+      34.6
+     ],
+     [
+      -66.7,
+      38.3
+     ],
+     [
+      -55.5,
+      39.6
+     ],
+     [
+      60.1,
+      35.8
+     ],
+     [
+      68.8,
+      31.7
+     ],
+     [
+      75.4,
+      27.6
+     ],
+     [
+      82.5,
+      21.8
+     ],
+     [
+      87.8,
+      13.1
+     ],
+     [
+      89.5,
+      5.7
+     ],
+     [
+      88.2,
+      -13.7
+     ],
+     [
+      84.9,
+      -22.4
+     ],
+     [
+      79.6,
+      -29.4
+     ],
+     [
+      72.5,
+      -35.2
+     ],
+     [
+      64.7,
+      -40.2
+     ],
+     [
+      55.6,
+      -41.8
+     ],
+     [
+      -63,
+      -34
+     ],
+     [
+      -70,
+      -30.7
+     ],
+     [
+      -78.7,
+      -24.5
+     ],
+     [
+      -85.3,
+      -15.4
+     ],
+     [
+      -89.8,
+      -5.5
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#a5503c",
+    "topColour": "#b5604a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "infield",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -81.99,
+      1.5
+     ],
+     [
+      -81.63,
+      12.21
+     ],
+     [
+      -78.21,
+      20.76
+     ],
+     [
+      -74.16,
+      26.34
+     ],
+     [
+      -68.58,
+      30.84
+     ],
+     [
+      -60.03,
+      34.17
+     ],
+     [
+      -49.95,
+      35.34
+     ],
+     [
+      54.09,
+      31.92
+     ],
+     [
+      61.92,
+      28.23
+     ],
+     [
+      67.86,
+      24.54
+     ],
+     [
+      74.25,
+      19.32
+     ],
+     [
+      79.02,
+      11.49
+     ],
+     [
+      80.55,
+      4.83
+     ],
+     [
+      79.38,
+      -12.63
+     ],
+     [
+      76.41,
+      -20.46
+     ],
+     [
+      71.64,
+      -26.76
+     ],
+     [
+      65.25,
+      -31.98
+     ],
+     [
+      58.23,
+      -36.48
+     ],
+     [
+      50.04,
+      -37.92
+     ],
+     [
+      -56.7,
+      -30.9
+     ],
+     [
+      -63.0,
+      -27.93
+     ],
+     [
+      -70.83,
+      -22.35
+     ],
+     [
+      -76.77,
+      -14.16
+     ],
+     [
+      -80.82,
+      -5.25
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#5f8f4a",
+    "topColour": "#6c9d52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch-stripe",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     100,
+     58
+    ],
+    "height": 0.03,
+    "colour": "#7aa85c",
+    "topColour": "#82b064"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -45
+    ],
+    "end": [
+     34,
+     -45
+    ],
+    "rows": 14,
+    "seatColour": "#4f7f9e",
+    "seatColours": [
+     "#4f7f9e",
+     "#c8c4b6"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c8c4b6",
+    "canopy": {
+     "height": 9.5,
+     "depth": 13,
+     "colour": "#8d9296",
+     "slopeDeg": 3,
+     "supports": 7
+    },
+    "backWall": 0.8,
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     34,
+     40
+    ],
+    "end": [
+     -34,
+     40
+    ],
+    "rows": 4,
+    "seatColour": "#c8c4b6",
+    "firstHeight": 0.5,
+    "concreteColour": "#c8c4b6",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.5,
+    "pillarEvery": 5,
+    "colour": "#c8c4b6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    45.5,
+    0.6
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 2.5,
+    "colour": "#2e3338",
+    "frameColour": "#c8c4b6"
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    -62,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    62,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    -62,
+    43,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    62,
+    40,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -80,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     90,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -95,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; outline real, single covered stand, lights, scoreboard and colours typed from brief"
+ }
+}

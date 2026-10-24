@@ -1,0 +1,316 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "grytviken",
+ "venueId": "grytviken-osm-way-533046863",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grytviken_museum.jpg",
+   "licence": "Public domain",
+   "author": "Wofratz (de.wikipedia)",
+   "view": "front",
+   "used": "white clapboard villa, red hip roof with a central front cross-gable, green window frames, front porch with steps, flagpole, green-roofed neighbour at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/533046863",
+   "used": "23.1 x 14.6 m footprint (name match); drawn as an axis-aligned two-volume composition facing the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "rect": [
+     23,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#ece9e1",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.4,
+    "bay": 3.4,
+    "trimColour": "#2f6b4c",
+    "glassColour": "#3a4650",
+    "faces": {
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8e2f2b",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     6.4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "timber",
+    "colour": "#ece9e1",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "trimColour": "#2f6b4c",
+    "glassColour": "#3a4650"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e2f2b",
+    "material": "corrugated",
+    "rise": 3.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    5,
+    0,
+    8
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.2,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -7,
+    0,
+    8
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.2,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    0,
+    -12.4
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 0.5,
+    "run": 1.4,
+    "colour": "#8b8478",
+    "rails": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#2f4f9f",
+    "count": 2,
+    "spacing": 1.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -12.1,
+    1.9
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 0.35,
+    "bottom": 0,
+    "colour": "#d8c07a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-shed",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    19,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#ece9e1",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "glassColour": "#3a4650",
+    "trimColour": "#2f6b4c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a5a",
+    "material": "corrugated",
+    "rise": 1.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post0",
+   "at": [
+    -2.2,
+    -12.0
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post1",
+   "at": [
+    -0.75,
+    -12.0
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post2",
+   "at": [
+    0.75,
+    -12.0
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post3",
+   "at": [
+    2.2,
+    -12.0
+   ],
+   "params": {
+    "rect": [
+     0.14,
+     0.14
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#ece9e1",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8e2f2b",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "fair",
+  "gaps": "not rendered: render server was down; massing, colours and roof composed from the photo by eye; neighbour shed and flags approximate"
+ }
+}

@@ -1,0 +1,373 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_John%27s_Church_and_Cemetery_Bermuda.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Peter Burka",
+   "view": "side",
+   "file": "/tmp/places-evidence/hamilton/stjohn.jpg",
+   "used": "whitewashed walls, stepped white roof, gabled pointed-arch porch, round oculus, pointed windows, square tower with pinnacles at left, lower east wing, white tombs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/717069727",
+   "used": "overall size and layout (54x28 m, irregular outline not used directly)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "bay": 3.5,
+    "plinth": 0.3,
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#eeece6",
+    "material": "slate",
+    "rise": 4.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    24,
+    1
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.18,
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#eeece6",
+    "rise": 1.8,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.5,
+     6.5
+    ]
+   },
+   "at": [
+    -21,
+    -1
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eeece6",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4.5,
+     3.5
+    ]
+   },
+   "at": [
+    -12,
+    -7.5
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f4ee",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#eeece6",
+    "rise": 2.2,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    -12,
+    -9.35,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 5,
+    "archWidth": 2.0,
+    "springHeight": 2.2,
+    "pointed": true,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tomb-a",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    -6,
+    -17
+   ],
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#fbfaf6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fbfaf6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tomb-b",
+   "footprint": {
+    "rect": [
+     4,
+     2.4
+    ]
+   },
+   "at": [
+    8,
+    -19
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#fbfaf6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fbfaf6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tomb-c",
+   "footprint": {
+    "rect": [
+     4.5,
+     2.6
+    ]
+   },
+   "at": [
+    18,
+    -15
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#fbfaf6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fbfaf6"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -23.9,
+    -3.9,
+    15
+   ],
+   "params": {
+    "height": 2.5,
+    "width": 0.8,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -23.9,
+    1.9,
+    15
+   ],
+   "params": {
+    "height": 2.5,
+    "width": 0.8,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -18.1,
+    -3.9,
+    15
+   ],
+   "params": {
+    "height": 2.5,
+    "width": 0.8,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -18.1,
+    1.9,
+    15
+   ],
+   "params": {
+    "height": 2.5,
+    "width": 0.8,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oculus",
+   "params": {
+    "points": [
+     [
+      -4.9,
+      -6.05
+     ],
+     [
+      -3.1,
+      -6.05
+     ],
+     [
+      -3.1,
+      -6.25
+     ],
+     [
+      -4.9,
+      -6.25
+     ]
+    ],
+    "z0": 3.8,
+    "height": 1.8,
+    "colour": "#3a3a3a"
+   },
+   "at": [
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     8
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hamilton",
+ "venueId": "hamilton-osm-way-717069727",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "critic fixes applied (pointed nave windows, aisle removed, porch moved to nave wall, oculus, tower pinnacles) but not visually re-checked: render queue had no server running"
+ }
+}

@@ -1,0 +1,388 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "male",
+ "venueId": "male-osm-way-306746570",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Medhuziyaarai.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ziansh",
+   "view": "front",
+   "file": "/tmp/places-evidence/male/m15_tomb.jpg",
+   "used": "white two-storey house with a front gable and blue-framed arched windows, white compound wall with curved scroll top, blue door, round white watchtower at the right corner, gate piers with lamps on the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/306746570",
+   "used": "compound size about 16 x 15 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     8,
+     11
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 6.8,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f5f0",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#2f6f9f"
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#b0b4b6",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "winL",
+   "at": [
+    -2,
+    -3.55,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#2f6f9f",
+    "topColour": "#2f6f9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "winR",
+   "at": [
+    2,
+    -3.55,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#2f6f9f",
+    "topColour": "#2f6f9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedimentBoard",
+   "at": [
+    0,
+    -3.6,
+    6.9
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.2
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#2f6f9f",
+    "topColour": "#2f6f9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wallFront",
+   "at": [
+    0,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#f6f5f0",
+    "topColour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wallBack",
+   "at": [
+    0,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 2.6,
+    "colour": "#f6f5f0",
+    "topColour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wallL",
+   "at": [
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     15
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#f6f5f0",
+    "topColour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wallR",
+   "at": [
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     15
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#f6f5f0",
+    "topColour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wallCap",
+   "at": [
+    0,
+    -7.5,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#ffffff",
+    "topColour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate",
+   "at": [
+    -1.5,
+    -7.78
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.3,
+    "colour": "#2f6f9f",
+    "topColour": "#2f6f9f"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "watchtower",
+   "at": [
+    6,
+    -5.6,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "profile": [
+     [
+      2.0,
+      0,
+      "#f6f5f0"
+     ],
+     [
+      2.0,
+      4.8,
+      "#f6f5f0"
+     ],
+     [
+      2.3,
+      4.8,
+      "#ffffff"
+     ],
+     [
+      2.3,
+      5.3,
+      "#ffffff"
+     ],
+     [
+      2.0,
+      5.3,
+      "#f6f5f0"
+     ],
+     [
+      2.0,
+      6.6,
+      "#f6f5f0"
+     ],
+     [
+      2.2,
+      6.6,
+      "#ffffff"
+     ],
+     [
+      2.2,
+      6.9,
+      "#ffffff"
+     ],
+     [
+      0,
+      6.9,
+      "#ffffff"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "towerWin",
+   "at": [
+    6,
+    -7.6,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#2a3a44",
+    "topColour": "#2a3a44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pierL",
+   "at": [
+    -8,
+    -7.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#f6f5f0",
+    "topColour": "#f6f5f0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pierL2",
+   "at": [
+    -8,
+    -7.5,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#ffffff",
+    "topColour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "piece",
+   "at": [
+    -4,
+    -7.78,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.1
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#c9a64a",
+    "topColour": "#c9a64a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -3,
+     -10
+    ],
+    "height": 4
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "not rendered: queue down; gable axis, wall scroll top and tower unchecked"
+ }
+}

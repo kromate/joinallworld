@@ -1,0 +1,482 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lima",
+ "venueId": "lima-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_del_Metropolitano_de_Lima-_Estadio_Nacional_-_31067506001.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "cemeiakano",
+   "view": "street",
+   "file": "/tmp/places-evidence/lima/station2.jpg",
+   "used": "pale board-marked concrete station body with a dark glazed band under a deep concrete fascia, blank name board on the roof edge, ramp with white railing, bus lane with yellow line on the median road, the stadium's dark grey curved wall behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estaci%C3%B3n_Estadio_Nacional_Metropolitano.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tropoplus",
+   "view": "detail",
+   "file": "/tmp/places-evidence/lima/station1.jpg",
+   "used": "glazed band with a projecting horizontal mullion and louvred panels, concrete tie-hole texture, pale grey concrete colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/568381963",
+   "used": "checked only: the OSM element under the pin is the stadium (422 x 201 m), not the station, so it is not used as the footprint; the station is sized from the brief (about 64 x 9 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.777,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     64,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bcbdbc",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#a9aaa9",
+      "height": 0.3,
+      "proud": 0.1,
+      "at": 3.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aaa9",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed",
+   "footprint": {
+    "rect": [
+     62,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.6,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#46545c",
+    "glassColour": "#3a4850",
+    "windows": "ribbon",
+    "windowRatio": 0.85,
+    "bay": 4,
+    "plinth": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "ribbon"
+    },
+    "bands": "#bcbdbc"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b5b4",
+    "material": "concrete",
+    "overhang": 0.9,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     64.5,
+     9.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 7.4,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#bcbdbc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bcbdbc"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -4.2,
+    8.3
+   ],
+   "params": {
+    "width": 14,
+    "height": 3.2,
+    "bottom": 0.0,
+    "colour": "#1f55a8",
+    "frameColour": "#d8dde2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -4.2,
+    8.3
+   ],
+   "params": {
+    "width": 14,
+    "height": 3.2,
+    "bottom": 0.0,
+    "colour": "#1f55a8",
+    "frameColour": "#d8dde2",
+    "posts": false
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp-l",
+   "params": {
+    "section": {
+     "rect": [
+      3.0,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -33,
+      -4.5,
+      3.4
+     ],
+     [
+      -50,
+      -4.5,
+      0.4
+     ]
+    ],
+    "colour": "#b9bab9"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-l",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -33,
+      -6.1,
+      4.1
+     ],
+     [
+      -50,
+      -6.1,
+      1.1
+     ]
+    ],
+    "colour": "#e4e6e8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp-r",
+   "params": {
+    "section": {
+     "rect": [
+      3.0,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      33,
+      -4.5,
+      3.4
+     ],
+     [
+      50,
+      -4.5,
+      0.4
+     ]
+    ],
+    "colour": "#b9bab9"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail-r",
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      33,
+      -6.1,
+      4.1
+     ],
+     [
+      50,
+      -6.1,
+      1.1
+     ]
+    ],
+    "colour": "#e4e6e8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    2,
+    -6.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b0b1b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4a5a4"
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -10,
+    -14,
+    0.1
+   ],
+   "params": {
+    "colour": "#c9ccce",
+    "stripe": "#d9812c",
+    "count": 2,
+    "spacing": 13,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    12,
+    16,
+    0.1
+   ],
+   "params": {
+    "colour": "#c9ccce",
+    "stripe": "#d9812c",
+    "count": 2,
+    "spacing": 13,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bus-lane-f",
+   "at": [
+    0,
+    -14,
+    0.02
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -3
+     ],
+     [
+      70,
+      -3
+     ],
+     [
+      70,
+      3
+     ],
+     [
+      -70,
+      3
+     ]
+    ],
+    "height": 0.04,
+    "colour": "#5d5f60"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "yellow-line",
+   "at": [
+    0,
+    -10.7,
+    0.07
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -0.15
+     ],
+     [
+      70,
+      -0.15
+     ],
+     [
+      70,
+      0.15
+     ],
+     [
+      -70,
+      0.15
+     ]
+    ],
+    "height": 0.03,
+    "colour": "#e0b92e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "yellow-line2",
+   "at": [
+    0,
+    10.7,
+    0.07
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -0.15
+     ],
+     [
+      70,
+      -0.15
+     ],
+     [
+      70,
+      0.15
+     ],
+     [
+      -70,
+      0.15
+     ]
+    ],
+    "height": 0.03,
+    "colour": "#e0b92e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stadium-wall",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     110,
+     60
+    ]
+   },
+   "at": [
+    40,
+    92
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#68696f",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#68696f",
+       "#6f6a66",
+       "#7a5a4c"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f94",
+    "parapet": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue down): station sized from the brief (64 x 9 m); glazed band, fascia, ramps and the stadium backdrop are unchecked against the photo; louvred panels and bus colours simplified."
+ }
+}

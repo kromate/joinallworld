@@ -1,0 +1,239 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tailafak_Bridge,_Guam_-_DSC00903.JPG",
+   "licence": "CC0",
+   "author": "Daderot",
+   "view": "side",
+   "file": "/tmp/places-evidence/hagatna/bridge0.jpg",
+   "used": "two round coral-stone arches with a central pier, grass-covered deck, rough grey-tan stone courses, shallow river, dense tropical greenery"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "water",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     22
+    ],
+    "height": 0.3,
+    "colour": "#7a6f55"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     11,
+     4.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.3,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89f88",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 5,
+      "opening": 0.7,
+      "height": 0.75,
+      "depth": 4.6,
+      "pierColour": "#8d8571",
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f3d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck-grass",
+   "at": [
+    0,
+    0,
+    3.7
+   ],
+   "params": {
+    "rect": [
+     11.2,
+     4.0
+    ],
+    "height": 0.15,
+    "colour": "#6f8f3d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-l",
+   "at": [
+    -4.6,
+    -1.9,
+    3.7
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#8d8571"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collapse-r",
+   "at": [
+    4.3,
+    -2.0,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.8
+    ],
+    "height": 1.1,
+    "colour": "#9a917b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-l",
+   "at": [
+    -8,
+    -2,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.9
+    ],
+    "height": 2.4,
+    "colour": "#a89f88",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-r",
+   "at": [
+    8,
+    1.5,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.9
+    ],
+    "height": 2.0,
+    "colour": "#8d8571",
+    "topScale": 0.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13,
+    4
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -6
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-osm-way-611934431",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Composed from the photo but never rendered or compared: the render queue servers were down (no heartbeat). Needs a check round."
+ }
+}

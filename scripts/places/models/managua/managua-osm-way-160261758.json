@@ -1,0 +1,517 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nicaragua_National_Football_Stadium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Agraysky",
+   "view": "interior",
+   "file": "/tmp/places-evidence/managua/stadium1.jpg",
+   "used": "pitch long axis, low tan concrete end stands with railings, long near stand, small roofed grandstand across the pitch, four tall floodlight masts, mesh fence round the pitch, green artificial turf"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fut_fem_2012_1.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hugo Rene Rodriguez Gonzalez",
+   "view": "detail",
+   "file": "/tmp/places-evidence/managua/stadium2.jpg",
+   "used": "pale concrete stepped stand behind mesh fence with yellow railings, artificial turf colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/160261758",
+   "used": "site outline as paved apron (scaled 0.56 to the scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 24,
+  "fovDeg": 55,
+  "aspect": 2.4,
+  "fit": "all",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "polygon": [
+     [
+      -64.0,
+      -26.7
+     ],
+     [
+      -62.2,
+      -27.0
+     ],
+     [
+      -62.5,
+      -29.0
+     ],
+     [
+      -24.2,
+      -34.2
+     ],
+     [
+      -25.5,
+      -43.9
+     ],
+     [
+      -25.0,
+      -45.8
+     ],
+     [
+      -23.7,
+      -48.9
+     ],
+     [
+      -21.5,
+      -51.3
+     ],
+     [
+      -18.2,
+      -52.6
+     ],
+     [
+      18.4,
+      -58.2
+     ],
+     [
+      28.7,
+      -58.5
+     ],
+     [
+      35.1,
+      -56.3
+     ],
+     [
+      39.7,
+      -52.2
+     ],
+     [
+      43.4,
+      -46.3
+     ],
+     [
+      45.6,
+      -29.1
+     ],
+     [
+      48.7,
+      -29.6
+     ],
+     [
+      52.3,
+      -6.9
+     ],
+     [
+      48.9,
+      -6.4
+     ],
+     [
+      52.4,
+      15.3
+     ],
+     [
+      54.0,
+      29.3
+     ],
+     [
+      53.5,
+      35.2
+     ],
+     [
+      51.2,
+      41.1
+     ],
+     [
+      47.3,
+      45.8
+     ],
+     [
+      42.6,
+      49.3
+     ],
+     [
+      -3.6,
+      56.7
+     ],
+     [
+      -7.3,
+      55.1
+     ],
+     [
+      -9.9,
+      53.1
+     ],
+     [
+      -11.2,
+      49.5
+     ],
+     [
+      -12.5,
+      40.1
+     ],
+     [
+      -50.3,
+      45.4
+     ],
+     [
+      -50.7,
+      42.8
+     ],
+     [
+      -52.8,
+      43.2
+     ],
+     [
+      -52.9,
+      42.3
+     ],
+     [
+      -54.2,
+      42.6
+     ],
+     [
+      -54.6,
+      40.5
+     ],
+     [
+      -53.3,
+      40.3
+     ],
+     [
+      -54.7,
+      31.3
+     ],
+     [
+      -52.7,
+      31.0
+     ],
+     [
+      -60.4,
+      -16.2
+     ],
+     [
+      -62.2,
+      -15.9
+     ]
+    ]
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f918f",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 68,
+    "width": 44,
+    "stripes": 8,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -36,
+     -26
+    ],
+    "end": [
+     36,
+     -26
+    ],
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "under": "solid",
+    "bay": 6,
+    "seatColour": "#cfc6ad",
+    "concreteColour": "#cdc4ad",
+    "underColour": "#b8b0a0",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     36,
+     26
+    ],
+    "end": [
+     -36,
+     26
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "under": "solid",
+    "bay": 6,
+    "seatColour": "#3b6e91",
+    "concreteColour": "#cdc4ad",
+    "underColour": "#b8b0a0",
+    "facetDeg": 10,
+    "canopy": {
+     "height": 2.0,
+     "depth": 13,
+     "thickness": 0.6,
+     "slopeDeg": 3,
+     "colour": "#e9e5d6",
+     "edgeColour": "#d9d3c0",
+     "overhangBack": 1.0,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     43,
+     -22
+    ],
+    "end": [
+     43,
+     22
+    ],
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "under": "solid",
+    "bay": 6,
+    "seatColour": "#cdbb90",
+    "concreteColour": "#cdc4ad",
+    "underColour": "#b8b0a0",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -43,
+     22
+    ],
+    "end": [
+     -43,
+     -22
+    ],
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "under": "solid",
+    "bay": 6,
+    "seatColour": "#cdbb90",
+    "concreteColour": "#cdc4ad",
+    "underColour": "#b8b0a0",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "kind": "fence",
+    "height": 1.6,
+    "thickness": 0.08,
+    "colour": "#7c8a7e",
+    "points": [
+     [
+      -37,
+      -23
+     ],
+     [
+      37,
+      -23
+     ],
+     [
+      37,
+      23
+     ],
+     [
+      -37,
+      23
+     ],
+     [
+      -37,
+      -23
+     ]
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    34,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    34,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    50,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "post_height": 5,
+    "facing": "west"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "pillar": 0.6,
+    "colour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -52,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 40,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -47,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered or compared: the shared render queue had no live worker (heartbeats 3 h stale, 294 jobs waiting). Photos were viewed and the massing follows them, but part placement is unchecked."
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-way-160261758"
+}

@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingston-nf",
+ "venueId": "kingston-nf-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1061214551",
+   "used": "31 x 29 m diamond-aligned footprint (bearing 135 deg), tagged Bi-Centential Complex"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched"
+    },
+    "plinth": 0.35,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f3b2b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    -14,
+    6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f3b2b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     10,
+     18
+    ]
+   },
+   "at": [
+    14,
+    4
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8f3b2b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -7.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a8c7a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f3b2b",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4,
+    "rise": 0.5,
+    "run": 0.35,
+    "count": 3,
+    "colour": "#cfcabb"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.1,
+    "bottom": 0.8,
+    "colour": "#7a8c7a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "colour": "#c7c9cb"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not yet compared: render queue had no running server (stale heartbeats, jobs stuck). No photo found; footprint/text composition only."
+ }
+}

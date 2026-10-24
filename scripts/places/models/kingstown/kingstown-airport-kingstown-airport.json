@@ -1,0 +1,286 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-airport-kingstown-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Argyle_Terminal_Building.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dylanwill",
+   "view": "front",
+   "file": "/tmp/places-evidence/kingstown/airport.jpg",
+   "used": "bright blue terminal, barrel-arched dark louvred roof with blue edge, glazed upper facade, green ground storey, white flat canopies, taller right block with white parapet, lower left wing"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10290890",
+   "used": "overall length (230 m); outline too fragmented, a central 130 m portion is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     56,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f78c8",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#4b5056",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-green",
+   "footprint": {
+    "rect": [
+     84,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5fae4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8eaea",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     42,
+     22
+    ]
+   },
+   "at": [
+    -49,
+    2
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a6fc0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a6fc0",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     38,
+     24
+    ]
+   },
+   "at": [
+    48,
+    2
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f78c8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "plain"
+    },
+    "bands": "#e6e9ea",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e9ea",
+    "parapet": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -18,
+    -13,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 8,
+    "height": 5,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#eef0f0",
+    "edgeColour": "#eef0f0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 46,
+    "depth": 6,
+    "height": 4.6,
+    "thickness": 0.45,
+    "columns": 0,
+    "colour": "#e6e9ea",
+    "edgeColour": "#e6e9ea"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -82,
+    12,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "style": "round",
+    "colour": "#dfe3e4",
+    "cabColour": "#4f7da3"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f2",
+    "count": 3,
+    "spacing": 4.2
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    14,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#2a2d33",
+    "count": 3,
+    "spacing": 4.6
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -19
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "never rendered: render queue had no live server (188 jobs waiting); composed from the photo by eye, canopy/barrel-roof proportions unchecked, lettering omitted"
+ }
+}

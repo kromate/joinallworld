@@ -1,0 +1,252 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/38959369",
+   "used": "market 485 x 333 m, 13.9 ha; a 116 x 96 m slice is modelled (outline far exceeds the scene clamp)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q134761708",
+   "used": "wholesale market and transport hub, 1980s, 1,200+ stalls: long zinc-roofed sheds, bus bays from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -48
+     ],
+     [
+      58,
+      -48
+     ],
+     [
+      58,
+      48
+     ],
+     [
+      -58,
+      48
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#55585a"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "id": "shed-0",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 10,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_colour": "#8c8f91",
+    "wall_colour": "#b8b8b2",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "id": "shed-3",
+   "at": [
+    42,
+    10,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 10,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_colour": "#9a9c9a",
+    "wall_colour": "#b8b8b2",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "id": "shed-1",
+   "at": [
+    -18,
+    24,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 10,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_colour": "#9a9c9a",
+    "wall_colour": "#b8b8b2",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "id": "shed-4",
+   "at": [
+    42,
+    24,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 10,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_colour": "#80848a",
+    "wall_colour": "#b8b8b2",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "id": "shed-2",
+   "at": [
+    -18,
+    38,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 10,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_colour": "#80848a",
+    "wall_colour": "#b8b8b2",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "id": "shed-5",
+   "at": [
+    42,
+    38,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 10,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_colour": "#a2a4a1",
+    "wall_colour": "#b8b8b2",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -45,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bus-terminal",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    -36
+   ],
+   "height": 4.5,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8b8b2",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8183",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#d9a05b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5,
+     -30,
+     0
+    ],
+    "end": [
+     40,
+     -30,
+     0
+    ],
+    "count": 5
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; shed count, roof colours and bus bay typed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-osm-relation-21143410"
+}

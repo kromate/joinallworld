@@ -1,0 +1,354 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "havana",
+ "venueId": "havana-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Havana_-_Zoo_Entrance.jpg",
+   "licence": "Public domain",
+   "author": "Carlos Jordi, Havana (publisher)",
+   "view": "front",
+   "file": "/tmp/places-evidence/havana/zoo1.jpg",
+   "used": "1950s entrance (colour postcard): tall tapering terracotta-brown masonry pylon at the left, long thin white flat canopy blade on a slim column, two-storey pale control kiosk with ribbon windows behind, blank lettering board on the lawn edge, curved white kerb drive, dark conifer trees, stag on an orange rock mound at the right, flagpole"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/231769366",
+   "used": "zoo park ~509 x 401 m: only the entrance zone is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.58,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    -28,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       3.4
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       5.6,
+       3.0
+      ],
+      "cx": 0.4
+     },
+     {
+      "z": 15,
+      "rect": [
+       3.2,
+       2.4
+      ],
+      "cx": 1.0
+     }
+    ],
+    "colour": "#a56b4b",
+    "material": "brick",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     5.5
+    ],
+    "z0": 6.2,
+    "height": 0.5,
+    "colour": "#f1eee4",
+    "topColour": "#f1eee4"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 0,
+    "height": 6.2,
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 0,
+    "height": 6.2,
+    "colour": "#e9e6dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    4,
+    8
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7e0cc",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.2,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a90",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lantern",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    4,
+    8
+   ],
+   "z0": 7.5,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d6",
+    "windows": "ribbon",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a90",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#f4f1e6",
+    "frameColour": "#cfcabb",
+    "posts": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    34,
+    6,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6,
+       4.5
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       4.5,
+       3.4
+      ],
+      "cx": 0.4
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       2.2,
+       1.8
+      ],
+      "cx": 0.6
+     }
+    ],
+    "colour": "#b97a3e",
+    "capTop": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    35,
+    6,
+    5
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       1.1,
+       0.4
+      ]
+     },
+     {
+      "z": 1.2,
+      "ellipse": [
+       0.9,
+       0.35
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       0.45,
+       0.3
+      ],
+      "cx": 0.5
+     }
+    ],
+    "colour": "#c18a44",
+    "capTop": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -4,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#2a4a8a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 2.5,
+    "colour": "#f2f0ea"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     16
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     18
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     20
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     14
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "pending render"
+ }
+}

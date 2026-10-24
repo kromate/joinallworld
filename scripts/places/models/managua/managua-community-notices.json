@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "managua",
+ "venueId": "managua-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Managua",
+   "used": "government buildings built after 1972; ministry block typed as two-storey cream concrete with a flag court"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     50,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e7c9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#6f8c8f",
+    "bands": "#4c7a54",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.6,
+    "colour": "#8c8f91",
+    "material": "metal-sheet",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b8b2",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f91",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 3.9,
+    "colour": "#b8b8b2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.6,
+    "colour": "#4c7a54"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#2a6fb5",
+     "#f4f4f0",
+     "#2a6fb5"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d7d0b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Not rendered (queue down). Text only: exterior typed."
+ }
+}

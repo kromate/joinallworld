@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kingstown",
+ "venueId": "kingstown-osm-node-10723229405",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/573684211",
+   "used": "irregular 27 x 15 m outline, containing the point"
+  },
+  {
+   "kind": "text",
+   "used": "No photo of this building found; nearby Commons photos are of Bequia, a different island. Brief: timber and block, green zinc roof, built against rock, open-air"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#cc6f5e",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f7d57",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "colours": [
+     "#4f7d57",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4,
+    -9,
+    3.4
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 8,
+    "colours": [
+     "#cc6f5e",
+     "#ffffff",
+     "#4f7d57"
+    ]
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 24,
+    "height": 9,
+    "seed": 3,
+    "stairs": false,
+    "rock_colour": "#6f6a62",
+    "boulders": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   90,
+   70
+  ]
+ }
+}

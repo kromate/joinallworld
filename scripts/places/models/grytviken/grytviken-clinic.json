@@ -1,0 +1,96 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "grytviken",
+ "venueId": "grytviken-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/533055640",
+   "used": "7 m round-cornered hut outline, 4 m from the venue point; scaled up to the brief's 12x9 m is NOT done, outline kept at real size"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#ece9e1",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "bands": "#8d3b2a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2e",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "rise": 1.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -5,
+    2.2
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step",
+   "at": [
+    0,
+    -4.2
+   ],
+   "params": {
+    "rect": [
+     2,
+     1
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#7d6a5a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "placeholder game venue; no photo of it exists, only the OSM hut outline; the red cross is a blank board"
+ }
+}

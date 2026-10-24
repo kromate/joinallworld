@@ -1,0 +1,41 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gustavia",
+ "venueId": "gustavia-transit",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/1030454050", "used": "29.7 x 6 m quayside building outline, oriented along the quay"},
+  {"kind": "photo", "url": "https://commons.wikimedia.org/wiki/File:Entering_the_inner_harbor,_Gustavia,_St._Barthelemy_FWI_-_panoramio.jpg", "licence": "CC BY 3.0", "author": "David Broad", "view": "street", "file": "/tmp/places-evidence/gustavia/transit1.jpg", "used": "setting only: turquoise harbour, palm-lined paved quay, white render with red roofs; terminal itself not identifiable"},
+  {"kind": "text", "used": "brief: low waterfront shed and ticket hall with a short pier for Saint-Martin ferries; cream render, teal accent, grey metal roof"}
+ ],
+ "camera": {"yawDeg": 20, "pitchDeg": 14, "fovDeg": 50, "aspect": 1.333, "margin": 0.12},
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {"osm": true},
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "pattern": {"type": "bands", "colour": "#4f8f9a"}
+   },
+   "roof": {"form": "shed", "colour": "#7b7f82", "material": "metal-sheet", "overhang": 0.6, "rise": 1.0}
+  },
+  {"type": "ferry-jetty", "at": [8, 8, 0], "rotDeg": 43, "params": {"length": 22, "width": 4, "shelter": true, "colour": "#b9b3a6"}},
+  {"type": "awning", "at": [-2, 2, 0], "rotDeg": 43, "params": {"width": 14, "depth": 2, "colours": ["#4f8f9a", "#f1ece0"]}},
+  {"type": "sign-board", "at": [0, 0, 4.4], "rotDeg": 43, "params": {"width": 6, "height": 0.9, "bottom": 0, "colour": "#4f8f9a", "posts": false}},
+  {"type": "bus-park-row", "at": [-14, -8, 0], "params": {"length": 8, "kind": "taxi", "density": 0.8}}
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "trees": [{"kind": "palm", "at": [-12, 6]}, {"kind": "palm", "at": [14, -10]}],
+  "extent": [90, 70]
+ }
+}

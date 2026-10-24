@@ -1,0 +1,163 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/289488758",
+   "used": "real building outline (32 x 18 m, offset-rectangle plan with a small rear notch); containing match, no name tag"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/way/289488758",
+   "used": "single-storey pad restaurant in a car park off Marine Corps Drive; the only nearby photo is of a different building (a ramen shop) and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9ccb0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#c9553f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6e72",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-base",
+   "footprint": {
+    "rect": [
+     14,
+     0.8
+    ]
+   },
+   "at": [
+    -1,
+    -18.5
+   ],
+   "rotDeg": 12,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9b4a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b4a38"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -19.5,
+    0
+   ],
+   "rotDeg": 12,
+   "params": {
+    "width": 9,
+    "depth": 2.2,
+    "drop": 0.7,
+    "height": 3.0,
+    "colours": [
+     "#a8372c",
+     "#a8372c"
+    ],
+    "stripe": 9
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -21,
+    0
+   ],
+   "rotDeg": 12,
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 4.5,
+    "colour": "#a8372c",
+    "frameColour": "#d8d8d4",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 4,
+    "spread": 6,
+    "line": 24
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 20,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building exists; facade colours and awning are typical for a US casual-dining pad site, only the plan is real"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hagatna",
+ "venueId": "hagatna-meal-stop"
+}

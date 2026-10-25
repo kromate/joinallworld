@@ -1,0 +1,342 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nuestra_Se%C3%B1ora_de_Lourdes_Chapel_in_Miramar,_Santurce,_San_Juan,_Puerto_Rico.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Frederic Gleach",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-juan/mine-chapel1.jpg",
+   "used": "massing: crenellated corner tower with paired-arch belfry, front gable with pointed rose window and big pointed window, dark maroon roof, honey limestone walls, iron railing"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nuestra-senora-de-lourdes-4.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Thief12",
+   "view": "detail",
+   "file": "/tmp/places-evidence/san-juan/mine-chapel2.jpg",
+   "used": "tower top with corner pinnacles, gargoyles, gable cross, stained glass blue tint, weathered grey-tan stone"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/295445063",
+   "used": "plan size about 21 x 16 m, height 11.6 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 48,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     17
+    ]
+   },
+   "at": [
+    2.5,
+    2.5
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b09d7e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5c3d36",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-west",
+   "footprint": {
+    "rect": [
+     4,
+     15
+    ]
+   },
+   "at": [
+    -4.5,
+    3.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c3b08a",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5c3d36",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -5.5,
+    -4.5
+   ],
+   "height": 8.8,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b09d7e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f836b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     4.4,
+     4.4
+    ]
+   },
+   "at": [
+    -5.5,
+    -4.5
+   ],
+   "z0": 8.8,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c1ad86",
+    "windows": "arched",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "cornice": false
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f836b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crenel-nw",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -7.55,
+    -6.55,
+    11.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 1.1,
+    "colour": "#8f836b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crenel-ne",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3.45,
+    -6.55,
+    11.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 1.1,
+    "colour": "#8f836b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crenel-sw",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -7.55,
+    -2.45,
+    11.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 1.1,
+    "colour": "#8f836b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crenel-se",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -3.45,
+    -2.45,
+    11.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 1.1,
+    "colour": "#8f836b"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    2.5,
+    -6.02,
+    5.3
+   ],
+   "params": {
+    "radius": 0.9,
+    "stained": true
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    2.5,
+    -6.02,
+    0.8
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 4.0,
+    "kind": "pointed",
+    "stained": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -1.2,
+    -8.2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.2,
+    "rise": 0.2,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#a8a291"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -3,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.8,
+    "thickness": 0.08,
+    "kind": "railing",
+    "colour": "#26262a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   40,
+   36
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -13,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     11,
+     -12
+    ],
+    "height": 5
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower is shorter and plainer than the real one (no paired-column belfry, gargoyles, buttresses); front is flat without the pointed entrance arch; west aisle simplified; stone texture too regular."
+ }
+}

@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-community-notices",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: no building matched the name; modest 14 x 9 m hip-roofed community hall in Roseau vernacular (pale yellow render, green corrugated roof)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#8fb7c9"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f7a52",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -5.6
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a8",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f7a52",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -6,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#ffffff",
+    "frameColour": "#4f7a52"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no real building identified; generic small hall"
+ }
+}

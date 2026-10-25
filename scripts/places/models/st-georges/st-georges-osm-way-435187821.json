@@ -1,0 +1,332 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/435187821",
+   "used": "campus outline 181 x 154 m drawn as the lawn plot; buildings are typed inside it"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "Caribbean secondary school: low painted blocks round a yard, red metal roofs, flags, fence"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plot",
+   "params": {
+    "points": [
+     [
+      -57.7,
+      -4.0
+     ],
+     [
+      -55.4,
+      -10.4
+     ],
+     [
+      -39.6,
+      -13.4
+     ],
+     [
+      -32.1,
+      -28.1
+     ],
+     [
+      -32.2,
+      -53.3
+     ],
+     [
+      29.8,
+      -51.1
+     ],
+     [
+      48.8,
+      36.4
+     ],
+     [
+      14.4,
+      51.3
+     ],
+     [
+      -20.8,
+      52.9
+     ],
+     [
+      -39.1,
+      16.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#6f9a4c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-block",
+   "footprint": {
+    "rect": [
+     42,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bay": 3.2,
+    "bands": "#7fa6bd",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0452f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    -27,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bay": 3.2,
+    "bands": "#7fa6bd",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0452f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    19,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bay": 3.2,
+    "bands": "#7fa6bd",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b0452f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    -22
+   ],
+   "rotDeg": 0,
+   "z0": 0.3,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bay": 3.2,
+    "bands": "#7fa6bd",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0452f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "courtyard-garden",
+   "id": "yard",
+   "at": [
+    -4,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 16,
+    "trees": 2,
+    "paths": true
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flags",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.8,
+    "kind": "rail",
+    "colour": "#7fa6bd"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "id": "field",
+   "at": [
+    30,
+    -40,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 40,
+    "width": 24,
+    "lane_width": 2,
+    "infield": true,
+    "pitch": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -34
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-osm-way-435187821",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; blocks are typed inside the campus plot, only the plot is the real outline"
+ }
+}

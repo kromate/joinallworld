@@ -1,0 +1,252 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.openstreetmap.org/",
+   "used": "nearest OSM building is a small residential module, not a stop; the stop is a game placeholder (no bus service on the island, only vehicles on gravel tracks) so a roadside open-front shelter 10 x 6 m in station yellow and grey is modelled from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists for this placeholder venue; shelter form is plausible for the polar-station prefab style, not surveyed"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "slab",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     6.4
+    ],
+    "height": 0.2,
+    "colour": "#6e6a66",
+    "topColour": "#6e6a66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "back-wall",
+   "at": [
+    0,
+    1.9,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     0.25
+    ],
+    "height": 2.7,
+    "colour": "#e3b93b",
+    "topColour": "#e3b93b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-wall-w",
+   "at": [
+    -4.7,
+    0.4,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     3.4
+    ],
+    "height": 2.7,
+    "colour": "#e3b93b",
+    "topColour": "#e3b93b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "side-wall-e",
+   "at": [
+    4.7,
+    0.4,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     3.4
+    ],
+    "height": 2.7,
+    "colour": "#8c9296",
+    "topColour": "#8c9296",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof",
+   "at": [
+    0,
+    0.2
+   ],
+   "z0": 2.9,
+   "height": 0.6,
+   "storeys": 1,
+   "footprint": {
+    "rect": [
+     10.4,
+     4.6
+    ]
+   },
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f4a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f4a52",
+    "material": "metal-sheet",
+    "rise": 0.7,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "id": "front-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "p",
+     "at": [
+      0,
+      0,
+      0.2
+     ],
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 2.7,
+      "colour": "#8c9296",
+      "topColour": "#8c9296",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.9,
+     -2.0,
+     0
+    ],
+    "end": [
+     4.9,
+     -2.0,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bench",
+   "at": [
+    0,
+    1.1,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.55
+    ],
+    "height": 0.5,
+    "colour": "#6b4a38",
+    "topColour": "#8a6a4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-pole",
+   "at": [
+    6.2,
+    -2.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.18,
+     0.18
+    ],
+    "height": 3.4,
+    "colour": "#8c9296",
+    "topColour": "#8c9296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    6.2,
+    -2.6,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "height": 0.9,
+    "colour": "#e3b93b",
+    "topColour": "#e3b93b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "route-marker",
+   "at": [
+    -6.4,
+    -2.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 1.4,
+    "colour": "#b5352c",
+    "topColour": "#b5352c",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "extent": [
+   40,
+   30
+  ]
+ }
+}

@@ -1,0 +1,361 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-osm-way-1245381574",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nelson%27s_Dockyard.jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/st-johns/nd.jpg",
+   "used": "layout of the dockyard: pale stone storehouses with grey hipped and gabled roofs along the quay, central lawn, long pier into the harbour, forested hills behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1245381574",
+   "used": "identity only: the World Heritage outline is 2.7 km across, so just the dockyard core is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "copper-lumber-store",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    -30,
+    14
+   ],
+   "rotDeg": 0,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8d0b6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a929c",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "engineers-workshop",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    3,
+    22
+   ],
+   "rotDeg": 0,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc6aa",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a929c",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admirals-inn",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -8,
+    -2
+   ],
+   "rotDeg": 0,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efeadb",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a929c",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pitch-tar-store",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    -4
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d4cab0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a929c",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mast-house",
+   "footprint": {
+    "rect": [
+     20,
+     9
+    ]
+   },
+   "at": [
+    28,
+    10
+   ],
+   "rotDeg": 0,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8d0b6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a929c",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "harbour-house",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -52,
+    10
+   ],
+   "rotDeg": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#efeadb",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a929c",
+    "material": "slate"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     8,
+     -6,
+     0
+    ],
+    "end": [
+     26,
+     -6,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "mass",
+     "id": "pillar",
+     "footprint": {
+      "rect": [
+       1.2,
+       1.2
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 5.5,
+     "storeys": 1,
+     "wall": {
+      "material": "stone",
+      "colour": "#cbbf9f",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#cbbf9f",
+      "material": "concrete"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.2,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#cbbf9f",
+    "points": [
+     [
+      -60,
+      -14
+     ],
+     [
+      -20,
+      -14
+     ],
+     [
+      20,
+      -14
+     ],
+     [
+      48,
+      -14
+     ]
+    ]
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    2,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "width": 5,
+    "shelter": false,
+    "timber": true
+   }
+  },
+  {
+   "type": "banded-stack",
+   "at": [
+    34,
+    24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "radius": 0.7,
+    "bands": false,
+    "colour": "#8a5a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -15,
+     36
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Aerial photo shows a harbour with moorings and forested hills; only the building group and a pier are modelled, no water, yachts or hillside; building positions approximate."
+ }
+}

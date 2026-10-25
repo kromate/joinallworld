@@ -1,0 +1,88 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1055513557",
+   "used": "real outline of the university block, 16.5 x 11.4 m; the two Commons TEC photos show the San Jose Academic Centre, a different building, so were not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "fit": 17
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d6d3c9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#b5503c",
+    "plinth": 0.4,
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#b5503c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this Cartago block (Commons TEC photos show the San Jose centre); only the 16 m OSM outline, a modest 3-storey concrete block."
+ }
+}

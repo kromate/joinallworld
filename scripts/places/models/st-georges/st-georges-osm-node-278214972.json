@@ -1,0 +1,181 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-osm-node-278214972",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q24679909",
+   "used": "a headland at the south-east tip of Grenada; no structures known, so a low scrub point with rocky shore"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "rock-shelf",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -6
+     ],
+     [
+      -12,
+      -12
+     ],
+     [
+      8,
+      -13
+     ],
+     [
+      24,
+      -8
+     ],
+     [
+      28,
+      2
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      -18,
+      10
+     ],
+     [
+      -28,
+      3
+     ]
+    ],
+    "height": 1.2,
+    "topScale": 0.92,
+    "colour": "#8d8a82",
+    "topColour": "#9a978d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "scrub-mound",
+   "at": [
+    2,
+    4,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -18,
+      -6
+     ],
+     [
+      -4,
+      -9
+     ],
+     [
+      14,
+      -7
+     ],
+     [
+      22,
+      0
+     ],
+     [
+      16,
+      8
+     ],
+     [
+      -6,
+      10
+     ],
+     [
+      -16,
+      5
+     ]
+    ],
+    "z0": 1.2,
+    "height": 2.2,
+    "topScale": 0.5,
+    "colour": "#7f9456",
+    "topColour": "#9aa86a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "lookout-wall",
+   "at": [
+    6,
+    -8,
+    1.2
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#8d8a82"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "water",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -6,
+     4
+    ],
+    "height": 4
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     8,
+     8
+    ],
+    "height": 3.5
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     14,
+     2
+    ],
+    "height": 4
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -12,
+     6
+    ],
+    "height": 3
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or structures known: low rock shelf and scrub mound headland, generic shape not the real coastline."
+ }
+}

@@ -1,0 +1,171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/30087660",
+   "used": "campus extent only (495 x 103 m); the outline is the whole campus so a typical academic block is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Santo_Domingo_Institute_of_Technology",
+   "used": "private university founded 1972; 1970s modernist concrete teaching block around a shaded courtyard"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     90,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.4,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d0bf",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#f2f0ea",
+    "plinth": 0.5,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca2",
+    "material": "membrane",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 5,
+    "height": 3.6,
+    "colour": "#c8c3b4",
+    "columns": 4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -16.5,
+    8
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#6a8794",
+    "posts": false
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#1d3f8f"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    28,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3,
+    "colour": "#9a9a9a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM outline is the whole campus, so a typical U-shaped 1970s block is shown."
+ }
+}

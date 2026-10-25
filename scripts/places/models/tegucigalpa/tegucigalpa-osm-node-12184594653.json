@@ -1,0 +1,89 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1217235082",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 15,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b36b",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bands": "#f0ece0",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.5,
+    "height": 1.2,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-osm-node-12184594653",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Nearest-match OSM outline (29 m); colours and roof assumed from the brief"
+ }
+}

@@ -1,0 +1,427 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-osm-way-168220217",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:WhaleboneArchCathedral.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Travellers & Tinkers",
+   "view": "front",
+   "file": "/tmp/places-evidence/stanley/cathedral1.jpg",
+   "used": "square stone tower with red-brick quoins, bands and arched belfry, clock, steep red pyramidal roof; stone nave with red-brick-trimmed gable and three lancets facing the street; whalebone arch of two curved jaws on a stone plinth in front; low stone wall and timber rail"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/168220217",
+   "used": "plan: tower at the west-front corner, nave, front-projecting gabled transept, chancel, low west annex"
+  }
+ ],
+ "camera": {
+  "yawDeg": -42,
+  "pitchDeg": 6,
+  "fovDeg": 30,
+  "aspect": 0.8,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     19,
+     10
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#85847c",
+    "windows": "pointed",
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a24a36",
+      "height": 0.3
+     }
+    ],
+    "windowRatio": 0.2,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3d",
+    "material": "corrugated",
+    "rise": 5.5,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     6.5,
+     8
+    ]
+   },
+   "at": [
+    8.7,
+    -7.5
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#85847c",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "pointed",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3d",
+    "material": "corrugated",
+    "rise": 6.5,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     6,
+     14
+    ]
+   },
+   "at": [
+    14.3,
+    0.5
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#85847c",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3d",
+    "material": "corrugated",
+    "rise": 3.5,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     7,
+     12
+    ]
+   },
+   "at": [
+    -13,
+    3.5
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#85847c",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3d",
+    "material": "corrugated",
+    "rise": 2.5,
+    "overhang": 0.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    -14.7,
+    -6
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#7d7f79",
+    "windows": "pointed",
+    "windowRatio": 0.12,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "pointed",
+     "left": "pointed",
+     "right": "pointed",
+     "back": "none"
+    },
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a23f2a",
+      "height": 0.4,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#9b4a3a",
+    "material": "corrugated",
+    "rise": 6.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "quoin-nw",
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#a23f2a"
+   },
+   "at": [
+    -17.0,
+    -8.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "quoin-ne",
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#a23f2a"
+   },
+   "at": [
+    -12.4,
+    -8.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "quoin-se",
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#a23f2a"
+   },
+   "at": [
+    -12.4,
+    -3.7
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "jaw-a",
+   "at": [
+    -11,
+    -12,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.5
+    },
+    "points": [
+     [
+      -3.9000000000000004,
+      0,
+      0.0
+     ],
+     [
+      -3.5999999999999996,
+      0,
+      4.800000000000001
+     ],
+     [
+      -1.35,
+      0,
+      8.7
+     ],
+     [
+      1.35,
+      0,
+      9.600000000000001
+     ],
+     [
+      3.5999999999999996,
+      0,
+      6.300000000000001
+     ],
+     [
+      4.5,
+      0,
+      0.30000000000000004
+     ]
+    ],
+    "curve": true,
+    "colour": "#cbb872",
+    "taper": 0.6
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "jaw-b",
+   "at": [
+    -11,
+    -12,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.5
+    },
+    "points": [
+     [
+      3.9000000000000004,
+      0,
+      0.0
+     ],
+     [
+      3.5999999999999996,
+      0,
+      4.800000000000001
+     ],
+     [
+      1.35,
+      0,
+      8.7
+     ],
+     [
+      -1.35,
+      0,
+      9.600000000000001
+     ],
+     [
+      -3.5999999999999996,
+      0,
+      6.300000000000001
+     ],
+     [
+      -4.5,
+      0,
+      0.30000000000000004
+     ]
+    ],
+    "curve": true,
+    "colour": "#c4b068",
+    "taper": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-plinth",
+   "params": {
+    "rect": [
+     8,
+     3
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#9b9a92"
+   },
+   "at": [
+    -11,
+    -12
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "wall",
+   "at": [
+    -12,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 0.9,
+    "thickness": 0.5,
+    "colour": "#8a8a84"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "porch-steps",
+   "at": [
+    -8,
+    -9.0,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#9a998f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 5,
+  "trees": 0,
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "stone is a generic block texture (no red-brick window surrounds, clock, belfry louvres or gable lancet detailing); whalebone arch simplified to two tubes; tower windows plain"
+ }
+}

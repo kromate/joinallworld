@@ -1,0 +1,418 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-airport-toronto-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Outside_Terminal_1,_departure_level_(10056748).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user via Wikimedia Commons",
+   "view": "street",
+   "file": "/tmp/places-evidence/toronto/yyz-dep.jpg",
+   "used": "departures curb: deep flat canopy of white soffit beams and big round white columns, steel-grey metal soffit, curved glazed wall of the hall, yellow-and-dark signage boards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Toronto_Pearson_Airport_Terminal_1_Construction_Feb_05.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ImagePerson",
+   "view": "side",
+   "used": "wave-profile steel roof on slender columns, overhanging swept edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1423202553",
+   "used": "nearest OSM building is only a 43 m annex, so only the overall scale is taken; the 320 m terminal is shown as its central 110 m with two piers"
+  }
+ ],
+ "camera": {
+  "yawDeg": -55,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     96,
+     28
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#aebfc6",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "wave",
+    "rise": 4,
+    "colour": "#b8c0c4",
+    "material": "metal-sheet",
+    "overhang": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     16,
+     40
+    ]
+   },
+   "at": [
+    -34,
+    40
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db2ba",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 9,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "bands": "#e6e8e9"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8c0c4",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     16,
+     36
+    ]
+   },
+   "at": [
+    34,
+    38
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9db2ba",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 9,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "bands": "#e6e8e9"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8c0c4",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 14,
+      "colour": "#c9ced1"
+     }
+    },
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -43,
+     34,
+     6
+    ],
+    "end": [
+     -43,
+     64,
+     6
+    ]
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "height": 48,
+    "style": "round",
+    "colour": "#d8dcde"
+   }
+  },
+  {
+   "type": "lamp",
+   "lod": [
+    0
+   ],
+   "at": [
+    -48,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soffit",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "rect": [
+     104,
+     20
+    ],
+    "z0": 6.2,
+    "height": 0.5,
+    "colour": "#6f767b",
+    "material": "metal-sheet",
+    "topColour": "#e9ebec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-deck",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "rect": [
+     104,
+     20
+    ],
+    "z0": 6.7,
+    "height": 0.9,
+    "colour": "#eceeef",
+    "topColour": "#dfe2e3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       20
+      ],
+      "z0": 5.4,
+      "height": 0.8,
+      "colour": "#f2f3f3"
+     }
+    },
+    "mode": "line",
+    "count": 14,
+    "start": [
+     -48,
+     -30,
+     0
+    ],
+    "end": [
+     48,
+     -30,
+     0
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.7,
+      "n": 12,
+      "z0": 0,
+      "height": 6.2,
+      "colour": "#eeeeea",
+      "material": "smooth-concrete"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -48,
+     -36,
+     0
+    ],
+    "end": [
+     48,
+     -36,
+     0
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.7,
+      "n": 12,
+      "z0": 0,
+      "height": 6.2,
+      "colour": "#eeeeea",
+      "material": "smooth-concrete"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -48,
+     -22,
+     0
+    ],
+    "end": [
+     48,
+     -22,
+     0
+    ],
+    "lod1Step": 2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -36,
+    -39.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.2,
+    "bottom": 3.4,
+    "colour": "#2b2f35",
+    "frameColour": "#f2b705",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6,
+    -39.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.2,
+    "bottom": 3.4,
+    "colour": "#2b2f35",
+    "frameColour": "#f2b705",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    26,
+    -39.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.2,
+    "bottom": 3.4,
+    "colour": "#2b2f35",
+    "frameColour": "#f2b705",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": 0,
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Deep departures canopy with round columns, soffit beams and dark/yellow signboards added, wing/garage removed; still shown as whole-terminal view vs close-up curb photo, glazed hall wall is straight not curved"
+ }
+}

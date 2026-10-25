@@ -1,0 +1,290 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrada_al_Sant%C3%ADsimo_Sacramento_en_el_Santuario_de_Nuestra_Se%C3%B1ora_de_F%C3%A1tima.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Raul Alfredo Artero Moreno",
+   "view": "detail",
+   "file": "/tmp/places-evidence/san-salvador/fatima1.jpg",
+   "used": "interior only: white textured render walls, pointed-arch openings and tall pointed stained windows; no exterior photo exists so massing is typed"
+  },
+  {
+   "kind": "text",
+   "ref": "brief san-salvador-osm-node-7439633333",
+   "used": "24x15 m nave, side bell tower, blue Marian accents, clay tile roof (typed, OSM has only a node)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     24,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee2",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.14,
+    "bay": 4.0,
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a40",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "narthex",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee2",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a40",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe6d6",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a40",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacristy",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    15,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2bd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "at": [
+    -15.5,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "height": 15,
+    "colour": "#f2eee2",
+    "windows": "none",
+    "bay": 3,
+    "trimColour": "#4a74a8"
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    -15.5,
+    -8,
+    15
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6,
+    "cap": "pyramid",
+    "colour": "#f2eee2",
+    "cap_colour": "#4a74a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "blue-band",
+   "at": [
+    -15.5,
+    -8,
+    14
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     4.5
+    ],
+    "height": 0.5,
+    "colour": "#4a74a8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.8,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#d9d2bd"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    7,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#f0ede4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.2,
+    "bottom": 0.6,
+    "colour": "#4a74a8",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -15
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-node-7439633333",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo (only an interior); massing, tower and tile roof are typed from the brief."
+ }
+}

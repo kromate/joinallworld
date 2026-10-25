@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/277045544",
+   "used": "real gabled 16.5 x 7.9 m outline 2.4 m from the node"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Villa_Las_Estrellas",
+   "used": "blue prefab canteen module typical of the village; colours typed from the Commons settlement photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "canteen",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f5f9a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bands": "#e8ecee"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f4a52",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -1.5,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.7,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    3,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 1.5,
+    "colour": "#f2efe6",
+    "frameColour": "#2f5f9a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    7,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 0.9,
+    "tankHeight": 1.6,
+    "legHeight": 1.2,
+    "legs": 4,
+    "colour": "#c8372d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo of the canteen; outline is real, wall and roof colours and the fuel tank are typed."
+ }
+}

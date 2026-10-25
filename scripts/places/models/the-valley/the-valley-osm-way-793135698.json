@@ -1,0 +1,190 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/793135698",
+   "used": "leisure=park outline about 140 x 131 m: sets the field extent; pitch, perimeter fence, small covered stand and floodlights are typed from the type (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    -5,
+    15,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 62,
+    "stripes": 10,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -28,
+     -20
+    ],
+    "end": [
+     18,
+     -20
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "canopy": 3.0,
+    "seatColour": "#3e6f9a",
+    "concreteColour": "#d6d1c4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -48
+     ],
+     [
+      -60,
+      50
+     ],
+     [
+      50,
+      78
+     ],
+     [
+      52,
+      -35
+     ],
+     [
+      44,
+      -50
+     ],
+     [
+      -60,
+      -48
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.1,
+    "kind": "fence",
+    "pillarEvery": 0,
+    "colour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    45,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55,
+    45,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    45,
+    70,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -66,
+     0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -66,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: typed pitch, small stand, fence and floodlights; outline only sets extent"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-osm-way-793135698"
+}

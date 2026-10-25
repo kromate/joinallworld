@@ -1,0 +1,157 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:La_Casita_Blanca_restaurante,_San_Juan,_Puerto_Rico.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Krista",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-juan/casita.jpg",
+   "used": "low whitewashed box, flat roof with parapet, big blank white roof sign board, white lattice porch roof on slim posts, open doorway and barred window, white planter walls, bougainvillea at left, potted plants"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/365942359",
+   "used": "overall size only (19x12 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#fbfaf5",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 4,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e3da",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -6.2,
+    2.7
+   ],
+   "params": {
+    "form": "flat",
+    "width": 13,
+    "depth": 3,
+    "height": 0,
+    "thickness": 0.35,
+    "columns": 3,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.6,
+    3.7
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#f7f6f2",
+    "frameColour": "#e6e3da",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    6,
+    -6.5,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.8,
+    "thickness": 0.35,
+    "kind": "wall",
+    "colour": "#f5f2ea"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.5,
+    "count": 2,
+    "spread": 2,
+    "colour": "#3f7a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7.5,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2,
+    "count": 2,
+    "spread": 1.5,
+    "colour": "#4a8a3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-node-4727907289",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "porch lattice, plants, door and barred window not modelled; shaded wall renders bluish; roof sign and porch placed"
+ }
+}

@@ -1,0 +1,471 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hurstville_Oval_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ArsenalFan20",
+   "view": "front",
+   "file": "/tmp/places-evidence/sydney/oval2.jpg",
+   "used": "low white picket perimeter fence with hedge, big palm, flat green oval, small covered stand at the far left, white scoreboard shed at the far right, trees and light poles"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hurstville_Oval_4.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ArsenalFan20",
+   "view": "side",
+   "used": "curved concrete terrace bank and rim of the oval"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/17499261",
+   "used": "overall extent of the park (174 x 159 m); oval approx 140 x 112 m inside"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.06,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.1,
+    "thickness": 0.12,
+    "colour": "#eeeae0",
+    "points": [
+     [
+      50.0,
+      0.0
+     ],
+     [
+      47.6,
+      12.4
+     ],
+     [
+      40.5,
+      23.5
+     ],
+     [
+      29.4,
+      32.4
+     ],
+     [
+      15.5,
+      38.0
+     ],
+     [
+      0.0,
+      40.0
+     ],
+     [
+      -15.5,
+      38.0
+     ],
+     [
+      -29.4,
+      32.4
+     ],
+     [
+      -40.5,
+      23.5
+     ],
+     [
+      -47.6,
+      12.4
+     ],
+     [
+      -50.0,
+      0.0
+     ],
+     [
+      -47.6,
+      -12.4
+     ],
+     [
+      -40.5,
+      -23.5
+     ],
+     [
+      -29.4,
+      -32.4
+     ],
+     [
+      -15.5,
+      -38.0
+     ],
+     [
+      -0.0,
+      -40.0
+     ],
+     [
+      15.5,
+      -38.0
+     ],
+     [
+      29.4,
+      -32.4
+     ],
+     [
+      40.5,
+      -23.5
+     ],
+     [
+      47.6,
+      -12.4
+     ],
+     [
+      50.0,
+      0.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.03
+   ],
+   "params": {
+    "points": [
+     [
+      48.5,
+      0.0
+     ],
+     [
+      46.2,
+      12.0
+     ],
+     [
+      39.3,
+      22.8
+     ],
+     [
+      28.5,
+      31.4
+     ],
+     [
+      15.0,
+      36.9
+     ],
+     [
+      0.0,
+      38.8
+     ],
+     [
+      -15.0,
+      36.9
+     ],
+     [
+      -28.5,
+      31.4
+     ],
+     [
+      -39.3,
+      22.8
+     ],
+     [
+      -46.2,
+      12.0
+     ],
+     [
+      -48.5,
+      0.0
+     ],
+     [
+      -46.2,
+      -12.0
+     ],
+     [
+      -39.3,
+      -22.8
+     ],
+     [
+      -28.5,
+      -31.4
+     ],
+     [
+      -15.0,
+      -36.9
+     ],
+     [
+      -0.0,
+      -38.8
+     ],
+     [
+      15.0,
+      -36.9
+     ],
+     [
+      28.5,
+      -31.4
+     ],
+     [
+      39.3,
+      -22.8
+     ],
+     [
+      46.2,
+      -12.0
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#5fa03c",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     16,
+     46
+    ],
+    "height": 0.04,
+    "colour": "#6cad47",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -46,
+     -22
+    ],
+    "end": [
+     -46,
+     22
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.3,
+    "seatColour": "#9aa3a8",
+    "concreteColour": "#b7b2a6",
+    "under": "solid",
+    "canopy": {
+     "height": 4.6,
+     "depth": 5,
+     "colour": "#5d6469",
+     "supports": 5
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     16,
+     4
+    ]
+   },
+   "at": [
+    44,
+    36
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#eceee9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eceee9"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -14,
+    -52
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a4533a",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b4a3b",
+    "rise": 1.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    38,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    36,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -4,
+    -47,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    59,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    7,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -55,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -41,
+    -37,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-recreation",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no picket-fence pattern or striped lawn, far stand and scoreboard simplified, trees generic, palm foreground much smaller than in the photo"
+ }
+}

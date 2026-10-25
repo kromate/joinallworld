@@ -1,0 +1,325 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sydney_Town_Hall_(2).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Larry Koester",
+   "view": "front",
+   "file": "/tmp/places-evidence/sydney/th2.jpg",
+   "used": "yellow-block sandstone colour, arched window bays with paired pilasters, pedimented central breakfront, domed corner pavilions, clock tower at right of the front, mansard slate roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/104948253",
+   "used": "overall size 96 x 56 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.1,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     62,
+     38
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c8a06a",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 6.5,
+    "plinth": 1.4,
+    "cornice": true,
+    "bands": "#b38a55",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a4d52",
+    "material": "slate",
+    "pitch": 38,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    8,
+    -6
+   ],
+   "height": 46,
+   "storeys": 7,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c39a62",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "bay": 9,
+    "cornice": true,
+    "bands": "#b38a55",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#7a5a3c",
+    "material": "slate",
+    "rise": 9,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-l",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -23,
+    -14.5
+   ],
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c8a06a",
+    "windows": "none",
+    "cornice": true,
+    "plinth": 1.4,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#4a4d52",
+    "material": "slate",
+    "rise": 4.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-r",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    27,
+    -14.5
+   ],
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#c8a06a",
+    "windows": "none",
+    "cornice": true,
+    "plinth": 1.4,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#4a4d52",
+    "material": "slate",
+    "rise": 4.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-back",
+   "footprint": {
+    "rect": [
+     44,
+     26
+    ]
+   },
+   "at": [
+    0,
+    32
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#bf9760",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d52",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/portico",
+   "at": [
+    8,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 3.5,
+    "height": 11,
+    "columns": 4,
+    "pediment": false,
+    "steps": 5,
+    "colour": "#d0ac78",
+    "roofColour": "#b38a55"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/steps",
+   "at": [
+    -8,
+    -19.5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 1.4,
+    "run": 1.0,
+    "count": 5,
+    "colour": "#bd9660"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/spire",
+   "at": [
+    8,
+    -6,
+    55
+   ],
+   "params": {
+    "baseWidth": 1.6,
+    "height": 8,
+    "colour": "#6b5a46",
+    "finial": true
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/spire",
+   "at": [
+    -23,
+    -14.5,
+    27.5
+   ],
+   "params": {
+    "baseWidth": 1.4,
+    "height": 5,
+    "colour": "#6b5a46"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/spire",
+   "at": [
+    27,
+    -14.5,
+    27.5
+   ],
+   "params": {
+    "baseWidth": 1.4,
+    "height": 5,
+    "colour": "#6b5a46"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/tree",
+   "at": [
+    -36,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 9,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-community-voting-game",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Second Empire ornament, domed corner pavilions, balconies and the clock-tower belfry/cupola are simplified; roof is hip not mansard (LOD1 budget); tower is a plain pyramid-capped shaft"
+ }
+}

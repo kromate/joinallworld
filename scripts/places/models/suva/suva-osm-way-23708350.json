@@ -1,0 +1,212 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-osm-way-23708350",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/23708350",
+   "used": "real 99 x 96 m outline as the arena base; Wikipedia (Vodafone Arena, Fiji) for 2003 South Pacific Games domed arena, ex FMF Dome, 4000 capacity"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d8d9",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "bands": "#2f6aa0",
+    "plinth": 0.6,
+    "pattern": {
+     "type": "bands"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a3",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    9
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#a7adb1",
+    "topColour": "#9aa0a3",
+    "profile": [
+     [
+      0,
+      24.2
+     ],
+     [
+      10,
+      23.2
+     ],
+     [
+      20,
+      20.4
+     ],
+     [
+      30,
+      15.6
+     ],
+     [
+      38,
+      9.4
+     ],
+     [
+      42,
+      3.5
+     ],
+     [
+      44,
+      0
+     ]
+    ],
+    "bottomCap": false
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    8.6
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#2f6aa0",
+    "profile": [
+     [
+      44.5,
+      0
+     ],
+     [
+      44.5,
+      1.6
+     ],
+     [
+      44,
+      1.6
+     ],
+     [
+      44,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    -8,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 6,
+    "height": 5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f2f2ee",
+    "roofColour": "#2f6aa0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    18,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 1.5,
+    "colour": "#2f6aa0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -70,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; dome inferred from the former FMF Dome name"
+ }
+}

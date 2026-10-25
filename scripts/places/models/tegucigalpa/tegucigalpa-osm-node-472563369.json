@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-osm-node-472563369",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.openstreetmap.org/node/472563369",
+   "used": "point only; typical small private hospital: 45 x 20 m two storeys, painted render with green accent band, ribbon windows, hip tile roof, covered drop-off, ambulance bay"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     45,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "bay": 4.5,
+    "plinth": 0.6,
+    "bands": "#2f7a5a",
+    "glassColour": "#4a6a72",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5532f",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -12
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f7a5a",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "glassColour": "#4a6a72",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca3",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy-fascia",
+   "at": [
+    10,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 2,
+    "round": false,
+    "colour": "#f0ece0",
+    "roofColour": "#2f7a5a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    19,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.4,
+    "bottom": 2.2,
+    "colour": "#f0ece0",
+    "frameColour": "#2f7a5a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     18
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ }
+}

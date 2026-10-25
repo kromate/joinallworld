@@ -1,0 +1,175 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q5244825",
+   "used": "Vila Madalena metro station (1998, Line 2 green); the commons photos show the platform interior only, so a modest street entrance in grey concrete with a green line sign board was composed; the OSM match is the unrelated Helbor tower and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     13
+    ]
+   },
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bfc3c4",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#a9adb0",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9adb0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#c9cccd"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.8,
+    "bottom": 4.7,
+    "colour": "#1f8f6a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -9,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 0.5,
+    "run": 1,
+    "count": 6,
+    "colour": "#b4b7b8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -20,
+     0
+    ],
+    "end": [
+     12,
+     -20,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 6
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     12
+    ],
+    "height": 6.5,
+    "colour": "#d9a441",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-transit",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo and wrong OSM match; a generic street entrance for the Line 2 station, not the real design."
+ }
+}

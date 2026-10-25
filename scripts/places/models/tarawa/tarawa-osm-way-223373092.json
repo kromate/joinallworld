@@ -1,0 +1,385 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bairiki_National_Stadium,_Tarawa,_Kiribati.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Flexmaen",
+   "view": "front",
+   "file": "/tmp/places-evidence/tarawa/stadium.jpg",
+   "used": "single covered stand on the left: long low concrete base, flat raked bleachers, dark green steel roof on slim posts, open sides; bare dusty field, concrete court, palms behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/223373092",
+   "used": "overall size only (227 x 151 m); modelled portion is the stand and the near field"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.78,
+  "margin": 0.05,
+  "shiftX": 0.2
+ },
+ "parts": [
+  {
+   "type": "core/prism",
+   "id": "dry-grass",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     160,
+     100
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#b09a6a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "dust-1",
+   "at": [
+    -20,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     14
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#bdbab0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "dust-2",
+   "at": [
+    35,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     10
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#b5b0a2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "road",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     5
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#8f9092"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "road-pale",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     7
+    ],
+    "z0": 0,
+    "height": 0.07,
+    "colour": "#c4c3bc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stand-base",
+   "footprint": {
+    "rect": [
+     62,
+     2.4
+    ]
+   },
+   "at": [
+    -32,
+    10.5
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b7ae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aea5"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -63,
+     12
+    ],
+    "end": [
+     -1,
+     12
+    ],
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "seatColour": "#a9abab",
+    "concreteColour": "#c2c0b8",
+    "closeEnds": true
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 8.4,
+      "colour": "#d8d8d2"
+     }
+    },
+    "start": [
+     -62,
+     22
+    ],
+    "end": [
+     -2,
+     22
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 8.4,
+      "colour": "#d8d8d2"
+     }
+    },
+    "start": [
+     -62,
+     10
+    ],
+    "end": [
+     -2,
+     10
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "roof-deck",
+   "at": [
+    -32,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     66,
+     15
+    ],
+    "z0": 8.4,
+    "height": 2.2,
+    "colour": "#2f4a38"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "roof-hip",
+   "at": [
+    -32,
+    16,
+    0
+   ],
+   "params": {
+    "rect": [
+     66,
+     15
+    ],
+    "z0": 8.9,
+    "height": 1.6,
+    "colour": "#3d5a45",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -26,
+    3,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "court",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     28
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#a3a5a0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "court-line-1",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     36,
+     0.2
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#e8e8e2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "court-line-2",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     24
+    ],
+    "z0": 0,
+    "height": 0.14,
+    "colour": "#e8e8e2"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "court-pole",
+   "at": [
+    22,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "width": 160,
+    "depth": 14,
+    "count": 50,
+    "kind": "broadleaf",
+    "min_height": 8,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    40,
+    0
+   ],
+   "params": {
+    "width": 150,
+    "depth": 10,
+    "count": 35,
+    "kind": "palm",
+    "min_height": 10,
+    "max_height": 15
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stand roof still reads thin from the far camera and the ground pad is a flat beige pad outside the site; trees denser mixed broadleaf+palm but not a continuous canopy; road/court simplified; only stand and near field modelled"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-way-223373092"
+}

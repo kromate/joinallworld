@@ -1,0 +1,237 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1303203230",
+   "used": "identity only: the 790 x 580 m campus polygon is too big, a representative cluster of about 100 x 70 m is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "brief suva-community-workshop",
+   "used": "vocational campus: low concrete workshop sheds and a classroom block round a courtyard, teal trim, grey corrugated roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    -18,
+    -22
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcd8c8",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#4f7f8f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f92",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-a",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    -30,
+    10
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3cfbf",
+    "windows": "louvre",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f92",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-b",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    10,
+    18
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dcd8c8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f92",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-c",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    40,
+    0
+   ],
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e0d0",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "bands": "#4f7f8f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f92",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    -18,
+    -28.5,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 2.2,
+    "eaveHeight": 2.7,
+    "attachHeight": 3.9,
+    "colour": "#4f7f8f",
+    "roofColour": "#8a8f92"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#68b4e0",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#4f7f8f",
+    "frameColour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; cluster of sheds is representative, not the real campus layout."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-community-workshop"
+}

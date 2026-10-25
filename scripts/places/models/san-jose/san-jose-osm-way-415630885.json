@@ -1,0 +1,335 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-osm-way-415630885",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Okayama_al_norte.jpg",
+   "licence": "Public domain",
+   "author": "ArquiWHAT (assumed)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/san-jose/oka1.jpg",
+   "used": "layout: pink oval stage disc, stepped benches behind, curved cobble paths, red-tiled hip gazebo far right, rock-edged pond left, lamp posts, big shade tree"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ParqueOkayama.jpg",
+   "licence": "Public domain",
+   "author": "ArquiWHAT (assumed)",
+   "view": "detail",
+   "file": "/tmp/places-evidence/san-jose/oka2.jpg",
+   "used": "Japanese garden pond with stone lantern, bamboo grove, clipped conifers, rock edging"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/415630885",
+   "used": "park outline 164 x 61 m (lawn plate)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#79a04f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -24,
+    -24,
+    0.5
+   ],
+   "params": {
+    "width": 44,
+    "depth": 28,
+    "shape": "oval",
+    "colour": "#7f9a88",
+    "bank": true
+   }
+  },
+  {
+   "type": "mosque-domed/stone-lantern",
+   "at": [
+    -8,
+    -14,
+    0.5
+   ],
+   "params": {
+    "scale": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stage",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     36,
+     22
+    ]
+   },
+   "at": [
+    16,
+    6
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c58a82",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6948c"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "stage-inner",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    12,
+    3
+   ],
+   "z0": 1.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b86f68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b96f69"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     20,
+     24,
+     0.5
+    ],
+    "end": [
+     20,
+     40,
+     0.5
+    ],
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       18,
+       0.9
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 0.5,
+     "storeys": 1,
+     "wall": {
+      "material": "concrete",
+      "colour": "#a9a59c",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#b3afa6"
+     }
+    }
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    38,
+    52,
+    0.5
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "height": 4.5,
+    "kind": "hip",
+    "roof_colour": "#b2402f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -30,
+      -44
+     ],
+     [
+      -18,
+      -4
+     ],
+     [
+      -8,
+      18
+     ],
+     [
+      6,
+      26
+     ],
+     [
+      24,
+      40
+     ],
+     [
+      34,
+      44
+     ]
+    ],
+    "width": 4.5,
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -40,
+      10
+     ],
+     [
+      -12,
+      4
+     ],
+     [
+      2,
+      -2
+     ]
+    ],
+    "width": 4.5,
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    22,
+    -4,
+    0.5
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -36,
+    0.5
+   ],
+   "params": {
+    "kind": "bamboo",
+    "height": 12,
+    "count": 5,
+    "spread": 5,
+    "colour": "#4e7a38"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -34,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -32,
+    -10,
+    0.5
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 5,
+    "count": 4,
+    "spread": 8,
+    "colour": "#7f9b3c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    10,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Layout is the photo's (oval pink stage, stepped benches, red-tile hip gazebo, pond with lantern, bamboo/conifers) but positions are approximate on the OSM plate; no cobble paving texture, rocks, or the surrounding street shops; lamps simplified."
+ }
+}

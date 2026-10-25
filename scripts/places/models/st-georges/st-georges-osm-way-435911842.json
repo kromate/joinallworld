@@ -1,0 +1,160 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/435911842",
+   "used": "real outline 10.6 x 9.4 m, slightly skewed rectangle"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "tiny coastal bar-restaurant, blue and yellow paint, louvres, open veranda"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.4,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fa6c4",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bay": 2.2,
+    "bands": "#e5c56a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2523a",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "id": "veranda",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 9,
+    "depth": 2.4,
+    "height": 2.8,
+    "roof": "lean-to",
+    "steps": true,
+    "balustrade": true,
+    "roof_colour": "#a2523a",
+    "wall_colour": "#e5c56a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    7,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.0,
+    "bottom": 1.4,
+    "colour": "#e5c56a",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "array",
+   "id": "tables",
+   "params": {
+    "of": {
+     "type": "beach-row",
+     "params": {
+      "count": 1,
+      "umbrellas": true,
+      "loungers": false,
+      "colours": [
+       "#e5c56a",
+       "#ffffff"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -12
+    ],
+    "end": [
+     6,
+     -12
+    ],
+    "count": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     11,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     8
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-osm-way-435911842",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; paint colours and veranda are typed on the real 10x9 m outline"
+ }
+}

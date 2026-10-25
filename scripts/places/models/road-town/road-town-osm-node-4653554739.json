@@ -1,0 +1,219 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/521982426",
+   "used": "28 m2 shelter outline, nearest match 6.6 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: rocky point with small beach shelter and railings; Wikidata Q31919120 is a point"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "polygon": [
+     [
+      -3.3,
+      -0.6
+     ],
+     [
+      -1.9,
+      2.7
+     ],
+     [
+      1.1,
+      3.1
+     ],
+     [
+      3.3,
+      0.5
+     ],
+     [
+      2.1,
+      -2.5
+     ],
+     [
+      -1.1,
+      -3.1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9b2a2",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8372f",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "rail",
+    "colour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.6,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "colour": "#4d7a5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rock1",
+   "footprint": {
+    "polygon": [
+     [
+      -4,
+      -2
+     ],
+     [
+      0,
+      -3
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      -3,
+      2
+     ]
+    ]
+   },
+   "at": [
+    14,
+    2
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a7c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d978a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rock2",
+   "footprint": {
+    "polygon": [
+     [
+      -3,
+      -2
+     ],
+     [
+      2,
+      -3
+     ],
+     [
+      4,
+      1
+     ],
+     [
+      -1,
+      3
+     ]
+    ]
+   },
+   "at": [
+    19,
+    -4
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a7c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d978a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; real tiny shelter outline plus rail, steps, palms and a few rocks from the brief; sea and headland shape not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-osm-node-4653554739"
+}

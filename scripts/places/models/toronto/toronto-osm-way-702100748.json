@@ -1,0 +1,387 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-way-702100748",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tyndale_University.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Silver Dovelet",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/m15-tyndale.jpg",
+   "used": "buff stone chapel gable with a slim green copper spire, maroon tile roofs, low glazed link, long low stone wing on the left, big stone block with red roof at right, wide lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/702100748",
+   "used": "campus outline is 632 x 459 m: only the chapel-and-entrance range is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -2,
+  "pitchDeg": 1.5,
+  "fovDeg": 60,
+  "aspect": 2.24,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -36,
+    13
+   ],
+   "rotDeg": 5,
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbbd9c",
+    "windows": "punched",
+    "windowRatio": 0.09,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#a0553f",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5e2a2c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-link",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -9,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a3238",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#1d262c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    8,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbbd9c",
+    "windows": "pointed-arch",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "left": "pointed-arch",
+     "right": "pointed-arch"
+    },
+    "plinth": 0.5,
+    "trimColour": "#a0553f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5e2a2c",
+    "material": "clay-tile",
+    "pitch": 45,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    42,
+    20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbbd9c",
+    "windows": "punched",
+    "windowRatio": 0.09,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5e2a2c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    8,
+    20,
+    15.5
+   ],
+   "params": {
+    "baseWidth": 2.2,
+    "height": 17,
+    "shaftHeight": 2,
+    "sides": 4,
+    "colour": "#5aa08a",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 1,
+    "spread": 9,
+    "colour": "#6aa83a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1,
+    "spread": 6,
+    "colour": "#6a3a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12,
+    "count": 1,
+    "spread": 7,
+    "colour": "#2f5a3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 4.5,
+    "bottom": 0,
+    "colour": "#f2f2f2",
+    "frameColour": "#4a2f7a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rotunda",
+   "footprint": {
+    "polygon": [
+     [
+      4.5,
+      0.0
+     ],
+     [
+      4.16,
+      1.72
+     ],
+     [
+      3.18,
+      3.18
+     ],
+     [
+      1.72,
+      4.16
+     ],
+     [
+      0.0,
+      4.5
+     ],
+     [
+      -1.72,
+      4.16
+     ],
+     [
+      -3.18,
+      3.18
+     ],
+     [
+      -4.16,
+      1.72
+     ],
+     [
+      -4.5,
+      0.0
+     ],
+     [
+      -4.16,
+      -1.72
+     ],
+     [
+      -3.18,
+      -3.18
+     ],
+     [
+      -1.72,
+      -4.16
+     ],
+     [
+      -0.0,
+      -4.5
+     ],
+     [
+      1.72,
+      -4.16
+     ],
+     [
+      3.18,
+      -3.18
+     ],
+     [
+      4.16,
+      -1.72
+     ]
+    ]
+   },
+   "at": [
+    -12,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f9aa0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#6f8a92",
+    "trimColour": "#f2f2f2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8680"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -47,
+    3,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6,
+    "depth": 5,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#7a5a3a",
+    "edgeColour": "#5a4028",
+    "axis": "x"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Chapel is a taller stone gable with maroon roof and spire; atrium is a dark glass box with a small rotunda, no round window or wooden-post canopy detail; wings only slightly angled; campus far larger."
+ }
+}

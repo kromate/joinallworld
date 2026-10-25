@@ -1,0 +1,338 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "roseau",
+ "venueId": "roseau-osm-way-145400476",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dominica_Botanical_Gardens_(1).jpg",
+   "licence": "see Commons",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/roseau/bg2.jpg",
+   "used": "wide open lawn, big spreading trees, white low building and long low block at the lawn edge, hills behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dominica_Botanic_Gardens_02_2025_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Concord",
+   "view": "street",
+   "file": "/tmp/places-evidence/roseau/bg1.jpg",
+   "used": "the big banyan with a curtain of aerial roots beside the road, a yellow minibus parked next to it"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/145400476",
+   "used": "park of 16 ha, 552 m long; only the lawn near the entrance (about 118 m) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.58,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "polygon": [
+     [
+      -58,
+      -40
+     ],
+     [
+      58,
+      -44
+     ],
+     [
+      60,
+      30
+     ],
+     [
+      20,
+      48
+     ],
+     [
+      -56,
+      40
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6b8f5a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#74a05a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-house",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -22,
+    26
+   ],
+   "z0": 0.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a9d9f",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "long-block",
+   "footprint": {
+    "rect": [
+     28,
+     8
+    ]
+   },
+   "at": [
+    -42,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0.5,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e1d6",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b9bcc0",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-building",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    18,
+    36
+   ],
+   "z0": 0.5,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfe9dc",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f7a52",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    38,
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.5,
+      "ellipse": [
+       4.2,
+       3.6
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       2.6,
+       2.4
+      ]
+     },
+     {
+      "z": 7,
+      "ellipse": [
+       2.2,
+       2.0
+      ]
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       1.4,
+       1.4
+      ]
+     }
+    ],
+    "colour": "#8a7358"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 22,
+    "count": 1,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 24,
+    "count": 1,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 1,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 8,
+    "line": 10
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    26,
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#e7b43a",
+    "stripe": "#ffffff",
+    "count": 1,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -43,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 0.5,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#b9b2a2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Trees are generic broadleaf blobs; banyan aerial roots are a tapered trunk only; only the entrance lawn of the 552 m garden is modelled."
+ }
+}

@@ -1,0 +1,559 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-way-4385854",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SkodaStadiumSouthernEnd.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "MasterMind5991",
+   "view": "interior",
+   "file": "/tmp/places-evidence/sydney/sh2.jpg",
+   "used": "members stand: two curved cantilever roofs with pale underside, red seat blocks with aisles, glazed concourse band, red lattice floodlight masts behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sydney_Showground_Stadium,_GWS_vs_Collingwood,_March_2024.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "unknown",
+   "view": "interior",
+   "file": "/tmp/places-evidence/sydney/sh1.jpg",
+   "used": "overall bowl: four red floodlight pylons, roofed stands on the long sides, lower open end stands"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/4385854",
+   "used": "overall size only (the outline includes the surrounding plaza); bowl rebuilt as an oval of 96 x 76 m field"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      48.0,
+      0.0
+     ],
+     [
+      47.27,
+      6.6
+     ],
+     [
+      45.11,
+      13.0
+     ],
+     [
+      41.57,
+      19.0
+     ],
+     [
+      36.77,
+      24.43
+     ],
+     [
+      30.85,
+      29.11
+     ],
+     [
+      24.0,
+      32.91
+     ],
+     [
+      16.42,
+      35.71
+     ],
+     [
+      8.34,
+      37.42
+     ],
+     [
+      0.0,
+      38.0
+     ],
+     [
+      -8.34,
+      37.42
+     ],
+     [
+      -16.42,
+      35.71
+     ],
+     [
+      -24.0,
+      32.91
+     ],
+     [
+      -30.85,
+      29.11
+     ],
+     [
+      -36.77,
+      24.43
+     ],
+     [
+      -41.57,
+      19.0
+     ],
+     [
+      -45.11,
+      13.0
+     ],
+     [
+      -47.27,
+      6.6
+     ],
+     [
+      -48.0,
+      0.0
+     ],
+     [
+      -47.27,
+      -6.6
+     ],
+     [
+      -45.11,
+      -13.0
+     ],
+     [
+      -41.57,
+      -19.0
+     ],
+     [
+      -36.77,
+      -24.43
+     ],
+     [
+      -30.85,
+      -29.11
+     ],
+     [
+      -24.0,
+      -32.91
+     ],
+     [
+      -16.42,
+      -35.71
+     ],
+     [
+      -8.34,
+      -37.42
+     ],
+     [
+      -0.0,
+      -38.0
+     ],
+     [
+      8.34,
+      -37.42
+     ],
+     [
+      16.42,
+      -35.71
+     ],
+     [
+      24.0,
+      -32.91
+     ],
+     [
+      30.85,
+      -29.11
+     ],
+     [
+      36.77,
+      -24.43
+     ],
+     [
+      41.57,
+      -19.0
+     ],
+     [
+      45.11,
+      -13.0
+     ],
+     [
+      47.27,
+      -6.6
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#3f7d3a",
+    "topColour": "#4a8c40"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 48,
+    "radiusY": 38,
+    "startDeg": 20,
+    "endDeg": 160,
+    "rows": 14,
+    "facetDeg": 16,
+    "seatColour": "#c8342c",
+    "under": "solid",
+    "concreteColour": "#9ea1a3",
+    "backWall": 1,
+    "canopy": {
+     "height": 12,
+     "depth": 13,
+     "colour": "#8e9296",
+     "slopeDeg": 6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "far-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 48,
+    "radiusY": 38,
+    "startDeg": 200,
+    "endDeg": 340,
+    "rows": 11,
+    "facetDeg": 16,
+    "seatColour": "#c8342c",
+    "under": "solid",
+    "concreteColour": "#9ea1a3",
+    "canopy": {
+     "height": 9.5,
+     "depth": 8,
+     "colour": "#8e9296",
+     "slopeDeg": 4
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "east-end",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 48,
+    "radiusY": 38,
+    "startDeg": -20,
+    "endDeg": 20,
+    "rows": 8,
+    "facetDeg": 16,
+    "seatColour": "#b8372f",
+    "under": "solid",
+    "concreteColour": "#9ea1a3"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "west-end",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 48,
+    "radiusY": 38,
+    "startDeg": 160,
+    "endDeg": 200,
+    "rows": 8,
+    "facetDeg": 16,
+    "seatColour": "#b8372f",
+    "under": "solid",
+    "concreteColour": "#9ea1a3"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -52,
+    40,
+    0
+   ],
+   "params": {
+    "colour": "#c0392b",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 41.6,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 52,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 52.1,
+      "rect": [
+       6,
+       2.6
+      ],
+      "colour": "#b8bcc0"
+     },
+     {
+      "z": 54.6,
+      "rect": [
+       6,
+       2.6
+      ],
+      "colour": "#e8ecef"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    58,
+    0
+   ],
+   "params": {
+    "colour": "#c0392b",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 41.6,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 52,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 52.1,
+      "rect": [
+       6,
+       2.6
+      ],
+      "colour": "#b8bcc0"
+     },
+     {
+      "z": 54.6,
+      "rect": [
+       6,
+       2.6
+      ],
+      "colour": "#e8ecef"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    52,
+    40,
+    0
+   ],
+   "params": {
+    "colour": "#c0392b",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 41.6,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 52,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 52.1,
+      "rect": [
+       6,
+       2.6
+      ],
+      "colour": "#b8bcc0"
+     },
+     {
+      "z": 54.6,
+      "rect": [
+       6,
+       2.6
+      ],
+      "colour": "#e8ecef"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "colour": "#c0392b",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 41.6,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 52,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 52.1,
+      "rect": [
+       6,
+       2.6
+      ],
+      "colour": "#b8bcc0"
+     },
+     {
+      "z": 54.6,
+      "rect": [
+       6,
+       2.6
+      ],
+      "colour": "#e8ecef"
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     14,
+     2.5
+    ]
+   },
+   "at": [
+    62,
+    0
+   ],
+   "rotDeg": 90,
+   "z0": 6,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2b2e33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2e33"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Roofs are straight canopies not curved shells; stands are uniform arcs without aisles or the glazed concourse; scoreboard and lights approximate."
+ }
+}

@@ -1,0 +1,215 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "small district hospital: two-storey ward block with hipped metal roof, ambulance bay, red cross plate; OSM maps only an 8 x 5 m annex (way/1356177876) inside a 6183 m2 hospital area, so the main block size is estimated"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     45,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.4,
+   "height": 7.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bay": 3.0,
+    "bands": "#7fa6bd"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2523a",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic-wing",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    -15,
+    -16
+   ],
+   "z0": 0.4,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e1cc",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 3.0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2523a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    30,
+    14
+   ],
+   "z0": 0.3,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2523a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "bay",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "height": 3.6,
+    "columns": 3,
+    "colour": "#efe9da",
+    "roofColour": "#7fa6bd",
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "id": "cross",
+   "at": [
+    -2,
+    -7.9,
+    5.2
+   ],
+   "params": {
+    "size": 2.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.2,
+    "bottom": 1.6,
+    "colour": "#7fa6bd",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    -2,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 8,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     16
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-osm-way-439102912",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM maps only an 8x5 m annex, ward block size and layout are estimated"
+ }
+}

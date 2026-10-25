@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "west-island",
+ "venueId": "west-island-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/west-island.json#west-island-recreation",
+   "used": "authored game venue: 40 x 30 m palm-shaded open space with a small pitch, pavilion, kiosk and low rail; the OSM nearest match is the police station and is not used"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cocos_Island_Atoll.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "PalawanOz",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/west-island/atoll.jpg",
+   "used": "Island setting only: flat open ground and palm cover"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    -6,
+    6,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "width": 20,
+    "stripes": 4,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    13,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.2,
+    "posts": 6,
+    "colour": "#d8c9a6",
+    "cap_colour": "#a14a3c"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#4f6f5c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 0.9,
+    "thickness": 0.1,
+    "colour": "#ffffff",
+    "points": [
+     [
+      -20,
+      -14
+     ],
+     [
+      20,
+      -14
+     ]
+    ]
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     3
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     21,
+     14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     18
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -12
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this place; layout typed from the brief."
+ }
+}

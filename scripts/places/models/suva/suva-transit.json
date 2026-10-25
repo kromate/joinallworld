@@ -1,0 +1,134 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/719057174",
+   "used": "building outline 73 x 35 m (nearest match, 18 m, untagged; plausible harbour shed)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "concrete jetty into Suva Harbour with covered waiting shed, corrugated roof, blue accent cladding, open quay"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    75
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfd2d1",
+    "windows": "none",
+    "plinth": 0.6,
+    "bands": "#2f6aa0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6f72",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2,
+    "bottom": 5,
+    "colour": "#2f6aa0",
+    "posts": false
+   }
+  },
+  {
+   "type": "quay",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "depth": 30,
+    "water_depth": 34,
+    "bollards": true
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 28,
+    "width": 7,
+    "shelter": true,
+    "colour": "#cfd2d1",
+    "roof_colour": "#6b6f72"
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    10,
+    20,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "width": 3,
+    "colour": "#2f6aa0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    60,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo; outline is untagged nearest match; quay, jetty and boat typed from brief"
+ }
+}

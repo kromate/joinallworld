@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-airport-wellington-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wellington_airport_aerial.jpg",
+   "licence": "Attribution (Land Information New Zealand)",
+   "author": "Land Information New Zealand",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/wellington/airport.jpg",
+   "used": "terminal plan: one large pale-roofed terminal block with piers/jet bridges to the south and a smaller domestic wing, apron to the south, runway beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1160300187",
+   "used": "main terminal footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90,
+    "fit": 110
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb0b5",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d6",
+    "material": "metal-sheet",
+    "overhang": 2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rock",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     44,
+     26
+    ]
+   },
+   "at": [
+    38,
+    -6
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6f7f6a",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "curved",
+    "colour": "#7b8a74",
+    "material": "copper",
+    "rise": 6,
+    "curve": "arch"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "domestic",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    -34,
+    -14
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8cccc",
+    "material": "metal-sheet",
+    "overhang": 2.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     70,
+     9
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a4b4b8",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d2d2",
+    "material": "metal-sheet",
+    "overhang": 1
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -62,
+    24,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "round",
+    "colour": "#d8d8d6"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -24,
+    32,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    0,
+    32,
+    3
+   ],
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    24,
+    32,
+    3
+   ],
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    0,
+    60,
+    0
+   ],
+   "params": {
+    "scale": 0.9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only an aerial photo exists so no facade comparison; copper Rock roof, leaning tower and pier are approximate"
+ }
+}

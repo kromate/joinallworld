@@ -1,0 +1,197 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/938227316",
+   "used": "3.6 x 3.2 m footprint of the lookout"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Flamingo%27s_at_Jan_Kok_(31200734795).jpg",
+   "licence": "CC BY 2.0",
+   "author": "-JvL-",
+   "view": "detail",
+   "used": "setting only: shallow grey brackish lagoon, stony bund and mangrove scrub at Jan Kok salt pans; the tower itself is not in any photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "height": 3.0,
+     "wall": {
+      "material": "timber",
+      "colour": "#7d6444",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#7d6444"
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 3.0,
+    "dy": 2.6,
+    "centred": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     3.6
+    ],
+    "z0": 3.0,
+    "height": 0.25,
+    "colour": "#9a7a56",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cabin",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.0
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.25,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a7a56",
+    "windows": "none",
+    "faces": {
+     "front": "ribbon"
+    },
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c99a4a",
+    "material": "timber-shingle",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    -1.9,
+    3.25
+   ],
+   "params": {
+    "length": 4.0,
+    "height": 1.0,
+    "colour": "#7d6444"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -3.0,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 3.5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 10,
+    "count": 9,
+    "min_height": 2,
+    "max_height": 4
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 40,
+    "colour": "#8fa3ad",
+    "bank": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "The tower is in no photo; a generic timber bird hide on legs, only the lagoon setting comes from photos."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-osm-node-295322115"
+}

@@ -1,0 +1,341 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-osm-way-1494357523",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20190719_03_Iglesia_de_Santa_Rosa.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carlos Figueroa Rojas",
+   "view": "front",
+   "file": "/tmp/places-evidence/santiago/rosa0.jpg",
+   "used": "tall cream-stucco gabled nave with shaped baroque front gable and cross, lower aisle on the left with terracotta lean-to roof, pilasters and arched windows, dark fieldstone plinth, arched niche portal with statue and glazed shrine, grey sheet roof with clerestory strip, low parish hall on the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Iglesia_de_Santa_Rosa,_Lo_Barnechea,_Santiago_20250818_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carlos Figueroa Rojas",
+   "view": "front",
+   "file": "/tmp/places-evidence/santiago/rosa1.jpg",
+   "used": "bay count of the side aisle (about 8 bays), plinth stone and plaza steps at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1494357523",
+   "used": "name-matched footprint 47 x 22 m, bearing 74 degrees (long axis)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -42,
+  "pitchDeg": 4,
+  "fovDeg": 46,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     15,
+     40
+    ]
+   },
+   "at": [
+    2,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9d0b4",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle",
+   "footprint": {
+    "rect": [
+     6.5,
+     34
+    ]
+   },
+   "at": [
+    -8.9,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d4caa8",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "arched",
+     "front": "none"
+    },
+    "bay": 4.4,
+    "plinth": 1.0,
+    "groundKind": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b0613f",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    2,
+    -17.5,
+    0
+   ],
+   "params": {
+    "colour": "#d6ccae",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       15.6,
+       2.4
+      ]
+     },
+     {
+      "z": 12.4,
+      "rect": [
+       15.6,
+       2.4
+      ]
+     },
+     {
+      "z": 16.5,
+      "rect": [
+       9,
+       2.4
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       1.4,
+       2.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     6.5,
+     5
+    ]
+   },
+   "at": [
+    -8.9,
+    -17.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9d0b4",
+    "windows": "none",
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a99a82",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     18,
+     24
+    ]
+   },
+   "at": [
+    19,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dcc6",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 1.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4b0a6",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    2,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 6.2,
+    "height": 8.6,
+    "depth": 0.7,
+    "archWidth": 3.2,
+    "springHeight": 5.4,
+    "colour": "#7e7b76"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -19.6,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#eeeae0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -19.7,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.4
+    ],
+    "height": 2.7,
+    "colour": "#a8c3cf",
+    "top": true
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    2,
+    -17.5,
+    20.2
+   ],
+   "params": {
+    "height": 3.4,
+    "colour": "#3a3a3c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 6,
+    "height": 1.2,
+    "thickness": 0.5,
+    "colour": "#575a5c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#7a7a76"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -2,
+    -23,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -14
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Front gable is a plain loft without the shaped baroque scrolls; niche portal and statue simplified; aisle windows are not arched cuts with pilasters; stone plinth is plain; hall at right is a generic block."
+ }
+}

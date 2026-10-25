@@ -1,0 +1,322 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaren",
+ "venueId": "yaren-airport-yaren-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nauru_Airport_Terminal_Building.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carbacca",
+   "view": "front",
+   "file": "/tmp/places-evidence/yaren/airport2.jpg",
+   "used": "landside front: long low terminal, pale corrugated hip roof with blue edge line, brick piers with yellow fascia and dark glazing, raised glazed clerestory block, small square control tower with dark cab, forecourt parking"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:View_of_Nauru_airport.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Cedric Favero",
+   "view": "aerial",
+   "used": "setting: terminal sits on a thin coastal strip beside the runway with vegetation behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/107982310",
+   "used": "terminal size 62 x 22 m, two levels tag"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 9,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -17,
+    0
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d2",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "none"
+    },
+    "bands": {
+     "colour": "#d9d56a",
+     "height": 0.9
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d4d9dc",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d2",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": {
+     "colour": "#d9d56a",
+     "height": 0.9
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d4d9dc",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    3,
+    1
+   ],
+   "z0": 5.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9dcdc",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#2a3238",
+    "faces": {
+     "front": "ribbon",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#d4d9dc",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-piers",
+   "footprint": {
+    "rect": [
+     34,
+     1.6
+    ]
+   },
+   "at": [
+    1,
+    -7.4
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9a77a",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "glassColour": "#232a30",
+    "bay": 5,
+    "bands": {
+     "colour": "#e0dc6e",
+     "height": 0.8
+    },
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b8",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    30,
+    1
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece7da",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8aeb0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    2,
+    5,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "style": "square",
+    "colour": "#d6d9d9",
+    "cabColour": "#262c31",
+    "bandColour": "#b9bec1"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -17,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#e8c93a",
+    "frameColour": "#2a4f9a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    44,
+    -12,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#8f8f93",
+    "count": 3,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    12,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#e8e8e8",
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is taken from a rooftop so the foreground flat roof is not modelled; tower cab is round not square; no dormer boxes on the roof; no vehicles matching"
+ }
+}

@@ -1,0 +1,120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Consejo_Nacional_de_Televisi%C3%B3n,_Providencia,_Santiago_20250709.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carlos Figueroa Rojas",
+   "view": "street",
+   "file": "/tmp/places-evidence/santiago/santiago-community-notices-0.jpg",
+   "used": "white French-style town house, stone-lined corners, dark slate mansard with dormers, black iron balconies, white gate piers with a wrought-iron gate and low white wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/264762579",
+   "used": "real house outline, 3 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 38,
+  "aspect": 0.667,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee8",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#e4e0d6"
+   },
+   "roof": {
+    "form": "mansard",
+    "colour": "#44474c",
+    "material": "slate",
+    "rise": 4.2,
+    "pitch": 75,
+    "overhang": 0.15
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "rotDeg": 15,
+   "params": {
+    "width": 3.4,
+    "height": 2.2,
+    "pillar": 0.9,
+    "leaf": "bars",
+    "colour": "#ece9e2",
+    "leafColour": "#1f2023"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "rotDeg": 15,
+   "params": {
+    "length": 12,
+    "height": 1.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -2,
+     -18
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -6
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mansard is a plain hip form without dormers; no iron balconies, stone quoins or rear annex; outline is the irregular OSM house so the facade angle differs from the photo."
+ }
+}

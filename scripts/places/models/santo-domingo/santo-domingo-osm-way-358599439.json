@@ -1,0 +1,349 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/358599439",
+   "used": "park extent (about 620,000 m2 multi-sport park, centre ~900 x 700 m): too large for the 118 m limit, so a representative cluster of the documented facilities is composed instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "id": "track",
+   "at": [
+    -32,
+    30,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "width": 56,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "stand-south",
+   "params": {
+    "start": [
+     -75,
+     -8
+    ],
+    "end": [
+     10,
+     -8
+    ],
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.85,
+    "canopy": {
+     "depth": 7,
+     "height": 13
+    },
+    "seatColours": [
+     "#4a7a4e",
+     "#e8e4d6",
+     "#c95a3a"
+    ],
+    "concreteColour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "stand-north",
+   "params": {
+    "start": [
+     10,
+     68
+    ],
+    "end": [
+     -75,
+     68
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColours": [
+     "#4a7a4e",
+     "#e8e4d6"
+    ],
+    "concreteColour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "arena-hall",
+   "id": "sports-palace",
+   "at": [
+    50,
+    5,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 38,
+    "height": 15,
+    "roof": "barrel",
+    "clerestory": true
+   }
+  },
+  {
+   "type": "arena-hall",
+   "id": "combat-pavilion",
+   "at": [
+    50,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 24,
+    "height": 11,
+    "roof": "barrel",
+    "clerestory": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pool-hall",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    50,
+    50
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d4c8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9b978c",
+    "parapet": 0.5,
+    "rise": 2.5
+   }
+  },
+  {
+   "type": "swimming-pool",
+   "id": "outdoor-pool",
+   "at": [
+    52,
+    72,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "length": 10,
+    "umbrellas": 2
+   }
+  },
+  {
+   "type": "loft",
+   "id": "velodrome",
+   "at": [
+    -30,
+    86,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       34,
+       24
+      ],
+      "colour": "#d4d0c4"
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       33,
+       23
+      ],
+      "colour": "#d4d0c4"
+     },
+     {
+      "z": 13,
+      "ellipse": [
+       27,
+       18
+      ],
+      "colour": "#8f8c82"
+     },
+     {
+      "z": 14,
+      "ellipse": [
+       9,
+       5
+      ],
+      "colour": "#8f8c82"
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "fl1",
+   "at": [
+    -78,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "fl3",
+   "at": [
+    -78,
+    70,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "fl5",
+   "at": [
+    82,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "id": "fl6",
+   "at": [
+    82,
+    30,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "gate-piers",
+   "id": "gate",
+   "at": [
+    -10,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 4.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flags",
+   "at": [
+    -16,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 2,
+    "spacing": 12,
+    "colours": [
+     "#002d62",
+     "#ce1126"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "fence",
+   "at": [
+    -55,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "rail",
+    "pillarEvery": 5,
+    "colour": "#7e7b72"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "lot",
+   "at": [
+    -10,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "grove-e",
+   "at": [
+    88,
+    20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 70,
+    "count": 8,
+    "min_height": 8,
+    "max_height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; a representative cluster of the documented facilities of a 900 m park; ground pad clamps at 120 m so western items overhang it"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-358599439"
+}

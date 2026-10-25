@@ -1,0 +1,277 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1301409416",
+   "used": "real outline 45 x 26 m, long axis about 19 degrees from east"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/San_Jos%C3%A9_Costa_Rica_Temple",
+   "used": "classic modern LDS temple: white Blanco Guardiano marble, 149 x 77 ft, 71 ft high, single spire with gilded angel Moroni at one end; no photo of the temple was found (Commons category empty, enwiki image is a different statue)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -60,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     40
+    ],
+    "height": 0.1,
+    "colour": "#7a9a5a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "temple",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0.6,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "marble",
+    "colour": "#f4f2ec",
+    "glassColour": "#7c8794",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 4.5,
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d99a6",
+    "material": "slate",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    19,
+    6.2,
+    0.6
+   ],
+   "rotDeg": 19,
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 15,
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "storeys": 2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    19,
+    6.2,
+    15.6
+   ],
+   "rotDeg": 19,
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "height": 0.5,
+    "colour": "#d6d3c9"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    19,
+    6.2,
+    16.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      0.95,
+      0.0,
+      "#f4f2ec"
+     ],
+     [
+      0.95,
+      3.0,
+      "#f4f2ec"
+     ],
+     [
+      0.65,
+      3.1,
+      "#f4f2ec"
+     ],
+     [
+      0.6,
+      6.0,
+      "#f4f2ec"
+     ],
+     [
+      0.35,
+      7.0,
+      "#f4f2ec"
+     ],
+     [
+      0.12,
+      8.1,
+      "#f4f2ec"
+     ],
+     [
+      0.12,
+      8.3,
+      "#d4af37"
+     ],
+     [
+      0.25,
+      8.5,
+      "#d4af37"
+     ],
+     [
+      0.07,
+      9.1,
+      "#d4af37"
+     ],
+     [
+      0.0,
+      9.3,
+      "#d4af37"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    19,
+    6.2,
+    16.1
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 6,
+    "profile": [
+     [
+      0.95,
+      0.0,
+      "#f4f2ec"
+     ],
+     [
+      0.15,
+      1.5,
+      "#f4f2ec"
+     ],
+     [
+      0.15,
+      2.0,
+      "#d4af37"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28,
+    8.9,
+    0.1
+   ],
+   "rotDeg": 19,
+   "params": {
+    "rect": [
+     6,
+     10
+    ],
+    "height": 0.4,
+    "colour": "#d6d3c9"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    32,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this temple was available; massing from the OSM outline and Wikipedia facts (white marble, one spire with Moroni at one end, 22 m). Tower end, window rhythm and roof pitch are typical of the classic modern LDS design, not checked. Spire scaled to a 22-25 m overall height."
+ }
+}

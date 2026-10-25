@@ -1,0 +1,387 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/220331294",
+   "used": "identity only: a 1.7 km long gully reserve (364,385 m2) is far larger than the scene, so one representative stretch is composed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     62
+    ],
+    "height": 0.15,
+    "colour": "#6f9a4f",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    18,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     96,
+     50
+    ],
+    "height": 0.04,
+    "colour": "#7aa857"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.4
+    ],
+    "height": 0.5,
+    "colour": "#e8e6dc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "clubroom",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    28,
+    -24
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e0dbcd",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3a2f",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-roof",
+   "footprint": {
+    "rect": [
+     16,
+     2.6
+    ]
+   },
+   "at": [
+    28,
+    -29.3
+   ],
+   "z0": 2.4,
+   "height": 0.5,
+   "wall": {
+    "material": "render",
+    "colour": "#8a3a2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3a2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -28.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 2.5,
+    "colour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    -28.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 2.5,
+    "colour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -58,
+    -14,
+    0
+   ],
+   "params": {
+    "radius": 0.25,
+    "n": 6,
+    "height": 16,
+    "colour": "#9a9fa3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -58,
+    -14,
+    16
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.6
+    ],
+    "height": 0.8,
+    "colour": "#d8d8d0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    58,
+    -14,
+    0
+   ],
+   "params": {
+    "radius": 0.25,
+    "n": 6,
+    "height": 16,
+    "colour": "#9a9fa3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    58,
+    -14,
+    16
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.6
+    ],
+    "height": 0.8,
+    "colour": "#d8d8d0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -58,
+    50,
+    0
+   ],
+   "params": {
+    "radius": 0.25,
+    "n": 6,
+    "height": 16,
+    "colour": "#9a9fa3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -58,
+    50,
+    16
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.6
+    ],
+    "height": 0.8,
+    "colour": "#d8d8d0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    58,
+    50,
+    0
+   ],
+   "params": {
+    "radius": 0.25,
+    "n": 6,
+    "height": 16,
+    "colour": "#9a9fa3"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    58,
+    50,
+    16
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.6
+    ],
+    "height": 0.8,
+    "colour": "#d8d8d0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -22,
+    -37,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     22
+    ],
+    "height": 0.08,
+    "colour": "#a39d90"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     120,
+     0.9
+    ],
+    "height": 1.2,
+    "colour": "#7b8085",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -40
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     64,
+     -44
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     58
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     60
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the park exists in evidence; pavilion, floodlights and pitch are typical NZ sports-park elements, not measured."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-osm-way-220331294"
+}

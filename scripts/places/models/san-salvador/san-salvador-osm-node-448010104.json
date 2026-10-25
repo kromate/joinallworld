@@ -1,0 +1,187 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/20958216",
+   "used": "recreation ground outline 155 x 79 m, long axis N-S (bearing 5); pitch and terraces sized inside it"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q9255029",
+   "used": "Estadio Espana, stadium in Soyapango; brief: one covered concrete stand on the long side, far end open"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "length": 100,
+    "width": 62
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 16,
+    "height": 11,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 2,
+    "seat_colour": "#2f5f93",
+    "seat_colour2": "#d0cbbd"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -58,
+     40
+    ],
+    "end": [
+     58,
+     40
+    ],
+    "rows": 8,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 8,
+    "seatColours": [
+     "#2f5f93",
+     "#d0cbbd"
+    ],
+    "concreteColour": "#cfc9ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    62,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "post_height": 2.4,
+    "facing": "west"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#d0cbbd"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-node-448010104",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this stadium (Commons Estadio Espana images are the Buenos Aires ground and were rejected); stand and terraces typed on the OSM ground"
+ }
+}

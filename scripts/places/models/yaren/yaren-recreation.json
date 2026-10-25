@@ -1,0 +1,173 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaren",
+ "venueId": "yaren-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1184486003",
+   "used": "real park outline (55 x 23 m, about 1000 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "core/prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -28,
+      4.3
+     ],
+     [
+      -13.8,
+      22.9
+     ],
+     [
+      29.5,
+      -10.6
+     ],
+     [
+      22,
+      -19.4
+     ],
+     [
+      15,
+      -19.2
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#7fa468",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "path",
+   "params": {
+    "points": [
+     [
+      -20,
+      6
+     ],
+     [
+      -8,
+      16
+     ],
+     [
+      22,
+      -9
+     ],
+     [
+      17,
+      -14
+     ]
+    ],
+    "z0": 0.15,
+    "height": 0.05,
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    2,
+    3,
+    0.15
+   ],
+   "rotDeg": -40,
+   "params": {
+    "width": 6.5,
+    "depth": 4.5,
+    "height": 3.0,
+    "roof": "hip",
+    "rise": 1.4,
+    "posts": 4,
+    "colour": "#e6dcc4",
+    "cap_colour": "#4f6f5a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -28,
+    4.3,
+    0
+   ],
+   "rotDeg": -52,
+   "params": {
+    "length": 24,
+    "height": 0.7,
+    "thickness": 0.25,
+    "colour": "#8a8a84"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    12,
+    -6,
+    0
+   ],
+   "rotDeg": -40,
+   "params": {
+    "width": 3,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#b9b6ac"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    10,
+    0.15
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -14,
+    0.15
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; shelter, benches and wall are typical island park elements, not observed"
+ }
+}

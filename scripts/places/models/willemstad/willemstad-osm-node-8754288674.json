@@ -1,0 +1,544 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-osm-node-8754288674",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plantagehuisje_Ascersion.JPG",
+   "licence": "CC BY 2.5 nl",
+   "author": "Technische Fred (nl.wikipedia)",
+   "view": "front",
+   "file": "/tmp/places-evidence/willemstad/asc3.jpg",
+   "used": "cream stucco, steep orange tile saddle roof with a row of dormers with red-white diamond shutters, stepped-gable end with chimney, raised terrace plinth with steps, white trim"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Collectie_Nationaal_Museum_van_Wereldculturen_TM-20029913_Landhuis_Ascension_Curacao_Boy_Lawson_(Fotograaf).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Boy Lawson",
+   "view": "side",
+   "file": "/tmp/places-evidence/willemstad/asc1.jpg",
+   "used": "long low profile, terrace wall along the garden side, tall chimney, five dormers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Landhuis,_voorzijde_-_20652799_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Coenraad Liebrecht Temminck Groll",
+   "view": "front",
+   "used": "stair with balustrade and finials, dormer proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/322890086",
+   "used": "overall extent about 33 x 30 m with terraces; the footprint polygon is ragged so the house is a rectangle of its main axis"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "terrace",
+   "params": {
+    "points": [
+     [
+      -15,
+      -6.8
+     ],
+     [
+      14.6,
+      -6.8
+     ],
+     [
+      14.6,
+      6.8
+     ],
+     [
+      -15,
+      6.8
+     ]
+    ],
+    "height": 1.2,
+    "colour": "#efe3bd",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     28,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.2,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f1dfa6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.0,
+    "cornice": true,
+    "trimColour": "#f6efe0",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c8602f",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.6,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "dormer",
+     "params": {
+      "width": 1.5,
+      "depth": 1.4,
+      "height": 1.7,
+      "colour": "#f6efe0",
+      "roof_colour": "#c8602f",
+      "trim_colour": "#f6efe0"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -10,
+     -2.7,
+     7.6
+    ],
+    "end": [
+     10,
+     -2.7,
+     7.6
+    ]
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    10,
+    0,
+    8.4
+   ],
+   "params": {
+    "height": 6,
+    "radius": 0.7,
+    "material": "stucco",
+    "colour": "#f1dfa6"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 1.4,
+    "height": 2,
+    "legs": 1.5,
+    "colour": "#8a9099"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 10,
+    "count": 8,
+    "min_height": 2.5,
+    "max_height": 4.5
+   }
+  },
+  {
+   "type": "stepped-gable",
+   "at": [
+    -14.75,
+    0,
+    5.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 11.4,
+    "height": 5.0,
+    "steps": 4,
+    "thickness": 0.5,
+    "colour": "#f1dfa6"
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    -14.75,
+    0,
+    10.0
+   ],
+   "params": {
+    "height": 1.4,
+    "radius": 0.5,
+    "material": "stucco",
+    "colour": "#f6efe0"
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    -15,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 4.0,
+    "height": 1.2,
+    "run": 2.4,
+    "colour": "#f2ead2",
+    "rails": true
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -15,
+    -6.8,
+    1.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 13.6,
+    "height": 0.7,
+    "colour": "#f6efe0"
+   }
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -12,
+    -5.5
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b52a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b52a2a"
+   },
+   "id": "sh1"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -12,
+    -5.7
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6efe0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6efe0"
+   },
+   "id": "sh2"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -5.5
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b52a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b52a2a"
+   },
+   "id": "sh3"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -5.7
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6efe0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6efe0"
+   },
+   "id": "sh4"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -1.5,
+    -5.5
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b52a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b52a2a"
+   },
+   "id": "sh5"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -1.5,
+    -5.7
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6efe0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6efe0"
+   },
+   "id": "sh6"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    3,
+    -5.5
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b52a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b52a2a"
+   },
+   "id": "sh7"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    3,
+    -5.7
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6efe0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6efe0"
+   },
+   "id": "sh8"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    7.5,
+    -5.5
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b52a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b52a2a"
+   },
+   "id": "sh9"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    7.5,
+    -5.7
+   ],
+   "z0": 2.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f6efe0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6efe0"
+   },
+   "id": "sh10"
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 4,
+  "match": "fair",
+  "gaps": "Stepped gable parapet is on the roof edge but only half height and the chimney finial is small; shutters are plain red/white stripes not diamonds; gable-end stair sits at the corner and the plinth is not a solid stuccoed wall; gable window and shutter on end wall missing"
+ }
+}

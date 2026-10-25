@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/91525942",
+   "used": "real outline of Hospital San Rafael, 190 x 183 m, 4 levels; no photo found on Commons, Wikidata or Wikipedia"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 6,
+    "fit": 92
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfc9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 14,
+    "bands": "#3f7a8a",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "colour": "#f4f4f1",
+    "roofColour": "#3f7a8a"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -58,
+    10
+   ],
+   "params": {
+    "size": 3,
+    "colour": "#c8242b"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -20,
+    -85,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -80
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -80
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: real simplified H/wing outline, 4 storeys, cream render with teal bands from the brief colours; no facade detail verified."
+ }
+}

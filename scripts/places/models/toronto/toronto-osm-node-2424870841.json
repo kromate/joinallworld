@@ -1,0 +1,525 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-node-2424870841",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vaughan_Mills,_Entrance_2_(54634951476).jpg",
+   "licence": "CC BY 4.0",
+   "author": "Glenn Samonte",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/osm-node-2424870841-0.jpg",
+   "used": "entrance 2 court: white stucco anchor store with dark blue glass band and sign band at left, set-back cream entrance block with olive green angled panels and glazed doors, navy blue store with cream cornice and blank billboard at right, paved plaza with brick band and teal lamp posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/34857629",
+   "used": "size only: the mall outline is about 854 x 263 m and one representative entrance court with the long blank cladded body behind is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "entrance court only (mall is 850 m long); stores sit on a line rather than the real diagonal court; no true curved plaza edge; glass reflections, lettering and billboard imagery are flat; glazed door bays are painted slabs"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store-white",
+   "footprint": {
+    "rect": [
+     18,
+     22
+    ]
+   },
+   "at": [
+    -16,
+    2
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ecebe6",
+    "windows": "none",
+    "plinth": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc7",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "store-glass-band",
+   "at": [
+    -16,
+    -9.2
+   ],
+   "params": {
+    "rect": [
+     16.8,
+     0.5
+    ],
+    "z0": 4.6,
+    "height": 7.4,
+    "colour": "#2b3640"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "store-sign-band",
+   "at": [
+    -16,
+    -9.3
+   ],
+   "params": {
+    "rect": [
+     16.4,
+     0.6
+    ],
+    "z0": 3.0,
+    "height": 1.5,
+    "colour": "#f0eeea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "store-sign-letters",
+   "at": [
+    -16,
+    -9.7
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.3
+    ],
+    "z0": 3.4,
+    "height": 0.7,
+    "colour": "#2b2b2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "store-shopfront",
+   "at": [
+    -16,
+    -9.2
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#46535c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "store-door-frame",
+   "at": [
+    -12,
+    -9.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.35
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#d9d9d6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     17,
+     14
+    ]
+   },
+   "at": [
+    7,
+    5
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#c9c9a0",
+    "windows": "none",
+    "plinth": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4a8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-olive-left",
+   "at": [
+    -1.2,
+    -2.6
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.5
+    ],
+    "z0": 0,
+    "height": 12.5,
+    "colour": "#9aa05a"
+   },
+   "rotDeg": -20
+  },
+  {
+   "type": "prism",
+   "id": "entrance-olive-right",
+   "at": [
+    15.2,
+    -2.6
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.5
+    ],
+    "z0": 0,
+    "height": 12.5,
+    "colour": "#7f8a45"
+   },
+   "rotDeg": 20
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass",
+   "at": [
+    7,
+    -2.15
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.4
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#2f3a40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass-upper",
+   "at": [
+    7,
+    -2.15
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.4
+    ],
+    "z0": 5.5,
+    "height": 3.2,
+    "colour": "#55656f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-number-board",
+   "at": [
+    7,
+    -2.4
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.5
+    ],
+    "z0": 9.5,
+    "height": 3,
+    "colour": "#efece4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-sign-strip",
+   "at": [
+    7,
+    -2.3
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.4
+    ],
+    "z0": 10.2,
+    "height": 0.6,
+    "colour": "#d9d6cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store-navy",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    32,
+    6
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2a3a5e",
+    "windows": "none",
+    "plinth": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d7d6d1",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "navy-cornice",
+   "at": [
+    32,
+    -2.4
+   ],
+   "params": {
+    "rect": [
+     16.8,
+     2.2
+    ],
+    "z0": 11.5,
+    "height": 1.0,
+    "colour": "#d9d8d3",
+    "topScale": 0.92
+   }
+  },
+  {
+   "type": "prism",
+   "id": "billboard",
+   "at": [
+    28,
+    -2.3
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "z0": 2,
+    "height": 8.5,
+    "colour": "#c9b8a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "navy-base",
+   "at": [
+    32,
+    -2.2
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.4
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#4a4d55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "service-door",
+   "at": [
+    38,
+    -2.2
+   ],
+   "params": {
+    "rect": [
+     2,
+     0.3
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#7a7d82"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mall-body",
+   "footprint": {
+    "rect": [
+     70,
+     30
+    ]
+   },
+   "at": [
+    14,
+    40
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c4b8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -30,
+      -16
+     ],
+     [
+      -8,
+      -12
+     ],
+     [
+      12,
+      -9
+     ],
+     [
+      40,
+      -14
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#b8654a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -25,
+      -30
+     ],
+     [
+      0,
+      -22
+     ],
+     [
+      25,
+      -22
+     ],
+     [
+      50,
+      -30
+     ]
+    ],
+    "width": 22,
+    "colour": "#a9a8a3"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     -16,
+     0
+    ],
+    "end": [
+     26,
+     -9,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "profile": [
+       [
+        0.2,
+        0,
+        "#3f7f78"
+       ],
+       [
+        0.18,
+        10.5
+       ],
+       [
+        1.6,
+        10.6,
+        "#2f4f4c"
+       ],
+       [
+        1.6,
+        10.9
+       ]
+      ]
+     }
+    },
+    "lod2Step": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   60
+  ]
+ }
+}

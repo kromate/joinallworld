@@ -1,0 +1,176 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/santo-domingo.json",
+   "used": "no facts or photo found; a one-storey municipal district office with a gable roof, awning, flag poles, blank blue sign board on a road frontage"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     20,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d7b5",
+    "windows": "louvre",
+    "windowRatio": 0.15,
+    "bay": 3.4,
+    "plinth": 0.5,
+    "bands": "#3d6fa0"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8f90",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-room",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    5,
+    8
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccfae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f90",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3,
+    -6.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.2,
+    "height": 2.7,
+    "colours": [
+     "#3d6fa0",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    4,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "count": 3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.2,
+    "bottom": 1.6,
+    "colour": "#3d6fa0",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    9,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 1.5,
+    "colours": [
+     "#1d3f8f",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#d9d9d9"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or facts found; typical one-storey municipal office."
+ }
+}

@@ -1,0 +1,220 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Queensgate_Shopping_Centre_western_entrance,_December_2016.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lcmortensen",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/market-game-0.jpg",
+   "used": "two-level beige-grey panelled box, taller entrance block with large blank sign face, dark flat entrance canopy over a glazed shopfront, blue-green glazed upper bands"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1137992012",
+   "used": "real mall outline (about 293 x 207 m, scaled to fit the scene)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 44,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 195,
+    "simplify": 2.5
+   },
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b7b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": {
+     "colour": "#8f8d86",
+     "height": 0.4
+    },
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "left",
+       "right",
+       "back"
+      ],
+      "spacing": 3,
+      "depth": 0.08,
+      "colour": "#9d9b94"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a29c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     28,
+     13
+    ]
+   },
+   "at": [
+    -12,
+    -34
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b7b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "spacing": 3,
+      "depth": 0.08,
+      "colour": "#9d9b94"
+     }
+    ],
+    "bands": {
+     "colour": "#8f8d86",
+     "height": 0.4
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a29c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazing",
+   "footprint": {
+    "rect": [
+     34,
+     1.2
+    ]
+   },
+   "at": [
+    -12,
+    -40.6
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c3538",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#33444c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f464b"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "canopy",
+   "at": [
+    -12,
+    -44.6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 8,
+    "height": 4.8,
+    "thickness": 0.5,
+    "colour": "#3d4449",
+    "edgeColour": "#2f3539"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    -12,
+    -27.2,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "height": 7,
+    "bottom": 6,
+    "colour": "#d9d6cc",
+    "frameColour": "#c6c1b5",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign2",
+   "at": [
+    -40,
+    -41.8,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 3.2,
+    "bottom": 7,
+    "colour": "#2b2f33",
+    "frameColour": "#555b60",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "outline is an irregular mass scaled by 0.4 so entrance corner is estimated; panel joints are subtle fins; roof patches may still read slightly blue-tinted; no rigging masts, road furniture or neighbours"
+ }
+}

@@ -1,0 +1,312 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/250861349",
+   "used": "circuit site outline as the asphalt apron (1099 x 334 m, scaled to the scene)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: long main grandstand and pit-lane building with cantilever roof, scoreboard, flags, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "osm": true,
+    "simplify": 2
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5f6366",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#585c5f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    -30,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     110,
+     10
+    ],
+    "height": 0.05,
+    "colour": "#3f4245"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     110,
+     0.5
+    ],
+    "height": 0.05,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pit-building",
+   "footprint": {
+    "rect": [
+     96,
+     11
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "z0": 0.5,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4d2cb",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4a5560",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#7a7f85",
+      "height": 0.5,
+      "at": [
+       3.2
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea4a8",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pit-garages",
+   "footprint": {
+    "rect": [
+     96,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "z0": 0.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#ffffff",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#ffffff",
+       "#e6e6e2"
+      ],
+      "cols": 16,
+      "rows": 1,
+      "gap": 0.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea4a8",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "start": [
+     48,
+     -9
+    ],
+    "end": [
+     -48,
+     -9
+    ],
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 6.6,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#c8372d",
+     "#f2f2f0",
+     "#2a4e8a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d4d2cb",
+    "underColour": "#8a8f93",
+    "canopy": {
+     "height": 5,
+     "depth": 14,
+     "thickness": 1.2,
+     "slopeDeg": 3,
+     "colour": "#9ea4a8",
+     "edgeColour": "#d4d2cb"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     9,
+     1
+    ]
+   },
+   "at": [
+    62,
+    -14
+   ],
+   "z0": 0.5,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7a7f85",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#33383c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -46,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 6,
+    "colours": [
+     "#002d62",
+     "#ce1126",
+     "#ffffff",
+     "#002d62"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -52,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 26
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 8,
+    "spread": 50,
+    "line": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     -40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-250861349",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo: OSM apron plus brief; grandstand, pit building and garages are typical, not measured; track layout and real stand colours unknown."
+ }
+}

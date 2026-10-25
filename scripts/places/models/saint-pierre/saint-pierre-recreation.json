@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "saint-pierre",
+ "venueId": "saint-pierre-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/220425927",
+   "used": "waterfront square outline 78 x 50 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "square",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9adb0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9da1a4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#3a4046",
+    "points": [
+     [
+      6.5,
+      16.4
+     ],
+     [
+      12.1,
+      12.5
+     ],
+     [
+      26.6,
+      -1.9
+     ],
+     [
+      35.3,
+      -16.6
+     ],
+     [
+      34.9,
+      -19.9
+     ],
+     [
+      15.7,
+      -31.3
+     ],
+     [
+      2,
+      -36.1
+     ],
+     [
+      -11.9,
+      -32.7
+     ],
+     [
+      -18.3,
+      -15.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    -8,
+    16,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 6,
+    "colour": "#e8e4da",
+    "cap_colour": "#4f6f8f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#2b4a8f",
+     "#f2f2f2",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    2,
+    6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: pavilion, flags and quay railing positions are assumed from the brief; only the outline is measured"
+ }
+}

@@ -1,0 +1,182 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-way-158967597",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/400901288",
+   "used": "teaching block outline about 65 x 18 m, 2 storeys"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrada_da_Faculdade_de_Medicina_Veterin%C3%A1ria_e_Zootecnia_(FMVZ)_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Horadrim",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-paulo/m10_vet1.jpg",
+   "used": "entrance gatehouse only: two-storey glazed box on slim piers with teal-green frame, flat canopy roof, steel stair, pale-green gate piers; gives the faculty colour palette. Not the main block so no comparison render"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrada_da_Faculdade_de_Medicina_Veterin%C3%A1ria_e_Zootecnia_(FMVZ)_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Horadrim",
+   "view": "front",
+   "used": "long white wall with a blank band for the faculty name behind eucalyptus trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 22,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfd0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#56706a",
+    "plinth": 0.5,
+    "bands": "#8fb7ac"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a7a0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -34,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 2.8,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fb5a8",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#2f3d44"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fb5a8",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/colonnade",
+     "params": {
+      "length": 0.5,
+      "count": 1,
+      "height": 2.8,
+      "radius": 0.3,
+      "kind": "square",
+      "colour": "#7fb5a8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -37.5,
+     -36,
+     0
+    ],
+    "end": [
+     -30.5,
+     -36,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "bottom": 6.5,
+    "colour": "#e9eeea",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     0
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     20
+    ],
+    "height": 16
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     30
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photo shows only the entrance gatehouse; main block is the OSM outline with typed ribbon windows and teal bands; gatehouse position assumed"
+ }
+}

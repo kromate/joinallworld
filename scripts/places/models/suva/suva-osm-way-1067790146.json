@@ -1,0 +1,105 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-osm-way-1067790146",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1067790146",
+   "used": "hut outline 10 x 9 m, bearing 9 deg"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "osm": true,
+    "fit": 11
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d6b98a",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f7a55",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 2.2,
+    "drop": 0.4,
+    "height": 2.5,
+    "colours": [
+     "#4f7a55",
+     "#f4ecd8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1,
+    "bottom": 1.0,
+    "colour": "#4f7a55"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo (Commons hits were insects): OSM 10x9 m outline, timber hut with hip roof, typed colours"
+ }
+}

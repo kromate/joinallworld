@@ -1,0 +1,190 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fort%C3%ADn_San_Juan_de_la_Cruz_-_El_Canuelo.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jaro Nemčok",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/san-juan/fort1.jpg",
+   "used": "square fort with tall plain sandstone walls and a thin cornice line, low parapet with stepped merlon-like crown, grey weathered terreplein with grass edges, round garita on the near corner, grass shore with palms and sea"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/203588975",
+   "used": "real square outline 24.6 x 23.1 m, rotated 138 degrees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 32,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.55,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "fort",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#cbb98f",
+    "windows": "none",
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#a8946d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a2a293",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "garita",
+   "at": [
+    -0.4,
+    -16.2,
+    8.2
+   ],
+   "params": {
+    "profile": [
+     [
+      0.9,
+      0,
+      "#b3a07a"
+     ],
+     [
+      1.3,
+      0.4
+     ],
+     [
+      1.3,
+      1.0
+     ],
+     [
+      1.1,
+      1.6
+     ],
+     [
+      0.9,
+      1.9,
+      "#a99472"
+     ],
+     [
+      0.0,
+      2.6
+     ]
+    ],
+    "segments": 10,
+    "colour": "#b3a07a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "garita-corbel",
+   "at": [
+    -0.4,
+    -16.2,
+    7.6
+   ],
+   "params": {
+    "profile": [
+     [
+      0.6,
+      0
+     ],
+     [
+      1.2,
+      0.7
+     ]
+    ],
+    "segments": 10,
+    "colour": "#a8946d"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -38,
+    10,
+    0.02
+   ],
+   "params": {
+    "width": 40,
+    "depth": 90,
+    "colour": "#4d8a85"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    42,
+    0.02
+   ],
+   "params": {
+    "width": 90,
+    "depth": 30,
+    "colour": "#4d8a85"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "walls are vertical, not battered, no weathered stepped crown or cannon embrasures, rocky breakwater and shore detail omitted"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-way-203588975"
+}

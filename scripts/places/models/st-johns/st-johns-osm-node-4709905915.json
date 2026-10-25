@@ -1,0 +1,130 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/35926726",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d6b98a",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "bands": "#3f8a8f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a6a45",
+    "material": "thatch",
+    "pitch": 28,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "radius": 3.0,
+    "height": 2.6,
+    "thatch": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 1.8,
+    "colour": "#3f8a8f"
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    2,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4.5,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#3f8a8f",
+     "#f4ecd8"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the bar exists on Commons; real zigzag OSM outline, typed beach-bar details."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-osm-node-4709905915"
+}

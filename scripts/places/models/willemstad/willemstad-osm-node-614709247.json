@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-osm-node-614709247",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q96291351",
+   "used": "bay in Curacao; only a Wikidata item, no OSM outline and no modern photo (the Commons image is a historic phosphate factory), so a typical Curacao limestone cove"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -38,
+    0.6
+   ],
+   "params": {
+    "width": 110,
+    "depth": 50,
+    "colour": "#2fb3c4",
+    "bank": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "beach",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      -14
+     ],
+     [
+      -35,
+      -19
+     ],
+     [
+      -10,
+      -21
+     ],
+     [
+      18,
+      -18
+     ],
+     [
+      45,
+      -13
+     ],
+     [
+      60,
+      -5
+     ],
+     [
+      55,
+      8
+     ],
+     [
+      -54,
+      8
+     ]
+    ],
+    "height": 0.3,
+    "colour": "#e8dcc0",
+    "material": "sand"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    -45,
+    22,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "height": 13,
+    "seed": 3,
+    "stairs": false,
+    "boulders": 5,
+    "rock_colour": "#cfc6ad"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    45,
+    24,
+    0
+   ],
+   "params": {
+    "width": 55,
+    "depth": 32,
+    "height": 11,
+    "seed": 7,
+    "stairs": false,
+    "boulders": 6,
+    "rock_colour": "#c9bfa4"
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 26,
+    "height": 9,
+    "seed": 11,
+    "stairs": false,
+    "boulders": 4,
+    "rock_colour": "#d4cbb2"
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 22,
+    "colours": [
+     "#f3efe6",
+     "#c99a4a",
+     "#a14a3c"
+    ],
+    "radius": 1.5
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    22,
+    0,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 2.6,
+    "colour": "#c99a4a",
+    "roofColour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 12,
+    "count": 10,
+    "min_height": 2.5,
+    "max_height": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of this cove; generic limestone cove, no shelters/vegetation detail verified"
+ }
+}

@@ -1,0 +1,232 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-way-199426776",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Boquer%C3%B3n_and_Boquer%C3%B3ncito.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "House1090",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/san-salvador/boq.jpg",
+   "used": "setting only: steep green forested crater walls dropping to a flat floor with the small inner cone; no building is visible, so the pavilion is a modest typical visitor building"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/199426776",
+   "used": "park polygon (635 x 211 m) judged a park outline, not a building; used only for scale of the setting"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "visitor-pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8845b",
+    "windows": "none",
+    "plinth": 0.6,
+    "groundKind": "open"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f93",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     12
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#d9ccae",
+    "topColour": "#d9ccae"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.1,
+    "thickness": 0.25,
+    "colour": "#7a6a4a",
+    "kind": "railing"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 1.4,
+    "count": 4,
+    "colour": "#7a7468"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    66,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#4f7a3a",
+    "profile": [
+     [
+      70,
+      0,
+      "#4f7a3a"
+     ],
+     [
+      58,
+      10
+     ],
+     [
+      44,
+      20
+     ],
+     [
+      34,
+      24,
+      "#3f6a30"
+     ],
+     [
+      24,
+      15
+     ],
+     [
+      14,
+      7,
+      "#6f8a4a"
+     ],
+     [
+      0,
+      6,
+      "#7a8a4a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -34,
+    6,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "count": 6,
+    "min_height": 8,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    10,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 34,
+    "count": 6,
+    "min_height": 8,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -6
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No building photo exists; pavilion is a typical visitor building and the crater is a simple revolve backdrop."
+ }
+}

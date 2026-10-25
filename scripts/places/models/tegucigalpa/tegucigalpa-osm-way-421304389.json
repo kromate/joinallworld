@@ -1,0 +1,102 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-osm-way-421304389",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/421304389",
+   "used": "real kiosk outline about 14 x 12 m, one storey"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d9",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f93",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "height": 3,
+    "form": "flat",
+    "colour": "#6b3f2a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 0.9,
+    "bottom": 3.1,
+    "colour": "#6b3f2a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo: facade glazing, awning colour and terrace are typical for a pedestrian-precinct cafe kiosk"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "extent": [
+   40,
+   35
+  ]
+ }
+}

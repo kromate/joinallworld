@@ -1,0 +1,310 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monumento_a_la_Constituci%C3%B3n_de_El_Salvador.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Lexdjelectronic2013",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-salvador/const1.jpg",
+   "used": "tall grey-cream open rectangular frame with concave curved top, projecting mid slab on corbels, bronze figure of Justice with raised sword and scales, plinth with dark bronze plaques"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monumento_Constituci%C3%B3n_de_frente.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "JMRAFFi",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-salvador/const2.jpg",
+   "used": "frame proportions, cream colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/396926462",
+   "used": "nearest building only; not used (the monument stands in a traffic circle)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     8.6,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdbbb2",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c1b7"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col-left",
+   "footprint": {
+    "rect": [
+     2.2,
+     3.0
+    ]
+   },
+   "at": [
+    -2.8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 5.0,
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d1c3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d1c3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col-right",
+   "footprint": {
+    "rect": [
+     2.2,
+     3.0
+    ]
+   },
+   "at": [
+    2.8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 5.0,
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d1c3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d1c3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     7.8,
+     3.0
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 9.6,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d1c3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6d1c3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     7.0,
+     5.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 4.4,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c5b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabd"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.0,
+    0,
+    3.5
+   ],
+   "params": {
+    "points": [
+     [
+      -0.9,
+      -1.5
+     ],
+     [
+      0.9,
+      -1.5
+     ],
+     [
+      0.9,
+      1.5
+     ],
+     [
+      -0.9,
+      1.5
+     ]
+    ],
+    "height": 1.0,
+    "topScale": 0.4,
+    "colour": "#bdbbb2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.0,
+    0,
+    3.5
+   ],
+   "params": {
+    "points": [
+     [
+      -0.9,
+      -1.5
+     ],
+     [
+      0.9,
+      -1.5
+     ],
+     [
+      0.9,
+      1.5
+     ],
+     [
+      -0.9,
+      1.5
+     ]
+    ],
+    "height": 1.0,
+    "topScale": 0.4,
+    "colour": "#bdbbb2"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    0,
+    5.3
+   ],
+   "params": {
+    "height": 5.2,
+    "pose": "raised",
+    "colour": "#6b5f3f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2.15,
+    1.3
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     0.12
+    ],
+    "height": 2.2,
+    "colour": "#3a3326"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2.15,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     0.12
+    ],
+    "height": 0.7,
+    "colour": "#3a3326"
+   }
+  },
+  {
+   "type": "roundabout",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 30,
+    "road_width": 6,
+    "trees": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-node-3838426270",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Frame top is flat with notches instead of the concave curve; statue is a blocky low-poly figure with no sword or scales; plaques simplified"
+ }
+}

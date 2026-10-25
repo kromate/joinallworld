@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-airport-san-jose-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vista_a%C3%A9rea_del_Aeropuerto_Internacional_Juan_Santamar%C3%ADa.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Bernal Saborio",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/san-jose/airport4.jpg",
+   "used": "terminal roof: long terracotta-red barrel/hip roofs over the airside, white roofs of hangars to the west, terminal wraps a curved forecourt road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminal_principal,_aeropuerto_Juan_Santamaria.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Orion2228",
+   "view": "back",
+   "file": "/tmp/places-evidence/san-jose/airport1.jpg",
+   "used": "red roof edge, green-tinted glazed gate lounge, grey jet bridges with numbered gate boards"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeropuerto_Internacional_Juan_Santamar%C3%ADa.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "AlonsoJimenez",
+   "view": "interior",
+   "used": "steel-ribbed barrel vault with glazed clerestory ribs, glass curtain end walls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24829823",
+   "used": "real terminal outline, 481 x 120 m, 3 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 40,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     118,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bdb8",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#c0553b",
+    "material": "metal-sheet",
+    "rise": 3,
+    "overhang": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    42,
+    -18
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bdb8",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0553b",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    -44,
+    -17
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bdb8",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0553b",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -20,
+    22,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "style": "round",
+    "colour": "#d8d8d2",
+    "cabColour": "#5c7480"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 80,
+    "depth": 10,
+    "height": 5,
+    "colour": "#d9d6cf",
+    "columns": 6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 20,
+      "colour": "#b9bec2"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -30,
+     -24,
+     5
+    ],
+    "end": [
+     30,
+     -24,
+     5
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    40,
+    40,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "colour": "#2f6b4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -90
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -92
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only a 118 m stretch of the 480 m terminal is modelled as a rectangular hall with two wings; the real terracotta roofs are stepped and hipped, the forecourt ring road, hangars and aircraft are missing."
+ }
+}

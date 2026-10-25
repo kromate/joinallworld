@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/498370391",
+   "used": "real outline of the Female Ward block (55 x 50 m quad, name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece4",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": {
+     "colour": "#8fb6c9",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "rise": 3.2,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    30,
+    26,
+    0
+   ],
+   "params": {
+    "radius": 1.4,
+    "height": 2.2,
+    "legs": 2.4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.5
+    ],
+    "height": 2.4,
+    "colour": "#f2f0ea"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     42,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the ward exists; massing from OSM outline, roof and colours typical of Tarawa"
+ }
+}

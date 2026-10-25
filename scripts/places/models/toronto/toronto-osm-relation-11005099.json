@@ -1,0 +1,776 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-relation-11005099",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centreville_New_Sky_Ride.jpg",
+   "licence": "CC BY-SA 4.0",
+   "view": "street",
+   "file": "/tmp/places-evidence/toronto/osm-relation-11005099-3.jpg",
+   "used": "sky ride station with black curved glass canopy over ochre timber base, yellow ticket shed with grey shingle gable roof, white chairlift towers, willows, red umbrellas, wide asphalt path"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Train_Ride,_Centreville.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Robert Taylor",
+   "view": "street",
+   "used": "miniature railway: green steam-outline loco with red canopied carriages on a curved narrow track beside a pond and willows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centreville_Carousel.jpg",
+   "licence": "CC BY-SA 4.0",
+   "view": "street",
+   "used": "carousel house: cream/teal frieze with red wings, yellow rafters, picket fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/11005099",
+   "used": "size only: the park is about 400 x 230 m, so one representative core (sky ride, carousel, windmill wheel, railway, kiosks, pond) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftX": -0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "representative core, not the exact photo framing: willows are stylised revolve skirts, no queue people, chairs sparse, ground still grass-heavy beside the asphalt path, ladder is a flat slab"
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "id": "skyride-canopy",
+   "params": {
+    "section": {
+     "poly": [
+      [
+       -4.2,
+       0
+      ],
+      [
+       -4.0,
+       1.6
+      ],
+      [
+       -3.2,
+       2.9
+      ],
+      [
+       -2,
+       3.7
+      ],
+      [
+       0,
+       4.0
+      ],
+      [
+       2,
+       3.7
+      ],
+      [
+       3.2,
+       2.9
+      ],
+      [
+       4.0,
+       1.6
+      ],
+      [
+       4.2,
+       0
+      ]
+     ]
+    },
+    "points": [
+     [
+      -20,
+      10,
+      4.0
+     ],
+     [
+      -8,
+      10,
+      4.0
+     ]
+    ],
+    "colour": "#15181c"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -19.5,
+     10,
+     0
+    ],
+    "end": [
+     -8.5,
+     10,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       7.6
+      ],
+      "z0": 4.0,
+      "height": 4.05,
+      "colour": "#2b3036",
+      "topScale": 0.5
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.45
+    },
+    "points": [
+     [
+      -23,
+      10.5,
+      7.2
+     ],
+     [
+      -10,
+      10.5,
+      7.2
+     ]
+    ],
+    "colour": "#a9adb2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.35
+    },
+    "points": [
+     [
+      -23,
+      11.4,
+      6.5
+     ],
+     [
+      -10,
+      11.4,
+      6.5
+     ]
+    ],
+    "colour": "#9a9ea3"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ladder",
+   "at": [
+    -8,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.2
+    ],
+    "z0": 0,
+    "height": 8.5,
+    "colour": "#c7cbd0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-tower-1",
+   "at": [
+    10,
+    30
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#f0f1f3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-tower-2",
+   "at": [
+    16,
+    62
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#f0f1f3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-tower-3",
+   "at": [
+    22,
+    100
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#f0f1f3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-arm-1",
+   "at": [
+    10,
+    30
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.4
+    ],
+    "z0": 10,
+    "height": 0.4,
+    "colour": "#f0f1f3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-arm-2",
+   "at": [
+    16,
+    62
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.4
+    ],
+    "z0": 10,
+    "height": 0.4,
+    "colour": "#f0f1f3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-arm-3",
+   "at": [
+    22,
+    100
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.4
+    ],
+    "z0": 10,
+    "height": 0.4,
+    "colour": "#f0f1f3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "cable",
+   "params": {
+    "section": {
+     "circle": 0.05
+    },
+    "points": [
+     [
+      -8,
+      10,
+      7
+     ],
+     [
+      10,
+      30,
+      10
+     ],
+     [
+      16,
+      62,
+      10
+     ],
+     [
+      22,
+      100,
+      10
+     ]
+    ],
+    "colour": "#303030",
+    "curve": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     10,
+     30,
+     0
+    ],
+    "end": [
+     16,
+     62,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.5
+      ],
+      "z0": 7.8,
+      "height": 0.6,
+      "colour": "#d9d9d9"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      8,
+      -10
+     ],
+     [
+      6,
+      10
+     ],
+     [
+      10,
+      30
+     ],
+     [
+      16,
+      62
+     ],
+     [
+      22,
+      100
+     ]
+    ],
+    "width": 9,
+    "colour": "#4b4b4e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -30,
+      2
+     ],
+     [
+      -10,
+      0
+     ],
+     [
+      6,
+      6
+     ]
+    ],
+    "width": 5,
+    "colour": "#55555a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     17,
+     -8,
+     0
+    ],
+    "end": [
+     26,
+     70,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "profile": [
+       [
+        0.63,
+        0.0,
+        "#5a4a38"
+       ],
+       [
+        0.5599999999999999,
+        4.7250000000000005,
+        "#5a4a38"
+       ],
+       [
+        1.1199999999999999,
+        8.775,
+        "#8f9d3c"
+       ],
+       [
+        3.36,
+        13.5,
+        "#98a63f"
+       ],
+       [
+        5.04,
+        10.8,
+        "#9aa840"
+       ],
+       [
+        5.46,
+        6.75,
+        "#8f9d3c"
+       ],
+       [
+        5.18,
+        2.9700000000000006,
+        "#86943a"
+       ],
+       [
+        4.199999999999999,
+        2.16,
+        "#86943a"
+       ]
+      ]
+     }
+    },
+    "lod2Step": 4,
+    "lod1Step": 1
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -2,
+    2,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.4,
+    "thickness": 0.12,
+    "kind": "fence",
+    "colour": "#101214"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -24,
+    4,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3.5,
+    "colours": [
+     "#b4302a"
+    ],
+    "tables": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 2.2,
+    "count": 8,
+    "spread": 0,
+    "line": 14,
+    "colour": "#3f6b35"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skyride-base",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -22,
+    12
+   ],
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c9923c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4a2a",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-shed",
+   "footprint": {
+    "rect": [
+     4.5,
+     4
+    ]
+   },
+   "at": [
+    6,
+    4
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e8b445",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c9da0",
+    "pitch": 38,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "carousel",
+   "at": [
+    -40,
+    30,
+    0
+   ],
+   "params": {
+    "radius": 9,
+    "height": 9,
+    "colour": "#e8d9a8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-1",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -10,
+    40
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e8d9a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b4654a",
+    "pitch": 28,
+    "axis": "x",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-3",
+   "footprint": {
+    "rect": [
+     4.5,
+     4
+    ]
+   },
+   "at": [
+    22,
+    38
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#e3b04c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7f7f80",
+    "pitch": 28,
+    "axis": "x",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.4,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#1f2124"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    4,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.4,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#1f2124"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.8,
+    "bottom": 4.5,
+    "colour": "#4f7aa5",
+    "frameColour": "#e8d9a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -20,
+    56,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "pitch": 3.5,
+    "kind": "umbrella",
+    "colours": [
+     "#b4302a",
+     "#e3b04c",
+     "#4f7aa5"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   110,
+   100
+  ]
+ }
+}

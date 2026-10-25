@@ -1,0 +1,465 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cathedral_in_Willemstad,_Cura%C3%A7ao.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Gerd Fahrenhorst",
+   "view": "front",
+   "file": "/tmp/places-evidence/willemstad/cathedral.jpg",
+   "used": "ochre plastered walls with cream pilaster buttresses and pinnacles, pointed louvred lancets, hipped tower between pinnacles, red tile roofs, low aisle roofs with round clerestory windows, low cream balustrade wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/371810812",
+   "used": "cathedral extent 53 x 33 m (nave axis, aisles and apse proportions)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 8,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     11,
+     36
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3b95a",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "plinth": 0.8,
+    "trimColour": "#f2e6c0",
+    "cornice": true,
+    "windowShape": "round",
+    "faces": {
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5472f",
+    "material": "clay-tile",
+    "rise": 3.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-west",
+   "footprint": {
+    "rect": [
+     4.4,
+     30
+    ]
+   },
+   "at": [
+    -7.7,
+    6.5
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3b95a",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.8,
+    "trimColour": "#f2e6c0",
+    "cornice": true,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b5472f",
+    "material": "clay-tile",
+    "rise": 1.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-east",
+   "footprint": {
+    "rect": [
+     4.4,
+     30
+    ]
+   },
+   "at": [
+    7.7,
+    6.5
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3b95a",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.8,
+    "trimColour": "#f2e6c0",
+    "cornice": true,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b5472f",
+    "material": "clay-tile",
+    "rise": 1.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     9,
+     5.5
+    ]
+   },
+   "at": [
+    0,
+    -14.2
+   ],
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3b95a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.8,
+    "trimColour": "#f2e6c0",
+    "cornice": true,
+    "windowShape": "pointed",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5472f",
+    "material": "clay-tile",
+    "rise": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade-west",
+   "footprint": {
+    "rect": [
+     4.4,
+     5.5
+    ]
+   },
+   "at": [
+    -7.7,
+    -14.2
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3b95a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "trimColour": "#f2e6c0",
+    "cornice": true,
+    "windowShape": "pointed",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3b95a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade-east",
+   "footprint": {
+    "rect": [
+     4.4,
+     5.5
+    ]
+   },
+   "at": [
+    7.7,
+    -14.2
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3b95a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "trimColour": "#f2e6c0",
+    "cornice": true,
+    "windowShape": "pointed",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3b95a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    0,
+    24.5
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3b95a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.8,
+    "trimColour": "#f2e6c0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5472f",
+    "material": "clay-tile",
+    "rise": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buttress-0",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -4.9,
+    -17.2
+   ],
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2e6c0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#f2e6c0",
+    "rise": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buttress-1",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    4.9,
+    -17.2
+   ],
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2e6c0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#f2e6c0",
+    "rise": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buttress-2",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -10.2,
+    -17.2
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2e6c0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#f2e6c0",
+    "rise": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "buttress-3",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    10.2,
+    -17.2
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f2e6c0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#f2e6c0",
+    "rise": 1.8
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.1,
+    "colour": "#f0e6c8"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -17,
+    -14,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 24,
+    "height": 1.1,
+    "colour": "#f0e6c8"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -17.0,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 4.4,
+    "arch": true
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    18,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-quiet-reflection",
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "photo shows a Gothic-style yellow ochre church not classical; tower and pinnacles simplified, side annex and plinth bust omitted, window rhythm approximate"
+ }
+}

@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-relation-6711205",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museu_de_Arte_Sacra_de_S%C3%A3o_Paulo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wilfredor",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-paulo/m10_mas1.jpg",
+   "used": "whitewashed two-storey front, ochre pilaster and string-course trim, green-framed windows, three-arch porch, stepped bell gable with cross, dark tile eaves"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2018-12-06_-_Museu_de_Arte_Sacra_de_S%C3%A3o_Paulo_-_002.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Oleg Yunakov",
+   "view": "side",
+   "used": "long side wing with green window rhythm and hipped tile roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/6711205",
+   "used": "wing outline about 77 x 58 m, height 9.4 m, hipped roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 32,
+  "aspect": 1.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9.4,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.8,
+    "cornice": true,
+    "trimColour": "#d8b46c",
+    "glassColour": "#6a8f80",
+    "bands": "#d8b46c",
+    "bay": 6.5,
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3a35",
+    "material": "clay-tile",
+    "pitch": 9,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    -10.5,
+    -38
+   ],
+   "rotDeg": -17.8,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "arched",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "arched",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.6,
+    "trimColour": "#d8b46c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8b46c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-base",
+   "footprint": {
+    "rect": [
+     9,
+     2.6
+    ]
+   },
+   "at": [
+    -10.4,
+    -35.2
+   ],
+   "rotDeg": -17.8,
+   "z0": 9.4,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3f1ea",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "arched"
+    },
+    "trimColour": "#d8b46c",
+    "bands": "#d8b46c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3a35",
+    "material": "clay-tile",
+    "pitch": 45
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    -10.4,
+    -35.2,
+    21.2
+   ],
+   "params": {
+    "height": 2.2,
+    "colour": "#e9e4d6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -40
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "stepped baroque bell gable simplified to a plain gable block, porch arches only cut windows, green window frames and green eave band not reproduced, side wings follow OSM parallelogram"
+ }
+}

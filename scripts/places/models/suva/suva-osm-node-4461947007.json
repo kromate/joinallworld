@@ -1,0 +1,134 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/726098970",
+   "used": "long narrow block outline 87 x 11 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d4c4",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "bands": "#4f7f8f",
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f92",
+    "material": "membrane",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -5.8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 60,
+    "floors": 2,
+    "storeyHeight": 4,
+    "proud": 1.4,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#4f7f8f",
+     "#f2f2ee",
+     "#c98f7b"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "colour": "#4f7f8f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; outline and levels typed from OSM and brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-osm-node-4461947007"
+}

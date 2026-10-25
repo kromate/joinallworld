@@ -1,0 +1,836 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-osm-way-1207066140",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Basilica_Virgen_de_Suyapa.jpg",
+   "licence": "Public domain",
+   "author": "Marduk",
+   "view": "front",
+   "file": "/tmp/places-evidence/tegucigalpa/suyapa1.jpg",
+   "used": "twin square towers with banded cornices, arched belfries and silver-grey domes; central gabled arch front between lower wings; white render with grey trim; dome behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Towards_Catedral_de_Suyapa_from_the_hotel.jpg",
+   "licence": "CC BY 2.0",
+   "author": "madmack66",
+   "view": "side",
+   "file": "/tmp/places-evidence/tegucigalpa/suyapa2.jpg",
+   "used": "general massing check (not compared directly)"
+  },
+  {
+   "kind": "text",
+   "url": "https://es.wikipedia.org/wiki/Bas%C3%ADlica_de_Suyapa",
+   "used": "43 m towers, 46 m dome of 11.5 m diameter, 93 m long, Latin cross, 13.5 m nave"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.25,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "facade pilasters and arched centre pediment simplified (no real arch gable); belfries not open arched pairs; no door arches or round windows; dome too visible"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 20,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b7bbbf",
+      "height": 0.5,
+      "at": 0.9,
+      "proud": 0.2,
+      "floors": [
+       1
+      ]
+     },
+     {
+      "type": "fins",
+      "colour": "#b7bbbf",
+      "width": 1.0,
+      "depth": 0.3,
+      "spacing": 3,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#b7bbbf",
+      "height": 0.6,
+      "at": 0.55,
+      "proud": 0.2,
+      "floors": [
+       0,
+       1
+      ]
+     }
+    ],
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7bbbf",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     13,
+     10
+    ]
+   },
+   "at": [
+    1,
+    -4
+   ],
+   "height": 18,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 13,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b7bbbf",
+      "height": 0.5,
+      "at": 0.9,
+      "proud": 0.2,
+      "floors": [
+       2
+      ]
+     },
+     {
+      "type": "fins",
+      "colour": "#b7bbbf",
+      "width": 1.0,
+      "depth": 0.3,
+      "spacing": 3,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e4e0",
+    "pitch": 30,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    1,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 1.5,
+    "height": 4.5,
+    "columns": 0,
+    "pediment": false,
+    "steps": 2,
+    "colour": "#f1f0ec",
+    "roofColour": "#b7bbbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     64
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bay": 20,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9ea3a8",
+    "pitch": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisleL",
+   "footprint": {
+    "rect": [
+     7,
+     50
+    ]
+   },
+   "at": [
+    -16.5,
+    38
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "bay": 20,
+    "faces": {
+     "right": "plain",
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisleR",
+   "footprint": {
+    "rect": [
+     7,
+     50
+    ]
+   },
+   "at": [
+    16.5,
+    38
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "bay": 20,
+    "faces": {
+     "left": "plain",
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     54,
+     16
+    ]
+   },
+   "at": [
+    0,
+    44
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bay": 20,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9ea3a8",
+    "pitch": 16,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    44,
+    16
+   ],
+   "params": {
+    "colour": "#f1f0ec",
+    "segments": 16,
+    "arcade": {
+     "count": 6,
+     "width": 1.6,
+     "height": 3.2,
+     "sill": 1.4,
+     "shape": "arch",
+     "depth": 0.4
+    },
+    "profile": [
+     [
+      6.6,
+      0
+     ],
+     [
+      6.6,
+      11
+     ],
+     [
+      6.9,
+      11.4,
+      "#b7bbbf"
+     ],
+     [
+      6.3,
+      12.0,
+      "#b7bbbf"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    44,
+    28
+   ],
+   "params": {
+    "colour": "#a9aeb3",
+    "segments": 16,
+    "profile": [
+     [
+      6.3,
+      0
+     ],
+     [
+      5.9,
+      2.5
+     ],
+     [
+      4.7,
+      5.8
+     ],
+     [
+      2.8,
+      8.4
+     ],
+     [
+      1.2,
+      9.8
+     ],
+     [
+      1.0,
+      10.2
+     ],
+     [
+      1.0,
+      12.5,
+      "#e8e8e8"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    72
+   ],
+   "params": {
+    "radius": 8,
+    "n": 8,
+    "height": 14,
+    "colour": "#f1f0ec",
+    "topColour": "#9ea3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-21",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -21,
+    -3
+   ],
+   "height": 30,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 20,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b7bbbf",
+      "height": 0.5,
+      "at": 0.9,
+      "proud": 0.25,
+      "floors": [
+       2,
+       4
+      ]
+     },
+     {
+      "type": "fins",
+      "colour": "#b7bbbf",
+      "width": 0.7,
+      "depth": 0.35,
+      "spacing": 3,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7bbbf",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-21",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -21,
+    -3
+   ],
+   "z0": 30,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "bay": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7bbbf",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -21,
+    -3,
+    37
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#b9bcc0",
+    "profile": [
+     [
+      4.2,
+      0
+     ],
+     [
+      4.6,
+      0.4
+     ],
+     [
+      4.0,
+      1.2,
+      "#b7bbbf"
+     ],
+     [
+      3.6,
+      2.4
+     ],
+     [
+      3.8,
+      3.2
+     ],
+     [
+      3.0,
+      4.4
+     ],
+     [
+      1.8,
+      5.4
+     ],
+     [
+      0.8,
+      6.1
+     ],
+     [
+      0.6,
+      6.6
+     ],
+     [
+      0.6,
+      8,
+      "#e8e8e8"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower21",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    21,
+    -3
+   ],
+   "height": 30,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 20,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b7bbbf",
+      "height": 0.5,
+      "at": 0.9,
+      "proud": 0.25,
+      "floors": [
+       2,
+       4
+      ]
+     },
+     {
+      "type": "fins",
+      "colour": "#b7bbbf",
+      "width": 0.7,
+      "depth": 0.35,
+      "spacing": 3,
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7bbbf",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry21",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    21,
+    -3
+   ],
+   "z0": 30,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "arched",
+    "windowRatio": 0.5,
+    "bay": 4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7bbbf",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    21,
+    -3,
+    37
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#b9bcc0",
+    "profile": [
+     [
+      4.2,
+      0
+     ],
+     [
+      4.6,
+      0.4
+     ],
+     [
+      4.0,
+      1.2,
+      "#b7bbbf"
+     ],
+     [
+      3.6,
+      2.4
+     ],
+     [
+      3.8,
+      3.2
+     ],
+     [
+      3.0,
+      4.4
+     ],
+     [
+      1.8,
+      5.4
+     ],
+     [
+      0.8,
+      6.1
+     ],
+     [
+      0.6,
+      6.6
+     ],
+     [
+      0.6,
+      8,
+      "#e8e8e8"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "core/steps",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 1.2,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-9",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    -9.5,
+    -8
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#b7bbbf",
+      "width": 1.0,
+      "depth": 0.3,
+      "spacing": 3,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e4e0",
+    "pitch": 30,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing9",
+   "footprint": {
+    "rect": [
+     6,
+     8
+    ]
+   },
+   "at": [
+    9.5,
+    -8
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ec",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#b7bbbf",
+      "width": 1.0,
+      "depth": 0.3,
+      "spacing": 3,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e4e0",
+    "pitch": 30,
+    "axis": "y"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   140,
+   130
+  ]
+ }
+}

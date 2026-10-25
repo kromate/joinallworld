@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-airport-stanley-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stanley-Airport.JPG",
+   "licence": "Public domain",
+   "author": "Apcbg",
+   "view": "front",
+   "file": "/tmp/places-evidence/stanley/airport.jpg",
+   "used": "distant view across tussock grass: grey-clad low terminal and hangar sheds with low gable roofs, a small white two-storey control block with a mast, white shed to the right, flat open airfield"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/210884209",
+   "used": "terminal footprint 27 x 16 m, 2 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.48,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa0a4",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "plinth": 0.2,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b9bdbf",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    -34,
+    4
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9fa3",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c6c9c9",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-shed",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    36,
+    4
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e4e2da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d5d3cb",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-block",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -62,
+    -6
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "overhang": 0.4,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    -62,
+    -6,
+    6
+   ],
+   "params": {
+    "height": 3.5,
+    "style": "square",
+    "colour": "#ece9e0",
+    "cabColour": "#9fb6c2"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#2c4a8c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Distant photo: real tower is a low white block with mast, terminal and sheds are approximated; flat grass/runway not shown"
+ }
+}

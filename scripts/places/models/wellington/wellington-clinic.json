@@ -1,0 +1,505 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hutt_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "HenryCrun15",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/clinic.jpg",
+   "used": "eight-storey ward block with projecting horizontal concrete bands and blue-green glazed strips, tall blank concrete lift tower right, glazed round stair tower, low dark canopy base, rooftop plant screen"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/203229384",
+   "used": "site size only; block modelled from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 2.0,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     70,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 29,
+   "storeys": 8,
+   "z0": 0,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7e7b74",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#3f7f86",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8e",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab0",
+   "footprint": {
+    "rect": [
+     70,
+     1.8
+    ]
+   },
+   "at": [
+    -4,
+    -8.9
+   ],
+   "z0": 3.3000000000000003,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29f97",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29f97",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab1",
+   "footprint": {
+    "rect": [
+     70,
+     1.8
+    ]
+   },
+   "at": [
+    -4,
+    -8.9
+   ],
+   "z0": 6.500000000000001,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29f97",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29f97",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab2",
+   "footprint": {
+    "rect": [
+     70,
+     1.8
+    ]
+   },
+   "at": [
+    -4,
+    -8.9
+   ],
+   "z0": 9.7,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29f97",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29f97",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab3",
+   "footprint": {
+    "rect": [
+     70,
+     1.8
+    ]
+   },
+   "at": [
+    -4,
+    -8.9
+   ],
+   "z0": 12.9,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29f97",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29f97",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab4",
+   "footprint": {
+    "rect": [
+     70,
+     1.8
+    ]
+   },
+   "at": [
+    -4,
+    -8.9
+   ],
+   "z0": 16.1,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29f97",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29f97",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab5",
+   "footprint": {
+    "rect": [
+     70,
+     1.8
+    ]
+   },
+   "at": [
+    -4,
+    -8.9
+   ],
+   "z0": 19.3,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29f97",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29f97",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab6",
+   "footprint": {
+    "rect": [
+     70,
+     1.8
+    ]
+   },
+   "at": [
+    -4,
+    -8.9
+   ],
+   "z0": 22.500000000000004,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29f97",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29f97",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab7",
+   "footprint": {
+    "rect": [
+     70,
+     1.8
+    ]
+   },
+   "at": [
+    -4,
+    -8.9
+   ],
+   "z0": 25.700000000000003,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a29f97",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29f97",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy",
+   "footprint": {
+    "rect": [
+     68,
+     6
+    ]
+   },
+   "at": [
+    -4,
+    -9
+   ],
+   "z0": 3.6,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a4943",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4943",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     64,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    -3
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3b3b39",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "glassColour": "#2f3a3d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d6a62",
+    "material": "membrane",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift-tower",
+   "footprint": {
+    "rect": [
+     13,
+     14
+    ]
+   },
+   "at": [
+    37,
+    -2
+   ],
+   "height": 42,
+   "storeys": 10,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#6e6c66",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "windowRatio": 0.05
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85888a",
+    "material": "membrane",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    50,
+    -10,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "n": 12,
+    "height": 32,
+    "colour": "#8fb4b2",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "storeys": 8,
+    "glassColour": "#4f8f96",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#f2f2ee",
+      "#6aa8ac"
+     ]
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    -18,
+    0
+   ],
+   "z0": 29,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bcbd",
+    "windows": "none",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9e",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -54,
+    12
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bdb8ae",
+    "windows": "none",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f93",
+    "material": "metal-sheet",
+    "pitch": 25
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "colour": "#e8e8e8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -18
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stair tower still reads as a plain glazed prism (no banded drum), plant screen is a plain block, ground storey canopy simplified"
+ }
+}

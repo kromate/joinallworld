@@ -1,0 +1,116 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "west-island",
+ "venueId": "west-island-osm-way-1015047086",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1015047086",
+   "used": "name-matched 5.4 x 3.6 m cafe outline"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/west-island.json",
+   "used": "kiosk colours, metal roof, awning, two umbrellas"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9ec3c4",
+    "windows": "none",
+    "bands": "#d8c9a6",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a14a3c",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -2.4,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "depth": 1.4,
+    "colours": [
+     "#d8c9a6",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -5,
+    -1.5,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spread": 3,
+    "radius": 1.3,
+    "colours": [
+     "#ffffff",
+     "#a14a3c"
+    ],
+    "tables": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     6,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   26,
+   20
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo; OSM kiosk outline, typed colours and awning"
+ }
+}

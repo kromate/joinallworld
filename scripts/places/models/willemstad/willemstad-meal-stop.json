@@ -1,0 +1,322 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Playa_Porto_Marie.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LoganP25",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/willemstad/portomarie1.jpg",
+   "used": "low hipped dark thatch/shingle bar building on the west edge of the cove, open timber deck with yellow chairs, long timber pier into turquoise water, cream umbrellas and blue loungers on white sand, palms, rocky wooded headland"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Playa_Porto_Marie_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LoganP25",
+   "view": "street",
+   "file": "/tmp/places-evidence/willemstad/portomarie3.jpg",
+   "used": "weathered timber posts, grey plank deck, yellow chairs, plank pier on rock, blue loungers, palm"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1413015257",
+   "used": "10 x 8 m building outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -55,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a7a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a5f50",
+    "material": "thatch",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.35,
+       0.35
+      ]
+     },
+     "height": 2.6,
+     "wall": {
+      "material": "timber",
+      "colour": "#6e5236",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#6e5236"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.5,
+     -4.6
+    ],
+    "end": [
+     4.5,
+     -4.6
+    ],
+    "count": 4,
+    "dz": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    -7.2
+   ],
+   "params": {
+    "rect": [
+     10,
+     5
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#8d8a84",
+    "material": "timber"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.55,
+       0.55
+      ]
+     },
+     "height": 0.5,
+     "wall": {
+      "material": "plastic",
+      "colour": "#e8b923",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#e8b923"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.5,
+     -8.2
+    ],
+    "end": [
+     3.5,
+     -8.2
+    ],
+    "count": 4,
+    "dz": 0.4
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    7,
+    -5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "length": 22,
+    "width": 2.0,
+    "height": 0.6,
+    "rails": false,
+    "piles": true,
+    "colour": "#8f8878"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pierbase",
+   "at": [
+    8.5,
+    -5
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#6f6a60",
+    "material": "stone"
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    12,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 10,
+    "colours": [
+     "#e7dcc4",
+     "#efe6d2"
+    ],
+    "radius": 1.5
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 8,
+    "spacing": 2.6,
+    "umbrellas": false,
+    "loungers": true,
+    "colours": [
+     "#2f6fb0",
+     "#2f6fb0"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -24,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 30,
+    "count": 8,
+    "min_height": 4,
+    "max_height": 8
+   }
+  },
+  {
+   "type": "rock-hill",
+   "at": [
+    34,
+    28,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 20,
+    "height": 5,
+    "seed": 3,
+    "boulders": 10,
+    "rock_colour": "#7a6f55",
+    "stairs": false
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    28,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12,
+    "count": 14,
+    "min_height": 3,
+    "max_height": 6
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    48,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 64,
+    "depth": 70,
+    "shape": "ellipse",
+    "colour": "#2fb3c4",
+    "bank": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Curved cove, pier on rock base and open bar hut with small deck now match the photo layout; the cliff headland is a low rock mound, no dense vegetation, and the bar walls are plain timber."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-meal-stop"
+}

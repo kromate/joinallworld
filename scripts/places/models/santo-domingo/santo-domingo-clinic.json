@@ -1,0 +1,313 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:HGPS.JPG",
+   "licence": "Public domain",
+   "author": "Jairo Torres Betances",
+   "view": "street",
+   "file": "/tmp/places-evidence/santo-domingo/clinic1.jpg",
+   "used": "three-storey cream render block with maroon pilasters between window bays, dark small-paned windows, blue-grey flat roof with deep eaves, maroon brick end wall, round maroon tower, low entrance canopy, palms, patterned paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/164695925",
+   "used": "not used: it is the whole 549 x 448 m health campus, not one building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     60,
+     15
+    ]
+   },
+   "at": [
+    -15,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dcc9",
+    "windows": "punched",
+    "windowRatio": 0.42,
+    "bay": 6.2,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "groundKind": "plain"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8d85",
+    "material": "metal-sheet",
+    "overhang": 2.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "pilaster",
+     "footprint": {
+      "rect": [
+       1.4,
+       0.7
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 11.5,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#7b2b3a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#7b2b3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -43,
+     -7.9
+    ],
+    "end": [
+     13,
+     -7.9
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-end",
+   "footprint": {
+    "rect": [
+     3,
+     15.5
+    ]
+   },
+   "at": [
+    16.5,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a3144",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9188",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wing",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    30,
+    6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d4",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 5,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9188",
+    "overhang": 1.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "round-tower",
+   "at": [
+    20,
+    -3
+   ],
+   "params": {
+    "radius": 4.6,
+    "n": 20,
+    "z0": 0,
+    "height": 9.5,
+    "colour": "#7b2b3a",
+    "topColour": "#6e8a86",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "at": [
+    20,
+    -3
+   ],
+   "params": {
+    "radius": 5.0,
+    "n": 20,
+    "z0": 9.5,
+    "height": 1.2,
+    "topScale": 0.7,
+    "colour": "#6e8a86",
+    "topColour": "#6e8a86"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    38,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 8,
+    "height": 4.2,
+    "colour": "#6e8a86",
+    "columns": 2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    15,
+    -8.2,
+    6.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#7b2b3a",
+    "posts": false
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    46,
+    8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#d8d4c6",
+    "roofColour": "#6e8a86",
+    "vans": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#8a2f3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -11
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -5,
+     -11
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof overhang and tower cap simplified; no brick-tile pavement pattern; far end wing guessed; camera framing is wider than the photo."
+ }
+}

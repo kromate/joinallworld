@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-way-851490550",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/851490550",
+   "used": "name-matched long lagoon-front strip (275 x 63 m); the first 118 m is composed as the park lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "z0": -0.38,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9ab57a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fae6e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter-base",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "z0": -0.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5b0a5",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a5"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    6,
+    0,
+    0.3
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 3,
+    "rows": 2,
+    "dx": 4.2,
+    "dy": 4.2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 2.6,
+      "colour": "#8c6a45"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter-roof",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "z0": 2.9,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b89a5e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b89a5e",
+    "material": "thatch",
+    "rise": 2.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 0.8,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#d9d4c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -4,
+     34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo: lawn outline scaled 0.43 to fit the scene; shelter and palms assumed"
+ }
+}

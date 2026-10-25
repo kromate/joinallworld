@@ -1,0 +1,138 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/362275270",
+   "used": "real 12-point commercial footprint, about 50 x 44 m, 1408 m2"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/the-valley.json#the-valley-market-game",
+   "used": "two storeys, flat roof, render and red accents, arcade walkway, awning (typed, no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#b94a3a",
+    "plinth": 0.3,
+    "parapet": 0.6,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#e8d9b0",
+      "#efe3c4"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9091",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 10,
+    "depth": 2,
+    "height": 3,
+    "colours": [
+     "#b94a3a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -28,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 4.5,
+    "colour": "#b94a3a",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -3,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 12,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; U-plan from OSM outline, facade colours and awnings typed from brief"
+ }
+}

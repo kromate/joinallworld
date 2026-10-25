@@ -1,0 +1,180 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-way-455336051",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Heliopolis.jpg",
+   "licence": "CC0",
+   "author": "hospital staff (own work)",
+   "view": "street",
+   "file": "/tmp/places-evidence/sao-paulo/heli.jpg",
+   "used": "tall stepped slab blocks in ochre-yellow painted render, continuous horizontal ribbon windows with white frames per floor, taller stair/ward tower to the right, low grey podium with vent grilles and glazed ground floor"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/455336051",
+   "used": "zig-zag plan of the long block (110 x 24 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.57,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     96,
+     34
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdbab2",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "osm": true,
+    "simplify": 7
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 5,
+   "height": 33,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c68a",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": "#cdb877",
+    "glassColour": "#a5b9c4",
+    "bay": 18
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-tower",
+   "footprint": {
+    "rect": [
+     13,
+     16
+    ]
+   },
+   "at": [
+    34,
+    12
+   ],
+   "z0": 5,
+   "height": 42,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3bf80",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#a5b9c4",
+    "bay": 10
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lift-core",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    34,
+    12
+   ],
+   "z0": 47,
+   "height": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b676",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -21,
+    3.5
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.4,
+    "colour": "#f2f2f2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Windows are wider glazed ribbons than the photo's white-framed grids; ward tower is a plain box without the tapering batter; background buildings absent."
+ }
+}

@@ -1,0 +1,118 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "road-town",
+ "venueId": "road-town-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/399711084",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "used": "two-storey colonial-style courthouse with verandah, hipped metal roof; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bands": "#b9b2a2",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8372f",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 4.6,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f6f3ea",
+    "roofColour": "#3f7a58"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -9,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "extent": [
+   60,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -6
+    ],
+    "height": 10
+   }
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo: 16x14 m outline only, verandah and arches typed; portico is aligned to the +y-facing front, not the real entrance"
+ }
+}

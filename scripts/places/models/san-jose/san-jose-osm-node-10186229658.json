@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-osm-node-10186229658",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: memorial marker for SANSA Flight 32 crash on a mountain slope; nothing else documented, modest plaque wall and cross"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaque-wall",
+   "footprint": {
+    "rect": [
+     4,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b9b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-post",
+   "at": [
+    0,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-arm",
+   "at": [
+    0,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "z0": 2.0,
+    "height": 0.3,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step",
+   "at": [
+    0,
+    -1.5
+   ],
+   "params": {
+    "rect": [
+     5,
+     2.2
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#a7a79f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.9,
+    "kind": "rail",
+    "colour": "#7a8f5a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -7,
+     5
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -3
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or outline; modest plaque wall and cross typed from the brief"
+ }
+}

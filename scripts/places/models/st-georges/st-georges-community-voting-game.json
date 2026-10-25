@@ -1,0 +1,115 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/385939410",
+   "used": "real 19 x 8 m rectangle, turned 23 degrees to its road (name match, no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "osm": true,
+    "fit": 40
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc4",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "glassColour": "#6a4f35",
+    "plinth": 0.4,
+    "bands": "#ffffff",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a23b2a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -7,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.2,
+    "colour": "#f2f2f2",
+    "frameColour": "#8a6f4d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; real outline with typical hip-roof court"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-community-voting-game"
+}

@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-osm-way-80445127",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MUSEUM_OF_THE_DOMINICAN_MAN,_SANTO_DOMINGO,_DOMINICAN_REPUBLIC.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jerrye & Roy Klotz MD",
+   "view": "street",
+   "file": "/tmp/places-evidence/santo-domingo/museo-hombre.jpg",
+   "used": "cream concrete block on an open pilotis ground floor, rounded drum bays on the middle storey, plain top storey with small paired windows, low rubble-stone fence, lamp post, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/80445127",
+   "used": "overall size 66 x 49 m, orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     62,
+     44
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2dfd3",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 3,
+      "spacing": 7,
+      "width": 1.4
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b8",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     62,
+     44
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 8.5,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2dfd3",
+    "windows": "rect",
+    "windowRatio": 0.07,
+    "faces": {
+     "front": "rect",
+     "left": "rect",
+     "back": "none",
+     "right": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5b8",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-core",
+   "footprint": {
+    "rect": [
+     52,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d3c38",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c82"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "params": {
+      "radius": 2.6,
+      "n": 12,
+      "z0": 5,
+      "height": 4.5,
+      "colour": "#8a93a6"
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -22,
+     -23.2
+    ],
+    "end": [
+     22,
+     -23.2
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.0,
+    "thickness": 0.5,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#9d9684"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -31,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -33,
+     -30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -28
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -10
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Drum bays are rounder and bluer than the photo and sit under the storey rather than as recessed bays; no setback corner volume, cantilevers or ribbon windows; fence is plain rubble wall."
+ }
+}

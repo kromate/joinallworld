@@ -1,0 +1,206 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "west-island",
+ "venueId": "west-island-osm-way-198316207",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/198316207",
+   "used": "10.7 x 6.4 m cafe footprint, bearing 148 deg (rect rotated, outline is a plain rectangle) and scale"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:William_Keeling_Crescent_(24516896231).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "street",
+   "file": "/tmp/places-evidence/west-island/crescent.jpg",
+   "used": "West Island setting only: low pale buildings under grey metal roofs, coral sand edges, palms; the cafe itself is not visible"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Naval_Monument_(24585209435).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "street",
+   "file": "/tmp/places-evidence/west-island/naval.jpg",
+   "used": "Local building colours: pale teal walls with white trim and louvre shutters under pale corrugated roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     10.7,
+     6.4
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9ec3c4",
+    "windows": "louvre",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "bands": "#f2d27a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   },
+   "z0": 0.5,
+   "rotDeg": -32
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    1.5,
+    -4.2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b99a6b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99a6b",
+    "material": "concrete"
+   },
+   "rotDeg": -32
+  },
+  {
+   "type": "awning",
+   "at": [
+    1.0,
+    -3.4,
+    0.5
+   ],
+   "rotDeg": -32,
+   "params": {
+    "width": 9,
+    "depth": 3,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#f2d27a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    2.5,
+    -7,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "colours": [
+     "#f2d27a",
+     "#9ec3c4",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -7,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.6,
+    "bottom": 0.5,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 2.5,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 2,
+    "colour": "#d8d2c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     3
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     11,
+     5
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -9
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   45,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the cafe; beach-bar look is inferred from the name and island building colours."
+ }
+}

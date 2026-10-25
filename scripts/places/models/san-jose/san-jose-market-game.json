@@ -1,0 +1,195 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mercado_Central_de_San_Jos%C3%A9,_Costa_Rica.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Peque\u00f1o mar",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-jose/mc1.jpg",
+   "used": "entrance: tall pale blue-grey painted sign wall over a dark flat awning and shopfronts, flat grey roofs behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:San_Jose_Central_Market1.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Puroticorico",
+   "view": "street",
+   "used": "white sign wall over a canopy with maroon end posts, roller shutters and yellow shopfront beside the entrance, low shed roof behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/264040874",
+   "used": "real city-block outline, 88 x 85 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9d2bd",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "cornice": true,
+    "groundKind": "shopfront",
+    "groundHeight": 3.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-lantern",
+   "footprint": {
+    "rect": [
+     56,
+     50
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "z0": 7,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9aeb1",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7f858a",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "awning",
+   "at": [
+    0,
+    -47.5
+   ],
+   "params": {
+    "rect": [
+     28,
+     3
+    ],
+    "z0": 3.4,
+    "height": 0.5,
+    "colour": "#4a3b38"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-wall",
+   "at": [
+    0,
+    -46.5
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.8
+    ],
+    "z0": 3.9,
+    "height": 5.2,
+    "colour": "#b5c5cc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-l",
+   "at": [
+    -14,
+    -48.5
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "z0": 0,
+    "height": 3.9,
+    "colour": "#8b3a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-r",
+   "at": [
+    14,
+    -48.5
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "z0": 0,
+    "height": 3.9,
+    "colour": "#8b3a3a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -46,
+    9
+   ],
+   "params": {
+    "height": 5,
+    "colours": [
+     "#1f3f8f",
+     "#ffffff",
+     "#c8102e"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photo is a close-up of the entrance only; model has a plain two-storey perimeter and a shed lantern, no painted compass-rose lettering, shopfront clutter or interior alleys"
+ }
+}

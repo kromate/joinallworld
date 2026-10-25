@@ -1,0 +1,317 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ceren_01.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "daggerquill",
+   "view": "side",
+   "file": "/tmp/places-evidence/san-salvador/ceren1.jpg",
+   "used": "thick tan-brown adobe house walls with small window niches standing in an ash pit, stepped soil section, stair, roof over the whole excavation"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ES_JoyadeCeren_06_2011_EEstructuras_11_y_6_y_1_Area_1_2121.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mariordo (Mario Roberto Duran Ortiz)",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-salvador/ceren3.jpg",
+   "used": "pale ash floor, conical adobe granary stumps, low stake lines, low platform walls, green rail on the visitor edge, translucent roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/337980176",
+   "used": "rotated 42x29 m outline of the shelter, bearing 121 degrees"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ash-pit",
+   "footprint": {
+    "osm": true,
+    "scale": 0.9
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9bb9f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3c6ad",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-a",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -2
+   ],
+   "rotDeg": -31,
+   "z0": 0.5,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "punched",
+    "windowRatio": 0.04
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b49a72",
+    "material": "concrete",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "house-b",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    8,
+    6
+   ],
+   "rotDeg": -31,
+   "z0": 0.5,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98a63",
+    "windows": "punched",
+    "windowRatio": 0.04
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b49a72",
+    "material": "concrete",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -1,
+    -9
+   ],
+   "rotDeg": -31,
+   "z0": 0.5,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#9a7650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b49a72",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    10,
+    -8
+   ],
+   "rotDeg": -31,
+   "z0": 0.5,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c8b08a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3c6ad",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "conical-tower",
+   "at": [
+    -1,
+    5,
+    0.5
+   ],
+   "params": {
+    "height": 2.6,
+    "radius": 1.1,
+    "toron": false
+   }
+  },
+  {
+   "type": "conical-tower",
+   "at": [
+    3,
+    3.5,
+    0.5
+   ],
+   "params": {
+    "height": 2.0,
+    "radius": 0.9,
+    "toron": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -14,
+    4,
+    0.5
+   ],
+   "params": {
+    "width": 1.6,
+    "rise": 0.35,
+    "run": 0.5,
+    "count": 6,
+    "colour": "#a98a63"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    0,
+    5
+   ],
+   "rotDeg": -31,
+   "params": {
+    "form": "flat",
+    "width": 43,
+    "depth": 29,
+    "height": 5,
+    "thickness": 0.35,
+    "columns": 10,
+    "colour": "#9a9fa2",
+    "edgeColour": "#6f7477"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 4,
+    "height": 0.9,
+    "thickness": 0.1,
+    "kind": "rail",
+    "colour": "#3f7a52",
+    "points": [
+     [
+      -18,
+      -12
+     ],
+     [
+      18,
+      -18
+     ],
+     [
+      24,
+      -1
+     ],
+     [
+      -12,
+      18
+     ],
+     [
+      -24,
+      0
+     ],
+     [
+      -18,
+      -12
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     32
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-relation-6127139",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Excavation pit and stepped ash walls are not modelled (flat ash floor); roof is lighter and wider than the real translucent shelter."
+ }
+}

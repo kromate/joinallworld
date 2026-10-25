@@ -1,0 +1,885 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaren",
+ "venueId": "yaren-osm-node-10994460231",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nauru-WWIIrelic.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "unknown (Wikimedia Commons)",
+   "view": "side",
+   "file": "/tmp/places-evidence/yaren/guns.jpg",
+   "used": "twin-barrel rusted gun on an open carriage lying in dry scrub, brown-rust colour, long thin barrels raised"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Command_Ridge",
+   "used": "concrete Japanese bunker, rusted WWII guns"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bunker",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    5,
+    8
+   ],
+   "rotDeg": 10,
+   "z0": 0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#8a877d",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7a70",
+    "material": "concrete",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.0,
+    8.0,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.12
+    ],
+    "height": 0.3,
+    "colour": "#1c1a18"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.9,
+    8.0,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "points": [
+     [
+      -0.6,
+      -0.5
+     ],
+     [
+      0.7,
+      -0.4
+     ],
+     [
+      0.5,
+      0.6
+     ],
+     [
+      -0.4,
+      0.5
+     ]
+    ],
+    "height": 0.5,
+    "topScale": 0.5,
+    "colour": "#85827a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.55,
+    "n": 8,
+    "height": 0.5,
+    "topScale": 0.7,
+    "colour": "#4a2f24"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "radius": 0.22,
+    "n": 8,
+    "height": 0.5,
+    "colour": "#5a3a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     1.3
+    ],
+    "height": 0.65,
+    "topScale": [
+     0.85,
+     0.9
+    ],
+    "colour": "#5a3a2c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0.45,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.1
+    ],
+    "height": 0.85,
+    "colour": "#4a2f24"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.2,
+    0.2,
+    1.55
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.5
+    ],
+    "height": 0.2,
+    "colour": "#6b4636"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.65,
+    -0.1,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.8
+    ],
+    "height": 0.7,
+    "colour": "#4a2f24"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.65,
+    -0.1,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.8
+    ],
+    "height": 0.7,
+    "colour": "#4a2f24"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0.9,
+    0.5,
+    1.0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.06
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0.4,
+      0.4,
+      0.3
+     ],
+     [
+      0.6,
+      0.5,
+      0.6
+     ]
+    ],
+    "colour": "#4a2f24"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.5,
+    1.0,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.35
+    ],
+    "height": 0.08,
+    "colour": "#5a3a2c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -0.28,
+    -0.5,
+    1.2
+   ],
+   "params": {
+    "section": {
+     "circle": 0.09
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -0.5,
+      -1.4,
+      0.8
+     ],
+     [
+      -1.0,
+      -2.8,
+      1.6
+     ]
+    ],
+    "colour": "#5a3a2c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -0.28,
+    -0.5,
+    1.2
+   ],
+   "params": {
+    "section": {
+     "circle": 0.15000000000000002
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -0.15,
+      -0.4,
+      0.23
+     ]
+    ],
+    "colour": "#4a2f24"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0.28,
+    -0.5,
+    1.2
+   ],
+   "params": {
+    "section": {
+     "circle": 0.09
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -0.5,
+      -1.4,
+      0.8
+     ],
+     [
+      -1.0,
+      -2.8,
+      1.6
+     ]
+    ],
+    "colour": "#4a2f24"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0.28,
+    -0.5,
+    1.2
+   ],
+   "params": {
+    "section": {
+     "circle": 0.15000000000000002
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      -0.15,
+      -0.4,
+      0.23
+     ]
+    ],
+    "colour": "#4a2f24"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.5,
+    -1.5,
+    0
+   ],
+   "rotDeg": 41,
+   "params": {
+    "radius": 0.45,
+    "n": 6,
+    "height": 0.36000000000000004,
+    "topScale": 0.6,
+    "colour": "#b5b0a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    2.5,
+    0
+   ],
+   "rotDeg": 50,
+   "params": {
+    "radius": 0.35,
+    "n": 6,
+    "height": 0.27999999999999997,
+    "topScale": 0.6,
+    "colour": "#c0bba9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3,
+    -3,
+    0
+   ],
+   "rotDeg": 6,
+   "params": {
+    "radius": 0.4,
+    "n": 6,
+    "height": 0.32000000000000006,
+    "topScale": 0.6,
+    "colour": "#b5b0a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.2,
+    2.8,
+    0
+   ],
+   "rotDeg": 68,
+   "params": {
+    "radius": 0.3,
+    "n": 6,
+    "height": 0.24,
+    "topScale": 0.6,
+    "colour": "#b5b0a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.5,
+    3.5,
+    0
+   ],
+   "rotDeg": 46,
+   "params": {
+    "radius": 0.3,
+    "n": 6,
+    "height": 0.24,
+    "topScale": 0.6,
+    "colour": "#c0bba9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -1,
+    0
+   ],
+   "rotDeg": 7,
+   "params": {
+    "radius": 0.35,
+    "n": 6,
+    "height": 0.27999999999999997,
+    "topScale": 0.6,
+    "colour": "#c0bba9"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -3,
+    0
+   ],
+   "rotDeg": 27,
+   "params": {
+    "radius": 0.5,
+    "n": 6,
+    "height": 0.4,
+    "topScale": 0.6,
+    "colour": "#b5b0a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1,
+    -4.5,
+    0
+   ],
+   "rotDeg": 11,
+   "params": {
+    "radius": 0.25,
+    "n": 6,
+    "height": 0.2,
+    "topScale": 0.6,
+    "colour": "#a8a393"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -1.472901275326329,
+    -4.1493919979676,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.33776181344784645,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.6755236268956929,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -7.936010890578196,
+    1.0472591070892747,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.4368624251768719,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.8737248503537438,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    2.3512664831712673,
+    1.327950471366517,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.2154655120840351,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.4309310241680702,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.539745607526962,
+    -7.206570985763657,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.2552704558644121,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.5105409117288242,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.0199681628676665,
+    -5.869202936934318,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.3047847608928663,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.6095695217857326,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.0846309862306285,
+    2.912043116179273,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.22576392811089785,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.4515278562217957,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    1.281679045412261,
+    -4.994063571405704,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.22435764399868335,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.4487152879973667,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    3.817993783430765,
+    1.0298926901341865,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.35475239829338845,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.7095047965867769,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    4.990117949654525,
+    -0.550370146565216,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.4308603459097154,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.8617206918194308,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -2.4915175929978055,
+    -4.025174642279211,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.2449416873957858,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.4898833747915716,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    5.036933350516387,
+    -6.6903198272676825,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.27506227963640634,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.5501245592728127,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -0.08790552800540041,
+    -2.5043889606660272,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.04,
+      "colour": "#6b5a3a"
+     },
+     {
+      "z": 0.31220854760694833,
+      "circle": 0.22,
+      "colour": "#7c6b45"
+     },
+     {
+      "z": 0.6244170952138967,
+      "circle": 0.12,
+      "colour": "#8a7a50"
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   18,
+   14
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "gun is now the hero (rust twin barrels at ~30 deg on pedestal, yoke, seat) in a low bunker and rocks, but gun is still small and clean-edged versus the wreck; ground is red laterite not brown-grey scrub; scrub is simple lofted tufts"
+ }
+}

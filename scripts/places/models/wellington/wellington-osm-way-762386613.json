@@ -1,0 +1,395 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-osm-way-762386613",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vucel_1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Shimaje",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/m19_vucel.jpg",
+   "used": "stacked volumes: rubble-stone plinth with glazed clerestory on the left, dark charcoal panel block, taller silver vertical-cladding box with monopitch roof and glass corner, curved timber ribs, pinkish render annex, entrance steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/762386611",
+   "used": "overall footprint size and bearing (about 30 x 26 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 44,
+  "aspect": 1.82,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    -10,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#6e6962",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d7276",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-glazing",
+   "footprint": {
+    "rect": [
+     10.6,
+     10
+    ]
+   },
+   "at": [
+    -10,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "z0": 3.4,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c4cf",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#9dc7c8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-block",
+   "footprint": {
+    "rect": [
+     7,
+     8
+    ]
+   },
+   "at": [
+    -1.5,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#47464a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a4e",
+    "material": "metal-sheet",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "silver-box",
+   "footprint": {
+    "rect": [
+     14,
+     13
+    ]
+   },
+   "at": [
+    6,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#bdbab2",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "curtain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a7aaad",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-pier",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    3,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#7a746c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     5,
+     10
+    ]
+   },
+   "at": [
+    13,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b69a8c",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -1.5,
+    -7.3,
+    3.4
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#2f5a46",
+    "frameColour": "#2f5a46",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.5,
+        1.1
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0.5,
+        -0.7,
+        4.6
+       ],
+       [
+        -0.1,
+        -1.6,
+        8.8
+       ]
+      ],
+      "curve": true,
+      "colour": "#6b4a3a"
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     10.2,
+     -5,
+     0
+    ],
+    "step": [
+     1.0,
+     0,
+     0
+    ],
+    "vary": null
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    9,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.7,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#8c8c88"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "shrub",
+    "height": 3,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hillside",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#4b6b35",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       40,
+       10
+      ]
+     },
+     {
+      "z": 16,
+      "ellipse": [
+       30,
+       6
+      ]
+     },
+     {
+      "z": 30,
+      "ellipse": [
+       16,
+       3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "bush",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 8,
+    "count": 14,
+    "min_height": 5,
+    "max_height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "sign board still renders saturated blue despite green colour; glazed left band and curved ribs improved but ribs sit small; entrance steps/glazed doors missing; hillside is a smooth bank behind; rubble stone is plain grey"
+ }
+}

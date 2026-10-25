@@ -1,0 +1,149 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1065992602",
+   "used": "8.8 x 4.5 m office footprint, bearing 63 deg; brief: port office, sheds, quay"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "polygon": [
+     [
+      -4.9,
+      0
+     ],
+     [
+      2.8,
+      4
+     ],
+     [
+      4.9,
+      0
+     ],
+     [
+      -2.8,
+      -4
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -20,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5b0a5",
+    "windows": "louvre",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cargo-shed",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -22,
+    6
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9cdcf",
+    "windows": "none",
+    "bands": "#8fb6c9"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "quay",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 16,
+    "water_depth": 28,
+    "bollards": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.3,
+    "bottom": 2,
+    "colour": "#2f6b8f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; sheds and quay layout assumed around the real office footprint"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-node-5850089485"
+}

@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Cl%C3%ADnico_de_la_Fuerza_A%C3%A9rea,_Las_Condes,_Santiago_20230421_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carlos Figueroa Rojas",
+   "view": "street",
+   "file": "/tmp/places-evidence/santiago/santiago-clinic-0.jpg",
+   "used": "strong blue entrance wall carrying a blank sign and red cross, low blue glazed pavilion with flat blue roof behind a lawn, tall white block with teal bands in the distance, street trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/79792943",
+   "used": "hospital outline (103 x 80 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 1,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "osm": true,
+    "fit": 90
+   },
+   "at": [
+    -25,
+    50
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9e0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "bands": "#3f9aa6",
+    "cornice": true,
+    "pattern": {
+     "type": "floors"
+    },
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     36,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    -52
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f62b5",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a57a3",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-wall",
+   "footprint": {
+    "rect": [
+     22,
+     1.2
+    ]
+   },
+   "at": [
+    34,
+    -58
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2c63b8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c63b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-cross",
+   "footprint": {
+    "rect": [
+     3,
+     0.8
+    ]
+   },
+   "at": [
+    36,
+    -58.8
+   ],
+   "z0": 5,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d03a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d03a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wall",
+   "footprint": {
+    "rect": [
+     14,
+     1
+    ]
+   },
+   "at": [
+    -28,
+    -56
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2c63b8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c63b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -64
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -62
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -40
+    ],
+    "height": 9
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     10,
+     -70,
+     0
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     -40,
+     -48,
+     0
+    ],
+    "yawDeg": 0
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Entrance view only: the tall white block is the real pinwheel outline scaled down and is not seen in the photo as clearly; sign wall has no lettering; no cable lines or kerb details."
+ }
+}

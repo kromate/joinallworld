@@ -1,0 +1,231 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1204253618",
+   "used": "real outline 30.3 x 22.3 m, name match; body height 7.3 m (24 ft) from the brief"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/San_Juan_Puerto_Rico_Temple",
+   "used": "one storey, 74 ft with spire, Spanish colonial style, crema tile cladding, blue cement-tile accents, gold, clay tile roof, single domed spire modelled on San Juan City Hall towers"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.3,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#efe9d6",
+    "windows": "arched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#2f6c8f",
+    "accentColour": "#2f6c8f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5683f",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.4,
+     6.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#efe9d6",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.3,
+    "cornice": true,
+    "bands": "#c9a24a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a24a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "belfry-dome",
+   "at": [
+    0,
+    0,
+    15.5
+   ],
+   "params": {
+    "profile": [
+     [
+      3.4,
+      0,
+      "#e9dfc4"
+     ],
+     [
+      3.0,
+      0.6
+     ],
+     [
+      2.6,
+      2.4
+     ],
+     [
+      3.0,
+      2.9,
+      "#c9a24a"
+     ],
+     [
+      2.9,
+      3.2,
+      "#2f6c8f"
+     ],
+     [
+      2.2,
+      4.4,
+      "#2f6c8f"
+     ],
+     [
+      1.0,
+      5.6,
+      "#2f6c8f"
+     ],
+     [
+      0.45,
+      6.2,
+      "#c9a24a"
+     ],
+     [
+      0.25,
+      7.0,
+      "#c9a24a"
+     ],
+     [
+      0.0,
+      7.8,
+      "#c9a24a"
+     ]
+    ],
+    "segments": 16,
+    "colour": "#2f6c8f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.6,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#e5dfcc"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#e9e2cd"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the temple found; entrance side and tower position assumed (tower centred), cladding pattern and art-glass not modelled"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-way-1204253618"
+}

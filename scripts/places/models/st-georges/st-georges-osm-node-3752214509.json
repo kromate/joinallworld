@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-georges",
+ "venueId": "st-georges-osm-node-3752214509",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: dry thorny scrub reserve for the Grenada dove on the south-west peninsula with a small entrance gate, sign board and boundary fence; no photo or outline found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.4,
+    "pillar": 0.7,
+    "leaf": "bars",
+    "colour": "#a58a62",
+    "leafColour": "#4a4036"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.8,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#a58a62"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    20,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.8,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#a58a62"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 2.2,
+    "bottom": 1.1,
+    "colour": "#7d8f58",
+    "frameColour": "#a58a62"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -9,
+    -30
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a58a62",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b8f8c",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 44,
+    "count": 26,
+    "kind": "acacia",
+    "min_height": 3,
+    "max_height": 5.5,
+    "keep_out": []
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 5,
+    "spread": 10,
+    "line": 50
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no evidence of the real reserve; dry scrub and entrance typed from the habitat"
+ }
+}

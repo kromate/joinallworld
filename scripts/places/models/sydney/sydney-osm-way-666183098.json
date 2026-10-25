@@ -1,0 +1,440 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wooloware_Endeavour_Field.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "J Bar",
+   "view": "front",
+   "file": "/tmp/places-evidence/sydney/shark2.jpg",
+   "used": "main grandstand: raked blue-grey lower tier, cream concrete band with ribbon glazing, upper seat tier in front of a brown brick wall, thin flat cantilever roof with floodlight row, concrete stair towers at both ends"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Shark_Park_front.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "used": "dark clad street-side wall with blue vertical fins (blank, no signage)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/149721348",
+   "used": "pitch size and orientation (137 x 84 m); stand placed along the long side"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     30,
+     20
+    ],
+    "end": [
+     -30,
+     20
+    ],
+    "rows": 12,
+    "rise": 0.55,
+    "run": 0.8,
+    "firstHeight": 0.5,
+    "seatColour": "#b3d3ea",
+    "seatColours": [
+     "#b3d3ea",
+     "#c6deef"
+    ],
+    "blocks": 6,
+    "concreteColour": "#c9c2ae",
+    "under": "solid",
+    "backWall": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "box",
+   "footprint": {
+    "rect": [
+     62,
+     6
+    ]
+   },
+   "at": [
+    0,
+    33
+   ],
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e3d49a",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#8fa6b4",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c867a",
+    "parapet": 0.3
+   },
+   "z0": 6.8
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    12.8
+   ],
+   "params": {
+    "start": [
+     28,
+     36.5
+    ],
+    "end": [
+     -28,
+     36.5
+    ],
+    "rows": 8,
+    "rise": 0.55,
+    "run": 0.8,
+    "firstHeight": 0.3,
+    "seatColour": "#b3d3ea",
+    "seatColours": [
+     "#b3d3ea",
+     "#c6deef"
+    ],
+    "blocks": 6,
+    "concreteColour": "#c9c2ae",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "backwall",
+   "footprint": {
+    "rect": [
+     62,
+     2
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "height": 14.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a5340",
+    "windows": "none",
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c9a0"
+   },
+   "z0": 12.8
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    44,
+    19.9
+   ],
+   "params": {
+    "rect": [
+     66,
+     19
+    ],
+    "height": 0.8,
+    "colour": "#d9d2c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    34.8,
+    20.7
+   ],
+   "params": {
+    "rect": [
+     64,
+     0.8
+    ],
+    "height": 0.6,
+    "colour": "#ece7da",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "banner",
+   "footprint": {
+    "rect": [
+     22,
+     0.6
+    ]
+   },
+   "at": [
+    -12,
+    35.0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c1ac",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c1ac"
+   },
+   "z0": 17.0
+  },
+  {
+   "type": "mass",
+   "id": "stair-1",
+   "footprint": {
+    "rect": [
+     5,
+     8
+    ]
+   },
+   "at": [
+    -32.5,
+    36
+   ],
+   "height": 25,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a99f8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c9a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair1",
+   "footprint": {
+    "rect": [
+     5,
+     8
+    ]
+   },
+   "at": [
+    32.5,
+    36
+   ],
+   "height": 25,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a99f8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c9a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.5,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 9,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.5,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 9,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    10,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     7.3,
+     0.2
+    ],
+    "height": 0.2,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    44,
+    20.7
+   ],
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "height": 3,
+    "colour": "#d9d2c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     34.8,
+     20.7
+    ],
+    "end": [
+     28,
+     34.8,
+     20.7
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.3
+      ],
+      "height": 1.2,
+      "colour": "#f4f4f0",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -24,
+     35,
+     15.5
+    ],
+    "end": [
+     24,
+     35,
+     15.5
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       8,
+       0.3
+      ],
+      "height": 1.4,
+      "colour": "#2f5d8a",
+      "windows": "none"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-way-666183098",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "upper tier still reads as dark void under a too-tall brick back wall, stair towers are plain grey blocks without external flights, seats read grey not pale blue, roof-end plant box small"
+ }
+}

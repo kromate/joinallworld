@@ -1,0 +1,128 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "stanley",
+ "venueId": "stanley-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/216493995",
+   "used": "20 x 10 m warehouse outline at the stop, 1 m from the venue point"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/stanley.json#stanley-transit",
+   "used": "bus shelter and layby; Stanley street photos for coloured corrugated roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8dcdc",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3d5f8a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 7,
+    "depth": 2.2,
+    "height": 2.8,
+    "thickness": 0.15,
+    "columns": 2,
+    "colour": "#3d5f8a",
+    "edgeColour": "#e8eaea",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.2,
+    "bottom": 0.4,
+    "colour": "#3d5f8a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -6,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -1,
+    -13,
+    0
+   ],
+   "params": {
+    "colour": "#c9462f",
+    "count": 1,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the stop; shelter and signage typed, warehouse cladding colour assumed"
+ }
+}

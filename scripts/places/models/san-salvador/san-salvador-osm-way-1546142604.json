@@ -1,0 +1,504 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-way-1546142604",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Universitario_(UES)_Centro.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "JMRAFFi",
+   "view": "side",
+   "file": "/tmp/places-evidence/san-salvador/ues.jpg",
+   "used": "open bowl with red running track around a grass pitch, one covered main stand with a row of arched teal roof vaults and a tan block behind, grassy earth banks and trees on the other sides, floodlight masts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1546142604",
+   "used": "overall size and elongated oval plan (about 134 x 184 m, scaled down to the scene)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 46,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      58.0,
+      0.0
+     ],
+     [
+      56.02,
+      10.35
+     ],
+     [
+      50.23,
+      20.0
+     ],
+     [
+      41.01,
+      28.28
+     ],
+     [
+      29.0,
+      34.64
+     ],
+     [
+      15.01,
+      38.64
+     ],
+     [
+      0.0,
+      40.0
+     ],
+     [
+      -15.01,
+      38.64
+     ],
+     [
+      -29.0,
+      34.64
+     ],
+     [
+      -41.01,
+      28.28
+     ],
+     [
+      -50.23,
+      20.0
+     ],
+     [
+      -56.02,
+      10.35
+     ],
+     [
+      -58.0,
+      0.0
+     ],
+     [
+      -56.02,
+      -10.35
+     ],
+     [
+      -50.23,
+      -20.0
+     ],
+     [
+      -41.01,
+      -28.28
+     ],
+     [
+      -29.0,
+      -34.64
+     ],
+     [
+      -15.01,
+      -38.64
+     ],
+     [
+      -0.0,
+      -40.0
+     ],
+     [
+      15.01,
+      -38.64
+     ],
+     [
+      29.0,
+      -34.64
+     ],
+     [
+      41.01,
+      -28.28
+     ],
+     [
+      50.23,
+      -20.0
+     ],
+     [
+      56.02,
+      -10.35
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.15,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      48.0,
+      0.0
+     ],
+     [
+      46.36,
+      7.76
+     ],
+     [
+      41.57,
+      15.0
+     ],
+     [
+      33.94,
+      21.21
+     ],
+     [
+      24.0,
+      25.98
+     ],
+     [
+      12.42,
+      28.98
+     ],
+     [
+      0.0,
+      30.0
+     ],
+     [
+      -12.42,
+      28.98
+     ],
+     [
+      -24.0,
+      25.98
+     ],
+     [
+      -33.94,
+      21.21
+     ],
+     [
+      -41.57,
+      15.0
+     ],
+     [
+      -46.36,
+      7.76
+     ],
+     [
+      -48.0,
+      0.0
+     ],
+     [
+      -46.36,
+      -7.76
+     ],
+     [
+      -41.57,
+      -15.0
+     ],
+     [
+      -33.94,
+      -21.21
+     ],
+     [
+      -24.0,
+      -25.98
+     ],
+     [
+      -12.42,
+      -28.98
+     ],
+     [
+      -0.0,
+      -30.0
+     ],
+     [
+      12.42,
+      -28.98
+     ],
+     [
+      24.0,
+      -25.98
+     ],
+     [
+      33.94,
+      -21.21
+     ],
+     [
+      41.57,
+      -15.0
+     ],
+     [
+      46.36,
+      -7.76
+     ]
+    ],
+    "z0": 0.3,
+    "height": 0.1,
+    "colour": "#6f9e4a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 52,
+    "radiusY": 37,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 5,
+    "rise": 0.7,
+    "run": 1.3,
+    "firstHeight": 0.8,
+    "facetDeg": 24,
+    "under": "fill",
+    "concreteColour": "#a39a88",
+    "seatColour": "#6e8a4c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     38,
+     32
+    ],
+    "end": [
+     -38,
+     32
+    ],
+    "rows": 12,
+    "rise": 0.6,
+    "run": 0.85,
+    "firstHeight": 2.5,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#b85a3a",
+     "#c9b068",
+     "#7a8a96"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c9c3b2",
+    "underColour": "#a49f92",
+    "canopy": {
+     "height": 5.5,
+     "depth": 13,
+     "thickness": 0.9,
+     "slopeDeg": 2,
+     "colour": "#3f8a8c",
+     "edgeColour": "#3f8a8c",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-block",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    -6,
+    50
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b45a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a398",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     40
+    ],
+    "end": [
+     34,
+     40
+    ],
+    "count": 7,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        1.0,
+        0.7
+       ]
+      },
+      "arc": {
+       "plane": "xz",
+       "radius": 6,
+       "startDeg": 0,
+       "endDeg": 180
+      },
+      "colour": "#3f8a8c",
+      "n": 8
+     }
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -50,
+    28,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    50,
+    28,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -50,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    50,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "tree-grove",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 8,
+    "count": 7,
+    "min_height": 7,
+    "max_height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -40
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     40
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is an interior view from an embankment; model shows the exterior bowl from outside; arched teal vaults simplified to a flat canopy; no inflatable bottle or hillside detail."
+ }
+}

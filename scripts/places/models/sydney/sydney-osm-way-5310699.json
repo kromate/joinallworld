@@ -1,0 +1,603 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-osm-way-5310699",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Leichhardt_Oval_Football_Stadium_(3).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hpeterswald",
+   "view": "interior",
+   "file": "/tmp/places-evidence/sydney/lo2.jpg",
+   "used": "main grandstand: long low-slung dark cantilever roof, glazed upper concourse band, orange and brown seats on raked tiers, concrete end block with stairs, two lattice-free floodlight poles"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Leichhardt_Oval_from_NE.JPG",
+   "licence": "Public domain",
+   "author": "nimajnif",
+   "view": "interior",
+   "file": "/tmp/places-evidence/sydney/lo1.jpg",
+   "used": "opposite side: small flat-roofed covered stand and grass banks under big trees, tall single floodlight pole"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/5310699",
+   "used": "overall size (about 130 x 100 m ground); outline not used because it includes the surrounding park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.02,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      46.0,
+      0.0
+     ],
+     [
+      44.43,
+      8.28
+     ],
+     [
+      39.84,
+      16.0
+     ],
+     [
+      32.53,
+      22.63
+     ],
+     [
+      23.0,
+      27.71
+     ],
+     [
+      11.91,
+      30.91
+     ],
+     [
+      0.0,
+      32.0
+     ],
+     [
+      -11.91,
+      30.91
+     ],
+     [
+      -23.0,
+      27.71
+     ],
+     [
+      -32.53,
+      22.63
+     ],
+     [
+      -39.84,
+      16.0
+     ],
+     [
+      -44.43,
+      8.28
+     ],
+     [
+      -46.0,
+      0.0
+     ],
+     [
+      -44.43,
+      -8.28
+     ],
+     [
+      -39.84,
+      -16.0
+     ],
+     [
+      -32.53,
+      -22.63
+     ],
+     [
+      -23.0,
+      -27.71
+     ],
+     [
+      -11.91,
+      -30.91
+     ],
+     [
+      -0.0,
+      -32.0
+     ],
+     [
+      11.91,
+      -30.91
+     ],
+     [
+      23.0,
+      -27.71
+     ],
+     [
+      32.53,
+      -22.63
+     ],
+     [
+      39.84,
+      -16.0
+     ],
+     [
+      44.43,
+      -8.28
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#3f7d3a",
+    "topColour": "#4a8c40"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     42,
+     34
+    ],
+    "end": [
+     -42,
+     34
+    ],
+    "rows": 13,
+    "rise": 0.6,
+    "run": 0.8,
+    "seatColour": "#d9902f",
+    "seatColours": [
+     "#d9902f",
+     "#8a5a26"
+    ],
+    "blocks": 6,
+    "under": "open",
+    "concreteColour": "#b9b5aa",
+    "backWall": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "main-roof",
+   "at": [
+    0,
+    42,
+    10.8
+   ],
+   "params": {
+    "rect": [
+     68,
+     17
+    ],
+    "height": 1.4,
+    "topScale": [
+     1,
+     0.55
+    ],
+    "topOffset": [
+     0,
+     2.5
+    ],
+    "colour": "#3e444a",
+    "topColour": "#4a5056"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-box",
+   "footprint": {
+    "rect": [
+     60,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    44.5
+   ],
+   "rotDeg": 0,
+   "z0": 7.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f93ab",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d646a",
+    "parapet": 0,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-tower",
+   "footprint": {
+    "rect": [
+     9,
+     10
+    ]
+   },
+   "at": [
+    -50,
+    42
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#9aa0a3",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9094",
+    "parapet": 0,
+    "overhang": 0
+   }
+  },
+  {
+   "type": "stand",
+   "id": "south-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -30,
+     -34
+    ],
+    "end": [
+     30,
+     -34
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#7a8087",
+    "under": "open",
+    "concreteColour": "#b9b5aa",
+    "canopy": {
+     "height": 5.5,
+     "depth": 6,
+     "colour": "#8e9498",
+     "slopeDeg": 2,
+     "supports": 6
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "hill-west",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 46,
+    "radiusY": 32,
+    "startDeg": 150,
+    "endDeg": 210,
+    "rows": 9,
+    "rise": 0.3,
+    "run": 1.2,
+    "seatColour": "#5e8f3e",
+    "under": "solid",
+    "concreteColour": "#6f9a4a",
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "stand",
+   "id": "hill-east",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 46,
+    "radiusY": 32,
+    "startDeg": -30,
+    "endDeg": 30,
+    "rows": 9,
+    "rise": 0.3,
+    "run": 1.2,
+    "seatColour": "#5e8f3e",
+    "under": "solid",
+    "concreteColour": "#6f9a4a",
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -54,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f94",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     },
+     {
+      "z": 30.1,
+      "rect": [
+       3.6,
+       1.2
+      ],
+      "colour": "#cfd3d6"
+     },
+     {
+      "z": 32.4,
+      "rect": [
+       3.6,
+       1.2
+      ],
+      "colour": "#e8ecef"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    54,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f94",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     },
+     {
+      "z": 30.1,
+      "rect": [
+       3.6,
+       1.2
+      ],
+      "colour": "#cfd3d6"
+     },
+     {
+      "z": 32.4,
+      "rect": [
+       3.6,
+       1.2
+      ],
+      "colour": "#e8ecef"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -54,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f94",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     },
+     {
+      "z": 30.1,
+      "rect": [
+       3.6,
+       1.2
+      ],
+      "colour": "#cfd3d6"
+     },
+     {
+      "z": 32.4,
+      "rect": [
+       3.6,
+       1.2
+      ],
+      "colour": "#e8ecef"
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    54,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f94",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     },
+     {
+      "z": 30.1,
+      "rect": [
+       3.6,
+       1.2
+      ],
+      "colour": "#cfd3d6"
+     },
+     {
+      "z": 32.4,
+      "rect": [
+       3.6,
+       1.2
+      ],
+      "colour": "#e8ecef"
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     7,
+     1.5
+    ]
+   },
+   "at": [
+    58,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 3,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2b2e33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b2e33"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -42
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -55
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -56
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Main roof is a straight slab rather than the tapered wedge; stairs and concourse columns omitted; seat colours uniform per block; grass hills approximated by green stepped arcs; trees not matched."
+ }
+}

@@ -1,0 +1,187 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/522791499",
+   "used": "footprint 34.4 x 25.1 m, two storeys"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centrelink_Innaloo,_Western_Australia.jpg",
+   "licence": "Public domain",
+   "author": "Shinjiman",
+   "view": "front",
+   "file": "/tmp/places-evidence/sydney/cl1.jpg",
+   "used": "style reference only (a different Centrelink office): beige render, curved entry fascia on dark-based columns, tinted glazing, palms"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     34.4,
+     25.1
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#b9ab9a",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "cornice": true,
+    "bands": "#a89b8b",
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "material": "metal-sheet",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-glaze",
+   "footprint": {
+    "rect": [
+     16,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4d5a5c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7378",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 5,
+    "height": 4.4,
+    "thickness": 0.9,
+    "columns": 4,
+    "colour": "#b9ab9a",
+    "edgeColour": "#d6cbbd"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -19.8,
+    4.8
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.5,
+    "bottom": 0,
+    "colour": "#2f7f86",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/car",
+   "at": [
+    -9,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/tree",
+   "at": [
+    16,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 3,
+    "line": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-community-notices",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Footprint-only: look follows a typical Centrelink office (different building); real rotated plan axis-aligned, no logo"
+ }
+}

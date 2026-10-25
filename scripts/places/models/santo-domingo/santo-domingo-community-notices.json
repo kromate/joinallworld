@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santo-domingo",
+ "venueId": "santo-domingo-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ministerio_de_Relaciones_Exteriores_Rep%C3%B9blica_Dominicana.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Comunicaciondigitalmirex",
+   "view": "front",
+   "file": "/tmp/places-evidence/santo-domingo/notices1.jpg",
+   "used": "two-storey mission-style building painted bright yellow, central gabled parapet with arched openings, arched first-floor windows and balcony, arcaded porch with slim white columns and stair, terracotta tile hip roofs, flag staffs, palms, curving kerb"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/327261539",
+   "used": "overall extent only (171 x 76 m L-plan); the photo shows the entrance block, modelled by hand"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b923",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "bay": 6.5,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#f3e7a6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5553a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-gable",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b923",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9c42a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "arcade",
+   "at": [
+    0,
+    -7.2,
+    9.5
+   ],
+   "params": {
+    "length": 7,
+    "height": 3.2,
+    "thickness": 0.8,
+    "bays": 3,
+    "shape": "round",
+    "colour": "#ebc72c",
+    "trim": "#f6edb8"
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 4.2,
+    "count": 6,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -8.8,
+    4.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 17,
+    "depth": 3.4,
+    "height": 0.2,
+    "thickness": 0.4,
+    "colour": "#e9c42a"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "count": 5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -6,
+    13
+   ],
+   "params": {
+    "height": 4,
+    "count": 2,
+    "spacing": 8,
+    "colours": [
+     "#1d3f8f",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -22,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1d3f8f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 0.9,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#f0d34a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "colour": "#e6e6e6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -15
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo shows the entrance block only; central tower is a small gabled block, porch arcade simplified; real building is a 171 m L-plan."
+ }
+}

@@ -1,0 +1,310 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_building_of_Hornsby_Ku-ring-gai_Hospital_August_2026.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nick-D",
+   "view": "front",
+   "file": "/tmp/places-evidence/sydney/hosp1.jpg",
+   "used": "new main building: terracotta-orange ribbon-window ward block at left, vertical grey fins, dark glazed tower with orange pattern mural, long cantilevered entry canopy with raked struts, palms, car park and low grey wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/69548890",
+   "used": "campus is 335 x 199 m; only the new frontage block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     56,
+     20
+    ]
+   },
+   "at": [
+    -24,
+    2
+   ],
+   "height": 23,
+   "storeys": 6,
+   "wall": {
+    "material": "render",
+    "colour": "#c8683c",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "glassColour": "#1f2a32",
+    "bay": 9,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c8683c",
+       "#3a3d40"
+      ]
+     }
+    ],
+    "faces": {
+     "left": "none",
+     "right": "plain",
+     "back": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f93",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-core",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    10,
+    4
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a7abae",
+    "windows": "none",
+    "pattern": {
+     "type": "fins",
+     "colour": "#d4d7d9"
+    },
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c7074",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mural-tower",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#222629",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#c8683c",
+      "#222629",
+      "#e8d5c0"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#44484c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-plant",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    44,
+    16
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9a98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c7074",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    -9,
+    -8
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f1f1ee",
+    "windows": "none",
+    "glassColour": "#2a3238"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6c7074",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    26,
+    -6
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#222629",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#aeb4b8",
+    "material": "metal-sheet",
+    "rise": 2.5,
+    "overhang": 0,
+    "high": "back"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    30,
+    -16,
+    5.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 38,
+    "depth": 14,
+    "height": 5.5,
+    "thickness": 0.8,
+    "columns": 0,
+    "colour": "#b88a5c",
+    "edgeColour": "#dfe3e5"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/tree",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 3,
+    "line": 14
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/car",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "colour": "#bfc3c6"
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "core/car",
+   "at": [
+    40,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.2,
+    "colour": "#b32a2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sydney",
+ "venueId": "sydney-clinic",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Mural pattern is a generic panel grid, raked canopy struts and projecting white-framed balcony box missing; only the new frontage block of a 335 m campus"
+ }
+}

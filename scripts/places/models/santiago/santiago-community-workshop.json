@@ -1,0 +1,214 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/952834076",
+   "used": "nearest feature: 66 x 9 m roof canopy 30 m from the venue point, used for the open parade/workshop canopy"
+  },
+  {
+   "kind": "text",
+   "url": "https://es.wikipedia.org/wiki/Base_A%C3%A9rea_El_Bosque",
+   "used": "FACh air base school: low flat-roofed 1960s classroom blocks in white with blue, workshop shed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "canopy",
+   "footprint": {
+    "osm": true,
+    "fit": 66
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a5f7a",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classrooms",
+   "footprint": {
+    "rect": [
+     48,
+     12
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e0d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#3a5f7a",
+    "pattern": {
+     "type": "balconies"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "material": "membrane",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-shed",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -42,
+    30
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d7d9d6",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "bands": "#3a5f7a"
+   },
+   "roof": {
+    "form": "sawtooth",
+    "colour": "#b8bcbf",
+    "teeth": 4,
+    "rise": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barracks",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    44,
+    34
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0e8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#3a5f7a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9aeb2",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     16
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     16
+    ],
+    "height": 9
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -10,
+     -12,
+     0
+    ]
+   },
+   {
+    "at": [
+     0,
+     -12,
+     0
+    ],
+    "colour": "#e0e0e0"
+   },
+   {
+    "at": [
+     10,
+     -12,
+     0
+    ],
+    "colour": "#2f4f6f"
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and the OSM match is a canopy 30 m away; classroom, barracks and shed are typical FACh-school blocks, not the real layout."
+ }
+}

@@ -1,0 +1,478 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Heritage_Collection_Museum,_Anguilla.jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Jones",
+   "view": "front",
+   "file": "/tmp/places-evidence/the-valley/heritage.jpg",
+   "used": "low cream-yellow rendered bungalow with an arched white corner veranda at left and an open timber-post lean-to porch with corrugated iron roof and blank board at right, grass, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/362017267",
+   "used": "overall size about 16 x 12 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8db96",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9cd88",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-block",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -7.5,
+    -0.5
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadf9f",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": {
+     "type": "arcade",
+     "shape": "arch",
+     "bay": 2.0,
+     "opening": 0.62,
+     "height": 0.75,
+     "depth": 0.5,
+     "pierColour": "#f4f0dc",
+     "faces": [
+      "front",
+      "left"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe8c4",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -7.5,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.6,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#cfcbc0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    3.5,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      8.4,
+      0.14
+     ]
+    },
+    "points": [
+     [
+      0,
+      -2.0,
+      3.2
+     ],
+     [
+      0,
+      -6.5,
+      2.5
+     ]
+    ],
+    "colour": "#8d9094"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.3,
+    -6.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "height": 2.6,
+    "colour": "#6a4a30"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.5,
+    -6.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "height": 2.6,
+    "colour": "#6a4a30"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.3,
+    -6.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.22,
+     0.22
+    ],
+    "height": 2.6,
+    "colour": "#6a4a30"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.5,
+    -6.1,
+    2.55
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.25
+    ],
+    "height": 0.3,
+    "colour": "#6a4a30"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.2,
+    -6.3,
+    2.55
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.1
+    ],
+    "height": 0.4,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "engine-base",
+   "footprint": {
+    "rect": [
+     3.2,
+     1.2
+    ]
+   },
+   "at": [
+    4.5,
+    -3.6
+   ],
+   "z0": 0,
+   "height": 0.6,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#222426",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#222426"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "engine-block",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.0
+    ]
+   },
+   "at": [
+    5.4,
+    -3.6
+   ],
+   "z0": 0.6,
+   "height": 1.0,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2c2e30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#222426"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carriage-1",
+   "footprint": {
+    "rect": [
+     1.1,
+     2.09
+    ]
+   },
+   "at": [
+    -1.5,
+    -9.5
+   ],
+   "z0": 0.25,
+   "height": 1.1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8dbd8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8dbd8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -1.5,
+    -9.5,
+    1.35
+   ],
+   "params": {
+    "section": {
+     "circle": 0.22000000000000003
+    },
+    "points": [
+     [
+      0,
+      -0.66,
+      0
+     ],
+     [
+      0,
+      1.1,
+      0.1
+     ],
+     [
+      0,
+      3.3000000000000003,
+      0.7150000000000001
+     ]
+    ],
+    "colour": "#2a2c2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carriage-2",
+   "footprint": {
+    "rect": [
+     1.35,
+     2.565
+    ]
+   },
+   "at": [
+    10.5,
+    -8.5
+   ],
+   "z0": 0.25,
+   "height": 1.35,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8dbd8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8dbd8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    10.5,
+    -8.5,
+    1.6
+   ],
+   "params": {
+    "section": {
+     "circle": 0.27
+    },
+    "points": [
+     [
+      0,
+      -0.81,
+      0
+     ],
+     [
+      0,
+      1.35,
+      0.1
+     ],
+     [
+      0,
+      4.050000000000001,
+      0.8775000000000001
+     ]
+    ],
+    "colour": "#2a2c2e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.1,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.7
+    ],
+    "height": 0.7,
+    "colour": "#d8dbd8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.7,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.7
+    ],
+    "height": 0.8,
+    "colour": "#d8dbd8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     2
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     0
+    ],
+    "height": 5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4.5,
+     -4.5
+    ],
+    "height": 2.0
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     -6
+    ],
+    "height": 1.6
+   }
+  ],
+  "extent": [
+   50,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "lean-to roof reads flat with sign board hidden, engine exhibit a dark block, cannon carriages boxy without spoked wheels, veranda arches only partly matching"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "the-valley",
+ "venueId": "the-valley-osm-way-362017267"
+}

@@ -1,0 +1,209 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mangrovepark_Cura%C3%A7ao_20221218.jpg",
+   "licence": "CC0",
+   "author": "WillemVanA",
+   "view": "detail",
+   "file": "/tmp/places-evidence/willemstad/mangrove.jpg",
+   "used": "dense mangrove canopy over a shallow tidal channel with prop roots, olive-green foliage, brown-green water"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/237592022",
+   "used": "park outline, 382 x 303 m, scaled down to the 118 m model limit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shore",
+   "footprint": {
+    "osm": true,
+    "fit": 96
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#6b7d5a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7d5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lagoon",
+   "at": [
+    0,
+    0,
+    -0.05
+   ],
+   "params": {
+    "rect": [
+     100,
+     84
+    ],
+    "height": 0.05,
+    "colour": "#5f7f6a"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -30,
+    -20,
+    0.3
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 50,
+    "width": 2.2,
+    "height": 0.8,
+    "rails": true,
+    "piles": true,
+    "colour": "#9a7a56"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -30,
+    -20,
+    0.3
+   ],
+   "params": {
+    "length": 40,
+    "width": 2.2,
+    "height": 0.8,
+    "rails": true,
+    "piles": true,
+    "colour": "#9a7a56"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    10,
+    10,
+    0.3
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3,
+    "roof": "hip",
+    "rise": 1.4,
+    "colour": "#9a7a56",
+    "cap_colour": "#6b7d5a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    25,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "count": 16,
+    "kind": "broadleaf",
+    "min_height": 4,
+    "max_height": 7
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    25,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 30,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 4,
+    "max_height": 6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    30,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 24,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 4,
+    "max_height": 7
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 26,
+    "count": 8,
+    "kind": "broadleaf",
+    "min_height": 4,
+    "max_height": 6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 3.5,
+    "count": 2,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   104,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "willemstad",
+ "venueId": "willemstad-recreation",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photo is an interior mangrove channel; shoreline scaled 0.25 to fit 118 m; boardwalk and pavilion typed from the brief; mangroves are generic tree clumps"
+ }
+}

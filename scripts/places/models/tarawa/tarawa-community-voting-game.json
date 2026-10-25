@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tenimanraoi_maneaba_in_Betio,_Kiribati.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Obkiribati1",
+   "view": "interior",
+   "file": "/tmp/places-evidence/tarawa/tenim.jpg",
+   "used": "interior of a different maneaba (Tenimanraoi, Betio); NOT this building. Used only for typical details: pale lining, yellow fascia, green posts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maneaba_in_South_Tarawa,_Kiribati.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rafael Avila Coya",
+   "view": "side",
+   "file": "/tmp/places-evidence/tarawa/man2.jpg",
+   "used": "another South Tarawa maneaba, for form only: huge steep hip roof sweeping to about 1.8 m above a low open side, short ridge, coral sand surround"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/291432462",
+   "used": "size 43 x 20 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 6,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     41,
+     18.5
+    ],
+    "height": 0.45,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    1.8
+   ],
+   "params": {
+    "curve": false,
+    "steps": 4,
+    "colour": "#6b6558",
+    "topColour": "#5f5748",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       44,
+       21
+      ]
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       38,
+       15
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       28,
+       8.5
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       16,
+       3.4
+      ]
+     },
+     {
+      "z": 9.5,
+      "rect": [
+       8,
+       1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -19,
+     -8.6,
+     0.4
+    ],
+    "end": [
+     19,
+     -8.6,
+     0.4
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 1.9,
+      "colour": "#4f8a5c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -19,
+     8.6,
+     0.4
+    ],
+    "end": [
+     19,
+     8.6,
+     0.4
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 1.9,
+      "colour": "#4f8a5c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -19.5,
+     -6,
+     0.4
+    ],
+    "end": [
+     -19.5,
+     6,
+     0.4
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 1.9,
+      "colour": "#4f8a5c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     19.5,
+     -6,
+     0.4
+    ],
+    "end": [
+     19.5,
+     6,
+     0.4
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 1.9,
+      "colour": "#4f8a5c"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -9.6,
+    0.45
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.9
+    ],
+    "height": 0.2,
+    "colour": "#d8d4c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -27,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no exterior photo of this maneaba; form from a nearby maneaba and OSM size 43x20 m; roof is plain hip approximation, a blue strip still shows under the eaves, no interior seating"
+ }
+}

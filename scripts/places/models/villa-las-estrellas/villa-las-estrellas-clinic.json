@@ -1,0 +1,122 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/277056528",
+   "used": "real 17 x 10 m outline (named medical unit)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Villa_Las_Estrellas",
+   "used": "air-force hospital, red cross; commons photos nearby are interiors, so no exterior photo was usable; colours typed from the settlement photo of prefab houses"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e4e0cf",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "bands": "#d9622b"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8342a",
+    "pitch": 16,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.9,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#8c9296"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#f2f2f2",
+    "frameColour": "#c0392b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ambulance-bay",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    12,
+    -1
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c4552a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f4a52",
+    "pitch": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "snow",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "villa-las-estrellas",
+ "venueId": "villa-las-estrellas-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Exterior never photographed (only interiors found); outline may belong to the Russian base; wall and roof colours and ambulance bay typed."
+ }
+}

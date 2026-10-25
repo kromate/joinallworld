@@ -1,0 +1,289 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_Benjam%C3%ADn_Bloom.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jarould",
+   "view": "front",
+   "file": "/tmp/places-evidence/san-salvador/bloom2.jpg",
+   "used": "tall ten-storey slab: grey-mauve concrete frame with white spandrel banding and paired ribbon windows, cream end stair/lift core with vertical slots, rooftop plant box, low white-roofed annexes at the base"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/399741857",
+   "used": "overall extent 91x50 m for the low wings; OSM tags 5 levels / 18 m do not match the tall slab in the photo, the photo is followed for the tower"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 10,
+  "fovDeg": 38
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     58,
+     16
+    ]
+   },
+   "at": [
+    6,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 38,
+   "storeys": 11,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a89fa0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 9,
+    "bands": "#d8d6d0",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b6b0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     10,
+     17
+    ]
+   },
+   "at": [
+    -28,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 39,
+   "storeys": 11,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b4",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "left": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-box",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    6,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 38,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdbab0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-west",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -12,
+    -20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd9cf",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-east",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    20,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8fa0a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#f1efe8",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-store",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -16,
+    -29
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6f9e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#335c85"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -27,
+    -9.5,
+    26
+   ],
+   "params": {
+    "width": 3,
+    "height": 2,
+    "bottom": 0,
+    "colour": "#f2efe6",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -36
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-osm-relation-8776526",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo shows a 10-storey slab while OSM says 5 levels; slab windows are paired punched not recessed balconies; annexes approximate."
+ }
+}

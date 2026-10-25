@@ -1,0 +1,439 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Metropolitano_-_La_Sabana_-_San_Jose_-_Costa_Rica_-_01_(8480531564).jpg",
+   "licence": "see Commons file page",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-jose/sab1.jpg",
+   "used": "muddy-green lake with a bamboo/cypress island, tall rainbow-eucalyptus trunks in the foreground, bare worn grass, standing stones, towers and a conifer behind"
+  },
+  {
+   "kind": "text",
+   "url": "https://es.wikipedia.org/wiki/Parque_Metropolitano_La_Sabana",
+   "used": "72 ha park: lakes, former 1940 airport terminal (now art museum), National Stadium, mostly eucalyptus, cypress and pine, sports courts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/12657481",
+   "used": "park outline is 1280 x 563 m, far beyond the 120 m scene limit, so a representative lakeside corner is modelled instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     100
+    ],
+    "height": 0.1,
+    "colour": "#8c9a5c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      27.0,
+      12.0
+     ],
+     [
+      25.9,
+      16.4
+     ],
+     [
+      22.8,
+      20.5
+     ],
+     [
+      17.9,
+      24.0
+     ],
+     [
+      11.5,
+      26.7
+     ],
+     [
+      4.0,
+      28.4
+     ],
+     [
+      -4.0,
+      29.0
+     ],
+     [
+      -12.0,
+      28.4
+     ],
+     [
+      -19.5,
+      26.7
+     ],
+     [
+      -25.9,
+      24.0
+     ],
+     [
+      -30.8,
+      20.5
+     ],
+     [
+      -33.9,
+      16.4
+     ],
+     [
+      -35.0,
+      12.0
+     ],
+     [
+      -33.9,
+      7.6
+     ],
+     [
+      -30.8,
+      3.5
+     ],
+     [
+      -25.9,
+      -0.0
+     ],
+     [
+      -19.5,
+      -2.7
+     ],
+     [
+      -12.0,
+      -4.4
+     ],
+     [
+      -4.0,
+      -5.0
+     ],
+     [
+      4.0,
+      -4.4
+     ],
+     [
+      11.5,
+      -2.7
+     ],
+     [
+      17.9,
+      -0.0
+     ],
+     [
+      22.8,
+      3.5
+     ],
+     [
+      25.9,
+      7.6
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#3f6a5e"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -8,
+    34,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 8,
+    "count": 16,
+    "kind": "cypress",
+    "min_height": 10,
+    "max_height": 18
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 50,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 14,
+    "max_height": 24
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -22,
+     0
+    ],
+    "end": [
+     6,
+     -26,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 26
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -22,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      2
+     ],
+     [
+      34,
+      -1
+     ],
+     [
+      34,
+      2
+     ],
+     [
+      -34,
+      5
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#b4a98e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    38,
+    30
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "glassColour": "#3e4650",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc4",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    38,
+    30,
+    8
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "height": 4.5,
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    38,
+    23,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     5
+    ],
+    "height": 0.5,
+    "colour": "#d6d1c4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    38,
+    -24,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     30,
+     16
+    ],
+    "height": 0.1,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    26,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 3,
+    "colour": "#6b6862"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "height": 4.2,
+    "colour": "#6b6862"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    12,
+    0.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "height": 0.6,
+    "colour": "#5e6e42"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -6,
+    12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "count": 5,
+    "kind": "cypress",
+    "min_height": 8,
+    "max_height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "The comparison photo is a close detail (eucalyptus trunks, lake shore, standing stones) so only the lakeside character, tree types and colours are matched. Park outline (1280 m) is too big for the scene, so a representative corner with lake, grove, former-terminal museum (proportions assumed) and a sports court is modelled; National Stadium is not included."
+ }
+}

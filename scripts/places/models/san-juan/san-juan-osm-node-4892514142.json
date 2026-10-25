@@ -1,0 +1,133 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/532823306",
+   "used": "real outline (nearest building 1.4 m, 35x33 m); no photo of the venue found, so storeys, hip roof and colours follow the brief's small-campus type"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eae4d3",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.5,
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8a6f52",
+      "height": 0.4,
+      "at": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a65a40",
+    "material": "clay-tile",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 0.8,
+    "colour": "#f6f3ea",
+    "frameColour": "#8a6f52"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -25,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -20
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -14,
+     -30
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     -11,
+     -30
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     -8,
+     -30
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     -5,
+     -30
+    ],
+    "yawDeg": 0
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-node-4892514142",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; flat parapet roof on irregular outline, colours typical"
+ }
+}

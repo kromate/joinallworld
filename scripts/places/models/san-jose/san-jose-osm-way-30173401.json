@@ -1,0 +1,760 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-osm-way-30173401",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Nacional_de_Diversiones_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hiram Montiel Calder\u00f3n",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/san-jose/pd2.jpg",
+   "used": "aerial layout: green pond at left, red-roofed white halls in the centre, ferris wheel and rides, winding service road, wooded surroundings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BocaracaParqueDiversiones.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ArquiWHAT",
+   "view": "detail",
+   "used": "roller coaster colours: yellow tubular track on blue steel supports"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30173401",
+   "used": "theme park, 1445 x 411 m; only a representative core is modelled (scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    -38,
+    8,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 20,
+    "shape": "oval",
+    "colour": "#3f6b50",
+    "bank": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-a",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    12,
+    -6
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece2",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 5,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8403c",
+    "pitch": 22,
+    "overhang": 1.2,
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-b",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    10,
+    -24
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d8",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a3c",
+    "pitch": 24,
+    "overhang": 1,
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-c",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    40,
+    -14
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c3a38",
+    "pitch": 22,
+    "overhang": 0.8,
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-bldg",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    26,
+    -30
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-roof",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -34
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8dcdf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c9cdd0",
+    "pitch": 6
+   }
+  },
+  {
+   "type": "ferris-wheel",
+   "at": [
+    -26,
+    38,
+    0
+   ],
+   "params": {
+    "radius": 13,
+    "gondolas": 12
+   }
+  },
+  {
+   "type": "carousel",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "height": 7,
+    "colour": "#e04b4b"
+   }
+  },
+  {
+   "type": "carousel",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "height": 6,
+    "colour": "#2a56a8"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 3,
+    "height": 8,
+    "openings": 1,
+    "kind": "round",
+    "pier": "#e3b520"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -47,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "bottom": 0.8,
+    "colour": "#2a56a8",
+    "frameColour": "#e3b520"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -46
+     ],
+     [
+      0,
+      -30
+     ],
+     [
+      14,
+      -14
+     ],
+     [
+      30,
+      0
+     ],
+     [
+      44,
+      24
+     ],
+     [
+      50,
+      44
+     ]
+    ],
+    "width": 4,
+    "colour": "#7e7e7a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      -14,
+      -20
+     ],
+     [
+      -34,
+      -4
+     ],
+     [
+      -52,
+      -24
+     ]
+    ],
+    "width": 3,
+    "colour": "#7e7e7a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      24,
+      30
+     ],
+     [
+      14,
+      38
+     ],
+     [
+      22,
+      50
+     ],
+     [
+      40,
+      50
+     ],
+     [
+      50,
+      44
+     ]
+    ],
+    "width": 3,
+    "colour": "#8a8a86"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -30,
+      9.2,
+      1
+     ],
+     [
+      -20,
+      9.2,
+      3
+     ],
+     [
+      -8,
+      9.2,
+      14
+     ],
+     [
+      0,
+      9.2,
+      24
+     ],
+     [
+      8,
+      9.2,
+      16
+     ],
+     [
+      14,
+      9.2,
+      8
+     ],
+     [
+      20,
+      10,
+      4
+     ],
+     [
+      28,
+      14,
+      3
+     ],
+     [
+      34,
+      20,
+      6
+     ],
+     [
+      30,
+      26,
+      10
+     ],
+     [
+      22,
+      26,
+      8
+     ],
+     [
+      16,
+      20,
+      4
+     ],
+     [
+      20,
+      12,
+      2
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#e3b520"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -30,
+      10.8,
+      1
+     ],
+     [
+      -20,
+      10.8,
+      3
+     ],
+     [
+      -8,
+      10.8,
+      14
+     ],
+     [
+      0,
+      10.8,
+      24
+     ],
+     [
+      8,
+      10.8,
+      16
+     ],
+     [
+      14,
+      10.8,
+      8
+     ],
+     [
+      20,
+      10,
+      4
+     ],
+     [
+      28,
+      14,
+      3
+     ],
+     [
+      34,
+      20,
+      6
+     ],
+     [
+      30,
+      26,
+      10
+     ],
+     [
+      22,
+      26,
+      8
+     ],
+     [
+      16,
+      20,
+      4
+     ],
+     [
+      20,
+      12,
+      2
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#e3b520"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -12.8,
+      32,
+      4.0
+     ],
+     [
+      -7.800000000000001,
+      32,
+      5.07179676972449
+     ],
+     [
+      -4.139745962155614,
+      32,
+      7.999999999999999
+     ],
+     [
+      -2.8,
+      32,
+      12.0
+     ],
+     [
+      -4.1397459621556125,
+      32,
+      15.999999999999998
+     ],
+     [
+      -7.800000000000001,
+      32,
+      18.92820323027551
+     ],
+     [
+      -12.799999999999999,
+      32,
+      20.0
+     ],
+     [
+      -17.8,
+      32,
+      18.92820323027551
+     ],
+     [
+      -21.460254037844383,
+      32,
+      16.000000000000004
+     ],
+     [
+      -22.8,
+      32,
+      12.000000000000002
+     ],
+     [
+      -21.460254037844386,
+      32,
+      7.999999999999999
+     ],
+     [
+      -17.800000000000004,
+      32,
+      5.071796769724493
+     ],
+     [
+      -12.800000000000002,
+      32,
+      4.0
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#e3b520"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "circle": 0.3
+    },
+    "points": [
+     [
+      -11.2,
+      32,
+      4.0
+     ],
+     [
+      -6.200000000000001,
+      32,
+      5.07179676972449
+     ],
+     [
+      -2.5397459621556147,
+      32,
+      7.999999999999999
+     ],
+     [
+      -1.2,
+      32,
+      12.0
+     ],
+     [
+      -2.539745962155613,
+      32,
+      15.999999999999998
+     ],
+     [
+      -6.200000000000001,
+      32,
+      18.92820323027551
+     ],
+     [
+      -11.199999999999998,
+      32,
+      20.0
+     ],
+     [
+      -16.2,
+      32,
+      18.92820323027551
+     ],
+     [
+      -19.86025403784438,
+      32,
+      16.000000000000004
+     ],
+     [
+      -21.2,
+      32,
+      12.000000000000002
+     ],
+     [
+      -19.860254037844385,
+      32,
+      7.999999999999999
+     ],
+     [
+      -16.200000000000003,
+      32,
+      5.071796769724493
+     ],
+     [
+      -11.200000000000001,
+      32,
+      4.0
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#e3b520"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -20,
+     10,
+     0
+    ],
+    "end": [
+     14,
+     10,
+     0
+    ],
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       2.4
+      ]
+     },
+     "height": 8,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#2a56a8",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#2a56a8"
+     }
+    },
+    "vary": {}
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 14,
+  "treeKind": "broadleaf",
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Aerial photo shows a dense, sprawling park (go-kart road, many blue/red-roofed ride canopies, wooded slopes); model is a compact core with coaster, wheel, carousels, red-roofed halls and pond, not the 1.4 km layout."
+ }
+}

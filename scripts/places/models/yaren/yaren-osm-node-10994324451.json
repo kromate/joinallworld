@@ -1,0 +1,181 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaren",
+ "venueId": "yaren-osm-node-10994324451",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "style cue only, photo of another Yaren street (Ilya Varlamov, CC BY-SA 4.0): local building vernacular only (not this venue): pale aqua painted render, red corrugated roofs, grey concrete-block lean-to, palms, grey asphalt road",
+   "ref": "https://commons.wikimedia.org/wiki/File:Yaren_street,_Nauru.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/211248098",
+   "used": "checked and rejected: the containing building is Ewa Lodge hotel, not the cafe"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4c8",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "faces": {
+     "front": "louvre"
+    },
+    "bands": {
+     "colour": "#d9893a",
+     "height": 0.5
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -7,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.6,
+    "height": 3.0,
+    "roof": "lean-to",
+    "steps": true,
+    "balustrade": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    9,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 2.0,
+    "colour": "#d9893a",
+    "frameColour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -3,
+    -13,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spread": 4,
+    "colours": [
+     "#d9893a",
+     "#efe4c8"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-lean",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    9.5,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9d98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of Tropicana Cafe; modest roadside cafe typed from Yaren street vernacular, front veranda, red tin gable roof"
+ }
+}

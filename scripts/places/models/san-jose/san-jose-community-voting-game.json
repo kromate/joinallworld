@@ -1,0 +1,244 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-jose",
+ "venueId": "san-jose-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_de_la_Cultura_vista_suroeste.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Axxis10",
+   "view": "street",
+   "file": "/tmp/places-evidence/san-jose/plaza1.jpg",
+   "used": "open paved plaza with broad sunken steps on the left, low-walled fountain basin with planting in the centre, broadleaf trees along the far side, cream multi-storey building with arched upper windows behind, street lamps, Costa Rica flag"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24857113",
+   "used": "Teatro Nacional footprint 72.7 x 32.4 m, 2 levels, beside the plaza (match is the theatre, not the plaza)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/National_Theatre_of_Costa_Rica",
+   "used": "neoclassical, opened 1897, statues of Calderon and Beethoven at the front"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 60,
+  "aspect": 1.81,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "theatre",
+   "footprint": {
+    "polygon": [
+     [
+      -36,
+      -14
+     ],
+     [
+      36,
+      -14
+     ],
+     [
+      36,
+      14
+     ],
+     [
+      -36,
+      14
+     ]
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#e3d8b8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "plinth": 1.2,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9aa39a",
+    "pitch": 12,
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 12,
+    "columns": 6,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#eee6cc",
+    "roofColour": "#9aa39a"
+   }
+  },
+  {
+   "type": "statue-on-plinth",
+   "at": [
+    -14,
+    14,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "statue-on-plinth",
+   "at": [
+    14,
+    14,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -32,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "rise": 0.5,
+    "run": 1.8,
+    "count": 5,
+    "colour": "#bdbab0"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    8,
+    -8,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 3,
+    "height": 3,
+    "colour": "#d8cba8"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    28,
+    0,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "colours": [
+     "#c8503c",
+     "#e8d9a8",
+     "#3f7a8a"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 6,
+    "count": 6,
+    "min_height": 7,
+    "max_height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -28
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Plaza photo shows the sunken steps, fountain and trees (matched); the cream hotel behind is not modelled, theatre is from text facts, no people or pigeons; fountain is a round basin not the real planted bed."
+ }
+}

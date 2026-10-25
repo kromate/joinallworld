@@ -1,0 +1,228 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "st-johns",
+ "venueId": "st-johns-airport-st-johns-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:V.C._Bird_International_Airport.png",
+   "licence": "CC BY-SA 4.0",
+   "author": "CROIX",
+   "view": "front",
+   "file": "/tmp/places-evidence/st-johns/airport2.png",
+   "used": "2015 terminal landside facade: white two-storey central block with glazed upper floor and thin ribbed flat roof with swept overhang, lower white wings both sides, glazed ground floor behind columns"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/444994225",
+   "used": "overall size only (236 x 71 m); modelled at half length because of the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#f0f1f0",
+    "windows": "curtain",
+    "windowRatio": 0.42,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 0.8,
+      "spacing": 5.5,
+      "width": 0.9,
+      "colour": "#e8e9e8",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eceeee",
+    "material": "metal-sheet",
+    "overhang": 2.6,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     26,
+     24
+    ]
+   },
+   "at": [
+    -32,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eeefef",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eceeee",
+    "material": "metal-sheet",
+    "overhang": 1.6,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     26,
+     24
+    ]
+   },
+   "at": [
+    32,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eeefef",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eceeee",
+    "material": "metal-sheet",
+    "overhang": 1.6,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -13.2,
+    8.2
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#eef0f0",
+    "posts": false
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -24,
+    12,
+    3
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -8,
+    12,
+    3
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    8,
+    12,
+    3
+   ],
+   "rotDeg": 0
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    24,
+    12,
+    3
+   ],
+   "rotDeg": 0
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -46,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     46,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no ribbed swept roof edge or column rhythm at the ground floor; glazing reads darker than the photo; modelled at about 40% of the real 236 m length"
+ }
+}

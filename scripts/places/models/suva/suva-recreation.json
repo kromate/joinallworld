@@ -1,0 +1,264 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "suva",
+ "venueId": "suva-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Thurston_Gardens_from_Cakobau_Rd_and_QE_Dr.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Tucoxn",
+   "view": "street",
+   "file": "/tmp/places-evidence/suva/thurston1.jpg",
+   "used": "cream rendered gate piers with ball finials, cream low wall with black iron railings, ornate iron gate with star motifs, white name board on posts, tall royal palms and big shade trees behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Thurston_Garden_Suva_MatthiasSuessen-7808.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Matthias Suessen",
+   "view": "side",
+   "file": "/tmp/places-evidence/suva/thurston2.jpg",
+   "used": "1914 pink-granite drinking fountain on octagonal stepped base, lawn with royal palms and shrubs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/23706912",
+   "used": "park outline about 285 x 181 m (larger than the 118 m mass limit, so the lawn is the site ground)"
+  },
+  {
+   "kind": "text",
+   "ref": "brief; https://en.wikipedia.org/wiki/Thurston_Gardens",
+   "used": "1918 clock tower and bandstand, avenues of royal palms and tree ferns"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "fit": "building",
+  "shiftY": 0
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "height": 0.9,
+    "kind": "wall",
+    "pillarEvery": 7,
+    "colour": "#e9e3c4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    6,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 0.9,
+    "kind": "wall",
+    "pillarEvery": 7,
+    "colour": "#e9e3c4"
+   }
+  },
+  {
+   "type": "ball-gate-piers",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "gap": 5,
+    "height": 2.2,
+    "colour": "#e9e3c4"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.9,
+    "pillar": 0.1,
+    "leaf": "bars",
+    "colour": "#e9e3c4",
+    "leafColour": "#3a2c24"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4,
+    -30.2,
+    1.9
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 0.9,
+    "bottom": 1.9,
+    "colour": "#f4f4f1",
+    "posts": true,
+    "frameColour": "#f4f4f1"
+   }
+  },
+  {
+   "type": "clock-tower",
+   "at": [
+    35,
+    35,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 13,
+    "cap": "hip",
+    "cap_rise": 3.5,
+    "wall_colour": "#ece6d4",
+    "roof_colour": "#6f7a6a"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    -30,
+    45,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "height": 4
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    35,
+    0
+   ],
+   "params": {
+    "radius": 2.0,
+    "rimColour": "#8a5a5a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -56.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "width": 45,
+    "depth": 60,
+    "count": 14,
+    "min_height": 8,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    38.5,
+    49.0,
+    0
+   ],
+   "params": {
+    "width": 45,
+    "depth": 50,
+    "count": 14,
+    "min_height": 8,
+    "max_height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Photo shows only the street gate: piers, railings and palms are modelled but the dense canopy, iron star gate leaf detail and red notice board are absent; clock tower, bandstand, fountain placed from text/photo 2 not verified in position"
+ }
+}

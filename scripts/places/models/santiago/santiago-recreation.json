@@ -1,0 +1,531 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "santiago",
+ "venueId": "santiago-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Plaza_Elvira_Matte.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pdassori",
+   "view": "street",
+   "file": "/tmp/places-evidence/santiago/elvira.jpg",
+   "used": "open lawn with a dirt path, low rubble-stone retaining wall at left, tall araucarias and dark conifers, a purple-leaved plum, slim lamp post with a camera box, houses on the far side"
+  },
+  {
+   "kind": "text",
+   "ref": "https://es.wikipedia.org/wiki/Plaza_Elvira_Matte",
+   "used": "article lists benches, drinking fountain, a spider-net climbing frame, a slide and calisthenics bars: modelled as small play and fitness pieces"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/30359747",
+   "used": "real park outline 143 x 137 m (auto-fitted to 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.78,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "The photo shows only trees, lawn and a stone wall, so the layout of paths, playground and fitness bars comes from the article text and is schematic; tree species are approximated with conifer and broadleaf shapes tinted from the photo."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "park-lawn",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7a9a58",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a9a58",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -40
+     ],
+     [
+      -12,
+      -8
+     ],
+     [
+      12,
+      10
+     ],
+     [
+      50,
+      40
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#c8c2b4"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      50,
+      -40
+     ],
+     [
+      14,
+      -10
+     ],
+     [
+      -14,
+      12
+     ],
+     [
+      -50,
+      40
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#c8c2b4"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -52
+     ],
+     [
+      52,
+      -52
+     ],
+     [
+      52,
+      52
+     ],
+     [
+      -52,
+      52
+     ],
+     [
+      -52,
+      -52
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#c8c2b4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "thickness": 0.9,
+    "kind": "wall",
+    "colour": "#8d8a82",
+    "points": [
+     [
+      -44,
+      -14
+     ],
+     [
+      -38,
+      -6
+     ],
+     [
+      -30,
+      -2
+     ],
+     [
+      -20,
+      -2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -38,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 16,
+    "depth": 12,
+    "rise": 1.1,
+    "colour": "#b09a76"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "radius": 2.2,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8,
+    -16,
+    0.55
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.8
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    16,
+    0.55
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -30,
+    0.55
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    20,
+    30,
+    0.55
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    28,
+    -22,
+    0.55
+   ],
+   "params": {
+    "colour": "#c24a3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5,
+       5
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    -22,
+    0.55
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     5
+    ],
+    "height": 2.2,
+    "colour": "#e0b43a",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     26,
+     26,
+     0
+    ],
+    "end": [
+     36,
+     26,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.3,
+        2.4
+       ],
+       "height": 2.2,
+       "colour": "#4d5b66"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 17,
+    "colour": "#2f4a33",
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 19,
+    "colour": "#2f4a33",
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 18,
+    "colour": "#2f4a33",
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15,
+    "colour": "#2c4a3a",
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 16,
+    "colour": "#2c4a3a",
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#6b2f55",
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "colour": "#6b2f55",
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#6a9a4a",
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#6a9a4a",
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    46,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#6a9a4a",
+    "spread": 5
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -40,
+    40,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 16,
+    "count": 6,
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    40,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 16,
+    "count": 6,
+    "min_height": 8,
+    "max_height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   125
+  ]
+ }
+}

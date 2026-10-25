@@ -1,0 +1,187 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-juan",
+ "venueId": "san-juan-osm-way-336398987",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/365422500",
+   "used": "real multi-wing outline of the VA Caribbean Healthcare System hospital (about 220 x 188 m, fitted to 118 m) and height 33.4 m (about 9 storeys)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; facade colours, ribbon windows and rooftop plant are typed guesses; wings are one uniform height"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "simplify": 8
+   },
+   "height": 33.4,
+   "storeys": 9,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ddd6c3",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ddd6c3",
+       "#8a9aa6"
+      ]
+     }
+    ],
+    "plinth": 1.2,
+    "bands": "#f1eee4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3a8",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    6
+   ],
+   "params": {
+    "rect": [
+     22,
+     14
+    ],
+    "z0": 34.3,
+    "height": 4.5,
+    "colour": "#c9c4b6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plant2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20,
+    -14
+   ],
+   "params": {
+    "rect": [
+     12,
+     9
+    ],
+    "z0": 34.3,
+    "height": 3.2,
+    "colour": "#bdb8aa",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30,
+    -6
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 34.3,
+    "height": 5.5,
+    "colour": "#d4cebb",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 9,
+    "height": 5,
+    "form": "flat",
+    "colour": "#8a9aa6"
+   }
+  },
+  {
+   "type": "flag",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18,
+    -44,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ }
+}

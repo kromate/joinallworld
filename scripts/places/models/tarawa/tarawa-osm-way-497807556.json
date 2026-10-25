@@ -1,0 +1,342 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Te_Umanibong.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Obkiribati1",
+   "view": "front",
+   "file": "/tmp/places-evidence/tarawa/umanibong.jpg",
+   "used": "huge tan standing-seam roof dropping to low eaves, low pebble-dash white walls with concrete piers, maroon-framed louvred windows, central glazed doors, blank fascia board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/497807556",
+   "used": "footprint 23 x 15 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6e3da",
+    "windows": "none",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bay": 4.5,
+    "glassColour": "#2a2f33"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c58f66",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "pitch": 46,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "door",
+   "at": [
+    0,
+    -7.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.3
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "colour": "#1f2a30",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "pier-1",
+   "at": [
+    -1.75,
+    -7.7749999999999995,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.45
+    ],
+    "z0": 0,
+    "height": 3.8,
+    "colour": "#cfcdc6",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "pier1",
+   "at": [
+    1.75,
+    -7.7749999999999995,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.45
+    ],
+    "z0": 0,
+    "height": 3.8,
+    "colour": "#cfcdc6",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -7.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.4
+    ],
+    "z0": 2.85,
+    "height": 0.55,
+    "colour": "#2b2623",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "winL-7.5",
+   "at": [
+    -7.5,
+    -7.6499999999999995,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "z0": 1.0,
+    "height": 2.0,
+    "colour": "#6b2f33",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "winL-4.5",
+   "at": [
+    -4.5,
+    -7.6499999999999995,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "z0": 1.0,
+    "height": 2.0,
+    "colour": "#6b2f33",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "glL-7.5",
+   "at": [
+    -7.5,
+    -7.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 1.2,
+    "height": 1.6,
+    "colour": "#3a3a38",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "glL-4.5",
+   "at": [
+    -4.5,
+    -7.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 1.2,
+    "height": 1.6,
+    "colour": "#3a3a38",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "winR4.5",
+   "at": [
+    4.5,
+    -7.6499999999999995,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "z0": 1.0,
+    "height": 2.0,
+    "colour": "#6b2f33",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "winR7.5",
+   "at": [
+    7.5,
+    -7.6499999999999995,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "z0": 1.0,
+    "height": 2.0,
+    "colour": "#6b2f33",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "glR4.5",
+   "at": [
+    4.5,
+    -7.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 1.2,
+    "height": 1.6,
+    "colour": "#3a3a38",
+    "top": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "glR7.5",
+   "at": [
+    7.5,
+    -7.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 1.2,
+    "height": 1.6,
+    "colour": "#3a3a38",
+    "top": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.0,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.15,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#bdbab2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-osm-way-497807556",
+ "review": {
+  "rounds": 4,
+  "match": "fair",
+  "gaps": "Entrance bay, piers, fascia and maroon-framed windows added but windows/doors are small and roof still dominates the facade; wall still slightly cool, no louvres or glazing bars"
+ }
+}

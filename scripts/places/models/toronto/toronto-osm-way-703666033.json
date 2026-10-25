@@ -1,0 +1,363 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-way-703666033",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Seneca_CITE_Building_K_-_front_exterior_view.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Enoch Leung",
+   "view": "front",
+   "file": "/tmp/places-evidence/toronto/p2024-senK.jpg",
+   "used": "Building K (the 2019 CITE): three-storey glass box between tall white columns, timber-clad bays, dark grey graphic wall at the left end, louvred upper floors, thin white flat roof, red lettered sculpture on a concrete plinth, flagpoles"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Building_A_Exterior_Entrance_@_Seneca_Newnham_Campus.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Silver Dovelet",
+   "view": "front",
+   "used": "Building A: grey precast concrete block with horizontal teal-glass slit windows, a long flat white canopy over a glazed entrance, red letter board, teal glazed stair tower beside it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SenecaNewnhamStudentResidence.jpg",
+   "licence": "CC0",
+   "author": "Raysonho",
+   "view": "street",
+   "used": "high-rise student residence tower (1998) behind the college blocks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/703666033",
+   "used": "campus outline is 840 x 505 m: only a representative group of the 1969 blocks, the 2019 CITE building and the residence tower is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.03,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "building-k",
+   "footprint": {
+    "rect": [
+     66,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f949c",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "width": 0.6,
+      "depth": 1.5,
+      "spacing": 6.6,
+      "colour": "#eceeed",
+      "margin": 0.2
+     },
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#b9bec0",
+      "backColour": "#2b3438",
+      "pitch": 0.35,
+      "depth": 0.3,
+      "band": 0.5,
+      "at": 0.25,
+      "floors": "upper",
+      "margin": 1.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e7e9e8",
+    "overhang": 2.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "timber-1",
+   "at": [
+    -8,
+    -14.6,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.6
+    ],
+    "height": 8.8,
+    "colour": "#b4713f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "grey-wall",
+   "at": [
+    -26,
+    -13.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.6
+    ],
+    "height": 14.5,
+    "colour": "#5f625f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    14,
+    -25,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     3
+    ],
+    "height": 0.8,
+    "colour": "#b9b9b4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     5,
+     -25,
+     0.8
+    ],
+    "end": [
+     23,
+     -25,
+     0.8
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       2.2
+      ],
+      "height": 4.6,
+      "colour": "#d6212a"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "building-a",
+   "footprint": {
+    "rect": [
+     30,
+     22
+    ]
+   },
+   "at": [
+    -48,
+    30
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b2afa8",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "glassColour": "#4f8f8c",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "building-a-podium",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    -45,
+    14
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a9a69f",
+    "windows": "none",
+    "faces": {
+     "front": "curtain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -45,
+    6,
+    3.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 6,
+    "height": 0.0,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#e0e2e0",
+    "edgeColour": "#e0e2e0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -32,
+    6,
+    6
+   ],
+   "params": {
+    "width": 3,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#d6212a",
+    "frameColour": "#d6212a",
+    "posts": false
+   }
+  },
+  {
+   "type": "tower-block",
+   "at": [
+    50,
+    36
+   ],
+   "params": {
+    "width": 28,
+    "depth": 22,
+    "height": 48,
+    "storeys": 16,
+    "facade": "punched",
+    "window_ratio": 0.22,
+    "wall_colour": "#bba68a",
+    "balcony_pods": false,
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    24,
+    -26
+   ],
+   "params": {
+    "height": 13,
+    "count": 2,
+    "spacing": 5,
+    "colours": [
+     "#d6212a",
+     "#f2f2f0"
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "campus is 840 m across and only three buildings shown; red Seneca lettering is blocks, graphic wall hidden behind sculpture in view, recessed glazed entrance not cut; louvre depth approximate"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5,
+     -30
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -20
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ }
+}

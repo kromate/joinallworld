@@ -1,0 +1,127 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/tegucigalpa.json",
+   "used": "point only (no outline, no photo): a 25 m lookout/communications lattice tower on a wooded hilltop with a fenced base"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "lattice-mast",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "baseWidth": 3.4,
+    "topWidth": 1.0,
+    "panels": 6,
+    "colour": "#c0392b",
+    "colour2": "#f2f0ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "rect": [
+     3,
+     2.5
+    ]
+   },
+   "at": [
+    5,
+    -3
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0aca3",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f93",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "fence",
+    "length": 12,
+    "height": 2,
+    "colour": "#8c8f93",
+    "points": [
+     [
+      -6,
+      -6
+     ],
+     [
+      6,
+      -6
+     ],
+     [
+      6,
+      6
+     ],
+     [
+      -6,
+      6
+     ],
+     [
+      -6,
+      -6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 9,
+    "count": 5,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tegucigalpa",
+ "venueId": "tegucigalpa-osm-node-11872479469",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Point only, no outline or photo; lattice mast form and fenced base assumed"
+ }
+}

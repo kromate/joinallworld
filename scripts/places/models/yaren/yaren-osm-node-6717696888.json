@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaren",
+ "venueId": "yaren-osm-node-6717696888",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abandoned_Japanese_Pillbox,_Nauru_(1998).jpg",
+   "licence": "Public domain",
+   "author": "Bernard Cloutier",
+   "view": "side",
+   "file": "/tmp/places-evidence/yaren/pillbox.jpg",
+   "used": "typical Nauru Japanese pillbox type (a different bunker): low flat-roofed concrete box, grey with dark stains, two dark slit apertures in the seaward face, grass edge, coconut palm and reef rock"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Command_Ridge",
+   "used": "Japanese concrete bunker with writing on the walls on Nauru"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bunker",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#8a8880",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#807e76",
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slit-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -1.8,
+    -3.0
+   ],
+   "z0": 1.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#1d1c1a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d1c1a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slit-2",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    2.2,
+    -3.0
+   ],
+   "z0": 1.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#1d1c1a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1d1c1a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stain",
+   "footprint": {
+    "rect": [
+     9.02,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.01
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#7a766c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a766c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4.6,
+    -0.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 1.4,
+    "rise": 0.35,
+    "run": 0.5,
+    "count": 5,
+    "colour": "#8a8880"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    -3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     7
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9,
+     8
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Generic Nauru pillbox (photo is a different bunker); no reef rocks or sea; slits are blocks not recesses; roof growth dropped."
+ }
+}

@@ -1,0 +1,392 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Basin_Reserve.JPG",
+   "licence": "Public domain",
+   "author": "PaddyBriggs",
+   "view": "front",
+   "file": "/tmp/places-evidence/wellington/288996918_0.jpg",
+   "used": "mown striped oval, cream pitch strip, grass banks with trees behind, white Art Deco pavilion and domed white rotunda on the far bank, glazed gabled RA Vance stand at right, advertising hoardings along the boundary"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/288996918",
+   "used": "oval ground outline (auto-fitted to 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "outfield",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#7a8f46",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8f46",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "rect": [
+     3.4,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "rotDeg": 75,
+   "z0": 0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d3c08f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3c08f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "oval",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     118,
+     105
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#4f9a3a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#69b24a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58a53e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deco-pavilion",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    48
+   ],
+   "rotDeg": 0,
+   "z0": 5,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece3",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "bay": 2.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "bandstand",
+   "id": "rotunda",
+   "at": [
+    -22,
+    38,
+    3.0
+   ],
+   "params": {
+    "radius": 2.4,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vance-stand",
+   "footprint": {
+    "rect": [
+     32,
+     12
+    ]
+   },
+   "at": [
+    38,
+    56
+   ],
+   "rotDeg": 0,
+   "z0": 5,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9dbd8",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "back": "plain"
+    },
+    "glassColour": "#aebfc9"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#aeb2b4",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "museum-stand",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -46,
+    54
+   ],
+   "rotDeg": 0,
+   "z0": 5,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6a58",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "scoreboard",
+   "id": "ransom-board",
+   "at": [
+    55,
+    -30,
+    0.5
+   ],
+   "params": {
+    "width": 7,
+    "height": 4,
+    "post_height": 2,
+    "facing": "north",
+    "colour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "hoarding-near",
+   "at": [
+    0,
+    -30,
+    0.5
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.0,
+    "thickness": 0.2,
+    "colour": "#1f6a4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "hoarding-far",
+   "at": [
+    0,
+    30,
+    0.5
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.0,
+    "thickness": 0.2,
+    "colour": "#1f4f9a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "far-trees",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 10,
+    "count": 16,
+    "min_height": 8,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "prism",
+   "id": "far-bank",
+   "params": {
+    "points": [
+     [
+      -60,
+      0
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      64,
+      16
+     ],
+     [
+      -64,
+      16
+     ]
+    ],
+    "z0": 0.5,
+    "height": 6,
+    "topScale": [
+     1,
+     0.6
+    ],
+    "topOffset": [
+     0,
+     6
+    ],
+    "colour": "#6f8f3f",
+    "topColour": "#6f9440"
+   },
+   "at": [
+    0,
+    36
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "near-bank",
+   "params": {
+    "points": [
+     [
+      -50,
+      0
+     ],
+     [
+      50,
+      0
+     ],
+     [
+      52,
+      6
+     ],
+     [
+      -52,
+      6
+     ]
+    ],
+    "z0": 0.5,
+    "height": 1.5,
+    "topScale": [
+     1,
+     0.6
+    ],
+    "colour": "#6f8f3f"
+   },
+   "at": [
+    0,
+    -44
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "id": "bank-trees",
+   "at": [
+    0,
+    56,
+    5
+   ],
+   "params": {
+    "width": 110,
+    "depth": 12,
+    "count": 22,
+    "min_height": 10,
+    "max_height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "wellington",
+ "venueId": "wellington-osm-way-288996918",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "outfield now oval but mown stripes absent and bank is smooth slope without terraced crowd tiers; hillside, houses and tunnel behind not modelled; near-bank strip reads as a stray bar; scaled OSM slab"
+ }
+}

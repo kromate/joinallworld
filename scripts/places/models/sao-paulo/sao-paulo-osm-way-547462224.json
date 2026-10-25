@@ -1,0 +1,282 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parque_Ecol%C3%B3gico_Guapituba_-_Alfredo_Klinkert_Junior.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Allan Lisboa",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-paulo/guap.jpg",
+   "used": "red hardwood round deck on a stone drum in a dark pond, plank walkway into it, dense Atlantic forest with palms and araucaria behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/547462224",
+   "used": "park is 818 x 648 m, far too large for the scene clamp; one corner (deck, pond, forest edge, entrance pavilion) is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 0.6,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "stadium/water-surface",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "width": 46,
+    "depth": 36,
+    "shape": "rect",
+    "colour": "#26352f",
+    "bank": true
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "segments": 40,
+    "colour": "#7b3e38",
+    "profile": [
+     [
+      0.1,
+      0.55,
+      "#8a4640"
+     ],
+     [
+      9,
+      0.55,
+      "#8a4640"
+     ],
+     [
+      9,
+      0.5,
+      "#6f6d62"
+     ],
+     [
+      8.6,
+      -0.2,
+      "#5e5d55"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     17
+    ],
+    "z0": 0.35,
+    "height": 0.2,
+    "colour": "#80403a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -3.5,
+     0.55
+    ],
+    "end": [
+     0,
+     12,
+     0.55
+    ],
+    "count": 16,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.5,
+       0.12
+      ],
+      "height": 0.08,
+      "colour": "#5a2823"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stadium/tree-grove",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 22,
+    "count": 30,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 19,
+    "count": 4,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    44,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 27,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "stadium/park-pavilion",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.4,
+    "kind": "hip",
+    "roof_colour": "#a6522f"
+   }
+  },
+  {
+   "type": "stadium/path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -14
+     ],
+     [
+      -34,
+      -26
+     ],
+     [
+      -6,
+      -26
+     ],
+     [
+      0,
+      -10
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b9ad92"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -4.5,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#4a3a2a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-osm-way-547462224",
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Photo is a close deck-and-pond view; the model is a wider scene with a flat disc deck, boxy water, and low-poly trees instead of dense Atlantic forest; park is 800 m and only one corner is modelled."
+ }
+}

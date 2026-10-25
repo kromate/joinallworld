@@ -1,0 +1,391 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "toronto",
+ "venueId": "toronto-osm-way-681295729",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Scarborough_Hospital.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "SimonP",
+   "view": "street",
+   "file": "/tmp/places-evidence/toronto/m15-scarb.jpg",
+   "used": "round red-brown brick patient tower with regular punched windows and a pale concrete block rising behind with a rooftop H helipad sign, lower brick wing with ivy at left, grey slab further left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/681295729",
+   "used": "campus is about 396 x 267 m: only the tower-and-wings cluster at the Lawrence entrance is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "round-tower",
+   "footprint": {
+    "polygon": [
+     [
+      12.0,
+      0.0
+     ],
+     [
+      11.59,
+      3.11
+     ],
+     [
+      10.39,
+      6.0
+     ],
+     [
+      8.49,
+      8.49
+     ],
+     [
+      6.0,
+      10.39
+     ],
+     [
+      3.11,
+      11.59
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -3.11,
+      11.59
+     ],
+     [
+      -6.0,
+      10.39
+     ],
+     [
+      -8.49,
+      8.49
+     ],
+     [
+      -10.39,
+      6.0
+     ],
+     [
+      -11.59,
+      3.11
+     ],
+     [
+      -12.0,
+      0.0
+     ],
+     [
+      -11.59,
+      -3.11
+     ],
+     [
+      -10.39,
+      -6.0
+     ],
+     [
+      -8.49,
+      -8.49
+     ],
+     [
+      -6.0,
+      -10.39
+     ],
+     [
+      -3.11,
+      -11.59
+     ],
+     [
+      -0.0,
+      -12.0
+     ],
+     [
+      3.11,
+      -11.59
+     ],
+     [
+      6.0,
+      -10.39
+     ],
+     [
+      8.49,
+      -8.49
+     ],
+     [
+      10.39,
+      -6.0
+     ],
+     [
+      11.59,
+      -3.11
+     ]
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 44,
+   "storeys": 12,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8644a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 1.0,
+    "bay": 9,
+    "trimColour": "#d8d2c4",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concrete-block",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -3,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 48,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d6cc",
+    "windows": "punched",
+    "windowRatio": 0.04,
+    "bay": 8,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "punched"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d8a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant-room",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    -3,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 48,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfccc2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-wing",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    -24,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a45c46",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 12,
+    "plinth": 0.8,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grey-slab",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    -44,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdbab0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-low",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    8,
+    -13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bcc0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "glassColour": "#9ab4ba"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3,
+    4.5,
+    48
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 3.4,
+    "bottom": 0,
+    "colour": "#2f6fa8",
+    "frameColour": "#eeeeee",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 0.8,
+    "colour": "#2f6b4f",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    -10.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.5
+    ],
+    "height": 5,
+    "colour": "#4f6f3a",
+    "topColour": "#4f6f3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower is 24-sided with 12 storeys and windows on the front only; no wrap banner; ivy is a flat green panel; only the entrance cluster of a 400 m campus."
+ }
+}

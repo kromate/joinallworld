@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tarawa",
+ "venueId": "tarawa-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/335676916",
+   "used": "footprint of the named Betio Super Market, 58 x 36 m"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9d6d0",
+    "windows": "none",
+    "bands": "#8fb6c9",
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8aeb2",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 3.2,
+    "height": 3.0,
+    "colours": [
+     "#8fb6c9",
+     "#f2f0ea"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.6,
+    "bottom": 3.4,
+    "colour": "#2f7ab5",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 3.4,
+    "colour": "#c9d6d0",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; massing from the OSM outline, colours from the Tarawa style brief. Roof pitch and awning position are guesses."
+ }
+}

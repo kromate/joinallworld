@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "san-salvador",
+ "venueId": "san-salvador-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "campus gate (CC BY-SA 4.0, PizzaKing13) only: blue pylon with pale lintel, palms, low cream service buildings; not a classroom block",
+   "ref": "https://commons.wikimedia.org/wiki/File:Entrance_of_the_Central_American_University,_San_Salvador.jpg"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Central_American_University,_San_Salvador",
+   "used": "Jesuit university founded 1965; campus polygon 664 x 398 m (too large to model)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-main",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cbbfa8",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#efeae0",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3a8",
+    "material": "concrete",
+    "overhang": 1.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-wing",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    -21,
+    20
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#a5603f",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3a8",
+    "material": "concrete",
+    "overhang": 0.8,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-arcade",
+   "footprint": {
+    "rect": [
+     56,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efeae0",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b3a8",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.6,
+    "bottom": 4,
+    "colour": "#e6e3d8",
+    "frameColour": "#1f3d8f",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of a classroom block; typed modernist concrete/brick campus block."
+ }
+}

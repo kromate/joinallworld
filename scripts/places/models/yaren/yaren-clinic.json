@@ -1,0 +1,335 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaren",
+ "venueId": "yaren-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nauru_Medical_Centre.jpg",
+   "licence": "CC0",
+   "author": "Gmsslala",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/yaren/clinic1.jpg",
+   "used": "low white corrugated-roof ward blocks, gable and hip roofs, solar panel arrays on roofs, open covered ambulance bay, fenced forecourt with gate"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:RON_Hospital_(15222341848).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Sean Kelleher",
+   "view": "street",
+   "used": "cream walls, brick lower walls, low pitched roofs, blank sign arch over entrance"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/538840002",
+   "used": "footprint of the ward wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.9,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-ward",
+   "footprint": {
+    "rect": [
+     58,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9df",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "glassColour": "#4a6e72"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e7e8",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-ward",
+   "footprint": {
+    "rect": [
+     50,
+     9
+    ]
+   },
+   "at": [
+    6,
+    18
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9df",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "glassColour": "#4a6e72"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e7e8",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     9,
+     34
+    ]
+   },
+   "at": [
+    -27,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece9df",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "glassColour": "#4a6e72"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e0e4e5",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     9,
+     30
+    ]
+   },
+   "at": [
+    28,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "glassColour": "#4a6e72"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4e7e8",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin-block",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    2,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2cd",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "glassColour": "#4a6e72"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#dfe3e4",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    14,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#ece9df",
+    "roofColour": "#dfe3e4",
+    "vans": 1
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    -8,
+    -14,
+    4.6
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 9,
+    "tilt": 10
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    8,
+    18,
+    4.6
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 8,
+    "tilt": 10
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 0.9,
+    "bottom": 3.0,
+    "colour": "#f4f4f4",
+    "frameColour": "#3b4a5a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -34,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 68,
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#8a8f92"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -42,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "ground",
+    "radius": 1.6,
+    "tankHeight": 2.6,
+    "colour": "#d8dcdc"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -38,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     35,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     45
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "plan is simplified into 4 wards plus admin block rather than the real many-wing outline; no tent canopy, hillside backdrop or blank arch sign over gate"
+ }
+}

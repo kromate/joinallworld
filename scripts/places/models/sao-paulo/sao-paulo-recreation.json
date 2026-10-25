@@ -1,0 +1,451 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BOSQUE_MAIA_EM_GUARULHOS-SP_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "CORRETOR-CARVALHO",
+   "view": "street",
+   "file": "/tmp/places-evidence/sao-paulo/maia.jpg",
+   "used": "playground on sand, brown pond with iron fence, raised timber play-house with white rail, red-roofed gazebo, lamps, housing towers beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/5110800",
+   "used": "park is 1169 x 255 m, too large for the scene; the playground corner is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "stadium/water-surface",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 14,
+    "shape": "rect",
+    "colour": "#8a6c52",
+    "bank": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    18,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     24
+    ],
+    "height": 0.08,
+    "colour": "#d6b98f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    15,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     9,
+     4.2
+    ],
+    "height": 0.25,
+    "colour": "#7a5436",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     3.8,
+     13.2,
+     0
+    ],
+    "end": [
+     12.2,
+     13.2,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 2.6,
+      "colour": "#5a3d28"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     3.8,
+     16.8,
+     0
+    ],
+    "end": [
+     12.2,
+     16.8,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 2.6,
+      "colour": "#5a3d28"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    8,
+    15,
+    2.9
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      -4.4,
+      -2.1,
+      0
+     ],
+     [
+      4.4,
+      -2.1,
+      0
+     ],
+     [
+      4.4,
+      2.1,
+      0
+     ],
+     [
+      -4.4,
+      2.1,
+      0
+     ]
+    ],
+    "closed": true,
+    "colour": "#f2f2ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "playhouse",
+   "footprint": {
+    "rect": [
+     3.2,
+     3.2
+    ]
+   },
+   "at": [
+    9.5,
+    16
+   ],
+   "z0": 2.85,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b0612f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8643c",
+    "material": "corrugated",
+    "rise": 1.1,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "stadium/park-pavilion",
+   "at": [
+    -24,
+    16,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 7,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#963a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -29,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     12,
+     0
+    ],
+    "end": [
+     -4,
+     22,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "height": 3,
+      "colour": "#c25a2b"
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 7,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "stadium/path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      40,
+      -14
+     ],
+     [
+      22,
+      -6
+     ],
+     [
+      8,
+      -8
+     ],
+     [
+      -6,
+      -16
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#b6b2aa"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    150,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     12
+    ],
+    "height": 55,
+    "colour": "#d6d1c7",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#d6d1c7",
+      "#c3beb4"
+     ]
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    54,
+    152,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     11
+    ],
+    "height": 50,
+    "colour": "#cfcac0",
+    "windows": "none",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#cfcac0",
+      "#bdb8ae"
+     ]
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-paulo",
+ "venueId": "sao-paulo-recreation",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Play equipment, swings and slides are reduced to a timber play-house and a gazebo; pond shape is a rectangle; the real fence curve, terracing and background skyline are approximate."
+ }
+}
